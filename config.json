@@ -1,0 +1,81 @@
+{
+  "title": "Les Verts Styleguide",
+  "version": "0.0.1",
+  "fractal": {
+    "helpers": "./styleguide/helpers",
+    "overides": {
+      "path": "./styleguide/styleguide-overides",
+      "src": "./styleguide/styleguide-overides/**/*",
+      "dest": "./styleguide/dist/static/styleguide",
+      "serve": "/styleguide/"
+    },
+    "src": {
+      "docs": "./styleguide/src/docs",
+      "components": "./styleguide/src/components"
+    },
+    "dist": "./styleguide/dist",
+    "build": "./styleguide/dist/build",
+    "static": "./styleguide/dist/static",
+    "server": {
+      "sync": true,
+      "port": 4000
+    },
+    "sync": {
+      "tunnel": false,
+      "ghostMode": {
+        "clicks": false,
+        "forms": false,
+        "scroll": false
+      },
+      "watchOptions": {
+        "cwd": "./styleguide/dist",
+        "ignoreInitial": true
+      }
+    }
+  },
+  "javascript": {
+    "src": "./styleguide/src/**/*.js",
+    "entries": ["./styleguide/src/index.js"],
+    "paths": ["./styleguide/src/", "./styleguide/src/components", "./styleguide/src/js"],
+    "dest": "./styleguide/dist/static/js",
+    "build_name": "app.js"
+  },
+  "sass": {
+    "src": "./styleguide/src/style.scss",
+    "dest": "./styleguide/dist/static",
+    "basename": "style"
+  },
+  "images": {
+    "src": "./styleguide/src/img/**/*",
+    "dest": "./styleguide/dist/static/img"
+  },
+  "svgsprite": {
+    "src": "./styleguide/src/icons/**/*.svg",
+    "sprite": "icons.svg",
+    "dest": "./styleguide/dist/static"
+  },
+  "fonts": {
+    "src": "./styleguide/src/fonts/**/*.*",
+    "dest": "./styleguide/dist/static/fonts"
+  },
+  "watch": {
+    "sass": "./styleguide/src/**/*.scss",
+    "images": "./styleguide/src/img/**/*",
+    "svgsprite": "./styleguide/src/icons/**/*",
+    "fonts": "./styleguide/src/fonts/**/*",
+    "scripts": "./styleguide/src/**/*.js",
+    "sg_custom": "./styleguide-assets/**/*"
+  },
+  "modernizr": {
+    "src": "./styleguide/src/**/*.js",
+    "dest": "./styleguide/dist/static/js",
+    "crawl": false,
+    "quiet": true,
+    "settings": {
+      "options": [
+        "setClasses"
+      ],
+      "tests": []
+    }
+  }
+}

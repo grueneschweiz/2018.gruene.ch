@@ -1,0 +1,18 @@
+context:
+  colors:
+    - title: Primary
+      values:
+        primary: "#84B414"
+        primary-dark: "#516F0A"
+    - title: Secondary
+      values:
+        secondary: "#E10078"
+        secondary-dark: "#B1025F"
+    - title: Text
+      values:
+        text: "#333333"
+        text-light: "#4E4E4E"
+    - title: Others
+      values:
+        black: "#000000"
+        white: "#FFFFFF"

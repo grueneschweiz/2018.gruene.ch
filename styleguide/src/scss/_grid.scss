@@ -1,0 +1,13 @@
+/**
+ * Extend this class to use the global grid system in your templates.
+ * Based on the powerfull CSS Grid Layout.
+ */
+.grid {
+	@include fluid-props(max-width, $fluid-min, $fluid-max, $grid-max-width-min, $grid-max-width-max);
+	@include fluid-props(grid-column-gap, $fluid-min, $fluid-max, $grid-gap-min, $grid-gap-max);
+	display: grid;
+	grid-template-columns: repeat($grid-nb-columns, 1fr);
+
+	margin-left: auto;
+	margin-right: auto;
+}

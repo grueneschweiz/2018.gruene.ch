@@ -1,0 +1,64 @@
+{
+  "name": "les-verts-stack",
+  "version": "0.0.1",
+  "desccription": "Les Verts (Die Gruene) new website with living styleguide made with Fractal.build, hosted on WordPress Multisite and with the latest technologies by superhuit.ch.",
+  "main": "src/js/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://gitlab.com/superhuit/les-verts-stack.git"
+  },
+  "author": {
+    "name": "Superhuit",
+    "email": "hello@superhuit.ch",
+    "url": "https://superhuit.ch"
+  },
+  "license": "UNLICENSED",
+  "private": true,
+  "bugs": {
+    "url": "https://gitlab.com/superhuit/les-verts-stack/issues",
+    "email": "incoming+superhuit/les-verts-stack@incoming.gitlab.com"
+  },
+  "homepage": "https://superhuit.gitlab.io/les-verts-stack",
+  "keywords": [
+    "verts",
+    "gruene",
+    "styleguide",
+    "fractal",
+    "website",
+    "wordpress",
+    "multisite",
+    "switzerland"
+  ],
+  "scripts": {
+    "start": "gulp fractal:start",
+    "build": "gulp build:production",
+    "fractal:build": "gulp fractal:build"
+  },
+  "dependencies": {
+    "object-fit-images": "^3.2.3"
+  },
+  "devDependencies": {
+    "@frctl/fractal": "^1.1.7",
+    "@frctl/handlebars": "^1.1.4",
+    "@frctl/mandelbrot": "^1.2.0",
+    "babel-core": "^6.26.3",
+    "babel-preset-env": "^1.7.0",
+    "babelify": "^8.0.0",
+    "browserify": "^16.2.2",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^5.0.0",
+    "gulp-clean-css": "^3.9.4",
+    "gulp-eslint": "^5.0.0",
+    "gulp-file": "^0.4.0",
+    "gulp-modernizr": "^3.0.0",
+    "gulp-plumber": "^1.2.0",
+    "gulp-rename": "^1.3.0",
+    "gulp-sass": "^4.0.1",
+    "gulp-svg-sprite": "^1.4.0",
+    "gulp-uglify": "^3.0.0",
+    "handlebars-helper-svg": "^2.0.1",
+    "lodash.isobject": "^3.0.2",
+    "vinyl-buffer": "^1.0.1",
+    "vinyl-source-stream": "^2.0.0"
+  }
+}

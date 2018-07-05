@@ -1,0 +1,45 @@
+.doc-icons h3 {
+	margin-top: 2em;
+}
+
+.doc-icons ul {
+	display: grid;
+	grid-template-columns: repeat(5, 20%);
+	grid-gap: 2px;
+	padding: 0 !important;
+	margin: 0 !important;
+}
+
+.doc-icons li {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+	display: flex;
+	flex-flow: column nowrap;
+	text-align: center;
+	background-color: #F7F7F7;
+}
+
+.doc-icons__icon {
+	padding: 20px 10px;
+	color: #666;
+}
+.doc-icons__icon:hover {
+	color: #2d2d2d;
+}
+
+.doc-icons__icon svg {
+	display: block;
+	margin: 0 auto 10px;
+	width: 48px;
+	height: 48px;
+	fill: currentColor;
+	transition: fill .2s ease;
+}
+
+.doc-icons__icon h4 {
+	color: currentColor;
+	font-weight: normal;
+	text-transform: lowercase;
+	transition: color .2s ease;
+}

@@ -1,0 +1,59 @@
+.button {
+	font-size: 14px;
+	display: inline-block;
+	line-height: 1.71428em; // 24/14
+	letter-spacing: .08928em; // 1.25/14
+	padding-left: 1.57142em; // 22/14
+	padding-right: 1.57142em; // 22/14
+	@include fluid-props(padding-top padding-bottom, $fluid-min, $fluid-max, 6px, 10px);
+
+	background-color: $color-primary;
+	border-color: $color-primary;
+	border-radius: .14285em; // 2/14
+	color: $color-white;
+	font-family: $font-secondary;
+	font-weight: $font-weight-bold;
+	text-align: center;
+	text-transform: uppercase;
+	transition: background-color $transition-fast $transition-ease, color $transition-fast $transition-ease;
+
+	@include hover {
+		background-color: $color-primary-dark;
+	}
+
+	&.button--outline {
+		color: $color-primary;
+
+		@include hover {
+			background-color: $color-primary;
+		}
+	}
+}
+
+.button--secondary {
+	background-color: $color-secondary;
+	border-color: $color-secondary;
+
+	@include hover {
+		background-color: $color-secondary-dark;
+	}
+
+	&.button--outline {
+		color: $color-secondary;
+
+		@include hover {
+			background-color: $color-secondary;
+		}
+	}
+}
+
+.button--outline {
+	background-color: transparent;
+	border-width: 1px;
+	border-style: solid;
+
+
+	@include hover {
+		color: $color-white;
+	}
+}

@@ -1,0 +1,20 @@
+label: Button
+status: wip
+display:
+  margin: 40px
+context:
+  label: Mitmachen
+variants:
+  - name: Outlined
+    context:
+      modifiers:
+        - outline
+  - name: Secondary
+    context:
+      modifiers:
+        - secondary
+  - name: Secondary outlined
+    context:
+      modifiers:
+        - secondary
+        - outline

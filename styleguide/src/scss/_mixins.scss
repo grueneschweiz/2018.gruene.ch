@@ -1,0 +1,106 @@
+/**
+ * CSS Media query.
+ */
+@mixin media($query) {
+  @media all and (min-width: $query) {
+    @content;
+  }
+}
+
+@mixin size($width, $height) {
+  width: $width;
+  height: $height;
+}
+
+@mixin centerer($horizontal: true, $vertical: true) {
+  position: absolute;
+  @if ($horizontal and $vertical) {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  } @else if ($horizontal) {
+    left: 50%;
+    transform: translate(-50%, 0);
+  } @else if ($vertical) {
+    top: 50%;
+    transform: translate(0, -50%);
+  }
+}
+
+/**
+ * Mixin for hover states.
+ * TODO Will work only on no-touch devices
+ */
+@mixin hover() {
+  &:hover,
+  &:focus {
+    @content;
+  }
+}
+
+/**
+ * Object Fit Polyfill, needs to include https://www.npmjs.com/package/object-fit-images
+ * This mixin can be used to set the object-fit:
+ * @include object-fit(contain);
+ * or object-fit and object-position:
+ * @include object-fit(cover, top);
+ */
+@mixin object-fit($fit: fill, $position: null){
+  -o-object-fit: $fit;
+     object-fit: $fit;
+  @if $position {
+    -o-object-position: $position;
+       object-position: $position;
+    font-family: 'object-fit: #{$fit}; object-position: #{$position}';
+  } @else {
+    font-family: 'object-fit: #{$fit}';
+  }
+}
+
+/**
+ * Fluid Props
+ */
+@mixin fluid-props($properties, $min-vw, $max-vw, $min-value, $max-value, $set-initial-properties: true, $suffix: null) {
+  @if $set-initial-properties {
+    @each $property in $properties {
+      #{$property}: $min-value $suffix;
+    }
+  }
+
+  @media screen and (min-width: $min-vw) {
+    @each $property in $properties {
+     #{$property}: calc(#{$min-value} + #{strip-unit($max-value - $min-value)} * (100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)}) $suffix;
+    }
+  }
+
+  // scaling until 2k if the max-vw equals the mockup size
+  @if $max-vw == $size-large {
+    $min-vw: $size-large;
+    $max-vw: $size-huge;
+   $min-value: $max-value;
+    $max-value: $max-value * $size-huge / $size-large;
+
+   @if $max-value < 0 {
+     $max-value: floor($max-value);
+   }
+   @else {
+     $max-value: ceil($max-value);
+   }
+
+    @media screen and (min-width: $size-large) {
+      @each $property in $properties {
+       #{$property}: calc(#{$min-value} + #{strip-unit($max-value - $min-value)} * (100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)}) $suffix;
+      }
+    }
+  }
+
+  @media screen and (min-width: $max-vw) {
+    @each $property in $properties {
+      #{$property}: $max-value $suffix;
+    }
+  }
+}
+
+@function strip-unit($value) {
+  @return $value / ($value * 0 + 1);
+}
