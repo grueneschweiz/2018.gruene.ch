@@ -119,5 +119,6 @@ wordpress/sitemap.xml.gz
 
 
 ### PROJECT SPECIFICS ###
+.data
 dist
 node_modules
