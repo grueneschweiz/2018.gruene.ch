@@ -1,4 +1,5 @@
 {
     "require": {
+        "mindkomm/timmy": "^0.13.6"
     }
 }

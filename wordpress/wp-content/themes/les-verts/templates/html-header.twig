@@ -1,0 +1,49 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js ie ie6 lt-ie9 lt-ie8 lt-ie7" {{ site.language_attributes }}> <![endif]-->
+<!--[if IE 7]><html class="no-js ie ie7 lt-ie9 lt-ie8" {{ site.language_attributes }}> <![endif]-->
+<!--[if IE 8]><html class="no-js ie ie8 lt-ie9" {{ site.language_attributes }}> <![endif]-->
+<!--[if gt IE 8]><!--><html class="no-js" {{ site.language_attributes }}> <!--<![endif]-->
+<head>
+	<meta charset="{{ site.charset }}" />
+	<title>
+			{% if wp_title %}
+					{{ wp_title }} - {{ site.name }}
+			{% else %}
+					{{ site.name }}
+			{% endif %}
+	</title>
+	<script type="text/javascript">
+		var html = document.getElementsByTagName('html')[0];
+		html.className = html.className.replace( /(?:^|\s)no-js(?!\S)/g , 'js' );
+	</script>
+	<meta name="description" content="{{post._yoast_wpseo_metadesc ?: post.description_short|striptags|replace({"\n": " ", "\r": " "}) ?: post.content_short|striptags|replace({"\n": " ", "\r": " "})}}">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="author" href="{{ site.theme.link }}/humans.txt" />
+	<link rel="pingback" href="{{ site.pingback_url }}" />
+	<!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+	<![endif]-->
+	<link rel="shortcut icon" href="{{ theme_uri }}/favicon/favicon.ico" />
+	{# <link rel="apple-touch-icon-precomposed" sizes="57x57" href="{{ theme_uri }}/favicon/apple-touch-icon-57x57.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ theme_uri }}/favicon/apple-touch-icon-114x114.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ theme_uri }}/favicon/apple-touch-icon-72x72.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ theme_uri }}/favicon/apple-touch-icon-144x144.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="60x60" href="{{ theme_uri }}/favicon/apple-touch-icon-60x60.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="120x120" href="{{ theme_uri }}/favicon/apple-touch-icon-120x120.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="76x76" href="{{ theme_uri }}/favicon/apple-touch-icon-76x76.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="152x152" href="{{ theme_uri }}/favicon/apple-touch-icon-152x152.png" />
+	<link rel="icon" type="image/png" href="{{ theme_uri }}/favicon/favicon-196x196.png" sizes="196x196" />
+	<link rel="icon" type="image/png" href="{{ theme_uri }}/favicon/favicon-96x96.png" sizes="96x96" />
+	<link rel="icon" type="image/png" href="{{ theme_uri }}/favicon/favicon-32x32.png" sizes="32x32" />
+	<link rel="icon" type="image/png" href="{{ theme_uri }}/favicon/favicon-16x16.png" sizes="16x16" />
+	<link rel="icon" type="image/png" href="{{ theme_uri }}/favicon/favicon-128.png" sizes="128x128" />
+	<meta name="application-name" content="&nbsp;"/>
+	<meta name="msapplication-TileColor" content="#FFFFFF" />
+	<meta name="msapplication-TileImage" content="{{ theme_uri }}/favicon/mstile-144x144.png" />
+	<meta name="msapplication-square70x70logo" content="{{ theme_uri }}/favicon/mstile-70x70.png" />
+	<meta name="msapplication-square150x150logo" content="{{ theme_uri }}/favicon/mstile-150x150.png" />
+	<meta name="msapplication-wide310x150logo" content="{{ theme_uri }}/favicon/mstile-310x150.png" />
+	<meta name="msapplication-square310x310logo" content="{{ theme_uri }}/favicon/mstile-310x310.png" /> #}
+	{{function('wp_head')}}
