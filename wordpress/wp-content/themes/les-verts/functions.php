@@ -79,7 +79,9 @@ class StarterSite extends TimberSite {
 		$context['site'] = $this;
 
 		// Active languages
-		$context['langs'] = pll_languages_list();
+		if ( function_exists('pll_languages_list') ) {
+			$context['langs'] = pll_languages_list();
+		}
 
 		// Theme base URI
 		$context['theme_uri'] = THEME_URI;
