@@ -6,7 +6,7 @@ pages:
   stage: deploy
   script:
   - yarn fractal:build
-  - mv theme/styleguide/build public
+  - mv theme/styleguide/dist/build public
   artifacts:
     paths:
     - public
