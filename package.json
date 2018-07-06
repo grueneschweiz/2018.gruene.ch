@@ -31,8 +31,11 @@
   ],
   "scripts": {
     "start": "gulp fractal:start",
+    "start:all": "yarn start wp:start",
     "build": "gulp build:production",
-    "fractal:build": "gulp fractal:build"
+    "fractal:build": "gulp fractal:build",
+    "wp:start": "docker-compose up -d",
+    "wp:init": "./scripts/wp-init-local.sh"
   },
   "dependencies": {
     "object-fit-images": "^3.2.3"
