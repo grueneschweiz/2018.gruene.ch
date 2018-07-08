@@ -65,6 +65,9 @@ Session.vim
 # auto-generated tag files
 tags
 
+### PhpStrom ###
+.idea
+
 ### Node ###
 # Logs
 logs
