@@ -14,13 +14,13 @@ Basically, you just need to include these two files in your products:
 
 The CSS depends on a couple of other assets (fonts, images…); you will find them in the `dist/static` folder once your project has been built (after running `yarn && yarn build`).
 
-If you just want to integrate some specific components, and/or want a deeper understanding of how to use the current web interface, please have a look at the detailed [Web UI documentation](how-to-use-this-interface.html).
+If you just want to integrate some specific components, and/or want a deeper understanding of how to use the current web interface, please have a look at the detailed [Web UI documentation](docs/how-to-use-this-interface).
 
 ## Design principles and conventions
 
-The architecture of this project is based on the [atomic web design](atomic-design.html) principles.
+The architecture of this project is based on the [atomic web design](docs/atomic-design) principles.
 
-[CSS class names](class-names.html) are prefixed based on these principles and also follow the [BEM convention](http://getbem.com/naming/) _(in short, BEM stands for **B**lock **E**lement **M**odifier)_.
+[CSS class names](docs/class-names) are prefixed based on these principles and also follow the [BEM convention](http://getbem.com/naming/) _(in short, BEM stands for **B**lock **E**lement **M**odifier)_.
 
 
 ## Code
@@ -32,6 +32,6 @@ This project (including the documentation you are currently browsing) has been b
 
 ## Contact
 
-Questions, suggestions? Feel free to [mail superhuit](mailto:tech+lillustre@superhuit.ch)
+Questions, suggestions? Feel free to [mail superhuit](mailto:tech+lesverts@superhuit.ch)
 
 _[superhuit](https://www.superhuit.ch)_
