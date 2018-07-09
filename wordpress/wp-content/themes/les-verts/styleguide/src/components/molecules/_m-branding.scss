@@ -7,41 +7,41 @@
   height: $height;
   letter-spacing: 0.2px;
 
-  .grid-wrapper {
-    @extend .grid;
+  &__wrapper {
+    @extend .grid-width;
     display: table;
+  }
 
-    .table-row {
-      display: table-row;
-      height: $height;
+  &__row {
+    display: table-row;
+    height: $height;
+  }
 
-      h1 {
-        display: table-cell;
-        vertical-align: middle;
-        width: 100%;
-        height: $height;
-        @include fluid-props(font-size, $fluid-min, $fluid-max, 24px, 34px);
+  &__logo {
+    display: table-cell;
+    vertical-align: middle;
+    height: $height;
+    width: 148px;
+    padding: 22px 0;
 
-        span {
-          white-space: nowrap;
-        }
-      }
-
-      > div {
-        display: table-cell;
-        vertical-align: middle;
-        height: $height;
-        width: 148px;
-
-        @media all and (max-width: $size-small) {
-          display: none;
-        }
-
-        svg {
-          height: 91px;
-          width: 148px;
-        }
-      }
+    @media all and (max-width: $size-small) {
+      display: none;
     }
+
+    svg {
+      width: 148px;
+    }
+  }
+
+  &__title {
+    display: table-cell;
+    vertical-align: middle;
+    width: 100%;
+    height: $height;
+    @include fluid-props(font-size, $fluid-min, $fluid-max, 24px, 34px);
+  }
+
+  &__unbreakeable {
+    white-space: nowrap;
   }
 }
