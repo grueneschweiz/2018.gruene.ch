@@ -1,0 +1,24 @@
+label: Button
+status: ready
+display:
+  margin: 40px
+context:
+  label: Mitmachen
+variants:
+  - name: Outlined
+    context:
+      modifiers:
+        - outline
+  - name: Secondary
+    context:
+      modifiers:
+        - secondary
+  - name: Secondary outlined
+    context:
+      modifiers:
+        - secondary
+        - outline
+  - name: Transparent outlined
+    context:
+      modifiers:
+        - transparent
