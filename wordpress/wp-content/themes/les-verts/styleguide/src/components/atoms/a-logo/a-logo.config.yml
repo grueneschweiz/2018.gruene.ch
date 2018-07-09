@@ -1,0 +1,29 @@
+label: Logo
+status: wip
+display:
+  margin: 40px
+default: De green
+context:
+  title: Logo Grüne Schweiz
+  de: true
+variants:
+  - name: De white
+    context:
+      de: true
+      white: true
+      modifiers:
+        - white
+  - name: Fr green
+    context:
+      title: Logo les Verts suisses
+      de: false
+      modifiers:
+        - fr
+  - name: Fr white
+    context:
+      title: Logo les Verts suisses
+      de: false
+      white: true
+      modifiers:
+        - white
+        - fr
