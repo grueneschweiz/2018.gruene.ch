@@ -37,7 +37,7 @@ module.exports = function( options ) {
 							{convertShapeToPath: true},
 							{moveElemsAttrsToGroup: true},
 							{cleanupEnableBackground: true},
-							{moveGroupAttrsToElems: true}
+							{moveGroupAttrsToElems: false}
 						]
 					}}
 				]
