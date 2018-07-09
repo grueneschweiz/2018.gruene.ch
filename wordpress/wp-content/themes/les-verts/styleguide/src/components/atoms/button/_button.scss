@@ -57,3 +57,11 @@
 		color: $color-white;
 	}
 }
+
+.button--transparent {
+	background-color: transparent;
+	border-width: 1px;
+	border-style: solid;
+	color: $color-white;
+	border-color: $color-white;
+}

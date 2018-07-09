@@ -18,3 +18,7 @@ variants:
       modifiers:
         - secondary
         - outline
+  - name: Transparent outlined
+    context:
+      modifiers:
+        - transparent
