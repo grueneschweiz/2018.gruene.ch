@@ -1,0 +1,6 @@
+label: Link Button
+status: wip
+display:
+  margin: 40px
+context:
+  label: Weiterlesen

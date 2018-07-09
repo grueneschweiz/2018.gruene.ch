@@ -1,0 +1,32 @@
+.a-link-button {
+  font-size: 12px;
+  display: inline-block;
+  line-height: 1.1666666667em; // 12/14
+  padding-right: 0.5em; // 6/12
+  @include fluid-props(padding-top padding-bottom, $fluid-min, $fluid-max, 6px, 10px);
+
+  color: $color-primary;
+  font-family: $font-secondary;
+  font-weight: $font-weight-bold;
+  text-transform: uppercase;
+  transition: color $transition-fast $transition-ease;
+
+  @include hover {
+    color: $color-primary-dark;
+  }
+
+  svg {
+    fill: none;
+    stroke: $color-primary;
+    height: 2em;
+    transition: color $transition-fast $transition-ease;
+
+    svg path:last-of-type {
+      stroke-width: 0;
+    }
+
+    @include hover {
+      stroke: $color-primary-dark;
+    }
+  }
+}
