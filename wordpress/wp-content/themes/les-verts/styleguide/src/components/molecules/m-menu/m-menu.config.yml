@@ -1,0 +1,23 @@
+label: Menu
+status: wip
+context:
+  nav-items:
+    - Aktuelles
+    - Positionen
+    - Die Grünen
+    - Publikationen
+    - Kontakt
+  languages:
+    - de
+    - fr
+  search: Suche
+  logo:
+    de: true
+    title: Logo Grüne Schweiz
+  button:
+    label: Mitmachen
+    modifiers:
+      - outline
+      - secondary
+
+

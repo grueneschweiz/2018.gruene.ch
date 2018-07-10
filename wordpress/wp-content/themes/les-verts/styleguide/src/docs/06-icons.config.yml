@@ -3,3 +3,4 @@ context:
     - name: Miscellaneous
       icons:
         - testimony
+        - glass

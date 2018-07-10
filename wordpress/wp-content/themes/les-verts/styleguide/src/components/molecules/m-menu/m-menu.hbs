@@ -1,0 +1,31 @@
+<header class="m-menu">
+    <div class="m-menu__table">
+        <div class="m-menu__logo">
+            {{> @a-logo logo}}
+        </div>
+        <nav class="m-menu__nav">
+            <ul class="m-menu__nav-list">
+                {{#each nav-items}}
+                    <li class="m-menu__nav-item"><a class="m-menu__nav-link {{#if @first }}m-menu__nav-link--active{{/if}}" href="#">{{ . }}</a></li>
+                {{/each}}
+                <li class="m-menu__nav-item">
+                    <a href="#">
+                        <svg class="m-menu__search" role="search" alt="{{ search }}">
+                            <use xlink:href="#glass"/>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <div class="m-menu__right">
+            <div class="m-menu__cta">{{> @a-button--outlined button}}</div>
+            <div class="m-menu__language-nav">
+                <ul class="m-menu__language-nav-list">
+                    {{#each languages}}
+                        <li class="m-menu__language-nav-item"><a class="m-menu__language-nav-link {{#if @first }}m-menu__language-nav-link--active{{/if}}" href="#">{{ . }}</a></li>
+                    {{/each}}
+                </ul>
+            </div>
+        </div>
+    </div>
+</header>

@@ -12,7 +12,9 @@ context:
       values:
         text: "#333333"
         text-light: "#4E4E4E"
-    - title: Others
+    - title: Monochrome
       values:
-        black: "#000000"
         white: "#FFFFFF"
+        grey-1: "#F9F9F9"
+        grey-2: "#E2E2E2"
+        black: "#000000"
