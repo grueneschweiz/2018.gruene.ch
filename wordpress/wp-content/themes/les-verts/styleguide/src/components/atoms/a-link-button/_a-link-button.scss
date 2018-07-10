@@ -1,5 +1,5 @@
 .a-link-button {
-  font-size: 12px;
+  font-size: 0.75rem;
   display: inline-block;
   line-height: 1.1666666667em; // 12/14
   padding-right: 0.5em; // 6/12
@@ -10,56 +10,59 @@
   font-weight: $font-weight-bold;
   text-transform: uppercase;
   transition: color $transition-fast $transition-ease;
+  position: relative;
 
-  &__arrow {
-    display: inline-block;
-    margin-left: 0.7058823529em; // 12/17
-    height: 1em;
-    padding-top: 0.25em; // don't ask ;)
+  &::before {
+    content: "";
+    position: absolute;
+    left: 100%;
+    top: 50%;
+    display: block;
+    width: 0;
+    transition: all $transition-fast $transition-ease;
+    height: 0.1666666667em;
+    background-color: $color-primary;
+    transform: translateY(-50%);
   }
 
-  &__chevron {
+  &::after {
+    content: "";
+    position: absolute;
+    left: 100%;
+    top: 50%;
+    display: block;
     width: 0.7071067812em; // 1/sqrt(2)
     height: 0.7071067812em; // 1/sqrt(2)
     border-color: $color-primary;
     border-top: 0.1666666667em solid; // 2/12
     border-right: 0.1666666667em solid; // 2/12
-    transform: rotate(45deg);
-    margin-left: - 0.75em; // 1 - 3/12
-  }
-
-  &__bar {
-    width: 0;
-    height: 0.1666666667em; // 2/12
-    background-color: $color-primary;
-    transition: all $transition-fast $transition-ease;
-  }
-
-  &__cell {
-    display: table-cell;
-    vertical-align: middle;
+    transform: translate(-50%, -50%) rotate(45deg);
+    transition: left $transition-fast $transition-ease;
   }
 
   @include hover {
     color: $color-primary-dark;
 
-    .a-link-button__bar {
+    &::before {
       width: 1.5em;
       background-color: $color-primary-dark;
+    }
+    &::after {
+      left: calc(100% + 1.2em);
     }
   }
 
   &--grey {
     color: $color-text-light;
 
-    .a-link-button__bar {
+    &::before {
       background-color: $color-text-light;
     }
 
     @include hover {
       color: $color-text-light;
 
-      .a-link-button__bar {
+      &::before {
         background-color: $color-text-light;
       }
     }
@@ -68,14 +71,14 @@
   &--white {
     color: $color-white;
 
-    .a-link-button__bar {
+    &::before {
       background-color: $color-white;
     }
 
     @include hover {
       color: $color-white;
 
-      .a-link-button__bar {
+      &::before {
         background-color: $color-white;
       }
     }
