@@ -1,6 +1,15 @@
 label: Link Button
-status: wip
+status: ready
 display:
   margin: 40px
 context:
   label: Weiterlesen
+variants:
+  - name: Grey
+    context:
+      modifiers:
+        - grey
+  - name: White
+    context:
+      modifiers:
+        - white

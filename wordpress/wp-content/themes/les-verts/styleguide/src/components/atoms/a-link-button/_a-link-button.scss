@@ -11,22 +11,73 @@
   text-transform: uppercase;
   transition: color $transition-fast $transition-ease;
 
-  @include hover {
-    color: $color-primary-dark;
+  &__arrow {
+    display: inline-block;
+    margin-left: 0.7058823529em; // 12/17
+    height: 1em;
+    padding-top: 0.25em; // don't ask ;)
   }
 
-  svg {
-    fill: none;
-    stroke: $color-primary;
-    height: 2em;
-    transition: color $transition-fast $transition-ease;
+  &__chevron {
+    width: 0.7071067812em; // 1/sqrt(2)
+    height: 0.7071067812em; // 1/sqrt(2)
+    border-color: $color-primary;
+    border-top: 0.1666666667em solid; // 2/12
+    border-right: 0.1666666667em solid; // 2/12
+    transform: rotate(45deg);
+    margin-left: - 0.75em; // 1 - 3/12
+  }
 
-    svg path:last-of-type {
-      stroke-width: 0;
+  &__bar {
+    width: 0;
+    height: 0.1666666667em; // 2/12
+    background-color: $color-primary;
+    transition: all $transition-fast $transition-ease;
+  }
+
+  &__cell {
+    display: table-cell;
+    vertical-align: middle;
+  }
+
+  @include hover {
+    color: $color-primary-dark;
+
+    .a-link-button__bar {
+      width: 1.5em;
+      background-color: $color-primary-dark;
+    }
+  }
+
+  &--grey {
+    color: $color-text-light;
+
+    .a-link-button__bar {
+      background-color: $color-text-light;
     }
 
     @include hover {
-      stroke: $color-primary-dark;
+      color: $color-text-light;
+
+      .a-link-button__bar {
+        background-color: $color-text-light;
+      }
+    }
+  }
+
+  &--white {
+    color: $color-white;
+
+    .a-link-button__bar {
+      background-color: $color-white;
+    }
+
+    @include hover {
+      color: $color-white;
+
+      .a-link-button__bar {
+        background-color: $color-white;
+      }
     }
   }
 }
