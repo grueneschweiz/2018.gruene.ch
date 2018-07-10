@@ -2,11 +2,24 @@ label: Menu
 status: wip
 context:
   nav-items:
-    - Aktuelles
-    - Positionen
-    - Die Grünen
-    - Publikationen
-    - Kontakt
+    - title: Aktuelles
+      section-items:
+        - title: Kampagnen und Events
+          sub-items:
+            - Fair-Food
+            - Petition «Nein zur Lex Beznau»
+            - Referendum gegen Versicherungsspione
+            - Events
+        - title: Abstimmungsempfehlungen
+          sub-items:
+            - Gegenvorschlag Veloinitiative
+            - Ernährungssouveränität
+            - Fair-Food
+        - title: Medienmitteilungen
+    - title: Positionen
+    - title: Die Grünen
+    - title: Publikationen
+    - title: Kontakt
   languages:
     - de
     - fr
