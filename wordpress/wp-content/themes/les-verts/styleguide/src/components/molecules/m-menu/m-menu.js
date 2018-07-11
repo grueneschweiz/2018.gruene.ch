@@ -21,6 +21,8 @@ export default class MMenu extends BaseView {
     }
 
     toggleNavigation(event) {
+        event.preventDefault();
+
         if (this.currentOpen !== event.target) {
             this.openNavigation(event.target);
         }
@@ -38,19 +40,23 @@ export default class MMenu extends BaseView {
             return;
         }
 
-        let classes = submenu.getAttribute('class') + ' ' + OPEN_STATE;
-        submenu.setAttribute('class', classes);
+        this.markOpen(submenu);
+        this.markOpen(element);
     }
 
     closeNavigation() {
         this.currentOpen = null;
 
-        let elements = this.getScopedElements(SUBMENU_SELECTOR);
+        let elements = this.getScopedElements(SUBMENU_SELECTOR + ', ' + MAIN_ENTRY_SELECTOR);
 
         elements.forEach(element => {
-            console.log(element);
             let classes = element.getAttribute('class').replace(' ' + OPEN_STATE, '');
             element.setAttribute('class', classes);
         });
+    }
+
+    markOpen(element) {
+        let classes = element.getAttribute('class') + ' ' + OPEN_STATE;
+        element.setAttribute('class', classes);
     }
 }

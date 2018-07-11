@@ -20,5 +20,13 @@
     position: absolute;
     bottom: 0;
     left: 0;
+    transition: width $transition-fast $transition-ease;
+  }
+
+  @include hover {
+    &:after{
+      width: 100%;
+      background-color: $color-primary;
+    }
   }
 }

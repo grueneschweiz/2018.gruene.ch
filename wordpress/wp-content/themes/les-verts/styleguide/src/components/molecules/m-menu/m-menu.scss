@@ -74,6 +74,10 @@
     &--active,
     &:focus,
     &:hover {
+      color: $color-secondary;
+    }
+
+    &.is-open {
       border-bottom-color: $color-primary;
     }
   }
