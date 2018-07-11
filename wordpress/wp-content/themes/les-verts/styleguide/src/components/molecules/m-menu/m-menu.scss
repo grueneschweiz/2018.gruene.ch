@@ -2,6 +2,7 @@
   font-size: 0.9375rem; // 15/16
   border-bottom: 0.125rem solid $color-grey-1;
   position: fixed;
+  z-index: 10;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -10,11 +11,36 @@
 
   &__logo {
     @include fluid-props(width, $size-medium, $grid-max-width-max, 100px, 116px);
-    @include fluid-props(margin-left, $size-medium, $grid-max-width-max, 16px, 33px);
+    margin-left: 30px;
+
+    @include media($size-medium){
+      @include fluid-props(margin-left, $size-medium, $grid-max-width-max, 16px, 33px);
+    }
   }
 
   &__right {
-    @include fluid-props(padding-right, $size-medium, $size-huge, 24px, 33px);
+    display: none;
+    background: $color-grey-1;
+    position: absolute;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    padding: 22px 41px;
+
+    &.is-open {
+      display: block;
+    }
+
+    @include media($size-medium) {
+      display: block;
+      background: transparent;
+      position: initial;
+      top: initial;
+      left: initial;
+      width: initial;
+      padding: 0;
+      @include fluid-props(padding-right, $size-medium, $size-huge, 24px, 33px);
+    }
   }
 
   &__cta {
@@ -25,6 +51,13 @@
     font-size: 0.875rem;
     display: inline-block;
     @include fluid-props(margin-left, $size-medium, $size-huge, 24px, 55px);
+    float: right;
+    margin-top: 11px;
+
+    @include media($size-medium){
+      float: initial;
+      margin-top: 0;
+    }
   }
 
   &__language-nav-item {
@@ -52,15 +85,36 @@
    */
 
   &__nav {
-    width: calc(100% - 500 * (100vw / 1024));
+    width: 100%;
+    padding: 8px 41px 40px;
+    display: none;
+    position: absolute;
+    top: 168px;
+
+    &.is-open {
+      display: block;
+    }
+
+    @include media($size-medium) {
+      width: calc(100% - 500 * (100vw / 1024));
+      display: block;
+      padding: initial;
+      position: initial;
+      top: initial;
+    }
   }
 
   &__nav-list{
     width: 100%;
-    max-width: 800px;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
+    flex-direction: column;
+
+    @include media($size-medium) {
+      flex-direction: row;
+      max-width: 800px;
+    }
   }
 
   &__nav-link {
@@ -68,8 +122,12 @@
     font-weight: $font-weight-bold;
     white-space: nowrap;
     @include fluid-props(margin-top, $size-medium, $grid-max-width-max, 32px, 40px);
-    @include fluid-props(height, $size-medium, $grid-max-width-max, 48px, 60px);
+    height: 35px;
     border-bottom: solid 0.125rem transparent;
+
+    @include media($size-medium) {
+      @include fluid-props(height, $size-medium, $grid-max-width-max, 48px, 60px);
+    }
 
     &--active,
     &:focus,
@@ -86,12 +144,37 @@
     color: $color-text;
   }
 
+  &__search-text {
+    @include media($size-medium) {
+      display: none;
+    }
+  }
+
   &__search {
     fill: none;
     stroke: $color-text;
     width: 1.333em;
     height: 1.333em;
-    margin-top: -3px;
+    margin-bottom: -4px;
+    margin-left: 30px;
+
+    @include media($size-medium) {
+      margin-top: -3px;
+      margin-bottom: initial;
+      margin-left: initial;
+    }
+
+    @include hover {
+      stroke: $color-secondary;
+    }
+  }
+
+  &__hamburger {
+    margin-right: 32px;
+
+    @include media($size-medium) {
+      display: none;
+    }
   }
 
   /**
@@ -112,7 +195,7 @@
     padding: 0 100px;
 
     &.is-open {
-      display: flex
+      display: flex;
     }
 
     &__section {

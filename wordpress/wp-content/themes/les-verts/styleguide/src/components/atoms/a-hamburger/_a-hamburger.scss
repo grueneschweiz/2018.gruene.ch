@@ -46,7 +46,7 @@
     }
   }
 
-  &.is-active &__inner {
+  &.is-open &__inner {
     background-color: transparent;
     transform: rotateX(180deg) rotateY(180deg);
 

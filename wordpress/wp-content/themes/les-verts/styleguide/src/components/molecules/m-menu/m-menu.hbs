@@ -2,7 +2,7 @@
     <div class="m-menu__logo">
         {{> @a-logo logo}}
     </div>
-    <nav class="m-menu__nav">
+    <nav class="m-menu__nav" id="menu">
         <ul class="m-menu__nav-list">
             {{#each nav-items}}
                 <li class="m-menu__nav-item">
@@ -27,7 +27,8 @@
                 </li>
             {{/each}}
             <li class="m-menu__nav-item">
-                <a class="m-menu__nav-link href=" #">
+                <a class="m-menu__nav-link" href="#">
+                    <span class="m-menu__search-text">{{ search }}</span>
                 <svg class="m-menu__search" role="search" alt="{{ search }}">
                     <use xlink:href="#glass"/>
                 </svg>
@@ -47,5 +48,8 @@
                 {{/each}}
             </ul>
         </div>
+    </div>
+    <div class="m-menu__hamburger">
+        {{> @a-hamburger }}
     </div>
 </header>
