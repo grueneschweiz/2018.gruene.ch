@@ -6,21 +6,22 @@
         <ul class="m-menu__nav-list">
             {{#each nav-items}}
                 <li class="m-menu__nav-item">
-                    <a class="m-menu__nav-link {{#if @first }}m-menu__nav-link--active{{/if}}" href="#">{{ this.title }}</a>
+                    <a class="m-menu__nav-link {{#if @first }}m-menu__nav-link--active{{/if}}"
+                       href="#">{{ this.title }}</a>
                     {{#if section-items}}
                         <ul class="m-menu__submenu">
                             {{#each section-items}}
                                 <li class="m-menu__submenu__section">
-                                    <a class="m-menu__submenu__section-title" href="#">{{ this.title }}</a>
-                                    <ul class="m-menu__submenu__section-list">
-                                        {{#each this.sub-items}}
-                                            <li class="m-menu__submenu__section-item">
-                                                <a class="m-menu__submenu__section-link" href="#">{{ . }}</a>
-                                            </li>
-                                        {{/each}}
-                                    </ul>
+                                    {{> @a-submenu this}}
                                 </li>
                             {{/each}}
+                            <li class="m-menu__submenu__close-wrapper">
+                                <button class="m-menu__submenu__close">
+                                    <svg title="Close" role="img">
+                                        <use xlink:href="#close"/>
+                                    </svg>
+                                </button>
+                            </li>
                         </ul>
                     {{/if}}
                 </li>

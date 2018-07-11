@@ -5,17 +5,29 @@ context:
     - title: Aktuelles
       section-items:
         - title: Kampagnen und Events
-          sub-items:
-            - Fair-Food
-            - Petition «Nein zur Lex Beznau»
-            - Referendum gegen Versicherungsspione
-            - Events
+          items:
+            - label: Fair-Food
+            - label: Petition «Nein zur Lex Beznau»
+            - label: Referendum gegen Versicherungsspione
+            - label: Events
         - title: Abstimmungsempfehlungen
-          sub-items:
-            - Gegenvorschlag Veloinitiative
-            - Ernährungssouveränität
-            - Fair-Food
+          items:
+            - label: Gegenvorschlag Veloinitiative
+            - label: Ernährungssouveränität
+            - label: Fair-Food
         - title: Medienmitteilungen
+        - title: Fair-Food-Initiative
+          featured: true
+          img:
+            src: "/img/wheat.jpg"
+            alt: Symbolbild Fair-Food
+          cat-title:
+            label: Fair-Food-Initiative
+          text: Umweltfreundlich und fair hergestellte Lebensmittel – dies wollen die Grünen mit der Fair-Food-Initiative erreichen.
+          button:
+            label: Kampagne anzeigen
+          modifiers:
+            - featured
     - title: Positionen
     - title: Die Grünen
     - title: Publikationen
@@ -32,5 +44,3 @@ context:
     modifiers:
       - outline
       - secondary
-
-

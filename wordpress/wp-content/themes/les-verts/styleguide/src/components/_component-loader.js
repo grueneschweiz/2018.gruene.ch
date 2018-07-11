@@ -7,7 +7,7 @@ import elementExist from 'utils/elementExist';
  * Example: the path is relative from this file
  * 		import MyComponent from "organisms/my-component/my-component.js";
  */
-
+import MMenu from "molecules/m-menu/m-menu.js";
 // ================= STOP TO ADD HERE
 
 /**
@@ -18,6 +18,7 @@ import elementExist from 'utils/elementExist';
  */
 const COMPONENTS_TO_LOAD = [
 	// { view: MyComponent, name: 'MyComponent', selector: '[data-my-component]' }
+    { view: MMenu, name: 'MMenu', selector: '.m-menu' }
 ];
 
 const LOADED_COMPONENTS = {}
