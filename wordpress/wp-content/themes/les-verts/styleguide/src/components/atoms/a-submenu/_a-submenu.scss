@@ -1,4 +1,8 @@
 .a-submenu {
+  max-width: 269px;
+  min-width: 177px;
+  width: 100%;
+
   &__title {
     font-family: $font-title;
     color: $color-primary;
@@ -26,5 +30,22 @@
     line-height: 1.75em;
     padding: 7px 0;
     display: block;
+  }
+
+  &--featured__image {
+    width: 100%;
+    margin-top: 28px;
+  }
+
+  &--featured__title {
+    font-size: 1.25rem;
+    letter-spacing: 0.0125em;
+    line-height: 1.4em;
+    margin-top: 16px;
+  }
+
+  &--featured__text {
+    margin-top: 12px;
+    margin-bottom: 28px;
   }
 }
