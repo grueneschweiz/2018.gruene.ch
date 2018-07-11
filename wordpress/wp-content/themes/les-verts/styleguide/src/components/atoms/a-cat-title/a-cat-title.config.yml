@@ -1,0 +1,7 @@
+label: Category Title
+status: ready
+display:
+  margin: 40px
+context:
+  label: Medienmitteilungen
+  url: '#'

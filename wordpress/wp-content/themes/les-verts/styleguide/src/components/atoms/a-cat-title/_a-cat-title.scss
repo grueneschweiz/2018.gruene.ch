@@ -1,0 +1,24 @@
+.a-cat-title {
+  font-size: 1rem;
+  position: relative;
+
+  &__link {
+    font-family: $font-primary;
+    font-weight: $font-weight-semi;
+    letter-spacing: 0.125em;
+    line-height: 1.25em;
+    color: $color-text;
+    padding-bottom: 12px;
+    display: block;
+  }
+
+  &:after {
+    content: "";
+    width: 23px;
+    height: 2px;
+    background-color: $color-text-light;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+}
