@@ -4,6 +4,8 @@ context:
       values:
         primary: "#84B414"
         primary-dark: "#516F0A"
+        primary-light: "#CEE1A1"
+        primary-super-light: "#E6F0D0"
     - title: Secondary
       values:
         secondary: "#E10078"

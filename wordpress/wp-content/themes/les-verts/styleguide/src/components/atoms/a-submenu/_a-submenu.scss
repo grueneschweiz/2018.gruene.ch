@@ -6,8 +6,27 @@
   &__title {
     font-family: $font-title;
     color: $color-primary;
-    margin-bottom: 17px;
+    margin-bottom: 10px;
+    padding-bottom: 7px;
     display: block;
+    position: relative;
+
+    &:after {
+      content: "";
+      width: 0;
+      height: 0.25em;
+      background-color: $color-primary-light;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      transition: width $transition-fast $transition-ease;
+    }
+
+    @include hover {
+      &:after {
+        width: 100%;
+      }
+    }
   }
 
   &__item {
@@ -22,6 +41,14 @@
       position: absolute;
       bottom: 0;
       left: 0;
+      transition: width $transition-fast $transition-ease;
+    }
+
+    @include hover {
+      &:after {
+        width: 100%;
+        background-color: $color-primary;
+      }
     }
   }
 
