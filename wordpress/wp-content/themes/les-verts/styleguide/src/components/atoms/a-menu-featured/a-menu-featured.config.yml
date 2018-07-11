@@ -1,0 +1,14 @@
+label: Featured Menu item
+status: ready
+display:
+  margin: 40px
+context:
+  img:
+    src: "/img/wheat.jpg"
+    alt: Symbolbild Fair-Food
+  cat-title:
+    label: Fair-Food-Initiative
+  title: Fair schmeckt besser!
+  text: Umweltfreundlich und fair hergestellte Lebensmittel – dies wollen die Grünen mit der Fair-Food-Initiative erreichen.
+  button:
+    label: Kampagne anzeigen

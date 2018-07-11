@@ -1,0 +1,21 @@
+.a-menu-featured {
+  max-width: 269px;
+  width: 100%;
+
+  &__image {
+    width: 100%;
+    margin-top: 28px;
+  }
+
+  &__title {
+    font-size: 1.25rem;
+    letter-spacing: 0.0125em;
+    line-height: 1.4em;
+    margin-top: 16px;
+  }
+
+  &__text {
+    margin-top: 12px;
+    margin-bottom: 28px;
+  }
+}
