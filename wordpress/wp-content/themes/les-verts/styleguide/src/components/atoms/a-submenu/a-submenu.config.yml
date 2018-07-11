@@ -1,0 +1,14 @@
+label: Submenu
+status: ready
+context:
+  title: 'Submenu'
+  url: '#'
+  items:
+    - label: Fair-Food
+      url: '#'
+    - label: Petition «Nein zur Lex Beznau»
+      url: '#'
+    - label: Referendum gegen Versicherungsspione
+      url: '#'
+    - label: Events
+      url: '#'

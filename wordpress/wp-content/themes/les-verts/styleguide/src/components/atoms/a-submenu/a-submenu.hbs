@@ -1,0 +1,10 @@
+<div class="a-submenu">
+    <a class="a-submenu__title" href="{{ url }}">{{ title }}</a>
+    <ul class="a-submenu__list">
+        {{#each items}}
+            <li class="a-submenu__item">
+                <a class="a-submenu__link" href="{{ this.url }}">{{ this.label }}</a>
+            </li>
+        {{/each}}
+    </ul>
+</div>

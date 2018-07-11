@@ -1,0 +1,30 @@
+.a-submenu {
+  &__title {
+    font-family: $font-title;
+    color: $color-primary;
+    margin-bottom: 17px;
+    display: block;
+  }
+
+  &__item {
+    color: $color-text;
+    position: relative;
+
+    &:after {
+      content: "";
+      width: 36px;
+      height: 1px;
+      background-color: $color-grey-2;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+    }
+  }
+
+  &__link {
+    color: $color-text;
+    line-height: 1.75em;
+    padding: 7px 0;
+    display: block;
+  }
+}
