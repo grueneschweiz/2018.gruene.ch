@@ -1,13 +1,19 @@
-label: Checkbox
+label: Checkbox / Option
 status: ready
 display:
   margin: 40px
+default: Checkbox
 context:
   label: Here is a lot of text. A very long story must be accepted. What a pain. Here is a lot of text. A very long story must be accepted. What a pain.
   id: some-checkbox
   name: some-checkbox
 variants:
-  - name: required
+  - name: checkbox required
     context:
       modifiers:
         - required
+  - name: option
+    context:
+      option: true
+      modifiers:
+        - option

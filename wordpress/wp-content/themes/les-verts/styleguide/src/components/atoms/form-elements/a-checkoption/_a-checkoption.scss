@@ -1,4 +1,4 @@
-.a-checkbox {
+.a-checkoption {
 
   &__field {
     position: absolute;
@@ -21,6 +21,10 @@
 
   &--required {
     background-image: url('/img/checkbox--secondary.svg');
+  }
+
+  &--option {
+    background-image: url('/img/option.svg');
   }
 
   &__field:checked + &__label {
