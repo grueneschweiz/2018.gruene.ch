@@ -20,3 +20,6 @@ context:
         grey-1: "#F9F9F9"
         grey-2: "#E2E2E2"
         black: "#000000"
+    - title: Misc
+      values:
+        form-invalid: "#DE001B"

@@ -18,6 +18,8 @@ $color-black: #000000;
 $color-grey-1: #F9F9F9;
 $color-grey-2: #E2E2E2;
 
+$color-form-invalid: #DE001B;
+
 /**
  * LAYOUT SIZES
  */
@@ -67,9 +69,9 @@ $transition-slow: .8s;
 /**
  * Z INDEXES
  */
- $z-index-popup: 90;
- $z-index-header: 10;
- $z-index-menu: 11;
- $z-index-topbar: 12;
- $z-index-side-nav: 15;
- $z-index-modal: 100;
+$z-index-popup: 90;
+$z-index-header: 10;
+$z-index-menu: 11;
+$z-index-topbar: 12;
+$z-index-side-nav: 15;
+$z-index-modal: 100;

@@ -1,0 +1,16 @@
+label: Input
+status: ready
+display:
+  margin: 40px
+context:
+  label: PLZ
+  id: some-input
+  type: text
+  pattern: (\w{0,3}(?<=\w)-)?\d{4,6}
+  required: required
+  name: some-input
+variants:
+  - name: Inverted
+    context:
+      modifiers:
+        - invers

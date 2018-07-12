@@ -1,0 +1,11 @@
+<div class="a-input">
+    <label for="{{ id }}" class="a-input__label {{#if required}}a-input__label--required{{/if}}">
+        {{ label }}
+    </label>
+    <input id="{{ id }}"
+           class="a-input__field {{ modifiers_classes }}"
+           type="{{ type }}"
+           pattern="{{ pattern }}"
+           name="{{ name }}"
+        {{ required }}>
+</div>

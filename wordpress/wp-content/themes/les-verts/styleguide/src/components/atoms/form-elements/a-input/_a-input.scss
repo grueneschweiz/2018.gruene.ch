@@ -1,0 +1,48 @@
+.a-input {
+  position: relative;
+  width: 100%;
+
+  &__label {
+    position: absolute;
+    left: 0.75rem;
+    bottom: 3rem;
+    text-transform: uppercase;
+    font-size: 0.625rem;
+    font-weight: $font-weight-bold;
+    transition-timing-function: $transition-ease;
+    transition-duration: $transition-fast;
+    transition-property: font-size, bottom, font-weight;
+
+    &.is-empty {
+      font-size:initial;
+      font-weight: initial;
+      text-transform: initial;
+      bottom: 0.875rem;
+    }
+
+    &--required:after {
+      content: "*";
+    }
+  }
+
+  &__field {
+    width: 100%;
+    background: $color-grey-1;
+    border: none;
+    height: 2.625rem;
+    color: $color-text;
+    font-size: 1rem;
+    padding-left: 0.75rem;
+    margin-top: 1rem;
+    border-bottom: 2px solid $color-grey-2;
+    border-radius: 0;
+
+    &:valid, &.is-valid {
+      border-bottom-color: $color-primary;
+    }
+
+    &.is-touched:invalid, &.invalid.is-touched {
+      border-bottom-color: $color-form-invalid;
+    }
+  }
+}
