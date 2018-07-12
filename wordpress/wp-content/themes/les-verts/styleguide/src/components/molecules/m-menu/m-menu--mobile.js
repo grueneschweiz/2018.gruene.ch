@@ -1,4 +1,4 @@
-import {MMenuBase} from "./m-menu--base";
+import {MMenuBase, OPEN_STATE} from "./m-menu--base";
 
 const MAIN_MENU_SELECTOR = '.m-menu__nav';
 const RIGHT_SELECTOR = '.m-menu__right';
@@ -18,9 +18,7 @@ export default class MMenuMobile extends MMenuBase {
     bind() {
         super.bind();
 
-        this.toggleMainNavigationHandler = this.toggleMainNavigation.bind(this);
-
-        this.on("click", HAMBURGER_SELECTOR, this.toggleMainNavigationHandler);
+        this.on("click", HAMBURGER_SELECTOR, () => this.toggleMainNavigation());
     }
 
     toggleMainNavigation() {
@@ -40,9 +38,9 @@ export default class MMenuMobile extends MMenuBase {
         let hamburger = this.getScopedElement(HAMBURGER_SELECTOR);
         let right = this.getScopedElement(RIGHT_SELECTOR);
 
-        MMenuMobile.markOpen(hamburger);
-        MMenuMobile.markOpen(mainNav);
-        MMenuMobile.markOpen(right);
+        this.addClass(hamburger, OPEN_STATE);
+        this.addClass(mainNav, OPEN_STATE);
+        this.addClass(right, OPEN_STATE);
     }
 
     closeMainNavigation() {
@@ -52,25 +50,25 @@ export default class MMenuMobile extends MMenuBase {
         let hamburger = this.getScopedElement(HAMBURGER_SELECTOR);
         let right = this.getScopedElement(RIGHT_SELECTOR);
 
-        MMenuMobile.unmarkOpen(hamburger);
-        MMenuMobile.unmarkOpen(mainNav);
-        MMenuMobile.unmarkOpen(right);
+        this.removeClass(hamburger, OPEN_STATE);
+        this.removeClass(mainNav, OPEN_STATE);
+        this.removeClass(right, OPEN_STATE);
 
         this.closeSubNavigation();
     }
 
     afterOpenSubNavigation(element) {
         let right = this.getScopedElement(RIGHT_SELECTOR);
-        MMenuMobile.unmarkOpen(right);
+        this.removeClass(right, OPEN_STATE);
 
         let menuItems = this.getScopedElements(SUBMENU_ITEMS_SELECTOR);
         let liClicked = element.parentElement;
 
         menuItems.forEach(item => {
             if (item === liClicked) {
-                MMenuMobile.appendClass(item, ACTIVE_STATE);
+                this.addClass(item, ACTIVE_STATE);
             } else {
-                MMenuMobile.appendClass(item, HIDDEN_STATE);
+                this.addClass(item, HIDDEN_STATE);
             }
         });
     }
@@ -78,14 +76,14 @@ export default class MMenuMobile extends MMenuBase {
     afterCloseSubNavigation() {
         if (this.mobileOpen) {
             let right = this.getScopedElement(RIGHT_SELECTOR);
-            MMenuMobile.markOpen(right);
+            this.addClass(right, OPEN_STATE);
         }
 
         let menuItems = this.getScopedElements(SUBMENU_ITEMS_SELECTOR);
 
         menuItems.forEach(item => {
-            MMenuMobile.deleteClass(item, HIDDEN_STATE);
-            MMenuMobile.deleteClass(item, ACTIVE_STATE);
+            this.removeClass(item, HIDDEN_STATE);
+            this.removeClass(item, ACTIVE_STATE);
         });
     }
 

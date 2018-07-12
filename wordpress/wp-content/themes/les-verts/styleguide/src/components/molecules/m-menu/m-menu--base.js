@@ -13,9 +13,9 @@ export class MMenuBase extends BaseView {
     }
 
     bind() {
-        this.toggleSubNavigationHandler = this.toggleSubNavigation.bind(this);
+        super.bind();
 
-        this.on("click", MAIN_ENTRY_SELECTOR, this.toggleSubNavigationHandler);
+        this.on("click", MAIN_ENTRY_SELECTOR, () => this.toggleSubNavigation());
     }
 
     toggleSubNavigation() {
@@ -36,8 +36,8 @@ export class MMenuBase extends BaseView {
             return;
         }
 
-        MMenuBase.markOpen(submenu);
-        MMenuBase.markOpen(element);
+        this.addClass(submenu, OPEN_STATE);
+        this.addClass(element, OPEN_STATE);
 
         this.afterOpenSubNavigation(element);
     }
@@ -47,7 +47,7 @@ export class MMenuBase extends BaseView {
 
         let elements = this.getScopedElements(SUBMENU_SELECTOR + ', ' + MAIN_ENTRY_SELECTOR);
 
-        elements.forEach(element => MMenuBase.unmarkOpen(element));
+        elements.forEach(element => this.removeClass(element, OPEN_STATE));
 
         this.afterCloseSubNavigation();
     }
@@ -67,23 +67,4 @@ export class MMenuBase extends BaseView {
      * overwrite those functions to do some more stuff on closing
      */
     afterCloseSubNavigation(){}
-
-    static markOpen(element) {
-        MMenuBase.appendClass(element, OPEN_STATE);
-    }
-
-    static unmarkOpen(element) {
-        MMenuBase.deleteClass(element, OPEN_STATE);
-    }
-
-    static appendClass(element, cls) {
-        let classes = element.getAttribute('class') + ' ' + cls;
-        element.setAttribute('class', classes);
-    }
-
-    static deleteClass(element, cls) {
-        let classes = element.getAttribute('class').replace(cls, '');
-        classes = classes.replace(/\s+/g, ' ');
-        element.setAttribute('class', classes);
-    }
 }
