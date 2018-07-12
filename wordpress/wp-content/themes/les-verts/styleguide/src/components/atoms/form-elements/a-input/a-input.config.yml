@@ -9,8 +9,15 @@ context:
   pattern: (\w{0,3}(?<=\w)-)?\d{4,6}
   required: required
   name: some-input
+  text: true
 variants:
-  - name: Inverted
+  - name: Text Inverted
     context:
       modifiers:
         - invers
+  - name: Textarea
+    context:
+      textarea: true
+      text: false
+      modifiers:
+        - textarea

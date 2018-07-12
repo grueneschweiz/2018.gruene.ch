@@ -27,7 +27,7 @@ export default class AInput extends BaseView {
     }
 
     manageEmptyState() {
-        if (this.input.value) {
+        if (this.isEmpty()) {
             this.removeEmptyState();
         } else {
             this.setEmptyState();
@@ -40,5 +40,9 @@ export default class AInput extends BaseView {
 
     removeEmptyState() {
         this.removeClass(this.label, EMPTY_STATE);
+    }
+
+    isEmpty() {
+        return this.input.value;
     }
 }

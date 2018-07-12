@@ -5,7 +5,7 @@
   &__label {
     position: absolute;
     left: 0.75rem;
-    bottom: 3rem;
+    top: 0;
     text-transform: uppercase;
     font-size: 0.625rem;
     font-weight: $font-weight-bold;
@@ -17,7 +17,7 @@
       font-size:initial;
       font-weight: initial;
       text-transform: initial;
-      bottom: 0.875rem;
+      top: 1.75rem;
     }
 
     &--required:after {
@@ -49,5 +49,11 @@
 
   &--invers {
     background-color: $color-white;
+  }
+
+  &--textarea {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    height: 6rem;
   }
 }
