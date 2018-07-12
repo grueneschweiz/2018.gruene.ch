@@ -1,0 +1,8 @@
+<svg width="36px" height="36px" viewBox="0 0 36 36" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <g id="ico/12px/radio-button/default" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <circle id="Oval-Copy-2" stroke="#84B414" stroke-width="2" cx="30" cy="6" r="5"></circle>
+    </g>
+    <g id="ico/12px/radio-button/selected" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <circle id="Oval-Copy-3" stroke="#84B414" stroke-width="4" cx="6" cy="30" r="4"></circle>
+    </g>
+</svg>

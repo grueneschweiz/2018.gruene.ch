@@ -1,0 +1,29 @@
+.a-checkbox {
+
+  &__field {
+    position: absolute;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    width: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+  }
+
+  &__label {
+    padding-left: 1.75rem;
+    background-size: 2.25rem;
+    cursor: pointer;
+    display: block;
+    background: url('/img/checkbox.svg') no-repeat -1.5rem 0.125rem;
+  }
+
+  &--required {
+    background-image: url('/img/checkbox--secondary.svg');
+  }
+
+  &__field:checked + &__label {
+    background-position: 0 -1.375rem;
+  }
+}

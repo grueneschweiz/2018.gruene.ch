@@ -1,0 +1,13 @@
+label: Checkbox
+status: ready
+display:
+  margin: 40px
+context:
+  label: Here is a lot of text. A very long story must be accepted. What a pain. Here is a lot of text. A very long story must be accepted. What a pain.
+  id: some-checkbox
+  name: some-checkbox
+variants:
+  - name: required
+    context:
+      modifiers:
+        - required

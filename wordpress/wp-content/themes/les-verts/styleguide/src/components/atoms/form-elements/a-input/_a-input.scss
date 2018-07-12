@@ -42,7 +42,7 @@
       border-bottom-color: $color-primary;
     }
 
-    &.is-touched:invalid, &.invalid.is-touched {
+    &.is-touched:invalid, &.is-invalid.is-touched {
       border-bottom-color: $color-form-invalid;
     }
   }

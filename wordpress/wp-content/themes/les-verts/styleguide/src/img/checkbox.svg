@@ -1,0 +1,10 @@
+<svg width="36px" height="36px" viewBox="0 0 36 36" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <g id="ico/12px/check-box/default" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect id="Rectangle-2" stroke="#84B414" stroke-width="2" x="25" y="1" width="10" height="10"></rect>
+    </g>
+    <g id="ico/12px/check-box/selected" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect id="Rectangle-2-Copy" fill="#84B414" x="0" y="24" width="12" height="12"></rect>
+        <path d="M3,27 L9,33" id="Path-2" stroke="#FFFFFF"></path>
+        <path d="M3,27 L9,33" id="Path-2" stroke="#FFFFFF" transform="translate(6.000000, 6.000000) scale(-1, 1) translate(-6.000000, -6.000000) "></path>
+    </g>
+</svg>
