@@ -1,30 +1,46 @@
 .a-submenu {
-  max-width: 269px;
-  min-width: 177px;
   width: 100%;
+  max-width: 269px;
+
+  @include media($size-medium) {
+    min-width: 177px;
+  }
 
   &__title {
     font-family: $font-title;
-    color: $color-primary;
-    margin-bottom: 1px;
-    padding-bottom: 16px;
     display: block;
-    position: relative;
-
-    &:after {
-      content: "";
-      width: 0;
-      height: 0.25em;
-      background-color: $color-primary-light;
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      transition: width $transition-fast $transition-ease;
-    }
+    line-height: 2em;
+    color: $color-text;
+    transition: color $transition-fast $transition-ease;
 
     @include hover {
+      color: $color-secondary;
+    }
+
+    @include media($size-medium) {
+      color: $color-primary;
+      margin-bottom: 1px;
+      padding-bottom: 16px;
+      position: relative;
+      line-height: 1.25em;
+
       &:after {
-        width: 100%;
+        content: "";
+        width: 0;
+        height: 0.25em;
+        background-color: $color-primary-light;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        transition: width $transition-fast $transition-ease;
+      }
+
+      @include hover {
+        color: $color-primary;
+
+        &:after {
+          width: 100%;
+        }
       }
     }
   }
@@ -32,22 +48,29 @@
   &__item {
     color: $color-text;
     position: relative;
+    margin: 1em 0 0 1.25em;
 
-    &:after {
-      content: "";
-      width: 36px;
-      height: 1px;
-      background-color: $color-grey-2;
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      transition: width $transition-fast $transition-ease;
-    }
+    @include media($size-medium) {
+      margin: 0;
 
-    @include hover {
       &:after {
-        width: 100%;
-        background-color: $color-primary;
+        content: "";
+        width: 36px;
+        height: 1px;
+        background-color: $color-grey-2;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        transition: width $transition-fast $transition-ease;
+      }
+
+      @include hover {
+        color: $color-text;
+
+        &:after {
+          width: 100%;
+          background-color: $color-primary;
+        }
       }
     }
   }
@@ -57,6 +80,25 @@
     line-height: 1.75em;
     padding: 7px 0;
     display: block;
+    transition: color $transition-fast $transition-ease;
+
+    @include hover {
+      color: $color-secondary;
+    }
+
+    @include media($size-medium) {
+      @include hover {
+        color: $color-text;
+      }
+    }
+  }
+
+  &--featured {
+    margin-top: 2em;
+
+    @include media($size-medium) {
+      margin-top: initial;
+    }
   }
 
   &--featured__image {

@@ -259,7 +259,7 @@ export default class BaseView {
 		}
 
 		// Remove listeners attached to the viewport service
-		viewport_service.removeAllListeners();
+		//viewport_service.removeAllListeners(); // TODO: fix this
 	}
 
 }

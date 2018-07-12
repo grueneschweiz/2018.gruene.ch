@@ -1,7 +1,6 @@
 .m-menu {
   font-size: 0.9375rem; // 15/16
   border-bottom: 0.125rem solid $color-grey-1;
-  position: fixed;
   z-index: 10;
   display: flex;
   justify-content: space-between;
@@ -9,11 +8,15 @@
   width: 100%;
   @include fluid-props(height, $size-medium, $grid-max-width-max, 80px, 100px);
 
+  @include media($size-medium) {
+    position: fixed;
+  }
+
   &__logo {
     @include fluid-props(width, $size-medium, $grid-max-width-max, 100px, 116px);
     margin-left: 30px;
 
-    @include media($size-medium){
+    @include media($size-medium) {
       @include fluid-props(margin-left, $size-medium, $grid-max-width-max, 16px, 33px);
     }
   }
@@ -54,7 +57,7 @@
     float: right;
     margin-top: 11px;
 
-    @include media($size-medium){
+    @include media($size-medium) {
       float: initial;
       margin-top: 0;
     }
@@ -104,7 +107,7 @@
     }
   }
 
-  &__nav-list{
+  &__nav-list {
     width: 100%;
     margin: 0 auto;
     display: flex;
@@ -114,6 +117,18 @@
     @include media($size-medium) {
       flex-direction: row;
       max-width: 800px;
+    }
+  }
+
+  &__nav-item {
+    &.is-active {
+      position: absolute;
+      top: -88px;
+      width: calc(100% - 69px);
+    }
+
+    &.is-hidden {
+      display: none;
     }
   }
 
@@ -136,7 +151,25 @@
     }
 
     &.is-open {
-      border-bottom-color: $color-primary;
+      // mobile only
+      @media all and (max-width: ($size-medium - 1)){
+        color: $color-secondary;
+
+        &:after {
+          content: "";
+          position: absolute;
+          right: 0;
+          top: 32px;
+          background: url('/img/arrow.svg') no-repeat;
+          width: 24px;
+          height: 14px;
+        }
+      }
+
+      // desktop only
+      @include media($size-medium) {
+        border-bottom-color: $color-primary;
+      }
     }
   }
 
@@ -184,32 +217,56 @@
   &__submenu {
     position: absolute;
     @include fluid-props(top, $size-medium, $grid-max-width-max, 80px, 100px);
-    left: 0;
+    left: -41px;
     width: 100vw;
     min-height: calc(100vw - 80px + 20 * (100vw - 1024px) / 416);
     display: none;
-    justify-content: center;
-    align-items: flex-start;
     font-size: 1rem;
     hyphens: auto;
-    padding: 0 100px;
+    background-color: $color-grey-1;
+    flex-direction: column;
+
+    @include media($size-medium) {
+      background-color: transparent;
+      left: 0;
+      justify-content: center;
+      align-items: flex-start;
+      flex-direction: row;
+      padding: 0 100px;
+    }
 
     &.is-open {
       display: flex;
     }
 
     &__section {
-      max-width: 268px;
-      width: 100%;
+      width: calc(100% - 74px);
       display: block;
-      @include fluid-props(margin-left margin-right, $size-medium, $grid-max-width-max, 12px, 16px);
-      margin-top: 72px;
+      margin-left: 41px;
+      margin-right: 41px;
+      margin-top: 2em;
+
+      &:nth-last-of-type(2) {
+        // second last because the last one is the close button
+        margin-bottom: 37px;
+      }
+
+      @include media($size-medium) {
+        max-width: 268px;
+        @include fluid-props(margin-left margin-right, $size-medium, $grid-max-width-max, 12px, 16px);
+        margin-top: 72px;
+      }
     }
 
     &__close-wrapper {
       position: absolute;
       right: 16px;
       top: 12px;
+      display: none;
+
+      @include media($size-medium) {
+        display: block;
+      }
     }
 
     &__close {

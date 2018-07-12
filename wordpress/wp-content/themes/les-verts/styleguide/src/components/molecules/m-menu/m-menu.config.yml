@@ -1,5 +1,5 @@
 label: Menu
-status: wip
+status: ready
 context:
   nav-items:
     - title: Aktuelles
