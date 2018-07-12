@@ -36,6 +36,7 @@
     margin-top: 1rem;
     border-bottom: 2px solid $color-grey-2;
     border-radius: 0;
+    transition: border-bottom-color $transition-fast $transition-ease;
 
     &:valid, &.is-valid {
       border-bottom-color: $color-primary;
@@ -44,5 +45,9 @@
     &.is-touched:invalid, &.invalid.is-touched {
       border-bottom-color: $color-form-invalid;
     }
+  }
+
+  &--invers {
+    background-color: $color-white;
   }
 }
