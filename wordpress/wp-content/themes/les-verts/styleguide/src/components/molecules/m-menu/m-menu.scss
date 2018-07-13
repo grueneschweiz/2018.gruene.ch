@@ -1,7 +1,7 @@
 .m-menu {
   font-size: 0.9375rem; // 15/16
   border-bottom: 0.125rem solid $color-grey-1;
-  z-index: 10;
+  z-index: $z-index-menu;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -146,13 +146,12 @@
     display: inline-block;
     font-weight: $font-weight-bold;
     white-space: nowrap;
-    @include fluid-props(margin-top, $size-medium, $grid-max-width-max, 32px, 40px);
-    height: 35px;
-    border-bottom: solid 0.125rem transparent;
     color: $color-text;
+    position: relative;
+    margin-top: 38px;
 
     @include media($size-medium) {
-      @include fluid-props(height, $size-medium, $grid-max-width-max, 48px, 60px);
+      margin-top: 0;
     }
 
     &--active,
@@ -162,24 +161,49 @@
     }
 
     &.is-open {
+      &:after {
+        @include fluid-props(bottom, $size-medium, $grid-max-width-max, -35px, -45px);
+      }
+
       // mobile only
-      @media all and (max-width: ($size-medium - 1)){
+      @media all and (max-width: ($size-medium - 1)) {
         color: $color-secondary;
+        width: 100%;
+        margin-top: 32px;
 
         &:after {
           content: "";
           position: absolute;
           right: 0;
-          top: 32px;
+          top: 0;
+          bottom: auto; // because the fluid props can't be nested in media query
           background: url('/img/arrow.svg') no-repeat;
           width: 24px;
           height: 14px;
+        }
+
+        &:before {
+          content: "";
+          position: absolute;
+          left: 0;
+          bottom: -36px;
+          width: 34px;
+          height: 2px;
+          z-index: $z-index-menu + 1;
+          background-color: $color-secondary;
         }
       }
 
       // desktop only
       @include media($size-medium) {
-        border-bottom-color: $color-primary;
+        &:after {
+          content: '';
+          position: absolute;
+          left: 0;
+          width: 100%;
+          height: 2px;
+          background-color: $color-primary;
+        }
       }
     }
   }
