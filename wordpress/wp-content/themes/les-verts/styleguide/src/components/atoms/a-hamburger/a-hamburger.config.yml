@@ -2,3 +2,5 @@ label: Hamburger
 status: ready
 display:
   margin: 40px
+context:
+  aria-label-toggle-navigation: "Navigation anzeigen / verbergen"

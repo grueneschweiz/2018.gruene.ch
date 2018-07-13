@@ -53,11 +53,33 @@
   &__item {
     @include clean-li;
     color: $color-text;
-    position: relative;
     margin: 1em 0 0 1.25em;
 
     @include media($size-medium) {
       margin: 0;
+    }
+  }
+
+  &__link {
+    @include clean-link;
+    color: $color-text;
+    line-height: 1.75em;
+    padding: 7px 0;
+    display: block;
+    position: relative;
+    transition: color $transition-fast $transition-ease;
+
+    @include hover {
+      color: $color-secondary;
+    }
+
+    @include media($size-medium) {
+      @include hover {
+        color: $color-text;
+      }
+    }
+
+    @include media($size-medium) {
 
       &:after {
         content: "";
@@ -77,25 +99,6 @@
           width: 100%;
           background-color: $color-primary;
         }
-      }
-    }
-  }
-
-  &__link {
-    @include clean-link;
-    color: $color-text;
-    line-height: 1.75em;
-    padding: 7px 0;
-    display: block;
-    transition: color $transition-fast $transition-ease;
-
-    @include hover {
-      color: $color-secondary;
-    }
-
-    @include media($size-medium) {
-      @include hover {
-        color: $color-text;
       }
     }
   }

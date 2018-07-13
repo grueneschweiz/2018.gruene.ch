@@ -1,6 +1,6 @@
 import {MMenuBase, OPEN_STATE} from "./m-menu--base";
 
-const MAIN_MENU_SELECTOR = '.m-menu__nav';
+const MAIN_MENU_SELECTOR = '.m-menu__nav-list';
 const RIGHT_SELECTOR = '.m-menu__right';
 const HAMBURGER_SELECTOR = '.a-hamburger';
 const SUBMENU_ITEMS_SELECTOR = '.m-menu__nav-item';
@@ -41,6 +41,8 @@ export default class MMenuMobile extends MMenuBase {
         this.addClass(hamburger, OPEN_STATE);
         this.addClass(mainNav, OPEN_STATE);
         this.addClass(right, OPEN_STATE);
+
+        hamburger.setAttribute('aria-expanded', true);
     }
 
     closeMainNavigation() {
@@ -53,6 +55,8 @@ export default class MMenuMobile extends MMenuBase {
         this.removeClass(hamburger, OPEN_STATE);
         this.removeClass(mainNav, OPEN_STATE);
         this.removeClass(right, OPEN_STATE);
+
+        hamburger.setAttribute('aria-expanded', false);
 
         this.closeSubNavigation();
     }

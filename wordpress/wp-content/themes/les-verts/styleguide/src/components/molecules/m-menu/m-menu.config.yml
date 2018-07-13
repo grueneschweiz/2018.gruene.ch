@@ -32,6 +32,11 @@ context:
     - title: Die Grünen
     - title: Publikationen
     - title: Kontakt
+  aria-label-main-navigation: Hauptnavigation
+  aria-label-language-navigation: Sprachmenü
+  aria-label-sub-navigation: Untermenü
+  aria-label-close-sub-navigation: Untermenü schliessen
+  aria-label-search: Suche
   languages:
     - de
     - fr

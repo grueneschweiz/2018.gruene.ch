@@ -38,6 +38,8 @@ export class MMenuBase extends BaseView {
 
         this.addClass(submenu, OPEN_STATE);
         this.addClass(element, OPEN_STATE);
+        element.setAttribute('aria-expanded', true);
+        element.nextElementSibling.firstElementChild.firstElementChild.firstElementChild.focus();
 
         this.afterOpenSubNavigation(element);
     }
@@ -47,7 +49,10 @@ export class MMenuBase extends BaseView {
 
         let elements = this.getScopedElements(SUBMENU_SELECTOR + ', ' + MAIN_ENTRY_SELECTOR);
 
-        elements.forEach(element => this.removeClass(element, OPEN_STATE));
+        elements.forEach(element => {
+            this.removeClass(element, OPEN_STATE);
+            element.setAttribute('aria-expanded', false);
+        });
 
         this.afterCloseSubNavigation();
     }
@@ -61,10 +66,12 @@ export class MMenuBase extends BaseView {
      *
      * @param {EventTarget} element
      */
-    afterOpenSubNavigation(){}
+    afterOpenSubNavigation() {
+    }
 
     /**
      * overwrite those functions to do some more stuff on closing
      */
-    afterCloseSubNavigation(){}
+    afterCloseSubNavigation() {
+    }
 }
