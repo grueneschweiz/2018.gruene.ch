@@ -1,7 +1,7 @@
 label: Button
 status: ready
 display:
-  margin: 40px
+  padding: 40px
 context:
   label: Mitmachen
 variants:
@@ -19,6 +19,8 @@ variants:
         - secondary
         - outline
   - name: Transparent outlined
+    display:
+      background: "#E2E2E2"
     context:
       modifiers:
         - transparent

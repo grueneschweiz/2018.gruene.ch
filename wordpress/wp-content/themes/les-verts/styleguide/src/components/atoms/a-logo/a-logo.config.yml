@@ -1,7 +1,8 @@
 label: Logo
 status: ready
 display:
-  margin: 40px
+  padding: 40px
+  background-color: "#E2E2E2"
 default: De green
 context:
   title: Logo Grüne Schweiz

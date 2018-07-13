@@ -104,3 +104,51 @@
 @function strip-unit($value) {
   @return $value / ($value * 0 + 1);
 }
+
+/**
+ * Cleaners to remove basic typography styles
+ */
+@mixin clean-p {
+  letter-spacing: 0;
+  line-height: 1;
+  margin: 0;
+  font-size: initial; // sorry IE users
+}
+
+@mixin clean-link {
+  display: inline;
+  position: static;
+  color: initial; // sorry IE users
+  outline: initial; // sorry IE users
+
+  &:before {
+    content: normal;
+    position: static;
+    z-index: 0;
+    width: auto;
+    height: auto;
+    background-color: transparent;
+    transition: none;
+  }
+}
+
+@mixin clean-ul {
+  line-height: 1;
+  margin: 0;
+}
+
+@mixin clean-ol {
+  @include clean-ul;
+  counter-reset: none;
+}
+
+@mixin clean-li {
+  counter-increment: none;
+  &:before {
+    content: normal;
+    display: initial; // sorry IE users
+    margin: 0;
+    color: initial; // sorry IE users
+    transform: none;
+  }
+}

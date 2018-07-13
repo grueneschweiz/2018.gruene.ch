@@ -2,10 +2,8 @@
   $height: 136px;
 
   background-color: $color-primary;
-  color: $color-white;
   width: 100%;
   height: $height;
-  letter-spacing: 0.2px;
 
   &__wrapper {
     @extend .grid-width;
@@ -34,6 +32,7 @@
   }
 
   &__title {
+    color: $color-white;
     display: table-cell;
     vertical-align: middle;
     width: 100%;

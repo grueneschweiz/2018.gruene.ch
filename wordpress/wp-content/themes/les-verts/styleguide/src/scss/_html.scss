@@ -6,20 +6,3 @@ body.no-scroll {
 	overflow: hidden;
 	height: 100vh;
 }
-
-/**
- * TYPOGRAPHY
- */
-
-body {
-	font-family: $font-primary;
-}
-
-h1, h2, h3, h4 {
-	font-family: $font-title;
-}
-
-p {
-	letter-spacing: 0.015625em;
-	line-height: 1.75em;
-}

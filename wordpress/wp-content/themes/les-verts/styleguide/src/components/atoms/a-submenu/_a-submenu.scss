@@ -7,6 +7,7 @@
   }
 
   &__title {
+    @include clean-link;
     font-family: $font-title;
     display: block;
     line-height: 2em;
@@ -45,7 +46,12 @@
     }
   }
 
+  &__list {
+    @include clean-ul;
+  }
+
   &__item {
+    @include clean-li;
     color: $color-text;
     position: relative;
     margin: 1em 0 0 1.25em;
@@ -76,6 +82,7 @@
   }
 
   &__link {
+    @include clean-link;
     color: $color-text;
     line-height: 1.75em;
     padding: 7px 0;

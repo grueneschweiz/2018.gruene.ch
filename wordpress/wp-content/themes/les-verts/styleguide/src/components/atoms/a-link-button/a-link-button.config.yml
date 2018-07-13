@@ -1,7 +1,7 @@
 label: Link Button
 status: ready
 display:
-  margin: 40px
+  padding: 40px
 context:
   label: Weiterlesen
 variants:
@@ -10,6 +10,8 @@ variants:
       modifiers:
         - grey
   - name: White
+    display:
+      background-color: "#E2E2E2"
     context:
       modifiers:
         - white
