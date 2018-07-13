@@ -106,18 +106,32 @@
     @include media($size-medium) {
       margin-top: initial;
     }
-  }
 
-  &--featured__image {
-    width: 100%;
-    margin-top: 28px;
-  }
+    &__link {
+      @include clean-link;
 
-  &--featured__title {
-    font-size: 1.25rem;
-    letter-spacing: 0.0125em;
-    line-height: 1.4em;
-    margin-top: 16px;
+      &__image{
+        width: 100%;
+        margin-top: 28px;
+        transition: transform $transition-fast $transition-ease;
+      }
+
+      &__title {
+        font-size: 1.25rem;
+        line-height: 1.4em;
+        margin-top: 16px;
+      }
+
+      @include hover {
+        .a-submenu--featured__link__image {
+          transform: scale(1.05);
+        }
+
+        .a-submenu--featured__link__title {
+          color: $color-primary-dark;
+        }
+      }
+    }
   }
 
   &--featured__text {
