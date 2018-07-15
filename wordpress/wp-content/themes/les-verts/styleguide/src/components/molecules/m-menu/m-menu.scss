@@ -9,7 +9,7 @@
   width: 100%;
   @include fluid-props(height, $size-medium, $grid-max-width-max, 80px, 100px);
 
-  @include media($size-medium) {
+  @include media('desktop') {
     position: fixed;
   }
 
@@ -17,7 +17,7 @@
     @include fluid-props(width, $size-medium, $grid-max-width-max, 100px, 116px);
     margin-left: 30px;
 
-    @include media($size-medium) {
+    @include media('desktop') {
       @include fluid-props(margin-left, $size-medium, $grid-max-width-max, 16px, 33px);
     }
   }
@@ -35,7 +35,7 @@
       display: block;
     }
 
-    @include media($size-medium) {
+    @include media('desktop') {
       display: block;
       background: transparent;
       position: initial;
@@ -58,7 +58,7 @@
     float: right;
     margin-top: 11px;
 
-    @include media($size-medium) {
+    @include media('desktop') {
       float: initial;
       margin-top: 0;
     }
@@ -98,13 +98,19 @@
     width: 100%;
     padding: 8px 41px 40px;
     position: absolute;
-    top: 168px;
+    top: 164px;
 
-    @include media($size-medium) {
+    @include media('desktop') {
       width: calc(100% - 500 * (100vw / 1024));
-      padding: initial;
-      position: initial;
-      top: initial;
+      padding: 0;
+      position: static;
+      top: 0;
+    }
+
+    @include media('mobile') {
+      &.is-open {
+        background: $color-white;
+      }
     }
   }
 
@@ -132,8 +138,13 @@
 
     &.is-active {
       position: absolute;
-      top: -88px;
-      width: calc(100% - 69px);
+      top: -84px;
+      height: 84px;
+      padding-left: 41px;
+      padding-right: 34px;
+      width: 100%;
+      left: 0;
+      background: $color-white;
     }
 
     &.is-hidden {
@@ -148,10 +159,12 @@
     white-space: nowrap;
     color: $color-text;
     position: relative;
-    margin-top: 38px;
+    margin-top: 34px;
+    margin-bottom: 4px;
+    transition: color $transition-fast $transition-ease;
 
-    @include media($size-medium) {
-      margin-top: 0;
+    @include media('desktop') {
+      margin: 0;
     }
 
     &--active,
@@ -165,8 +178,7 @@
         @include fluid-props(bottom, $size-medium, $grid-max-width-max, -35px, -45px);
       }
 
-      // mobile only
-      @media all and (max-width: ($size-medium - 1)) {
+      @include media('mobile') {
         color: $color-secondary;
         width: 100%;
         margin-top: 34px;
@@ -201,8 +213,7 @@
         }
       }
 
-      // desktop only
-      @include media($size-medium) {
+      @include media('desktop') {
         &:after {
           content: '';
           position: absolute;
@@ -215,13 +226,21 @@
     }
   }
 
+  &__search {
+    @include hover {
+      svg {
+        stroke: $color-secondary;
+      }
+    }
+  }
+
   &__search-text {
-    @include media($size-medium) {
+    @include media('desktop') {
       display: none;
     }
   }
 
-  &__search {
+  &__search-icon {
     fill: none;
     stroke: $color-text;
     width: 1.333em;
@@ -229,7 +248,7 @@
     margin-bottom: -4px;
     margin-left: 30px;
 
-    @include media($size-medium) {
+    @include media('desktop') {
       margin-top: -3px;
       margin-bottom: initial;
       margin-left: initial;
@@ -242,10 +261,10 @@
 
   &__hamburger {
     position: absolute;
-    top: -141px;
+    top: -137px;
     right: 31px;
 
-    @include media($size-medium) {
+    @include media('desktop') {
       display: none;
     }
   }
@@ -257,8 +276,8 @@
   &__submenu {
     @include clean-ul;
     position: absolute;
-    @include fluid-props(top, $size-medium, $grid-max-width-max, 84px, 100px);
-    left: -41px;
+    @include fluid-props(top, $size-medium, $grid-max-width-max, 80px, 100px);
+    left: 0;
     width: 100vw;
     min-height: calc(100vw - 84px + 20 * (100vw - 1024px) / 416);
     display: none;
@@ -267,9 +286,14 @@
     background-color: $color-grey-1;
     flex-direction: column;
 
-    @include media($size-medium) {
+    // mobile only
+    @include media('mobile') {
+      top: 84px;
+    }
+
+    // desktop only
+    @include media('desktop') {
       background-color: $color-white;
-      left: 0;
       justify-content: center;
       align-items: flex-start;
       flex-direction: row;
@@ -311,7 +335,7 @@
         }
       }
 
-      @include media($size-medium) {
+      @include media('desktop') {
         max-width: 268px;
         @include fluid-props(margin-left margin-right, $size-medium, $grid-max-width-max, 12px, 16px);
         margin-top: 72px;
@@ -325,7 +349,7 @@
       top: 12px;
       display: none;
 
-      @include media($size-medium) {
+      @include media('desktop') {
         display: block;
       }
     }

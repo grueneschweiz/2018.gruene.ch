@@ -1,7 +1,7 @@
 label: Menu
 status: ready
 display:
-  background: "#E2E2E2"
+  background: "#AAAAAA"
 context:
   nav-items:
     - title: Aktuelles
