@@ -8,6 +8,16 @@
   width: 100%;
   @include fluid-props(height, $size-medium, $grid-max-width-max, 80px, 100px);
 
+  &:before {
+    // this is used because the native background is behind the ul on sliding
+    content: ' ';
+    width: 100%;
+    @include fluid-props(height, $size-medium, $grid-max-width-max, 80px, 100px);
+    position: fixed;
+    background: $color-white;
+    z-index: -1;
+  }
+
   @include media($size-medium) {
     position: fixed;
   }
@@ -256,18 +266,21 @@
   &__submenu {
     @include clean-ul;
     position: absolute;
-    @include fluid-props(top, $size-medium, $grid-max-width-max, 84px, 100px);
     left: -41px;
     width: 100vw;
     min-height: calc(100vw - 84px + 20 * (100vw - 1024px) / 416);
-    display: none;
+    visibility: hidden;
+    display: flex;
     font-size: 1rem;
     hyphens: auto;
     background-color: $color-grey-1;
     flex-direction: column;
+    top: -100vw;
+    transition: top $transition-fast $transition-ease, visibility $transition-fast;
+    z-index: -2;
 
     @include media($size-medium) {
-      background-color: transparent;
+      background-color: $color-white;
       left: 0;
       justify-content: center;
       align-items: flex-start;
@@ -276,7 +289,8 @@
     }
 
     &.is-open {
-      display: flex;
+      visibility: visible;
+      @include fluid-props(top, $size-medium, $grid-max-width-max, 84px, 100px);
     }
 
     &__section {
