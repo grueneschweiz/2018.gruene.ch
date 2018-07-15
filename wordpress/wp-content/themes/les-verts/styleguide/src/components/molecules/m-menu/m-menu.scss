@@ -96,7 +96,7 @@
 
   &__nav {
     width: 100%;
-    padding: 8px 41px 40px;
+    padding: 27px 41px 40px;
     position: absolute;
     top: 164px;
 
@@ -126,7 +126,7 @@
       display: flex;
     }
 
-    @include media($size-medium) {
+    @include media('desktop') {
       display: flex;
       flex-direction: row;
       max-width: 800px;
@@ -159,8 +159,7 @@
     white-space: nowrap;
     color: $color-text;
     position: relative;
-    margin-top: 34px;
-    margin-bottom: 4px;
+    padding: 19px 0;
     transition: color $transition-fast $transition-ease;
 
     @include media('desktop') {
@@ -181,13 +180,13 @@
       @include media('mobile') {
         color: $color-secondary;
         width: 100%;
-        margin-top: 34px;
+        margin-top: 15px;
 
         &:after {
           content: "";
           position: absolute;
           right: 0;
-          top: 0;
+          top: 19px;
           bottom: auto; // because the fluid props can't be nested in media query
           background: url('/img/arrow.svg') no-repeat;
           width: 24px;
@@ -198,7 +197,7 @@
           content: "";
           position: absolute;
           left: 0;
-          bottom: -37px;
+          bottom: -18px;
           width: 34px;
           height: 2px;
           z-index: 1;
