@@ -1,0 +1,20 @@
+.a-link-image {
+  &__image {
+    max-width: 100%;
+    transition: transform $transition-fast $transition-ease;
+  }
+
+  &__link {
+    @include clean-link;
+
+    display: block;
+    max-width: 100%;
+    overflow: hidden;
+
+    @include hover {
+      .a-link-image__image {
+        transform: scale(1.05);
+      }
+    }
+  }
+}
