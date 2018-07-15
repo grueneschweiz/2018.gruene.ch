@@ -287,7 +287,7 @@
       margin-left: 41px;
       margin-right: 41px;
       margin-top: 2em;
-      animation: fadeIn $transition-fast/2 $transition-ease 1 alternate both;
+      animation: fadeIn $transition-fast $transition-ease both;
 
       &:nth-last-of-type(2) {
         // second last because the last one is the close button
