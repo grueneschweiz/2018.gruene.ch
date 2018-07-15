@@ -43,6 +43,12 @@
           width: 100%;
         }
       }
+
+      &:focus {
+        &:after {
+          transition: none;
+        }
+      }
     }
   }
 
@@ -98,6 +104,12 @@
         &:after {
           width: 100%;
           background-color: $color-primary;
+        }
+      }
+
+      &:focus {
+        &:after {
+          transition: none;
         }
       }
     }

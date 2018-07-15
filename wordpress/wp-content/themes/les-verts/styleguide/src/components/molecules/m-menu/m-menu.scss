@@ -1,22 +1,13 @@
 .m-menu {
   font-size: 0.9375rem; // 15/16
   border-bottom: 0.125rem solid $color-grey-1;
+  background: $color-white;
   z-index: $z-index-menu;
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
   @include fluid-props(height, $size-medium, $grid-max-width-max, 80px, 100px);
-
-  &:before {
-    // this is used because the native background is behind the ul on sliding
-    content: ' ';
-    width: 100%;
-    @include fluid-props(height, $size-medium, $grid-max-width-max, 80px, 100px);
-    position: fixed;
-    background: $color-white;
-    z-index: -1;
-  }
 
   @include media($size-medium) {
     position: fixed;
@@ -198,7 +189,7 @@
           bottom: -37px;
           width: 34px;
           height: 2px;
-          z-index: $z-index-menu + 1;
+          z-index: 1;
           background-color: $color-secondary;
           transition: width $transition-fast $transition-ease;
         }
@@ -266,18 +257,15 @@
   &__submenu {
     @include clean-ul;
     position: absolute;
+    @include fluid-props(top, $size-medium, $grid-max-width-max, 84px, 100px);
     left: -41px;
     width: 100vw;
     min-height: calc(100vw - 84px + 20 * (100vw - 1024px) / 416);
-    visibility: hidden;
-    display: flex;
+    display: none;
     font-size: 1rem;
     hyphens: auto;
     background-color: $color-grey-1;
     flex-direction: column;
-    top: -100vw;
-    transition: top $transition-fast $transition-ease, visibility $transition-fast;
-    z-index: -2;
 
     @include media($size-medium) {
       background-color: $color-white;
@@ -289,8 +277,7 @@
     }
 
     &.is-open {
-      visibility: visible;
-      @include fluid-props(top, $size-medium, $grid-max-width-max, 84px, 100px);
+      display: flex;
     }
 
     &__section {
@@ -300,10 +287,28 @@
       margin-left: 41px;
       margin-right: 41px;
       margin-top: 2em;
+      animation: fadeIn $transition-fast/2 $transition-ease 1 alternate both;
 
       &:nth-last-of-type(2) {
         // second last because the last one is the close button
         margin-bottom: 37px;
+      }
+
+      @for $i from 1 through 4 {
+        &:nth-of-type(#{$i}) {
+          animation-delay: $i * $transition-fast / 8;
+        }
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          //transform: translateY(-5px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
       }
 
       @include media($size-medium) {
