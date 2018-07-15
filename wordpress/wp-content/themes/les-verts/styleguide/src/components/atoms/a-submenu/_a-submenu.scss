@@ -122,6 +122,10 @@
       margin-top: initial;
     }
 
+    .a-link-image{
+      margin-top: 28px;
+    }
+
     &__link {
       @include clean-link;
 
@@ -138,10 +142,6 @@
       }
 
       @include hover {
-        .a-submenu--featured__link__image {
-          transform: scale(1.05);
-        }
-
         .a-submenu--featured__link__title {
           color: $color-primary-dark;
         }
