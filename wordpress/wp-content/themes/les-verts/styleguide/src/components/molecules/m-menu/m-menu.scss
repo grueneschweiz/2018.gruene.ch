@@ -23,26 +23,21 @@
   }
 
   &__right {
-    display: none;
-    background: $color-grey-1;
-    position: absolute;
-    top: 80px;
-    left: 0;
-    width: 100%;
-    padding: 22px 41px;
-
     &.is-open {
       display: block;
     }
 
+    @include media('mobile') {
+      display: none;
+      background: $color-grey-1;
+      position: absolute;
+      top: 80px;
+      left: 0;
+      width: 100%;
+      padding: 22px 41px;
+    }
+
     @include media('desktop') {
-      display: block;
-      background: transparent;
-      position: initial;
-      top: initial;
-      left: initial;
-      width: initial;
-      padding: 0;
       @include fluid-props(padding-right, $size-medium, $size-huge, 24px, 33px);
     }
   }
@@ -59,7 +54,7 @@
     margin-top: 11px;
 
     @include media('desktop') {
-      float: initial;
+      float: none;
       margin-top: 0;
     }
   }
@@ -95,19 +90,15 @@
    */
 
   &__nav {
-    width: 100%;
-    padding: 27px 41px 40px;
-    position: absolute;
-    top: 164px;
-
     @include media('desktop') {
       width: calc(100% - 500 * (100vw / 1024));
-      padding: 0;
-      position: static;
-      top: 0;
     }
 
     @include media('mobile') {
+      width: 100%;
+      padding: 27px 41px 40px;
+      position: absolute;
+      top: 164px;
       &.is-open {
         background: $color-white;
       }
@@ -249,8 +240,8 @@
 
     @include media('desktop') {
       margin-top: -3px;
-      margin-bottom: initial;
-      margin-left: initial;
+      margin-bottom: 0;
+      margin-left: 0;
     }
 
     @include hover {
@@ -326,7 +317,7 @@
       @keyframes fadeIn {
         from {
           opacity: 0;
-          //transform: translateY(-5px);
+          transform: translateY(-5px);
         }
         to {
           opacity: 1;
