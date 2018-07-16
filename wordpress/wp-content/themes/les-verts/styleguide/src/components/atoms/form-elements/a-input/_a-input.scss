@@ -45,6 +45,11 @@
     &.is-touched:invalid, &.is-invalid.is-touched {
       border-bottom-color: $color-form-invalid;
     }
+
+    &:focus {
+      outline: none;
+      border-bottom: 2px solid $color-grey-3;
+    }
   }
 
   &--invers {

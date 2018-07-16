@@ -19,6 +19,7 @@ context:
         white: "#FFFFFF"
         grey-1: "#F9F9F9"
         grey-2: "#E2E2E2"
+        grey-3: "6A6A6A"
         black: "#000000"
     - title: Misc
       values:
