@@ -1,0 +1,35 @@
+.o-front-article-single {
+  @include media($_DESKTOP){
+    margin: 0 60px;
+  }
+
+  &__cat-title {
+    margin-bottom: 22px;
+
+    @include media($_DESKTOP) {
+      margin-bottom: 30px;
+    }
+  }
+
+  &__cta {
+    margin-top: 16px;
+    border-top: 1px solid $color-grey-2;
+    display: flex;
+    flex-direction: column-reverse;
+
+    @include media($_DESKTOP) {
+      flex-direction: row;
+      align-items: center;
+      padding-top: 20px;
+    }
+  }
+
+  &__cta-label {
+    margin: 16px 0;
+
+    @include media($_DESKTOP) {
+      margin-left: 40px;
+    }
+  }
+
+}
