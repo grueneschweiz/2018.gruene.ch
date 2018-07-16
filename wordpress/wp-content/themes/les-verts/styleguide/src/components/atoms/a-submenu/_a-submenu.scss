@@ -2,7 +2,7 @@
   width: 100%;
   max-width: 269px;
 
-  @include media('desktop') {
+  @include media($_DESKTOP) {
     min-width: 177px;
   }
 
@@ -27,13 +27,13 @@
         margin-right: 0.5em;
         margin-left: calc(-1px - 0.5em);
 
-        @include media('desktop') {
+        @include media($_DESKTOP) {
           border-left-color: $color-primary;
         }
       }
     }
 
-    @include media('desktop') {
+    @include media($_DESKTOP) {
       color: $color-primary;
       margin-bottom: 1px;
       padding-bottom: 16px;
@@ -70,7 +70,7 @@
     color: $color-text;
     margin: 1em 0 0 1.25em;
 
-    @include media('desktop') {
+    @include media($_DESKTOP) {
       margin: 0;
     }
   }
@@ -87,7 +87,7 @@
     &:hover {
       color: $color-secondary;
 
-      @include media('desktop') {
+      @include media($_DESKTOP) {
         color: $color-text;
       }
     }
@@ -101,13 +101,13 @@
         margin-right: 0.5em;
         margin-left: calc(-1px - 0.5em);
 
-        @include media('desktop') {
+        @include media($_DESKTOP) {
           border-left-color: $color-primary;
         }
       }
     }
 
-    @include media('desktop') {
+    @include media($_DESKTOP) {
       &:after {
         content: "";
         width: 36px;
@@ -133,7 +133,7 @@
   &--featured {
     margin-top: 2em;
 
-    @include media('desktop') {
+    @include media($_DESKTOP) {
       margin-top: initial;
     }
 

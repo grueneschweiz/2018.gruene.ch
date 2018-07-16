@@ -1,16 +1,16 @@
 /**
  * CSS Media query.
  *
- * Use @include media('mobile') or @include media('desktop') to trigger
+ * Use @include media($_MOBILE) or @include media($_DESKTOP) to trigger
  * the mobile/desktop breakpoint. Any other input will be treated as
  * (min-width: $query)
  */
 @mixin media($query) {
-  @if $query == 'mobile' {
+  @if $query == $_MOBILE {
     @media all and (max-width: ($size-medium - 1)) {
       @content;
     }
-  } @else if($query == 'desktop') {
+  } @else if($query == $_DESKTOP) {
     @media all and (min-width: $size-medium) {
       @content;
     }

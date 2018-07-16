@@ -14,9 +14,9 @@
     transition-property: font-size, bottom, font-weight;
 
     &.is-empty {
-      font-size:initial;
-      font-weight: initial;
-      text-transform: initial;
+      font-size: 1em;
+      font-weight: $font-weight-normal;
+      text-transform: none;
       top: 1.75rem;
     }
 

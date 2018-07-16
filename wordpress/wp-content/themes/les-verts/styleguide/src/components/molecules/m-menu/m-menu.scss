@@ -9,7 +9,7 @@
   width: 100%;
   @include fluid-props(height, $size-medium, $grid-max-width-max, 80px, 100px);
 
-  @include media('desktop') {
+  @include media($_DESKTOP) {
     position: fixed;
   }
 
@@ -17,7 +17,7 @@
     @include fluid-props(width, $size-medium, $grid-max-width-max, 100px, 116px);
     margin-left: 30px;
 
-    @include media('desktop') {
+    @include media($_DESKTOP) {
       @include fluid-props(margin-left, $size-medium, $grid-max-width-max, 16px, 33px);
     }
   }
@@ -27,7 +27,7 @@
       display: block;
     }
 
-    @include media('mobile') {
+    @include media($_MOBILE) {
       display: none;
       background: $color-grey-1;
       position: absolute;
@@ -37,7 +37,7 @@
       padding: 22px 41px;
     }
 
-    @include media('desktop') {
+    @include media($_DESKTOP) {
       @include fluid-props(padding-right, $size-medium, $size-huge, 24px, 33px);
     }
   }
@@ -53,7 +53,7 @@
     float: right;
     margin-top: 11px;
 
-    @include media('desktop') {
+    @include media($_DESKTOP) {
       float: none;
       margin-top: 0;
     }
@@ -99,11 +99,11 @@
    */
 
   &__nav {
-    @include media('desktop') {
+    @include media($_DESKTOP) {
       width: calc(100% - 500 * (100vw / 1024));
     }
 
-    @include media('mobile') {
+    @include media($_MOBILE) {
       width: 100%;
       padding: 27px 41px 40px;
       position: absolute;
@@ -126,7 +126,7 @@
       display: flex;
     }
 
-    @include media('desktop') {
+    @include media($_DESKTOP) {
       display: flex;
       flex-direction: row;
       max-width: 800px;
@@ -162,7 +162,7 @@
     padding: 19px 0;
     transition: color $transition-fast $transition-ease;
 
-    @include media('desktop') {
+    @include media($_DESKTOP) {
       margin: 0;
     }
 
@@ -187,7 +187,7 @@
         @include fluid-props(bottom, $size-medium, $grid-max-width-max, -35px, -45px);
       }
 
-      @include media('mobile') {
+      @include media($_MOBILE) {
         color: $color-secondary;
         width: 100%;
         margin-top: 15px;
@@ -223,7 +223,7 @@
         }
       }
 
-      @include media('desktop') {
+      @include media($_DESKTOP) {
         &:after {
           content: '';
           position: absolute;
@@ -245,7 +245,7 @@
   }
 
   &__search-text {
-    @include media('desktop') {
+    @include media($_DESKTOP) {
       display: none;
     }
   }
@@ -258,7 +258,7 @@
     margin-bottom: -4px;
     margin-left: 30px;
 
-    @include media('desktop') {
+    @include media($_DESKTOP) {
       margin-top: -3px;
       margin-bottom: 0;
       margin-left: 0;
@@ -274,7 +274,7 @@
     top: -137px;
     right: 31px;
 
-    @include media('desktop') {
+    @include media($_DESKTOP) {
       display: none;
     }
   }
@@ -297,12 +297,12 @@
     flex-direction: column;
 
     // mobile only
-    @include media('mobile') {
+    @include media($_MOBILE) {
       top: 84px;
     }
 
     // desktop only
-    @include media('desktop') {
+    @include media($_DESKTOP) {
       background-color: $color-white;
       justify-content: center;
       align-items: flex-start;
@@ -345,7 +345,7 @@
         }
       }
 
-      @include media('desktop') {
+      @include media($_DESKTOP) {
         max-width: 268px;
         @include fluid-props(margin-left margin-right, $size-medium, $grid-max-width-max, 12px, 16px);
         margin-top: 72px;
@@ -359,7 +359,7 @@
       top: 12px;
       display: none;
 
-      @include media('desktop') {
+      @include media($_DESKTOP) {
         display: block;
       }
     }
