@@ -34,7 +34,7 @@
     border-color: $color-primary;
     border-top: 0.1666666667em solid; // 2/12
     border-right: 0.1666666667em solid; // 2/12
-    transform: translateX(-0.5em) translateY(0.1em) rotate(45deg);
+    transform: translateX(-0.5em) rotate(45deg);
   }
 
   @include hover {

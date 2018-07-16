@@ -1,0 +1,12 @@
+<div class="m-front-article {{ modifiers_classes }}">
+    <h3 class="m-front-article__title">
+        <a href="{{ url }}" class="m-front-article__title-link">{{ title }}</a>
+    </h3>
+    {{#if has-img}}
+        <div class="m-front-article__image">
+            {{> @a-link-image img}}
+        </div>
+    {{/if}}
+    <p class="m-front-article__text">{{ text }}</p>
+    {{render '@a-link-button'}}
+</div>

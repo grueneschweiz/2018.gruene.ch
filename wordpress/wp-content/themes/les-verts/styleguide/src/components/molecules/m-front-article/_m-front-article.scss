@@ -1,0 +1,33 @@
+.m-front-article {
+  display: flex;
+  flex-direction: column;
+
+  &__title {
+    @include fluid-props(font-size, $size-tiny, $size-medium, 20px, 24px);
+    @include fluid-props(margin-top, $size-tiny, $size-medium, 4px, 12px);
+    margin-bottom: 12px;
+  }
+
+  &--image-second &__title {
+    margin-top: 0;
+  }
+
+  &__title-link {
+    @include clean-link;
+    line-height: 1.4em;
+    color: $color-primary;
+  }
+
+  &__image {
+    margin-bottom: 12px;
+  }
+
+  &--image-first &__image {
+    order: -1;
+  }
+
+  &__text{
+    margin-top: 0;
+    margin-bottom: 16px;
+  }
+}
