@@ -2,7 +2,7 @@
 title: Grid System
 ---
 
-A responsive, mobile first fluid grid system, based on *CSS Grid layout*, that appropriately scales up to 14 columns as the device or viewport size increases.
+A responsive, mobile first fluid grid system, based on *CSS Grid layout*, that appropriately scales up to 12 columns as the device or viewport size increases.
 
 Drag & use this <a href="javascript: (function () {var el = document.body;var className = 'grid-debugger';if (el.classList) {el.classList.toggle(className);} else {var classes = el.className.split(' ');var existingIndex = classes.indexOf(className);if (existingIndex >= 0)classes.splice(existingIndex, 1);elseclasses.push(className);el.className = classes.join(' ');}})();">grid debugger</a> bookmarklet to toggle a developpement helper for the grid.
 
