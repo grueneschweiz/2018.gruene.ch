@@ -23,4 +23,4 @@ context:
         black: "#000000"
     - title: Misc
       values:
-        form-invalid: "#DE001B"
+        red: "#EF0606"

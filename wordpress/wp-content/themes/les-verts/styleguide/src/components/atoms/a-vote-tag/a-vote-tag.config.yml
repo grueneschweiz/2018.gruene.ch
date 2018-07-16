@@ -1,0 +1,22 @@
+label: Vote tag
+status: ready
+default: Stimmfreigabe
+display:
+  padding: 40px
+context:
+  label: '-'
+  url: '#'
+  aria-label: Abstimmungsempfehlung
+  modifiers:
+    - free
+variants:
+  - name: No
+    context:
+      label: nein
+      modifiers:
+        - no
+  - name: Yes
+    context:
+      label: ja
+      modifiers:
+        - yes
