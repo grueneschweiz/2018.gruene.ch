@@ -1,8 +1,9 @@
 .a-link-button {
   font-size: 0.75rem;
-  display: inline-block;
-  line-height: 1.1666666667em; // 12/14
-  padding-right: 0.5em; // 6/12
+  display: inline-flex;
+  align-items: center;
+  line-height: 0.9em; // make sure the arrow wont be cut
+  padding-left: 0;
   @include fluid-props(padding-top padding-bottom, $fluid-min, $fluid-max, 6px, 10px);
 
   color: $color-primary;
@@ -10,45 +11,38 @@
   font-weight: $font-weight-bold;
   text-transform: uppercase;
   transition: color $transition-fast $transition-ease;
-  position: relative;
+
+  &__label {
+    order: 0;
+    padding-right: 1em; // 6/12
+  }
 
   &::before {
     content: "";
-    position: absolute;
-    left: 100%;
-    top: 50%;
-    display: block;
+    order: 1;
     width: 0;
     transition: all $transition-fast $transition-ease;
     height: 0.1666666667em;
     background-color: $color-primary;
-    transform: translateY(-50%);
   }
 
   &::after {
     content: "";
-    position: absolute;
-    left: 100%;
-    top: 50%;
-    display: block;
-    width: 0.7071067812em; // 1/sqrt(2)
-    height: 0.7071067812em; // 1/sqrt(2)
+    order: 2;
+    width: 0.6em;
+    height: 0.6em;
     border-color: $color-primary;
     border-top: 0.1666666667em solid; // 2/12
     border-right: 0.1666666667em solid; // 2/12
-    transform: translate(-50%, -50%) rotate(45deg);
-    transition: left $transition-fast $transition-ease;
+    transform: translateX(-0.5em) translateY(0.1em) rotate(45deg);
   }
 
   @include hover {
     color: $color-primary-dark;
 
     &::before {
-      width: 1.5em;
+      width: 1.2em;
       background-color: $color-primary-dark;
-    }
-    &::after {
-      left: calc(100% + 1.2em);
     }
   }
 
