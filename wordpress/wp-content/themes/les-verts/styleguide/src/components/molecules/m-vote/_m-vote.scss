@@ -1,0 +1,30 @@
+.m-vote {
+  position: relative;
+
+  &__title {
+    margin-right: 75px;
+
+    @include media($_MOBILE) {
+      font-size: 1rem;
+
+      &:after {
+        content: "";
+        width: 0.6em;
+        height: 0.6em;
+        border-color: $color-primary;
+        border-top: 0.1666666667em solid; // 2/12
+        border-right: 0.1666666667em solid; // 2/12
+        transform: translateX(-0.2em) rotate(45deg);
+        position: absolute;
+        right: 0;
+        bottom: 0;
+      }
+    }
+  }
+
+  &__tag {
+    position: absolute;
+    top: 3px;
+    right: 0;
+  }
+}

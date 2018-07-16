@@ -1,0 +1,9 @@
+label: Vote
+display:
+  padding: 40px;
+context:
+  label: "Kein Kahlschlag bei der Medienvielfalt: Nein zu No Billag"
+  vote-tag:
+    label: nein
+    modifiers:
+      - no
