@@ -144,6 +144,12 @@
     background-color: transparent;
     transition: none;
   }
+
+  @include hover {
+    &:before {
+      height: auto;
+    }
+  }
 }
 
 @mixin clean-ul {
