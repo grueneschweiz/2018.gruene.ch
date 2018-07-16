@@ -36,4 +36,10 @@ export default class MMenu extends BaseView {
             this.handler.bind();
         }
     }
+
+    destroy() {
+        super.destroy();
+
+        window.removeEventListener("resize", this.setMenuHandler);
+    }
 }
