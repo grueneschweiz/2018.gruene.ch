@@ -10,7 +10,7 @@
             {{#each nav-items}}
                 <li class="m-menu__nav-item" role="none">
                     <a class="m-menu__nav-link {{#if @first }}m-menu__nav-link--active{{/if}}"
-                       href="#" role="menuitem" {{#if @first }}tabindex="0" accesskey="1"{{else}}tabindex="-1"{{/if}}
+                       href="#" role="menuitem" {{#if @first }}tabindex="0" accesskey="1"{{/if}}
                        aria-haspopup="menu" aria-expanded="false">{{ this.title }}</a>
                     {{#if section-items}}
                         <ul class="m-menu__submenu" role="menu" aria-label="{{ ../aria-label-sub-navigation }}">

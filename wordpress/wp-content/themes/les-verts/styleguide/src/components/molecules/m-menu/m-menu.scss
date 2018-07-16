@@ -79,9 +79,18 @@
   &__language-nav-link {
     @include clean-link;
     color: $color-text;
+    transition: color $transition-fast $transition-ease;
 
     &--active {
       color: $color-secondary;
+    }
+
+    &:hover {
+      @extend .m-menu__language-nav-link--active;
+    }
+
+    &:focus {
+      text-decoration: underline;
     }
   }
 
@@ -158,9 +167,19 @@
     }
 
     &--active,
-    &:focus,
     &:hover {
       color: $color-secondary;
+    }
+
+    &:focus {
+      &:before {
+        content: '';
+        width: 0;
+        height: 0;
+        border-left: 1px solid $color-secondary;
+        margin-right: 0.5em;
+        margin-left: calc(-1px - 0.5em);
+      }
     }
 
     &.is-open {
@@ -193,12 +212,13 @@
           height: 2px;
           z-index: 1;
           background-color: $color-secondary;
-          transition: width $transition-fast $transition-ease;
         }
 
         @include hover {
           &:before {
+            margin-left: 0;
             width: calc(100vw - 69px);
+            transition: width $transition-fast $transition-ease;
           }
         }
       }
@@ -217,7 +237,7 @@
   }
 
   &__search {
-    @include hover {
+    &:hover{
       svg {
         stroke: $color-secondary;
       }
@@ -244,7 +264,7 @@
       margin-left: 0;
     }
 
-    @include hover {
+    &:hover {
       stroke: $color-secondary;
     }
   }

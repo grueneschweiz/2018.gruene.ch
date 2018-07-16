@@ -2,7 +2,7 @@
   width: 100%;
   max-width: 269px;
 
-  @include media($size-medium) {
+  @include media('desktop') {
     min-width: 177px;
   }
 
@@ -14,11 +14,26 @@
     color: $color-text;
     transition: color $transition-fast $transition-ease;
 
-    @include hover {
+    &:hover {
       color: $color-secondary;
     }
 
-    @include media($size-medium) {
+    &:focus {
+      &:before {
+        content: '';
+        width: 0;
+        height: 0;
+        border-left: 1px solid $color-secondary;
+        margin-right: 0.5em;
+        margin-left: calc(-1px - 0.5em);
+
+        @include media('desktop') {
+          border-left-color: $color-primary;
+        }
+      }
+    }
+
+    @include media('desktop') {
       color: $color-primary;
       margin-bottom: 1px;
       padding-bottom: 16px;
@@ -36,17 +51,11 @@
         transition: width $transition-fast $transition-ease;
       }
 
-      @include hover {
+      &:hover {
         color: $color-primary;
 
         &:after {
           width: 100%;
-        }
-      }
-
-      &:focus {
-        &:after {
-          transition: none;
         }
       }
     }
@@ -61,7 +70,7 @@
     color: $color-text;
     margin: 1em 0 0 1.25em;
 
-    @include media($size-medium) {
+    @include media('desktop') {
       margin: 0;
     }
   }
@@ -75,18 +84,30 @@
     position: relative;
     transition: color $transition-fast $transition-ease;
 
-    @include hover {
+    &:hover {
       color: $color-secondary;
-    }
 
-    @include media($size-medium) {
-      @include hover {
+      @include media('desktop') {
         color: $color-text;
       }
     }
 
-    @include media($size-medium) {
+    &:focus {
+      &:before {
+        content: '';
+        width: 0;
+        height: 0;
+        border-left: 1px solid $color-secondary;
+        margin-right: 0.5em;
+        margin-left: calc(-1px - 0.5em);
 
+        @include media('desktop') {
+          border-left-color: $color-primary;
+        }
+      }
+    }
+
+    @include media('desktop') {
       &:after {
         content: "";
         width: 36px;
@@ -98,18 +119,12 @@
         transition: width $transition-fast $transition-ease;
       }
 
-      @include hover {
+      &:hover {
         color: $color-text;
 
         &:after {
           width: 100%;
           background-color: $color-primary;
-        }
-      }
-
-      &:focus {
-        &:after {
-          transition: none;
         }
       }
     }
@@ -118,7 +133,7 @@
   &--featured {
     margin-top: 2em;
 
-    @include media($size-medium) {
+    @include media('desktop') {
       margin-top: initial;
     }
 
