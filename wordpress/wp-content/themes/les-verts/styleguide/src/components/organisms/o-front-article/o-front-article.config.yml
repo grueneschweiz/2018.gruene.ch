@@ -54,3 +54,48 @@ variants:
         modifiers:
           - secondary
       cta-help-text: Ich will mich für Gleichstellung einsetzen
+  - name: oton
+    label: O-Ton
+    context:
+      oton: true
+      mm: true
+      modifiers:
+        - oton
+        - mm
+      cat-title:
+        label: Medienmitteilungen
+        url: '#'
+      articles:
+        - article-1:
+          modifiers:
+            - no-image
+          url: '#'
+          title: 'Fall "Daniel Moser": Wo bleiben die Konsequenzen?'
+          text: "« Der Schweizerische Nachrichtendienst hat das Gesetz gebrochen. Und er ist dilettantisch und unprofessionell vorgegangen. Das stellt die GPDel klar fest. Wo bleiben die Konsequenzen für die Verantwortlichen, den ehemaligen Geheimdienstchef Markus Seiler und den zuständigen Bundesrat? »"
+          has-img: false
+      date: 26. März 2018
+      author: Balthasar Glättli
+      author-url: '#'
+      img:
+        url: '#'
+        image-src: "/img/glaettli.jpg"
+        alt: Balthasar Glättli
+        title: 'Balthasar Glättli zum Fall "Daniel Moser"'
+  - name: mm
+    label: MM
+    context:
+      mm: true
+      modifiers:
+        - mm
+      cat-title:
+        label: Medienmitteilungen
+        url: '#'
+      articles:
+        - article-1:
+          modifiers:
+            - no-image
+          url: '#'
+          title: '«Fair Food»: Bundesrat anerkennt Handlungsbedarf, nun ist der Ball bei der Stimmbevölkerung'
+          text: "An seiner heutigen Medienkonferenz zur Fair-Food-Initiative hat der Bundesrat Verständnis für die Anliegen der Initiative gezeigt. Er anerkennt, dass Handlungsbedarf zur Förderung einer nachhaltigen Lebensmittelproduktion besteht. Die Grünen begrüssen dies, bedauern jedoch, dass den Worten keine Taten folgen. Ein Ja zur Fair-Food-Initiative am 23. September ist darum wichtiger denn je."
+          has-img: false
+      date: 26. März 2018

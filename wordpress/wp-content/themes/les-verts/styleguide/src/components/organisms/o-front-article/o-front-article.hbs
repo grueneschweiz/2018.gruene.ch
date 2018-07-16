@@ -2,6 +2,13 @@
     <div class="o-front-article__cat-title">
         {{> @a-cat-title cat-title}}
     </div>
+    {{#if mm}}
+        <div class="o-front-article__quote">
+            <svg title="Quote" role="img">
+                <use xlink:href="#quote" />
+            </svg>
+        </div>
+    {{/if}}
     <div class="o-front-article__articles">
         {{#each articles}}
             <div class="o-front-article__article">
@@ -17,6 +24,19 @@
             <div class="o-front-article__cta-label">
                 {{ cta-help-text }}
             </div>
+        </div>
+    {{/if}}
+    {{#if mm}}
+        <div class="o-front-article__mm">
+            <div class="o-front-article__meta">
+                <time class="o-front-article__date">{{ date }}</time>
+                {{#if oton}}<a href="{{ author-url }}" class="o-front-article__author">{{ author }}</a>{{/if}}
+            </div>
+            {{#if oton}}
+                <div class="o-front-article__author-image">
+                    {{> @a-link-image img}}
+                </div>
+            {{/if}}
         </div>
     {{/if}}
 </div>

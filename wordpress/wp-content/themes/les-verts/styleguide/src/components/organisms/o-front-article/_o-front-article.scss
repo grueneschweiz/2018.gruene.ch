@@ -9,6 +9,18 @@
     }
   }
 
+  &__quote {
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    svg {
+      fill: $color-primary-super-light;
+      height: 39px;
+      width: 56px;
+    }
+  }
+
   &__articles {
     display: flex;
     flex-wrap: wrap;
@@ -43,6 +55,12 @@
     }
   }
 
+  &--mm &__article {
+    @include media($_DESKTOP) {
+      margin-top: 62px;
+    }
+  }
+
   &__cta {
     margin-top: 16px;
     border-top: 1px solid $color-grey-2;
@@ -61,6 +79,57 @@
 
     @include media($_DESKTOP) {
       margin-left: 40px;
+    }
+  }
+
+  &__mm {
+    display: flex;
+    width: 100%;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+
+  &__author-image {
+    width: 100px;
+    height: 100px;
+    transform: rotate(-5deg);
+    transform-origin: bottom right;
+    margin-left: 20px;
+  }
+
+  &__meta {
+    flex-grow: 1;
+    border-top: solid 1px $color-grey-2;
+    margin-top: 12px;
+    font-size: 0.75rem; // 12/16
+  }
+
+  &__date {
+    display: block;
+    margin: 12px 0 8px;
+
+    @include media($_DESKTOP) {
+      margin-bottom: 0;
+      display: inline-block;
+    }
+  }
+
+  &__author {
+    @include clean-link;
+    display: inline-block;
+    font-weight: bold;
+
+    @include media($_DESKTOP) {
+      margin-left: 28px;
+      position: relative;
+
+      &:before {
+        content: "\25A0";
+        color: $color-secondary;
+        transform: rotate(-5deg);
+        position: absolute;
+        left: -19px;
+      }
     }
   }
 }
