@@ -1,0 +1,22 @@
+<div class="o-front-article {{modifiers_classes}}">
+    <div class="o-front-article__cat-title">
+        {{> @a-cat-title cat-title}}
+    </div>
+    <div class="o-front-article__articles">
+        {{#each articles}}
+            <div class="o-front-article__article">
+                {{> @m-front-article this }}
+            </div>
+        {{/each}}
+    </div>
+    {{#if single}}
+        <div class="o-front-article__cta">
+            <div class="o-front-article__cta-button">
+                {{> @a-button cta }}
+            </div>
+            <div class="o-front-article__cta-label">
+                {{ cta-help-text }}
+            </div>
+        </div>
+    {{/if}}
+</div>

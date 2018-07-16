@@ -8,7 +8,8 @@
     margin-bottom: 12px;
   }
 
-  &--image-second &__title {
+  &--image-second &__title,
+  &--no-image &__title {
     margin-top: 0;
   }
 
