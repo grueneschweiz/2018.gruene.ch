@@ -1,0 +1,34 @@
+label: Bar
+status: ready
+default: green left
+context:
+  label: Kurz halten! ÖJ
+  modifiers:
+    - green
+    - left
+variants:
+  - name: magenta left
+    context:
+      modifiers:
+      - magenta
+      - left
+  - name: white left
+    context:
+      modifiers:
+        - white
+        - left
+  - name: green right
+    context:
+      modifiers:
+      - magenta
+      - right
+  - name: magenta right
+    context:
+      modifiers:
+      - magenta
+      - right
+  - name: white right
+    context:
+      modifiers:
+      - white
+      - right

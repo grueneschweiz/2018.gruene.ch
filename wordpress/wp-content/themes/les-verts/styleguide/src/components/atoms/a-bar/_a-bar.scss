@@ -1,0 +1,30 @@
+.a-bar {
+  font-family: $font-primary;
+  font-weight: $font-weight-extra;
+  color: $color-white;
+  text-transform: uppercase;
+  line-height: 1em;
+
+  display: inline-block;
+  padding: 0.08em 0.2em 0.1em;
+
+  &--left {
+    padding-left: 5em;
+  }
+
+  &--right {
+    padding-right: 5em;
+  }
+
+  &--green {
+    background: $color-primary;
+  }
+
+  &--magenta {
+    background: $color-secondary;
+  }
+
+  &--white {
+    background: $color-white;
+  }
+}
