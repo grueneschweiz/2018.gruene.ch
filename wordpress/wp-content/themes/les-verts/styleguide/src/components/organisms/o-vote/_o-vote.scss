@@ -1,0 +1,72 @@
+.o-vote {
+  height: 100%;
+  width: 100%;
+
+  max-width: 689px;
+
+  &__cat-title {
+    margin-bottom: 22px;
+
+    @include media($_DESKTOP) {
+      margin: 0 60px 32px;
+    }
+  }
+
+  &__proposals {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  &--many-proposals &__proposals {
+    overflow-y: scroll;
+  }
+
+  &__proposal {
+    @include clean-link;
+    flex-grow: 1;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    transition: background $transition-fast $transition-ease;
+    position: relative;
+
+    &:after {
+      content: ' ';
+      width: 100%;
+      height: 1px;
+      background: $color-grey-2;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+    }
+
+    &:last-of-type:after {
+      background: transparent;
+    }
+
+    @include media($_DESKTOP) {
+      padding: 0 60px;
+
+      &:after {
+        width: calc(100% - 120px);
+        left: 60px;
+      }
+    }
+
+    @include hover {
+      background: $color-grey-1;
+    }
+  }
+
+  &__more {
+    padding-top: 16px;
+    border-top: 1px solid $color-grey-2;
+
+    @include media($_DESKTOP) {
+      margin-left: 60px;
+      margin-right: 60px;
+    }
+  }
+}

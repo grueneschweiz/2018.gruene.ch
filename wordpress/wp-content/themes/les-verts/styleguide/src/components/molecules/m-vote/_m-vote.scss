@@ -1,8 +1,11 @@
 .m-vote {
   position: relative;
+  width: 100%;
+  max-width: 689px;
+  padding: 0.5em 0;
 
   &__title {
-    margin-right: 75px;
+    margin: 0 75px 0 0;
 
     @include media($_MOBILE) {
       font-size: 1rem;
@@ -17,14 +20,18 @@
         transform: translateX(-0.2em) rotate(45deg);
         position: absolute;
         right: 0;
-        bottom: 0;
+        bottom: 0.8em;
       }
     }
   }
 
   &__tag {
     position: absolute;
-    top: 3px;
+    top: 10px;
     right: 0;
+
+    @include media($_DESKTOP){
+      top: 13px;
+    }
   }
 }
