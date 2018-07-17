@@ -1,0 +1,31 @@
+.m-bars {
+  line-height: 0; // so the subline won't be to high
+
+  &__rotator {
+    display: inline-block;
+  }
+
+  &--left &__rotator {
+    transform-origin: top left;
+    transform: translateX(-4.25em) rotate(-5deg);
+  }
+
+  &--right &__rotator {
+    transform-origin: top right;
+    transform: translateX(4.25em) rotate(-5deg);
+
+  }
+
+  &__positioner {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &--right &__positioner {
+    align-items: flex-end;
+  }
+
+  &--left &__positioner {
+    align-items: flex-start;
+  }
+}

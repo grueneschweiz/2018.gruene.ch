@@ -32,3 +32,15 @@ variants:
       modifiers:
       - white
       - right
+  - name: subline left
+    context:
+      modifiers:
+      - white
+      - left
+      - subline
+  - name: subline right
+    context:
+      modifiers:
+        - white
+        - right
+        - subline

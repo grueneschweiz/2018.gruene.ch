@@ -7,6 +7,7 @@
 
   display: inline-block;
   padding: 0.08em 0.2em 0.1em;
+  margin-bottom: 0.1em;
 
   &--left {
     padding-left: 5em;
@@ -26,5 +27,18 @@
 
   &--white {
     background: $color-white;
+    color: $color-primary;
+  }
+
+  &--subline {
+    font-size: 0.4em;
+
+    &.a-bar--left {
+      padding-left: 12.6em; // +0.1em for identical letter start
+    }
+
+    &.a-bar--right {
+      padding-right: 12.6em; // +0.1em for identical letter start
+    }
   }
 }
