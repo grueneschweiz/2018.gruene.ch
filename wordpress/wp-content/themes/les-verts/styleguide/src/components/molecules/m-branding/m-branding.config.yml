@@ -6,4 +6,7 @@ context:
     - Sozial engagiert.
     - Global solidarisch.
   logo:
-    title: My context title
+    de: true
+    white: true
+    modifiers:
+      - white

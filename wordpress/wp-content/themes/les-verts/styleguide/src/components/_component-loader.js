@@ -9,6 +9,7 @@ import elementExist from 'utils/elementExist';
  */
 import MMenu from "molecules/m-menu/m-menu.js";
 import AInput from "atoms/form-elements/a-input/a-input.js";
+import OHeader from "./organisms/o-header/o-header";
 // ================= STOP TO ADD HERE
 
 /**
@@ -20,7 +21,8 @@ import AInput from "atoms/form-elements/a-input/a-input.js";
 const COMPONENTS_TO_LOAD = [
 	// { view: MyComponent, name: 'MyComponent', selector: '[data-my-component]' }
     { view: MMenu, name: 'MMenu', selector: '.m-menu' },
-    { view: AInput, name: 'AInput', selector: '.a-input' }
+    { view: AInput, name: 'AInput', selector: '.a-input' },
+    { view: OHeader, name: 'OHeader', selector: '.o-header' }
 ];
 
 const LOADED_COMPONENTS = {}

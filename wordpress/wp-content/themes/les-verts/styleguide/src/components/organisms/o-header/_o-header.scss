@@ -1,0 +1,21 @@
+.o-header {
+  &__branding.is-hidden {
+    display: block;
+  }
+
+  &__menu.is-fixed {
+    position: fixed;
+    top: 0;
+    width: 100%;
+  }
+
+  &__spacer {
+    display: none;
+    width: 100%;
+    @include fluid-props(height, $size-medium, $grid-max-width-max, 80px, 100px);
+  }
+
+  &__spacer.is-active {
+    display: block;
+  }
+}

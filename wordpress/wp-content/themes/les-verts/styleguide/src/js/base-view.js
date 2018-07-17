@@ -5,7 +5,6 @@ import delegate from 'delegate';
 import pullAt from 'lodash.pullat';
 
 
-
 /**
  * Generate an incremental
  * view id.
