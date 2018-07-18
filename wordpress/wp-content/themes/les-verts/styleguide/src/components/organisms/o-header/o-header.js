@@ -20,7 +20,9 @@ export default class OHeader extends BaseView {
     bind() {
         super.bind();
 
-        window.addEventListener("scroll", throttle(() => this.setMenuBarPosition(), 50));
+        this.scrollHandler = throttle(() => this.setMenuBarPosition(), 50);
+
+        window.addEventListener("scroll", this.scrollHandler);
     }
 
     setMenuBarPosition() {
@@ -41,5 +43,11 @@ export default class OHeader extends BaseView {
             this.removeClass(this.branding, HIDDEN_STATE);
             this.removeClass(this.spacer, ACTIVE_STATE);
         }
+    }
+
+    destroy() {
+        super.destroy();
+
+        window.removeEventListener("scroll", this.scrollHandler);
     }
 }
