@@ -1,0 +1,55 @@
+.m-campaign-cta {
+  background: $color-grey-2;
+  max-width: 705px;
+  @include fluid-props(padding, $fluid-min, $fluid-max, 29px, 68px);
+
+  &__title {
+    color: $color-text;
+    font-size: 1rem;
+    margin: 0;
+
+    @include media($_DESKTOP) {
+      color: $color-secondary;
+    }
+  }
+
+  &__text {
+    margin: 1rem 0 0;
+  }
+
+  &__grid {
+    @extend .grid;
+    grid-row-gap: 16px;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  &__postal-code {
+    grid-column: 1 / 4;
+    grid-row: 1 / 2;
+  }
+
+  &__email {
+    grid-column: 4 / 13;
+    grid-row: 1 / 2;
+  }
+
+  &__consent {
+    grid-column: 1 / 13;
+
+    @include media($size-small) {
+      grid-column: 1 / 7;
+    }
+  }
+
+  &__button {
+    grid-column: 1 / 13;
+    grid-row: 3 / 4;
+
+    @include media($size-small) {
+      grid-column: 7 / 13;
+      grid-row: 2 / 3;
+      justify-self: end;
+    }
+  }
+}

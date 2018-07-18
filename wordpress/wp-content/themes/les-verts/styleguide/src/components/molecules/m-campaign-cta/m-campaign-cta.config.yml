@@ -1,0 +1,32 @@
+label: Campaign cta
+status: ready
+display:
+  margin: 20px
+context:
+  title: Ich will zum Erfolg beitragen!
+  text: Hiermit abonniere ich den Newsletter, der mich laufend über alle Aktivitäten und Mitmachmöglichkeiten informiert.
+  input-postal-code:
+    label: PLZ
+    id: plz
+    type: text
+    pattern: (\w{0,3}(?<=\w)-)?\d{4,6}
+    required: required
+    name: plz
+    text: true
+  input-email:
+    label: E-Mail
+    id: email
+    type: email
+    required: required
+    name: email
+    text: true
+  checkbox:
+    label: Ich akzeptiere die Datenschutzbestimmungen.
+    id: datenschutz
+    name: datenschutz
+    modifiers:
+    - required
+  button:
+    label: Mitmachen
+    modifiers:
+    - secondary
