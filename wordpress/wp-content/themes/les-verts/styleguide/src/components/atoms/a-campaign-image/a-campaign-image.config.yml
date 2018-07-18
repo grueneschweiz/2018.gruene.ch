@@ -1,5 +1,5 @@
 label: Campaign image
-status: wip
+status: ready
 context:
   image-src: "/img/wheat.jpg"
   alt: Some many things on this image
