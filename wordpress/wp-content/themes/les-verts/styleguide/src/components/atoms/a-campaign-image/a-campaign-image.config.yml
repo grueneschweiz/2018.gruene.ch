@@ -1,0 +1,6 @@
+label: Campaign image
+status: wip
+context:
+  image-src: "/img/wheat.jpg"
+  alt: Some many things on this image
+  copy: Photographer xy

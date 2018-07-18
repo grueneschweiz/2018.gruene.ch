@@ -1,0 +1,21 @@
+.a-campaign-image {
+  width: 100%;
+  position: relative;
+  line-height: 0;
+
+  &__image {
+    width: 100%;
+    height: auto;
+  }
+
+  &__copy {
+    position: absolute;
+    @include fluid-props(bottom right, $size-tiny, $size-large, 5px, 19px);
+    @include fluid-props(font-size, $size-tiny, $size-large, 5px, 10px);
+    transform: translateX(calc(100% - 1em)) rotate(-90deg);
+    transform-origin: top left;
+
+    color: $color-white;
+    text-transform: uppercase;
+  }
+}
