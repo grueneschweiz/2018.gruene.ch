@@ -10,6 +10,7 @@ import elementExist from 'utils/elementExist';
 import MMenu from "molecules/m-menu/m-menu.js";
 import AInput from "atoms/form-elements/a-input/a-input.js";
 import OHeader from "./organisms/o-header/o-header";
+import OCampaign from "./organisms/o-campaign/o-campaign";
 // ================= STOP TO ADD HERE
 
 /**
@@ -22,7 +23,8 @@ const COMPONENTS_TO_LOAD = [
 	// { view: MyComponent, name: 'MyComponent', selector: '[data-my-component]' }
     { view: MMenu, name: 'MMenu', selector: '.m-menu' },
     { view: AInput, name: 'AInput', selector: '.a-input' },
-    { view: OHeader, name: 'OHeader', selector: '.o-header' }
+    { view: OHeader, name: 'OHeader', selector: '.o-header' },
+    { view: OCampaign, name: 'OCampaign', selector: '.o-campaign' }
 ];
 
 const LOADED_COMPONENTS = {}

@@ -1,0 +1,57 @@
+.o-campaign {
+  position: relative;
+
+  height: 10000px;
+
+  &__image {
+    position: fixed;
+    width: 100%;
+    z-index: -1;
+  }
+
+  &__bars {
+    width: 100%;
+    position: relative;
+    @include fluid-props(font-size, $fluid-min, $fluid-max, 16px, 72px);
+
+    .m-bars {
+      position: absolute;
+      @include fluid-props(bottom, $fluid-min, $fluid-max, 64px, 96px);
+    }
+  }
+
+  &__cta-wrapper {
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: -3em;
+
+    $side-margin: 50px;
+
+    @include media($_DESKTOP) {
+      width: calc(100% - 2 * #{$side-margin});
+      margin: -4em $side-margin;
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-template-rows: repeat(12, 1fr);
+
+
+      @include fluid-props(grid-column-gap, $fluid-min, $fluid-max, $grid-gap-min, $grid-gap-max);
+    }
+
+    @include media($grid-max-width-max + 2 * $side-margin) {
+      margin-left: auto;
+      margin-right: auto;
+      width: $grid-max-width-max;
+    }
+  }
+
+  &__desc {
+    grid-column: 1 / 8;
+    grid-row: 1 / 12;
+  }
+
+  &__cta {
+    grid-column: 7 / 13;
+    grid-row: 5 / 13;
+  }
+}

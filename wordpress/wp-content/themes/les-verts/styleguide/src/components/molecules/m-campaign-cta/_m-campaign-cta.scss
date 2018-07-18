@@ -1,6 +1,9 @@
 .m-campaign-cta {
   background: $color-grey-2;
-  max-width: 705px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
   @include fluid-props(padding, $fluid-min, $fluid-max, 29px, 68px);
 
   &__title {
@@ -36,6 +39,8 @@
 
   &__consent {
     grid-column: 1 / 13;
+    font-size: 0.875rem;
+    hyphens: auto;
 
     @include media($size-small) {
       grid-column: 1 / 7;

@@ -1,9 +1,12 @@
 .m-campaign-desc {
   background: $color-grey-1;
-  max-width: 808px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
   @include fluid-props(padding-left padding-right, $fluid-min, $fluid-max, 29px, 68px);
-  padding-top: 3px;
-  padding-bottom: 22px;
+  padding-top: 13px;
+  padding-bottom: 40px;
 
   @include media($_DESKTOP) {
     padding-right: 170px;
@@ -15,5 +18,6 @@
 
   &__desc {
     margin: 0 0 0.75em;
+    font-size: 1.25rem;
   }
 }
