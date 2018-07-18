@@ -1,4 +1,6 @@
 .a-link-button {
+  @include clean-link;
+
   font-size: 0.75rem;
   display: inline-flex;
   align-items: center;
@@ -15,66 +17,41 @@
   &__label {
     order: 0;
     padding-right: 1em; // 6/12
-  }
-
-  &::before {
-    content: "";
-    order: 1;
-    width: 0;
-    transition: all $transition-fast $transition-ease;
-    height: 0.1666666667em;
-    background-color: $color-primary;
+    display: inline-block;
   }
 
   &::after {
     content: "";
-    order: 2;
     width: 0.6em;
     height: 0.6em;
     border-color: $color-primary;
     border-top: 0.1666666667em solid; // 2/12
     border-right: 0.1666666667em solid; // 2/12
     transform: translateX(-0.5em) rotate(45deg);
+    transition: transform $transition-fast $transition-ease;
   }
 
   @include hover {
     color: $color-primary-dark;
 
-    &::before {
-      width: 1.2em;
-      background-color: $color-primary-dark;
+    &::after {
+      transform: translateX(0.5em) rotate(45deg);
     }
   }
 
   &--grey {
     color: $color-text-light;
 
-    &::before {
-      background-color: $color-text-light;
-    }
-
     @include hover {
       color: $color-text-light;
-
-      &::before {
-        background-color: $color-text-light;
-      }
     }
   }
 
   &--white {
     color: $color-white;
 
-    &::before {
-      background-color: $color-white;
-    }
-
     @include hover {
       color: $color-white;
-
-      &::before {
-        background-color: $color-white;
-      }
     }
   }
 }

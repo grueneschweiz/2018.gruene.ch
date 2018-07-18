@@ -4,6 +4,7 @@ display:
   padding: 40px
 context:
   label: Weiterlesen
+  url: '#'
 variants:
   - name: Grey
     context:
