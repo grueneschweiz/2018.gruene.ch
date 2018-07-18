@@ -6,7 +6,7 @@
         <input id="{{ id }}"
                class="a-input__field {{ modifiers_classes }}"
                type="{{ type }}"
-               pattern="{{ pattern }}"
+               {{#if pattern}}pattern="{{ pattern }}"{{/if}}
                name="{{ name }}"
                value="{{ value }}"
             {{ required }}>
