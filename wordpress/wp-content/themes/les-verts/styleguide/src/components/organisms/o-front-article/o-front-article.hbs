@@ -1,4 +1,4 @@
-<div class="o-front-article {{modifiers_classes}}">
+<article class="o-front-article {{modifiers_classes}}">
     <div class="o-front-article__cat-title">
         {{> @a-cat-title cat-title}}
     </div>
@@ -17,17 +17,17 @@
         {{/each}}
     </div>
     {{#if single}}
-        <div class="o-front-article__cta">
+        <footer class="o-front-article__cta">
             <div class="o-front-article__cta-button">
                 {{> @a-button cta }}
             </div>
             <div class="o-front-article__cta-label">
                 {{ cta-help-text }}
             </div>
-        </div>
+        </footer>
     {{/if}}
     {{#if mm}}
-        <div class="o-front-article__mm">
+        <footer class="o-front-article__mm">
             <div class="o-front-article__meta">
                 <time class="o-front-article__date">{{ date }}</time>
                 {{#if oton}}<a href="{{ author-url }}" class="o-front-article__author">{{ author }}</a>{{/if}}
@@ -37,6 +37,6 @@
                     {{> @a-link-image img}}
                 </div>
             {{/if}}
-        </div>
+        </footer>
     {{/if}}
-</div>
+</article>
