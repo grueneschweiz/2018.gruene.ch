@@ -59,6 +59,10 @@
     }
   }
 
+  &--mm {
+    position: relative;
+  }
+
   &--mm &__article {
     @include media($_DESKTOP) {
       margin-top: 62px;
