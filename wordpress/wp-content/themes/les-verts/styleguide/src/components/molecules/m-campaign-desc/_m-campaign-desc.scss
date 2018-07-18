@@ -1,0 +1,18 @@
+.m-campaign-desc {
+  background: $color-grey-1;
+  @include fluid-props(padding-left padding-right, $fluid-min, $fluid-max, 29px, 68px);
+  padding-top: 3px;
+  padding-bottom: 22px;
+
+  @include media($_DESKTOP) {
+    padding-right: 170px;
+  }
+
+  &__title {
+    @include fluid-props(font-size, $fluid-min, $fluid-max, 32px, 48px);
+  }
+
+  &__desc {
+    margin: 0 0 0.75em;
+  }
+}
