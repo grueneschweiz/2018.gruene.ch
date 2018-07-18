@@ -1,4 +1,7 @@
 .o-header {
+  position: relative;
+  z-index: $z-index-header;
+
   &__branding.is-hidden {
     display: block;
   }
