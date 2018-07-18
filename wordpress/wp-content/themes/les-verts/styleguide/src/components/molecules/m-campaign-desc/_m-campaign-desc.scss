@@ -1,5 +1,6 @@
 .m-campaign-desc {
   background: $color-grey-1;
+  max-width: 808px;
   @include fluid-props(padding-left padding-right, $fluid-min, $fluid-max, 29px, 68px);
   padding-top: 3px;
   padding-bottom: 22px;
