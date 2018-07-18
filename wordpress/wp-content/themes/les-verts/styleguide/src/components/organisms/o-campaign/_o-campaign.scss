@@ -2,9 +2,10 @@
   position: relative;
 
   &__image {
-    position: fixed;
+    position: relative;
     width: 100%;
     z-index: -1;
+    transition: top 20ms $transition-ease;
   }
 
   &__bars {

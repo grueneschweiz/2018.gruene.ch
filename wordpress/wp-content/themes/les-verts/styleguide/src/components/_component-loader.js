@@ -22,12 +22,12 @@ import OCampaign from "./organisms/o-campaign/o-campaign";
 const COMPONENTS_TO_LOAD = [
 	// { view: MyComponent, name: 'MyComponent', selector: '[data-my-component]' }
     { view: MMenu, name: 'MMenu', selector: '.m-menu' },
-    { view: AInput, name: 'AInput', selector: '.a-input' },
     { view: OHeader, name: 'OHeader', selector: '.o-header' },
-    { view: OCampaign, name: 'OCampaign', selector: '.o-campaign' }
+    { view: OCampaign, name: 'OCampaign', selector: '.o-campaign' },
+    { view: AInput, name: 'AInput', selector: '.a-input' },
 ];
 
-const LOADED_COMPONENTS = {}
+const LOADED_COMPONENTS = {};
 
 /**
  * Load all the components.
@@ -42,15 +42,19 @@ export default function() {
 		// we load the view.
 		if ( elementExist(element) ) {
 
-			for (var j = 0; j < element.length; j++) {
+			for (let j = 0; j < element.length; j++) {
 				// Create the view instance
 				// and push the view in the loaded view cache object.
 				let v = new view(element[j]);
-				v.bind();
+				v.setComponentsReference(LOADED_COMPONENTS);
 				LOADED_COMPONENTS[name + j] = v;
 			}
 		}
 	}
+
+    Object.entries(LOADED_COMPONENTS).forEach(([, component]) => {
+        component.bind();
+    });
 
 	// Exposes the loaded views for dev purposes
 	// TODO remove after dev

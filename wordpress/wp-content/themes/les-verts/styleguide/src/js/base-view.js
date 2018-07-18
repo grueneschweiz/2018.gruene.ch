@@ -244,6 +244,25 @@ export default class BaseView {
 		classes.forEach( (c) => { el.classList.remove(c); } );
 	}
 
+    /**
+	 * Sets a reference to the loaded components
+	 *
+     * @param {Object} components
+     */
+    setComponentsReference(components) {
+		this.components = components;
+	}
+
+    /**
+	 * Returns the component with the referenced key
+	 *
+     * @param key
+     * @returns {*}
+     */
+	getComponent(key) {
+    	return this.components[key];
+	}
+
 	/**
 	 * Off all events (element & global).
 	 *
