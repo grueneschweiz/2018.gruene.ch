@@ -40,8 +40,6 @@
 
   &__article {
     margin-top: 22px;
-    min-width: 200px;
-    max-width: 569px;
   }
 
   &--double &__article {
@@ -53,6 +51,8 @@
     }
 
     @include media($_DESKTOP) {
+      width: calc(50% - 16px);
+
       &:first-of-type {
         margin-right: 16px;
       }

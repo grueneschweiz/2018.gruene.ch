@@ -17,7 +17,7 @@ context:
       has-img: true
       img:
         url: '#'
-        image-src: "/img/wheat.jpg"
+        image-src: "/img/equality.jpg"
         alt: Symbolbild Fair-Food
         title: Fair schmeckt besser
     - article-2:
@@ -39,14 +39,14 @@ variants:
       articles:
         - article-1:
           modifiers:
-            - image-second
+            - image-first
           url: '#'
           title: "Gleichstellung: Ein Schwerpunkt der Grünen - seit ihrer Gründung"
           text: "Die Gleichstellung von Mann und Frau ist seit 1981 in der Verfassung verankert und seit 1996 im Gleichstellungsgesetz festgeschrieben. In der Realität ist die Gleichstellung jedoch noch lange nicht erreicht. Frauen sind nach wie vor untervertreten in Kaderpositionen, verdienen deutlich weniger als Männer. Ebenso arbeiten fast alle Männer Vollzeit, aber nur jede zweite Frau."
           has-img: true
           img:
             url: '#'
-            image-src: "/img/wheat.jpg"
+            image-src: "/img/equality.jpg"
             alt: Symbolbild Fair-Food
             title: Fair schmeckt besser
       cta:
