@@ -17,6 +17,11 @@
     @include clean-link;
     line-height: 1.4em;
     color: $color-primary;
+    transition: color $transition-fast $transition-ease;
+
+    @include hover {
+      color: $color-primary-dark;
+    }
   }
 
   &__image {
