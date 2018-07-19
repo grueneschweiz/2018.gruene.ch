@@ -1,11 +1,15 @@
 .o-vote {
   height: 100%;
   width: 100%;
-
   max-width: 689px;
+  padding: 41px 0;
+
+  @include media($_DESKTOP) {
+    padding: 60px 0;
+  }
 
   &__cat-title {
-    margin-bottom: 22px;
+    margin: 0 41px 22px;
 
     @include media($_DESKTOP) {
       margin: 0 60px 32px;
@@ -31,15 +35,16 @@
     align-content: center;
     transition: background $transition-fast $transition-ease;
     position: relative;
+    padding: 0 41px;
 
     &:after {
       content: ' ';
-      width: 100%;
+      width: calc(100% - 82px);
       height: 1px;
       background: $color-grey-2;
       position: absolute;
       bottom: 0;
-      left: 0;
+      left: 41px;
     }
 
     &:last-of-type:after {
@@ -63,10 +68,10 @@
   &__more {
     padding-top: 16px;
     border-top: 1px solid $color-grey-2;
+    margin: 0 41px;
 
     @include media($_DESKTOP) {
-      margin-left: 60px;
-      margin-right: 60px;
+      margin: 0 60px;
     }
   }
 }
