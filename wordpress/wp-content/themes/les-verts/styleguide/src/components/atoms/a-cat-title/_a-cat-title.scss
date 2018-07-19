@@ -12,7 +12,7 @@
     line-height: 1.25em;
     color: $color-text;
     padding-bottom: 12px;
-    display: block;
+    display: inline-block;
 
     &:after {
       content: "";
@@ -27,7 +27,7 @@
 
     @include hover {
       &:after{
-        width: 100%;
+        width: 69px;
         background-color: $color-primary;
       }
     }
