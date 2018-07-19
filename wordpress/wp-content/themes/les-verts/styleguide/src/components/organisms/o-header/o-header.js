@@ -15,12 +15,14 @@ export default class OHeader extends BaseView {
         this.branding = this.getScopedElement(BRANDING_SELECTOR);
         this.menu = this.getScopedElement(MENU_SELECTOR);
         this.spacer = this.getScopedElement(SPACER_SELECTOR);
+
+        this.setMenuBarPosition();
     }
 
     bind() {
         super.bind();
 
-        this.scrollHandler = throttle(() => this.setMenuBarPosition(), 50);
+        this.scrollHandler = throttle(() => this.setMenuBarPosition(), 20, {leading: false, trailing: true});
 
         window.addEventListener("scroll", this.scrollHandler);
     }
@@ -43,6 +45,18 @@ export default class OHeader extends BaseView {
             this.removeClass(this.branding, HIDDEN_STATE);
             this.removeClass(this.spacer, ACTIVE_STATE);
         }
+    }
+
+    getFixed() {
+        return this.isFixed;
+    }
+
+    getMenu() {
+        return this.menu;
+    }
+
+    getBranding() {
+        return this.branding;
     }
 
     destroy() {
