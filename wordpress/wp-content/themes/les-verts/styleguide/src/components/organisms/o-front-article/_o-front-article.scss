@@ -1,6 +1,8 @@
 .o-front-article {
+  padding: 41px 41px;
+
   @include media($_DESKTOP) {
-    margin: 0 60px;
+    padding: 60px 60px;
   }
 
   &__cat-title {
@@ -11,17 +13,23 @@
 
   &__quote {
     position: absolute;
-    top: 0;
-    right: 0;
+    top: 41px;
+    right: 41px;
 
     @include media($_DESKTOP) {
+      top: 60px;
       right: 60px;
     }
 
     svg {
       fill: $color-primary-super-light;
-      height: 39px;
-      width: 56px;
+      height: 29px;
+      width: 40px;
+
+      @include media($_DESKTOP) {
+        height: 39px;
+        width: 56px;
+      }
     }
   }
 
@@ -61,6 +69,7 @@
 
   &--mm {
     position: relative;
+    background: $color-grey-1;
   }
 
   &--mm &__article {

@@ -1,0 +1,13 @@
+.page {
+
+  &__grid {
+    padding-top: 41px;
+
+    @include media($_DESKTOP){
+      padding-top: 150px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 32px 100px;
+    }
+  }
+}
