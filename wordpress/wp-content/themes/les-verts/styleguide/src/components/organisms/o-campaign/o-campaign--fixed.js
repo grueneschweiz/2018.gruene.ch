@@ -3,6 +3,7 @@ export default class OCampaignFixed {
         this.context = context;
         this.fixed = false;
         this.image = this.context.getImage();
+        this.imageWrapper = this.context.getImageWrapper();
     }
 
     run() {
@@ -15,15 +16,16 @@ export default class OCampaignFixed {
     }
 
     setPosition() {
-        let menu = this.context.getHeader().getMenu();
-
-        this.image.style.position = 'fixed';
-        this.image.style.top = (menu.offsetTop + menu.clientHeight) + "px";
+        this.imageWrapper.style.top = this.context.getHeader().getMenu().clientHeight + 'px';
     }
 
     setBluring() {
-        let blur = (this.context.getScrollTop() - this.image.clientTop) / this.context.getScrollStart() * this.context.getSizedBlur();
+        let blur = (this.context.getScrollTop() - this.image.clientTop) / this.context.getScrollStart();
 
-        this.image.style.filter = "blur("+blur+"px)";
+        this.image.style.filter = "blur(" + this.easeInQuint(blur) * this.context.getSizedBlur() + "px)";
+    }
+
+    easeInQuint(t) {
+        return t * t * t * t;
     }
 }

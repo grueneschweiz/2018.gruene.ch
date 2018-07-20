@@ -1,11 +1,15 @@
 .o-campaign {
   position: relative;
 
-  &__image {
-    position: relative;
+  &__image-wrapper {
+    position: fixed;
     width: 100%;
     z-index: -1;
-    transition: top 20ms $transition-ease;
+    overflow: hidden; // to cut the ugly blurred borders
+  }
+
+  &__image {
+    transform: scale(1.01); // to cut the ugly blurred borders
   }
 
   &__bars {

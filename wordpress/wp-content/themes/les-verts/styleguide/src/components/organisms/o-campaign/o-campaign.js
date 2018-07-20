@@ -6,6 +6,7 @@ import OCampaignFixed from "./o-campaign--fixed";
 import OCampaignScrolling from "./o-campaign--scrolling";
 
 const IMAGE_SELECTOR = '.o-campaign__image';
+const IMAGE_WRAPPER_SELECTOR = '.o-campaign__image-wrapper';
 const BARS_SELECTOR = '.o-campaign__bars';
 
 const BLUR_SIZE_TINY = 2;
@@ -16,12 +17,12 @@ const SIZE_ADD_LARGE = 1305; // so total will be 1680
 
 const IMAGE_OVERLAP_FACTOR = 2 / 3;
 
-const SCROLL_THROTTLING_MS = 20;
 const RESIZE_THROTTLING_MS = 100;
 
 export default class OCampaign extends BaseView {
     initialize() {
         this.image = this.getScopedElement(IMAGE_SELECTOR);
+        this.imageWrapper = this.getScopedElement(IMAGE_WRAPPER_SELECTOR);
         this.bars = this.getScopedElement(BARS_SELECTOR);
 
         this.header = this.getComponent('OHeader0');
@@ -33,7 +34,7 @@ export default class OCampaign extends BaseView {
     bind() {
         super.bind();
 
-        this.scrollHandler = throttle(() => this.onScroll(), SCROLL_THROTTLING_MS, {leading: false, trailing: true});
+        this.scrollHandler = () => requestAnimationFrame(this.onScroll.bind(this));
         this.resizeHandler = throttle(() => this.onResize(), RESIZE_THROTTLING_MS, {leading: false, trailing: true});
 
         window.addEventListener("scroll", this.scrollHandler);
@@ -67,14 +68,22 @@ export default class OCampaign extends BaseView {
         return this.image;
     }
 
+    getImageWrapper() {
+        return this.imageWrapper;
+    }
+
+    getBars() {
+        return this.bars;
+    }
+
     setState(state) {
-        if (! (this.state instanceof state)) {
+        if (!(this.state instanceof state)) {
             this.state = new state(this);
         }
     }
 
     onScroll() {
-        if (! this.header.getFixed()) {
+        if (!this.header.getFixed()) {
             this.setState(OCampaignInitial);
         } else {
             if (this.getScrollTop() < this.getScrollStart()) {
