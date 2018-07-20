@@ -183,7 +183,7 @@
 
     &.is-open {
       &:after {
-        @include fluid-props(bottom, $size-medium, $grid-max-width-max, -35px, -45px);
+        @include fluid-props(bottom, $size-medium, $grid-max-width-max, -16.5px, -26px);
       }
 
       @include media($_MOBILE) {
