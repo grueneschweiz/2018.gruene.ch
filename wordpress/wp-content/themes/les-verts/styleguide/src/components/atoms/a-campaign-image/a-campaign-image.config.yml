@@ -1,6 +1,6 @@
 label: Campaign image
 status: ready
 context:
-  image-src: "/img/wheat.jpg"
+  image-src: "/img/wheat_ratio.jpg"
   alt: Some many things on this image
   copy: Photographer xy
