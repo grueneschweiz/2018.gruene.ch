@@ -7,8 +7,6 @@
   }
 
   &__menu{
-    transition: top $transition-fast $transition-ease;
-
     &.is-fixed {
       position: fixed;
       top: 0;

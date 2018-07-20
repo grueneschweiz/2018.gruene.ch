@@ -15,26 +15,31 @@ export class MMenuBase extends BaseView {
     bind() {
         super.bind();
 
-        this.on("click", MAIN_ENTRY_SELECTOR, () => this.toggleSubNavigation());
+        this.on("click", MAIN_ENTRY_SELECTOR, (event) => this.toggleSubNavigation(event));
     }
 
-    toggleSubNavigation() {
+    toggleSubNavigation(event) {
         if (this.currentSub !== event.target) {
-            this.openSubNavigation(event.target);
+            this.openSubNavigation(event);
         }
         else {
+            event.preventDefault();
             this.closeSubNavigation();
         }
     }
 
-    openSubNavigation(element) {
-        this.currentSub = element;
-
+    openSubNavigation(event) {
+        let element = event.target;
         let submenu = element.parentElement.querySelector(SUBMENU_SELECTOR);
 
         if (null === submenu) {
+            // if there is no submenu, handle it as regular link
             return;
         }
+
+        event.preventDefault();
+
+        this.currentSub = element;
 
         this.addClass(submenu, OPEN_STATE);
         this.addClass(element, OPEN_STATE);
