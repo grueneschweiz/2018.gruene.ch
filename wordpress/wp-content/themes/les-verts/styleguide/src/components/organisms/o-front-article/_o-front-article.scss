@@ -1,8 +1,13 @@
 .o-front-article {
   padding: 41px 41px;
+  max-width: 651px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
 
   @include media($_DESKTOP) {
     padding: 60px 60px;
+    max-width: 689px;
   }
 
   &__cat-title {

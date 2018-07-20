@@ -1,13 +1,16 @@
 .o-vote {
   height: 100%;
   width: 100%;
-  max-width: 689px;
+  max-width: 651px;
+  margin-left: auto;
+  margin-right: auto;
   padding: 41px 0;
   display: flex;
   flex-direction: column;
 
   @include media($_DESKTOP) {
     padding: 60px 0;
+    max-width: 689px;
   }
 
   &__cat-title {
