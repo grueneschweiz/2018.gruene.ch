@@ -8,11 +8,10 @@ context:
       section-items:
         - title: Kampagnen und Events
           items:
-            - label: Fair-Food
             - label: Petition «Nein zur Lex Beznau»
             - label: Referendum gegen Versicherungsspione
             - label: Events
-        - title: Abstimmungsempfehlungen
+        - title: Abstimmungen
           items:
             - label: Gegenvorschlag Veloinitiative
             - label: Ernährungssouveränität
@@ -21,7 +20,7 @@ context:
         - title: Fair-Food-Initiative
           featured: true
           img:
-            src: "/img/wheat.jpg"
+            src: "/img/wheat_ratio.jpg"
             alt: Symbolbild Fair-Food
           cat-title:
             label: Fair-Food-Initiative
@@ -31,7 +30,7 @@ context:
           modifiers:
             - featured
     - title: Positionen
-    - title: Die Grünen
+    - title: Grüne Schweiz
     - title: Publikationen
     - title: Kontakt
   aria-label-main-navigation: Hauptnavigation
