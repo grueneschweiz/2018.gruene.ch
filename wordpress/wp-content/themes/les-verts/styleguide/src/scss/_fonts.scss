@@ -19,15 +19,15 @@
 //     url('/assets/fonts/ApercuPro-Light.svg#ApercuPro-Light') format('svg');
 // }
 
-// @font-face {
-// 	font-family: 'ApercuPro';
-// 	font-style: normal;
-// 	font-weight: 500;
-// 	src: url('/assets/fonts/ApercuPro-Medium.eot');
-// 	src: local('Apercu Pro'),
-//     url('/assets/fonts/ApercuPro-Medium.eot?#iefix') format('embedded-opentype'),
-//     url('/assets/fonts/ApercuPro-Medium.woff2') format('woff2'),
-//     url('/assets/fonts/ApercuPro-Medium.woff') format('woff'),
-//     url('/assets/fonts/ApercuPro-Medium.ttf') format('truetype'),
-//     url('/assets/fonts/ApercuPro-Medium.svg#ApercuPro-Medium') format('svg');
-// }
+@font-face {
+ 	font-family: 'Sanuk Fat';
+ 	font-style: normal;
+ 	font-weight: 500;
+ 	src: url('/fonts/SanukOT-Fat.otf');
+     //src: local('Apercu Pro'),
+     //url('/assets/fonts/ApercuPro-Medium.eot?#iefix') format('embedded-opentype'),
+     //url('/assets/fonts/ApercuPro-Medium.woff2') format('woff2'),
+     //url('/assets/fonts/ApercuPro-Medium.woff') format('woff'),
+     //url('/assets/fonts/ApercuPro-Medium.ttf') format('truetype'),
+     //url('/assets/fonts/ApercuPro-Medium.svg#ApercuPro-Medium') format('svg');
+ }
