@@ -3,6 +3,8 @@
   width: 100%;
   max-width: 689px;
   padding: 41px 0;
+  display: flex;
+  flex-direction: column;
 
   @include media($_DESKTOP) {
     padding: 60px 0;
@@ -19,11 +21,8 @@
   &__proposals {
     display: flex;
     flex-direction: column;
-    height: 100%;
-  }
-
-  &--many-proposals &__proposals {
-    overflow-y: scroll;
+    flex-grow: 0.5;
+    flex-shrink: 0;
   }
 
   &__proposal {
