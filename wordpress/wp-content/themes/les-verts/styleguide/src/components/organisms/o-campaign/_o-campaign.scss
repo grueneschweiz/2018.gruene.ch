@@ -33,7 +33,6 @@
       grid-template-columns: repeat(12, 1fr);
       grid-template-rows: repeat(12, 1fr);
 
-
       @include fluid-props(grid-column-gap, $fluid-min, $fluid-max, $grid-gap-min, $grid-gap-max);
     }
 
@@ -47,10 +46,12 @@
   &__desc {
     grid-column: 1 / 8;
     grid-row: 1 / 12;
+    align-self: start;
   }
 
   &__cta {
     grid-column: 7 / 13;
-    grid-row: 5 / 13;
+    grid-row: 2 / 13;
+    align-self: end;
   }
 }
