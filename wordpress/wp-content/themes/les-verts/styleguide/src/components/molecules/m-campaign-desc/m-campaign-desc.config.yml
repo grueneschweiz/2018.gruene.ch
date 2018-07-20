@@ -1,0 +1,10 @@
+label: Campaign description
+status: ready
+display:
+  margin: 40px
+context:
+  title: Fair schmeckt besser!
+  text: "Die Fair-Food Initiative verlangt, was für alle selbstverständlich ist: Lebensmittel aus einer naturnahen, umwelt- und tierfreundlichen Landwirtschaft mit fairen Arbeitsbedingungen fördern. Dabei soll es keine Rolle spielen, ob die Lebensmittel aus der Schweiz stammen oder importiert sind."
+  link-button:
+    url: '#'
+    label: Mehr über die Fair-Food Initiative

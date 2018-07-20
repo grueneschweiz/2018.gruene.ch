@@ -1,0 +1,125 @@
+label: Vote
+status: ready
+default: 3 proposals
+display:
+  padding: 40px
+context:
+  cat-title:
+    label: Abstimmungsempfehlungen
+  proposals:
+    - label: "Fair-Food JA: Gesund und umweltfreundlich"
+      url: '#'
+      vote-tag:
+        label: ja
+        modifiers:
+          - yes
+    - label: Ernährungssouverenität, die Ergänzung zur Fair-Food-Initiative
+      url: '#'
+      vote-tag:
+        label: ja
+        modifiers:
+          - yes
+    - label: Ja zum Velo, zu den Fuss und Wanderwegen
+      url: '#'
+      vote-tag:
+        label: ja
+        modifiers:
+          - yes
+  link-button:
+    label: Kantonale Abstimmungen
+variants:
+  - name: 15 proposals
+    context:
+      modifiers:
+        - many-proposals
+      proposals:
+        - label: "Fair-Food JA: Gesund und umweltfreundlich"
+          url: '#'
+          vote-tag:
+            label: ja
+            modifiers:
+              - yes
+        - label: Ernährungssouverenität, die Ergänzung zur Fair-Food-Initiative
+          url: '#'
+          vote-tag:
+            label: ja
+            modifiers:
+              - yes
+        - label: Ja zum Velo, zu den Fuss und Wanderwegen
+          url: '#'
+          vote-tag:
+            label: ja
+            modifiers:
+              - yes
+        - label: "Fair-Food JA: Gesund und umweltfreundlich"
+          url: '#'
+          vote-tag:
+            label: ja
+            modifiers:
+              - yes
+        - label: Ernährungssouverenität, die Ergänzung zur Fair-Food-Initiative
+          url: '#'
+          vote-tag:
+            label: ja
+            modifiers:
+              - yes
+        - label: Ja zum Velo, zu den Fuss und Wanderwegen
+          url: '#'
+          vote-tag:
+            label: ja
+            modifiers:
+              - yes
+        - label: "Fair-Food JA: Gesund und umweltfreundlich"
+          url: '#'
+          vote-tag:
+            label: ja
+            modifiers:
+              - yes
+        - label: Ernährungssouverenität, die Ergänzung zur Fair-Food-Initiative
+          url: '#'
+          vote-tag:
+            label: ja
+            modifiers:
+              - yes
+        - label: Ja zum Velo, zu den Fuss und Wanderwegen
+          url: '#'
+          vote-tag:
+            label: ja
+            modifiers:
+              - yes
+        - label: "Fair-Food JA: Gesund und umweltfreundlich"
+          url: '#'
+          vote-tag:
+            label: ja
+            modifiers:
+              - yes
+        - label: Ernährungssouverenität, die Ergänzung zur Fair-Food-Initiative
+          url: '#'
+          vote-tag:
+            label: ja
+            modifiers:
+              - yes
+        - label: Ja zum Velo, zu den Fuss und Wanderwegen
+          url: '#'
+          vote-tag:
+            label: ja
+            modifiers:
+              - yes
+        - label: "Fair-Food JA: Gesund und umweltfreundlich"
+          url: '#'
+          vote-tag:
+            label: ja
+            modifiers:
+              - yes
+        - label: Ernährungssouverenität, die Ergänzung zur Fair-Food-Initiative
+          url: '#'
+          vote-tag:
+            label: ja
+            modifiers:
+              - yes
+        - label: Ja zum Velo, zu den Fuss und Wanderwegen
+          url: '#'
+          vote-tag:
+            label: ja
+            modifiers:
+              - yes

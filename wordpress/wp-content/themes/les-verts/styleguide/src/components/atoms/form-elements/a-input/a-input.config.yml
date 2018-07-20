@@ -1,0 +1,23 @@
+label: Input
+status: ready
+display:
+  margin: 40px
+context:
+  label: PLZ
+  id: some-input
+  type: text
+  pattern: (\w{0,3}(?<=\w)-)?\d{4,6}
+  required: required
+  name: some-input
+  text: true
+variants:
+  - name: Text Inverted
+    context:
+      modifiers:
+        - invers
+  - name: Textarea
+    context:
+      textarea: true
+      text: false
+      modifiers:
+        - textarea

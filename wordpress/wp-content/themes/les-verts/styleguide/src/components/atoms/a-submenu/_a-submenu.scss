@@ -1,0 +1,171 @@
+.a-submenu {
+  width: 100%;
+  max-width: 269px;
+
+  @include media($_DESKTOP) {
+    min-width: 177px;
+  }
+
+  &__title {
+    @include clean-link;
+    font-family: $font-title;
+    display: block;
+    line-height: 2em;
+    color: $color-text;
+    transition: color $transition-fast $transition-ease;
+
+    &:hover {
+      color: $color-secondary;
+    }
+
+    &:focus {
+      &:before {
+        content: '';
+        width: 0;
+        height: 0;
+        border-left: 1px solid $color-secondary;
+        margin-right: 0.5em;
+        margin-left: calc(-1px - 0.5em);
+
+        @include media($_DESKTOP) {
+          border-left-color: $color-primary;
+        }
+      }
+    }
+
+    @include media($_DESKTOP) {
+      color: $color-primary;
+      margin-bottom: 5px;
+      padding-bottom: 12px;
+      position: relative;
+      line-height: 1.25em;
+      transition: color $transition-fast $transition-ease;
+
+      &:after {
+        content: "";
+        width: 0;
+        height: 2px;
+        background-color: $color-primary-dark;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        transition: width $transition-fast $transition-ease;
+      }
+
+      &:hover {
+        color: $color-primary-dark;
+
+        &:after {
+          width: 69px;
+        }
+      }
+    }
+  }
+
+  &__list {
+    @include clean-ul;
+  }
+
+  &__item {
+    @include clean-li;
+    color: $color-text;
+    margin: 1em 0 0 1.25em;
+
+    @include media($_DESKTOP) {
+      margin: 0;
+    }
+  }
+
+  &__link {
+    @include clean-link;
+    color: $color-text;
+    line-height: 1.75em;
+    padding: 7px 0;
+    display: block;
+    position: relative;
+    transition: color $transition-fast $transition-ease;
+
+    &:hover {
+      color: $color-secondary;
+
+      @include media($_DESKTOP) {
+        color: $color-text;
+      }
+    }
+
+    &:focus {
+      &:before {
+        content: '';
+        width: 0;
+        height: 0;
+        border-left: 1px solid $color-secondary;
+        margin-right: 0.5em;
+        margin-left: calc(-1px - 0.5em);
+
+        @include media($_DESKTOP) {
+          border-left-color: $color-primary;
+        }
+      }
+    }
+
+    @include media($_DESKTOP) {
+      &:after {
+        content: "";
+        width: 36px;
+        height: 1px;
+        background-color: $color-grey-2;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        transition: width $transition-fast $transition-ease;
+      }
+
+      &:hover {
+        color: $color-text;
+
+        &:after {
+          width: 69px;
+          background-color: $color-primary;
+        }
+      }
+    }
+  }
+
+  &--featured {
+    margin-top: 2em;
+
+    @include media($_DESKTOP) {
+      margin-top: initial;
+    }
+
+    .a-link-image{
+      margin-top: 28px;
+    }
+
+    &__link {
+      @include clean-link;
+
+      &__image{
+        width: 100%;
+        margin-top: 28px;
+        transition: transform $transition-fast $transition-ease;
+      }
+
+      &__title {
+        font-size: 1.25rem;
+        line-height: 1.4em;
+        margin-top: 16px;
+        transition: color $transition-fast $transition-ease;
+
+        @include hover {
+            color: $color-primary-dark;
+        }
+      }
+    }
+  }
+
+  &--featured__text {
+    margin-top: 12px;
+    margin-bottom: 28px;
+  }
+}

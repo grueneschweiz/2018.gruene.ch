@@ -1,0 +1,52 @@
+label: Menu
+status: ready
+display:
+  background: "#AAAAAA"
+context:
+  nav-items:
+    - title: Aktuelles
+      section-items:
+        - title: Kampagnen und Events
+          items:
+            - label: Petition «Nein zur Lex Beznau»
+            - label: Referendum gegen Versicherungsspione
+            - label: Events
+        - title: Abstimmungen
+          items:
+            - label: Gegenvorschlag Veloinitiative
+            - label: Ernährungssouveränität
+            - label: Fair-Food
+        - title: Medienmitteilungen
+        - title: Fair-Food-Initiative
+          featured: true
+          img:
+            src: "/img/wheat_ratio.jpg"
+            alt: Symbolbild Fair-Food
+          cat-title:
+            label: Fair-Food-Initiative
+          text: Umweltfreundlich und fair hergestellte Lebensmittel – dies wollen die Grünen mit der Fair-Food-Initiative erreichen.
+          button:
+            label: Kampagne anzeigen
+          modifiers:
+            - featured
+    - title: Positionen
+    - title: Grüne Schweiz
+    - title: Publikationen
+    - title: Kontakt
+  aria-label-main-navigation: Hauptnavigation
+  aria-label-language-navigation: Sprachmenü
+  aria-label-sub-navigation: Untermenü
+  aria-label-close-sub-navigation: Untermenü schliessen
+  aria-label-search: Suche
+  languages:
+    - de
+    - fr
+  search: Suche
+  logo:
+    de: true
+    title: Logo Grüne Schweiz
+  button:
+    label: Mitmachen
+    modifiers:
+      - outline
+      - secondary

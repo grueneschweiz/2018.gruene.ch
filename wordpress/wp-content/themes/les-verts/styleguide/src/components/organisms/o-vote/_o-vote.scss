@@ -1,0 +1,79 @@
+.o-vote {
+  height: 100%;
+  width: 100%;
+  max-width: 651px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 41px 0;
+  display: flex;
+  flex-direction: column;
+
+  @include media($_DESKTOP) {
+    padding: 60px 0;
+    max-width: 689px;
+  }
+
+  &__cat-title {
+    margin: 0 41px 22px;
+
+    @include media($_DESKTOP) {
+      margin: 0 60px 32px;
+    }
+  }
+
+  &__proposals {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 0.5;
+    flex-shrink: 0;
+  }
+
+  &__proposal {
+    @include clean-link;
+    flex-grow: 1;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    transition: background $transition-fast $transition-ease;
+    position: relative;
+    padding: 0 41px;
+
+    &:after {
+      content: ' ';
+      width: calc(100% - 82px);
+      height: 1px;
+      background: $color-grey-2;
+      position: absolute;
+      bottom: 0;
+      left: 41px;
+    }
+
+    &:last-of-type:after {
+      background: transparent;
+    }
+
+    @include media($_DESKTOP) {
+      padding: 0 60px;
+
+      &:after {
+        width: calc(100% - 120px);
+        left: 60px;
+      }
+    }
+
+    @include hover {
+      background: $color-grey-1;
+    }
+  }
+
+  &__more {
+    padding-top: 16px;
+    border-top: 1px solid $color-grey-2;
+    margin: 0 41px;
+
+    @include media($_DESKTOP) {
+      margin: 0 60px;
+    }
+  }
+}

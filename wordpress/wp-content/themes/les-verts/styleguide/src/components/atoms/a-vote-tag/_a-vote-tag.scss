@@ -1,0 +1,34 @@
+.a-vote-tag {
+	@include clean-link;
+
+	display: inline-block;
+	padding: 4px 4px 5px;
+	border-radius: 2px;
+	text-align: center;
+	text-transform: uppercase;
+	font-size: 0.75rem;
+	font-weight: $font-weight-bold;
+	font-family: $font-title;
+	letter-spacing: 0.04166666667em;
+	width: 44px;
+
+	@include media($_DESKTOP) {
+		font-size: 0.875rem;
+		padding: 6px 0 7px;
+		width: 60px;
+	}
+
+	&--free {
+		background-color: $color-grey-2;
+	}
+
+	&--no {
+		background-color: lighten($color-red, 44%);
+		color: $color-red;
+	}
+
+	&--yes {
+		background-color: lighten($color-primary, 44%);
+		color: $color-primary-dark;
+	}
+}

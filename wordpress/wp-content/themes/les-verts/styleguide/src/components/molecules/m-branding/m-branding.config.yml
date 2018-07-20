@@ -1,0 +1,12 @@
+label: Branding
+status: ready
+context:
+  unbreakables:
+    - Ökologisch konsequent.
+    - Sozial engagiert.
+    - Global solidarisch.
+  logo:
+    de: true
+    white: true
+    modifiers:
+      - white

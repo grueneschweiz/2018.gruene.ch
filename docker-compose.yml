@@ -1,0 +1,56 @@
+version: '2'
+services:
+  wordpress:
+    depends_on:
+      - db
+    build: .
+    links:
+      - db
+    ports:
+      # MUST be on port 80, because multisite
+      # doesn't support ports in base url
+      - "80:80"
+    working_dir: /var/www/html
+    volumes:
+      - ./wordpress/wp-content/:/var/www/html/wp-content
+      - ./scripts/php.ini:/usr/local/etc/php/php.ini
+      - ./scripts/ssmtp.conf:/etc/ssmtp/ssmtp.conf
+    container_name: wp_docker_les_verts
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_NAME: wordpress
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: wordpress
+      WORDPRESS_DEBUG: 1
+    command: ["apache2-foreground"]
+
+  db:
+    image: mysql:5.7
+    volumes:
+      - "./.data/db:/var/lib/mysql"
+    environment:
+      MYSQL_ROOT_PASSWORD: wordpress
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: wordpress
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    links:
+      - db
+    ports:
+      - "8181:80"
+    environment:
+      PMA_HOST: db
+      PMA_USER: root
+      PMA_PASSWORD: wordpress
+
+  mailhog:
+    image: mailhog/mailhog
+    command: ["-smtp-bind-addr", "0.0.0.0:25"]
+    user: root
+    expose:
+      - 25
+      - 8025
+    ports:
+      - 8025:8025

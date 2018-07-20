@@ -1,0 +1,11 @@
+# Theme specific ignores
+static
+style.min.css
+vendor
+build
+lib/controllers/geodata/GeoIP.dat
+
+# Others
+node_modules
+.DS_Store
+.vscode

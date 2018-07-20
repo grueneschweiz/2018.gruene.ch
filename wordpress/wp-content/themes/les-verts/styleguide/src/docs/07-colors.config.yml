@@ -1,0 +1,26 @@
+context:
+  colors:
+    - title: Primary
+      values:
+        primary: "#84B414"
+        primary-dark: "#516F0A"
+        primary-light: "#CEE1A1"
+        primary-super-light: "#E6F0D0"
+    - title: Secondary
+      values:
+        secondary: "#E10078"
+        secondary-dark: "#B1025F"
+    - title: Text
+      values:
+        text: "#333333"
+        text-light: "#4E4E4E"
+    - title: Monochrome
+      values:
+        white: "#FFFFFF"
+        grey-1: "#F9F9F9"
+        grey-2: "#E2E2E2"
+        grey-3: "6A6A6A"
+        black: "#000000"
+    - title: Misc
+      values:
+        red: "#EF0606"

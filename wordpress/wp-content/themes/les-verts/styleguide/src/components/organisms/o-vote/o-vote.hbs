@@ -1,0 +1,17 @@
+<article class="o-vote {{ modifiers_classes }}">
+    <div class="o-vote__cat-title">
+        {{> @a-cat-title cat-title}}
+    </div>
+    <div class="o-vote__proposals">
+        {{#each proposals}}
+            <a href="{{ this.url }}" class="o-vote__proposal">
+                {{> @m-vote this }}
+            </a>
+        {{/each}}
+    </div>
+    <footer class="o-vote__more">
+        <div class="o-vote__link-button">
+            {{> @a-link-button link-button }}
+        </div>
+    </footer>
+</article>

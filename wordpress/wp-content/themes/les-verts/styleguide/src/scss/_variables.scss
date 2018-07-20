@@ -1,0 +1,85 @@
+/**
+ * CONSTANTS
+ */
+$_DESKTOP: 'desktop';
+$_MOBILE: 'mobile';
+
+/**
+ * COLORS
+ */
+$color-primary: #84B414;
+$color-primary-dark: #516F0A;
+$color-primary-light: #CEE1A1;
+$color-primary-super-light: #E6F0D0;
+
+$color-secondary: #E10078;
+$color-secondary-dark: #B1025F;
+
+$color-text: #333333;
+$color-text-light: #4E4E4E;
+
+$color-white: #FFFFFF;
+$color-black: #000000;
+
+$color-grey-1: #F9F9F9;
+$color-grey-2: #E2E2E2;
+$color-grey-3: #6A6A6A;
+
+$color-red: #EF0606;
+
+/**
+ * LAYOUT SIZES
+ */
+$size-tiny: 375px;
+$size-small: 768px;
+$size-medium: 1024px;
+$size-large: 1680px;
+$size-huge: 2560px;
+
+/**
+* FLUID PROPS
+*/
+$fluid-min: $size-tiny;
+$fluid-max: $size-large;
+
+/**
+ * GRID system
+ */
+$grid-nb-columns: 12;
+$grid-gap-min: 6px;
+$grid-gap-max: 36px;
+$grid-max-width-min: 280px;
+$grid-max-width-max: 1440px;
+
+/**
+ * FONTS
+ */
+$font-primary: 'Open Sans', sans-serif;
+$font-secondary: Arial, Helvetica, sans-serif;
+$font-title: 'Sanuk Fat', 'Arial Black', Gadget, sans-serif;
+
+// $font-weight-light: 300; // Not defined in design
+$font-weight-normal: 400;
+// $font-weight-medium: 500; // Not defined in design
+$font-weight-semi: 600;
+$font-weight-bold: 700;
+$font-weight-extra: 800;
+
+/**
+ * TRANSITIONS PARAMETERS
+ */
+$transition-ease: cubic-bezier(0.65, 0.05, 0.36, 1);
+
+$transition-fast: .2s;
+$transition-mid: .4s;
+$transition-slow: .8s;
+
+/**
+ * Z INDEXES
+ */
+$z-index-popup: 90;
+$z-index-header: 10;
+$z-index-menu: 11;
+$z-index-topbar: 12;
+$z-index-side-nav: 15;
+$z-index-modal: 100;

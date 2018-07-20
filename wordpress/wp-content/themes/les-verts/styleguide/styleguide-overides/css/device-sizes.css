@@ -1,0 +1,23 @@
+.Pen-device-sizes {
+	display: flex;
+	margin-left: 15px;
+}
+
+.Pen-device-sizes li {
+	margin-right: 5px;
+}
+.Pen-device-size {
+	display: block;
+	width: 22px;
+	height: 22px;
+	transition: opacity .2s ease;
+	fill: #822;
+	opacity: .75;
+}
+.Pen-device-size:hover {
+	opacity: 1;
+}
+
+.Pen-device-size svg {
+	pointer-events: none;
+}

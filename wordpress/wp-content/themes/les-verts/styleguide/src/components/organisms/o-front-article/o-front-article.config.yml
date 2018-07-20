@@ -1,0 +1,101 @@
+label: Front article
+status: ready
+default: double
+context:
+  modifiers:
+    - double
+  cat-title:
+    label: Kampagnen
+    url: '#'
+  articles:
+    - article-1:
+      modifiers:
+        - image-second
+      url: '#'
+      title: "Gleichstellung: Ein Schwerpunkt der Grünen - seit ihrer Gründung"
+      text: "Die Gleichstellung von Mann und Frau ist seit 1981 in der Verfassung verankert und seit 1996 im Gleichstellungsgesetz festgeschrieben. In der Realität ist die Gleichstellung jedoch noch lange nicht erreicht. Frauen sind nach wie vor untervertreten in Kaderpositionen, verdienen deutlich weniger als Männer. Ebenso arbeiten fast alle Männer Vollzeit, aber nur jede zweite Frau."
+      has-img: true
+      img:
+        url: '#'
+        image-src: "/img/equality.jpg"
+        alt: Symbolbild Fair-Food
+        title: Fair schmeckt besser
+    - article-2:
+      modifiers:
+        - no-image
+      url: '#'
+      title: "Gleichstellung: Ein Schwerpunkt der Grünen - seit ihrer Gründung"
+      text: "Die Gleichstellung von Mann und Frau ist seit 1981 in der Verfassung verankert und seit 1996 im Gleichstellungsgesetz festgeschrieben. In der Realität ist die Gleichstellung jedoch noch lange nicht erreicht. Frauen sind nach wie vor untervertreten in Kaderpositionen, verdienen deutlich weniger als Männer. Ebenso arbeiten fast alle Männer Vollzeit, aber nur jede zweite Frau."
+      has-img: false
+variants:
+  - name: single
+    context:
+      single: true
+      modifiers:
+        - single
+      cat-title:
+        label: Kampagne
+        url: '#'
+      articles:
+        - article-1:
+          modifiers:
+            - image-first
+          url: '#'
+          title: "Gleichstellung: Ein Schwerpunkt der Grünen - seit ihrer Gründung"
+          text: "Die Gleichstellung von Mann und Frau ist seit 1981 in der Verfassung verankert und seit 1996 im Gleichstellungsgesetz festgeschrieben. In der Realität ist die Gleichstellung jedoch noch lange nicht erreicht. Frauen sind nach wie vor untervertreten in Kaderpositionen, verdienen deutlich weniger als Männer. Ebenso arbeiten fast alle Männer Vollzeit, aber nur jede zweite Frau."
+          has-img: true
+          img:
+            url: '#'
+            image-src: "/img/equality.jpg"
+            alt: Symbolbild Fair-Food
+            title: Fair schmeckt besser
+      cta:
+        label: Aktiv werden
+        modifiers:
+          - secondary
+      cta-help-text: Ich will mich für Gleichstellung einsetzen
+  - name: oton
+    label: O-Ton
+    context:
+      oton: true
+      mm: true
+      modifiers:
+        - oton
+        - mm
+      cat-title:
+        label: Medienmitteilungen
+        url: '#'
+      articles:
+        - article-1:
+          modifiers:
+            - no-image
+          url: '#'
+          title: 'Fall "Daniel Moser": Wo bleiben die Konsequenzen?'
+          text: "« Der Schweizerische Nachrichtendienst hat das Gesetz gebrochen. Und er ist dilettantisch und unprofessionell vorgegangen. Das stellt die GPDel klar fest. Wo bleiben die Konsequenzen für die Verantwortlichen, den ehemaligen Geheimdienstchef Markus Seiler und den zuständigen Bundesrat? »"
+          has-img: false
+      date: 26. März 2018
+      author: Balthasar Glättli
+      author-url: '#'
+      img:
+        url: '#'
+        image-src: "/img/glaettli.jpg"
+        alt: Balthasar Glättli
+        title: 'Balthasar Glättli zum Fall "Daniel Moser"'
+  - name: mm
+    label: MM
+    context:
+      mm: true
+      modifiers:
+        - mm
+      cat-title:
+        label: Medienmitteilungen
+        url: '#'
+      articles:
+        - article-1:
+          modifiers:
+            - no-image
+          url: '#'
+          title: '«Fair Food»: Bundesrat anerkennt Handlungsbedarf, nun ist der Ball bei der Stimmbevölkerung'
+          text: "An seiner heutigen Medienkonferenz zur Fair-Food-Initiative hat der Bundesrat Verständnis für die Anliegen der Initiative gezeigt. Er anerkennt, dass Handlungsbedarf zur Förderung einer nachhaltigen Lebensmittelproduktion besteht. Die Grünen begrüssen dies, bedauern jedoch, dass den Worten keine Taten folgen. Ein Ja zur Fair-Food-Initiative am 23. September ist darum wichtiger denn je."
+          has-img: false
+      date: 26. März 2018

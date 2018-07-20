@@ -1,0 +1,22 @@
+.a-link-image {
+  line-height: 0;
+
+  &__image {
+    max-width: 100%;
+    transition: transform $transition-mid cubic-bezier(0.390, 0.575, 0.565, 1.000);
+  }
+
+  &__link {
+    @include clean-link;
+
+    display: block;
+    max-width: 100%;
+    overflow: hidden;
+
+    @include hover {
+      .a-link-image__image {
+        transform: scale(1.01);
+      }
+    }
+  }
+}

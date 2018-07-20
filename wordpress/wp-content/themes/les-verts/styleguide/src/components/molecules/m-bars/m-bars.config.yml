@@ -1,0 +1,45 @@
+label: Bars
+status: ready
+default: left
+context:
+  modifiers:
+  - left
+  bars:
+  - bar-1:
+    label: Engagiere dich
+    modifiers:
+    - green
+    - left
+  - bar-2:
+    label: für Fair-Food
+    modifiers:
+    - magenta
+    - left
+  - bar-3:
+    label: zusammen die Welt verändern
+    modifiers:
+    - white
+    - left
+    - subline
+variants:
+  - name: right
+    context:
+      modifiers:
+      - right
+      bars:
+      - bar-1:
+        label: Engagiere dich
+        modifiers:
+        - green
+        - right
+      - bar-2:
+        label: für Fair-Food
+        modifiers:
+        - magenta
+        - right
+      - bar-3:
+        label: zusammen die Welt verändern
+        modifiers:
+        - white
+        - right
+        - subline

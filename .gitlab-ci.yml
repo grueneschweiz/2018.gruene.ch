@@ -1,0 +1,15 @@
+image: node:boron
+before_script:
+  - npm install yarn
+  - yarn
+pages:
+  stage: deploy
+  script:
+  - yarn gulp sg:custom
+  - yarn fractal:build
+  - mv theme/styleguide/dist/build public
+  artifacts:
+    paths:
+    - public
+  only:
+  - master

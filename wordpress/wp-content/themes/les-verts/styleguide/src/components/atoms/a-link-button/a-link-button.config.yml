@@ -1,0 +1,18 @@
+label: Link Button
+status: ready
+display:
+  padding: 40px
+context:
+  label: Weiterlesen
+  url: '#'
+variants:
+  - name: Grey
+    context:
+      modifiers:
+        - grey
+  - name: White
+    display:
+      background-color: "#E2E2E2"
+    context:
+      modifiers:
+        - white

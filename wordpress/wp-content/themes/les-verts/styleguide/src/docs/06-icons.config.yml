@@ -1,0 +1,11 @@
+context:
+  groups:
+    - name: Actions
+      icons:
+        - close
+    - name: Miscellaneous
+      icons:
+        - testimony
+        - glass
+        - hamburger
+        - quote

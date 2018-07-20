@@ -1,0 +1,1 @@
+!!! These json files are not up-to-date anymore, please edit the php files. You can import them with this script if needed, as well: https://dev-notes.eu/2017/01/convert-acf-fields-registered-by-php-to-importable-json-format/

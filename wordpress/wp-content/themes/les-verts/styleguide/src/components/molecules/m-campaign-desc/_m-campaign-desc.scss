@@ -1,0 +1,33 @@
+.m-campaign-desc {
+  background: $color-grey-1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  @include fluid-props(padding-left padding-right, $fluid-min, $fluid-max, 29px, 68px);
+  padding-top: 13px;
+  padding-bottom: 40px;
+
+  @include media($_DESKTOP) {
+    padding-right: 170px;
+  }
+
+  &__title {
+    @include fluid-props(font-size, $fluid-min, $fluid-max, 32px, 48px);
+  }
+
+  &__link {
+    @include clean-link;
+    color: $color-primary;
+    transition: color $transition-fast $transition-ease;
+
+    @include hover {
+      color: $color-primary-dark;
+    }
+  }
+
+  &__desc {
+    margin: 0 0 0.75em;
+    font-size: 1.25rem;
+  }
+}

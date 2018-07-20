@@ -1,0 +1,27 @@
+label: Front article
+default: Image first
+status: ready
+display:
+  padding: 40px
+context:
+  title: "Gleichstellung: Ein Schwerpunkt der Grünen - seit ihrer Gründung"
+  text: "Die Gleichstellung von Mann und Frau ist seit 1981 in der Verfassung verankert und seit 1996 im Gleichstellungsgesetz festgeschrieben. In der Realität ist die Gleichstellung jedoch noch lange nicht erreicht. Frauen sind nach wie vor untervertreten in Kaderpositionen, verdienen deutlich weniger als Männer. Ebenso arbeiten fast alle Männer Vollzeit, aber nur jede zweite Frau."
+  url: '#'
+  has-img: true
+  img:
+    url: '#'
+    image-src: "/img/wheat.jpg"
+    alt: Symbolbild Fair-Food
+    title: Fair schmeckt besser
+  modifiers:
+  - image-first
+variants:
+  - name: Image second
+    context:
+      modifiers:
+        - image-second
+  - name: No Image
+    context:
+      has-img: false
+      modifiers:
+        - no-image
