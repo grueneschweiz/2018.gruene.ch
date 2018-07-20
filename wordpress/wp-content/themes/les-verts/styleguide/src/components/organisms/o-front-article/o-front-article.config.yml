@@ -1,5 +1,5 @@
 label: Front article
-status: wip
+status: ready
 default: double
 context:
   modifiers:

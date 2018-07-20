@@ -1,5 +1,5 @@
 label: Bars
-status: wip
+status: ready
 default: left
 context:
   modifiers:

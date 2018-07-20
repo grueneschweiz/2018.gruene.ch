@@ -1,5 +1,5 @@
 label: Vote
-status: wip
+status: ready
 default: 3 proposals
 display:
   padding: 40px
