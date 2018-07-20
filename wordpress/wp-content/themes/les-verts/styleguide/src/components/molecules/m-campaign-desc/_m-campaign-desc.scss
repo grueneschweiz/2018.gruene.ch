@@ -16,6 +16,16 @@
     @include fluid-props(font-size, $fluid-min, $fluid-max, 32px, 48px);
   }
 
+  &__link {
+    @include clean-link;
+    color: $color-primary;
+    transition: color $transition-fast $transition-ease;
+
+    @include hover {
+      color: $color-primary-dark;
+    }
+  }
+
   &__desc {
     margin: 0 0 0.75em;
     font-size: 1.25rem;
