@@ -1,28 +1,29 @@
 export default class OCampaignFixed {
     constructor(context) {
         this.context = context;
-        this.fixed = false;
+        this.done = false;
         this.image = this.context.getImage();
         this.imageWrapper = this.context.getImageWrapper();
     }
 
     run() {
-        if (! this.fixed) {
+        if (! this.done) {
             this.setPosition();
-            this.fixed = true;
+            this.done = true;
         }
 
         this.setBluring();
     }
 
     setPosition() {
-        this.imageWrapper.style.top = this.context.getHeader().getMenu().clientHeight + 'px';
+        this.imageWrapper.style.top = this.context.getMenu().clientHeight + 'px';
     }
 
     setBluring() {
-        let blur = (this.context.getScrollTop() - this.image.clientTop) / this.context.getScrollStart();
+        let scrollFactor = (this.context.getScrollTop() - this.image.clientTop) / this.context.getScrollStart();
+        let blur = this.easeInQuint( scrollFactor ) * this.context.getSizedBlur();
 
-        this.image.style.filter = "blur(" + this.easeInQuint(blur) * this.context.getSizedBlur() + "px)";
+        this.image.style.filter = `blur(${blur}px)`;
     }
 
     easeInQuint(t) {

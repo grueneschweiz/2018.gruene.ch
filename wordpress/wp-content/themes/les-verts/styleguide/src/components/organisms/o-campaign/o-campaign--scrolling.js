@@ -4,8 +4,8 @@ export default class OCampaignScrolling {
         this.done = false;
         this.image = this.context.getImage();
         this.imageWrapper = this.context.getImageWrapper();
-
         this.scrollStart = this.context.getScrollStart();
+        this.menuHeight = this.context.getMenu().clientHeight;
     }
 
     run() {
@@ -24,10 +24,10 @@ export default class OCampaignScrolling {
     setBluring() {
         let blur = this.context.getSizedBlur();
 
-        this.image.style.filter = "blur(" + blur + "px)";
+        this.image.style.filter = `blur(${blur}px)`;
     }
 
     getTopPosition() {
-        return ((-(this.context.getScrollTop() - this.scrollStart) * 0.5) + this.context.getHeader().getMenu().clientHeight) + 'px';
+        return ((-(this.context.getScrollTop() - this.scrollStart) * 0.5) + this.menuHeight) + 'px';
     }
 }

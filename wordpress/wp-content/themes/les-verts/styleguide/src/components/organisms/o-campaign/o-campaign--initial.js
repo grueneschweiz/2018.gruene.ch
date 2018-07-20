@@ -5,12 +5,12 @@ export default class OCampaignInitial {
         this.image = this.context.getImage();
         this.imageWrapper = this.context.getImageWrapper();
 
-        let menu = this.context.getHeader().getMenu();
+        let menu = this.context.getMenu();
         this.menuBottom = menu.offsetTop + menu.clientHeight;
     }
 
     run() {
-        if (! this.done) {
+        if (!this.done) {
             this.setBluring();
             this.done = true;
         }
@@ -19,7 +19,7 @@ export default class OCampaignInitial {
     }
 
     setPosition() {
-        this.imageWrapper.style.top = (- this.context.getScrollTop() + this.menuBottom)+'px';
+        this.imageWrapper.style.top = (-this.context.getScrollTop() + this.menuBottom) + 'px';
     }
 
     setBluring() {

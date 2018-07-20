@@ -1,5 +1,3 @@
-import throttle from 'lodash.throttle';
-
 import BaseView from "./../../../js/base-view";
 import OCampaignInitial from "./o-campaign--initial";
 import OCampaignFixed from "./o-campaign--fixed";
@@ -17,8 +15,6 @@ const SIZE_ADD_LARGE = 1305; // so total will be 1680
 
 const IMAGE_OVERLAP_FACTOR = 2 / 3;
 
-const RESIZE_THROTTLING_MS = 100;
-
 export default class OCampaign extends BaseView {
     initialize() {
         this.image = this.getScopedElement(IMAGE_SELECTOR);
@@ -26,6 +22,8 @@ export default class OCampaign extends BaseView {
         this.bars = this.getScopedElement(BARS_SELECTOR);
 
         this.header = this.getComponent('OHeader0');
+        this.branding = this.header.getBranding();
+        this.menu = this.header.getMenu();
 
         this.onResize();
         this.onScroll();
@@ -35,7 +33,7 @@ export default class OCampaign extends BaseView {
         super.bind();
 
         this.scrollHandler = () => requestAnimationFrame(this.onScroll.bind(this));
-        this.resizeHandler = throttle(() => this.onResize(), RESIZE_THROTTLING_MS, {leading: false, trailing: true});
+        this.resizeHandler = () => requestAnimationFrame(this.onResize.bind(this));
 
         window.addEventListener("scroll", this.scrollHandler);
         window.addEventListener("resize", this.resizeHandler);
@@ -44,42 +42,6 @@ export default class OCampaign extends BaseView {
     onResize() {
         this.getScrollStart(true);
         this.bars.style.height = this.image.clientHeight + 'px';
-    }
-
-    getScrollStart(recalculate = false) {
-        if (!this.scrollStart || recalculate) {
-            this.scrollStart = this.header.getBranding().clientHeight
-                + this.image.clientTop
-                + this.image.clientHeight * IMAGE_OVERLAP_FACTOR;
-        }
-
-        return this.scrollStart;
-    }
-
-    getScrollTop() {
-        return window.pageYOffset || document.documentElement.scrollTop;
-    }
-
-    getHeader() {
-        return this.header;
-    }
-
-    getImage() {
-        return this.image;
-    }
-
-    getImageWrapper() {
-        return this.imageWrapper;
-    }
-
-    getBars() {
-        return this.bars;
-    }
-
-    setState(state) {
-        if (!(this.state instanceof state)) {
-            this.state = new state(this);
-        }
     }
 
     onScroll() {
@@ -96,14 +58,54 @@ export default class OCampaign extends BaseView {
         this.state.run();
     }
 
+    setState(state) {
+        if (!(this.state instanceof state)) {
+            this.state = new state(this);
+        }
+    }
+
+    getScrollStart(recalculate = false) {
+        if (!this.scrollStart || recalculate) {
+            this.scrollStart = this.header.getBranding().clientHeight
+                + this.image.clientTop
+                + this.image.clientHeight * IMAGE_OVERLAP_FACTOR;
+        }
+
+        return this.scrollStart;
+    }
+
+    getScrollTop() {
+        return window.pageYOffset || document.documentElement.scrollTop;
+    }
+
+    getBranding() {
+        return this.branding;
+    }
+
+    getMenu() {
+        return this.menu;
+    }
+
+    getImage() {
+        return this.image;
+    }
+
+    getImageWrapper() {
+        return this.imageWrapper;
+    }
+
     /**
-     * Calculate the max blur size respecting the device size
+     * Calculate the max blur size respecting the device size (cached)
      *
      * @returns {number}
      */
     getSizedBlur() {
-        let vw = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-        return (vw - SIZE_TINY) / SIZE_ADD_LARGE * BLUR_ADD_LARGE + BLUR_SIZE_TINY;
+        if (!this.sizedBlur) {
+            let vw = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+            let sizedBlur = (vw - SIZE_TINY) / SIZE_ADD_LARGE * BLUR_ADD_LARGE + BLUR_SIZE_TINY;
+            this.sizedBlur = Math.max(sizedBlur, 0);
+        }
+        return this.sizedBlur;
     }
 
     destroy() {
