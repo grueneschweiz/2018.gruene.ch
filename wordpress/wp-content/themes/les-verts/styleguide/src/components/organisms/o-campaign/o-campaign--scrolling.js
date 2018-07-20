@@ -1,3 +1,5 @@
+const SCROLL_SPEED = 0.5;
+
 export default class OCampaignScrolling {
     constructor(context) {
         this.context = context;
@@ -28,6 +30,6 @@ export default class OCampaignScrolling {
     }
 
     getTopPosition() {
-        return ((-(this.context.getScrollTop() - this.scrollStart) * 0.5) + this.menuHeight) + 'px';
+        return ((-(this.context.getScrollTop() - this.scrollStart) * SCROLL_SPEED) + this.menuHeight) + 'px';
     }
 }

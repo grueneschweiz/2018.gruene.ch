@@ -1,3 +1,5 @@
+import throttle from 'lodash.throttle';
+
 import BaseView from "./../../../js/base-view";
 import OCampaignInitial from "./o-campaign--initial";
 import OCampaignFixed from "./o-campaign--fixed";
@@ -15,6 +17,8 @@ const SIZE_ADD_LARGE = 1305; // so total will be 1680
 
 const IMAGE_OVERLAP_FACTOR = 2 / 3;
 
+const RESIZE_THROTTLING_MS = 100;
+
 export default class OCampaign extends BaseView {
     initialize() {
         this.image = this.getScopedElement(IMAGE_SELECTOR);
@@ -26,16 +30,14 @@ export default class OCampaign extends BaseView {
         this.menu = this.header.getMenu();
 
         this.onResize();
-        this.onScroll();
+        requestAnimationFrame(this.onScroll.bind(this)); // this will start a loop
     }
 
     bind() {
         super.bind();
 
-        this.scrollHandler = () => requestAnimationFrame(this.onScroll.bind(this));
-        this.resizeHandler = () => requestAnimationFrame(this.onResize.bind(this));
+        this.resizeHandler = throttle(() => this.onResize(), RESIZE_THROTTLING_MS, {leading: false, trailing: true});
 
-        window.addEventListener("scroll", this.scrollHandler);
         window.addEventListener("resize", this.resizeHandler);
     }
 
@@ -56,6 +58,8 @@ export default class OCampaign extends BaseView {
         }
 
         this.state.run();
+
+        requestAnimationFrame(this.onScroll.bind(this));
     }
 
     setState(state) {
