@@ -28,17 +28,19 @@ export default class OCampaign extends BaseView {
         this.header = this.getComponent('OHeader0');
         this.branding = this.header.getBranding();
         this.menu = this.header.getMenu();
-
-        this.onResize();
-        requestAnimationFrame(this.onScroll.bind(this)); // this will start a loop
     }
 
     bind() {
         super.bind();
 
+        this.scrollHandler = () => requestAnimationFrame(this.onScroll.bind(this));
         this.resizeHandler = throttle(() => this.onResize(), RESIZE_THROTTLING_MS, {leading: false, trailing: true});
 
         window.addEventListener("resize", this.resizeHandler);
+        window.addEventListener("scroll", this.scrollHandler);
+
+        this.scrollHandler();
+        this.resizeHandler();
     }
 
     onResize() {
@@ -58,8 +60,6 @@ export default class OCampaign extends BaseView {
         }
 
         this.state.run();
-
-        requestAnimationFrame(this.onScroll.bind(this));
     }
 
     setState(state) {
