@@ -1,5 +1,3 @@
-import throttle from 'lodash.throttle';
-
 import BaseView from "base-view";
 
 const BRANDING_SELECTOR = '.o-header__branding';
@@ -22,15 +20,14 @@ export default class OHeader extends BaseView {
     bind() {
         super.bind();
 
-        this.scrollHandler = throttle(() => this.setMenuBarPosition(), 20, {leading: false, trailing: true});
-
+        this.scrollHandler = () => requestAnimationFrame(this.setMenuBarPosition.bind(this));
         window.addEventListener("scroll", this.scrollHandler);
     }
 
     setMenuBarPosition() {
         let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
-        if (scrollTop >= this.branding.clientHeight && !this.isFixed) {
+        if (!this.isFixed && scrollTop >= this.branding.clientHeight) {
             this.isFixed = true;
 
             this.addClass(this.menu, FIXED_STATE);
@@ -38,7 +35,7 @@ export default class OHeader extends BaseView {
             this.addClass(this.spacer, ACTIVE_STATE);
         }
 
-        if (scrollTop < this.branding.clientHeight && this.isFixed) {
+        if (this.isFixed && scrollTop < this.branding.clientHeight) {
             this.isFixed = false;
 
             this.removeClass(this.menu, FIXED_STATE);
