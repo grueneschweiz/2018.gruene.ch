@@ -35,16 +35,17 @@
 
     @include media($_DESKTOP) {
       color: $color-primary;
-      margin-bottom: 1px;
-      padding-bottom: 16px;
+      margin-bottom: 5px;
+      padding-bottom: 12px;
       position: relative;
       line-height: 1.25em;
+      transition: color $transition-fast $transition-ease;
 
       &:after {
         content: "";
         width: 0;
-        height: 0.25em;
-        background-color: $color-primary-light;
+        height: 2px;
+        background-color: $color-primary-dark;
         position: absolute;
         bottom: 0;
         left: 0;
@@ -52,10 +53,10 @@
       }
 
       &:hover {
-        color: $color-primary;
+        color: $color-primary-dark;
 
         &:after {
-          width: 100%;
+          width: 69px;
         }
       }
     }
@@ -123,7 +124,7 @@
         color: $color-text;
 
         &:after {
-          width: 100%;
+          width: 69px;
           background-color: $color-primary;
         }
       }
@@ -154,11 +155,10 @@
         font-size: 1.25rem;
         line-height: 1.4em;
         margin-top: 16px;
-      }
+        transition: color $transition-fast $transition-ease;
 
-      @include hover {
-        .a-submenu--featured__link__title {
-          color: $color-primary-dark;
+        @include hover {
+            color: $color-primary-dark;
         }
       }
     }
