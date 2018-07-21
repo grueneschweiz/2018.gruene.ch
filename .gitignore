@@ -126,3 +126,4 @@ wordpress/sitemap.xml.gz
 dist
 node_modules
 fonts
+deploy.*
