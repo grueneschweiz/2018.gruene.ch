@@ -1,0 +1,39 @@
+.o-positions {
+  padding: 41px 41px;
+  max-width: 651px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+
+  @include media($_DESKTOP) {
+    padding: 60px 60px;
+    max-width: $grid-max-width-max;
+  }
+
+  &__cat-title {
+    margin-bottom: 22px;
+
+    @include media($_DESKTOP) {
+      margin-bottom: 47px;
+    }
+  }
+
+  &__articles {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-row-gap: 40px;
+    align-items: start;
+
+    @include media($_DESKTOP) {
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 64px 32px;
+      align-items: start;
+    }
+  }
+
+  &__article {
+    width: 100%;
+    max-width: 600px;
+  }
+}
