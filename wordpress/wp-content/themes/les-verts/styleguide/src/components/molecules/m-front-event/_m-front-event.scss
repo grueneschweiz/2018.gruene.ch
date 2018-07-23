@@ -1,0 +1,72 @@
+.m-front-event {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  grid-column-gap: 12px;
+  border-bottom: 1px solid $color-grey-2;
+  padding: 18px 0;
+
+  @include media($_DESKTOP) {
+    grid-template-columns: 148px 1fr;
+    grid-column-gap: 32px;
+    padding: 22px 0;
+  }
+
+  &__image {
+    width: 100%;
+    height: 80px;
+    background-size: cover;
+    background-position: center center;
+    grid-column: 1 / 2;
+    grid-row: 1 / 3;
+
+    @include media($_DESKTOP) {
+      height: 94px;
+    }
+  }
+
+  &__title {
+    margin: 0 3.1914893617em 0 0;
+    align-self: flex-start;
+    color: $color-text;
+    font-size: 1rem;
+
+    @include media($_MOBILE) {
+
+      &:after {
+        content: "";
+        width: 0.6em;
+        height: 0.6em;
+        border-top: 0.1666666667em solid $color-primary; // 2/12
+        border-right: 0.1666666667em solid $color-primary; // 2/12
+        transform: translateX(-0.2em) rotate(45deg);
+        position: absolute;
+        right: 0;
+        top: 0.2em;
+      }
+    }
+  }
+
+
+  &__meta {
+    font-size: 0.875rem;
+    line-height: 1.4em;
+    align-self: flex-end;
+    margin-top: 0.8571428571em;
+  }
+
+  &__datetime {
+    display: inline-block;
+    margin-right: 0.75em;
+  }
+
+  &__place {
+    display: inline-block;
+
+    &:before {
+      content: "\25A0";
+      color: $color-secondary;
+      transform: rotate(-5deg);
+      margin-right: 0.85em;
+    }
+  }
+}

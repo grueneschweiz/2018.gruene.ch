@@ -1,0 +1,38 @@
+label: Events
+status: ready
+context:
+  cat-title:
+    label: Events
+    url: '#'
+  link-button:
+    label: Alle Events
+    url: '#'
+  events:
+    - title: Öffentlichkeit und Demokratie im Zeitalter der Neuen Medien
+      timestamp: '2018-08-25 11:00'
+      datetime: 28. Oktober 2017 | 10:45 - 12:30
+      place: Hotel & Restaurant Landgasthof, Baselstrasse 38, Riehen
+      alt: Die Delegierten schreiten zur Abstimmung
+      image-src: "/img/dv.jpg"
+      link: '#'
+    - title: Delegiertenversammlung mit Stargast mit sehr langem Namen
+      timestamp: '2018-08-25 11:00'
+      datetime: 25. August 2018 | 11:00
+      place: Säulenhalle Zug
+      alt: Die Delegierten schreiten zur Abstimmung
+      image-src: "/img/dv.jpg"
+      link: '#'
+    - title: Netzwerktreffen Grüne Städte – voneinander lernen
+      timestamp: '2018-08-25 11:00'
+      datetime: 10. Juni 2017 | 10:15 - 16:45
+      place: aki, Alpeneggstrasse 5, Bern
+      alt: Die Delegierten schreiten zur Abstimmung
+      image-src: "/img/dv.jpg"
+      link: '#'
+    - title: Delegiertenversammlung
+      timestamp: '2018-08-25 11:00'
+      datetime: 25. August 2018 – 11:00
+      place: Säulenhalle Zug
+      alt: Die Delegierten schreiten zur Abstimmung
+      image-src: "/img/dv.jpg"
+      link: '#'

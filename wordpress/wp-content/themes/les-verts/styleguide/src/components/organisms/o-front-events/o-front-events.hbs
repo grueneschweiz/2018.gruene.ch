@@ -1,0 +1,15 @@
+<div class="o-front-events">
+    <div class="o-front-events__cat-title">
+        {{> @a-cat-title cat-title}}
+    </div>
+    <div class="o-front-events__events">
+        {{#each events}}
+            <a class="o-front-events__event" href="{{this.link}}">
+                {{> @m-front-event this }}
+            </a>
+        {{/each}}
+    </div>
+    <div class="o-front-events__more">
+        {{> @a-link-button link-button}}
+    </div>
+</div>
