@@ -24,8 +24,9 @@ context:
     label: Ich akzeptiere die Datenschutzbestimmungen.
     id: datenschutz
     name: datenschutz
+    required: true
     modifiers:
-    - required
+    - legal
   button:
     label: Mitmachen
     modifiers:

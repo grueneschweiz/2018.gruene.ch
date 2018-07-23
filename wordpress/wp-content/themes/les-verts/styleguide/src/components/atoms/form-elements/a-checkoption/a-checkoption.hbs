@@ -10,6 +10,7 @@
                class="a-checkoption__field"
                type="checkbox"
                name="{{ name }}"
+               {{#if required}}required{{/if}}
             {{ checked }}>
     {{/if}}
     <label for="{{ id }}" class="a-checkoption__label {{ modifiers_classes }}">

@@ -98,6 +98,7 @@
 
   &__cta-label {
     margin: 16px 0;
+    line-height: 1.4em;
 
     @include media($_DESKTOP) {
       margin-left: 40px;
@@ -123,7 +124,7 @@
     flex-grow: 1;
     border-top: solid 1px $color-grey-2;
     margin-top: 12px;
-    font-size: 0.75rem; // 12/16
+    font-size: 0.875rem; // 14/16
   }
 
   &__date {

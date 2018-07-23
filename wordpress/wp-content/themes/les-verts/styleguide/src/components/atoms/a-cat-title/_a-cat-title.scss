@@ -11,12 +11,12 @@
     letter-spacing: 0.125em;
     line-height: 1.25em;
     color: $color-text;
-    padding-bottom: 12px;
+    padding-bottom: 0.75em;
     display: block;
 
     &:after {
       content: "";
-      width: 23px;
+      width: 1.4em;
       height: 2px;
       background-color: $color-text-light;
       position: absolute;
@@ -27,7 +27,7 @@
 
     @include hover {
       &:after{
-        width: 69px;
+        width: 4.2em;
         background-color: $color-primary;
       }
     }

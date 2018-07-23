@@ -8,7 +8,7 @@
 
   &__title {
     margin: 0;
-    line-height: 1rem;
+    line-height: 1em;
   }
 
   &__title-link {
@@ -17,16 +17,21 @@
 
     @include media($_DESKTOP) {
       color: $color-secondary;
+      transition: color $transition-fast $transition-ease;
+
+      @include hover {
+        color: $color-secondary-dark;
+      }
     }
   }
 
   &__text {
-    margin: 1rem 0 0;
+    margin: 1em 0 0;
   }
 
   &__grid {
     @extend .grid;
-    grid-row-gap: 16px;
+    grid-row-gap: 1em;
     width: 100%;
     max-width: 100%;
   }
@@ -44,6 +49,7 @@
   &__consent {
     grid-column: 1 / 13;
     font-size: 0.875rem;
+    line-height: 1.4em;
     hyphens: auto;
 
     @include media($size-small) {

@@ -8,10 +8,11 @@ context:
   id: some-checkbox
   name: some-checkbox
 variants:
-  - name: checkbox required
+  - name: legal checkbox
     context:
+      required: true
       modifiers:
-        - required
+        - legal
   - name: option
     context:
       option: true
