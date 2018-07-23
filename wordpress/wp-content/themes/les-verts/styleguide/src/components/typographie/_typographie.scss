@@ -142,3 +142,8 @@ ul li:before {
   color: $color-secondary;
   transform: rotate(-5deg);
 }
+
+::selection {
+  color: $color-white;
+  background: $color-primary;
+}
