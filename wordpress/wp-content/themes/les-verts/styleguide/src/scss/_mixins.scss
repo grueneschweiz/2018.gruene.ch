@@ -164,11 +164,16 @@
 
 @mixin clean-li {
   counter-increment: none;
+  position: static;
+  padding-left: 0;
+
   &:before {
     content: normal;
     display: initial; // sorry IE users
     margin: 0;
     color: initial; // sorry IE users
     transform: none;
+    position: static;
+    left: auto;
   }
 }
