@@ -25,3 +25,14 @@ variants:
       has-img: false
       modifiers:
         - no-image
+  - name: List
+    context:
+      title: Gesundes Klima und eine intakte Umwelt
+      has-img: false
+      modifiers:
+        - list
+        - no-image
+      list-items:
+        - Klimakatastrophe abwenden - Erneuerbare fördern
+        - Bahn, Bus und Velo statt Stau und Gestank
+        - Raumplanung statt Siedlungsbrei
