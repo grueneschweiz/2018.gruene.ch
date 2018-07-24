@@ -1,0 +1,51 @@
+.a-person-slide {
+  width: 280px;
+  height: 100%;
+  line-height: 0;
+  background: $color-white;
+
+  @include media($_DESKTOP) {
+    width: 288px;
+  }
+
+  &__image {
+    width: 100%;
+  }
+
+  &__caption {
+    padding: 18px 20px;
+
+    & > p {
+      margin: 0;
+
+      &:first-of-type {
+        margin-bottom: .75rem;
+      }
+    }
+  }
+
+  &__meta {
+    font-size: 0.875rem;
+  }
+
+  &__author {
+    font-weight: $font-weight-bold;
+  }
+
+  &__quote {
+    &:before {
+      content: "\AB";
+      padding-right: 0.25em;
+    }
+
+    &:after {
+      content: "\BB";
+      padding-left: 0.25em;
+    }
+
+    &:before, &:after {
+      color: $color-primary;
+      font-weight: $font-weight-bold;
+    }
+  }
+}

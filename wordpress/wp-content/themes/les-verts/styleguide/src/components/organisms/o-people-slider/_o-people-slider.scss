@@ -1,0 +1,81 @@
+.o-people-slider {
+  width: 100%;
+  overflow: hidden;
+  background: $color-grey-1;
+  position: relative;
+
+  &__wrapper {
+    @extend .grid-item;
+
+    @include media($_DESKTOP) {
+      max-width: $grid-max-width-max;
+    }
+  }
+
+  &__title {
+    @include fluid-props(font-size, $size-tiny, $size-medium, 32px, 46px);
+    @include fluid-props(margin-top, $size-tiny, $size-medium, 20px, 34px);
+    @include fluid-props(margin-bottom, $size-tiny, $size-medium, 26px, 56px);
+  }
+
+  &__slider {
+    display: flex;
+    align-items: stretch;
+    position: relative;
+  }
+
+  &__slide {
+    @include fluid-props(margin-right, $size-tiny, $size-medium, 20px, 32px);
+  }
+
+  &__slide-button {
+    display: none;
+    position: absolute;
+    height: 288px;
+    width: 108px;
+    @include fluid-props(top, $size-medium, $grid-max-width-max, $grid-item-padding-min + 180, $grid-item-padding-max + 180);
+    cursor: pointer;
+    transition: background-color $transition-fast $transition-ease;
+
+    @include media($size-small) {
+      display: block;
+    }
+
+    @media screen and (hover: none) {
+      // don't combine this query with the one above to work around the missing support in firefox
+      display: none;
+    }
+
+    &.is-disabled {
+      display: none;
+    }
+
+    @include hover {
+      background-color: rgba(255, 255, 255, 0.6);
+
+      svg {
+        fill: $color-primary-dark;
+      }
+    }
+
+    svg {
+      height: 48px;
+      width: 48px;
+      fill: $color-primary;
+      stroke: $color-white;
+      transition: fill $transition-fast $transition-ease;
+    }
+
+    &--left {
+      left: 0;
+
+      svg {
+        transform: rotate(180deg);
+      }
+    }
+
+    &--right {
+      right: 0;
+    }
+  }
+}

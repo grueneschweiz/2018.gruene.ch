@@ -1,0 +1,8 @@
+label: Person slide
+status: ready
+context:
+  image: '/img/adrian-345.jpg'
+  alt: Adrian Aulbach
+  author: Adrian Aulbach
+  job: Softwareentwickler, Student, Co-Präsident Grüne Interlaken-Oberhasli
+  quote: Grün – Aber sicher! Für eine sichere Energieversorgung, sicheren Verkehr und sichere Arbeitsplätze.

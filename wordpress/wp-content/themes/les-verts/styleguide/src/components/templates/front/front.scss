@@ -12,19 +12,17 @@
   }
 
   &__grid {
-    $side-margin: 15px;
-
     @include media($_DESKTOP){
       display: grid;
       grid-template-columns: 1fr 1fr;
       @include fluid-props(grid-gap, $size-medium, $grid-max-width-max, $grid-gap-min, $grid-gap-max);
       align-items: start;
       max-width: $grid-max-width-max;
-      width: calc(100% - 2 * #{$side-margin});
-      margin: 0 $side-margin;
+      width: calc(100% - 2 * #{$grid-min-side-margin});
+      margin: 0 $grid-min-side-margin;
     }
 
-    @include media($grid-max-width-max + 2 * $side-margin) {
+    @include media($grid-max-width-max + 2 * $grid-min-side-margin) {
       margin-left: auto;
       margin-right: auto;
       width: $grid-max-width-max;

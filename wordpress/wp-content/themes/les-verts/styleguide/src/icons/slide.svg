@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="48px" height="48px" viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.1 (57501) - http://www.bohemiancoding.com/sketch -->
+    <title>ico/48px/chevron-right/green</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Symbols" stroke="none" stroke-width="0" fill="none" fill-rule="evenodd">
+        <g id="comp/gruene-menschen/_LG" transform="translate(-1478.000000, -298.000000)">
+            <g id="ico/48px/chevron-right/green" transform="translate(1478.000000, 298.000000)">
+                <circle id="Oval-2" fill="#84B414" stroke-width="0" fill-rule="evenodd" cx="24" cy="24" r="24"></circle>
+                <polyline id="Path-4" stroke="#FFFFFF" stroke-width="2" transform="translate(24.000000, 24.000000) rotate(-90.000000) translate(-24.000000, -24.000000) " points="12 18 24 30 36 18"></polyline>
+            </g>
+        </g>
+    </g>
+</svg>

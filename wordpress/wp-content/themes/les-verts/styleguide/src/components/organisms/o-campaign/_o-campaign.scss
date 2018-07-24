@@ -28,17 +28,15 @@
     margin-right: 10px;
     @include fluid-props(margin-top, $fluid-min, $fluid-max, -10px, -60px);
 
-    $side-margin: 15px;
-
     @include media($_DESKTOP) {
-      width: calc(100% - 2 * #{$side-margin});
-      margin: -4em $side-margin;
+      width: calc(100% - 2 * #{$grid-min-side-margin});
+      margin: -4em $grid-min-side-margin;
       display: grid;
       grid-template-columns: 1fr 60px 16px 16px 60px 1fr;
       grid-template-rows: repeat(12, 1fr);
     }
 
-    @include media($grid-max-width-max + 2 * $side-margin) {
+    @include media($grid-max-width-max + 2 * $grid-min-side-margin) {
       margin-left: auto;
       margin-right: auto;
       width: $grid-max-width-max;

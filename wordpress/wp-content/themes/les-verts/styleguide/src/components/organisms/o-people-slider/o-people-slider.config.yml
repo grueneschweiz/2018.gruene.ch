@@ -1,0 +1,60 @@
+label: People slider
+status: ready
+context:
+  title: Wir engagieren uns als Grüne
+  aria-label-slide-left: Vorherige Person anzeigen
+  aria-label-slide-right: Nächste Person anzeigen
+  cat-title:
+    label: Grüne Menschen
+    link: '#'
+  slides:
+    - author: Adrian Aulbach
+      alt: Adrian Aulbach
+      image: '/img/adrian-345.jpg'
+      quote: Grün – Aber sicher! Für eine sichere Energieversorgung, sicheren Verkehr und sichere Arbeitsplätze.
+      job: Softwareentwickler, Student, Co-Präsident Grüne Interlaken-Oberhasli
+    - author: Anna de Quervain
+      alt: Anna de Quervain
+      image: '/img/anna_q-345.jpg'
+      quote: Investitionen in Bildung und Integration sind Investitionen in die Zukunft.
+      job: Stadträtin Burgdorf, Fraktionssprecherin, Vorstand Operation Libero Bern
+    - author: Anna Zeilstra
+      alt: Anna Zeilstra
+      image: '/img/anna_z-345.jpg'
+      quote: Ich setze mich für Minderheiten und eine offene Gesellschaft ein.
+      job: Sozialpädagogin HF, Präsidentin Grüne Spiez, Mitglied GGR Spiez, Mitglied Sozialkommission
+    - author: Carole Klopfstein
+      alt: Carole Klopfstein
+      image: '/img/carole-345.jpg'
+      quote: Soziale Verantwortung, Solidarität und Nachhaltigkeit - Nicht alle Aspekte der Gesellschaft lassen sich durch die Wirtschaft lösen.
+      job: Gemeinderätin GGR Muri-Gümligen, Projektleiterin
+    - author: Cyril Bucher
+      alt: Cyril Bucher
+      image: '/img/cyril-345.jpg'
+      quote: Investition in Bildung und Gesundheit. Förderung des Sportes. Nachhaltigkeit in der Wirtschaft.
+      job: Medizinstudent
+    - author: Adrian Aulbach
+      alt: Adrian Aulbach
+      image: '/img/adrian-345.jpg'
+      quote: Grün – Aber sicher! Für eine sichere Energieversorgung, sicheren Verkehr und sichere Arbeitsplätze.
+      job: Softwareentwickler, Student, Co-Präsident Grüne Interlaken-Oberhasli
+    - author: Anna de Quervain
+      alt: Anna de Quervain
+      image: '/img/anna_q-345.jpg'
+      quote: Investitionen in Bildung und Integration sind Investitionen in die Zukunft.
+      job: Stadträtin Burgdorf, Fraktionssprecherin, Vorstand Operation Libero Bern
+    - author: Anna Zeilstra
+      alt: Anna Zeilstra
+      image: '/img/anna_z-345.jpg'
+      quote: Ich setze mich für Minderheiten und eine offene Gesellschaft ein.
+      job: Sozialpädagogin HF, Präsidentin Grüne Spiez, Mitglied GGR Spiez, Mitglied Sozialkommission
+    - author: Carole Klopfstein
+      alt: Carole Klopfstein
+      image: '/img/carole-345.jpg'
+      quote: Soziale Verantwortung, Solidarität und Nachhaltigkeit - Nicht alle Aspekte der Gesellschaft lassen sich durch die Wirtschaft lösen.
+      job: Gemeinderätin GGR Muri-Gümligen, Projektleiterin
+    - author: Cyril Bucher
+      alt: Cyril Bucher
+      image: '/img/cyril-345.jpg'
+      quote: Investition in Bildung und Gesundheit. Förderung des Sportes. Nachhaltigkeit in der Wirtschaft.
+      job: Medizinstudent

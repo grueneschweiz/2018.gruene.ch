@@ -3,6 +3,7 @@ context:
     - name: Actions
       icons:
         - close
+        - slide
     - name: Miscellaneous
       icons:
         - testimony
