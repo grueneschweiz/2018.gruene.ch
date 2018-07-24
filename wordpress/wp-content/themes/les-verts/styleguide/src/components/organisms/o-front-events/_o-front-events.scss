@@ -1,20 +1,17 @@
 .o-front-events {
-  padding: 41px 41px;
-  max-width: 651px;
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
+  @extend .grid-item;
+  padding-left: 0;
+  padding-right: 0;
 
   @include media($_DESKTOP) {
-    padding: 60px 60px;
     max-width: $grid-max-width-max;
   }
 
   &__cat-title {
     margin-bottom: 4px;
+    @include fluid-grid-item-props(margin-left);
 
     @include media($_DESKTOP) {
-      margin-left: 60px;
       margin-bottom: 25px;
     }
   }
@@ -23,7 +20,7 @@
     width: 100%;
     display: grid;
     grid-template-columns: 1fr;
-    grid-gap: 0 32px;
+    @include fluid-props(grid-column-gap, $size-medium, $grid-max-width-max, $grid-gap-min, $grid-gap-max);
 
     @include media($_DESKTOP) {
       grid-template-columns: 1fr 1fr;
@@ -34,12 +31,7 @@
   &__event {
     @include clean-link;
     width: 100%;
-    max-width: 600px;
-
-    @include media($_DESKTOP) {
-      padding-left: 60px;
-      padding-right: 60px;
-    }
+    @include fluid-grid-item-props(padding-left padding-right);
 
     @include hover {
       background-color: $color-grey-1;
@@ -48,9 +40,6 @@
 
   &__more {
     padding-top: 16px;
-
-    @include media($_DESKTOP) {
-      margin: 0 60px;
-    }
+    @include fluid-grid-item-props(padding-left);
   }
 }

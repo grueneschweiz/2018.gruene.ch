@@ -1,12 +1,7 @@
 .o-positions {
-  padding: 41px 41px;
-  max-width: 651px;
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
+  @extend .grid-item;
 
   @include media($_DESKTOP) {
-    padding: 60px 60px;
     max-width: $grid-max-width-max;
   }
 
@@ -14,7 +9,6 @@
     margin-bottom: 22px;
 
     @include media($_DESKTOP) {
-      margin-left: 60px;
       margin-bottom: 47px;
     }
   }
@@ -23,22 +17,28 @@
     width: 100%;
     display: grid;
     grid-template-columns: 1fr;
+    @include fluid-props(grid-column-gap, $size-medium, $grid-max-width-max, $grid-gap-min, $grid-gap-max);
     grid-row-gap: 40px;
     align-items: start;
 
     @include media($_DESKTOP) {
       grid-template-columns: 1fr 1fr;
-      grid-gap: 64px 32px;
+      grid-row-gap: 64px;
       align-items: start;
     }
   }
 
   &__article {
     width: 100%;
-    max-width: 600px;
 
     @include media($_DESKTOP) {
-      padding-left: 60px;
+      &:nth-of-type(even) {
+        @include fluid-grid-item-props(padding-left);
+      }
+
+      &:nth-of-type(odd) {
+        @include fluid-grid-item-props(padding-right);
+      }
     }
   }
 }

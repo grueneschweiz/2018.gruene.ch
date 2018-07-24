@@ -9,7 +9,7 @@
   padding-bottom: 40px;
 
   @include media($_DESKTOP) {
-    padding-right: 170px;
+    padding-right: calc(75px + 39 * (100vw - 375px) / 1305);
   }
 
   &__title {
