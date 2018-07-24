@@ -31,12 +31,16 @@
 
     &:after {
       content: ' ';
-      width: calc(100% - 41px + 19 * (100vw - 1024px) / 416);
+      width: calc(100% - 82px);
       height: 1px;
       background: $color-grey-2;
       position: absolute;
       bottom: 1px;
       @include fluid-grid-item-props(left);
+
+      @include media($_DESKTOP) {
+        width: calc(100% - 2 * (41px + 19 * (100vw - 1024px) / 416));
+      }
     }
 
     @include hover {
