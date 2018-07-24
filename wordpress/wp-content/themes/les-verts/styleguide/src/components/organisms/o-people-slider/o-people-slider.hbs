@@ -4,21 +4,25 @@
             {{> @a-cat-title cat-title}}
         </div>
         <h3 class="o-people-slider__title">{{title}}</h3>
-        <div class="o-people-slider__slider">
-            {{#each slides}}
-                <div class="o-people-slider__slide">
-                    {{> @a-person-slide this}}
-                </div>
-            {{/each}}
+        <div class="o-people-slider__library-container swiper-container">
+            <div class="o-people-slider__slider swiper-wrapper">
+                {{#each slides}}
+                    <div class="o-people-slider__slide swiper-slide">
+                        {{> @a-person-slide this}}
+                    </div>
+                {{/each}}
+            </div>
         </div>
-        <button class="o-people-slider__slide-button o-people-slider__slide-button--left" aria-label="{{aria-label-slide-left}}">
+        <button class="o-people-slider__slide-button o-people-slider__slide-button--left"
+                aria-label="{{aria-label-slide-left}}">
             <svg title="Slide to the left" role="img">
-                <use xlink:href="#slide" />
+                <use xlink:href="#slide"/>
             </svg>
         </button>
-        <button class="o-people-slider__slide-button o-people-slider__slide-button--right" aria-controls="o-people-slider__slider" aria-label="{{aria-label-slide-right}}">
+        <button class="o-people-slider__slide-button o-people-slider__slide-button--right"
+                aria-controls="o-people-slider__slider" aria-label="{{aria-label-slide-right}}">
             <svg title="Slide to the right" role="img">
-                <use xlink:href="#slide" />
+                <use xlink:href="#slide"/>
             </svg>
         </button>
     </div>
