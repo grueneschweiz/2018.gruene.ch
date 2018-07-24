@@ -25,12 +25,14 @@
   }
 
   &__title {
-    margin: 0 3.1914893617em 0 0;
+    margin: 0;
     align-self: flex-start;
     color: $color-text;
     font-size: 1rem;
+    hyphens: auto;
 
     @include media($_MOBILE) {
+       margin-right: 3.1914893617em;
 
       &:after {
         content: "";
