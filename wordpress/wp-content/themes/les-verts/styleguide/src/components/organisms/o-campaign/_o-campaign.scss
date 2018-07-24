@@ -19,14 +19,14 @@
 
     .m-bars {
       position: absolute;
-      @include fluid-props(bottom, $fluid-min, $fluid-max, 64px, 96px);
+      @include fluid-props(bottom, $fluid-min, $fluid-max, 15px, 96px);
     }
   }
 
   &__cta-wrapper {
     margin-left: 10px;
     margin-right: 10px;
-    margin-top: -3em;
+    @include fluid-props(margin-top, $fluid-min, $fluid-max, -10px, -60px);
 
     $side-margin: 15px;
 
