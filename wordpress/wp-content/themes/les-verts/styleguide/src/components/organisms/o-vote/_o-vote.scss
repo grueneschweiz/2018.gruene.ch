@@ -1,24 +1,14 @@
 .o-vote {
+  @extend .grid-item;
   height: 100%;
-  width: 100%;
-  max-width: 651px;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 41px 0;
+  padding-left: 0;
+  padding-right: 0;
   display: flex;
   flex-direction: column;
 
-  @include media($_DESKTOP) {
-    padding: 60px 0;
-    max-width: 689px;
-  }
-
   &__cat-title {
-    margin: 0 41px 22px;
-
-    @include media($_DESKTOP) {
-      margin: 0 60px 32px;
-    }
+    margin-bottom: 22px;
+    @include fluid-grid-item-props(margin-left);
   }
 
   &__proposals {
@@ -37,7 +27,7 @@
     align-content: center;
     transition: background $transition-fast $transition-ease;
     position: relative;
-    padding: 0 41px;
+    @include fluid-grid-item-props(padding-left padding-right);
 
     &:after {
       content: ' ';
@@ -45,20 +35,11 @@
       height: 1px;
       background: $color-grey-2;
       position: absolute;
-      bottom: 0;
-      left: 41px;
-    }
+      bottom: 1px;
+      @include fluid-grid-item-props(left);
 
-    &:last-of-type:after {
-      background: transparent;
-    }
-
-    @include media($_DESKTOP) {
-      padding: 0 60px;
-
-      &:after {
-        width: calc(100% - 120px);
-        left: 60px;
+      @include media($_DESKTOP) {
+        width: calc(100% - 2 * (41px + 19 * (100vw - 1024px) / 416));
       }
     }
 
@@ -69,11 +50,6 @@
 
   &__more {
     padding-top: 16px;
-    border-top: 1px solid $color-grey-2;
-    margin: 0 41px;
-
-    @include media($_DESKTOP) {
-      margin: 0 60px;
-    }
+    @include fluid-grid-item-props(padding-left padding-right);
   }
 }

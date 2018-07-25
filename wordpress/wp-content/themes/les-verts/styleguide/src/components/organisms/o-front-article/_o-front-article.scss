@@ -1,14 +1,5 @@
 .o-front-article {
-  padding: 41px 41px;
-  max-width: 651px;
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-
-  @include media($_DESKTOP) {
-    padding: 60px 60px;
-    max-width: 689px;
-  }
+  @extend .grid-item;
 
   &__cat-title {
     @include media($_DESKTOP) {
@@ -18,13 +9,7 @@
 
   &__quote {
     position: absolute;
-    top: 41px;
-    right: 41px;
-
-    @include media($_DESKTOP) {
-      top: 60px;
-      right: 60px;
-    }
+    @include fluid-grid-item-props(top right);
 
     svg {
       fill: $color-primary-super-light;
@@ -65,16 +50,21 @@
       &:last-of-type {
         margin-left: 16px;
       }
-    }
 
-    .m-front-article__title {
-      font-size: 1rem;
+      .m-front-article__title {
+        font-size: 1rem;
+      }
     }
   }
 
   &--mm {
     position: relative;
     background: $color-grey-1;
+
+    @include media($_MOBILE) {
+      margin-top: 41px;
+      margin-bottom: 41px;
+    }
   }
 
   &--mm &__article {
@@ -98,6 +88,7 @@
 
   &__cta-label {
     margin: 16px 0;
+    line-height: 1.4em;
 
     @include media($_DESKTOP) {
       margin-left: 40px;
@@ -123,7 +114,7 @@
     flex-grow: 1;
     border-top: solid 1px $color-grey-2;
     margin-top: 12px;
-    font-size: 0.75rem; // 12/16
+    font-size: 0.875rem; // 14/16
   }
 
   &__date {

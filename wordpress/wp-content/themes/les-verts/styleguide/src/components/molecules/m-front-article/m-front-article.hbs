@@ -7,6 +7,14 @@
             {{> @a-link-image img}}
         </div>
     {{/if}}
-    <p class="m-front-article__text">{{ text }}</p>
+    {{#if list-items}}
+        <ul class="m-front-article__list">
+            {{#each list-items}}
+                <li class="m-front-article__list-item">{{ . }}</li>
+            {{/each}}
+        </ul>
+    {{else}}
+        <p class="m-front-article__text">{{{ text }}}</p>
+    {{/if}}
     {{render '@a-link-button'}}
 </div>

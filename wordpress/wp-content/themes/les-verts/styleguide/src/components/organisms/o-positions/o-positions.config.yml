@@ -1,0 +1,48 @@
+label: Positions
+status: ready
+display:
+  padding: 40px
+context:
+  cat-title:
+    label: Standpunkte
+  articles:
+  - article:
+    title: Gesundes Klima und intakte Umwelt
+    has-img: false
+    modifiers:
+      - list
+      - no-image
+    list-items:
+      - Klimakatastrophe abwenden - Erneuerbare fördern
+      - Bahn, Bus und Velo statt Stau und Gestank
+      - Raumplanung statt Siedlungsbrei
+  - article:
+    title: Solidarität, Gleichstellung, Chancengleichheit
+    has-img: false
+    modifiers:
+      - list
+      - no-image
+    list-items:
+      - Klimakatastrophe abwenden - Erneuerbare fördern
+      - Bahn, Bus und Velo statt Stau und Gestank
+      - Raumplanung statt Siedlungsbrei
+  - article:
+    title: Nachhaltige und faire Wirtschaft
+    has-img: false
+    modifiers:
+      - list
+      - no-image
+    list-items:
+      - Klimakatastrophe abwenden - Erneuerbare fördern
+      - Bahn, Bus und Velo statt Stau und Gestank
+      - Raumplanung statt Siedlungsbrei
+  - article:
+    title: Frieden und globale Gerechtigkeit
+    has-img: false
+    modifiers:
+      - list
+      - no-image
+    list-items:
+      - Klimakatastrophe abwenden - Erneuerbare fördern
+      - Bahn, Bus und Velo statt Stau und Gestank
+      - Raumplanung statt Siedlungsbrei

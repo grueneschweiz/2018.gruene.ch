@@ -2,7 +2,7 @@
 	@include clean-link;
 
 	display: inline-block;
-	padding: 4px 4px 5px;
+	padding: 0.3333333333em 0.3333333333em 0.4166666667em;
 	border-radius: 2px;
 	text-align: center;
 	text-transform: uppercase;
@@ -10,12 +10,12 @@
 	font-weight: $font-weight-bold;
 	font-family: $font-title;
 	letter-spacing: 0.04166666667em;
-	width: 44px;
+	width: 3.6666666667em;
 
 	@include media($_DESKTOP) {
 		font-size: 0.875rem;
-		padding: 6px 0 7px;
-		width: 60px;
+		padding: 0.4285714286em 0 0.5em;
+		width: 4.2857142857em;
 	}
 
 	&--free {

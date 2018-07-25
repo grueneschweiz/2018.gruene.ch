@@ -112,15 +112,17 @@ ul, ol {
   margin-bottom: 1.5em;
 
   li {
+    position: relative;
+    padding-left: 1.5em;
+
     &:before {
-      display: inline-block;
-      margin-right: 1em;
+      position: absolute;
+      left: 0;
     }
   }
 }
 
 li > ol, li > ul {
-  margin-left: 2em;
   margin-top: 0;
   margin-bottom: 0;
 }
@@ -130,6 +132,14 @@ ol {
 
   li {
     counter-increment: item;
+
+    li {
+      padding-left: 2.5em;
+
+      li {
+        padding-left: 3em;
+      }
+    }
 
     &:before {
       content: counters(item, ".") ".";
@@ -141,4 +151,9 @@ ul li:before {
   content: "\25A0";
   color: $color-secondary;
   transform: rotate(-5deg);
+}
+
+::selection {
+  color: $color-white;
+  background: $color-primary;
 }

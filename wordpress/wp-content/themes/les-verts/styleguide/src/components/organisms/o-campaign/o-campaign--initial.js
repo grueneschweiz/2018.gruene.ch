@@ -19,10 +19,10 @@ export default class OCampaignInitial {
     }
 
     setPosition() {
-        this.imageWrapper.style.top = (-this.context.getScrollTop() + this.menuBottom) + 'px';
+        this.imageWrapper.style.transform = this.context.translate(-this.context.getScrollTop() + this.menuBottom);
     }
 
     setBluring() {
-        this.image.filter = 'none';
+        this.image.style.filter = 'none';
     }
 }

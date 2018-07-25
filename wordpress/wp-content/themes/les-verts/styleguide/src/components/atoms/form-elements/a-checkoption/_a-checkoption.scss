@@ -30,7 +30,7 @@
       left: 2px;
     }
 
-    &.a-checkoption--required:after {
+    &.a-checkoption--legal:after {
       box-shadow: 0 0 5px 1px $color-secondary;
     }
 
@@ -39,7 +39,7 @@
     }
   }
 
-  &--required {
+  &--legal {
     background-image: url('/img/checkbox--secondary.svg');
   }
 

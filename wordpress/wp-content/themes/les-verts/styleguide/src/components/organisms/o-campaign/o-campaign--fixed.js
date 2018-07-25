@@ -16,7 +16,7 @@ export default class OCampaignFixed {
     }
 
     setPosition() {
-        this.imageWrapper.style.top = this.context.getMenu().clientHeight + 'px';
+        this.imageWrapper.style.transform = this.context.translate(this.context.getMenu().clientHeight);
     }
 
     setBluring() {

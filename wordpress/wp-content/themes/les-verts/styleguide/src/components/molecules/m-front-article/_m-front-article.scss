@@ -5,7 +5,7 @@
   &__title {
     @include fluid-props(font-size, $size-tiny, $size-medium, 20px, 24px);
     @include fluid-props(margin-top, $size-tiny, $size-medium, 4px, 12px);
-    margin-bottom: 12px;
+    margin-bottom: 0.5em;
   }
 
   &--image-second &__title,
@@ -32,8 +32,8 @@
     order: -1;
   }
 
-  &__text{
+  &__text, &__list{
     margin-top: 0;
-    margin-bottom: 16px;
+    margin-bottom: 1em;
   }
 }

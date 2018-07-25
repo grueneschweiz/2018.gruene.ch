@@ -28,19 +28,28 @@ export default class OCampaign extends BaseView {
         this.header = this.getComponent('OHeader0');
         this.branding = this.header.getBranding();
         this.menu = this.header.getMenu();
+
+        this.ticking = false;
     }
 
     bind() {
         super.bind();
 
-        this.scrollHandler = () => requestAnimationFrame(this.onScroll.bind(this));
+        this.scrollHandler = () => this.requestTick();
         this.resizeHandler = throttle(() => this.onResize(), RESIZE_THROTTLING_MS, {leading: false, trailing: true});
 
         window.addEventListener("resize", this.resizeHandler);
-        window.addEventListener("scroll", this.scrollHandler);
+        window.addEventListener("scroll", this.scrollHandler, false);
 
         this.scrollHandler();
         this.resizeHandler();
+    }
+
+    requestTick() {
+        if (!this.ticking){
+            this.ticking = true;
+            window.requestAnimationFrame(this.onScroll.bind(this));
+        }
     }
 
     onResize() {
@@ -60,6 +69,7 @@ export default class OCampaign extends BaseView {
         }
 
         this.state.run();
+        this.ticking = false;
     }
 
     setState(state) {
@@ -96,6 +106,10 @@ export default class OCampaign extends BaseView {
 
     getImageWrapper() {
         return this.imageWrapper;
+    }
+
+    translate(y) {
+        return `translate3d(0px, ${y}px, 0px)`;
     }
 
     /**

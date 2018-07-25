@@ -20,7 +20,7 @@ export default class OCampaignScrolling {
     }
 
     setPosition() {
-        this.imageWrapper.style.top = this.getTopPosition();
+        this.imageWrapper.style.transform = this.context.translate(this.getTopPosition());
     }
 
     setBluring() {
@@ -30,6 +30,6 @@ export default class OCampaignScrolling {
     }
 
     getTopPosition() {
-        return ((-(this.context.getScrollTop() - this.scrollStart) * SCROLL_SPEED) + this.menuHeight) + 'px';
+        return ((-(this.context.getScrollTop() - this.scrollStart) * SCROLL_SPEED) + this.menuHeight);
     }
 }

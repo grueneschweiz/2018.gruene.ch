@@ -12,23 +12,28 @@
   }
 
   &__grid {
-
     @include media($_DESKTOP){
       display: grid;
       grid-template-columns: 1fr 1fr;
-      grid-gap: 100px 32px;
+      @include fluid-props(grid-gap, $size-medium, $grid-max-width-max, $grid-gap-min, $grid-gap-max);
       align-items: start;
       max-width: $grid-max-width-max;
-      width: 100%;
-      margin: auto;
+      width: calc(100% - 2 * #{$grid-min-side-margin});
+      margin: 0 $grid-min-side-margin;
+    }
 
-      &:nth-child(odd) .o-front-article--mm {
-        margin-left: 60px;
-      }
+    @include media($grid-max-width-max + 2 * $grid-min-side-margin) {
+      margin-left: auto;
+      margin-right: auto;
+      width: $grid-max-width-max;
+    }
+  }
 
-      &:nth-child(even) .o-front-article--mm {
-        margin-right: 60px;
-      }
+  &__article {
+    height: 100%;
+
+    &--2-col {
+      grid-column: 1 / 3;
     }
   }
 }

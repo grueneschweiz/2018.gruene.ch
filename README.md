@@ -1,9 +1,9 @@
 Les Verts Stack
 ===============
 
-Les Verts (Die Gruene) new website with living styleguide made with Fractal.build, hosted on WordPress Multisite and with the latest technologies by superhuit.ch.
+Les Verts (Grüne Schweiz) new website with living styleguide made with Fractal.build, hosted on WordPress Multisite and with the latest technologies by superhuit.ch.
 
-Living Styleguide: https://superhuit.gitlab.io/les-verts-stack/
+Living Styleguide: https://styleguide.2018.gruene.ch/
 
 Installation
 ============

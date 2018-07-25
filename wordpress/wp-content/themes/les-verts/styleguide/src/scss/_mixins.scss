@@ -120,6 +120,14 @@
 }
 
 /**
+ * Use this to style items of the main grid.
+ * This is just a shortcut to have the right sizes ready.
+ */
+@mixin fluid-grid-item-props($properties) {
+  @include fluid-props($properties, $size-medium, $grid-max-width-max, $grid-item-padding-min, $grid-item-padding-max);
+}
+
+/**
  * Cleaners to remove basic typography styles
  */
 @mixin clean-p {
@@ -164,11 +172,16 @@
 
 @mixin clean-li {
   counter-increment: none;
+  position: static;
+  padding-left: 0;
+
   &:before {
     content: normal;
     display: initial; // sorry IE users
     margin: 0;
     color: initial; // sorry IE users
     transform: none;
+    position: static;
+    left: auto;
   }
 }

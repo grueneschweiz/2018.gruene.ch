@@ -4,11 +4,26 @@
         {{render '@o-campaign'}}
         <div class="page__grid-wrapper">
             <div class="page__grid">
-                {{render '@o-vote--3-proposals'}}
-                {{render '@o-front-article--single'}}
-                {{render '@o-front-article--oton' }}
-                {{render '@o-front-article' }}
+                <div class="page__article">
+                    {{render '@o-vote--3-proposals'}}
+                </div>
+                <div class="page__article">
+                    {{render '@o-front-article--single'}}
+                </div>
+                <div class="page__article">
+                    {{render '@o-front-article--oton' }}
+                </div>
+                <div class="page__article">
+                    {{render '@o-front-article' }}
+                </div>
+                <div class="page__article--2-col">
+                    {{render '@o-positions' }}
+                </div>
+                <div class="page__article--2-col">
+                    {{render '@o-front-events' }}
+                </div>
             </div>
+            {{render '@o-people-slider'}}
         </div>
     </main>
 </div>
