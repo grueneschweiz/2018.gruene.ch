@@ -7,7 +7,7 @@ export default class OCampaignScrolling {
         this.image = this.context.getImage();
         this.imageWrapper = this.context.getImageWrapper();
         this.scrollStart = this.context.getScrollStart();
-        this.menuHeight = this.context.getMenu().clientHeight;
+        this.brandingHeight = this.context.getBranding().clientHeight;
     }
 
     run() {
@@ -30,6 +30,6 @@ export default class OCampaignScrolling {
     }
 
     getTopPosition() {
-        return ((-(this.context.getScrollTop() - this.scrollStart) * SCROLL_SPEED) + this.menuHeight);
+        return ((-(this.context.getScrollTop() - this.scrollStart) * SCROLL_SPEED) - this.brandingHeight);
     }
 }

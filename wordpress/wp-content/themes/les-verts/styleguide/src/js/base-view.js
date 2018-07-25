@@ -106,12 +106,23 @@ export default class BaseView {
 
     /**
      * Is desktop?
+     *
+     * @return {boolean}
      */
     isDesktop() {
         if (window && window.innerWidth) {
             return (window.innerWidth >= 1024);
         }
         return true;
+    }
+
+    /**
+     * How far have we scrolled down?
+     *
+     * @return {number}
+     */
+    getScrollTop() {
+        return window.pageYOffset || document.documentElement.scrollTop;
     }
 
     /**

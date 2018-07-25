@@ -88,10 +88,6 @@ export default class OCampaign extends BaseView {
         return this.scrollStart;
     }
 
-    getScrollTop() {
-        return window.pageYOffset || document.documentElement.scrollTop;
-    }
-
     getBranding() {
         return this.branding;
     }

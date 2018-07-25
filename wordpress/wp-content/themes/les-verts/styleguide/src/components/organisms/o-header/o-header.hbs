@@ -1,9 +1,14 @@
 <header class="o-header">
-    <div class="o-header__branding">
-        {{> @m-branding branding}}
+    <div class="o-header__display">
+        <div class="o-header__branding">
+            {{> @m-branding branding}}
+        </div>
+        <div class="o-header__menu">
+            {{render '@m-menu'}}
+        </div>
     </div>
-    <div class="o-header__menu">
+    <div class="o-header__shadow" aria-hidden="true">
+        {{> @m-branding branding}}
         {{render '@m-menu'}}
     </div>
-    <div class="o-header__spacer"></div>
 </header>
