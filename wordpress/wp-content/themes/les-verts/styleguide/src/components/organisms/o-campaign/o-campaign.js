@@ -1,33 +1,20 @@
 import throttle from 'lodash.throttle';
 
 import BaseView from "./../../../js/base-view";
-import OCampaignInitial from "./o-campaign--initial";
-import OCampaignFixed from "./o-campaign--fixed";
-import OCampaignScrolling from "./o-campaign--scrolling";
 
 const IMAGE_SELECTOR = '.o-campaign__image';
 const IMAGE_WRAPPER_SELECTOR = '.o-campaign__image-wrapper';
-const BARS_SELECTOR = '.o-campaign__bars';
 
-const BLUR_SIZE_TINY = 2;
-const BLUR_ADD_LARGE = 6; // so total will be 8
-
-const SIZE_TINY = 375;
-const SIZE_ADD_LARGE = 1305; // so total will be 1680
-
-const IMAGE_OVERLAP_FACTOR = 2 / 3;
-
+const SCROLL_SPEED = 0.1;
 const RESIZE_THROTTLING_MS = 100;
 
 export default class OCampaign extends BaseView {
     initialize() {
         this.image = this.getScopedElement(IMAGE_SELECTOR);
         this.imageWrapper = this.getScopedElement(IMAGE_WRAPPER_SELECTOR);
-        this.bars = this.getScopedElement(BARS_SELECTOR);
 
         this.header = this.getComponent('OHeader0');
         this.branding = this.header.getBranding();
-        this.menu = this.header.getMenu();
 
         this.ticking = false;
     }
@@ -46,80 +33,40 @@ export default class OCampaign extends BaseView {
     }
 
     requestTick() {
-        if (!this.ticking){
+        if (!this.ticking) {
             this.ticking = true;
             window.requestAnimationFrame(this.onScroll.bind(this));
         }
     }
 
     onResize() {
-        this.getScrollStart(true);
-        this.bars.style.height = this.image.clientHeight + 'px';
+        this.setBrandingHeight();
+        this.setScrollStop();
     }
 
     onScroll() {
         if (!this.header.getFixed()) {
-            this.setState(OCampaignInitial);
+            this.imageWrapper.style.transform = this.translate(-this.getScrollTop());
         } else {
-            if (this.getScrollTop() < this.getScrollStart()) {
-                this.setState(OCampaignFixed);
-            } else {
-                this.setState(OCampaignScrolling);
+            if (this.getScrollTop() < this.scrollStop) {
+                let delta = this.getScrollTop() - this.brandingHeight;
+                this.imageWrapper.style.transform = this.translate(-this.brandingHeight - delta * SCROLL_SPEED);
             }
         }
 
-        this.state.run();
         this.ticking = false;
     }
 
-    setState(state) {
-        if (!(this.state instanceof state)) {
-            this.state = new state(this);
-        }
+    setBrandingHeight() {
+        this.brandingHeight = this.branding.clientHeight;
     }
 
-    getScrollStart(recalculate = false) {
-        if (!this.scrollStart || recalculate) {
-            this.scrollStart = this.header.getBranding().clientHeight
-                + this.image.clientTop
-                + this.image.clientHeight * IMAGE_OVERLAP_FACTOR;
-        }
-
-        return this.scrollStart;
-    }
-
-    getBranding() {
-        return this.branding;
-    }
-
-    getMenu() {
-        return this.menu;
-    }
-
-    getImage() {
-        return this.image;
-    }
-
-    getImageWrapper() {
-        return this.imageWrapper;
+    setScrollStop() {
+        this.scrollStop = this.brandingHeight + this.element.clientHeight;
     }
 
     translate(y) {
         return `translate3d(0px, ${y}px, 0px)`;
-    }
-
-    /**
-     * Calculate the max blur size respecting the device size (cached)
-     *
-     * @returns {number}
-     */
-    getSizedBlur() {
-        if (!this.sizedBlur) {
-            let vw = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-            let sizedBlur = (vw - SIZE_TINY) / SIZE_ADD_LARGE * BLUR_ADD_LARGE + BLUR_SIZE_TINY;
-            this.sizedBlur = Math.max(sizedBlur, 0);
-        }
-        return this.sizedBlur;
     }
 
     destroy() {

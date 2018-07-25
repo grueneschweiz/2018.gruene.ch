@@ -5,22 +5,26 @@
     position: fixed;
     width: 100%;
     z-index: -1;
-    overflow: hidden; // to cut the ugly blurred borders
   }
 
-  &__image {
-    transform: scale(1.02); // to cut the ugly blurred borders
-  }
 
   &__bars {
     width: 100%;
-    position: relative;
+    height: 100%;
+    position: absolute;
+    top: 0;
     @include fluid-props(font-size, $fluid-min, $fluid-max, 16px, 72px);
 
     .m-bars {
       position: absolute;
       @include fluid-props(bottom, $fluid-min, $fluid-max, 15px, 96px);
     }
+  }
+
+  &__spacer {
+    position:relative;
+    z-index: -1;
+    visibility: hidden;
   }
 
   &__cta-wrapper {
