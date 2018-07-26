@@ -69,6 +69,11 @@ class StarterSite extends TimberSite {
 	function add_to_context( $context ) {
 		// $context['notes'] = 'These values are available everytime you call Timber::get_context();';
 
+		$context['branding'] = [
+			'unbreakeables' => ['ökologisch.','sozial.','solidarisch.'], // todo: get them from the customizer
+			'theme_uri' => THEME_URI
+		];
+		
 		// Inject some default WP vars
 		$context['menu'] = new TimberMenu('menu');
 

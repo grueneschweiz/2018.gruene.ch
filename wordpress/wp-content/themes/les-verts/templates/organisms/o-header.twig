@@ -1,0 +1,14 @@
+<header class="o-header">
+    <div class="o-header__display">
+        <div class="o-header__branding">
+            {% include 'molecules/m-branding.twig' with branding only %}
+        </div>
+        <div class="o-header__menu">
+            {% include 'molecules/m-menu.twig' %}
+        </div>
+    </div>{#
+    <div class="o-header__shadow" aria-hidden="true">
+        {% include 'molecules/m-branding.twig' with branding only %}
+        {% include 'molecules/m-menu.twig' with menu only %}
+    </div>#}
+</header>

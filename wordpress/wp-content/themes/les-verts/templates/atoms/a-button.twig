@@ -1,0 +1,3 @@
+<{% if url %}a href="{{ url }}"{% else %}button type="{{ type }}"{% endif %}
+        class="button {{ modifier }}"
+        {% if target is not empty %} target="{{ target }}"{% endif %}>{{ label }}</{% if url %}a{% else %}button{% endif %}>
