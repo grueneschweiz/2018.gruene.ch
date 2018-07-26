@@ -1,0 +1,15 @@
+.a-social-icon {
+  @include clean-link;
+
+  svg {
+    stroke: $color-primary;
+    fill: transparent;
+    transition: stroke $transition-fast $transition-ease;
+  }
+
+  @include hover {
+    svg {
+      stroke: $color-primary-dark;
+    }
+  }
+}
