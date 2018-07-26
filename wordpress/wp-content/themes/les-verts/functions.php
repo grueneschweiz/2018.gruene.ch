@@ -69,9 +69,6 @@ class StarterSite extends TimberSite {
 	function add_to_context( $context ) {
 		// $context['notes'] = 'These values are available everytime you call Timber::get_context();';
 
-		// Inject the current page or post
-		$context['post'] = Timber::query_post();
-
 		// Inject some default WP vars
 		$context['menu'] = new TimberMenu('menu');
 
