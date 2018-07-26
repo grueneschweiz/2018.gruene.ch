@@ -131,8 +131,7 @@ class StarterSite extends TimberSite {
 		}
 
 		// js
-		// WARNING: the JS is included directly in `base.twig` for practical purposes
-		// (async, defer, onload cannot be easily added through the standard wp functions)
+		wp_enqueue_script( 'app', get_stylesheet_directory_uri() . '/static/js/app'. ( WP_DEBUG ? '' : '.min' ) .'.js', false, THEME_VERSION );
 
 		// tweaks
 		if ( !is_admin() ) {
