@@ -1,0 +1,10 @@
+<div class="a-footer-link-list">
+    <h2 class="a-footer-link-list__title">{{title}}</h2>
+    <ul class="a-footer-link-list__list">
+        {{#each links}}
+            <li class="a-footer-link-list__item">
+                <a href="{{this.url}}" class="a-footer-link-list__link">{{this.label}}</a>
+            </li>
+        {{/each}}
+    </ul>
+</div>
