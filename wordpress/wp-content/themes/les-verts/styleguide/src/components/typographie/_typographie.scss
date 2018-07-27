@@ -82,6 +82,7 @@ a {
   position: relative;
   color: $color-text;
   outline: none;
+  z-index: 1;
 
   &:before {
     content: '';
