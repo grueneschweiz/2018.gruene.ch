@@ -9,6 +9,10 @@
     }
   }
 
+  &__text > p:first-of-type {
+    margin-top: 0;
+  }
+
   &__flex {
     display: flex;
     justify-content: space-between;
@@ -16,7 +20,6 @@
 
   &__social {
     width: 32px;
-    margin-top: 24px;
 
     a {
       height: 32px;
