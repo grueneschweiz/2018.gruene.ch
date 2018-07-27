@@ -87,6 +87,8 @@ class FormType extends Model {
 		add_filter( 'acf/prepare_field/name=form_autoreply_template', array( __CLASS__, 'acf_unrequired_local_settings') );
 		add_filter( 'acf/prepare_field/name=form_privacy_page', array( __CLASS__, 'acf_unrequired_local_settings') );
 
+		add_filter( 'acf/prepare_field/name=which_type_of_form', array( __CLASS__, 'acf_which_type_values') );
+
 		add_filter( 'acf/validate_value/name=form_email_to', array( __CLASS__, 'acf_validate_empty_value_local_settings'), 20, 2 );
 		add_filter( 'acf/validate_value/name=form_email_from', array( __CLASS__, 'acf_validate_empty_value_local_settings'), 20, 2 );
 		add_filter( 'acf/validate_value/name=form_name_from', array( __CLASS__, 'acf_validate_empty_value_local_settings'), 20, 2 );
@@ -131,6 +133,10 @@ class FormType extends Model {
 	 * Populate the field with choices of the Campain Monitor subscriber lists
 	 */
 	public static function acf_populate_cm_list_ids( $field ) {
+		if ( !class_exists('CampaignMonitorAPI') ) {
+			return $field;
+		}
+
 		$api = \CampaignMonitorAPI::getAPI();
 		$lists = $api->getLists();
 
@@ -185,6 +191,19 @@ class FormType extends Model {
 		}
 
 		$field['required'] = 0;
+
+		return $field;
+	}
+
+	/**
+	 * Do not show Campaign monitor option in type of form
+	 * If Campaign monitor is not available
+	 */
+	public static function acf_which_type_values( $field ) {
+
+		if ( !class_exists('CampaignMonitorAPI') ) {
+			$field['choices'] = array_splice($field['choices'], 0, 1);
+		}
 
 		return $field;
 	}
@@ -246,6 +265,8 @@ class FormType extends Model {
 		}
 		return $data;
 	}
+
+
 
 	/**
 	 * Add extra columns in edit table

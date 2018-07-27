@@ -2,6 +2,10 @@
  * SET SOME GLOBAL HTML & BODY RULES.
  */
 
+html {
+	font-family: $font-primary;
+}
+
 body.no-scroll {
 	overflow: hidden;
 	height: 100vh;
