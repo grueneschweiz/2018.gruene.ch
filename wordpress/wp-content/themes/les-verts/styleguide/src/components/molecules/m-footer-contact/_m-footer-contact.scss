@@ -1,0 +1,26 @@
+.m-footer-contact {
+  &__title {
+    margin-top: 0;
+    margin-bottom: 40px;
+    font-size: 1.25rem;
+
+    @include media($_DESKTOP) {
+      font-size: 2rem;
+    }
+  }
+
+  &__flex {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__social {
+    width: 32px;
+    margin-top: 24px;
+
+    a {
+      height: 32px;
+      margin-bottom: 16px;
+    }
+  }
+}
