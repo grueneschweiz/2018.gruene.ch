@@ -4,6 +4,9 @@
     {{#if phone}}
         <a href="tel:{{phone}}{{! in production: strip whitespace}}" class="a-address__phone">{{phone}}</a>
     {{/if}}
+    {{#if bank}}
+        <p class="a-address__bank">{{bank}}</p>
+    {{/if}}
     {{#if link-button}}
         <div class="a-address__link-button">
             {{> @a-link-button--grey link-button}}
