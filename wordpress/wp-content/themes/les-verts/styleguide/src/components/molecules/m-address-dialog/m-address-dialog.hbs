@@ -1,0 +1,19 @@
+<div class="m-address-dialog">
+    <div class="m-address-dialog__main">
+        {{#each addresses}}
+            <div class="m-address-dialog__address">
+                {{> @a-address . }}
+            </div>
+        {{/each}}
+        {{#each links}}
+            <div class="m-address-dialog__address">
+                <a href="{{link}}" class="m-address-dialog__link">{{label}}</a>
+            </div>
+        {{/each}}
+    </div>
+    <button class="m-address-dialog__close" aria-label="{{close}}">
+        <svg title="{{close}}" role="img">
+            <use xlink:href="#close"/>
+        </svg>
+    </button>
+</div>
