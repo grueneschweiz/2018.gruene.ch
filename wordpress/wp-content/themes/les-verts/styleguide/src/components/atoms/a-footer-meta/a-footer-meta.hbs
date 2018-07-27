@@ -1,0 +1,14 @@
+<section class="a-footer-meta">
+    <div class="a-footer-meta__wrapper">
+        <div class="a-footer-meta__copy">{{copy}}</div>
+        <nav class="a-footer-meta__menu">
+            <ul class="a-footer-meta__list" role="menu" aria-label="{{ aria-label-meta-navigation }}">
+                {{#each items}}
+                    <li class="a-footer-meta__item">
+                        <a href="{{this.link}}" class="a-footer-meta__link">{{this.label}}</a>
+                    </li>
+                {{/each}}
+            </ul>
+        </nav>
+    </div>
+</section>

@@ -1,0 +1,10 @@
+label: Footer meta
+status: ready
+context:
+  copy: © 2018 Grüne Schweiz
+  aria-label-meta-navigation: Footer Meta Navigation
+  items:
+  - label: Datenschutz
+    link: '#'
+  - label: Impressum
+    link: '#'
