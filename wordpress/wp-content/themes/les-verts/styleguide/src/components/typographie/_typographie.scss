@@ -89,8 +89,8 @@ a {
     position: absolute;
     z-index: -1;
     bottom: 0;
-    left: 0;
-    width: 100%;
+    left: -0.125em;
+    width: calc(100% + 0.25em);
     height: 0.25em;
     background-color: $color-primary-light;
     transition: height $transition-fast $transition-ease;
