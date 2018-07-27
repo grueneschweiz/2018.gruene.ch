@@ -17,6 +17,13 @@
       font-weight: $font-weight-bold;
       letter-spacing: 0.015em;
       fill: $color-grey-3;
+      display: none;
+    }
+
+    @include media($_DESKTOP) {
+      text {
+        display: block;
+      }
     }
 
     @include hover {
