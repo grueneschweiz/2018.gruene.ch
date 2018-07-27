@@ -1,0 +1,27 @@
+.a-address {
+  &__name {
+    margin: 0;
+    font-weight: $font-weight-bold;
+  }
+
+  &__address {
+    margin: 0.5em 0;
+  }
+
+  &__phone {
+    @include clean-link;
+    color: $color-primary;
+    font-weight: $font-weight-bold;
+    transition: color $transition-fast $transition-ease;
+    display: block;
+    margin-top: 1.25em;
+
+    @include hover {
+      color: $color-primary-dark;
+    }
+  }
+
+  &__link-button, &__button {
+    margin-top: 1.25em;
+  }
+}
