@@ -9,6 +9,7 @@ import elementExist from 'utils/elementExist';
  */
 import MMenu from "molecules/m-menu/m-menu.js";
 import AInput from "atoms/form-elements/a-input/a-input.js";
+import ASelect from "atoms/form-elements/a-select/a-select.js";
 import OHeader from "./organisms/o-header/o-header";
 import OCampaign from "./organisms/o-campaign/o-campaign";
 import OPeopleSlider from "./organisms/o-people-slider/o-people-slider";
@@ -26,6 +27,7 @@ const COMPONENTS_TO_LOAD = [
     { view: OHeader, name: 'OHeader', selector: '.o-header' },
     { view: OCampaign, name: 'OCampaign', selector: '.o-campaign' },
     { view: AInput, name: 'AInput', selector: '.a-input' },
+    { view: ASelect, name: 'ASelect', selector: '.a-select' },
     { view: OPeopleSlider, name: 'OPeopleSlider', selector: '.o-people-slider' },
 ];
 
