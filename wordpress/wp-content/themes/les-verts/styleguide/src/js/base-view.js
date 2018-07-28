@@ -142,8 +142,9 @@ export default class BaseView {
      * @param {String}        selector        Optional.
      * @param {Function}    handler
      * @param {Boolean}        channel            Optional. Default: false. Whether or not to bind a global event.
+     * @param {Boolean}     stopPropagation     Optional. Default: false. Whether the handler event should stop the events propagation.
      */
-    on(event_name, selector, handler, channel = false) {
+    on(event_name, selector, handler, channel = false, stopPropagation = true) {
 
         // Handle the optional selector argument
         if (isFunction(selector)) {
@@ -177,7 +178,9 @@ export default class BaseView {
                     selector: selector,
                     handler: handler,
                     delegate: delegate(this.element, selector, event_name, (e) => {
-                        e.stopPropagation();
+                        if (stopPropagation){
+                            e.stopPropagation();
+                        }
                         handler(e);
                     }, true)
                 });
