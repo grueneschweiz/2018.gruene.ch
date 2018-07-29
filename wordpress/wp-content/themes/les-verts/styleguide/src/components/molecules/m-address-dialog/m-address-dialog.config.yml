@@ -1,36 +1,37 @@
 label: Address dialog
 status: ready
 context:
+  id: be
   close: Dialog schliessen
   addresses:
   - title: Grüne Kanton Bern
-    address: Monbijoustrasse 61<br>3007 Bern
-    phone: 031 311 87 01
+    address: Musterstrasse 99<br>0000 Beispielort
+    phone: 012 345 67 89
     link-button:
       label: E-Mail senden
-      link: mailto:sekretariat@gruenebern.ch
+      link: mailto:party@example.com
       modifiers:
       - grey
     button:
       label: Website
-      link: https://gruenebern.ch
+      link: https://example.com
       modifiers:
       - outline
       - full-width
   - title: Grünalternative Partei Bern
-    address: Monbijoustrasse 61<br>3007 Bern
-    phone: 031 311 87 01
+    address: Musterstrasse 99<br>0000 Beispielort
+    phone: 012 345 67 89
     link-button:
       label: E-Mail senden
-      link: mailto:sekretariat@gruenebern.ch
+      link: mailto:party@example.com
       modifiers:
       - grey
     button:
       label: Website
-      link: https://gruenebern.ch
+      link: https://example.com
       modifiers:
       - outline
       - full-width
   links:
   - label: Junge Grüne Bern
-    link: https://jungegruene.ch/be
+    link: https://example.com
