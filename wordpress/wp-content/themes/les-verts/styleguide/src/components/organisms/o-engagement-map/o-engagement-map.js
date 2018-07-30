@@ -5,6 +5,7 @@ const DIALOG_WRAPPER_SELECTOR = '.o-engagement-map__dialog';
 const MAP_SELECTOR = '.o-engagement-map__map';
 const MAP_SECTION_SELECTOR = MAP_SELECTOR + ' .map-item';
 const DIALOG_CLOSE_SELECTOR = '.m-address-dialog__close';
+const MODAL_SELECTOR = '.o-engagement-map__modal';
 
 const DIALOG_ID_PREFIX = 'm-address-';
 
@@ -19,6 +20,7 @@ export default class OEngagementMap extends BaseView {
 
         this.select = this.getScopedElement(SELECT_SELECTOR);
         this.map = this.getScopedElement(MAP_SELECTOR);
+        this.modal = this.getScopedElement(MODAL_SELECTOR);
 
         this.dialog = null;
         this.mapItem = null;
@@ -30,6 +32,7 @@ export default class OEngagementMap extends BaseView {
         this.on('change', SELECT_SELECTOR, () => this.selectHandler(), false, false);
         this.on('click', MAP_SECTION_SELECTOR, (event) => this.mapClickHandler(event));
         this.on('click', DIALOG_CLOSE_SELECTOR, () => this.closeClickHandler());
+        this.on('click', MODAL_SELECTOR, () => this.closeClickHandler());
     }
 
     closeClickHandler() {
@@ -97,8 +100,9 @@ export default class OEngagementMap extends BaseView {
     }
 
     hideDialog() {
+        this.hideModal();
+
         if (this.dialog) {
-            this.removeClass(this.map, OPEN_STATE);
             this.removeClass(this.dialog, OPEN_STATE);
             this.removeClass(this.dialog, ALIGN_LEFT_STATE);
         }
@@ -108,9 +112,18 @@ export default class OEngagementMap extends BaseView {
         this.setDialog();
 
         if (this.dialog) {
-            this.addClass(this.map, OPEN_STATE);
             this.addClass(this.dialog, OPEN_STATE);
+
+            this.showModal();
         }
+    }
+
+    showModal() {
+        this.addClass(this.modal, OPEN_STATE);
+    }
+
+    hideModal() {
+        this.removeClass(this.modal, OPEN_STATE);
     }
 
     setPosition(clickOffsetX) {

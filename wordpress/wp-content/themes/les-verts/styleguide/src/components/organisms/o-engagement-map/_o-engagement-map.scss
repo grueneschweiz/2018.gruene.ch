@@ -58,12 +58,35 @@
 
     @include media($_DESKTOP) {
       position: absolute;
+      z-index: 2;
       top: 0;
       right: 0;
 
       &.pull-left {
         right: auto;
         left: 0;
+      }
+    }
+  }
+
+  &__modal {
+    display: none;
+
+    @include media($_DESKTOP) {
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background: $color-white;
+      opacity: 0;
+      transition: opacity $transition-fast $transition-ease;
+
+      &.is-open {
+        display: block;
+        opacity: 0.75;
       }
     }
   }
