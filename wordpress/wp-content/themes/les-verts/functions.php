@@ -70,7 +70,7 @@ class StarterSite extends TimberSite {
 		// $context['notes'] = 'These values are available everytime you call Timber::get_context();';
 
 		$context['branding'] = [
-			'unbreakeables' => ['ökologisch.','sozial.','solidarisch.'], // todo: get them from the customizer
+			'unbreakeables' => ['Ökologisch konsequent.','Sozial engagiert.','Global solidarisch.'], // todo: get them from the customizer
 			'theme_uri' => THEME_URI
 		];
 		
