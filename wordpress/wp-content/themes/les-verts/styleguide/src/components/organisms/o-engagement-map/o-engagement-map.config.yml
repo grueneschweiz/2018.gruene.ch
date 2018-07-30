@@ -1,0 +1,138 @@
+label: Engagement map
+status: ready
+context:
+  cat-title:
+    label: Mitmachen
+    link: '#'
+  title: Engagiere dich, mit uns – bei dir!
+  text-before: <p>Als Basisbewegung setezn wir uns für eine ökologische und solidarische Schweiz und Welt ein.</p>
+    <p>Wir sind stark, dank Menschen wie dir, die sich stets für eine lebenswerte Zukunft einsetzen.</p>
+    <p>Gemeinsam können wir die ökologische Transformation der Wirtschaft meistern, den sozialen Zusammenhalt und die Solidarität stärken, Frieden sichern.</p>
+  button:
+    label: Mitglied werden
+    link: '#'
+    modifiers:
+    - secondary
+  text-after: <p>Unter 30 Jahre alt? Schau doch auch bei den <a href="https://jungegruene.ch/mitmachen">Jungen Grünen</a> rein.
+  select:
+    id: party-selector
+    required: false
+    label: Kanton auswählen
+    name: party-selector
+    options:
+    - label: Aargau
+      value: ag
+    - label: Appenzell Innerhoden
+      value: ai
+    - label: Appenzell Ausserhoden
+      value: ar
+    - label: Bern
+      value: be
+    - label: Basel-Landschaft
+      value: bl
+    - label: Basel-Stadt
+      value: bs
+    - label: Freiburg
+      value: fr
+    - label: Genf
+      value: gr
+    - label: Glarus
+      value: gl
+    - label: Graubünden
+      value: gr
+    - label: Jura
+      value: ju
+    - label: Luzern
+      value: lu
+    - label: Neuenburg
+      value: ne
+    - label: Nidwalden
+      value: nw
+    - label: Obwalden
+      value: ow
+    - label: St.Gallen
+      value: sg
+    - label: Solothurn
+      value: so
+    - label: Schwyz
+      value: sz
+    - label: Thurgau
+      value: tg
+    - label: Tessin
+      value: ti
+    - label: Uri
+      value: ur
+    - label: Waadt
+      value: vd
+    - label: Wallis
+      value: vs
+    - label: Zug
+      value: zg
+    - label: Zürich
+      value: zh
+  dialogs:
+  - id: ag
+    addresses:
+    - title: Grüne Aargau
+      address: Musterstrasse 99<br>0000 Beispielort
+      phone: 012 345 67 89
+      email: mailto:party@example.com
+      website: https://example.com
+    links:
+    - label: Junge Grüne Aargau
+      link: https://example.com
+  - id: ai
+    addresses:
+    - title: Grüne Appenzell innerhoden
+      address: Musterstrasse 99<br>0000 Beispielort
+      phone: 012 345 67 89
+      email: mailto:party@example.com
+      website: https://example.com
+    links:
+    - label: Junge Grüne Ostschweiz
+      link: https://example.com
+  - id: ar
+    addresses:
+    - title: Grüne Appenzell ausserhoden
+      address: Musterstrasse 99<br>0000 Beispielort
+      phone: 012 345 67 89
+      email: mailto:party@example.com
+      website: https://example.com
+    links:
+    - label: Junge Grüne Ostschweiz
+      link: https://example.com
+  - id: be
+    addresses:
+    - title: Grüne Kanton Bern
+      address: Musterstrasse 99<br>0000 Beispielort
+      phone: 012 345 67 89
+      email: mailto:party@example.com
+      website: https://example.com
+    - title: Grünalternative Partei Bern
+      address: Musterstrasse 99<br>0000 Beispielort
+      phone: 012 345 67 89
+      email: mailto:party@example.com
+      website: https://example.com
+    links:
+    - label: Junge Grüne Bern
+      link: https://example.com
+  - id: bl
+    addresses:
+    - title: Grüne Basel-Landschaft
+      address: Musterstrasse 99<br>0000 Beispielort
+      phone: 012 345 67 89
+      email: mailto:party@example.com
+      website: https://example.com
+    links:
+    - label: Junges Grünes Bündnis Nordwest
+      link: https://example.com
+  - id: bs
+    addresses:
+    - title: Grüne Basel-Stadt
+      address: Musterstrasse 99<br>0000 Beispielort
+      phone: 012 345 67 89
+      email: mailto:party@example.com
+      website: https://example.com
+    links:
+    - label: Junges Grünes Bündnis Nordwest
+      link: https://example.com

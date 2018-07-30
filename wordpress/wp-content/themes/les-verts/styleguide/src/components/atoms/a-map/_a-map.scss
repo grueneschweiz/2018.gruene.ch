@@ -26,15 +26,18 @@
       }
     }
 
-    @include hover {
+    &.is-active {
       path {
         fill: $color-primary-light;
         stroke: $color-grey-3;
       }
-
       text {
         fill: $color-text-light;
       }
+    }
+
+    @include hover {
+      @extend .is-active;
     }
   }
 }
