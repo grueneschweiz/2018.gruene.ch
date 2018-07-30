@@ -104,12 +104,27 @@
       width: 100%;
       padding: 27px 41px 40px;
       position: absolute;
-      @include fluid-props(top, $size-medium, $grid-max-width-max, 160px, 164px);
+      top: 0;
 
       &.is-open {
         background: $color-white;
         min-height: calc(100vh - 160px);
+        @include fluid-props(top, $size-medium, $grid-max-width-max, 160px, 164px);
+
+        .m-menu__hamburger {
+          @include fluid-props(top, $size-medium, $grid-max-width-max, -133px, -135px);
+        }
       }
+    }
+  }
+
+  &__hamburger {
+    position: absolute;
+    top: 27px;
+    right: 31px;
+
+    @include media($_DESKTOP) {
+      display: none;
     }
   }
 
@@ -265,16 +280,6 @@
 
     &:hover {
       stroke: $color-secondary;
-    }
-  }
-
-  &__hamburger {
-    position: absolute;
-    top: -137px;
-    right: 31px;
-
-    @include media($_DESKTOP) {
-      display: none;
     }
   }
 

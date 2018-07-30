@@ -1,0 +1,20 @@
+<div class="a-address">
+    <p class="a-address__name">{{{title}}}</p>
+    <p class="a-address__address">{{{address}}}</p>
+    {{#if phone}}
+        <a href="tel:{{phone}}{{! in production: strip whitespace}}" class="a-address__phone">{{phone}}</a>
+    {{/if}}
+    {{#if bank}}
+        <p class="a-address__bank">{{bank}}</p>
+    {{/if}}
+    {{#if email}}
+        <div class="a-address__link-button">
+            {{> @a-link-button--grey modifiers='grey' label=email-label url=email}}
+        </div>
+    {{/if}}
+    {{#if website}}
+        <div class="a-address__button">
+            {{> @a-button--outlined modifiers=button-modifiers label=website-label url=link}}
+        </div>
+    {{/if}}
+</div>

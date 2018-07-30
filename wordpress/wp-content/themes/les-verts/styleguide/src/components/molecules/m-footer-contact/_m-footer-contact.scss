@@ -1,0 +1,25 @@
+.m-footer-contact {
+  &__title {
+    margin-top: 0;
+    margin-bottom: 40px;
+    @include fluid-props(font-size, $size-tiny, $size-medium, 20px, 32px);
+  }
+
+  &__text > p:first-of-type {
+    margin-top: 0;
+  }
+
+  &__flex {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__social {
+    width: 32px;
+
+    a {
+      height: 32px;
+      margin-bottom: 16px;
+    }
+  }
+}

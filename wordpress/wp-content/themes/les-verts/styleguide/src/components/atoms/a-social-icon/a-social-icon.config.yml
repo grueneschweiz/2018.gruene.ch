@@ -1,0 +1,13 @@
+label: Social icon
+status: ready
+default: facebook
+context:
+  type: facebook
+  link: '#'
+variants:
+  - name: twitter
+    context:
+      type: twitter
+  - name: email
+    context:
+      type: email

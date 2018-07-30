@@ -1,0 +1,29 @@
+label: Address dialog
+status: ready
+context:
+  id: be
+  close: Dialog schliessen
+  addresses:
+  - title: Grüne Kanton Bern
+    address: Musterstrasse 99<br>0000 Beispielort
+    phone: 012 345 67 89
+    email: party@example.com
+    website: https://example.com
+    email-label: E-Mail senden
+    website-label: Website
+    button-modifiers:
+    - full-width
+    - outline
+  - title: Grünalternative Partei Bern
+    address: Musterstrasse 99<br>0000 Beispielort
+    phone: 012 345 67 89
+    email: party@example.com
+    website: https://example.com
+    email-label: E-Mail senden
+    website-label: Website
+    button-modifiers:
+    - full-width
+    - outline
+  links:
+  - label: Junge Grüne Bern
+    link: https://example.com

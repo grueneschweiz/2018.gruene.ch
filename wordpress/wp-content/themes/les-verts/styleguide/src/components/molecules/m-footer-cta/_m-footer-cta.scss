@@ -1,0 +1,15 @@
+.m-footer-cta {
+  display: flex;
+  flex-direction: column;
+
+  &__title {
+    margin-top: 0;
+    margin-bottom: 40px;
+    color: $color-secondary;
+    @include fluid-props(font-size, $size-tiny, $size-medium, 20px, 32px);
+  }
+
+  &__button {
+    margin-bottom: 25px;
+  }
+}
