@@ -13,6 +13,7 @@ const OPEN_STATE = 'is-open';
 const ALIGN_LEFT_STATE = 'pull-left';
 const ACTIVE_STATE = 'is-active';
 
+/*eslint no-console: ["error", { allow: ["error"] }] */
 export default class OEngagementMap extends BaseView {
 
     initialize() {
@@ -65,7 +66,7 @@ export default class OEngagementMap extends BaseView {
 
         if (!mapItem) {
             this.mapItem = null;
-            console.warn(`NOT FOUND: There was no map item with the selector '${selector}'.`);
+            console.error(`NOT FOUND: There was no map item with the selector '${selector}'.`);
             return;
         }
 
@@ -92,7 +93,7 @@ export default class OEngagementMap extends BaseView {
 
         if (!dialog) {
             this.dialog = null;
-            console.warn(`NOT FOUND: There was no address with the selector '${selector}'.`);
+            console.error(`NOT FOUND: There was no address with the selector '${selector}'.`);
             return;
         }
 
