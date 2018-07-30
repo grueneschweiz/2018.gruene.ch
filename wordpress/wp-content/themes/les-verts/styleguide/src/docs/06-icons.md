@@ -13,8 +13,9 @@ To include an icon, copy and paste the markup below
 Here is the full rendered markup for the **home** icon:
 
 ```
-<svg title="Accueil" role="img">
-	<use xlink:href="#home" />
+<svg role="img">
+    <title>Give me a title</title>
+	<use xlink:href="#home"></use>
 </svg>
 ```
 
