@@ -4,14 +4,10 @@ display:
   padding: 40px
 context:
   title: Kontakt
-  address:
-    title: Grüne Scheiz<br>Les Verts suisses
-    address: Waisenhausplatz 21<br>3011 Bern
-    phone: 031 326 66 00
-    bank: Postkonto 80-26747-3
-    button:
-      label: E-Mail senden
-      link: "mailto:gruene@gruene.ch"
+  address: "<p><strong>Grüne Schweiz</strong><br><strong>Les Verts suisses</strong><br>Waisenhausplatz 21<br>3011 Bern</p><p>031 326 66 00<br>Postkonto 80-26747-3</p>"
+  button:
+    label: E-Mail senden
+    link: "mailto:gruene@gruene.ch"
   facebook:
     type: facebook
     link: "https://www.facebook.com/gruenelesverts/"
