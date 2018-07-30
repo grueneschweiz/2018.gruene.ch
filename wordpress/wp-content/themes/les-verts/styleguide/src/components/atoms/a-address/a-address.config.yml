@@ -3,17 +3,13 @@ status: ready
 display:
   padding: 40px
 context:
+  email-label: E-Mail senden
+  website-label: Website
   title: Grüne Kanton Bern
   address: Monbijoustrasse 61<br>3007 Bern
   phone: 031 311 87 01
-  link-button:
-    label: E-Mail senden
-    link: mailto:sekretariat@gruenebern.ch
-    modifiers:
-    - grey
-  button:
-    label: Website
-    link: https://gruenebern.ch
-    modifiers:
-    - outline
-    - full-width
+  email: mailto:sekretariat@gruenebern.ch
+  website: https://gruenebern.ch
+  button-modifiers:
+  - full-width
+  - outline

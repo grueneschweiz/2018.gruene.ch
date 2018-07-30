@@ -7,14 +7,14 @@
     {{#if bank}}
         <p class="a-address__bank">{{bank}}</p>
     {{/if}}
-    {{#if link-button}}
+    {{#if email}}
         <div class="a-address__link-button">
-            {{> @a-link-button--grey link-button}}
+            {{> @a-link-button--grey modifiers='grey' label=email-label url=email}}
         </div>
     {{/if}}
-    {{#if button}}
+    {{#if website}}
         <div class="a-address__button">
-            {{> @a-button--outlined button}}
+            {{> @a-button--outlined modifiers=button-modifiers label=website-label url=link}}
         </div>
     {{/if}}
 </div>

@@ -76,8 +76,13 @@ context:
     - title: Grüne Aargau
       address: Musterstrasse 99<br>0000 Beispielort
       phone: 012 345 67 89
-      email: mailto:party@example.com
+      email: party@example.com
       website: https://example.com
+      email-label: E-Mail senden
+      website-label: Website
+      button-modifiers:
+      - full-width
+      - outline
     links:
     - label: Junge Grüne Aargau
       link: https://example.com
@@ -86,8 +91,13 @@ context:
     - title: Grüne Appenzell innerhoden
       address: Musterstrasse 99<br>0000 Beispielort
       phone: 012 345 67 89
-      email: mailto:party@example.com
+      email: party@example.com
       website: https://example.com
+      email-label: E-Mail senden
+      website-label: Website
+      button-modifiers:
+      - full-width
+      - outline
     links:
     - label: Junge Grüne Ostschweiz
       link: https://example.com
@@ -96,8 +106,13 @@ context:
     - title: Grüne Appenzell ausserhoden
       address: Musterstrasse 99<br>0000 Beispielort
       phone: 012 345 67 89
-      email: mailto:party@example.com
+      email: party@example.com
       website: https://example.com
+      email-label: E-Mail senden
+      website-label: Website
+      button-modifiers:
+      - full-width
+      - outline
     links:
     - label: Junge Grüne Ostschweiz
       link: https://example.com
@@ -106,13 +121,23 @@ context:
     - title: Grüne Kanton Bern
       address: Musterstrasse 99<br>0000 Beispielort
       phone: 012 345 67 89
-      email: mailto:party@example.com
+      email: party@example.com
       website: https://example.com
+      email-label: E-Mail senden
+      website-label: Website
+      button-modifiers:
+      - full-width
+      - outline
     - title: Grünalternative Partei Bern
       address: Musterstrasse 99<br>0000 Beispielort
       phone: 012 345 67 89
-      email: mailto:party@example.com
+      email: party@example.com
       website: https://example.com
+      email-label: E-Mail senden
+      website-label: Website
+      button-modifiers:
+      - full-width
+      - outline
     links:
     - label: Junge Grüne Bern
       link: https://example.com
@@ -121,8 +146,13 @@ context:
     - title: Grüne Basel-Landschaft
       address: Musterstrasse 99<br>0000 Beispielort
       phone: 012 345 67 89
-      email: mailto:party@example.com
+      email: party@example.com
       website: https://example.com
+      email-label: E-Mail senden
+      website-label: Website
+      button-modifiers:
+      - full-width
+      - outline
     links:
     - label: Junges Grünes Bündnis Nordwest
       link: https://example.com
@@ -131,8 +161,13 @@ context:
     - title: Grüne Basel-Stadt
       address: Musterstrasse 99<br>0000 Beispielort
       phone: 012 345 67 89
-      email: mailto:party@example.com
+      email: party@example.com
       website: https://example.com
+      email-label: E-Mail senden
+      website-label: Website
+      button-modifiers:
+      - full-width
+      - outline
     links:
     - label: Junges Grünes Bündnis Nordwest
       link: https://example.com
