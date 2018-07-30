@@ -10,3 +10,8 @@ context:
         - glass
         - hamburger
         - quote
+    - name: Social Media / Contact
+      icons:
+        - facebook
+        - twitter
+        - email

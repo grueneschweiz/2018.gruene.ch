@@ -28,6 +28,10 @@
 			background-color: $color-primary;
 		}
 	}
+
+	&--full-width {
+		width: 100%;
+	}
 }
 
 .a-button--secondary {
@@ -51,7 +55,6 @@
 	background-color: transparent;
 	border-width: 1px;
 	border-style: solid;
-
 
 	@include hover {
 		color: $color-white;

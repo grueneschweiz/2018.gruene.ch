@@ -2,17 +2,16 @@ import BaseView from "base-view";
 
 const BRANDING_SELECTOR = '.o-header__branding';
 const MENU_SELECTOR = '.o-header__menu';
-const SPACER_SELECTOR = '.o-header__spacer';
-
-const FIXED_STATE = 'is-fixed';
-const HIDDEN_STATE = 'is-hidden';
-const ACTIVE_STATE = 'is-active';
+const VISIBLE_MENU_SELECTOR = '.o-header__display';
 
 export default class OHeader extends BaseView {
     initialize() {
         this.branding = this.getScopedElement(BRANDING_SELECTOR);
         this.menu = this.getScopedElement(MENU_SELECTOR);
-        this.spacer = this.getScopedElement(SPACER_SELECTOR);
+        this.visibleMenu = this.getScopedElement(VISIBLE_MENU_SELECTOR);
+
+        this.ticking = false;
+        this.isFixed = false;
 
         this.setMenuBarPosition();
     }
@@ -20,28 +19,36 @@ export default class OHeader extends BaseView {
     bind() {
         super.bind();
 
-        this.scrollHandler = () => requestAnimationFrame(this.setMenuBarPosition.bind(this));
-        window.addEventListener("scroll", this.scrollHandler);
+        this.scrollHandler = () => this.requestTick();
+        window.addEventListener("scroll", this.scrollHandler, false);
+    }
+
+    requestTick() {
+        if (!this.ticking){
+            this.ticking = true;
+            window.requestAnimationFrame(this.setMenuBarPosition.bind(this));
+        }
     }
 
     setMenuBarPosition() {
-        let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        let scrollTop = this.getScrollTop();
 
         if (!this.isFixed && scrollTop >= this.branding.clientHeight) {
             this.isFixed = true;
 
-            this.addClass(this.menu, FIXED_STATE);
-            this.addClass(this.branding, HIDDEN_STATE);
-            this.addClass(this.spacer, ACTIVE_STATE);
+            this.visibleMenu.style.transform = this.translate(-this.branding.clientHeight);
         }
 
-        if (this.isFixed && scrollTop < this.branding.clientHeight) {
+        if (scrollTop < this.branding.clientHeight) {
+            this.visibleMenu.style.transform = this.translate(-scrollTop);
             this.isFixed = false;
-
-            this.removeClass(this.menu, FIXED_STATE);
-            this.removeClass(this.branding, HIDDEN_STATE);
-            this.removeClass(this.spacer, ACTIVE_STATE);
         }
+
+        this.ticking = false;
+    }
+
+    translate(y) {
+        return `translate3d(0px, ${y}px, 0px)`;
     }
 
     getFixed() {

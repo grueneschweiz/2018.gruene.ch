@@ -1,0 +1,20 @@
+.a-social-icon {
+  @include clean-link;
+  width: 100%;
+  height: 100%;
+  display: block;
+
+  svg {
+    stroke: $color-primary;
+    fill: transparent;
+    transition: stroke $transition-fast $transition-ease;
+    width: 100%;
+    height: 100%;
+  }
+
+  @include hover {
+    svg {
+      stroke: $color-primary-dark;
+    }
+  }
+}

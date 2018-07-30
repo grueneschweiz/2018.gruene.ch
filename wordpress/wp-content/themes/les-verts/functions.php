@@ -69,9 +69,6 @@ class StarterSite extends TimberSite {
 	function add_to_context( $context ) {
 		// $context['notes'] = 'These values are available everytime you call Timber::get_context();';
 
-		// Inject the current page or post
-		$context['post'] = Timber::query_post();
-
 		// Inject some default WP vars
 		$context['menu'] = new TimberMenu('menu');
 
@@ -131,8 +128,7 @@ class StarterSite extends TimberSite {
 		}
 
 		// js
-		// WARNING: the JS is included directly in `base.twig` for practical purposes
-		// (async, defer, onload cannot be easily added through the standard wp functions)
+		wp_enqueue_script( 'app', get_stylesheet_directory_uri() . '/static/js/app'. ( WP_DEBUG ? '' : '.min' ) .'.js', false, THEME_VERSION );
 
 		// tweaks
 		if ( !is_admin() ) {

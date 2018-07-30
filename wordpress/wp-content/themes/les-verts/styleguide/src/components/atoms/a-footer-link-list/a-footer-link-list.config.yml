@@ -1,0 +1,61 @@
+label: Footer link list
+status: ready
+display:
+  padding: 40px
+context:
+  title: Kantonalparteien
+  links:
+  - url: '#'
+    label: Aargau
+  - url: '#'
+    label: Appenzell innerhoden
+  - url: '#'
+    label: Appenzell ausserhoden
+  - url: '#'
+    label: Bern
+  - url: '#'
+    label: Basel-Landschaft
+  - url: '#'
+    label: Basel-Stadt
+  - url: '#'
+    label: Freibourg
+  - url: '#'
+    label: Genf
+  - url: '#'
+    label: Glarus
+  - url: '#'
+    label: Graubünden
+  - url: '#'
+    label: Jura
+  - url: '#'
+    label: Luzern
+  - url: '#'
+    label: Neuenburg
+  - url: '#'
+    label: Nidwalden
+  - url: '#'
+    label: Obwalden
+  - url: '#'
+    label: St.Gallen
+  - url: '#'
+    label: Schaffhausen
+  - url: '#'
+    label: Solothurn
+  - url: '#'
+    label: Schwyz
+  - url: '#'
+    label: Thurgau
+  - url: '#'
+    label: Tessin
+  - url: '#'
+    label: Uri
+  - url: '#'
+    label: Waadt
+  - url: '#'
+    label: Wallis
+  - url: '#'
+    label: Zug
+  - url: '#'
+    label: Zürich
+  - url: '#'
+    label: Junge Grüne

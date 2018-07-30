@@ -1,0 +1,16 @@
+label: Select
+status: ready
+display:
+  padding: 40px
+context:
+  id: some-id
+  required: required
+  label: Select your choice
+  name: select
+  options:
+  - label: Bern
+    value: bern
+  - label: Zürich
+    value: zuerich
+  - label: Vaud
+    value: vaud

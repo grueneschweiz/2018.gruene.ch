@@ -19,6 +19,8 @@
 $WPCLI plugin activate polylang-pro --network
 # TODO: activate license key
 
+
+
 ## Advanced Custom Fields PRO
 $WPCLI plugin activate advanced-custom-fields-pro --network
 # $WPCLI eval 'acf_pro_update_license("INSERT LICENSE NUMBER HERE");'
@@ -43,6 +45,9 @@ $WPCLI plugin install disable-embeds --activate-network
 
 # Wordpress importer
 $WPCLI plugin install wordpress-importer --activate-network
+
+# Theme and plugin translation for polylang
+$WPCLI plugin install theme-translation-for-polylang --activate-network
 
 # Disable comments system
 $WPCLI plugin install disable-comments --activate-network

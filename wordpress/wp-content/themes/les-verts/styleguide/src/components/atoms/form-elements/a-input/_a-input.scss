@@ -11,7 +11,7 @@
     font-weight: $font-weight-bold;
     transition-timing-function: $transition-ease;
     transition-duration: $transition-fast;
-    transition-property: font-size, bottom, font-weight;
+    transition-property: font-size, top, font-weight;
 
     &.is-empty {
       font-size: 1em;

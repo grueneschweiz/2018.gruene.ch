@@ -1,0 +1,24 @@
+label: Footer cta
+status: ready
+display:
+  padding: 40px
+context:
+  title: Engagiere dich
+  ctas:
+    - newsletter:
+      label: Newsletter abonnieren
+      modifiers:
+        - secondary
+        - full-width
+    - attach:
+      label: Mitglied werden
+      modifiers:
+        - outline
+        - secondary
+        - full-width
+    - donate:
+      label: Spenden
+      modifiers:
+      - outline
+      - secondary
+      - full-width

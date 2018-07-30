@@ -24,3 +24,7 @@ variants:
     context:
       modifiers:
         - transparent
+  - name: Full width
+    context:
+      modifiers:
+        - full-width

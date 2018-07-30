@@ -1,0 +1,93 @@
+.o-engagement-map {
+  @extend .grid-item;
+
+  // hack: make sure there's never a gap between this and the footer
+  // else the fixed image from above might be seen. needed because of rounding.
+  margin-bottom: -1px;
+
+  @include media($_MOBILE) {
+    padding-bottom: 80px;
+  }
+
+  @include media($_DESKTOP) {
+    max-width: $grid-max-width-max;
+  }
+
+  &__title {
+    @include fluid-props(font-size, $size-tiny, $size-medium, 32px, 48px);
+    @include fluid-props(margin-top, $size-tiny, $size-medium, 20px, 34px);
+    @include fluid-props(margin-bottom, $size-tiny, $size-medium, 26px, 56px);
+  }
+
+  &__main-wrapper {
+    @include media($_DESKTOP){
+      display: grid;
+      grid-template-columns: 40% 60%;
+      @include fluid-props(grid-gap, $size-medium, $grid-max-width-max, $grid-gap-min, $grid-gap-max);
+    }
+  }
+
+  &__map-wrapper {
+    position: relative;
+  }
+
+  &__map.is-open {
+    @include media($_DESKTOP){
+      filter: opacity(40%);
+    }
+  }
+
+  &__selector {
+    margin-top: 35px;
+
+    @include media($_DESKTOP) {
+      display: none;
+    }
+  }
+
+  &__dialog {
+    display: none;
+
+    &.is-open {
+      display: block;
+
+      @include media($_DESKTOP) {
+        display: inline-block;
+      }
+    }
+
+    @include media($_DESKTOP) {
+      position: absolute;
+      z-index: 2;
+      top: 0;
+      right: 0;
+
+      &.pull-left {
+        right: auto;
+        left: 0;
+      }
+    }
+  }
+
+  &__modal {
+    display: none;
+
+    @include media($_DESKTOP) {
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background: $color-white;
+      opacity: 0;
+      transition: opacity $transition-fast $transition-ease;
+
+      &.is-open {
+        display: block;
+        opacity: 0.75;
+      }
+    }
+  }
+}

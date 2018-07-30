@@ -1,26 +1,11 @@
-.o-header {
-  position: relative;
-  z-index: $z-index-header;
-
-  &__branding.is-hidden {
-    display: block;
-  }
-
-  &__menu{
-    &.is-fixed {
-      position: fixed;
-      top: 0;
-      width: 100%;
-    }
-  }
-
-  &__spacer {
-    display: none;
+.o-header{
+  &__display{
+    position: fixed;
     width: 100%;
-    @include fluid-props(height, $size-medium, $grid-max-width-max, 80px, 100px);
+    z-index: $z-index-header;
   }
 
-  &__spacer.is-active {
-    display: block;
+  &__shadow {
+    visibility: hidden;
   }
 }

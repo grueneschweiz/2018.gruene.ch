@@ -142,6 +142,7 @@
   position: static;
   color: initial; // sorry IE users
   outline: initial; // sorry IE users
+  z-index: 0;
 
   &:before {
     content: normal;

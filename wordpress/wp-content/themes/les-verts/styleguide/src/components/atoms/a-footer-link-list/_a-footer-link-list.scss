@@ -1,0 +1,57 @@
+.a-footer-link-list {
+  &__title {
+    margin-top: 0;
+    margin-bottom: 40px;
+    @include fluid-props(font-size, $size-tiny, $size-medium, 20px, 32px);
+  }
+
+  &__list {
+    font-size: 0.875rem;
+    display: grid;
+    grid-template-columns: repeat(2, calc(50% - 12px));
+    grid-column-gap: 24px;
+    width: calc(100vw - #{2*$grid-item-padding-min});
+
+    @include media($size-tiny) {
+      grid-template-columns: repeat(3, calc(33% - 16px));
+    }
+
+    @include media($_DESKTOP) {
+      width: 100%;
+    }
+  }
+
+  &__item {
+    @include clean-li;
+    width: 100%;
+  }
+
+  &__link {
+    @include clean-link;
+    line-height: 1.75em;
+    padding: 7px 0 8px;
+    display: block;
+    position: relative;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    &:after {
+      content: ' ';
+      width: 36px;
+      height: 1px;
+      background-color: $color-grey-2;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      transition: width $transition-fast $transition-ease;
+    }
+
+    @include hover {
+      &:after {
+        width: 69px;
+        background-color: $color-primary;
+      }
+    }
+  }
+}

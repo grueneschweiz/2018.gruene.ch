@@ -1,0 +1,91 @@
+.a-select {
+  position: relative;
+  width: 100%;
+
+  &__label {
+    position: absolute;
+    z-index: 2;
+    left: 0.75rem;
+    top: -1rem;
+    text-transform: uppercase;
+    font-size: 0.625rem;
+    font-weight: $font-weight-bold;
+    transition-timing-function: $transition-ease;
+    transition-duration: $transition-fast;
+    transition-property: font-size, top, font-weight;
+
+    &.is-empty {
+      font-size: 1em;
+      font-weight: $font-weight-normal;
+      text-transform: none;
+      top: 0.75rem;
+    }
+
+    &--required:after {
+      content: "*";
+    }
+  }
+
+  &__background {
+    background: $color-grey-1;
+    border-bottom: 2px solid $color-grey-2;
+    margin-top: 1rem;
+    padding-left: 0.75rem;
+    transition: border-bottom-color $transition-fast $transition-ease;
+    position: relative;
+
+    &.is-valid {
+      border-bottom-color: $color-primary;
+    }
+
+    &.is-invalid.is-touched {
+      border-bottom-color: $color-red;
+    }
+
+    &.has-focus-within, &:focus-within {
+      border-bottom: 2px solid $color-grey-3;
+    }
+
+    &:before {
+      content: ' ';
+      width: 0.6em;
+      height: 0.6em;
+      display: block;
+      position: absolute;
+      right: 0;
+      top: 0.875em;
+      border-bottom: 0.1666666667em solid; // 2/12
+      border-right: 0.1666666667em solid; // 2/12
+      transform: translateX(-100%) rotate(45deg);
+    }
+
+    @include hover {
+      &:before {
+        border-color: $color-primary;
+      }
+    }
+  }
+
+  &__field {
+    width: 100%;
+    position: relative;
+    z-index: 1;
+    background: transparent;
+    border: none;
+    height: 2.625rem;
+    color: $color-text;
+    font-size: 1rem;
+    border-radius: 0;
+    box-shadow: none;
+    background-image: none;
+    -webkit-appearance: none;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &--invers {
+    background-color: $color-white;
+  }
+}

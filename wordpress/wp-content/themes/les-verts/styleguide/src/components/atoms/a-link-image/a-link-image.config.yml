@@ -4,6 +4,6 @@ display:
   padding: 40px
 context:
   link-url: '#'
-  image-src: "/img/wheat.jpg"
+  image-src: "/img/wheat_ratio.jpg"
   alt: Some many things on this image
   title: This is a linked image
