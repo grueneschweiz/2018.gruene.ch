@@ -14,7 +14,7 @@
   }
 
   &__title {
-    @include fluid-props(font-size, $size-tiny, $size-medium, 32px, 46px);
+    @include fluid-props(font-size, $size-tiny, $size-medium, 32px, 48px);
     @include fluid-props(margin-top, $size-tiny, $size-medium, 20px, 34px);
     @include fluid-props(margin-bottom, $size-tiny, $size-medium, 26px, 56px);
   }

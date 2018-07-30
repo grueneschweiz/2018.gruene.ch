@@ -2,11 +2,7 @@
   &__title {
     margin-top: 0;
     margin-bottom: 40px;
-    font-size: 1.25rem;
-
-    @include media($_DESKTOP) {
-      font-size: 2rem;
-    }
+    @include fluid-props(font-size, $size-tiny, $size-medium, 20px, 32px);
   }
 
   &__list {
