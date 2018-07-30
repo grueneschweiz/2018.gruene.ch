@@ -18,9 +18,11 @@ variants:
       modifiers:
         - featured
       featured: true
-      img:
-        src: "/img/wheat.jpg"
+      link-image:
+        link-url: '#'
+        image-src: "/img/wheat_ratio.jpg"
         alt: Symbolbild Fair-Food
+        title: This is a linked image
       cat-title:
         label: Fair-Food-Initiative
       title: Fair schmeckt besser!

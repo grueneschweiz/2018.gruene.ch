@@ -19,9 +19,11 @@ context:
         - title: Medienmitteilungen
         - title: Fair-Food-Initiative
           featured: true
-          img:
-            src: "/img/wheat_ratio.jpg"
+          link-image:
+            link-url: '#'
+            image-src: "/img/wheat_ratio.jpg"
             alt: Symbolbild Fair-Food
+            title: This is a linked image
           cat-title:
             label: Fair-Food-Initiative
           text: Umweltfreundlich und fair hergestellte Lebensmittel – dies wollen die Grünen mit der Fair-Food-Initiative erreichen.
