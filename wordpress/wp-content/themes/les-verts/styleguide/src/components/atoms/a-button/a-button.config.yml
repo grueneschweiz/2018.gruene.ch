@@ -28,3 +28,8 @@ variants:
     context:
       modifiers:
         - full-width
+  - name: Link
+    context:
+      url: 'https://google.com'
+      target: '_blank'
+      label: Google

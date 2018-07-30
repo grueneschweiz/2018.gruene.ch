@@ -1,4 +1,5 @@
 .a-button {
+	@include clean-link;
 	font-size: 0.875rem;
 	display: inline-block;
 	line-height: 1.71428em; // 24/14
