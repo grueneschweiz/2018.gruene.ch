@@ -29,6 +29,11 @@
       height: 40px;
       padding: 5px;
       display: block;
+      transition: background-color $transition-fast $transition-ease;
+
+      @include hover {
+        background: $color-primary-dark;
+      }
     }
 
     svg{
