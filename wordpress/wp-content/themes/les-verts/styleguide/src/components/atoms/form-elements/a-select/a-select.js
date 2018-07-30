@@ -54,7 +54,7 @@ export default class ASelect extends BaseView {
     }
 
     isEmpty() {
-        return ! Boolean(this.select.value);
+        return ! this.select.value;
     }
 
     setEmptyState() {
@@ -70,6 +70,10 @@ export default class ASelect extends BaseView {
     }
 
     manageValidState() {
+        if (! this.select.hasAttribute('required')){
+            return;
+        }
+
         if(!this.isEmpty()) {
             this.addClass(this.background, VALID_STATE);
             this.removeClass(this.background, INVALID_STATE);
