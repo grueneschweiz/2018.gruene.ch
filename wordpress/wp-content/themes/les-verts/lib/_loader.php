@@ -56,11 +56,12 @@ require_once __DIR__ .'/admin/translatable-post-types.php';
  *   and should show only if certain cookie/session conditions are met
  */
 
-// require_once __DIR__ .'/controllers/alert.php';
+require_once __DIR__ .'/controllers/branding.php';
+require_once __DIR__ .'/controllers/navigation.php';
 
 // register
-// Alert_controller::register();
-
+Branding_controller::register();
+Navigation_controller::register();
 
 
 /**
@@ -105,11 +106,11 @@ add_action( 'init', function() {
 // functions
 require_once __DIR__ .'/twig/functions/component_classes.php';
 require_once __DIR__ .'/twig/functions/get_lang.php';
-require_once __DIR__ .'/twig/functions/get_languages_switcher.php';
-require_once __DIR__ .'/twig/functions/pll__.php';
+// require_once __DIR__ .'/twig/functions/get_languages_switcher.php';
+// require_once __DIR__ .'/twig/functions/pll__.php';
 
 // filters
-require_once __DIR__ .'/twig/filters/newline.php';
+// require_once __DIR__ .'/twig/filters/newline.php';
 
 /**
  * FORM LIBRARY

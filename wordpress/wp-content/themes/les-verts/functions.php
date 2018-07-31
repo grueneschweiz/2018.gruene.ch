@@ -68,17 +68,7 @@ class StarterSite extends TimberSite {
 	
 	function add_to_context( $context ) {
 		// $context['notes'] = 'These values are available everytime you call Timber::get_context();';
-		
-		$context['branding'] = [
-			'unbreakeables' => [ 'Ökologisch konsequent.', 'Sozial engagiert.', 'Global solidarisch.' ],
-			// todo: get them from the customizer
-			'theme_uri'     => THEME_URI
-		];
-		
-		// Inject some default WP vars
-		$context['mainNav']     = new TimberMenu( 'main-nav', ['depth' => 3] );
-		$context['languageNav'] = new TimberMenu( 'language-nav', ['depth' => 1] );
-		$context['menuCta']     = [ 'label' => 'mitmachen', 'link' => '#' ]; // todo: get them from the customizer
+		// The registered controllers may also populate the context. Have a look at lib/_loader.php
 		
 		// Inception
 		$context['site'] = $this;
@@ -164,9 +154,9 @@ class StarterSite extends TimberSite {
 			}
 		}
 		
-		// if (is_admin_bar_showing()) {
-		// 	wp_enqueue_style( 'admin-style', get_stylesheet_directory_uri() . '/style-adminbar.css', false, THEME_VERSION );
-		// }
+		if (is_admin_bar_showing()) {
+		 	wp_enqueue_style( 'admin-style', get_stylesheet_directory_uri() . '/style-adminbar.css', false, THEME_VERSION );
+		}
 		
 		// load scripts on specific pages
 		// if( is_page() ){
