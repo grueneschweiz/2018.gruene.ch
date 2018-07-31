@@ -16,6 +16,7 @@
   }
 
   &__logo {
+    @include clean-link;
     display: table-cell;
     vertical-align: middle;
     height: $height;
@@ -26,7 +27,7 @@
       display: none;
     }
 
-    svg {
+    img {
       width: 148px;
     }
   }

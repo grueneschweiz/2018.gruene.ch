@@ -6,7 +6,7 @@
                     <span class="m-branding__unbreakeable">{{ unbreakeable }}</span>
                 {% endfor %}
             </h1>
-            <a href="/" title="{{ __('Home', constant('THEME_DOMAIN')) }}">
+            <a class="m-branding__logo" href="/" title="{{ __('Home', constant('THEME_DOMAIN')) }}">
                 {% include 'atoms/a-logo.twig' with {'white': true} only %}
             </a>
         </div>
