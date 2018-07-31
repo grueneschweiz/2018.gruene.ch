@@ -6,7 +6,7 @@
         <div class="m-menu__hamburger">
             {% include 'atoms/a-hamburger.twig' %}
         </div>
-        <ul class="m-menu__nav-list" role="menubar" id="menu" aria-label="{{ pll__('Main navigation') }}">
+        <ul class="m-menu__nav-list" role="menubar" id="menu" aria-label="{{ __('Main navigation', constant('THEME_DOMAIN')) }}">
             {% for item in mainNav.items %}
                 <li class="m-menu__nav-item" role="none">
                     <a class="m-menu__nav-link {% if item.current or item.current_item_ancestor %}m-menu__nav-link--active{% endif %}"
@@ -14,7 +14,7 @@
                        aria-haspopup="menu" aria-expanded="false">{{ item.title }}</a>
                     {% if item.children %}
                         <ul class="m-menu__submenu" role="menu"
-                            aria-label="{{ pll__('Submenu') }}">
+                            aria-label="{{ __('Submenu', constant('THEME_DOMAIN')) }}">
                             {% for subitem in item.children %}
                                 <li class="m-menu__submenu__section" role="none">
                                     {% include '../atoms/a-submenu.twig' with subitem only %}
@@ -22,9 +22,9 @@
                             {% endfor %}
                             <li class="m-menu__submenu__close-wrapper" role="none">
                                 <button class="m-menu__submenu__close"
-                                        aria-label="{{ pll__('Close submenu') }}">
+                                        aria-label="{{ __('Close submenu', constant('THEME_DOMAIN')) }}">
                                     <svg role="img">
-                                        <title>{{ pll__('Close icon') }}</title>
+                                        <title>{{ __('Close icon', constant('THEME_DOMAIN')) }}</title>
                                         <use xlink:href="#close"></use>
                                     </svg>
                                 </button>
@@ -34,11 +34,11 @@
                 </li>
             {% endfor %}
             <li class="m-menu__nav-item" role="none">
-                <a class="m-menu__nav-link m-menu__search" href="#" aria-label="{{ pll__('Search') }}"
+                <a class="m-menu__nav-link m-menu__search" href="#" aria-label="{{ __('Search', constant('THEME_DOMAIN')) }}"
                    aria-haspopup="true" aria-expanded="false">
                     <span class="m-menu__search-text">{{ search }}</span>
                     <svg class="m-menu__search-icon" role="search">
-                        <title>{{ pll__('Search') }}</title>
+                        <title>{{ __('Search', constant('THEME_DOMAIN')) }}</title>
                         <use xlink:href="#glass"></use>
                     </svg>
                 </a>
@@ -52,7 +52,7 @@
                 'modifiers': ['a-button--outline', 'a-button--secondary']
             } only %}</div>
         <div class="m-menu__language-nav">
-            <ul class="m-menu__language-nav-list" role="menubar" aria-label="{{ pll__('Language navigation') }}">
+            <ul class="m-menu__language-nav-list" role="menubar" aria-label="{{ __('Language navigation', constant('THEME_DOMAIN')) }}">
                 {% for language in languageNav.items %}
                       <li class="m-menu__language-nav-item">
                          <a class="m-menu__language-nav-link {% if item.current %}m-menu__language-nav-link--active{% endif %}"
