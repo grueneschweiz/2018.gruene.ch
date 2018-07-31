@@ -1,4 +1,4 @@
-<div class="a-submenu  {{ modifiers_classes }}">
+<div class="a-submenu  {{ {{ modifiers|join(' ') }} }}">
     {% if featured %}
         {% include 'a-cat-title.twig' with cat-title only %}
         {% include 'a-link-image.twig' with link-image only %}

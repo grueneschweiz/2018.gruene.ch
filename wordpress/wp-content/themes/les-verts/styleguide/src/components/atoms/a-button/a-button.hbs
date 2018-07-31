@@ -1,5 +1,5 @@
-{{#if url}}
-    <a href="{{url}}" class="a-button {{ modifiers_classes }}"{{#if target}} target="{{ target }}"{{/if}}>{{ label }}</a>
+{{#if link}}
+    <a href="{{link}}" class="a-button {{ modifiers_classes }}"{{#if target}} target="{{ target }}"{{/if}}>{{ label }}</a>
 {{else}}
     <button type="{{#if type}}{{type}}{{else}}button{{/if}}" class="a-button {{ modifiers_classes }}">{{ label }}</button>
 {{/if}}

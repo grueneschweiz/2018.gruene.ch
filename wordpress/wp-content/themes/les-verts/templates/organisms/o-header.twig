@@ -6,9 +6,9 @@
         <div class="o-header__menu">
             {% include 'molecules/m-menu.twig' %}
         </div>
-    </div>{#
+    </div>
     <div class="o-header__shadow" aria-hidden="true">
         {% include 'molecules/m-branding.twig' with branding only %}
-        {% include 'molecules/m-menu.twig' with menu only %}
-    </div>#}
+        {% include 'molecules/m-menu.twig' only %}
+    </div>
 </header>
