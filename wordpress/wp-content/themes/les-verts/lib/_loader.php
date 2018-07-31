@@ -87,13 +87,26 @@ add_action( 'init', function() {
 
 
 /**
+ * CUSTOMIZER
+ * ==========
+ *
+ * Register theme specific customizer classes
+ */
+
+require_once __DIR__ . '/customizer/logo.php';
+//require_once __DIR__ . '/customizer/slogan.php';
+
+Customizer\Logo::register();
+//Slogan::register();
+
+/**
  * TWEAKS
  * ======
  *
  * Rendering tweaks, hacks,…
  */
 
- require_once __DIR__ .'/tweaks/inject-svg-sprite.php';
+require_once __DIR__ .'/tweaks/inject-svg-sprite.php';
 
 
 /**

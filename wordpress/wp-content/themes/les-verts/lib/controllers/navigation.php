@@ -12,10 +12,16 @@ class Navigation_controller {
 	
 	public static function add_to_context( $context ) {
 		
-		// Inject some default WP vars
-		$context['mainNav']     = new TimberMenu( 'main-nav', ['depth' => 3] );
-		$context['languageNav'] = new TimberMenu( 'language-nav', ['depth' => 1] );
-		$context['menuCta']     = [ 'label' => 'mitmachen', 'link' => '#' ]; // todo: get them from the customizer
+		$context['menu']['main']     = new TimberMenu( 'main-nav', [ 'depth' => 3 ] );
+		$context['menu']['language'] = new TimberMenu( 'language-nav', [ 'depth' => 1 ] );
+		$context['menu']['cta']      = [ 'label' => 'mitmachen', 'link' => '#' ]; // todo: get them from the customizer
+		
+		$img_id                  = get_theme_mod( Customizer\Logo::SETTING_LOGO_DARK, false );
+		$context['menu']['logo'] = [
+			'image' => new \TimberImage( $img_id ),
+			'srcset' => [2, 3],
+			'resize' => [116],
+		];
 		
 		return $context;
 	}

@@ -1,1 +1,4 @@
-<img class="a-logo" alt="{{ title }}" src="{{ constant('THEME_URI') }}/static/img/logo-defr--{% if white %}white{% else %}green{% endif %}.svg">
+<img class="a-logo" {{ logo.image|get_timber_image_responsive({
+    resize: logo.resize,
+    srcset: logo.srcset,
+}) }}>

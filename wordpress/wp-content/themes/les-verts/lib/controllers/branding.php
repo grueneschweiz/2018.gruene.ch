@@ -14,6 +14,13 @@ class Branding_controller {
 			'unbreakeables' => [ 'Ökologisch konsequent.', 'Sozial engagiert.', 'Global solidarisch.' ],
 			// todo: get them from the customizer
 		];
+		
+		$img_id = get_theme_mod( Customizer\Logo::SETTING_LOGO_LIGHT, false );
+		$context['branding']['logo'] = [
+			'image' => new \TimberImage( $img_id ),
+			'srcset' => [2, 3],
+			'resize' => [148],
+		];
 
 		return $context;
 	}
