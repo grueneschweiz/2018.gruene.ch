@@ -9,20 +9,36 @@
 namespace SUPT\Customizer;
 
 
-class Logo {
+/**
+ * This is just an example
+ *
+ *
+ * Class Template
+ * @package SUPT\Customizer
+ */
+
+
+
+class Example {
 	const PRIORITY = 60;
-	const WIDTH_LIGHT = 296; // doubled because of retina
-	const WIDTH_DARK = 232; // same here
 	
-	const SECTION = 'title_tagline';
+	const SECTION = THEME_DOMAIN. '_section';
 	const SETTING_LOGO_LIGHT = 'logo_light';
 	const SETTING_LOGO_DARK = 'logo_dark';
 	
 	public static function register() {
 		add_action( 'customize_register', function ( $wp_customize ) {
+			self::add_section( $wp_customize );
 			self::add_settings( $wp_customize );
 			self::add_controls( $wp_customize );
 		} );
+	}
+	
+	public static function add_section( $wp_customize ) {
+		$wp_customize->add_section( self::SECTION, array(
+			'title'    => __( 'Logos', THEME_DOMAIN ),
+			'priority' => self::PRIORITY,
+		) );
 	}
 	
 	public static function add_settings( $wp_customize ) {
@@ -45,10 +61,7 @@ class Logo {
 				self::SETTING_LOGO_LIGHT,
 				array(
 					'label'       => __( 'Logo (light variant)', THEME_DOMAIN ),
-					'description' => _x( 'This is used in the green bar above the menu.', "'This' refers to the logo",
-							THEME_DOMAIN ) . ' ' .
-					                 __( sprintf( 'A compressed SVG is preferred. If you use a PNG, make sure its at least %d pixels wide.',
-						                 self::WIDTH_LIGHT ), THEME_DOMAIN ),
+					'description' => __( 'some words about the logo like the size etc.', THEME_DOMAIN ),
 					'section'     => self::SECTION,
 					'mime_type'   => 'image',
 				)
@@ -62,10 +75,7 @@ class Logo {
 				self::SETTING_LOGO_DARK,
 				array(
 					'label'       => __( 'Logo (dark variant)', THEME_DOMAIN ),
-					'description' => _x( 'This is used in the menubar.', "'This' refers to the logo",
-							THEME_DOMAIN ) . ' ' .
-					                 __( sprintf( 'A compressed SVG is preferred. If you use a PNG, make sure its at least %d pixels wide.',
-						                 self::WIDTH_DARK ), THEME_DOMAIN ),
+					'description' => __( 'some words about the logo like the size etc.', THEME_DOMAIN ),
 					'section'     => self::SECTION,
 					'mime_type'   => 'image',
 				)

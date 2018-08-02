@@ -94,10 +94,8 @@ add_action( 'init', function() {
  */
 
 require_once __DIR__ . '/customizer/logo.php';
-//require_once __DIR__ . '/customizer/slogan.php';
 
 Customizer\Logo::register();
-//Slogan::register();
 
 /**
  * TWEAKS
