@@ -1,20 +1,23 @@
-<div class="a-submenu  {{ {{ modifiers|join(' ') }} }}">
-    {% if featured %}
-        {% include 'a-cat-title.twig' with cat-title only %}
-        {% include 'a-link-image.twig' with link-image only %}
-        <a class="a-submenu--featured__link" href="{{ url }}">
-            <h3 class="a-submenu--featured__link__title">{{ title }}</h3>
+<div class="a-submenu{% if item.featured_menu_item %} a-submenu--featured{% endif %}">
+    {% if item.featured_menu_item %}
+        {% include 'atoms/a-cat-title.twig' with {
+            'label': item.category.name,
+            'url': item.category.link
+        } only %}
+        {% include 'atoms/a-link-image.twig' with {'url':item.link, 'image':item.image} only %}
+        <a class="a-submenu--featured__link" href="{{ item.link }}">
+            <h3 class="a-submenu--featured__link__title">{{ item.title }}</h3>
         </a>
-        <p class="a-submenu--featured__text">{{ text }}</p>
-        {% include 'a-button.twig' button %}
+        <p class="a-submenu--featured__text">{{ item.teaser }}</p>
+        {% include 'atoms/a-button.twig' with {'url': item.link, 'label': item.button_text} only %}
     {% else %}
-        <a class="a-submenu__title" href="{{ link }}">{{ title }}</a>
+        <a class="a-submenu__title" href="{{ item.link }}">{{ item.title }}</a>
         <ul class="a-submenu__list">
-            {% for item in menu.children %}
-            <li class="a-submenu__item">
-                <a class="a-submenu__link" href="{{ item.link }}">{{ item.title }}</a>
-            </li>
-            {% enfor %}
+            {% for subitem in item.children %}
+                <li class="a-submenu__item">
+                    <a class="a-submenu__link" href="{{ subitem.link }}">{{ subitem.title }}</a>
+                </li>
+            {% endfor %}
         </ul>
     {% endif %}
 </div>
