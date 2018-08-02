@@ -170,6 +170,19 @@ class StarterSite extends TimberSite {
 		// }
 	}
 	
+	/**
+	 * Load backend dependencies for gutenberg blocks
+	 */
+	function register_gutenberg_blocks() {
+		wp_enqueue_style( THEME_DOMAIN.'_gutenberg',
+			get_stylesheet_directory_uri() . '/blocks/dist/editor' . ( WP_DEBUG ? '' : '.min' ) . '.css', false,
+			THEME_VERSION );
+		
+		// js
+		wp_enqueue_script( THEME_DOMAIN.'_gutenberg',
+			get_stylesheet_directory_uri() . '/blocks/dist/blocks' . ( WP_DEBUG ? '' : '.min' ) . '.js', false,
+			THEME_VERSION );
+	}
 }
 
 

@@ -77,5 +77,21 @@
       ],
       "tests": []
     }
+  },
+  "gutenberg_js": {
+    "src": "./theme/blocks/src/**/*.js",
+    "entries": ["./theme/blocks/src/blocks.js"],
+    "paths": ["./theme/blocks/src"],
+    "dest": "./theme/blocks/dist",
+    "build_name": "blocks.js"
+  },
+  "gutenberg_sass": {
+    "src": "./theme/blocks/src/editor.scss",
+    "dest": "./theme/blocks/dist/",
+    "basename": "editor"
+  },
+  "gutenberg_watch": {
+    "scripts": "./theme/blocks/src/**/*.js",
+    "gutenberg_sass": "./theme/blocks/src/**/*.scss"
   }
 }
