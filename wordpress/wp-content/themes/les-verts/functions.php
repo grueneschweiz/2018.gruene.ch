@@ -3,6 +3,11 @@
  * REQUIREMENTS
  */
 
+// Exit if accessed directly.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 // Composer dependencies
 require_once __DIR__ . '/vendor/autoload.php';
 
@@ -54,6 +59,7 @@ class StarterSite extends TimberSite {
 		// Actions
 		// -> more info: https://developer.wordpress.org/reference/functions/add_action/
 		add_action( 'init', array( $this, 'register_menu_locations' ) );
+		add_action( 'enqueue_block_editor_assets', array( $this, 'register_gutenberg_blocks' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'setup_assets' ) );
 		
 		// // For debug purpose only: shows all the hooks & registered actions
@@ -120,17 +126,12 @@ class StarterSite extends TimberSite {
 	
 	function setup_assets() {
 		// css
-		wp_enqueue_style( 'screen',
+		wp_enqueue_style( THEME_VERSION. '_screen',
 			get_stylesheet_directory_uri() . '/static/style' . ( WP_DEBUG ? '' : '.min' ) . '.css', false,
 			THEME_VERSION );
-		if ( is_rtl() ) {
-			wp_enqueue_style( 'rtl',
-				get_stylesheet_directory_uri() . '/static/rtl' . ( WP_DEBUG ? '' : '.min' ) . '.css', false,
-				THEME_VERSION );
-		}
 		
 		// js
-		wp_enqueue_script( 'app',
+		wp_enqueue_script( THEME_VERSION. '_app',
 			get_stylesheet_directory_uri() . '/static/js/app' . ( WP_DEBUG ? '' : '.min' ) . '.js', false,
 			THEME_VERSION );
 		
@@ -144,7 +145,7 @@ class StarterSite extends TimberSite {
 				// TODO find a way to load dynymically the BS file (cause the port number could be somthing else)
 				if ( is_multisite() ) { // Removing trailing slash to attach browser-sync
 					wp_enqueue_script( 'bs',
-						substr( network_site_url(), 0, - 1 ) . ':4000/browser-sync/browser-sync-client.js', false, null,
+						substr( network_site_url(), 0, - 1 ) . '/browser-sync/browser-sync-client.js', false, null,
 						true );
 				} else {
 					wp_enqueue_script( 'bs', get_site_url() . ':4000/browser-sync/browser-sync-client.js', false, null,
