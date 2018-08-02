@@ -92,6 +92,6 @@
   },
   "gutenberg_watch": {
     "scripts": "./theme/blocks/src/**/*.js",
-    "gutenberg_sass": "./theme/blocks/src/**/*.scss"
+    "sass": "./theme/blocks/src/**/*.scss"
   }
 }

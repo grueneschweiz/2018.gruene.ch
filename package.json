@@ -32,7 +32,7 @@
   "scripts": {
     "start": "gulp fractal:start",
     "gutenberg": "gulp gutenberg",
-    "start:all": "yarn wp:start && yarn start && yarn gutenberg",
+    "start:all": "yarn wp:start && yarn start && yarn gutenberg:watch",
     "build": "gulp build:production",
     "fractal:build": "gulp fractal:build",
     "wp:start": "docker-compose up -d",
