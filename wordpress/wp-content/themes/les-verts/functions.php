@@ -51,11 +51,10 @@ class StarterSite extends TimberSite {
 		// -> more info: https://developer.wordpress.org/reference/functions/add_filter/
 		add_filter( 'timber_context', array( $this, 'add_to_context' ), - 1 );
 		
-		
 		// Actions
 		// -> more info: https://developer.wordpress.org/reference/functions/add_action/
 		add_action( 'init', array( $this, 'register_menu_locations' ) );
-		add_action( 'wp_enqueue_scripts', array( $this, 'supt_setup_assets' ) );
+		add_action( 'wp_enqueue_scripts', array( $this, 'setup_assets' ) );
 		
 		// // For debug purpose only: shows all the hooks & registered actions
 		// add_action('wp', function(){ echo '<pre>';print_r($GLOBALS['wp_filter']); echo '</pre>';exit; } );
@@ -119,7 +118,7 @@ class StarterSite extends TimberSite {
 		) );
 	}
 	
-	function supt_setup_assets() {
+	function setup_assets() {
 		// css
 		wp_enqueue_style( 'screen',
 			get_stylesheet_directory_uri() . '/static/style' . ( WP_DEBUG ? '' : '.min' ) . '.css', false,
