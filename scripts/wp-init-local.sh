@@ -10,3 +10,11 @@ docker exec wp_docker_les_verts bash -c "cd /var/www/html && chmod +x wp-install
 # Sync all ACF Fields from JSON files
 docker exec wp_docker_les_verts wp package install git@github.com:superhuit-ch/wp-cli-acf-json.git
 docker exec wp_docker_les_verts wp acf-json sync --all_sites
+
+
+# Install wordpress in .wordpress (only used for IDE support)
+curl -o .wordpress/latest.tar.gz https://wordpress.org/latest.tar.gz
+tar xvzf .wordpress/latest.tar.gz -C .wordpress/
+rm .wordpress/latest.tar.gz
+mv .wordpress/wordpress/* .wordpress
+rm .wordpress/wordpress

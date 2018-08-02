@@ -7,7 +7,7 @@
 require_once __DIR__ . '/vendor/autoload.php';
 
 // Requirements
-use Symfony\Component\Intl\Intl;
+//use Symfony\Component\Intl\Intl;
 
 // Constants
 $theme = wp_get_theme();
