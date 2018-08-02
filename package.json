@@ -31,7 +31,7 @@
   ],
   "scripts": {
     "start": "gulp fractal:start",
-    "start:all": "yarn start wp:start",
+    "start:all": "yarn wp:start && yarn start",
     "build": "gulp build:production",
     "fractal:build": "gulp fractal:build",
     "wp:start": "docker-compose up -d",
