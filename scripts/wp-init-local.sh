@@ -26,5 +26,7 @@ rm .wordpress/latest.tar.gz
 mv .wordpress/wordpress/* .wordpress
 rmdir .wordpress/wordpress
 
-# copy the wp-content
-cp -r wordpress/wp-content .wordpress/wp-content
+# copy the plugins
+rm -rf .wordpress/wp-content
+cp -r wordpress/wp-content .wordpress
+rm -rf .wordpress/wp-content/themes/*
