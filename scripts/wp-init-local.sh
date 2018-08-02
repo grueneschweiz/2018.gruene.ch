@@ -1,5 +1,8 @@
 #!/bin/sh
 
+###########################
+# INSTALL DEV ENVIRONMENT #
+###########################
 # Install theme dependencies with composer
 docker exec wp_docker_les_verts bash -c "cd /var/www/html/wp-content/themes/les-verts && composer install"
 # Install wp core
@@ -11,10 +14,17 @@ docker exec wp_docker_les_verts bash -c "cd /var/www/html && chmod +x wp-install
 docker exec wp_docker_les_verts wp package install git@github.com:superhuit-ch/wp-cli-acf-json.git
 docker exec wp_docker_les_verts wp acf-json sync --all_sites
 
+######################
+# ENABLE IDE SUPPORT #
+######################
+mkdir .wordpress
 
-# Install wordpress in .wordpress (only used for IDE support)
+# download and unzip wordpress
 curl -o .wordpress/latest.tar.gz https://wordpress.org/latest.tar.gz
 tar xvzf .wordpress/latest.tar.gz -C .wordpress/
 rm .wordpress/latest.tar.gz
 mv .wordpress/wordpress/* .wordpress
-rm .wordpress/wordpress
+rmdir .wordpress/wordpress
+
+# copy the wp-content
+cp -r wordpress/wp-content .wordpress/wp-content
