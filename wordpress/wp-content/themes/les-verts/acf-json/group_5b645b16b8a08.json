@@ -175,12 +175,19 @@
         },
         {
             "key": "field_5b645e2f33ef5",
-            "label": "Subline Bars",
-            "name": "subline_bars",
+            "label": "White Subline Bars",
+            "name": "white_subline_bars",
             "type": "repeater",
             "instructions": "",
             "required": 0,
-            "conditional_logic": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5b64adcb29154",
+                        "operator": "==empty"
+                    }
+                ]
+            ],
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -194,8 +201,8 @@
             "sub_fields": [
                 {
                     "key": "field_5b645e3c33ef6",
-                    "label": "Subline",
-                    "name": "campaign__subline-bar",
+                    "label": "White Subline",
+                    "name": "white_subline_bar",
                     "type": "text",
                     "instructions": "",
                     "required": 0,
@@ -212,6 +219,81 @@
                     "maxlength": ""
                 }
             ]
+        },
+        {
+            "key": "field_5b64adcb29154",
+            "label": "Green Subline Bars",
+            "name": "green_subline_bars",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5b645bd433eec",
+                        "operator": "!=empty"
+                    },
+                    {
+                        "field": "field_5b645e2f33ef5",
+                        "operator": "==empty"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "field_5b645e3c33ef6",
+            "min": 0,
+            "max": 2,
+            "layout": "table",
+            "button_label": "Add Subline",
+            "sub_fields": [
+                {
+                    "key": "field_5b64adcb29155",
+                    "label": "Green Subline",
+                    "name": "green_subline_bar",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                }
+            ]
+        },
+        {
+            "key": "field_5b64b19806123",
+            "label": "Bar alignment",
+            "name": "bar_alignment",
+            "type": "radio",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "left": "Left",
+                "right": "Right"
+            },
+            "allow_null": 0,
+            "other_choice": 0,
+            "default_value": "left : left",
+            "layout": "horizontal",
+            "return_format": "value",
+            "save_other_choice": 0
         },
         {
             "key": "field_5b645e6b33ef7",
@@ -318,5 +400,5 @@
     "hide_on_screen": "",
     "active": 0,
     "description": "",
-    "modified": 1533310059
+    "modified": 1533327558
 }

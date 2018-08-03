@@ -4,36 +4,42 @@
     <section class="page__campaign">
         {% include 'organisms/o-campaign.twig' with {
             'image': post.campaign_image,
+            'green_bars': post.get_field('campaign_green_bars'),
+            'white_bars': post.get_field('campaign_white_bars'),
+            'magenta_bars': post.get_field('campaign_magenta_bars'),
+            'white_subline_bars': post.get_field('campaign_white_subline_bars'),
+            'green_subline_bars': post.get_field('campaign_green_subline_bars'),
+            'alignment': post.get_field('campaign_bar_alignment'),
         } only %}
     </section>
 
-{#
-<div class="page__grid-wrapper">
-    <section class="page__grid">
-        <div class="page__article">
-            {{ render '@o-vote--3-proposals' }}
-        </div>
-        <div class="page__article">
-            {{ render '@o-front-article--single' }}
-        </div>
-        <div class="page__article">
-            {{ render '@o-front-article--oton' }}
-        </div>
-        <div class="page__article">
-            {{ render '@o-front-article' }}
-        </div>
-        <div class="page__article--2-col">
-            {{ render '@o-positions' }}
-        </div>
-        <div class="page__article--2-col">
-            {{ render '@o-front-events' }}
-        </div>
-    </section>
-    <section class="page__people-slider">
-        {{ render '@o-people-slider' }}
-    </section>
-    <section class="page__engagement-map">
-        {{ render '@o-engagement-map' }}
-    </section>
-</div>#}
+    {#
+    <div class="page__grid-wrapper">
+        <section class="page__grid">
+            <div class="page__article">
+                {{ render '@o-vote--3-proposals' }}
+            </div>
+            <div class="page__article">
+                {{ render '@o-front-article--single' }}
+            </div>
+            <div class="page__article">
+                {{ render '@o-front-article--oton' }}
+            </div>
+            <div class="page__article">
+                {{ render '@o-front-article' }}
+            </div>
+            <div class="page__article--2-col">
+                {{ render '@o-positions' }}
+            </div>
+            <div class="page__article--2-col">
+                {{ render '@o-front-events' }}
+            </div>
+        </section>
+        <section class="page__people-slider">
+            {{ render '@o-people-slider' }}
+        </section>
+        <section class="page__engagement-map">
+            {{ render '@o-engagement-map' }}
+        </section>
+    </div>#}
 {% endblock %}

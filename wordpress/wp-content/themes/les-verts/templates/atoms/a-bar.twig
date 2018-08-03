@@ -1,1 +1,3 @@
-<div class="a-bar {{ modifiers|join(' ') }}">{{ label }}</div>
+{% if label %}
+    <div class="a-bar {{ modifiers|join(' ') }}">{{ label }}</div>
+{% endif %}
