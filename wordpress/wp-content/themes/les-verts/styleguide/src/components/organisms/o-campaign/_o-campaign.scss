@@ -5,8 +5,11 @@
     position: fixed;
     width: 100%;
     z-index: -1;
-  }
 
+    .a-image__image {
+      width: 100%;
+    }
+  }
 
   &__bars {
     width: 100%;

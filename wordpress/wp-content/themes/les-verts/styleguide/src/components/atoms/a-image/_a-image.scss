@@ -1,11 +1,26 @@
-.a-campaign-image {
-  width: 100%;
+.a-image {
+  max-width: 100%;
   position: relative;
   line-height: 0;
 
   &__image {
-    width: 100%;
+    max-width: 100%;
     height: auto;
+    transition: transform $transition-mid cubic-bezier(0.390, 0.575, 0.565, 1.000);
+  }
+
+  &__link {
+    @include clean-link;
+
+    display: block;
+    max-width: 100%;
+    overflow: hidden;
+
+    @include hover {
+      .a-image__image {
+        transform: scale(1.01);
+      }
+    }
   }
 
   &__copy {

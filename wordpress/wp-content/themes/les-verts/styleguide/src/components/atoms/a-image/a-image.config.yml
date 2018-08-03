@@ -1,6 +1,8 @@
-label: Campaign image
+label: Image
 status: ready
 context:
+  link-url: '#'
   image-src: "/img/wheat_ratio.jpg"
   alt: Some many things on this image
+  title: This is a linked image
   copy: Photographer xy

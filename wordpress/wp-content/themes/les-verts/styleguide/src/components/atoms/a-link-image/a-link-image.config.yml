@@ -1,9 +1,0 @@
-label: Link Image
-status: ready
-display:
-  padding: 40px
-context:
-  link-url: '#'
-  image-src: "/img/wheat_ratio.jpg"
-  alt: Some many things on this image
-  title: This is a linked image

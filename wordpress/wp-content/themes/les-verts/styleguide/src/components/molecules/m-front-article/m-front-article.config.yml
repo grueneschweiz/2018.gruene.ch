@@ -9,7 +9,7 @@ context:
   url: '#'
   has-img: true
   img:
-    url: '#'
+    link-url: '#'
     image-src: "/img/wheat.jpg"
     alt: Symbolbild Fair-Food
     title: Fair schmeckt besser
