@@ -9,4 +9,4 @@
  * Gulp is compiling as the input file.
  */
 
-import './example/block.js';
+import './campaign/block.js';

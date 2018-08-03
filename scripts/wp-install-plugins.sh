@@ -23,7 +23,8 @@ $WPCLI plugin activate polylang-pro --network
 
 ## Advanced Custom Fields PRO
 $WPCLI plugin activate advanced-custom-fields-pro --network
-# $WPCLI eval 'acf_pro_update_license("INSERT LICENSE NUMBER HERE");'
+#$WPCLI eval 'acf_pro_update_license("ENTER_LICENCE_KEY_HERE");'
+#$WPCLI plugin update advanced-custom-fields-pro
 
 ## Timber
 $WPCLI plugin install timber-library --activate-network
@@ -48,6 +49,9 @@ $WPCLI plugin install wordpress-importer --activate-network
 
 # Theme and plugin translation for polylang
 $WPCLI plugin install theme-translation-for-polylang --activate-network
+
+# Enable Gutenberg
+$WPCLI plugin install gutenberg --activate-network
 
 # Disable comments system
 $WPCLI plugin install disable-comments --activate-network

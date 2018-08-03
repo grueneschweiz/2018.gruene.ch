@@ -44,6 +44,6 @@ gulp.task( 'gutenberg:lint', lint_task.bind(null, CONFIG.gutenberg_js.src) );
 gulp.task( 'gutenberg:scripts', js_task.bind(null, CONFIG.gutenberg_js) );	// Script task: compile the javascript code.
 gulp.task( 'gutenberg:sass', sass_task.bind(null, CONFIG.gutenberg_sass) ); // Sass tasks: compile & minify Sass files
 gulp.task( 'gutenberg:watch', gutenberg_watch_task.bind(null, CONFIG.gutenberg_watch) );
-gulp.task( 'gutenberg', ['gutenberg-lint', 'gutenberg-scripts', 'gutenberg-sass'] );
+gulp.task( 'gutenberg', ['gutenberg:lint', 'gutenberg:scripts', 'gutenberg:sass'] );
 
 gulp.task( 'default', ['fractal:start'] );
