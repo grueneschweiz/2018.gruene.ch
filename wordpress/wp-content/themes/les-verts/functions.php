@@ -55,6 +55,7 @@ class StarterSite extends TimberSite {
 		// Filters
 		// -> more info: https://developer.wordpress.org/reference/functions/add_filter/
 		add_filter( 'timber_context', array( $this, 'add_to_context' ), - 1 );
+		add_filter( 'block_categories', array( $this, 'register_gutenberg_block_category' ) );
 		
 		// Actions
 		// -> more info: https://developer.wordpress.org/reference/functions/add_action/
@@ -183,6 +184,17 @@ class StarterSite extends TimberSite {
 		wp_enqueue_script( THEME_DOMAIN.'_gutenberg',
 			get_stylesheet_directory_uri() . '/blocks/dist/blocks' . ( WP_DEBUG ? '' : '.min' ) . '.js', false,
 			THEME_VERSION );
+	}
+	
+	function register_gutenberg_block_category($categories) {
+		$my_category = array(
+			'slug'  => 'theme',
+			'title' => __( 'Theme Blocks', THEME_DOMAIN ),
+		);
+		
+		array_unshift($categories, $my_category);
+		
+		return $categories;
 	}
 }
 
