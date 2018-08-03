@@ -11,6 +11,7 @@
   @include fluid-props(height, $size-medium, $grid-max-width-max, 80px, 100px);
 
   &__logo {
+    @include clean-link;
     @include fluid-props(width, $size-medium, $grid-max-width-max, 100px, 116px);
     margin-left: 30px;
 
