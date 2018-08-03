@@ -1,0 +1,11 @@
+<div class="m-bars {{modifiers|join(' ')}}">
+    <div class="m-bars__rotator">
+        <div class="m-bars__positioner">
+            {% for bar in bars %}
+            <div class="m-bars__bar">
+                {% include 'atoms/a-bar.twig' with bar only %}
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>

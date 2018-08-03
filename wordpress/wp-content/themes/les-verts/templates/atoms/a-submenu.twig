@@ -4,7 +4,7 @@
             'label': item.category.name,
             'url': item.category.link
         } only %}
-        {% include 'atoms/a-link-image.twig' with {'url':item.link, 'image':item.image} only %}
+        {% include 'atoms/a-image.twig' with {'link_url':item.link, 'image':item.image} only %}
         <a class="a-submenu--featured__link" href="{{ item.link }}">
             <h3 class="a-submenu--featured__link__title">{{ item.title }}</h3>
         </a>

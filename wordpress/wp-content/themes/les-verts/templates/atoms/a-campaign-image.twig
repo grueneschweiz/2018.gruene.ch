@@ -1,0 +1,4 @@
+<figure class="a-campaign-image">
+    <img {{ image|get_timber_image_responsive('full-grid') }} class="a-campaign-image__image">
+    <figcaption><small class="a-campaign-image__copy">&copy; {{TimberImage(image).get_field('copyright')}}</small></figcaption>
+</figure>

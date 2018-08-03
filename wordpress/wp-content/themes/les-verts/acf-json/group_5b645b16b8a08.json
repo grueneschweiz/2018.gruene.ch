@@ -1,0 +1,322 @@
+{
+    "key": "group_5b645b16b8a08",
+    "title": "[Model]Campaign",
+    "fields": [
+        {
+            "key": "field_5b645b8533eeb",
+            "label": "Image",
+            "name": "image",
+            "type": "image",
+            "instructions": "Make sure the image is at least 2000px wide.",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "full-grid",
+            "library": "all",
+            "min_width": 2000,
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_5b645bd433eec",
+            "label": "Green Bars",
+            "name": "green_bars",
+            "type": "repeater",
+            "instructions": "This is the default",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5b645c8433eee",
+                        "operator": "==empty"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "field_5b645c0833eed",
+            "min": 0,
+            "max": 2,
+            "layout": "table",
+            "button_label": "Add green bar",
+            "sub_fields": [
+                {
+                    "key": "field_5b645c0833eed",
+                    "label": "Green Bar",
+                    "name": "green_bar",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": 20
+                }
+            ]
+        },
+        {
+            "key": "field_5b645c8433eee",
+            "label": "White Bars",
+            "name": "white_bars",
+            "type": "repeater",
+            "instructions": "Use the white bars only, if the image doesn't contrast enough with the bars",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5b645bd433eec",
+                        "operator": "==empty"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "field_5b645cf533eef",
+            "min": 0,
+            "max": 2,
+            "layout": "table",
+            "button_label": "Add white bar",
+            "sub_fields": [
+                {
+                    "key": "field_5b645cf533eef",
+                    "label": "White Bar",
+                    "name": "white_bar",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": 20
+                }
+            ]
+        },
+        {
+            "key": "field_5b645d3433ef0",
+            "label": "Magenta Bars",
+            "name": "magenta_bars",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "field_5b645d6b33ef1",
+            "min": 0,
+            "max": 0,
+            "layout": "table",
+            "button_label": "Add magenta bar",
+            "sub_fields": [
+                {
+                    "key": "field_5b645d6b33ef1",
+                    "label": "Magenta Bar",
+                    "name": "magenta_bar",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_5b645bd433eec",
+                                "operator": "!=empty"
+                            }
+                        ],
+                        [
+                            {
+                                "field": "field_5b645c8433eee",
+                                "operator": "!=empty"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": 20
+                }
+            ]
+        },
+        {
+            "key": "field_5b645e2f33ef5",
+            "label": "Subline Bars",
+            "name": "subline_bars",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "field_5b645e3c33ef6",
+            "min": 0,
+            "max": 2,
+            "layout": "table",
+            "button_label": "Add Subline",
+            "sub_fields": [
+                {
+                    "key": "field_5b645e3c33ef6",
+                    "label": "Subline",
+                    "name": "campaign__subline-bar",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                }
+            ]
+        },
+        {
+            "key": "field_5b645e6b33ef7",
+            "label": "Campaign Title",
+            "name": "title",
+            "type": "text",
+            "instructions": "Keep it as short as possible!",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": 40
+        },
+        {
+            "key": "field_5b645ec333ef8",
+            "label": "Teaser",
+            "name": "teaser",
+            "type": "textarea",
+            "instructions": "Keept it short (200 to 400 characters).",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": 500,
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_5b645edb33ef9",
+            "label": "Read more button",
+            "name": "read-more-text",
+            "type": "text",
+            "instructions": "The button text",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Read more about the campain",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": 50
+        },
+        {
+            "key": "field_5b645f6d33efa",
+            "label": "Main campaign page",
+            "name": "link",
+            "type": "post_object",
+            "instructions": "Select the campaign page",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "post",
+                "page"
+            ],
+            "taxonomy": [],
+            "allow_null": 0,
+            "multiple": 0,
+            "return_format": "object",
+            "ui": 1
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ],
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "page"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 0,
+    "description": "",
+    "modified": 1533310059
+}

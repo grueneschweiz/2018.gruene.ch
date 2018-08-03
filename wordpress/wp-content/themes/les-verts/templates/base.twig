@@ -9,19 +9,11 @@
 	<body class="{{body_class}}">
 		{% include 'organisms/o-header.twig' %}
 
-		<section id="content" role="main" class="content-wrapper">
-			{% if title %}<h1>{{title}}</h1>{% endif %}
-			<div class="wrapper {{sidebar_class}}">
-				{% block content %}
-					Sorry, no content
-				{% endblock %}
-			</div>
-			{% if sidebar %}
-				<aside class="layout-sidebar">
-					{{sidebar}}
-				</aside>
-			{% endif %}
-		</section>
+		<main class="page__main">
+            {% block content %}
+                {{ __('Sorry, no content', constant('THEME_DOMAIN')) }}
+            {% endblock %}
+		</main>
 
 		{% block footer %}
 			<footer id="footer">
