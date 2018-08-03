@@ -7,12 +7,17 @@
 	"extends": "eslint:recommended",
 	"parserOptions": {
 		"ecmaVersion": 6,
-		"sourceType": "module"
+		"sourceType": "module",
+		"ecmaFeatures": {
+			// used for gutenberg blocks
+			"jsx": true
+		}
 	},
 	"rules": {
 		"no-console": [ "warn" ]
 	},
 	"globals": {
-		"viewport_service": false
+		"viewport_service": false,
+		"wp": true
 	}
 }
