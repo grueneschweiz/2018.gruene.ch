@@ -113,7 +113,8 @@ wordpress/wp-content/themes/twenty*/
 # Plugins: track only those that cannot be installed by the bootstrap script
 !wordpress/wp-content/plugins
 wordpress/wp-content/plugins/*
-!wordpress/wp-content/plugins/advanced-custom-fields-pro
+# Do not commit acf-pro, it's not licenced under gpl!
+#!wordpress/wp-content/plugins/advanced-custom-fields-pro
 
 wordpress/license.txt
 wordpress/readme.html
