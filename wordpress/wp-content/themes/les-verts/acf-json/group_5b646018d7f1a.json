@@ -22,6 +22,149 @@
             "layout": "block",
             "prefix_label": 0,
             "prefix_name": 1
+        },
+        {
+            "key": "field_5b684af179d22",
+            "label": "Content Blocks",
+            "name": "content_blocks",
+            "type": "flexible_content",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layouts": {
+                "5b684af8c6b51": {
+                    "key": "5b684af8c6b51",
+                    "name": "vote",
+                    "label": "Vote proposition",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_5b684cf979d23",
+                            "label": "Vote proposition",
+                            "name": "vote",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_5b6841bfef6ab"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "0",
+                    "max": "1"
+                },
+                "layout_5b68527d1477a": {
+                    "key": "layout_5b68527d1477a",
+                    "name": "single",
+                    "label": "Single Post \/ Page Teaser",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_5b6852ec1477b",
+                            "label": "Post \/ Page",
+                            "name": "single",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_5b6846d09aa72"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "0",
+                    "max": "4"
+                },
+                "layout_5b68533d5538a": {
+                    "key": "layout_5b68533d5538a",
+                    "name": "double",
+                    "label": "Double Post \/ Page Teaser",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_5b68536b5538b",
+                            "label": "Two Posts \/ Page Teasers",
+                            "name": "double",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_5b684a4bdffb6"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "0",
+                    "max": "2"
+                },
+                "layout_5b6854e05538c": {
+                    "key": "layout_5b6854e05538c",
+                    "name": "media",
+                    "label": "Latest media release",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_5b6854fa5538d",
+                            "label": "Latest media release",
+                            "name": "media",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_5b68487f04a16"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "0",
+                    "max": "1"
+                }
+            },
+            "button_label": "Add Row",
+            "min": "",
+            "max": ""
         }
     ],
     "location": [
@@ -54,5 +197,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1533310134
+    "modified": 1533570295
 }

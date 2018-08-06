@@ -1,0 +1,9 @@
+<div class="m-vote">
+    <h3 class="m-vote__title">{{ label }}</h3>
+    <div class="m-vote__tag">
+        {% include 'atoms/a-vote-tag.twig' with {
+            'modifier': tag.value,
+            'label': tag.label,
+        } only %}
+    </div>
+</div>

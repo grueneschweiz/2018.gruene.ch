@@ -1,6 +1,6 @@
 {
     "key": "group_5b645b16b8a08",
-    "title": "[Model]Campaign",
+    "title": "[Template]Campaign",
     "fields": [
         {
             "key": "field_5b645b8533eeb",
@@ -483,5 +483,5 @@
     "hide_on_screen": "",
     "active": 0,
     "description": "",
-    "modified": 1533551140
+    "modified": 1533558990
 }
