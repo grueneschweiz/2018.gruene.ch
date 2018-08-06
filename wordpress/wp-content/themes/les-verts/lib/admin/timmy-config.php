@@ -41,6 +41,16 @@ add_filter( 'timmy/sizes', function( $sizes ) {
 			'post_types' => [ 'all' ],
 			'show_in_ui' => true,
 		],
+		
+		// header image
+		'header' => [
+			'resize' => [ 1440, 720 ],
+			'srcset' => [ [320, 240], [512, 358], [768, 460], [1024, 512], [1280, 640], [1440, 720], [1792, 896], [2048, 1024], [2500, 1250] ],
+			'sizes' => '(max-width: 1679px) 100vw, 1440px',
+			'name' => 'Full Grid Width',
+			'post_types' => [ 'all' ],
+			'show_in_ui' => true,
+		],
 
 		// full width of the grid - large
 		'full-grid-large' => [

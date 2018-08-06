@@ -374,6 +374,89 @@
             "multiple": 0,
             "return_format": "object",
             "ui": 1
+        },
+        {
+            "key": "field_5b681c8590acf",
+            "label": "Participate Title",
+            "name": "participate_title",
+            "type": "text",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5b681f7ccd058",
+            "label": "Participation description",
+            "name": "participation_description",
+            "type": "textarea",
+            "instructions": "Tell the visiter very briefly, what the form does. Example: Stay updated, subscribe to our newsletter; make a change, become a member; sign the petition",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": 280,
+            "rows": 2,
+            "new_lines": ""
+        },
+        {
+            "key": "field_5b681f2590ad0",
+            "label": "Form",
+            "name": "form",
+            "type": "post_object",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "torro_form"
+            ],
+            "taxonomy": [],
+            "allow_null": 0,
+            "multiple": 0,
+            "return_format": "object",
+            "ui": 1
+        },
+        {
+            "key": "field_5b6821cd715d5",
+            "label": "Link to general participation page",
+            "name": "general_participation_link",
+            "type": "post_object",
+            "instructions": "Select the page with all your participation possibilities",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "post",
+                "page"
+            ],
+            "taxonomy": [],
+            "allow_null": 0,
+            "multiple": 0,
+            "return_format": "object",
+            "ui": 1
         }
     ],
     "location": [
@@ -400,5 +483,5 @@
     "hide_on_screen": "",
     "active": 0,
     "description": "",
-    "modified": 1533327558
+    "modified": 1533551140
 }
