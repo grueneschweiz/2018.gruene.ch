@@ -1,6 +1,9 @@
 label: Events
 status: ready
+default: Full width
 context:
+  modifiers:
+    - full-width
   cat-title:
     label: Events
     js_hook: toggle-events
@@ -44,3 +47,8 @@ context:
       image-src: "/img/dv.jpg"
       link: '#'
       hidden: true
+variants:
+  - name: Single column
+    context:
+      modifiers:
+      -

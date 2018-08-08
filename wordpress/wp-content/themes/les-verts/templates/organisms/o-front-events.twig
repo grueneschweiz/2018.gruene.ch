@@ -1,4 +1,4 @@
-<div class="o-front-events">
+<div class="o-front-events{% if block.full_width %} o-front-events--full-width{% endif %}">
     <div class="o-front-events__cat-title">
         {% include 'atoms/a-cat-title.twig' with {
             'js_hook': 'toggle-events',

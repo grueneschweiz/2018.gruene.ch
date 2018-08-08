@@ -1,0 +1,96 @@
+{
+    "key": "group_5b6ae2eb01de7",
+    "title": "[Template]Events Block",
+    "fields": [
+        {
+            "key": "field_5b6ae7071a2b7",
+            "label": "Title",
+            "name": "category_title",
+            "type": "text",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Events",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5b6ae32ac26d0",
+            "label": "Max events to show",
+            "name": "max_num",
+            "type": "number",
+            "instructions": "It will always be possible to show all events by clicking on the 'show all' button.",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 4,
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "min": 2,
+            "max": "",
+            "step": 2
+        },
+        {
+            "key": "field_5b6ae4faa4259",
+            "label": "Full Width",
+            "name": "full_width",
+            "type": "true_false",
+            "instructions": "If full width is set to yes, the block will span the whole page (both columns) else it will only take the place of a single column block.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5b6ae32ac26d0",
+                        "operator": ">",
+                        "value": "2"
+                    },
+                    {
+                        "field": "field_5b6ae32ac26d0",
+                        "operator": "<",
+                        "value": "6"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 1,
+            "ui": 1,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_type",
+                "operator": "==",
+                "value": "front_page"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 0,
+    "description": "",
+    "modified": 1533743368
+}
