@@ -29,7 +29,7 @@
             "name": "exclude_category",
             "type": "taxonomy",
             "instructions": "Media releases with the category above AND this category selected, will show up in the media release archive but not on the front page.",
-            "required": 1,
+            "required": 0,
             "conditional_logic": 0,
             "wrapper": {
                 "width": "",
@@ -63,5 +63,5 @@
     "hide_on_screen": "",
     "active": 0,
     "description": "",
-    "modified": 1533567641
+    "modified": 1533718844
 }

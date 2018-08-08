@@ -1,7 +1,7 @@
-<article class="o-vote {{ modifiers|join(' ') }}">
+<article class="o-vote">
     <div class="o-vote__cat-title">
         {% include 'atoms/a-cat-title.twig' with {
-            'url': category_link,
+            'url': TimberTerm(category_category).link,
             'label': category_title
         } only %}
     </div>

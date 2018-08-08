@@ -41,6 +41,16 @@ add_filter( 'timmy/sizes', function( $sizes ) {
 			'show_in_ui' => true,
 		],
 		
+		// half width of the grid
+		'half-grid' => [
+			'resize' => [ 1440 ],
+			'srcset' => [ [320], [512], [768], [1024], [1280] ],
+			'sizes' => '(max-width: 1470px) 100vw, 597px',
+			'name' => 'Half Grid Width',
+			'post_types' => [ 'all' ],
+			'show_in_ui' => true,
+		],
+		
 		// header image
 		'header' => [
 			'resize' => [ 1440, 720 ],

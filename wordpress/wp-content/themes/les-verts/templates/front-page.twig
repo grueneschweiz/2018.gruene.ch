@@ -31,15 +31,12 @@
             {% for block in post.get_field('content_blocks') %}
                 <div class="page__article">
                     {% if block.acf_fc_layout == 'vote' %}
-                        {% include 'organisms/o-vote.twig' with {
-                            'proposals' : block.proposals,
-                            'category_title': block.category_title,
-                            'category_link': TimberTerm(block.category_category).link,
-                            'link': block.link,
-                            'link_label': block.link_label
-                        } only %}
+                        {% include 'organisms/o-vote.twig' with block only %}
                     {% else %}
-                        {% include 'organisms/o-front-article.twig' %}
+                        {% include 'organisms/o-front-article.twig' with {
+                            'block': block,
+                            'latest_press_release': loop.parent.latest_press_release
+                        } only %}
                     {% endif %}
                 </div>
             {% endfor %}

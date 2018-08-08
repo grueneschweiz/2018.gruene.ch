@@ -1,0 +1,24 @@
+<div class="m-front-article m-front-article--{{ inner_modifiers|join(' ') }}">
+    <h3 class="m-front-article__title">
+        <a href="{{ post.link() }}" class="m-front-article__title-link" tabindex="-1">{{ post.title }}</a>
+    </h3>
+    {% if post.thumbnail %}
+        <div class="m-front-article__image">
+            {% include 'atoms/a-image.twig' with {
+                'image': post.thumbnail,
+                'size': 'half-grid',
+                'link_url': post.link()
+            } only %}
+        </div>
+    {% endif %}
+    {#{#}{#if list-items}}#}
+    {#<ul class="m-front-article__list">#}
+        {#{#}{#each list-items}}#}
+        {#<li class="m-front-article__list-item">{{ . }}</li>#}
+        {#{{/each}}#}
+    {#</ul>#}
+    {#{{else}}#}
+    <p class="m-front-article__text">{{ post.preview().read_more(false).force(false) }}</p>
+    {#{{/if}}#}
+    {#{{render '@a-link-button'}}#}
+</div>

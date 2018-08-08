@@ -1,0 +1,74 @@
+{% if block.acf_fc_layout == 'media' %}
+    {% set modifiers = ['mm'] %}
+    {% set inner_modifiers = ['no-image'] %}
+    {# todo: if oton: o-ton modifier, author image etc#}
+    {% set post = latest_press_release %}
+{% else %}
+    {% set modifiers = [block.acf_fc_layout] %}
+    {% if block.acf_fc_layout == 'single' %}
+        {% set inner_modifiers = ['image-first'] %}
+        {% set post = block.post %}
+    {% else %}
+        {% set inner_modifiers = ['image-second'] %}
+        {% set posts = block.post %}
+    {% endif %}
+{% endif %}
+
+<article class="o-front-article o-front-article--{{ modifiers|join(' ') }}">
+    <div class="o-front-article__cat-title">
+        {% include 'atoms/a-cat-title.twig' with {
+            'url': TimberTerm(block.category_category).link,
+            'label': block.category_title
+        } only %}
+    </div>
+    {% if acf_fc_layout == 'media' %}
+        <div class="o-front-article__quote">
+            <svg role="img">
+                <title>{{ __('Quotation mark', constant('THEME_DOMAIN')) }}</title>
+                <use xlink:href="#quote"></use>
+            </svg>
+        </div>
+    {% endif %}
+    <div class="o-front-article__articles">
+        {% if acf_fc_layout == 'double' %}
+            {% for post in posts %}
+                <div class="o-front-article__article">
+                    {% include 'molecules/m-front-article.twig' with {
+                        'post': post,
+                        'inner_modifiers': loop.parent.inner_modifiers
+                    } only %}
+                </div>
+            {% endfor %}
+        {% else %}
+            <div class="o-front-article__article">
+                {% include 'molecules/m-front-article.twig' with {
+                    'post': post,
+                    'inner_modifiers': inner_modifiers
+                } only %}
+            </div>
+        {% endif %}
+    </div>
+    {% if acf_fc_layout == 'single' %}
+        <footer class="o-front-article__cta">
+            <div class="o-front-article__cta-button">
+                {#{{> @a-button cta }}#}
+            </div>
+            <div class="o-front-article__cta-label">
+                {#{{ cta-help-text }}#}
+            </div>
+        </footer>
+    {% endif %}
+    {% if acf_fc_layout == 'media' %}
+        <footer class="o-front-article__mm">
+            <div class="o-front-article__meta">
+                <time class="o-front-article__date" datetime="{{ timestamp }}">{{ date }}</time>
+                {#{#}{#if oton}}<a href="{{ author-url }}" class="o-front-article__author">{{ author }}</a>{{/if}}#}
+            </div>
+            {#{#}{#if oton}}#}
+            {#<div class="o-front-article__author-image">#}
+            {#{{> @a-image img}}#}
+            {#</div>#}
+            {#{% endif %}#}
+        </footer>
+    {% endif %}
+</article>
