@@ -1,7 +1,7 @@
-{% if link is not empty %}
+{% if link %}
     <a href="{{ link }}"
-       class="a-button {{ modifiers|join(' ') }}"{% if target is not empty %} target="{{ target }}"{% endif %}>{{ label }}</a>
+       class="a-button {{ modifiers|join(' ') }}"{% if target %} target="{{ target }}"{% endif %}{% if js_hook %} data-{{ js_hook }}{% endif %}>{{ label }}</a>
 {% else %}
-    <button type="{% if type is not empty %}{{ type }}{% else %}button{% endif %}"
-            class="a-button {{ modifiers|join(' ') }}">{{ label }}</button>
+    <button type="{% if type %}{{ type }}{% else %}button{% endif %}"
+            class="a-button {{ modifiers|join(' ') }}"{% if js_hook %} data-{{ js_hook }}{% endif %}>{{ label }}</button>
 {% endif %}

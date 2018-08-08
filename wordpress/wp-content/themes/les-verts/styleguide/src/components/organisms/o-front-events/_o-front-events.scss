@@ -36,10 +36,18 @@
     @include hover {
       background-color: $color-grey-1;
     }
+
+    &--hidden {
+      display: none;
+    }
   }
 
   &__more {
     padding-top: 16px;
     @include fluid-grid-item-props(padding-left);
+
+    &.is-hidden {
+      display: none;
+    }
   }
 }

@@ -1,0 +1,27 @@
+<div class="o-front-events">
+    <div class="o-front-events__cat-title">
+        {% include 'atoms/a-cat-title.twig' with {
+            'js_hook': 'toggle-events',
+            'label': block.category_title
+        } only %}
+    </div>
+    <div class="o-front-events__events">
+        {% for event in events %}
+            <a class="o-front-events__event{% if loop.index > block.max_num %} o-front-events__event--hidden{% endif %}"
+               href="{{ event.link() }}">
+                {% include 'molecules/m-front-event.twig' with {
+                    'event': event,
+                    'venue': attribute(loop.parent.venues, event._EventVenueID)
+                } only %}
+            </a>
+        {% endfor %}
+    </div>
+    {% if events|length > block.max_num %}
+        <div class="o-front-events__more">
+            {% include 'atoms/a-link-button.twig' with {
+                'js_hook': 'toggle-events',
+                'label': __('Show all events', constant('THEME_DOMAIN'))
+            } only %}
+        </div>
+    {% endif %}
+</div>

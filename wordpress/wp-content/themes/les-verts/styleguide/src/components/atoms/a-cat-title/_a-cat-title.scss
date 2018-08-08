@@ -13,6 +13,7 @@
     color: $color-text;
     padding-bottom: 0.75em;
     display: block;
+    cursor: pointer;
 
     &:after {
       content: "";

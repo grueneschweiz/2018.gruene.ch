@@ -55,6 +55,7 @@ class StarterSite extends TimberSite {
 		// -> more info: https://developer.wordpress.org/reference/functions/add_action/
 		add_action( 'init', array( $this, 'register_menu_locations' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'setup_assets' ) );
+		add_action( 'admin_enqueue_scripts', array( $this, 'setup_admin_assets' ) );
 		
 		// // For debug purpose only: shows all the hooks & registered actions
 		// add_action('wp', function(){ echo '<pre>';print_r($GLOBALS['wp_filter']); echo '</pre>';exit; } );
@@ -123,11 +124,6 @@ class StarterSite extends TimberSite {
 		wp_enqueue_style( 'screen',
 			get_stylesheet_directory_uri() . '/static/style' . ( WP_DEBUG ? '' : '.min' ) . '.css', false,
 			THEME_VERSION );
-		if ( is_rtl() ) {
-			wp_enqueue_style( 'rtl',
-				get_stylesheet_directory_uri() . '/static/rtl' . ( WP_DEBUG ? '' : '.min' ) . '.css', false,
-				THEME_VERSION );
-		}
 		
 		// js
 		wp_enqueue_script( 'app',
@@ -153,8 +149,9 @@ class StarterSite extends TimberSite {
 			}
 		}
 		
+		// admin bar styles
 		if (is_admin_bar_showing()) {
-		 	wp_enqueue_style( 'admin-style', get_stylesheet_directory_uri() . '/style-adminbar.css', false, THEME_VERSION );
+		 	wp_enqueue_style( 'adminbar-style', get_stylesheet_directory_uri() . '/style-adminbar.css', false, THEME_VERSION );
 		}
 		
 		// load scripts on specific pages
@@ -168,6 +165,13 @@ class StarterSite extends TimberSite {
 		// 		}
 		// 	}
 		// }
+	}
+	
+	function setup_admin_assets() {
+		// global admin styles
+		if (is_admin()) {
+			wp_enqueue_style( 'admin-style', get_stylesheet_directory_uri() . '/style-admin.css', false, THEME_VERSION );
+		}
 	}
 	
 }

@@ -1,0 +1,24 @@
+{% set date_format = _x('d. F Y', 'Date format. See http://php.net/manual/de/function.date.php', constant('THEME_DOMAIN')) %}
+{% set start_date = event._EventStartDate|date(date_format) %}
+{% if event._EventAllDay and event._EventAllDay == 'yes' %}
+    {% set timestamp = event._EventStartDate|date('Y-m-d') %}
+    {% set time = start_date %}
+{% else %}
+    {% set timestamp = event._EventStartDate|date('Y-m-d H:i') %}
+    {% set start_time = event._EventStartDate|date('H:i') %}
+    {% set stop_time = event._EventEndDate|date('H:i') %}
+    {% set time = start_date ~ ' | ' ~ start_time ~ ' &ndash; ' ~ stop_time %}
+{% endif %}
+
+<article class="m-front-event">
+    <div class="m-front-event__image"
+         style="background-image: url('{{ Image(event.image).src|resize(148,94) }}')"></div>
+    <h3 class="m-front-event__title">{{ event.title }}</h3>
+    <div class="m-front-event__meta">
+        <time class="m-front-event__datetime"
+              datetime="{{ timestamp }}">{{ time }}</time>
+        {% if venue %}
+            <div class="m-front-event__place">{{ venue.title }}{% if venue._VenueAddress %}, {{ venue._VenueAddress }}{% endif %}{% if venue._VenueCity %}, {{ venue._VenueCity }}{% endif %}</div>
+        {% endif %}
+    </div>
+</article>

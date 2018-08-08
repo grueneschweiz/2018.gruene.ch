@@ -160,6 +160,37 @@
                     ],
                     "min": "0",
                     "max": "1"
+                },
+                "layout_5b6ae44c62e25": {
+                    "key": "layout_5b6ae44c62e25",
+                    "name": "events",
+                    "label": "Events",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_5b6ae45562e26",
+                            "label": "Events",
+                            "name": "events",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_5b6ae2eb01de7"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "0",
+                    "max": "1"
                 }
             },
             "button_label": "Add Row",
@@ -197,5 +228,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1533570295
+    "modified": 1533731981
 }

@@ -1,0 +1,11 @@
+/**
+ * These styles will be applied on all (!) admin pages and on front end pages if
+ * you are logged in. So be specific and care full!
+ */
+
+/**
+ * Hide the Post Duplicator button in the publish meta box
+ */
+#submitdiv #duplicator {
+    display: none;
+}

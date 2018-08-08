@@ -29,9 +29,17 @@
     <div class="page__grid-wrapper">
         <section class="page__grid">
             {% for block in post.get_field('content_blocks') %}
-                <div class="page__article">
+                <div class="page__article {% if block.full_width %}page__article--2-col{% endif %}">
                     {% if block.acf_fc_layout == 'vote' %}
                         {% include 'organisms/o-vote.twig' with block only %}
+                    {% elseif block.acf_fc_layout == 'events' %}
+                        {% if loop.parent.events %}
+                            {% include 'organisms/o-front-events.twig' with {
+                                'block': block,
+                                'events': loop.parent.events,
+                                'venues': loop.parent.venues
+                            } only %}
+                        {% endif %}
                     {% else %}
                         {% include 'organisms/o-front-article.twig' with {
                             'block': block,
