@@ -1,6 +1,6 @@
-<div class="m-front-article m-front-article--{{ inner_modifiers|join(' ') }}">
+<div class="m-front-article {{ modifiers|join(' ') }}">
     <h3 class="m-front-article__title">
-        <a href="{{ post.link() }}" class="m-front-article__title-link" tabindex="-1">{{ post.title }}</a>
+        <a href="{{ post.link }}" class="m-front-article__title-link" tabindex="-1">{{ post.title }}</a>
     </h3>
     {% if post.thumbnail %}
         <div class="m-front-article__image">
@@ -13,12 +13,23 @@
     {% endif %}
     {#{#}{#if list-items}}#}
     {#<ul class="m-front-article__list">#}
-        {#{#}{#each list-items}}#}
-        {#<li class="m-front-article__list-item">{{ . }}</li>#}
-        {#{{/each}}#}
+    {#{#}{#each list-items}}#}
+    {#<li class="m-front-article__list-item">{{ . }}</li>#}
+    {#{{/each}}#}
     {#</ul>#}
     {#{{else}}#}
-    <p class="m-front-article__text">{{ post.preview().read_more(false).force(false) }}</p>
+    <p class="m-front-article__text">
+        {% if excerpt %}
+            {{ excerpt }}
+        {% elseif post.excerpt %}
+            {{ post.excerpt }}
+        {% else %}
+            {{ post.preview().read_more(false).force(false) }}
+        {% endif %}
+    </p>
     {#{{/if}}#}
-    {#{{render '@a-link-button'}}#}
+    {% include 'atoms/a-link-button.twig' with {
+        'link': post.link(),
+        'label': __('Read more', constant('THEME_DOMAIN'))
+    } only %}
 </div>

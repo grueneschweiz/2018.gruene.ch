@@ -1,0 +1,118 @@
+{
+    "key": "group_5b6b14b2632f8",
+    "title": "[Template]Position",
+    "fields": [
+        {
+            "key": "field_5b6b14c533c22",
+            "label": "Title",
+            "name": "title",
+            "type": "text",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": 60
+        },
+        {
+            "key": "field_5b6b151133c23",
+            "label": "Position",
+            "name": "position",
+            "type": "repeater",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "field_5b6b152f33c24",
+            "min": 1,
+            "max": 4,
+            "layout": "table",
+            "button_label": "Add Position",
+            "sub_fields": [
+                {
+                    "key": "field_5b6b152f33c24",
+                    "label": "position",
+                    "name": "position",
+                    "type": "text",
+                    "instructions": "Keep it very short, use just a few keywords.",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": 120
+                }
+            ]
+        },
+        {
+            "key": "field_5b6b15e295147",
+            "label": "Read more button text",
+            "name": "read_more_label",
+            "type": "text",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Read more",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": 60
+        },
+        {
+            "key": "field_5b6b24861e7f5",
+            "label": "Read more button link",
+            "name": "read_more_link",
+            "type": "url",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_type",
+                "operator": "==",
+                "value": "front_page"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 0,
+    "description": "",
+    "modified": 1533748672
+}

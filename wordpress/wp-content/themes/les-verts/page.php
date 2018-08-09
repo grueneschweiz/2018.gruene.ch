@@ -52,13 +52,13 @@ function supt_get_latest_press_release( &$context ) {
 				'posts_per_page' => 1,
 				'cat'            => $cat_id,
 				'post_status'    => 'publish', // prevent 'private' if logged in
+				'meta_query'     => array(
+					array(
+						'key'     => 'show_on_front_page',
+						'value'   => '1',
+					)
+				),
 			);
-			
-			// exclude the posts form the excluded categories
-			$exclude_ids = $context['post']->custom["content_blocks_{$id}_exclude_category"];
-			if ( $exclude_ids ) {
-				$args['category__not_in'] = $exclude_ids;
-			}
 			
 			// get the latest post
 			$press_post = Timber::get_posts( $args );

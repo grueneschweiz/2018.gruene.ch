@@ -191,6 +191,37 @@
                     ],
                     "min": "0",
                     "max": "1"
+                },
+                "layout_5b6b17209a92c": {
+                    "key": "layout_5b6b17209a92c",
+                    "name": "positions",
+                    "label": "Positions",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_5b6b17259a92d",
+                            "label": "Positions",
+                            "name": "positions",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_5b6b162bb52ed"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
                 }
             },
             "button_label": "Add Row",
@@ -228,5 +259,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1533731981
+    "modified": 1533744988
 }

@@ -56,11 +56,21 @@ add_filter( 'timmy/sizes', function( $sizes ) {
 			'resize' => [ 1440, 720 ],
 			'srcset' => [ [320, 240], [512, 358], [768, 460], [1024, 512], [1280, 640], [1440, 720], [1792, 896], [2048, 1024], [2500, 1250] ],
 			'sizes' => '(max-width: 1679px) 100vw, 1440px',
-			'name' => 'Full Grid Width',
+			'name' => 'Header image',
 			'post_types' => [ 'all' ],
 			'show_in_ui' => true,
 		],
-
+		
+		// author image
+		'author' => [
+			'resize' => [ 100, 100 ],
+			'srcset' => [ [100,100], [200,200] ],
+			'sizes' => '100px 1x, 200px 2x',
+			'name' => 'Header image',
+			'post_types' => [ 'all' ],
+			'show_in_ui' => true,
+		],
+		
 		// small thumbnail
 		// note: used in widget listing, team members,…
 		'small-thumbnail' => [

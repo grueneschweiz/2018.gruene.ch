@@ -40,6 +40,8 @@
                                 'venues': loop.parent.venues
                             } only %}
                         {% endif %}
+                    {% elseif block.acf_fc_layout == 'positions' %}
+                        {% include 'organisms/o-positions.twig' with block only %}
                     {% else %}
                         {% include 'organisms/o-front-article.twig' with {
                             'block': block,
@@ -48,12 +50,6 @@
                     {% endif %}
                 </div>
             {% endfor %}
-            {#<div class="page__article--2-col">#}
-            {#{{ render '@o-positions' }}#}
-            {#</div>#}
-            {#<div class="page__article--2-col">#}
-            {#{{ render '@o-front-events' }}#}
-            {#</div>#}
         </section>
         {#<section class="page__people-slider">#}
         {#{{ render '@o-people-slider' }}#}

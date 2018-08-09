@@ -74,15 +74,12 @@ Navigation_controller::register();
  * - all of these classes have to extend the class `Model` from ./post-types/Model.php
  */
 
-// require_once __DIR__ .'/post-types/AlertType.php';
+require_once __DIR__ .'/post-types/PeopleType.php';
 
 
 // register post types & taxonomies
 add_action( 'init', function() {
-
-	// alert
-	// \SUPT\AlertType::register_post_types(THEME_DOMAIN);
-
+	\SUPT\PeopleType::register_post_types(THEME_DOMAIN);
 } );
 
 
