@@ -11,23 +11,23 @@
             } only %}
         </div>
     {% endif %}
-    {#{#}{#if list-items}}#}
-    {#<ul class="m-front-article__list">#}
-    {#{#}{#each list-items}}#}
-    {#<li class="m-front-article__list-item">{{ . }}</li>#}
-    {#{{/each}}#}
-    {#</ul>#}
-    {#{{else}}#}
-    <p class="m-front-article__text">
-        {% if excerpt %}
-            {{ excerpt }}
-        {% elseif post.excerpt %}
-            {{ post.excerpt }}
-        {% else %}
-            {{ post.preview().read_more(false).force(false) }}
-        {% endif %}
-    </p>
-    {#{{/if}}#}
+    {% if post.list_items %}
+        <ul class="m-front-article__list">
+            {% for item in post.list_items %}
+                <li class="m-front-article__list-item">{{ item.position }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p class="m-front-article__text">
+            {% if excerpt %}
+                {{ excerpt }}
+            {% elseif post.excerpt %}
+                {{ post.excerpt }}
+            {% else %}
+                {{ post.preview().read_more(false).force(false) }}
+            {% endif %}
+        </p>
+    {% endif %}
     {% include 'atoms/a-link-button.twig' with {
         'link': post.link(),
         'label': __('Read more', constant('THEME_DOMAIN'))
