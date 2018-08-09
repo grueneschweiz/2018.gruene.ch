@@ -29,7 +29,7 @@
         </p>
     {% endif %}
     {% include 'atoms/a-link-button.twig' with {
-        'link': post.link(),
+        'link': post.link,
         'label': __('Read more', constant('THEME_DOMAIN'))
     } only %}
 </div>
