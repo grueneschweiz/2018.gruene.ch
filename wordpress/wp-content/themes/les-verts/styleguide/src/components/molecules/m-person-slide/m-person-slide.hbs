@@ -1,0 +1,12 @@
+<article class="m-person-slide">
+    <figure class="m-person-slide__figure">
+        {{> @a-image no_caption=1 image-src=image alt=alt}}
+        <figcaption class="m-person-slide__caption">
+            <p class="m-person-slide__quote">{{quote}}</p>
+            <p class="m-person-slide__meta">
+                <span class="m-person-slide__author">{{author}}</span>{{#if job}},
+                <span class="m-person-slide__job">{{job}}</span>{{/if}}
+            </p>
+        </figcaption>
+    </figure>
+</article>

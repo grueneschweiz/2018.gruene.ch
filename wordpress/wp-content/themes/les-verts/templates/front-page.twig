@@ -29,6 +29,13 @@
     <div class="page__grid-wrapper">
         <section class="page__grid">
             {% for block in post.get_field('content_blocks') %}
+                {% if block.acf_fc_layout == 'testimonials' %}
+                    </section> {# this dirty hack is necessary to achieve full with even on big screens and shift around the IE scrollbar bug #}
+                    <section class="page__article page__article--full-width">
+                        {% include 'organisms/o-people-slider.twig' with block only %}
+                    </section>
+                    <section class="page__grid"> {# this belongs to the hack above#}
+                {% else %}
                 <div class="page__article {% if block.full_width %}page__article--2-col{% endif %}">
                     {% if block.acf_fc_layout == 'vote' %}
                         {% include 'organisms/o-vote.twig' with block only %}
@@ -49,6 +56,7 @@
                         } only %}
                     {% endif %}
                 </div>
+                {% endif %}
             {% endfor %}
         </section>
         {#<section class="page__people-slider">#}

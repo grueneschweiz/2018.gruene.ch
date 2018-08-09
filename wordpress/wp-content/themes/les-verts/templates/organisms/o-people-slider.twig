@@ -1,29 +1,31 @@
 <div class="o-people-slider">
     <div class="o-people-slider__wrapper">
         <div class="o-people-slider__cat-title">
-            {{> @a-cat-title cat-title}}
+            {% include 'atoms/a-cat-title.twig' with {
+                'label': category_title
+            } only %}
         </div>
-        <h3 class="o-people-slider__title">{{title}}</h3>
+        <h3 class="o-people-slider__title">{{ title }}</h3>
         <div class="o-people-slider__library-container swiper-container">
             <div class="o-people-slider__slider swiper-wrapper">
-                {{#each slides}}
+                {% for slide in testimonials %}
                     <div class="o-people-slider__slide swiper-slide">
-                        {{> @m-person-slide this}}
+                        {% include 'molecules/m-person-slide.twig' with slide only %}
                     </div>
-                {{/each}}
+                {% endfor %}
             </div>
         </div>
         <button class="o-people-slider__slide-button o-people-slider__slide-button--left"
-                aria-label="{{aria-label-slide-left}}">
+                aria-label="{{ __('Slide to the left', constant('THEME_DOMAIN')) }}">
             <svg role="img">
-                <title>{{ 'Slide to the left' }}</title>
+                <title>{{ __('Slide to the left', constant('THEME_DOMAIN')) }}</title>
                 <use xlink:href="#slide"></use>
             </svg>
         </button>
         <button class="o-people-slider__slide-button o-people-slider__slide-button--right"
-                aria-controls="o-people-slider__slider" aria-label="{{aria-label-slide-right}}">
+                aria-controls="o-people-slider__slider" aria-label="{{ __('Slide to the right', constant('THEME_DOMAIN')) }}">
             <svg role="img">
-                <title>{{'Slide to the right'}}</title>
+                <title>{{ __('Slide to the right', constant('THEME_DOMAIN')) }}</title>
                 <use xlink:href="#slide"></use>
             </svg>
         </button>
