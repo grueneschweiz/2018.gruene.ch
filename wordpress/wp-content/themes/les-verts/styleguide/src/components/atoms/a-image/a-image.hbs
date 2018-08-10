@@ -2,8 +2,11 @@
     {{#if link-url}}<a class="a-image__link" href="{{link-url}}" tabindex="-1">{{/if}}
     <img src="{{image-src}}" alt="{{alt}}" title="{{title}}" class="a-image__image">
     {{#if link-url}}</a>{{/if}}
-    <figcaption>
-        {{#if caption}}<span class="a-image__caption">{{caption}}</span>{{/if}}
-        {{#if copy}}<small class="a-image__copy">&copy; {{copy}}</small>{{/if}}
-    </figcaption>
+    {{# unless no_caption }}
+        <figcaption>
+            {{#if caption}}<span class="a-image__caption">{{caption}}</span>{{/if}}
+            {{#if copy}}
+                <small class="a-image__copy">&copy; {{copy}}</small>{{/if}}
+        </figcaption>
+    {{/unless}}
 </figure>

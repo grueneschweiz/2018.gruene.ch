@@ -12,6 +12,7 @@
   font-family: $font-secondary;
   font-weight: $font-weight-bold;
   text-transform: uppercase;
+  cursor: pointer;
   transition: color $transition-fast $transition-ease;
 
   &__label {

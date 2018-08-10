@@ -21,7 +21,9 @@
     display: grid;
     grid-template-columns: 1fr;
     @include fluid-props(grid-column-gap, $size-medium, $grid-max-width-max, $grid-gap-min, $grid-gap-max);
+  }
 
+  &--full-width &__events {
     @include media($_DESKTOP) {
       grid-template-columns: 1fr 1fr;
       align-items: start;
@@ -36,10 +38,18 @@
     @include hover {
       background-color: $color-grey-1;
     }
+
+    &--hidden {
+      display: none;
+    }
   }
 
   &__more {
     padding-top: 16px;
     @include fluid-grid-item-props(padding-left);
+
+    &.is-hidden {
+      display: none;
+    }
   }
 }

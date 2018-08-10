@@ -53,6 +53,11 @@ $WPCLI plugin install theme-translation-for-polylang --activate-network
 $WPCLI plugin install disable-comments --activate-network
 $WPCLI option update disable_comments_options '{"disabled_post_types":["post","page","attachment"],"remove_everywhere":true,"permanent":false,"extra_post_types":false,"db_version":6}' --format=json
 
+# Events
+$WPCLI plugin install the-events-calendar --activate-network
+
+# Duplicate posts
+$WPCLI plugin install post-duplicator --activate-network
 
 # Delete useless themes & extensions
 $WPCLI theme delete twentyfifteen

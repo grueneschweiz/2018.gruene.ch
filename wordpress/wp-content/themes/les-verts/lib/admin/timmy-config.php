@@ -23,7 +23,6 @@ add_filter( 'image_size_names_choose', function( $sizes ) {
 // REMARK: please read this before adding unnecessary sizes: https://github.com/mindkomm/timmy#using-an-image-size-array-instead-of-a-key
 add_filter( 'timmy/sizes', function( $sizes ) {
 	return [
-
 		// maximum, used for example by a gallery image
 		'static-max' => [
 			'resize' => [ 2500 ],
@@ -41,78 +40,47 @@ add_filter( 'timmy/sizes', function( $sizes ) {
 			'post_types' => [ 'all' ],
 			'show_in_ui' => true,
 		],
-
-		// full width of the grid - large
-		'full-grid-large' => [
-			'resize' => [ 1680 ],
-			'srcset' => [ [320], [512], [768], [1024], [1280], [1440], [1792], [2048], [2500] ],
-			'sizes' => '(max-width: 1679px) 100vw, 1680px',
-			'name' => 'Full Grid Large Width',
+		
+		// half width of the grid
+		'half-grid' => [
+			'resize' => [ 1440 ],
+			'srcset' => [ [320], [512], [768], [1024], [1280] ],
+			'sizes' => '(max-width: 1470px) 100vw, 597px',
+			'name' => 'Half Grid Width',
+			'post_types' => [ 'all' ],
+			'show_in_ui' => true,
+		],
+		
+		// header image
+		'header' => [
+			'resize' => [ 1440, 720 ],
+			'srcset' => [ [320, 240], [512, 358], [768, 460], [1024, 512], [1280, 640], [1440, 720], [1792, 896], [2048, 1024], [2500, 1250] ],
+			'sizes' => '(max-width: 1679px) 100vw, 1440px',
+			'name' => 'Header image',
+			'post_types' => [ 'all' ],
+			'show_in_ui' => true,
+		],
+		
+		// Testimonial
+		'testimonial' => [
+			'resize' => [ 288, 260 ],
+			'srcset' => [ [288,260], [576,520] ],
+			'sizes' => '288px 1x, 576px 2x',
+			'name' => 'Testimonial',
 			'post_types' => [ 'all' ],
 			'show_in_ui' => false,
 		],
-
-		// full width of the screen
-		'full-screen' => [
-			'resize' => [ 1024 ],
-			'srcset' => [ [320], [512], [768], [1024], [2048], [2500] ],
-			'sizes' => '100vw',
-			'name' => 'Full Screen Width',
+		
+		// author image
+		'author' => [
+			'resize' => [ 100, 100 ],
+			'srcset' => [ [100,100], [200,200] ],
+			'sizes' => '100px 1x, 200px 2x',
+			'name' => 'Author image',
 			'post_types' => [ 'all' ],
 			'show_in_ui' => false,
 		],
-
-		// full width of the screen - mobile only, used for header
-		'full-screen-mobile' => [
-			'resize' => [ 1024 ],
-			'srcset' => [ [320], [512], [768], [1024], [1280], [1440], [1792] ],
-			'sizes' => '100vw',
-			'name' => 'Full Screen Width Mobile Only',
-			'post_types' => [ 'all' ],
-			'show_in_ui' => false,
-		],
-
-		// full screen on mobile, then half screen
-		'full-half-screen' => [
-			'resize' => [ 1024 ],
-			'srcset' => [ [320], [512], [768], [1024], [1280], [1440], [1792] ],
-			'sizes' => '(max-width: 767px) 100vw, (max-width: 1679px) 50vw, 940px',
-			'name' => 'Mobile Full Screen - Desktop Half Screen',
-			'post_types' => [ 'all' ],
-			'show_in_ui' => false,
-		],
-
-		// widgets image
-		'widget-full' => [
-			'resize' => [ 320 ],
-			'srcset' => [ [640] ],
-			'sizes' => '320px',
-			'name' => 'Full Widget Width',
-			'post_types' => [ 'all' ],
-			'show_in_ui' => false,
-		],
-
-		// small thumbnail
-		// note: used in widget listing, team members,…
-		'small-thumbnail' => [
-			'resize' => [ 150 ],
-			'srcset' => [ [320] ],
-			'sizes' => '150px',
-			'name' => 'Small Thumbnail',
-			'post_types' => [ 'all' ],
-			'show_in_ui' => false,
-		],
-
-		// gifthandle
-		'gifthandle' => [
-			'resize' => [ 460 ],
-			'srcset' => [ [320], [512], [768] ],
-			'sizes' => '(max-width: 499px) 100vw, (max-width: 1023px) 50vw, (max-width: 1679px) 30vw, 460px',
-			'name' => 'Gift Handle',
-			'post_types' => [ 'all' ],
-			'show_in_ui' => false,
-		],
-
+		
 		// admin thumbnail
 		'admin-thumbnail' => [
 			'resize' => [ 320 ],

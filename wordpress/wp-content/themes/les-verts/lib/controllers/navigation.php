@@ -14,9 +14,14 @@ class Navigation_controller {
 		$menu = new \TimberMenu( 'main-nav', [ 'depth' => 3 ] );
 		self::prepare_featured_items( $menu->items );
 		
-		$context['menu']['main']     = $menu;
-		$context['menu']['language'] = new \TimberMenu( 'language-nav', [ 'depth' => 1 ] );
-		$context['menu']['cta']      = [ 'label' => 'mitmachen', 'link' => '#' ]; // todo: get them from the customizer
+		$context['menu']['main']        = $menu;
+		$context['menu']['language']    = new \TimberMenu( 'language-nav', [ 'depth' => 1 ] );
+		$context['menu']['cta']         = [
+			'label' => 'mitmachen',
+			'link'  => '#'
+		]; // todo: get them from the customizer
+		$context['menu']['footer']      = new \TimberMenu( 'footer-nav', [ 'depth' => 2 ] );
+		$context['menu']['footer_meta'] = new \TimberMenu( 'footer-meta-nav', [ 'depth' => 1 ] );
 		
 		$img_id                  = get_theme_mod( Customizer\Logo::SETTING_LOGO_DARK, false );
 		$context['menu']['logo'] = [

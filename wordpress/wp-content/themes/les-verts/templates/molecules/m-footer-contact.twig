@@ -1,0 +1,15 @@
+<section class="m-footer-contact">
+    {{title}}
+    <div class="m-footer-contact__flex">
+        <div class="m-footer-contact__text">{{address}}</div>
+        <div class="m-footer-contact__social">
+            {% for media in social_media %}
+                {% include 'atoms/a-social-icon.twig' with {
+                    'type': media.acf_fc_layout,
+                    'link': media.link,
+                    'target': '_blank'
+                } %}
+            {% endfor %}
+        </div>
+    </div>
+</section>

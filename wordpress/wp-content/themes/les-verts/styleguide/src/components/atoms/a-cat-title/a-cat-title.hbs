@@ -1,1 +1,3 @@
-<h2 class="a-cat-title"><a class="a-cat-title__link" href="{{ url }}">{{ label }}</a></h2>
+<h2 class="a-cat-title">
+    <a class="a-cat-title__link" {{#if url}}href="{{ url }}"{{/if}}{{#if js_hook}} data-{{ js_hook }}{{/if}}>{{ label }}</a>
+</h2>

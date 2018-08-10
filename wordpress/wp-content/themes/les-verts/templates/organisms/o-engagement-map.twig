@@ -1,0 +1,45 @@
+<article class="o-engagement-map">
+    <div class="o-engagement-map__cat-title">
+        {% include 'atoms/a-cat-title.twig' with {
+            'url': link,
+            'label': category_title
+        } only %}
+    </div>
+    <h3 class="o-engagement-map__title">{{ title }}</h3>
+    <div class="o-engagement-map__main-wrapper">
+        <div class="o-engagement-map__desc-wrapper">
+            {{ text }}
+        </div>
+        <div class="o-engagement-map__map-wrapper">
+            <div class="o-engagement-map__map">
+                {% include 'atoms/a-map.twig' with {
+                    'svg': map
+                } only %}
+            </div>
+            <div class="o-engagement-map__selector">
+                {% include 'atoms/a-select.twig' with {
+                    'id': 'party-selector',
+                    'name': 'party-selector',
+                    'label': map_selector_label,
+                    'options': map_data
+                } only %}
+            </div>
+            <div class="o-engagement-map__dialog-wrapper">
+                {% for item in map_data %}
+                    {% set content = '' %}
+                    {% for c in item.dialog_content %}
+                        {% set content = content~'<div class="a-simple-dialog__content">'~c.address~'</div>' %}
+                    {% endfor %}
+                    <div class="o-engagement-map__dialog">
+                        {% include 'atoms/a-simple-dialog.twig' with {
+                            'id': item.value,
+                            'content': content,
+                            'modifiers': 'a-simple-dialog--reduced-top-bottom-padding'
+                        } only %}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="o-engagement-map__modal"></div>
+</article>

@@ -1,0 +1,26 @@
+<article class="o-vote">
+    <div class="o-vote__cat-title">
+        {% include 'atoms/a-cat-title.twig' with {
+            'url': TimberTerm(category_category).link,
+            'label': category_title
+        } only %}
+    </div>
+    <div class="o-vote__proposals">
+        {% for proposal in proposals %}
+            <a href="{{ proposal.proposal.link }}" class="o-vote__proposal">
+                {% include 'molecules/m-vote.twig' with {
+                    'label': proposal.proposal.title,
+                    'tag': proposal.flag
+                } only %}
+            </a>
+        {% endfor %}
+    </div>
+    <footer class="o-vote__more">
+        <div class="o-vote__link-button">
+            {% include 'atoms/a-link-button.twig' with {
+                'link': link,
+                'label': link_label
+            } only %}
+        </div>
+    </footer>
+</article>

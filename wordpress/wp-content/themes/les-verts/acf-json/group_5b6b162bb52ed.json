@@ -1,0 +1,141 @@
+{
+    "key": "group_5b6b162bb52ed",
+    "title": "[Template]Positions",
+    "fields": [
+        {
+            "key": "field_5b6b163dfeb4f",
+            "label": "Category",
+            "name": "category",
+            "type": "clone",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "clone": [
+                "field_5b6860ce304b8"
+            ],
+            "display": "seamless",
+            "layout": "block",
+            "prefix_label": 0,
+            "prefix_name": 0
+        },
+        {
+            "key": "field_5b6b1931729fb",
+            "label": "Link",
+            "name": "link",
+            "type": "page_link",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "post",
+                "page"
+            ],
+            "taxonomy": [],
+            "allow_null": 0,
+            "allow_archives": 0,
+            "multiple": 0
+        },
+        {
+            "key": "field_5b6b1670feb50",
+            "label": "Positions",
+            "name": "positions",
+            "type": "repeater",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "field_5b6b1687feb51",
+            "min": 1,
+            "max": 4,
+            "layout": "block",
+            "button_label": "Add Position",
+            "sub_fields": [
+                {
+                    "key": "field_5b6b1687feb51",
+                    "label": "Position",
+                    "name": "position",
+                    "type": "clone",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "clone": [
+                        "group_5b6b14b2632f8"
+                    ],
+                    "display": "seamless",
+                    "layout": "block",
+                    "prefix_label": 0,
+                    "prefix_name": 0
+                }
+            ]
+        },
+        {
+            "key": "field_5b6b2b49866f7",
+            "label": "Full Width",
+            "name": "full_width",
+            "type": "true_false",
+            "instructions": "If full width is set to yes, the block will span the whole page (both columns) else it will only take the place of a single column block.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5b6b1670feb50",
+                        "operator": ">",
+                        "value": "2"
+                    },
+                    {
+                        "field": "field_5b6b1670feb50",
+                        "operator": "<",
+                        "value": "6"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 1,
+            "ui": 1,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_type",
+                "operator": "==",
+                "value": "front_page"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 0,
+    "description": "",
+    "modified": 1533750208
+}

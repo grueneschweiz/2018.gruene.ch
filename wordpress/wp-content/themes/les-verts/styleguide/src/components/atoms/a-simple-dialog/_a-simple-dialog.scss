@@ -1,4 +1,4 @@
-.m-address-dialog {
+.a-simple-dialog {
   @include media($_DESKTOP){
     display: flex;
   }
@@ -7,17 +7,19 @@
     background: $color-grey-1;
   }
 
-  &__address {
+  // if several blocks are used, a-simple-dialog__content can be injected
+  &__content {
     padding: 30px;
     border-bottom: solid 1px $color-grey-2;
   }
 
-  &__address:last-of-type {
-    border-bottom: none;
+  &--reduced-top-bottom-padding &__content {
+    padding-top: 6px;
+    padding-bottom: 6px;
   }
 
-  &__link {
-    line-height: 1.75em;
+  &__content:last-of-type {
+    border-bottom: none;
   }
 
   &__close {

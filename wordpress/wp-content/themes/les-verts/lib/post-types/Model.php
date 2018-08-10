@@ -82,12 +82,4 @@ class Model {
 		}
 		return $groups;
 	}
-
-	/**
-	 * Gets the current lang
-	 * TODO: maybe add this in a helper
-	 */
-	static function get_lang() {
-		return pll_current_language();
-	}
 }

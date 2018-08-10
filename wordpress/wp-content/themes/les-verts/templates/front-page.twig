@@ -4,42 +4,62 @@
     <section class="page__campaign">
         {% include 'organisms/o-campaign.twig' with {
             'image': post.campaign_image,
-            'green_bars': post.get_field('campaign_green_bars'),
-            'white_bars': post.get_field('campaign_white_bars'),
-            'magenta_bars': post.get_field('campaign_magenta_bars'),
-            'white_subline_bars': post.get_field('campaign_white_subline_bars'),
-            'green_subline_bars': post.get_field('campaign_green_subline_bars'),
-            'alignment': post.get_field('campaign_bar_alignment'),
+            'bars': {
+                'green_bars': post.get_field('campaign_green_bars'),
+                'white_bars': post.get_field('campaign_white_bars'),
+                'magenta_bars': post.get_field('campaign_magenta_bars'),
+                'white_subline_bars': post.get_field('campaign_white_subline_bars'),
+                'green_subline_bars': post.get_field('campaign_green_subline_bars'),
+                'alignment': post.get_field('campaign_bar_alignment'),
+            },
+            'desc': {
+                'title': post.get_field('campaign_title'),
+                'teaser': post.get_field('campaign_teaser'),
+                'read_more_text': post.get_field('campaign_read-more-text'),
+                'link': post.get_field('campaign_link').link()
+            },
+            'cta': {
+                'title': post.get_field('campaign_participate_title'),
+                'desc': post.get_field('campaign_participation_description'),
+                'form': post.get_field('campaign_form'),
+                'link': post.get_field('campaign_general_participation_link').link(),
+            }
         } only %}
     </section>
-
-    {#
     <div class="page__grid-wrapper">
         <section class="page__grid">
-            <div class="page__article">
-                {{ render '@o-vote--3-proposals' }}
-            </div>
-            <div class="page__article">
-                {{ render '@o-front-article--single' }}
-            </div>
-            <div class="page__article">
-                {{ render '@o-front-article--oton' }}
-            </div>
-            <div class="page__article">
-                {{ render '@o-front-article' }}
-            </div>
-            <div class="page__article--2-col">
-                {{ render '@o-positions' }}
-            </div>
-            <div class="page__article--2-col">
-                {{ render '@o-front-events' }}
-            </div>
+            {% for block in post.get_field('content_blocks') %}
+                {% if block.acf_fc_layout == 'testimonials' %}
+                    </section> {# this dirty hack is necessary to achieve full with even on big screens and shift around the IE scrollbar bug #}
+                    <section class="page__article page__article--full-width">
+                        {% include 'organisms/o-people-slider.twig' with block only %}
+                    </section>
+                    <section class="page__grid"> {# this belongs to the hack above#}
+                {% else %}
+                <div class="page__article {% if block.full_width %}page__article--2-col{% endif %}">
+                    {% if block.acf_fc_layout == 'vote' %}
+                        {% include 'organisms/o-vote.twig' with block only %}
+                    {% elseif block.acf_fc_layout == 'events' %}
+                        {% if loop.parent.events %}
+                            {% include 'organisms/o-front-events.twig' with {
+                                'block': block,
+                                'events': loop.parent.events,
+                                'venues': loop.parent.venues
+                            } only %}
+                        {% endif %}
+                    {% elseif block.acf_fc_layout == 'positions' %}
+                        {% include 'organisms/o-positions.twig' with block only %}
+                    {% elseif block.acf_fc_layout == 'engagement_map' %}
+                        {% include 'organisms/o-engagement-map.twig' with block only %}
+                    {% else %}
+                        {% include 'organisms/o-front-article.twig' with {
+                            'block': block,
+                            'latest_press_release': loop.parent.latest_press_release
+                        } only %}
+                    {% endif %}
+                </div>
+                {% endif %}
+            {% endfor %}
         </section>
-        <section class="page__people-slider">
-            {{ render '@o-people-slider' }}
-        </section>
-        <section class="page__engagement-map">
-            {{ render '@o-engagement-map' }}
-        </section>
-    </div>#}
+    </div>
 {% endblock %}

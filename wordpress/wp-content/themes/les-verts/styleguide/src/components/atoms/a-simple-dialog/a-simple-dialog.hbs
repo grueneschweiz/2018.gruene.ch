@@ -1,0 +1,11 @@
+<div class="a-simple-dialog {{ modifiers_classes }}" {{#if id}}id="a-simple-dialog--{{ id }}"{{/if}}>
+    <div class="a-simple-dialog__main">
+        {{{ content }}}
+    </div>
+    <button class="a-simple-dialog__close" aria-label="{{ 'Close dialog' }}">
+        <svg role="img">
+            <title>{{ 'Close dialog' }}</title>
+            <use xlink:href="#close"></use>
+        </svg>
+    </button>
+</div>
