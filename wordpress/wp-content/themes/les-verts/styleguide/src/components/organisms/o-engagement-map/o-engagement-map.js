@@ -4,10 +4,10 @@ const SELECT_SELECTOR = '#party-selector';
 const DIALOG_WRAPPER_SELECTOR = '.o-engagement-map__dialog';
 const MAP_SELECTOR = '.o-engagement-map__map';
 const MAP_SECTION_SELECTOR = MAP_SELECTOR + ' .map-item';
-const DIALOG_CLOSE_SELECTOR = '.m-address-dialog__close';
+const DIALOG_CLOSE_SELECTOR = '.a-simple-dialog__close';
 const MODAL_SELECTOR = '.o-engagement-map__modal';
 
-const DIALOG_ID_PREFIX = 'm-address-';
+const DIALOG_ID_PREFIX = 'a-simple-dialog--';
 
 const OPEN_STATE = 'is-open';
 const ALIGN_LEFT_STATE = 'pull-left';

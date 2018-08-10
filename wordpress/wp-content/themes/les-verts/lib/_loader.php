@@ -36,6 +36,7 @@ if( class_exists( 'acf' ) ) {
 
 //require_once __DIR__ .'/admin/acf-option-pages.php';
 require_once __DIR__ .'/admin/acf-protect-admin.php';
+require_once __DIR__ . '/admin/customize-tinymce.php';
 require_once __DIR__ .'/admin/admin-hide-pll-sync.php';
 require_once __DIR__ .'/admin/lower-yoast-metabox.php';
 require_once __DIR__ .'/admin/smush.php';

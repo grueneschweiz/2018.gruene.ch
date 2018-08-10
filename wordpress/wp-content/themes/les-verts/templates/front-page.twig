@@ -49,6 +49,8 @@
                         {% endif %}
                     {% elseif block.acf_fc_layout == 'positions' %}
                         {% include 'organisms/o-positions.twig' with block only %}
+                    {% elseif block.acf_fc_layout == 'engagement_map' %}
+                        {% include 'organisms/o-engagement-map.twig' with block only %}
                     {% else %}
                         {% include 'organisms/o-front-article.twig' with {
                             'block': block,
@@ -59,11 +61,5 @@
                 {% endif %}
             {% endfor %}
         </section>
-        {#<section class="page__people-slider">#}
-        {#{{ render '@o-people-slider' }}#}
-        {#</section>#}
-        {#<section class="page__engagement-map">#}
-        {#{{ render '@o-engagement-map' }}#}
-        {#</section>#}
     </div>
 {% endblock %}

@@ -1,0 +1,5 @@
+label: Simple Dialog
+status: ready
+context:
+  content: Some content<p>and a paragraph</p>
+  id: fun
