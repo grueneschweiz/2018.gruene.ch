@@ -56,6 +56,8 @@ class StarterSite extends TimberSite {
 		add_action( 'init', array( $this, 'register_menu_locations' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'setup_assets' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'setup_admin_assets' ) );
+		add_action( 'widgets_init', array( $this, 'register_widget_zones' ) );
+		
 		
 		// // For debug purpose only: shows all the hooks & registered actions
 		// add_action('wp', function(){ echo '<pre>';print_r($GLOBALS['wp_filter']); echo '</pre>';exit; } );
@@ -102,9 +104,6 @@ class StarterSite extends TimberSite {
 			}
 		}
 		
-		// Copyright date
-		$context['year'] = date( 'Y' );
-		
 		// Are we in debut mode?
 		$context['WP_DEBUG'] = WP_DEBUG;
 		
@@ -113,9 +112,10 @@ class StarterSite extends TimberSite {
 	
 	function register_menu_locations() {
 		register_nav_menus( array(
-			'main-nav'     => __( 'Main navigation', THEME_DOMAIN ),
-			'language-nav' => __( 'Language navigation', THEME_DOMAIN ),
-			// 'footer' => __( 'Footer', THEME_DOMAIN )
+			'main-nav'        => __( 'Main navigation', THEME_DOMAIN ),
+			'language-nav'    => __( 'Language navigation', THEME_DOMAIN ),
+			'footer-nav'      => __( 'Footer navigation', THEME_DOMAIN ),
+			'footer-meta-nav' => __( 'Footer meta navigation', THEME_DOMAIN ),
 		) );
 	}
 	
@@ -150,8 +150,9 @@ class StarterSite extends TimberSite {
 		}
 		
 		// admin bar styles
-		if (is_admin_bar_showing()) {
-		 	wp_enqueue_style( 'adminbar-style', get_stylesheet_directory_uri() . '/style-adminbar.css', false, THEME_VERSION );
+		if ( is_admin_bar_showing() ) {
+			wp_enqueue_style( 'adminbar-style', get_stylesheet_directory_uri() . '/style-adminbar.css', false,
+				THEME_VERSION );
 		}
 		
 		// load scripts on specific pages
@@ -169,11 +170,30 @@ class StarterSite extends TimberSite {
 	
 	function setup_admin_assets() {
 		// global admin styles
-		if (is_admin()) {
-			wp_enqueue_style( 'admin-style', get_stylesheet_directory_uri() . '/style-admin.css', false, THEME_VERSION );
+		if ( is_admin() ) {
+			wp_enqueue_style( 'admin-style', get_stylesheet_directory_uri() . '/style-admin.css', false,
+				THEME_VERSION );
 		}
 	}
 	
+	/**
+	 * Load the widget zones
+	 *
+	 * @see http://codex.wordpress.org/Function_Reference/register_sidebar
+	 */
+	function register_widget_zones() {
+		register_sidebar( array(
+			'name'        => esc_html__( 'Footer', THEME_DOMAIN ),
+			'id'          => 'footer-widget-area',
+			'description' => __( 'This is the footer. Use it for your primary calls to action (Text widget)'
+			                     . ', your contact details (Text widget) and the footer menu (Navigation Menu widget).',
+				THEME_DOMAIN ),
+//			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+//			'after_widget'  => '</aside>',
+//			'before_title'  => '<h1 class="widget-title">',
+//			'after_title'   => '</h1>',
+		) );
+	}
 }
 
 

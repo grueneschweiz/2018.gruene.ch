@@ -17,7 +17,7 @@
 
 		{% block footer %}
 			<footer id="footer">
-				{#{% include 'footer.twig' %}#}
+				{% include 'footer.twig' %}
 			</footer>
 			<script>
 				function supt_pfl(){var script=document.createElement("script");script.src="{{ function('get_stylesheet_directory_uri') }}/static/js/app{{ WP_DEBUG ? '' : '.min' }}.js";document.head.appendChild(script)};
