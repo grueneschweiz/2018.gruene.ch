@@ -12,11 +12,4 @@
             {% endfor %}
         </div>
     </div>
-    <div class="m-footer-contact__button">
-        {# todo: spam protect email #}
-        {% include 'atoms/a-button.twig' with {
-            'link': 'mailto:' ~ email,
-            'label': __('Send E-Mail', constant('THEME_DOMAIN'))
-        } only %}
-    </div>
 </section>
