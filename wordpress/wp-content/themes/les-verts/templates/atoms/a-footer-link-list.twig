@@ -1,0 +1,10 @@
+<section class="a-footer-link-list">
+    {{ title }}
+    <ul class="a-footer-link-list__list">
+        {% for item in list %}
+            <li class="a-footer-link-list__item">
+                <a href="{{ item.link }}" target="_blank" class="a-footer-link-list__link">{{ item.label }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+</section>

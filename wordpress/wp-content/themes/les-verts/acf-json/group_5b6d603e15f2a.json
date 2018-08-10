@@ -1,0 +1,158 @@
+{
+    "key": "group_5b6d603e15f2a",
+    "title": "(Widget) Contact",
+    "fields": [
+        {
+            "key": "field_5b6d66726dae9",
+            "label": "Address",
+            "name": "address",
+            "type": "wysiwyg",
+            "instructions": "Use this field for everything except the email address and the social icons",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 0,
+            "delay": 0
+        },
+        {
+            "key": "field_5b6d66dd6daea",
+            "label": "Email",
+            "name": "email",
+            "type": "email",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_5b6d66eb6daeb",
+            "label": "Social Media",
+            "name": "social_media",
+            "type": "flexible_content",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layouts": {
+                "5b6d66ff18a3e": {
+                    "key": "5b6d66ff18a3e",
+                    "name": "facebook",
+                    "label": "Facebook",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_5b6d67a21c8de",
+                            "label": "Link to the facebook fan page \/ profile",
+                            "name": "link",
+                            "type": "url",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": ""
+                        }
+                    ],
+                    "min": "",
+                    "max": "1"
+                },
+                "layout_5b6d67df1c8df": {
+                    "key": "layout_5b6d67df1c8df",
+                    "name": "twitter",
+                    "label": "Twitter",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_5b6d67e81c8e0",
+                            "label": "Link to the twitter profile",
+                            "name": "link",
+                            "type": "url",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": ""
+                        }
+                    ],
+                    "min": "",
+                    "max": "1"
+                },
+                "layout_5b6d680d1c8e1": {
+                    "key": "layout_5b6d680d1c8e1",
+                    "name": "instagram",
+                    "label": "Instagram",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_5b6d681c1c8e2",
+                            "label": "Link to the instagram profile",
+                            "name": "link",
+                            "type": "url",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": ""
+                        }
+                    ],
+                    "min": "",
+                    "max": "1"
+                }
+            },
+            "button_label": "Add Icon",
+            "min": "",
+            "max": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "widget",
+                "operator": "==",
+                "value": "supt_contact_widget"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1533911702
+}

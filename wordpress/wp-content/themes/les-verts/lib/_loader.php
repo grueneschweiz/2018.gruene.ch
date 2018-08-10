@@ -34,7 +34,7 @@ if( class_exists( 'acf' ) ) {
  * - add a "help" section
  */
 
-require_once __DIR__ .'/admin/acf-option-pages.php';
+//require_once __DIR__ .'/admin/acf-option-pages.php';
 require_once __DIR__ .'/admin/acf-protect-admin.php';
 require_once __DIR__ .'/admin/admin-hide-pll-sync.php';
 require_once __DIR__ .'/admin/lower-yoast-metabox.php';
@@ -76,10 +76,29 @@ Navigation_controller::register();
 
 require_once __DIR__ .'/post-types/PeopleType.php';
 
-
 // register post types & taxonomies
 add_action( 'init', function() {
 	\SUPT\PeopleType::register_post_types(THEME_DOMAIN);
+} );
+
+
+/**
+ * WIDGETS
+ * =======
+ *
+ * Custom widgets
+ */
+
+require_once __DIR__ .'/widgets/Widget.php';
+require_once __DIR__ .'/widgets/ContactWidget.php';
+require_once __DIR__ .'/widgets/ButtonWidget.php';
+require_once __DIR__ .'/widgets/LinkListWidget.php';
+
+// register post types & taxonomies
+add_action( 'widgets_init', function() {
+	register_widget('\SUPT\ContactWidget');
+	register_widget('\SUPT\ButtonWidget');
+	register_widget('\SUPT\LinkListWidget');
 } );
 
 
@@ -93,6 +112,7 @@ add_action( 'init', function() {
 require_once __DIR__ . '/customizer/logo.php';
 
 Customizer\Logo::register();
+
 
 /**
  * TWEAKS

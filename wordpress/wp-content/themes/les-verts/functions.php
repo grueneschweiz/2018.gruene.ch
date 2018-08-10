@@ -89,6 +89,9 @@ class StarterSite extends TimberSite {
 		// Global options
 		$context['OPTIONS'] = get_fields( 'options' );
 		
+		// Widgets
+		$context['widgets']['footer'] = Timber::get_widgets( 'footer-widget-area' );
+		
 		// Localized options
 		$context['localized_options'] = get_fields( \SUPT\get_lang() );
 		
@@ -114,7 +117,6 @@ class StarterSite extends TimberSite {
 		register_nav_menus( array(
 			'main-nav'        => __( 'Main navigation', THEME_DOMAIN ),
 			'language-nav'    => __( 'Language navigation', THEME_DOMAIN ),
-			'footer-nav'      => __( 'Footer navigation', THEME_DOMAIN ),
 			'footer-meta-nav' => __( 'Footer meta navigation', THEME_DOMAIN ),
 		) );
 	}
@@ -183,15 +185,13 @@ class StarterSite extends TimberSite {
 	 */
 	function register_widget_zones() {
 		register_sidebar( array(
-			'name'        => esc_html__( 'Footer', THEME_DOMAIN ),
-			'id'          => 'footer-widget-area',
-			'description' => __( 'This is the footer. Use it for your primary calls to action (Text widget)'
-			                     . ', your contact details (Text widget) and the footer menu (Navigation Menu widget).',
+			'name'          => esc_html__( 'Footer', THEME_DOMAIN ),
+			'id'            => 'footer-widget-area',
+			'description'   => __( 'This is the footer. Use it for your primary calls to action (Button widget)'
+			                       . ', your contact details (Contact widget) and the footer menu (Link list widget).',
 				THEME_DOMAIN ),
-//			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-//			'after_widget'  => '</aside>',
-//			'before_title'  => '<h1 class="widget-title">',
-//			'after_title'   => '</h1>',
+			'before_widget' => '<div class="widget">',
+			'after_widget'  => '</div>',
 		) );
 	}
 }
