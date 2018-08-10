@@ -4,7 +4,7 @@ display:
   padding: 40px
 context:
   title: Kontakt
-  address: "<p><strong>Grüne Schweiz</strong><br><strong>Les Verts suisses</strong><br>Waisenhausplatz 21<br>3011 Bern</p><p>031 326 66 00<br>Postkonto 80-26747-3</p>"
+  address: "<p><strong>Grüne Schweiz</strong><br><strong>Les Verts suisses</strong><br>Waisenhausplatz 21<br>3011 Bern</p><p>031 326 66 00<br>Postkonto 80-26747-3</p><p><a href='mailto:gruene@gruene.ch' class='a-button'>E-Mail senden</a></p>"
   button:
     label: E-Mail senden
     link: "mailto:gruene@gruene.ch"
