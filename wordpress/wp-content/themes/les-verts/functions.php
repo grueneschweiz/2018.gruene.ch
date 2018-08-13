@@ -57,7 +57,7 @@ class StarterSite extends TimberSite {
 		add_action( 'wp_enqueue_scripts', array( $this, 'setup_assets' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'setup_admin_assets' ) );
 		add_action( 'widgets_init', array( $this, 'register_widget_zones' ) );
-		
+		add_action( 'after_setup_theme', array($this, 'load_textdomain') );
 		
 		// // For debug purpose only: shows all the hooks & registered actions
 		// add_action('wp', function(){ echo '<pre>';print_r($GLOBALS['wp_filter']); echo '</pre>';exit; } );
@@ -193,6 +193,13 @@ class StarterSite extends TimberSite {
 			'before_widget' => '<div class="widget">',
 			'after_widget'  => '</div>',
 		) );
+	}
+	
+	/**
+	 * Load theme translations
+	 */
+	function load_textdomain() {
+		load_theme_textdomain( THEME_DOMAIN, get_template_directory() . '/languages' );
 	}
 }
 
