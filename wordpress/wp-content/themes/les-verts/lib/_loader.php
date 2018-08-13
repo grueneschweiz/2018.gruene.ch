@@ -16,8 +16,8 @@ if( class_exists( 'acf' ) ) {
 	require_once __DIR__ .'/acf/acf-init.php';
 
 	// custom locations (= where to show which field groups)
-	require_once __DIR__ .'/acf/custom-locations/localized-options.php';
-	require_once __DIR__ .'/acf/custom-locations/localized-menu.php';
+	// require_once __DIR__ .'/acf/custom-locations/localized-options.php';
+	// require_once __DIR__ .'/acf/custom-locations/localized-menu.php';
 }
 
 
@@ -43,6 +43,7 @@ require_once __DIR__ .'/admin/smush.php';
 require_once __DIR__ .'/admin/svg-support.php';
 require_once __DIR__ .'/admin/timmy-config.php';
 require_once __DIR__ .'/admin/translatable-post-types.php';
+require_once __DIR__ . '/admin/tweak-tribe-events.php';
 
 /**
  * CONTROLLERS
