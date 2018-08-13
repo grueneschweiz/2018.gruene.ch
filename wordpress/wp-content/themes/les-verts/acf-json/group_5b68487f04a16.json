@@ -24,11 +24,11 @@
             "prefix_name": 0
         },
         {
-            "key": "field_5b684980a99d9",
-            "label": "Exclude category",
-            "name": "exclude_category",
-            "type": "taxonomy",
-            "instructions": "Media releases with the category above AND this category selected, will show up in the media release archive but not on the front page.",
+            "key": "field_5b7193201a0ac",
+            "label": "Automated Content Selection",
+            "name": "",
+            "type": "message",
+            "instructions": "",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -36,14 +36,9 @@
                 "class": "",
                 "id": ""
             },
-            "taxonomy": "category",
-            "field_type": "multi_select",
-            "allow_null": 0,
-            "add_term": 0,
-            "save_terms": 0,
-            "load_terms": 0,
-            "return_format": "id",
-            "multiple": 0
+            "message": "This block will automatically display the latest media release (as long as it is published under the category you set below). Posts where the flag 'Show on front page' is not set to false will be excluded.\r\n\r\nIf the press release contains a quote block, the quote will be displayed. Else the lead is shown.",
+            "new_lines": "wpautop",
+            "esc_html": 0
         }
     ],
     "location": [
@@ -63,5 +58,5 @@
     "hide_on_screen": "",
     "active": 0,
     "description": "",
-    "modified": 1533718844
+    "modified": 1534170908
 }

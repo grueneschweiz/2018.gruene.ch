@@ -4,8 +4,8 @@
     "fields": [
         {
             "key": "field_5b6861bb4db05",
-            "label": "Category",
-            "name": "category",
+            "label": "Block Title",
+            "name": "block_title",
             "type": "clone",
             "instructions": "",
             "required": 1,
@@ -27,8 +27,8 @@
             "key": "field_5b6846f16fb72",
             "label": "Post",
             "name": "post",
-            "type": "post_object",
-            "instructions": "",
+            "type": "clone",
+            "instructions": "Select the post to display. The excerpt and the image of the post, will be displayed.",
             "required": 1,
             "conditional_logic": 0,
             "wrapper": {
@@ -36,22 +36,20 @@
                 "class": "",
                 "id": ""
             },
-            "post_type": [
-                "post",
-                "page"
+            "clone": [
+                "group_5b71a23bc757e"
             ],
-            "taxonomy": [],
-            "allow_null": 0,
-            "multiple": 0,
-            "return_format": "object",
-            "ui": 1
+            "display": "seamless",
+            "layout": "block",
+            "prefix_label": 0,
+            "prefix_name": 0
         },
         {
-            "key": "field_5b6847db6fb75",
-            "label": "Call to action link",
-            "name": "cta_link",
-            "type": "url",
-            "instructions": "",
+            "key": "field_5b719f7e7fcc0",
+            "label": "Footer",
+            "name": "footer",
+            "type": "group",
+            "instructions": "Make use of the call to action. Just paste in the link to the form, where the visitor can get active.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -59,60 +57,77 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "",
-            "placeholder": ""
-        },
-        {
-            "key": "field_5b68476a6fb74",
-            "label": "Call to action label",
-            "name": "cta_label",
-            "type": "text",
-            "instructions": "",
-            "required": 1,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_5b6847db6fb75",
-                        "operator": "!=empty"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "Get active",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
-        },
-        {
-            "key": "field_5b6847346fb73",
-            "label": "Call to action description",
-            "name": "cta_desc",
-            "type": "text",
-            "instructions": "",
-            "required": 1,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_5b6847db6fb75",
-                        "operator": "!=empty"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
+            "layout": "row",
+            "sub_fields": [
+                {
+                    "key": "field_5b6847db6fb75",
+                    "label": "Call to Action Link",
+                    "name": "cta_link",
+                    "type": "url",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": ""
+                },
+                {
+                    "key": "field_5b68476a6fb74",
+                    "label": "Call to Action Button Text",
+                    "name": "cta_label",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_5b6847db6fb75",
+                                "operator": "!=empty"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "Get active",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_5b6847346fb73",
+                    "label": "Call to Action Description",
+                    "name": "cta_desc",
+                    "type": "text",
+                    "instructions": "One very short sentence that explains why someone should click the call to action. Example: I want to get active against GMO.",
+                    "required": 1,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_5b6847db6fb75",
+                                "operator": "!=empty"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                }
+            ]
         }
     ],
     "location": [
@@ -132,5 +147,5 @@
     "hide_on_screen": "",
     "active": 0,
     "description": "",
-    "modified": 1533827470
+    "modified": 1534174384
 }

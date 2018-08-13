@@ -7,7 +7,7 @@
             "label": "Further Reading",
             "name": "further_reading",
             "type": "repeater",
-            "instructions": "",
+            "instructions": "Optional. Provide some links that explain the CURRENT TOPIC in more detail. Examples: Press release of the administration, protocol of the debate in parliament etc.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -15,11 +15,11 @@
                 "class": "",
                 "id": ""
             },
-            "collapsed": "field_5b6c028a3a2bb",
+            "collapsed": "field_5b6c4bfb0b804",
             "min": 0,
             "max": 0,
             "layout": "table",
-            "button_label": "",
+            "button_label": "Add Link",
             "sub_fields": [
                 {
                     "key": "field_5b6c4bfb0b804",
@@ -43,7 +43,7 @@
             "label": "Related Content",
             "name": "related_content",
             "type": "repeater",
-            "instructions": "",
+            "instructions": "Optional. Provide OHTER CONTENT the reader might be interested in. It's best if the content is related. If for example this post is about nuclear energy, it be cool to link something about renewables.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -55,7 +55,7 @@
             "min": 0,
             "max": 0,
             "layout": "table",
-            "button_label": "",
+            "button_label": "Add Related Content",
             "sub_fields": [
                 {
                     "key": "field_5b6c4bfb2ce49",
@@ -103,5 +103,5 @@
     "hide_on_screen": "",
     "active": 0,
     "description": "",
-    "modified": 1533824176
+    "modified": 1534180356
 }

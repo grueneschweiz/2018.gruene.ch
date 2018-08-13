@@ -26,7 +26,7 @@
             "label": "Role",
             "name": "role",
             "type": "text",
-            "instructions": "",
+            "instructions": "Optional. Example: President Greens Fribourg, Business owner",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -45,7 +45,7 @@
             "label": "Quote",
             "name": "quote",
             "type": "textarea",
-            "instructions": "",
+            "instructions": "Make sure there is not one quote, that is much longer than the others.",
             "required": 1,
             "conditional_logic": 0,
             "wrapper": {
@@ -56,7 +56,7 @@
             "default_value": "",
             "placeholder": "",
             "maxlength": 280,
-            "rows": 5,
+            "rows": 3,
             "new_lines": ""
         },
         {
@@ -101,5 +101,5 @@
     "hide_on_screen": "",
     "active": 0,
     "description": "",
-    "modified": 1533832257
+    "modified": 1534175362
 }

@@ -50,7 +50,7 @@
             "label": "Content",
             "name": "content",
             "type": "flexible_content",
-            "instructions": "",
+            "instructions": "Add your main content here.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -273,7 +273,7 @@
                     "max": ""
                 }
             },
-            "button_label": "Add Row",
+            "button_label": "Add Content Block",
             "min": "",
             "max": ""
         },
@@ -348,5 +348,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1533825281
+    "modified": 1534179979
 }

@@ -42,7 +42,7 @@
             "sub_fields": [
                 {
                     "key": "field_5b6b152f33c24",
-                    "label": "position",
+                    "label": "Position",
                     "name": "position",
                     "type": "text",
                     "instructions": "Keep it very short, use just a few keywords.",
@@ -63,7 +63,7 @@
         },
         {
             "key": "field_5b6b15e295147",
-            "label": "Read more button text",
+            "label": "Read More Button Text",
             "name": "read_more_label",
             "type": "text",
             "instructions": "",
@@ -82,7 +82,7 @@
         },
         {
             "key": "field_5b6b24861e7f5",
-            "label": "Read more button link",
+            "label": "Read More Button Link",
             "name": "read_more_link",
             "type": "url",
             "instructions": "",
@@ -114,5 +114,5 @@
     "hide_on_screen": "",
     "active": 0,
     "description": "",
-    "modified": 1533748672
+    "modified": 1534174801
 }

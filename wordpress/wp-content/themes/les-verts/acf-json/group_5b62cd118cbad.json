@@ -4,10 +4,10 @@
     "fields": [
         {
             "key": "field_5b62da7660cb3",
-            "label": "Featured Menu item",
+            "label": "Featured Menu Item",
             "name": "featured_menu_item",
             "type": "true_false",
-            "instructions": "",
+            "instructions": "Do only use this option, if this is a sub item (on level 2). Else it won't have any effect.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -22,12 +22,12 @@
             "ui_off_text": ""
         },
         {
-            "key": "field_5b62cdaa766b0",
-            "label": "Category",
-            "name": "category",
-            "type": "taxonomy",
-            "instructions": "Select the category (p.ex. campaigns)",
-            "required": 1,
+            "key": "field_5b71c942afd74",
+            "label": "",
+            "name": "block_title",
+            "type": "clone",
+            "instructions": "",
+            "required": 0,
             "conditional_logic": [
                 [
                     {
@@ -42,14 +42,13 @@
                 "class": "",
                 "id": ""
             },
-            "taxonomy": "category",
-            "field_type": "select",
-            "allow_null": 0,
-            "add_term": 0,
-            "save_terms": 0,
-            "load_terms": 0,
-            "return_format": "id",
-            "multiple": 0
+            "clone": [
+                "group_5b684e748247e"
+            ],
+            "display": "group",
+            "layout": "block",
+            "prefix_label": 0,
+            "prefix_name": 0
         },
         {
             "key": "field_5b62ceb8766b1",
@@ -112,10 +111,10 @@
         },
         {
             "key": "field_5b62cfc0766b5",
-            "label": "Button text",
+            "label": "Button Text",
             "name": "button_text",
             "type": "text",
-            "instructions": "",
+            "instructions": "The button will link to this menu item",
             "required": 1,
             "conditional_logic": [
                 [
@@ -155,5 +154,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1533559049
+    "modified": 1534183975
 }
