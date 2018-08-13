@@ -25,7 +25,7 @@
         },
         {
             "key": "field_5b6b1670feb50",
-            "label": "Positions",
+            "label": "Positions Group",
             "name": "positions",
             "type": "repeater",
             "instructions": "",
@@ -115,5 +115,5 @@
     "hide_on_screen": "",
     "active": 0,
     "description": "",
-    "modified": 1534174648
+    "modified": 1534188708
 }

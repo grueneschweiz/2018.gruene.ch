@@ -4,7 +4,7 @@
     "fields": [
         {
             "key": "field_5b6b14c533c22",
-            "label": "Title",
+            "label": "Position Block Title",
             "name": "title",
             "type": "text",
             "instructions": "",
@@ -114,5 +114,5 @@
     "hide_on_screen": "",
     "active": 0,
     "description": "",
-    "modified": 1534174801
+    "modified": 1534189023
 }
