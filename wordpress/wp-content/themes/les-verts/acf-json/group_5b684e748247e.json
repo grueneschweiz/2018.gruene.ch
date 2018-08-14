@@ -20,7 +20,7 @@
                 {
                     "key": "field_5b6860ce304b8",
                     "label": "Title",
-                    "name": "block_title",
+                    "name": "title",
                     "type": "text",
                     "instructions": "",
                     "required": 1,
@@ -54,7 +54,7 @@
                         {
                             "key": "field_5b71975ea470c",
                             "label": "Link Type",
-                            "name": "link_type",
+                            "name": "type",
                             "type": "button_group",
                             "instructions": "",
                             "required": 0,
@@ -78,7 +78,7 @@
                         {
                             "key": "field_5b6860fd304b9",
                             "label": "Category",
-                            "name": "category_category",
+                            "name": "category",
                             "type": "taxonomy",
                             "instructions": "",
                             "required": 0,
@@ -108,7 +108,7 @@
                         {
                             "key": "field_5b71984fa470e",
                             "label": "Internal Link",
-                            "name": "category_internal",
+                            "name": "internal",
                             "type": "post_object",
                             "instructions": "",
                             "required": 0,
@@ -140,7 +140,7 @@
                         {
                             "key": "field_5b7198bba470f",
                             "label": "URL",
-                            "name": "category_url",
+                            "name": "url",
                             "type": "url",
                             "instructions": "",
                             "required": 0,
@@ -208,5 +208,5 @@
     "hide_on_screen": "",
     "active": 0,
     "description": "",
-    "modified": 1534172231
+    "modified": 1534249224
 }

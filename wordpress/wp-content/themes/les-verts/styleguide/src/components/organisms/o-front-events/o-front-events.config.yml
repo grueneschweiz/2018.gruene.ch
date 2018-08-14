@@ -6,7 +6,6 @@ context:
     - full-width
   cat-title:
     label: Events
-    js_hook: toggle-events
   link-button:
     label: Alle Events anzeigen
     js_hook: toggle-events

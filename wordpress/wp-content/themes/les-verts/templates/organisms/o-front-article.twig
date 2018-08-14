@@ -29,10 +29,7 @@
 
 <article class="o-front-article {{ modifiers|join(' ') }}">
     <div class="o-front-article__cat-title">
-        {% include 'atoms/a-cat-title.twig' with {
-            'url': TimberTerm(block.category_category).link,
-            'label': block.category_title
-        } only %}
+        {% include 'atoms/a-cat-title.twig' with block.block_title only %}
     </div>
     {% if oton %}
         <div class="o-front-article__quote">

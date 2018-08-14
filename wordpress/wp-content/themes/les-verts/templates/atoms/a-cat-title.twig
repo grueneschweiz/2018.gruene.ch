@@ -1,4 +1,14 @@
 <h2 class="a-cat-title">
-    <a class="a-cat-title__link"
-       {% if url %}href="{{ url }}"{% endif %}{% if js_hook %} data-{{ js_hook }}{% endif %}>{{ label }}</a>
+	{% if link.type == 'none' %}
+		<span class="a-cat-title__link a-cat-title__link--no-link">{{ title }}</span>
+	{% else %}
+		{% if link.type == 'category' %}
+			{% set url = TimberTerm(link.category).link %}
+		{% elseif link.type == 'internal' %}
+			{% set url = link.internal.link %}
+		{% else %}
+			{% set url = link.url %}
+		{% endif %}
+		<a class="a-cat-title__link" href="{{ url }}">{{ title }}</a>
+	{% endif %}
 </h2>

@@ -1,3 +1,7 @@
 <h2 class="a-cat-title">
-    <a class="a-cat-title__link" {{#if url}}href="{{ url }}"{{/if}}{{#if js_hook}} data-{{ js_hook }}{{/if}}>{{ label }}</a>
+	{{# if url }}
+		<a class="a-cat-title__link" href="{{ url }}">{{ label }}</a>
+	{{else}}
+		<span class="a-cat-title__link a-cat-title__link--no-link">{{ label }}</span>
+	{{/if}}
 </h2>
