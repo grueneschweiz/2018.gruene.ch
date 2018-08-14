@@ -1,8 +1,6 @@
 .m-person-slide {
   width: 220px;
-  height: 100%;
   line-height: 0;
-  background: $color-white;
 
   @include media($size-tiny) {
     width: 280px;
