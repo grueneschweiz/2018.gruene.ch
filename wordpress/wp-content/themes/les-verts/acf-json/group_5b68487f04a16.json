@@ -1,7 +1,24 @@
 {
     "key": "group_5b68487f04a16",
-    "title": "[Template]Latest media release",
+    "title": "[Template]Latest Press Release",
     "fields": [
+        {
+            "key": "field_5b7193201a0ac",
+            "label": "About this Block",
+            "name": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "This block displays the latest press release (as long as it is published under the category you set below). Posts where the flag 'Show on front page' is not set to false will be excluded.\r\n\r\nIf the press release contains a quote block, the quote will be displayed. Else the lead is shown.",
+            "new_lines": "wpautop",
+            "esc_html": 0
+        },
         {
             "key": "field_5b68614337425",
             "label": "Category",
@@ -22,23 +39,6 @@
             "layout": "block",
             "prefix_label": 0,
             "prefix_name": 0
-        },
-        {
-            "key": "field_5b7193201a0ac",
-            "label": "Automated Content Selection",
-            "name": "",
-            "type": "message",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "message": "This block will automatically display the latest media release (as long as it is published under the category you set below). Posts where the flag 'Show on front page' is not set to false will be excluded.\r\n\r\nIf the press release contains a quote block, the quote will be displayed. Else the lead is shown.",
-            "new_lines": "wpautop",
-            "esc_html": 0
         }
     ],
     "location": [
@@ -58,5 +58,5 @@
     "hide_on_screen": "",
     "active": 0,
     "description": "",
-    "modified": 1534170908
+    "modified": 1534250353
 }

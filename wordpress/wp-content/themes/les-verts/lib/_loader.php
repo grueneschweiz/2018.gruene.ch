@@ -86,6 +86,18 @@ add_action( 'init', function() {
 
 
 /**
+ * CUSTOM TIMBER CLASSES
+ * =====================
+ *
+ * Include your timber classes here.
+ *
+ * @see https://timber.github.io/docs/guides/extending-timber/
+ */
+
+require_once __DIR__ . '/timber/ACFPost.php';
+
+
+/**
  * WIDGETS
  * =======
  *
@@ -135,10 +147,8 @@ require_once __DIR__ .'/tweaks/inject-svg-sprite.php';
  */
 
 // functions
-require_once __DIR__ .'/twig/functions/component_classes.php';
 require_once __DIR__ .'/twig/functions/get_lang.php';
-// require_once __DIR__ .'/twig/functions/get_languages_switcher.php';
-// require_once __DIR__ .'/twig/functions/pll__.php';
+require_once __DIR__.'/twig/functions/register_timber_acf_post_type.php';
 
 // filters
 // require_once __DIR__ .'/twig/filters/newline.php';

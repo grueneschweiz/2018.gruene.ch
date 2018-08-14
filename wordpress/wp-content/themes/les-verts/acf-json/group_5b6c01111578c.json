@@ -43,10 +43,10 @@
                     "sub_fields": [
                         {
                             "key": "field_5b71c0d3fc187",
-                            "label": "",
+                            "label": "Please Note",
                             "name": "",
-                            "type": "text",
-                            "instructions": "If a quote is given, it will replace the lead text on the front page. On the archive page and in search results, the teaser will still be the lead.",
+                            "type": "message",
+                            "instructions": "",
                             "required": 0,
                             "conditional_logic": 0,
                             "wrapper": {
@@ -54,11 +54,9 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "",
-                            "placeholder": "",
-                            "prepend": "",
-                            "append": "",
-                            "maxlength": ""
+                            "message": "If a quote is given, it will replace the lead text on the front page. On the archive page and in search results, the teaser will still be the lead.",
+                            "new_lines": "wpautop",
+                            "esc_html": 0
                         },
                         {
                             "key": "field_5b6c057a04c41",
@@ -187,5 +185,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1534182266
+    "modified": 1534251295
 }

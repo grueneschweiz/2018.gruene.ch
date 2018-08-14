@@ -18,8 +18,8 @@
     {% if block.acf_fc_layout == 'double' %}
         {% set inner_modifiers = ['m-front-article--image-second'] %}
         {% set posts = {
-            0: block.post_1,
-            1: block.post_2
+            0: block.post_1_post,
+            1: block.post_2_post
         } %}
     {% else %}
         {% set inner_modifiers = ['m-front-article--image-first'] %}

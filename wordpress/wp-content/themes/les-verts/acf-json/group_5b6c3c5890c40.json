@@ -5,7 +5,7 @@
         {
             "key": "field_5b6c3c777bf29",
             "label": "Excerpt",
-            "name": "excerpt",
+            "name": "acf_excerpt",
             "type": "textarea",
             "instructions": "Provide a brief lead, that attracts the reader but doesn't completely summarize the story. It will be used as preview on the front page, archive pages and for search results.",
             "required": 0,
@@ -365,5 +365,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1534240131
+    "modified": 1534256010
 }

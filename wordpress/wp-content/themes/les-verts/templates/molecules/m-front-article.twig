@@ -1,11 +1,13 @@
+{% set post = ACFPost(post) %}
+
 <div class="m-front-article {{ modifiers|join(' ') }}">
     <h3 class="m-front-article__title">
         <a href="{{ post.link }}" class="m-front-article__title-link" tabindex="-1">{{ post.title }}</a>
     </h3>
-    {% if post.thumbnail %}
+    {% if post.header_image %}
         <div class="m-front-article__image">
             {% include 'atoms/a-image.twig' with {
-                'image': post.thumbnail,
+                'image': post.header_image,
                 'size': 'half-grid',
                 'link_url': post.link()
             } only %}
@@ -19,12 +21,10 @@
         </ul>
     {% else %}
         <p class="m-front-article__text">
-            {% if excerpt %}
+						{% if excerpt %}
                 {{ excerpt }}
-            {% elseif post.excerpt %}
-                {{ post.excerpt }}
             {% else %}
-                {{ post.preview().read_more(false).force(false) }}
+                {{ post.excerpt }}
             {% endif %}
         </p>
     {% endif %}
