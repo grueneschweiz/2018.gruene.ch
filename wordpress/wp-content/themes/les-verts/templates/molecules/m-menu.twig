@@ -17,7 +17,7 @@
                             aria-label="{{ __('Submenu', constant('THEME_DOMAIN')) }}">
                             {% for subitem in item.children %}
                                 <li class="m-menu__submenu__section" role="none">
-                                    {% include 'atoms/a-submenu.twig' with {'item': subitem} only %}
+                                    {% include 'atoms/a-submenu.twig' with {'item': subitem } only %}
                                 </li>
                             {% endfor %}
                             <li class="m-menu__submenu__close-wrapper" role="none">

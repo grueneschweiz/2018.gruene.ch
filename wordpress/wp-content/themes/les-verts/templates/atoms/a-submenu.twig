@@ -1,23 +1,24 @@
 <div class="a-submenu{% if item.featured_menu_item %} a-submenu--featured{% endif %}">
-    {% if item.featured_menu_item %}
-        {% include 'atoms/a-cat-title.twig' with {
-            'label': item.category.name,
-            'url': item.category.link
-        } only %}
-        {% include 'atoms/a-image.twig' with {'link_url':item.link, 'image':item.image} only %}
-        <a class="a-submenu--featured__link" href="{{ item.link }}">
-            <h3 class="a-submenu--featured__link__title">{{ item.title }}</h3>
-        </a>
-        <p class="a-submenu--featured__text">{{ item.teaser }}</p>
-        {% include 'atoms/a-button.twig' with {'url': item.link, 'label': item.button_text} only %}
-    {% else %}
-        <a class="a-submenu__title" href="{{ item.link }}">{{ item.title }}</a>
-        <ul class="a-submenu__list">
-            {% for subitem in item.children %}
-                <li class="a-submenu__item">
-                    <a class="a-submenu__link" href="{{ subitem.link }}">{{ subitem.title }}</a>
-                </li>
-            {% endfor %}
-        </ul>
-    {% endif %}
+	{% if item.featured_menu_item %}
+		{% set item_meta = item.meta('group') %}
+		{% include 'atoms/a-cat-title.twig' with item_meta.block_title only %}
+		{% include 'atoms/a-image.twig' with {
+			'link_url':item.link,
+			'image':item_meta.image
+		} only %}
+		<a class="a-submenu--featured__link" href="{{ item.link }}">
+			<h3 class="a-submenu--featured__link__title">{{ item.title }}</h3>
+		</a>
+		<p class="a-submenu--featured__text">{{ item_meta.teaser }}</p>
+		{% include 'atoms/a-button.twig' with {'link': item.link, 'label': item_meta.button_text} only %}
+	{% else %}
+		<a class="a-submenu__title" href="{{ item.link }}">{{ item.title }}</a>
+		<ul class="a-submenu__list">
+			{% for subitem in item.children %}
+				<li class="a-submenu__item">
+					<a class="a-submenu__link" href="{{ subitem.link }}">{{ subitem.title }}</a>
+				</li>
+			{% endfor %}
+		</ul>
+	{% endif %}
 </div>
