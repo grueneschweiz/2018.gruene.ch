@@ -5,35 +5,35 @@
 {% endif %}
 
 <div class="m-front-article {{ modifiers|join(' ') }}">
-    <h3 class="m-front-article__title">
-        <a href="{{ post.link }}" class="m-front-article__title-link" tabindex="-1">{{ post.title }}</a>
-    </h3>
-    {% if post.header_image %}
-        <div class="m-front-article__image">
-            {% include 'atoms/a-image.twig' with {
-                'image': post.header_image,
-                'size': 'half-grid',
-                'link_url': post.link()
-            } only %}
-        </div>
-    {% endif %}
-    {% if post.list_items %}
-        <ul class="m-front-article__list">
-            {% for item in post.list_items %}
-                <li class="m-front-article__list-item">{{ item.position }}</li>
-            {% endfor %}
-        </ul>
-    {% else %}
-        <p class="m-front-article__text">
-						{% if excerpt %}
-                {{ excerpt }}
-            {% else %}
-                {{ post.excerpt }}
-            {% endif %}
-        </p>
-    {% endif %}
-    {% include 'atoms/a-link-button.twig' with {
-        'link': post.link,
-        'label': __('Read more', constant('THEME_DOMAIN'))
-    } only %}
+	<h3 class="m-front-article__title">
+		<a href="{{ post.link }}" class="m-front-article__title-link" tabindex="-1">{{ post.title }}</a>
+	</h3>
+	{% if post.header_image %}
+		<div class="m-front-article__image">
+			{% include 'atoms/a-image.twig' with {
+				'image': post.header_image,
+				'size': 'half-grid',
+				'link_url': post.link()
+			} only %}
+		</div>
+	{% endif %}
+	{% if post.list_items %}
+		<ul class="m-front-article__list">
+			{% for item in post.list_items %}
+				<li class="m-front-article__list-item">{{ item.position }}</li>
+			{% endfor %}
+		</ul>
+	{% else %}
+		<p class="m-front-article__text">
+			{% if excerpt %}
+				{{ excerpt }}
+			{% else %}
+				{{ post.excerpt }}
+			{% endif %}
+		</p>
+	{% endif %}
+	{% include 'atoms/a-link-button.twig' with {
+		'link': post.link,
+		'label': __('Read more', constant('THEME_DOMAIN'))
+	} only %}
 </div>
