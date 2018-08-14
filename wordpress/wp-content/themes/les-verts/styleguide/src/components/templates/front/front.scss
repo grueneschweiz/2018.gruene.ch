@@ -30,7 +30,9 @@
   }
 
   &__article {
-    height: 100%;
+		@include media($_DESKTOP){
+			height: 100%;
+		}
 
     &--2-col {
       grid-column: 1 / 3;
