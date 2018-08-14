@@ -25,7 +25,7 @@
                 {% for item in map_data %}
                     {% set content = '' %}
                     {% for c in item.dialog_content %}
-                        {% set content = content~'<div class="a-simple-dialog__content">'~c.address~'</div>' %}
+                        {% set content = content~'<div class="a-simple-dialog__content">'~c.content~'</div>' %}
                     {% endfor %}
                     <div class="o-engagement-map__dialog">
                         {% include 'atoms/a-simple-dialog.twig' with {
