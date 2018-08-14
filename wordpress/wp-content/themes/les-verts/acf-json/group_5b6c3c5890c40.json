@@ -1,6 +1,6 @@
 {
     "key": "group_5b6c3c5890c40",
-    "title": "Default",
+    "title": "Content",
     "fields": [
         {
             "key": "field_5b6c3c777bf29",
@@ -88,7 +88,7 @@
                         }
                     ],
                     "min": "",
-                    "max": ""
+                    "max": "1"
                 },
                 "layout_5b6c4a2a4c11e": {
                     "key": "layout_5b6c4a2a4c11e",
@@ -129,7 +129,7 @@
                     "sub_fields": [
                         {
                             "key": "field_5b6c4a7a4c121",
-                            "label": "text",
+                            "label": "",
                             "name": "text",
                             "type": "wysiwyg",
                             "instructions": "",
@@ -226,11 +226,28 @@
                     "display": "block",
                     "sub_fields": [
                         {
+                            "key": "field_5b72a37b414b7",
+                            "label": "About this Block",
+                            "name": "",
+                            "type": "message",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "message": "Use this block to embed some posts, tweets, youtube videos etc. Just paste the link to the resource to embed and wait for the preview. If no preview appears, auto-embedding is not supported. You can then use a text block, switch to the text mode (on the upper right corner) and paste in the embed code provided from the platform that hosts the content.",
+                            "new_lines": "wpautop",
+                            "esc_html": 0
+                        },
+                        {
                             "key": "field_5b6c4b1b4c127",
                             "label": "Video \/ Tweet \/ Post etc.",
                             "name": "oembed",
                             "type": "oembed",
-                            "instructions": "",
+                            "instructions": "Make sure you use the url to the tweet, post or video itself and not to the timeline.",
                             "required": 0,
                             "conditional_logic": 0,
                             "wrapper": {
@@ -348,5 +365,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1534179979
+    "modified": 1534240131
 }

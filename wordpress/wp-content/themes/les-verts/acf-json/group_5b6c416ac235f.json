@@ -3,6 +3,42 @@
     "title": "[Template]In Short",
     "fields": [
         {
+            "key": "field_5b7293fda545d",
+            "label": "About this Block",
+            "name": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "This block aims to suffice the visitors that don't want to read a lot, but take action right away. Provide the key facts, preferably in bullet points and add the main call to action below.",
+            "new_lines": "wpautop",
+            "esc_html": 0
+        },
+        {
+            "key": "field_5b7293675fb5d",
+            "label": "Title",
+            "name": "title",
+            "type": "text",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "The most important in brief",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
             "key": "field_5b6c426cd8fbe",
             "label": "Content",
             "name": "content",
@@ -24,7 +60,7 @@
                     "sub_fields": [
                         {
                             "key": "field_5b6c4280d8fbf",
-                            "label": "Bullet Points",
+                            "label": "",
                             "name": "bullet_points",
                             "type": "repeater",
                             "instructions": "",
@@ -36,10 +72,10 @@
                                 "id": ""
                             },
                             "collapsed": "field_5b6c4290d8fc0",
-                            "min": 0,
+                            "min": 1,
                             "max": 0,
                             "layout": "table",
-                            "button_label": "",
+                            "button_label": "Add Bullet Point",
                             "sub_fields": [
                                 {
                                     "key": "field_5b6c4290d8fc0",
@@ -74,7 +110,7 @@
                     "sub_fields": [
                         {
                             "key": "field_5b6c497c69760",
-                            "label": "Text",
+                            "label": "",
                             "name": "text",
                             "type": "wysiwyg",
                             "instructions": "",
@@ -98,7 +134,7 @@
                 "layout_5b6c498e69761": {
                     "key": "layout_5b6c498e69761",
                     "name": "call_to_action",
-                    "label": "Call to action",
+                    "label": "Call to Action",
                     "display": "block",
                     "sub_fields": [
                         {
@@ -128,8 +164,8 @@
                     "max": ""
                 }
             },
-            "button_label": "Add Row",
-            "min": "",
+            "button_label": "Add In Short Content Block",
+            "min": 1,
             "max": ""
         }
     ],
@@ -150,5 +186,5 @@
     "hide_on_screen": "",
     "active": 0,
     "description": "",
-    "modified": 1533825110
+    "modified": 1534239506
 }
