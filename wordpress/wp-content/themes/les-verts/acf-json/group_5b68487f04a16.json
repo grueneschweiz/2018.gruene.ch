@@ -21,8 +21,8 @@
         },
         {
             "key": "field_5b68614337425",
-            "label": "Category",
-            "name": "category",
+            "label": "Block Title",
+            "name": "block_title",
             "type": "clone",
             "instructions": "",
             "required": 1,
@@ -39,6 +39,28 @@
             "layout": "block",
             "prefix_label": 0,
             "prefix_name": 0
+        },
+        {
+            "key": "field_5b730cf648300",
+            "label": "Category",
+            "name": "category",
+            "type": "taxonomy",
+            "instructions": "Select the category, that you assign to your press releases. This Block will always display the newest post of this category (except if you've set the 'show on front' flag to 'no').",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "taxonomy": "category",
+            "field_type": "select",
+            "allow_null": 0,
+            "add_term": 0,
+            "save_terms": 0,
+            "load_terms": 0,
+            "return_format": "id",
+            "multiple": 0
         }
     ],
     "location": [
@@ -58,5 +80,5 @@
     "hide_on_screen": "",
     "active": 0,
     "description": "",
-    "modified": 1534250353
+    "modified": 1534266822
 }

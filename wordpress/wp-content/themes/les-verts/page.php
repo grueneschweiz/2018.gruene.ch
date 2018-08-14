@@ -45,7 +45,7 @@ function supt_get_latest_press_release( &$context ) {
 		if ( 'media' == $type ) {
 			// get post category
 			$id     = (int) $id;
-			$cat_id = $context['post']->custom["content_blocks_{$id}_category_category"];
+			$cat_id = $context['post']->custom["content_blocks_{$id}_category"];
 			
 			// get latest post query
 			$args = array(
