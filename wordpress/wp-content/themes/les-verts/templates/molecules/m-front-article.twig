@@ -1,4 +1,8 @@
-{% set post = ACFPost(post) %}
+{% if not post.list_items %}
+	{# since the postitions are not real post objects we only want the real
+	   post object to be instantiatet #}
+	{% set post = ACFPost(post) %}
+{% endif %}
 
 <div class="m-front-article {{ modifiers|join(' ') }}">
     <h3 class="m-front-article__title">
