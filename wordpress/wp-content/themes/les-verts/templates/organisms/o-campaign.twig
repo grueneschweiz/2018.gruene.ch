@@ -7,14 +7,7 @@
             } only %}
         </div>
         <div class="o-campaign__bars">
-            {% include 'molecules/m-bars.twig' with {
-                'green_bars': bars.green_bars,
-                'white_bars': bars.white_bars,
-                'magenta_bars': bars.magenta_bars,
-                'white_subline_bars': bars.white_subline_bars,
-                'green_subline_bars': bars.green_subline_bars,
-                'alignment': bars.alignment,
-            } only %}
+            {% include 'molecules/m-bars.twig' with bars only %}
         </div>
     </div>
     <div class="o-campaign__spacer" aria-hidden="true">

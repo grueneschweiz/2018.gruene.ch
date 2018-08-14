@@ -5,15 +5,15 @@
         {% include 'organisms/o-campaign.twig' with {
             'image': post.campaign_image,
             'bars': {
-                'green_bars': post.get_field('campaign_green_bars'),
-                'white_bars': post.get_field('campaign_white_bars'),
-                'magenta_bars': post.get_field('campaign_magenta_bars'),
-                'white_subline_bars': post.get_field('campaign_white_subline_bars'),
-                'green_subline_bars': post.get_field('campaign_green_subline_bars'),
-                'alignment': post.get_field('campaign_bar_alignment'),
+                'headlines_green': post.get_field('campaign_bars_headlines_green'),
+                'headlines_white': post.get_field('campaign_bars_headlines_white'),
+                'headlines_magenta': post.get_field('campaign_bars_headlines_magenta'),
+                'sublines_white': post.get_field('campaign_bars_sublines_white'),
+                'sublines_green': post.get_field('campaign_bars_sublines_green'),
+                'alignment': post.get_field('campaign_bars_bar_alignment'),
             },
             'desc': {
-                'title': post.get_field('campaign_title'),
+                'title': post.get_field('campaign_campaign_summary_title'),
                 'teaser': post.get_field('campaign_teaser'),
                 'read_more_text': post.get_field('campaign_read-more-text'),
                 'link': post.get_field('campaign_link').link()
@@ -25,6 +25,7 @@
                 'link': post.get_field('campaign_general_participation_link').link(),
             }
         } only %}
+			{{ dump(post) }}
     </section>
     <div class="page__grid-wrapper">
         <section class="page__grid">

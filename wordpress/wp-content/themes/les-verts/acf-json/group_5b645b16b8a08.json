@@ -121,8 +121,8 @@
                 },
                 {
                     "key": "field_5b7184aaad3bf",
-                    "label": "Bars",
-                    "name": "bars_bars",
+                    "label": "Headlines",
+                    "name": "headlines",
                     "type": "group",
                     "instructions": "",
                     "required": 0,
@@ -145,7 +145,7 @@
                         {
                             "key": "field_5b645bd433eec",
                             "label": "",
-                            "name": "green_bars",
+                            "name": "green",
                             "type": "repeater",
                             "instructions": "",
                             "required": 0,
@@ -166,13 +166,13 @@
                             "collapsed": "field_5b645c0833eed",
                             "min": 1,
                             "max": 2,
-                            "layout": "table",
+                            "layout": "",
                             "button_label": "Add Green Headline",
                             "sub_fields": [
                                 {
                                     "key": "field_5b645c0833eed",
                                     "label": "Green Headline",
-                                    "name": "green_bar",
+                                    "name": "bar",
                                     "type": "text",
                                     "instructions": "",
                                     "required": 0,
@@ -193,7 +193,7 @@
                         {
                             "key": "field_5b645c8433eee",
                             "label": "",
-                            "name": "white_bars",
+                            "name": "white",
                             "type": "repeater",
                             "instructions": "",
                             "required": 0,
@@ -214,13 +214,13 @@
                             "collapsed": "field_5b645cf533eef",
                             "min": 1,
                             "max": 2,
-                            "layout": "table",
+                            "layout": "",
                             "button_label": "Add White Headline",
                             "sub_fields": [
                                 {
                                     "key": "field_5b645cf533eef",
                                     "label": "White Headline",
-                                    "name": "white_bar",
+                                    "name": "bar",
                                     "type": "text",
                                     "instructions": "",
                                     "required": 0,
@@ -241,7 +241,7 @@
                         {
                             "key": "field_5b645d3433ef0",
                             "label": "",
-                            "name": "magenta_bars",
+                            "name": "magenta",
                             "type": "repeater",
                             "instructions": "",
                             "required": 0,
@@ -254,13 +254,13 @@
                             "collapsed": "field_5b645d6b33ef1",
                             "min": 1,
                             "max": 2,
-                            "layout": "table",
+                            "layout": "",
                             "button_label": "Add Magenta Headline",
                             "sub_fields": [
                                 {
                                     "key": "field_5b645d6b33ef1",
                                     "label": "Magenta Headline",
-                                    "name": "magenta_bar",
+                                    "name": "bar",
                                     "type": "text",
                                     "instructions": "",
                                     "required": 0,
@@ -277,18 +277,73 @@
                                     "maxlength": 20
                                 }
                             ]
-                        },
+                        }
+                    ]
+                },
+                {
+                    "key": "field_5b72aad898025",
+                    "label": "Subline Color",
+                    "name": "subline_color",
+                    "type": "button_group",
+                    "instructions": "Select color of the sublines. Default is white. Use green, if the background is white already.",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_5b64b19806123",
+                                "operator": "!=",
+                                "value": "none"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "30",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "white": "White",
+                        "green": "Green"
+                    },
+                    "allow_null": 0,
+                    "default_value": "white",
+                    "layout": "vertical",
+                    "return_format": "value"
+                },
+                {
+                    "key": "field_5b72aadc98026",
+                    "label": "Sublines",
+                    "name": "sublines",
+                    "type": "group",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_5b64b19806123",
+                                "operator": "!=",
+                                "value": "none"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "70",
+                        "class": "",
+                        "id": ""
+                    },
+                    "layout": "block",
+                    "sub_fields": [
                         {
-                            "key": "field_5b64adcb29154",
+                            "key": "field_5b72aadd9802d",
                             "label": "",
-                            "name": "green_subline_bars",
+                            "name": "green",
                             "type": "repeater",
                             "instructions": "",
                             "required": 0,
                             "conditional_logic": [
                                 [
                                     {
-                                        "field": "field_5b718193dfd9f",
+                                        "field": "field_5b72aad898025",
                                         "operator": "==",
                                         "value": "green"
                                     }
@@ -299,16 +354,16 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "collapsed": "field_5b645e3c33ef6",
+                            "collapsed": "field_5b72aadd9802e",
                             "min": 0,
                             "max": 2,
                             "layout": "table",
                             "button_label": "Add Subline",
                             "sub_fields": [
                                 {
-                                    "key": "field_5b64adcb29155",
+                                    "key": "field_5b72aadd9802e",
                                     "label": "Green Subline",
-                                    "name": "green_subline_bar",
+                                    "name": "bar",
                                     "type": "text",
                                     "instructions": "",
                                     "required": 0,
@@ -327,16 +382,16 @@
                             ]
                         },
                         {
-                            "key": "field_5b645e2f33ef5",
+                            "key": "field_5b72aadd9802f",
                             "label": "",
-                            "name": "white_subline_bars",
+                            "name": "white",
                             "type": "repeater",
                             "instructions": "",
                             "required": 0,
                             "conditional_logic": [
                                 [
                                     {
-                                        "field": "field_5b718193dfd9f",
+                                        "field": "field_5b72aad898025",
                                         "operator": "==",
                                         "value": "white"
                                     }
@@ -347,16 +402,16 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "collapsed": "field_5b645e3c33ef6",
+                            "collapsed": "field_5b72aadd98030",
                             "min": 0,
                             "max": 2,
                             "layout": "table",
                             "button_label": "Add Subline",
                             "sub_fields": [
                                 {
-                                    "key": "field_5b645e3c33ef6",
+                                    "key": "field_5b72aadd98030",
                                     "label": "White Subline",
-                                    "name": "white_subline_bar",
+                                    "name": "bar",
                                     "type": "text",
                                     "instructions": "",
                                     "required": 0,
@@ -577,5 +632,5 @@
     "hide_on_screen": "",
     "active": 0,
     "description": "",
-    "modified": 1534169697
+    "modified": 1534242189
 }

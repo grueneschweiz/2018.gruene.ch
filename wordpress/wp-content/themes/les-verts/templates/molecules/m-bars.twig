@@ -3,42 +3,42 @@
 <div class="m-bars m-bars--{{ alignment }}">
     <div class="m-bars__rotator">
         <div class="m-bars__positioner">
-            {% for bar in green_bars %}
+            {% for bar in headlines_green %}
                 <div class="m-bars__bar">
                     {% include 'atoms/a-bar.twig' with {
-                        'label': bar.green_bar,
+                        'label': bar.bar,
                         'modifiers': ['a-bar--green', bar_alignment_class]
                     } only %}
                 </div>
             {% endfor %}
-            {% for bar in white_bars %}
+            {% for bar in headlines_white %}
                 <div class="m-bars__bar">
                     {% include 'atoms/a-bar.twig' with {
-                        'label': bar.white_bar,
+                        'label': bar.bar,
                         'modifiers': ['a-bar--white', bar_alignment_class]
                     } only %}
                 </div>
             {% endfor %}
-            {% for bar in magenta_bars %}
+            {% for bar in headlines_magenta %}
                 <div class="m-bars__bar">
                     {% include 'atoms/a-bar.twig' with {
-                        'label': bar.magenta_bar,
+                        'label': bar.bar,
                         'modifiers': ['a-bar--magenta', bar_alignment_class]
                     } only %}
                 </div>
             {% endfor %}
-            {% for bar in white_subline_bars %}
+            {% for bar in sublines_white %}
                 <div class="m-bars__bar">
                     {% include 'atoms/a-bar.twig' with {
-                        'label': bar.white_subline_bar,
+                        'label': bar.bar,
                         'modifiers': ['a-bar--subline','a-bar--white', bar_alignment_class]
                     } only %}
                 </div>
             {% endfor %}
-            {% for bar in green_subline_bars %}
+            {% for bar in sublines_magenta %}
                 <div class="m-bars__bar">
                     {% include 'atoms/a-bar.twig' with {
-                        'label': bar.green_subline_bar,
+                        'label': bar.bar,
                         'modifiers': ['a-bar--subline','a-bar--green', bar_alignment_class]
                     } only %}
                 </div>
