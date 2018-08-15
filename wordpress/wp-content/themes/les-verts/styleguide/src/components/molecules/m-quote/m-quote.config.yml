@@ -1,0 +1,11 @@
+label: Quote
+status: ready
+context:
+  image:
+    image-src: '/img/glaettli.jpg'
+    alt: Balthasar Glättli
+    title: Balthasar Glättli
+    no_caption: 1
+  quote: 'Schafft es Aussenminister Cassis, in einer Woche nicht nur die Akzeptanz der Bilateralen zu gefährden, sondern auch mit Waffenexporten in Bürgerkriegsländer die guten Dienste der neutralen Schweiz zu torpedieren? Das darf der Gesamtbundesrat nicht zulassen.'
+  name: Balthasar Glättli
+  role: Nationalrat

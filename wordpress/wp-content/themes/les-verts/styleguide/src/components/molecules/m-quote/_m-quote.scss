@@ -1,0 +1,54 @@
+.m-quote {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+
+	@include media($size-small) {
+		flex-wrap: nowrap;
+	}
+
+	&__image-outer {
+		// use the font size so we only have to calculate it one and use em after
+		@include fluid-props(font-size, 320px, $fluid-max, 247px, 380px);
+
+		flex-shrink: 0;
+		width: 1em;
+		height: 1em;
+		transform: rotate(-5deg);
+		overflow: hidden;
+		margin: 0.0415em;
+	}
+
+	&__image-inner {
+		width: 1.083em; // cos(5deg) + sin(5deg)
+		height: 1.083em;
+		transform: translateX(-0.0415em) translateY(-0.0415em) rotate(5deg);
+	}
+
+	&__caption {
+		width: 100%;
+
+		@include media($size-small) {
+			margin-left: 35px;
+		}
+	}
+
+	&__quote {
+		@extend h2;
+
+		&::before {
+			content: '\00ab\00a0';
+		}
+
+		&::after {
+			content: '\00a0\00bb';
+		}
+	}
+
+	&__author {
+		font-size: 0.875rem;
+		font-weight: $font-weight-semi;
+		margin: 2em 0;
+	}
+}
