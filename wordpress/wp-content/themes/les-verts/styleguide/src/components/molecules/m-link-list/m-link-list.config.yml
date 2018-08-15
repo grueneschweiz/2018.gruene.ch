@@ -1,0 +1,12 @@
+label: Link list
+status: ready
+context:
+  cat-title:
+    label: Weitere Ressourcen
+  links:
+    - label: Medienmitteilung der Grünen
+      link: '#'
+    - label: Medienmitteilung des Bundesrats
+      link: '#'
+    - label: Debatte im Parlament
+      link: '#'

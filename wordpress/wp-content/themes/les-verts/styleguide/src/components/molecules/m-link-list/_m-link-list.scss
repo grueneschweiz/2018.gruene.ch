@@ -1,0 +1,42 @@
+.m-link-list {
+	&__list {
+		@include clean-ul;
+	}
+
+	&__item {
+		@include clean-li;
+	}
+
+	&__link {
+		@include clean-link;
+
+		border-bottom: 1px solid $color-grey-2;
+		transition: background-color $transition-fast $transition-ease;
+		display: block;
+		width: 100%;
+		font-family: $font-title;
+		color: $color-primary;
+		@include fluid-props(padding-top padding-bottom, $fluid-min, $fluid-max, 20px, 24px);
+
+		@include media($_MOBILE) {
+			position: relative;
+			padding-right: 2em;
+
+			&:after {
+				content: "";
+				width: 0.6em;
+				height: 0.6em;
+				border-top: 0.1666666667em solid $color-primary; // 2/12
+				border-right: 0.1666666667em solid $color-primary; // 2/12
+				transform: translateX(-0.2em) translateY(-50%) rotate(45deg);
+				position: absolute;
+				right: 0;
+				top: 50%;
+			}
+		}
+
+		@include hover {
+			background-color: $color-grey-1;
+		}
+	}
+}

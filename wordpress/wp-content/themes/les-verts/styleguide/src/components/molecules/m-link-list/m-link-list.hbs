@@ -1,0 +1,12 @@
+<div class="m-link-list">
+	<div class="m-link-list__cat-title">
+		{{> @a-cat-title cat-title}}
+	</div>
+	<ul class="m-link-list__list">
+		{{#each links}}
+			<li class="m-link-list__item">
+				<a href="{{link}}" class="m-link-list__link">{{label}}</a>
+			</li>
+		{{/each}}
+	</ul>
+</div>
