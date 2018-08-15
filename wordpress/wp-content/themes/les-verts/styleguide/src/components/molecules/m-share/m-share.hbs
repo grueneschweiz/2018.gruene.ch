@@ -1,0 +1,16 @@
+<div class="m-share">
+	<div class="m-share__buttons">
+		{{#each icons}}
+			<div class="m-share__icon">
+				{{> @a-social-icon this}}
+			</div>
+		{{/each}}
+		<div class="m-share__desc"><span class="m-share__rotator">{{label}}</span></div>
+	</div>
+	<button class="m-share__mobile" aria-label="{{'show share buttons'}}">
+		<svg role="img">
+			<title>{{label}}</title>
+			<use xlink:href="#mobile"></use>
+		</svg>
+	</button>
+</div>
