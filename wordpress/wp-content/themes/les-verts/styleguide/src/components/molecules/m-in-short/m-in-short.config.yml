@@ -1,0 +1,36 @@
+label: In short
+status: ready
+context:
+  title: In Kürze
+  bullet_points:
+    - Der Bund will die olympischen Spiele mit einer Steuermilliarde subventionieren.
+    - "Vergangene Olympiaden haben gezeigt: Meist kommt es viel teurer als geplant und das Gastland muss nachbezahlen."
+    - Schon drei mal hat die schweizer Bevölkerung die olympischen Spiele abgelehnt. Nun will der Bundesrat nicht darüber abstimmen lassen.
+  call_to_action:
+    input-postal-code:
+      label: PLZ
+      id: plz
+      type: text
+      pattern: (\w{0,3}(?<=\w)-)?\d{4,6}
+      required: required
+      name: plz
+      text: true
+    input-email:
+      label: E-Mail
+      id: email
+      type: email
+      required: required
+      name: email
+      text: true
+    checkbox:
+      label: Ich akzeptiere die Datenschutzbestimmungen.
+      id: datenschutz
+      name: datenschutz
+      required: true
+      modifiers:
+      - legal
+    button:
+      label: Mitmachen
+      modifiers:
+      - secondary
+

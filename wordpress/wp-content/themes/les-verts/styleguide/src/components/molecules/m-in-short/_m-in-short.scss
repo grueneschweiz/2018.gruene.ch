@@ -1,0 +1,10 @@
+.m-in-short {
+	&__title {
+		@extend h3;
+	}
+
+	.m-in-short__title {
+		// we need two levels of binding to overwrite the @extend from above
+		color: $color-text;
+	}
+}
