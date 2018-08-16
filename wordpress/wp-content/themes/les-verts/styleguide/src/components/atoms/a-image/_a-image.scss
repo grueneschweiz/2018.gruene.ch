@@ -1,36 +1,36 @@
 .a-image {
-  max-width: 100%;
-  position: relative;
-  line-height: 0;
+	max-width: 100%;
+	position: relative;
+	line-height: 0;
 
-  &__image {
-    max-width: 100%;
-    height: auto;
-    transition: transform $transition-mid cubic-bezier(0.390, 0.575, 0.565, 1.000);
-  }
+	&__image {
+		max-width: 100%;
+		height: auto;
+		transition: transform $transition-mid cubic-bezier(0.390, 0.575, 0.565, 1.000);
+	}
 
-  &__link {
-    @include clean-link;
+	&__link {
+		@include clean-link;
 
-    display: block;
-    max-width: 100%;
-    overflow: hidden;
+		display: block;
+		max-width: 100%;
+		overflow: hidden;
 
-    @include hover {
-      .a-image__image {
-        transform: scale(1.01);
-      }
-    }
-  }
+		@include hover {
+			.a-image__image {
+				transform: scale(1.01);
+			}
+		}
+	}
 
-  &__copy {
-    position: absolute;
-    @include fluid-props(bottom right, $size-tiny, $size-large, 5px, 19px);
-    @include fluid-props(font-size, $size-tiny, $size-large, 5px, 10px);
-    transform: translateX(calc(100% - 1em)) rotate(-90deg);
-    transform-origin: top left;
+	&__copy {
+		position: absolute;
+		@include fluid-props(bottom right, $size-tiny, $size-large, 5px, 19px);
+		@include fluid-props(font-size, $size-tiny, $size-large, 5px, 10px);
+		transform: translateX(calc(100% - 1em)) rotate(-90deg);
+		transform-origin: top left;
 
-    color: $color-white;
-    text-transform: uppercase;
-  }
+		color: $color-white;
+		text-transform: uppercase;
+	}
 }

@@ -1,39 +1,39 @@
 .m-front-article {
-  display: flex;
-  flex-direction: column;
+	display: flex;
+	flex-direction: column;
 
-  &__title {
-    @include fluid-props(font-size, $size-tiny, $size-medium, 20px, 24px);
-    @include fluid-props(margin-top, $size-tiny, $size-medium, 4px, 12px);
-    margin-bottom: 0.5em;
-  }
+	&__title {
+		@include fluid-props(font-size, $size-tiny, $size-medium, 20px, 24px);
+		@include fluid-props(margin-top, $size-tiny, $size-medium, 4px, 12px);
+		margin-bottom: 0.5em;
+	}
 
-  &--image-second &__title,
-  &--no-image &__title {
-    margin-top: 0;
-  }
+	&--image-second &__title,
+	&--no-image &__title {
+		margin-top: 0;
+	}
 
-  &__title-link {
-    @include clean-link;
-    line-height: 1.4em;
-    color: $color-primary;
-    transition: color $transition-fast $transition-ease;
+	&__title-link {
+		@include clean-link;
+		line-height: 1.4em;
+		color: $color-primary;
+		transition: color $transition-fast $transition-ease;
 
-    @include hover {
-      color: $color-primary-dark;
-    }
-  }
+		@include hover {
+			color: $color-primary-dark;
+		}
+	}
 
-  &__image {
-    margin-bottom: 12px;
-  }
+	&__image {
+		margin-bottom: 12px;
+	}
 
-  &--image-first &__image {
-    order: -1;
-  }
+	&--image-first &__image {
+		order: -1;
+	}
 
-  &__text, &__list{
-    margin-top: 0;
-    margin-bottom: 1em;
-  }
+	&__text, &__list {
+		margin-top: 0;
+		margin-bottom: 1em;
+	}
 }

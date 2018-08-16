@@ -3,14 +3,12 @@
 /**
  * Core imports.
  */
- @import
- './scss/variables',
- './scss/reset',
- './scss/mixins',
- './scss/fonts',
- './scss/html',
- './scss/grid';
-
+@import './scss/variables',
+'./scss/reset',
+'./scss/mixins',
+'./scss/fonts',
+'./scss/html',
+'./scss/grid';
 /**
  * Import the auto-generated component file.
  */

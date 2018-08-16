@@ -4,8 +4,8 @@
  * @param {Element} element
  * @return {Boolean}
  */
-function elementExist(element) {
-	return !!(element);
+function elementExist( element ) {
+	return ! ! ( element );
 }
 
 export default elementExist;

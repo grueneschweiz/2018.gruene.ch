@@ -1,41 +1,41 @@
 .page {
 
-  &__grid-wrapper {
-    width: 100%;
-    background: $color-white;
-    margin-top: 41px;
+	&__grid-wrapper {
+		width: 100%;
+		background: $color-white;
+		margin-top: 41px;
 
-    @include media($_DESKTOP){
-      margin-top: 150px;
-      padding-top: 40px;
-    }
-  }
+		@include media($_DESKTOP) {
+			margin-top: 150px;
+			padding-top: 40px;
+		}
+	}
 
-  &__grid {
-    @include media($_DESKTOP){
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      @include fluid-props(grid-gap, $size-medium, $grid-max-width-max, $grid-gap-min, $grid-gap-max);
-      align-items: start;
-      max-width: $grid-max-width-max;
-      width: calc(100% - 2 * #{$grid-min-side-margin});
-      margin: 0 $grid-min-side-margin;
-    }
+	&__grid {
+		@include media($_DESKTOP) {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			@include fluid-props(grid-gap, $size-medium, $grid-max-width-max, $grid-gap-min, $grid-gap-max);
+			align-items: start;
+			max-width: $grid-max-width-max;
+			width: calc(100% - 2 * #{$grid-min-side-margin});
+			margin: 0 $grid-min-side-margin;
+		}
 
-    @include media($grid-max-width-max + 2 * $grid-min-side-margin) {
-      margin-left: auto;
-      margin-right: auto;
-      width: $grid-max-width-max;
-    }
-  }
+		@include media($grid-max-width-max + 2 * $grid-min-side-margin) {
+			margin-left: auto;
+			margin-right: auto;
+			width: $grid-max-width-max;
+		}
+	}
 
-  &__article {
-		@include media($_DESKTOP){
+	&__article {
+		@include media($_DESKTOP) {
 			height: 100%;
 		}
 
-    &--2-col {
-      grid-column: 1 / 3;
-    }
-  }
+		&--2-col {
+			grid-column: 1 / 3;
+		}
+	}
 }

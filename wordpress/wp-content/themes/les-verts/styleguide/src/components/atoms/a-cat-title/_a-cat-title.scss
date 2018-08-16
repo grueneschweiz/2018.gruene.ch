@@ -1,39 +1,39 @@
 .a-cat-title {
-  font-size: 1rem;
-  margin: 0;
-  position: relative;
+	font-size: 1rem;
+	margin: 0;
+	position: relative;
 
-  &__link {
-    @include clean-link;
+	&__link {
+		@include clean-link;
 
-    font-family: $font-primary;
-    font-weight: $font-weight-semi;
-    letter-spacing: 0.125em;
-    line-height: 1.25em;
-    color: $color-text;
-    padding-bottom: 0.75em;
-    display: block;
+		font-family: $font-primary;
+		font-weight: $font-weight-semi;
+		letter-spacing: 0.125em;
+		line-height: 1.25em;
+		color: $color-text;
+		padding-bottom: 0.75em;
+		display: block;
 
-    &:after {
-      content: "";
-      width: 1.4em;
-      height: 2px;
-      background-color: $color-text-light;
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      transition: width $transition-fast $transition-ease;
-    }
+		&:after {
+			content: "";
+			width: 1.4em;
+			height: 2px;
+			background-color: $color-text-light;
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			transition: width $transition-fast $transition-ease;
+		}
 
-		&:not(&--no-link){
+		&:not(&--no-link) {
 			cursor: pointer;
 
 			@include hover {
-				&:after{
+				&:after {
 					width: 4.2em;
 					background-color: $color-primary;
 				}
 			}
 		}
-  }
+	}
 }

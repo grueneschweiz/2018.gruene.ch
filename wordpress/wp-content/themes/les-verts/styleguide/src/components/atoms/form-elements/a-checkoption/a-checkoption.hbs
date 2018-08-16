@@ -1,19 +1,19 @@
 <div class="a-checkoption">
-    {{#if option}}
-        <input type="radio"
-               name="{{ name }}"
-               id="{{ id }}"
-               class="a-checkoption__field">
-    {{ else }}
-        <input type="hidden" name="{{ name }}" value="0">
-        <input id="{{ id }}"
-               class="a-checkoption__field"
-               type="checkbox"
-               name="{{ name }}"
-               {{#if required}}required{{/if}}
-            {{ checked }}>
-    {{/if}}
-    <label for="{{ id }}" class="a-checkoption__label {{ modifiers_classes }}">
-        {{ label }}
-    </label>
+	{{#if option}}
+		<input type="radio"
+					 name="{{ name }}"
+					 id="{{ id }}"
+					 class="a-checkoption__field">
+	{{ else }}
+		<input type="hidden" name="{{ name }}" value="0">
+		<input id="{{ id }}"
+					 class="a-checkoption__field"
+					 type="checkbox"
+					 name="{{ name }}"
+					 {{#if required}}required{{/if}}
+			{{ checked }}>
+	{{/if}}
+	<label for="{{ id }}" class="a-checkoption__label {{ modifiers_classes }}">
+		{{ label }}
+	</label>
 </div>

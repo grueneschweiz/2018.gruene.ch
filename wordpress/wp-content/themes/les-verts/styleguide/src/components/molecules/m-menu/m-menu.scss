@@ -1,402 +1,402 @@
 .m-menu {
-  font-size: 0.9375rem; // 15/16
-  border-bottom: 0.125rem solid $color-grey-1;
-  background: $color-white;
-  z-index: $z-index-menu;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  position: relative;
-  @include fluid-props(height, $size-medium, $grid-max-width-max, 80px, 100px);
+	font-size: 0.9375rem; // 15/16
+	border-bottom: 0.125rem solid $color-grey-1;
+	background: $color-white;
+	z-index: $z-index-menu;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+	position: relative;
+	@include fluid-props(height, $size-medium, $grid-max-width-max, 80px, 100px);
 
-  &__logo {
-    @include clean-link;
-    @include fluid-props(width, $size-medium, $grid-max-width-max, 100px, 116px);
-    margin-left: 30px;
+	&__logo {
+		@include clean-link;
+		@include fluid-props(width, $size-medium, $grid-max-width-max, 100px, 116px);
+		margin-left: 30px;
 
-    @include media($_DESKTOP) {
-      @include fluid-props(margin-left, $size-medium, $grid-max-width-max, 16px, 33px);
-    }
+		@include media($_DESKTOP) {
+			@include fluid-props(margin-left, $size-medium, $grid-max-width-max, 16px, 33px);
+		}
 
-    .a-logo {
-      max-width: 100%;
-      max-height: 100%;
-    }
-  }
+		.a-logo {
+			max-width: 100%;
+			max-height: 100%;
+		}
+	}
 
-  &__right {
-    &.is-open {
-      display: block;
-    }
+	&__right {
+		&.is-open {
+			display: block;
+		}
 
-    @include media($_MOBILE) {
-      display: none;
-      background: $color-grey-1;
-      position: absolute;
-      top: 80px;
-      left: 0;
-      width: 100%;
-      padding: 22px 41px;
-    }
+		@include media($_MOBILE) {
+			display: none;
+			background: $color-grey-1;
+			position: absolute;
+			top: 80px;
+			left: 0;
+			width: 100%;
+			padding: 22px 41px;
+		}
 
-    @include media($_DESKTOP) {
-      @include fluid-props(padding-right, $size-medium, $size-huge, 24px, 33px);
-    }
-  }
+		@include media($_DESKTOP) {
+			@include fluid-props(padding-right, $size-medium, $size-huge, 24px, 33px);
+		}
+	}
 
-  &__cta {
-    display: inline-block;
-  }
+	&__cta {
+		display: inline-block;
+	}
 
-  &__language-nav {
-    font-size: 0.875rem;
-    display: inline-block;
-    @include fluid-props(margin-left, $size-medium, $size-huge, 24px, 55px);
-    float: right;
-    margin-top: 11px;
+	&__language-nav {
+		font-size: 0.875rem;
+		display: inline-block;
+		@include fluid-props(margin-left, $size-medium, $size-huge, 24px, 55px);
+		float: right;
+		margin-top: 11px;
 
-    @include media($_DESKTOP) {
-      float: none;
-      margin-top: 0;
-    }
-  }
+		@include media($_DESKTOP) {
+			float: none;
+			margin-top: 0;
+		}
+	}
 
-  &__language-nav-list {
-    @include clean-ul;
-  }
+	&__language-nav-list {
+		@include clean-ul;
+	}
 
-  &__language-nav-item {
-    @include clean-li;
-    display: inline-block;
-    font-weight: $font-weight-bold;
-    text-transform: uppercase;
+	&__language-nav-item {
+		@include clean-li;
+		display: inline-block;
+		font-weight: $font-weight-bold;
+		text-transform: uppercase;
 
-    &:first-of-type:after {
-      content: '|';
-      font-weight: $font-weight-normal;
-      padding: 0 0.5em 0 0.7em;
-    }
-  }
+		&:first-of-type:after {
+			content: '|';
+			font-weight: $font-weight-normal;
+			padding: 0 0.5em 0 0.7em;
+		}
+	}
 
-  &__language-nav-link {
-    @include clean-link;
-    color: $color-text;
-    transition: color $transition-fast $transition-ease;
+	&__language-nav-link {
+		@include clean-link;
+		color: $color-text;
+		transition: color $transition-fast $transition-ease;
 
-    &--active {
-      color: $color-secondary;
-    }
+		&--active {
+			color: $color-secondary;
+		}
 
-    &:hover {
-      @extend .m-menu__language-nav-link--active;
-    }
+		&:hover {
+			@extend .m-menu__language-nav-link--active;
+		}
 
-    &:focus {
-      text-decoration: underline;
-    }
-  }
+		&:focus {
+			text-decoration: underline;
+		}
+	}
 
-  /**
+	/**
    * Main navigation
    */
 
-  &__nav {
-    @include media($_DESKTOP) {
-      width: calc(100% - 500 * (100vw / 1024));
-    }
+	&__nav {
+		@include media($_DESKTOP) {
+			width: calc(100% - 500 * (100vw / 1024));
+		}
 
-    @include media($_MOBILE) {
-      width: 100%;
-      padding: 27px 41px 40px;
-      position: absolute;
-      top: 0;
+		@include media($_MOBILE) {
+			width: 100%;
+			padding: 27px 41px 40px;
+			position: absolute;
+			top: 0;
 
-      &.is-open {
-        background: $color-white;
-        min-height: calc(100vh - 160px);
-        @include fluid-props(top, $size-medium, $grid-max-width-max, 160px, 164px);
+			&.is-open {
+				background: $color-white;
+				min-height: calc(100vh - 160px);
+				@include fluid-props(top, $size-medium, $grid-max-width-max, 160px, 164px);
 
-        .m-menu__hamburger {
-          @include fluid-props(top, $size-medium, $grid-max-width-max, -133px, -135px);
-        }
-      }
-    }
-  }
+				.m-menu__hamburger {
+					@include fluid-props(top, $size-medium, $grid-max-width-max, -133px, -135px);
+				}
+			}
+		}
+	}
 
-  &__hamburger {
-    position: absolute;
-    top: 27px;
-    right: 31px;
+	&__hamburger {
+		position: absolute;
+		top: 27px;
+		right: 31px;
 
-    @include media($_DESKTOP) {
-      display: none;
-    }
-  }
+		@include media($_DESKTOP) {
+			display: none;
+		}
+	}
 
-  &__nav-list {
-    @include clean-ul;
-    width: 100%;
-    margin: 0 auto;
-    display: none;
-    justify-content: space-between;
-    flex-direction: column;
+	&__nav-list {
+		@include clean-ul;
+		width: 100%;
+		margin: 0 auto;
+		display: none;
+		justify-content: space-between;
+		flex-direction: column;
 
-    &.is-open {
-      display: flex;
-    }
+		&.is-open {
+			display: flex;
+		}
 
-    @include media($_DESKTOP) {
-      display: flex;
-      flex-direction: row;
-      max-width: 800px;
-    }
-  }
+		@include media($_DESKTOP) {
+			display: flex;
+			flex-direction: row;
+			max-width: 800px;
+		}
+	}
 
-  &__nav-item {
-    @include clean-li;
+	&__nav-item {
+		@include clean-li;
 
-    &.is-active {
-      position: absolute;
-      top: -80px;
-      height: 84px;
-      padding-left: 41px;
-      padding-right: 34px;
-      width: 100%;
-      left: 0;
-      background: $color-white;
-    }
+		&.is-active {
+			position: absolute;
+			top: -80px;
+			height: 84px;
+			padding-left: 41px;
+			padding-right: 34px;
+			width: 100%;
+			left: 0;
+			background: $color-white;
+		}
 
-    &.is-hidden {
-      display: none;
-    }
-  }
+		&.is-hidden {
+			display: none;
+		}
+	}
 
-  &__nav-link {
-    @include clean-link;
-    display: inline-block;
-    font-weight: $font-weight-bold;
-    white-space: nowrap;
-    color: $color-text;
-    position: relative;
-    padding: 19px 0;
-    transition: color $transition-fast $transition-ease;
+	&__nav-link {
+		@include clean-link;
+		display: inline-block;
+		font-weight: $font-weight-bold;
+		white-space: nowrap;
+		color: $color-text;
+		position: relative;
+		padding: 19px 0;
+		transition: color $transition-fast $transition-ease;
 
-    @include media($_DESKTOP) {
-      margin: 0;
-    }
+		@include media($_DESKTOP) {
+			margin: 0;
+		}
 
-    &--active,
-    &:hover {
-      color: $color-secondary;
-    }
+		&--active,
+		&:hover {
+			color: $color-secondary;
+		}
 
-    &:focus {
-      &:before {
-        content: '';
-        width: 0;
-        height: 0;
-        border-left: 1px solid $color-secondary;
-        margin-right: 0.5em;
-        margin-left: calc(-1px - 0.5em);
-      }
-    }
+		&:focus {
+			&:before {
+				content: '';
+				width: 0;
+				height: 0;
+				border-left: 1px solid $color-secondary;
+				margin-right: 0.5em;
+				margin-left: calc(-1px - 0.5em);
+			}
+		}
 
-    &.is-open {
-      &:after {
-        @include fluid-props(bottom, $size-medium, $grid-max-width-max, -16.5px, -26px);
-      }
+		&.is-open {
+			&:after {
+				@include fluid-props(bottom, $size-medium, $grid-max-width-max, -16.5px, -26px);
+			}
 
-      @include media($_MOBILE) {
-        color: $color-secondary;
-        width: 100%;
-        margin-top: 15px;
+			@include media($_MOBILE) {
+				color: $color-secondary;
+				width: 100%;
+				margin-top: 15px;
 
-        &:after {
-          content: "";
-          position: absolute;
-          right: 0;
-          top: 19px;
-          bottom: auto; // because the fluid props can't be nested in media query
-          background: url('/img/arrow.svg') no-repeat;
-          width: 24px;
-          height: 14px;
-        }
+				&:after {
+					content: "";
+					position: absolute;
+					right: 0;
+					top: 19px;
+					bottom: auto; // because the fluid props can't be nested in media query
+					background: url('/img/arrow.svg') no-repeat;
+					width: 24px;
+					height: 14px;
+				}
 
-        &:before {
-          content: "";
-          position: absolute;
-          left: 0;
-          bottom: -18px;
-          width: 34px;
-          height: 2px;
-          z-index: 1;
-          background-color: $color-secondary;
-        }
+				&:before {
+					content: "";
+					position: absolute;
+					left: 0;
+					bottom: -18px;
+					width: 34px;
+					height: 2px;
+					z-index: 1;
+					background-color: $color-secondary;
+				}
 
-        @include hover {
-          &:before {
-            margin-left: 0;
-            width: calc(100vw - 69px);
-            transition: width $transition-fast $transition-ease;
-          }
-        }
-      }
+				@include hover {
+					&:before {
+						margin-left: 0;
+						width: calc(100vw - 69px);
+						transition: width $transition-fast $transition-ease;
+					}
+				}
+			}
 
-      @include media($_DESKTOP) {
-        &:after {
-          content: '';
-          position: absolute;
-          left: 0;
-          width: 100%;
-          height: 2px;
-          background-color: $color-primary;
-        }
-      }
-    }
-  }
+			@include media($_DESKTOP) {
+				&:after {
+					content: '';
+					position: absolute;
+					left: 0;
+					width: 100%;
+					height: 2px;
+					background-color: $color-primary;
+				}
+			}
+		}
+	}
 
-  &__search {
-    &:hover {
-      svg {
-        stroke: $color-secondary;
-      }
-    }
-  }
+	&__search {
+		&:hover {
+			svg {
+				stroke: $color-secondary;
+			}
+		}
+	}
 
-  &__search-text {
-    @include media($_DESKTOP) {
-      display: none;
-    }
-  }
+	&__search-text {
+		@include media($_DESKTOP) {
+			display: none;
+		}
+	}
 
-  &__search-icon {
-    fill: none;
-    stroke: $color-text;
-    width: 1.333em;
-    height: 1.333em;
-    margin-bottom: -4px;
-    margin-left: 30px;
+	&__search-icon {
+		fill: none;
+		stroke: $color-text;
+		width: 1.333em;
+		height: 1.333em;
+		margin-bottom: -4px;
+		margin-left: 30px;
 
-    @include media($_DESKTOP) {
-      margin-top: -3px;
-      margin-bottom: 0;
-      margin-left: 0;
-    }
+		@include media($_DESKTOP) {
+			margin-top: -3px;
+			margin-bottom: 0;
+			margin-left: 0;
+		}
 
-    &:hover {
-      stroke: $color-secondary;
-    }
-  }
+		&:hover {
+			stroke: $color-secondary;
+		}
+	}
 
-  /**
+	/**
    * Submenu
    */
 
-  &__submenu {
-    @include clean-ul;
-    position: absolute;
-    @include fluid-props(top, $size-medium, $grid-max-width-max, 80px, 100px);
-    left: 0;
-    width: 100%;
-    min-height: calc(100vh - 57px + 20 * (100vh - 1024px) / 416);
-    height: 100%;
-    overflow-y: scroll;
-    display: none;
-    hyphens: auto;
-    background-color: $color-grey-1;
-    flex-direction: column;
+	&__submenu {
+		@include clean-ul;
+		position: absolute;
+		@include fluid-props(top, $size-medium, $grid-max-width-max, 80px, 100px);
+		left: 0;
+		width: 100%;
+		min-height: calc(100vh - 57px + 20 * (100vh - 1024px) / 416);
+		height: 100%;
+		overflow-y: scroll;
+		display: none;
+		hyphens: auto;
+		background-color: $color-grey-1;
+		flex-direction: column;
 
-    @include media($_MOBILE) {
-      top: 84px;
-    }
+		@include media($_MOBILE) {
+			top: 84px;
+		}
 
-    @include media($_DESKTOP) {
-      background-color: $color-white;
-      justify-content: center;
-      align-items: flex-start;
-      flex-direction: row;
-      padding: 0 100px;
-    }
+		@include media($_DESKTOP) {
+			background-color: $color-white;
+			justify-content: center;
+			align-items: flex-start;
+			flex-direction: row;
+			padding: 0 100px;
+		}
 
-    &.is-open {
-      display: flex;
+		&.is-open {
+			display: flex;
 
-      @include media($_MOBILE) {
-        min-height: calc(100vh - 151px + 20 * (100vh - 1024px) / 416);
-      }
-    }
+			@include media($_MOBILE) {
+				min-height: calc(100vh - 151px + 20 * (100vh - 1024px) / 416);
+			}
+		}
 
-    &.is-not-scrollable {
-      overflow-y: auto;
-    }
+		&.is-not-scrollable {
+			overflow-y: auto;
+		}
 
-    &__section {
-      @include clean-li;
-      width: calc(100% - 74px);
-      display: block;
-      margin-left: 41px;
-      margin-right: 41px;
-      margin-top: 2em;
-      animation: fadeIn $transition-fast $transition-ease both;
+		&__section {
+			@include clean-li;
+			width: calc(100% - 74px);
+			display: block;
+			margin-left: 41px;
+			margin-right: 41px;
+			margin-top: 2em;
+			animation: fadeIn $transition-fast $transition-ease both;
 
-      &:nth-last-of-type(2) {
-        // second last because the last one is the close button
-        margin-bottom: 37px;
-      }
+			&:nth-last-of-type(2) {
+				// second last because the last one is the close button
+				margin-bottom: 37px;
+			}
 
-      @for $i from 1 through 4 {
-        &:nth-of-type(#{$i}) {
-          animation-delay: $i * $transition-fast / 8;
-        }
-      }
+			@for $i from 1 through 4 {
+				&:nth-of-type(#{$i}) {
+					animation-delay: $i * $transition-fast / 8;
+				}
+			}
 
-      @keyframes fadeIn {
-        from {
-          opacity: 0;
-          transform: translateY(-5px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
+			@keyframes fadeIn {
+				from {
+					opacity: 0;
+					transform: translateY(-5px);
+				}
+				to {
+					opacity: 1;
+					transform: translateY(0);
+				}
+			}
 
-      @include media($_DESKTOP) {
-        max-width: 268px;
-        @include fluid-props(margin-left margin-right, $size-medium, $grid-max-width-max, 12px, 16px);
-        margin-top: 72px;
-      }
-    }
+			@include media($_DESKTOP) {
+				max-width: 268px;
+				@include fluid-props(margin-left margin-right, $size-medium, $grid-max-width-max, 12px, 16px);
+				margin-top: 72px;
+			}
+		}
 
-    &__close-wrapper {
-      @include clean-li;
-      position: absolute;
-      right: 16px;
-      top: 12px;
-      display: none;
+		&__close-wrapper {
+			@include clean-li;
+			position: absolute;
+			right: 16px;
+			top: 12px;
+			display: none;
 
-      @include media($_DESKTOP) {
-        display: block;
-      }
-    }
+			@include media($_DESKTOP) {
+				display: block;
+			}
+		}
 
-    &__close {
-      width: 48px;
-      height: 48px;
+		&__close {
+			width: 48px;
+			height: 48px;
 
-      svg {
-        width: 100%;
-        height: 100%;
-        stroke: $color-primary;
-        transition: stroke $transition-fast $transition-ease;
-      }
+			svg {
+				width: 100%;
+				height: 100%;
+				stroke: $color-primary;
+				transition: stroke $transition-fast $transition-ease;
+			}
 
-      @include hover {
-        svg {
-          stroke: $color-secondary;
-        }
-      }
-    }
-  }
+			@include hover {
+				svg {
+					stroke: $color-secondary;
+				}
+			}
+		}
+	}
 }
