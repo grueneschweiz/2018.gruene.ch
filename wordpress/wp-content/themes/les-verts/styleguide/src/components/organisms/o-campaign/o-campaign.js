@@ -75,6 +75,10 @@ export default class OCampaign extends BaseView {
     }
 
     setBarPosition() {
+    	  if (! this.bars ) {
+    		    return;
+			  }
+
         let barsBottom = this.bars.getBoundingClientRect().bottom;
         let viewportHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
         let scrollTop = this.getScrollTop();

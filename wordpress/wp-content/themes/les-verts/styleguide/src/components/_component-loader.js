@@ -15,6 +15,8 @@ import OCampaign from "./organisms/o-campaign/o-campaign";
 import OPeopleSlider from "./organisms/o-people-slider/o-people-slider";
 import OEngagementMap from "./organisms/o-engagement-map/o-engagement-map";
 import OFrontEvents from './organisms/o-front-events/o-front-events';
+import MShare from './molecules/m-share/m-share';
+
 // ================= STOP TO ADD HERE
 
 /**
@@ -31,7 +33,8 @@ const COMPONENTS_TO_LOAD = [
     { view: ASelect, name: 'ASelect', selector: '.a-select' },
     { view: OPeopleSlider, name: 'OPeopleSlider', selector: '.o-people-slider' },
     { view: OEngagementMap, name: 'OEngagementMap', selector: '.o-engagement-map' },
-	{ view: OFrontEvents, name: 'OFrontEvents', selector: '.o-front-events' },
+		{ view: OFrontEvents, name: 'OFrontEvents', selector: '.o-front-events' },
+		{ view: MShare, name: 'MShare', selector: '.m-share' },
 ];
 
 const LOADED_COMPONENTS = {};

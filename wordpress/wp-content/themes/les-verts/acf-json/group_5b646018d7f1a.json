@@ -40,7 +40,7 @@
                 "5b684af8c6b51": {
                     "key": "5b684af8c6b51",
                     "name": "vote",
-                    "label": "Vote proposition",
+                    "label": "Vote Proposals",
                     "display": "block",
                     "sub_fields": [
                         {
@@ -133,7 +133,7 @@
                 "layout_5b6854e05538c": {
                     "key": "layout_5b6854e05538c",
                     "name": "media",
-                    "label": "Latest media release",
+                    "label": "Latest Press Release",
                     "display": "block",
                     "sub_fields": [
                         {
@@ -302,7 +302,7 @@
     ],
     "menu_order": 0,
     "position": "normal",
-    "style": "default",
+    "style": "seamless",
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": [
@@ -321,5 +321,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1533914570
+    "modified": 1534187735
 }

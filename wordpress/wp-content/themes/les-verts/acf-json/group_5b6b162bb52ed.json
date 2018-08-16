@@ -4,8 +4,8 @@
     "fields": [
         {
             "key": "field_5b6b163dfeb4f",
-            "label": "Category",
-            "name": "category",
+            "label": "Block Title",
+            "name": "block_title",
             "type": "clone",
             "instructions": "",
             "required": 1,
@@ -16,7 +16,7 @@
                 "id": ""
             },
             "clone": [
-                "field_5b6860ce304b8"
+                "group_5b684e748247e"
             ],
             "display": "seamless",
             "layout": "block",
@@ -24,30 +24,8 @@
             "prefix_name": 0
         },
         {
-            "key": "field_5b6b1931729fb",
-            "label": "Link",
-            "name": "link",
-            "type": "page_link",
-            "instructions": "",
-            "required": 1,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "post_type": [
-                "post",
-                "page"
-            ],
-            "taxonomy": [],
-            "allow_null": 0,
-            "allow_archives": 0,
-            "multiple": 0
-        },
-        {
             "key": "field_5b6b1670feb50",
-            "label": "Positions",
+            "label": "Positions Group",
             "name": "positions",
             "type": "repeater",
             "instructions": "",
@@ -62,7 +40,7 @@
             "min": 1,
             "max": 4,
             "layout": "block",
-            "button_label": "Add Position",
+            "button_label": "Add Position Block",
             "sub_fields": [
                 {
                     "key": "field_5b6b1687feb51",
@@ -137,5 +115,5 @@
     "hide_on_screen": "",
     "active": 0,
     "description": "",
-    "modified": 1533750208
+    "modified": 1534188708
 }

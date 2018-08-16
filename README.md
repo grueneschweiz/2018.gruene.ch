@@ -155,3 +155,4 @@ Useful commands
 * `yarn fractal:build` - Build the styleguide as a static site in _`./styleguide/dist/build`_
 * `yarn fractal sass:generate` - auto-update the _loader.scss file with existing components
 * `yarn wp:init` - Initialise the local WordPress instance
+* `yarn add:component type component_name` - Create a new component for the styleguide.

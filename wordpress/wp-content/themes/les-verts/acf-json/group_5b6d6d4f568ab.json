@@ -23,7 +23,7 @@
             "sub_fields": [
                 {
                     "key": "field_5b6d6de749393",
-                    "label": "Button text",
+                    "label": "Button Text",
                     "name": "label",
                     "type": "text",
                     "instructions": "",
@@ -95,5 +95,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1533906752
+    "modified": 1534183524
 }

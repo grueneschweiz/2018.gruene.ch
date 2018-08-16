@@ -13,7 +13,6 @@
     color: $color-text;
     padding-bottom: 0.75em;
     display: block;
-    cursor: pointer;
 
     &:after {
       content: "";
@@ -26,11 +25,15 @@
       transition: width $transition-fast $transition-ease;
     }
 
-    @include hover {
-      &:after{
-        width: 4.2em;
-        background-color: $color-primary;
-      }
-    }
+		&:not(&--no-link){
+			cursor: pointer;
+
+			@include hover {
+				&:after{
+					width: 4.2em;
+					background-color: $color-primary;
+				}
+			}
+		}
   }
 }

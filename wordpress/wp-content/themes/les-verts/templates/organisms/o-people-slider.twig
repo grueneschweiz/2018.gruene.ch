@@ -1,9 +1,7 @@
 <div class="o-people-slider">
     <div class="o-people-slider__wrapper">
         <div class="o-people-slider__cat-title">
-            {% include 'atoms/a-cat-title.twig' with {
-                'label': category_title
-            } only %}
+            {% include 'atoms/a-cat-title.twig' with block_title only %}
         </div>
         <h3 class="o-people-slider__title">{{ title }}</h3>
         <div class="o-people-slider__library-container swiper-container">

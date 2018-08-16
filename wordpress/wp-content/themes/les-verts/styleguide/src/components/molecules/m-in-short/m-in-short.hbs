@@ -1,0 +1,16 @@
+<div class="m-in-short">
+	<h2 class="m-in-short__title">{{title}}</h2>
+	{{# if bullet_points}}
+		<ul class="m-in-short__list">
+			{{#each bullet_points}}
+				<li class="m-in-short__item">{{.}}</li>
+			{{/each}}
+		</ul>
+	{{/if}}
+	<form class="m-in-short__grid">
+		<div class="m-in-short__postal-code">{{> @a-input call_to_action.input-postal-code}}</div>
+		<div class="m-in-short__email">{{> @a-input call_to_action.input-email}}</div>
+		<div class="m-in-short__consent">{{> @a-checkoption call_to_action.checkbox}}</div>
+		<div class="m-in-short__button">{{> @a-button call_to_action.button}}</div>
+	</form>
+</div>

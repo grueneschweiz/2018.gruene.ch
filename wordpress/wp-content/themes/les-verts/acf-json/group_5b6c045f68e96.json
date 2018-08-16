@@ -3,6 +3,23 @@
     "title": "[Template]Quote",
     "fields": [
         {
+            "key": "field_5b72a5ba9a5e6",
+            "label": "About this Block",
+            "name": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "Use this block to display a nicely formated quote of any person you added in your people section. The image will automatically be pulled from the persons record.",
+            "new_lines": "wpautop",
+            "esc_html": 0
+        },
+        {
             "key": "field_5b6c0475af343",
             "label": "Quote",
             "name": "quote",
@@ -26,7 +43,7 @@
             "label": "Person",
             "name": "person",
             "type": "post_object",
-            "instructions": "",
+            "instructions": "Select a person defined in the 'Peoples' menu. The name and the image of this person will be used to display the quote.",
             "required": 1,
             "conditional_logic": 0,
             "wrapper": {
@@ -48,7 +65,7 @@
             "label": "Role",
             "name": "role",
             "type": "text",
-            "instructions": "This overwrites the role of the person record",
+            "instructions": "Example: President of the Greens Uri",
             "required": 1,
             "conditional_logic": 0,
             "wrapper": {
@@ -80,5 +97,5 @@
     "hide_on_screen": "",
     "active": 0,
     "description": "",
-    "modified": 1533807568
+    "modified": 1534240371
 }

@@ -14,10 +14,11 @@ namespace SUPT;
 
 if( class_exists( 'acf' ) ) {
 	require_once __DIR__ .'/acf/acf-init.php';
+	require_once __DIR__ .'/acf/acf-flexible-content-defaults.php';
 
 	// custom locations (= where to show which field groups)
-	require_once __DIR__ .'/acf/custom-locations/localized-options.php';
-	require_once __DIR__ .'/acf/custom-locations/localized-menu.php';
+	// require_once __DIR__ .'/acf/custom-locations/localized-options.php';
+	// require_once __DIR__ .'/acf/custom-locations/localized-menu.php';
 }
 
 
@@ -43,6 +44,7 @@ require_once __DIR__ .'/admin/smush.php';
 require_once __DIR__ .'/admin/svg-support.php';
 require_once __DIR__ .'/admin/timmy-config.php';
 require_once __DIR__ .'/admin/translatable-post-types.php';
+require_once __DIR__ . '/admin/tweak-tribe-events.php';
 
 /**
  * CONTROLLERS
@@ -81,6 +83,18 @@ require_once __DIR__ .'/post-types/PeopleType.php';
 add_action( 'init', function() {
 	\SUPT\PeopleType::register_post_types(THEME_DOMAIN);
 } );
+
+
+/**
+ * CUSTOM TIMBER CLASSES
+ * =====================
+ *
+ * Include your timber classes here.
+ *
+ * @see https://timber.github.io/docs/guides/extending-timber/
+ */
+
+require_once __DIR__ . '/timber/ACFPost.php';
 
 
 /**
@@ -133,10 +147,8 @@ require_once __DIR__ .'/tweaks/inject-svg-sprite.php';
  */
 
 // functions
-require_once __DIR__ .'/twig/functions/component_classes.php';
 require_once __DIR__ .'/twig/functions/get_lang.php';
-// require_once __DIR__ .'/twig/functions/get_languages_switcher.php';
-// require_once __DIR__ .'/twig/functions/pll__.php';
+require_once __DIR__.'/twig/functions/register_timber_acf_post_type.php';
 
 // filters
 // require_once __DIR__ .'/twig/filters/newline.php';

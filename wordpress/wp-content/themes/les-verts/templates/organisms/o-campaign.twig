@@ -1,44 +1,39 @@
 <article class="o-campaign">
-    <div class="o-campaign__image-wrapper">
-        <div class="o-campaign__image">
-            {% include 'atoms/a-image.twig' with {
-                'image' : image,
-                'size': 'header'
-            } only %}
-        </div>
-        <div class="o-campaign__bars">
-            {% include 'molecules/m-bars.twig' with {
-                'green_bars': bars.green_bars,
-                'white_bars': bars.white_bars,
-                'magenta_bars': bars.magenta_bars,
-                'white_subline_bars': bars.white_subline_bars,
-                'green_subline_bars': bars.green_subline_bars,
-                'alignment': bars.alignment,
-            } only %}
-        </div>
-    </div>
-    <div class="o-campaign__spacer" aria-hidden="true">
-        {% include 'atoms/a-image.twig' with {
-            'image' : image,
-            'size': 'header'
-        } only %}
-    </div>
-    <div class="o-campaign__cta-wrapper">
-        <div class="o-campaign__desc">
-            {% include 'molecules/m-campaign-desc.twig' with {
-                'title': desc.title,
-                'teaser': desc.teaser,
-                'read_more_text': desc.read_more_text,
-                'link': desc.link,
-            } only %}
-        </div>
-        <div class="o-campaign__cta">
-            {% include 'molecules/m-campaign-cta.twig' with {
-                'title': cta.title,
-                'desc': cta.desc,
-                'form': cta.form,
-                'link': cta.link,
-            } only %}
-        </div>
-    </div>
+	<div class="o-campaign__image-wrapper">
+		<div class="o-campaign__image">
+			{% include 'atoms/a-image.twig' with {
+				'image' : image,
+				'size': 'header'
+			} only %}
+		</div>
+		{% if bars.alignment != 'none' %}
+			<div class="o-campaign__bars">
+				{% include 'molecules/m-bars.twig' with bars only %}
+			</div>
+		{% endif %}
+	</div>
+	<div class="o-campaign__spacer" aria-hidden="true">
+		{% include 'atoms/a-image.twig' with {
+			'image' : image,
+			'size': 'header'
+		} only %}
+	</div>
+	<div class="o-campaign__cta-wrapper">
+		<div class="o-campaign__desc">
+			{% include 'molecules/m-campaign-desc.twig' with {
+				'title': desc.title,
+				'teaser': desc.teaser,
+				'read_more_text': desc.read_more_text,
+				'link': desc.link,
+			} only %}
+		</div>
+		<div class="o-campaign__cta">
+			{% include 'molecules/m-campaign-cta.twig' with {
+				'title': cta.title,
+				'desc': cta.desc,
+				'form': cta.form,
+				'link': cta.link,
+			} only %}
+		</div>
+	</div>
 </article>

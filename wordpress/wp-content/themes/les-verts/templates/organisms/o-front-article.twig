@@ -18,8 +18,8 @@
     {% if block.acf_fc_layout == 'double' %}
         {% set inner_modifiers = ['m-front-article--image-second'] %}
         {% set posts = {
-            0: block.post_1,
-            1: block.post_2
+            0: block.post_1_post,
+            1: block.post_2_post
         } %}
     {% else %}
         {% set inner_modifiers = ['m-front-article--image-first'] %}
@@ -29,10 +29,7 @@
 
 <article class="o-front-article {{ modifiers|join(' ') }}">
     <div class="o-front-article__cat-title">
-        {% include 'atoms/a-cat-title.twig' with {
-            'url': TimberTerm(block.category_category).link,
-            'label': block.category_title
-        } only %}
+        {% include 'atoms/a-cat-title.twig' with block.block_title only %}
     </div>
     {% if oton %}
         <div class="o-front-article__quote">

@@ -4,9 +4,9 @@
     "fields": [
         {
             "key": "field_5b6ae7071a2b7",
-            "label": "Title",
-            "name": "category_title",
-            "type": "text",
+            "label": "Block Title",
+            "name": "block_title",
+            "type": "clone",
             "instructions": "",
             "required": 1,
             "conditional_logic": 0,
@@ -15,11 +15,13 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "Events",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
+            "clone": [
+                "group_5b684e748247e"
+            ],
+            "display": "seamless",
+            "layout": "block",
+            "prefix_label": 0,
+            "prefix_name": 0
         },
         {
             "key": "field_5b6ae32ac26d0",
@@ -92,5 +94,5 @@
     "hide_on_screen": "",
     "active": 0,
     "description": "",
-    "modified": 1533743368
+    "modified": 1534174259
 }

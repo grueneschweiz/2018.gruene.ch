@@ -4,7 +4,7 @@
     "fields": [
         {
             "key": "field_5b647cb444899",
-            "label": "Copyright info",
+            "label": "Copyright Info",
             "name": "copyright",
             "type": "text",
             "instructions": "",
@@ -27,7 +27,7 @@
             {
                 "param": "attachment",
                 "operator": "==",
-                "value": "all"
+                "value": "image"
             }
         ]
     ],
@@ -39,5 +39,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1533559022
+    "modified": 1534184490
 }

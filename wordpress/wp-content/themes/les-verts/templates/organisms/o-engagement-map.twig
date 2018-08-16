@@ -1,9 +1,6 @@
 <article class="o-engagement-map">
     <div class="o-engagement-map__cat-title">
-        {% include 'atoms/a-cat-title.twig' with {
-            'url': link,
-            'label': category_title
-        } only %}
+        {% include 'atoms/a-cat-title.twig' with block_title only %}
     </div>
     <h3 class="o-engagement-map__title">{{ title }}</h3>
     <div class="o-engagement-map__main-wrapper">
@@ -28,7 +25,7 @@
                 {% for item in map_data %}
                     {% set content = '' %}
                     {% for c in item.dialog_content %}
-                        {% set content = content~'<div class="a-simple-dialog__content">'~c.address~'</div>' %}
+                        {% set content = content~'<div class="a-simple-dialog__content">'~c.content~'</div>' %}
                     {% endfor %}
                     <div class="o-engagement-map__dialog">
                         {% include 'atoms/a-simple-dialog.twig' with {

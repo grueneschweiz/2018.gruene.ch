@@ -1,0 +1,13 @@
+label: Share
+status: ready
+display:
+  padding: 40px
+context:
+  label: partager
+  icons:
+  - link: "https://www.facebook.com/sharer.php?u=https%3A%2F%2Fcss-tricks.com%2F"
+    type: facebook
+  - link: "https://twitter.com/intent/tweet?url=https%3A%2F%2Fcss-tricks.com%2F&text=Tips%2C+Tricks%2C+and+Techniques+on+using+Cascading+Style+Sheets.&hashtags=css,html"
+    type: twitter
+  - link: "mailto:?subject=Sitetitle&body=Some%20content"
+    type: email

@@ -7,7 +7,7 @@
             "label": "Lead",
             "name": "lead",
             "type": "textarea",
-            "instructions": "",
+            "instructions": "Provide a brief lead that summarises the content. It will be displayed on the archive page, on search results and on the front page (if there is no quote bock).",
             "required": 1,
             "conditional_logic": 0,
             "wrapper": {
@@ -41,6 +41,23 @@
                     "label": "Quote",
                     "display": "block",
                     "sub_fields": [
+                        {
+                            "key": "field_5b71c0d3fc187",
+                            "label": "Please Note",
+                            "name": "",
+                            "type": "message",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "message": "If a quote is given, it will replace the lead text on the front page. On the archive page and in search results, the teaser will still be the lead.",
+                            "new_lines": "wpautop",
+                            "esc_html": 0
+                        },
                         {
                             "key": "field_5b6c057a04c41",
                             "label": "Quote",
@@ -96,7 +113,7 @@
                     "max": ""
                 }
             },
-            "button_label": "Add Row",
+            "button_label": "Add Content Block",
             "min": "",
             "max": ""
         },
@@ -126,7 +143,7 @@
             "label": "Show on front page",
             "name": "show_on_front_page",
             "type": "true_false",
-            "instructions": "",
+            "instructions": "Set this to false, if you don't want this press release to appear in the 'Latest Press Release' block on the front page.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -168,5 +185,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1533824150
+    "modified": 1534251295
 }

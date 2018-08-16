@@ -2,6 +2,14 @@ label: Category Title
 status: ready
 display:
   margin: 40px
+default: With Link
 context:
   label: Medienmitteilungen
   url: '#'
+variants:
+  - name: No Link
+    context:
+      url: ''
+      modifiers:
+      - magenta
+      - left

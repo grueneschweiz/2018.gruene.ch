@@ -4,8 +4,8 @@
     "fields": [
         {
             "key": "field_5b6861e519396",
-            "label": "Category",
-            "name": "category",
+            "label": "Block Title",
+            "name": "block_title",
             "type": "clone",
             "instructions": "",
             "required": 1,
@@ -27,8 +27,8 @@
             "key": "field_5b684a4be8d5e",
             "label": "Post 1",
             "name": "post_1",
-            "type": "post_object",
-            "instructions": "",
+            "type": "clone",
+            "instructions": "Select the post to display. The excerpt and the image of the post, will be displayed.",
             "required": 1,
             "conditional_logic": 0,
             "wrapper": {
@@ -36,21 +36,19 @@
                 "class": "",
                 "id": ""
             },
-            "post_type": [
-                "post",
-                "page"
+            "clone": [
+                "group_5b71a23bc757e"
             ],
-            "taxonomy": [],
-            "allow_null": 0,
-            "multiple": 0,
-            "return_format": "object",
-            "ui": 1
+            "display": "seamless",
+            "layout": "block",
+            "prefix_label": 0,
+            "prefix_name": 1
         },
         {
             "key": "field_5b684a644d73a",
             "label": "Post 2",
             "name": "post_2",
-            "type": "post_object",
+            "type": "clone",
             "instructions": "",
             "required": 1,
             "conditional_logic": 0,
@@ -59,15 +57,13 @@
                 "class": "",
                 "id": ""
             },
-            "post_type": [
-                "post",
-                "page"
+            "clone": [
+                "group_5b71a23bc757e"
             ],
-            "taxonomy": [],
-            "allow_null": 0,
-            "multiple": 0,
-            "return_format": "object",
-            "ui": 1
+            "display": "seamless",
+            "layout": "block",
+            "prefix_label": 0,
+            "prefix_name": 1
         }
     ],
     "location": [
@@ -87,5 +83,5 @@
     "hide_on_screen": "",
     "active": 0,
     "description": "",
-    "modified": 1533567498
+    "modified": 1534174359
 }

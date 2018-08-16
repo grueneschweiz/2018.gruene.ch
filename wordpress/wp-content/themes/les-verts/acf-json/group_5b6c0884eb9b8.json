@@ -3,34 +3,10 @@
     "title": "People",
     "fields": [
         {
-            "key": "field_5b6c08b39417e",
-            "label": "Portrait",
-            "name": "image",
-            "type": "image",
-            "instructions": "",
-            "required": 1,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "return_format": "array",
-            "preview_size": "admin-thumbnail",
-            "library": "all",
-            "min_width": 720,
-            "min_height": 720,
-            "min_size": "",
-            "max_width": "",
-            "max_height": "",
-            "max_size": "",
-            "mime_types": ""
-        },
-        {
-            "key": "field_5b6c0b49ad2a1",
-            "label": "Role",
-            "name": "role",
-            "type": "text",
+            "key": "field_5b71c667b80df",
+            "label": "",
+            "name": "",
+            "type": "group",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -39,216 +15,257 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
-        },
-        {
-            "key": "field_5b6c09509417f",
-            "label": "Contact",
-            "name": "contact",
-            "type": "flexible_content",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "layouts": {
-                "5b6c09700cad3": {
-                    "key": "5b6c09700cad3",
-                    "name": "email",
-                    "label": "Email",
-                    "display": "block",
-                    "sub_fields": [
-                        {
-                            "key": "field_5b6c097794180",
-                            "label": "Email",
+            "layout": "row",
+            "sub_fields": [
+                {
+                    "key": "field_5b6c08b39417e",
+                    "label": "Portrait",
+                    "name": "image",
+                    "type": "image",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "preview_size": "admin-thumbnail",
+                    "library": "all",
+                    "min_width": 720,
+                    "min_height": 720,
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": ""
+                },
+                {
+                    "key": "field_5b6c0b49ad2a1",
+                    "label": "Role",
+                    "name": "role",
+                    "type": "text",
+                    "instructions": "Example: President Greens Glarus, Business owner",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_5b6c09509417f",
+                    "label": "Contact",
+                    "name": "contact",
+                    "type": "flexible_content",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "layouts": {
+                        "5b6c09700cad3": {
+                            "key": "5b6c09700cad3",
                             "name": "email",
-                            "type": "email",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "",
-                            "placeholder": "",
-                            "prepend": "",
-                            "append": ""
-                        }
-                    ],
-                    "min": "",
-                    "max": "1"
-                },
-                "layout_5b6c09a694181": {
-                    "key": "layout_5b6c09a694181",
-                    "name": "phone",
-                    "label": "Phone",
-                    "display": "block",
-                    "sub_fields": [
-                        {
-                            "key": "field_5b6c09b294182",
-                            "label": "Phone",
+                            "label": "Email",
+                            "display": "block",
+                            "sub_fields": [
+                                {
+                                    "key": "field_5b6c097794180",
+                                    "label": "Email",
+                                    "name": "email",
+                                    "type": "email",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "placeholder": "",
+                                    "prepend": "",
+                                    "append": ""
+                                }
+                            ],
+                            "min": "",
+                            "max": "1"
+                        },
+                        "layout_5b6c09a694181": {
+                            "key": "layout_5b6c09a694181",
                             "name": "phone",
-                            "type": "text",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "",
-                            "placeholder": "",
-                            "prepend": "",
-                            "append": "",
-                            "maxlength": ""
-                        }
-                    ],
-                    "min": "",
-                    "max": "1"
-                },
-                "layout_5b6c09ca94183": {
-                    "key": "layout_5b6c09ca94183",
-                    "name": "website",
-                    "label": "Website",
-                    "display": "block",
-                    "sub_fields": [
-                        {
-                            "key": "field_5b6c09d394184",
-                            "label": "Website",
+                            "label": "Phone",
+                            "display": "block",
+                            "sub_fields": [
+                                {
+                                    "key": "field_5b6c09b294182",
+                                    "label": "Phone",
+                                    "name": "phone",
+                                    "type": "text",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "placeholder": "",
+                                    "prepend": "",
+                                    "append": "",
+                                    "maxlength": ""
+                                }
+                            ],
+                            "min": "",
+                            "max": "1"
+                        },
+                        "layout_5b6c09ca94183": {
+                            "key": "layout_5b6c09ca94183",
                             "name": "website",
-                            "type": "url",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "",
-                            "placeholder": ""
-                        }
-                    ],
-                    "min": "",
-                    "max": "1"
-                },
-                "layout_5b6c0a1e94186": {
-                    "key": "layout_5b6c0a1e94186",
-                    "name": "twitter",
-                    "label": "Twitter",
-                    "display": "block",
-                    "sub_fields": [
-                        {
-                            "key": "field_5b6c0a2494187",
-                            "label": "Twitter Name",
+                            "label": "Website",
+                            "display": "block",
+                            "sub_fields": [
+                                {
+                                    "key": "field_5b6c09d394184",
+                                    "label": "Website",
+                                    "name": "website",
+                                    "type": "url",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "placeholder": ""
+                                }
+                            ],
+                            "min": "",
+                            "max": "1"
+                        },
+                        "layout_5b6c0a1e94186": {
+                            "key": "layout_5b6c0a1e94186",
                             "name": "twitter",
-                            "type": "text",
-                            "instructions": "Use @name",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "",
-                            "placeholder": "",
-                            "prepend": "",
-                            "append": "",
-                            "maxlength": ""
-                        }
-                    ],
-                    "min": "",
-                    "max": "1"
-                },
-                "layout_5b6c0a5b94188": {
-                    "key": "layout_5b6c0a5b94188",
-                    "name": "facebook",
-                    "label": "Facebook",
-                    "display": "block",
-                    "sub_fields": [
-                        {
-                            "key": "field_5b6c0a6294189",
-                            "label": "Facebook",
+                            "label": "Twitter",
+                            "display": "block",
+                            "sub_fields": [
+                                {
+                                    "key": "field_5b6c0a2494187",
+                                    "label": "Twitter Name",
+                                    "name": "twitter",
+                                    "type": "text",
+                                    "instructions": "Use @name",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "placeholder": "",
+                                    "prepend": "",
+                                    "append": "",
+                                    "maxlength": ""
+                                }
+                            ],
+                            "min": "",
+                            "max": "1"
+                        },
+                        "layout_5b6c0a5b94188": {
+                            "key": "layout_5b6c0a5b94188",
                             "name": "facebook",
-                            "type": "url",
-                            "instructions": "Use the URL to the profile or page",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "",
-                            "placeholder": ""
+                            "label": "Facebook",
+                            "display": "block",
+                            "sub_fields": [
+                                {
+                                    "key": "field_5b6c0a6294189",
+                                    "label": "Facebook",
+                                    "name": "facebook",
+                                    "type": "url",
+                                    "instructions": "Use the URL to the profile or page",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "placeholder": ""
+                                }
+                            ],
+                            "min": "",
+                            "max": "1"
+                        },
+                        "layout_5b6c0a909418a": {
+                            "key": "layout_5b6c0a909418a",
+                            "name": "instagram",
+                            "label": "Instagram",
+                            "display": "block",
+                            "sub_fields": [
+                                {
+                                    "key": "field_5b6c0ad89418b",
+                                    "label": "Instagram Name",
+                                    "name": "insta",
+                                    "type": "text",
+                                    "instructions": "Use @name",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "placeholder": "",
+                                    "prepend": "",
+                                    "append": "",
+                                    "maxlength": ""
+                                }
+                            ],
+                            "min": "",
+                            "max": "1"
                         }
-                    ],
+                    },
+                    "button_label": "Add Contact",
                     "min": "",
-                    "max": "1"
+                    "max": ""
                 },
-                "layout_5b6c0a909418a": {
-                    "key": "layout_5b6c0a909418a",
-                    "name": "instagram",
-                    "label": "Instagram",
-                    "display": "block",
-                    "sub_fields": [
-                        {
-                            "key": "field_5b6c0ad89418b",
-                            "label": "Instagram Name",
-                            "name": "insta",
-                            "type": "text",
-                            "instructions": "Use @name",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "",
-                            "placeholder": "",
-                            "prepend": "",
-                            "append": "",
-                            "maxlength": ""
-                        }
-                    ],
-                    "min": "",
-                    "max": "1"
+                {
+                    "key": "field_5b6c0be978e57",
+                    "label": "More",
+                    "name": "more",
+                    "type": "wysiwyg",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "tabs": "all",
+                    "toolbar": "full",
+                    "media_upload": 1,
+                    "delay": 0
                 }
-            },
-            "button_label": "Add Contact",
-            "min": "",
-            "max": ""
-        },
-        {
-            "key": "field_5b6c0be978e57",
-            "label": "More",
-            "name": "more",
-            "type": "wysiwyg",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "tabs": "all",
-            "toolbar": "full",
-            "media_upload": 1,
-            "delay": 0
+            ]
         }
     ],
     "location": [
@@ -282,5 +299,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1533808403
+    "modified": 1534183407
 }

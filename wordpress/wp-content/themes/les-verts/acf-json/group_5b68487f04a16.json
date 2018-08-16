@@ -1,11 +1,28 @@
 {
     "key": "group_5b68487f04a16",
-    "title": "[Template]Latest media release",
+    "title": "[Template]Latest Press Release",
     "fields": [
         {
+            "key": "field_5b7193201a0ac",
+            "label": "About this Block",
+            "name": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "This block displays the latest press release (as long as it is published under the category you set below). Posts where the flag 'Show on front page' is not set to false will be excluded.\r\n\r\nIf the press release contains a quote block, the quote will be displayed. Else the lead is shown.",
+            "new_lines": "wpautop",
+            "esc_html": 0
+        },
+        {
             "key": "field_5b68614337425",
-            "label": "Category",
-            "name": "category",
+            "label": "Block Title",
+            "name": "block_title",
             "type": "clone",
             "instructions": "",
             "required": 1,
@@ -24,12 +41,12 @@
             "prefix_name": 0
         },
         {
-            "key": "field_5b684980a99d9",
-            "label": "Exclude category",
-            "name": "exclude_category",
+            "key": "field_5b730cf648300",
+            "label": "Category",
+            "name": "category",
             "type": "taxonomy",
-            "instructions": "Media releases with the category above AND this category selected, will show up in the media release archive but not on the front page.",
-            "required": 0,
+            "instructions": "Select the category, that you assign to your press releases. This Block will always display the newest post of this category (except if you've set the 'show on front' flag to 'no').",
+            "required": 1,
             "conditional_logic": 0,
             "wrapper": {
                 "width": "",
@@ -37,7 +54,7 @@
                 "id": ""
             },
             "taxonomy": "category",
-            "field_type": "multi_select",
+            "field_type": "select",
             "allow_null": 0,
             "add_term": 0,
             "save_terms": 0,
@@ -63,5 +80,5 @@
     "hide_on_screen": "",
     "active": 0,
     "description": "",
-    "modified": 1533718844
+    "modified": 1534266822
 }

@@ -1,0 +1,79 @@
+.m-share {
+	$size: 40px;
+
+	width: $size;
+
+	&__icon {
+		height: $size;
+		margin-bottom: $size / 3;
+		background: $color-white;
+	}
+
+	&__desc {
+		margin: #{$size / 2} 0;
+		order: -1;
+		position: relative;
+
+		@include media($_DESKTOP) {
+			order: 99;
+		}
+	}
+
+	&__rotator {
+		transform: rotate(90deg) translateX(-100%) translateY(50%);
+		transform-origin: bottom left;
+		text-transform: uppercase;
+		font-weight: $font-weight-bold;
+		font-family: $font-title;
+		color: $color-grey-3;
+		display: block;
+		position: absolute;
+		bottom: 0;
+		left: 50%;
+
+		@include media($_DESKTOP) {
+			top: 0;
+			bottom: auto;
+			transform: rotate(90deg) translateX(#{-$size / 2}) translateY(50%);
+		}
+	}
+
+	&__buttons {
+		flex-direction: column;
+		display: flex;
+		justify-content: flex-end;
+		height: 0;
+		overflow: hidden;
+		transition: height $transition-mid $transition-ease;
+
+		&.is-open {
+			height: 320px;
+		}
+
+		@include media($_DESKTOP) {
+			height: auto;
+			overflow: visible;
+		}
+	}
+
+	&__mobile {
+		display: block;
+		padding: 0;
+
+		@include media($_DESKTOP) {
+			display: none;
+		}
+
+		svg {
+			width: $size;
+			height: $size;
+			fill: $color-primary;
+			stroke: $color-white;
+			transition: fill $transition-fast $transition-ease;
+
+			@include hover {
+				fill: $color-primary-dark;
+			}
+		}
+	}
+}

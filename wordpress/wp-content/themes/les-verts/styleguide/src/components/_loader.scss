@@ -1,5 +1,6 @@
 // __ THIS IS AN AUTO-GENERATED FILE __
 @import "./atoms/a-bar/a-bar";
+@import "./atoms/a-breadcrumbs/a-breadcrumbs";
 @import "./atoms/a-button/a-button";
 @import "./atoms/a-cat-title/a-cat-title";
 @import "./atoms/a-footer-link-list/a-footer-link-list";
@@ -24,8 +25,12 @@
 @import "./molecules/m-footer-cta/m-footer-cta";
 @import "./molecules/m-front-article/m-front-article";
 @import "./molecules/m-front-event/m-front-event";
+@import "./molecules/m-in-short/m-in-short";
+@import "./molecules/m-link-list/m-link-list";
 @import "./molecules/m-menu/m-menu";
 @import "./molecules/m-person-slide/m-person-slide";
+@import "./molecules/m-quote/m-quote";
+@import "./molecules/m-share/m-share";
 @import "./molecules/m-vote/m-vote";
 @import "./organisms/o-campaign/o-campaign";
 @import "./organisms/o-engagement-map/o-engagement-map";
@@ -37,4 +42,5 @@
 @import "./organisms/o-positions/o-positions";
 @import "./organisms/o-vote/o-vote";
 @import "./templates/front/front";
+@import "./templates/page/page";
 @import "./typographie/typographie";

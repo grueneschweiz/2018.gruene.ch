@@ -92,11 +92,11 @@
             ]
         },
         {
-            "key": "field_5b687a7954f7d",
-            "label": "Link",
-            "name": "link",
-            "type": "page_link",
-            "instructions": "Link to a page with links to the propositions of the greens of the cantons or the communities.",
+            "key": "field_5b719d2713c9f",
+            "label": "Footer",
+            "name": "footer",
+            "type": "group",
+            "instructions": "",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -104,39 +104,56 @@
                 "class": "",
                 "id": ""
             },
-            "post_type": [
-                "page"
-            ],
-            "taxonomy": [],
-            "allow_null": 0,
-            "allow_archives": 0,
-            "multiple": 0
-        },
-        {
-            "key": "field_5b687a2c54f7c",
-            "label": "Link label",
-            "name": "link_label",
-            "type": "text",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_5b687a7954f7d",
-                        "operator": "!=empty"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
+            "layout": "row",
+            "sub_fields": [
+                {
+                    "key": "field_5b687a7954f7d",
+                    "label": "All Votations Link",
+                    "name": "link",
+                    "type": "page_link",
+                    "instructions": "Link to a page with links to the propositions of the greens of the cantons or the communities.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "post_type": [
+                        "page"
+                    ],
+                    "taxonomy": [],
+                    "allow_null": 0,
+                    "allow_archives": 0,
+                    "multiple": 0
+                },
+                {
+                    "key": "field_5b687a2c54f7c",
+                    "label": "All Votation Label",
+                    "name": "link_label",
+                    "type": "text",
+                    "instructions": "As long as you don't provide a label, the footer is not shown",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_5b687a7954f7d",
+                                "operator": "!=empty"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                }
+            ]
         }
     ],
     "location": [
@@ -156,5 +173,5 @@
     "hide_on_screen": "",
     "active": 0,
     "description": "",
-    "modified": 1533574094
+    "modified": 1534172826
 }
