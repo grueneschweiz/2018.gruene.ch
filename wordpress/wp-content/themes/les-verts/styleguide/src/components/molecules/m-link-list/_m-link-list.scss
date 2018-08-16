@@ -1,4 +1,8 @@
 .m-link-list {
+	&__cat-title {
+		margin-bottom: 16px;
+	}
+
 	&__list {
 		@include clean-ul;
 	}

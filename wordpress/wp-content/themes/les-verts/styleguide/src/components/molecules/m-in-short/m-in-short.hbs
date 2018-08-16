@@ -1,9 +1,9 @@
 <div class="m-in-short">
 	<h2 class="m-in-short__title">{{title}}</h2>
 	{{# if bullet_points}}
-		<ul>
+		<ul class="m-in-short__list">
 			{{#each bullet_points}}
-				<li>{{.}}</li>
+				<li class="m-in-short__item">{{.}}</li>
 			{{/each}}
 		</ul>
 	{{/if}}
