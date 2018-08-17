@@ -33,6 +33,9 @@ class ACFPost extends \TimberPost {
 	}
 	
 	private function generateExcerpt() {
+		if (empty($this->content)) {
+			return __('No content found.', THEME_DOMAIN);
+		}
 		foreach($this->content as $block){
 			if ('text' === $block['acf_fc_layout']) {
 				$text = strip_shortcodes( $block['text'] );
