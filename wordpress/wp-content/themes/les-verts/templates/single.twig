@@ -1,38 +1,39 @@
 {% extends "base.twig" %}
 
 {% block content %}
-	<div class="content-wrapper">
-		<article class="post-type-{{ post.post_type }}" id="post-{{ post.ID }}">
-			<img src="{{ post.thumbnail.src|resize(1200, 300) }}">
-			<section class="article-content">
-				<h1 class="article-h1">{{ post.title }}</h1>
-				<p class="blog-author">
-					<span>By</span><a href="{{post.author.path}}"> {{ post.author.name }} </a><span>&bull;</span> {{ post.date }}
-				</p>
-				<div class="article-body">
-					{{post.content}}
-				</div>
-			</section>
-
-			<!-- comment box -->
-			<section class="comment-box">
-				<!-- comments -->
-				<div class="comments">
-				    {% if post.comments %}
-					<h3> comments </h3>
-					{% for cmt in post.comments %}
-					    {% include "comment.twig" with {comment:cmt} %}
-					{% endfor %}
-				    {% endif %}
-				</div>
-
-				{% if post.comment_status == "closed" %}
-					<p> comments for this post are closed </p>
-				{% else %}
-				    <!-- comment form -->
-				    {% include "comment-form.twig" %}
-				{% endif %}
-			</section>
-		</article>
-	</div><!-- /content-wrapper -->
+	{% if post.header_image %}
+		<div class="page__header-image">
+			{% include 'atoms/a-image.twig' with {
+				'image': post.header_image,
+				'size': header
+			} only %}
+		</div>
+	{% endif %}
+	<div class="page__content">
+		{% if post.share_buttons %}
+			<div class="page__share">
+				{% include 'molecules/m-share.twig' with {
+					'url': post.link
+				} %}
+			</div>
+		{% endif %}
+		{#<div class="page__breadcrumbs">#}
+		{#{{ render '@a-breadcrumbs' }}#}
+		{#</div>#}
+		{#<h1>1’000’000 CHF für die olympischen Spiele ohne Einverständnis der Bevölkerung?</h1>#}
+		{#<div class="page__box">#}
+		{#{{ render '@m-in-short' }}#}
+		{#</div>#}
+		{#<div class="page__quote">#}
+		{#{{ render '@m-quote' }}#}
+		{#</div>#}
+		{#<p>Diese Kosten und Risiken belasten die Staatskasse. Es stellt sich die Frage, ob der Öffentlichkeit mit einer#}
+		{#anderen Verwendung dieser knappen Mittel – etwa für Bildung, die Förderung des Breitensports oder die Umwelt –#}
+		{#nicht mehr gedient wäre. Es stellt sich auch die Frage, ob die Bevölkerung bereit ist, die Risiken eines#}
+		{#solchen internationalen Grossanlasses zu tragen.</p>#}
+		{#<div class="page__linked-content">#}
+		{#{{ render '@m-link-list' }}#}
+		{#{{ render '@m-link-list' }}#}
+		{#</div>#}
+	</div>
 {% endblock %}
