@@ -1,58 +1,58 @@
 .a-link-button {
-  @include clean-link;
+	@include clean-link;
 
-  font-size: 0.875rem;
-  display: inline-flex;
-  align-items: center;
-  line-height: 0.9em; // make sure the arrow wont be cut
-  padding-left: 0;
-  @include fluid-props(padding-top padding-bottom, $fluid-min, $fluid-max, 6px, 10px);
+	font-size: 0.875rem;
+	display: inline-flex;
+	align-items: center;
+	line-height: 0.9em; // make sure the arrow wont be cut
+	padding-left: 0;
+	@include fluid-props(padding-top padding-bottom, $fluid-min, $fluid-max, 6px, 10px);
 
-  color: $color-primary;
-  font-family: $font-secondary;
-  font-weight: $font-weight-bold;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: color $transition-fast $transition-ease;
+	color: $color-primary;
+	font-family: $font-secondary;
+	font-weight: $font-weight-bold;
+	text-transform: uppercase;
+	cursor: pointer;
+	transition: color $transition-fast $transition-ease;
 
-  &__label {
-    order: 0;
-    padding-right: 1em; // 6/12
-    display: inline-block;
-  }
+	&__label {
+		order: 0;
+		padding-right: 1em; // 6/12
+		display: inline-block;
+	}
 
-  &::after {
-    content: "";
-    width: 0.6em;
-    height: 0.6em;
-    border-color: $color-primary;
-    border-top: 0.1666666667em solid; // 2/12
-    border-right: 0.1666666667em solid; // 2/12
-    transform: translateX(-0.5em) rotate(45deg);
-    transition: transform $transition-fast $transition-ease;
-  }
+	&::after {
+		content: "";
+		width: 0.6em;
+		height: 0.6em;
+		border-color: $color-primary;
+		border-top: 0.1666666667em solid; // 2/12
+		border-right: 0.1666666667em solid; // 2/12
+		transform: translateX(-0.5em) rotate(45deg);
+		transition: transform $transition-fast $transition-ease;
+	}
 
-  @include hover {
-    color: $color-primary-dark;
+	@include hover {
+		color: $color-primary-dark;
 
-    &::after {
-      transform: translateX(0.5em) rotate(45deg);
-    }
-  }
+		&::after {
+			transform: translateX(0.5em) rotate(45deg);
+		}
+	}
 
-  &--grey {
-    color: $color-grey-3;
+	&--grey {
+		color: $color-grey-3;
 
-    @include hover {
-      color: $color-text-light;
-    }
-  }
+		@include hover {
+			color: $color-text-light;
+		}
+	}
 
-  &--white {
-    color: $color-white;
+	&--white {
+		color: $color-white;
 
-    @include hover {
-      color: $color-white;
-    }
-  }
+		@include hover {
+			color: $color-white;
+		}
+	}
 }

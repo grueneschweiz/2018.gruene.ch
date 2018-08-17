@@ -20,13 +20,39 @@
 		@include fluid-props(margin-top, $fluid-min, $fluid-max, 40px, 60px);
 	}
 
+	//noinspection CssOverwrittenProperties
+	&__share {
+		right: 0;
+
+		@include media($_MOBILE){
+			position: fixed;
+			z-index: 5;
+			bottom: 0;
+			background: $color-white;
+		}
+
+		@include media($_DESKTOP){
+			position: relative; // IE: just keep it fixed
+			position: sticky;
+			top: 200px;
+			float: right;
+			padding-right: $margin-size-min;
+			margin-bottom: 60px;
+			margin-right: calc(-#{$margin-size-min} - #{strip-unit($margin-size-max - $margin-size-min)} * (100vw - #{$fluid-min}) / #{strip-unit($fluid-max - $fluid-min)});
+		}
+
+		@include media(1240px) {
+			margin-right: calc(-120px - #{strip-unit($margin-size-max - $margin-size-min)} * (100vw - #{$fluid-min}) / #{strip-unit($fluid-max - $fluid-min)});
+		}
+	}
+
 	&__box {
 		background-color: $color-grey-1;
 		@include fluid-props(padding-left padding-right, $fluid-min, $fluid-max, $margin-size-min, $margin-size-max);
 		@include fluid-props(padding-top padding-bottom, $fluid-min, $fluid-max, $margin-size-min, 96px);
 		@include fluid-props(margin-left margin-right, $fluid-min, $fluid-max, -$margin-size-min, -$margin-size-max);
 		@include fluid-props(margin-top margin-bottom, $fluid-min, $fluid-max, 50px, 100px);
-		width: calc(100% + 2 * (#{$margin-size-min} + #{$margin-size-max - $margin-size-min} * (100vw - #{$fluid-min}) / #{$fluid-max - $fluid-min});
+		width: calc(100% + 2 * (#{$margin-size-min} + #{$margin-size-max - $margin-size-min} * (100vw - #{$fluid-min}) / #{$fluid-max - $fluid-min}));
 	}
 
 	&__quote {

@@ -4,16 +4,16 @@ context:
       icons:
         - close
         - slide
+        - glass
+        - plus
     - name: Miscellaneous
       icons:
         - testimony
-        - glass
-        - hamburger
         - quote
         - arrow
     - name: Social Media / Contact
       icons:
         - facebook
         - twitter
-        - email
+        - mail
         - mobile

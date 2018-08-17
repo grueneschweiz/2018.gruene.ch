@@ -1,20 +1,20 @@
-<div class="a-submenu  {{ modifiers_classes }}" >
-    {{#if featured}}
-        {{> @a-cat-title cat-title}}
-        {{> @a-image link-image }}
-        <a class="a-submenu--featured__link" href="{{ this.url }}">
-            <h3 class="a-submenu--featured__link__title">{{ title }}</h3>
-        </a>
-        <p class="a-submenu--featured__text">{{ text }}</p>
-        {{> @a-button button}}
-    {{else}}
-        <a class="a-submenu__title" href="{{ url }}">{{ title }}</a>
-        <ul class="a-submenu__list">
-            {{#each items}}
-                <li class="a-submenu__item">
-                    <a class="a-submenu__link" href="{{ this.url }}">{{ this.label }}</a>
-                </li>
-            {{/each}}
-        </ul>
-    {{/if}}
+<div class="a-submenu  {{ modifiers_classes }}">
+	{{#if featured}}
+		{{> @a-cat-title cat-title}}
+		{{> @a-image link-image }}
+		<a class="a-submenu--featured__link" href="{{ this.url }}">
+			<h3 class="a-submenu--featured__link__title">{{ title }}</h3>
+		</a>
+		<p class="a-submenu--featured__text">{{ text }}</p>
+		{{> @a-button button}}
+	{{else}}
+		<a class="a-submenu__title" href="{{ url }}">{{ title }}</a>
+		<ul class="a-submenu__list">
+			{{#each items}}
+				<li class="a-submenu__item">
+					<a class="a-submenu__link" href="{{ this.url }}">{{ this.label }}</a>
+				</li>
+			{{/each}}
+		</ul>
+	{{/if}}
 </div>

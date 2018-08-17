@@ -1,53 +1,53 @@
 .m-person-slide {
-  width: 220px;
-  line-height: 0;
+	width: 220px;
+	line-height: 0;
 
-  @include media($size-tiny) {
-    width: 280px;
-  }
+	@include media($size-tiny) {
+		width: 280px;
+	}
 
-  @include media($_DESKTOP) {
-    width: 288px;
-  }
+	@include media($_DESKTOP) {
+		width: 288px;
+	}
 
-  &__image {
-    width: 100%;
-  }
+	&__image {
+		width: 100%;
+	}
 
-  &__caption {
-    padding: 18px 20px;
+	&__caption {
+		padding: 18px 20px;
 
-    & > p {
-      margin: 0;
+		& > p {
+			margin: 0;
 
-      &:first-of-type {
-        margin-bottom: .75rem;
-      }
-    }
-  }
+			&:first-of-type {
+				margin-bottom: .75rem;
+			}
+		}
+	}
 
-  &__meta {
-    font-size: 0.875rem;
-  }
+	&__meta {
+		font-size: 0.875rem;
+	}
 
-  &__author {
-    font-weight: $font-weight-bold;
-  }
+	&__author {
+		font-weight: $font-weight-bold;
+	}
 
-  &__quote {
-    &:before {
-      content: "\AB";
-      padding-right: 0.25em;
-    }
+	&__quote {
+		&:before {
+			content: "\AB";
+			padding-right: 0.25em;
+		}
 
-    &:after {
-      content: "\BB";
-      padding-left: 0.25em;
-    }
+		&:after {
+			content: "\BB";
+			padding-left: 0.25em;
+		}
 
-    &:before, &:after {
-      color: $color-primary;
-      font-weight: $font-weight-bold;
-    }
-  }
+		&:before, &:after {
+			color: $color-primary;
+			font-weight: $font-weight-bold;
+		}
+	}
 }

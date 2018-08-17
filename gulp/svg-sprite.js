@@ -21,11 +21,11 @@ module.exports = function( options ) {
 					whitespace: '-', // Whitespace
 				},
 				transform: [
-					{svgo		: {
+					/*{svgo		: {
 						plugins	: [
 							{removeAttrs: { attrs: '(fill|stroke)' }},
 							{removeTitle: true},
-							{mergePaths: true},
+							{mergePaths: false},
 							{removeDesc: true},
 							{removeXMLNS: true},
 							{cleanupAttrs: true},
@@ -39,7 +39,7 @@ module.exports = function( options ) {
 							{cleanupEnableBackground: true},
 							{moveGroupAttrsToElems: false}
 						]
-					}}
+					}}*/
 				]
 			},
 			svg: {

@@ -16,7 +16,7 @@ export default class Viewport extends EventEmitter {
 	 * @return {Number}
 	 */
 	getViewportWidth() {
-		return Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+		return Math.max( document.documentElement.clientWidth, window.innerWidth || 0 );
 	}
 
 	/**
@@ -24,14 +24,14 @@ export default class Viewport extends EventEmitter {
 	 * @return {Number}
 	 */
 	getViewportHeight() {
-		return Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+		return Math.max( document.documentElement.clientHeight, window.innerHeight || 0 );
 	}
 
 	getViewportRatio() {
-		return (this.getCurrentWidth() / this.getCurrentHeight());
+		return ( this.getCurrentWidth() / this.getCurrentHeight() );
 	}
 
-	setCurrentWidth(width) {
+	setCurrentWidth( width ) {
 		this.current_width = width;
 	}
 
@@ -39,7 +39,7 @@ export default class Viewport extends EventEmitter {
 		return this.current_width;
 	}
 
-	setCurrentHeight(height) {
+	setCurrentHeight( height ) {
 		this.current_height = height;
 	}
 
@@ -48,13 +48,13 @@ export default class Viewport extends EventEmitter {
 	}
 
 	bindResize() {
-        window.addEventListener('resize', debounce(this.resizeHandler.bind(this), DEBOUNCE_DELAY, false));
+		window.addEventListener( 'resize', debounce( this.resizeHandler.bind( this ), DEBOUNCE_DELAY, false ) );
 	}
 
 	resizeHandler() {
-		this.setCurrentWidth(this.getViewportWidth());
-		this.setCurrentHeight(this.getViewportHeight());
-		this.emit('change');
+		this.setCurrentWidth( this.getViewportWidth() );
+		this.setCurrentHeight( this.getViewportHeight() );
+		this.emit( 'change' );
 	}
 
 	isMobile() {
@@ -62,18 +62,18 @@ export default class Viewport extends EventEmitter {
 	}
 
 	isTablet() {
-			return this.getCurrentWidth() >= MOBILE_BREAKPOINT &&  this.getCurrentWidth() < LAPTOP_BREAKPOINT;
+		return this.getCurrentWidth() >= MOBILE_BREAKPOINT && this.getCurrentWidth() < LAPTOP_BREAKPOINT;
 	}
 
 	isComputer() {
-			return this.getCurrentWidth() >= LAPTOP_BREAKPOINT;
+		return this.getCurrentWidth() >= LAPTOP_BREAKPOINT;
 	}
 
 	isLaptop() {
-			return this.getCurrentWidth() >= LAPTOP_BREAKPOINT &&  this.getCurrentWidth() < LARGE_LAPTOP_BREAKPOINT;
+		return this.getCurrentWidth() >= LAPTOP_BREAKPOINT && this.getCurrentWidth() < LARGE_LAPTOP_BREAKPOINT;
 	}
 
 	isLargeLaptop() {
-			return this.getCurrentWidth() > LARGE_LAPTOP_BREAKPOINT;
+		return this.getCurrentWidth() > LARGE_LAPTOP_BREAKPOINT;
 	}
 }

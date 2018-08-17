@@ -1,71 +1,71 @@
 .m-campaign-cta {
-  background: $color-grey-2;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  @include fluid-props(padding, $fluid-min, $fluid-max, 29px, 68px);
+	background: $color-grey-2;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	@include fluid-props(padding, $fluid-min, $fluid-max, 29px, 68px);
 
-  &__title {
-    margin: 0;
-    line-height: 1em;
-  }
+	&__title {
+		margin: 0;
+		line-height: 1em;
+	}
 
-  &__title-link {
-    @include clean-link;
-    color: $color-text;
-    font-size: 1rem;
+	&__title-link {
+		@include clean-link;
+		color: $color-text;
+		font-size: 1rem;
 
-    @include media($_DESKTOP) {
-      color: $color-secondary;
-      transition: color $transition-fast $transition-ease;
+		@include media($_DESKTOP) {
+			color: $color-secondary;
+			transition: color $transition-fast $transition-ease;
 
-      @include hover {
-        color: $color-secondary-dark;
-      }
-    }
-  }
+			@include hover {
+				color: $color-secondary-dark;
+			}
+		}
+	}
 
-  &__text {
-    margin: 1em 0 0;
-  }
+	&__text {
+		margin: 1em 0 0;
+	}
 
-  &__grid {
-    @extend .grid;
-    grid-row-gap: 1em;
-    width: 100%;
-    max-width: 100%;
-  }
+	&__grid {
+		@extend .grid;
+		grid-row-gap: 1em;
+		width: 100%;
+		max-width: 100%;
+	}
 
-  &__postal-code {
-    grid-column: 1 / 4;
-    grid-row: 1 / 2;
-  }
+	&__postal-code {
+		grid-column: 1 / 4;
+		grid-row: 1 / 2;
+	}
 
-  &__email {
-    grid-column: 4 / 13;
-    grid-row: 1 / 2;
-  }
+	&__email {
+		grid-column: 4 / 13;
+		grid-row: 1 / 2;
+	}
 
-  &__consent {
-    grid-column: 1 / 13;
-    font-size: 0.875rem;
-    line-height: 1.4em;
-    hyphens: auto;
+	&__consent {
+		grid-column: 1 / 13;
+		font-size: 0.875rem;
+		line-height: 1.4em;
+		hyphens: auto;
 
-    @include media($size-small) {
-      grid-column: 1 / 7;
-    }
-  }
+		@include media($size-small) {
+			grid-column: 1 / 7;
+		}
+	}
 
-  &__button {
-    grid-column: 1 / 13;
-    grid-row: 3 / 4;
+	&__button {
+		grid-column: 1 / 13;
+		grid-row: 3 / 4;
 
-    @include media($size-small) {
-      grid-column: 7 / 13;
-      grid-row: 2 / 3;
-      justify-self: end;
-    }
-  }
+		@include media($size-small) {
+			grid-column: 7 / 13;
+			grid-row: 2 / 3;
+			justify-self: end;
+		}
+	}
 }

@@ -1,60 +1,60 @@
 <div class="m-menu">
-    <a class="m-menu__logo" href="/" title="{{ home }}">
-        {{> @a-logo logo}}
-    </a>
-    <nav class="m-menu__nav">
-        <div class="m-menu__hamburger">
-            {{ render '@a-hamburger' }}
-        </div>
-        <ul class="m-menu__nav-list" role="menubar" id="menu" aria-label="{{ aria-label-main-navigation }}">
-            {{#each nav-items}}
-                <li class="m-menu__nav-item" role="none">
-                    <a class="m-menu__nav-link {{#if @first }}m-menu__nav-link--active{{/if}}"
-                       href="#" role="menuitem" {{#if @first }}tabindex="0" accesskey="1"{{/if}}
-                       aria-haspopup="menu" aria-expanded="false">{{ this.title }}</a>
-                    {{#if section-items}}
-                        <ul class="m-menu__submenu" role="menu" aria-label="{{ ../aria-label-sub-navigation }}">
-                            {{#each section-items}}
-                                <li class="m-menu__submenu__section" role="none">
-                                    {{> @a-submenu this}}
-                                </li>
-                            {{/each}}
-                            <li class="m-menu__submenu__close-wrapper" role="none">
-                                <button class="m-menu__submenu__close"
-                                        aria-label="{{ ../aria-label-close-sub-navigation }}">
-                                    <svg role="img">
-                                        <title>{{close}}</title>
-                                        <use xlink:href="#close"></use>
-                                    </svg>
-                                </button>
-                            </li>
-                        </ul>
-                    {{/if}}
-                </li>
-            {{/each}}
-            <li class="m-menu__nav-item" role="none">
-                <a class="m-menu__nav-link m-menu__search" href="#" aria-label="{{ aria-label-search }}"
-                   aria-haspopup="true" aria-expanded="false">
-                    <span class="m-menu__search-text">{{ search }}</span>
-                    <svg class="m-menu__search-icon" role="search">
-                        <title>{{ search }}</title>
-                        <use xlink:href="#glass"></use>
-                    </svg>
-                </a>
-            </li>
-        </ul>
-    </nav>
-    <div class="m-menu__right">
-        <div class="m-menu__cta">{{> @a-button--outlined button}}</div>
-        <div class="m-menu__language-nav">
-            <ul class="m-menu__language-nav-list" role="menubar" aria-label="{{ aria-label-language-navigation }}">
-                {{#each languages}}
-                    <li class="m-menu__language-nav-item">
-                        <a class="m-menu__language-nav-link {{#if @first }}m-menu__language-nav-link--active{{/if}}"
-                           href="#">{{ . }}</a>
-                    </li>
-                {{/each}}
-            </ul>
-        </div>
-    </div>
+	<a class="m-menu__logo" href="/" title="{{ home }}">
+		{{> @a-logo logo}}
+	</a>
+	<nav class="m-menu__nav">
+		<div class="m-menu__hamburger">
+			{{ render '@a-hamburger' }}
+		</div>
+		<ul class="m-menu__nav-list" role="menubar" id="menu" aria-label="{{ aria-label-main-navigation }}">
+			{{#each nav-items}}
+				<li class="m-menu__nav-item" role="none">
+					<a class="m-menu__nav-link {{#if @first }}m-menu__nav-link--active{{/if}}"
+						 href="#" role="menuitem" {{#if @first }}tabindex="0" accesskey="1"{{/if}}
+						 aria-haspopup="menu" aria-expanded="false">{{ this.title }}</a>
+					{{#if section-items}}
+						<ul class="m-menu__submenu" role="menu" aria-label="{{ ../aria-label-sub-navigation }}">
+							{{#each section-items}}
+								<li class="m-menu__submenu__section" role="none">
+									{{> @a-submenu this}}
+								</li>
+							{{/each}}
+							<li class="m-menu__submenu__close-wrapper" role="none">
+								<button class="m-menu__submenu__close"
+												aria-label="{{ ../aria-label-close-sub-navigation }}">
+									<svg role="img">
+										<title>{{close}}</title>
+										<use xlink:href="#close"></use>
+									</svg>
+								</button>
+							</li>
+						</ul>
+					{{/if}}
+				</li>
+			{{/each}}
+			<li class="m-menu__nav-item" role="none">
+				<a class="m-menu__nav-link m-menu__search" href="#" aria-label="{{ aria-label-search }}"
+					 aria-haspopup="true" aria-expanded="false">
+					<span class="m-menu__search-text">{{ search }}</span>
+					<svg class="m-menu__search-icon" role="search">
+						<title>{{ search }}</title>
+						<use xlink:href="#glass"></use>
+					</svg>
+				</a>
+			</li>
+		</ul>
+	</nav>
+	<div class="m-menu__right">
+		<div class="m-menu__cta">{{> @a-button--outlined button}}</div>
+		<div class="m-menu__language-nav">
+			<ul class="m-menu__language-nav-list" role="menubar" aria-label="{{ aria-label-language-navigation }}">
+				{{#each languages}}
+					<li class="m-menu__language-nav-item">
+						<a class="m-menu__language-nav-link {{#if @first }}m-menu__language-nav-link--active{{/if}}"
+							 href="#">{{ . }}</a>
+					</li>
+				{{/each}}
+			</ul>
+		</div>
+	</div>
 </div>

@@ -1,20 +1,20 @@
 <div class="m-front-article {{ modifiers_classes }}">
-    <h3 class="m-front-article__title">
-        <a href="{{ url }}" class="m-front-article__title-link" tabindex="-1">{{ title }}</a>
-    </h3>
-    {{#if has-img}}
-        <div class="m-front-article__image">
-            {{> @a-image img}}
-        </div>
-    {{/if}}
-    {{#if list-items}}
-        <ul class="m-front-article__list">
-            {{#each list-items}}
-                <li class="m-front-article__list-item">{{ . }}</li>
-            {{/each}}
-        </ul>
-    {{else}}
-        <p class="m-front-article__text">{{{ text }}}</p>
-    {{/if}}
-    {{render '@a-link-button'}}
+	<h3 class="m-front-article__title">
+		<a href="{{ url }}" class="m-front-article__title-link" tabindex="-1">{{ title }}</a>
+	</h3>
+	{{#if has-img}}
+		<div class="m-front-article__image">
+			{{> @a-image img}}
+		</div>
+	{{/if}}
+	{{#if list-items}}
+		<ul class="m-front-article__list">
+			{{#each list-items}}
+				<li class="m-front-article__list-item">{{ . }}</li>
+			{{/each}}
+		</ul>
+	{{else}}
+		<p class="m-front-article__text">{{{ text }}}</p>
+	{{/if}}
+	{{render '@a-link-button'}}
 </div>

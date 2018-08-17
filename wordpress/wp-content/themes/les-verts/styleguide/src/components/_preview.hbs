@@ -3,13 +3,13 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0">
-	<link rel='stylesheet' media="all" href="{{path '/style.css' }}" />
+	<link rel='stylesheet' media="all" href="{{path '/style.css' }}"/>
 
 	<link rel="canonical" href="{{ location.href }}">
 	<title>Preview: {{ this._target.title }}</title>
 	<script type="text/javascript">
-	var html = document.getElementsByTagName('html')[0];
-	html.className = html.className.replace( /(?:^|\s)no-js(?!\S)/g , 'js' );
+		var html = document.getElementsByTagName( 'html' )[ 0 ];
+		html.className = html.className.replace( /(?:^|\s)no-js(?!\S)/g, 'js' );
 	</script>
 
 	<link rel="apple-touch-icon" sizes="57x57" href="{{path '/img/favicons/apple-icon-57x57.png'}}">
@@ -21,7 +21,7 @@
 	<link rel="apple-touch-icon" sizes="144x144" href="{{path '/img/favicons/apple-icon-144x144.png'}}">
 	<link rel="apple-touch-icon" sizes="152x152" href="{{path '/img/favicons/apple-icon-152x152.png'}}">
 	<link rel="apple-touch-icon" sizes="180x180" href="{{path '/img/favicons/apple-icon-180x180.png'}}">
-	<link rel="icon" type="image/png" sizes="192x192"  href="{{path '/img/favicons/android-icon-192x192.png'}}">
+	<link rel="icon" type="image/png" sizes="192x192" href="{{path '/img/favicons/android-icon-192x192.png'}}">
 	<link rel="icon" type="image/png" sizes="32x32" href="{{path '/img/favicons/favicon-32x32.png'}}">
 	<link rel="icon" type="image/png" sizes="96x96" href="{{path '/img/favicons/favicon-96x96.png'}}">
 	<link rel="icon" type="image/png" sizes="16x16" href="{{path '/img/favicons/favicon-16x16.png'}}">
@@ -31,10 +31,10 @@
 	<meta name="theme-color" content="#ffffff">
 </head>
 <body>
-	{{{ yield }}}
+{{{ yield }}}
 
-	{{inline_svg 'icons.svg' style="display:none;" }}
-	<script type="text/javascript" src="{{path '/js/modernizr.js' }}"></script>
-	<script type="text/javascript" src="{{path '/js/app.js' }}"></script>
+{{inline_svg 'icons.svg' style="display:none;" }}
+<script type="text/javascript" src="{{path '/js/modernizr.js' }}"></script>
+<script type="text/javascript" src="{{path '/js/app.js' }}"></script>
 </body>
 </html>

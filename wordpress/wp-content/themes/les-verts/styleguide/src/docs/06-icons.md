@@ -1,4 +1,7 @@
 To add an icon in the icon system, create the icon svg file in `src/icons` folder.
+Make sure to [minimize it](https://jakearchibald.github.io/svgomg/) and to remove 
+the fill and stroke colors where needed. Store the non-minimized version of the
+icon in `src/icons_raw`.
 
 All icons will be included in the `static/icons.svg` SVG sprite.
 

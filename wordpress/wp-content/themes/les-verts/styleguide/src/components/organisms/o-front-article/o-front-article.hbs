@@ -1,43 +1,43 @@
 <article class="o-front-article {{modifiers_classes}}">
-    <div class="o-front-article__cat-title">
-        {{> @a-cat-title cat-title}}
-    </div>
-    {{#if mm}}
-        <div class="o-front-article__quote">
-            <svg role="img">
-                <title>{{quote}}</title>
-                <use xlink:href="#quote"></use>
-            </svg>
-        </div>
-    {{/if}}
-    <div class="o-front-article__articles">
-        {{#each articles}}
-            <div class="o-front-article__article">
-                {{> @m-front-article this }}
-            </div>
-        {{/each}}
-    </div>
-    {{#if single}}
-        <footer class="o-front-article__cta">
-            <div class="o-front-article__cta-button">
-                {{> @a-button cta }}
-            </div>
-            <div class="o-front-article__cta-label">
-                {{ cta-help-text }}
-            </div>
-        </footer>
-    {{/if}}
-    {{#if mm}}
-        <footer class="o-front-article__mm">
-            <div class="o-front-article__meta">
-                <time class="o-front-article__date" datetime="{{ timestamp }}">{{ date }}</time>
-                {{#if oton}}<a href="{{ author-url }}" class="o-front-article__author">{{ author }}</a>{{/if}}
-            </div>
-            {{#if oton}}
-                <div class="o-front-article__author-image">
-                    {{> @a-image img}}
-                </div>
-            {{/if}}
-        </footer>
-    {{/if}}
+	<div class="o-front-article__cat-title">
+		{{> @a-cat-title cat-title}}
+	</div>
+	{{#if mm}}
+		<div class="o-front-article__quote">
+			<svg role="img">
+				<title>{{quote}}</title>
+				<use xlink:href="#quote"></use>
+			</svg>
+		</div>
+	{{/if}}
+	<div class="o-front-article__articles">
+		{{#each articles}}
+			<div class="o-front-article__article">
+				{{> @m-front-article this }}
+			</div>
+		{{/each}}
+	</div>
+	{{#if single}}
+		<footer class="o-front-article__cta">
+			<div class="o-front-article__cta-button">
+				{{> @a-button cta }}
+			</div>
+			<div class="o-front-article__cta-label">
+				{{ cta-help-text }}
+			</div>
+		</footer>
+	{{/if}}
+	{{#if mm}}
+		<footer class="o-front-article__mm">
+			<div class="o-front-article__meta">
+				<time class="o-front-article__date" datetime="{{ timestamp }}">{{ date }}</time>
+				{{#if oton}}<a href="{{ author-url }}" class="o-front-article__author">{{ author }}</a>{{/if}}
+			</div>
+			{{#if oton}}
+				<div class="o-front-article__author-image">
+					{{> @a-image img}}
+				</div>
+			{{/if}}
+		</footer>
+	{{/if}}
 </article>

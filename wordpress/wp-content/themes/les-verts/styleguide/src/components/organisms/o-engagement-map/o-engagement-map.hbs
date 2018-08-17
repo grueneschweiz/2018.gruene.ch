@@ -1,31 +1,31 @@
 <article class="o-engagement-map">
-    <div class="o-engagement-map__cat-title">
-        {{> @a-cat-title cat-title}}
-    </div>
-    <h3 class="o-engagement-map__title">{{title}}</h3>
-    <div class="o-engagement-map__main-wrapper">
-        <div class="o-engagement-map__desc-wrapper">
-            {{{text-before}}}
-            <div class="o-engagement-map__button">
-                {{> @a-button button}}
-            </div>
-            {{{text-after}}}
-        </div>
-        <div class="o-engagement-map__map-wrapper">
-            <div class="o-engagement-map__map">
-                {{> @a-map }}
-            </div>
-            <div class="o-engagement-map__selector">
-                {{> @a-select select}}
-            </div>
-            <div class="o-engagement-map__dialog-wrapper">
-                {{#each dialogs}}
-                    <div class="o-engagement-map__dialog">
-                        {{> @a-simple-dialog this}}
-                    </div>
-                {{/each}}
-            </div>
-        </div>
-    </div>
-    <div class="o-engagement-map__modal"></div>
+	<div class="o-engagement-map__cat-title">
+		{{> @a-cat-title cat-title}}
+	</div>
+	<h3 class="o-engagement-map__title">{{title}}</h3>
+	<div class="o-engagement-map__main-wrapper">
+		<div class="o-engagement-map__desc-wrapper">
+			{{{text-before}}}
+			<div class="o-engagement-map__button">
+				{{> @a-button button}}
+			</div>
+			{{{text-after}}}
+		</div>
+		<div class="o-engagement-map__map-wrapper">
+			<div class="o-engagement-map__map">
+				{{> @a-map }}
+			</div>
+			<div class="o-engagement-map__selector">
+				{{> @a-select select}}
+			</div>
+			<div class="o-engagement-map__dialog-wrapper">
+				{{#each dialogs}}
+					<div class="o-engagement-map__dialog">
+						{{> @a-simple-dialog this}}
+					</div>
+				{{/each}}
+			</div>
+		</div>
+	</div>
+	<div class="o-engagement-map__modal"></div>
 </article>

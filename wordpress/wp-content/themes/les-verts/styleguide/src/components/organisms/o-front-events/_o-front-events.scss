@@ -1,55 +1,55 @@
 .o-front-events {
-  @extend .grid-item;
-  padding-left: 0;
-  padding-right: 0;
+	@extend .grid-item;
+	padding-left: 0;
+	padding-right: 0;
 
-  @include media($_DESKTOP) {
-    max-width: $grid-max-width-max;
-  }
+	@include media($_DESKTOP) {
+		max-width: $grid-max-width-max;
+	}
 
-  &__cat-title {
-    margin-bottom: 4px;
-    @include fluid-grid-item-props(margin-left);
+	&__cat-title {
+		margin-bottom: 4px;
+		@include fluid-grid-item-props(margin-left);
 
-    @include media($_DESKTOP) {
-      margin-bottom: 25px;
-    }
-  }
+		@include media($_DESKTOP) {
+			margin-bottom: 25px;
+		}
+	}
 
-  &__events {
-    width: 100%;
-    display: grid;
-    grid-template-columns: 1fr;
-    @include fluid-props(grid-column-gap, $size-medium, $grid-max-width-max, $grid-gap-min, $grid-gap-max);
-  }
+	&__events {
+		width: 100%;
+		display: grid;
+		grid-template-columns: 1fr;
+		@include fluid-props(grid-column-gap, $size-medium, $grid-max-width-max, $grid-gap-min, $grid-gap-max);
+	}
 
-  &--full-width &__events {
-    @include media($_DESKTOP) {
-      grid-template-columns: 1fr 1fr;
-      align-items: start;
-    }
-  }
+	&--full-width &__events {
+		@include media($_DESKTOP) {
+			grid-template-columns: 1fr 1fr;
+			align-items: start;
+		}
+	}
 
-  &__event {
-    @include clean-link;
-    width: 100%;
-    @include fluid-grid-item-props(padding-left padding-right);
+	&__event {
+		@include clean-link;
+		width: 100%;
+		@include fluid-grid-item-props(padding-left padding-right);
 
-    @include hover {
-      background-color: $color-grey-1;
-    }
+		@include hover {
+			background-color: $color-grey-1;
+		}
 
-    &--hidden {
-      display: none;
-    }
-  }
+		&--hidden {
+			display: none;
+		}
+	}
 
-  &__more {
-    padding-top: 16px;
-    @include fluid-grid-item-props(padding-left);
+	&__more {
+		padding-top: 16px;
+		@include fluid-grid-item-props(padding-left);
 
-    &.is-hidden {
-      display: none;
-    }
-  }
+		&.is-hidden {
+			display: none;
+		}
+	}
 }
