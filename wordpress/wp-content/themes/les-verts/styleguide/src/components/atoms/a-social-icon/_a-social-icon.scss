@@ -5,15 +5,16 @@
 	display: block;
 
 	svg {
+		fill: $color-primary;
 		stroke: $color-primary;
-		fill: transparent;
-		transition: stroke $transition-fast $transition-ease;
+		transition: all $transition-fast $transition-ease;
 		width: 100%;
 		height: 100%;
 	}
 
 	@include hover {
 		svg {
+			fill: $color-primary-dark;
 			stroke: $color-primary-dark;
 		}
 	}
