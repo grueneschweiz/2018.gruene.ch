@@ -6,7 +6,7 @@
 	&__image {
 		max-width: 100%;
 		height: auto;
-		transition: transform $transition-mid cubic-bezier(0.390, 0.575, 0.565, 1.000);
+		transition: transform $transition-mid $transition-ease-image;
 	}
 
 	&__link {

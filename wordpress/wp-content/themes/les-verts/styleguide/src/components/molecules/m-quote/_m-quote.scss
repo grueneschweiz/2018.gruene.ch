@@ -18,6 +18,11 @@
 		transform: rotate(-5deg);
 		overflow: hidden;
 		margin: 0.0415em;
+		transition: transform $transition-mid $transition-ease-image;
+
+		@include hover {
+			transform: rotate(-5deg) scale(1.01);
+		}
 	}
 
 	&__image-inner {
