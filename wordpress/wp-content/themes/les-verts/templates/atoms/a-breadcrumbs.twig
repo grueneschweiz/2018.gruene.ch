@@ -1,0 +1,8 @@
+{% if fn('function_exists', 'yoast_breadcrumb') %}
+	<div class="a-breadcrumbs">
+		{{ fn('yoast_breadcrumb', '','') }}
+	</div>
+	<div class="a-breadcrumbs a-breadcrumbs--mobile">
+		{{ fn('yoast_breadcrumb', '','') }}
+	</div>
+{% endif %}

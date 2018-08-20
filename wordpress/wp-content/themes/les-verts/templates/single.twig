@@ -17,10 +17,10 @@
 				} %}
 			</div>
 		{% endif %}
-		{#<div class="page__breadcrumbs">#}
-		{#{{ render '@a-breadcrumbs' }}#}
-		{#</div>#}
-		{#<h1>1’000’000 CHF für die olympischen Spiele ohne Einverständnis der Bevölkerung?</h1>#}
+		<div class="page__breadcrumbs">
+			{% include 'atoms/a-breadcrumbs.twig' %}
+		</div>
+		<h1>{{ post.title }}</h1>
 		{#<div class="page__box">#}
 		{#{{ render '@m-in-short' }}#}
 		{#</div>#}
