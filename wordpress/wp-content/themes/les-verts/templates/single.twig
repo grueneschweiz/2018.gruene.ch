@@ -21,9 +21,15 @@
 			{% include 'atoms/a-breadcrumbs.twig' %}
 		</div>
 		<h1>{{ post.title }}</h1>
-		{#<div class="page__box">#}
-		{#{{ render '@m-in-short' }}#}
-		{#</div>#}
+		{% for block in post.get_field('content') %}
+			{% if block.acf_fc_layout == 'in_short' %}
+				<div class="page__box">
+					{% include 'molecules/m-in-short.twig' with block only %}
+				</div>
+			{% endif %}
+			{{ dump(block) }}
+		{% endfor %}
+
 		{#<div class="page__quote">#}
 		{#{{ render '@m-quote' }}#}
 		{#</div>#}
