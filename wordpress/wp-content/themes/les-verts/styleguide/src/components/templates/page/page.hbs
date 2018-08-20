@@ -1,17 +1,20 @@
 <div class="page">
 	{{render '@o-header'}}
 	<main class="page__main">
+		<article>
 		<div class="page__header-image">
 			{{> @a-image image-src='/img/Olympia_vors_Volk_d.jpg' alt="Die olympischen Ringe als Fünffränkler" title="Olympia vors Volk"}}
 		</div>
 		<div class="page__content">
-			<div class="page__share">
-				{{render '@m-share' }}
-			</div>
-			<div class="page__breadcrumbs">
-				{{render '@a-breadcrumbs'}}
-			</div>
-			<h1>1’000’000 CHF für die olympischen Spiele ohne Einverständnis der Bevölkerung?</h1>
+			<header>
+				<div class="page__share">
+					{{render '@m-share' }}
+				</div>
+				<div class="page__breadcrumbs">
+					{{render '@a-breadcrumbs'}}
+				</div>
+				<h1>1’000’000 CHF für die olympischen Spiele ohne Einverständnis der Bevölkerung?</h1>
+			</header>
 			<div class="page__box">
 				{{render '@m-in-short'}}
 			</div>
@@ -22,11 +25,12 @@
 				anderen Verwendung dieser knappen Mittel – etwa für Bildung, die Förderung des Breitensports oder die Umwelt –
 				nicht mehr gedient wäre. Es stellt sich auch die Frage, ob die Bevölkerung bereit ist, die Risiken eines
 				solchen internationalen Grossanlasses zu tragen.</p>
-			<div class="page__linked-content">
+			<footer class="page__linked-content">
 				{{render '@m-link-list'}}
 				{{render '@m-link-list'}}
-			</div>
+			</footer>
 		</div>
+		</article>
 	</main>
 	{{render '@o-footer'}}
 </div>

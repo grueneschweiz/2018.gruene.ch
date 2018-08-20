@@ -1,0 +1,21 @@
+<div class="m-link-list">
+	<div class="m-link-list__cat-title">
+		{% include 'atoms/a-cat-title.twig' with {
+			'link': {
+				'type': 'none',
+			},
+			'title': block_title
+		} only %}
+	</div>
+	<ul class="m-link-list__list">
+		{% for link in links %}
+			<li class="m-link-list__item">
+				<a href="{{ link.further_reading_link.url }}"
+					 class="m-link-list__link"
+					 {% if link.further_reading_link.target %}target="{{ link.further_reading_link.target }}"{% endif %}>
+					{{ link.further_reading_link.title }}
+				</a>
+			</li>
+		{% endfor %}
+	</ul>
+</div>

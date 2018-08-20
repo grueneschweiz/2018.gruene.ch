@@ -1,44 +1,55 @@
 {% extends "base.twig" %}
 
 {% block content %}
-	{% if post.header_image %}
-		<div class="page__header-image">
-			{% include 'atoms/a-image.twig' with {
-				'image': post.header_image,
-				'size': header
-			} only %}
-		</div>
-	{% endif %}
-	<div class="page__content">
-		{% if post.share_buttons %}
-			<div class="page__share">
-				{% include 'molecules/m-share.twig' with {
-					'url': post.link
-				} %}
+	<article>
+		{% if post.header_image %}
+			<div class="page__header-image">
+				{% include 'atoms/a-image.twig' with {
+					'image': post.header_image,
+					'size': header
+				} only %}
 			</div>
 		{% endif %}
-		<div class="page__breadcrumbs">
-			{% include 'atoms/a-breadcrumbs.twig' %}
+		<div class="page__content">
+			<header>
+				{% if post.share_buttons %}
+					<div class="page__share">
+						{% include 'molecules/m-share.twig' with {
+							'url': post.link
+						} only %}
+					</div>
+				{% endif %}
+				<div class="page__breadcrumbs">
+					{% include 'atoms/a-breadcrumbs.twig' %}
+				</div>
+				<h1>{{ post.title }}</h1>
+			</header>
+			{% for block in post.get_field('content') %}
+				{% if block.acf_fc_layout == 'in_short' %}
+					<div class="page__box">
+						{% include 'molecules/m-in-short.twig' with block only %}
+					</div>
+				{% elseif block.acf_fc_layout == 'quote' %}
+					<div class="page__quote">
+						{% include 'molecules/m-quote.twig' with block only %}
+					</div>
+				{% elseif block.acf_fc_layout == 'oembed' %}
+					{{ block.oembed }}
+				{% else %}
+					{{ block.text }}
+				{% endif %}
+			{% endfor %}
+
+			<footer class="page__linked-content">
+				{% include 'molecules/m-link-list.twig' with {
+					'block_title': __('More about it', constant('THEME_DOMAIN')),
+					'links': post.get_field('further_reading')
+				} only %}
+				{% include 'molecules/m-link-list.twig' with {
+					'block_title': __('This might also interesst you', constant('THEME_DOMAIN')),
+					'links': post.get_field('related_content')
+				} only %}
+			</footer>
 		</div>
-		<h1>{{ post.title }}</h1>
-		{% for block in post.get_field('content') %}
-			{% if block.acf_fc_layout == 'in_short' %}
-				<div class="page__box">
-					{% include 'molecules/m-in-short.twig' with block only %}
-				</div>
-			{% elseif block.acf_fc_layout == 'quote' %}
-				<div class="page__quote">
-					{% include 'molecules/m-quote.twig' with block only %}
-				</div>
-			{% else %}
-				{{ block.text }}
-			{% endif %}
-		{% endfor %}
-
-
-		{#<div class="page__linked-content">#}
-		{#{{ render '@m-link-list' }}#}
-		{#{{ render '@m-link-list' }}#}
-		{#</div>#}
-	</div>
+	</article>
 {% endblock %}
