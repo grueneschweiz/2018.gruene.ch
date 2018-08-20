@@ -3,11 +3,11 @@
     "title": "[Template]Linked Content",
     "fields": [
         {
-            "key": "field_5b6c4bfab8443",
-            "label": "Further Reading",
-            "name": "further_reading",
+            "key": "field_5b7afb3b9157f",
+            "label": "Linked Content Block",
+            "name": "linked_content_block",
             "type": "repeater",
-            "instructions": "Optional. Provide some links that explain the CURRENT TOPIC in more detail. Examples: Press release of the administration, protocol of the debate in parliament etc.",
+            "instructions": "Use linked content blocks to provide some additional information, the reader could look at, after he has read this page. \r\n\r\nA good first starting point could be a list of documents where the reader can dig deeper, like the debate in parliament etc. A second very important thing is a list of related content (from this website) the visitor should look at next :)",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -15,17 +15,17 @@
                 "class": "",
                 "id": ""
             },
-            "collapsed": "field_5b6c4bfb0b804",
+            "collapsed": "field_5b7afba7b6b08",
             "min": 0,
             "max": 0,
-            "layout": "table",
-            "button_label": "Add Link",
+            "layout": "block",
+            "button_label": "Add Linked Content Block",
             "sub_fields": [
                 {
-                    "key": "field_5b6c4bfb0b804",
-                    "label": "Link",
-                    "name": "further_reading_link",
-                    "type": "link",
+                    "key": "field_5b7afba7b6b08",
+                    "label": "Block Title",
+                    "name": "block_title",
+                    "type": "clone",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -34,54 +34,155 @@
                         "class": "",
                         "id": ""
                     },
-                    "return_format": "array"
-                }
-            ]
-        },
-        {
-            "key": "field_5b6c4bfab854c",
-            "label": "Related Content",
-            "name": "related_content",
-            "type": "repeater",
-            "instructions": "Optional. Provide OHTER CONTENT the reader might be interested in. It's best if the content is related. If for example this post is about nuclear energy, it be cool to link something about renewables.",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "collapsed": "",
-            "min": 0,
-            "max": 0,
-            "layout": "table",
-            "button_label": "Add Related Content",
-            "sub_fields": [
-                {
-                    "key": "field_5b6c4bfb2ce49",
-                    "label": "Related Content",
-                    "name": "related_content",
-                    "type": "post_object",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "post_type": [
-                        "post",
-                        "page",
-                        "attachment",
-                        "tribe_events",
-                        "people"
+                    "clone": [
+                        "group_5b684e748247e"
                     ],
-                    "taxonomy": [],
-                    "allow_null": 0,
-                    "multiple": 0,
-                    "return_format": "object",
-                    "ui": 1
+                    "display": "seamless",
+                    "layout": "block",
+                    "prefix_label": 0,
+                    "prefix_name": 0
+                },
+                {
+                    "key": "field_5b7af93309079",
+                    "label": "Linked Content",
+                    "name": "linked_content",
+                    "type": "flexible_content",
+                    "instructions": "Use either one of the auto blocks or add as many links and post \/ pages \/ events as you want.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "layouts": {
+                        "5b7af950bce91": {
+                            "key": "5b7af950bce91",
+                            "name": "links",
+                            "label": "Link",
+                            "display": "row",
+                            "sub_fields": [
+                                {
+                                    "key": "field_5b7af96e0907a",
+                                    "label": "Link",
+                                    "name": "link",
+                                    "type": "link",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "return_format": "array"
+                                }
+                            ],
+                            "min": "",
+                            "max": ""
+                        },
+                        "layout_5b7afa685296a": {
+                            "key": "layout_5b7afa685296a",
+                            "name": "post_objects",
+                            "label": "Single Post \/ Page \/ Event",
+                            "display": "row",
+                            "sub_fields": [
+                                {
+                                    "key": "field_5b7af9910907b",
+                                    "label": "Post \/ Page \/ Event",
+                                    "name": "post_object",
+                                    "type": "post_object",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "post_type": [
+                                        "post",
+                                        "page",
+                                        "tribe_events"
+                                    ],
+                                    "taxonomy": [],
+                                    "allow_null": 0,
+                                    "multiple": 0,
+                                    "return_format": "object",
+                                    "ui": 1
+                                }
+                            ],
+                            "min": "",
+                            "max": ""
+                        },
+                        "layout_5b7afc3e0ac83": {
+                            "key": "layout_5b7afc3e0ac83",
+                            "name": "add_by_tag",
+                            "label": "Auto: Add by Tag",
+                            "display": "block",
+                            "sub_fields": [
+                                {
+                                    "key": "field_5b7afcb10ac84",
+                                    "label": "Tag",
+                                    "name": "tag",
+                                    "type": "taxonomy",
+                                    "instructions": "All current and future posts, pages and events with at least one of the selected tags will be listed.",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "taxonomy": "post_tag",
+                                    "field_type": "multi_select",
+                                    "allow_null": 0,
+                                    "add_term": 0,
+                                    "save_terms": 0,
+                                    "load_terms": 0,
+                                    "return_format": "id",
+                                    "multiple": 0
+                                }
+                            ],
+                            "min": "",
+                            "max": "1"
+                        },
+                        "layout_5b7afd5adee29": {
+                            "key": "layout_5b7afd5adee29",
+                            "name": "add_by_category",
+                            "label": "Auto: Add by Category",
+                            "display": "block",
+                            "sub_fields": [
+                                {
+                                    "key": "field_5b7afd8cdee2a",
+                                    "label": "Category",
+                                    "name": "category",
+                                    "type": "taxonomy",
+                                    "instructions": "All current and future posts, pages and events with at least one of the selected categories will be listed.",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "taxonomy": "category",
+                                    "field_type": "multi_select",
+                                    "allow_null": 0,
+                                    "add_term": 0,
+                                    "save_terms": 0,
+                                    "load_terms": 0,
+                                    "return_format": "id",
+                                    "multiple": 0
+                                }
+                            ],
+                            "min": "",
+                            "max": "1"
+                        }
+                    },
+                    "button_label": "Add Linked Content",
+                    "min": "",
+                    "max": ""
                 }
             ]
         }
@@ -103,5 +204,5 @@
     "hide_on_screen": "",
     "active": 0,
     "description": "",
-    "modified": 1534180356
+    "modified": 1534788190
 }
