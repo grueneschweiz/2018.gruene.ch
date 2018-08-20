@@ -26,17 +26,16 @@
 				<div class="page__box">
 					{% include 'molecules/m-in-short.twig' with block only %}
 				</div>
+			{% elseif block.acf_fc_layout == 'quote' %}
+				<div class="page__quote">
+					{% include 'molecules/m-quote.twig' with block only %}
+				</div>
+			{% else %}
+				{{ block.text }}
 			{% endif %}
-			{{ dump(block) }}
 		{% endfor %}
 
-		{#<div class="page__quote">#}
-		{#{{ render '@m-quote' }}#}
-		{#</div>#}
-		{#<p>Diese Kosten und Risiken belasten die Staatskasse. Es stellt sich die Frage, ob der Öffentlichkeit mit einer#}
-		{#anderen Verwendung dieser knappen Mittel – etwa für Bildung, die Förderung des Breitensports oder die Umwelt –#}
-		{#nicht mehr gedient wäre. Es stellt sich auch die Frage, ob die Bevölkerung bereit ist, die Risiken eines#}
-		{#solchen internationalen Grossanlasses zu tragen.</p>#}
+
 		{#<div class="page__linked-content">#}
 		{#{{ render '@m-link-list' }}#}
 		{#{{ render '@m-link-list' }}#}
