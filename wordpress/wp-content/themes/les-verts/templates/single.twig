@@ -1,11 +1,13 @@
 {% extends "base.twig" %}
 
 {% block content %}
+	{% set main_content = post.get_field('main_content') %}
+	{% set link_lists = post.get_field('link_lists') %}
 	<article>
-		{% if post.header_image %}
+		{% if main_content.header_image %}
 			<div class="page__header-image">
 				{% include 'atoms/a-image.twig' with {
-					'image': post.header_image,
+					'image': main_content.header_image,
 					'size': header
 				} only %}
 			</div>
@@ -24,7 +26,7 @@
 				</div>
 				<h1>{{ post.title }}</h1>
 			</header>
-			{% for block in post.get_field('content') %}
+			{% for block in main_content.content %}
 				{% if block.acf_fc_layout == 'in_short' %}
 					<div class="page__box">
 						{% include 'molecules/m-in-short.twig' with block only %}
@@ -40,16 +42,29 @@
 				{% endif %}
 			{% endfor %}
 
-			<footer class="page__linked-content">
-				{% include 'molecules/m-link-list.twig' with {
-					'block_title': __('More about it', constant('THEME_DOMAIN')),
-					'links': post.get_field('further_reading')
-				} only %}
-				{% include 'molecules/m-link-list.twig' with {
-					'block_title': __('This might also interesst you', constant('THEME_DOMAIN')),
-					'links': post.get_field('related_content')
-				} only %}
-			</footer>
+			<aside class="page__linked-content">
+				{% if link_lists %}
+					{% for block in link_lists.link_lists %}
+						{% if block.acf_fc_layout == 'manual' %}
+							{% include 'molecules/m-link-list.twig' with {
+								'block_title': block.block_title,
+								'links': block.linked_content
+							} only %}
+						{% else %}
+							{% include 'molecules/m-link-list.twig' with {
+								'block_title': block.block_title,
+								'links': PostQuery({
+									'posts_per_page': 4,
+									'category__in': block.linked_content.categories,
+									'tag__in': block.linked_content.tags,
+									'post_status': 'publish'
+								}),
+								'full_width': block.full_width
+							} only %}
+						{% endif %}
+					{% endfor %}
+				{% endif %}
+			</aside>
 		</div>
 	</article>
 {% endblock %}

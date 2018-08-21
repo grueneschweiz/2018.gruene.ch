@@ -50,8 +50,9 @@
 		background-color: $color-grey-1;
 		@include fluid-props(padding-left padding-right, $fluid-min, $fluid-max, $margin-size-min, $margin-size-max);
 		@include fluid-props(padding-top padding-bottom, $fluid-min, $fluid-max, $margin-size-min, 96px);
-		@include fluid-props(margin-left margin-right, $fluid-min, $fluid-max, -$margin-size-min, -$margin-size-max);
 		@include fluid-props(margin-top margin-bottom, $fluid-min, $fluid-max, 50px, 100px);
+
+		@include fluid-props(margin-left margin-right, $fluid-min, $fluid-max, -$margin-size-min, -$margin-size-max);
 		width: calc(100% + 2 * (#{$margin-size-min} + #{$margin-size-max - $margin-size-min} * (100vw - #{$fluid-min}) / #{$fluid-max - $fluid-min}));
 	}
 
@@ -65,8 +66,16 @@
 		grid-gap: 50px;
 		@include fluid-props(margin-top margin-bottom, $fluid-min, $fluid-max, 50px, 100px);
 
-		@include media($_DESKTOP) {
+		@include fluid-props(margin-left margin-right, $fluid-min, $fluid-max, -$margin-size-min, -$margin-size-max);
+		width: calc(100% + 2 * (#{$margin-size-min} + #{$margin-size-max - $margin-size-min} * (100vw - #{$fluid-min}) / #{$fluid-max - $fluid-min}));
+
+		@include media($size-small) {
 			grid-template-columns: 1fr 1fr;
+		}
+
+		@media all and (max-width: ($size-small - 1)) {
+			margin-left: 0;
+			margin-right: 0;
 		}
 	}
 }

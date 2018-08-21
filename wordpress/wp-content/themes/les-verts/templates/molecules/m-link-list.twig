@@ -1,20 +1,19 @@
-<div class="m-link-list">
+<div class="m-link-list{% if full_width %} m-link-list--full-width{% endif %}">
 	<div class="m-link-list__cat-title">
-		{% include 'atoms/a-cat-title.twig' with {
-			'link': {
-				'type': 'none',
-			},
-			'title': block_title
-		} only %}
+		{% include 'atoms/a-cat-title.twig' with block_title only %}
 	</div>
 	<ul class="m-link-list__list">
 		{% for link in links %}
+			{% if link.post_date %}
+				{% set link = {
+					'type':'autolist',
+					'post_object': link,
+					'full_width': full_width
+				} %}
+			{% endif %}
 			<li class="m-link-list__item">
-				<a href="{{ link.further_reading_link.url }}"
-					 class="m-link-list__link"
-					 {% if link.further_reading_link.target %}target="{{ link.further_reading_link.target }}"{% endif %}>
-					{{ link.further_reading_link.title }}
-				</a>
+				{% include 'atoms/a-post-link.twig' with link only %}
+				{# todo: implement events #}
 			</li>
 		{% endfor %}
 	</ul>

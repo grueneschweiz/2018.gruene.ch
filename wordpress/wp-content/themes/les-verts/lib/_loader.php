@@ -149,6 +149,7 @@ require_once __DIR__ .'/tweaks/inject-svg-sprite.php';
 // functions
 require_once __DIR__ .'/twig/functions/get_lang.php';
 require_once __DIR__.'/twig/functions/register_timber_acf_post_type.php';
+require_once __DIR__.'/twig/functions/register_timber_post_query.php';
 
 // filters
 // require_once __DIR__ .'/twig/filters/newline.php';

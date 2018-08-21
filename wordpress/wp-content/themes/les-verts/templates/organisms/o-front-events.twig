@@ -6,7 +6,7 @@
         {% for event in events %}
             <a class="o-front-events__event{% if loop.index > block.max_num %} o-front-events__event--hidden{% endif %}"
                href="{{ event.link() }}">
-                {% include 'molecules/m-front-event.twig' with {
+                {% include 'atoms/a-event-link.twig' with {
                     'event': event,
                     'venue': attribute(loop.parent.venues, event._EventVenueID)
                 } only %}

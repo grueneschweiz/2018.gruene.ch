@@ -10,15 +10,15 @@
     {% set time = start_date ~ ' | ' ~ start_time ~ ' &ndash; ' ~ stop_time %}
 {% endif %}
 
-<article class="m-front-event">
-    <div class="m-front-event__image"
+<article class="a-event-link">
+    <div class="a-event-link__image"
          style="background-image: url('{{ Image(event.image).src|resize(148,94) }}')"></div>
-    <h3 class="m-front-event__title">{{ event.title }}</h3>
-    <div class="m-front-event__meta">
-        <time class="m-front-event__datetime"
+    <h3 class="a-event-link__title">{{ event.title }}</h3>
+    <div class="a-event-link__meta">
+        <time class="a-event-link__datetime"
               datetime="{{ timestamp }}">{{ time }}</time>
         {% if venue %}
-            <div class="m-front-event__place">{{ venue.title }}{% if venue._VenueAddress %}, {{ venue._VenueAddress }}{% endif %}{% if venue._VenueCity %}, {{ venue._VenueCity }}{% endif %}</div>
+            <div class="a-event-link__place">{{ venue.title }}{% if venue._VenueAddress %}, {{ venue._VenueAddress }}{% endif %}{% if venue._VenueCity %}, {{ venue._VenueCity }}{% endif %}</div>
         {% endif %}
     </div>
 </article>
