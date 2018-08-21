@@ -71,7 +71,7 @@
                                 "none": "None"
                             },
                             "allow_null": 0,
-                            "default_value": "Category",
+                            "default_value": "none",
                             "layout": "vertical",
                             "return_format": "value"
                         },
@@ -208,5 +208,5 @@
     "hide_on_screen": "",
     "active": 0,
     "description": "",
-    "modified": 1534249224
+    "modified": 1534863964
 }
