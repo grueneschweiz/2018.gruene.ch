@@ -13,39 +13,41 @@
 			</div>
 		{% endif %}
 		<div class="page__content">
-			<header>
+			<div class="page__shareable">
 				{% if post.share_buttons %}
-					<div class="page__share">
+					<aside class="page__share">
 						{% include 'molecules/m-share.twig' with {
 							'url': post.link
 						} only %}
-					</div>
+					</aside>
 				{% endif %}
-				<div class="page__breadcrumbs">
-					{% include 'atoms/a-breadcrumbs.twig' %}
-				</div>
-				<h1>{{ post.title }}</h1>
-			</header>
-			{% for block in main_content.content %}
-				{% if block.acf_fc_layout == 'in_short' %}
-					<div class="page__box">
-						{% include 'molecules/m-in-short.twig' with block only %}
+				<header>
+					<div class="page__breadcrumbs">
+						{% include 'atoms/a-breadcrumbs.twig' %}
 					</div>
-				{% elseif block.acf_fc_layout == 'quote' %}
-					<div class="page__quote">
-						{% include 'molecules/m-quote.twig' with block only %}
-					</div>
-				{% elseif block.acf_fc_layout == 'oembed' %}
-					{{ block.oembed }}
-				{% else %}
-					{{ block.text }}
-				{% endif %}
-			{% endfor %}
+					<h1>{{ post.title }}</h1>
+				</header>
+				{% for block in main_content.content %}
+					{% if block.acf_fc_layout == 'in_short' %}
+						<div class="page__box">
+							{% include 'molecules/m-in-short.twig' with block only %}
+						</div>
+					{% elseif block.acf_fc_layout == 'quote' %}
+						<div class="page__quote">
+							{% include 'molecules/m-quote.twig' with block only %}
+						</div>
+					{% elseif block.acf_fc_layout == 'oembed' %}
+						{{ block.oembed }}
+					{% else %}
+						{{ block.text }}
+					{% endif %}
+				{% endfor %}
+			</div>
 
 			{% if link_lists %}
-			<aside class="page__linked-content">
-				{% include 'organisms/o-linked-content.twig' with link_lists only %}
-			</aside>
+				<aside class="page__linked-content">
+					{% include 'organisms/o-linked-content.twig' with link_lists only %}
+				</aside>
 			{% endif %}
 		</div>
 	</article>
