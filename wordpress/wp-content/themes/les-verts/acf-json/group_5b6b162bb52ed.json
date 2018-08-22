@@ -3,6 +3,23 @@
     "title": "[Template]Positions",
     "fields": [
         {
+            "key": "field_5b7da2d494e05",
+            "label": "About this Block",
+            "name": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "Use this block to display a teaser of your political positions. Make sure you link a page, that will further detail your position.",
+            "new_lines": "wpautop",
+            "esc_html": 0
+        },
+        {
             "key": "field_5b6b163dfeb4f",
             "label": "Block Title",
             "name": "block_title",
@@ -115,5 +132,5 @@
     "hide_on_screen": "",
     "active": 0,
     "description": "",
-    "modified": 1534188708
+    "modified": 1534960405
 }

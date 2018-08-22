@@ -3,6 +3,23 @@
     "title": "[Template]Testimonials",
     "fields": [
         {
+            "key": "field_5b7da1211ced8",
+            "label": "About this Block",
+            "name": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "Use this block to display some fancy testimonials. This can just be some regular members, your candidate for the next election, your steering committee etc.",
+            "new_lines": "wpautop",
+            "esc_html": 0
+        },
+        {
             "key": "field_5b6c6e387d12b",
             "label": "Category",
             "name": "category",
@@ -83,5 +100,5 @@
     "hide_on_screen": "",
     "active": 0,
     "description": "",
-    "modified": 1534187937
+    "modified": 1534960071
 }

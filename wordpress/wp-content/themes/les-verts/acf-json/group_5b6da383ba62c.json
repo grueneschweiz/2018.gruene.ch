@@ -3,6 +3,23 @@
     "title": "[Template]Map Block",
     "fields": [
         {
+            "key": "field_5b71a8daf58b5",
+            "label": "About this Block – Advanced !",
+            "name": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "This is an advanced block. You'll need to know the fundamentals of SVG to use it. It can be used to display a map of your region with a nice popup for every region if it is clicked. As well as an engaging text to become a member.",
+            "new_lines": "wpautop",
+            "esc_html": 0
+        },
+        {
             "key": "field_5b6dae2576af9",
             "label": "Block Title",
             "name": "block_title",
@@ -22,23 +39,6 @@
             "layout": "block",
             "prefix_label": 0,
             "prefix_name": 0
-        },
-        {
-            "key": "field_5b71a8daf58b5",
-            "label": "Advanced !",
-            "name": "",
-            "type": "message",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "message": "This is an advanced block. You'll need to know the fundamentals of SVG to use it.",
-            "new_lines": "wpautop",
-            "esc_html": 0
         },
         {
             "key": "field_5b6daeb276afb",
@@ -263,5 +263,5 @@
     "hide_on_screen": "",
     "active": 0,
     "description": "",
-    "modified": 1534176018
+    "modified": 1534960224
 }

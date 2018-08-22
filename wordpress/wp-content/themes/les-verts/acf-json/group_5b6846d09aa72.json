@@ -3,6 +3,23 @@
     "title": "[Template]Single Post",
     "fields": [
         {
+            "key": "field_5b7d9f270b51d",
+            "label": "About this Block",
+            "name": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "Use this block to display a teaser of any post or page of this website.",
+            "new_lines": "wpautop",
+            "esc_html": 0
+        },
+        {
             "key": "field_5b6861bb4db05",
             "label": "Block Title",
             "name": "block_title",
@@ -147,5 +164,5 @@
     "hide_on_screen": "",
     "active": 0,
     "description": "",
-    "modified": 1534174384
+    "modified": 1534959504
 }

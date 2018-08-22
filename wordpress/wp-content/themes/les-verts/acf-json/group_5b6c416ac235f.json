@@ -24,7 +24,7 @@
             "label": "Title",
             "name": "title",
             "type": "text",
-            "instructions": "",
+            "instructions": "Title of the 'In Short' block. Use something like 'The most important in brief'",
             "required": 1,
             "conditional_logic": 0,
             "wrapper": {
@@ -32,7 +32,7 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "The most important in brief",
+            "default_value": "",
             "placeholder": "",
             "prepend": "",
             "append": "",
@@ -43,7 +43,7 @@
             "label": "Content",
             "name": "content",
             "type": "flexible_content",
-            "instructions": "",
+            "instructions": "The content in the 'In Short' block. Make sure to add a call to action.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -186,5 +186,5 @@
     "hide_on_screen": "",
     "active": 0,
     "description": "",
-    "modified": 1534782077
+    "modified": 1534956213
 }
