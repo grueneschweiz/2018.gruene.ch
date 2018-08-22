@@ -10,7 +10,8 @@
 	&__wrapper {
 		display: grid;
 		grid-template-columns: 1fr;
-		grid-gap: 50px;
+		grid-column-gap: 50px;
+		@include fluid-props(grid-row-gap, $fluid-min, $fluid-max, 60px, 120px);
 
 		@include media($size-small) {
 			grid-template-columns: 1fr 1fr;

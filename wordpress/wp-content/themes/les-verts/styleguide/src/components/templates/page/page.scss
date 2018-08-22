@@ -16,6 +16,11 @@
 		}
 	}
 
+	&__shareable > p {
+		max-width: $text-max-width;
+		width: 100%;
+	}
+
 	&__breadcrumbs {
 		@include fluid-props(margin-top, $fluid-min, $fluid-max, 40px, 60px);
 	}
@@ -61,7 +66,7 @@
 	}
 
 	&__linked-content {
-		@include fluid-props(margin-top margin-bottom, $fluid-min, $fluid-max, 120px, 180px);
+		@include fluid-props(margin-top margin-bottom, $fluid-min, $fluid-max, 80px, 180px);
 
 		@include fluid-props(margin-left margin-right, $fluid-min, $fluid-max, -$margin-size-min, -$margin-size-max);
 		width: calc(100% + 2 * (#{$margin-size-min} + #{$margin-size-max - $margin-size-min} * (100vw - #{$fluid-min}) / #{$fluid-max - $fluid-min}));

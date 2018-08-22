@@ -9,15 +9,13 @@
 	}
 
 	&__image-outer {
-		// use the font size so we only have to calculate it one and use em after
-		@include fluid-props(font-size, 320px, $fluid-max, 247px, 380px);
+		@include fluid-props(margin, 320px, $fluid-max, 10px, 15px);
 
 		flex-shrink: 0;
-		width: 1em;
-		height: 1em;
+		width: 247px;
+		height: 247px;
 		transform: rotate(-5deg);
 		overflow: hidden;
-		margin: 0.0415em;
 		transition: transform $transition-mid $transition-ease-image;
 
 		@include hover {
@@ -26,9 +24,9 @@
 	}
 
 	&__image-inner {
-		width: 1.083em; // cos(5deg) + sin(5deg)
-		height: 1.083em;
-		transform: translateX(-0.0415em) translateY(-0.0415em) rotate(5deg);
+		width: 108.3%; // cos(5deg) + sin(5deg)
+		height: 108.3%;
+		transform: translateX(-4.15%) translateY(-4.15%) rotate(5deg);
 	}
 
 	&__caption {
