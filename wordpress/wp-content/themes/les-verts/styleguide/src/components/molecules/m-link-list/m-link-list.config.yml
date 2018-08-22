@@ -37,6 +37,9 @@ variants:
   context:
     modifiers:
     - full-width
+    link-button:
+      label: 17 weitere Ressourcen
+      url: '#'
     links:
     - post: true
       has_excerpt: true

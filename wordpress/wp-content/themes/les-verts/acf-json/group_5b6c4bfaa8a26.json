@@ -3,6 +3,25 @@
     "title": "[Template]Link Lists",
     "fields": [
         {
+            "key": "field_5b7d1c098d538",
+            "label": "Title",
+            "name": "title",
+            "type": "text",
+            "instructions": "Use this title to explain the reader what follows. On a campaign page the title could be something like 'You might also be interested in'.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
             "key": "field_5b7c160fb4d15",
             "label": "Link List Blocks",
             "name": "link_lists",
@@ -293,5 +312,5 @@
     "hide_on_screen": "",
     "active": 0,
     "description": "",
-    "modified": 1534864984
+    "modified": 1534925984
 }

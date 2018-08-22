@@ -95,6 +95,7 @@ add_action( 'init', function() {
  */
 
 require_once __DIR__ . '/timber/ACFPost.php';
+require_once __DIR__ . '/timber/SUPTPostQuery.php';
 
 
 /**

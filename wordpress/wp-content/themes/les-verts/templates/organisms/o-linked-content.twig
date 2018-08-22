@@ -1,0 +1,28 @@
+<div class="o-linked-content">
+	<h2 class="o-linked-content__title">{{ title }}</h2>
+	<div class="o-linked-content__wrapper">
+		{% for block in link_lists %}
+			<div
+				class="o-linked-content__block{% if block.full_width %} o-linked-content__block--full-width{% endif %}">
+				{% if block.acf_fc_layout == 'manual' %}
+					{% include 'molecules/m-link-list.twig' with {
+						'block_title': block.block_title,
+						'links': block.linked_content
+					} only %}
+				{% else %}
+					{% include 'molecules/m-link-list.twig' with {
+						'block_title': block.block_title,
+						'links': PostQuery({
+							'posts_per_page': 4,
+							'category__in': block.linked_content.categories,
+							'tag__in': block.linked_content.tags,
+							'post_status': 'publish'
+						}),
+						'full_width': block.full_width
+					} only %}
+				{% endif %}
+			</div>
+		{% endfor %}
+	</div>
+</div>
+

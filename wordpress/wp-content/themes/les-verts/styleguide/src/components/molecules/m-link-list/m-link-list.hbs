@@ -9,4 +9,9 @@
 			</li>
 		{{/each}}
 	</ul>
+	{{#if link-button}}
+		<div class="m-link-list__more">
+			{{> @a-link-button link-button}}
+		</div>
+	{{/if}}
 </div>

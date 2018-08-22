@@ -2,41 +2,33 @@
 	{{render '@o-header'}}
 	<main class="page__main">
 		<article>
-		<div class="page__header-image">
-			{{> @a-image image-src='/img/Olympia_vors_Volk_d.jpg' alt="Die olympischen Ringe als Fünffränkler" title="Olympia vors Volk"}}
-		</div>
-		<div class="page__content">
-			<header>
-				<div class="page__share">
-					{{render '@m-share' }}
-				</div>
-				<div class="page__breadcrumbs">
-					{{render '@a-breadcrumbs'}}
-				</div>
-				<h1>1’000’000 CHF für die olympischen Spiele ohne Einverständnis der Bevölkerung?</h1>
-			</header>
-			<div class="page__box">
-				{{render '@m-in-short'}}
+			<div class="page__header-image">
+				{{> @a-image image-src='/img/Olympia_vors_Volk_d.jpg' alt="Die olympischen Ringe als Fünffränkler" title="Olympia vors Volk"}}
 			</div>
-			<div class="page__quote">
-				{{render '@m-quote' }}
+			<div class="page__content">
+				<header>
+					<div class="page__share">
+						{{render '@m-share' }}
+					</div>
+					<div class="page__breadcrumbs">
+						{{render '@a-breadcrumbs'}}
+					</div>
+					<h1>1’000’000 CHF für die olympischen Spiele ohne Einverständnis der Bevölkerung?</h1>
+				</header>
+				<div class="page__box">
+					{{render '@m-in-short'}}
+				</div>
+				<div class="page__quote">
+					{{render '@m-quote' }}
+				</div>
+				<p>Diese Kosten und Risiken belasten die Staatskasse. Es stellt sich die Frage, ob der Öffentlichkeit mit einer
+					anderen Verwendung dieser knappen Mittel – etwa für Bildung, die Förderung des Breitensports oder die Umwelt –
+					nicht mehr gedient wäre. Es stellt sich auch die Frage, ob die Bevölkerung bereit ist, die Risiken eines
+					solchen internationalen Grossanlasses zu tragen.</p>
+				<aside class="page__linked-content">
+					{{render '@o-linked-content'}}
+				</aside>
 			</div>
-			<p>Diese Kosten und Risiken belasten die Staatskasse. Es stellt sich die Frage, ob der Öffentlichkeit mit einer
-				anderen Verwendung dieser knappen Mittel – etwa für Bildung, die Förderung des Breitensports oder die Umwelt –
-				nicht mehr gedient wäre. Es stellt sich auch die Frage, ob die Bevölkerung bereit ist, die Risiken eines
-				solchen internationalen Grossanlasses zu tragen.</p>
-			<aside class="page__linked-content">
-				<div class="page__linked-content-block">
-					{{render '@m-link-list'}}
-				</div>
-				<div class="page__linked-content-block">
-					{{render '@m-link-list'}}
-				</div>
-				<div class="page__linked-content-block page__linked-content-block--full-width">
-					{{render '@m-link-list--full-width'}}
-				</div>
-			</aside>
-		</div>
 		</article>
 	</main>
 	{{render '@o-footer'}}

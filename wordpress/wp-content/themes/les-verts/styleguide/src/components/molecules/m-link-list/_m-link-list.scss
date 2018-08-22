@@ -12,6 +12,8 @@
 			display: grid;
 			grid-template-columns: 1fr;
 			grid-column-gap: 50px;
+			align-items: stretch;
+
 			@include media($size-small) {
 				grid-template-columns: 1fr 1fr;
 			}
@@ -20,5 +22,9 @@
 
 	&__item {
 		@include clean-li;
+	}
+
+	&__more {
+		margin: 48px 0;
 	}
 }

@@ -1,3 +1,5 @@
+{% set autolist = 0 %}
+
 <div class="m-link-list{% if full_width %} m-link-list--full-width{% endif %}">
 	<div class="m-link-list__cat-title">
 		{% include 'atoms/a-cat-title.twig' with block_title only %}
@@ -5,6 +7,7 @@
 	<ul class="m-link-list__list">
 		{% for link in links %}
 			{% if link.post_date %}
+				{% set autolist = 1 %}
 				{% set link = {
 					'type':'autolist',
 					'post_object': link,
@@ -12,9 +15,22 @@
 				} %}
 			{% endif %}
 			<li class="m-link-list__item">
-				{% include 'atoms/a-post-link.twig' with link only %}
-				{# todo: implement events #}
+				{% if link.post_object.post_type == 'tribe_events' %}
+					{% include 'atoms/a-event-link.twig' with {
+						'event': link.post_object
+					} only %}
+				{% else %}
+					{% include 'atoms/a-post-link.twig' with link only %}
+				{% endif %}
 			</li>
 		{% endfor %}
 	</ul>
+	{% if autolist and links.found_posts() > 4 %}
+		<div class="m-link-list__more">
+			{% include 'atoms/a-link-button.twig' with {
+				'label': _x('All %d %s', 'Example: All 17 press releases', constant('THEME_DOMAIN'))|format(links.found_posts(), block_title.title),
+				'link': 'XXXXXXXXXXXX'
+			} only %}
+		</div>
+	{% endif %}
 </div>
