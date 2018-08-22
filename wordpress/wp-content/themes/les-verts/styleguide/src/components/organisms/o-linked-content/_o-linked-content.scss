@@ -1,0 +1,26 @@
+.o-linked-content {
+	&__title {
+		@include fluid-props(margin-bottom, $fluid-min, $fluid-max, 60px, 100px);
+
+		@include media($size-small) {
+			text-align: center;
+		}
+	}
+
+	&__wrapper {
+		display: grid;
+		grid-template-columns: 1fr;
+		grid-column-gap: 50px;
+		@include fluid-props(grid-row-gap, $fluid-min, $fluid-max, 60px, 120px);
+
+		@include media($size-small) {
+			grid-template-columns: 1fr 1fr;
+		}
+	}
+
+	&__block--full-width {
+		@include media($size-small) {
+			grid-column: 1 / 3;
+		}
+	}
+}

@@ -523,23 +523,62 @@
             "layout": "block",
             "sub_fields": [
                 {
-                    "key": "field_5b681c8590acf",
+                    "key": "field_5b7d9b1980bb8",
                     "label": "Participate Title",
-                    "name": "title",
-                    "type": "text",
-                    "instructions": "Write something encouraging, like 'Let me be part of the success'.\r\nIf set, the title will be linked to the general participation page (see below).",
-                    "required": 1,
+                    "name": "participate_title",
+                    "type": "group",
+                    "instructions": "Use an encouraging title, like 'Let me be part of the success'.\r\n<br><br>Link this title with the page that contains an overview with all your participation possibilities.",
+                    "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
                         "width": "",
                         "class": "",
                         "id": ""
                     },
-                    "default_value": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "maxlength": ""
+                    "layout": "row",
+                    "sub_fields": [
+                        {
+                            "key": "field_5b681c8590acf",
+                            "label": "Participate Title",
+                            "name": "title",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "maxlength": ""
+                        },
+                        {
+                            "key": "field_5b6821cd715d5",
+                            "label": "Participate Title Link",
+                            "name": "general_participation_link",
+                            "type": "page_link",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "post_type": [
+                                "post",
+                                "page"
+                            ],
+                            "taxonomy": [],
+                            "allow_null": 1,
+                            "allow_archives": 1,
+                            "multiple": 0
+                        }
+                    ]
                 },
                 {
                     "key": "field_5b681f7ccd058",
@@ -581,29 +620,6 @@
                     "multiple": 0,
                     "return_format": "id",
                     "ui": 1
-                },
-                {
-                    "key": "field_5b6821cd715d5",
-                    "label": "Link to General Participation Page",
-                    "name": "general_participation_link",
-                    "type": "post_object",
-                    "instructions": "Select the page with all your participation possibilities",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "post_type": [
-                        "post",
-                        "page"
-                    ],
-                    "taxonomy": [],
-                    "allow_null": 0,
-                    "multiple": 0,
-                    "return_format": "object",
-                    "ui": 1
                 }
             ]
         }
@@ -632,5 +648,5 @@
     "hide_on_screen": "",
     "active": 0,
     "description": "",
-    "modified": 1534246617
+    "modified": 1534958661
 }

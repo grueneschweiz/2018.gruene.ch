@@ -3,6 +3,23 @@
     "title": "[Template]Vote Proposals",
     "fields": [
         {
+            "key": "field_5b7da085dc6f1",
+            "label": "About this Block",
+            "name": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "Use this block to display your vote proposals. Make sure you add a brief post with an explanation of your proposal first.",
+            "new_lines": "wpautop",
+            "esc_html": 0
+        },
+        {
             "key": "field_5b68621965af5",
             "label": "Category",
             "name": "category",
@@ -96,7 +113,7 @@
             "label": "Footer",
             "name": "footer",
             "type": "group",
-            "instructions": "",
+            "instructions": "As long as you don't provide a link text, the footer is not shown.\r\n<br><br>\r\nUse the all votations link to link to a page that contains links to the propositions of the greens of the cantons or the communities.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -107,32 +124,11 @@
             "layout": "row",
             "sub_fields": [
                 {
-                    "key": "field_5b687a7954f7d",
-                    "label": "All Votations Link",
-                    "name": "link",
-                    "type": "page_link",
-                    "instructions": "Link to a page with links to the propositions of the greens of the cantons or the communities.",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "post_type": [
-                        "page"
-                    ],
-                    "taxonomy": [],
-                    "allow_null": 0,
-                    "allow_archives": 0,
-                    "multiple": 0
-                },
-                {
                     "key": "field_5b687a2c54f7c",
-                    "label": "All Votation Label",
+                    "label": "All Votations Link Text",
                     "name": "link_label",
                     "type": "text",
-                    "instructions": "As long as you don't provide a label, the footer is not shown",
+                    "instructions": "",
                     "required": 0,
                     "conditional_logic": [
                         [
@@ -152,6 +148,27 @@
                     "prepend": "",
                     "append": "",
                     "maxlength": ""
+                },
+                {
+                    "key": "field_5b687a7954f7d",
+                    "label": "All Votations Link",
+                    "name": "link",
+                    "type": "page_link",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "post_type": [
+                        "page"
+                    ],
+                    "taxonomy": [],
+                    "allow_null": 0,
+                    "allow_archives": 0,
+                    "multiple": 0
                 }
             ]
         }
@@ -173,5 +190,5 @@
     "hide_on_screen": "",
     "active": 0,
     "description": "",
-    "modified": 1534172826
+    "modified": 1534959860
 }

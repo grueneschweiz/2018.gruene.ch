@@ -1,0 +1,18 @@
+<div class="m-in-short">
+	<h2 class="m-in-short__title">{{ title }}</h2>
+	{% for block in content %}
+		{% if block.acf_fc_layout == 'bullet_points' %}
+			<ul>
+				{% for item in block.bullet_points %}
+					<li>{{ item.bullet_point }}</li>
+				{% endfor %}
+			</ul>
+		{% elseif block.acf_fc_layout == 'call_to_action' %}
+			{% filter shortcodes %}
+				[torro_form id="{{ block.form }}"]
+			{% endfilter %}
+		{% else %}
+			{{ block.text }}
+		{% endif %}
+	{% endfor %}
+</div>

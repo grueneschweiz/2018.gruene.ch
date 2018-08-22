@@ -4,9 +4,76 @@ context:
   cat-title:
     label: Weitere Ressourcen
   links:
-    - label: Medienmitteilung der Grünen
+    - post: true
       link: '#'
-    - label: Medienmitteilung des Bundesrats
+      title: Für nachhaltige Sportveranstaltungen und ein Graubünden ohne Olympische Spiele
+      date: 17. Januar 2016
+      categories:
+      - Resolutionen
+      - Sport
+      modifiers:
+      - post
+    - post: true
       link: '#'
-    - label: Debatte im Parlament
+      title: Für nachhaltige Sportveranstaltungen und ein Graubünden ohne Olympische Spiele
+      modifiers:
+      - post
+    - page: true
       link: '#'
+      title: Für nachhaltige Sportveranstaltungen und ein Graubünden ohne Olympische Spiele
+      categories:
+      - Resolutionen
+      - Sport
+      modifiers:
+      - page
+    - external: true
+      link: '#'
+      title: Für nachhaltige Sportveranstaltungen und ein Graubünden ohne Olympische Spiele
+      target: _blank
+      modifiers:
+      - link
+variants:
+- name: Full-Width
+  context:
+    modifiers:
+    - full-width
+    link-button:
+      label: 17 weitere Ressourcen
+      url: '#'
+    links:
+    - post: true
+      has_excerpt: true
+      link: '#'
+      title: Für nachhaltige Sportveranstaltungen und ein Graubünden ohne Olympische Spiele
+      date: 17. Januar 2016
+      excerpt: Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum
+      modifiers:
+      - post
+      - excerpt
+    - post: true
+      has_excerpt: true
+      link: '#'
+      title: Für nachhaltige Sportveranstaltungen und ein Graubünden ohne Olympische Spiele
+      date: 17. Januar 2016
+      excerpt: Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum
+      modifiers:
+      - post
+      - excerpt
+    - post: true
+      has_excerpt: true
+      link: '#'
+      title: Für nachhaltige Sportveranstaltungen und ein Graubünden ohne Olympische Spiele
+      date: 17. Januar 2016
+      excerpt: Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum
+      modifiers:
+      - post
+      - excerpt
+    - post: true
+      has_excerpt: true
+      link: '#'
+      title: Für nachhaltige Sportveranstaltungen und ein Graubünden ohne Olympische Spiele
+      date: 17. Januar 2016
+      excerpt: Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum
+      modifiers:
+      - post
+      - excerpt

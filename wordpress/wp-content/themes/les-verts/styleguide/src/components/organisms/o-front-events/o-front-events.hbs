@@ -4,9 +4,11 @@
 	</div>
 	<div class="o-front-events__events">
 		{{#each events}}
-			<a class="o-front-events__event{{#if this.hidden}} o-front-events__event--hidden{{/if}}" href="{{this.link}}">
-				{{> @m-front-event this }}
-			</a>
+			<div class="o-front-events__event{{#if this.hidden}} o-front-events__event--hidden{{/if}}">
+				<div class="o-front-events__inner">
+					{{> @a-event-link this }}
+				</div>
+			</div>
 		{{/each}}
 	</div>
 	<div class="o-front-events__more">

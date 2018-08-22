@@ -65,7 +65,6 @@ add_filter( 'timmy/sizes', function( $sizes ) {
 		'testimonial' => [
 			'resize' => [ 288, 260 ],
 			'srcset' => [ [288,260], [576,520] ],
-			'sizes' => '288px 1x, 576px 2x',
 			'name' => 'Testimonial',
 			'post_types' => [ 'all' ],
 			'show_in_ui' => false,
@@ -75,7 +74,15 @@ add_filter( 'timmy/sizes', function( $sizes ) {
 		'author' => [
 			'resize' => [ 100, 100 ],
 			'srcset' => [ [100,100], [200,200] ],
-			'sizes' => '100px 1x, 200px 2x',
+			'name' => 'Author image',
+			'post_types' => [ 'all' ],
+			'show_in_ui' => false,
+		],
+		
+		// quote image
+		'quote' => [
+			'resize' => [ 380, 380 ],
+			'srcset' => [ [380,380], [546, 546],[720,720] ],
 			'name' => 'Author image',
 			'post_types' => [ 'all' ],
 			'show_in_ui' => false,

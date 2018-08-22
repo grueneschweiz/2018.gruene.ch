@@ -7,7 +7,7 @@
             "label": "Block Title",
             "name": "block_title",
             "type": "group",
-            "instructions": "",
+            "instructions": "The 'Block Title' aims to provide the user an aid to navigate quickly over the page. Use a generic title (for example the category the content belongs to). Make sure the title is very short (one word, if possible) and link it with the place, where a user can find all the content that meets the given title (if the title is a category, link it to this categories archive page).",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -71,7 +71,7 @@
                                 "none": "None"
                             },
                             "allow_null": 0,
-                            "default_value": "Category",
+                            "default_value": "none",
                             "layout": "vertical",
                             "return_format": "value"
                         },
@@ -208,5 +208,5 @@
     "hide_on_screen": "",
     "active": 0,
     "description": "",
-    "modified": 1534249224
+    "modified": 1534956867
 }

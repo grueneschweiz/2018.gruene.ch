@@ -23,21 +23,32 @@
 			background-size: contain;
 			width: 0.8em;
 			margin: 0.2em 0.2em 0 0.5em;
-			height: 0.8em;
+			height: 0.8em !important; // make sure to overwrite the hover height defined in the typography
 			display: none;
+		}
 
+		&::after {
 			@include media($_DESKTOP) {
 				display: inline-block;
 			}
 		}
+	}
 
-		&::before {
-			transform: rotate(180deg);
-			display: inline-block;
+	.breadcrumb_second_last a {
+		display: inline-block;
 
-			@include media($_DESKTOP) {
-				display: none;
+		@include media($_MOBILE){
+			&::before {
+				display: inline-block;
+				transform: rotate(180deg);
+				margin: 0 0.5em -0.1em 0.2em;
 			}
+		}
+	}
+
+	.breadcrumb_last {
+		@include media($_MOBILE) {
+			display: none;
 		}
 	}
 

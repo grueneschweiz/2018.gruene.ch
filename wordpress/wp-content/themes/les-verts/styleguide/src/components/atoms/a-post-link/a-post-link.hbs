@@ -1,0 +1,36 @@
+{{#if has_excerpt}}
+	<article class="a-post-link">
+{{else}}
+	<a class="a-post-link a-post-link--link" href="{{link}}"{{#if target}} target="{{target}}"{{/if}}>
+{{/if}}
+{{#if has_excerpt}}
+		<header class="a-post-link__meta a-post-link__meta--header">
+			{{#if date}}
+				<time class="a-post-link__meta-item" datetime="{{date}}">{{date}}</time>
+			{{/if}}
+		</header>
+{{/if}}
+{{#if has_excerpt}}<a href="{{link}}" class="a-post-link__title-link">{{/if}}
+	<h3 class="a-post-link__title">{{title}}</h3>
+{{#if has_excerpt}}</a>{{/if}}
+{{#if has_excerpt}}
+		<p class="a-post-link__excerpt">{{excerpt}}</p>
+	{{> '@a-link-button' url=link label='Weiterlesen'}}
+{{else}}
+	{{#unless external}}
+			<footer class="a-post-link__meta a-post-link__meta--footer">
+				{{#if date}}
+					<time class="a-post-link__meta-item" datetime="{{date}}">{{date}}</time>
+				{{/if}}
+				{{#if categories}}
+					<div class="a-post-link__meta-item">{{categories}}</div>
+				{{/if}}
+			</footer>
+	{{/unless}}
+{{/if}}
+{{#if has_excerpt}}
+	</article>
+{{else}}
+	</a>
+{{/if}}
+

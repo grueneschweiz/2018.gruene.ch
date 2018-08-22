@@ -1,0 +1,29 @@
+<div class="m-share">
+	<div class="m-share__buttons">
+		<div class="m-share__icon">
+			{% include 'atoms/a-social-icon.twig' with {
+				'type': 'twitter',
+				'link': 'https://twitter.com/intent/tweet?url=' ~ (url|url_encode)
+			} only %}
+		</div>
+		<div class="m-share__icon">
+			{% include 'atoms/a-social-icon.twig' with {
+				'type': 'facebook',
+				'link': 'https://www.facebook.com/sharer.php?u=' ~ (url|url_encode)
+			} only %}
+		</div>
+		<div class="m-share__icon">
+			{% include 'atoms/a-social-icon.twig' with {
+				'type': 'mail',
+				'link': 'mailto:?body='~url
+			} only %}
+		</div>
+		<div class="m-share__desc"><span class="m-share__rotator">{{ __('Share', constant('THEME_DOMAIN')) }}</span></div>
+	</div>
+	<button class="m-share__mobile" aria-label="{{ __('Toggle share buttons', constant('THEME_DOMAIN')) }}">
+		<svg role="img">
+			<title>{{ __('Share', constant('THEME_DOMAIN')) }}</title>
+			<use xlink:href="#mobile"></use>
+		</svg>
+	</button>
+</div>

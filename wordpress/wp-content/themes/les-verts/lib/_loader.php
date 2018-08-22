@@ -14,7 +14,7 @@ namespace SUPT;
 
 if( class_exists( 'acf' ) ) {
 	require_once __DIR__ .'/acf/acf-init.php';
-	require_once __DIR__ .'/acf/acf-flexible-content-defaults.php';
+	//require_once __DIR__ .'/acf/acf-content-defaults.php';
 
 	// custom locations (= where to show which field groups)
 	// require_once __DIR__ .'/acf/custom-locations/localized-options.php';
@@ -39,7 +39,7 @@ if( class_exists( 'acf' ) ) {
 require_once __DIR__ .'/admin/acf-protect-admin.php';
 require_once __DIR__ . '/admin/customize-tinymce.php';
 require_once __DIR__ .'/admin/admin-hide-pll-sync.php';
-require_once __DIR__ .'/admin/lower-yoast-metabox.php';
+require_once __DIR__ .'/admin/tweak-yoast-seo.php';
 require_once __DIR__ .'/admin/smush.php';
 require_once __DIR__ .'/admin/svg-support.php';
 require_once __DIR__ .'/admin/timmy-config.php';
@@ -95,6 +95,7 @@ add_action( 'init', function() {
  */
 
 require_once __DIR__ . '/timber/ACFPost.php';
+require_once __DIR__ . '/timber/SUPTPostQuery.php';
 
 
 /**
@@ -149,6 +150,7 @@ require_once __DIR__ .'/tweaks/inject-svg-sprite.php';
 // functions
 require_once __DIR__ .'/twig/functions/get_lang.php';
 require_once __DIR__.'/twig/functions/register_timber_acf_post_type.php';
+require_once __DIR__.'/twig/functions/register_timber_post_query.php';
 
 // filters
 // require_once __DIR__ .'/twig/filters/newline.php';

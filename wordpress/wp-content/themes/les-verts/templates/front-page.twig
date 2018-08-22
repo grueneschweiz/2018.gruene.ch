@@ -2,15 +2,16 @@
 
 {% block content %}
     <section class="page__campaign">
+			{% set bars = post.get_field('campaign_bars') %}
         {% include 'organisms/o-campaign.twig' with {
             'image': post.campaign_image,
             'bars': {
-                'headlines_green': post.get_field('campaign_bars_headlines_green'),
-                'headlines_white': post.get_field('campaign_bars_headlines_white'),
-                'headlines_magenta': post.get_field('campaign_bars_headlines_magenta'),
-                'sublines_white': post.get_field('campaign_bars_sublines_white'),
-                'sublines_green': post.get_field('campaign_bars_sublines_green'),
-                'alignment': post.get_field('campaign_bars_bar_alignment'),
+                'headlines_green': bars.headlines.green,
+                'headlines_white': bars.headlines.white,
+                'headlines_magenta': bars.headlines.magenta,
+                'sublines_white': bars.sublines.white,
+                'sublines_green': bars.sublines.green,
+                'alignment': bars.bar_alignment,
             },
             'desc': {
                 'title': post.campaign_summary_title,
@@ -19,10 +20,10 @@
                 'link': post.get_field('campaign_link').link()
             },
             'cta': {
-                'title': post.campaign_call_to_action_title,
+                'title': post.campaign_call_to_action_participate_title_title,
                 'desc': post.campaign_call_to_action_description,
                 'form': post.campaign_call_to_action_form,
-                'link': post.campaign_call_to_action_general_participation_link.link(),
+                'link': TimberPost(post.campaign_call_to_action_participate_title_general_participation_link).link(),
             }
         } only %}
     </section>

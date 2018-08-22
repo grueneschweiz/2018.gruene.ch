@@ -3,6 +3,23 @@
     "title": "[Template]Events Block",
     "fields": [
         {
+            "key": "field_5b7da28b9c989",
+            "label": "About this Block",
+            "name": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "This block displays a teaser of your most recent events.",
+            "new_lines": "wpautop",
+            "esc_html": 0
+        },
+        {
             "key": "field_5b6ae7071a2b7",
             "label": "Block Title",
             "name": "block_title",
@@ -94,5 +111,5 @@
     "hide_on_screen": "",
     "active": 0,
     "description": "",
-    "modified": 1534174259
+    "modified": 1534960316
 }

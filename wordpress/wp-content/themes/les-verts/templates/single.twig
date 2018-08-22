@@ -1,38 +1,54 @@
 {% extends "base.twig" %}
 
 {% block content %}
-	<div class="content-wrapper">
-		<article class="post-type-{{ post.post_type }}" id="post-{{ post.ID }}">
-			<img src="{{ post.thumbnail.src|resize(1200, 300) }}">
-			<section class="article-content">
-				<h1 class="article-h1">{{ post.title }}</h1>
-				<p class="blog-author">
-					<span>By</span><a href="{{post.author.path}}"> {{ post.author.name }} </a><span>&bull;</span> {{ post.date }}
-				</p>
-				<div class="article-body">
-					{{post.content}}
-				</div>
-			</section>
-
-			<!-- comment box -->
-			<section class="comment-box">
-				<!-- comments -->
-				<div class="comments">
-				    {% if post.comments %}
-					<h3> comments </h3>
-					{% for cmt in post.comments %}
-					    {% include "comment.twig" with {comment:cmt} %}
-					{% endfor %}
-				    {% endif %}
-				</div>
-
-				{% if post.comment_status == "closed" %}
-					<p> comments for this post are closed </p>
-				{% else %}
-				    <!-- comment form -->
-				    {% include "comment-form.twig" %}
+	{% set main_content = post.get_field('main_content') %}
+	{% set link_lists = post.get_field('link_lists') %}
+	<article>
+		{% if main_content.header_image %}
+			<div class="page__header-image">
+				{% include 'atoms/a-image.twig' with {
+					'image': main_content.header_image,
+					'size': header
+				} only %}
+			</div>
+		{% endif %}
+		<div class="page__content">
+			<div class="page__shareable">
+				{% if post.share_buttons %}
+					<aside class="page__share">
+						{% include 'molecules/m-share.twig' with {
+							'url': post.link
+						} only %}
+					</aside>
 				{% endif %}
-			</section>
-		</article>
-	</div><!-- /content-wrapper -->
+				<header>
+					<div class="page__breadcrumbs">
+						{% include 'atoms/a-breadcrumbs.twig' %}
+					</div>
+					<h1>{{ post.title }}</h1>
+				</header>
+				{% for block in main_content.content %}
+					{% if block.acf_fc_layout == 'in_short' %}
+						<div class="page__box">
+							{% include 'molecules/m-in-short.twig' with block only %}
+						</div>
+					{% elseif block.acf_fc_layout == 'quote' %}
+						<div class="page__quote">
+							{% include 'molecules/m-quote.twig' with block only %}
+						</div>
+					{% elseif block.acf_fc_layout == 'oembed' %}
+						{{ block.oembed }}
+					{% else %}
+						{{ block.text }}
+					{% endif %}
+				{% endfor %}
+			</div>
+
+			{% if link_lists %}
+				<aside class="page__linked-content">
+					{% include 'organisms/o-linked-content.twig' with link_lists only %}
+				</aside>
+			{% endif %}
+		</div>
+	</article>
 {% endblock %}

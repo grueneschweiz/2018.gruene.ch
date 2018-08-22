@@ -16,6 +16,11 @@
 		}
 	}
 
+	&__shareable > p {
+		max-width: $text-max-width;
+		width: 100%;
+	}
+
 	&__breadcrumbs {
 		@include fluid-props(margin-top, $fluid-min, $fluid-max, 40px, 60px);
 	}
@@ -24,14 +29,14 @@
 	&__share {
 		right: 0;
 
-		@include media($_MOBILE){
+		@include media($_MOBILE) {
 			position: fixed;
 			z-index: 5;
 			bottom: 0;
 			background: $color-white;
 		}
 
-		@include media($_DESKTOP){
+		@include media($_DESKTOP) {
 			position: relative; // IE: just keep it fixed
 			position: sticky;
 			top: 200px;
@@ -50,8 +55,9 @@
 		background-color: $color-grey-1;
 		@include fluid-props(padding-left padding-right, $fluid-min, $fluid-max, $margin-size-min, $margin-size-max);
 		@include fluid-props(padding-top padding-bottom, $fluid-min, $fluid-max, $margin-size-min, 96px);
-		@include fluid-props(margin-left margin-right, $fluid-min, $fluid-max, -$margin-size-min, -$margin-size-max);
 		@include fluid-props(margin-top margin-bottom, $fluid-min, $fluid-max, 50px, 100px);
+
+		@include fluid-props(margin-left margin-right, $fluid-min, $fluid-max, -$margin-size-min, -$margin-size-max);
 		width: calc(100% + 2 * (#{$margin-size-min} + #{$margin-size-max - $margin-size-min} * (100vw - #{$fluid-min}) / #{$fluid-max - $fluid-min}));
 	}
 
@@ -60,13 +66,14 @@
 	}
 
 	&__linked-content {
-		display: grid;
-		grid-template-columns: 1fr;
-		grid-gap: 50px;
-		@include fluid-props(margin-top margin-bottom, $fluid-min, $fluid-max, 50px, 100px);
+		@include fluid-props(margin-top margin-bottom, $fluid-min, $fluid-max, 80px, 180px);
 
-		@include media($_DESKTOP) {
-			grid-template-columns: 1fr 1fr;
+		@include fluid-props(margin-left margin-right, $fluid-min, $fluid-max, -$margin-size-min, -$margin-size-max);
+		width: calc(100% + 2 * (#{$margin-size-min} + #{$margin-size-max - $margin-size-min} * (100vw - #{$fluid-min}) / #{$fluid-max - $fluid-min}));
+
+		@media all and (max-width: ($size-small - 1)) {
+			margin-left: 0;
+			margin-right: 0;
 		}
 	}
 }
