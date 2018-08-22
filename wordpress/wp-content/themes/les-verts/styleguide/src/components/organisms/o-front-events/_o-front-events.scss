@@ -19,6 +19,7 @@
 	&__events {
 		width: 100%;
 		display: grid;
+		align-items: stretch;
 		grid-template-columns: 1fr;
 		@include fluid-props(grid-column-gap, $size-medium, $grid-max-width-max, $grid-gap-min, $grid-gap-max);
 	}
@@ -26,12 +27,15 @@
 	&--full-width &__events {
 		@include media($_DESKTOP) {
 			grid-template-columns: 1fr 1fr;
-			align-items: start;
 		}
 	}
 
+	&__inner {
+		border-bottom: 1px solid $color-grey-2;
+		height: 100%;
+	}
+
 	&__event {
-		@include clean-link;
 		width: 100%;
 		@include fluid-grid-item-props(padding-left padding-right);
 

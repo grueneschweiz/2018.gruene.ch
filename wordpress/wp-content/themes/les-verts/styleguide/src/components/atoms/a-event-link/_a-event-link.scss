@@ -1,8 +1,9 @@
 .a-event-link {
+	@include clean-link;
+
 	display: grid;
 	grid-template-columns: 1fr;
 	grid-column-gap: 12px;
-	border-bottom: 1px solid $color-grey-2;
 	@include fluid-props(padding-top padding-bottom, $fluid-min, $fluid-max, 18px, 22px);
 
 	@include media($size-tiny) {

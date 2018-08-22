@@ -5,7 +5,9 @@
 	<ul class="m-link-list__list">
 		{{#each links}}
 			<li class="m-link-list__item">
-				{{> @a-post-link this}}
+				<div class="m-link-list__inner">
+					{{> @a-post-link this}}
+				</div>
 			</li>
 		{{/each}}
 	</ul>

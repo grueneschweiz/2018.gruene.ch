@@ -22,6 +22,26 @@
 
 	&__item {
 		@include clean-li;
+		transition: background-color $transition-fast $transition-ease;
+		margin: 0 -12px;
+		padding: 0 12px;
+
+		@include hover {
+			background-color: $color-grey-1;
+		}
+	}
+
+	&--full-width {
+		.m-link-list__item {
+			@include hover {
+				background-color: transparent;
+			}
+		}
+	}
+
+	&__inner {
+		border-bottom: 1px solid $color-grey-2;
+		height: 100%;
 	}
 
 	&__more {

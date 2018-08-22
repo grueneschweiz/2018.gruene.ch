@@ -2,13 +2,9 @@
 	@include clean-link;
 
 	display: block;
-	height: 100%;
-	border-bottom: 1px solid $color-grey-2;
 	@include fluid-props(padding-top padding-bottom, $fluid-min, $fluid-max, 22px, 26px);
 
 	&--link {
-		transition: background-color $transition-fast $transition-ease;
-
 		@include media($_MOBILE) {
 			position: relative;
 			padding-right: 2em;
@@ -24,10 +20,6 @@
 				right: 0;
 				top: 50%;
 			}
-		}
-
-		@include hover {
-			background-color: $color-grey-1;
 		}
 
 		.a-post-link__title {
