@@ -7,6 +7,17 @@
 		@include clean-ul;
 	}
 
+	&--full-width {
+		.m-link-list__list {
+			display: grid;
+			grid-template-columns: 1fr;
+			grid-column-gap: 50px;
+			@include media($size-small) {
+				grid-template-columns: 1fr 1fr;
+			}
+		}
+	}
+
 	&__item {
 		@include clean-li;
 	}

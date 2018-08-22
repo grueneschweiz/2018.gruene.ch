@@ -45,23 +45,25 @@
 			<aside class="page__linked-content">
 				{% if link_lists %}
 					{% for block in link_lists.link_lists %}
-						{% if block.acf_fc_layout == 'manual' %}
-							{% include 'molecules/m-link-list.twig' with {
-								'block_title': block.block_title,
-								'links': block.linked_content
-							} only %}
-						{% else %}
-							{% include 'molecules/m-link-list.twig' with {
-								'block_title': block.block_title,
-								'links': PostQuery({
-									'posts_per_page': 4,
-									'category__in': block.linked_content.categories,
-									'tag__in': block.linked_content.tags,
-									'post_status': 'publish'
-								}),
-								'full_width': block.full_width
-							} only %}
-						{% endif %}
+						<div class="page__linked-content-block{% if block.full_width %} page__linked-content-block--full-width{% endif %}">
+							{% if block.acf_fc_layout == 'manual' %}
+								{% include 'molecules/m-link-list.twig' with {
+									'block_title': block.block_title,
+									'links': block.linked_content
+								} only %}
+							{% else %}
+								{% include 'molecules/m-link-list.twig' with {
+									'block_title': block.block_title,
+									'links': PostQuery({
+										'posts_per_page': 4,
+										'category__in': block.linked_content.categories,
+										'tag__in': block.linked_content.tags,
+										'post_status': 'publish'
+									}),
+									'full_width': block.full_width
+								} only %}
+							{% endif %}
+						</div>
 					{% endfor %}
 				{% endif %}
 			</aside>

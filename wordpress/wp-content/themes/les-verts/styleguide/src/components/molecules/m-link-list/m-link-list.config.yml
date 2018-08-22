@@ -14,13 +14,10 @@ context:
       modifiers:
       - post
     - post: true
-      has_excerpt: true
       link: '#'
       title: Für nachhaltige Sportveranstaltungen und ein Graubünden ohne Olympische Spiele
-      excerpt: Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum
       modifiers:
       - post
-      - excerpt
     - page: true
       link: '#'
       title: Für nachhaltige Sportveranstaltungen und ein Graubünden ohne Olympische Spiele
@@ -35,3 +32,45 @@ context:
       target: _blank
       modifiers:
       - link
+variants:
+- name: Full-Width
+  context:
+    modifiers:
+    - full-width
+    links:
+    - post: true
+      has_excerpt: true
+      link: '#'
+      title: Für nachhaltige Sportveranstaltungen und ein Graubünden ohne Olympische Spiele
+      date: 17. Januar 2016
+      excerpt: Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum
+      modifiers:
+      - post
+      - excerpt
+    - post: true
+      has_excerpt: true
+      link: '#'
+      title: Für nachhaltige Sportveranstaltungen und ein Graubünden ohne Olympische Spiele
+      date: 17. Januar 2016
+      excerpt: Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum
+      modifiers:
+      - post
+      - excerpt
+    - post: true
+      has_excerpt: true
+      link: '#'
+      title: Für nachhaltige Sportveranstaltungen und ein Graubünden ohne Olympische Spiele
+      date: 17. Januar 2016
+      excerpt: Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum
+      modifiers:
+      - post
+      - excerpt
+    - post: true
+      has_excerpt: true
+      link: '#'
+      title: Für nachhaltige Sportveranstaltungen und ein Graubünden ohne Olympische Spiele
+      date: 17. Januar 2016
+      excerpt: Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum
+      modifiers:
+      - post
+      - excerpt
