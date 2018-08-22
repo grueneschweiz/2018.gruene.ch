@@ -14,7 +14,7 @@ namespace SUPT;
 
 if( class_exists( 'acf' ) ) {
 	require_once __DIR__ .'/acf/acf-init.php';
-	require_once __DIR__ .'/acf/acf-content-defaults.php';
+	//require_once __DIR__ .'/acf/acf-content-defaults.php';
 
 	// custom locations (= where to show which field groups)
 	// require_once __DIR__ .'/acf/custom-locations/localized-options.php';
