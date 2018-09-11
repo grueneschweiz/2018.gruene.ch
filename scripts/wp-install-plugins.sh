@@ -19,8 +19,6 @@
 $WPCLI plugin activate polylang-pro --network
 # TODO: activate license key
 
-
-
 ## Advanced Custom Fields PRO
 $WPCLI plugin activate advanced-custom-fields-pro --network
 # $WPCLI eval 'acf_pro_update_license("INSERT LICENSE NUMBER HERE");'
@@ -59,20 +57,28 @@ $WPCLI plugin install the-events-calendar --activate-network
 # Duplicate posts
 $WPCLI plugin install post-duplicator --activate-network
 
+# Disable gutenberg
+$WPCLI plugin install classic-editor --activate-network
+
+#====================
+# Enable theme
+#====================
+$WPCLI theme enable les-verts --network
+
+#====================
+# Setup default site
+#====================
+$WPCLI option update timezone_string "Europe/Zurich"
+$WPCLI theme activate les-verts
+
+#====================
 # Delete useless themes & extensions
+#====================
 $WPCLI theme delete twentyfifteen
 $WPCLI theme delete twentysixteen
 $WPCLI theme delete twentyseventeen
 $WPCLI plugin uninstall akismet --deactivate
 $WPCLI plugin uninstall hello --deactivate
-
-
-#====================
-# Setup default site
-#====================
-# $WPCLI option update timezone_string "Europe/Zurich"
-$WPCLI theme enable les-verts --network
-
 
 #=================
 # Setup all sites
