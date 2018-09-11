@@ -125,7 +125,7 @@ add_action( 'widgets_init', function() {
  * Register theme specific customizer classes
  */
 
-require_once __DIR__ . '/customizer/logo.php';
+require_once __DIR__ . '/customizer/Logo.php';
 
 Customizer\Logo::register();
 
