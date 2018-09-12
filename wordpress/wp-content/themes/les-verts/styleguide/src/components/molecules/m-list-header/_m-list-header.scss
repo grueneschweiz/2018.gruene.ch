@@ -1,0 +1,38 @@
+.m-list-header {
+	display: flex;
+	align-items: baseline;
+	justify-content: space-between;
+	flex-wrap: wrap;
+
+
+	&__title {
+		color: $color-text;
+	}
+
+	&__criteria {
+		line-height: 1.5em;
+	}
+
+	&__criteria-desc {
+		font-weight: $font-weight-semi;
+		display: inline-block;
+		margin-right: 0.75em;
+	}
+
+	&__criteria-list {
+		@include clean-ul;
+
+		display: inline-block;
+	}
+
+	&__criteria-item {
+		@include clean-li;
+
+		display: inline-block;
+		line-height: 1.5em;
+
+		&:not(:last-of-type){
+			margin-right: 0.75em;
+		}
+	}
+}

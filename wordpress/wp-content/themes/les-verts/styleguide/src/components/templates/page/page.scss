@@ -43,6 +43,10 @@
 		}
 	}
 
+	&__text-width {
+		max-width: $text-max-width;
+	}
+
 	&__shareable > p {
 		max-width: $text-max-width;
 		width: 100%;
@@ -52,7 +56,8 @@
 		@include fluid-props(margin-top, $fluid-min, $fluid-max, 40px, 60px);
 	}
 
-	&--overview &__breadcrumbs {
+	&--overview &__breadcrumbs,
+	&--list &__breadcrumbs {
 		margin-top: 0;
 	}
 
@@ -121,5 +126,28 @@
 
 	&__preview-article {
 		border-bottom: solid 1px $color-grey-2;
+	}
+
+	&__list-header {
+		@include fluid-props(margin-top margin-bottom, $fluid-min, $fluid-max, 40px, 80px);
+	}
+
+	&__list-articles {
+		@include clean-ul;
+	}
+
+	&__list-article {
+		@include clean-li;
+
+		border-bottom: solid 1px $color-grey-2;
+		@include fluid-props(padding-bottom margin-bottom, $fluid-min, $size-medium, 16px, 32px);
+	}
+
+	&__list-pagination {
+		width: 100%;
+		max-width: $text-max-width;
+		@include fluid-props(margin-top margin-bottom padding-bottom, $fluid-min, $fluid-max, 30px, 50px);
+		display: flex;
+		justify-content: center;
 	}
 }
