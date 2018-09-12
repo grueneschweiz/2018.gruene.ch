@@ -4,7 +4,18 @@
 	$margin-size-min: 12px;
 	$margin-size-max: 120px;
 
-	&__content {
+	&--overview {
+		$content-max-width: $size-large;
+		$text-max-width: $size-small;
+	}
+
+	&__wide-header-wrapper {
+		background: $color-grey-1;
+		@include fluid-props(padding-top padding-bottom, $fluid-min, $fluid-max, 40px, 60px);
+	}
+
+	&__content,
+	&__wide-header {
 		max-width: $content-max-width;
 		width: calc(100% - #{2*$margin-size-min});
 		margin: 0 auto;
@@ -16,6 +27,22 @@
 		}
 	}
 
+	&__wide-header-text > p {
+		max-width: $text-max-width;
+
+		@include media($size-small){
+			font-size: 1.125rem;
+		}
+
+		@include media($size-medium){
+			font-size: 1.25rem;
+		}
+
+		&:last-of-type {
+			margin-bottom: 0;
+		}
+	}
+
 	&__shareable > p {
 		max-width: $text-max-width;
 		width: 100%;
@@ -23,6 +50,10 @@
 
 	&__breadcrumbs {
 		@include fluid-props(margin-top, $fluid-min, $fluid-max, 40px, 60px);
+	}
+
+	&--overview &__breadcrumbs {
+		margin-top: 0;
 	}
 
 	//noinspection CssOverwrittenProperties
@@ -75,5 +106,20 @@
 			margin-left: 0;
 			margin-right: 0;
 		}
+	}
+
+	&__preview-articles {
+		display: grid;
+		grid-template-columns: 1fr;
+		@include fluid-props(grid-gap, $fluid-min, $fluid-max, 50px, 150px);
+		@include fluid-props(margin-top margin-bottom, $fluid-min, $fluid-max, 50px, 100px);
+
+		@include media($size-small) {
+			grid-template-columns: 1fr 1fr;
+		}
+	}
+
+	&__preview-article {
+		border-bottom: solid 1px $color-grey-2;
 	}
 }
