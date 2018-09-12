@@ -6,6 +6,8 @@ context:
         - slide
         - glass
         - plus
+        - next
+        - last
     - name: Miscellaneous
       icons:
         - testimony
