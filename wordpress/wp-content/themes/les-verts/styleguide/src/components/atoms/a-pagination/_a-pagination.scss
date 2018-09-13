@@ -59,6 +59,10 @@
 
 		&--current {
 			color: $color-primary;
+
+			@include hover {
+				color: $color-primary;
+			}
 		}
 	}
 }
