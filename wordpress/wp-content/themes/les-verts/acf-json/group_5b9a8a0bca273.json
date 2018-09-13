@@ -1,0 +1,125 @@
+{
+    "key": "group_5b9a8a0bca273",
+    "title": "Overview",
+    "fields": [
+        {
+            "key": "field_5b9a8a0be9449",
+            "label": "Lead",
+            "name": "excerpt",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_5b9a8a0c01790",
+                    "label": "Lead",
+                    "name": "acf_excerpt",
+                    "type": "textarea",
+                    "instructions": "Provide a brief description that summarises what this page is about. It will be displayed below the title as well as in search results etc.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "maxlength": 280,
+                    "rows": 5,
+                    "new_lines": ""
+                }
+            ]
+        },
+        {
+            "key": "field_5b9a8a0be959d",
+            "label": "Main Content",
+            "name": "posts",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "field_5b9a8b184a95e",
+            "min": 1,
+            "max": 0,
+            "layout": "table",
+            "button_label": "Add Post \/ Page",
+            "sub_fields": [
+                {
+                    "key": "field_5b9a8b184a95e",
+                    "label": "Post \/ Page",
+                    "name": "post",
+                    "type": "post_object",
+                    "instructions": "Select the post or page, that should be displayed.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "post_type": [
+                        "post",
+                        "page"
+                    ],
+                    "taxonomy": [],
+                    "allow_null": 0,
+                    "multiple": 0,
+                    "return_format": "id",
+                    "ui": 1
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "page"
+            },
+            {
+                "param": "post_template",
+                "operator": "==",
+                "value": "single_overview.php"
+            },
+            {
+                "param": "page_type",
+                "operator": "!=",
+                "value": "front_page"
+            }
+        ]
+    ],
+    "menu_order": 10,
+    "position": "normal",
+    "style": "seamless",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [
+        "the_content",
+        "excerpt",
+        "discussion",
+        "comments",
+        "revisions",
+        "slug",
+        "author",
+        "format",
+        "featured_image",
+        "send-trackbacks"
+    ],
+    "active": 1,
+    "description": "",
+    "modified": 1536857345
+}

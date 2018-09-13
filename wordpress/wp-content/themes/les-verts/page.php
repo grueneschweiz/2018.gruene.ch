@@ -24,7 +24,7 @@
 $context         = Timber::get_context();
 $post            = new TimberPost();
 $context['post'] = $post;
-$templates       = array( 'page-' . $post->post_name . '.twig', 'page.twig' );
+$templates       = array( 'page-' . $post->post_name . '.twig', 'page.twig', 'single.twig' );
 if ( is_front_page() ) {
 	supt_get_latest_press_release( $context );
 	supt_get_events( $context );
