@@ -1,0 +1,63 @@
+{% set page_modifiers = ['page--list'] %}
+
+{% extends "base.twig" %}
+
+{% block content %}
+	<header class="page__wide-header-wrapper">
+		<div class="page__wide-header">
+			<div class="page__breadcrumbs">
+				{% include 'atoms/a-breadcrumbs.twig' %}
+			</div>
+			<h1>{{ title }}</h1>
+			<div class="page__wide-header-text">
+				<p>{{ archive_description }}</p>
+			</div>
+		</div>
+	</header>
+
+
+	<section class="page__content">
+		<div class="page__text-width">
+			<header class="page__list-header">
+				{% include 'molecules/m-list-header.twig' with {
+					'title': title,
+					'counter': posts.found_posts()
+				} only %}
+				{# todo: fix number of found posts! #}
+			</header>
+			<ul class="page__list-articles">
+				{% for post in posts %}
+					<li class="page__list-article">
+						{% include 'molecules/m-front-article.twig' with {
+							'post': post,
+							'modifiers': [
+								'm-front-article--no-image',
+							],
+						} only %}
+					</li>
+				{% endfor %}
+			</ul>
+			<footer class="page__list-pagination">
+				{% include 'atoms/a-pagination.twig' with { 'posts': posts } only %}
+			</footer>
+		</div>
+	</section>
+
+
+
+	<div class="page__content">
+		<div class="page__preview-articles">
+			{% for item in post.get_field('posts') %}
+				<article class="page__preview-article">
+					{% include 'molecules/m-front-article.twig' with {
+						'post': item.post,
+						'modifiers': [
+							'm-front-article--image-first',
+							'm-front-article--stretch'
+						]
+					} only %}
+				</article>
+			{% endfor %}
+		</div>
+	</div>
+{% endblock %}
