@@ -1,0 +1,77 @@
+label: Page
+status: wip
+variants:
+- name: Overview
+  context:
+    articles:
+    - title: "Energie und Klima"
+      text: "Es ist nicht mehr schönzureden: Das Klima erwärmt sich zum allergrössten Teil durch menschliche Aktivitäten - und zwar sehr viel schneller und stärker als ursprünglich angenommen."
+      url: '#'
+      has-img: true
+      img:
+        link-url: '#'
+        image-src: "/img/wheat.jpg"
+        alt: Symbolbild Fair-Food
+        title: Fair schmeckt besser
+      modifiers:
+      - image-first
+      - stretch
+    - title: "Verkehr"
+      text: "Die Mobilität ist Grundlage von Begegnung und Kommunikation. Die GRÜNEN setzen sich dafür ein, dass sie ökologisch verträglich und zukunftsfähig gestaltet wird."
+      url: '#'
+      has-img: true
+      img:
+        link-url: '#'
+        image-src: "/img/wheat.jpg"
+        alt: Symbolbild Fair-Food
+        title: Fair schmeckt besser
+      modifiers:
+      - image-first
+      - stretch
+    - title: "Naturschutz"
+      text: "Die Biodiversität nimmt weltweit immer mehr ab. Der Schutz der natürlichen Lebensgrundlagen ist daher die zentrale Herausforderung des 21. Jahrhunderts."
+      url: '#'
+      has-img: true
+      img:
+        link-url: '#'
+        image-src: "/img/wheat.jpg"
+        alt: Symbolbild Fair-Food
+        title: Fair schmeckt besser
+      modifiers:
+      - image-first
+      - stretch
+    - title: "Raumplanung"
+      text: "Wohnen und Infrastruktur beanspruchen in der Schweiz seit Jahren immer mehr Land. 70 Prozent der Bevölkerung wohnen heute in Städten und Agglomerationen."
+      url: '#'
+      has-img: true
+      img:
+        link-url: '#'
+        image-src: "/img/wheat.jpg"
+        alt: Symbolbild Fair-Food
+        title: Fair schmeckt besser
+      modifiers:
+      - image-first
+      - stretch
+- name: List
+  context:
+    articles:
+    - title: "Energie und Klima"
+      text: "Es ist nicht mehr schönzureden: Das Klima erwärmt sich zum allergrössten Teil durch menschliche Aktivitäten - und zwar sehr viel schneller und stärker als ursprünglich angenommen."
+      url: '#'
+      modifiers:
+      - no-image
+    - title: "Verkehr"
+      text: "Die Mobilität ist Grundlage von Begegnung und Kommunikation. Die GRÜNEN setzen sich dafür ein, dass sie ökologisch verträglich und zukunftsfähig gestaltet wird."
+      url: '#'
+      modifiers:
+      - no-image
+    - title: "Naturschutz"
+      text: "Die Biodiversität nimmt weltweit immer mehr ab. Der Schutz der natürlichen Lebensgrundlagen ist daher die zentrale Herausforderung des 21. Jahrhunderts."
+      url: '#'
+      modifiers:
+      - no-image
+    - title: "Raumplanung"
+      text: "Wohnen und Infrastruktur beanspruchen in der Schweiz seit Jahren immer mehr Land. 70 Prozent der Bevölkerung wohnen heute in Städten und Agglomerationen."
+      url: '#'
+      modifiers:
+      - no-image

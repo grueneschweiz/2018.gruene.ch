@@ -1,0 +1,51 @@
+<div class="a-pagination">
+	{# todo: implement this (the difficulty is to get the first pages link #}
+	{#<a href="{{ posts.pagination.prev.link }}"#}
+		 {#class="a-pagination__link a-pagination__link--icon a-pagination__link--first {% if not posts.pagination.prev %}a-pagination__link--disabled{% endif %}"#}
+		 {#title="{{ __('First Page', constant('THEME_DOMAIN')) }}">#}
+		{#<svg role="img">#}
+			{#<title>{{ __('First Page', constant('THEME_DOMAIN')) }}</title>#}
+			{#<use xlink:href="#last"></use>#}
+		{#</svg>#}
+	{#</a>#}
+	<a href="{{ posts.pagination.prev.link }}"
+		 class="a-pagination__link a-pagination__link--icon a-pagination__link--prev {% if not posts.pagination.prev %}a-pagination__link--disabled{% endif %}"
+		 title="{{ __('Previous Page', constant('THEME_DOMAIN')) }}">
+		<svg role="img">
+			<title>{{ __('Previous Page', constant('THEME_DOMAIN')) }}</title>
+			<use xlink:href="#next"></use>
+		</svg>
+	</a>
+	<ul class="a-pagination__list">
+		{% if not posts.pagination.pages %}
+			<li class="a-pagination__item"><span
+					class="a-pagination__link a-pagination__link--current">1</span></li>
+		{% else %}
+			{% for page in posts.pagination.pages %}
+				{% if page.link %}
+					<li class="a-pagination__item"><a href="{{ page.link }}" class="a-pagination__link">{{ page.title }}</a></li>
+				{% else %}
+					<li class="a-pagination__item"><span
+							class="a-pagination__link a-pagination__link--current">{{ page.title }}</span></li>
+				{% endif %}
+			{% endfor %}
+		{% endif %}
+	</ul>
+	<a href="{{ posts.pagination.next.link }}"
+		 class="a-pagination__link a-pagination__link--icon a-pagination__link--next {% if not posts.pagination.next %}a-pagination__link--disabled{% endif %}"
+		 title="{{ __('Next Page', constant('THEME_DOMAIN')) }}">
+		<svg role="img">
+			<title>{{ __('Next Page', constant('THEME_DOMAIN')) }}</title>
+			<use xlink:href="#next"></use>
+		</svg>
+	</a>
+	{# todo: implement this (the difficulty is to get the last pages link #}
+	{#<a href="{{ posts.pagination.next.link }}"#}
+		 {#class="a-pagination__link a-pagination__link--icon a-pagination__link--last {% if not posts.pagination.next %}a-pagination__link--disabled{% endif %}"#}
+		 {#title="{{ __('Last Page', constant('THEME_DOMAIN')) }}">#}
+		{#<svg role="img">#}
+			{#<title>{{ __('Last Page', constant('THEME_DOMAIN')) }}</title>#}
+			{#<use xlink:href="#last"></use>#}
+		{#</svg>#}
+	{#</a>#}
+</div>

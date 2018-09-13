@@ -1,0 +1,26 @@
+<div class="page page--overview">
+	{{render '@o-header'}}
+	<main class="page__main">
+		<header class="page__wide-header-wrapper">
+			<div class="page__wide-header">
+				<div class="page__breadcrumbs">
+					{{render '@a-breadcrumbs'}}
+				</div>
+				<h1>Für ein gesundes Klima und eine intakte Umwelt</h1>
+				<div class="page__wide-header-text">
+					<p>Wir GRÜNE stehen ein für den Schutz von Klima und Umwelt. Wir setzen auf erneuerbare Energie und fordern den Ausstieg aus Braunkohle und Atomkraft. Wir wollen einen starken öffentlichen Verkehr und nicht noch mehr Autobahnen. Und wir setzen uns dafür ein, dass die Artenvielfalt und lebenswichtige Naturräume geschützt werden. Damit die Lebensgrundlagen von heute auch für die zukünftigen Generationen erhalten bleiben.</p>
+				</div>
+			</div>
+		</header>
+		<div class="page__content">
+			<div class="page__preview-articles">
+				{{#each articles}}
+					<article class="page__preview-article">
+						{{> @m-front-article this}}
+					</article>
+				{{/each}}
+			</div>
+		</div>
+	</main>
+	{{render '@o-footer'}}
+</div>

@@ -36,3 +36,7 @@ variants:
         - Klimakatastrophe abwenden - Erneuerbare fördern
         - Bahn, Bus und Velo statt Stau und Gestank
         - Raumplanung statt Siedlungsbrei
+  - name: Stretch
+    context:
+      modifiers:
+      - stretch

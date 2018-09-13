@@ -21,6 +21,10 @@ class ACFPost extends \TimberPost {
 			$this->__excerpt = $this->acf_excerpt;
 		}
 		
+		if ( ! empty( $this->excerpt_acf_excerpt ) ) {
+			$this->__excerpt = $this->excerpt_acf_excerpt;
+		}
+		
 		if ( ! empty( $this->lead ) ) {
 			$this->__excerpt = $this->lead;
 		}

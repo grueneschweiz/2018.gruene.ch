@@ -1,0 +1,34 @@
+<div class="page page--list">
+	{{render '@o-header'}}
+	<main class="page__main">
+		<header class="page__wide-header-wrapper">
+			<div class="page__wide-header">
+				<div class="page__breadcrumbs">
+					{{render '@a-breadcrumbs'}}
+				</div>
+				<h1>Medienmitteilungen</h1>
+				<div class="page__wide-header-text">
+					<p>Hier käme dann ein Kategorienbeschrieb der Medienmitteilungen.</p>
+				</div>
+			</div>
+		</header>
+		<section class="page__content">
+			<div class="page__text-width">
+			<header class="page__list-header">
+				{{render '@m-list-header'}}
+			</header>
+			<ul class="page__list-articles">
+				{{#each articles}}
+					<li class="page__list-article">
+						{{> @m-front-article this}}
+					</li>
+				{{/each}}
+			</ul>
+			<footer class="page__list-pagination">
+				{{render '@a-pagination'}}
+			</footer>
+			</div>
+		</section>
+	</main>
+	{{render '@o-footer'}}
+</div>

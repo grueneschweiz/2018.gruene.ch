@@ -32,8 +32,10 @@
 			{% endif %}
 		</p>
 	{% endif %}
-	{% include 'atoms/a-link-button.twig' with {
-		'link': post.link,
-		'label': __('Read more', constant('THEME_DOMAIN'))
-	} only %}
+	<div class="m-front-article__link-button">
+		{% include 'atoms/a-link-button.twig' with {
+			'link': post.link,
+			'label': __('Read more', constant('THEME_DOMAIN'))
+		} only %}
+	</div>
 </div>

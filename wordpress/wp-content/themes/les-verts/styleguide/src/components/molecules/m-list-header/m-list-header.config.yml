@@ -1,0 +1,10 @@
+label: List Header
+status: ready
+context:
+  counter: 82
+  title: Medienmitteilungen
+  criteria-desc: 'Aus den Bereichen:'
+  criteria:
+  - Klima und Energie
+  - Atom
+  - Energiewende
