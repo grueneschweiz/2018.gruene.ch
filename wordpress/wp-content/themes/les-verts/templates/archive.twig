@@ -19,9 +19,8 @@
 			<header class="page__list-header">
 				{% include 'molecules/m-list-header.twig' with {
 					'title': title,
-					'counter': posts.found_posts()
+					'counter': posts|length
 				} only %}
-				{# todo: fix number of found posts! #}
 			</header>
 			<ul class="page__list-articles">
 				{% for post in posts %}
@@ -40,9 +39,6 @@
 			</footer>
 		</div>
 	</section>
-
-
-
 	<div class="page__content">
 		<div class="page__preview-articles">
 			{% for item in post.get_field('posts') %}
