@@ -148,6 +148,7 @@
 		position: static;
 		z-index: 0;
 		width: auto;
+		left: initial; // sorry IE users
 		height: auto;
 		background-color: transparent;
 		transition: none;
@@ -156,6 +157,8 @@
 	@include hover {
 		&:before {
 			height: auto;
+			width: auto; // sorry IE users
+			left: initial; // sorry IE users
 		}
 	}
 }
