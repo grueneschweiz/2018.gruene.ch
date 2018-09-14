@@ -8,10 +8,10 @@
 	<h3 class="m-front-article__title">
 		<a href="{{ post.link }}" class="m-front-article__title-link" tabindex="-1">{{ post.title }}</a>
 	</h3>
-	{% if post.header_image %}
+	{% if post.main_content_header_image %}
 		<div class="m-front-article__image">
 			{% include 'atoms/a-image.twig' with {
-				'image': post.header_image,
+				'image': post.main_content_header_image,
 				'size': 'half-grid',
 				'link_url': post.link()
 			} only %}
