@@ -9,13 +9,13 @@
 		$text-max-width: $size-small;
 	}
 
-	&__wide-header-wrapper {
-		background: $color-grey-1;
+	&__header-wrapper--wide {
 		@include fluid-props(padding-top padding-bottom, $fluid-min, $fluid-max, 40px, 60px);
+		background: $color-grey-1;
 	}
 
 	&__content,
-	&__wide-header {
+	&__header--wide {
 		max-width: $content-max-width;
 		width: calc(100% - #{2*$margin-size-min});
 		margin: 0 auto;
@@ -27,14 +27,18 @@
 		}
 	}
 
-	&__wide-header-text > p {
+	&__shareable {
+		@include fluid-props(padding-top padding-bottom, $fluid-min, $fluid-max, 40px, 60px);
+	}
+
+	&__header-text > p {
 		max-width: $text-max-width;
 
-		@include media($size-small){
+		@include media($size-small) {
 			font-size: 1.125rem;
 		}
 
-		@include media($size-medium){
+		@include media($size-medium) {
 			font-size: 1.25rem;
 		}
 
@@ -50,15 +54,6 @@
 	&__shareable > p {
 		max-width: $text-max-width;
 		width: 100%;
-	}
-
-	&__breadcrumbs {
-		@include fluid-props(margin-top, $fluid-min, $fluid-max, 40px, 60px);
-	}
-
-	&--overview &__breadcrumbs,
-	&--list &__breadcrumbs {
-		margin-top: 0;
 	}
 
 	//noinspection CssOverwrittenProperties
