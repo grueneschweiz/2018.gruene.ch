@@ -12,12 +12,14 @@
             </a>
         {% endfor %}
     </div>
-    <footer class="o-vote__more">
-        <div class="o-vote__link-button">
-            {% include 'atoms/a-link-button.twig' with {
-                'link': footer.link,
-                'label': footer.link_label
-            } only %}
-        </div>
-    </footer>
+		{% if footer.link %}
+			<footer class="o-vote__more">
+					<div class="o-vote__link-button">
+							{% include 'atoms/a-link-button.twig' with {
+									'link': footer.link,
+									'label': footer.link_label
+							} only %}
+					</div>
+			</footer>
+		{% endif %}
 </article>
