@@ -4,10 +4,10 @@
 	$margin-size-min: 12px;
 	$margin-size-max: 120px;
 
-	&--overview {
-		$content-max-width: $size-large;
-		$text-max-width: $size-small;
-	}
+	// for &--overview
+	// ---------------
+	// $content-max-width: $size-large;
+	// $text-max-width: $size-small;
 
 	&__header-wrapper--wide {
 		@include fluid-props(padding-top padding-bottom, $fluid-min, $fluid-max, 40px, 60px);
@@ -25,6 +25,11 @@
 			max-width: $text-max-width;
 			width: 100%;
 		}
+	}
+
+	&--overview &__content,
+	&--overview &__header--wide {
+		max-width: $size-large;
 	}
 
 	&__shareable {
@@ -45,6 +50,10 @@
 		&:last-of-type {
 			margin-bottom: 0;
 		}
+	}
+
+	&--overview &__header-text > p {
+		max-width: $size-small;
 	}
 
 	&__text-width {
