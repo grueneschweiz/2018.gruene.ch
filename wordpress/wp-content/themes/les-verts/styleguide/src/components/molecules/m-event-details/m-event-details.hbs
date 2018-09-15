@@ -1,0 +1,20 @@
+<div class="m-event-details">
+	<div class="m-event-details__time-wrapper">
+		<svg role="img" class="m-event-details__icon">
+			<title>{{date-label}}</title>
+			<use xlink:href="#clock"></use>
+		</svg>
+		<time class="m-event-details__time"
+					datetime="{{timestamp}}">{{{date}}}</time>
+	</div>
+	<div class="m-event-details__location-wrapper">
+		<svg role="img" class="m-event-details__icon">
+			<title>{{place-label}}</title>
+			<use xlink:href="#location"></use>
+		</svg>
+		<span class="m-event-details__location">{{location}}</span>
+	</div>
+	<div class="m-event-details__link-button">
+		{{> '@a-link-button' link-button }}
+	</div>
+</div>

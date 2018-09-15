@@ -1,0 +1,30 @@
+<div class="page">
+	{{render '@o-header'}}
+	<main class="page__main">
+		<article>
+			<div class="page__content">
+				<div class="page__shareable">
+					<aside class="page__share">
+						{{render '@m-share' }}
+					</aside>
+					<header class="page__header-wrapper">
+						<div class="page__header">
+							<div class="page__breadcrumbs">
+								{{render '@a-breadcrumbs'}}
+							</div>
+							<h1>Delegiertenversammlung</h1>
+						</div>
+						<div class="page__header-text">
+							{{render '@m-event-details'}}
+						</div>
+					</header>
+					<p>Die Delegiertenversammlung (DV) ist das oberste Organ der Grünen Schweiz. Sie tritt mindestens zweimal
+						pro Jahr auf Einladung des Vorstandes zusammen. Sie umfasst rund 250 Delegierte.</p>
+					<p>Die DV ist insbesondere zuständig für die Verabschiedung von Grundsatz-Stellungnahmen, die
+						Parolenfassungen zu Abstimmungen, für Statutenänderungen sowie für die Wahl des Parteipräsidiums.</p>
+				</div>
+			</div>
+		</article>
+	</main>
+	{{render '@o-footer'}}
+</div>

@@ -30,6 +30,11 @@ if ( is_front_page() ) {
 	supt_get_events( $context );
 	array_unshift( $templates, 'front-page.twig' );
 }
+
+if ('tribe_events' === get_post_type() ){
+	array_unshift( $templates, 'event.twig' );
+}
+
 Timber::render( $templates, $context );
 
 /**

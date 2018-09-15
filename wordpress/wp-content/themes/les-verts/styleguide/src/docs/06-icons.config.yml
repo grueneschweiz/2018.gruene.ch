@@ -13,6 +13,8 @@ context:
         - testimony
         - quote
         - arrow
+        - clock
+        - location
     - name: Social Media / Contact
       icons:
         - facebook
