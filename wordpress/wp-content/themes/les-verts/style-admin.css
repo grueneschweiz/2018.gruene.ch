@@ -9,3 +9,19 @@
 #submitdiv #duplicator {
     display: none;
 }
+
+/**
+ * Tribe Events Plugin: Hide not supported fields of events and venues
+ */
+#tribe_events_event_details #event_tribe_organizer,
+#tribe_events_event_details #event_cost,
+#tribe_events_event_details #google_map_link_toggle,
+#eventDetails #google_map_link_toggle,
+#tribe_events_event_details #event_url,
+.tribe-linked-type-venue-country,
+.tribe-linked-type-venue-state-province,
+.tribe-linked-type-venue-phone,
+.tribe-linked-type-venue-website
+{
+	display: none;
+}

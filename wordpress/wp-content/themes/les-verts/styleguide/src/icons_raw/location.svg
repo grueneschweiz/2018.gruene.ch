@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
+    <title>Location</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Location" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M4.37428212,12.8770805 C4.31873178,12.7644397 4.26559659,12.6503908 4.21494429,12.5350016 C4.12312483,12.3319777 4.03863647,12.1340444 3.96147923,11.9412015 C3.95703955,11.9301052 3.95475849,11.9182635 3.95475849,11.906312 C3.95475849,11.8967112 3.95619902,11.8874469 3.95887573,11.8787234 C3.66145471,11.0114253 3.5,10.0808363 3.5,9.11248216 C3.5,4.41116808 7.30557963,0.6 12,0.6 C16.6944204,0.6 20.5,4.41116808 20.5,9.11248216 C20.5,10.5775441 20.1304321,11.9561621 19.4795652,13.1599376 C18.1885365,15.7926825 15.6928189,19.2727033 11.9924126,23.6 C8.2133046,19.1648606 5.67392777,15.5905541 4.37428212,12.8770805 Z" id="Combined-Shape" stroke="#000000" stroke-width="1.08235294" fill-rule="nonzero"></path>
+        <circle id="Path" stroke="#000000" stroke-width="1.08235294" fill-rule="nonzero" cx="12" cy="9" r="4"></circle>
+    </g>
+</svg>

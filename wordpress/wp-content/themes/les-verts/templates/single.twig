@@ -21,11 +21,18 @@
 						} only %}
 					</aside>
 				{% endif %}
-				<header>
-					<div class="page__breadcrumbs">
-						{% include 'atoms/a-breadcrumbs.twig' %}
+				<header class="page__header-wrapper">
+					<div class="page__header">
+						<div class="page__breadcrumbs">
+							{% include 'atoms/a-breadcrumbs.twig' %}
+						</div>
+						<h1>{{ post.title }}</h1>
+						{% if post.excerpt_lead %}
+						<div class="page__header-text">
+							<p>{{ post.excerpt_lead }}</p>
+						</div>
+						{% endif %}
 					</div>
-					<h1>{{ post.title }}</h1>
 				</header>
 				{% for block in main_content.content %}
 					{% if block.acf_fc_layout == 'in_short' %}

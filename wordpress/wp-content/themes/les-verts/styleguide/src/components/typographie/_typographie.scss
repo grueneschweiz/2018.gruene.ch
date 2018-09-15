@@ -89,16 +89,18 @@ a {
 		position: absolute;
 		z-index: -1;
 		bottom: 0;
-		left: -0.125em;
-		width: calc(100% + 0.25em);
+		width: 100%;
+		left: 0;
 		height: 0.25em;
 		background-color: $color-primary-light;
-		transition: height $transition-fast $transition-ease;
+		transition: all $transition-fast $transition-ease;
 	}
 
 	@include hover {
 		&:before {
 			height: 1.5em;
+			left: -0.125em;
+			width: calc(100% + 0.25em);
 		}
 	}
 }

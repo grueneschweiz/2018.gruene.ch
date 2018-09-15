@@ -4,8 +4,8 @@
     {% set modifiers = ['o-front-article--mm'] %}
     {% set author = '' %}
     {% set oton = 0 %}
-    {% set excerpt = post.get_field('lead') %}
-    {% for block in post.get_field('content') %}
+    {% set excerpt = post.get_field('excerpt_lead') %}
+    {% for block in post.get_field('main_content_content') %}
         {% if block.acf_fc_layout == 'quote' %}
             {% set modifiers = ['o-front-article--oton', 'o-front-article--mm'] %}
             {% set oton = 1 %}
@@ -60,17 +60,17 @@
             </div>
         {% endif %}
     </div>
-    {% if block.acf_fc_layout == 'single' and block.cta_link %}
+    {% if block.acf_fc_layout == 'single' and block.footer.cta_link %}
         <footer class="o-front-article__cta">
             <div class="o-front-article__cta-button">
                 {% include 'atoms/a-button.twig' with {
-                    'link': block.cta_link,
-                    'label': block.cta_label,
+                    'link': block.footer.cta_link,
+                    'label': block.footer.cta_label,
                     'modifiers': 'a-button--secondary'
                 } %}
             </div>
             <div class="o-front-article__cta-label">
-                {{ block.cta_desc }}
+                {{ block.footer.cta_desc }}
             </div>
         </footer>
     {% endif %}

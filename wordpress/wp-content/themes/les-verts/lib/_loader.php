@@ -153,7 +153,7 @@ require_once __DIR__.'/twig/functions/register_timber_acf_post_type.php';
 require_once __DIR__.'/twig/functions/register_timber_post_query.php';
 
 // filters
-// require_once __DIR__ .'/twig/filters/newline.php';
+require_once __DIR__ .'/twig/filters/event_time.php';
 
 /**
  * FORM LIBRARY

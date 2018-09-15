@@ -1,0 +1,12 @@
+label: Event Details
+status: ready
+context:
+  date: '31. Oktober 2019 | 17:33 &ndash; 19:22'
+  timestamp: '2019-10-31 17:33'
+  location: Landgasthof, Baselstrasse 38, Riehen
+  place-label: Ort
+  date-label: Datum und Dauer
+  link-button:
+    link: '#'
+    label: 'Save to calendar (ICS)'
+

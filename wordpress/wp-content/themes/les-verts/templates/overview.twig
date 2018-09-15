@@ -3,13 +3,13 @@
 {% extends "base.twig" %}
 
 {% block content %}
-	<header class="page__wide-header-wrapper">
-		<div class="page__wide-header">
+	<header class="page__header-wrapper page__header-wrapper--wide">
+		<div class="page__header page__header--wide">
 			<div class="page__breadcrumbs">
 				{% include 'atoms/a-breadcrumbs.twig' %}
 			</div>
 			<h1>{{ post.title }}</h1>
-			<div class="page__wide-header-text">
+			<div class="page__header-text">
 				<p>{{ post.excerpt() }}</p>
 			</div>
 		</div>

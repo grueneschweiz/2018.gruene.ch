@@ -3,29 +3,10 @@
     "title": "Press Release",
     "fields": [
         {
-            "key": "field_5b6c01293a2b6",
+            "key": "field_5b9b7511d846f",
             "label": "Lead",
-            "name": "lead",
-            "type": "textarea",
-            "instructions": "Provide a brief lead that summarises the content. It will be displayed on the archive page, on search results and on the front page (if there is no quote bock).",
-            "required": 1,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "maxlength": 280,
-            "rows": 5,
-            "new_lines": ""
-        },
-        {
-            "key": "field_5b6c055d04c40",
-            "label": "Content",
-            "name": "content",
-            "type": "flexible_content",
+            "name": "excerpt",
+            "type": "group",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -34,94 +15,147 @@
                 "class": "",
                 "id": ""
             },
-            "layouts": {
-                "5b6c056ad4f71": {
-                    "key": "5b6c056ad4f71",
-                    "name": "quote",
-                    "label": "Quote",
-                    "display": "block",
-                    "sub_fields": [
-                        {
-                            "key": "field_5b71c0d3fc187",
-                            "label": "Please Note",
-                            "name": "",
-                            "type": "message",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "message": "If a quote is given, it will replace the lead text on the front page. On the archive page and in search results, the teaser will still be the lead.",
-                            "new_lines": "wpautop",
-                            "esc_html": 0
-                        },
-                        {
-                            "key": "field_5b6c057a04c41",
-                            "label": "Quote",
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_5b6c01293a2b6",
+                    "label": "Lead",
+                    "name": "lead",
+                    "type": "textarea",
+                    "instructions": "Provide a brief lead that summarises the content. It will be displayed on the archive page, on search results and on the front page (if there is no quote bock).",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "maxlength": 280,
+                    "rows": 5,
+                    "new_lines": ""
+                }
+            ]
+        },
+        {
+            "key": "field_5b9b73df97fd2",
+            "label": "Main Content",
+            "name": "main_content",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_5b6c055d04c40",
+                    "label": "Content",
+                    "name": "content",
+                    "type": "flexible_content",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "layouts": {
+                        "5b6c056ad4f71": {
+                            "key": "5b6c056ad4f71",
                             "name": "quote",
-                            "type": "clone",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "clone": [
-                                "group_5b6c045f68e96"
+                            "label": "Quote",
+                            "display": "block",
+                            "sub_fields": [
+                                {
+                                    "key": "field_5b71c0d3fc187",
+                                    "label": "Please Note",
+                                    "name": "",
+                                    "type": "message",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "message": "If a quote is given, it will replace the lead text on the front page. On the archive page and in search results, the teaser will still be the lead.",
+                                    "new_lines": "wpautop",
+                                    "esc_html": 0
+                                },
+                                {
+                                    "key": "field_5b6c057a04c41",
+                                    "label": "Quote",
+                                    "name": "quote",
+                                    "type": "clone",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "clone": [
+                                        "group_5b6c045f68e96"
+                                    ],
+                                    "display": "seamless",
+                                    "layout": "block",
+                                    "prefix_label": 0,
+                                    "prefix_name": 0
+                                }
                             ],
-                            "display": "seamless",
-                            "layout": "block",
-                            "prefix_label": 0,
-                            "prefix_name": 0
-                        }
-                    ],
-                    "min": "",
-                    "max": ""
-                },
-                "layout_5b6c07f004c42": {
-                    "key": "layout_5b6c07f004c42",
-                    "name": "text",
-                    "label": "Text",
-                    "display": "block",
-                    "sub_fields": [
-                        {
-                            "key": "field_5b6c07fc04c43",
-                            "label": "Text",
+                            "min": "",
+                            "max": ""
+                        },
+                        "layout_5b6c07f004c42": {
+                            "key": "layout_5b6c07f004c42",
                             "name": "text",
-                            "type": "wysiwyg",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "",
-                            "tabs": "all",
-                            "toolbar": "full",
-                            "media_upload": 1,
-                            "delay": 0
+                            "label": "Text",
+                            "display": "block",
+                            "sub_fields": [
+                                {
+                                    "key": "field_5b6c07fc04c43",
+                                    "label": "Text",
+                                    "name": "text",
+                                    "type": "wysiwyg",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "tabs": "all",
+                                    "toolbar": "full",
+                                    "media_upload": 1,
+                                    "delay": 0
+                                }
+                            ],
+                            "min": "",
+                            "max": ""
                         }
-                    ],
+                    },
+                    "button_label": "Add Content Block",
                     "min": "",
                     "max": ""
                 }
-            },
-            "button_label": "Add Content Block",
-            "min": "",
-            "max": ""
+            ]
         },
         {
             "key": "field_5b6c4c5cb2fea",
-            "label": "Linked Content",
-            "name": "linked_content",
-            "type": "clone",
+            "label": "Link Lists",
+            "name": "link_lists",
+            "type": "group",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -130,20 +164,37 @@
                 "class": "",
                 "id": ""
             },
-            "clone": [
-                "group_5b6c4bfaa8a26"
-            ],
-            "display": "seamless",
             "layout": "block",
-            "prefix_label": 0,
-            "prefix_name": 0
+            "sub_fields": [
+                {
+                    "key": "field_5b9b7369e4072",
+                    "label": "Link List",
+                    "name": "linked_content",
+                    "type": "clone",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "clone": [
+                        "group_5b6c4bfaa8a26"
+                    ],
+                    "display": "seamless",
+                    "layout": "block",
+                    "prefix_label": 0,
+                    "prefix_name": 0
+                }
+            ]
         },
         {
-            "key": "field_5b6c01dc3a2b9",
-            "label": "Show on front page",
-            "name": "show_on_front_page",
-            "type": "true_false",
-            "instructions": "Set this to false, if you don't want this press release to appear in the 'Latest Press Release' block on the front page.",
+            "key": "field_5b9b758b2e6b6",
+            "label": "Settings",
+            "name": "settings",
+            "type": "group",
+            "instructions": "",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -151,11 +202,28 @@
                 "class": "",
                 "id": ""
             },
-            "message": "",
-            "default_value": 1,
-            "ui": 1,
-            "ui_on_text": "",
-            "ui_off_text": ""
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_5b6c01dc3a2b9",
+                    "label": "Show on front page",
+                    "name": "show_on_front_page",
+                    "type": "true_false",
+                    "instructions": "Set this to false, if you don't want this press release to appear in the 'Latest Press Release' block on the front page.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "message": "",
+                    "default_value": 1,
+                    "ui": 1,
+                    "ui_on_text": "",
+                    "ui_off_text": ""
+                }
+            ]
         }
     ],
     "location": [
@@ -169,7 +237,7 @@
     ],
     "menu_order": 0,
     "position": "normal",
-    "style": "default",
+    "style": "seamless",
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": [
@@ -185,5 +253,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1534251295
+    "modified": 1536914884
 }
