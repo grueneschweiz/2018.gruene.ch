@@ -1,0 +1,695 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"Project-Id-Version: Les Verts\n"
+"POT-Creation-Date: 2018-09-19 14:13+0200\n"
+"PO-Revision-Date: 2018-09-19 14:12+0200\n"
+"Last-Translator: Cyrill Bolliger <bolliger@gmx.ch>\n"
+"Language-Team: Cyrill Bolliger <bolliger@gmx.ch>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.1.1\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"X-Poedit-WPHeader: style.css\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+
+#: archive.php:22
+msgid "Archive"
+msgstr ""
+
+#: functions.php:119 templates/molecules/m-menu.twig:9
+msgid "Main navigation"
+msgstr ""
+
+#: functions.php:120 templates/molecules/m-menu.twig:55
+msgid "Language navigation"
+msgstr ""
+
+#: functions.php:121
+msgid "Footer meta navigation"
+msgstr ""
+
+#: functions.php:189
+msgid "Footer"
+msgstr ""
+
+#: functions.php:191
+msgid ""
+"This is the footer. Use it for your primary calls to action (Button widget), "
+"your contact details (Contact widget) and the footer menu (Link list widget)."
+msgstr ""
+
+#: lib/admin/acf-option-pages.php:21 lib/admin/acf-option-pages.php:22
+msgid "Global Options"
+msgstr ""
+
+#: lib/admin/acf-option-pages.php:42 lib/admin/acf-option-pages.php:43
+msgid "Options ("
+msgstr ""
+
+#: lib/customizer/Logo.php:47 lib/customizer/_Example.php:63
+msgid "Logo (light variant)"
+msgstr ""
+
+#: lib/customizer/Logo.php:48
+msgctxt "'This' refers to the logo"
+msgid "This is used in the green bar above the menu."
+msgstr ""
+
+#: lib/customizer/Logo.php:64 lib/customizer/_Example.php:77
+msgid "Logo (dark variant)"
+msgstr ""
+
+#: lib/customizer/Logo.php:65
+msgctxt "'This' refers to the logo"
+msgid "This is used in the menubar."
+msgstr ""
+
+#: lib/customizer/_Example.php:39
+msgid "Logos"
+msgstr ""
+
+#: lib/customizer/_Example.php:64 lib/customizer/_Example.php:78
+msgid "some words about the logo like the size etc."
+msgstr ""
+
+#: lib/form/FormType.php:25
+msgctxt "post type general name"
+msgid "Forms"
+msgstr ""
+
+#: lib/form/FormType.php:26
+msgctxt "post type singular name"
+msgid "Form"
+msgstr ""
+
+#: lib/form/FormType.php:27
+msgctxt "admin menu"
+msgid "Forms"
+msgstr ""
+
+#: lib/form/FormType.php:28
+msgctxt "add new on admin bar"
+msgid "Form"
+msgstr ""
+
+#: lib/form/FormType.php:29
+msgctxt "formulaire"
+msgid "Add"
+msgstr ""
+
+#: lib/form/FormType.php:30
+msgid "Add form"
+msgstr ""
+
+#: lib/form/FormType.php:31
+msgid "New form"
+msgstr ""
+
+#: lib/form/FormType.php:32
+msgid "Edit form"
+msgstr ""
+
+#: lib/form/FormType.php:33
+msgid "View form"
+msgstr ""
+
+#: lib/form/FormType.php:34
+msgid "All forms"
+msgstr ""
+
+#: lib/form/FormType.php:35
+msgid "Find form"
+msgstr ""
+
+#: lib/form/FormType.php:36
+msgid "Form:"
+msgstr ""
+
+#: lib/form/FormType.php:37
+msgid "No form found"
+msgstr ""
+
+#: lib/form/FormType.php:38
+msgid "No form in the trash"
+msgstr ""
+
+#: lib/form/FormType.php:279
+msgid "Fields"
+msgstr ""
+
+#: lib/form/FormType.php:323 lib/form/templates/form-sent-page.twig:2
+msgid "Form submissions"
+msgstr ""
+
+#: lib/form/FormType.php:323 lib/form/templates/form-sent-page.twig:23
+msgid "Submissions"
+msgstr ""
+
+#: lib/form/acf/form-local-settings.php:7
+#: lib/form/acf/form-local-settings.php:298
+msgid "Local form settings"
+msgstr ""
+
+#: lib/form/acf/form-local-settings.php:11
+msgid "Which type of form is it?"
+msgstr ""
+
+#: lib/form/acf/form-local-settings.php:23
+msgid "Send form result by email"
+msgstr ""
+
+#: lib/form/acf/form-local-settings.php:24
+msgid "Send form result to Campaign Monitor only"
+msgstr ""
+
+#: lib/form/acf/form-local-settings.php:25
+msgid ""
+"Use a \"Subscribe to Newsletter\" checkbox (will also send to Campaign "
+"Monitor)"
+msgstr ""
+
+#: lib/form/acf/form-local-settings.php:59
+msgid "Checkbox settings"
+msgstr ""
+
+#: lib/form/acf/form-local-settings.php:83
+msgid "Label"
+msgstr ""
+
+#: lib/form/acf/form-local-settings.php:127
+msgid "Campaign Monitor settings"
+msgstr ""
+
+#: lib/form/acf/form-local-settings.php:143
+msgid "Subscribers list"
+msgstr ""
+
+#: lib/form/acf/form-local-settings.php:146
+msgid "Choose below which list from Campaign Monitor you want to link to…"
+msgstr ""
+
+#: lib/form/acf/form-local-settings.php:166
+msgid "Source fields"
+msgstr ""
+
+#: lib/form/acf/form-local-settings.php:192
+msgid ""
+"Campaign Monitor needs two types of data:\n"
+"* the email of the user\n"
+"* the name of the user\n"
+"\n"
+"To correctly send data to the Campaign Monitor, please select below where to "
+"get this email from the form details."
+msgstr ""
+
+#: lib/form/acf/form-local-settings.php:202
+msgid "Email field"
+msgstr ""
+
+#: lib/form/acf/form-local-settings.php:225
+msgid "First Name"
+msgstr ""
+
+#: lib/form/acf/form-local-settings.php:248
+msgid "Last Name"
+msgstr ""
+
+#: lib/form/acf/form-local-settings.php:341
+msgid "The parameters below will replace the global settings."
+msgstr ""
+
+#: lib/post-types/AlertType.php:17
+msgctxt "post type general name"
+msgid "Alerts"
+msgstr ""
+
+#: lib/post-types/AlertType.php:18
+msgctxt "post type singular name"
+msgid "Alert"
+msgstr ""
+
+#: lib/post-types/AlertType.php:19
+msgctxt "admin menu"
+msgid "Alerts"
+msgstr ""
+
+#: lib/post-types/AlertType.php:20
+msgctxt "add new on admin bar"
+msgid "Alerts"
+msgstr ""
+
+#: lib/post-types/AlertType.php:21
+msgid "Add New Alert"
+msgstr ""
+
+#: lib/post-types/AlertType.php:22
+msgid "New Alert"
+msgstr ""
+
+#: lib/post-types/AlertType.php:23
+msgid "Edit Alert"
+msgstr ""
+
+#: lib/post-types/AlertType.php:24
+msgid "View Alert"
+msgstr ""
+
+#: lib/post-types/AlertType.php:25
+msgid "All Alerts"
+msgstr ""
+
+#: lib/post-types/AlertType.php:26
+msgid "Search Alerts"
+msgstr ""
+
+#: lib/post-types/AlertType.php:29
+msgid "No alert found."
+msgstr ""
+
+#: lib/post-types/AlertType.php:62
+msgid "Active"
+msgstr ""
+
+#: lib/post-types/AlertType.php:63
+msgid "End date"
+msgstr ""
+
+#: lib/post-types/PeopleType.php:13
+msgid "People"
+msgstr ""
+
+#: lib/post-types/PeopleType.php:14
+msgid "Person"
+msgstr ""
+
+#: lib/post-types/PeopleType.php:15
+msgid "Add New Person"
+msgstr ""
+
+#: lib/post-types/PeopleType.php:16
+msgid "Edit Person"
+msgstr ""
+
+#: lib/post-types/PeopleType.php:17
+msgid "New Person"
+msgstr ""
+
+#: lib/post-types/PeopleType.php:18
+msgid "View Person"
+msgstr ""
+
+#: lib/post-types/PeopleType.php:19
+msgid "View People"
+msgstr ""
+
+#: lib/post-types/PeopleType.php:20
+msgid "Search Person"
+msgstr ""
+
+#: lib/post-types/PeopleType.php:21
+msgid "No people found"
+msgstr ""
+
+#: lib/post-types/PeopleType.php:22
+msgid "No people found in trash"
+msgstr ""
+
+#: lib/post-types/PeopleType.php:23
+msgid "All People"
+msgstr ""
+
+#: lib/post-types/PeopleType.php:24
+msgid "People Archives"
+msgstr ""
+
+#: lib/post-types/PeopleType.php:25
+msgid "People Attributes"
+msgstr ""
+
+#: lib/post-types/PeopleType.php:26
+msgid "Uploaded to this person"
+msgstr ""
+
+#: lib/timber/ACFPost.php:37
+msgid "No content found."
+msgstr ""
+
+#: lib/widgets/ButtonWidget.php:23
+msgid "Button"
+msgstr ""
+
+#: lib/widgets/ButtonWidget.php:25
+msgid "Show your main calls to action"
+msgstr ""
+
+#: lib/widgets/ButtonWidget.php:29
+msgid "Get active"
+msgstr ""
+
+#: lib/widgets/ContactWidget.php:25 lib/widgets/ContactWidget.php:31
+msgid "Contact"
+msgstr ""
+
+#: lib/widgets/ContactWidget.php:27
+msgid "Presents your contact details"
+msgstr ""
+
+#: lib/widgets/LinkListWidget.php:23
+msgid "Link List"
+msgstr ""
+
+#: lib/widgets/LinkListWidget.php:25
+msgid "Add some links to the green family"
+msgstr ""
+
+#: lib/widgets/LinkListWidget.php:29
+msgid "The green family"
+msgstr ""
+
+#: lib/widgets/Widget.php:53
+msgid "Title:"
+msgstr ""
+
+#: vendor/mindkomm/timmy/lib/Timmy.php:220
+msgid "Full Size"
+msgstr ""
+
+#: vendor/timber/timber/lib/Archives.php:160
+#, php-format
+msgid "%1$s %2$d"
+msgstr ""
+
+#: vendor/timber/timber/lib/Archives.php:162
+#, php-format
+msgid "%1$s"
+msgstr ""
+
+#: vendor/timber/timber/lib/Pagination.php:115
+msgid "&laquo; Previous"
+msgstr ""
+
+#: vendor/timber/timber/lib/Pagination.php:116
+msgid "Next &raquo;"
+msgstr ""
+
+#: vendor/timber/timber/lib/Pagination.php:179
+#: vendor/timber/timber/lib/TextHelper.php:26
+#: vendor/timber/timber/lib/TextHelper.php:44
+msgid "&hellip;"
+msgstr ""
+
+#: vendor/timber/timber/lib/TextHelper.php:53
+msgctxt "word count: words or characters?"
+msgid "words"
+msgstr ""
+
+#: vendor/timber/timber/tests/test-timber-gettext.php:8
+#: vendor/timber/timber/tests/test-timber-gettext.php:21
+msgid "my_boo"
+msgstr ""
+
+#: vendor/timber/timber/tests/test-timber-gettext.php:29
+#: vendor/timber/timber/tests/test-timber-gettext.php:31
+msgid "foo"
+msgid_plural "foos"
+msgstr[0] ""
+msgstr[1] ""
+
+#: vendor/timber/timber/tests/test-timber-gettext.php:37
+#: vendor/timber/timber/tests/test-timber-gettext.php:44
+#: vendor/timber/timber/tests/test-timber-gettext.php:52
+#: vendor/timber/timber/tests/test-timber-gettext.php:54
+msgctxt "my"
+msgid "boo"
+msgid_plural "boos"
+msgstr[0] ""
+msgstr[1] ""
+
+#: vendor/timber/timber/tests/test-timber-menu.php:512
+#: vendor/timber/timber/tests/test-timber-menu.php:513
+msgid "Gallery"
+msgstr ""
+
+#: vendor/timber/timber/tests/wp-overrides.php:40
+#, php-format
+msgid "\"%1$s\" from %2$s by %3$s."
+msgstr ""
+
+#: vendor/timber/timber/tests/wp-overrides.php:43
+#, php-format
+msgid "\"%1$s\" from %2$s."
+msgstr ""
+
+#: vendor/timber/timber/tests/wp-overrides.php:46
+#, php-format
+msgid "\"%1$s\" by %2$s."
+msgstr ""
+
+#: vendor/timber/timber/tests/wp-overrides.php:48
+#, php-format
+msgid "\"%s\"."
+msgstr ""
+
+#: vendor/timber/timber/tests/wp-overrides.php:55
+#, php-format
+msgid "%1$s by %2$s."
+msgstr ""
+
+#: vendor/timber/timber/tests/wp-overrides.php:67
+#, php-format
+msgid "Released: %d."
+msgstr ""
+
+#: vendor/timber/timber/tests/wp-overrides.php:72
+#, php-format
+msgid "Track %1$s of %2$s."
+msgstr ""
+
+#: vendor/timber/timber/tests/wp-overrides.php:74
+#, php-format
+msgid "Track %1$s."
+msgstr ""
+
+#: vendor/timber/timber/tests/wp-overrides.php:78
+#, php-format
+msgid "Genre: %s."
+msgstr ""
+
+#: vendor/timber/timber/tests/wp-overrides.php:143
+msgid "The uploaded file exceeds the upload_max_filesize directive in php.ini."
+msgstr ""
+
+#: vendor/timber/timber/tests/wp-overrides.php:144
+msgid ""
+"The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in "
+"the HTML form."
+msgstr ""
+
+#: vendor/timber/timber/tests/wp-overrides.php:145
+msgid "The uploaded file was only partially uploaded."
+msgstr ""
+
+#: vendor/timber/timber/tests/wp-overrides.php:146
+msgid "No file was uploaded."
+msgstr ""
+
+#: vendor/timber/timber/tests/wp-overrides.php:148
+msgid "Missing a temporary folder."
+msgstr ""
+
+#: vendor/timber/timber/tests/wp-overrides.php:149
+msgid "Failed to write file to disk."
+msgstr ""
+
+#: vendor/timber/timber/tests/wp-overrides.php:150
+msgid "File upload stopped by extension."
+msgstr ""
+
+#: vendor/timber/timber/tests/wp-overrides.php:167
+msgid "Invalid form submission."
+msgstr ""
+
+#: vendor/timber/timber/tests/wp-overrides.php:177
+msgid "File is empty. Please upload something more substantial."
+msgstr ""
+
+#: vendor/timber/timber/tests/wp-overrides.php:179
+msgid ""
+"File is empty. Please upload something more substantial. This error could "
+"also be caused by uploads being disabled in your php.ini or by post_max_size "
+"being defined as smaller than upload_max_filesize in php.ini."
+msgstr ""
+
+#: vendor/timber/timber/tests/wp-overrides.php:185
+msgid "Specified file failed upload test."
+msgstr ""
+
+#: vendor/timber/timber/tests/wp-overrides.php:198
+msgid "Sorry, this file type is not permitted for security reasons."
+msgstr ""
+
+#: vendor/timber/timber/tests/wp-overrides.php:223
+#, php-format
+msgid "The uploaded file could not be moved to %s."
+msgstr ""
+
+#: lib/form/templates/form-sent-page.twig:9
+msgid "Select bulk action"
+msgstr ""
+
+#: lib/form/templates/form-sent-page.twig:11
+msgid "bulk actions"
+msgstr ""
+
+#: lib/form/templates/form-sent-page.twig:12
+#: lib/form/templates/form-sent-page.twig:46
+msgid "Delete permanently"
+msgstr ""
+
+#: lib/form/templates/form-sent-page.twig:14
+msgid "Apply"
+msgstr ""
+
+#: lib/form/templates/form-sent-page.twig:17
+msgid "form(s) sent"
+msgstr ""
+
+#: lib/form/templates/form-sent-page.twig:28
+msgid "Select all"
+msgstr ""
+
+#: lib/form/templates/form-sent-page.twig:31
+msgid "Date"
+msgstr ""
+
+#: templates/atoms/a-footer-meta.twig:7
+msgid "Meta navigation"
+msgstr ""
+
+#: templates/atoms/a-hamburger.twig:2
+msgid "Toggle navigation"
+msgstr ""
+
+#: templates/atoms/a-pagination.twig:13 templates/atoms/a-pagination.twig:15
+msgid "Previous Page"
+msgstr ""
+
+#: templates/atoms/a-pagination.twig:36 templates/atoms/a-pagination.twig:38
+msgid "Next Page"
+msgstr ""
+
+#: templates/atoms/a-post-link.twig:21
+msgctxt "Date format. See http://php.net/manual/de/function.date.php"
+msgid "d. F Y"
+msgstr ""
+
+#: templates/atoms/a-post-link.twig:45
+#: templates/molecules/m-front-article.twig:38
+msgid "Read more"
+msgstr ""
+
+#: templates/atoms/a-simple-dialog.twig:5
+#: templates/atoms/a-simple-dialog.twig:7
+msgid "Close dialog"
+msgstr ""
+
+#: templates/atoms/a-vote-tag.twig:1
+msgid "Vote recommendations"
+msgstr ""
+
+#: templates/base.twig:15
+msgid "Sorry, no content"
+msgstr ""
+
+#: templates/molecules/m-branding.twig:9 templates/molecules/m-menu.twig:2
+msgid "Home"
+msgstr ""
+
+#: templates/molecules/m-event-details.twig:4
+msgid "date and duration"
+msgstr ""
+
+#: templates/molecules/m-event-details.twig:13
+msgid "place"
+msgstr ""
+
+#: templates/molecules/m-event-details.twig:23
+msgid "Save to calendar"
+msgstr ""
+
+#: templates/molecules/m-link-list.twig:33
+#, php-format
+msgctxt "Example: All 17 press releases"
+msgid "All %d %s"
+msgstr ""
+
+#: templates/molecules/m-menu.twig:17
+msgid "Submenu"
+msgstr ""
+
+#: templates/molecules/m-menu.twig:25
+msgid "Close submenu"
+msgstr ""
+
+#: templates/molecules/m-menu.twig:27
+msgid "Close icon"
+msgstr ""
+
+#: templates/molecules/m-menu.twig:37 templates/molecules/m-menu.twig:41
+msgid "Search"
+msgstr ""
+
+#: templates/molecules/m-share.twig:21 templates/molecules/m-share.twig:25
+msgid "Share"
+msgstr ""
+
+#: templates/molecules/m-share.twig:23
+msgid "Toggle share buttons"
+msgstr ""
+
+#: templates/organisms/o-front-article.twig:37
+msgid "Quotation mark"
+msgstr ""
+
+#: templates/organisms/o-front-events.twig:21
+msgid "Show all events"
+msgstr ""
+
+#: templates/organisms/o-people-slider.twig:17
+#: templates/organisms/o-people-slider.twig:19
+msgid "Slide to the left"
+msgstr ""
+
+#: templates/organisms/o-people-slider.twig:24
+#: templates/organisms/o-people-slider.twig:26
+msgid "Slide to the right"
+msgstr ""
+
+#. Theme Name of the plugin/theme
+msgid "Les Verts"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "Handcrafted custom theme for Les Verts, by superhuit.ch."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "superhuit"
+msgstr ""
+
+#. Template Name of the plugin/theme
+msgid "Overview"
+msgstr ""
+
+#. Template Name of the plugin/theme
+msgid "Press Release"
+msgstr ""
