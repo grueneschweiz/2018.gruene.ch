@@ -51,7 +51,7 @@
 				{% endfor %}
 			</div>
 
-			{% if link_lists %}
+			{% if link_lists and link_lists.link_lists %}
 				<aside class="page__linked-content">
 					{% include 'organisms/o-linked-content.twig' with link_lists only %}
 				</aside>
