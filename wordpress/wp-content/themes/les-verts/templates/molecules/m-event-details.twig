@@ -1,3 +1,5 @@
+{% set event = TribeEvent(post) %}
+
 <div class="m-event-details">
 	<div class="m-event-details__time-wrapper">
 		<svg role="img" class="m-event-details__icon">
@@ -5,16 +7,16 @@
 			<use xlink:href="#clock"></use>
 		</svg>
 		<time class="m-event-details__time"
-					datetime="{{ event|event_timestamp }}">{{ event|event_time }}</time>
+					datetime="{{ event.timestamp }}">{{ event.time_string }}</time>
 	</div>
-	{% if venue %}
+	{% if event.venue %}
 		<div class="m-event-details__location-wrapper">
 			<svg role="img" class="m-event-details__icon">
 				<title>{{ __('place', constant('THEME_DOMAIN')) }}</title>
 				<use xlink:href="#location"></use>
 			</svg>
 			<span
-				class="m-event-details__location">{{ venue.title }}{% if venue._VenueAddress %}, {{ venue._VenueAddress }}{% endif %}{% if venue._VenueCity %}, {{ venue._VenueCity }}{% endif %}</span>
+				class="m-event-details__location">{{ event.venue_string }}</span>
 		</div>
 	{% endif %}
 	<div class="m-event-details__link-button">

@@ -7,8 +7,7 @@
             <div class="o-front-events__event{% if loop.index > block.max_num %} o-front-events__event--hidden{% endif %}">
 							<div class="o-front-events__inner">
                 {% include 'atoms/a-event-link.twig' with {
-                    'event': event,
-                    'venue': attribute(loop.parent.venues, event._EventVenueID)
+                    'post': event
                 } only %}
 							</div>
             </div>
