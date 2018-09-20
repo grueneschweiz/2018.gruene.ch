@@ -157,7 +157,19 @@ require_once __DIR__ .'/twig/filters/event_time.php';
 
 /**
  * FORM LIBRARY
+ * ============
  */
 if( class_exists( 'acf' ) ) {
-	require_once __DIR__ . '/form/_loader.php';
+	//require_once __DIR__ . '/form/_loader.php';
+}
+
+
+/**
+ * TORRO FORMS
+ * ===========
+ *
+ * Extend the torro forms plugin
+ */
+if( class_exists( 'Torro_Forms' ) ) {
+	require_once __DIR__ . '/torro/tweak_torro_forms.php';
 }
