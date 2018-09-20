@@ -9,9 +9,11 @@
 				{% include 'atoms/a-breadcrumbs.twig' %}
 			</div>
 			<h1>{{ title }}</h1>
-			<div class="page__header-text">
-				<p>{{ archive_description }}</p>
-			</div>
+			{% if archive_description %}
+				<div class="page__header-text">
+					<p>{{ archive_description }}</p>
+				</div>
+			{% endif %}
 		</div>
 	</header>
 	<section class="page__content">
@@ -24,13 +26,19 @@
 			</header>
 			<ul class="page__list-articles">
 				{% for post in posts %}
-					<li class="page__list-article">
-						{% include 'molecules/m-front-article.twig' with {
-							'post': post,
-							'modifiers': [
-								'm-front-article--no-image',
-							],
-						} only %}
+					<li class="page__list-article {% if post.EventStartDate %}page__list-article--hover-link{% endif %}">
+						{% if post.EventStartDate %}
+							{% include 'atoms/a-event-link.twig' with {
+								'post': post
+							} only %}
+						{% else %}
+							{% include 'molecules/m-front-article.twig' with {
+								'post': post,
+								'modifiers': [
+									'm-front-article--no-image',
+								],
+							} only %}
+						{% endif %}
 					</li>
 				{% endfor %}
 			</ul>

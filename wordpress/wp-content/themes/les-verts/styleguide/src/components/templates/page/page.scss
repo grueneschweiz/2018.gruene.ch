@@ -145,6 +145,29 @@
 
 		border-bottom: solid 1px $color-grey-2;
 		@include fluid-props(padding-bottom margin-bottom, $fluid-min, $size-medium, 16px, 32px);
+
+		&--hover-link {
+			position: relative;
+			margin-left: -15px;
+			padding-left: 15px;
+			margin-right: -15px;
+			padding-right: 15px;
+			border-bottom: none;
+
+			&::after {
+				content: ' ';
+				position: absolute;
+				bottom: 0;
+				left: 15px;
+				background: $color-grey-2;
+				width: calc(100% - 30px);
+				height: 1px;
+			}
+
+			@include hover {
+				background: $color-grey-1;
+			}
+		}
 	}
 
 	&__list-pagination {
