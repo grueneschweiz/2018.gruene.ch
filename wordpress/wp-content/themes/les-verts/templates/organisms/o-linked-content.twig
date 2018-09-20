@@ -14,7 +14,7 @@
 						'block_title': block.block_title,
 						'links': PostQuery({
 							'posts_per_page': 4,
-							'category__in': block.linked_content.categories,
+							'category__and': block.linked_content.categories,
 							'tag__in': block.linked_content.tags,
 							'post_status': 'publish'
 						}),
