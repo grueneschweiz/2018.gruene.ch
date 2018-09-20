@@ -2,9 +2,9 @@
 	<h2 class="m-in-short__title">{{ title }}</h2>
 	{% for block in content %}
 		{% if block.acf_fc_layout == 'bullet_points' %}
-			<ul>
+			<ul class="m-in-short__list">
 				{% for item in block.bullet_points %}
-					<li>{{ item.bullet_point }}</li>
+					<li class="m-in-short__item">{{ item.bullet_point }}</li>
 				{% endfor %}
 			</ul>
 		{% elseif block.acf_fc_layout == 'call_to_action' %}

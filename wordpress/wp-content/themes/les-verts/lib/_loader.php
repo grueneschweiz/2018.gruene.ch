@@ -96,7 +96,7 @@ add_action( 'init', function() {
 
 require_once __DIR__ . '/timber/ACFPost.php';
 require_once __DIR__ . '/timber/SUPTPostQuery.php';
-
+require_once __DIR__ . '/timber/SUPTTribeEvent.php';
 
 /**
  * WIDGETS
@@ -149,15 +149,26 @@ require_once __DIR__ .'/tweaks/inject-svg-sprite.php';
 
 // functions
 require_once __DIR__ .'/twig/functions/get_lang.php';
-require_once __DIR__.'/twig/functions/register_timber_acf_post_type.php';
-require_once __DIR__.'/twig/functions/register_timber_post_query.php';
+require_once __DIR__.'/twig/functions/register_timber_custom_post_types.php';
 
 // filters
-require_once __DIR__ .'/twig/filters/event_time.php';
+//require_once __DIR__ .'/twig/filters/event_time.php';
 
 /**
  * FORM LIBRARY
+ * ============
  */
 if( class_exists( 'acf' ) ) {
-	require_once __DIR__ . '/form/_loader.php';
+	//require_once __DIR__ . '/form/_loader.php';
+}
+
+
+/**
+ * TORRO FORMS
+ * ===========
+ *
+ * Extend the torro forms plugin
+ */
+if( class_exists( 'Torro_Forms' ) ) {
+	require_once __DIR__ . '/torro/tweak_torro_forms.php';
 }

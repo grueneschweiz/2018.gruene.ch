@@ -210,7 +210,7 @@
                             "label": "Content Filter",
                             "name": "linked_content",
                             "type": "group",
-                            "instructions": "The latest content that matches at least <strong>one<\/strong> of the selected categories <strong>and one<\/strong> of the selected tags will be displayed.<br><br>\r\n\r\nIf <strong>no tags<\/strong> are selected, all content matching any of the categories will be displayed. If <strong>no categories<\/strong> are selected, all content matching any of the tags will be displayed.",
+                            "instructions": "The latest content that matches <strong>all<\/strong> of the selected categories and <strong>at least one<\/strong> of the selected tags will be displayed.<br><br>\r\n\r\nIf <strong>no tags<\/strong> are selected, all content matching any of the categories will be displayed. If <strong>no categories<\/strong> are selected, all content matching any of the tags will be displayed.",
                             "required": 0,
                             "conditional_logic": 0,
                             "wrapper": {
@@ -312,5 +312,5 @@
     "hide_on_screen": "",
     "active": 0,
     "description": "",
-    "modified": 1534925984
+    "modified": 1537467558
 }

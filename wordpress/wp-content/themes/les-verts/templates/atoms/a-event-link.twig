@@ -1,12 +1,14 @@
+{% set event = TribeEvent(post) %}
+
 <a class="a-event-link" href="{{ event.link() }}">
     <div class="a-event-link__image"
          style="background-image: url('{{ Image(event.image).src|resize(148,94) }}')"></div>
     <h3 class="a-event-link__title">{{ event.title }}</h3>
     <div class="a-event-link__meta">
         <time class="a-event-link__datetime"
-              datetime="{{ event|event_timestamp }}">{{ event|event_time }}</time>
-        {% if venue %}
-            <div class="a-event-link__place">{{ venue.title }}{% if venue._VenueAddress %}, {{ venue._VenueAddress }}{% endif %}{% if venue._VenueCity %}, {{ venue._VenueCity }}{% endif %}</div>
+              datetime="{{ event.timestamp }}">{{ event.time_string }}</time>
+        {% if event.venue %}
+            <div class="a-event-link__place">{{ event.venue_string }}</div>
         {% endif %}
     </div>
 </a>

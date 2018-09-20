@@ -20,9 +20,9 @@ export class MMenuBase extends BaseView {
 
 	toggleSubNavigation( event ) {
 		if (this.currentSub !== event.target) {
+			this.closeSubNavigation();
 			this.openSubNavigation( event );
-		}
-		else {
+		}	else {
 			event.preventDefault();
 			this.closeSubNavigation();
 		}
