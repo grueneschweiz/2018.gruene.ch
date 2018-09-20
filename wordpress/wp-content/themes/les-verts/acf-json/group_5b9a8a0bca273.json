@@ -88,17 +88,12 @@
             {
                 "param": "post_type",
                 "operator": "==",
-                "value": "page"
+                "value": "post"
             },
             {
                 "param": "post_template",
                 "operator": "==",
                 "value": "single_overview.php"
-            },
-            {
-                "param": "page_type",
-                "operator": "!=",
-                "value": "front_page"
             }
         ]
     ],
@@ -121,5 +116,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1536857345
+    "modified": 1537438228
 }
