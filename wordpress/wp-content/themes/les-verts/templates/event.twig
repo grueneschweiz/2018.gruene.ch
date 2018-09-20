@@ -29,9 +29,7 @@
 						</div>
 					</div>
 				</header>
-				<div class="page__event-content">
-					{{ post.description }}
-				</div>
+				{{ post.description|wpautop|shortcodes }}
 			</div>
 		</div>
 	</article>
