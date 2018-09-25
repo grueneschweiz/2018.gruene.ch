@@ -10,14 +10,10 @@ namespace SUPT\Customizer;
 
 
 /**
- * This is just an example
+ * Adds the get active section to the customizer
  *
- *
- * Class Template
  * @package SUPT\Customizer
  */
-
-
 
 class GetActive {
 	const PRIORITY = 101;
