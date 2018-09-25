@@ -28,6 +28,23 @@ context:
   link-button:
     label: Kantonale Abstimmungen
 variants:
+  - name: 2 proposals
+    context:
+      proposals:
+        - label: "Fair-Food JA: Gesund und umweltfreundlich"
+          excerpt: Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum
+          url: '#'
+          vote-tag:
+            label: ja
+            modifiers:
+              - yes
+        - label: Ernährungssouverenität, die Ergänzung zur Fair-Food-Initiative
+          excerpt: Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum
+          url: '#'
+          vote-tag:
+            label: ja
+            modifiers:
+              - yes
   - name: 15 proposals
     context:
       modifiers:

@@ -5,7 +5,7 @@
 	padding: 0.5em 0;
 
 	&__title {
-		margin: 0 3.1914893617em 0 0;
+		margin: 0 3.2em 0 0;
 
 		@include media($_MOBILE) {
 			font-size: 1rem;
@@ -17,12 +17,16 @@
 				border-color: $color-primary;
 				border-top: 0.1666666667em solid; // 2/12
 				border-right: 0.1666666667em solid; // 2/12
-				transform: translateX(-0.2em) rotate(45deg);
+				transform: translateX(-0.2em) translateY(-50%) rotate(45deg);
 				position: absolute;
 				right: 0;
-				bottom: 0.8em;
+				bottom: 50%;
 			}
 		}
+	}
+
+	&--excerpt &__title::after {
+		display: none;
 	}
 
 	&__tag {
@@ -32,6 +36,14 @@
 
 		@include media($_DESKTOP) {
 			top: 13px;
+		}
+	}
+
+	&__excerpt {
+		margin: 0.5em 3.2em 0.5em 0;
+
+		@include media($_DESKTOP) {
+			margin-right: 4.7em;
 		}
 	}
 }

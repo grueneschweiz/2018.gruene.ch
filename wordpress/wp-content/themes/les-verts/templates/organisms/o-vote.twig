@@ -3,11 +3,31 @@
 		{% include 'atoms/a-cat-title.twig' with block_title only %}
 	</div>
 	<div class="o-vote__proposals">
+		{% set num_proposals = proposals|length %}
+
 		{% for proposal in proposals %}
-			<a href="{{ proposal.proposal.link }}" class="o-vote__proposal">
+			{% set tag = proposal.flag %}
+
+			{% if 'internal' == proposal.proposal_link.type %}
+				{% set acf_post = ACFPost(proposal.proposal_link.internal) %}
+				{% set label = acf_post.title %}
+				{% set link = acf_post.link %}
+				{% if num_proposals < 3 %}
+					{% set excerpt = acf_post.excerpt %}
+				{% endif %}
+			{% else %}
+				{% set label = proposal.proposal_link.external.title %}
+				{% set link = proposal.proposal_link.external.url %}
+				{% if num_proposals < 3 %}
+					{% set excerpt = proposal.proposal_link.external.excerpt %}
+				{% endif %}
+			{% endif %}
+
+			<a href="{{ link }}" class="o-vote__proposal">
 				{% include 'molecules/m-vote.twig' with {
-					'label': proposal.proposal.title,
-					'tag': proposal.flag
+					'label': label,
+					'tag': tag,
+					'excerpt': excerpt
 				} only %}
 			</a>
 		{% endfor %}

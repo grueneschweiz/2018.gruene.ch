@@ -1,4 +1,4 @@
-<a {{#if url}}href="{{ url }}"{{/if}} class="a-link-button {{ modifiers_classes }}"{{#if js_hook}}
+<{{#if url}}a href="{{ url }}"{{else}}div{{/if}} class="a-link-button {{ modifiers_classes }}"{{#if js_hook}}
 	 data-{{ js_hook }}{{/if}}>
 	<span class="a-link-button__label">{{ label }}</span>
-</a>
+</{{#if url}}a{{else}}div{{/if}}>
