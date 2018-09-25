@@ -16,10 +16,7 @@ class Navigation_controller {
 		
 		$context['menu']['main']        = $menu;
 		$context['menu']['language']    = new \TimberMenu( 'language-nav', [ 'depth' => 1 ] );
-		$context['menu']['cta']         = [
-			'label' => 'mitmachen',
-			'link'  => '#'
-		]; // todo: get them from the customizer
+		$context['menu']['cta']         = self::get_menu_cta();
 		$context['menu']['footer']      = new \TimberMenu( 'footer-nav', [ 'depth' => 2 ] );
 		$context['menu']['footer_meta'] = new \TimberMenu( 'footer-meta-nav', [ 'depth' => 1 ] );
 		
@@ -62,5 +59,32 @@ class Navigation_controller {
 				}
 			}
 		}
+	}
+	
+	/**
+	 * Return array with label and link for the get active button.
+	 *
+	 * The values come from the customizer. If no page is defined, an empty
+	 * array will be returned.
+	 *
+	 * @return array
+	 */
+	public static function get_menu_cta() {
+		$post_id = get_theme_mod( Customizer\GetActive::SETTING_GET_ACTIVE_POST_ID, false );
+		
+		if ( ! $post_id ) {
+			return [];
+		}
+		
+		$label = get_theme_mod( Customizer\GetActive::SETTING_GET_ACTIVE_LABEL, false );
+		
+		if ( ! $label ) {
+			$label = __( 'Get Active', THEME_DOMAIN );
+		}
+		
+		return [
+			'label' => $label,
+			'link'  => get_permalink( $post_id ),
+		];
 	}
 }

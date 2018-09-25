@@ -1,3 +1,3 @@
-<a {% if link %}href="{{ link }}"{% endif %} class="a-link-button {{ modifiers|join(' ') }}"{% if target %} target="{{ target }}"{% endif %}{% if js_hook %} data-{{ js_hook }}{% endif %}>
+<{% if link %}a href="{{ link }}"{% else %}div{% endif %} class="a-link-button {{ modifiers|join(' ') }}"{% if target %} target="{{ target }}"{% endif %}{% if js_hook %} data-{{ js_hook }}{% endif %}>
     <span class="a-link-button__label">{{ label }}</span>
-</a>
+</{% if link %}a{% else %}div{% endif %}>

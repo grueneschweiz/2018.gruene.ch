@@ -59,12 +59,12 @@ add_action( 'acf/input/admin_footer', function() {
 				{
 					title: "Button Outline Green",
 					selector: "a",
-					classes: "a-button a-button--primary a-button-outline"
+					classes: "a-button a-button--primary a-button--outline"
 				},
 				{
 					title: "Button Outline Magenta",
 					selector: "a",
-					classes: "a-button a-button--secondary a-button-outline"
+					classes: "a-button a-button--secondary a-button--outline"
 				}
 			];
 			return mceInit;
@@ -74,15 +74,13 @@ add_action( 'acf/input/admin_footer', function() {
 } );
 
 // custom css
-// todo: include backend styles
-//add_filter( 'tiny_mce_before_init', function( $mce_init ) {
-//	$styleguide_css = get_stylesheet_directory_uri() . '/static/main.min.css';
-//	$content_css = get_stylesheet_directory_uri() . '/style-admin-editor.css';
-//	if (isset($mce_init['content_css'])) {
-//		$content_css_new =  $mce_init[ 'content_css' ].','.$styleguide_css.','.$content_css;
-//	}
-//	$mce_init[ 'content_css' ] = $content_css_new;
-//	$mce_init['body_class'] .= ' u-typography';
-//
-//	return $mce_init;
-//} );
+add_filter( 'tiny_mce_before_init', function( $mce_init ) {
+	$styleguide_css = get_stylesheet_directory_uri() . '/styleguide/dist/build/style.min.css';
+	$content_css = get_stylesheet_directory_uri() . '/style-admin-editor.css';
+	if (isset($mce_init['content_css'])) {
+		$content_css_new =  $mce_init[ 'content_css' ].','.$styleguide_css.','.$content_css;
+	}
+	$mce_init[ 'content_css' ] = $content_css_new;
+
+	return $mce_init;
+} );

@@ -1,6 +1,12 @@
-<div class="m-vote">
+<div class="m-vote{{#if excerpt}} m-vote--excerpt{{/if}}">
 	<h3 class="m-vote__title">{{ label }}</h3>
 	<div class="m-vote__tag">
 		{{> @a-vote-tag vote-tag}}
 	</div>
+	{{#if excerpt}}
+		<p class="m-vote__excerpt">{{ excerpt }}</p>
+		<div class="m-vote__link-button">
+			{{> @a-link-button url='' label="Mehr über die Vorlage"}}
+		</div>
+	{{/if}}
 </div>

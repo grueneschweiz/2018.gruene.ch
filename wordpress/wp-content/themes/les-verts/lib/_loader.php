@@ -126,8 +126,10 @@ add_action( 'widgets_init', function() {
  */
 
 require_once __DIR__ . '/customizer/Logo.php';
+require_once __DIR__ . '/customizer/GetActive.php';
 
 Customizer\Logo::register();
+Customizer\GetActive::register();
 
 
 /**

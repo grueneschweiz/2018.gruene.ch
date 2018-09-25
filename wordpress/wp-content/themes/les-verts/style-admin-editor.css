@@ -2,7 +2,6 @@
  * Custom styles for the tinymce editor
  */
 
-/* body#tinymce.wp-editor {
-	padding: 10px;
-	color: #4a4a4a;
-} */
+body#tinymce.wp-editor {
+	padding: 0 10px;
+}
