@@ -46,11 +46,13 @@
         </ul>
     </nav>
     <div class="m-menu__right">
+				{% if menu.cta %}
         <div class="m-menu__cta">{% include 'atoms/a-button.twig' with {
                 'link': menu.cta.link,
                 'label': menu.cta.label,
                 'modifiers': ['a-button--outline', 'a-button--secondary']
             } only %}</div>
+				{% endif %}
         <div class="m-menu__language-nav">
             <ul class="m-menu__language-nav-list" role="menubar" aria-label="{{ __('Language navigation', constant('THEME_DOMAIN')) }}">
                 {% for language in menu.language.items %}
