@@ -20,7 +20,7 @@ namespace SUPT\Customizer;
 
 
 class GetActive {
-	const PRIORITY = 60;
+	const PRIORITY = 101;
 	
 	const SECTION = THEME_DOMAIN. '_section';
 	const SETTING_GET_ACTIVE_LABEL = 'get_active_label';
