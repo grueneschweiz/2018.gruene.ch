@@ -5,6 +5,7 @@
 		{% include 'atoms/a-image.twig' with {
 			'link_url':item.link,
 			'image':item_meta.image
+			'size': 'header'
 		} only %}
 		<a class="a-submenu--featured__link" href="{{ item.link }}">
 			<h3 class="a-submenu--featured__link__title">{{ item.title }}</h3>
