@@ -4,7 +4,7 @@
     </div>
     <div class="o-front-events__events">
         {% for event in events %}
-            <div class="o-front-events__event{% if loop.index > block.max_num %} o-front-events__event--hidden{% endif %}">
+            <div class="o-front-events__event">
 							<div class="o-front-events__inner">
                 {% include 'atoms/a-event-link.twig' with {
                     'post': event
@@ -13,10 +13,10 @@
             </div>
         {% endfor %}
     </div>
-    {% if events|length > block.max_num %}
+    {% if block.max_num < fn('wp_count_posts','tribe_events')%}
         <div class="o-front-events__more">
             {% include 'atoms/a-link-button.twig' with {
-                'js_hook': 'toggle-events',
+                'link': fn('tribe_get_events_link'),
                 'label': __('Show all events', constant('THEME_DOMAIN'))
             } only %}
         </div>

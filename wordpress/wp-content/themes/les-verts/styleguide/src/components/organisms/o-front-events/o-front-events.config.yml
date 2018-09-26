@@ -8,7 +8,7 @@ context:
     label: Events
   link-button:
     label: Alle Events anzeigen
-    js_hook: toggle-events
+    link: '#'
   events:
     - title: Öffentlichkeit und Demokratie im Zeitalter der Neuen Medien
       timestamp: '2018-08-25 11:00'
@@ -38,14 +38,6 @@ context:
       alt: Die Delegierten schreiten zur Abstimmung
       image-src: "/img/dv.jpg"
       link: '#'
-    - title: Hidden event
-      timestamp: '2018-08-25 11:00'
-      datetime: 25. August 2018 – 11:00
-      place: Säulenhalle Zug
-      alt: Die Delegierten schreiten zur Abstimmung
-      image-src: "/img/dv.jpg"
-      link: '#'
-      hidden: true
 variants:
   - name: Single column
     context:
