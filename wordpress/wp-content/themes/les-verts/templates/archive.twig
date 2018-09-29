@@ -21,7 +21,7 @@
 			<header class="page__list-header">
 				{% include 'molecules/m-list-header.twig' with {
 					'title': title,
-					'counter': posts|length
+					'counter': posts.found_posts()
 				} only %}
 			</header>
 			<ul class="page__list-articles">
