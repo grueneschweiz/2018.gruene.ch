@@ -8,7 +8,7 @@
 	{% set title = post_object.title %}
 	{% set url = post_object.link %}
 	{% set categories = post_object.categories() %}
-	{% if post_object.object_type == 'post' %}
+	{% if post_object._wp_page_template.0 == 'single_press_release.php' or post_object._wp_page_template == 'single_press_release.php' %}
 		{% set date = post_object.post_date %}
 	{% endif %}
 {% endif %}
@@ -45,15 +45,17 @@
 				'label': __('Read more', constant('THEME_DOMAIN'))
 			} only %}
 		{% else %}
-			{% if acf_fc_layout == 'post_objects' %}
-				<footer class="a-post-link__meta a-post-link__meta--footer">
-					{% if date %}
-						<time class="a-post-link__meta-item" datetime="{{ timestamp }}">{{ date }}</time>
-					{% endif %}
-					{% if categories %}
-						<div class="a-post-link__meta-item">{{ categories|join(', ') }}</div>
-					{% endif %}
-				</footer>
+			{% if acf_fc_layout == 'post_objects' or type == 'autolist' %}
+				{% if date or categories %}
+					<footer class="a-post-link__meta a-post-link__meta--footer">
+						{% if date %}
+							<time class="a-post-link__meta-item" datetime="{{ timestamp }}">{{ date }}</time>
+						{% endif %}
+						{% if categories %}
+							<div class="a-post-link__meta-item">{{ categories|join(', ') }}</div>
+						{% endif %}
+					</footer>
+				{% endif %}
 			{% endif %}
 		{% endif %}
 		{% if full_width %}
