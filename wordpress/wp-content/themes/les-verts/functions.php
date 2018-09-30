@@ -94,19 +94,19 @@ class StarterSite extends TimberSite {
 		$context['widgets']['footer'] = Timber::get_widgets( 'footer-widget-area' );
 		
 		// Localized options
-		$context['localized_options'] = get_fields( \SUPT\get_lang() );
+		//$context['localized_options'] = get_fields( \SUPT\get_lang() );
 		
 		// Options overrides
-		if (
-			isset( $context['localized_options'] )
-			&& isset( $context['localized_options']['gtm_override'] )
-			&& $context['localized_options']['gtm_override']
-		) {
-			foreach ( [ 'gtm_enable', 'gtm_id' ] as $key ) {
-				$val                        = isset( $context['localized_options'][ $key ] ) ? $context['localized_options'][ $key ] : null;
-				$context['OPTIONS'][ $key ] = $val;
-			}
-		}
+//		if (
+//			isset( $context['localized_options'] )
+//			&& isset( $context['localized_options']['gtm_override'] )
+//			&& $context['localized_options']['gtm_override']
+//		) {
+//			foreach ( [ 'gtm_enable', 'gtm_id' ] as $key ) {
+//				$val                        = isset( $context['localized_options'][ $key ] ) ? $context['localized_options'][ $key ] : null;
+//				$context['OPTIONS'][ $key ] = $val;
+//			}
+//		}
 		
 		// Are we in debut mode?
 		$context['WP_DEBUG'] = WP_DEBUG;
