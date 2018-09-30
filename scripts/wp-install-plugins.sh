@@ -31,6 +31,8 @@ $WPCLI plugin install svg-support --activate-network
 
 # YAOST seo plugin
 $WPCLI plugin install wordpress-seo --activate-network
+$WPCLI option patch update wpseo_titles breadcrumbs-home <<< "Front Page"
+$WPCLI option patch update wpseo enable_admin_bar_menu false
 
 # Smush Image Compression
 $WPCLI plugin install wp-smushit --activate-network
