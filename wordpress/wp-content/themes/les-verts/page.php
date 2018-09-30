@@ -102,10 +102,12 @@ function supt_get_events( &$context ) {
 	foreach ( $context['post']->custom['content_blocks'] as $id => $type ) {
 		if ( 'events' == $type ) {
 			
+			$post_per_page = (int) $context['post']->{"content_blocks_{$id}_max_num"};
+			
 			// get upcoming and running events
 			$args = array(
 				'post_type'      => 'tribe_events',
-				'posts_per_page' => - 1,
+				'posts_per_page' => $post_per_page,
 				'post_status'    => 'publish', // prevent 'private' if logged in
 				'orderby'        => 'meta_value_datetime',
 				'meta_query'     => array(
