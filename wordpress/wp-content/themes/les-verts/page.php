@@ -30,7 +30,7 @@ if ('tribe_events' === get_post_type() ) {
 	if( 'list' === get_query_var('eventDisplay')) {
 		
 		// the list view
-		$context['posts'] = new Timber\PostQuery();
+		$context['posts'] = new \SUPT\SUPTPostQuery();
 		$context['title'] = __('Events', THEME_DOMAIN);
 		array_unshift( $templates, 'archive.twig' );
 		
