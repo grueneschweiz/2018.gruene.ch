@@ -115,6 +115,13 @@
 			margin-left: 0;
 			margin-right: 0;
 		}
+
+		&--single-block {
+			margin-left: 0;
+			margin-right: 0;
+			max-width: $text-max-width;
+			width: 100%;
+		}
 	}
 
 	&__preview-articles {

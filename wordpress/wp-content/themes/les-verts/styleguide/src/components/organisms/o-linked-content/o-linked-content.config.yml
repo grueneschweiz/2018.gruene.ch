@@ -2,3 +2,9 @@ label: Linked Content
 status: ready
 context:
   title: Das könnte dich auch noch interessieren
+variants:
+- name: Single block
+  context:
+    single: true
+    modifiers:
+    - single-block

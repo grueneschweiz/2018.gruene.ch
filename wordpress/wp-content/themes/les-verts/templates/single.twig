@@ -52,7 +52,7 @@
 			</div>
 
 			{% if link_lists and link_lists.link_lists %}
-				<aside class="page__linked-content">
+				<aside class="page__linked-content{% if link_lists.link_lists|length == 1 and not link_lists.link_lists.0.full_width %} page__linked-content--single-block{% endif %}">
 					{% include 'organisms/o-linked-content.twig' with link_lists only %}
 				</aside>
 			{% endif %}

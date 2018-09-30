@@ -1,14 +1,16 @@
-<div class="o-linked-content">
+<div class="o-linked-content{{#if single}} o-linked-content--single-block{{/if}}">
 	<h2 class="o-linked-content__title">{{title}}</h2>
 	<div class="o-linked-content__wrapper">
 		<div class="o-linked-content__block">
 			{{render '@m-link-list'}}
 		</div>
-		<div class="o-linked-content__block">
-			{{render '@m-link-list'}}
-		</div>
-		<div class="o-linked-content__block o-linked-content__block--full-width">
-			{{render '@m-link-list--full-width'}}
-		</div>
+		{{#unless single}}
+			<div class="o-linked-content__block">
+				{{render '@m-link-list'}}
+			</div>
+			<div class="o-linked-content__block o-linked-content__block--full-width">
+				{{render '@m-link-list--full-width'}}
+			</div>
+		{{/unless}}
 	</div>
 </div>

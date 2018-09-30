@@ -75,3 +75,6 @@ variants:
       url: '#'
       modifiers:
       - no-image
+- name: Default Single Linked Content
+  context:
+    single: true
