@@ -1,31 +1,32 @@
 <div class="o-people-slider">
-    <div class="o-people-slider__wrapper">
-        <div class="o-people-slider__cat-title">
-            {% include 'atoms/a-cat-title.twig' with block_title only %}
-        </div>
-        <h3 class="o-people-slider__title">{{ title }}</h3>
-        <div class="o-people-slider__library-container swiper-container">
-            <div class="o-people-slider__slider swiper-wrapper">
-                {% for slide in testimonials %}
-                    <div class="o-people-slider__slide swiper-slide">
-                        {% include 'molecules/m-person-slide.twig' with slide only %}
-                    </div>
-                {% endfor %}
-            </div>
-        </div>
-        <button class="o-people-slider__slide-button o-people-slider__slide-button--left"
-                aria-label="{{ __('Slide to the left', constant('THEME_DOMAIN')) }}">
-            <svg role="img">
-                <title>{{ __('Slide to the left', constant('THEME_DOMAIN')) }}</title>
-                <use xlink:href="#slide"></use>
-            </svg>
-        </button>
-        <button class="o-people-slider__slide-button o-people-slider__slide-button--right"
-                aria-controls="o-people-slider__slider" aria-label="{{ __('Slide to the right', constant('THEME_DOMAIN')) }}">
-            <svg role="img">
-                <title>{{ __('Slide to the right', constant('THEME_DOMAIN')) }}</title>
-                <use xlink:href="#slide"></use>
-            </svg>
-        </button>
-    </div>
+	<div class="o-people-slider__wrapper">
+		<div class="o-people-slider__cat-title">
+			{% include 'atoms/a-cat-title.twig' with block_title only %}
+		</div>
+		<h3 class="o-people-slider__title">{{ title }}</h3>
+		<div class="o-people-slider__library-container swiper-container">
+			<div class="o-people-slider__slider swiper-wrapper">
+				{% for slide in testimonials %}
+					<div class="o-people-slider__slide swiper-slide">
+						{% include 'molecules/m-person-slide.twig' with slide only %}
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+		<button class="o-people-slider__slide-button o-people-slider__slide-button--left"
+						aria-label="{{ __('Slide to the left', constant('THEME_DOMAIN')) }}">
+			<svg role="img">
+				<title>{{ __('Slide to the left', constant('THEME_DOMAIN')) }}</title>
+				<use xlink:href="#slide"></use>
+			</svg>
+		</button>
+		<button class="o-people-slider__slide-button o-people-slider__slide-button--right"
+						aria-controls="o-people-slider__slider"
+						aria-label="{{ __('Slide to the right', constant('THEME_DOMAIN')) }}">
+			<svg role="img">
+				<title>{{ __('Slide to the right', constant('THEME_DOMAIN')) }}</title>
+				<use xlink:href="#slide"></use>
+			</svg>
+		</button>
+	</div>
 </div>

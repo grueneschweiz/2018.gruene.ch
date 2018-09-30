@@ -1,32 +1,38 @@
 {% block html_head_container %}
 
-{% include 'html-header.twig' %}
+	{% include 'html-header.twig' %}
 	{% block head %}
 	{% endblock %}
 	</head>
 {% endblock %}
 
-	<body class="{{body_class}}">
-		<div class="page {{ page_modifiers|join }}">
-			{% include 'organisms/o-header.twig' %}
+<body class="{{ body_class }}">
+<div class="page {{ page_modifiers|join }}">
+	{% include 'organisms/o-header.twig' %}
 
-			<main class="page__main">
-							{% block content %}
-									{{ __('Sorry, no content', constant('THEME_DOMAIN')) }}
-							{% endblock %}
-			</main>
+	<main class="page__main">
+		{% block content %}
+			{{ __('Sorry, no content', constant('THEME_DOMAIN')) }}
+		{% endblock %}
+	</main>
 
-			{% block footer %}
-				<footer id="footer">
-					{% include 'footer.twig' %}
-				</footer>
-				<script>
-					function supt_pfl(){var script=document.createElement("script");script.src="{{ function('get_stylesheet_directory_uri') }}/static/js/app{{ WP_DEBUG ? '' : '.min' }}.js";document.head.appendChild(script)};
-				</script>
-				{% set polyfills = "?features=HTMLPictureElement,CustomEvent,Element.prototype.closest,Object.assign,NodeList.prototype.forEach,Promise,matchMedia" %}
-				<script src="//cdn.polyfill.io/v2/polyfill{{ WP_DEBUG ? '' : '.min' }}.js{{ polyfills }}" onload="supt_pfl()" async defer></script>
-				{{ function('wp_footer') }}
-			{% endblock %}
-			</div>
-	</body>
-</html>
+	{% block footer %}
+	<footer id="footer">
+		{% include 'footer.twig' %}
+	</footer>
+	<script>
+		function supt_pfl() {
+			var script = document.createElement( 'script' );
+			script.src = "{{ function('get_stylesheet_directory_uri') }}/static/js/app{{ WP_DEBUG ? '' : '.min' }}.js";
+			document.head.appendChild( script );
+		};
+	</script>
+	{% set polyfills = "?features=HTMLPictureElement,CustomEvent,Element.prototype.closest,Object.assign,NodeList.prototype.forEach,Promise,matchMedia" %}
+	<script src="//cdn.polyfill.io/v2/polyfill{{ WP_DEBUG ? '' : '.min' }}.js{{ polyfills }}" onload="supt_pfl()" async
+					defer></script>
+	{{ function('wp_footer') }}
+	{% endblock %}
+	</div>
+	<
+	/body>;
+	</html>

@@ -26,12 +26,12 @@ $context['post'] = new TimberPost();
 $templates       = array( 'page-' . $post->post_name . '.twig', 'page.twig', 'single.twig' );
 
 // handle events of the events calendar plugin
-if ('tribe_events' === get_post_type() ) {
-	if( 'list' === get_query_var('eventDisplay')) {
+if ( 'tribe_events' === get_post_type() ) {
+	if ( 'list' === get_query_var( 'eventDisplay' ) ) {
 		
 		// the list view
 		$context['posts'] = new \SUPT\SUPTPostQuery();
-		$context['title'] = __('Events', THEME_DOMAIN);
+		$context['title'] = __( 'Events', THEME_DOMAIN );
 		array_unshift( $templates, 'archive.twig' );
 		
 	} else {
@@ -44,7 +44,7 @@ if ('tribe_events' === get_post_type() ) {
 // handle front page
 if ( is_front_page() ) {
 	$context['latest_press_release'] = supt_get_latest_press_release( $context );
-	$context['events'] = supt_get_events( $context );
+	$context['events']               = supt_get_events( $context );
 	array_unshift( $templates, 'front-page.twig' );
 }
 
@@ -70,8 +70,8 @@ function supt_get_latest_press_release( &$context ) {
 				'post_status'    => 'publish', // prevent 'private' if logged in
 				'meta_query'     => array(
 					array(
-						'key'     => 'settings_show_on_front_page',
-						'value'   => '1',
+						'key'   => 'settings_show_on_front_page',
+						'value' => '1',
 					)
 				),
 			);

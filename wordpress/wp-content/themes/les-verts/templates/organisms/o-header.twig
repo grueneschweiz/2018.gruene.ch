@@ -1,18 +1,18 @@
 <header class="o-header">
-    <div class="o-header__display">
-				{% if branding %}
-					<div class="o-header__branding">
-							{% include 'molecules/m-branding.twig' with branding only %}
-					</div>
-				{% endif %}
-        <div class="o-header__menu">
-            {% include 'molecules/m-menu.twig' %}
-        </div>
-    </div>
-    <div class="o-header__shadow" aria-hidden="true">
-				{% if branding %}
-        	{% include 'molecules/m-branding.twig' with branding only %}
-				{% endif %}
-        {% include 'molecules/m-menu.twig' only %}
-    </div>
+	<div class="o-header__display">
+		{% if branding %}
+			<div class="o-header__branding">
+				{% include 'molecules/m-branding.twig' with branding only %}
+			</div>
+		{% endif %}
+		<div class="o-header__menu">
+			{% include 'molecules/m-menu.twig' %}
+		</div>
+	</div>
+	<div class="o-header__shadow" aria-hidden="true">
+		{% if branding %}
+			{% include 'molecules/m-branding.twig' with branding only %}
+		{% endif %}
+		{% include 'molecules/m-menu.twig' only %}
+	</div>
 </header>

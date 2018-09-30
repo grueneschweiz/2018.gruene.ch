@@ -1,16 +1,16 @@
 <section class="m-footer-cta">
-    {{ title }}
-    {% for button in buttons %}
-        <div class="m-footer-cta__button">
-            {% set mod = 'a-button--outline' %}
-            {% if button.highlighted %}
-                {% set mod = '' %}
-            {% endif %}
-            {% include 'atoms/a-button.twig' with {
-                'link': button.link,
-                'label': button.label,
-                'modifiers': ['a-button--secondary', 'a-button--full-width', mod]
-            } only %}
-        </div>
-    {% endfor %}
+	{{ title }}
+	{% for button in buttons %}
+		<div class="m-footer-cta__button">
+			{% set mod = 'a-button--outline' %}
+			{% if button.highlighted %}
+				{% set mod = '' %}
+			{% endif %}
+			{% include 'atoms/a-button.twig' with {
+				'link': button.link,
+				'label': button.label,
+				'modifiers': ['a-button--secondary', 'a-button--full-width', mod]
+			} only %}
+		</div>
+	{% endfor %}
 </section>

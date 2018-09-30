@@ -1,16 +1,16 @@
 <article class="m-person-slide">
-    <figure class="m-person-slide__figure">
-        {% include 'atoms/a-image.twig' with {
-            'image': image,
-            'size': 'testimonial',
-            'no_caption': 1
-        } %}
-        <figcaption class="m-person-slide__caption">
-            <p class="m-person-slide__quote">{{quote}}</p>
-            <p class="m-person-slide__meta">
-                <span class="m-person-slide__author">{{name}}</span>{% if role %},
-                <span class="m-person-slide__job">{{role}}</span>{% endif %}
-            </p>
-        </figcaption>
-    </figure>
+	<figure class="m-person-slide__figure">
+		{% include 'atoms/a-image.twig' with {
+			'image': image,
+			'size': 'testimonial',
+			'no_caption': 1
+		} %}
+		<figcaption class="m-person-slide__caption">
+			<p class="m-person-slide__quote">{{ quote }}</p>
+			<p class="m-person-slide__meta">
+				<span class="m-person-slide__author">{{ name }}</span>{% if role %},
+				<span class="m-person-slide__job">{{ role }}</span>{% endif %}
+			</p>
+		</figcaption>
+	</figure>
 </article>

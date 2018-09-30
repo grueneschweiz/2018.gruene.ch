@@ -1,16 +1,16 @@
 <figure class="a-image">
-    {% set img = TimberImage(image) %}
-    {% if not size %}{% set size = 'full-grid' %}{% endif %}
-    {% set copy = img.get_field('copyright') %}
-    {% if link_url %}<a class="a-image__link" href="{{ link_url }}"
-                        tabindex="-1"{% if target %} target="{{ taget }}"{% endif %}>{% endif %}
-        <img {{ image|get_timber_image_responsive(size) }} class="a-image__image">
-        {% if link_url %}</a>{% endif %}
-    {% if not no_caption %}
-        <figcaption>
-            {% if img.caption %}<span class="a-image__caption">{{ img.caption }}</span>{% endif %}
-            {% if copy %}
-                <small class="a-image__copy">&copy; {{ copy }}</small>{% endif %}
-        </figcaption>
-    {% endif %}
+	{% set img = TimberImage(image) %}
+	{% if not size %}{% set size = 'full-grid' %}{% endif %}
+	{% set copy = img.get_field('copyright') %}
+	{% if link_url %}<a class="a-image__link" href="{{ link_url }}"
+											tabindex="-1"{% if target %} target="{{ taget }}"{% endif %}>{% endif %}
+		<img {{ image|get_timber_image_responsive(size) }} class="a-image__image">
+		{% if link_url %}</a>{% endif %}
+	{% if not no_caption %}
+		<figcaption>
+			{% if img.caption %}<span class="a-image__caption">{{ img.caption }}</span>{% endif %}
+			{% if copy %}
+				<small class="a-image__copy">&copy; {{ copy }}</small>{% endif %}
+		</figcaption>
+	{% endif %}
 </figure>

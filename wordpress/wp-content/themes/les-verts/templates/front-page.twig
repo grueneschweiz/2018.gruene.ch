@@ -1,66 +1,66 @@
 {% extends "base.twig" %}
 
 {% block content %}
-    <section class="page__campaign">
-			{% set bars = post.get_field('campaign_bars') %}
-        {% include 'organisms/o-campaign.twig' with {
-            'image': post.campaign_image,
-            'bars': {
-                'headlines_green': bars.headlines.green,
-                'headlines_white': bars.headlines.white,
-                'headlines_magenta': bars.headlines.magenta,
-                'sublines_white': bars.sublines.white,
-                'sublines_green': bars.sublines.green,
-                'alignment': bars.bar_alignment,
-            },
-            'desc': {
-                'title': post.campaign_summary_title,
-                'teaser': post.campaign_summary_teaser,
-                'read_more_text': post.campaign_summary_read_more_text,
-                'link': post.get_field('campaign_link').link()
-            },
-            'cta': {
-                'title': post.campaign_call_to_action_participate_title_title,
-                'desc': post.campaign_call_to_action_description,
-                'form': post.campaign_call_to_action_form,
-                'link': TimberPost(post.campaign_call_to_action_participate_title_general_participation_link).link(),
-            }
-        } only %}
-    </section>
-    <div class="page__grid-wrapper">
-        <section class="page__grid">
-            {% for block in post.get_field('content_blocks') %}
-                {% if block.acf_fc_layout == 'testimonials' %}
-                    </section> {# this dirty hack is necessary to achieve full with even on big screens and shift around the IE scrollbar bug #}
-                    <section class="page__article page__article--full-width">
-                        {% include 'organisms/o-people-slider.twig' with block only %}
-                    </section>
-                    <section class="page__grid"> {# this belongs to the hack above#}
-                {% else %}
-                <div class="page__article {% if block.full_width %}page__article--2-col{% endif %}">
-                    {% if block.acf_fc_layout == 'vote' %}
-                        {% include 'organisms/o-vote.twig' with block only %}
-                    {% elseif block.acf_fc_layout == 'events' %}
-                        {% if loop.parent.events %}
-                            {% include 'organisms/o-front-events.twig' with {
-                                'block': block,
-                                'events': loop.parent.events,
-                                'venues': loop.parent.venues
-                            } only %}
-                        {% endif %}
-                    {% elseif block.acf_fc_layout == 'positions' %}
-                        {% include 'organisms/o-positions.twig' with block only %}
-                    {% elseif block.acf_fc_layout == 'engagement_map' %}
-                        {% include 'organisms/o-engagement-map.twig' with block only %}
-                    {% else %}
-                        {% include 'organisms/o-front-article.twig' with {
-                            'block': block,
-                            'latest_press_release': loop.parent.latest_press_release
-                        } only %}
-                    {% endif %}
-                </div>
-                {% endif %}
-            {% endfor %}
-        </section>
-    </div>
+	<section class="page__campaign">
+		{% set bars = post.get_field('campaign_bars') %}
+		{% include 'organisms/o-campaign.twig' with {
+			'image': post.campaign_image,
+			'bars': {
+				'headlines_green': bars.headlines.green,
+				'headlines_white': bars.headlines.white,
+				'headlines_magenta': bars.headlines.magenta,
+				'sublines_white': bars.sublines.white,
+				'sublines_green': bars.sublines.green,
+				'alignment': bars.bar_alignment,
+			},
+			'desc': {
+				'title': post.campaign_summary_title,
+				'teaser': post.campaign_summary_teaser,
+				'read_more_text': post.campaign_summary_read_more_text,
+				'link': post.get_field('campaign_link').link()
+			},
+			'cta': {
+				'title': post.campaign_call_to_action_participate_title_title,
+				'desc': post.campaign_call_to_action_description,
+				'form': post.campaign_call_to_action_form,
+				'link': TimberPost(post.campaign_call_to_action_participate_title_general_participation_link).link(),
+			}
+		} only %}
+	</section>
+	<div class="page__grid-wrapper">
+		<section class="page__grid">
+			{% for block in post.get_field('content_blocks') %}
+			{% if block.acf_fc_layout == 'testimonials' %}
+		</section> {# this dirty hack is necessary to achieve full with even on big screens and shift around the IE scrollbar bug #}
+		<section class="page__article page__article--full-width">
+			{% include 'organisms/o-people-slider.twig' with block only %}
+		</section>
+		<section class="page__grid"> {# this belongs to the hack above#}
+			{% else %}
+				<div class="page__article {% if block.full_width %}page__article--2-col{% endif %}">
+					{% if block.acf_fc_layout == 'vote' %}
+						{% include 'organisms/o-vote.twig' with block only %}
+					{% elseif block.acf_fc_layout == 'events' %}
+						{% if loop.parent.events %}
+							{% include 'organisms/o-front-events.twig' with {
+								'block': block,
+								'events': loop.parent.events,
+								'venues': loop.parent.venues
+							} only %}
+						{% endif %}
+					{% elseif block.acf_fc_layout == 'positions' %}
+						{% include 'organisms/o-positions.twig' with block only %}
+					{% elseif block.acf_fc_layout == 'engagement_map' %}
+						{% include 'organisms/o-engagement-map.twig' with block only %}
+					{% else %}
+						{% include 'organisms/o-front-article.twig' with {
+							'block': block,
+							'latest_press_release': loop.parent.latest_press_release
+						} only %}
+					{% endif %}
+				</div>
+			{% endif %}
+			{% endfor %}
+		</section>
+	</div>
 {% endblock %}

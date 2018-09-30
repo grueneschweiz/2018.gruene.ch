@@ -1,17 +1,17 @@
 <div class="a-footer-meta">
-    <div class="a-footer-meta__wrapper">
-        <div class="a-footer-meta__copy">&copy; {{ "now"|date('Y') }} {{ site.name }}</div>
-        {% if menu.footer_meta %}
-            <nav class="a-footer-meta__menu">
-                <ul class="a-footer-meta__list" role="menu"
-                    aria-label="{{ __('Meta navigation', constant('THEME_DOMAIN')) }}">
-                    {% for item in menu.footer_meta.items %}
-                        <li class="a-footer-meta__item">
-                            <a href="{{ item.link }}" class="a-footer-meta__link">{{ item.title }}</a>
-                        </li>
-                    {% endfor %}
-                </ul>
-            </nav>
-        {% endif %}
-    </div>
+	<div class="a-footer-meta__wrapper">
+		<div class="a-footer-meta__copy">&copy; {{ "now"|date('Y') }} {{ site.name }}</div>
+		{% if menu.footer_meta %}
+			<nav class="a-footer-meta__menu">
+				<ul class="a-footer-meta__list" role="menu"
+						aria-label="{{ __('Meta navigation', constant('THEME_DOMAIN')) }}">
+					{% for item in menu.footer_meta.items %}
+						<li class="a-footer-meta__item">
+							<a href="{{ item.link }}" class="a-footer-meta__link">{{ item.title }}</a>
+						</li>
+					{% endfor %}
+				</ul>
+			</nav>
+		{% endif %}
+	</div>
 </div>

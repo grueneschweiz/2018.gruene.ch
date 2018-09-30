@@ -1,48 +1,48 @@
 {% set bar_alignment_class = 'a-bar--' ~ alignment %}
 
 <div class="m-bars m-bars--{{ alignment }}">
-    <div class="m-bars__rotator">
-        <div class="m-bars__positioner">
-            {% for bar in headlines_green %}
-                <div class="m-bars__bar">
-                    {% include 'atoms/a-bar.twig' with {
-                        'label': bar.bar,
-                        'modifiers': ['a-bar--green', bar_alignment_class]
-                    } only %}
-                </div>
-            {% endfor %}
-            {% for bar in headlines_white %}
-                <div class="m-bars__bar">
-                    {% include 'atoms/a-bar.twig' with {
-                        'label': bar.bar,
-                        'modifiers': ['a-bar--white', bar_alignment_class]
-                    } only %}
-                </div>
-            {% endfor %}
-            {% for bar in headlines_magenta %}
-                <div class="m-bars__bar">
-                    {% include 'atoms/a-bar.twig' with {
-                        'label': bar.bar,
-                        'modifiers': ['a-bar--magenta', bar_alignment_class]
-                    } only %}
-                </div>
-            {% endfor %}
-            {% for bar in sublines_white %}
-                <div class="m-bars__bar">
-                    {% include 'atoms/a-bar.twig' with {
-                        'label': bar.bar,
-                        'modifiers': ['a-bar--subline','a-bar--white', bar_alignment_class]
-                    } only %}
-                </div>
-            {% endfor %}
-            {% for bar in sublines_magenta %}
-                <div class="m-bars__bar">
-                    {% include 'atoms/a-bar.twig' with {
-                        'label': bar.bar,
-                        'modifiers': ['a-bar--subline','a-bar--green', bar_alignment_class]
-                    } only %}
-                </div>
-            {% endfor %}
-        </div>
-    </div>
+	<div class="m-bars__rotator">
+		<div class="m-bars__positioner">
+			{% for bar in headlines_green %}
+				<div class="m-bars__bar">
+					{% include 'atoms/a-bar.twig' with {
+						'label': bar.bar,
+						'modifiers': ['a-bar--green', bar_alignment_class]
+					} only %}
+				</div>
+			{% endfor %}
+			{% for bar in headlines_white %}
+				<div class="m-bars__bar">
+					{% include 'atoms/a-bar.twig' with {
+						'label': bar.bar,
+						'modifiers': ['a-bar--white', bar_alignment_class]
+					} only %}
+				</div>
+			{% endfor %}
+			{% for bar in headlines_magenta %}
+				<div class="m-bars__bar">
+					{% include 'atoms/a-bar.twig' with {
+						'label': bar.bar,
+						'modifiers': ['a-bar--magenta', bar_alignment_class]
+					} only %}
+				</div>
+			{% endfor %}
+			{% for bar in sublines_white %}
+				<div class="m-bars__bar">
+					{% include 'atoms/a-bar.twig' with {
+						'label': bar.bar,
+						'modifiers': ['a-bar--subline','a-bar--white', bar_alignment_class]
+					} only %}
+				</div>
+			{% endfor %}
+			{% for bar in sublines_magenta %}
+				<div class="m-bars__bar">
+					{% include 'atoms/a-bar.twig' with {
+						'label': bar.bar,
+						'modifiers': ['a-bar--subline','a-bar--green', bar_alignment_class]
+					} only %}
+				</div>
+			{% endfor %}
+		</div>
+	</div>
 </div>
