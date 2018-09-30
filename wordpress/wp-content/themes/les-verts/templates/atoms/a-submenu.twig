@@ -13,11 +13,11 @@
 		<p class="a-submenu--featured__text">{{ item_meta.teaser }}</p>
 		{% include 'atoms/a-button.twig' with {'link': item.link, 'label': item_meta.button_text} only %}
 	{% else %}
-		<a class="a-submenu__title" href="{{ item.link }}">{{ item.title }}</a>
+		<a class="a-submenu__title {% if item.current or item.current_item_ancestor %}a-submenu__title--active{% endif %}" href="{{ item.link }}">{{ item.title }}</a>
 		<ul class="a-submenu__list">
 			{% for subitem in item.children %}
 				<li class="a-submenu__item">
-					<a class="a-submenu__link" href="{{ subitem.link }}">{{ subitem.title }}</a>
+					<a class="a-submenu__link {% if subitem.current or subitem.current_item_ancestor %}a-submenu__link--active{% endif %}" href="{{ subitem.link }}">{{ subitem.title }}</a>
 				</li>
 			{% endfor %}
 		</ul>

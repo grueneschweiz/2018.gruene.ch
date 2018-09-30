@@ -14,7 +14,7 @@
 		color: $color-text;
 		transition: color $transition-fast $transition-ease;
 
-		&:hover {
+		&:hover, &--active {
 			color: $color-secondary;
 		}
 
@@ -52,7 +52,7 @@
 				transition: width $transition-fast $transition-ease;
 			}
 
-			&:hover {
+			&:hover, &--active {
 				color: $color-primary-dark;
 
 				&:after {
@@ -85,7 +85,7 @@
 		position: relative;
 		transition: color $transition-fast $transition-ease;
 
-		&:hover {
+		&:hover, &--active {
 			color: $color-secondary;
 
 			@include media($_DESKTOP) {
@@ -120,7 +120,7 @@
 				transition: width $transition-fast $transition-ease;
 			}
 
-			&:hover {
+			&:hover, &--active {
 				color: $color-text;
 
 				&:after {
