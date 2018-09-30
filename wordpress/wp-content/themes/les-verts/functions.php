@@ -57,8 +57,8 @@ class StarterSite extends TimberSite {
 		add_action( 'wp_enqueue_scripts', array( $this, 'setup_assets' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'setup_admin_assets' ) );
 		add_action( 'widgets_init', array( $this, 'register_widget_zones' ) );
-		add_action( 'after_setup_theme', array($this, 'load_textdomain') );
-		add_action( 'after_setup_theme', array($this, 'add_yoast_breadcrumbs_support') );
+		add_action( 'after_setup_theme', array( $this, 'load_textdomain' ) );
+		add_action( 'after_setup_theme', array( $this, 'add_yoast_breadcrumbs_support' ) );
 		
 		// // For debug purpose only: shows all the hooks & registered actions
 		// add_action('wp', function(){ echo '<pre>';print_r($GLOBALS['wp_filter']); echo '</pre>';exit; } );
@@ -94,19 +94,19 @@ class StarterSite extends TimberSite {
 		$context['widgets']['footer'] = Timber::get_widgets( 'footer-widget-area' );
 		
 		// Localized options
-		$context['localized_options'] = get_fields( \SUPT\get_lang() );
+		//$context['localized_options'] = get_fields( \SUPT\get_lang() );
 		
 		// Options overrides
-		if (
-			isset( $context['localized_options'] )
-			&& isset( $context['localized_options']['gtm_override'] )
-			&& $context['localized_options']['gtm_override']
-		) {
-			foreach ( [ 'gtm_enable', 'gtm_id' ] as $key ) {
-				$val                        = isset( $context['localized_options'][ $key ] ) ? $context['localized_options'][ $key ] : null;
-				$context['OPTIONS'][ $key ] = $val;
-			}
-		}
+//		if (
+//			isset( $context['localized_options'] )
+//			&& isset( $context['localized_options']['gtm_override'] )
+//			&& $context['localized_options']['gtm_override']
+//		) {
+//			foreach ( [ 'gtm_enable', 'gtm_id' ] as $key ) {
+//				$val                        = isset( $context['localized_options'][ $key ] ) ? $context['localized_options'][ $key ] : null;
+//				$context['OPTIONS'][ $key ] = $val;
+//			}
+//		}
 		
 		// Are we in debut mode?
 		$context['WP_DEBUG'] = WP_DEBUG;

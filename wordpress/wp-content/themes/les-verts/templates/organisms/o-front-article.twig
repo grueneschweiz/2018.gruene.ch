@@ -1,98 +1,98 @@
 {% if block.acf_fc_layout == 'media' %}
-    {% set inner_modifiers = ['m-front-article--no-image'] %}
-    {% set post = latest_press_release %}
-    {% set modifiers = ['o-front-article--mm'] %}
-    {% set author = '' %}
-    {% set oton = 0 %}
-    {% set excerpt = post.get_field('excerpt_lead') %}
-    {% for block in post.get_field('main_content_content') %}
-        {% if block.acf_fc_layout == 'quote' %}
-            {% set modifiers = ['o-front-article--oton', 'o-front-article--mm'] %}
-            {% set oton = 1 %}
-            {% set excerpt = '&laquo;&nbsp;' ~ block.quote ~ '&nbsp;&raquo;' %}
-            {% set author = block.person %}
-        {% endif %}
-    {% endfor %}
+	{% set inner_modifiers = ['m-front-article--no-image'] %}
+	{% set post = latest_press_release %}
+	{% set modifiers = ['o-front-article--mm'] %}
+	{% set author = '' %}
+	{% set oton = 0 %}
+	{% set excerpt = post.get_field('excerpt_lead') %}
+	{% for block in post.get_field('main_content_content') %}
+		{% if block.acf_fc_layout == 'quote' %}
+			{% set modifiers = ['o-front-article--oton', 'o-front-article--mm'] %}
+			{% set oton = 1 %}
+			{% set excerpt = '&laquo;&nbsp;' ~ block.quote ~ '&nbsp;&raquo;' %}
+			{% set author = block.person %}
+		{% endif %}
+	{% endfor %}
 {% else %}
-    {% set modifiers = ['o-front-article--' ~ block.acf_fc_layout] %}
-    {% if block.acf_fc_layout == 'double' %}
-        {% set inner_modifiers = ['m-front-article--image-second'] %}
-        {% set posts = {
-            0: block.post_1_post,
-            1: block.post_2_post
-        } %}
-    {% else %}
-        {% set inner_modifiers = ['m-front-article--image-first'] %}
-        {% set post = block.post %}
-    {% endif %}
+	{% set modifiers = ['o-front-article--' ~ block.acf_fc_layout] %}
+	{% if block.acf_fc_layout == 'double' %}
+		{% set inner_modifiers = ['m-front-article--image-second'] %}
+		{% set posts = {
+			0: block.post_1_post,
+			1: block.post_2_post
+		} %}
+	{% else %}
+		{% set inner_modifiers = ['m-front-article--image-first'] %}
+		{% set post = block.post %}
+	{% endif %}
 {% endif %}
 
 <article class="o-front-article {{ modifiers|join(' ') }}">
-    <div class="o-front-article__cat-title">
-        {% include 'atoms/a-cat-title.twig' with block.block_title only %}
-    </div>
-    {% if oton %}
-        <div class="o-front-article__quote">
-            <svg role="img">
-                <title>{{ __('Quotation mark', constant('THEME_DOMAIN')) }}</title>
-                <use xlink:href="#quote"></use>
-            </svg>
-        </div>
-    {% endif %}
-    <div class="o-front-article__articles">
-        {% if block.acf_fc_layout == 'double' %}
-            {% for post in posts %}
-                <div class="o-front-article__article">
-                    {% include 'molecules/m-front-article.twig' with {
-                        'post': post,
-                        'modifiers': inner_modifiers
-                    } only %}
-                </div>
-            {% endfor %}
-        {% else %}
-            <div class="o-front-article__article">
-                {% include 'molecules/m-front-article.twig' with {
-                    'post': post,
-                    'modifiers': inner_modifiers,
-                    'author': author,
-                    'excerpt': excerpt
-                } only %}
-            </div>
-        {% endif %}
-    </div>
-    {% if block.acf_fc_layout == 'single' and block.footer.cta_link %}
-        <footer class="o-front-article__cta">
-            <div class="o-front-article__cta-button">
-                {% include 'atoms/a-button.twig' with {
-                    'link': block.footer.cta_link,
-                    'label': block.footer.cta_label,
-                    'modifiers': 'a-button--secondary'
-                } %}
-            </div>
-            <div class="o-front-article__cta-label">
-                {{ block.footer.cta_desc }}
-            </div>
-        </footer>
-    {% endif %}
-    {% if block.acf_fc_layout == 'media' %}
-        <footer class="o-front-article__mm">
-            <div class="o-front-article__meta">
-                <time class="o-front-article__date"
-                      datetime="{{ post.post_date|date('Y-m-d H:i') }}">{{ post.post_date|date() }}</time>
-                {% if oton %}
-                    <a href="{{ author.link() }}" class="o-front-article__author">{{ author.title }}</a>
-                {% endif %}
-            </div>
-            {% if oton %}
-                <div class="o-front-article__author-image">
-                    {% include 'atoms/a-image.twig' with {
-                        'image': author._image,
-                        'size': 'author',
-                        'link_url': author.link(),
-                        'no_caption': true
-                    } only %}
-                </div>
-            {% endif %}
-        </footer>
-    {% endif %}
+	<div class="o-front-article__cat-title">
+		{% include 'atoms/a-cat-title.twig' with block.block_title only %}
+	</div>
+	{% if oton %}
+		<div class="o-front-article__quote">
+			<svg role="img">
+				<title>{{ __('Quotation mark', constant('THEME_DOMAIN')) }}</title>
+				<use xlink:href="#quote"></use>
+			</svg>
+		</div>
+	{% endif %}
+	<div class="o-front-article__articles">
+		{% if block.acf_fc_layout == 'double' %}
+			{% for post in posts %}
+				<div class="o-front-article__article">
+					{% include 'molecules/m-front-article.twig' with {
+						'post': post,
+						'modifiers': inner_modifiers
+					} only %}
+				</div>
+			{% endfor %}
+		{% else %}
+			<div class="o-front-article__article">
+				{% include 'molecules/m-front-article.twig' with {
+					'post': post,
+					'modifiers': inner_modifiers,
+					'author': author,
+					'excerpt': excerpt
+				} only %}
+			</div>
+		{% endif %}
+	</div>
+	{% if block.acf_fc_layout == 'single' and block.footer.cta_link %}
+		<footer class="o-front-article__cta">
+			<div class="o-front-article__cta-button">
+				{% include 'atoms/a-button.twig' with {
+					'link': block.footer.cta_link,
+					'label': block.footer.cta_label,
+					'modifiers': 'a-button--secondary'
+				} %}
+			</div>
+			<div class="o-front-article__cta-label">
+				{{ block.footer.cta_desc }}
+			</div>
+		</footer>
+	{% endif %}
+	{% if block.acf_fc_layout == 'media' %}
+		<footer class="o-front-article__mm">
+			<div class="o-front-article__meta">
+				<time class="o-front-article__date"
+							datetime="{{ post.post_date|date('Y-m-d H:i') }}">{{ post.post_date|date() }}</time>
+				{% if oton %}
+					<a href="{{ author.link() }}" class="o-front-article__author">{{ author.title }}</a>
+				{% endif %}
+			</div>
+			{% if oton %}
+				<div class="o-front-article__author-image">
+					{% include 'atoms/a-image.twig' with {
+						'image': author._image,
+						'size': 'author',
+						'link_url': author.link(),
+						'no_caption': true
+					} only %}
+				</div>
+			{% endif %}
+		</footer>
+	{% endif %}
 </article>

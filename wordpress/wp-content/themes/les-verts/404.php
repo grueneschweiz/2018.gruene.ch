@@ -9,6 +9,6 @@
  * @since    Timber 0.1
  */
 
-$context = Timber::get_context();
+$context               = Timber::get_context();
 $context['page_class'] = 'page-404';
 Timber::render( '404.twig', $context );

@@ -16,10 +16,10 @@
 
 $templates = array( 'archive.twig', 'index.twig' );
 
-$context = Timber::get_context();
-$posts = new \SUPT\SUPTPostQuery();
-$context['posts'] = $posts;
-$context['title'] = $posts->archive_title();
+$context                        = Timber::get_context();
+$posts                          = new \SUPT\SUPTPostQuery();
+$context['posts']               = $posts;
+$context['title']               = $posts->archive_title();
 $context['archive_description'] = $posts->archive_description();
 
 if ( is_category() ) {

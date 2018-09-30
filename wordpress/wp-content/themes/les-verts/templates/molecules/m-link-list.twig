@@ -18,7 +18,7 @@
 				<div class="m-link-list__inner">
 					{% if link.post_object.post_type == 'tribe_events' %}
 						{% include 'atoms/a-event-link.twig' with {
-							'event': link.post_object
+							'post': link.post_object
 						} only %}
 					{% else %}
 						{% include 'atoms/a-post-link.twig' with link only %}

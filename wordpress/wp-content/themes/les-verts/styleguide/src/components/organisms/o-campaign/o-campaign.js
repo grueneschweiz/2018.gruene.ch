@@ -63,7 +63,11 @@ export default class OCampaign extends BaseView {
 	}
 
 	setBrandingHeight() {
-		this.brandingHeight = this.branding.clientHeight;
+		if (this.branding){
+			this.brandingHeight = this.branding.clientHeight;
+		} else {
+			this.brandingHeight = 0;
+		}
 	}
 
 	setScrollStop() {

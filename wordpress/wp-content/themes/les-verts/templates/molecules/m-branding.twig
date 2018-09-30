@@ -1,14 +1,14 @@
 <section class="m-branding" role="banner">
-    <div class="m-branding__wrapper">
-        <div class="m-branding__row">
-            <h1 class="m-branding__title">
-                {% for unbreakeable in unbreakeables %}
-                    <span class="m-branding__unbreakeable">{{ unbreakeable }}</span>
-                {% endfor %}
-            </h1>
-            <a class="m-branding__logo" href="/" title="{{ __('Home', constant('THEME_DOMAIN')) }}">
-                {% include 'atoms/a-logo.twig' with {'logo': logo} only %}
-            </a>
-        </div>
-    </div>
+	<div class="m-branding__wrapper">
+		<div class="m-branding__row">
+			<h1 class="m-branding__title">
+				{% for unbreakeable in unbreakeables %}
+					<span class="m-branding__unbreakeable">{{ unbreakeable }}</span>
+				{% endfor %}
+			</h1>
+			<a class="m-branding__logo" href="/" title="{{ __('Home', constant('THEME_DOMAIN')) }}">
+				{% include 'atoms/a-logo.twig' with {'logo': logo} only %}
+			</a>
+		</div>
+	</div>
 </section>

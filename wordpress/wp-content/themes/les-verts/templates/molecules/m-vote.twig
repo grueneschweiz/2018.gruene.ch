@@ -7,12 +7,12 @@
 		} only %}
 	</div>
 	{% if excerpt %}
-	<p class="m-vote__excerpt">{{ excerpt }}</p>
-	<div class="m-vote__link-button">
-		{% include 'atoms/a-link-button.twig' with {
-			'link': '',
-			'label': _x('More about this subject', 'A vote proposal is the subject', constant('THEME_DOMAIN'))
-		} %}
-	</div>
+		<p class="m-vote__excerpt">{{ excerpt }}</p>
+		<div class="m-vote__link-button">
+			{% include 'atoms/a-link-button.twig' with {
+				'link': '',
+				'label': _x('More about this subject', 'A vote proposal is the subject', constant('THEME_DOMAIN'))
+			} %}
+		</div>
 	{% endif %}
 </div>

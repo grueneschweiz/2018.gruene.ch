@@ -1,16 +1,16 @@
 <div class="a-select">
-    <label for="{{ id }}" class="a-select__label {% if required %}a-select__label--required{% endif %}">
-        {{ label }}
-    </label>
-    <div class="a-select__background">
-        <select id="{{ id }}"
-                class="a-select__field {{ modifiers|join(' ') }}"
-                name="{{ name }}"
-                {{ required }}>
-            <option value=""> </option>
-            {% for option in options %}
-                <option value="{{ option.value }}"{% if selected %} selected{% endif %}>{{ option.label }}</option>
-            {% endfor %}
-        </select>
-    </div>
+	<label for="{{ id }}" class="a-select__label {% if required %}a-select__label--required{% endif %}">
+		{{ label }}
+	</label>
+	<div class="a-select__background">
+		<select id="{{ id }}"
+						class="a-select__field {{ modifiers|join(' ') }}"
+						name="{{ name }}"
+			{{ required }}>
+			<option value=""></option>
+			{% for option in options %}
+				<option value="{{ option.value }}"{% if selected %} selected{% endif %}>{{ option.label }}</option>
+			{% endfor %}
+		</select>
+	</div>
 </div>

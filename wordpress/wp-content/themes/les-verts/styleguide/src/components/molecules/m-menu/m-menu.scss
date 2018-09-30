@@ -14,6 +14,8 @@
 		@include clean-link;
 		@include fluid-props(width, $size-medium, $grid-max-width-max, 100px, 116px);
 		margin-left: 30px;
+		position: relative;
+		z-index: 5;
 
 		@include media($_DESKTOP) {
 			@include fluid-props(margin-left, $size-medium, $grid-max-width-max, 16px, 33px);
@@ -54,11 +56,11 @@
 		display: inline-block;
 		@include fluid-props(margin-left, $size-medium, $size-huge, 24px, 55px);
 		float: right;
-		margin-top: 11px;
+		margin: 11px 0;
 
 		@include media($_DESKTOP) {
 			float: none;
-			margin-top: 0;
+			margin: 0;
 		}
 	}
 
@@ -119,6 +121,14 @@
 
 				.m-menu__hamburger {
 					@include fluid-props(top, $size-medium, $grid-max-width-max, -133px, -135px);
+				}
+			}
+
+			&--no-menu-right.is-open {
+				top: 80px;
+
+				.m-menu__hamburger {
+					top: -53px;
 				}
 			}
 		}

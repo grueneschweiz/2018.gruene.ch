@@ -11,9 +11,18 @@ class Branding_controller {
 	}
 	
 	public static function add_to_context( $context ) {
+		if ( ! session_id() ) {
+			session_start();
+		}
+		
+		if ( isset( $_SESSION['hide_branding'] ) ) {
+			return $context;
+		}
 		
 		$context['branding']['unbreakeables'] = self::get_branding();
 		$context['branding']['logo']          = self::get_logo();
+		
+		$_SESSION['hide_branding'] = true;
 		
 		return $context;
 	}
