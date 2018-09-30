@@ -31,9 +31,8 @@
 		<div class="m-link-list__more">
 			{% include 'atoms/a-link-button.twig' with {
 				'label': _x('All %d %s', 'Example: All 17 press releases', constant('THEME_DOMAIN'))|format(links.found_posts(), block_title.title),
-				'link': 'XXXXXXXXXXXX'
+				'link': links.archive_url()
 			} only %}
-			{# todo: add link #}
 		</div>
 	{% endif %}
 </div>
