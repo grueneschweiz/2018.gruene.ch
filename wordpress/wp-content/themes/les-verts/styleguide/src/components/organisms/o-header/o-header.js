@@ -31,6 +31,11 @@ export default class OHeader extends BaseView {
 	}
 
 	setMenuBarPosition() {
+		if (! this.branding ) {
+			this.isFixed = true;
+			return;
+		}
+
 		let scrollTop = this.getScrollTop();
 
 		if (! this.isFixed && scrollTop >= this.branding.clientHeight) {
