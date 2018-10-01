@@ -56,11 +56,13 @@
 		display: inline-block;
 		@include fluid-props(margin-left, $size-medium, $size-huge, 24px, 55px);
 		float: right;
-		margin: 11px 0;
+		margin-top: 11px;
+		margin-bottom: 11px;
 
 		@include media($_DESKTOP) {
 			float: none;
-			margin: 0;
+			margin-top: 0;
+			margin-bottom: 0;
 		}
 	}
 
