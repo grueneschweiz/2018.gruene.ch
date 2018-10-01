@@ -5,6 +5,10 @@
 		@include fluid-props(font-size, $size-tiny, $size-medium, 20px, 32px);
 	}
 
+	&__text p {
+		font-size: 0.875rem;
+	}
+
 	&__text > p:first-of-type {
 		margin-top: 0;
 	}
