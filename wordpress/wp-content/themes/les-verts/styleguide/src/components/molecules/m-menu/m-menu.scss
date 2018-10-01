@@ -328,11 +328,24 @@
 			justify-content: center;
 			align-items: flex-start;
 			flex-direction: row;
-			padding: 0 100px;
+			padding: 0 14px 0 100px;
 		}
 
 		&.is-open {
 			display: flex;
+			opacity: 1;
+			animation-name: fadeInOpacity;
+			animation-iteration-count: 1;
+			animation-duration: $transition-fast;
+
+			@keyframes fadeInOpacity {
+				0% {
+					opacity: 0;
+				}
+				100% {
+					opacity: 1;
+				}
+			}
 
 			@include media($_MOBILE) {
 				min-height: calc(100vh - 151px + 20 * (100vh - 1024px) / 416);
@@ -383,9 +396,8 @@
 
 		&__close-wrapper {
 			@include clean-li;
-			position: absolute;
-			right: 16px;
-			top: 12px;
+			margin-left: 30px;
+			margin-top: 12px;
 			display: none;
 
 			@include media($_DESKTOP) {
