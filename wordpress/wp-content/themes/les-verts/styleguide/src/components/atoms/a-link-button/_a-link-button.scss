@@ -14,18 +14,13 @@
 	text-transform: uppercase;
 	cursor: pointer;
 	transition: color $transition-fast $transition-ease;
-
-	&__label {
-		order: 0;
-		padding-right: 1.5em;
-		display: inline-block;
-		letter-spacing: 0.08928em;
-	}
+	letter-spacing: 0.08928em;
 
 	&::after {
-		content: "";
+		content: " ";
 		width: 0.6em;
 		height: 0.6em;
+		margin-left: 1.5em;
 		border-color: $color-primary;
 		border-top: 0.1666666667em solid; // 2/12
 		border-right: 0.1666666667em solid; // 2/12
