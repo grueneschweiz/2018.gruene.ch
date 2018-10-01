@@ -1,7 +1,7 @@
 .a-link-button {
 	@include clean-link;
 
-	font-size: 0.875rem;
+	font-size: 0.875em;
 	display: inline-flex;
 	align-items: center;
 	line-height: 0.9em; // make sure the arrow wont be cut
@@ -17,9 +17,9 @@
 
 	&__label {
 		order: 0;
-		padding-right: 1em; // 6/12
+		padding-right: 1.5em;
 		display: inline-block;
-		letter-spacing: 0.05em;
+		letter-spacing: 0.08928em;
 	}
 
 	&::after {
