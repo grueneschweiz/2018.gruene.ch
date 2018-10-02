@@ -45,6 +45,7 @@ require_once __DIR__ .'/admin/svg-support.php';
 require_once __DIR__ .'/admin/timmy-config.php';
 require_once __DIR__ .'/admin/translatable-post-types.php';
 require_once __DIR__ . '/admin/tweak-tribe-events.php';
+require_once __DIR__ . '/admin/custom-menu-metabox.php';
 
 /**
  * CONTROLLERS
