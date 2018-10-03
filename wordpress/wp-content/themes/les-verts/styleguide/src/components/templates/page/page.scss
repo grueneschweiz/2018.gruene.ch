@@ -65,6 +65,10 @@
 		width: 100%;
 	}
 
+	&__shareable li {
+		max-width: $text-max-width;
+	}
+
 	//noinspection CssOverwrittenProperties
 	&__share {
 		right: 0;
