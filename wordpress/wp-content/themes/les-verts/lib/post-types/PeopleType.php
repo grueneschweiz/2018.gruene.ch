@@ -8,22 +8,22 @@ class PeopleType extends Model {
 	
 	const MODEL_NAME = 'people';
 	
-	public static function register_post_types( $domain ) {
+	public static function register_post_types() {
 		$labels = array(
-			'name'                  => __( 'People', $domain ),
-			'singular_name'         => __( 'Person', $domain ),
-			'add_new_item'          => __( 'Add New Person', $domain ),
-			'edit_item'             => __( 'Edit Person', $domain ),
-			'new_item'              => __( 'New Person', $domain ),
-			'view_item'             => __( 'View Person', $domain ),
-			'view_items'            => __( 'View People', $domain ),
-			'search_items'          => __( 'Search Person', $domain ),
-			'not_found'             => __( 'No people found', $domain ),
-			'not_found_in_trash'    => __( 'No people found in trash', $domain ),
-			'all_items'             => __( 'All People', $domain ),
-			'archives'              => __( 'People Archives', $domain ),
-			'attributes'            => __( 'People Attributes', $domain ),
-			'uploaded_to_this_item' => __( 'Uploaded to this person', $domain ),
+			'name'                  => __( 'People', THEME_DOMAIN ),
+			'singular_name'         => __( 'Person', THEME_DOMAIN ),
+			'add_new_item'          => __( 'Add New Person', THEME_DOMAIN ),
+			'edit_item'             => __( 'Edit Person', THEME_DOMAIN ),
+			'new_item'              => __( 'New Person', THEME_DOMAIN ),
+			'view_item'             => __( 'View Person', THEME_DOMAIN ),
+			'view_items'            => __( 'View People', THEME_DOMAIN ),
+			'search_items'          => __( 'Search Person', THEME_DOMAIN ),
+			'not_found'             => __( 'No people found', THEME_DOMAIN ),
+			'not_found_in_trash'    => __( 'No people found in trash', THEME_DOMAIN ),
+			'all_items'             => __( 'All People', THEME_DOMAIN ),
+			'archives'              => __( 'People Archives', THEME_DOMAIN ),
+			'attributes'            => __( 'People Attributes', THEME_DOMAIN ),
+			'uploaded_to_this_item' => __( 'Uploaded to this person', THEME_DOMAIN ),
 		);
 		$args   = array(
 			'labels'              => $labels,
@@ -42,5 +42,22 @@ class PeopleType extends Model {
 		);
 		
 		register_post_type( self::MODEL_NAME, $args );
+	}
+	
+	public static function register_taxonomy() {
+		$args = array(
+			'hierarchical'      => false,
+			'label'             => __( 'Testimonial Category', THEME_DOMAIN ),
+			'show_ui'           => true,
+			'show_admin_column' => true,
+			'show_in_rest'      => true,
+			'show_tagcloud'     => false,
+			'description'       => __( 'This taxonomy is used to organise the testimonials only.', THEME_DOMAIN ),
+			'query_var'         => false,
+			'rewrite'           => false,
+			'public'            => false,
+		);
+		
+		register_taxonomy( 'testimonials', self::MODEL_NAME, $args );
 	}
 }

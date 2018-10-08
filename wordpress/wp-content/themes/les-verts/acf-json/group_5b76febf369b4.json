@@ -58,13 +58,6 @@
                 "operator": "==",
                 "value": "tribe_events"
             }
-        ],
-        [
-            {
-                "param": "post_type",
-                "operator": "==",
-                "value": "people"
-            }
         ]
     ],
     "menu_order": 20,
@@ -75,5 +68,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1534525461
+    "modified": 1538581339
 }

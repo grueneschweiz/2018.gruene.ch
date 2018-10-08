@@ -82,7 +82,8 @@ require_once __DIR__ .'/post-types/PeopleType.php';
 
 // register post types & taxonomies
 add_action( 'init', function() {
-	\SUPT\PeopleType::register_post_types(THEME_DOMAIN);
+	\SUPT\PeopleType::register_post_types();
+	\SUPT\PeopleType::register_taxonomy();
 } );
 
 
@@ -98,6 +99,7 @@ add_action( 'init', function() {
 require_once __DIR__ . '/timber/ACFPost.php';
 require_once __DIR__ . '/timber/SUPTPostQuery.php';
 require_once __DIR__ . '/timber/SUPTTribeEvent.php';
+require_once __DIR__ . '/timber/SUPTPerson.php';
 
 /**
  * WIDGETS
@@ -153,6 +155,7 @@ require_once __DIR__ .'/tweaks/inject-svg-sprite.php';
 // functions
 require_once __DIR__ .'/twig/functions/get_lang.php';
 require_once __DIR__.'/twig/functions/register_timber_custom_post_types.php';
+require_once __DIR__.'/twig/functions/get_people.php';
 
 // filters
 //require_once __DIR__ .'/twig/filters/event_time.php';

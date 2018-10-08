@@ -1,14 +1,21 @@
+{% set testimonials = getPeopleTestimonialTaxonomies(taxonomy) %}
+
 <div class="o-people-slider">
 	<div class="o-people-slider__wrapper">
 		<div class="o-people-slider__cat-title">
 			{% include 'atoms/a-cat-title.twig' with block_title only %}
 		</div>
-		<h3 class="o-people-slider__title">{{ title }}</h3>
+		{% if title %}
+			<h3 class="o-people-slider__title">{{ title }}</h3>
+		{% endif %}
 		<div class="o-people-slider__library-container swiper-container">
 			<div class="o-people-slider__slider swiper-wrapper">
 				{% for slide in testimonials %}
 					<div class="o-people-slider__slide swiper-slide">
-						{% include 'molecules/m-person-slide.twig' with slide only %}
+						{% include 'molecules/m-person-slide.twig' with {
+							'post': slide,
+							'taxonomies': taxonomy
+						} only %}
 					</div>
 				{% endfor %}
 			</div>
