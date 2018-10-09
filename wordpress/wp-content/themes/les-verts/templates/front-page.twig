@@ -1,6 +1,7 @@
 {% extends "base.twig" %}
 
 {% block content %}
+	{% include 'atoms/a-search.twig' %}
 	<section class="page__campaign">
 		{% set bars = post.get_field('campaign_bars') %}
 		{% include 'organisms/o-campaign.twig' with {

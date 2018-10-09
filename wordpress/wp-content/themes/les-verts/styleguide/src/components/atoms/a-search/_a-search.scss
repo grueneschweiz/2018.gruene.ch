@@ -1,0 +1,106 @@
+.a-search {
+	$offset: 0.75em;
+
+	margin-left: #{- $offset};
+
+	@include media($_DESKTOP) {
+		padding-top: 0.533em;
+		position: absolute;
+		background: rgba(255,255,255,0);
+		height: 60px;
+		transition: all $transition-ease $transition-mid;
+		width: 100%;
+		max-width: 34px; // this will be overwritten by js
+
+		&.is-active {
+			background: $color-white;
+		}
+	}
+
+	&__icon {
+		fill: none;
+		stroke: $color-text;
+		width: 1.333em;
+		height: 1.333em;
+		margin-bottom: -0.25em;
+		margin-left: -2em;
+		cursor: pointer;
+		transition: stroke $transition-ease $transition-fast;
+
+		&.highlight,
+		&:hover,
+		&:focus {
+			stroke: $color-secondary;
+		}
+	}
+
+	&__field {
+		background: transparent;
+		border: none;
+		width: 8em;
+		max-width: 300px;
+		font-size: 0.9375rem;
+		font-weight: 700;
+		color: $color-text;
+		transition: all $transition-ease $transition-mid;
+		height: 2.625em;
+		padding-left: $offset;
+		border-bottom: 2px solid transparent;
+
+		@include media($_DESKTOP) {
+			width: 2em;
+			color: transparent;
+		}
+
+		&::placeholder {
+			color: $color-text;
+			transition: color $transition-ease $transition-fast;
+		}
+
+		&:focus,
+		&.is-active {
+			width: calc(100% - 10px); // 10px for the submit label (even with width 0)
+			background-color: $color-grey-1;
+			border-bottom-color: $color-grey-3;
+			outline: none;
+			color: $color-text;
+
+			&::placeholder {
+				color: $color-grey-2;
+			}
+		}
+
+		&:not(:focus),
+		&:not(.is-active) {
+			cursor: pointer;
+
+			@include media($_MOBILE) {
+				&.highlight {
+					&::placeholder {
+						color: $color-secondary;
+					}
+				}
+			}
+
+			@include media($_DESKTOP) {
+				&::placeholder {
+					color: transparent;
+				}
+			}
+		}
+	}
+
+	&__submit-label {
+		width: 0;
+	}
+
+	&__submit {
+		// hide for none screen readers
+		position: absolute;
+		left:     -10000px;
+		top:      auto;
+		width:    1px;
+		height:   1px;
+		overflow: hidden;
+	}
+}

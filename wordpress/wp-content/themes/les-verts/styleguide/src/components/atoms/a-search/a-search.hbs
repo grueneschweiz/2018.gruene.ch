@@ -1,0 +1,15 @@
+<div class="a-search">
+	<form role="search" method="get" id="searchform" class="a-search__form" action="{{action}}">
+		<div>
+			<label class="screen-reader-text" for="s">{{ search }}</label>
+			<input class="a-search__field" type="text" value="" name="s" id="s" placeholder="{{ search }}">
+			<label class="a-search__submit-label">
+				<input class="a-search__submit" type="submit" id="searchsubmit" value="{{ search_submit }}">
+				<svg class="a-search__icon" aria-hidden="true">
+					<title>{{ search_submit }}</title>
+					<use xlink:href="#glass"></use>
+				</svg>
+			</label>
+		</div>
+	</form>
+</div>

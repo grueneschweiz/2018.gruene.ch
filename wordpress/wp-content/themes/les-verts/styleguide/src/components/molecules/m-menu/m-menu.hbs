@@ -33,14 +33,7 @@
 				</li>
 			{{/each}}
 			<li class="m-menu__nav-item" role="none">
-				<a class="m-menu__nav-link m-menu__search" href="#" aria-label="{{ aria-label-search }}"
-					 aria-haspopup="true" aria-expanded="false">
-					<span class="m-menu__search-text">{{ search }}</span>
-					<svg class="m-menu__search-icon" role="search">
-						<title>{{ search }}</title>
-						<use xlink:href="#glass"></use>
-					</svg>
-				</a>
+				{{render '@a-search'}}
 			</li>
 		</ul>
 	</nav>

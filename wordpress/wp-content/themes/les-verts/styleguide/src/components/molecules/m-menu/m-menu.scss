@@ -268,39 +268,6 @@
 		}
 	}
 
-	&__search {
-		&:hover {
-			svg {
-				stroke: $color-secondary;
-			}
-		}
-	}
-
-	&__search-text {
-		@include media($_DESKTOP) {
-			display: none;
-		}
-	}
-
-	&__search-icon {
-		fill: none;
-		stroke: $color-text;
-		width: 1.333em;
-		height: 1.333em;
-		margin-bottom: -4px;
-		margin-left: 30px;
-
-		@include media($_DESKTOP) {
-			margin-top: -3px;
-			margin-bottom: 0;
-			margin-left: 0;
-		}
-
-		&:hover {
-			stroke: $color-secondary;
-		}
-	}
-
 	/**
    * Submenu
    */

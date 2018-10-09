@@ -15,6 +15,7 @@ import OCampaign from './organisms/o-campaign/o-campaign';
 import OPeopleGrid from './organisms/o-people-grid/o-people-grid';
 import OEngagementMap from './organisms/o-engagement-map/o-engagement-map';
 import MShare from './molecules/m-share/m-share';
+import ASearch from './atoms/a-search/a-search';
 
 // ================= STOP TO ADD HERE
 
@@ -27,6 +28,7 @@ import MShare from './molecules/m-share/m-share';
 const COMPONENTS_TO_LOAD = [
 	{ view: MMenu, name: 'MMenu', selector: '.m-menu' }, // load as very first (performance)
 	{ view: OHeader, name: 'OHeader', selector: '.o-header' }, // load second (performance)
+	{ view: ASearch, name: 'ASearch', selector: '.a-search'},
 	{ view: OCampaign, name: 'OCampaign', selector: '.o-campaign' },
 	{ view: AInput, name: 'AInput', selector: '.a-input' },
 	{ view: ASelect, name: 'ASelect', selector: '.a-select' },
