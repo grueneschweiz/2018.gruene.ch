@@ -1,0 +1,33 @@
+<div class="o-people-grid {{modifiers_classes}}">
+	<div class="o-people-grid__wrapper">
+		<div class="o-people-grid__cat-title">
+			{{> @a-cat-title cat-title}}
+		</div>
+		<h3 class="o-people-grid__title">{{title}}</h3>
+		<div class="o-people-grid__library-container swiper-container">
+			<div class="o-people-grid__slider swiper-wrapper">
+				{{#each slides}}
+					<div class="o-people-grid__slide swiper-slide">
+						{{> @m-person-slide this}}
+					</div>
+				{{/each}}
+			</div>
+		</div>
+		{{#if horizontal}}
+			<button class="o-people-grid__slide-button o-people-grid__slide-button--left"
+							aria-label="{{aria-label-slide-left}}">
+				<svg role="img">
+					<title>{{ 'Slide to the left' }}</title>
+					<use xlink:href="#slide"></use>
+				</svg>
+			</button>
+			<button class="o-people-grid__slide-button o-people-grid__slide-button--right"
+							aria-controls="o-people-grid__slider" aria-label="{{aria-label-slide-right}}">
+				<svg role="img">
+					<title>{{'Slide to the right'}}</title>
+					<use xlink:href="#slide"></use>
+				</svg>
+			</button>
+		{{/if}}
+	</div>
+</div>

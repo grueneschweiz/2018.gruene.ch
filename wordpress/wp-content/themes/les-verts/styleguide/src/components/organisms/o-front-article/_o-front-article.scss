@@ -136,7 +136,7 @@
 			margin-left: 28px;
 			position: relative;
 
-			&:before {
+			&::before, &:hover::before {
 				content: "\25A0";
 				color: $color-secondary;
 				transform: rotate(-5deg);

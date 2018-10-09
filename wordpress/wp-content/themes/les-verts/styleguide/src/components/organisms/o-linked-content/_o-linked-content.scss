@@ -7,6 +7,10 @@
 		}
 	}
 
+	&--single-block &__title {
+		text-align: left;
+	}
+
 	&__wrapper {
 		display: grid;
 		grid-template-columns: 1fr;
@@ -16,6 +20,10 @@
 		@include media($size-small) {
 			grid-template-columns: 1fr 1fr;
 		}
+	}
+
+	&--single-block &__wrapper {
+		grid-template-columns: 1fr;
 	}
 
 	&__block--full-width {

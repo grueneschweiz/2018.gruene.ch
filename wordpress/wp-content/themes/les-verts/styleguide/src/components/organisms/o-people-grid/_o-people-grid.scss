@@ -1,4 +1,4 @@
-.o-people-slider {
+.o-people-grid {
 	width: 100%;
 	height: 100%;
 	overflow: hidden;
@@ -20,7 +20,27 @@
 		@include fluid-props(margin-bottom, $size-tiny, $size-medium, 26px, 56px);
 	}
 
-	&__slider {
+	&--vertical &__slider {
+		display: grid;
+		grid-gap: 32px;
+		align-content: space-between;
+		grid-auto-flow: row;
+		grid-template-columns: 1fr;
+
+		@include media(480px) {
+			grid-template-columns: 1fr 1fr;
+		}
+
+		@include media($size-medium) {
+			grid-template-columns: 1fr 1fr 1fr;
+		}
+
+		@include media($size-large) {
+			grid-template-columns: 1fr 1fr 1fr 1fr;
+		}
+	}
+
+	&--horizontal &__slider {
 		display: flex;
 		align-items: stretch;
 		position: relative;
@@ -32,10 +52,25 @@
 	}
 
 	&__slide {
+		background: $color-white;
+	}
+
+	&--horizontal &__slide {
 		@include fluid-props(margin-right, $size-tiny, $size-medium, 20px, 32px);
 		position: relative;
 		transition-property: transform;
-		background: $color-white;
+
+		.m-person-slide {
+			width: 220px;
+
+			@include media($size-tiny) {
+				width: 280px;
+			}
+
+			@include media($_DESKTOP) {
+				width: 288px;
+			}
+		}
 	}
 
 	&__slide-button {

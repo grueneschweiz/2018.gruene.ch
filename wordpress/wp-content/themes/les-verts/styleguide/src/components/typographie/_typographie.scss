@@ -13,7 +13,7 @@ body {
 @mixin heading-font {
 	font-family: $font-title;
 	color: $color-primary;
-	letter-spacing: 0.025em; // For Sanuk; 0.018125em for Arial Black
+	letter-spacing: 0.018125em; // 0.025 For Sanuk; 0.018125em for Arial Black
 	line-height: 1.2727272727em;
 	margin-top: 0.6086956522em;
 	margin-bottom: 0.4057971015em;

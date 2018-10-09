@@ -1,9 +1,13 @@
-label: People slider
+label: People grid
 status: ready
+default: horizontal
 context:
   title: Wir engagieren uns als Grüne
   aria-label-slide-left: Vorherige Person anzeigen
   aria-label-slide-right: Nächste Person anzeigen
+  horizontal: true
+  modifiers:
+    - horizontal
   cat-title:
     label: Grüne Menschen
     link: '#'
@@ -58,3 +62,9 @@ context:
       image: '/img/cyril-345.jpg'
       quote: Investition in Bildung und Gesundheit. Förderung des Sportes. Nachhaltigkeit in der Wirtschaft.
       job: Medizinstudent
+variants:
+  - name: Vertical
+    context:
+      horizontal: false
+      modifiers:
+        - vertical

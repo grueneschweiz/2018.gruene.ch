@@ -56,11 +56,13 @@
 		display: inline-block;
 		@include fluid-props(margin-left, $size-medium, $size-huge, 24px, 55px);
 		float: right;
-		margin: 11px 0;
+		margin-top: 11px;
+		margin-bottom: 11px;
 
 		@include media($_DESKTOP) {
 			float: none;
-			margin: 0;
+			margin-top: 0;
+			margin-bottom: 0;
 		}
 	}
 
@@ -266,39 +268,6 @@
 		}
 	}
 
-	&__search {
-		&:hover {
-			svg {
-				stroke: $color-secondary;
-			}
-		}
-	}
-
-	&__search-text {
-		@include media($_DESKTOP) {
-			display: none;
-		}
-	}
-
-	&__search-icon {
-		fill: none;
-		stroke: $color-text;
-		width: 1.333em;
-		height: 1.333em;
-		margin-bottom: -4px;
-		margin-left: 30px;
-
-		@include media($_DESKTOP) {
-			margin-top: -3px;
-			margin-bottom: 0;
-			margin-left: 0;
-		}
-
-		&:hover {
-			stroke: $color-secondary;
-		}
-	}
-
 	/**
    * Submenu
    */
@@ -326,11 +295,24 @@
 			justify-content: center;
 			align-items: flex-start;
 			flex-direction: row;
-			padding: 0 100px;
+			padding: 0 14px 0 100px;
 		}
 
 		&.is-open {
 			display: flex;
+			opacity: 1;
+			animation-name: fadeInOpacity;
+			animation-iteration-count: 1;
+			animation-duration: $transition-fast;
+
+			@keyframes fadeInOpacity {
+				0% {
+					opacity: 0;
+				}
+				100% {
+					opacity: 1;
+				}
+			}
 
 			@include media($_MOBILE) {
 				min-height: calc(100vh - 151px + 20 * (100vh - 1024px) / 416);
@@ -381,9 +363,8 @@
 
 		&__close-wrapper {
 			@include clean-li;
-			position: absolute;
-			right: 16px;
-			top: 12px;
+			margin-left: 30px;
+			margin-top: 12px;
 			display: none;
 
 			@include media($_DESKTOP) {

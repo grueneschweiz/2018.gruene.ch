@@ -31,8 +31,12 @@
 						nicht mehr gedient wäre. Es stellt sich auch die Frage, ob die Bevölkerung bereit ist, die Risiken eines
 						solchen internationalen Grossanlasses zu tragen.</p>
 				</div>
-				<aside class="page__linked-content">
-					{{render '@o-linked-content'}}
+				<aside class="page__linked-content{{# if single}} page__linked-content--single-block{{/if}}">
+					{{# if single}}
+						{{render '@o-linked-content--single-block'}}
+					{{else}}
+						{{render '@o-linked-content'}}
+					{{/if}}
 				</aside>
 			</div>
 		</article>

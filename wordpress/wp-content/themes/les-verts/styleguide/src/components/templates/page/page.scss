@@ -65,6 +65,10 @@
 		width: 100%;
 	}
 
+	&__shareable li {
+		max-width: $text-max-width;
+	}
+
 	//noinspection CssOverwrittenProperties
 	&__share {
 		right: 0;
@@ -114,6 +118,13 @@
 		@media all and (max-width: ($size-small - 1)) {
 			margin-left: 0;
 			margin-right: 0;
+		}
+
+		&--single-block {
+			margin-left: 0;
+			margin-right: 0;
+			max-width: $text-max-width;
+			width: 100%;
 		}
 	}
 

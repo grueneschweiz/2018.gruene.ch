@@ -1,0 +1,40 @@
+{% set testimonials = getPeopleTestimonialByTaxonomies(taxonomy) %}
+<div class="o-people-grid o-people-grid--{{ layout }}">
+	<div class="o-people-grid__wrapper">
+		<div class="o-people-grid__cat-title">
+			{% include 'atoms/a-cat-title.twig' with block_title only %}
+		</div>
+		{% if title %}
+			<h3 class="o-people-grid__title">{{ title }}</h3>
+		{% endif %}
+		<div class="o-people-grid__library-container swiper-container">
+			<div class="o-people-grid__slider swiper-wrapper">
+				{% for slide in testimonials %}
+					<div class="o-people-grid__slide swiper-slide">
+						{% include 'molecules/m-person-slide.twig' with {
+							'post': slide,
+							'taxonomies': taxonomy
+						} only %}
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+		{% if 'horizontal' == horizontal %}
+			<button class="o-people-grid__slide-button o-people-grid__slide-button--left"
+							aria-label="{{ __('Slide to the left', constant('THEME_DOMAIN')) }}">
+				<svg role="img">
+					<title>{{ __('Slide to the left', constant('THEME_DOMAIN')) }}</title>
+					<use xlink:href="#slide"></use>
+				</svg>
+			</button>
+			<button class="o-people-grid__slide-button o-people-grid__slide-button--right"
+							aria-controls="o-people-grid__slider"
+							aria-label="{{ __('Slide to the right', constant('THEME_DOMAIN')) }}">
+				<svg role="img">
+					<title>{{ __('Slide to the right', constant('THEME_DOMAIN')) }}</title>
+					<use xlink:href="#slide"></use>
+				</svg>
+			</button>
+		{% endif %}
+	</div>
+</div>

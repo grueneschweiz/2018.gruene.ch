@@ -1,6 +1,6 @@
 .a-button {
 	@include clean-link;
-	font-size: 0.875rem;
+	font-size: 0.875em; // keep this as em
 	display: inline-block;
 	line-height: 1.71428em; // 24/14
 	letter-spacing: .08928em; // 1.25/14

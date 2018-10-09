@@ -3,43 +3,51 @@
 
 	font-size: .875rem;
 
+	span, a {
+		height: 1.25rem;
+	}
+
 	a {
 		@include clean-link;
 		transition: color $transition-fast $transition-ease;
 		display: none;
 
-		@include media($_DESKTOP) {
-			display: inline-block;
-		}
-
 		@include hover() {
 			color: $color-primary;
 		}
+	}
 
-		&::after,
-		&::before {
+	& a,
+	.breadcrumb_last {
+		max-width: 180px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+
+		&::before,
+		&:hover::before,
+		&:focus::before {
 			content: ' ';
+			display: inline-block;
 			background: url($arrow) no-repeat center center;
 			background-size: contain;
 			width: 0.8em;
-			margin: 0.2em 0.2em 0 0.5em;
+			margin: 0.2em 0.5em 0 0.2em;
 			height: 0.8em !important; // make sure to overwrite the hover height defined in the typography
-			display: none;
 		}
 
-		&::after {
-			@include media($_DESKTOP) {
-				display: inline-block;
-			}
+		@include media($_DESKTOP) {
+			display: inline-block;
 		}
 	}
 
-	.breadcrumb_second_last a {
+	.breadcrumb_second_last {
 		display: inline-block;
 
-		@include media($_MOBILE){
-			&::before {
-				display: inline-block;
+		@include media($_MOBILE) {
+			&::before,
+			&:hover::before,
+			&:focus::before {
 				transform: rotate(180deg);
 				margin: 0 0.5em -0.1em 0.2em;
 			}
@@ -53,7 +61,16 @@
 	}
 
 	// home
-	& > span > span > a {
+	& > div > span > a {
 		font-weight: $font-weight-semi;
+		padding-top: 0.2em;
+
+		@include media($_DESKTOP){
+			&::before,
+			&:hover::before,
+			&:focus::before {
+				display: none;
+			}
+		}
 	}
 }

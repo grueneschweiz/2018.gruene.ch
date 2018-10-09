@@ -1,7 +1,7 @@
 .a-link-button {
 	@include clean-link;
 
-	font-size: 0.875rem;
+	font-size: 0.875em;
 	display: inline-flex;
 	align-items: center;
 	line-height: 0.9em; // make sure the arrow wont be cut
@@ -14,18 +14,13 @@
 	text-transform: uppercase;
 	cursor: pointer;
 	transition: color $transition-fast $transition-ease;
-
-	&__label {
-		order: 0;
-		padding-right: 1em; // 6/12
-		display: inline-block;
-		letter-spacing: 0.05em;
-	}
+	letter-spacing: 0.08928em;
 
 	&::after {
-		content: "";
+		content: " ";
 		width: 0.6em;
 		height: 0.6em;
+		margin-left: 1.5em;
 		border-color: $color-primary;
 		border-top: 0.1666666667em solid; // 2/12
 		border-right: 0.1666666667em solid; // 2/12
