@@ -36,7 +36,7 @@
 				</li>
 			{% endfor %}
 			<li class="m-menu__nav-item" role="none">
-				{% include 'atoms/a-search.twig' %}
+				{% include 'atoms/a-search.twig' with {'modifiers':['a-search--covering']} %}
 			</li>
 		</ul>
 	</nav>

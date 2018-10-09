@@ -3,3 +3,13 @@ status: wip
 context:
   aria-label-search: Suche
   search: Suche
+variants:
+  - name: Inverted & Expanded
+    context:
+      modifiers:
+      - inverted
+      - expanded
+  - name: navigation
+    context:
+      modifiers:
+      - covering

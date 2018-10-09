@@ -1,0 +1,34 @@
+<div class="page page--list">
+	{{render '@o-header'}}
+	<main class="page__main">
+		<header class="page__header-wrapper page__header-wrapper--wide">
+			<div class="page__header page__header--wide">
+				<h1>{{title}}</h1>
+				<div class="page__header-text">
+					{{> @a-search terms=terms search='Suche' search_submit='Suchen' modifiers=search_modifiers }}
+				</div>
+			</div>
+		</header>
+		<section class="page__content">
+			<div class="page__text-width">
+				<header class="page__list-header">
+					{{render '@m-list-header'}}
+				</header>
+				<ul class="page__list-articles">
+					{{#each articles}}
+						<li class="page__list-article">
+							{{> @m-front-article this}}
+						</li>
+					{{/each}}
+					<li class="page__list-article page__list-article--hover-link">
+						{{render '@a-event-link'}}
+					</li>
+				</ul>
+				<footer class="page__list-pagination">
+					{{render '@a-pagination'}}
+				</footer>
+			</div>
+		</section>
+	</main>
+	{{render '@o-footer'}}
+</div>

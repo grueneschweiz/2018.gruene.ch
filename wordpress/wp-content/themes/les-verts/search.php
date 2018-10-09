@@ -9,8 +9,11 @@
  * @since   Timber 0.1
  */
 
-// Return 404
-status_header( 404 );
-nocache_headers();
-include( get_query_template( '404' ) );
-die();
+$templates = array( 'search.twig', 'archive.twig', 'index.twig' );
+$context = Timber::get_context();
+
+$context['posts'] = new \SUPT\SUPTPostQuery();
+$context['title']               = _x('Search', 'Noun', THEME_DOMAIN);
+$context['archive_description'] = __("You've been searching for:", THEME_DOMAIN) .' '. get_search_query();
+
+Timber::render( $templates, $context );
