@@ -1,14 +1,5 @@
 .m-person-slide {
-	width: 220px;
 	line-height: 0;
-
-	@include media($size-tiny) {
-		width: 280px;
-	}
-
-	@include media($_DESKTOP) {
-		width: 288px;
-	}
 
 	&__image {
 		width: 100%;

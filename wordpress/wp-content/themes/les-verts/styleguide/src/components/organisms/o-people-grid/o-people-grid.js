@@ -1,11 +1,11 @@
 import BaseView from './../../../js/base-view';
 import Swiper from 'swiper';
 
-const SWIPER_CONTAINER_SELECTOR = '.o-people-slider__library-container';
-const SLIDER_NEXT_BUTTON_SELECTOR = '.o-people-slider__slide-button--right';
-const SLIDER_PREVIOUS_BUTTON_SELECTOR = '.o-people-slider__slide-button--left';
+const SWIPER_CONTAINER_SELECTOR = '.o-people-grid__library-container';
+const SLIDER_NEXT_BUTTON_SELECTOR = '.o-people-grid__slide-button--right';
+const SLIDER_PREVIOUS_BUTTON_SELECTOR = '.o-people-grid__slide-button--left';
 
-export default class OPeopleSlider extends BaseView {
+export default class OPeopleGrid extends BaseView {
 	bind() {
 		super.bind();
 
