@@ -1,5 +1,5 @@
 label: Search Field
-status: wip
+status: ready
 context:
   aria-label-search: Suche
   search: Suche
