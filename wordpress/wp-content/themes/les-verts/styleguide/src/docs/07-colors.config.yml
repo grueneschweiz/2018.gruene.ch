@@ -9,6 +9,7 @@ context:
     - title: Secondary
       values:
         secondary: "#E10078"
+        secondary-light: "#F0CEE1"
         secondary-dark: "#B1025F"
     - title: Text
       values:

@@ -39,11 +39,11 @@ context:
   aria-label-language-navigation: Sprachmenü
   aria-label-sub-navigation: Untermenü
   aria-label-close-sub-navigation: Untermenü schliessen
-  aria-label-search: Suche
+  search_modifiers:
+  - covering
   languages:
     - de
     - fr
-  search: Suche
   logo:
     de: true
     title: Logo Grüne Schweiz

@@ -4,6 +4,8 @@ const ICON_SELECTOR = '.a-search__icon';
 const FIELD_SELECTOR = '.a-search__field';
 const SUBMIT_LABEL_SELECTOR = '.a-search__submit-label';
 
+const COVERING_CLASS = 'a-search--covering';
+
 const ACTIVE_STATE = 'is-active';
 const HOVER_STATE = 'highlight';
 
@@ -15,7 +17,12 @@ export default class ASearch extends BaseView {
 		this.overIcon = false;
 		this.overField = false;
 		this.active = false;
-		this.initialWidth = this.element.scrollWidth;
+
+		this.covering = this.element.classList.contains(COVERING_CLASS);
+
+		if (this.covering){
+			this.initialWidth = this.element.scrollWidth;
+		}
 	}
 
 	bind() {
@@ -77,10 +84,12 @@ export default class ASearch extends BaseView {
 		this.addClass( this.field, ACTIVE_STATE );
 
 		// expand the whole element to make sure we hide all elements on the right
-		let left = this.element.offsetLeft;
-		let vw = document.body.clientWidth;
-		this.element.style.maxWidth = (vw - left)+'px';
-		this.addClass(ACTIVE_STATE);
+		if (this.covering){
+			let left = this.element.offsetLeft;
+			let vw = document.body.clientWidth;
+			this.element.style.maxWidth = (vw - left)+'px';
+			this.addClass(ACTIVE_STATE);
+		}
 	}
 
 	close() {
@@ -88,8 +97,10 @@ export default class ASearch extends BaseView {
 		this.active = false;
 
 		// shrink the background
-		this.element.style.maxWidth = null;
-		this.removeClass(ACTIVE_STATE);
+		if (this.covering) {
+			this.element.style.maxWidth = null;
+			this.removeClass( ACTIVE_STATE );
+		}
 	}
 
 	setOverState( target, state ) {

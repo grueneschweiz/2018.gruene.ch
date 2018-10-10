@@ -1,0 +1,148 @@
+.m-person {
+	$intermediate-breakpoint: 480px;
+
+	background-color: $color-grey-1;
+
+	&__main {
+		display: flex;
+		flex-direction: column;
+		position: relative;
+
+		@include media($intermediate-breakpoint) {
+			flex-direction: row;
+		}
+	}
+
+	&__image {
+		width: 100%;
+
+		@include media($intermediate-breakpoint) {
+			max-width: 215px;
+		}
+	}
+
+	&__basic-info {
+		margin: 20px;
+
+		@include media($size-small) {
+			margin: 24px;
+		}
+	}
+
+	&--expandable &__basic-info {
+		padding-bottom: 20px;
+	}
+
+	&__full-name {
+		@extend h4;
+		display: inline-block;
+	}
+
+	&__supplementary {
+		display: inline-block;
+		&::before {
+			content: '\00a0\2013\00a0';
+		}
+	}
+
+	&__role {
+		margin: 0.75em 0;
+		hyphens: auto;
+
+		@include media($intermediate-breakpoint) {
+			hyphens: none;
+		}
+	}
+
+	&__address {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+	}
+
+	&__contact {
+		margin: 0.5em 0;
+	}
+
+	&__social-media {
+		display: flex;
+		margin-top: 0.75em;
+	}
+
+	&__social-icon {
+		width: 32px;
+		height: 32px;
+		margin-right: 12px;
+	}
+
+	&__toggle {
+		position: absolute;
+		bottom: 0;
+		right: 0;
+		background: $color-primary-light;
+		padding: 16px 12px 16px 18px;
+
+		font-size: 0.875rem;
+		color: $color-primary-dark;
+		font-family: $font-secondary;
+		font-weight: $font-weight-bold;
+		text-transform: uppercase;
+		cursor: pointer;
+		transition: all $transition-fast $transition-ease;
+		letter-spacing: 0.08928em;
+
+		@include hover {
+			background: $color-secondary-light;
+			color: $color-secondary-dark;
+		}
+
+		&::after {
+			font-size: 1.15em;
+			line-height: 0;
+		}
+
+		&.is-collapsed::after {
+			content: '\00a0\00FF0B';
+		}
+
+		&.is-expanded::after {
+			content: '\00a0\002013';
+			position: relative;
+			top: -2px;
+		}
+	}
+
+	&__toggle.is-collapsed &__collaps {
+		display: none;
+	}
+
+	&__toggle.is-expanded &__expand {
+		display: none;
+	}
+
+	&__expandable {
+		background: $color-grey-2;
+		transition: all $transition-ease $transition-mid;
+		overflow: hidden;
+		max-height: 5000px;
+
+		@include fluid-props(padding, $intermediate-breakpoint, $size-small, 20px, 48px);
+
+		&.is-collapsed {
+			max-height: 0;
+			height: 0;
+			padding-top: 0;
+			padding-bottom: 0;
+		}
+
+		h1, h2, h3, h4, h5 {
+			font-size: 1rem;
+			color: $color-text;
+		}
+	}
+
+
+	&__contact-title {
+		margin-top: 35px;
+	}
+}

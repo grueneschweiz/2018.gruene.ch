@@ -36,14 +36,7 @@
 				</li>
 			{% endfor %}
 			<li class="m-menu__nav-item" role="none">
-				<a class="m-menu__nav-link m-menu__search" href="#" aria-label="{{ __('Search', constant('THEME_DOMAIN')) }}"
-					 aria-haspopup="true" aria-expanded="false">
-					<span class="m-menu__search-text">{{ __('Search', constant('THEME_DOMAIN')) }}</span>
-					<svg class="m-menu__search-icon" role="search">
-						<title>{{ __('Search', constant('THEME_DOMAIN')) }}</title>
-						<use xlink:href="#glass"></use>
-					</svg>
-				</a>
+				{% include 'atoms/a-search.twig' with {'modifiers':['a-search--covering']} %}
 			</li>
 		</ul>
 	</nav>

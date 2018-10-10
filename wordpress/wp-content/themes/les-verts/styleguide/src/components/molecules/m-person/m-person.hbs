@@ -1,0 +1,43 @@
+<article class="m-person {{modifiers_classes}}">
+	<div class="m-person__main">
+		<div class="m-person__image">
+			{{> @a-image image}}
+		</div>
+		<div class="m-person__basic-info">
+			<header><h3 id="m-person__full-name--{{id}}" class="m-person__full-name">{{full_name}}</h3>{{#if supplementary}}<span class="m-person__supplementary">{{supplementary}}</span>{{/if}}</header>
+			{{#if role}}<p class="m-person__role">{{role}}</p>{{/if}}
+			{{#unless expandable}}
+				<address class="m-person__address">
+					{{#if email}}<a href="mailto:{{email}}" class="m-person__contact m-person__contact--email">{{email}}</a>{{/if}}
+					{{#if phone}}<a href="tel:+41{{phone}}" class="m-person__contact m-person__contact--phone">{{phone}}</a>{{/if}}
+					{{#if website}}<a href="http://{{website}}" class="m-person__contact m-person__contact--website">{{website}}</a>{{/if}}
+				</address>
+				<div class="m-person__social-media">
+					{{#if facebook}}<div class="m-person__social-icon">{{> @a-social-icon type='facebook' link=facebook}}</div>{{/if}}
+					{{#if twitter}}<div class="m-person__social-icon">{{> @a-social-icon type='twitter' link=twitter}}</div>{{/if}}
+					{{#if instagram}}<div class="m-person__social-icon">{{> @a-social-icon type='instagram' link=instagram}}</div>{{/if}}
+				</div>
+			{{/unless}}
+		</div>
+		{{#if expandable}}<div class="m-person__toggle is-collapsed" aria-controls="m-person__expandable-{{id}}" data-expand="{{button-expand}}" data-collaps="{{button-collaps}}">{{button-expand}}</div>{{/if}}
+	</div>
+	{{#if expandable}}
+		<div id="m-person__expandable-{{id}}" class="m-person__expandable is-collapsed" aria-hidden="true" aria-labelledby="m-person__full-name--{{id}}">
+			<div class="m-person__wysiwyg">
+				{{{wysiwyg}}}
+			</div>
+			<!-- Add an if contact here in twig -->
+			<h4 class="m-person__contact-title">{{contact}}</h4>
+			<address class="m-person__address">
+				{{#if email}}<a href="mailto:{{email}}" class="m-person__contact m-person__contact--email">{{email}}</a>{{/if}}
+				{{#if phone}}<a href="tel:+41{{phone}}" class="m-person__contact m-person__contact--phone">{{phone}}</a>{{/if}}
+				{{#if website}}<a href="http://{{website}}" class="m-person__contact m-person__contact--website">{{website}}</a>{{/if}}
+			</address>
+			<div class="m-person__social-media">
+				{{#if facebook}}<div class="m-person__social-icon">{{> @a-social-icon type='facebook' link=facebook}}</div>{{/if}}
+				{{#if twitter}}<div class="m-person__social-icon">{{> @a-social-icon type='twitter' link=twitter}}</div>{{/if}}
+				{{#if instagram}}<div class="m-person__social-icon">{{> @a-social-icon type='instagram' link=instagram}}</div>{{/if}}
+			</div>
+		</div>
+	{{/if}}
+</article>

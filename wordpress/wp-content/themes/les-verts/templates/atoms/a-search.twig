@@ -1,1 +1,15 @@
-<div class="a-search">{{ fn('get_search_form', false) }}</div>
+<div class="a-search{% if modifiers %} {{ modifiers|join(' ') }}{% endif %}">
+	<form role="search" method="get" id="searchform" class="a-search__form" action="{{ site.url }}">
+		<div>
+			<label class="screen-reader-text" for="s">{{ _x( 'Search for:', constant('THEME_DOMAIN') ) }}</label>
+			<input class="a-search__field" type="text" value="{{ fn('get_search_query') }}" name="s" id="s" placeholder="{{ _x('Search', 'Noun', constant('THEME_DOMAIN')) }}">
+			<label class="a-search__submit-label">
+				<input class="a-search__submit" type="submit" id="searchsubmit" value="{{ _x('Search', 'Verb', constant('THEME_DOMAIN')) }}">
+				<svg class="a-search__icon" aria-hidden="true">
+					<title>{{ _x('Search', 'Verb', constant('THEME_DOMAIN')) }}</title>
+					<use xlink:href="#glass"> </use>
+				</svg>
+			</label>
+		</div>
+	</form>
+</div>

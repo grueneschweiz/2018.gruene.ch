@@ -14,3 +14,6 @@ context:
   twitter:
     type: twitter
     link: "https://twitter.com/GrueneCH"
+  instagram:
+    type: instagram
+    link: "https://www.instagram.com/gruenelesverts/"
