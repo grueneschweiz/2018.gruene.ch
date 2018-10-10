@@ -62,6 +62,9 @@ $WPCLI plugin install post-duplicator --activate-network
 # Disable gutenberg
 $WPCLI plugin install classic-editor --activate-network
 
+# SearchWP
+$WPCLI plugin activate searchwp --activate-network
+
 #====================
 # Enable theme
 #====================
