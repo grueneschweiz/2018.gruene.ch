@@ -16,6 +16,7 @@ import OPeopleGrid from './organisms/o-people-grid/o-people-grid';
 import OEngagementMap from './organisms/o-engagement-map/o-engagement-map';
 import MShare from './molecules/m-share/m-share';
 import ASearch from './atoms/a-search/a-search';
+import MPerson from './molecules/m-person/m-person';
 
 // ================= STOP TO ADD HERE
 
@@ -35,6 +36,7 @@ const COMPONENTS_TO_LOAD = [
 	{ view: OPeopleGrid, name: 'OPeopleGrid', selector: '.o-people-grid--horizontal' },
 	{ view: OEngagementMap, name: 'OEngagementMap', selector: '.o-engagement-map' },
 	{ view: MShare, name: 'MShare', selector: '.m-share' },
+	{ view: MPerson, name: 'MPerson', selector: '.m-person--expandable' },
 ];
 
 const LOADED_COMPONENTS = {};

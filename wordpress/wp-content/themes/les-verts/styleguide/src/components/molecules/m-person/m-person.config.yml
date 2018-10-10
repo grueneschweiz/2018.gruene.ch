@@ -1,0 +1,27 @@
+label: Person
+status: ready
+context:
+  full_name: Balthasar Glättli
+  image:
+    image-src: '/img/glaettli.jpg'
+    alt: Balthasar Glättli
+    title: Balthasar Glättli
+    no_caption: 1
+  supplementary: Zürich
+  role: Nationalrat, Sicherheitskommission, Fraktionspräsident, Präsident Mieterverband Deutschschweiz
+  email: balthasar.glaettli@gruene.ch
+  phone: 079 123 45 67
+  website: www.balthasar-glaettli.ch
+  facebook: https://google.com
+  twitter: https://google.com
+  instagram: https://google.com
+variants:
+  - name: expandable
+    context:
+      contact: Kontakt
+      expandable: true
+      button-expand: Mehr Infos
+      button-collaps: Weniger Infos
+      wysiwyg: <strong>some</strong> html output
+      modifiers:
+      - expandable
