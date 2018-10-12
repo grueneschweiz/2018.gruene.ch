@@ -164,3 +164,31 @@ ul li:before {
 	color: $color-white;
 	background: $color-primary;
 }
+
+/**
+ * Quotes
+ */
+blockquote, q {
+	font-size: 1.25rem;
+	color: $color-primary;
+	font-weight: $font-weight-bold;
+	font-family: $font-title;
+	letter-spacing: 0.018125em;
+	line-height: 1.2727272727em;
+
+	p {
+		display: inline;
+	}
+
+	&::before {
+		content: '\0000AB';
+		display: inline-block;
+		padding-right: 0.125em;
+	}
+
+	&::after {
+		content: '\0000BB';
+		display: inline-block;
+		padding-left: 0.125em;
+	}
+}

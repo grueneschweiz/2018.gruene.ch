@@ -1,0 +1,118 @@
+{% if wysiwyg %}
+	{% set expandable = true %}
+{% endif %}
+
+{% set id = person.slug~random() %}
+{% set contact = person.get_field('contact') %}
+
+<article class="m-person{% if expandable %} m-person--expandable{% endif %}">
+	<div class="m-person__main">
+		<div class="m-person__image">
+			{% include 'atoms/a-image.twig' with {
+				'size': 'quote',
+				'image': person.image,
+				'no_caption': 1
+			} only %}
+		</div>
+		<div class="m-person__basic-info">
+			<header><h3 id="m-person__full-name--{{ id }}"
+									class="m-person__full-name">{{ person.full_name }}</h3>{% if supplement %}<span
+					class="m-person__supplementary">{{ supplement }}</span>{% endif %}</header>
+			{% if person.role %}<p class="m-person__role">{{ person.role }}</p>{% endif %}
+			{% if not expandable and contact %}
+				<address class="m-person__address">
+					{% for block in contact %}
+						{% if 'email' == block.acf_fc_layout %}
+							<div
+								class="m-person__contact m-person__contact--email">{% include 'atoms/a-contact.twig' with block only %}</div>
+						{% endif %}
+						{% if 'phone' == block.acf_fc_layout %}
+							<div
+								class="m-person__contact m-person__contact--phone">{% include 'atoms/a-contact.twig' with block only %}</div>
+						{% endif %}
+						{% if 'website' == block.acf_fc_layout %}
+							<div
+								class="m-person__contact m-person__contact--website">{% include 'atoms/a-contact.twig' with block only %}</div>
+						{% endif %}
+					{% endfor %}
+				</address>
+				<div class="m-person__social-media">
+					{% for block in contact %}
+						{% if 'facebook' == block.acf_fc_layout %}
+							<div class="m-person__social-icon">{% include 'atoms/a-social-icon.twig' with {
+									'link': block.facebook,
+									'type': 'facebook'
+								} %}</div>
+						{% endif %}
+						{% if 'twitter' == block.acf_fc_layout %}
+							<div class="m-person__social-icon">{% include 'atoms/a-social-icon.twig' with {
+									'link': block.twitter,
+									'type': 'twitter'
+								} %}</div>
+						{% endif %}
+						{% if 'instagram' == block.acf_fc_layout %}
+							<div class="m-person__social-icon">{% include 'atoms/a-social-icon.twig' with {
+									'link': block.instagram,
+									'type': 'instagram'
+								} %}</div>
+						{% endif %}
+					{% endfor %}
+				</div>
+			{% endif %}
+		</div>
+		{% if expandable %}
+			<button class="m-person__toggle is-collapsed" aria-controls="m-person__expandable-{{ id }}"
+							data-expand="{{ __('More', constant('THEME_DOMAIN')) }}"
+							data-collaps="{{ __('Less', constant('THEME_DOMAIN')) }}">{{ __('More', constant('THEME_DOMAIN')) }}</button>
+		{% endif %}
+	</div>
+	{% if expandable %}
+		<div id="m-person__expandable-{{ id }}" class="m-person__expandable is-collapsed" aria-hidden="true"
+				 aria-labelledby="m-person__full-name--{{ id }}">
+			<div class="m-person__wysiwyg">
+				{{ wysiwyg }}
+			</div>
+			{% if contact %}
+				<h4 class="m-person__contact-title">{{ __('Contact', constant('THEME_DOMAIN')) }}</h4>
+				<address class="m-person__address">
+					{% for block in contact %}
+						{% if 'email' == block.acf_fc_layout %}
+							<div
+								class="m-person__contact m-person__contact--email">{% include 'atoms/a-contact.twig' with block only %}</div>
+						{% endif %}
+						{% if 'phone' == block.acf_fc_layout %}
+							<div
+								class="m-person__contact m-person__contact--phone">{% include 'atoms/a-contact.twig' with block only %}</div>
+						{% endif %}
+						{% if 'website' == block.acf_fc_layout %}
+							<div
+								class="m-person__contact m-person__contact--website">{% include 'atoms/a-contact.twig' with block only %}</div>
+						{% endif %}
+					{% endfor %}
+				</address>
+				<div class="m-person__social-media">
+					{% for block in contact %}
+						{% if 'facebook' == block.acf_fc_layout %}
+							<div class="m-person__social-icon">{% include 'atoms/a-social-icon.twig' with {
+									'link': block.facebook,
+									'type': 'facebook'
+								} %}</div>
+						{% endif %}
+						{% if 'twitter' == block.acf_fc_layout %}
+							<div class="m-person__social-icon">{% include 'atoms/a-social-icon.twig' with {
+									'link': block.twitter,
+									'type': 'twitter'
+								} %}</div>
+						{% endif %}
+						{% if 'instagram' == block.acf_fc_layout %}
+							<div class="m-person__social-icon">{% include 'atoms/a-social-icon.twig' with {
+									'link': block.instagram,
+									'type': 'instagram'
+								} %}</div>
+						{% endif %}
+					{% endfor %}
+				</div>
+			{% endif %}
+		</div>
+	{% endif %}
+</article>

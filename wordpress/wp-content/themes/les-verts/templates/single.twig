@@ -43,6 +43,10 @@
 						<div class="page__quote">
 							{% include 'molecules/m-quote.twig' with block only %}
 						</div>
+					{% elseif block.acf_fc_layout == 'person' %}
+						<div class="page__person">
+							{% include 'molecules/m-person.twig' with block only %}
+						</div>
 					{% elseif block.acf_fc_layout == 'oembed' %}
 						{{ block.oembed }}
 					{% else %}

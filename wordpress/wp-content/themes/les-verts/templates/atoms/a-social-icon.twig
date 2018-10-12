@@ -1,3 +1,11 @@
+{% if 'facebook' == type %}
+	{% set link = link|social_link('facebook') %}
+{% elseif 'twitter' == type %}
+	{% set link = link|social_link('twitter') %}
+{% elseif 'instagram' == type %}
+	{% set link = link|social_link('instagram') %}
+{% endif %}
+
 <a href="{{ link }}" class="a-social-icon" target="_blank" aria-label="{{ type }}">
 	<svg role="img">
 		<title>{{ type }}</title>
