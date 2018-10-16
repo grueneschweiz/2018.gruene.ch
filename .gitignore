@@ -129,4 +129,3 @@ node_modules
 fonts
 deploy.*
 .wordpress
-scripts/wp-init-server.sh
