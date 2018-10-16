@@ -57,6 +57,10 @@ Timber::render( $templates, $context );
  * @param $context
  */
 function supt_get_latest_press_release( &$context ) {
+	if (empty($context['post']->custom['content_blocks'])) {
+		return;
+	}
+	
 	foreach ( $context['post']->custom['content_blocks'] as $id => $type ) {
 		if ( 'media' == $type ) {
 			// get post category
@@ -98,6 +102,10 @@ function supt_get_latest_press_release( &$context ) {
  */
 function supt_get_events( &$context ) {
 	$context['venues'] = null;
+	
+	if (empty($context['post']->custom['content_blocks'])) {
+		return;
+	}
 	
 	foreach ( $context['post']->custom['content_blocks'] as $id => $type ) {
 		if ( 'events' == $type ) {
