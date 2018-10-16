@@ -15,7 +15,7 @@ class Branding_controller {
 			session_start();
 		}
 		
-		if ( isset( $_SESSION['hide_branding'] ) ) {
+		if ( isset( $_SESSION['hide_branding'] ) && ! is_customize_preview() ) {
 			return $context;
 		}
 		
