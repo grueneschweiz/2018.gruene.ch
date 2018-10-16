@@ -94,3 +94,5 @@ $WPCLI plugin uninstall hello --deactivate
 # set permalink structure
 $WPCLI rewrite structure '%postname%'
 
+# set upload limit to 64 MB
+$WPCLI network meta update 1 fileupload_maxk 65536
