@@ -65,6 +65,9 @@ $WPCLI plugin install classic-editor --activate-network
 # SearchWP
 $WPCLI plugin activate searchwp --network
 
+# Enhanced media library
+plugin install enhanced-media-library --activate-network
+
 #====================
 # Enable theme
 #====================
