@@ -53,6 +53,9 @@ if ! [ -x "$(command -v wp)" ]; then
 	curl -O https://raw.githubusercontent.com/wp-cli/wp-cli/master/utils/wp-completion.bash
 	echo "source ~/.wp-cli/wp-completion.bash" >> ~/.bash_profile
 	source ~/.bash_profile
+else
+	# update wp cli
+	wp cli update --yes
 fi
 
 # install wordpress
@@ -111,4 +114,6 @@ if ! [ -x "$(command -v composer)" ]; then
 	php composer-setup.php --install-dir=bin --filename=composer
 	chmod u+x bin/composer
 	rm composer-setup.php
+else
+	composer self-update
 fi
