@@ -51,7 +51,7 @@ $WPCLI plugin install theme-translation-for-polylang --activate-network
 
 # Disable comments system
 $WPCLI plugin install disable-comments --activate-network
-$WPCLI option update disable_comments_options '{"disabled_post_types":["post","page","attachment"],"remove_everywhere":true,"permanent":false,"extra_post_types":false,"db_version":6}' --format=json
+$WPCLI option patch update disable_comments_options remove_everywhere <<< "true"
 
 # Events
 $WPCLI plugin install the-events-calendar --activate-network
