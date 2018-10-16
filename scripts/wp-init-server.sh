@@ -101,3 +101,14 @@ RewriteRule ^([_0-9a-zA-Z-]+/)?(.*\.php)$ \$2 [L]
 RewriteRule . index.php [L]" > .htaccess
 
 echo ".htaccess file created and rewrite rules set"
+
+# if composer command doesn't exist
+if ! [ -x "$(command -v composer)" ]; then
+  # download an install cli
+  echo "Installing composer"
+	cd ~
+	curl -sS https://getcomposer.org/installer -o composer-setup.php
+	php composer-setup.php --install-dir=bin --filename=composer
+	chmod u+x bin/composer
+	rm composer-setup.php
+fi
