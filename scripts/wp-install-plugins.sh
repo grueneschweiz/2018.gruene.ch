@@ -24,7 +24,7 @@ $WPCLI plugin activate advanced-custom-fields-pro --network
 # $WPCLI eval 'acf_pro_update_license("INSERT LICENSE NUMBER HERE");'
 
 ## Timber
-$WPCLI plugin install timber-library --activate-network
+$WPCLI plugin install timber-library --version=1.7.1 --activate-network
 
 ## SVG support
 $WPCLI plugin install svg-support --activate-network
@@ -32,7 +32,7 @@ $WPCLI plugin install svg-support --activate-network
 # YAOST seo plugin
 $WPCLI plugin install wordpress-seo --activate-network
 $WPCLI option patch update wpseo_titles breadcrumbs-home <<< "Front Page"
-$WPCLI option patch update wpseo enable_admin_bar_menu false
+$WPCLI option patch update wpseo enable_admin_bar_menu <<< "false"
 
 # Smush Image Compression
 $WPCLI plugin install wp-smushit --activate-network
@@ -63,7 +63,7 @@ $WPCLI plugin install post-duplicator --activate-network
 $WPCLI plugin install classic-editor --activate-network
 
 # SearchWP
-$WPCLI plugin activate searchwp --activate-network
+$WPCLI plugin activate searchwp --network
 
 #====================
 # Enable theme
@@ -85,37 +85,9 @@ $WPCLI theme delete twentyseventeen
 $WPCLI plugin uninstall akismet --deactivate
 $WPCLI plugin uninstall hello --deactivate
 
-#=================
-# Setup all sites
-# NOTE: runs only if sites aren't setup already
-# NOTE 2: Needs to be defined accordingly to available sites
-#=================
+#====================
+# Configrue
+#====================
+# set permalink structure
+$WPCLI rewrite structure '%postname%'
 
-# # Stop the script if more than 1 site exist
-# if [[ $($WPCLI site list --format=count) > 1 ]]; then
-#     echo "Warning: More than 1 sites exist already, skipping the multisites creation.";
-#     exit 0;
-# fi
-
-# # Define variables
-# sites_slugs=('_ch' '_us' '_ca' '_uk' '_nl' '_de' '_fr')
-# sites_titles=('Switzerland' 'United-States' 'Canada' 'United-Kingdom' 'Netherlands' 'Germany' 'France')
-# sites_langs=('fr_FR' 'en_US' 'en_CA' 'en_GB' 'nl_NL' 'de_DE' 'fr_FR')
-# # sites_pll=('fr_FR' 'en_US' 'en_CA' 'en_GB' 'nl_NL' 'de_DE' 'fr_FR') # polylang languages
-# sites_timezones=('Europe/Zurich' 'America/New_York' 'America/Montreal' 'Europe/London' 'Europe/Amsterdam' 'Europe/Berlin' 'Europe/Paris')
-
-# # Create & configure the sites
-# arraylength=${#sites_slugs[@]}
-# for (( i=0; i<${arraylength}; i++ )); do
-#     url="${BASE_URL}/${sites_slugs[$i]}"
-#     echo "---"
-#     echo "Setting up ${url} with…"
-#     echo "- slug: ${sites_slugs[$i]}"
-#     echo "- title: ${sites_titles[$i]}"
-#     echo "- lang: ${sites_langs[$i]}"
-#     echo "- timezone: ${sites_timezones[$i]}"
-#     $WPCLI site create --slug="${sites_slugs[$i]}" --title="${sites_titles[$i]}"
-#     $WPCLI language core install "${sites_langs[$i]}" --url="${url}" --activate
-#     $WPCLI option update timezone_string "${sites_timezones[$i]}" --url="${url}"
-#     $WPCLI theme activate medair --url="${url}"
-# done

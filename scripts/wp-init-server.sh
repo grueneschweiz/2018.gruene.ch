@@ -20,12 +20,14 @@ read -p "Enter DB host: " DB_HOST
 read -p "Enter DB name: " DB_NAME
 read -p "Enter DB user: " DB_USER
 read -sp "Enter DB password: " DB_PASS
+printf "\n"
 
 echo "Configure website"
 read -p "Enter website url: " SITE_URL
 read -p "Enter website title: " SITE_TITLE
 read -p "Enter website admin user: " SITE_ADMIN_USER
 read -sp "Enter website admin password: " SITE_ADMIN_PASS
+printf "\n"
 read -p "Enter website admin email: " SITE_ADMIN_EMAIL
 read -p "Enter language code (Ex. 'de_DE' or 'fr_FR'): " SITE_LOCALE
 
@@ -54,7 +56,7 @@ if ! [ -x "$(command -v wp)" ]; then
 	echo "source ~/.wp-cli/wp-completion.bash" >> ~/.bash_profile
 	source ~/.bash_profile
 else
-	# update wp cli
+	echo "Updating wp cli"
 	wp cli update --yes
 fi
 
@@ -115,5 +117,6 @@ if ! [ -x "$(command -v composer)" ]; then
 	chmod u+x bin/composer
 	rm composer-setup.php
 else
+	echo "Updating composer"
 	composer self-update
 fi
