@@ -1,0 +1,54 @@
+.a-post-meta {
+	font-size: 0.875rem;
+	letter-spacing: 0.018em;
+	hyphens: auto;
+
+	@include media($_MOBILE) {
+		background-color: $color-grey-1;
+		padding: 12px 40px;
+	}
+
+	&__block {
+		padding: 8px 0;
+		display: block;
+	}
+
+	&__date {
+		@extend .a-post-meta__block;
+		color: $color-grey-3;
+		font-weight: $font-weight-bold;
+	}
+
+	&__categories {
+		@extend .a-post-meta__block;
+	}
+
+	&__tags {
+		@extend .a-post-meta__block;
+	}
+
+	&__date + &__categories,
+	&__date + &__tags,
+	&__categories + &__tags {
+		padding-top: 0;
+
+		&::before {
+			content: ' ';
+			height: 1px;
+			width: 20px;
+			background-color: $color-grey-2;
+			display: block;
+			margin-bottom: 8px;
+		}
+	}
+
+	&__category {
+		@include clean-link;
+		color: $color-primary;
+		font-weight: $font-weight-bold;
+	}
+
+	&__tag {
+		@include clean-link;
+	}
+}
