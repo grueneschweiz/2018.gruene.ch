@@ -1,10 +1,11 @@
-
-<svg width="18px" height="12px" viewBox="0 0 18 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-	<g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-		<g id="comp/share-v2/LG" transform="translate(-15.000000, -91.000000)" fill="#84B414">
-			<g id="ico/24px/email/green/no-outline" transform="translate(8.000000, 81.000000)">
-				<path d="M7,10.8668191 L7,21.1109659 L12.8969474,15.8460198 L7,10.8668191 Z M23.9730743,10 L8.02692567,10 L15.999775,16.7320048 L23.9730743,10 Z M15.999775,18.4665142 L13.919823,16.7102254 L7.99542489,22 L24.0041251,22 L18.079277,16.7102254 L15.999775,18.4665142 Z M25,21.1109659 L25,10.8668191 L19.1026026,15.8460198 L25,21.1109659 Z" id="Fill-4"></path>
-			</g>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<!-- Generator: Sketch 52.2 (67145) - http://www.bohemiancoding.com/sketch -->
+	<title>ico/24px/email/green</title>
+	<desc>Created with Sketch.</desc>
+	<g id="ico/24px/email/green" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+		<g id="ico/24px/email/green/no-outline" fill="#84B414">
+			<path d="M7,10.8668191 L7,21.1109659 L12.8969474,15.8460198 L7,10.8668191 Z M23.9730743,10 L8.02692567,10 L15.999775,16.7320048 L23.9730743,10 Z M15.999775,18.4665142 L13.919823,16.7102254 L7.99542489,22 L24.0041251,22 L18.079277,16.7102254 L15.999775,18.4665142 Z M25,21.1109659 L25,10.8668191 L19.1026026,15.8460198 L25,21.1109659 Z" id="Fill-4"></path>
 		</g>
 	</g>
 </svg>
