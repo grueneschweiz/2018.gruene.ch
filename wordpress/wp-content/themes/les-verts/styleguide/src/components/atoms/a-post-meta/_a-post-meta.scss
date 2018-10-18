@@ -2,11 +2,8 @@
 	font-size: 0.875rem;
 	letter-spacing: 0.018em;
 	hyphens: auto;
-
-	@include media($_MOBILE) {
-		background-color: $color-grey-1;
-		padding: 12px 40px;
-	}
+	line-height: 1.57em;
+	@include fluid-props(padding-top padding-bottom, $fluid-min, $size-medium, 4px, 40px);
 
 	&__block {
 		padding: 8px 0;

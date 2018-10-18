@@ -1,6 +1,12 @@
+body.has-share-buttons {
+	@include media($_MOBILE) {
+		margin-bottom: 42px;
+	}
+}
+
 .m-share {
 	$icon-size: 40px;
-	$height-desktop: 260px;
+	$height-desktop: 272px;
 
 	width: 100%;
 	display: flex;
@@ -14,6 +20,7 @@
 		width: $height-desktop;
 		transform: translateY($height-desktop) rotate(-90deg);
 		transform-origin: top left;
+		padding: 4px 8px 4px 4px;
 	}
 
 	&__icon {
