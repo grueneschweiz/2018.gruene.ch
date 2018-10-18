@@ -89,3 +89,13 @@ $z-index-menu: 11;
 $z-index-topbar: 12;
 $z-index-side-nav: 15;
 $z-index-modal: 100;
+
+/**
+ * PAGE LAYOUT
+ */
+$page-grid-content-min-width: 296px;
+$page-grid-content-max-width: 790px;
+$page-grid-side-width: 210px;
+$page-grid-wide-side-max-width: 100px;
+$page-grid-padder-min-width: 12px;
+$page-grid-padder-regular-width: 40px;

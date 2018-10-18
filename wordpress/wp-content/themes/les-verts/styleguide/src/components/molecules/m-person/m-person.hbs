@@ -19,7 +19,7 @@
 				</div>
 			{{/unless}}
 		</div>
-		{{#if expandable}}<div class="m-person__toggle is-collapsed" aria-controls="m-person__expandable-{{id}}" data-expand="{{button-expand}}" data-collaps="{{button-collaps}}">{{button-expand}}</div>{{/if}}
+		{{#if expandable}}<button class="m-person__toggle is-collapsed" aria-controls="m-person__expandable-{{id}}" data-expand="{{button-expand}}" data-collaps="{{button-collaps}}">{{button-expand}}</button>{{/if}}
 	</div>
 	{{#if expandable}}
 		<div id="m-person__expandable-{{id}}" class="m-person__expandable is-collapsed" aria-hidden="true" aria-labelledby="m-person__full-name--{{id}}">

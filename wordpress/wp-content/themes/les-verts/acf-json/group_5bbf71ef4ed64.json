@@ -1,0 +1,103 @@
+{
+    "key": "group_5bbf71ef4ed64",
+    "title": "[Template]Person",
+    "fields": [
+        {
+            "key": "field_5bbf725974660",
+            "label": "Person",
+            "name": "person",
+            "type": "post_object",
+            "instructions": "Select a person. Its name, photo and contact details will be displayed.",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "people"
+            ],
+            "taxonomy": "",
+            "allow_null": 0,
+            "multiple": 0,
+            "return_format": "object",
+            "ui": 1
+        },
+        {
+            "key": "field_5bbf732574661",
+            "label": "Names supplement",
+            "name": "supplement",
+            "type": "text",
+            "instructions": "Will be displayed next to the name. Use it to mark the city, year of birth etc. or leave it blank.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": 50
+        },
+        {
+            "key": "field_5bbf73b674662",
+            "label": "Role",
+            "name": "role",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": 280,
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_5bbf73d274663",
+            "label": "Additional Info",
+            "name": "wysiwyg",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "delay": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 0,
+    "description": "",
+    "modified": 1539273808
+}

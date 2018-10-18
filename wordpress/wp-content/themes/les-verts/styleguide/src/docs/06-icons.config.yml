@@ -22,3 +22,7 @@ context:
         - mail
         - mobile
         - instagram
+        - facebook--no-outline
+        - twitter--no-outline
+        - mail--no-outline
+        - whatsapp--no-outline

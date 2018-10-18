@@ -1,0 +1,21 @@
+label: Post Meta
+status: ready
+context:
+  date: 03.10.2018
+  datetime: 2018-10-03
+  categories:
+  - label: Medienmitteilungen
+    link:
+  - label: Energie
+    link:
+  - label: Verkehr
+    link:
+  tags:
+  - label: Fabi
+    link:
+  - label: Bahninfrastruktur
+    link:
+  - label: Bahn
+    link:
+  - label: SBB
+    link:

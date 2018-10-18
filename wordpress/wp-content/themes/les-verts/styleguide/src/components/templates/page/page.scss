@@ -1,137 +1,190 @@
 .page {
-	$text-max-width: 600px;
-	$content-max-width: $size-medium;
-	$margin-size-min: 12px;
-	$margin-size-max: 120px;
+	/**
+		* ======
+		* Layout
+		* ======
+	  */
+	$page-grid-desktop: #{$page-grid-content-max-width + $page-grid-side-width + 2 * $page-grid-padder-min-width};
+	$page-grid-wide: #{$page-grid-content-max-width + 2 * ($page-grid-side-width + $page-grid-padder-regular-width + $page-grid-wide-side-max-width)};
 
-	// for &--overview
-	// ---------------
-	// $content-max-width: $size-large;
-	// $text-max-width: $size-small;
+	&__grid {
+		display: grid;
+		grid-template-columns: [full-start] 1fr [wide-start] 0 [side-left-start] 0 [side-left-end content-start] $page-grid-content-min-width [content-end side-right-start] 0 [side-right-end] 0 [wide-end] 1fr [full-end];
 
-	&__header-wrapper--wide {
-		@include fluid-props(padding-top padding-bottom, $fluid-min, $fluid-max, 40px, 60px);
-		background: $color-grey-1;
-	}
+		@include media(#{$page-grid-content-min-width + 2 * $page-grid-padder-regular-width}) {
+			grid-template-columns: [full-start] $page-grid-padder-regular-width [wide-start] 0 [side-left-start] 0 [side-left-end content-start] 1fr [content-end side-right-start] 0 [side-right-end] 0 [wide-end] $page-grid-padder-regular-width [full-end];
+		}
 
-	&__content,
-	&__header--wide {
-		max-width: $content-max-width;
-		width: calc(100% - #{2*$margin-size-min});
-		margin: 0 auto;
-		@include fluid-props(padding-left padding-right, $fluid-min, $fluid-max, $margin-size-min, $margin-size-max);
+		@include media(#{$page-grid-content-max-width + 2 * $page-grid-padder-regular-width}) {
+			grid-template-columns: [full-start] $page-grid-padder-regular-width [wide-start] 1fr [side-left-start] 0 [side-left-end content-start] $page-grid-content-max-width [content-end side-right-start] 0 [side-right-end] 1fr [wide-end] $page-grid-padder-regular-width [full-end];
+		}
 
-		& > p {
-			max-width: $text-max-width;
-			width: 100%;
+		@include media(#{$page-grid-content-max-width + $page-grid-side-width + 2 * $page-grid-padder-min-width}) {
+			grid-template-columns: [full-start] 1fr [wide-start] 0 [side-left-start] $page-grid-side-width [side-left-end content-start] $page-grid-content-max-width [content-end side-right-start] 0 [side-right-end] 0 [wide-end] 1fr [full-end];
+
+			&--no-sidebar {
+				grid-template-columns: [full-start] $page-grid-padder-regular-width [wide-start] 0 [side-left-start] 1fr [side-left-end content-start] $page-grid-content-max-width [content-end side-right-start] 1fr [side-right-end] 0 [wide-end] $page-grid-padder-regular-width [full-end];
+			}
+		}
+
+		@include media(#{$page-grid-content-max-width + $page-grid-side-width + 2 * $page-grid-padder-regular-width}) {
+			grid-template-columns: [full-start] $page-grid-padder-regular-width [wide-start] 0 [side-left-start] $page-grid-side-width [side-left-end content-start] $page-grid-content-max-width [content-end side-right-start] 1fr [side-right-end] 0 [wide-end] $page-grid-padder-regular-width [full-end];
+
+			&--no-sidebar {
+				grid-template-columns: [full-start] $page-grid-padder-regular-width [wide-start] 0 [side-left-start] 1fr [side-left-end content-start] $page-grid-content-max-width [content-end side-right-start] 1fr [side-right-end] 0 [wide-end] $page-grid-padder-regular-width [full-end];
+			}
+		}
+
+		@include media(#{$page-grid-content-max-width + 2 * ($page-grid-side-width + $page-grid-padder-regular-width)}) {
+			grid-template-columns: [full-start] $page-grid-padder-regular-width [wide-start] 1fr [side-left-start] $page-grid-side-width [side-left-end content-start] $page-grid-content-max-width [content-end side-right-start] $page-grid-side-width [side-right-end] 1fr [wide-end] $page-grid-padder-regular-width [full-end];
+		}
+
+		@include media($page-grid-wide) {
+			grid-template-columns: [full-start] 1fr [wide-start] $page-grid-wide-side-max-width [side-left-start] $page-grid-side-width [side-left-end content-start] $page-grid-content-max-width [content-end side-right-start] $page-grid-side-width [side-right-end] $page-grid-wide-side-max-width [wide-end] 1fr [full-end];
 		}
 	}
 
-	&--overview &__content,
-	&--overview &__header--wide {
-		max-width: $size-large;
+	&__full {
+		grid-column-start: full-start;
+		grid-column-end: full-end;
+	}
+
+	&__wide {
+		grid-column-start: wide-start;
+		grid-column-end: wide-end;
+
+		&--content-width {
+			max-width: $page-grid-content-max-width;
+		}
+	}
+
+	&__side {
+		grid-column-start: side-left-start;
+		grid-column-end: side-right-end;
+
+		&--full {
+			grid-column-start: full-start;
+			grid-column-end: full-end;
+		}
+
+		@include media($page-grid-desktop) {
+			&--left {
+				grid-column-start: side-left-start;
+				grid-column-end: side-left-end;
+			}
+
+			&--right {
+				grid-column-start: side-right-start;
+				grid-column-end: side-right-end;
+			}
+		}
+	}
+
+	&__row {
+		@include media($page-grid-desktop) {
+			&--1 {
+				grid-row: 1 / 2;
+			}
+
+			&--2 {
+				grid-row: 2 / 3;
+			}
+		}
+	}
+
+	&__content {
+		grid-column-start: content-start;
+		grid-column-end: content-end;
+	}
+
+	/**
+		* ==========
+		* Components
+		* ==========
+	  */
+	&__header-wrapper {
+		padding-top: 40px;
+
+		@include media($_DESKTOP) {
+			// keep this discrete, else the post meta position cant be set correctly
+			padding-top: 60px;
+		}
+
+		&--highlighted {
+			background: $color-grey-1;
+			@include fluid-props(padding-bottom, $fluid-min, $fluid-max, 40px, 60px);
+		}
+	}
+
+	&__header-text,
+	&__header-text p {
+		font-size: 1.25rem;
+	}
+
+	&__post-meta-wrapper {
+		@extend .page__side;
+		@extend .page__side--left;
+		@extend .page__side--full;
+		@extend .page__grid;
+
+		background-color: $color-grey-1;
+
+		@include media($page-grid-desktop) {
+			background-color: transparent;
+			display: flex;
+			flex-direction: column;
+			padding-right: 40px;
+			height: 100%;
+		}
+	}
+
+	&__post-meta {
+		@extend .page__content;
+
+		@include media($page-grid-desktop) {
+			margin-top: 72px;
+		}
 	}
 
 	&__shareable {
-		@include fluid-props(padding-top padding-bottom, $fluid-min, $fluid-max, 40px, 60px);
-	}
-
-	&__header-text > p {
-		max-width: $text-max-width;
-
-		@include media($size-small) {
-			font-size: 1.125rem;
+		@include media($page-grid-desktop) {
+			flex-grow: 1;
 		}
-
-		@include media($size-medium) {
-			font-size: 1.25rem;
-		}
-
-		&:last-of-type {
-			margin-bottom: 0;
-		}
-	}
-
-	&--overview &__header-text > p {
-		max-width: $size-small;
-	}
-
-	&__text-width {
-		max-width: $text-max-width;
-	}
-
-	&__shareable > p {
-		max-width: $text-max-width;
-		width: 100%;
-	}
-
-	&__shareable li {
-		max-width: $text-max-width;
 	}
 
 	//noinspection CssOverwrittenProperties
 	&__share {
-		right: 0;
-
-		@include media($_MOBILE) {
-			position: fixed;
-			z-index: 5;
-			bottom: 0;
-			background: $color-white;
-		}
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		z-index: 10;
 
 		@include media($_DESKTOP) {
-			position: relative; // IE: just keep it fixed
+			position: static; // IE: just keep it fixed
 			position: sticky;
-			top: 200px;
-			float: right;
-			padding-right: $margin-size-min;
-			margin-bottom: 60px;
-			margin-right: calc(-#{$margin-size-min} - #{strip-unit($margin-size-max - $margin-size-min)} * (100vw - #{$fluid-min}) / #{strip-unit($fluid-max - $fluid-min)});
-		}
-
-		@include media(1240px) {
-			margin-right: calc(-120px - #{strip-unit($margin-size-max - $margin-size-min)} * (100vw - #{$fluid-min}) / #{strip-unit($fluid-max - $fluid-min)});
+			top: 235px;
+			z-index: 0;
+			height: 300px;
 		}
 	}
 
 	&__box {
 		background-color: $color-grey-1;
-		@include fluid-props(padding-left padding-right, $fluid-min, $fluid-max, $margin-size-min, $margin-size-max);
-		@include fluid-props(padding-top padding-bottom, $fluid-min, $fluid-max, $margin-size-min, 96px);
-		@include fluid-props(margin-top margin-bottom, $fluid-min, $fluid-max, 50px, 100px);
-
-		@include fluid-props(margin-left margin-right, $fluid-min, $fluid-max, -$margin-size-min, -$margin-size-max);
-		width: calc(100% + 2 * (#{$margin-size-min} + #{$margin-size-max - $margin-size-min} * (100vw - #{$fluid-min}) / #{$fluid-max - $fluid-min}));
-	}
-
-	&__quote {
-		@include fluid-props(margin-top margin-bottom, $fluid-min, $fluid-max, 50px, 100px);
-	}
-
-	&__linked-content {
-		@include fluid-props(margin-top margin-bottom, $fluid-min, $fluid-max, 80px, 180px);
-
-		@include fluid-props(margin-left margin-right, $fluid-min, $fluid-max, -$margin-size-min, -$margin-size-max);
-		width: calc(100% + 2 * (#{$margin-size-min} + #{$margin-size-max - $margin-size-min} * (100vw - #{$fluid-min}) / #{$fluid-max - $fluid-min}));
-
-		@media all and (max-width: ($size-small - 1)) {
-			margin-left: 0;
-			margin-right: 0;
-		}
-
-		&--single-block {
-			margin-left: 0;
-			margin-right: 0;
-			max-width: $text-max-width;
-			width: 100%;
+		@include fluid-props(margin-top margin-bottom, $size-tiny, $size-medium, 25px, 35px);
+		@include fluid-props(padding, $size-tiny, $size-medium, 12px, 40px);
+		@include media($_DESKTOP) {
+			margin-top: 50px;
+			margin-bottom: 50px;
+			padding: 60px;
 		}
 	}
 
 	&__preview-articles {
 		display: grid;
 		grid-template-columns: 1fr;
-		@include fluid-props(grid-gap, $fluid-min, $fluid-max, 50px, 150px);
+		@include fluid-props(grid-column-gap, 1490px, $fluid-max, 40px, 100px); // 1490px = $page-grid-wide, but for some reason sass can't work with the variable
+		@include fluid-props(grid-row-gap, $fluid-min, $fluid-max, 40px, 80px);
 		@include fluid-props(margin-top margin-bottom, $fluid-min, $fluid-max, 50px, 100px);
 
 		@include media($size-small) {
@@ -183,7 +236,6 @@
 
 	&__list-pagination {
 		width: 100%;
-		max-width: $text-max-width;
 		@include fluid-props(margin-top margin-bottom padding-bottom, $fluid-min, $fluid-max, 30px, 50px);
 		display: flex;
 		justify-content: center;

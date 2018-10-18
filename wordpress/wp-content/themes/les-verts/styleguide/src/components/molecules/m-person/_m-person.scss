@@ -79,7 +79,7 @@
 		position: absolute;
 		bottom: 0;
 		right: 0;
-		background: $color-primary-light;
+		background: $color-primary-super-light;
 		padding: 16px 12px 16px 18px;
 
 		font-size: 0.875rem;
@@ -92,8 +92,7 @@
 		letter-spacing: 0.08928em;
 
 		@include hover {
-			background: $color-secondary-light;
-			color: $color-secondary-dark;
+			background: $color-primary-light;
 		}
 
 		&::after {
@@ -103,12 +102,15 @@
 
 		&.is-collapsed::after {
 			content: '\00a0\00FF0B';
+			position: relative;
 		}
 
 		&.is-expanded::after {
 			content: '\00a0\002013';
 			position: relative;
 			top: -2px;
+			right: 2px;
+			padding-left: 7px;
 		}
 	}
 
@@ -122,7 +124,7 @@
 
 	&__expandable {
 		background: $color-grey-2;
-		transition: all $transition-ease $transition-mid;
+		transition: all ease-in-out $transition-mid;
 		overflow: hidden;
 		max-height: 5000px;
 

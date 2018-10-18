@@ -3,30 +3,32 @@
 {% extends "base.twig" %}
 
 {% block content %}
-	<header class="page__header-wrapper page__header-wrapper--wide">
-		<div class="page__header page__header--wide">
-			<div class="page__breadcrumbs">
-				{% include 'atoms/a-breadcrumbs.twig' %}
+	<article class="page__grid page__grid--no-sidebar">
+		<header class="page__full page__grid page__grid--no-sidebar page__header-wrapper page__header-wrapper--highlighted">
+			<div class="page__wide page__wide--content-width page__header">
+				<div class="page__breadcrumbs">
+					{% include 'atoms/a-breadcrumbs.twig' %}
+				</div>
+				<h1>{{ post.title }}</h1>
+				<div class="page__header-text">
+					<p>{{ post.excerpt() }}</p>
+				</div>
 			</div>
-			<h1>{{ post.title }}</h1>
-			<div class="page__header-text">
-				<p>{{ post.excerpt() }}</p>
+		</header>
+		<div class="page__wide">
+			<div class="page__preview-articles">
+				{% for item in post.get_field('posts') %}
+					<article class="page__preview-article">
+						{% include 'molecules/m-front-article.twig' with {
+							'post': item.post,
+							'modifiers': [
+								'm-front-article--image-first',
+								'm-front-article--stretch'
+							]
+						} only %}
+					</article>
+				{% endfor %}
 			</div>
 		</div>
-	</header>
-	<div class="page__content">
-		<div class="page__preview-articles">
-			{% for item in post.get_field('posts') %}
-				<article class="page__preview-article">
-					{% include 'molecules/m-front-article.twig' with {
-						'post': item.post,
-						'modifiers': [
-							'm-front-article--image-first',
-							'm-front-article--stretch'
-						]
-					} only %}
-				</article>
-			{% endfor %}
-		</div>
-	</div>
+	</article>
 {% endblock %}

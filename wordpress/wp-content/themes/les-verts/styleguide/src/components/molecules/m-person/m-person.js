@@ -11,6 +11,9 @@ export default class MPerson extends BaseView {
 		this.button = this.getScopedElement(BUTTON_SELECTOR);
 		this.content = this.getScopedElement(CONTENT_SELECTOR);
 
+		this.hiddenAnchorTags = this.getScopedElement(CONTENT_SELECTOR).getElementsByTagName('a');
+		this.setTabIndexes(-1);
+
 		this.expanded = false;
 	}
 
@@ -28,6 +31,7 @@ export default class MPerson extends BaseView {
 			this.addClass(this.button, COLLABSED_STATE);
 			this.addClass(this.content, COLLABSED_STATE);
 			this.button.innerText = this.button.getAttribute('data-expand');
+			this.setTabIndexes(-1);
 		} else {
 			// expand it
 			this.removeClass(this.button, COLLABSED_STATE);
@@ -35,9 +39,16 @@ export default class MPerson extends BaseView {
 			this.addClass(this.button, EXPANDED_STATE);
 			this.addClass(this.content, EXPANDED_STATE);
 			this.button.innerText = this.button.getAttribute('data-collaps');
+			this.setTabIndexes(0);
 		}
 
 		this.content.setAttribute('aria-hidden', this.expanded);
 		this.expanded = !this.expanded;
+	}
+
+	setTabIndexes(int) {
+		for (let i = 0; i < this.hiddenAnchorTags.length; i ++) {
+			this.hiddenAnchorTags.item(i).tabIndex = int;
+		}
 	}
 }

@@ -3,9 +3,9 @@
 {% block content %}
 	{% set main_content = post.get_field('main_content') %}
 	{% set link_lists = post.get_field('link_lists') %}
-	<article>
+	<article class="page__grid{% if not post.share_buttons %} page__grid--no-sidebar{% endif %}">
 		{% if main_content.header_image %}
-			<div class="page__header-image">
+			<div class="page__full page__header-image">
 				{% include 'atoms/a-image.twig' with {
 					'image': main_content.header_image,
 					'size': header
@@ -13,46 +13,62 @@
 			</div>
 		{% endif %}
 		<div class="page__content">
-			<div class="page__shareable">
-				{% if post.share_buttons %}
-					<aside class="page__share">
-						{% include 'molecules/m-share.twig' with {
-							'url': post.link
-						} only %}
-					</aside>
-				{% endif %}
-				<header class="page__header-wrapper">
-					<div class="page__header">
-						<div class="page__breadcrumbs">
-							{% include 'atoms/a-breadcrumbs.twig' %}
-						</div>
-						<h1>{{ post.title }}</h1>
-						{% if post.excerpt_lead %}
-							<div class="page__header-text">
-								<p>{{ post.excerpt_lead }}</p>
-							</div>
-						{% endif %}
+			<header class="page__header-wrapper">
+				<div class="page__header">
+					<div class="page__breadcrumbs">
+						{% include 'atoms/a-breadcrumbs.twig' %}
 					</div>
-				</header>
-				{% for block in main_content.content %}
-					{% if block.acf_fc_layout == 'in_short' %}
-						<div class="page__box">
-							{% include 'molecules/m-in-short.twig' with block only %}
+					<h1>{{ post.title }}</h1>
+					{% if post.excerpt_lead %}
+						<div class="page__header-text">
+							<p>{{ post.excerpt_lead }}</p>
 						</div>
-					{% elseif block.acf_fc_layout == 'quote' %}
-						<div class="page__quote">
-							{% include 'molecules/m-quote.twig' with block only %}
-						</div>
-					{% elseif block.acf_fc_layout == 'oembed' %}
-						{{ block.oembed }}
-					{% else %}
-						{{ block.text }}
 					{% endif %}
-				{% endfor %}
+				</div>
+			</header>
+
+			{% for block in main_content.content %}
+				{% if block.acf_fc_layout == 'in_short' %}
+					<div class="page__box">
+						{% include 'molecules/m-in-short.twig' with block only %}
+					</div>
+				{% elseif block.acf_fc_layout == 'quote' %}
+					<div class="page__quote">
+						{% include 'molecules/m-quote.twig' with block only %}
+					</div>
+				{% elseif block.acf_fc_layout == 'person' %}
+					<div class="page__person">
+						{% include 'molecules/m-person.twig' with block only %}
+					</div>
+				{% elseif block.acf_fc_layout == 'oembed' %}
+					{{ block.oembed }}
+				{% else %}
+					{{ block.text }}
+				{% endif %}
+			{% endfor %}
+		</div>
+
+		<div
+			class="page__post-meta-wrapper {% if main_content.header_image %}page__row--2{% else %}page__row--1{% endif %}">
+			<aside class="page__post-meta">
+				{% include 'atoms/a-post-meta.twig' with {
+					'date': is_press_release ? post.date : false,
+					'datetime': post.post_date,
+					'categories': post.categories,
+					'tags': post.tags
+				} only %}
+			</aside>
+			<div class="page__shareable">
+				<aside class="page__share">
+					{% include 'molecules/m-share.twig' with {
+						'url': post.link
+					} only %}
+				</aside>
 			</div>
 
 			{% if link_lists and link_lists.link_lists %}
-				<aside class="page__linked-content{% if link_lists.link_lists|length == 1 and not link_lists.link_lists.0.full_width %} page__linked-content--single-block{% endif %}">
+				<aside
+					class="{% if link_lists.link_lists|length == 1 and not link_lists.link_lists.0.full_width %}page__content{% else %}page__wide{% endif %} page__linked-content">
 					{% include 'organisms/o-linked-content.twig' with link_lists only %}
 				</aside>
 			{% endif %}

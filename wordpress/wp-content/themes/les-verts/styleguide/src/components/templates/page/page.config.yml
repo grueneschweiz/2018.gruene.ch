@@ -1,8 +1,13 @@
 label: Page
 status: wip
+context:
+  shareable: true
+  header-image: true
 variants:
 - name: Overview
   context:
+    shareable: false
+    header-image: false
     articles:
     - title: "Energie und Klima"
       text: "Es ist nicht mehr schönzureden: Das Klima erwärmt sich zum allergrössten Teil durch menschliche Aktivitäten - und zwar sehr viel schneller und stärker als ursprünglich angenommen."
@@ -54,6 +59,8 @@ variants:
       - stretch
 - name: List
   context:
+    shareable: false
+    header-image: false
     articles:
     - title: "Energie und Klima"
       text: "Es ist nicht mehr schönzureden: Das Klima erwärmt sich zum allergrössten Teil durch menschliche Aktivitäten - und zwar sehr viel schneller und stärker als ursprünglich angenommen."
@@ -79,6 +86,8 @@ variants:
   context:
     title: Suche
     terms: Vernehmlassung Energiestrategie 2050
+    shareable: false
+    header-image: false
     search_modifiers:
     - expanded
     - inverted
@@ -106,3 +115,7 @@ variants:
 - name: Default Single Linked Content
   context:
     single: true
+- name: Event
+  context:
+    shareable: true
+    header-image: false

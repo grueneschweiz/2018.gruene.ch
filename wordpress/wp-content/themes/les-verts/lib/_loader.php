@@ -158,7 +158,11 @@ require_once __DIR__.'/twig/functions/register_timber_custom_post_types.php';
 require_once __DIR__.'/twig/functions/get_people.php';
 
 // filters
-//require_once __DIR__ .'/twig/filters/event_time.php';
+require_once __DIR__ .'/twig/filters/email.php';
+require_once __DIR__ .'/twig/filters/phone.php';
+require_once __DIR__ .'/twig/filters/social_link.php';
+require_once __DIR__ .'/twig/filters/hexencode.php';
+require_once __DIR__ .'/twig/filters/nice_link.php';
 
 /**
  * FORM LIBRARY
