@@ -32,7 +32,7 @@
                     },
                     "default_value": "",
                     "placeholder": "",
-                    "maxlength": 280,
+                    "maxlength": "",
                     "rows": 5,
                     "new_lines": ""
                 }
@@ -253,5 +253,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1536914884
+    "modified": 1539889297
 }

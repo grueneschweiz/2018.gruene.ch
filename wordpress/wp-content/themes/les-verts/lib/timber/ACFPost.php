@@ -18,16 +18,18 @@ class ACFPost extends \TimberPost {
 		}
 		
 		if ( ! empty( $this->excerpt_acf_excerpt ) ) {
-			$this->__excerpt = $this->excerpt_acf_excerpt;
+			$tmp = $this->excerpt_acf_excerpt;
 		}
 		
 		if ( ! empty( $this->excerpt_lead ) ) {
-			$this->__excerpt = $this->excerpt_lead;
+			$tmp = $this->excerpt_lead;
 		}
 		
 		if ( empty( $this->__excerpt ) ) {
-			$this->__excerpt = $this->generateExcerpt();
+			$tmp = $this->generateExcerpt();
 		}
+		
+		$this->__excerpt = $this->trim_words( $tmp );
 		
 		return $this->__excerpt;
 	}
@@ -38,15 +40,18 @@ class ACFPost extends \TimberPost {
 		}
 		foreach ( $this->content as $block ) {
 			if ( 'text' === $block['acf_fc_layout'] ) {
-				$text           = strip_shortcodes( $block['text'] );
-				$text           = apply_filters( 'the_content', $text );
-				$text           = str_replace( ']]>', ']]&gt;', $text );
-				$excerpt_length = apply_filters( 'excerpt_length', 55 );
-				$excerpt_more   = apply_filters( 'excerpt_more', ' ' . '[&hellip;]' );
-				$text           = wp_trim_words( $text, $excerpt_length, $excerpt_more );
+				$text = strip_shortcodes( $block['text'] );
+				$text = apply_filters( 'the_content', $text );
+				$text = str_replace( ']]>', ']]&gt;', $text );
 				
 				return $text;
 			}
 		}
+	}
+	
+	private function trim_words( $text ) {
+		$excerpt_length = apply_filters( 'excerpt_length', 55 );
+		$excerpt_more   = apply_filters( 'excerpt_more', ' ' . '[&hellip;]' );
+		$text           = wp_trim_words( $text, $excerpt_length, $excerpt_more );
 	}
 }
