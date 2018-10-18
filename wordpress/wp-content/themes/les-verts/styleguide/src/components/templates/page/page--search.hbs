@@ -1,16 +1,16 @@
 <div class="page page--list">
 	{{render '@o-header'}}
 	<main class="page__main">
-		<header class="page__header-wrapper page__header-wrapper--wide">
-			<div class="page__header page__header--wide">
-				<h1>{{title}}</h1>
-				<div class="page__header-text">
-					{{> @a-search terms=terms search='Suche' search_submit='Suchen' modifiers=search_modifiers }}
+		<article class="page__grid{{#unless shareable}} page__grid--no-sidebar{{/unless}}">
+			<header class="page__full page__grid{{#unless shareable}} page__grid--no-sidebar{{/unless}} page__header-wrapper page__header-wrapper--highlighted">
+				<div class="page__content page__header">
+					<h1>{{title}}</h1>
+					<div class="page__header-text">
+						{{> @a-search terms=terms search='Suche' search_submit='Suchen' modifiers=search_modifiers }}
+					</div>
 				</div>
-			</div>
-		</header>
-		<section class="page__content">
-			<div class="page__text-width">
+			</header>
+			<section class="page__content">
 				<header class="page__list-header">
 					{{render '@m-list-header'}}
 				</header>
@@ -27,8 +27,8 @@
 				<footer class="page__list-pagination">
 					{{render '@a-pagination'}}
 				</footer>
-			</div>
-		</section>
+			</section>
+		</article>
 	</main>
 	{{render '@o-footer'}}
 </div>
