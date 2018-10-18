@@ -9,110 +9,38 @@
 
 	&__grid {
 		display: grid;
-		grid-template-columns:
-			[full-start] 1fr
-			[wide-start] 0
-			[side-left-start] 0
-			[side-left-end content-start] $page-grid-content-min-width
-			[content-end side-right-start] 0
-			[side-right-end] 0
-			[wide-end] 1fr
-			[full-end];
+		grid-template-columns: [full-start] 1fr [wide-start] 0 [side-left-start] 0 [side-left-end content-start] $page-grid-content-min-width [content-end side-right-start] 0 [side-right-end] 0 [wide-end] 1fr [full-end];
 
-		@include media(#{$page-grid-content-min-width + 2 * $page-grid-padder-regular-width}){
-			grid-template-columns:
-				[full-start] $page-grid-padder-regular-width
-				[wide-start] 0
-				[side-left-start] 0
-				[side-left-end content-start] 1fr
-				[content-end side-right-start] 0
-				[side-right-end] 0
-				[wide-end] $page-grid-padder-regular-width
-				[full-end];
+		@include media(#{$page-grid-content-min-width + 2 * $page-grid-padder-regular-width}) {
+			grid-template-columns: [full-start] $page-grid-padder-regular-width [wide-start] 0 [side-left-start] 0 [side-left-end content-start] 1fr [content-end side-right-start] 0 [side-right-end] 0 [wide-end] $page-grid-padder-regular-width [full-end];
 		}
 
-		@include media(#{$page-grid-content-max-width + 2 * $page-grid-padder-regular-width}){
-			grid-template-columns:
-				[full-start] $page-grid-padder-regular-width
-				[wide-start] 1fr
-				[side-left-start] 0
-				[side-left-end content-start] $page-grid-content-max-width
-				[content-end side-right-start] 0
-				[side-right-end] 1fr
-				[wide-end] $page-grid-padder-regular-width
-				[full-end];
+		@include media(#{$page-grid-content-max-width + 2 * $page-grid-padder-regular-width}) {
+			grid-template-columns: [full-start] $page-grid-padder-regular-width [wide-start] 1fr [side-left-start] 0 [side-left-end content-start] $page-grid-content-max-width [content-end side-right-start] 0 [side-right-end] 1fr [wide-end] $page-grid-padder-regular-width [full-end];
 		}
 
 		@include media(#{$page-grid-content-max-width + $page-grid-side-width + 2 * $page-grid-padder-min-width}) {
-			grid-template-columns:
-				[full-start] 1fr
-				[wide-start] 0
-				[side-left-start] $page-grid-side-width
-				[side-left-end content-start] $page-grid-content-max-width
-				[content-end side-right-start] 0
-				[side-right-end] 0
-				[wide-end] 1fr
-				[full-end];
+			grid-template-columns: [full-start] 1fr [wide-start] 0 [side-left-start] $page-grid-side-width [side-left-end content-start] $page-grid-content-max-width [content-end side-right-start] 0 [side-right-end] 0 [wide-end] 1fr [full-end];
 
 			&--no-sidebar {
-				grid-template-columns:
-					[full-start] $page-grid-padder-regular-width
-					[wide-start] 0
-					[side-left-start] 1fr
-					[side-left-end content-start] $page-grid-content-max-width
-					[content-end side-right-start] 1fr
-					[side-right-end] 0
-					[wide-end] $page-grid-padder-regular-width
-					[full-end];
+				grid-template-columns: [full-start] $page-grid-padder-regular-width [wide-start] 0 [side-left-start] 1fr [side-left-end content-start] $page-grid-content-max-width [content-end side-right-start] 1fr [side-right-end] 0 [wide-end] $page-grid-padder-regular-width [full-end];
 			}
 		}
 
-		@include media(#{$page-grid-content-max-width + $page-grid-side-width + 2 * $page-grid-padder-regular-width}){
-			grid-template-columns:
-				[full-start] $page-grid-padder-regular-width
-				[wide-start] 0
-				[side-left-start] $page-grid-side-width
-				[side-left-end content-start] $page-grid-content-max-width
-				[content-end side-right-start] 1fr
-				[side-right-end] 0
-				[wide-end] $page-grid-padder-regular-width
-				[full-end];
+		@include media(#{$page-grid-content-max-width + $page-grid-side-width + 2 * $page-grid-padder-regular-width}) {
+			grid-template-columns: [full-start] $page-grid-padder-regular-width [wide-start] 0 [side-left-start] $page-grid-side-width [side-left-end content-start] $page-grid-content-max-width [content-end side-right-start] 1fr [side-right-end] 0 [wide-end] $page-grid-padder-regular-width [full-end];
 
 			&--no-sidebar {
-				grid-template-columns:
-					[full-start] $page-grid-padder-regular-width
-					[wide-start] 0
-					[side-left-start] 1fr
-					[side-left-end content-start] $page-grid-content-max-width
-					[content-end side-right-start] 1fr
-					[side-right-end] 0
-					[wide-end] $page-grid-padder-regular-width
-					[full-end];
+				grid-template-columns: [full-start] $page-grid-padder-regular-width [wide-start] 0 [side-left-start] 1fr [side-left-end content-start] $page-grid-content-max-width [content-end side-right-start] 1fr [side-right-end] 0 [wide-end] $page-grid-padder-regular-width [full-end];
 			}
 		}
 
 		@include media(#{$page-grid-content-max-width + 2 * ($page-grid-side-width + $page-grid-padder-regular-width)}) {
-			grid-template-columns:
-				[full-start] $page-grid-padder-regular-width
-				[wide-start] 1fr
-				[side-left-start] $page-grid-side-width
-				[side-left-end content-start] $page-grid-content-max-width
-				[content-end side-right-start] $page-grid-side-width
-				[side-right-end] 1fr
-				[wide-end] $page-grid-padder-regular-width
-				[full-end];
+			grid-template-columns: [full-start] $page-grid-padder-regular-width [wide-start] 1fr [side-left-start] $page-grid-side-width [side-left-end content-start] $page-grid-content-max-width [content-end side-right-start] $page-grid-side-width [side-right-end] 1fr [wide-end] $page-grid-padder-regular-width [full-end];
 		}
 
 		@include media($page-grid-wide) {
-			grid-template-columns:
-				[full-start] 1fr
-				[wide-start] $page-grid-wide-side-max-width
-				[side-left-start] $page-grid-side-width
-				[side-left-end content-start] $page-grid-content-max-width
-				[content-end side-right-start] $page-grid-side-width
-				[side-right-end] $page-grid-wide-side-max-width
-				[wide-end] 1fr
-				[full-end];
+			grid-template-columns: [full-start] 1fr [wide-start] $page-grid-wide-side-max-width [side-left-start] $page-grid-side-width [side-left-end content-start] $page-grid-content-max-width [content-end side-right-start] $page-grid-side-width [side-right-end] $page-grid-wide-side-max-width [wide-end] 1fr [full-end];
 		}
 	}
 
@@ -152,8 +80,8 @@
 		}
 	}
 
-	@include media($page-grid-desktop) {
-		&__row {
+	&__row {
+		@include media($page-grid-desktop) {
 			&--1 {
 				grid-row: 1 / 2;
 			}
@@ -188,6 +116,11 @@
 		}
 	}
 
+	&__header-text,
+	&__header-text p {
+		font-size: 1.25rem;
+	}
+
 	&__post-meta-wrapper {
 		@extend .page__side;
 		@extend .page__side--left;
@@ -208,13 +141,13 @@
 	&__post-meta {
 		@extend .page__content;
 
-		@include media($page-grid-desktop){
+		@include media($page-grid-desktop) {
 			margin-top: 72px;
 		}
 	}
 
 	&__shareable {
-		@include media($page-grid-desktop){
+		@include media($page-grid-desktop) {
 			flex-grow: 1;
 		}
 	}
