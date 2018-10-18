@@ -23,6 +23,9 @@ $WPCLI plugin activate polylang-pro --network
 $WPCLI plugin activate advanced-custom-fields-pro --network
 # $WPCLI eval 'acf_pro_update_license("INSERT LICENSE NUMBER HERE");'
 
+## WP CLI command to sync advanced custom fields
+$WPCLI package install git@github.com:superhuit-ch/wp-cli-acf-json.git
+
 ## Timber
 $WPCLI plugin install timber-library --version=1.7.1 --activate-network
 
@@ -96,3 +99,6 @@ $WPCLI rewrite structure '%postname%'
 
 # set upload limit to 64 MB
 $WPCLI network meta update 1 fileupload_maxk 65536
+
+# sync acf fields
+$WPCLI acf-json sync --all_sites
