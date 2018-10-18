@@ -1,31 +1,36 @@
 {% extends "base.twig" %}
 
 {% block content %}
-	<article>
+	<article class="page__grid{% if not post.share_buttons %} page__grid--no-sidebar{% endif %}">
 		<div class="page__content">
-			<div class="page__shareable">
-				{% if post.share_buttons %}
+			<header class="page__header-wrapper">
+				<div class="page__header">
+					<div class="page__breadcrumbs">
+						{% include 'atoms/a-breadcrumbs.twig' %}
+					</div>
+					<h1>{{ post.title }}</h1>
+					<div class="page__header-text">
+						{% include 'molecules/m-event-details.twig' with {
+							'post': post,
+						} only %}
+					</div>
+				</div>
+			</header>
+			{{ post.description|wpautop|shortcodes }}
+		</div>
+		<div class="page__post-meta-wrapper page__row--1">
+			<aside class="page__post-meta">
+				{# leave this empty container as spacer for the sharebuttons#}
+			</aside>
+			{% if post.share_buttons %}
+				<div class="page__shareable">
 					<aside class="page__share">
 						{% include 'molecules/m-share.twig' with {
 							'url': post.link
 						} only %}
 					</aside>
-				{% endif %}
-				<header class="page__header-wrapper">
-					<div class="page__header">
-						<div class="page__breadcrumbs">
-							{% include 'atoms/a-breadcrumbs.twig' %}
-						</div>
-						<h1>{{ post.title }}</h1>
-						<div class="page__header-text">
-							{% include 'molecules/m-event-details.twig' with {
-								'post': post,
-							} only %}
-						</div>
-					</div>
-				</header>
-				{{ post.description|wpautop|shortcodes }}
-			</div>
+				</div>
+			{% endif %}
 		</div>
 	</article>
 {% endblock %}

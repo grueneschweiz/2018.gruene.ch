@@ -230,7 +230,7 @@
 		@include media($_DESKTOP) {
 			position: static; // IE: just keep it fixed
 			position: sticky;
-			top: 200px;
+			top: 235px;
 			z-index: 0;
 			height: 300px;
 		}
