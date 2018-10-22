@@ -102,6 +102,19 @@
 		* Components
 		* ==========
 	  */
+	&__content {
+		@include media($size-small){
+			p, li {
+				font-size: 1.25rem;
+			}
+
+			li {
+				letter-spacing: 0.015625em;
+				line-height: 1.75em;
+			}
+		}
+	}
+
 	&__header-wrapper {
 		padding-top: 40px;
 
@@ -119,6 +132,10 @@
 	&__header-text,
 	&__header-text p {
 		font-size: 1.25rem;
+
+		@include media($size-small) {
+			font-size: 1.46875rem;
+		}
 	}
 
 	&__post-meta-wrapper {
