@@ -4,7 +4,6 @@
 	{% set modifiers = ['o-front-article--mm'] %}
 	{% set author = '' %}
 	{% set oton = 0 %}
-	{% set excerpt = post.get_field('excerpt_lead') %}
 	{% for block in post.get_field('main_content_content') %}
 		{% if block.acf_fc_layout == 'quote' %}
 			{% set modifiers = ['o-front-article--oton', 'o-front-article--mm'] %}

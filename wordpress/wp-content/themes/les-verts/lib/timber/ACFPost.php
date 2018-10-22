@@ -10,11 +10,23 @@ namespace SUPT;
 
 class ACFPost extends \TimberPost {
 	private $__excerpt;
+	private $__fullExcerpt;
 	
 	public function excerpt() {
 		// bail early to ensure we'll never compute it twice
 		if ( $this->__excerpt ) {
 			return $this->__excerpt;
+		}
+		
+		$this->__excerpt = $this->trim_words( $this->fullExcerpt() );
+		
+		return $this->__excerpt;
+	}
+	
+	public function fullExcerpt() {
+		// bail early to ensure we'll never compute it twice
+		if ( $this->__fullExcerpt ) {
+			return $this->__fullExcerpt;
 		}
 		
 		if ( ! empty( $this->excerpt_acf_excerpt ) ) {
@@ -25,13 +37,13 @@ class ACFPost extends \TimberPost {
 			$tmp = $this->excerpt_lead;
 		}
 		
-		if ( empty( $this->__excerpt ) ) {
+		if ( empty( $tmp ) ) {
 			$tmp = $this->generateExcerpt();
 		}
 		
-		$this->__excerpt = $this->trim_words( $tmp );
+		$this->__fullExcerpt = $tmp;
 		
-		return $this->__excerpt;
+		return $this->__fullExcerpt;
 	}
 	
 	private function generateExcerpt() {
@@ -52,6 +64,6 @@ class ACFPost extends \TimberPost {
 	private function trim_words( $text ) {
 		$excerpt_length = apply_filters( 'excerpt_length', 55 );
 		$excerpt_more   = apply_filters( 'excerpt_more', ' ' . '[&hellip;]' );
-		$text           = wp_trim_words( $text, $excerpt_length, $excerpt_more );
+		return wp_trim_words( $text, $excerpt_length, $excerpt_more );
 	}
 }

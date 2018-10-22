@@ -22,7 +22,7 @@
  */
 
 $context         = Timber::get_context();
-$context['post'] = new TimberPost();
+$context['post'] = new \SUPT\ACFPost();
 $templates       = array( 'page-' . $post->post_name . '.twig', 'page.twig', 'single.twig' );
 
 // handle events of the events calendar plugin

@@ -138,6 +138,10 @@
 		}
 	}
 
+	&__header-text--bold {
+		font-weight: $font-weight-semi;
+	}
+
 	&__post-meta-wrapper {
 		@extend .page__side;
 		@extend .page__side--left;
