@@ -52,6 +52,19 @@
 	&__author {
 		font-size: 0.875rem;
 		font-weight: $font-weight-semi;
-		margin-top: 2em;
+		margin-top: 1em;
+
+		&::before {
+			content: '\002014\0000A0';
+		}
+
+		@include media($size-small) {
+			font-size: 1rem;
+			margin-top: 2em;
+
+			&::before {
+				content: '';
+			}
+		}
 	}
 }
