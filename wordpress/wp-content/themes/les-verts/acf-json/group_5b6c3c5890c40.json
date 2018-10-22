@@ -4,7 +4,7 @@
     "fields": [
         {
             "key": "field_5b7c3141824bf",
-            "label": "Excerpt",
+            "label": "Teaser",
             "name": "excerpt",
             "type": "group",
             "instructions": "",
@@ -19,10 +19,10 @@
             "sub_fields": [
                 {
                     "key": "field_5b6c3c777bf29",
-                    "label": "Excerpt",
+                    "label": "Teaser",
                     "name": "acf_excerpt",
                     "type": "textarea",
-                    "instructions": "Provide a brief lead, that attracts the reader but doesn't completely summarize the story. It will be used as preview on the front page, archive pages and for search results.",
+                    "instructions": "Provide a brief teaser, that attracts the reader but doesn't completely summarize the story. It will be used as preview on the front page, archive pages and for search results. <strong>As preview only the first 280 characters will be shown.<\/strong>",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -32,9 +32,28 @@
                     },
                     "default_value": "",
                     "placeholder": "",
-                    "maxlength": 280,
+                    "maxlength": "",
                     "rows": 5,
                     "new_lines": ""
+                },
+                {
+                    "key": "field_5bcda61a29f09",
+                    "label": "Use for preview only (hide on page)",
+                    "name": "hide_on_page",
+                    "type": "true_false",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "message": "If yes, the teaser will only be shown as preview text but not on the page itself.",
+                    "default_value": 1,
+                    "ui": 1,
+                    "ui_on_text": "",
+                    "ui_off_text": ""
                 }
             ]
         },
@@ -455,5 +474,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1539274044
+    "modified": 1540215065
 }

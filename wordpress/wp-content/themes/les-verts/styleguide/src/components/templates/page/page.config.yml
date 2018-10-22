@@ -119,3 +119,7 @@ variants:
   context:
     shareable: true
     header-image: false
+- name: Press Release
+  context:
+    shareable: true
+    header-image: false

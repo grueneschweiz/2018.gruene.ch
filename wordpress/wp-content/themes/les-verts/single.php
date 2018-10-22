@@ -10,7 +10,7 @@
  */
 
 $context         = Timber::get_context();
-$post            = Timber::query_post();
+$post            = new \SUPT\ACFPost();
 $context['post'] = $post;
 
 if ( post_password_required( $post->ID ) ) {

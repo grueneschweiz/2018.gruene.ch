@@ -54,6 +54,10 @@ h3 {
 h4, h5 {
 	@include heading-font;
 	font-size: 1rem;
+
+	@include media($_DESKTOP) {
+		font-size: 1.25rem; // 23.5/16
+	}
 }
 
 /**

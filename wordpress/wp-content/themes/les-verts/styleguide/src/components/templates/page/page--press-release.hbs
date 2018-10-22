@@ -1,0 +1,43 @@
+<div class="page">
+	{{render '@o-header'}}
+	<main class="page__main">
+		<article class="page__grid{{#unless shareable}} page__grid--no-sidebar{{/unless}}">
+			{{#if header-image}}
+				<div class="page__full page__header-image">
+					{{> @a-image image-src='/img/Olympia_vors_Volk_d.jpg' alt="Die olympischen Ringe als Fünffränkler" title="Olympia vors Volk"}}
+				</div>
+			{{/if}}
+			<div class="page__content">
+				<header class="page__header-wrapper">
+					<div class="page__header">
+						<div class="page__breadcrumbs">
+							{{render '@a-breadcrumbs'}}
+						</div>
+						<h1>Grüne erfreut über Ja zur Gentechfrei-Initiative</h1>
+						<div class="page__header-text page__header-text--bold">
+							<p>Die Grünen Schweiz sind hocherfreut über die Annahme der Gentechfrei-Initiative. Mit dem klaren Ja hat die Bevölkerung klar gemacht, dass sie den Versprechungen der Gentechlobby misstraut und eine qualitativ hochstehende Landwirtschaft will. Das nur äusserst knappe Ja zur Liberalisierung der Sonntagsarbeit an Bahnhöfen und Flughäfen werten die Grünen als deutliche Absage an weitere Liberalisierungen der Sonntagsarbeit.</p>
+						</div>
+					</div>
+				</header>
+				<p>Jetzt hat es auch eine Volksabstimmung klar gemacht: die Mehrheit der Bevölkerung will keine gentechveränderten Produkte. Zwei urgründe Anliegen haben eine breite Zustimmung gefunden:</p>
+				<ul>
+					<li>Zu fördern ist eine gesunde, naturnahe, qualitativ hochstehende Landwirtschaft</li>
+					<li>neue Technologien dürfen erst dann eingeführt werden, wenn feststeht, dass sie ungefährlich sind</li>
+				</ul>
+				<p>Mit dem Ja zur Initiative verpflichtet die Bevölkerung den Bund, konsequent eine qualitativ hochstehende Landwirtschaft zu fördern. Die Forschung ist aufgerufen, in den nächsten Jahren intensive Risikoforschung zu betreiben, die auch ökologische Zusammenhänge stark gewichtet. Klar ist, dass sich die Landwirtschaftspolitik und die Importe von Lebensmitteln nach den Bedürfnissen der KonsumentInnen zu richten haben und nicht nach den Profitinteressen der Gentechlobby.</p>
+				<p>Das nur knappe Ja zur Ausweitung der Sonntagsarbeit und das Nein der meisten Kantone zeigt deutlich, dass eine weitere Liberalisierung der Sonntagsarbeit nicht in Frage kommt. Bereits am kommenden Mittwoch wird der Nationalrat beweisen können, ob er die Versprechen, es sei bei der Abstimmung nur um die Sonntagsarbeit und den status quo an Bahnhöfen und Flughäfen gegangen, wahr macht. Die Grünen werden sehr genau beobachten, wie sich insbesondere die CVP zur Motion stellt, die eine generelle Ausweitung der Sonntagsarbeit für den Verkauf und die Dienstleistungen will. Genau verfolgen werden die Grünen auch, ob die Versprechen von SBB-Chef Weibel und Bundesrat Deiss, an den Bahnhöfen müssten gute Arbeitsbedingungen und Zulagen für Sonntagsarbeit gelten, umgesetzt werden.</p>
+			</div>
+			<div class="page__post-meta-wrapper {{#if header-image}}page__row--2{{else}}page__row--1{{/if}}">
+				<aside class="page__post-meta">
+					{{render '@a-post-meta'}}
+				</aside>
+				<div class="page__shareable">
+					<aside class="page__share">
+						{{render '@m-share' }}
+					</aside>
+				</div>
+			</div>
+		</article>
+	</main>
+	{{render '@o-footer'}}
+</div>
