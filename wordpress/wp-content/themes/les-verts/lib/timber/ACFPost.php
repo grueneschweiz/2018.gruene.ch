@@ -29,8 +29,8 @@ class ACFPost extends \TimberPost {
 			return $this->__fullExcerpt;
 		}
 		
-		if ( ! empty( $this->lead ) ) {
-			$tmp = $this->lead;
+		if ( ! empty( $this->teaser ) ) {
+			$tmp = $this->teaser;
 		}
 		
 		if ( ! empty( $this->excerpt ) ) {
