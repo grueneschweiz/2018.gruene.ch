@@ -28,7 +28,7 @@
 			{% if excerpt %}
 				{{ excerpt }}
 			{% else %}
-				{{ post.excerpt }}
+				{{ post.excerpt() }}
 			{% endif %}
 		</p>
 	{% endif %}

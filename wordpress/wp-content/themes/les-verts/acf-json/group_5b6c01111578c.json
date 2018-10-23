@@ -5,8 +5,8 @@
         {
             "key": "field_5b9b7511d846f",
             "label": "Lead",
-            "name": "excerpt",
-            "type": "group",
+            "name": "",
+            "type": "clone",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -15,28 +15,13 @@
                 "class": "",
                 "id": ""
             },
+            "clone": [
+                "field_5bcee7167c5c5"
+            ],
+            "display": "group",
             "layout": "block",
-            "sub_fields": [
-                {
-                    "key": "field_5b6c01293a2b6",
-                    "label": "Lead",
-                    "name": "lead",
-                    "type": "textarea",
-                    "instructions": "Provide a brief lead that summarises the content. It will be displayed on the archive page, on search results and on the front page (if there is no quote bock).",
-                    "required": 1,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "placeholder": "",
-                    "maxlength": "",
-                    "rows": 5,
-                    "new_lines": ""
-                }
-            ]
+            "prefix_label": 0,
+            "prefix_name": 0
         },
         {
             "key": "field_5b9b73df97fd2",
@@ -253,5 +238,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1539889297
+    "modified": 1540286766
 }

@@ -34,8 +34,9 @@ $WPCLI plugin install svg-support --activate-network
 
 # YAOST seo plugin
 $WPCLI plugin install wordpress-seo --activate-network
-$WPCLI option patch update wpseo_titles breadcrumbs-home <<< "Front Page"
-$WPCLI option patch update wpseo enable_admin_bar_menu <<< "false"
+
+# Make yoast SEO work with acf
+$WPCLI plugin install acf-content-analysis-for-yoast-seo --activate-network
 
 # Smush Image Compression
 $WPCLI plugin install wp-smushit --activate-network
@@ -102,3 +103,10 @@ $WPCLI network meta update 1 fileupload_maxk 65536
 
 # sync acf fields
 $WPCLI acf-json sync --all_sites
+
+# configure YOAST meta description fields
+$WPCLI option patch update wpseo_titles metadesc-tribe_events %%cf_description%%
+$WPCLI option patch update wpseo_titles metadesc-post %%cf_teaser%%
+$WPCLI option patch update wpseo_titles metadesc-page %%cf_teaser%%
+$WPCLI option patch update wpseo_titles breadcrumbs-home <<< "Front Page"
+$WPCLI option patch update wpseo enable_admin_bar_menu <<< "false"

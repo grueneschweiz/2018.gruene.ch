@@ -19,7 +19,7 @@
 						{% include 'atoms/a-breadcrumbs.twig' %}
 					</div>
 					<h1>{{ post.title }}</h1>
-					{% if not post.excerpt_hide_on_page %}
+					{% if not post.teaser_hide_on_page %}
 						<div class="page__header-text page__header-text--bold">
 							<p>{{ post.fullExcerpt() }}</p>
 						</div>
