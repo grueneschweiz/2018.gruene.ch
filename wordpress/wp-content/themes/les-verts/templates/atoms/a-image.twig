@@ -6,11 +6,10 @@
 											tabindex="-1"{% if target %} target="{{ taget }}"{% endif %}>{% endif %}
 		<img {{ image|get_timber_image_responsive(size) }} class="a-image__image">
 		{% if link_url %}</a>{% endif %}
-	{% if not no_caption %}
+	{% if (not ( no_caption and no_copy )) and (img.caption or copy) %}
 		<figcaption>
-			{% if img.caption %}<span class="a-image__caption">{{ img.caption }}</span>{% endif %}
-			{% if copy %}
-				<small class="a-image__copy">&copy; {{ copy }}</small>{% endif %}
+			{% if not no_caption and img.caption %}<span class="a-image__caption">{{ img.caption }}</span>{% endif %}
+			{% if not no_copy and copy %}<small class="a-image__copy">&copy; {{ copy }}</small>{% endif %}
 		</figcaption>
 	{% endif %}
 </figure>

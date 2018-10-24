@@ -5,7 +5,8 @@
 		{% include 'atoms/a-image.twig' with {
 			'image': post.image,
 			'size': 'testimonial',
-			'no_caption': 1
+			'no_caption': 1,
+			'no_copy': 1
 		} %}
 		<figcaption class="m-person-slide__caption">
 			<p class="m-person-slide__quote">{{ post.quote(taxonomies) }}</p>
