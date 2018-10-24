@@ -55,7 +55,6 @@ $WPCLI plugin install theme-translation-for-polylang --activate-network
 
 # Disable comments system
 $WPCLI plugin install disable-comments --activate-network
-$WPCLI option patch update disable_comments_options remove_everywhere <<< "true"
 
 # Events
 $WPCLI plugin install the-events-calendar --activate-network
@@ -112,3 +111,6 @@ $WPCLI option patch update wpseo_titles breadcrumbs-home <<< "Front Page"
 $WPCLI option patch update wpseo enable_admin_bar_menu <<< "false"
 $WPCLI option patch update wpseo disable-author <<< "true"
 $WPCLI option patch update wpseo disable-date <<< "true"
+
+# disable comment everywhere
+$WPCLI option patch update disable_comments_options remove_everywhere <<< "true"
