@@ -52,7 +52,7 @@
                         "id": ""
                     },
                     "return_format": "array",
-                    "preview_size": "header",
+                    "preview_size": "regular",
                     "library": "all",
                     "min_width": "",
                     "min_height": "",
@@ -204,7 +204,7 @@
                                         "id": ""
                                     },
                                     "return_format": "array",
-                                    "preview_size": "full-grid",
+                                    "preview_size": "regular",
                                     "library": "all",
                                     "min_width": "",
                                     "min_height": "",
@@ -440,5 +440,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1540286578
+    "modified": 1540485085
 }
