@@ -1,8 +1,14 @@
 {% set event = TribeEvent(post) %}
 
 <a class="a-event-link" href="{{ event.link() }}">
-	<div class="a-event-link__image"
-			 style="background-image: url('{{ Image(event.image).src|resize(148,94) }}')"></div>
+	<div class="a-event-link__image">
+		{% include 'atoms/a-image.twig' with {
+			'image': event.image,
+			'size': 'regular',
+			'no_caption': 1,
+			'no_copy': 1
+		} only %}
+	</div>
 	<h3 class="a-event-link__title">{{ event.title }}</h3>
 	<div class="a-event-link__meta">
 		<time class="a-event-link__datetime"

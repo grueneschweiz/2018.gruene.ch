@@ -26,6 +26,8 @@
 
 	&__image {
 		margin-bottom: 12px;
+		width: 100%;
+		@include aspect-ratio-box(56.25%);
 	}
 
 	&--image-first &__image {

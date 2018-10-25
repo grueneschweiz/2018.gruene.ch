@@ -3,6 +3,7 @@
 
 	&__image {
 		width: 100%;
+		@include aspect-ratio-box(90%);
 	}
 
 	&__caption {

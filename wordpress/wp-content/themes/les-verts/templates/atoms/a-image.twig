@@ -1,16 +1,33 @@
-<figure class="a-image">
-	{% set img = TimberImage(image) %}
-	{% if not size %}{% set size = 'full-grid' %}{% endif %}
-	{% set copy = img.get_field('copyright') %}
+{# accepted parameters:
+	image: id or TimberImage
+	size: optional. string. passible values 'full-width', 'regular'.
+		if a size is given, the outer container must define the image boundaries.
+	link_url: optional. string.
+	target: optional. string.
+	no_caption: optional. boolean.
+	no_copy: optional. boolean.
+#}
+{% set img = TimberImage(image) %}
+{% if not size %}
+	{% set size = 'regular' %}
+	{% set no_crop = 1 %}
+{% endif %}
+{% if img.focal_point %}
+	{% set focal_point = img.focal_point %}
+{% else %}
+	{% set focal_point = middle_center %}
+{% endif %}
+<figure class="a-image{% if not no_crop %} a-image--cover{% endif %}">
 	{% if link_url %}<a class="a-image__link" href="{{ link_url }}"
 											tabindex="-1"{% if target %} target="{{ taget }}"{% endif %}>{% endif %}
-		<img {{ image|get_timber_image_responsive(size) }} class="a-image__image">
-		{% if link_url %}</a>{% endif %}
-	{% if not no_caption %}
+
+		<img {{ image|get_timber_image_responsive(size) }} class="a-image__image{% if not no_crop %} a-image__image--fp a-image__image--fp-{{ focal_point }}{% endif %}">
+	{% if link_url %}</a>{% endif %}
+	{% if (not ( no_caption and no_copy )) and (img.caption or img.copyright) %}
 		<figcaption>
-			{% if img.caption %}<span class="a-image__caption">{{ img.caption }}</span>{% endif %}
-			{% if copy %}
-				<small class="a-image__copy">&copy; {{ copy }}</small>{% endif %}
+			{% if not no_caption and img.caption %}<span class="a-image__caption">{{ img.caption }}</span>{% endif %}
+			{% if not no_copy and img.copyright %}
+				<small class="a-image__copy">&copy; {{ img.copyright }}</small>{% endif %}
 		</figcaption>
 	{% endif %}
 </figure>

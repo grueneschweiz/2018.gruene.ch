@@ -2,9 +2,10 @@
 	<div class="m-quote__image-outer">
 		<div class="m-quote__image-inner">
 			{% include 'atoms/a-image.twig' with {
-				'size': 'quote',
+				'size': 'regular',
 				'image': person.image,
-				'no_caption': 1
+				'no_caption': 1,
+				'no_copy': 1
 			} only %}
 		</div>
 	</div>

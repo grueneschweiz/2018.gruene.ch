@@ -15,6 +15,7 @@
 
 	&__image {
 		width: 100%;
+		@include aspect-ratio-box(100%);
 
 		@include media($intermediate-breakpoint) {
 			max-width: 215px;

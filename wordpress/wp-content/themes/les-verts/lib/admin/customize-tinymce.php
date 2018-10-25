@@ -40,6 +40,13 @@ add_filter( 'acf/fields/wysiwyg/toolbars', function( $toolbars ) {
 } );
 
 
+// remove unused block formats
+add_filter('tiny_mce_before_init', function($init) {
+	$init['block_formats'] = 'Paragraph=p;Heading 2=h2;Heading 3=h3;Heading 4=h4;';
+	return $init;
+});
+
+
 // custom js
 add_action( 'acf/input/admin_footer', function() {
 	?>

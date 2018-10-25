@@ -13,13 +13,13 @@
 				{% set label = acf_post.title %}
 				{% set link = acf_post.link %}
 				{% if num_proposals < 3 %}
-					{% set excerpt = acf_post.excerpt %}
+					{% set excerpt = acf_post.excerpt() %}
 				{% endif %}
 			{% else %}
 				{% set label = proposal.proposal_link.external.title %}
 				{% set link = proposal.proposal_link.external.url %}
 				{% if num_proposals < 3 %}
-					{% set excerpt = proposal.proposal_link.external.excerpt %}
+					{% set excerpt = proposal.proposal_link.external.teaser %}
 				{% endif %}
 			{% endif %}
 

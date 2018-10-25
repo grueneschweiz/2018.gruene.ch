@@ -1,0 +1,62 @@
+{
+    "key": "group_5bcee6dd2cfd7",
+    "title": "[Template]Teaser",
+    "fields": [
+        {
+            "key": "field_5bcee7167c5c5",
+            "label": "Teaser",
+            "name": "teaser",
+            "type": "textarea",
+            "instructions": "<strong>The first 280 characters<\/strong> will be used as preview text on the front page, archive pages and for search results.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "Provide a brief summary that attracts the readers interest. Make sure it contains the most important keywords.",
+            "maxlength": "",
+            "rows": 5,
+            "new_lines": ""
+        },
+        {
+            "key": "field_5bcee79ac84ae",
+            "label": "Use for preview only (hide on page)",
+            "name": "teaser_hide_on_page",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "If yes, the teaser will only be shown as preview text but not on the page itself.",
+            "default_value": 1,
+            "ui": 1,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 0,
+    "description": "",
+    "modified": 1540289280
+}

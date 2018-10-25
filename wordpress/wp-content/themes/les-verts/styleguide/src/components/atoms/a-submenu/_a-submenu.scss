@@ -138,8 +138,9 @@
 			margin-top: initial;
 		}
 
-		.a-image {
+		&__image {
 			margin-top: 28px;
+			@include aspect-ratio-box(56.25%);
 		}
 
 		&__link {
