@@ -66,13 +66,13 @@
 					} only %}
 				</aside>
 			</div>
-
-			{% if link_lists and link_lists.link_lists %}
-				<aside
-					class="{% if link_lists.link_lists|length == 1 and not link_lists.link_lists.0.full_width %}page__content{% else %}page__wide{% endif %} page__linked-content">
-					{% include 'organisms/o-linked-content.twig' with link_lists only %}
-				</aside>
-			{% endif %}
 		</div>
+
+		{% if link_lists and link_lists.link_lists %}
+			<aside
+				class="{% if link_lists.link_lists|length == 1 and not link_lists.link_lists.0.full_width %}page__content{% else %}page__wide{% endif %} page__linked-content">
+				{% include 'organisms/o-linked-content.twig' with link_lists only %}
+			</aside>
+		{% endif %}
 	</article>
 {% endblock %}
