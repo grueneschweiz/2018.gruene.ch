@@ -12,8 +12,9 @@
 		<div class="m-front-article__image">
 			{% include 'atoms/a-image.twig' with {
 				'image': post.main_content_header_image,
-				'size': 'header',
-				'link_url': post.link()
+				'size': 'regular',
+				'link_url': post.link(),
+				'no_caption': 1
 			} only %}
 		</div>
 	{% endif %}

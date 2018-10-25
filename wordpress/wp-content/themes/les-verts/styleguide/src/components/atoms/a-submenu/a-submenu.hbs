@@ -1,7 +1,11 @@
 <div class="a-submenu  {{ modifiers_classes }}">
 	{{#if featured}}
-		{{> @a-cat-title cat-title}}
-		{{> @a-image link-image }}
+		<div class="a-submenu--featured__cat-title">
+			{{> @a-cat-title cat-title}}
+		</div>
+		<div class="a-submenu--featured__image">
+			{{> @a-image link-image }}
+		</div>
 		<a class="a-submenu--featured__link" href="{{ this.url }}">
 			<h3 class="a-submenu--featured__link__title">{{ title }}</h3>
 		</a>

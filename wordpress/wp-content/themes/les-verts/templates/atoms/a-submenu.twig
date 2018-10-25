@@ -1,12 +1,17 @@
 <div class="a-submenu{% if item.featured_menu_item %} a-submenu--featured{% endif %}">
 	{% if item.featured_menu_item %}
 		{% set item_meta = item.meta('group') %}
-		{% include 'atoms/a-cat-title.twig' with item_meta.block_title only %}
-		{% include 'atoms/a-image.twig' with {
-			'link_url': item.link,
-			'image': item_meta.image,
-			'size': 'header'
-		} only %}
+		<div class="a-submenu--featured__cat-title">
+			{% include 'atoms/a-cat-title.twig' with item_meta.block_title only %}
+		</div>
+		<div class="a-submenu--featured__image">
+			{% include 'atoms/a-image.twig' with {
+				'link_url': item.link,
+				'image': item_meta.image,
+				'size': 'regular',
+				'no_caption': 1
+			} only %}
+		</div>
 		<a class="a-submenu--featured__link" href="{{ item.link }}">
 			<h3 class="a-submenu--featured__link__title">{{ item.title }}</h3>
 		</a>

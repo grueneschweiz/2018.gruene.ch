@@ -86,10 +86,9 @@
 				<div class="o-front-article__author-image">
 					{% include 'atoms/a-image.twig' with {
 						'image': author.image,
-						'size': 'author',
+						'size': 'regular',
 						'link_url': author.link(),
-						'no_caption': 1,
-						'no_copy': 1
+						'no_caption': 1
 					} only %}
 				</div>
 			{% endif %}

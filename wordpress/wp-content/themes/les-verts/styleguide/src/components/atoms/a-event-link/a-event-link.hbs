@@ -1,5 +1,7 @@
 <a class="a-event-link" href="{{link}}">
-	<div class="a-event-link__image" style="background-image: url('{{image-src}}')"></div>
+	<div class="a-event-link__image">
+		{{> @a-image image }}
+	</div>
 	<h3 class="a-event-link__title">{{title}}</h3>
 	<div class="a-event-link__meta">
 		<time class="a-event-link__datetime" datetime="{{timestamp}}">{{datetime}}</time>

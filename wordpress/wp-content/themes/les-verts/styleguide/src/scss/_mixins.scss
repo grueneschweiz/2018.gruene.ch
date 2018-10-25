@@ -127,6 +127,23 @@
 }
 
 /**
+ * Makes your box preserving its aspect ratio on resizing.
+ * Provide the height in percent of the width to define the aspect ratio.
+ */
+@mixin aspect-ratio-box($height_percent) {
+	padding-top: $height_percent;
+	height: 0;
+	overflow: hidden;
+	position: relative;
+
+	& > * {
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+}
+
+/**
  * Cleaners to remove basic typography styles
  */
 @mixin clean-p {

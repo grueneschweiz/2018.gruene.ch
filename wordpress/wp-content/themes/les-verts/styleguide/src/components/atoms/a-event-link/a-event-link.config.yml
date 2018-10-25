@@ -1,10 +1,12 @@
-label: Events
+label: Event link
 status: ready
 context:
   title: Delegiertenversammlung mit Stargast mit sehr langem Namen
   timestamp: '2018-08-25 11:00'
   datetime: 25. August 2018 – 11:00
   place: Säulenhalle Zug
-  alt: Die Delegierten schreiten zur Abstimmung
-  image-src: "/img/dv.jpg"
-  link: '#'
+  image:
+    link-url: '#'
+    image-src: "/img/dv.jpg"
+    alt: Die Delegierten schreiten zur Abstimmung
+    title: This is a linked image

@@ -1,0 +1,58 @@
+{
+    "key": "group_5bd05fb159df1",
+    "title": "(Media) Focal point",
+    "fields": [
+        {
+            "key": "field_5bd06039df32d",
+            "label": "Focal point",
+            "name": "focal_point",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "top-left": "top left",
+                "top-center": "top center",
+                "top-right": "top right",
+                "middle-left": "middle left",
+                "middle-center": "middle center",
+                "middle-right": "middle right",
+                "bottom-left": "bottom left",
+                "bottom-center": "bottom center",
+                "bottom-right": "bottom right"
+            },
+            "default_value": [
+                "middle-center"
+            ],
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "return_format": "value",
+            "ajax": 0,
+            "placeholder": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "attachment",
+                "operator": "==",
+                "value": "image\/jpeg"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1540472631
+}

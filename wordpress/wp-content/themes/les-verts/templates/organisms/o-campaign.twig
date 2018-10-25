@@ -3,7 +3,8 @@
 		<div class="o-campaign__image">
 			{% include 'atoms/a-image.twig' with {
 				'image' : image,
-				'size': 'header'
+				'size': 'full-width',
+				'no_caption': 1
 			} only %}
 		</div>
 		{% if bars.alignment != 'none' %}
@@ -15,7 +16,8 @@
 	<div class="o-campaign__spacer" aria-hidden="true">
 		{% include 'atoms/a-image.twig' with {
 			'image' : image,
-			'size': 'header'
+			'size': 'full-width',
+			'no_caption': 1
 		} only %}
 	</div>
 	<div class="o-campaign__cta-wrapper">
