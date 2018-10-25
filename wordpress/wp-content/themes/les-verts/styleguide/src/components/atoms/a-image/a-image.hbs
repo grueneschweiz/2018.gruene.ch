@@ -1,6 +1,6 @@
-<figure class="a-image">
+<figure class="a-image{{#unless no_crop }} a-image--cover{{/unless}}">
 	{{#if link-url}}<a class="a-image__link" href="{{link-url}}" tabindex="-1">{{/if}}
-	<img src="{{image-src}}" alt="{{alt}}" title="{{title}}" class="a-image__image">
+	<img src="{{image-src}}" alt="{{alt}}" title="{{title}}" class="a-image__image{{#unless no_crop }} a-image__image--fp a-image__image--fp-{{focal_point}}{{/unless}}">
 	{{#if link-url}}</a>{{/if}}
 	{{# unless no_caption }}
 		<figcaption>
