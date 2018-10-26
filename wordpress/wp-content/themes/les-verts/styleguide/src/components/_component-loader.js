@@ -17,6 +17,7 @@ import OEngagementMap from './organisms/o-engagement-map/o-engagement-map';
 import MShare from './molecules/m-share/m-share';
 import ASearch from './atoms/a-search/a-search';
 import MPerson from './molecules/m-person/m-person';
+import AImage from './atoms/a-image/a-image';
 
 // ================= STOP TO ADD HERE
 
@@ -37,6 +38,7 @@ const COMPONENTS_TO_LOAD = [
 	{ view: OEngagementMap, name: 'OEngagementMap', selector: '.o-engagement-map' },
 	{ view: MShare, name: 'MShare', selector: '.m-share' },
 	{ view: MPerson, name: 'MPerson', selector: '.m-person--expandable' },
+	{ view: AImage, name: 'AImage', selector: '.a-image__image--lazy' },
 ];
 
 const LOADED_COMPONENTS = {};

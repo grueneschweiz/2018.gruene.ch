@@ -6,6 +6,7 @@
 	target: optional. string.
 	no_caption: optional. boolean.
 	no_copy: optional. boolean.
+	not_lazy: optional. boolean.
 #}
 {% set img = TimberImage(image) %}
 {% if not size %}
@@ -21,7 +22,16 @@
 	{% if link_url %}<a class="a-image__link" href="{{ link_url }}"
 											tabindex="-1"{% if target %} target="{{ taget }}"{% endif %}>{% endif %}
 
-		<img {{ image|get_timber_image_responsive(size) }} class="a-image__image{% if not no_crop %} a-image__image--fp a-image__image--fp-{{ focal_point }}{% endif %}">
+		{% if not not_lazy %}<noscript>{% endif %}
+			<img {{ image|get_timber_image_responsive(size) }}
+				class="a-image__image{% if not no_crop %} a-image__image--fp a-image__image--fp-{{ focal_point }}{% endif %}">
+		{% if not not_lazy %}</noscript>
+			<div class="a-image__lazy-wrapper">
+				<img src="{{ img.src|resize(20) }}"
+						{{ image|get_timber_image_responsive(size)|lazy }}
+					 	class="a-image__image a-image__image--lazy{% if not no_crop %} a-image__image--fp a-image__image--fp-{{ focal_point }}{% endif %}">
+			</div>
+		{% endif %}
 	{% if link_url %}</a>{% endif %}
 	{% if (not ( no_caption and no_copy )) and (img.caption or img.copyright) %}
 		<figcaption>
