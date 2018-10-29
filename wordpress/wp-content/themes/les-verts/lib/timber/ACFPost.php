@@ -12,15 +12,25 @@ class ACFPost extends \TimberPost {
 	private $__excerpt;
 	private $__fullExcerpt;
 	
-	public function excerpt() {
+	public function excerpt( $length = 280 ) {
 		// bail early to ensure we'll never compute it twice
 		if ( $this->__excerpt ) {
 			return $this->__excerpt;
 		}
 		
-		$this->__excerpt = $this->trim_words( $this->fullExcerpt() );
+		$this->__excerpt = $this->limit_length( $this->fullExcerpt(), $length );
 		
 		return $this->__excerpt;
+	}
+	
+	private function limit_length( $text, $limit ) {
+		if ( strlen( $text ) > $limit ) {
+			$trimmed = substr( $text, 0, strpos( $text, ' ', $limit ) );
+			
+			return $trimmed . ' [&hellip;]';
+		}
+		
+		return $text;
 	}
 	
 	public function fullExcerpt() {
@@ -59,11 +69,5 @@ class ACFPost extends \TimberPost {
 				return $text;
 			}
 		}
-	}
-	
-	private function trim_words( $text ) {
-		$excerpt_length = apply_filters( 'excerpt_length', 55 );
-		$excerpt_more   = apply_filters( 'excerpt_more', ' ' . '[&hellip;]' );
-		return wp_trim_words( $text, $excerpt_length, $excerpt_more );
 	}
 }
