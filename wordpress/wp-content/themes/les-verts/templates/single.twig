@@ -22,7 +22,7 @@
 					<h1>{{ post.title }}</h1>
 					{% if not post.teaser_hide_on_page %}
 						<div class="page__header-text page__header-text--bold">
-							<p>{{ post.fullExcerpt() }}</p>
+							<p>{{ post.full_excerpt() }}</p>
 						</div>
 					{% endif %}
 				</div>
@@ -62,7 +62,9 @@
 			<div class="page__shareable">
 				<aside class="page__share">
 					{% include 'molecules/m-share.twig' with {
-						'url': post.link
+						'url': post.link,
+						'text': post.title,
+						'via': post.twitter_name,
 					} only %}
 				</aside>
 			</div>
