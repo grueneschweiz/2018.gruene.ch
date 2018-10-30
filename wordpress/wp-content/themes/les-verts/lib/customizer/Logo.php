@@ -18,11 +18,9 @@ class Logo {
 	const SETTING_LOGO_LIGHT = 'logo_light';
 	const SETTING_LOGO_DARK = 'logo_dark';
 	
-	public static function register() {
-		add_action( 'customize_register', function ( $wp_customize ) {
-			self::add_settings( $wp_customize );
-			self::add_controls( $wp_customize );
-		} );
+	public static function register($wp_customize) {
+		self::add_settings( $wp_customize );
+		self::add_controls( $wp_customize );
 	}
 	
 	public static function add_settings( $wp_customize ) {
