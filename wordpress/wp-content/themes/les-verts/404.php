@@ -9,6 +9,16 @@
  * @since    Timber 0.1
  */
 
-$context               = Timber::get_context();
+$context = Timber::get_context();
+
+$posts = new \SUPT\SUPTPostQuery( array(
+	'post_type'           => 'post',
+	'orderby'             => 'date',
+	'ignore_sticky_posts' => true,
+) );
+
+$context['posts']      = $posts;
+$context['title']      = __( 'Latest posts' );
 $context['page_class'] = 'page-404';
+
 Timber::render( '404.twig', $context );

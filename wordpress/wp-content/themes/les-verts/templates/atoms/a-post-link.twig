@@ -13,7 +13,7 @@
 	{% endif %}
 {% endif %}
 
-{% if type == 'autolist' and full_width %}
+{% if type == 'autolist' and with_excerpt %}
 	{% set excerpt = post_object.excerpt() %}
 {% endif %}
 
@@ -23,22 +23,25 @@
 	{% set timestamp = date|date('Y-m-d H:i') %}
 {% endif %}
 
-{% if full_width %}
-<article class="a-post-link">
+{% if with_excerpt %}
+<article class="a-post-link {{ modifiers }}">
 	{% else %}
 	<a class="a-post-link a-post-link--link" href="{{ url }}" {% if target %} target="{{ target }}"{% endif %}>
 		{% endif %}
-		{% if full_width %}
+        {% if with_excerpt %}<a href="{{ url }}" class="a-post-link__title-link">{% endif %}
+			<h3 class="a-post-link__title">{{ title }}</h3>
+            {% if with_excerpt %}</a>{% endif %}
+		{% if with_excerpt %}
 			<header class="a-post-link__meta a-post-link__meta--header">
 				{% if date %}
 					<time class="a-post-link__meta-item" datetime="{{ timestamp }}">{{ date }}</time>
 				{% endif %}
+                {% if categories %}
+					<div class="a-post-link__meta-item">{{ categories|join(', ') }}</div>
+                {% endif %}
 			</header>
 		{% endif %}
-		{% if full_width %}<a href="{{ url }}" class="a-post-link__title-link">{% endif %}
-			<h3 class="a-post-link__title">{{ title }}</h3>
-			{% if full_width %}</a>{% endif %}
-		{% if full_width %}
+		{% if with_excerpt %}
 			<p class="a-post-link__excerpt">{{ excerpt }}</p>
 			{% include 'atoms/a-link-button.twig' with {
 				'link': url,
@@ -58,7 +61,7 @@
 				{% endif %}
 			{% endif %}
 		{% endif %}
-		{% if full_width %}
+		{% if with_excerpt %}
 </article>
 {% else %}
 	</a>

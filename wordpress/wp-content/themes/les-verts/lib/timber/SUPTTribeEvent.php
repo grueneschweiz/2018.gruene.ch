@@ -9,7 +9,7 @@
 namespace SUPT;
 
 
-class SUPTTribeEvent extends \TimberPost {
+class SUPTTribeEvent extends ACFPost {
 	private $venue;
 	private $venue_string = '';
 	private $time_string = '';

@@ -183,7 +183,7 @@
 		}
 	}
 
-	&__content {
+    &:not(&--list) &__content {
 		@include media($size-small){
 			p, li {
 				font-size: 1.25rem;
@@ -235,7 +235,6 @@
 		@include clean-li;
 
 		border-bottom: solid 1px $color-grey-2;
-		@include fluid-props(padding-bottom margin-bottom, $fluid-min, $size-medium, 16px, 32px);
 
 		&--hover-link {
 			position: relative;

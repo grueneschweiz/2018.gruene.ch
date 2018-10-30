@@ -1,19 +1,20 @@
 <div class="a-post-meta">
-	{% if date %}
-		<time class="a-post-meta__date" datetime="{{ datetime|date('Y-m-d') }}">{{ date }}</time>
-	{% endif %}
-	{% if categories %}
-		<div class="a-post-meta__categories">
-			{% for category in categories %}
-				<a href="{{ category.link }}" class="a-post-meta__category">{{ category.name }}</a>
-			{% endfor %}
-		</div>
-	{% endif %}
-	{% if tags %}
-		<div class="a-post-meta__tags">
-			{% for tag in tags %}
-				<a href="{{ tag.link }}" class="a-post-meta__tag">{{ tag.name }}</a>
-			{% endfor %}
-		</div>
-	{% endif %}
+    {% if date %}
+        <time class="a-post-meta__date" datetime="{{ datetime|date('Y-m-d') }}">{{ date }}</time>
+    {% endif %}
+    {% if categories %}
+        <div class="a-post-meta__categories">
+            {% for category in categories %}
+                <a href="{{ category.link }}" class="a-post-meta__category"
+                   title="{{ __('Show all articles of the category %s', constant('THEME_DOMAIN'))|format(category.name) }}">{{ category.name }}{% if not loop.last %},{% endif %}</a>
+            {% endfor %}
+        </div>
+    {% endif %}
+    {% if tags %}
+        <div class="a-post-meta__tags">
+            {% for tag in tags %}
+                <a href="{{ tag.link }}" class="a-post-meta__tag">{{ tag.name }}</a>
+            {% endfor %}
+        </div>
+    {% endif %}
 </div>

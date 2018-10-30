@@ -48,7 +48,7 @@
 	}
 
 	&__meta--header {
-		margin-bottom: 1em;
+		margin: 0.5em 0 1em;
 		color: $color-text-light;
 	}
 
@@ -58,15 +58,21 @@
 
 	&__meta-item {
 		font-size: 0.875rem;
-		display: inline-block;
+		display: inline;
+		line-height: 1.25em;
 
 		&:not(:first-child)::before {
 			content: "\25A0";
-			color: $color-secondary;
+			color: $color-grey-3;
 			transform: rotate(-5deg);
 			margin-right: 0.85em;
 			margin-left: 0.55em;
 			display: inline-block;
 		}
+	}
+
+	&__excerpt {
+		margin-top: 0.5em;
+		margin-bottom: 0.5em;
 	}
 }
