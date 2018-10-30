@@ -5,7 +5,7 @@
 	{% if categories %}
 		<div class="a-post-meta__categories">
 			{% for category in categories %}
-				<a href="{{ category.link }}" class="a-post-meta__category">{{ category.name }}</a>
+				<a href="{{ category.link }}" class="a-post-meta__category">{{ category.name }}{% if not loop.last %},{% endif %}</a>
 			{% endfor %}
 		</div>
 	{% endif %}
