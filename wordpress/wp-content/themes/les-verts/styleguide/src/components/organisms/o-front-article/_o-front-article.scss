@@ -26,6 +26,13 @@
 	&__articles {
 		display: flex;
 		flex-wrap: wrap;
+		flex-grow: 1;
+	}
+
+	&--mm &__articles {
+		@include media($_MOBILE) {
+			padding: 12px 0;
+		}
 	}
 
 	&__article {
@@ -61,16 +68,14 @@
 	&--mm {
 		position: relative;
 		background: $color-grey-1;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		min-height: 80%;
 
 		@include media($_MOBILE) {
 			margin-top: 41px;
 			margin-bottom: 41px;
-		}
-	}
-
-	&--mm &__article {
-		@include media($_DESKTOP) {
-			margin-top: 62px;
 		}
 	}
 
@@ -109,6 +114,10 @@
 		transform: rotate(-5deg);
 		transform-origin: bottom right;
 		margin-left: 20px;
+
+		@include media(480px) {
+			margin-top: -27px;
+		}
 	}
 
 	&__meta {

@@ -1,6 +1,8 @@
 .m-front-article {
 	display: flex;
 	flex-direction: column;
+	justify-content: space-evenly; // mm
+	height: 100%; // mm
 
 	&__title {
 		@include fluid-props(font-size, $size-tiny, $size-medium, 20px, 24px);
@@ -36,7 +38,7 @@
 
 	&__text, &__list {
 		margin-top: 0;
-		margin-bottom: 1em;
+		margin-bottom: 0.5em;
 	}
 
 	&--stretch {
