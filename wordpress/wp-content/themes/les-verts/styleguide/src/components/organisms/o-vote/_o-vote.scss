@@ -41,6 +41,10 @@
 			@include media($_DESKTOP) {
 				width: calc(100% - 2 * (41px + 19 * (100vw - 1024px) / 416));
 			}
+
+			@include media(1470px) {
+				width: calc(100% - #{2*$grid-item-padding-max});
+			}
 		}
 
 		@include hover {
