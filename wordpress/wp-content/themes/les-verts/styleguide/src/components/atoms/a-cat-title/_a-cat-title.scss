@@ -1,7 +1,6 @@
 .a-cat-title {
 	font-size: 1rem;
 	margin: 0;
-	position: relative;
 
 	&__link {
 		@include clean-link;
@@ -11,26 +10,27 @@
 		letter-spacing: 0.125em;
 		line-height: 1.25em;
 		color: $color-text;
-		padding-bottom: 0.75em;
-		display: block;
+		transition: color $transition-fast $transition-ease;
+		display: inline-block;
 
-		&:after {
-			content: "";
+		&::after {
+			content: ' ';
 			width: 1.4em;
 			height: 2px;
 			background-color: $color-text-light;
-			position: absolute;
-			bottom: 0;
-			left: 0;
-			transition: width $transition-fast $transition-ease;
+			transition: all $transition-fast $transition-ease;
+			display: block;
+			margin-top: 0.7em;
 		}
 
 		&:not(&--no-link) {
 			cursor: pointer;
 
 			@include hover {
+				color: $color-primary;
+
 				&:after {
-					width: 4.2em;
+					width: 100%;
 					background-color: $color-primary;
 				}
 			}
