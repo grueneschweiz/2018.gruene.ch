@@ -109,8 +109,11 @@ $WPCLI option patch update wpseo_titles metadesc-post <<< "%%cf_teaser%%"
 $WPCLI option patch update wpseo_titles metadesc-page <<< "%%cf_teaser%%"
 $WPCLI option patch update wpseo_titles breadcrumbs-home <<< "Front Page"
 $WPCLI option patch update wpseo enable_admin_bar_menu <<< "false"
-$WPCLI option patch update wpseo disable-author <<< "true"
-$WPCLI option patch update wpseo disable-date <<< "true"
+$WPCLI option patch update wpseo_titles disable-author <<< "true"
+$WPCLI option patch update wpseo_titles disable-date <<< "true"
+$WPCLI option patch update wpseo_titles disable-attachment <<< "true"
+$WPCLI option patch update wpseo_titles hideeditbox-tax-media_category <<< "true"
+$WPCLI option patch update wpseo_titles post_types-post-maintax <<< "category"
 
 # disable comment everywhere
 $WPCLI option patch update disable_comments_options remove_everywhere <<< "true"
