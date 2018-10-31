@@ -12,6 +12,41 @@
 #===========================================
 
 #============================
+# Ensure proprietary plugins are uploaded
+#============================
+
+POLYLANG=`$WPCLI plugin list | grep polylang-pro`
+ACF=`$WPCLI plugin list | grep advanced-custom-fields-pro`
+SEARCHWP=`$WPCLI plugin list | grep searchwp`
+MISSING=0
+
+RED='\033[0;31m'
+YELLOW='\033[1;33m'
+
+if [ ! "$POLYLANG" ];
+then
+      echo -e "${RED}ERROR: ${YELLOW}Missing plugin 'polylang-pro'. Upload it, then rerun this script."
+      MISSING=1
+fi
+
+if [ ! "$ACF" ];
+then
+      echo -e "${RED}ERROR: ${YELLOW}Missing plugin 'advanced-custom-fields-pro'. Upload it, then rerun this script."
+      MISSING=1
+fi
+
+if [ ! "$SEARCHWP" ];
+then
+      echo -e "${RED}ERROR: ${YELLOW}Missing plugin 'searchwp'. Upload it, then rerun this script."
+      MISSING=1
+fi
+
+if [ "$MISSING" -eq "1" ];
+then
+	exit 1 || return 1
+fi
+
+#============================
 # Install & activate plugins
 #============================
 
@@ -109,8 +144,11 @@ $WPCLI option patch update wpseo_titles metadesc-post <<< "%%cf_teaser%%"
 $WPCLI option patch update wpseo_titles metadesc-page <<< "%%cf_teaser%%"
 $WPCLI option patch update wpseo_titles breadcrumbs-home <<< "Front Page"
 $WPCLI option patch update wpseo enable_admin_bar_menu <<< "false"
-$WPCLI option patch update wpseo disable-author <<< "true"
-$WPCLI option patch update wpseo disable-date <<< "true"
+$WPCLI option patch update wpseo_titles disable-author <<< "true"
+$WPCLI option patch update wpseo_titles disable-date <<< "true"
+$WPCLI option patch update wpseo_titles disable-attachment <<< "true"
+$WPCLI option patch update wpseo_titles hideeditbox-tax-media_category <<< "true"
+$WPCLI option patch update wpseo_titles post_types-post-maintax <<< "category"
 
 # disable comment everywhere
 $WPCLI option patch update disable_comments_options remove_everywhere <<< "true"
