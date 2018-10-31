@@ -2,13 +2,13 @@
 
 # Navigation
 # ==========
-$WPCLI menu create "Main navigation"
+$WPCLI menu create main-navigation <<< "Main navigation"
 $WPCLI menu location assign main-navigation main-nav
 
-$WPCLI menu create "Footer navigation"
+$WPCLI menu create footer-navigation <<< "Footer navigation"
 $WPCLI menu location assign footer-navigation footer-meta-nav
 
-$WPCLI menu create "Language navigation"
+$WPCLI menu create language-navigation <<< "Language navigation"
 $WPCLI menu location assign language-navigation language-nav
 
 # Front Page
@@ -16,4 +16,4 @@ $WPCLI menu location assign language-navigation language-nav
 
 # set static front page
 $WPCLI option update show_on_front <<< "page"
-$WPCLI option page_on_front show_on_front <<< "1" # todo: set correct id
+$WPCLI option update page_on_front <<< "2" # todo: set correct id
