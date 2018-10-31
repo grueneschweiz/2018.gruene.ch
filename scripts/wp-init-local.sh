@@ -13,6 +13,8 @@ docker exec wp_docker_les_verts bash -c "cd /var/www/html && chmod +x wp-install
 # Sync all ACF Fields from JSON files
 docker exec wp_docker_les_verts wp package install git@github.com:superhuit-ch/wp-cli-acf-json.git
 docker exec wp_docker_les_verts wp acf-json sync --all_sites
+# Create dist symlink
+docker exec wp_docker_les_verts bash -c "cd /var/www/html/wp-content/themes/les-verts && ln -s styleguide/dist/static static"
 
 ######################
 # ENABLE IDE SUPPORT #
