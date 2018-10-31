@@ -3,6 +3,7 @@
 	{% set post = latest_press_release %}
 	{% set modifiers = ['o-front-article--mm'] %}
 	{% set author = '' %}
+	{% set excerpt = '' %}
 	{% set oton = 0 %}
 	{% for block in post.get_field('main_content_content') %}
 		{% if block.acf_fc_layout == 'quote' %}
