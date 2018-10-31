@@ -40,6 +40,10 @@
 		}
 	}
 
+	&--horizontal {
+		@include fluid-props(margin-top margin-bottom padding-top padding-bottom, $fluid-min, $fluid-max, 5px, 25px);
+	}
+
 	&--horizontal &__slider {
 		display: flex;
 		align-items: stretch;
