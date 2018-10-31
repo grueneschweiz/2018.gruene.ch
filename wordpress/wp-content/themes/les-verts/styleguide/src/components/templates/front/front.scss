@@ -3,12 +3,8 @@
 	&__grid-wrapper {
 		width: 100%;
 		background: $color-white;
-		margin-top: 41px;
-
-		@include media($_DESKTOP) {
-			margin-top: -170px;
-			padding-top: 300px;
-		}
+		margin-top: -170px;
+		padding-top: 300px;
 	}
 
 	&__grid {
