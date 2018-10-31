@@ -4,7 +4,10 @@
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
-	@include fluid-props(padding, $fluid-min, $fluid-max, 29px, 68px);
+	@include fluid-props(padding, $fluid-min, $fluid-max, 29px, 60px);
+	@include media($size-large) {
+		padding: 60px; // don't oversize it for 2k screens
+	}
 
 	&__title {
 		margin: 0;

@@ -4,7 +4,11 @@
 	display: flex;
 	flex-direction: column;
 	justify-content: space-around;
-	@include fluid-props(padding-left padding-right, $fluid-min, $fluid-max, 29px, 68px);
+	@include fluid-props(padding-left padding-right, $fluid-min, $fluid-max, 29px, 60px);
+	@include media($size-large) {
+		padding-left: 60px; // don't oversize it for 2k screens
+		padding-right: 60px;
+	}
 	padding-top: 13px;
 	padding-bottom: 40px;
 
@@ -14,6 +18,9 @@
 
 	&__title {
 		@include fluid-props(font-size, $fluid-min, $fluid-max, 32px, 48px);
+		@include media($size-large) {
+			font-size: 48px; // don't go over 48 for 2k screens
+		}
 	}
 
 	&__link {

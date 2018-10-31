@@ -17,11 +17,21 @@
 		height: 100%;
 		position: absolute;
 		top: 0;
-		@include fluid-props(font-size, $fluid-min, $fluid-max, 16px, 72px);
+		@include fluid-props(font-size, $fluid-min, $fluid-max, 20px, 72px);
+
+		@include media($size-large) {
+			font-size: 72px;
+		}
 
 		.m-bars {
 			position: absolute;
-			@include fluid-props(bottom, $fluid-min, $fluid-max, 15px, 96px);
+			@include fluid-props(bottom, $fluid-min, $size-medium, 15px, 40px);
+			@include media($_DESKTOP) {
+				bottom: 60px;
+			}
+			@include media($size-large) {
+				bottom: 40px;
+			}
 		}
 	}
 
