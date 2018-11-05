@@ -14,7 +14,7 @@
                     <h1>{{ title }}</h1>
                     {% if archive_description %}
                         <div class="page__header-text">
-                            <p>{{ archive_description }}</p>
+                            <p>{{ archive_description|wptexturize|wpautop }}</p>
                         </div>
                     {% endif %}
                 {% endblock %}

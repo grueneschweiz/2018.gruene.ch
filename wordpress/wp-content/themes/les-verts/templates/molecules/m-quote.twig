@@ -10,7 +10,7 @@
 		</div>
 	</div>
 	<div class="m-quote__caption">
-		<div class="m-quote__quote">{{ quote }}</div>
+		<div class="m-quote__quote">{{ quote|wptexturize }}</div>
 		<div class="m-quote__author">{{ person.title }}{% if role %}, {{ role }}{% endif %}</div>
 	</div>
 </div>

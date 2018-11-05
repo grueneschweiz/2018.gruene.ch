@@ -1,8 +1,8 @@
 <div class="m-campaign-cta">
 	<h3 class="m-campaign-cta__title">
-		<a href="{{ link }}" class="m-campaign-cta__title-link">{{ title }}</a>
+		<a href="{{ link }}" class="m-campaign-cta__title-link">{{ title|wptexturize }}</a>
 	</h3>
-	<p class="m-campaign-cta__text">{{ desc }}</p>
+	<p class="m-campaign-cta__text">{{ desc|wptexturize }}</p>
 	{% if form %}
 		{% filter shortcodes %}
 			[torro_form id="{{ form }}"]

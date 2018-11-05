@@ -1,7 +1,7 @@
 {% if link %}
 	<a href="{{ link }}"
-		 class="a-button {{ modifiers|join(' ') }}"{% if target %} target="{{ target }}"{% endif %}{% if js_hook %} data-{{ js_hook }}{% endif %}>{{ label }}</a>
+		 class="a-button {{ modifiers|join(' ') }}"{% if target %} target="{{ target }}"{% endif %}{% if js_hook %} data-{{ js_hook }}{% endif %}>{{ label|wptexturize }}</a>
 {% else %}
 	<button type="{% if type %}{{ type }}{% else %}button{% endif %}"
-					class="a-button {{ modifiers|join(' ') }}"{% if js_hook %} data-{{ js_hook }}{% endif %}>{{ label }}</button>
+					class="a-button {{ modifiers|join(' ') }}"{% if js_hook %} data-{{ js_hook }}{% endif %}>{{ label|wptexturize }}</button>
 {% endif %}

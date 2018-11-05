@@ -21,13 +21,13 @@
 	{% if post.list_items %}
 		<ul class="m-front-article__list">
 			{% for item in post.list_items %}
-				<li class="m-front-article__list-item">{{ item.position }}</li>
+				<li class="m-front-article__list-item">{{ item.position|wptexturize }}</li>
 			{% endfor %}
 		</ul>
 	{% else %}
 		<p class="m-front-article__text">
 			{% if excerpt %}
-				{{ excerpt }}
+				{{ excerpt|wptexturize }}
 			{% else %}
 				{{ post.excerpt() }}
 			{% endif %}

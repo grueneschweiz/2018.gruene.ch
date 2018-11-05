@@ -14,19 +14,19 @@
 			} only %}
 		</div>
 		<a class="a-submenu--featured__link" href="{{ item.link }}">
-			<h3 class="a-submenu--featured__link__title">{{ item.title }}</h3>
+			<h3 class="a-submenu--featured__link__title">{{ item.title|wptexturize }}</h3>
 		</a>
-		<p class="a-submenu--featured__text">{{ item_meta.teaser }}</p>
+		<p class="a-submenu--featured__text">{{ item_meta.teaser|wptexturize }}</p>
 		{% include 'atoms/a-button.twig' with {'link': item.link, 'label': item_meta.button_text} only %}
 	{% else %}
 		<a class="a-submenu__title {% if item.current or item.current_item_ancestor %}a-submenu__title--active{% endif %}"
-			 href="{{ item.link }}">{{ item.title }}</a>
+			 href="{{ item.link }}">{{ item.title|wptexturize }}</a>
 		<ul class="a-submenu__list">
 			{% for subitem in item.children %}
 				<li class="a-submenu__item">
 					<a
 						class="a-submenu__link {% if subitem.current or subitem.current_item_ancestor %}a-submenu__link--active{% endif %}"
-						href="{{ subitem.link }}">{{ subitem.title }}</a>
+						href="{{ subitem.link }}">{{ subitem.title|wptexturize }}</a>
 				</li>
 			{% endfor %}
 		</ul>

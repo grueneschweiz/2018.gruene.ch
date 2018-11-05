@@ -1,8 +1,8 @@
 <div class="m-campaign-desc">
 	<h2 class="m-campaign-desc__title">
-		<a href="{{ link }}" class="m-campaign-desc__link">{{ title }}</a>
+		<a href="{{ link }}" class="m-campaign-desc__link">{{ title|wptexturize }}</a>
 	</h2>
-	<p class="m-campaign-desc__desc">{{ teaser }}</p>
+	<p class="m-campaign-desc__desc">{{ teaser|wptexturize }}</p>
 	<div class="m-campaign-desc__more">
 		{% include 'atoms/a-link-button.twig' with {
 			'label': read_more_text,

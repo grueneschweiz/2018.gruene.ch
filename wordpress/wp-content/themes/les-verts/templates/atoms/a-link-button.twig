@@ -1,4 +1,4 @@
 <{% if link %}a href="{{ link }}" {% else %}div{% endif %}
 	class="a-link-button {{ modifiers|join(' ') }}"{% if target %} target="{{ target }}"{% endif %}{% if js_hook %} data-{{ js_hook }}{% endif %}>
-	{{ label }}
+	{{ label|wptexturize }}
 	</{% if link %}a{% else %}div{% endif %}>

@@ -35,7 +35,7 @@
 	{% if link_url %}</a>{% endif %}
 	{% if (not ( no_caption and no_copy )) and (img.caption or img.copyright) %}
 		<figcaption>
-			{% if not no_caption and img.caption %}<span class="a-image__caption">{{ img.caption }}</span>{% endif %}
+			{% if not no_caption and img.caption %}<span class="a-image__caption">{{ img.caption|wptexturize }}</span>{% endif %}
 			{% if not no_copy and img.copyright %}
 				<small class="a-image__copy">&copy; {{ img.copyright }}</small>{% endif %}
 		</figcaption>

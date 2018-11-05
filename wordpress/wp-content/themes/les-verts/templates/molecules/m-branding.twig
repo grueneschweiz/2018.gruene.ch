@@ -3,7 +3,7 @@
 		<div class="m-branding__row">
 			<h1 class="m-branding__title">
 				{% for unbreakeable in unbreakeables %}
-					<span class="m-branding__unbreakeable">{{ unbreakeable }}</span>
+					<span class="m-branding__unbreakeable">{{ unbreakeable|wptexturize }}</span>
 				{% endfor %}
 			</h1>
 			<a class="m-branding__logo" href="/" title="{{ __('Home', constant('THEME_DOMAIN')) }}">
