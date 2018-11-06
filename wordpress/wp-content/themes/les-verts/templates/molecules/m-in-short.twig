@@ -8,7 +8,7 @@
 				{% endfor %}
 			</ul>
 		{% elseif block.acf_fc_layout == 'call_to_action' %}
-			{{ dump(block.form) }}
+			{% include 'form.twig' with {'post' : Post(block.form)} only %}
 		{% else %}
 			{{ block.text }}
 		{% endif %}

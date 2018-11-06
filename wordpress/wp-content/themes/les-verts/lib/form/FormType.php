@@ -97,11 +97,6 @@ class FormType extends Model {
 		add_filter( 'acf/validate_value/name=form_autoreply_subject', array( __CLASS__, 'acf_validate_empty_value_local_settings'), 20, 2 );
 		add_filter( 'acf/validate_value/name=form_autoreply_template', array( __CLASS__, 'acf_validate_empty_value_local_settings'), 20, 2 );
 		add_filter( 'acf/validate_value/name=form_privacy_page', array( __CLASS__, 'acf_validate_empty_value_local_settings'), 20, 2 );
-
-		add_filter( 'acf/prepare_field/name=subscribers_list', array( __CLASS__, 'acf_populate_cm_list_ids') );
-		add_filter( 'acf/prepare_field/name=email_field_source', array( __CLASS__, 'acf_populate_cm_source_field') );
-		add_filter( 'acf/prepare_field/name=first_name_field_source', array( __CLASS__, 'acf_populate_cm_source_field') );
-		add_filter( 'acf/prepare_field/name=last_name_field_source', array( __CLASS__, 'acf_populate_cm_source_field') );
 	}
 
 	/**
@@ -124,38 +119,6 @@ class FormType extends Model {
 		}
 		else {
 			$field['placeholder'] = get_field( $field['_name'], 'options' );
-		}
-
-		return $field;
-	}
-
-	/**
-	 * Populate the field with choices of the Campain Monitor subscriber lists
-	 */
-	public static function acf_populate_cm_list_ids( $field ) {
-		if ( !class_exists('CampaignMonitorAPI') ) {
-			return $field;
-		}
-
-		$api = \CampaignMonitorAPI::getAPI();
-		$lists = $api->getLists();
-
-		foreach ( $lists as $l ) {
-			$field['choices'][$l->ListID] = $l->Name;
-		}
-
-		return $field;
-	}
-
-	/**
-	 * Populate the field with choices of the Campain Monitor subscriber lists
-	 */
-	public static function acf_populate_cm_source_field( $field ) {
-
-		// file_put_contents( __DIR__."/debug.log", var_export($field, true) ."\r\n", FILE_APPEND );
-
-		if (!empty($field['value'])) {
-			$field['choices'][$field['value']] = $field['value'];
 		}
 
 		return $field;
@@ -240,18 +203,16 @@ class FormType extends Model {
 	 * Enqueue custom scripts & styles
 	 */
 	public static function admin_enqueue_scripts( ) {
-
+		
+		// todo: remove if not needed
+		
 		if ( self::MODEL_NAME != get_post_type() ) {
 			return;
 		}
 
 		$folder_uri = get_template_directory_uri() .'/lib/form';
 
-		wp_enqueue_script( 'slugify', "$folder_uri/scripts/slug.min.js", false, THEME_VERSION, true );
-		wp_enqueue_script( 'delegate', "$folder_uri/scripts/delegate.min.js", false, THEME_VERSION, true );
-		wp_enqueue_script( 'form-populate-id', "$folder_uri/scripts/form-populate-id.js", ['slugify'], THEME_VERSION, true );
-		wp_enqueue_script( 'input-populate-name', "$folder_uri/scripts/input-populate-name.js", ['slugify', 'delegate'], THEME_VERSION, true );
-		wp_enqueue_script( 'populate-cm-fields', "$folder_uri/scripts/populate-cm-fields.js", ['input-populate-name'], THEME_VERSION, true );
+		//wp_enqueue_script( 'slugify', "$folder_uri/scripts/slug.min.js", false, THEME_VERSION, true );
 	}
 
 	/**
