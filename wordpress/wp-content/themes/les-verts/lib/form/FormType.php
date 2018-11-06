@@ -8,7 +8,7 @@ require_once realpath(__DIR__ . '/../post-types/Model.php');
 
 class FormType extends Model {
 
-	const MODEL_NAME = 'form';
+	const MODEL_NAME = 'theme_form';
 	const COLUMN_FIELD_NAME = 'fields';
 	const POST_META_NAME_FORM_SENT = 'form_sent';
 
@@ -320,7 +320,7 @@ class FormType extends Model {
 
 	public static function add_sent_page_menu() {
 		if ( get_field('form_save_db', 'options') ) {
-			add_submenu_page( 'edit.php?post_type=form', __('Form submissions', 'supt-form'), __('Submissions', 'supt-form'), 'edit_pages', 'form_sent', array( __CLASS__, 'render_sent_page' ) );
+			add_submenu_page( 'edit.php?post_type=theme_form', __('Form submissions', THEME_DOMAIN), __('Submissions', THEME_DOMAIN), 'edit_pages', 'form_sent', array( __CLASS__, 'render_sent_page' ) );
 		}
 	}
 

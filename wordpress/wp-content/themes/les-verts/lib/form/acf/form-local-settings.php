@@ -4,11 +4,11 @@ if( function_exists('acf_add_local_field_group') ):
 
 acf_add_local_field_group(array(
 	'key' => 'group_5ab227ac7540e',
-	'title' => __('Local form settings', 'medr'),
+	'title' => __('Local form settings', THEME_DOMAIN),
 	'fields' => array(
 		array(
 			'key' => 'field_5afc366ed02dc',
-			'label' => __('Which type of form is it?', 'medr'),
+			'label' => __('Which type of form is it?', THEME_DOMAIN),
 			'name' => 'which_type_of_form',
 			'type' => 'radio',
 			'instructions' => '',
@@ -20,9 +20,9 @@ acf_add_local_field_group(array(
 				'id' => '',
 			),
 			'choices' => array(
-				'email' => __('Send form result by email', 'medr'),
-				'cm' => __('Send form result to Campaign Monitor only', 'medr'),
-				'news' => __('Use a "Subscribe to Newsletter" checkbox (will also send to Campaign Monitor)', 'medr'),
+				'email' => __('Send form result by email', THEME_DOMAIN),
+				'cm' => __('Send form result to Campaign Monitor only', THEME_DOMAIN),
+				'news' => __('Use a "Subscribe to Newsletter" checkbox (will also send to Campaign Monitor)', THEME_DOMAIN),
 			),
 			'allow_null' => 0,
 			'other_choice' => 0,
@@ -56,7 +56,7 @@ acf_add_local_field_group(array(
 			'sub_fields' => array(
 				array(
 					'key' => 'field_5afc3d77bfbd2',
-					'label' => __('Checkbox settings', 'medr'),
+					'label' => __('Checkbox settings', THEME_DOMAIN),
 					'name' => '',
 					'type' => 'tab',
 					'instructions' => '',
@@ -80,7 +80,7 @@ acf_add_local_field_group(array(
 				),
 				array(
 					'key' => 'field_5afd348dd414b',
-					'label' => __('Label', 'medr'),
+					'label' => __('Label', THEME_DOMAIN),
 					'name' => 'label',
 					'type' => 'text',
 					'instructions' => '',
@@ -124,7 +124,7 @@ acf_add_local_field_group(array(
 			'sub_fields' => array(
 				array(
 					'key' => 'field_5afd3490d414d',
-					'label' => __('Campaign Monitor settings', 'medr'),
+					'label' => __('Campaign Monitor settings', THEME_DOMAIN),
 					'name' => '',
 					'type' => 'tab',
 					'instructions' => '',
@@ -140,10 +140,10 @@ acf_add_local_field_group(array(
 				),
 				array(
 					'key' => 'field_5afc3bd4bfbca',
-					'label' => __('Subscribers list', 'medr'),
+					'label' => __('Subscribers list', THEME_DOMAIN),
 					'name' => 'subscribers_list',
 					'type' => 'select',
-					'instructions' => __('Choose below which list from Campaign Monitor you want to link to…', 'medr'),
+					'instructions' => __('Choose below which list from Campaign Monitor you want to link to…', THEME_DOMAIN),
 					'required' => 1,
 					'conditional_logic' => 0,
 					'wrapper' => array(
@@ -163,7 +163,7 @@ acf_add_local_field_group(array(
 				),
 				array(
 					'key' => 'field_5afc3cedbfbce',
-					'label' => __('Source fields', 'medr'),
+					'label' => __('Source fields', THEME_DOMAIN),
 					'name' => 'source_fields',
 					'type' => 'group',
 					'instructions' => '',
@@ -193,13 +193,13 @@ acf_add_local_field_group(array(
 * the email of the user
 * the name of the user
 
-To correctly send data to the Campaign Monitor, please select below where to get this email from the form details.', 'medr'),
+To correctly send data to the Campaign Monitor, please select below where to get this email from the form details.', THEME_DOMAIN),
 							'new_lines' => 'wpautop',
 							'esc_html' => 0,
 						),
 						array(
 							'key' => 'field_5afc3c59bfbcb',
-							'label' => __('Email field', 'medr'),
+							'label' => __('Email field', THEME_DOMAIN),
 							'name' => 'email_field_source',
 							'type' => 'select',
 							'instructions' => '',
@@ -222,7 +222,7 @@ To correctly send data to the Campaign Monitor, please select below where to get
 						),
 						array(
 							'key' => 'field_5afc3c81bfbcc',
-							'label' => __('First Name', 'medr'),
+							'label' => __('First Name', THEME_DOMAIN),
 							'name' => 'first_name_field_source',
 							'type' => 'select',
 							'instructions' => '',
@@ -245,7 +245,7 @@ To correctly send data to the Campaign Monitor, please select below where to get
 						),
 						array(
 							'key' => 'field_5afc3ccfbfbcd',
-							'label' => __('Last Name', 'medr'),
+							'label' => __('Last Name', THEME_DOMAIN),
 							'name' => 'last_name_field_source',
 							'type' => 'select',
 							'instructions' => '',
@@ -295,7 +295,7 @@ To correctly send data to the Campaign Monitor, please select below where to get
 			'sub_fields' => array(
 				array(
 					'key' => 'field_5afd3494d4154',
-					'label' => __('Local form settings', 'medr'),
+					'label' => __('Local form settings', THEME_DOMAIN),
 					'name' => '',
 					'type' => 'tab',
 					'instructions' => '',
@@ -338,7 +338,7 @@ To correctly send data to the Campaign Monitor, please select below where to get
 						'class' => '',
 						'id' => '',
 					),
-					'message' => __('The parameters below will replace the global settings.', 'medr'),
+					'message' => __('The parameters below will replace the global settings.', THEME_DOMAIN),
 					'new_lines' => 'wpautop',
 					'esc_html' => 0,
 				),
@@ -416,7 +416,7 @@ To correctly send data to the Campaign Monitor, please select below where to get
 			array(
 				'param' => 'post_type',
 				'operator' => '==',
-				'value' => 'form',
+				'value' => 'theme_form',
 			),
 		),
 	),
