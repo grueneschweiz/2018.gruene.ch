@@ -8,30 +8,11 @@ if( function_exists('acf_add_local_field_group') ):
 		'fields' => array(
 			array(
 				'key' => 'field_59f33777cf0db',
-				'label' => 'Title',
+				'label' => 'Field Label',
 				'name' => 'label',
 				'type' => 'text',
 				'instructions' => '',
 				'required' => 1,
-				'conditional_logic' => 0,
-				'wrapper' => array(
-					'width' => '50',
-					'class' => 'a-input__title',
-					'id' => '',
-				),
-				'default_value' => '',
-				'placeholder' => '',
-				'prepend' => '',
-				'append' => '',
-				'maxlength' => '',
-			),
-			array(
-				'key' => 'field_5a86967afd21e',
-				'label' => 'Placeholder',
-				'name' => 'placeholder',
-				'type' => 'text',
-				'instructions' => '',
-				'required' => 0,
 				'conditional_logic' => 0,
 				'wrapper' => array(
 					'width' => '50',
@@ -76,16 +57,29 @@ if( function_exists('acf_add_local_field_group') ):
 				'placeholder' => '',
 			),
 			array(
-				'key' => 'field_59f339868a4ad',
-				'label' => 'Name',
-				'name' => 'name',
+				'key' => 'field_5a86967afd21e',
+				'label' => 'Help Text (optional)',
+				'name' => 'help_text',
 				'type' => 'text',
-				'instructions' => '',
+				'instructions' => 'Displayed below the input field (small)',
 				'required' => 0,
-				'conditional_logic' => 0,
+				'conditional_logic' => array(
+				 array(
+				  array(
+				    'field' => 'field_59f33814cf0dc',
+				    'operator' => '!=',
+				    'value' => 'radio',
+				  ),
+				  array(
+				    'field' => 'field_59f33814cf0dc',
+				    'operator' => '!=',
+				    'value' => 'checkbox',
+				  ),
+				 ),
+				),
 				'wrapper' => array(
-					'width' => '50',
-					'class' => 'a-input__name',
+					'width' => '100',
+					'class' => '',
 					'id' => '',
 				),
 				'default_value' => '',
@@ -161,24 +155,24 @@ if( function_exists('acf_add_local_field_group') ):
 			),
 			array(
 				'key' => 'field_59f338a0cf0df',
-				'label' => 'Large',
+				'label' => 'Full Width',
 				'name' => 'full_width',
 				'type' => 'true_false',
 				'instructions' => 'Uses the full width of the form.',
 				'required' => 0,
 				'conditional_logic' => array(
-					// array(
-					// 	array(
-					// 		'field' => 'field_59f33814cf0dc',
-					// 		'operator' => '!=',
-					// 		'value' => 'radio',
-					// 	),
-					// 	array(
-					// 		'field' => 'field_59f33814cf0dc',
-					// 		'operator' => '!=',
-					// 		'value' => 'checkbox',
-					// 	),
-					// ),
+					 array(
+					 	array(
+					 		'field' => 'field_59f33814cf0dc',
+					 		'operator' => '!=',
+					 		'value' => 'radio',
+					 	),
+					 	array(
+					 		'field' => 'field_59f33814cf0dc',
+					 		'operator' => '!=',
+					 		'value' => 'checkbox',
+					 	),
+					 ),
 				),
 				'wrapper' => array(
 					'width' => '50',
@@ -186,10 +180,39 @@ if( function_exists('acf_add_local_field_group') ):
 					'id' => '',
 				),
 				'message' => '',
-				'default_value' => 0,
+				'default_value' => 1,
 				'ui' => 1,
 				'ui_on_text' => '',
 				'ui_off_text' => '',
+			),
+			array(
+				'key' => 'field_nkb3j4rzyurkd',
+				'label' => 'Width %',
+				'name' => 'width',
+				'type' => 'number',
+				'instructions' => '',
+				'required' => 1,
+				'conditional_logic' => array(
+					array(
+						array(
+							'field' => 'field_59f338a0cf0df',
+							'operator' => '==',
+							'value' => '0',
+						),
+					),
+				),
+				'wrapper' => array(
+					'width' => '50',
+					'class' => '',
+					'id' => '',
+				),
+				'default_value' => '50',
+				'placeholder' => '',
+				'prepend' => '',
+				'append' => '%',
+				'min' => '0',
+				'max' => '100',
+				'step' => '1',
 			),
 		),
 		'location' => array(
