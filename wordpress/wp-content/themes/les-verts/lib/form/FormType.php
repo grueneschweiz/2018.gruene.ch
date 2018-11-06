@@ -249,7 +249,6 @@ class FormType extends Model {
 
 		wp_enqueue_script( 'slugify', "$folder_uri/scripts/slug.min.js", false, THEME_VERSION, true );
 		wp_enqueue_script( 'delegate', "$folder_uri/scripts/delegate.min.js", false, THEME_VERSION, true );
-		wp_enqueue_script( 'form-populate-title', "$folder_uri/scripts/form-populate-title.js", false, THEME_VERSION, true );
 		wp_enqueue_script( 'form-populate-id', "$folder_uri/scripts/form-populate-id.js", ['slugify'], THEME_VERSION, true );
 		wp_enqueue_script( 'input-populate-name', "$folder_uri/scripts/input-populate-name.js", ['slugify', 'delegate'], THEME_VERSION, true );
 		wp_enqueue_script( 'populate-cm-fields', "$folder_uri/scripts/populate-cm-fields.js", ['input-populate-name'], THEME_VERSION, true );
