@@ -8,9 +8,7 @@
 				{% endfor %}
 			</ul>
 		{% elseif block.acf_fc_layout == 'call_to_action' %}
-			{% filter shortcodes %}
-				[torro_form id="{{ block.form }}"]
-			{% endfilter %}
+			{{ dump(block.form) }}
 		{% else %}
 			{{ block.text }}
 		{% endif %}
