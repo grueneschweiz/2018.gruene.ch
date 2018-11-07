@@ -285,7 +285,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 			),
 			array(
 				'key'               => 'field_5ab226578508a',
-				'label'             => 'After Submit',
+				'label'             => 'Submit Success',
 				'name'              => '',
 				'type'              => 'tab',
 				'instructions'      => '',
@@ -300,23 +300,6 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 				'endpoint'          => 1,
 			),
 			array(
-				'key'               => 'field_xqx1kbtdinlk1',
-				'label'             => '',
-				'name'              => '',
-				'type'              => 'message',
-				'instructions'      => '',
-				'required'          => 0,
-				'conditional_logic' => 0,
-				'wrapper'           => array(
-					'width' => '',
-					'class' => '',
-					'id'    => '',
-				),
-				'message'           => 'Messages to display after the form was submitted.',
-				'new_lines'         => 'wpautop',
-				'esc_html'          => 0,
-			),
-			array(
 				'key'               => 'field_59f33f04216b0',
 				'label'             => 'Success',
 				'name'              => 'form_success',
@@ -325,7 +308,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 				'required'          => 0,
 				'conditional_logic' => 0,
 				'wrapper'           => array(
-					'width' => '50',
+					'width' => '',
 					'class' => '',
 					'id'    => '',
 				),
@@ -372,6 +355,22 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 				),
 			),
 			array(
+				'key'               => 'field_i1q124brl4t9h',
+				'label'             => 'Submit Error',
+				'name'              => '',
+				'type'              => 'tab',
+				'instructions'      => '',
+				'required'          => 0,
+				'conditional_logic' => 0,
+				'wrapper'           => array(
+					'width' => '',
+					'class' => '',
+					'id'    => '',
+				),
+				'placement'         => 'left',
+				'endpoint'          => 0,
+			),
+			array(
 				'key'               => 'field_59f33f3b216b1',
 				'label'             => 'Error',
 				'name'              => 'form_error',
@@ -380,7 +379,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 				'required'          => 0,
 				'conditional_logic' => 0,
 				'wrapper'           => array(
-					'width' => '50',
+					'width' => '',
 					'class' => '',
 					'id'    => '',
 				),

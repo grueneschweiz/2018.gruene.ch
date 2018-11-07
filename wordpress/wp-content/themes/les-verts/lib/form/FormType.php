@@ -62,6 +62,7 @@ class FormType extends Model {
 	public static function register_acf_fields() {
 		require_once __DIR__ . '/acf/input.php';
 		require_once __DIR__ . '/acf/form-details.php';
+		require_once __DIR__ . '/acf/mail-template.php';
 		require_once __DIR__ . '/acf/form-local-settings.php';
 		
 		add_filter( 'acf/prepare_field/name=form_email_to', array( __CLASS__, 'acf_populate_placeholder_local_settings' ) );
