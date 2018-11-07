@@ -4,7 +4,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 	
 	acf_add_local_field_group(array(
 		'key' => 'group_5ab227ac7540e',
-		'title' => __('Form Settings', THEME_DOMAIN),
+		'title' => __('Mails', THEME_DOMAIN),
 		'fields' => array(
 			array(
 				'key' => 'field_5be2eab21cb60',
@@ -231,7 +231,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 					'id' => '',
 				),
 				'placement' => 'left',
-				'endpoint' => 0,
+				'endpoint' => 1,
 			),
 			array(
 				'key' => 'field_5be2e856b43c0',
