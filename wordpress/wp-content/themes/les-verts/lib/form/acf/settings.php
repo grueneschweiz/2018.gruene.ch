@@ -60,7 +60,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 			array(
 				'key'               => 'field_ripmhcld11kko',
 				'label'             => 'Submission Error',
-				'name'              => 'submit_error',
+				'name'              => 'form_submit_error',
 				'type'              => 'group',
 				'instructions'      => 'Shown when an error occurred while submitting the form.',
 				'required'          => 0,
@@ -75,7 +75,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 					array(
 						'key'               => 'field_81y1vl1anum78',
 						'label'             => 'Title',
-						'name'              => 'title',
+						'name'              => 'form_submit_error_title',
 						'type'              => 'text',
 						'instructions'      => '',
 						'required'          => 1,
@@ -94,7 +94,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 					array(
 						'key'               => 'field_kkdwe5vfnyrpt',
 						'label'             => 'Message',
-						'name'              => 'text',
+						'name'              => 'form_submit_error_text',
 						'type'              => 'wysiwyg',
 						'instructions'      => '',
 						'required'          => 0,
@@ -173,7 +173,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 					array(
 						'key'               => 'field_5a95be01c34dd',
 						'label'             => 'Server address',
-						'name'              => 'host',
+						'name'              => 'form_smtp_host',
 						'type'              => 'text',
 						'instructions'      => '',
 						'required'          => 1,
@@ -192,7 +192,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 					array(
 						'key'               => 'field_5a95be3dc34de',
 						'label'             => 'Port',
-						'name'              => 'port',
+						'name'              => 'form_smtp_port',
 						'type'              => 'number',
 						'instructions'      => '',
 						'required'          => 1,
@@ -213,7 +213,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 					array(
 						'key'               => 'field_5a95be77c34df',
 						'label'             => 'Username',
-						'name'              => 'username',
+						'name'              => 'form_smtp_username',
 						'type'              => 'text',
 						'instructions'      => '',
 						'required'          => 1,
@@ -232,7 +232,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 					array(
 						'key'               => 'field_5a95be8fc34e0',
 						'label'             => 'Password',
-						'name'              => 'password',
+						'name'              => 'form_smtp_password',
 						'type'              => 'text',
 						'instructions'      => '',
 						'required'          => 1,

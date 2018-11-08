@@ -27,7 +27,7 @@ if( function_exists('acf_add_local_field_group') ):
 			array(
 				'key' => 'field_5be2e5b13fdf6',
 				'label' => __('Subject', THEME_DOMAIN),
-				'name' => 'subject',
+				'name' => 'form_mail_subject',
 				'type' => 'text',
 				'instructions' => '',
 				'required' => 1,
@@ -46,7 +46,7 @@ if( function_exists('acf_add_local_field_group') ):
 			array(
 				'key' => 'field_5be2e5d83fdf7',
 				'label' => __('Template', THEME_DOMAIN),
-				'name' => 'template',
+				'name' => 'form_mail_template',
 				'type' => 'wysiwyg',
 				'instructions' => '',
 				'required' => 1,

@@ -25,7 +25,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 			array(
 				'key' => 'field_5be2e6b40fefa',
 				'label' => __('Send confirmation', THEME_DOMAIN),
-				'name' => 'send_confirmation',
+				'name' => 'form_send_confirmation',
 				'type' => 'true_false',
 				'instructions' => __('Mail to the person that filled out this form.', THEME_DOMAIN),
 				'required' => 0,
@@ -44,7 +44,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 			array(
 				'key' => 'field_5be2ec792f8cb',
 				'label' => __('Mail', THEME_DOMAIN),
-				'name' => 'confirmation',
+				'name' => '',
 				'type' => 'group',
 				'instructions' => '',
 				'required' => 0,
@@ -67,7 +67,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 					array(
 						'key' => 'field_5be2e9d9b43c4',
 						'label' => '',
-						'name' => 'template',
+						'name' => 'form_confirmation_template',
 						'type' => 'clone',
 						'instructions' => '',
 						'required' => 0,
@@ -114,7 +114,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 			array(
 				'key' => 'field_5be2e7620fefb',
 				'label' => __('Send notification', THEME_DOMAIN),
-				'name' => 'send_notification',
+				'name' => 'form_send_notification',
 				'type' => 'true_false',
 				'instructions' => __('Mail with the form data to an address of your choice.', THEME_DOMAIN),
 				'required' => 0,
@@ -133,7 +133,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 			array(
 				'key' => 'field_5be2ecc92f8cc',
 				'label' => __('Mail', THEME_DOMAIN),
-				'name' => 'notification',
+				'name' => '',
 				'type' => 'group',
 				'instructions' => '',
 				'required' => 0,
@@ -156,7 +156,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 					array(
 						'key' => 'field_5be2e7db0fefc',
 						'label' => __('Destination', THEME_DOMAIN),
-						'name' => 'destination',
+						'name' => 'form_confirmation_destination',
 						'type' => 'email',
 						'instructions' => __('This email address will receive notifications when a form is completed.', THEME_DOMAIN),
 						'required' => 1,
@@ -174,7 +174,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 					array(
 						'key' => 'field_5be2e954b43c2',
 						'label' => '',
-						'name' => 'template',
+						'name' => 'form_confirmation_template',
 						'type' => 'clone',
 						'instructions' => '',
 						'required' => 0,
@@ -236,7 +236,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 			array(
 				'key' => 'field_5be2e856b43c0',
 				'label' => __('Sender Name', THEME_DOMAIN),
-				'name' => 'sender_name',
+				'name' => 'form_sender_name',
 				'type' => 'text',
 				'instructions' => __('This is the name that will appear as the sender (the e-mail will always be website@yourdomain.tld).', THEME_DOMAIN),
 				'required' => 1,
@@ -255,7 +255,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 			array(
 				'key' => 'field_5be2e8b6b43c1',
 				'label' => __('Reply-To', THEME_DOMAIN),
-				'name' => 'reply-to',
+				'name' => 'form_reply_to',
 				'type' => 'email',
 				'instructions' => __('The e-mail, where replies to this mail should be sent to.', THEME_DOMAIN),
 				'required' => 1,

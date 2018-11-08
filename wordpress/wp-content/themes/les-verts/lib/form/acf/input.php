@@ -9,7 +9,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 			array(
 				'key'               => 'field_59f33777cf0db',
 				'label'             => 'Field Label',
-				'name'              => 'label',
+				'name'              => 'form_input_label',
 				'type'              => 'text',
 				'instructions'      => '',
 				'required'          => 1,
@@ -28,7 +28,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 			array(
 				'key'               => 'field_59f33814cf0dc',
 				'label'             => 'Type',
-				'name'              => 'type',
+				'name'              => 'form_input_type',
 				'type'              => 'select',
 				'instructions'      => '',
 				'required'          => 1,
@@ -59,7 +59,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 			array(
 				'key'               => 'field_5a86967afd21e',
 				'label'             => 'Help Text (optional)',
-				'name'              => 'help_text',
+				'name'              => 'form_input_help_text',
 				'type'              => 'text',
 				'instructions'      => 'Displayed below the input field (small)',
 				'required'          => 0,
@@ -91,7 +91,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 			array(
 				'key'               => 'field_5ab20e7f14b9a',
 				'label'             => 'Choices',
-				'name'              => 'choices',
+				'name'              => 'form_input_choices',
 				'type'              => 'textarea',
 				'instructions'      => 'Enter each choice on a new line.
 	
@@ -129,7 +129,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 			array(
 				'key'               => 'field_59f3388dcf0de',
 				'label'             => 'Required',
-				'name'              => 'required',
+				'name'              => 'form_input_required',
 				'type'              => 'true_false',
 				'instructions'      => 'Set the field as mandatory',
 				'required'          => 0,
@@ -156,7 +156,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 			array(
 				'key'               => 'field_59f338a0cf0df',
 				'label'             => 'Full Width',
-				'name'              => 'full_width',
+				'name'              => 'form_input_full_width',
 				'type'              => 'true_false',
 				'instructions'      => 'Uses the full width of the form.',
 				'required'          => 0,
@@ -188,7 +188,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 			array(
 				'key'               => 'field_nkb3j4rzyurkd',
 				'label'             => 'Width %',
-				'name'              => 'width',
+				'name'              => 'form_input_width',
 				'type'              => 'number',
 				'instructions'      => '',
 				'required'          => 1,
@@ -217,7 +217,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 			array(
 				'key'               => 'field_b9mi13o7801jf',
 				'label'             => 'Min width (optional)',
-				'name'              => 'min_width',
+				'name'              => 'form_input_min_width',
 				'type'              => 'number',
 				'instructions'      => '',
 				'required'          => 0,
