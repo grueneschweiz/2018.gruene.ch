@@ -214,6 +214,35 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 				'max'               => '100',
 				'step'              => '1',
 			),
+			array(
+				'key'               => 'field_b9mi13o7801jf',
+				'label'             => 'Min width (optional)',
+				'name'              => 'min_width',
+				'type'              => 'number',
+				'instructions'      => '',
+				'required'          => 0,
+				'conditional_logic' => array(
+					array(
+						array(
+							'field'    => 'field_59f338a0cf0df',
+							'operator' => '==',
+							'value'    => '0',
+						),
+					),
+				),
+				'wrapper'           => array(
+					'width' => '50',
+					'class' => '',
+					'id'    => '',
+				),
+				'default_value'     => '',
+				'placeholder'       => '',
+				'prepend'           => '',
+				'append'            => 'px',
+				'min'               => '0',
+				'max'               => '',
+				'step'              => '1',
+			),
 		),
 		'location'              => array(
 			array(
