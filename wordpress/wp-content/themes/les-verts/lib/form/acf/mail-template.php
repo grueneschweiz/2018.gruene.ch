@@ -18,9 +18,9 @@ if( function_exists('acf_add_local_field_group') ):
 					'class' => '',
 					'id' => '',
 				),
-				'message' => __('Use the following tags as placeholders in you mail. They will be replaced automatically: <div class="mail_template_placeholders"></div>
+				'message' => __('Use the following tags as placeholders in you mail. They will be replaced automatically: <strong><div class="form_mail_template_placeholders"></div></strong>
 
-<i><strong>Advanced</strong>: The email template below uses the <a href="https://twig.symfony.com/" target="_blank">Twig</a> engine to allow dynamic zones.</i>', THEME_DOMAIN),
+<i>Advanced: The email template below uses the <a href="https://twig.symfony.com/" target="_blank">Twig</a> engine to allow dynamic zones.</i>', THEME_DOMAIN),
 				'new_lines' => 'wpautop',
 				'esc_html' => 0,
 			),

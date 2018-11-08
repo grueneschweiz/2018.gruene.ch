@@ -49,7 +49,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 				'conditional_logic' => 0,
 				'wrapper'           => array(
 					'width' => '',
-					'class' => 'fields-repeater',
+					'class' => 'form_fields_repeater',
 					'id'    => '',
 				),
 				'collapsed'         => '',

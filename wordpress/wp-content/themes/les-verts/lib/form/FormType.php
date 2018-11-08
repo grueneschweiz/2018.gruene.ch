@@ -92,10 +92,8 @@ class FormType extends Model {
 		}
 		
 		$folder_uri = get_template_directory_uri() . '/lib/form';
-		
-		// todo: write script that injects the fields slugs into the mail template message
-		
-		//wp_enqueue_script( 'slugify', "$folder_uri/scripts/slug.min.js", false, THEME_VERSION, true );
+		wp_enqueue_script( 'slugify', "$folder_uri/scripts/slug.min.js", false, THEME_VERSION, true );
+		wp_enqueue_script('form_populate_placeholder_tags', "$folder_uri/scripts/input-populate-placeholder-tags.js", false, THEME_VERSION, true );
 	}
 	
 	
