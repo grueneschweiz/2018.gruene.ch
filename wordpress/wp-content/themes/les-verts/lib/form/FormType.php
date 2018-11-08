@@ -2,7 +2,7 @@
 
 namespace SUPT;
 
-use \Timber;
+use \Timber\Timber;
 
 require_once realpath( __DIR__ . '/../post-types/Model.php' );
 
@@ -102,7 +102,9 @@ class FormType extends Model {
 	/**
 	 * Add extra columns in edit table
 	 *
-	 * @param array $post_columns An array of column names.
+	 * @param array $columns An array of column names.
+	 *
+	 * @return array
 	 */
 	public static function register_columns_fields( $columns ) {
 		return array_merge(
@@ -120,10 +122,10 @@ class FormType extends Model {
 	 */
 	public static function populate_columns_fields( $column_name, $post_id ) {
 		if ( $column_name == self::COLUMN_FIELD_NAME ) {
-			$fields = get_field( 'fields', $post_id );
+			$fields = get_field( 'form_fields', $post_id );
 			
 			echo implode( ', ', array_map( function ( $f ) {
-				return $f['label'] . ( $f['required'] ? '*' : '' );
+				return $f['form_input_label'] . ( $f['form_input_required'] ? '*' : '' );
 			}, $fields ) );
 			
 		}
@@ -133,6 +135,8 @@ class FormType extends Model {
 	 * Set the default order to "Title ASC" if no order set
 	 *
 	 * @param array $query_vars The array of requested query variables.
+	 *
+	 * @return array
 	 */
 	public static function order_by_title( $query_vars ) {
 		global $pagenow, $post_type;
@@ -154,7 +158,6 @@ class FormType extends Model {
 	}
 	
 	public static function render_sent_page() {
-		
 		$args = array(
 			'posts_per_page' => - 1,
 			'post_type'      => self::MODEL_NAME,
@@ -164,33 +167,17 @@ class FormType extends Model {
 			$fields = array_map(
 				function ( $f ) {
 					return array(
-						'name'  => ( empty( $f['name'] ) ? supt_form_sanitize_with_underscore( $f['label'] ) : $f['name'] ),
-						'label' => $f['label'],
-						'type'  => $f['type']
+						'label' => $f['form_input_label'],
+						'type'  => $f['form_input_type']
 					);
 				},
-				get_field( 'fields', $form->ID )
-			);
-			
-			$confirm_fields = get_field( 'confirmation_fields', $form->ID );
-			if ( ! is_array( $confirm_fields ) ) {
-				$confirm_fields = array();
-			}
-			$confirm_fields = array_map(
-				function ( $f ) {
-					return array(
-						'name'  => ( empty( $f['name'] ) ? supt_form_sanitize_with_underscore( $f['label'] ) : $f['name'] ),
-						'label' => $f['label'],
-						'type'  => 'checkbox'
-					);
-				},
-				$confirm_fields
+				get_field( 'form_fields', $form->ID )
 			);
 			
 			$context['forms'][] = array(
 				'id'     => $form->ID,
-				'title'  => get_field( 'title', $form->ID ),
-				'fields' => array_merge( $fields, $confirm_fields ),
+				'title'  => $form->post_title,
+				'fields' => $fields,
 				'sents'  => array_reverse( get_post_meta( $form->ID, FormType::POST_META_NAME_FORM_SENT ) ),
 			);
 		}
