@@ -1,0 +1,26 @@
+label: Form
+status: ready
+context:
+  fields:
+  - input: true
+    text: true
+    id: plz
+    name: plz
+    label: PLZ
+    style: 'width: calc(30% - 0.5em);'
+    wrapper_classes: a-input--custom-width
+    required: false
+    type: text
+    custom_width_start: true
+  - input: true
+    text: true
+    id: e_mail
+    name: e_mail
+    label: E-Mail
+    style: 'width: calc(70% - 0.5em);'
+    wrapper_classes: a-input--custom-width
+    helptext: This field is required
+    required: true
+    type: email
+    custom_width_end: true
+

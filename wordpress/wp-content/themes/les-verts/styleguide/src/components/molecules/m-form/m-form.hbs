@@ -1,0 +1,17 @@
+<form action="#" class="m-form">
+	{{#each fields}}
+		{{#if custom_width_start}}<div class="m-form__custom-width-block">{{/if}}
+
+		{{#if this.select}}
+
+		{{/if}}
+		{{#if this.checkoption}}
+
+		{{/if}}
+		{{#if this.input}}
+			{{> @a-input this}}
+		{{/if}}
+
+		{{#if custom_width_end}}</div>{{/if}}
+	{{/each}}
+</form>

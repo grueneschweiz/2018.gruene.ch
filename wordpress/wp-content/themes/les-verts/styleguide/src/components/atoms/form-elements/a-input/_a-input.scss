@@ -61,4 +61,10 @@
 		padding-bottom: 0.5em;
 		height: 6em;
 	}
+
+	&__helptext {
+		font-size: 0.75em;
+		color: $color-grey-3;
+		margin-top: 0.4em;
+	}
 }
