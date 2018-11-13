@@ -31,6 +31,6 @@ Parameters:
 				 {% if checked %}checked="checked"{% endif %}>
 	{% endif %}
 	<label for="{{ id|default(name) }}" class="a-checkoption__label{% if 'radio' == type %} a-checkoption--option{% endif %} {{ modifiers_classes }}">
-		{{ label }}
+		{{ label|wptexturize }}
 	</label>
 </div>

@@ -14,7 +14,7 @@ Parameters:
 #}
 <div class="a-input{% if wrapper_classes %} {{ wrapper_classes }}{% endif %}"{% if style %} style="{{ style }}"{% endif %}>
 	<label for="{{ id|default(name) }}" class="a-input__label {% if required %}a-input__label--required{% endif %}">
-		{{ label }}
+		{{ label|wptexturize }}
 	</label>
 	{% if 'textarea' == type %}
 		<textarea id="{{ id|default(name) }}"
@@ -31,6 +31,6 @@ Parameters:
 			{% if required %}required="required"{% endif %}>
 	{% endif %}
 	{% if helptext %}
-		<div class="a-input__helptext">{{ helptext }}</div>
+		<div class="a-input__helptext">{{ helptext|wptexturize }}</div>
 	{% endif %}
 </div>
