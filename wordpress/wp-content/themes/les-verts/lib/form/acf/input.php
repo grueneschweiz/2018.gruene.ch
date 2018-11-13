@@ -45,6 +45,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 					'textarea' => 'Textarea',
 					'radio'    => 'Radio button',
 					'checkbox' => 'Check box',
+					'select'   => 'Drop down'
 				),
 				'default_value'     => array(
 					0 => 'text',
@@ -93,11 +94,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 				'label'             => 'Choices',
 				'name'              => 'form_input_choices',
 				'type'              => 'textarea',
-				'instructions'      => 'Enter each choice on a new line.
-	
-	For more control, you may specify both a value and label like this:
-	
-	red : Red',
+				'instructions'      => 'Enter each choice on a new line.',
 				'required'          => 1,
 				'conditional_logic' => array(
 					array(
@@ -112,6 +109,13 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 							'field'    => 'field_59f33814cf0dc',
 							'operator' => '==',
 							'value'    => 'checkbox',
+						),
+					),
+					array(
+						array(
+							'field'    => 'field_59f33814cf0dc',
+							'operator' => '==',
+							'value'    => 'select',
 						),
 					),
 				),
