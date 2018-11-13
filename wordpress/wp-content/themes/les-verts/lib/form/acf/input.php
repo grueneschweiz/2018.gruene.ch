@@ -150,11 +150,6 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 							'operator' => '!=',
 							'value'    => 'checkbox',
 						),
-						array(
-							'field'    => 'field_59f33814cf0dc',
-							'operator' => '!=',
-							'value'    => 'confirmation',
-						),
 					),
 				),
 				'wrapper'           => array(
@@ -167,30 +162,6 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 				'ui'                => 1,
 				'ui_on_text'        => '',
 				'ui_off_text'       => '',
-			),
-			array(
-				'key' => 'field_wo4ttvejawjvx',
-				'label' => 'Required',
-				'name' => '',
-				'type' => 'message',
-				'instructions' => '',
-				'required' => 0,
-				'conditional_logic' => array(
-					array(
-						array(
-							'field'    => 'field_59f33814cf0dc',
-							'operator' => '==',
-							'value'    => 'confirmation',
-						),
-					),
-				),
-				'wrapper' => array(
-					'width' => '50',
-					'class' => '',
-					'id' => '',
-				),
-				'message' => 'This field is always mandatory.',
-				'esc_html' => 0,
 			),
 			array(
 				'key'               => 'field_59f338a0cf0df',

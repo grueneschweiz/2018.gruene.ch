@@ -1,16 +1,19 @@
-<div class="a-select">
+<div class="a-select {{ modifiers_classes }}">
 	<label for="{{ id }}" class="a-select__label {{#if required}}a-select__label--required{{/if}}">
 		{{ label }}
 	</label>
 	<div class="a-select__background">
 		<select id="{{ id }}"
-						class="a-select__field {{ modifiers_classes }}"
+						class="a-select__field"
 						name="{{ name }}"
 			{{ required }}>
-			<option value=""></option>
+			<option value=""> </option>
 			{{#each options}}
 				<option value="{{this.value}}"{{#if selected}} selected{{/if}}>{{this.label}}</option>
 			{{/each}}
 		</select>
 	</div>
+	{{#if helptext}}
+		<div class="a-select__helptext">{{ helptext }}</div>
+	{{/if}}
 </div>

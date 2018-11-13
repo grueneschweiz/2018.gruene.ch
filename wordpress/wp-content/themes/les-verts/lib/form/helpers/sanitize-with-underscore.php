@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Little helper function to sanitize a sring
+ * Little helper function to sanitize a string
  * with underscores instead of dashes.
  *
  * @param    string $string The string to sanitize

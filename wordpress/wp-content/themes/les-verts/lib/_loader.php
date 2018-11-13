@@ -164,6 +164,7 @@ require_once __DIR__ .'/twig/filters/social_link.php';
 require_once __DIR__ .'/twig/filters/hexencode.php';
 require_once __DIR__ .'/twig/filters/nice_link.php';
 require_once __DIR__ .'/twig/filters/wptexturize.php';
+require_once __DIR__ .'/twig/filters/slugify.php';
 
 /**
  * FORM LIBRARY
