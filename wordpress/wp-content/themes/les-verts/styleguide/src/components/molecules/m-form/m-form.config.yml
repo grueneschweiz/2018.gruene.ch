@@ -1,6 +1,14 @@
 label: Form
 status: wip
 context:
+  submit: Informiert bleiben
+  submit_byline: Ich abonniere den Newsletter.
+  submitting: Senden...
+  success_title: Vielen Dank!
+  success_body: Schon bald erhälst du unseren Newsletter :)
+  error_title: Uups, da ist etwas schief gelaufen
+  error_body: Bitte kontaktiere uns, falls das Problem nochmals vor kommt.
+  privacy_policy: Ich stimme der Datenverarbeitung gemäss Datenschutzbestimmung zu.
   fields:
   - input: true
     text: true
