@@ -2,12 +2,32 @@
 	{{#each fields}}
 		{{#if custom_width_start}}<div class="m-form__custom-width-block">{{/if}}
 
+		{{#if this.confirmation}}
+			{{> @a-checkoption this}}
+		{{/if}}
+
 		{{#if this.select}}
-
+			{{> @a-select this}}
 		{{/if}}
-		{{#if this.checkoption}}
 
+		{{#if this.checkbox}}
+				<div class="m-form__checks-label">{{this.label}}</div>
+				<fieldset class="m-form__checks-fieldset">
+					{{#each this.options}}
+						{{> @a-checkoption this}}
+					{{/each}}
+				</fieldset>
 		{{/if}}
+
+		{{#if this.option}}
+			<div class="m-form__option-label">{{this.label}}</div>
+			<fieldset class="m-form__option-fieldset">
+				{{#each this.options}}
+					{{> @a-checkoption this}}
+				{{/each}}
+			</fieldset>
+		{{/if}}
+
 		{{#if this.input}}
 			{{> @a-input this}}
 		{{/if}}

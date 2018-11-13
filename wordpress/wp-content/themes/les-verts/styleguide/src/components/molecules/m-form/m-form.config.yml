@@ -1,5 +1,5 @@
 label: Form
-status: ready
+status: wip
 context:
   fields:
   - input: true
@@ -23,4 +23,58 @@ context:
     required: true
     type: email
     custom_width_end: true
+  - label: Thirsty?
+    option: true
+    options:
+    - name: thirsty
+      value: beer
+      label: Beer
+      id: beer
+      option: true
+      modifiers:
+        - option
+    - name: thirsty
+      value: wine
+      label: Wine
+      id: wine
+      option: true
+      modifiers:
+        - option
+    - name: thirsty
+      value: schnaps
+      label: Schnaps
+      id: schnaps
+      option: true
+      modifiers:
+        - option
+  - label: Hungry?
+    checkbox: true
+    options:
+    - name: apero
+      label: Apero
+      id: apero
+    - name: main
+      label: Main course
+      id: main
+    - name: dessert
+      label: Dessert
+      id: dessert
+  - label: Select Payment Method
+    select: true
+    id: payment
+    name: payment
+    required: true
+    options:
+      - value: cash
+        label: Cash
+      - value: card
+        label: Card
+  - label: I accept to get drunken reading the GDPR
+    name: gdpr
+    confirmation: true
+    id: gdpr
+    modifiers:
+      - legal
+
+
 
