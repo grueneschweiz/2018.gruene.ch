@@ -2,7 +2,7 @@ import BaseView from 'base-view';
 
 const SUBMIT_BUTTON_SELECTOR = '[data-form-submit]';
 const SUBMIT_WRAPPER_SELECTOR = '.m-form__submit-wrapper';
-const SUCESS_MESSAGE_SELECTOR = '.m-form__message--success';
+const SUCCESS_MESSAGE_SELECTOR = '.m-form__message--success';
 const ERROR_MESSAGE_SELECTOR = '.m-form__message--failure';
 
 const HIDDEN_STATE = 'is-hidden';
@@ -44,14 +44,23 @@ export default class MForm extends BaseView {
 		let url = this.element.action;
 		let data = new FormData( this.element );
 
-		// inject wordpress action
+		/**
+		 * append the following data in JS, so we have a first spam barrier
+		 */
+		// add wordpress action
 		data.append( 'action', 'supt_form_submit' );
+
+		// add nonce
+		data.append( 'nonce', this.element.dataset.nonce );
+
+		// add form id
+		data.append( 'form_id', this.element.dataset.formId );
 
 		this.ajax( url, 'POST', data )
 			.then( resp => {
 				// todo: handle server validation
 				let submitWrapper = this.getScopedElement( SUBMIT_WRAPPER_SELECTOR );
-				let successMessage = this.getScopedElement( SUCESS_MESSAGE_SELECTOR );
+				let successMessage = this.getScopedElement( SUCCESS_MESSAGE_SELECTOR );
 				this.addClass( submitWrapper, HIDDEN_STATE );
 				this.addClass( successMessage, SHOWN_STATE );
 			} )
@@ -89,9 +98,9 @@ export default class MForm extends BaseView {
 			xhr.onreadystatechange = function() {
 				if (xhr.readyState === 4) {
 					if (xhr.status === 200) {
-						let resp = xhr.responseText;
-						let respJson = JSON.parse( resp );
-						resolve( respJson );
+						let raw = xhr.responseText;
+						let resp = raw ? JSON.parse( raw ) : {};
+						resolve( resp );
 					} else {
 						reject( xhr.status );
 					}

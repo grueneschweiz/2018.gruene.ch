@@ -6,27 +6,49 @@
 class FormSubmission {
 	
 	const ACTION_BASE_NAME = 'supt-form';
-	const RECAPTCHA_VERIFY_URL = 'https://www.google.com/recaptcha/api/siteverify';
+	
+	/**
+	 * The form post
+	 *
+	 * @var int
+	 */
+	private $form_id;
+	
+	/**
+	 * The response status code
+	 *
+	 * @var int
+	 */
+	private $status;
+	
+	/**
+	 * The form data
+	 *
+	 * @var array
+	 */
+	private $data;
+	
+	/**
+	 * The validation errors
+	 *
+	 * @var array
+	 */
+	private $errors;
 	
 	function __construct() {
-		$this->status  = 400;
-		$this->data    = false;
-		$this->errors  = false;
-		$this->is_ajax = ( defined( 'DOING_AJAX' ) && DOING_AJAX );
-		
 		$this->register_actions();
 	}
 	
 	private function register_actions() {
-		add_action( 'wp_ajax_supt_form_submit',array( $this, 'handle_submit' ) );
-		add_action( 'wp_ajax_nopriv_supt_form_submit', array( $this, 'handle_submit' ));
+		add_action( 'wp_ajax_supt_form_submit', array( $this, 'handle_submit' ) );
+		add_action( 'wp_ajax_nopriv_supt_form_submit', array( $this, 'handle_submit' ) );
 		
 		if ( ! WP_DEBUG && get_field( 'form_smtp_enabled', 'options' ) ) {
-			add_action( 'phpmailer_init', array( $this, 'setupSMTP' ) );
+			add_action( 'phpmailer_init', array( $this, 'setup_SMTP' ) );
 		}
 	}
 	
-	public function setupSMTP( $phpmailer ) {
+	public function setup_SMTP( $phpmailer ) {
 		$config = get_field( 'form_smtp', 'options' );
 		$phpmailer->isSMTP();
 		$phpmailer->Host     = $config['host'];
@@ -37,51 +59,22 @@ class FormSubmission {
 	}
 	
 	public function handle_submit() {
-		var_dump($_REQUEST); die();
+		$this->form_id = (int) $_POST['form_id'];
 		
-		if ( ! ( isset( $_REQUEST['_supt_action'] ) && strpos( $_REQUEST['_supt_action'],
-				self::ACTION_BASE_NAME ) !== false ) ) {
-			return;
-		}
-		
-		$this->action_name = $_REQUEST['_supt_action'];
-		
-		// Retrieve the form id from the action and check if the post type is correct
-		$this->id = (int) str_replace( self::ACTION_BASE_NAME . '_', '', $this->action_name );
-		if ( get_post_type( $this->id ) !== \SUPT\FormType::MODEL_NAME ) {
-			return;
-		}
-		
-		// define if it's an ajax request
-		$this->is_ajax = ( isset( $_REQUEST['ajx'] ) && $_REQUEST['ajx'] );
-		
-		if ( ! $this->isSecure() ) {
+		if ( ! $this->is_submission_valid() ) {
+			$this->errors[] = 'Submission not valid.';
+			$this->status   = 400;
+			
 			$this->response();
 			
 			return;
 		}
 		
-		$this->validateRecaptcha();
-		if ( ! empty( $this->errors ) ) {
-			$this->response();
-			
-			return;
-		}
-		
-		// Validate inputs and stop process if any error
-		$this->filterSanitizeValidate();
-		if ( ! empty( $this->errors ) ) {
-			$this->response();
-			
-			return;
-		}
-		
-		$sendMethod = get_field( 'which_type_of_form', $this->id );
+		$this->add_data();
+		//$this->validate_data();
 		
 		$this->status = 200;
 		$this->save_submission();
-		
-		$subscribed = $this->subscribe_campaign_monitor();
 		
 		// TODO check names of ACF
 		if ( in_array( $sendMethod, array( 'email', 'news' ) ) ) {
@@ -116,19 +109,60 @@ class FormSubmission {
 		$this->response();
 	}
 	
-	private function isSecure() {
-		if ( $this->is_ajax ) {
-			$isSecure = check_ajax_referer( $this->action_name, false, false );
-		} else {
-			$isSecure = wp_verify_nonce( $_REQUEST['_wpnonce'], $this->action_name );
+	/**
+	 * Populate data field with sanitized form data.
+	 */
+	private function add_data() {
+		$whitelist = $this->get_field_whitelist();
+		
+		foreach($whitelist as $field) {
+			$this->data[] = $_POST[$field];
 		}
 		
-		if ( ! $isSecure ) {
-			$this->status           = 403;
-			$this->errors['global'] = true;
+		// todo: sanitize data
+		
+		var_dump( $this->data );
+		wp_die();
+	}
+	
+	/**
+	 * Return the field names, that should be present in the submitted data
+	 */
+	private function get_field_whitelist() {
+		// the fields defined in the form builder on the backend
+		$fields = get_field_objects( $this->form_id )['form_fields']['value'];
+		
+		$names = [];
+		foreach ( $fields as $field ) {
+			$label   = $field['form_input_label'];
+			$names[] = sanitize_title( $label ); // as used in the slugify twig function
 		}
 		
-		return $isSecure;
+		return $names;
+	}
+	
+	/**
+	 * Check if form is submitted using ajax, has a valid nonce and form id
+	 *
+	 * @return bool
+	 */
+	private function is_submission_valid() {
+		// check nonce
+		if ( ! wp_verify_nonce( $_POST['nonce'], self::ACTION_BASE_NAME ) ) {
+			return false;
+		}
+		
+		// only accept ajax submissions
+		if ( ! ( defined( 'DOING_AJAX' ) && DOING_AJAX ) ) {
+			return false;
+		}
+		
+		// check if form id corresponds to a form post type
+		if ( get_post_type( $this->form_id ) !== \SUPT\FormType::MODEL_NAME ) {
+			return false;
+		}
+		
+		return true;
 	}
 	
 	/**
@@ -219,44 +253,6 @@ class FormSubmission {
 		$this->data['timestamp'] = time();
 	}
 	
-	private function validateRecaptcha() {
-		if ( ! get_field( 'recaptcha_active', 'options' ) ) {
-			return true;
-		}
-		
-		if ( ! isset( $_REQUEST['g-recaptcha-response'] ) || empty( $_REQUEST['g-recaptcha-response'] ) ) {
-			error_log( 'FORM SUBMISSION - Missing reCAPTCHA token' );
-			$this->errors['global'] = true;
-		}
-		
-		// Init the request object
-		$ch = curl_init();
-		
-		// Set the request parameters
-		curl_setopt_array( $ch, array(
-			CURLOPT_URL            => self::RECAPTCHA_VERIFY_URL,
-			CURLOPT_HEADER         => false,
-			CURLOPT_POST           => true,
-			CURLOPT_RETURNTRANSFER => true,
-			CURLOPT_POSTFIELDS     => array(
-				"secret"   => get_field( 'recaptcha_secret_key', 'options' ),
-				"response" => $_REQUEST['g-recaptcha-response'],
-				"remoteip" => $_SERVER['REMOTE_ADDR'],
-			)
-		) );
-		
-		// Execute & close the request
-		$response = json_decode( curl_exec( $ch ) );
-		curl_close( $ch );
-		
-		if ( ! $response->success ) {
-			error_log( 'FORM SUBMISSION - Unenable to verify reCAPTCHA token' );
-			$this->errors['global'] = true;
-		}
-		
-		return empty( $this->errors );
-	}
-	
 	/**
 	 * Retrieve the params for the emails
 	 * from the form & global options
@@ -315,66 +311,18 @@ class FormSubmission {
 		}
 	}
 	
-	function subscribe_campaign_monitor() {
-		
-		$sendMethod = get_field( 'which_type_of_form', $this->id ); // email, cm, news
-		
-		if ( in_array( $sendMethod, array( 'cm', 'news' ) ) ) {
-			
-			$api = \CampaignMonitorAPI::getAPI();
-			
-			// if checkbox & is checked or no checkbox but do not notify
-			if ( $sendMethod == 'cm' || isset( $_REQUEST['subscribe_newsletter'] ) ) {
-				
-				$cmSettings   = get_field( 'campaign_monitor_settings', $this->id );
-				$sourceFields = $cmSettings['source_fields'];
-				// Retrieve email info
-				$emailFieldName = $sourceFields['email_field_source'];
-				$email          = $this->data[ $emailFieldName ];
-				
-				// Retrieve name info
-				
-				
-				$firstnameFieldName = $sourceFields['first_name_field_source'];
-				$lastnameFieldName  = $sourceFields['last_name_field_source'];
-				$name               = $this->data[ $firstnameFieldName ] . ( ! empty( $lastnameFieldName ) ? ' ' . $this->data[ $lastnameFieldName ] : '' );
-				
-				// Subscribe user
-				if ( ! ( empty( $email ) && empty( $name ) ) ) {
-					$cmListId = $cmSettings['subscribers_list'];
-					
-					return $api->addSubscriber( $cmListId, $email, $name );
-				}
-			}
-			
-		}
-		
-		return false;
-	}
-	
 	/**
-	 * Send the repsonse if ajax
-	 * or set the status in global variable
+	 * Send response and die
 	 */
 	private function response() {
-		if ( $this->is_ajax ) {
-			status_header( $this->status );
-			
-			if ( $this->status == 200 ) {
-				wp_send_json_success( $this->data );
-			} else {
-				wp_send_json_error( $this->errors );
-			}
-			
-			die();
+		status_header( $this->status );
+		
+		if ( $this->status == 200 ) {
+			wp_send_json_success( $this->data );
 		} else {
-			
-			if ( $this->status == 200 ) {
-				$GLOBALS[ self::ACTION_BASE_NAME ]['success'] = true;
-			} else {
-				$GLOBALS[ self::ACTION_BASE_NAME ]['status'] = $this->status;
-				$GLOBALS[ self::ACTION_BASE_NAME ]['errors'] = $this->errors;
-			}
+			wp_send_json_error( $this->errors );
 		}
+		
+		wp_die();
 	}
 }
