@@ -5,7 +5,9 @@
 			action="{{ fn('admin_url', 'admin-ajax.php') }}{# yes, this is the correct ajax url #}"
 			method="post"
 			enctype="multipart/form-data"
-			data-sending-lbl="{{ post.form_submitting }}">
+			data-sending-lbl="{{ post.form_submitting }}"
+			data-nonce="{{ fn('wp_create_nonce', 'supt-form') }}"
+			data-form-id="{{ post.id }}">
 	{% for field in fields %}
 		{% set custom_width = '' %}
 		{% set style = '' %}
@@ -127,7 +129,7 @@
 		</div>
 	{% endif %}
 
-	<div class="m-form__submit">
+	<div class="m-form__submit-wrapper">
 		<div class="m-form__submit-button">
 		{% include 'atoms/a-button.twig' with {
 			'modifiers': ['a-button--secondary'],
