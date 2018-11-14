@@ -1,4 +1,4 @@
-<form action="#" class="m-form">
+<form action="#" class="m-form" data-sending-lbl="{{ submitting }}">
 	{{#each fields}}
 		{{#if custom_width_start}}<div class="m-form__custom-width-block">{{/if}}
 
@@ -45,19 +45,18 @@
 		}}
 	</div>
 
-	<div class="m-form__submit">
+	<div class="m-form__submit-wrapper">
 		<div class="m-form__submit-button">
 			{{> @a-button label=submit js_hook='form-submit' modifiers='secondary'}}
 		</div>
 		<div class="m-form__submit-byline">{{ submit_byline }}</div>
-		<div class="m-form__submit-byline m-form__submit-byline--sending">{{ submitting }}</div>
 	</div>
 
-	<div class="m-form__message-success">
+	<div class="m-form__message m-form__message--success">
 		<h2 class="m-form__message-title">{{ success_title }}</h2>
 		<p class="m-form__message-body">{{ success_body }}</p>
 	</div>
-	<div class="m-form__message-failure">
+	<div class="m-form__message m-form__message--failure">
 		<h2 class="m-form__message-title">{{ error_title }}</h2>
 		<p class="m-form__message-body">{{ error_body }}</p>
 	</div>

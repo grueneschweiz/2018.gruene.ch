@@ -18,7 +18,8 @@ class FormSubmission {
 	}
 	
 	private function register_actions() {
-		add_action( 'init', array( $this, 'handle_submit' ) );
+		add_action( 'wp_ajax_supt_form_submit',array( $this, 'handle_submit' ) );
+		add_action( 'wp_ajax_nopriv_supt_form_submit', array( $this, 'handle_submit' ));
 		
 		if ( ! WP_DEBUG && get_field( 'form_smtp_enabled', 'options' ) ) {
 			add_action( 'phpmailer_init', array( $this, 'setupSMTP' ) );
@@ -36,6 +37,7 @@ class FormSubmission {
 	}
 	
 	public function handle_submit() {
+		var_dump($_REQUEST); die();
 		
 		if ( ! ( isset( $_REQUEST['_supt_action'] ) && strpos( $_REQUEST['_supt_action'],
 				self::ACTION_BASE_NAME ) !== false ) ) {

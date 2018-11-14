@@ -1,7 +1,11 @@
 {% set fields = post.get_field('form_fields') %}
 {% set custom_width_block_width = 0 %}
 
-<form class="m-form" action="#" method="post" enctype="multipart/form-data">
+<form class="m-form"
+			action="{{ fn('admin_url', 'admin-ajax.php') }}{# yes, this is the correct ajax url #}"
+			method="post"
+			enctype="multipart/form-data"
+			data-sending-lbl="{{ post.form_submitting }}">
 	{% for field in fields %}
 		{% set custom_width = '' %}
 		{% set style = '' %}
@@ -111,7 +115,7 @@
 	{% set privacy_policy_page_id = fn('get_option', 'wp_page_for_privacy_policy') %}
 	{% if privacy_policy_page_id %}
 		{% set privacy_policy_url = fn('get_permalink', privacy_policy_page_id) %}
-		{% set privacy_policy = '<a href="'~privacy_policy_url~'">'~__('privacy policy', constant('THEME_DOMAIN'))~'</a>' %}
+		{% set privacy_policy = '<a href="'~privacy_policy_url~'" target="_blank">'~__('privacy policy', constant('THEME_DOMAIN'))~'</a>' %}
 		<div class="m-form__privacy-policy">
 			{% include 'atoms/form-elements/a-checkoption.twig' with {
 				'name': 'privacy_policy',
@@ -128,18 +132,18 @@
 		{% include 'atoms/a-button.twig' with {
 			'modifiers': ['a-button--secondary'],
 			'js_hook': 'form-submit',
-			'label': post.form_submit
+			'label': post.form_submit,
+			'type': 'submit',
 		} only %}
 		</div>
 		<div class="m-form__submit-byline">{{ post.form_desc }}</div>
-		<div class="m-form__submit-byline m-form__submit-byline--sending">{{ post.form_submitting }}</div>
 	</div>
 
-	<div class="m-form__message-success">
+	<div class="m-form__message m-form__message--success">
 		<h2 class="m-form__message-title">{{ post.form_success_form_success_title|wptexturize }}</h2>
 		<p class="m-form__message-body">{{ post.form_success_form_success_text|wptexturize|wpautop }}</p>
 	</div>
-	<div class="m-form__message-failure">
+	<div class="m-form__message m-form__message--failure">
 		<h2 class="m-form__message-title">{{ __('Uups, something went wrong!', constant('THEME_DOMAIN')) }}</h2>
 		<p class="m-form__message-body">{{ __('Sorry, there was an error submitting this form. If the error persists, please contact us by email.', constant('THEME_DOMAIN')) }}</p>
 	</div>
