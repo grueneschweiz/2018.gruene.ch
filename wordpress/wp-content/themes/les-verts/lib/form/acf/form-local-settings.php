@@ -44,7 +44,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 			array(
 				'key' => 'field_5be2ec792f8cb',
 				'label' => __('Mail', THEME_DOMAIN),
-				'name' => '',
+				'name' => 'form_confirmation_mail',
 				'type' => 'group',
 				'instructions' => '',
 				'required' => 0,
@@ -65,21 +65,13 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 				'layout' => 'block',
 				'sub_fields' => array(
 					array(
-						'key' => 'field_5be2e9d9b43c4',
+						'key' => 'field_5bf2bc9461f40',
 						'label' => '',
 						'name' => 'form_confirmation_template',
 						'type' => 'clone',
 						'instructions' => '',
 						'required' => 0,
-						'conditional_logic' => array(
-							array(
-								array(
-									'field' => 'field_5be2e6b40fefa',
-									'operator' => '==',
-									'value' => '1',
-								),
-							),
-						),
+						'conditional_logic' => 0,
 						'wrapper' => array(
 							'width' => '',
 							'class' => '',
@@ -89,7 +81,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 							0 => 'group_5be2e2d8a21b0',
 						),
 						'display' => 'seamless',
-						'layout' => 'block',
+						'layout' => '',
 						'prefix_label' => 0,
 						'prefix_name' => 0,
 					),
@@ -133,7 +125,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 			array(
 				'key' => 'field_5be2ecc92f8cc',
 				'label' => __('Mail', THEME_DOMAIN),
-				'name' => '',
+				'name' => 'form_notification_mail',
 				'type' => 'group',
 				'instructions' => '',
 				'required' => 0,
@@ -172,21 +164,13 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 						'append' => '',
 					),
 					array(
-						'key' => 'field_5be2e954b43c2',
+						'key' => 'field_5bf2bdfc61f42',
 						'label' => '',
-						'name' => 'form_confirmation_template',
+						'name' => 'form_notification_template',
 						'type' => 'clone',
 						'instructions' => '',
 						'required' => 0,
-						'conditional_logic' => array(
-							array(
-								array(
-									'field' => 'field_5be2e7620fefb',
-									'operator' => '==',
-									'value' => '1',
-								),
-							),
-						),
+						'conditional_logic' => 0,
 						'wrapper' => array(
 							'width' => '',
 							'class' => '',

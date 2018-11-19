@@ -10,7 +10,6 @@ class FormType extends Model {
 	
 	const MODEL_NAME = 'theme_form';
 	const COLUMN_FIELD_NAME = 'fields';
-	const POST_META_NAME_FORM_SENT = 'form_sent';
 	
 	static function register_type() {
 		self::register_post_type();
@@ -176,7 +175,7 @@ class FormType extends Model {
 				'id'     => $form->ID,
 				'title'  => $form->post_title,
 				'fields' => $fields,
-				'sents'  => array_reverse( get_post_meta( $form->ID, FormType::POST_META_NAME_FORM_SENT ) ),
+				'sents'  => array_reverse( get_post_meta( $form->ID, FormType::MODEL_NAME ) ),
 			);
 		}
 		

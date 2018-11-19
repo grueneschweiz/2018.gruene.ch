@@ -89,38 +89,99 @@ class FormSubmission {
 		
 		$this->status = 200;
 		$this->save_submission();
-		
-		// TODO check names of ACF
-		if ( in_array( $sendMethod, array( 'email', 'news' ) ) ) {
-			$email = $this->getEmailParams();
-			
-			// Sends emails
-			try {
-				// Notification
-				$sent1 = supt_form_send_email( $email['to'], $email['from'], $email['notif']['subject'],
-					$email['notif']['template'], $this->data );
-				
-				// Auto Reply
-				$sent2 = true;
-				if ( isset( $this->autoReplyEmail ) ) {
-					$sent2 = supt_form_send_email( $this->autoReplyEmail, $email['from'], $email['autoreply']['subject'],
-						$email['autoreply']['template'], $this->data );
-				}
-			} catch ( Exception $e ) {
-				error_log( 'FORM SUBMISSION - Exception thrown while sending a form: ' . $e );
-				$this->error['global'] = true;
-				$this->status          = 500;
-			}
-			
-			
-			if ( ! ( isset( $sent1 ) && $sent1 && isset( $sent2 ) && $sent2 ) ) {
-				error_log( 'FORM SUBMISSION - Error while sending a form.' );
-				$this->error['global'] = true;
-				$this->status          = 500;
-			}
-		}
+		$this->send_notifications();
 		
 		$this->response();
+	}
+	
+	private function send_notifications() {
+		/**
+		 * Filters the submitted data, before notifications are sent.
+		 *
+		 * @param array $data the form data
+		 */
+		$data = (array) apply_filters( \SUPT\FormType::MODEL_NAME.'-before-email-notification', $this->data);
+		
+		/**
+		 * Fires before the email notifications are sent.
+		 *
+		 * @param array $data the form data
+		 */
+		do_action( \SUPT\FormType::MODEL_NAME.'-send-email-notification', $data );
+		
+		$fields = get_field_objects( $this->form_id );
+		
+		$confirmation = $fields['form_send_confirmation'];
+		$notification = $fields['form_send_notification'];
+		
+		if (!$confirmation['value'] &&!$notification['value']) {
+			// nothing to send
+			return;
+		}
+		
+		$sender_name = $fields['form_sender_name']['value'];
+		
+		/**
+		 * Filters the sender address of email notifications
+		 *
+		 * @param array $data the form data
+		 */
+		$from = apply_filters( \SUPT\FormType::MODEL_NAME.'-email-from', "$sender_name <noreply@{$this->get_domain()}>");
+		
+		$reply_to = $fields['form_reply_to']['value'];
+		$confirmation_to = $this->determine_confirmation_email_address();
+		
+		if ( $confirmation['value'] && $confirmation_to ) {
+			supt_form_send_email(
+				$confirmation_to,
+				$from,
+				$reply_to,
+				$confirmation['value']['form_mail_subject'],
+				$confirmation['value']['form_mail_template'],
+				$this->data
+			);
+		}
+		
+		if ($notification['value']) {
+			supt_form_send_email(
+				$notification['value']['form_confirmation_destination'],
+				$from,
+				$reply_to,
+				$notification['value']['form_mail_subject'],
+				$notification['value']['form_mail_template'],
+				$this->data
+			);
+		}
+	}
+	
+	/**
+	 * Return domain of current blog
+	 */
+	private function get_domain() {
+		$url = get_site_url();
+		preg_match("/^https?:\/\/(www.)?([^\/?:]*)/", $url, $matches);
+		if ($matches && is_array($matches)) {
+			return $matches[count($matches)-1];
+		}
+		
+		new WP_Error('cant-get-domain', 'The domain could not be parsed from the site url', $url);
+	}
+	
+	/**
+	 * Return the value of the first non empty field with type email
+	 *
+	 * @return bool|string
+	 */
+	private function determine_confirmation_email_address() {
+		foreach($this->get_fields() as $field) {
+			if ('email' === $field['form_input_type']) {
+				$field_slug = $this->slugify($field['form_input_label']);
+				if (empty( $this->data[$field_slug])) {
+					return $this->data[$field_slug];
+				}
+			}
+		}
+		return false;
 	}
 	
 	/**
@@ -285,58 +346,16 @@ class FormSubmission {
 	}
 	
 	/**
-	 * Retrieve the params for the emails
-	 * from the form & global options
-	 *
-	 * @return  array    The email params
-	 */
-	private function getEmailParams() {
-		
-		// Retrieve options from form
-		$to        = get_field( 'form_email_to', $this->id );
-		$fromName  = get_field( 'form_name_from', $this->id );
-		$fromEmail = get_field( 'form_email_from', $this->id );
-		$notif     = get_field( 'form_notif', $this->id );
-		$autoreply = get_field( 'form_autoreply', $this->id );
-		
-		// If options empty retrieve global options
-		if ( empty( $to ) ) {
-			$to = get_field( 'form_email_to', 'options' );
-		}
-		if ( empty( $fromName ) ) {
-			$fromName = get_field( 'form_name_from', 'options' );
-		}
-		if ( empty( $fromEmail ) ) {
-			$fromEmail = get_field( 'form_email_from', 'options' );
-		}
-		
-		$optNotif          = get_field( 'form_notif', 'options' );
-		$notif['subject']  = empty( $notif['form_notif_subject'] ) ? $optNotif['form_notif_subject'] : $notif['form_notif_subject'];
-		$notif['template'] = empty( $notif['form_notif_template'] ) ? $optNotif['form_notif_template'] : $notif['form_notif_template'];
-		
-		$optAutoreply          = get_field( 'form_autoreply', 'options' );
-		$autoreply['subject']  = empty( $autoreply['form_autoreply_subject'] ) ? $optAutoreply['form_autoreply_subject'] : $autoreply['form_autoreply_subject'];
-		$autoreply['template'] = empty( $autoreply['form_autoreply_template'] ) ? $optAutoreply['form_autoreply_template'] : $autoreply['form_autoreply_template'];
-		
-		if ( ! empty( $fromName ) ) {
-			$from = "$fromName <$fromEmail>";
-		} else {
-			$from = $fromEmail;
-		}
-		
-		return array(
-			'to'        => $to,
-			'from'      => $from,
-			'notif'     => $notif,
-			'autoreply' => $autoreply,
-		);
-	}
-	
-	/**
 	 * Persist form submission data
 	 */
 	function save_submission() {
-		add_post_meta( $this->form_id, \SUPT\FormType::POST_META_NAME_FORM_SENT, $this->data );
+		/**
+		 * Filters the submitted data, before it's persisted.
+		 *
+		 * @param array $this->data
+		 */
+		$data = (array) apply_filters(\SUPT\FormType::MODEL_NAME.'-before-save', $this->data);
+		add_post_meta( $this->form_id, \SUPT\FormType::MODEL_NAME, $data );
 	}
 	
 	/**
@@ -348,6 +367,7 @@ class FormSubmission {
 		if ( $this->status == 200 ) {
 			wp_send_json_success( $this->data );
 		} else {
+			// todo: nice validation errors in FE
 			wp_send_json_error( $this->errors );
 		}
 		

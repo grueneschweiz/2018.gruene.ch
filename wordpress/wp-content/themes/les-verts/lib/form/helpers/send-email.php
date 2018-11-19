@@ -1,6 +1,6 @@
 <?php
 /**
- * Send emai with with the body rendered from a twig template string
+ * Send email with with the body rendered from a twig template string
  *
  * @param  string|array $to Array or comma-separated list of email addresses to send message.
  * @param  string $from Array or comma-separated list of email addresses to send message.
@@ -10,11 +10,12 @@
  * @param  array $headers Optional. Additional headers.
  * @param  string|array $attachments Optional. Files to attach.
  *
- * @return bool                      Whether the email contents were sent successfully.
+ * @return bool Whether the email contents were sent successfully.
  */
 function supt_form_send_email(
 	$to,
 	$from,
+	$reply_to,
 	$subject,
 	$template,
 	$data = array(),
@@ -29,6 +30,7 @@ function supt_form_send_email(
 	$headers = array_merge(
 		array(
 			"From: $from",
+			"Reply-To: $reply_to",
 			'Content-Type: text/html; charset=UTF-8'
 		),
 		$headers
