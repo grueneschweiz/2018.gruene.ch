@@ -47,8 +47,8 @@ class FormSubmission {
 	}
 	
 	private function register_actions() {
-		add_action( 'wp_ajax_supt_form_submit',array( $this, 'handle_submit' ) );
-		add_action( 'wp_ajax_nopriv_supt_form_submit', array( $this, 'handle_submit' ));
+		add_action( 'wp_ajax_supt_form_submit', array( $this, 'handle_submit' ) );
+		add_action( 'wp_ajax_nopriv_supt_form_submit', array( $this, 'handle_submit' ) );
 		
 		if ( ! WP_DEBUG && get_field( 'form_smtp_enabled', 'options' ) ) {
 			add_action( 'phpmailer_init', array( $this, 'setup_SMTP' ) );
@@ -71,15 +71,21 @@ class FormSubmission {
 		if ( ! $this->is_submission_valid() ) {
 			$this->errors[] = 'Submission not valid.';
 			$this->status   = 400;
-			
 			$this->response();
 			
 			return;
 		}
 		
+		// get and validate data from request
 		$this->add_data();
 		
-		// todo: check for errors
+		// if there were some validation errors
+		if ( $this->errors ) {
+			$this->status = 400;
+			$this->response();
+			
+			return;
+		}
 		
 		$this->status = 200;
 		$this->save_submission();
@@ -121,25 +127,31 @@ class FormSubmission {
 	 * Populate data field with validated and sanitized form data.
 	 */
 	private function add_data() {
-		$whitelist = array_keys($this->get_fields());
+		$whitelist = array_keys( $this->get_fields() );
 		
-		foreach($whitelist as $field) {
-			// get data
-			$raw = trim($_POST[$field]);
-			
-			// sanitize and validate
-			$type = $this->get_fields()[$field]['form_input_type'];
-			$choices = $this->get_fields()[$field]['form_input_choices'];
-			$options = explode("\n", trim($choices));
-			$required = $this->get_fields()[$field]['form_input_required'];
-			$sanitized = $this->sanitize($raw, $type);
-			$valid = $this->validate($sanitized, $type, $options, $required, $message = '');
-			
-			if (!$valid) {
-				$this->errors[$field] = $message;
+		foreach ( $whitelist as $field ) {
+			if ( ! array_key_exists( $field, $_POST ) ) {
+				// if field was not transmitted
+				$this->errors[ $field ] = __( 'Missing data.', THEME_DOMAIN );
+				continue;
 			}
 			
-			$this->data[$field] = $sanitized;
+			// get data
+			$raw = trim( $_POST[ $field ] );
+			
+			// sanitize and validate
+			$type      = $this->get_fields()[ $field ]['form_input_type'];
+			$choices   = $this->get_fields()[ $field ]['form_input_choices'];
+			$options   = array_map( 'trim', explode( "\n", $choices ) );
+			$required  = $this->get_fields()[ $field ]['form_input_required'];
+			$sanitized = $this->sanitize( $raw, $type );
+			$valid     = $this->validate( $sanitized, $type, $options, $required );
+			
+			if ( true !== $valid ) {
+				$this->errors[ $field ] = $valid;
+			}
+			
+			$this->data[ $field ] = $sanitized;
 		}
 	}
 	
@@ -150,37 +162,36 @@ class FormSubmission {
 	 * @param string $type possible values: checkbox, confirmation, radio, select, email, phone, text, textarea
 	 * @param array $options possible values for select and radio fields
 	 * @param bool $required
-	 * @param string $message used to return an error message
 	 *
 	 * @return bool
 	 */
-	private function validate($data, $type, $options, $required, &$message) {
-		$valid = true;
-		$message = __('Invalid input.', THEME_DOMAIN);
+	private function validate( $data, $type, $options, $required ) {
+		$valid   = true;
+		$message = __( 'Invalid input.', THEME_DOMAIN );
 		
-		switch ($type) {
+		switch ( $type ) {
 			case 'checkbox':
 			case 'confirmation':
-				$valid = filter_var($data, FILTER_VALIDATE_BOOLEAN);
+				$valid = true;
 				break;
-				
+			
 			case 'radio':
 			case 'select':
-				$valid = in_array($data, $options);
+				$valid = in_array( $data, $options );
 				break;
-				
+			
 			case 'email':
-				$valid = filter_var($data, FILTER_VALIDATE_EMAIL);
-				$message = __('Invalid email.', THEME_DOMAIN);
+				$valid   = filter_var( $data, FILTER_VALIDATE_EMAIL );
+				$message = __( 'Invalid email.', THEME_DOMAIN );
 				break;
 		}
 		
-		if ($required && empty(trim($data))) {
-			$valid = false;
-			$message = __('This field is required.', THEME_DOMAIN);
+		if ( $required && empty( trim( $data ) ) ) {
+			$valid   = false;
+			$message = __( 'This field is required.', THEME_DOMAIN );
 		}
 		
-		return (bool) $valid;
+		return (bool) $valid ? (bool) $valid : $message;
 	}
 	
 	/**
@@ -193,21 +204,22 @@ class FormSubmission {
 	 *
 	 * @return bool|string
 	 */
-	private function sanitize($data, $type) {
-		switch ($type) {
+	private function sanitize( $data, $type ) {
+		switch ( $type ) {
 			case 'checkbox':
 			case 'confirmation':
-				return empty($data);
+				return filter_var( $data, FILTER_VALIDATE_BOOLEAN );
 			case 'radio':
 			case 'select':
 				return $data;
 			case 'phone':
 				$allowed = '\d\+ -';
-				return preg_replace("/[^${allowed}]/", '', $data);
+				
+				return preg_replace( "/[^${allowed}]/", '', $data );
 			case 'email':
-				return filter_var($data, FILTER_SANITIZE_EMAIL);
+				return filter_var( $data, FILTER_SANITIZE_EMAIL );
 			default:
-				return strip_tags($data);
+				return strip_tags( $data );
 		}
 	}
 	
@@ -217,16 +229,35 @@ class FormSubmission {
 	 * @return array
 	 */
 	private function get_fields() {
-		if (!$this->fields) {
+		if ( ! $this->fields ) {
 			$fields = get_field_objects( $this->form_id )['form_fields']['value'];
 			
-			foreach( $fields as $field ) {
-				$key = sanitize_title($field['form_input_label']); // as used in the slugify twig function
-				$this->fields[$key] = $field;
+			foreach ( $fields as $field ) {
+				if ( 'checkbox' === $field['form_input_type'] ) {
+					$labels = explode( "\n", $field['form_input_choices'] );
+					foreach ( $labels as $label ) {
+						$key                  = $this->slugify( $label );
+						$this->fields[ $key ] = $field;
+					}
+				} else {
+					$key                  = $this->slugify( $field['form_input_label'] );
+					$this->fields[ $key ] = $field;
+				}
 			}
 		}
 		
 		return $this->fields;
+	}
+	
+	/**
+	 * Transform given string in slug (as used in the slugify twig function)
+	 *
+	 * @param $string
+	 *
+	 * @return string
+	 */
+	private function slugify( $string ) {
+		return sanitize_title( trim( $string ) );
 	}
 	
 	/**
@@ -251,94 +282,6 @@ class FormSubmission {
 		}
 		
 		return true;
-	}
-	
-	/**
-	 * Filter, sanitize & validate the data accordingly to the
-	 * registered fields linked to this form
-	 */
-	private function filterSanitizeValidate() {
-		
-		$fields      = get_field( 'fields', $this->id );
-		$conf_fields = get_field( 'confirmation_fields', $this->id );
-		
-		if ( ! is_array( $conf_fields ) ) {
-			$conf_fields = array();
-		}
-		for ( $i = 0; $i < count( $conf_fields ); $i ++ ) {
-			$conf_fields[ $i ]['type'] = 'checkbox';
-			// $conf_fields[$i]['required'] = false; // commented: this is now set in the admin
-		}
-		
-		foreach ( array_merge( $fields, $conf_fields ) as $field ) {
-			$name = ( empty( $field['name'] ) ? supt_form_sanitize_with_underscore( $field['label'] ) : $field['name'] );
-			
-			// if not existing & required, add an error
-			if ( ! isset( $_REQUEST[ $name ] ) && $field['required'] ) {
-				$this->errors[ $name ][] = pll__( 'Mandatory field' );
-				continue;
-			}
-			
-			// if not existing & not required, maybe do stuff
-			if ( ! isset( $_REQUEST[ $name ] ) ) {
-				switch ( $field['type'] ) {
-					case 'checkbox':
-						$_REQUEST[ $name ] = "no";
-						break;
-					
-					default:
-						continue;
-						break;
-				}
-			}
-			
-			switch ( $field['type'] ) {
-				case 'email':
-					if ( ! empty( $_REQUEST[ $name ] ) && ! is_email( $_REQUEST[ $name ] ) ) {
-						$this->errors[ $name ][] = pll__( 'Invalid email address' );
-					}
-					$this->data[ $name ]  = sanitize_email( $_REQUEST[ $name ] );
-					$this->autoReplyEmail = $this->data[ $name ];
-					break;
-				
-				case 'number':
-					$this->data[ $name ] = (int) $_REQUEST[ $name ];
-					break;
-				
-				case 'checkbox':
-					if ( is_array( $_REQUEST[ $name ] ) && isset( $field['choices'] ) ) {
-						$choices = supt_form_parse_field_choices( $field['choices'] );
-						
-						foreach ( $_REQUEST[ $name ] as $value ) {
-							$this->data[ $name ][ $value ] = $choices[ $value ];
-						}
-						
-					} else {
-						$this->data[ $name ] = empty( $_REQUEST[ $name ] ) ? "yes" : $_REQUEST[ $name ];
-					}
-					break;
-				case 'radio':
-					$choices             = supt_form_parse_field_choices( $field['choices'] );
-					$this->data[ $name ] = $choices[ $_REQUEST[ $name ][0] ];
-					break;
-				
-				case 'textarea':
-					$this->data[ $name ] = sanitize_textarea_field( $_REQUEST[ $name ] );
-					break;
-				
-				case 'text':
-				default:
-					$this->data[ $name ] = sanitize_text_field( $_REQUEST[ $name ] );
-					break;
-			}
-			
-			if ( $field['required'] && empty( $this->data[ $name ] ) ) {
-				$this->errors[ $name ][] = pll__( 'Mandatory field' );
-			}
-		}
-		
-		// Add timestamp for later use
-		$this->data['timestamp'] = time();
 	}
 	
 	/**
@@ -390,13 +333,10 @@ class FormSubmission {
 	}
 	
 	/**
-	 * Saves form submission data into the database
-	 * Only saves if setting `form_save_db` is enables
+	 * Persist form submission data
 	 */
 	function save_submission() {
-		if ( get_field( 'form_save_db', 'options' ) ) {
-			add_post_meta( $this->id, \SUPT\FormType::POST_META_NAME_FORM_SENT, $this->data );
-		}
+		add_post_meta( $this->form_id, \SUPT\FormType::POST_META_NAME_FORM_SENT, $this->data );
 	}
 	
 	/**

@@ -2,7 +2,7 @@
 
 namespace SUPT;
 
-use \Twig_SimpleFilter;
+use Twig_SimpleFilter;
 
 add_filter( 'get_twig', function ( $twig ) {
 	$twig->addFilter(
@@ -10,7 +10,7 @@ add_filter( 'get_twig', function ( $twig ) {
 			/**
 			 * @see https://codex.wordpress.org/Function_Reference/sanitize_title
 			 */
-			return sanitize_title($string);
+			return sanitize_title( trim( $string ) );
 		} )
 	);
 	
