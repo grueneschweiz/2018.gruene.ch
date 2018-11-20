@@ -95,7 +95,6 @@ class FormType extends Model {
 		wp_enqueue_script('form_populate_placeholder_tags', "$folder_uri/scripts/input-populate-placeholder-tags.js", false, THEME_VERSION, true );
 	}
 	
-	
 	/**
 	 * Add extra columns in edit table
 	 *
@@ -165,6 +164,7 @@ class FormType extends Model {
 				function ( $f ) {
 					return array(
 						'label' => $f['form_input_label'],
+						'slug' => supt_slugify($f['form_input_label']),
 						'type'  => $f['form_input_type']
 					);
 				},

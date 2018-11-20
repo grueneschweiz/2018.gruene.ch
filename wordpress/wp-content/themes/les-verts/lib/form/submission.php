@@ -190,7 +190,7 @@ class FormSubmission {
 	private function determine_confirmation_email_address() {
 		foreach ( $this->get_fields() as $field ) {
 			if ( 'email' === $field['form_input_type'] ) {
-				$field_slug = $this->slugify( $field['form_input_label'] );
+				$field_slug = supt_slugify( $field['form_input_label'] );
 				if ( ! empty( $this->data[ $field_slug ] ) ) {
 					return $this->data[ $field_slug ];
 				}
@@ -348,13 +348,13 @@ class FormSubmission {
 			$fields = get_field_objects( $this->form_id )['form_fields']['value'];
 			
 			foreach ( $fields as $field ) {
-				$key                  = $this->slugify( $field['form_input_label'] );
+				$key                  = supt_slugify( $field['form_input_label'] );
 				$this->fields[ $key ] = $field;
 				
 				if ( 'checkbox' === $field['form_input_type'] ) {
 					$labels = explode( "\n", $field['form_input_choices'] );
 					foreach ( $labels as $label ) {
-						$valueKey                                  = $this->slugify( $label );
+						$valueKey                                  = supt_slugify( $label );
 						$this->fields[ $key ]['values'][$valueKey] = trim( $label );
 					}
 				}
@@ -362,17 +362,6 @@ class FormSubmission {
 		}
 		
 		return $this->fields;
-	}
-	
-	/**
-	 * Transform given string in slug (as used in the slugify twig function)
-	 *
-	 * @param array|string $string
-	 *
-	 * @return array|string
-	 */
-	private function slugify( $string ) {
-		return str_replace( '-', '_', sanitize_title( trim( $string ) ) );
 	}
 	
 	/**

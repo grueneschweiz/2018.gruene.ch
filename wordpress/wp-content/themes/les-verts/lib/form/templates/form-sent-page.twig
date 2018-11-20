@@ -32,7 +32,7 @@
 					<th scope="col" id="date" class="manage-column column-date">{{ _e( 'Date', 'supt-form' ) }}</th>
 					{% for field in form.fields %}
 						<th scope="col"
-								class="manage-column column-{{ field.name }} column-type-{{ field.type }}">{{ field.label }}</th>
+								class="manage-column column-{{ field.slug }} column-type-{{ field.type }}">{{ field.label }}</th>
 					{% endfor %}
 				</tr>
 				</thead>
@@ -52,16 +52,16 @@
 							</div>
 						</td>
 						{% for field in form.fields %}
-							<td class="column-{{ field.name }} column-type-{{ field.type }}" data-colname="{{ field.name }}">
+							<td class="column-{{ field.slug }} column-type-{{ field.type }}" data-colname="{{ field.slug }}">
 								{% if field.type == 'checkbox' %}
-									{% if item[field.name] is iterable %}
-										{{ item[field.name]|join(', ') }}
+									{% if item[field.slug] is iterable %}
+										{{ item[field.slug]|join(', ') }}
 									{% else %}
 										<span
-											class="dashicons dashicons-{% if item[field.name] is empty %}no-alt{% else %}yes{% endif %}"></span>
+											class="dashicons dashicons-{% if item[field.slug] is empty %}no-alt{% else %}yes{% endif %}"></span>
 									{% endif %}
 								{% else %}
-									{{ item[field.name] }}
+									{{ item[field.slug] }}
 								{% endif %}
 							</td>
 						{% endfor %}
