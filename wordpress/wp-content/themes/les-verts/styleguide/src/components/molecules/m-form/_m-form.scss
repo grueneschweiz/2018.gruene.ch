@@ -1,0 +1,34 @@
+.m-form {
+	&__custom-width-block {
+		display: flex;
+		justify-content: space-between;
+		flex-wrap: wrap;
+	}
+
+	&__message {
+		max-height: 0;
+		overflow: hidden;
+		transition: max-height $transition-ease $transition-slow;
+	}
+
+	&__message.is-shown {
+		max-height: 10000px;
+	}
+
+	&__sending {
+		display: inline-block;
+		width: 0.7em;
+		text-align: left;
+		margin-left: 0.2em;
+	}
+
+	&__submit-wrapper {
+		max-height: 10000px;
+		overflow: hidden;
+		transition: height $transition-ease $transition-slow;
+	}
+
+	&__submit-wrapper.is-hidden {
+		height: 0;
+	}
+}

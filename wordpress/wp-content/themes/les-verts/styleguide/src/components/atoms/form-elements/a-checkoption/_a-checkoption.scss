@@ -40,11 +40,11 @@
 	}
 
 	&--legal {
-		background-image: url('/img/checkbox--secondary.svg');
+		background-image: url('img/checkbox--secondary.svg');
 	}
 
 	&--option {
-		background-image: url('/img/option.svg');
+		background-image: url('img/option.svg');
 	}
 
 	&__field:checked + &__label {

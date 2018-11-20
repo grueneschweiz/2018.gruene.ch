@@ -1,4 +1,4 @@
-<div class="a-input">
+<div class="a-input{{#if wrapper_classes}} {{ wrapper_classes }}{{/if}}"{{#if style}} style="{{ style }}"{{/if}}>
 	<label for="{{ id }}" class="a-input__label {{#if required}}a-input__label--required{{/if}}">
 		{{ label }}
 	</label>
@@ -16,5 +16,8 @@
 							class="a-input__field {{ modifiers_classes }}"
 							name="{{ name }}"
 			{{ required }}>{{ value }}</textarea>
+	{{/if}}
+	{{#if helptext}}
+		<div class="a-input__helptext">{{ helptext }}</div>
 	{{/if}}
 </div>

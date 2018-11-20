@@ -1,0 +1,36 @@
+{#
+Parameters:
+- id: string (optional, name is used if id is not provided)
+- name: string must be unique in form
+- label: string
+- value: string
+- pattern: string, html5 pattern (optional)
+- style: string, inline style for the whole block (optional)
+- wrapper_classes: string
+- helptext: string (optional)
+- required: bool
+- modifiers_classes: string (optional)
+- type: string. accepted values 'textarea' and the html5 input types
+#}
+<div class="a-input{% if wrapper_classes %} {{ wrapper_classes }}{% endif %}"{% if style %} style="{{ style }}"{% endif %}>
+	<label for="{{ id|default(name) }}" class="a-input__label {% if required %}a-input__label--required{% endif %}">
+		{{ label|wptexturize }}
+	</label>
+	{% if 'textarea' == type %}
+		<textarea id="{{ id|default(name) }}"
+							class="a-input__field {{ modifiers_classes }}"
+							name="{{ name }}"
+							{% if required %}required="required"{% endif %}>{{ value }}</textarea>
+	{% else %}
+		<input id="{{ id|default(name) }}"
+					 class="a-input__field {{ modifiers_classes }}"
+					 type="{{ type }}"
+					 name="{{ name }}"
+					 value="{{ value }}"
+					 {% if pattern %}pattern="{{ pattern }}"{% endif %}
+			{% if required %}required="required"{% endif %}>
+	{% endif %}
+	{% if helptext %}
+		<div class="a-input__helptext">{{ helptext|wptexturize }}</div>
+	{% endif %}
+</div>

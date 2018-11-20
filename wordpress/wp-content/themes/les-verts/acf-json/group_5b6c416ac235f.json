@@ -151,9 +151,10 @@
                                 "id": ""
                             },
                             "post_type": [
+                                "theme_form",
                                 "torro_form"
                             ],
-                            "taxonomy": [],
+                            "taxonomy": "",
                             "allow_null": 0,
                             "multiple": 0,
                             "return_format": "id",
@@ -186,5 +187,5 @@
     "hide_on_screen": "",
     "active": 0,
     "description": "",
-    "modified": 1534956213
+    "modified": 1541500722
 }

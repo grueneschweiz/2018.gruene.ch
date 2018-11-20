@@ -1,0 +1,159 @@
+{% set fields = post.get_field('form_fields') %}
+{% set custom_width_block_width = 0 %}
+
+<form class="m-form"
+			action="{{ fn('admin_url', 'admin-ajax.php') }}{# yes, this is the correct ajax url #}"
+			method="post"
+			enctype="multipart/form-data"
+			data-sending-lbl="{{ post.form_submitting }}"
+			data-nonce="{{ fn('wp_create_nonce', 'supt-form') }}"
+			data-form-id="{{ post.id }}">
+	{% for field in fields %}
+		{% set custom_width = '' %}
+		{% set style = '' %}
+		{% set wrapper_classes = '' %}
+		{% set modifiers_classes = '' %}
+
+		{% if not field.form_input_full_width %}
+			{% if not custom_width_block_width %}
+				<div class="m-form__custom-width-block">
+			{% endif %}
+
+			{% set custom_width_block_width = custom_width_block_width + field.form_input_width %}
+
+			{% if custom_width_block_width > 100 %}
+				</div><div class="m-form__custom-width-block">
+			{% endif %}
+
+			{% set custom_width = 'custom_width' %}
+			{% set style = '' %}
+			{% if field.form_input_width %}
+				{% set style = 'width: calc('~field.form_input_width~'% - 0.5em);' %}
+			{% endif %}
+			{% if field.form_input_min_width %}
+				{% set style = style ~ 'min-width:'~ field.form_input_min_width~'px;' %}
+			{% endif %}
+		{% elseif custom_width_block_width %}
+			{% set custom_width_block_width = 0 %}
+			</div>{# close .m-form__custom-width-block #}
+		{% endif %}
+
+		{% if 'confirmation' == field.form_input_type %}
+			{% include 'atoms/form-elements/a-checkoption.twig' with {
+				'name': field.form_input_label|slugify,
+				'label': field.form_input_label,
+				'type': 'checkbox',
+				'required': field.form_input_required,
+			} only %}
+
+		{% elseif 'select' == field.form_input_type %}
+			{% if modifiers %}
+				{% set modifiers_classes = 'a-select--' ~ modifiers %}
+			{% endif %}
+			{% include 'atoms/form-elements/a-select.twig' with {
+				'name': field.form_input_label|slugify,
+				'label': field.form_input_label,
+				'required': field.form_input_required,
+				'helptext': field.form_input_helptext,
+				'options': field.form_input_choices|split('\n'),
+				'modifiers_classes': modifiers_classes
+			} only %}
+
+		{% elseif 'radio' == field.form_input_type %}
+			<div class="m-form__option-label">{{ field.form_input_label|wptexturize }}</div>
+			<fieldset class="m-form__option-fieldset">
+				{% set name = field.form_input_label|slugify %}
+				<input type="hidden" name="{{ name }}" value="">{# make sure unclicked elements still show up in post data #}
+				{% for option in field.form_input_choices|split('\n') %}
+					{% set option = option|trim %}
+					{% include 'atoms/form-elements/a-checkoption.twig' with {
+						'name': name,
+						'label': option,
+						'required': field.form_input_required,
+						'type': 'radio',
+						'value': option
+					} only %}
+				{% endfor %}
+			</fieldset>
+
+		{% elseif 'checkbox' == field.form_input_type %}
+			<div class="m-form__checks-label">{{ field.form_input_label|wptexturize }}</div>
+			<fieldset class="m-form__checks-fieldset">
+				{% for option in field.form_input_choices|split('\n') %}
+					{% set option = option|trim %}
+					{% include 'atoms/form-elements/a-checkoption.twig' with {
+						'name': option|slugify,
+						'label': option,
+						'type': 'checkbox'
+					} only %}
+				{% endfor %}
+			</fieldset>
+
+		{% else %}{# if textarea, text, password, email etc #}
+			{% if custom_width %}
+				{% set wrapper_classes = 'a-input--' ~ custom_width %}
+			{% endif %}
+			{% if modifiers %}
+				{% set modifiers_classes = 'a-input--' ~ modifiers %}
+			{% endif %}
+			{% if 'textarea' == field.form_input_type %}
+				{% set modifiers_classes = modifiers_classes ~ ' a-input--textarea' %}
+			{% endif %}
+			{% include 'atoms/form-elements/a-input.twig' with {
+				'name': field.form_input_label|slugify,
+				'label': field.form_input_label,
+				'style': style,
+				'helptext': field.form_input_help_text,
+				'required': field.form_input_required,
+				'type': field.form_input_type,
+				'wrapper_classes': wrapper_classes,
+				'modifiers_classes': modifiers_classes
+			} only %}
+		{% endif %}
+	{% endfor %}
+
+	{% if custom_width_block_width %}
+		</div>{# close .m-form__custom-width-block #}
+	{% endif %}
+
+	{% set privacy_policy_page_id = fn('get_option', 'wp_page_for_privacy_policy') %}
+	{% if privacy_policy_page_id %}
+		{% set privacy_policy_url = fn('get_permalink', privacy_policy_page_id) %}
+		{% set privacy_policy = '<a href="'~privacy_policy_url~'" target="_blank">'~__('privacy policy', constant('THEME_DOMAIN'))~'</a>' %}
+		<div class="m-form__privacy-policy">
+			{% include 'atoms/form-elements/a-checkoption.twig' with {
+				'name': 'privacy_policy',
+				'label': _x('I agree to the data processing according to the %s.', 'privacy policy', constant('THEME_DOMAIN'))|format(privacy_policy),
+				'type': 'checkbox',
+				'required': true,
+				'modifiers_classes': 'a-checkoption--legal',
+			} %}
+		</div>
+	{% endif %}
+
+	<div class="m-form__submit-wrapper">
+		<div class="m-form__submit-button">
+		{% include 'atoms/a-button.twig' with {
+			'modifiers': ['a-button--secondary'],
+			'js_hook': 'form-submit',
+			'label': post.form_submit,
+			'type': 'submit',
+		} only %}
+		</div>
+		<div class="m-form__submit-byline">{{ post.form_desc }}</div>
+	</div>
+
+	<div class="m-form__message m-form__message--success">
+		<h2 class="m-form__message-title">{{ post.form_success_form_success_title|wptexturize }}</h2>
+		<p class="m-form__message-body">{{ post.form_success_form_success_text|wptexturize|wpautop }}</p>
+	</div>
+	<div class="m-form__message m-form__message--failure">
+		<h2 class="m-form__message-title">{{ __('Uups, something went wrong!', constant('THEME_DOMAIN')) }}</h2>
+		<p class="m-form__message-body">{{ __('Sorry, there was an error submitting this form. If the error persists, please contact us by email.', constant('THEME_DOMAIN')) }}</p>
+	</div>
+	<div class="m-form__message m-form__message--invalid">
+		<h2 class="m-form__message-title">{{ __('Recheck your fields', constant('THEME_DOMAIN')) }}</h2>
+		<p class="m-form__message-body">{{ __('There seems to be an error in your input. Please recheck the fields.', constant('THEME_DOMAIN')) }}</p>
+	</div>
+
+</form>

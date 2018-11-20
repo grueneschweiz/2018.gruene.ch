@@ -1,0 +1,88 @@
+label: Form
+status: wip
+context:
+  submit: Informiert bleiben
+  submit_byline: Ich abonniere den Newsletter.
+  submitting: Senden...
+  success_title: Vielen Dank!
+  success_body: Schon bald erhälst du unseren Newsletter :)
+  error_title: Uups, da ist etwas schief gelaufen
+  error_body: Bitte kontaktiere uns, falls das Problem nochmals vor kommt.
+  privacy_policy: Ich stimme der Datenverarbeitung gemäss Datenschutzbestimmung zu.
+  fields:
+  - input: true
+    text: true
+    id: plz
+    name: plz
+    label: PLZ
+    style: 'width: calc(30% - 0.5em);'
+    wrapper_classes: a-input--custom-width
+    required: false
+    type: text
+    custom_width_start: true
+  - input: true
+    text: true
+    id: e_mail
+    name: e_mail
+    label: E-Mail
+    style: 'width: calc(70% - 0.5em);'
+    wrapper_classes: a-input--custom-width
+    helptext: This field is required
+    required: true
+    type: email
+    custom_width_end: true
+  - label: Thirsty?
+    option: true
+    options:
+    - name: thirsty
+      value: beer
+      label: Beer
+      id: beer
+      option: true
+      modifiers:
+        - option
+    - name: thirsty
+      value: wine
+      label: Wine
+      id: wine
+      option: true
+      modifiers:
+        - option
+    - name: thirsty
+      value: schnaps
+      label: Schnaps
+      id: schnaps
+      option: true
+      modifiers:
+        - option
+  - label: Hungry?
+    checkbox: true
+    options:
+    - name: apero
+      label: Apero
+      id: apero
+    - name: main
+      label: Main course
+      id: main
+    - name: dessert
+      label: Dessert
+      id: dessert
+  - label: Select Payment Method
+    select: true
+    id: payment
+    name: payment
+    required: true
+    options:
+      - value: cash
+        label: Cash
+      - value: card
+        label: Card
+  - label: I accept to get drunken reading the GDPR
+    name: gdpr
+    confirmation: true
+    id: gdpr
+    modifiers:
+      - legal
+
+
+

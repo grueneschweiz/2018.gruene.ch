@@ -1,0 +1,36 @@
+{#
+Parameters:
+- id: string (optional, name is used if id is not provided)
+- name: string must be unique in form
+- label: string
+- value: string (radio only)
+- required: bool (optional)
+- type: string. accepted values 'radio' and 'checkbox'
+- checked: bool (optional)
+- modifiers_classes: string (optional)
+#}
+<div class="a-checkoption">
+	{% if 'radio' == type %}
+		{% if not id %}
+			{% set id = name~random() %}
+		{% endif %}
+	<input type="radio"
+				 name="{{ name }}"
+				 id="{{ id }}"
+				 value="{{ value }}"
+				 {% if required %}required{% endif %}
+		     {% if checked %}checked="checked"{% endif %}
+				 class="a-checkoption__field">
+	{% else %}
+	<input type="hidden" name="{{ name }}" value="0">{# make sure unchecked elements still show up in post data #}
+	<input id="{{ id|default(name) }}"
+				 class="a-checkoption__field"
+				 type="checkbox"
+				 name="{{ name }}"
+				 {% if required %}required{% endif %}
+				 {% if checked %}checked="checked"{% endif %}>
+	{% endif %}
+	<label for="{{ id|default(name) }}" class="a-checkoption__label{% if 'radio' == type %} a-checkoption--option{% endif %} {{ modifiers_classes }}">
+		{{ label|wptexturize }}
+	</label>
+</div>

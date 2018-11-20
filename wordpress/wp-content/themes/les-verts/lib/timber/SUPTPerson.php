@@ -14,13 +14,13 @@ class SUPTPerson extends \TimberPost {
 	public function quote( $taxonomy ) {
 		$quote = $this->getTestimonialField( 'quote', $taxonomy );
 		
-		return $quote ? $quote : '';
+		return $quote ? wptexturize( $quote ) : '';
 	}
 	
 	private function getTestimonialField( $field, $taxonomy ) {
 		foreach ( $this->getTestimonials() as $testimonial ) {
 			if ( ! empty( array_intersect( $taxonomy, $testimonial['taxonomy'] ) ) ) {
-				return $testimonial[$field];
+				return $testimonial[ $field ];
 			}
 		}
 		

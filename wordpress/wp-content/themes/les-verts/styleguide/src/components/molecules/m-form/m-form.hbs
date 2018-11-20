@@ -1,0 +1,63 @@
+<form action="#" class="m-form" data-sending-lbl="{{ submitting }}">
+	{{#each fields}}
+		{{#if custom_width_start}}<div class="m-form__custom-width-block">{{/if}}
+
+		{{#if this.confirmation}}
+			{{> @a-checkoption this}}
+		{{/if}}
+
+		{{#if this.select}}
+			{{> @a-select this}}
+		{{/if}}
+
+		{{#if this.checkbox}}
+				<div class="m-form__checks-label">{{this.label}}</div>
+				<fieldset class="m-form__checks-fieldset">
+					{{#each this.options}}
+						{{> @a-checkoption this}}
+					{{/each}}
+				</fieldset>
+		{{/if}}
+
+		{{#if this.option}}
+			<div class="m-form__option-label">{{this.label}}</div>
+			<fieldset class="m-form__option-fieldset">
+				{{#each this.options}}
+					{{> @a-checkoption this}}
+				{{/each}}
+			</fieldset>
+		{{/if}}
+
+		{{#if this.input}}
+			{{> @a-input this}}
+		{{/if}}
+
+		{{#if custom_width_end}}</div>{{/if}}
+	{{/each}}
+
+	<div class="m-form__privacy-policy">
+		{{> @a-checkoption
+			name='privacy_policy'
+			label=privacy_policy
+			required=true
+			modifiers='legal'
+			id='privacy_policy'
+		}}
+	</div>
+
+	<div class="m-form__submit-wrapper">
+		<div class="m-form__submit-button">
+			{{> @a-button label=submit js_hook='form-submit' modifiers='secondary'}}
+		</div>
+		<div class="m-form__submit-byline">{{ submit_byline }}</div>
+	</div>
+
+	<div class="m-form__message m-form__message--success">
+		<h2 class="m-form__message-title">{{ success_title }}</h2>
+		<p class="m-form__message-body">{{ success_body }}</p>
+	</div>
+	<div class="m-form__message m-form__message--failure">
+		<h2 class="m-form__message-title">{{ error_title }}</h2>
+		<p class="m-form__message-body">{{ error_body }}</p>
+	</div>
+</form>

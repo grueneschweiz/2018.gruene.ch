@@ -3,26 +3,27 @@
 	<hr class="wp-header-end">
 
 	{% for form in forms %}
-	<h2>{{ form.title }}</h2>
-	<div class="tablenav top">
-		<div class="alignleft actions bulkactions">
-			<label for="bulk-action-selector-top" class="screen-reader-text">{{ _e( 'Select bulk action', 'supt-form' ) }}</label>
-			<select name="action" id="bulk-action-selector-top">
-				<option value="-1">{{ _e( 'bulk actions', 'supt-form' ) }}</option>
-				<option value="trash">{{ _e( 'Delete permanently', 'supt-form' ) }}</option>
-			</select>
-			<input type="submit" id="doaction" class="button action" value="{{ _e( 'Apply', 'supt-form' ) }}">
+		<h2>{{ form.title }}</h2>
+		<div class="tablenav top">
+			<div class="alignleft actions bulkactions">
+				<label for="bulk-action-selector-top"
+							 class="screen-reader-text">{{ _e( 'Select bulk action', 'supt-form' ) }}</label>
+				<select name="action" id="bulk-action-selector-top">
+					<option value="-1">{{ _e( 'bulk actions', 'supt-form' ) }}</option>
+					<option value="trash">{{ _e( 'Delete permanently', 'supt-form' ) }}</option>
+				</select>
+				<input type="submit" id="doaction" class="button action" value="{{ _e( 'Apply', 'supt-form' ) }}">
+			</div>
+			<div class="tablenav-pages one-page">
+				<span class="displaying-num">{{ form.sents|length }} {{ _e( 'form(s) sent', 'supt-form') }}</span>
+			</div>
+			<br class="clear">
 		</div>
-		<div class="tablenav-pages one-page">
-			<span class="displaying-num">{{ form.sents|length }} {{ _e( 'form(s) sent', 'supt-form') }}</span>
-		</div>
-		<br class="clear">
-	</div>
-	<form id="data-form-sent" method="post" data-form-sent>
+		<form id="data-form-sent" method="post" data-form-sent>
 
-		<h3 class="screen-reader-text">{{ _e( 'Submissions', 'supt-form' ) }}</h3>
-		<table class="wp-list-table widefat fixed striped posts">
-			<thead>
+			<h3 class="screen-reader-text">{{ _e( 'Submissions', 'supt-form' ) }}</h3>
+			<table class="wp-list-table widefat fixed striped posts">
+				<thead>
 				<tr>
 					<td id="cb" class="manage-column column-cb check-column">
 						<label class="screen-reader-text" for="cb-select-all-1">{{ _e( 'Select all', 'supt-form' ) }}</label>
@@ -30,41 +31,46 @@
 					</td>
 					<th scope="col" id="date" class="manage-column column-date">{{ _e( 'Date', 'supt-form' ) }}</th>
 					{% for field in form.fields %}
-					<th scope="col" class="manage-column column-{{ field.name }} column-type-{{ field.type }}">{{ field.label }}</th>
+						<th scope="col"
+								class="manage-column column-{{ field.slug }} column-type-{{ field.type }}">{{ field.label }}</th>
 					{% endfor %}
 				</tr>
-			</thead>
-			<tbody id="the-list" class="ui-sortable">
+				</thead>
+				<tbody id="the-list" class="ui-sortable">
 				{% for item in form.sents %}
-				<tr id="sent-{{ loop.index0 }}" class="hentry">
-					<th scope="row" class="check-column">
-						<input id="cb-select-{{ loop.index0 }}" type="checkbox" name="sent[{{ form.id }}][]" value="{{ loop.index0 }}">
-					</th>
-					<td class="date column-date has-row-actions column-primary" data-colname="Date">
-						<strong>{{ item.timestamp|date('j/m/Y @ H:i') }}</strong>
+					<tr id="sent-{{ loop.index0 }}" class="hentry">
+						<th scope="row" class="check-column">
+							<input id="cb-select-{{ loop.index0 }}" type="checkbox" name="sent[{{ form.id }}][]"
+										 value="{{ loop.index0 }}">
+						</th>
+						<td class="date column-date has-row-actions column-primary" data-colname="Date">
+							<strong>{{ item.timestamp|date('j/m/Y @ H:i') }}</strong>
 							<div class="row-actions">
-								<span class="trash"><a href="?action=trash&amp;form={{ form.id }}&amp;sent={{ loop.index0 }}" class="submitdelete" aria-label="{{ _e( 'Delete permanently', 'supt-form' ) }}">{{ _e( 'Delete permanently', 'supt-form' ) }}</a></span>
+								<span class="trash"><a href="?action=trash&amp;form={{ form.id }}&amp;sent={{ loop.index0 }}"
+																			 class="submitdelete"
+																			 aria-label="{{ _e( 'Delete permanently', 'supt-form' ) }}">{{ _e( 'Delete permanently', 'supt-form' ) }}</a></span>
 							</div>
-					</td>
-					{% for field in form.fields %}
-					<td class="column-{{ field.name }} column-type-{{ field.type }}" data-colname="{{ field.name }}">
-						{% if field.type == 'checkbox' %}
-							{% if item[field.name] is iterable %}
-							{{ item[field.name]|join(', ') }}
-							{% else %}
-							<span class="dashicons dashicons-{% if item[field.name] is empty %}no-alt{% else %}yes{% endif %}"></span>
-							{% endif %}
-						{% else %}
-						{{ item[field.name] }}
-						{% endif %}
-					</td>
-					{% endfor %}
-				</tr>
+						</td>
+						{% for field in form.fields %}
+							<td class="column-{{ field.slug }} column-type-{{ field.type }}" data-colname="{{ field.slug }}">
+								{% if field.type == 'checkbox' %}
+									{% if item[field.slug] is iterable %}
+										{{ item[field.slug]|join(', ') }}
+									{% else %}
+										<span
+											class="dashicons dashicons-{% if item[field.slug] is empty %}no-alt{% else %}yes{% endif %}"></span>
+									{% endif %}
+								{% else %}
+									{{ item[field.slug] }}
+								{% endif %}
+							</td>
+						{% endfor %}
+					</tr>
 				{% endfor %}
-			</tbody>
-		</table>
-	</form>
-	<div style="margin-bottom: 60px;"></div>
+				</tbody>
+			</table>
+		</form>
+		<div style="margin-bottom: 60px;"></div>
 	{% endfor %}
 	<br class="clear">
 </div>

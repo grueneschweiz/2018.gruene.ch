@@ -8,9 +8,10 @@
 				{% endfor %}
 			</ul>
 		{% elseif block.acf_fc_layout == 'call_to_action' %}
-			{% filter shortcodes %}
-				[torro_form id="{{ block.form }}"]
-			{% endfilter %}
+			{% include 'molecules/m-form.twig' with {
+				'post' : Post(block.form),
+				'modifiers': 'invers'
+			} only %}
 		{% else %}
 			{{ block.text }}
 		{% endif %}
