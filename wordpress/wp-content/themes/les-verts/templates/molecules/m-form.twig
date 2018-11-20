@@ -62,10 +62,12 @@
 		{% elseif 'radio' == field.form_input_type %}
 			<div class="m-form__option-label">{{ field.form_input_label|wptexturize }}</div>
 			<fieldset class="m-form__option-fieldset">
+				{% set name = field.form_input_label|slugify %}
+				<input type="hidden" name="{{ name }}" value="">{# make sure unclicked elements still show up in post data #}
 				{% for option in field.form_input_choices|split('\n') %}
 					{% set option = option|trim %}
 					{% include 'atoms/form-elements/a-checkoption.twig' with {
-						'name': field.form_input_label|slugify,
+						'name': name,
 						'label': option,
 						'required': field.form_input_required,
 						'type': 'radio',

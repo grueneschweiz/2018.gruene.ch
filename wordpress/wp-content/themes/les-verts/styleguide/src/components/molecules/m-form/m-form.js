@@ -29,9 +29,11 @@ export default class MForm extends BaseView {
 	submit( event ) {
 		event.preventDefault();
 
-		// hide error message
+		// hide error messages
 		let errorMessage = this.getScopedElement( ERROR_MESSAGE_SELECTOR );
+		let invalidMessage = this.getScopedElement( INVALID_MESSAGE_SELECTOR );
 		this.removeClass( errorMessage, SHOWN_STATE );
+		this.removeClass( invalidMessage, SHOWN_STATE );
 
 		// prevent double submit
 		if (this.submitted) {
@@ -61,7 +63,7 @@ export default class MForm extends BaseView {
 		this.ajax( url, 'POST', data )
 			.then( ( resp ) => {
 				if (resp instanceof Object && 'success' in resp && true === resp.success) {
-					this.showSuccess( resp );
+					this.showSuccess();
 				} else {
 					return Promise.reject( resp );
 				}
@@ -92,20 +94,11 @@ export default class MForm extends BaseView {
 		this.submitButton.innerHTML = this.origSubmitLbl;
 	}
 
-	showSuccess( resp ) {
+	showSuccess() {
 		let submitWrapper = this.getScopedElement( SUBMIT_WRAPPER_SELECTOR );
 		let successMessage = this.getScopedElement( SUCCESS_MESSAGE_SELECTOR );
-		let invalidMessage = this.getScopedElement( INVALID_MESSAGE_SELECTOR );
-		let errorMessage = this.getScopedElement( ERROR_MESSAGE_SELECTOR );
 		this.addClass( submitWrapper, HIDDEN_STATE );
 		this.addClass( successMessage, SHOWN_STATE );
-		this.removeClass( invalidMessage, SHOWN_STATE );
-		this.removeClass( errorMessage, SHOWN_STATE );
-
-		for (const key of Object.keys( resp.data )) {
-			let el = this.getScopedElement( '[name=' + key + ']' );
-			this.removeClass( el, INVALID_STATE );
-		}
 	}
 
 	showSending() {

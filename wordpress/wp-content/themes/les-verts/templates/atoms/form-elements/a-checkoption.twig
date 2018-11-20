@@ -10,7 +10,6 @@ Parameters:
 - modifiers_classes: string (optional)
 #}
 <div class="a-checkoption">
-	<input type="hidden" name="{{ name }}" value="0">{# make sure unclicked elements still show up in post data #}
 	{% if 'radio' == type %}
 		{% if not id %}
 			{% set id = name~random() %}
@@ -23,6 +22,7 @@ Parameters:
 		     {% if checked %}checked="checked"{% endif %}
 				 class="a-checkoption__field">
 	{% else %}
+	<input type="hidden" name="{{ name }}" value="0">{# make sure unchecked elements still show up in post data #}
 	<input id="{{ id|default(name) }}"
 				 class="a-checkoption__field"
 				 type="checkbox"
