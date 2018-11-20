@@ -4,9 +4,11 @@ const SUBMIT_BUTTON_SELECTOR = '[data-form-submit]';
 const SUBMIT_WRAPPER_SELECTOR = '.m-form__submit-wrapper';
 const SUCCESS_MESSAGE_SELECTOR = '.m-form__message--success';
 const ERROR_MESSAGE_SELECTOR = '.m-form__message--failure';
+const INVALID_MESSAGE_SELECTOR = '.m-form__message--invalid';
 
 const HIDDEN_STATE = 'is-hidden';
 const SHOWN_STATE = 'is-shown';
+const INVALID_STATE = 'is-invalid';
 
 export default class MForm extends BaseView {
 	initialize() {
@@ -14,6 +16,7 @@ export default class MForm extends BaseView {
 
 		this.submitted = false;
 		this.sendingTimer = null;
+		this.origSubmitLbl = this.submitButton.innerHTML;
 	}
 
 	bind() {
@@ -38,7 +41,6 @@ export default class MForm extends BaseView {
 		this.submitted = true;
 
 		// mark as sending
-		let origSubmitLbl = this.submitButton.innerHTML;
 		this.showSending();
 
 		let url = this.element.action;
@@ -57,21 +59,53 @@ export default class MForm extends BaseView {
 		data.append( 'form_id', this.element.dataset.formId );
 
 		this.ajax( url, 'POST', data )
-			.then( resp => {
-				// todo: handle server validation
-				let submitWrapper = this.getScopedElement( SUBMIT_WRAPPER_SELECTOR );
-				let successMessage = this.getScopedElement( SUCCESS_MESSAGE_SELECTOR );
-				this.addClass( submitWrapper, HIDDEN_STATE );
-				this.addClass( successMessage, SHOWN_STATE );
-			} )
-			.catch( () => {
-				clearInterval( this.sendingTimer );
-				this.submitButton.disabled = false;
-				this.submitted = false;
-				this.submitButton.innerHTML = origSubmitLbl;
-				let errorMessage = this.getScopedElement( ERROR_MESSAGE_SELECTOR );
-				this.addClass( errorMessage, SHOWN_STATE );
-			} );
+			.then( ( resp ) => {
+				if (resp instanceof Object && 'success' in resp && true === resp.success) {
+					this.showSuccess( resp );
+				} else {
+					return Promise.reject( resp );
+				}
+			} ).catch( ( resp ) => {
+			this.handleError( resp );
+		} );
+	}
+
+	handleError( resp ) {
+		if (resp instanceof Object && 'data' in resp) {
+			for (const key of Object.keys( resp.data )) {
+				let el = this.getScopedElement( '[name=' + key + ']' );
+				this.addClass( el, INVALID_STATE );
+			}
+
+			let invalidMessage = this.getScopedElement( INVALID_MESSAGE_SELECTOR );
+			this.addClass( invalidMessage, SHOWN_STATE );
+
+		} else {
+
+			let errorMessage = this.getScopedElement( ERROR_MESSAGE_SELECTOR );
+			this.addClass( errorMessage, SHOWN_STATE );
+		}
+
+		clearInterval( this.sendingTimer );
+		this.submitButton.disabled = false;
+		this.submitted = false;
+		this.submitButton.innerHTML = this.origSubmitLbl;
+	}
+
+	showSuccess( resp ) {
+		let submitWrapper = this.getScopedElement( SUBMIT_WRAPPER_SELECTOR );
+		let successMessage = this.getScopedElement( SUCCESS_MESSAGE_SELECTOR );
+		let invalidMessage = this.getScopedElement( INVALID_MESSAGE_SELECTOR );
+		let errorMessage = this.getScopedElement( ERROR_MESSAGE_SELECTOR );
+		this.addClass( submitWrapper, HIDDEN_STATE );
+		this.addClass( successMessage, SHOWN_STATE );
+		this.removeClass( invalidMessage, SHOWN_STATE );
+		this.removeClass( errorMessage, SHOWN_STATE );
+
+		for (const key of Object.keys( resp.data )) {
+			let el = this.getScopedElement( '[name=' + key + ']' );
+			this.removeClass( el, INVALID_STATE );
+		}
 	}
 
 	showSending() {
@@ -97,12 +131,18 @@ export default class MForm extends BaseView {
 			xhr.send( data );
 			xhr.onreadystatechange = function() {
 				if (xhr.readyState === 4) {
+					let raw = xhr.responseText;
+					let resp = '';
+					try {
+						resp = JSON.parse( raw );
+					} catch (err) {
+						resp = {};
+					}
+
 					if (xhr.status === 200) {
-						let raw = xhr.responseText;
-						let resp = raw ? JSON.parse( raw ) : {};
 						resolve( resp );
 					} else {
-						reject( xhr.status );
+						reject( resp );
 					}
 				}
 			};

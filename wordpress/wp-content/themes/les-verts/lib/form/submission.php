@@ -55,8 +55,12 @@ class FormSubmission {
 		}
 	}
 	
+	/**
+	 * Configure mailing service to use an SMTP account
+	 *
+	 * @param $phpmailer
+	 */
 	public function setup_SMTP( $phpmailer ) {
-		// todo: check this
 		$config = get_field( 'form_smtp', 'options' );
 		$phpmailer->isSMTP();
 		$phpmailer->Host     = $config['host'];
@@ -66,6 +70,9 @@ class FormSubmission {
 		$phpmailer->Password = $config['password'];
 	}
 	
+	/**
+	 * Process form submission
+	 */
 	public function handle_submit() {
 		$this->form_id = (int) $_POST['form_id'];
 		
@@ -95,6 +102,9 @@ class FormSubmission {
 		$this->response();
 	}
 	
+	/**
+	 * Send notification and confirmation mails
+	 */
 	private function send_notifications() {
 		/**
 		 * Filters the submitted data, before notifications are sent.
@@ -277,6 +287,11 @@ class FormSubmission {
 			
 			case 'radio':
 			case 'select':
+				if (empty($data)) {
+					$valid = true;
+					break;
+				}
+				
 				$valid = in_array( $data, $options );
 				break;
 			
@@ -406,7 +421,6 @@ class FormSubmission {
 		if ( $this->status == 200 ) {
 			wp_send_json_success( $this->data );
 		} else {
-			// todo: nice validation errors in FE
 			wp_send_json_error( $this->errors );
 		}
 		
