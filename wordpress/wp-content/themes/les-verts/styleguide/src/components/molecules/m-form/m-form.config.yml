@@ -15,6 +15,7 @@ context:
     id: plz
     name: plz
     label: PLZ
+    helptext: This field is optional
     style: 'width: calc(30% - 0.5em);'
     wrapper_classes: a-input--custom-width
     required: false
@@ -77,12 +78,6 @@ context:
         label: Cash
       - value: card
         label: Card
-  - label: I accept to get drunken reading the GDPR
-    name: gdpr
-    confirmation: true
-    id: gdpr
-    modifiers:
-      - legal
 
 
 

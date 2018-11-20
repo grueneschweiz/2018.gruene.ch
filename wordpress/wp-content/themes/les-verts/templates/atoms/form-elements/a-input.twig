@@ -5,14 +5,13 @@ Parameters:
 - label: string
 - value: string
 - pattern: string, html5 pattern (optional)
-- style: string, inline style for the whole block (optional)
 - wrapper_classes: string
 - helptext: string (optional)
 - required: bool
 - modifiers_classes: string (optional)
 - type: string. accepted values 'textarea' and the html5 input types
 #}
-<div class="a-input{% if wrapper_classes %} {{ wrapper_classes }}{% endif %}"{% if style %} style="{{ style }}"{% endif %}>
+<div class="a-input{% if wrapper_classes %} {{ wrapper_classes }}{% endif %}">
 	<label for="{{ id|default(name) }}" class="a-input__label {% if required %}a-input__label--required{% endif %}">
 		{{ label|wptexturize }}
 	</label>

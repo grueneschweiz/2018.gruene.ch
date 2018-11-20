@@ -1,4 +1,8 @@
 .m-form {
+	&__element {
+		padding: 0.25em 0;
+	}
+
 	&__custom-width-block {
 		display: flex;
 		justify-content: space-between;
@@ -26,6 +30,22 @@
 		max-height: 10000px;
 		overflow: hidden;
 		transition: height $transition-ease $transition-slow;
+		display: flex;
+		flex-direction: column-reverse;
+		margin-top: 1em;
+
+		@include media($size-small) {
+			align-items: center;
+			flex-direction: row;
+		}
+	}
+
+	&__submit-byline {
+		margin: 0.25em 0 0.4em;
+
+		@include media($size-small) {
+			margin: 0 0 0 1em;
+		}
 	}
 
 	&__submit-wrapper.is-hidden {

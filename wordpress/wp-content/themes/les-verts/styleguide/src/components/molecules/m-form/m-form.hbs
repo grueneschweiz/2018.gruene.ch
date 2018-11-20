@@ -3,39 +3,49 @@
 		{{#if custom_width_start}}<div class="m-form__custom-width-block">{{/if}}
 
 		{{#if this.confirmation}}
+			<div class="m-form__element" {{#if this.style}} style="{{ style }}"{{/if}}>
 			{{> @a-checkoption this}}
+			</div>
 		{{/if}}
 
 		{{#if this.select}}
+		<div class="m-form__element" {{#if this.style}} style="{{ style }}"{{/if}}>
 			{{> @a-select this}}
+		</div>
 		{{/if}}
 
 		{{#if this.checkbox}}
+		<div class="m-form__element" {{#if this.style}} style="{{ style }}"{{/if}}>
 				<div class="m-form__checks-label">{{this.label}}</div>
 				<fieldset class="m-form__checks-fieldset">
 					{{#each this.options}}
 						{{> @a-checkoption this}}
 					{{/each}}
 				</fieldset>
+		</div>
 		{{/if}}
 
 		{{#if this.option}}
+		<div class="m-form__element" {{#if this.style}} style="{{ style }}"{{/if}}>
 			<div class="m-form__option-label">{{this.label}}</div>
 			<fieldset class="m-form__option-fieldset">
 				{{#each this.options}}
 					{{> @a-checkoption this}}
 				{{/each}}
 			</fieldset>
+		</div>
 		{{/if}}
 
 		{{#if this.input}}
+		<div class="m-form__element" {{#if this.style}} style="{{ style }}"{{/if}}>
 			{{> @a-input this}}
+		</div>
 		{{/if}}
 
 		{{#if custom_width_end}}</div>{{/if}}
 	{{/each}}
 
-	<div class="m-form__privacy-policy">
+	<div class="m-form__element m-form__privacy-policy" {{#if this.style}} style="{{ style }}"{{/if}}>
 		{{> @a-checkoption
 			name='privacy_policy'
 			label=privacy_policy
