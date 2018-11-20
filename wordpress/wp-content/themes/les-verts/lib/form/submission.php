@@ -56,6 +56,7 @@ class FormSubmission {
 	}
 	
 	public function setup_SMTP( $phpmailer ) {
+		// todo: check this
 		$config = get_field( 'form_smtp', 'options' );
 		$phpmailer->isSMTP();
 		$phpmailer->Host     = $config['host'];
@@ -100,21 +101,21 @@ class FormSubmission {
 		 *
 		 * @param array $data the form data
 		 */
-		$data = (array) apply_filters( \SUPT\FormType::MODEL_NAME.'-before-email-notification', $this->data);
+		$data = (array) apply_filters( \SUPT\FormType::MODEL_NAME . '-before-email-notification', $this->data );
 		
 		/**
 		 * Fires before the email notifications are sent.
 		 *
 		 * @param array $data the form data
 		 */
-		do_action( \SUPT\FormType::MODEL_NAME.'-send-email-notification', $data );
+		do_action( \SUPT\FormType::MODEL_NAME . '-send-email-notification', $data );
 		
 		$fields = get_field_objects( $this->form_id );
 		
-		$confirmation = $fields['form_send_confirmation'];
-		$notification = $fields['form_send_notification'];
+		$confirmation = $fields['form_send_confirmation']['value'];
+		$notification = $fields['form_send_notification']['value'];
 		
-		if (!$confirmation['value'] &&!$notification['value']) {
+		if ( ! $confirmation && ! $notification ) {
 			// nothing to send
 			return;
 		}
@@ -126,29 +127,33 @@ class FormSubmission {
 		 *
 		 * @param array $data the form data
 		 */
-		$from = apply_filters( \SUPT\FormType::MODEL_NAME.'-email-from', "$sender_name <noreply@{$this->get_domain()}>");
+		$from = apply_filters( \SUPT\FormType::MODEL_NAME . '-email-from', "$sender_name <noreply@{$this->get_domain()}>" );
 		
-		$reply_to = $fields['form_reply_to']['value'];
+		$reply_to        = $fields['form_reply_to']['value'];
 		$confirmation_to = $this->determine_confirmation_email_address();
 		
-		if ( $confirmation['value'] && $confirmation_to ) {
+		if ( $confirmation && $confirmation_to ) {
+			$confirmation_mail = $fields['form_confirmation_mail']['value'];
+			
 			supt_form_send_email(
 				$confirmation_to,
 				$from,
 				$reply_to,
-				$confirmation['value']['form_mail_subject'],
-				$confirmation['value']['form_mail_template'],
+				$confirmation_mail['form_mail_subject'],
+				$confirmation_mail['form_mail_template'],
 				$this->data
 			);
 		}
 		
-		if ($notification['value']) {
+		if ( $notification ) {
+			$notification_mail = $fields['form_notification_mail']['value'];
+			
 			supt_form_send_email(
-				$notification['value']['form_confirmation_destination'],
+				$notification_mail['form_confirmation_destination'],
 				$from,
 				$reply_to,
-				$notification['value']['form_mail_subject'],
-				$notification['value']['form_mail_template'],
+				$notification_mail['form_mail_subject'],
+				$notification_mail['form_mail_template'],
 				$this->data
 			);
 		}
@@ -159,12 +164,12 @@ class FormSubmission {
 	 */
 	private function get_domain() {
 		$url = get_site_url();
-		preg_match("/^https?:\/\/(www.)?([^\/?:]*)/", $url, $matches);
-		if ($matches && is_array($matches)) {
-			return $matches[count($matches)-1];
+		preg_match( "/^https?:\/\/(www.)?([^\/?:]*)/", $url, $matches );
+		if ( $matches && is_array( $matches ) ) {
+			return $matches[ count( $matches ) - 1 ];
 		}
 		
-		new WP_Error('cant-get-domain', 'The domain could not be parsed from the site url', $url);
+		new WP_Error( 'cant-get-domain', 'The domain could not be parsed from the site url', $url );
 	}
 	
 	/**
@@ -173,14 +178,15 @@ class FormSubmission {
 	 * @return bool|string
 	 */
 	private function determine_confirmation_email_address() {
-		foreach($this->get_fields() as $field) {
-			if ('email' === $field['form_input_type']) {
-				$field_slug = $this->slugify($field['form_input_label']);
-				if (empty( $this->data[$field_slug])) {
-					return $this->data[$field_slug];
+		foreach ( $this->get_fields() as $field ) {
+			if ( 'email' === $field['form_input_type'] ) {
+				$field_slug = $this->slugify( $field['form_input_label'] );
+				if ( ! empty( $this->data[ $field_slug ] ) ) {
+					return $this->data[ $field_slug ];
 				}
 			}
 		}
+		
 		return false;
 	}
 	
@@ -188,32 +194,65 @@ class FormSubmission {
 	 * Populate data field with validated and sanitized form data.
 	 */
 	private function add_data() {
-		$whitelist = array_keys( $this->get_fields() );
+		$fields =$this->get_fields();
 		
-		foreach ( $whitelist as $field ) {
-			if ( ! array_key_exists( $field, $_POST ) ) {
-				// if field was not transmitted
-				$this->errors[ $field ] = __( 'Missing data.', THEME_DOMAIN );
-				continue;
+		foreach ( $fields as $key => $field ) {
+			
+			// sanitize and validate checkboxes
+			if ('checkbox' === $field['form_input_type']) {
+				$choices   = $field['form_input_choices'];
+				$options   = array_map( 'trim', explode( "\n", $choices ) );
+				$required  = $field['form_input_required'];
+				
+				foreach ($field['values'] as $value_key => $value) {
+					$raw = $this->get_field($value_key);
+					$checked = $this->sanitize( $raw, 'checkbox' );
+					$valid   = $this->validate( $checked, 'checkbox', $options, $required );
+					
+					if ( true !== $valid ) {
+						$this->errors[ $key ] = $valid;
+					}
+					
+					if ($checked) {
+						$this->data[$key][$value_key] = $value;
+					}
+				}
+				
+			} else {
+				$raw = $this->get_field($key);
+				
+				$type      = $field['form_input_type'];
+				$choices   = $field['form_input_choices'];
+				$options   = array_map( 'trim', explode( "\n", $choices ) );
+				$required  = $field['form_input_required'];
+				$sanitized = $this->sanitize( $raw, $type );
+				$valid     = $this->validate( $sanitized, $type, $options, $required );
+				
+				if ( true !== $valid ) {
+					$this->errors[ $key ] = $valid;
+				}
+				
+				$this->data[$key] = $sanitized;
 			}
-			
-			// get data
-			$raw = trim( $_POST[ $field ] );
-			
-			// sanitize and validate
-			$type      = $this->get_fields()[ $field ]['form_input_type'];
-			$choices   = $this->get_fields()[ $field ]['form_input_choices'];
-			$options   = array_map( 'trim', explode( "\n", $choices ) );
-			$required  = $this->get_fields()[ $field ]['form_input_required'];
-			$sanitized = $this->sanitize( $raw, $type );
-			$valid     = $this->validate( $sanitized, $type, $options, $required );
-			
-			if ( true !== $valid ) {
-				$this->errors[ $field ] = $valid;
-			}
-			
-			$this->data[ $field ] = $sanitized;
 		}
+	}
+	
+	/**
+	 * Get value from post variable or set error
+	 *
+	 * @param $key
+	 *
+	 * @return string|null
+	 */
+	private function get_field($key) {
+		if ( ! array_key_exists( $key, $_POST ) ) {
+			// if field was not transmitted
+			$this->errors[ $key ] = __( 'Missing data.', THEME_DOMAIN );
+			return null;
+		}
+		
+		// get data
+		return trim( $_POST[ $key ] );
 	}
 	
 	/**
@@ -294,15 +333,15 @@ class FormSubmission {
 			$fields = get_field_objects( $this->form_id )['form_fields']['value'];
 			
 			foreach ( $fields as $field ) {
+				$key                  = $this->slugify( $field['form_input_label'] );
+				$this->fields[ $key ] = $field;
+				
 				if ( 'checkbox' === $field['form_input_type'] ) {
 					$labels = explode( "\n", $field['form_input_choices'] );
 					foreach ( $labels as $label ) {
-						$key                  = $this->slugify( $label );
-						$this->fields[ $key ] = $field;
+						$valueKey                                  = $this->slugify( $label );
+						$this->fields[ $key ]['values'][$valueKey] = trim( $label );
 					}
-				} else {
-					$key                  = $this->slugify( $field['form_input_label'] );
-					$this->fields[ $key ] = $field;
 				}
 			}
 		}
@@ -313,12 +352,12 @@ class FormSubmission {
 	/**
 	 * Transform given string in slug (as used in the slugify twig function)
 	 *
-	 * @param $string
+	 * @param array|string $string
 	 *
-	 * @return string
+	 * @return array|string
 	 */
 	private function slugify( $string ) {
-		return sanitize_title( trim( $string ) );
+		return str_replace( '-', '_', sanitize_title( trim( $string ) ) );
 	}
 	
 	/**
@@ -352,9 +391,9 @@ class FormSubmission {
 		/**
 		 * Filters the submitted data, before it's persisted.
 		 *
-		 * @param array $this->data
+		 * @param array $this ->data
 		 */
-		$data = (array) apply_filters(\SUPT\FormType::MODEL_NAME.'-before-save', $this->data);
+		$data = (array) apply_filters( \SUPT\FormType::MODEL_NAME . '-before-save', $this->data );
 		add_post_meta( $this->form_id, \SUPT\FormType::MODEL_NAME, $data );
 	}
 	

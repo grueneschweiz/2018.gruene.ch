@@ -10,7 +10,7 @@ add_filter( 'get_twig', function ( $twig ) {
 			/**
 			 * @see https://codex.wordpress.org/Function_Reference/sanitize_title
 			 */
-			return sanitize_title( trim( $string ) );
+			return  str_replace( '-', '_', sanitize_title( trim( $string ) ) );
 		} )
 	);
 	
