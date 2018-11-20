@@ -22,7 +22,7 @@ Parameters:
 							{% if required %}required="required"{% endif %}>{{ value }}</textarea>
 	{% else %}
 		<input id="{{ id|default(name) }}"
-					 class="a-input__field {{ modifiers_classes }}"
+					 class="a-input__field {{ modifiers_classes }}{% if required %} is-required{% endif %}"
 					 type="{{ type }}"
 					 name="{{ name }}"
 					 value="{{ value }}"

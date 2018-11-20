@@ -33,6 +33,7 @@
 		padding-left: 0.75rem;
 		transition: border-bottom-color $transition-fast $transition-ease;
 		position: relative;
+		border-radius: 2px;
 
 		&.is-valid {
 			border-bottom-color: $color-primary;

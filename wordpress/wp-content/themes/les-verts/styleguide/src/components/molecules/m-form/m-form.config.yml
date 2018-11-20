@@ -32,6 +32,32 @@ context:
     required: true
     type: email
     custom_width_end: true
+  - input: true
+    text: true
+    id: vorname
+    name: vorname
+    label: Vorname
+    style: 'width: calc(50% - 0.5em);'
+    wrapper_classes: a-input--custom-width
+    required: false
+    type: text
+    custom_width_start: true
+  - input: true
+    text: true
+    id: nachname
+    name: nachname
+    label: Nachname
+    style: 'width: calc(50% - 0.5em);'
+    wrapper_classes: a-input--custom-width
+    required: false
+    type: text
+    custom_width_end: true
+  - input: true
+    text: true
+    id: adresse
+    name: adresse
+    label: Adresse
+    type: text
   - label: Thirsty?
     option: true
     options:

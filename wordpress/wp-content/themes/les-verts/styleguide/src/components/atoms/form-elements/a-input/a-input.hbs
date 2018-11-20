@@ -4,7 +4,7 @@
 	</label>
 	{{#if text}}
 		<input id="{{ id }}"
-					 class="a-input__field {{ modifiers_classes }}"
+					 class="a-input__field {{ modifiers_classes }}{{#if required}} is-required{{/if}}"
 					 type="{{ type }}"
 					 {{#if pattern}}pattern="{{ pattern }}"{{/if}}
 					 name="{{ name }}"
