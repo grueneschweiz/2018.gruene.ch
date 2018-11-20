@@ -1,84 +1,85 @@
 <?php
-if( function_exists('acf_add_local_field_group') ):
+if ( function_exists( 'acf_add_local_field_group' ) ):
 	
-	acf_add_local_field_group(array(
-		'key' => 'group_5be2e2d8a21b0',
-		'title' => '[Template]Form Mail Config',
-		'fields' => array(
+	acf_add_local_field_group( array(
+		'key'                   => 'group_5be2e2d8a21b0',
+		'title'                 => '[Template]Form Mail Config',
+		'fields'                => array(
 			array(
-				'key' => 'field_5be2e2e23fdf4',
-				'label' => '',
-				'name' => '',
-				'type' => 'message',
-				'instructions' => '',
-				'required' => 0,
+				'key'               => 'field_5be2e2e23fdf4',
+				'label'             => '',
+				'name'              => '',
+				'type'              => 'message',
+				'instructions'      => '',
+				'required'          => 0,
 				'conditional_logic' => 0,
-				'wrapper' => array(
+				'wrapper'           => array(
 					'width' => '',
 					'class' => '',
-					'id' => '',
+					'id'    => '',
 				),
-				'message' => __('Use the following tags as placeholders in you mail. They will be replaced automatically: <strong><div class="form_mail_template_placeholders"></div></strong>
+				'message'           => __( 'Use the following tags as placeholders in you mail. They will be replaced automatically: <strong><div class="form_mail_template_placeholders"></div></strong>
 
-<i>Advanced: The email template below uses the <a href="https://twig.symfony.com/" target="_blank">Twig</a> engine to allow dynamic zones.</i>', THEME_DOMAIN),
-				'new_lines' => 'wpautop',
-				'esc_html' => 0,
+<i>Advanced: The email template below uses the <a href="https://twig.symfony.com/" target="_blank">Twig</a> engine to allow dynamic zones.</i>',
+					THEME_DOMAIN ),
+				'new_lines'         => 'wpautop',
+				'esc_html'          => 0,
 			),
 			array(
-				'key' => 'field_5be2e5b13fdf6',
-				'label' => __('Subject', THEME_DOMAIN),
-				'name' => 'form_mail_subject',
-				'type' => 'text',
-				'instructions' => '',
-				'required' => 1,
+				'key'               => 'field_5be2e5b13fdf6',
+				'label'             => __( 'Subject', THEME_DOMAIN ),
+				'name'              => 'form_mail_subject',
+				'type'              => 'text',
+				'instructions'      => '',
+				'required'          => 1,
 				'conditional_logic' => 0,
-				'wrapper' => array(
+				'wrapper'           => array(
 					'width' => '',
 					'class' => '',
-					'id' => '',
+					'id'    => '',
 				),
-				'default_value' => '',
-				'placeholder' => '',
-				'prepend' => '',
-				'append' => '',
-				'maxlength' => '',
+				'default_value'     => '',
+				'placeholder'       => '',
+				'prepend'           => '',
+				'append'            => '',
+				'maxlength'         => '',
 			),
 			array(
-				'key' => 'field_5be2e5d83fdf7',
-				'label' => __('Template', THEME_DOMAIN),
-				'name' => 'form_mail_template',
-				'type' => 'wysiwyg',
-				'instructions' => '',
-				'required' => 1,
+				'key'               => 'field_5be2e5d83fdf7',
+				'label'             => __( 'Template', THEME_DOMAIN ),
+				'name'              => 'form_mail_template',
+				'type'              => 'wysiwyg',
+				'instructions'      => '',
+				'required'          => 1,
 				'conditional_logic' => 0,
-				'wrapper' => array(
+				'wrapper'           => array(
 					'width' => '',
 					'class' => '',
-					'id' => '',
+					'id'    => '',
 				),
-				'default_value' => '',
-				'tabs' => 'all',
-				'toolbar' => 'basic',
-				'media_upload' => 0,
-				'delay' => 0,
+				'default_value'     => '',
+				'tabs'              => 'all',
+				'toolbar'           => 'basic',
+				'media_upload'      => 0,
+				'delay'             => 0,
 			),
 		),
-		'location' => array(
+		'location'              => array(
 			array(
 				array(
-					'param' => 'post_type',
+					'param'    => 'post_type',
 					'operator' => '==',
-					'value' => 'post',
+					'value'    => 'post',
 				),
 			),
 		),
-		'menu_order' => 0,
-		'position' => 'normal',
-		'style' => 'default',
-		'label_placement' => 'top',
+		'menu_order'            => 0,
+		'position'              => 'normal',
+		'style'                 => 'default',
+		'label_placement'       => 'top',
 		'instruction_placement' => 'label',
-		'hide_on_screen' => '',
-		'active' => 0,
-		'description' => '',
-	));
+		'hide_on_screen'        => '',
+		'active'                => 0,
+		'description'           => '',
+	) );
 endif;

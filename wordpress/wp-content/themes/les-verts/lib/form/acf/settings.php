@@ -8,7 +8,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 		'fields'                => array(
 			array(
 				'key'               => 'field_5a95bda5c34da',
-				'label'             => 'SMTP',
+				'label'             => __( 'SMTP', THEME_DOMAIN ),
 				'name'              => '',
 				'type'              => 'tab',
 				'instructions'      => '',
@@ -24,10 +24,10 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 			),
 			array(
 				'key'               => 'field_5a95bdafc34db',
-				'label'             => 'Send over SMTP',
+				'label'             => __( 'Send over SMTP', THEME_DOMAIN ),
 				'name'              => 'form_smtp_enabled',
 				'type'              => 'true_false',
-				'instructions'      => 'If yes, send emails using SMTP',
+				'instructions'      => __( 'If yes, send emails using SMTP', THEME_DOMAIN ),
 				'required'          => 0,
 				'conditional_logic' => 0,
 				'wrapper'           => array(
@@ -66,7 +66,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 				'sub_fields'        => array(
 					array(
 						'key'               => 'field_5a95be01c34dd',
-						'label'             => 'Server address',
+						'label'             => __( 'Server address', THEME_DOMAIN ),
 						'name'              => 'form_smtp_host',
 						'type'              => 'text',
 						'instructions'      => '',
@@ -85,7 +85,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 					),
 					array(
 						'key'               => 'field_5a95be3dc34de',
-						'label'             => 'Port',
+						'label'             => __( 'Port', THEME_DOMAIN ),
 						'name'              => 'form_smtp_port',
 						'type'              => 'number',
 						'instructions'      => '',
@@ -106,7 +106,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 					),
 					array(
 						'key'               => 'field_5a95be77c34df',
-						'label'             => 'Username',
+						'label'             => __( 'Username', THEME_DOMAIN ),
 						'name'              => 'form_smtp_username',
 						'type'              => 'text',
 						'instructions'      => '',
@@ -125,7 +125,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 					),
 					array(
 						'key'               => 'field_5a95be8fc34e0',
-						'label'             => 'Password',
+						'label'             => __( 'Password', THEME_DOMAIN ),
 						'name'              => 'form_smtp_password',
 						'type'              => 'text',
 						'instructions'      => '',

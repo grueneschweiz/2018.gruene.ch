@@ -8,7 +8,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 		'fields'                => array(
 			array(
 				'key'               => 'field_59f33777cf0db',
-				'label'             => 'Field Label',
+				'label'             => __( 'Field Label', THEME_DOMAIN ),
 				'name'              => 'form_input_label',
 				'type'              => 'text',
 				'instructions'      => '',
@@ -27,7 +27,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 			),
 			array(
 				'key'               => 'field_59f33814cf0dc',
-				'label'             => 'Type',
+				'label'             => __( 'Type', THEME_DOMAIN ),
 				'name'              => 'form_input_type',
 				'type'              => 'select',
 				'instructions'      => '',
@@ -39,14 +39,14 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 					'id'    => '',
 				),
 				'choices'           => array(
-					'text'         => 'Text',
-					'email'        => 'Email',
-					'tel'          => 'Phone',
-					'textarea'     => 'Textarea',
-					'radio'        => 'Radio button',
-					'checkbox'     => 'Check box',
-					'select'       => 'Drop down',
-					'confirmation' => 'Confirmation'
+					'text'         => __( 'Text', THEME_DOMAIN ),
+					'email'        => __( 'Email', THEME_DOMAIN ),
+					'tel'          => __( 'Phone', THEME_DOMAIN ),
+					'textarea'     => __( 'Textarea', THEME_DOMAIN ),
+					'radio'        => __( 'Radio button', THEME_DOMAIN ),
+					'checkbox'     => __( 'Check box', THEME_DOMAIN ),
+					'select'       => __( 'Drop down', THEME_DOMAIN ),
+					'confirmation' => __( 'Confirmation', THEME_DOMAIN ),
 				),
 				'default_value'     => array(
 					0 => 'text',
@@ -60,10 +60,10 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 			),
 			array(
 				'key'               => 'field_5a86967afd21e',
-				'label'             => 'Help Text (optional)',
+				'label'             => __( 'Help Text (optional)', THEME_DOMAIN ),
 				'name'              => 'form_input_help_text',
 				'type'              => 'text',
-				'instructions'      => 'Displayed below the input field (small)',
+				'instructions'      => __( 'Displayed below the input field (small)', THEME_DOMAIN ),
 				'required'          => 0,
 				'conditional_logic' => array(
 					array(
@@ -97,10 +97,10 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 			),
 			array(
 				'key'               => 'field_5ab20e7f14b9a',
-				'label'             => 'Choices',
+				'label'             => __( 'Choices', THEME_DOMAIN ),
 				'name'              => 'form_input_choices',
 				'type'              => 'textarea',
-				'instructions'      => 'Enter each choice on a new line.',
+				'instructions'      => __( 'Enter each choice on a new line.', THEME_DOMAIN ),
 				'required'          => 1,
 				'conditional_logic' => array(
 					array(
@@ -138,10 +138,10 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 			),
 			array(
 				'key'               => 'field_59f3388dcf0de',
-				'label'             => 'Required',
+				'label'             => __( 'Required', THEME_DOMAIN ),
 				'name'              => 'form_input_required',
 				'type'              => 'true_false',
-				'instructions'      => 'Set the field as mandatory',
+				'instructions'      => __( 'Set the field as mandatory', THEME_DOMAIN ),
 				'required'          => 0,
 				'conditional_logic' => array(
 					array(
@@ -165,10 +165,10 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 			),
 			array(
 				'key'               => 'field_59f338a0cf0df',
-				'label'             => 'Full Width',
+				'label'             => __( 'Full Width', THEME_DOMAIN ),
 				'name'              => 'form_input_full_width',
 				'type'              => 'true_false',
-				'instructions'      => 'Uses the full width of the form.',
+				'instructions'      => __( 'Uses the full width of the form.', THEME_DOMAIN ),
 				'required'          => 0,
 				'conditional_logic' => array(
 					array(
@@ -197,7 +197,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 			),
 			array(
 				'key'               => 'field_nkb3j4rzyurkd',
-				'label'             => 'Width %',
+				'label'             => __( 'Width %', THEME_DOMAIN ),
 				'name'              => 'form_input_width',
 				'type'              => 'number',
 				'instructions'      => '',
@@ -226,7 +226,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 			),
 			array(
 				'key'               => 'field_b9mi13o7801jf',
-				'label'             => 'Min width (optional)',
+				'label'             => __( 'Min width (optional)', THEME_DOMAIN ),
 				'name'              => 'form_input_min_width',
 				'type'              => 'number',
 				'instructions'      => '',
