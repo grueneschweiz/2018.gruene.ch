@@ -36,14 +36,16 @@
 		padding-left: 0.75rem;
 		margin-top: 1rem;
 		border-bottom: 2px solid $color-grey-2;
-		border-radius: 0;
 		transition: border-bottom-color $transition-fast $transition-ease;
+		border-radius: 2px;
 
-		&:valid, &.is-valid {
+		&:not(.is-empty):valid, &.is-valid {
 			border-bottom-color: $color-primary;
 		}
 
-		&.is-touched:invalid, &.is-invalid.is-touched {
+		&.is-touched:invalid,
+		&.is-invalid.is-touched,
+		&.is-required.is-empty.is-touched {
 			border-bottom-color: $color-red;
 		}
 

@@ -28,21 +28,23 @@ export default class AInput extends BaseView {
 
 	manageEmptyState() {
 		if (this.isEmpty()) {
-			this.removeEmptyState();
-		} else {
 			this.setEmptyState();
+		} else {
+			this.removeEmptyState();
 		}
 	}
 
 	setEmptyState() {
 		this.addClass( this.label, EMPTY_STATE );
+		this.addClass( this.input, EMPTY_STATE );
 	}
 
 	removeEmptyState() {
 		this.removeClass( this.label, EMPTY_STATE );
+		this.removeClass( this.input, EMPTY_STATE );
 	}
 
 	isEmpty() {
-		return this.input.value;
+		return ! this.input.value;
 	}
 }
