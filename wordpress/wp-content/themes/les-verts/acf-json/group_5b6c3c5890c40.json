@@ -343,6 +343,55 @@
                             ],
                             "min": "",
                             "max": ""
+                        },
+                        "layout_5bf563b4e8753": {
+                            "key": "layout_5bf563b4e8753",
+                            "name": "form",
+                            "label": "Form",
+                            "display": "block",
+                            "sub_fields": [
+                                {
+                                    "key": "field_5bf563b4e8754",
+                                    "label": "About this Block",
+                                    "name": "",
+                                    "type": "message",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "message": "Show a form",
+                                    "new_lines": "",
+                                    "esc_html": 0
+                                },
+                                {
+                                    "key": "field_5bf563b4e8755",
+                                    "label": "form",
+                                    "name": "form",
+                                    "type": "post_object",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "post_type": [
+                                        "theme_form"
+                                    ],
+                                    "taxonomy": "",
+                                    "allow_null": 0,
+                                    "multiple": 0,
+                                    "return_format": "object",
+                                    "ui": 1
+                                }
+                            ],
+                            "min": "",
+                            "max": ""
                         }
                     },
                     "button_label": "Add Content Block",
@@ -440,5 +489,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1540485085
+    "modified": 1542808569
 }
