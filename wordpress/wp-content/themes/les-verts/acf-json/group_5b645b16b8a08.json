@@ -472,7 +472,7 @@
                     "label": "Teaser",
                     "name": "teaser",
                     "type": "textarea",
-                    "instructions": "Write a brief teaser to attract the readers interest. Keep it short (200 to 400 characters).",
+                    "instructions": "Write a brief teaser to attract the readers interest. Keept it short (200 to 400 characters).",
                     "required": 1,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -605,7 +605,7 @@
                     "name": "form",
                     "type": "post_object",
                     "instructions": "Select the form containing your call to action",
-                    "required": 0,
+                    "required": 1,
                     "conditional_logic": 0,
                     "wrapper": {
                         "width": "",
@@ -613,9 +613,9 @@
                         "id": ""
                     },
                     "post_type": [
-                        "torro_form"
+                        "theme_form"
                     ],
-                    "taxonomy": [],
+                    "taxonomy": "",
                     "allow_null": 0,
                     "multiple": 0,
                     "return_format": "id",
@@ -648,5 +648,5 @@
     "hide_on_screen": "",
     "active": 0,
     "description": "",
-    "modified": 1540484929
+    "modified": 1542807891
 }
