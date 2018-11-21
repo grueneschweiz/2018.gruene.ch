@@ -51,4 +51,8 @@
 	&__submit-wrapper.is-hidden {
 		height: 0;
 	}
+
+	&__checks-label, &__option-label {
+		margin-top: 0.75em;
+	}
 }
