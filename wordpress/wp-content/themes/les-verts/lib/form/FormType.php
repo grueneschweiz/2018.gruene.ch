@@ -51,9 +51,7 @@ class FormType extends Model {
 				'supports'            => array(
 					'title',
 					'revisions'
-				),
-				'capability_type'     => self::MODEL_NAME,
-				'map_meta_cap'        => true,
+				)
 			)
 		);
 	}
