@@ -159,6 +159,7 @@ class FormType extends Model {
 			'post_type'      => self::MODEL_NAME,
 		);
 		
+		$context = [];
 		foreach ( get_posts( $args ) as $form ) {
 			$fields = array_map(
 				function ( $f ) {
