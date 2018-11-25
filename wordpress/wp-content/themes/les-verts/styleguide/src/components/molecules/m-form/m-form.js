@@ -60,6 +60,11 @@ export default class MForm extends BaseView {
 		// add form id
 		data.append( 'form_id', this.element.dataset.formId );
 
+		// add action id (engagement funnel plugin)
+		if (this.element.dataset.actionId) {
+			data.append( 'action_id', this.element.dataset.actionId );
+		}
+
 		this.ajax( url, 'POST', data )
 			.then( ( resp ) => {
 				if (resp instanceof Object && 'success' in resp && true === resp.success) {
