@@ -1,0 +1,38 @@
+{% if block.acf_fc_layout == 'in_short' %}
+    <div class="page__box">
+        {% include 'molecules/m-in-short.twig' with block only %}
+    </div>
+{% elseif block.acf_fc_layout == 'quote' %}
+    <div class="page__quote">
+        {% include 'molecules/m-quote.twig' with block only %}
+    </div>
+{% elseif block.acf_fc_layout == 'person' %}
+    <div class="page__person">
+        {% include 'molecules/m-person.twig' with block only %}
+    </div>
+{% elseif block.acf_fc_layout == 'form' or block.form %}
+    <div class="page__form">
+        {% include 'molecules/m-form.twig' with {
+            'post': ACFPost(block.form)
+        } only %}
+    </div>
+{% elseif block.acf_fc_layout == 'engagement_funnel' %}
+    <div class="page__engagement_funnel">
+        {% set action = block.engagement_funnel.get_field('configurations').0.base_action %}
+        {% set content = action.get_field('content') %}
+
+        {% if content.post_type == 'petition' %}
+            {% include 'content-block.twig' with {'block': content} only %}
+        {% elseif content.post_type == 'theme_form' %}
+            {% include 'content-block.twig' with {'block': {'form':content}} only %}
+        {% else %}{# assume post #}
+            {% for block in content.get_field('main_content').content %}
+                {% include 'content-block.twig' with {'block':block} only %}
+            {% endfor %}
+        {% endif %}
+    </div>
+{% elseif block.acf_fc_layout == 'oembed' %}
+    {{ block.oembed }}
+{% else %}
+    {{ block.text }}
+{% endif %}

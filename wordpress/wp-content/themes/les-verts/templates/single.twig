@@ -29,29 +29,7 @@
 			</header>
 
 			{% for block in main_content.content %}
-				{% if block.acf_fc_layout == 'in_short' %}
-					<div class="page__box">
-						{% include 'molecules/m-in-short.twig' with block only %}
-					</div>
-				{% elseif block.acf_fc_layout == 'quote' %}
-					<div class="page__quote">
-						{% include 'molecules/m-quote.twig' with block only %}
-					</div>
-				{% elseif block.acf_fc_layout == 'person' %}
-					<div class="page__person">
-						{% include 'molecules/m-person.twig' with block only %}
-					</div>
-				{% elseif block.acf_fc_layout == 'form' %}
-					<div class="page__form">
-						{% include 'molecules/m-form.twig' with {
-							'post': block.form
-						} only %}
-					</div>
-				{% elseif block.acf_fc_layout == 'oembed' %}
-					{{ block.oembed }}
-				{% else %}
-					{{ block.text }}
-				{% endif %}
+				{% include 'content-block.twig' with {'block':block} only %}
 			{% endfor %}
 		</div>
 
