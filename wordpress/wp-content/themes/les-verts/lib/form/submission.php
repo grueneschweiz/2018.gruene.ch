@@ -13,7 +13,14 @@ class FormSubmission {
 	 * @var int
 	 */
 	private $form_id;
-	
+
+	/**
+	 * The id of the engagement funnel action
+	 *
+	 * @var int|null
+	 */
+	private $action_id;
+
 	/**
 	 * The response status code
 	 *
@@ -83,6 +90,10 @@ class FormSubmission {
 			
 			return;
 		}
+
+		if ($_POST['action_id']) {
+			$this->action_id = (int) $_POST['action_id'];
+		}
 		
 		// get and validate data from request
 		$this->add_data();
@@ -117,8 +128,9 @@ class FormSubmission {
 		 * Fires before the email notifications are sent.
 		 *
 		 * @param array $data the form data
+		 * @param int|null $action_id of the engagement funnel action
 		 */
-		do_action( \SUPT\FormType::MODEL_NAME . '-send-email-notification', $data );
+		do_action( \SUPT\FormType::MODEL_NAME . '-send-email-notification', $data, $this->action_id );
 		
 		$fields = get_field_objects( $this->form_id );
 		
@@ -398,7 +410,18 @@ class FormSubmission {
 		 * @param array $this ->data
 		 */
 		$data = (array) apply_filters( \SUPT\FormType::MODEL_NAME . '-before-save', $this->data );
-		add_post_meta( $this->form_id, \SUPT\FormType::MODEL_NAME, $data );
+		$post_meta_id = add_post_meta( $this->form_id, \SUPT\FormType::MODEL_NAME, $data );
+
+		if ( $post_meta_id ) {
+			/**
+			 * Fires after the data is persisted.
+			 *
+			 * @param array $data the form data
+			 * @param int|null $action_id of the engagement funnel action
+			 * @param int $post_meta_id the id with the inserted form data in the post meta table
+			 */
+			do_action( \SUPT\FormType::MODEL_NAME . '-after-save', $data, $this->action_id, $post_meta_id );
+		}
 	}
 	
 	/**

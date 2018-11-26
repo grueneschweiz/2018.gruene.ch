@@ -51,9 +51,7 @@ class FormType extends Model {
 				'supports'            => array(
 					'title',
 					'revisions'
-				),
-				'capability_type'     => self::MODEL_NAME,
-				'map_meta_cap'        => true,
+				)
 			)
 		);
 	}
@@ -159,6 +157,7 @@ class FormType extends Model {
 			'post_type'      => self::MODEL_NAME,
 		);
 		
+		$context = [];
 		foreach ( get_posts( $args ) as $form ) {
 			$fields = array_map(
 				function ( $f ) {
