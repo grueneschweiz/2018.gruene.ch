@@ -8,6 +8,11 @@
 			margin-top: -170px; // dont supercharge on 2k screens
 		}
 		padding-top: 300px;
+
+		&--no-campaign {
+			margin-top: 0;
+			padding-top: 0;
+		}
 	}
 
 	&__grid {

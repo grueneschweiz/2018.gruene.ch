@@ -1,6 +1,7 @@
 {% extends "base.twig" %}
 
 {% block content %}
+	{% if post.campaign_show_main_campaign %}
 	<section class="front__campaign">
 		{% set bars = post.get_field('campaign_bars') %}
 		{% include 'organisms/o-campaign.twig' with {
@@ -27,7 +28,8 @@
 			}
 		} only %}
 	</section>
-	<div class="front__grid-wrapper">
+	{% endif %}
+	<div class="front__grid-wrapper{% if not post.campaign_show_main_campaign %} front__grid-wrapper--no-campaign{% endif %}">
 		<section class="front__grid">
 			{% for block in post.get_field('content_blocks') %}
 			{% if block.acf_fc_layout == 'testimonials' %}
