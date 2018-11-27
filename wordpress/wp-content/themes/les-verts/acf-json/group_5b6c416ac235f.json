@@ -1,23 +1,6 @@
 {
     "key": "group_5b6c416ac235f",
     "title": "[Template]In Short",
-    "location": [
-        [
-            {
-                "param": "post_type",
-                "operator": "==",
-                "value": "post"
-            }
-        ]
-    ],
-    "menu_order": 0,
-    "position": "normal",
-    "style": "default",
-    "label_placement": "top",
-    "instruction_placement": "label",
-    "hide_on_screen": "",
-    "active": 0,
-    "description": "",
     "fields": [
         {
             "key": "field_5b7293fda545d",
@@ -60,7 +43,7 @@
             "label": "Content",
             "name": "content",
             "type": "flexible_content",
-            "instructions": "Use a bullet points or text block to add a brief description. Then add a call to action.",
+            "instructions": "Add a brief description. Then add a call to action.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -69,56 +52,6 @@
                 "id": ""
             },
             "layouts": {
-                "5b6c42780b3b3": {
-                    "key": "5b6c42780b3b3",
-                    "name": "bullet_points",
-                    "label": "Bullet Points",
-                    "display": "block",
-                    "sub_fields": [
-                        {
-                            "key": "field_5b6c4280d8fbf",
-                            "label": "",
-                            "name": "bullet_points",
-                            "type": "repeater",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "collapsed": "field_5b6c4290d8fc0",
-                            "min": 1,
-                            "max": 0,
-                            "layout": "table",
-                            "button_label": "Add Bullet Point",
-                            "sub_fields": [
-                                {
-                                    "key": "field_5b6c4290d8fc0",
-                                    "label": "Bullet Point",
-                                    "name": "bullet_point",
-                                    "type": "textarea",
-                                    "instructions": "Max. 280 characters.",
-                                    "required": 0,
-                                    "conditional_logic": 0,
-                                    "wrapper": {
-                                        "width": "",
-                                        "class": "",
-                                        "id": ""
-                                    },
-                                    "default_value": "",
-                                    "placeholder": "",
-                                    "maxlength": 280,
-                                    "rows": 2,
-                                    "new_lines": ""
-                                }
-                            ]
-                        }
-                    ],
-                    "min": "",
-                    "max": ""
-                },
                 "layout_5b6c42dbd8fc1": {
                     "key": "layout_5b6c42dbd8fc1",
                     "name": "text",
@@ -130,7 +63,7 @@
                             "label": "",
                             "name": "text",
                             "type": "wysiwyg",
-                            "instructions": "",
+                            "instructions": "Use bullet points, if possible.",
                             "required": 0,
                             "conditional_logic": 0,
                             "wrapper": {
@@ -186,5 +119,22 @@
             "max": ""
         }
     ],
-    "modified": 1543324744
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 0,
+    "description": "",
+    "modified": 1543332183
 }
