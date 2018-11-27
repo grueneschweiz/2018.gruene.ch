@@ -13,14 +13,14 @@ class FormSubmission {
 	 * @var int
 	 */
 	private $form_id;
-
+	
 	/**
 	 * The id of the engagement funnel action
 	 *
 	 * @var int|null
 	 */
 	private $action_id;
-
+	
 	/**
 	 * The response status code
 	 *
@@ -90,8 +90,8 @@ class FormSubmission {
 			
 			return;
 		}
-
-		if ($_POST['action_id']) {
+		
+		if ( $_POST['action_id'] ) {
 			$this->action_id = (int) $_POST['action_id'];
 		}
 		
@@ -127,10 +127,16 @@ class FormSubmission {
 		/**
 		 * Fires before the email notifications are sent.
 		 *
-		 * @param array $data the form data
-		 * @param int|null $action_id of the engagement funnel action
+		 * @param array $data with
+		 *  'form_data' => array with the validated and sanitized form data
+		 *  'action_id' => int|null the engagement funnel form data
 		 */
-		do_action( \SUPT\FormType::MODEL_NAME . '-send-email-notification', $data, $this->action_id );
+		do_action( \SUPT\FormType::MODEL_NAME . '-before-email-notification',
+			array(
+				'form_data' => $data,
+				'action_id' => $this->action_id,
+			)
+		);
 		
 		$fields = get_field_objects( $this->form_id );
 		
@@ -149,7 +155,8 @@ class FormSubmission {
 		 *
 		 * @param array $data the form data
 		 */
-		$from = apply_filters( \SUPT\FormType::MODEL_NAME . '-email-from', "$sender_name <noreply@{$this->get_domain()}>" );
+		$from = apply_filters( \SUPT\FormType::MODEL_NAME . '-email-from',
+			"$sender_name <noreply@{$this->get_domain()}>" );
 		
 		$reply_to        = $fields['form_reply_to']['value'];
 		$confirmation_to = $this->determine_confirmation_email_address();
@@ -216,18 +223,18 @@ class FormSubmission {
 	 * Populate data field with validated and sanitized form data.
 	 */
 	private function add_data() {
-		$fields =$this->get_fields();
+		$fields = $this->get_fields();
 		
 		foreach ( $fields as $key => $field ) {
 			
 			// sanitize and validate checkboxes
-			if ('checkbox' === $field['form_input_type']) {
-				$choices   = $field['form_input_choices'];
-				$options   = array_map( 'trim', explode( "\n", $choices ) );
-				$required  = $field['form_input_required'];
+			if ( 'checkbox' === $field['form_input_type'] ) {
+				$choices  = $field['form_input_choices'];
+				$options  = array_map( 'trim', explode( "\n", $choices ) );
+				$required = $field['form_input_required'];
 				
-				foreach ($field['values'] as $value_key => $value) {
-					$raw = $this->get_field($value_key);
+				foreach ( $field['values'] as $value_key => $value ) {
+					$raw     = $this->get_field( $value_key );
 					$checked = $this->sanitize( $raw, 'checkbox' );
 					$valid   = $this->validate( $checked, 'checkbox', $options, $required );
 					
@@ -235,13 +242,13 @@ class FormSubmission {
 						$this->errors[ $key ] = $valid;
 					}
 					
-					if ($checked) {
-						$this->data[$key][$value_key] = $value;
+					if ( $checked ) {
+						$this->data[ $key ][ $value_key ] = $value;
 					}
 				}
 				
 			} else {
-				$raw = $this->get_field($key);
+				$raw = $this->get_field( $key );
 				
 				$type      = $field['form_input_type'];
 				$choices   = $field['form_input_choices'];
@@ -254,9 +261,14 @@ class FormSubmission {
 					$this->errors[ $key ] = $valid;
 				}
 				
-				$this->data[$key] = $sanitized;
+				$this->data[ $key ] = $sanitized;
 			}
 		}
+		
+		$this->data['_meta_'] = array(
+			'form_id' => $this->form_id,
+			'action_id' => $this->action_id
+		);
 	}
 	
 	/**
@@ -266,10 +278,11 @@ class FormSubmission {
 	 *
 	 * @return string|null
 	 */
-	private function get_field($key) {
+	private function get_field( $key ) {
 		if ( ! array_key_exists( $key, $_POST ) ) {
 			// if field was not transmitted
 			$this->errors[ $key ] = __( 'Missing data.', THEME_DOMAIN );
+			
 			return null;
 		}
 		
@@ -299,7 +312,7 @@ class FormSubmission {
 			
 			case 'radio':
 			case 'select':
-				if (empty($data)) {
+				if ( empty( $data ) ) {
 					$valid = true;
 					break;
 				}
@@ -366,8 +379,8 @@ class FormSubmission {
 				if ( 'checkbox' === $field['form_input_type'] ) {
 					$labels = explode( "\n", $field['form_input_choices'] );
 					foreach ( $labels as $label ) {
-						$valueKey                                  = supt_slugify( $label );
-						$this->fields[ $key ]['values'][$valueKey] = trim( $label );
+						$valueKey                                    = supt_slugify( $label );
+						$this->fields[ $key ]['values'][ $valueKey ] = trim( $label );
 					}
 				}
 			}
@@ -410,17 +423,25 @@ class FormSubmission {
 		 * @param array $this ->data
 		 */
 		$data = (array) apply_filters( \SUPT\FormType::MODEL_NAME . '-before-save', $this->data );
+		
 		$post_meta_id = add_post_meta( $this->form_id, \SUPT\FormType::MODEL_NAME, $data );
-
+		
 		if ( $post_meta_id ) {
 			/**
 			 * Fires after the data is persisted.
 			 *
-			 * @param array $data the form data
-			 * @param int|null $action_id of the engagement funnel action
-			 * @param int $post_meta_id the id with the inserted form data in the post meta table
+			 * @param array $data with
+			 *  'form_data' => array with the validated and sanitized form data
+			 *  'action_id' => int|null the engagement funnel form data
+			 *  'post_meta_id' => the id of the post meta table where the form data is stored
 			 */
-			do_action( \SUPT\FormType::MODEL_NAME . '-after-save', $data, $this->action_id, $post_meta_id );
+			do_action( \SUPT\FormType::MODEL_NAME . '-after-save',
+				array(
+					'form_data'    => $data,
+					'action_id'    => $this->action_id,
+					'post_meta_id' => $post_meta_id
+				)
+			);
 		}
 	}
 	
