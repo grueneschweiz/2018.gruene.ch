@@ -26,6 +26,7 @@
 				'link': desc.link,
 			} only %}
 		</div>
+		{% if cta.title or cta.desc or cta.form %}
 		<div class="o-campaign__cta">
 			{% include 'molecules/m-campaign-cta.twig' with {
 				'title': cta.title,
@@ -34,5 +35,6 @@
 				'link': cta.link,
 			} only %}
 		</div>
+		{% endif %}
 	</div>
 </article>
