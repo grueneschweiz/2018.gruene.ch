@@ -21,7 +21,7 @@ set -u # treat undefined variables as errors
 set -o pipefail # only consider pipe successful if all commands involved were successful
 
 INSTALL_ACTIVATE_ARGUMENT="--activate"
-ACTIVATE_NETWORK_ARGUMENT=""
+ACTIVATE_NETWORK_ARGUMENT=
 NETWORK=
 MULTILANG=
 
@@ -143,14 +143,12 @@ $WPCLI plugin activate searchwp $ACTIVATE_NETWORK_ARGUMENT
 $WPCLI plugin install enhanced-media-library $INSTALL_ACTIVATE_ARGUMENT
 
 #====================
-# Enable theme
+# Theme
 #====================
-$WPCLI theme enable les-verts $ACTIVATE_NETWORK_ARGUMENT
+if [ $NETWORK ]; then
+    $WPCLI theme enable les-verts $ACTIVATE_NETWORK_ARGUMENT
+fi
 
-#====================
-# Setup default site
-#====================
-$WPCLI option update timezone_string "Europe/Zurich"
 $WPCLI theme activate les-verts
 
 #====================
@@ -159,20 +157,35 @@ $WPCLI theme activate les-verts
 $WPCLI theme delete twentyfifteen
 $WPCLI theme delete twentysixteen
 $WPCLI theme delete twentyseventeen
-$WPCLI plugin uninstall akismet --deactivate
-$WPCLI plugin uninstall hello --deactivate
+
+if $WPCLI plugin is-installed akismet; then
+    $WPCLI plugin uninstall akismet --deactivate
+fi
+
+if $WPCLI plugin list is-installed hello; then
+    $WPCLI plugin uninstall hello --deactivate
+fi
 
 #====================
-# Configrue
+# Configure
 #====================
+# set time zone
+$WPCLI option update timezone_string "Europe/Zurich"
+
 # set permalink structure
 $WPCLI rewrite structure '%postname%'
 
 # set upload limit to 64 MB
-$WPCLI network meta update 1 fileupload_maxk 65536
+if [ $NETWORK ]; then
+    $WPCLI network meta update 1 fileupload_maxk 65536
+fi
 
 # sync acf fields
-$WPCLI acf-json sync --all_sites
+ALL_SITES=
+if [ $NETWORK ]; then
+    ALL_SITES='--all_sites'
+fi
+$WPCLI acf-json sync $ALL_SITES
 
 # configure YOAST meta description fields
 $WPCLI option patch update wpseo_titles metadesc-tribe_events <<< "%%cf_description%%"
@@ -183,7 +196,7 @@ $WPCLI option patch update wpseo enable_admin_bar_menu <<< "false"
 $WPCLI option patch update wpseo_titles disable-author <<< "true"
 $WPCLI option patch update wpseo_titles disable-date <<< "true"
 $WPCLI option patch update wpseo_titles disable-attachment <<< "true"
-$WPCLI option patch update wpseo_titles hideeditbox-tax-media_category <<< "true"
+#$WPCLI option patch update wpseo_titles hideeditbox-tax-media_category <<< "true" todo: fix it (it doesnt work on clean installations)
 $WPCLI option patch update wpseo_titles post_types-post-maintax <<< "category"
 
 # disable comment everywhere
