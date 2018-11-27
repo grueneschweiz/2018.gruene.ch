@@ -1,6 +1,23 @@
 {
     "key": "group_5b6ae2eb01de7",
     "title": "[Template]Events Block",
+    "location": [
+        [
+            {
+                "param": "page_type",
+                "operator": "==",
+                "value": "front_page"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 0,
+    "description": "",
     "fields": [
         {
             "key": "field_5b7da28b9c989",
@@ -15,7 +32,7 @@
                 "class": "",
                 "id": ""
             },
-            "message": "This block displays a teaser of your most recent events.",
+            "message": "Displays a teaser of your most recent events.",
             "new_lines": "wpautop",
             "esc_html": 0
         },
@@ -94,22 +111,5 @@
             "ui_off_text": ""
         }
     ],
-    "location": [
-        [
-            {
-                "param": "page_type",
-                "operator": "==",
-                "value": "front_page"
-            }
-        ]
-    ],
-    "menu_order": 0,
-    "position": "normal",
-    "style": "default",
-    "label_placement": "top",
-    "instruction_placement": "label",
-    "hide_on_screen": "",
-    "active": 0,
-    "description": "",
-    "modified": 1534960316
+    "modified": 1543324741
 }

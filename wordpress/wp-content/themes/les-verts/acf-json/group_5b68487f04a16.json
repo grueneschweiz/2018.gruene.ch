@@ -1,6 +1,23 @@
 {
     "key": "group_5b68487f04a16",
     "title": "[Template]Latest Press Release",
+    "location": [
+        [
+            {
+                "param": "page_type",
+                "operator": "==",
+                "value": "front_page"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 0,
+    "description": "",
     "fields": [
         {
             "key": "field_5b7193201a0ac",
@@ -15,7 +32,7 @@
                 "class": "",
                 "id": ""
             },
-            "message": "This block displays the latest press release (as long as it is published under the category you set below). Posts where the flag 'Show on front page' is not set to false will be excluded.\r\n\r\nIf the press release contains a quote block, the quote will be displayed. Else the lead is shown.",
+            "message": "Display the latest press release (as long as it is published under the category you set below). Posts where the flag 'Show on front page' is not set to false will be excluded.\r\n\r\nIf the press release contains a quote block, the quote will be displayed. Else the lead is shown.",
             "new_lines": "wpautop",
             "esc_html": 0
         },
@@ -45,7 +62,7 @@
             "label": "Category",
             "name": "category",
             "type": "taxonomy",
-            "instructions": "Select the category, that you assign to your press releases. This Block will always display the newest post of this category (except if you've set the 'show on front' flag to 'no').",
+            "instructions": "Select the category of your press releases.",
             "required": 1,
             "conditional_logic": 0,
             "wrapper": {
@@ -63,22 +80,5 @@
             "multiple": 0
         }
     ],
-    "location": [
-        [
-            {
-                "param": "page_type",
-                "operator": "==",
-                "value": "front_page"
-            }
-        ]
-    ],
-    "menu_order": 0,
-    "position": "normal",
-    "style": "default",
-    "label_placement": "top",
-    "instruction_placement": "label",
-    "hide_on_screen": "",
-    "active": 0,
-    "description": "",
-    "modified": 1534266822
+    "modified": 1543324744
 }

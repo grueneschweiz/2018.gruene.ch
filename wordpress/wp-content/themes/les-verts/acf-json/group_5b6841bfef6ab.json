@@ -1,6 +1,23 @@
 {
     "key": "group_5b6841bfef6ab",
     "title": "[Template]Vote Proposals",
+    "location": [
+        [
+            {
+                "param": "page_type",
+                "operator": "==",
+                "value": "front_page"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 0,
+    "description": "",
     "fields": [
         {
             "key": "field_5b7da085dc6f1",
@@ -15,7 +32,7 @@
                 "class": "",
                 "id": ""
             },
-            "message": "Use this block to display your vote proposals. Make sure you add a brief post with an explanation of your proposal first.",
+            "message": "Displays voting recommendations.",
             "new_lines": "wpautop",
             "esc_html": 0
         },
@@ -240,7 +257,7 @@
             "label": "Footer",
             "name": "footer",
             "type": "group",
-            "instructions": "As long as you don't provide a link text, the footer is not shown.\r\n<br><br>\r\nUse the all votations link to link to a page that contains links to the propositions of the greens of the cantons or the communities.",
+            "instructions": "Only displayed, if link is set.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -251,8 +268,30 @@
             "layout": "row",
             "sub_fields": [
                 {
+                    "key": "field_5b687a7954f7d",
+                    "label": "All Votations Link",
+                    "name": "link",
+                    "type": "page_link",
+                    "instructions": "Page with link to all vote recommendations (national, cantonal, community).",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "post_type": [
+                        "page",
+                        "post"
+                    ],
+                    "taxonomy": "",
+                    "allow_null": 0,
+                    "allow_archives": 0,
+                    "multiple": 0
+                },
+                {
                     "key": "field_5b687a2c54f7c",
-                    "label": "All Votations Link Text",
+                    "label": "Link Text",
                     "name": "link_label",
                     "type": "text",
                     "instructions": "",
@@ -275,47 +314,9 @@
                     "prepend": "",
                     "append": "",
                     "maxlength": ""
-                },
-                {
-                    "key": "field_5b687a7954f7d",
-                    "label": "All Votations Link",
-                    "name": "link",
-                    "type": "page_link",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "post_type": [
-                        "page"
-                    ],
-                    "taxonomy": [],
-                    "allow_null": 0,
-                    "allow_archives": 0,
-                    "multiple": 0
                 }
             ]
         }
     ],
-    "location": [
-        [
-            {
-                "param": "page_type",
-                "operator": "==",
-                "value": "front_page"
-            }
-        ]
-    ],
-    "menu_order": 0,
-    "position": "normal",
-    "style": "default",
-    "label_placement": "top",
-    "instruction_placement": "label",
-    "hide_on_screen": "",
-    "active": 0,
-    "description": "",
-    "modified": 1540289541
+    "modified": 1543324751
 }

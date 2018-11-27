@@ -1,6 +1,24 @@
 {
     "key": "group_5b647ca5e8da4",
     "title": "(Media) Image Copyright",
+    "location": [
+        [
+            {
+                "param": "attachment",
+                "operator": "==",
+                "value": "image"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1543324738,
     "fields": [
         {
             "key": "field_5b647cb444899",
@@ -21,23 +39,5 @@
             "append": "",
             "maxlength": 120
         }
-    ],
-    "location": [
-        [
-            {
-                "param": "attachment",
-                "operator": "==",
-                "value": "image"
-            }
-        ]
-    ],
-    "menu_order": 0,
-    "position": "normal",
-    "style": "default",
-    "label_placement": "top",
-    "instruction_placement": "label",
-    "hide_on_screen": "",
-    "active": 1,
-    "description": "",
-    "modified": 1534184490
+    ]
 }

@@ -1,27 +1,6 @@
 {
     "key": "group_5b76febf369b4",
     "title": "Social Media",
-    "fields": [
-        {
-            "key": "field_5b76fef28095e",
-            "label": "Display Share Buttons",
-            "name": "share_buttons",
-            "type": "true_false",
-            "instructions": "You can hide the share buttons of this page, by disabling this option.",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "message": "",
-            "default_value": 1,
-            "ui": 1,
-            "ui_on_text": "",
-            "ui_off_text": ""
-        }
-    ],
     "location": [
         [
             {
@@ -68,5 +47,26 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1538581339
+    "modified": 1543324758,
+    "fields": [
+        {
+            "key": "field_5b76fef28095e",
+            "label": "Display Share Buttons",
+            "name": "share_buttons",
+            "type": "true_false",
+            "instructions": "You can hide the share buttons of this page, by disabling this option.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 1,
+            "ui": 1,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        }
+    ]
 }

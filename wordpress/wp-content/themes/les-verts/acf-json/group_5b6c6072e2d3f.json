@@ -1,6 +1,23 @@
 {
     "key": "group_5b6c6072e2d3f",
     "title": "[Template]Testimonials",
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 0,
+    "description": "",
     "fields": [
         {
             "key": "field_5b7da1211ced8",
@@ -15,7 +32,7 @@
                 "class": "",
                 "id": ""
             },
-            "message": "Use this block to display some fancy testimonials. Make sure you add the testimonials with the right <strong>category<\/strong> in the peoples section.",
+            "message": "Display some fancy testimonials. Make sure you add the testimonials with the corresponding <strong>category<\/strong> in the peoples section.",
             "new_lines": "wpautop",
             "esc_html": 0
         },
@@ -104,22 +121,5 @@
             "return_format": "value"
         }
     ],
-    "location": [
-        [
-            {
-                "param": "post_type",
-                "operator": "==",
-                "value": "post"
-            }
-        ]
-    ],
-    "menu_order": 0,
-    "position": "normal",
-    "style": "default",
-    "label_placement": "top",
-    "instruction_placement": "label",
-    "hide_on_screen": "",
-    "active": 0,
-    "description": "",
-    "modified": 1539001956
+    "modified": 1543324750
 }

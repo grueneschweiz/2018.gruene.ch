@@ -1,6 +1,23 @@
 {
     "key": "group_5b6846d09aa72",
     "title": "[Template]Single Post",
+    "location": [
+        [
+            {
+                "param": "page_type",
+                "operator": "==",
+                "value": "front_page"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 0,
+    "description": "",
     "fields": [
         {
             "key": "field_5b7d9f270b51d",
@@ -15,7 +32,7 @@
                 "class": "",
                 "id": ""
             },
-            "message": "Use this block to display a teaser of any post or page of this website.",
+            "message": "Display a teaser of any post or page.",
             "new_lines": "wpautop",
             "esc_html": 0
         },
@@ -66,7 +83,7 @@
             "label": "Footer",
             "name": "footer",
             "type": "group",
-            "instructions": "Make use of the call to action. Just paste in the link to the form, where the visitor can get active.",
+            "instructions": "Immediate call to action.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -81,7 +98,7 @@
                     "label": "Call to Action Link",
                     "name": "cta_link",
                     "type": "url",
-                    "instructions": "",
+                    "instructions": "Add anchor link to the call to action form.",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -147,22 +164,5 @@
             ]
         }
     ],
-    "location": [
-        [
-            {
-                "param": "page_type",
-                "operator": "==",
-                "value": "front_page"
-            }
-        ]
-    ],
-    "menu_order": 0,
-    "position": "normal",
-    "style": "default",
-    "label_placement": "top",
-    "instruction_placement": "label",
-    "hide_on_screen": "",
-    "active": 0,
-    "description": "",
-    "modified": 1534959504
+    "modified": 1543324749
 }

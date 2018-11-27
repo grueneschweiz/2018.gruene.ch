@@ -1,6 +1,23 @@
 {
     "key": "group_5b6c045f68e96",
     "title": "[Template]Quote",
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 0,
+    "description": "",
     "fields": [
         {
             "key": "field_5b72a5ba9a5e6",
@@ -15,7 +32,7 @@
                 "class": "",
                 "id": ""
             },
-            "message": "Use this block to display a nicely formated quote of any person you added in your people section. The image will automatically be pulled from the persons record.",
+            "message": "Displays a nicely formatted quote of any person you added in your people section. The image will automatically be pulled from the persons record.",
             "new_lines": "wpautop",
             "esc_html": 0
         },
@@ -24,7 +41,7 @@
             "label": "Quote",
             "name": "quote",
             "type": "textarea",
-            "instructions": "",
+            "instructions": "Max 280 character.",
             "required": 1,
             "conditional_logic": 0,
             "wrapper": {
@@ -80,22 +97,5 @@
             "maxlength": ""
         }
     ],
-    "location": [
-        [
-            {
-                "param": "post_type",
-                "operator": "==",
-                "value": "post"
-            }
-        ]
-    ],
-    "menu_order": 0,
-    "position": "normal",
-    "style": "default",
-    "label_placement": "top",
-    "instruction_placement": "label",
-    "hide_on_screen": "",
-    "active": 0,
-    "description": "",
-    "modified": 1534240371
+    "modified": 1543324749
 }

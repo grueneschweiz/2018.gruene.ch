@@ -1,13 +1,47 @@
 {
     "key": "group_5b6c4bfaa8a26",
     "title": "[Template]Link Lists",
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 0,
+    "description": "",
     "fields": [
+        {
+            "key": "field_5bfd14804bd11",
+            "label": "About this Block",
+            "name": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "Use link list blocks to provide some additional information, the reader could be interested in. \r\n\r\nA good first starting point would be a <i>manual link list<\/i> block that lists documents where the reader can dig deeper, like the debate in parliament etc. A second cool block <i>(auto link list)<\/i> could be the latest posts of the same category or with the same tag.",
+            "new_lines": "wpautop",
+            "esc_html": 0
+        },
         {
             "key": "field_5b7d1c098d538",
             "label": "Title",
             "name": "title",
             "type": "text",
-            "instructions": "Use this title to explain the reader what follows. On a campaign page the title could be something like 'You might also be interested in'.",
+            "instructions": "Example: 'You might also be interested in' or ' Related content'",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -26,7 +60,7 @@
             "label": "Link List Blocks",
             "name": "link_lists",
             "type": "flexible_content",
-            "instructions": "Use link list blocks to provide some additional information, the reader could look at, after he has read this page. \r\n\r\nA good first starting point could be a block that lists documents where the reader can dig deeper, like the debate in parliament etc. A second cool block could be a list of related content (from this website) the visitor should look at next :)",
+            "instructions": "",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -54,7 +88,7 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "message": "Use this block to provide the reader a manually curated list of links to read further. Links you add using this block will stay as you added them (static).",
+                            "message": "Show a manually curated list of links. Links you add using this block will stay as you added them (static).",
                             "new_lines": "wpautop",
                             "esc_html": 0
                         },
@@ -84,7 +118,7 @@
                             "label": "Linked Content",
                             "name": "linked_content",
                             "type": "flexible_content",
-                            "instructions": "Add up to four links to posts, pages, events or external links. This list will stay as it is until you change it ;)",
+                            "instructions": "Add up to four links to posts, pages, events or external links.",
                             "required": 0,
                             "conditional_logic": 0,
                             "wrapper": {
@@ -180,9 +214,28 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "message": "Use this block to provide the reader a automatically generated list of content to read. The newest five content elements (pages, posts or events) that meet the given filter criteria will be displayed. This list will automatically be updated if any new content meets the filter criteria (dynamic).",
+                            "message": "Display the latest four posts, events or pages that meet the given filter criteria. \r\n\r\nThis list will automatically be updated if any new content meets the filter criteria (dynamic).",
                             "new_lines": "wpautop",
                             "esc_html": 0
+                        },
+                        {
+                            "key": "field_5b7c253151b70",
+                            "label": "Show Excerpt",
+                            "name": "full_width",
+                            "type": "true_false",
+                            "instructions": "If true, the excerpt of every content element is shown. This block will then span the whole content area (both columns).",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "message": "",
+                            "default_value": 0,
+                            "ui": 1,
+                            "ui_on_text": "",
+                            "ui_off_text": ""
                         },
                         {
                             "key": "field_5b7c16edb4d17",
@@ -225,7 +278,7 @@
                                     "label": "Categories",
                                     "name": "categories",
                                     "type": "taxonomy",
-                                    "instructions": "",
+                                    "instructions": "Content is displayed if <strong>all categories match<\/strong>.",
                                     "required": 0,
                                     "conditional_logic": 0,
                                     "wrapper": {
@@ -247,7 +300,7 @@
                                     "label": "Tags",
                                     "name": "tags",
                                     "type": "taxonomy",
-                                    "instructions": "",
+                                    "instructions": "Content is displayed if <strong>at lease one tag matches<\/strong>.",
                                     "required": 0,
                                     "conditional_logic": 0,
                                     "wrapper": {
@@ -265,25 +318,6 @@
                                     "multiple": 0
                                 }
                             ]
-                        },
-                        {
-                            "key": "field_5b7c253151b70",
-                            "label": "Show Excerpt",
-                            "name": "full_width",
-                            "type": "true_false",
-                            "instructions": "If you choose to show the excerpt, this block will span the whole content area (both columns).",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "message": "",
-                            "default_value": 0,
-                            "ui": 1,
-                            "ui_on_text": "",
-                            "ui_off_text": ""
                         }
                     ],
                     "min": "",
@@ -295,22 +329,5 @@
             "max": ""
         }
     ],
-    "location": [
-        [
-            {
-                "param": "post_type",
-                "operator": "==",
-                "value": "post"
-            }
-        ]
-    ],
-    "menu_order": 0,
-    "position": "normal",
-    "style": "default",
-    "label_placement": "top",
-    "instruction_placement": "label",
-    "hide_on_screen": "",
-    "active": 0,
-    "description": "",
-    "modified": 1537467558
+    "modified": 1543324745
 }

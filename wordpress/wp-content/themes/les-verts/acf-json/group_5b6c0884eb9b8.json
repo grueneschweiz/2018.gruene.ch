@@ -1,6 +1,37 @@
 {
     "key": "group_5b6c0884eb9b8",
     "title": "Person",
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "people"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [
+        "the_content",
+        "excerpt",
+        "discussion",
+        "comments",
+        "revisions",
+        "slug",
+        "author",
+        "format",
+        "page_attributes",
+        "featured_image",
+        "categories",
+        "tags",
+        "send-trackbacks"
+    ],
+    "active": 1,
+    "description": "",
     "fields": [
         {
             "key": "field_5bb4e39c23f7a",
@@ -236,7 +267,7 @@
             "label": "Testimonials",
             "name": "testimonials",
             "type": "repeater",
-            "instructions": "",
+            "instructions": "Displayed by the testimonials block (≠ quote block).",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -255,7 +286,7 @@
                     "label": "Quote",
                     "name": "quote",
                     "type": "textarea",
-                    "instructions": "",
+                    "instructions": "Max 280 characters",
                     "required": 1,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -293,7 +324,7 @@
                     "label": "Testimonial Category",
                     "name": "taxonomy",
                     "type": "taxonomy",
-                    "instructions": "To present testimonials you will have to select the testimonials by category, so assign the same category to all testimonials you want to have in the same collection.",
+                    "instructions": "To present testimonials you will have to select the testimonials by category, so <strong>assign the same category to all testimonials you want to display in the same collection<\/strong>.",
                     "required": 1,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -313,36 +344,5 @@
             ]
         }
     ],
-    "location": [
-        [
-            {
-                "param": "post_type",
-                "operator": "==",
-                "value": "people"
-            }
-        ]
-    ],
-    "menu_order": 0,
-    "position": "normal",
-    "style": "default",
-    "label_placement": "top",
-    "instruction_placement": "label",
-    "hide_on_screen": [
-        "the_content",
-        "excerpt",
-        "discussion",
-        "comments",
-        "revisions",
-        "slug",
-        "author",
-        "format",
-        "page_attributes",
-        "featured_image",
-        "categories",
-        "tags",
-        "send-trackbacks"
-    ],
-    "active": 1,
-    "description": "",
-    "modified": 1540484989
+    "modified": 1543324753
 }
