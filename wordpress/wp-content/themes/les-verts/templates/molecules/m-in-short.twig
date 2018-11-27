@@ -1,13 +1,7 @@
 <div class="m-in-short">
 	<h2 class="m-in-short__title">{{ title|wptexturize }}</h2>
 	{% for block in content %}
-		{% if block.acf_fc_layout == 'bullet_points' %}
-			<ul class="m-in-short__list">
-				{% for item in block.bullet_points %}
-					<li class="m-in-short__item">{{ item.bullet_point|wptexturize }}</li>
-				{% endfor %}
-			</ul>
-		{% elseif block.acf_fc_layout == 'call_to_action' %}
+		{% if block.acf_fc_layout == 'call_to_action' %}
 			{% include 'molecules/m-form.twig' with {
 				'post' : Post(block.form),
 				'modifiers': 'invers'
