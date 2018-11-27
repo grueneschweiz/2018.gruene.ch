@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Les Verts\n"
-"POT-Creation-Date: 2018-09-19 14:13+0200\n"
-"PO-Revision-Date: 2018-09-19 14:27+0200\n"
+"POT-Creation-Date: 2018-11-27 18:29+0100\n"
+"PO-Revision-Date: 2018-11-27 18:29+0100\n"
 "Last-Translator: Cyrill Bolliger <bolliger@gmx.ch>\n"
 "Language-Team: Cyrill Bolliger <bolliger@gmx.ch>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.1.1\n"
+"X-Generator: Poedit 2.2\n"
 "X-Poedit-Basepath: ..\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
@@ -21,27 +21,27 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 
-#: archive.php:22
-msgid "Archive"
-msgstr "Archiv"
+#: 404.php:21
+msgid "Latest posts"
+msgstr "Neuste Beiträge"
 
-#: functions.php:119 templates/molecules/m-menu.twig:9
+#: functions.php:113 templates/molecules/m-menu.twig:10
 msgid "Main navigation"
 msgstr "Hauptnavigation"
 
-#: functions.php:120 templates/molecules/m-menu.twig:55
+#: functions.php:114 templates/molecules/m-menu.twig:55
 msgid "Language navigation"
 msgstr "Sprachnavigation"
 
-#: functions.php:121
+#: functions.php:115
 msgid "Footer meta navigation"
 msgstr "Footer Meta Navigation"
 
-#: functions.php:189
+#: functions.php:183
 msgid "Footer"
 msgstr "Footer"
 
-#: functions.php:191
+#: functions.php:185
 msgid ""
 "This is the footer. Use it for your primary calls to action (Button widget), "
 "your contact details (Contact widget) and the footer menu (Link list widget)."
@@ -57,6 +57,53 @@ msgstr "Globale Optionen"
 #: lib/admin/acf-option-pages.php:42 lib/admin/acf-option-pages.php:43
 msgid "Options ("
 msgstr "Optionen ("
+
+#: lib/admin/custom-menu-metabox.php:15 lib/admin/custom-menu-metabox.php:37
+msgid "Automatic Agenda"
+msgstr "Automatische Agenda"
+
+#: lib/admin/custom-menu-metabox.php:43
+msgid "Agenda"
+msgstr "Agenda"
+
+#: lib/admin/custom-menu-metabox.php:52
+msgid "Add to Menu"
+msgstr "Zum Menü hinzufügen"
+
+#: lib/controllers/navigation.php:38
+msgctxt "short date format"
+msgid "y-m-d"
+msgstr "d.m.y"
+
+#: lib/controllers/navigation.php:42
+#, php-format
+msgctxt "Example: 21.03.2018: Delegiertenversammlung"
+msgid "%s: %s"
+msgstr "%s: %s"
+
+#: lib/controllers/navigation.php:136 lib/customizer/GetActive.php:42
+msgid "Get Active"
+msgstr "Mitmachen"
+
+#: lib/customizer/GetActive.php:35
+msgid "Get Active Button"
+msgstr "Mitmachen-Button"
+
+#: lib/customizer/GetActive.php:56
+msgid "Button Label"
+msgstr "Button-Text"
+
+#: lib/customizer/GetActive.php:57
+msgid "Set the label text for the get active button."
+msgstr "Setze den Text für den Mitmachen-Button."
+
+#: lib/customizer/GetActive.php:70
+msgid "Button Link Page"
+msgstr "Button Link Seite"
+
+#: lib/customizer/GetActive.php:71
+msgid "Select the page, where the get active button should lead to."
+msgstr "Wähle die Seite, zu der der Mitmachen-Button führen soll."
 
 #: lib/customizer/Logo.php:47 lib/customizer/_Example.php:63
 msgid "Logo (light variant)"
@@ -84,207 +131,354 @@ msgstr "Logos"
 msgid "some words about the logo like the size etc."
 msgstr "einige Wörter über das Logo wie die Größe etc."
 
-#: lib/form/FormType.php:25
+#: lib/form/FormType.php:24
 msgctxt "post type general name"
 msgid "Forms"
 msgstr "Formulare"
 
-#: lib/form/FormType.php:26
+#: lib/form/FormType.php:25
 msgctxt "post type singular name"
 msgid "Form"
 msgstr "Formular"
 
-#: lib/form/FormType.php:27
+#: lib/form/FormType.php:26
 msgctxt "admin menu"
 msgid "Forms"
 msgstr "Formulare"
 
-#: lib/form/FormType.php:28
+#: lib/form/FormType.php:27
 msgctxt "add new on admin bar"
 msgid "Form"
 msgstr "Formular"
 
+#: lib/form/FormType.php:28
+msgctxt "form"
+msgid "Add New"
+msgstr "Neues hinzufügen"
+
 #: lib/form/FormType.php:29
-msgctxt "formulaire"
-msgid "Add"
-msgstr "Hinzufügen"
-
-#: lib/form/FormType.php:30
-msgid "Add form"
-msgstr "Formular hinzufügen"
-
-#: lib/form/FormType.php:31
-msgid "New form"
+msgid "Add New Form"
 msgstr "Neues Formular hinzufügen"
 
-#: lib/form/FormType.php:32
-msgid "Edit form"
+#: lib/form/FormType.php:30
+msgid "New Form"
+msgstr "Neues Formular"
+
+#: lib/form/FormType.php:31
+msgid "Edit Form"
 msgstr "Formular bearbeiten"
 
-#: lib/form/FormType.php:33
-msgid "View form"
+#: lib/form/FormType.php:32
+msgid "View Form"
 msgstr "Formular anzeigen"
 
-#: lib/form/FormType.php:34
-msgid "All forms"
+#: lib/form/FormType.php:33
+msgid "All Forms"
 msgstr "Alle Formulare"
 
-#: lib/form/FormType.php:35
+#: lib/form/FormType.php:34
 msgid "Find form"
 msgstr "Formular finden"
 
-#: lib/form/FormType.php:36
+#: lib/form/FormType.php:35
 msgid "Form:"
 msgstr "Formular:"
 
-#: lib/form/FormType.php:37
+#: lib/form/FormType.php:36
 msgid "No form found"
 msgstr "Kein Formular gefunden"
 
-#: lib/form/FormType.php:38
+#: lib/form/FormType.php:37
 msgid "No form in the trash"
 msgstr "Kein Formular im Papierkorb"
 
-#: lib/form/FormType.php:279
+#: lib/form/FormType.php:106
 msgid "Fields"
 msgstr "Felder"
 
-#: lib/form/FormType.php:323 lib/form/templates/form-sent-page.twig:2
-msgid "Form submissions"
-msgstr "Übermittelte Formulardaten"
-
-#: lib/form/FormType.php:323 lib/form/templates/form-sent-page.twig:23
+#: lib/form/FormType.php:150 lib/form/FormType.php:151
+#: lib/form/templates/form-sent-page.twig:24
 msgid "Submissions"
 msgstr "Vorschläge"
 
-#: lib/form/acf/form-local-settings.php:7
-#: lib/form/acf/form-local-settings.php:298
-msgid "Local form settings"
-msgstr "Lokale Formulareinstellungen"
+#: lib/form/acf/form-details.php:11
+msgid "Form fields"
+msgstr "Formularfelder"
 
-#: lib/form/acf/form-local-settings.php:11
-msgid "Which type of form is it?"
-msgstr ""
+#: lib/form/acf/form-details.php:38
+msgid "Define the input fields."
+msgstr "Definiere die Eingabefelder."
 
-#: lib/form/acf/form-local-settings.php:23
-msgid "Send form result by email"
-msgstr ""
+#: lib/form/acf/form-details.php:59
+msgid "Add field"
+msgstr "Feld hinzufügen"
 
-#: lib/form/acf/form-local-settings.php:24
-msgid "Send form result to Campaign Monitor only"
-msgstr ""
+#: lib/form/acf/form-details.php:86
+msgid "Submit"
+msgstr "Absenden"
 
-#: lib/form/acf/form-local-settings.php:25
+#: lib/form/acf/form-details.php:113
+msgid "Configure the submit buttons."
+msgstr "Konfiguriere die Buttons um das Formular abzuschicken."
+
+#: lib/form/acf/form-details.php:119 lib/widgets/ButtonWidget.php:23
+msgid "Button"
+msgstr "Button"
+
+#: lib/form/acf/form-details.php:138
+msgid "Button Submitting"
+msgstr "Vor dem Abschicken"
+
+#: lib/form/acf/form-details.php:149
+msgid "Sending"
+msgstr "Am senden"
+
+#: lib/form/acf/form-details.php:157
+msgid "Description"
+msgstr "Beschreibung"
+
+#: lib/form/acf/form-details.php:160
 msgid ""
-"Use a \"Subscribe to Newsletter\" checkbox (will also send to Campaign "
-"Monitor)"
+"Why someone should fill in this form. Displayed next to the submit button."
 msgstr ""
+"Warum jemand dieses Formular ausfüllen sollte. Angezeigt neben dem "
+"Abschicken-Button."
 
-#: lib/form/acf/form-local-settings.php:59
-msgid "Checkbox settings"
-msgstr ""
+#: lib/form/acf/form-details.php:175
+msgid "After Submit"
+msgstr "Nach dem Abschicken"
 
-#: lib/form/acf/form-local-settings.php:83
-msgid "Label"
-msgstr "Beschriftung"
+#: lib/form/acf/form-details.php:191
+msgid "Success"
+msgstr "Erfolg"
 
+#: lib/form/acf/form-details.php:194
+msgid "Shown when the form has been successfully sent."
+msgstr "Wird angezeigt, wenn das Formular erfolgreich übermittelt wurde."
+
+#: lib/form/acf/form-details.php:206
+msgid "Title"
+msgstr "Titel"
+
+#: lib/form/acf/form-details.php:217
+msgid "Thank you for your support!"
+msgstr "Herzlichen Dank für deine Unterstützung!"
+
+#: lib/form/acf/form-details.php:225
+msgid "Message"
+msgstr "Mitteilung"
+
+#: lib/form/acf/form-local-settings.php:7
+msgid "Mails"
+msgstr "E-Mails"
+
+#: lib/form/acf/form-local-settings.php:11 lib/form/acf/input.php:49
+msgid "Confirmation"
+msgstr "Bestätigung"
+
+#: lib/form/acf/form-local-settings.php:27
+msgid "Send confirmation"
+msgstr "Bestätigung senden"
+
+#: lib/form/acf/form-local-settings.php:30
+msgid "Mail to the person that filled out this form."
+msgstr "Mail an die Person, die dieses Formular ausgefüllt hat."
+
+#: lib/form/acf/form-local-settings.php:46
 #: lib/form/acf/form-local-settings.php:127
-msgid "Campaign Monitor settings"
-msgstr ""
+msgid "Mail"
+msgstr "E-Mail"
 
-#: lib/form/acf/form-local-settings.php:143
-msgid "Subscribers list"
-msgstr ""
+#: lib/form/acf/form-local-settings.php:92
+msgid "Notification"
+msgstr "Benachrichtigung"
 
-#: lib/form/acf/form-local-settings.php:146
-msgid "Choose below which list from Campaign Monitor you want to link to…"
-msgstr ""
+#: lib/form/acf/form-local-settings.php:108
+msgid "Send notification"
+msgstr "Benachrichtigung senden"
 
-#: lib/form/acf/form-local-settings.php:166
-msgid "Source fields"
+#: lib/form/acf/form-local-settings.php:111
+msgid "Mail with the form data to an address of your choice."
+msgstr "Mail mit den Formulardaten an eine Adresse deiner Wahl."
+
+#: lib/form/acf/form-local-settings.php:150
+msgid "Destination"
+msgstr "Ziel"
+
+#: lib/form/acf/form-local-settings.php:153
+msgid "This email address will receive notifications when a form is completed."
 msgstr ""
+"An diese E-Mailadresse werden Benachrichtigungen gesandt, wenn ein Formular "
+"ausgefüllt wurde."
 
 #: lib/form/acf/form-local-settings.php:192
+msgid "Sender Settings"
+msgstr "Absender Einstellungen"
+
+#: lib/form/acf/form-local-settings.php:223
+msgid "Sender Name"
+msgstr "Absender Name"
+
+#: lib/form/acf/form-local-settings.php:226
 msgid ""
-"Campaign Monitor needs two types of data:\n"
-"* the email of the user\n"
-"* the name of the user\n"
+"This is the name that will appear as the sender (the e-mail will always be "
+"website@yourdomain.tld)."
+msgstr ""
+"Das ist der Absendername (die Absenderadresse wird immer website@deine-"
+"domain.tld) sein."
+
+#: lib/form/acf/form-local-settings.php:243
+msgid "Reply-To"
+msgstr "Antwort an"
+
+#: lib/form/acf/form-local-settings.php:246
+msgid "The e-mail, where replies to this mail should be sent to."
+msgstr ""
+"Die E-Mailadresse, an die Antworten auf diese Mail gesendet werden sollen."
+
+#: lib/form/acf/input.php:11
+msgid "Field Label"
+msgstr "Feldbeschriftung"
+
+#: lib/form/acf/input.php:30
+msgid "Type"
+msgstr "Typ"
+
+#: lib/form/acf/input.php:42
+msgid "Text"
+msgstr "Text"
+
+#: lib/form/acf/input.php:43
+msgid "Email"
+msgstr "E-Mail"
+
+#: lib/form/acf/input.php:44
+msgid "Phone"
+msgstr "Telefon"
+
+#: lib/form/acf/input.php:45
+msgid "Textarea"
+msgstr "Textbereich"
+
+#: lib/form/acf/input.php:46
+msgid "Radio button"
+msgstr "Option (eine aus mehreren)"
+
+#: lib/form/acf/input.php:47
+msgid "Check box"
+msgstr "Option (mehrere möglich)"
+
+#: lib/form/acf/input.php:48
+msgid "Drop down"
+msgstr "Dropdown"
+
+#: lib/form/acf/input.php:63
+msgid "Help Text (optional)"
+msgstr "Hilfe-Text (optional)"
+
+#: lib/form/acf/input.php:66
+msgid "Displayed below the input field (small)"
+msgstr "Angezeigt unter dem Eingabefeld (klein)"
+
+#: lib/form/acf/input.php:100
+msgid "Choices"
+msgstr "Auswahlmöglichkeiten"
+
+#: lib/form/acf/input.php:103
+msgid "Enter each choice on a new line."
+msgstr "Eine Auswahl pro Zeile eingeben."
+
+#: lib/form/acf/input.php:141
+msgid "Required"
+msgstr "Pflichtfeld"
+
+#: lib/form/acf/input.php:144
+msgid "Set the field as mandatory"
+msgstr "Feld als erforderlich markieren"
+
+#: lib/form/acf/input.php:168
+msgid "Full Width"
+msgstr "Volle Breite"
+
+#: lib/form/acf/input.php:171
+msgid "Uses the full width of the form."
+msgstr "Nutzt die volle Breite des Formulars."
+
+#: lib/form/acf/input.php:200
+msgid "Width %"
+msgstr "Breite %"
+
+#: lib/form/acf/input.php:229
+msgid "Min width (optional)"
+msgstr "Min. Breite (optional)"
+
+#: lib/form/acf/mail-template.php:21
+msgid ""
+"Use the following tags as placeholders in your mail. They will be replaced "
+"automatically: <strong><div class=\"form_mail_template_placeholders\"></"
+"div></strong>\n"
 "\n"
-"To correctly send data to the Campaign Monitor, please select below where to "
-"get this email from the form details."
+"<i>Advanced: You may use <a href=\"https://twig.symfony.com/\" target="
+"\"_blank\">Twig</a> in this mail template.</i>"
 msgstr ""
+"Benutze die folgenden Codes als Platzhalter für dein E-Mail. Sie werden "
+"automatisch ersetzt: <strong><div class=\"form_mail_template_placeholders"
+"\"></div></strong>\n"
+"\n"
+"<i>Für Fortgeschrittene: In dieser E-Mailvorlage kann <a href=\"https://twig."
+"symfony.com/\" target=\"_blank\">Twig</a> verwendet werden.</i>"
 
-#: lib/form/acf/form-local-settings.php:202
-msgid "Email field"
-msgstr ""
+#: lib/form/acf/mail-template.php:30
+msgid "Subject"
+msgstr "Betreff"
 
-#: lib/form/acf/form-local-settings.php:225
-msgid "First Name"
-msgstr "Vorname"
+#: lib/form/acf/mail-template.php:49
+msgid "Template"
+msgstr "Vorlage"
 
-#: lib/form/acf/form-local-settings.php:248
-msgid "Last Name"
-msgstr "Nachname"
+#: lib/form/acf/settings.php:11
+msgid "SMTP"
+msgstr "SMTP"
 
-#: lib/form/acf/form-local-settings.php:341
-msgid "The parameters below will replace the global settings."
-msgstr ""
+#: lib/form/acf/settings.php:27
+msgid "Send over SMTP"
+msgstr "Über SMTP versenden"
 
-#: lib/post-types/AlertType.php:17
-msgctxt "post type general name"
-msgid "Alerts"
-msgstr "Benachrichtigungen"
+#: lib/form/acf/settings.php:30
+msgid "If yes, send emails using SMTP"
+msgstr "Wenn ja, E-Mails über SMTP versenden"
 
-#: lib/post-types/AlertType.php:18
-msgctxt "post type singular name"
-msgid "Alert"
-msgstr "Meldung"
+#: lib/form/acf/settings.php:69
+msgid "Server address"
+msgstr "Serveradresse"
 
-#: lib/post-types/AlertType.php:19
-msgctxt "admin menu"
-msgid "Alerts"
-msgstr "Benachrichtigungen"
+#: lib/form/acf/settings.php:88
+msgid "Port"
+msgstr "Port"
 
-#: lib/post-types/AlertType.php:20
-msgctxt "add new on admin bar"
-msgid "Alerts"
-msgstr "Benachrichtigungen"
+#: lib/form/acf/settings.php:109
+msgid "Username"
+msgstr "Benutzername"
 
-#: lib/post-types/AlertType.php:21
-msgid "Add New Alert"
-msgstr "Neue Benachrichtigung hinzufügen"
+#: lib/form/acf/settings.php:128
+msgid "Password"
+msgstr "Passwort"
 
-#: lib/post-types/AlertType.php:22
-msgid "New Alert"
-msgstr "Neuer Warn-Feed"
+#: lib/form/submission.php:284
+msgid "Missing data."
+msgstr "Fehlende Daten."
 
-#: lib/post-types/AlertType.php:23
-msgid "Edit Alert"
-msgstr "Job-Alert bearbeiten"
+#: lib/form/submission.php:305
+msgid "Invalid input."
+msgstr "Ungültige Eingabe."
 
-#: lib/post-types/AlertType.php:24
-msgid "View Alert"
-msgstr ""
+#: lib/form/submission.php:325
+msgid "Invalid email."
+msgstr "Ungültige E-Mail."
 
-#: lib/post-types/AlertType.php:25
-msgid "All Alerts"
-msgstr ""
-
-#: lib/post-types/AlertType.php:26
-msgid "Search Alerts"
-msgstr ""
-
-#: lib/post-types/AlertType.php:29
-msgid "No alert found."
-msgstr ""
-
-#: lib/post-types/AlertType.php:62
-msgid "Active"
-msgstr "Aktiv"
-
-#: lib/post-types/AlertType.php:63
-msgid "End date"
-msgstr "Enddatum"
+#: lib/form/submission.php:331
+msgid "This field is required."
+msgstr "Dieses Feld ist erforderlich."
 
 #: lib/post-types/PeopleType.php:13
 msgid "People"
@@ -342,13 +536,49 @@ msgstr "Personen Attribute"
 msgid "Uploaded to this person"
 msgstr "Hochgeladen zu dieser Person"
 
-#: lib/timber/ACFPost.php:37
-msgid "No content found."
-msgstr "Kein Inhalt gefunden."
+#: lib/post-types/PeopleType.php:50
+msgid "Testimonial Category"
+msgstr "Testimonial Kategorie"
 
-#: lib/widgets/ButtonWidget.php:23
-msgid "Button"
-msgstr "Button"
+#: lib/post-types/PeopleType.php:55
+msgid "This taxonomy is used to organise the testimonials only."
+msgstr ""
+"Diese Klassifizierung wird nur verwendet, um die Testimonials zu "
+"organisieren."
+
+#: lib/timber/SUPTPostQuery.php:59
+msgid "Filtered posts"
+msgstr "Gefilterte Beiträge"
+
+#: lib/timber/SUPTPostQuery.php:62 lib/timber/SUPTPostQuery.php:67
+#: lib/timber/SUPTPostQuery.php:72
+#, php-format
+msgid "Archive: %s"
+msgstr "Archiv: %s"
+
+#: lib/timber/SUPTPostQuery.php:82
+msgid "Archive"
+msgstr "Archiv"
+
+#: lib/timber/SUPTPostQuery.php:180
+#, php-format
+msgid "Here you will find any content categorized under %s and tagged with %s."
+msgstr ""
+"Hier findest du alle Inhalte der Kategorien %s mit den Schlagworten %s."
+
+#: lib/timber/SUPTPostQuery.php:186
+#, php-format
+msgid "Here you will find any content categorized under %s."
+msgstr "Hier findest du alle Inhalte der Kategorien %s."
+
+#: lib/timber/SUPTPostQuery.php:191
+#, php-format
+msgid "Here you will find any content tagged with %s."
+msgstr "Hier findest du alle Inhalte mit den Schlagworten %s."
+
+#: lib/timber/SUPTPostQuery.php:333
+msgid "The tag not in function is not supported."
+msgstr "Die 'tag not in' Funktion wird nicht unterstützt."
 
 #: lib/widgets/ButtonWidget.php:25
 msgid "Show your main calls to action"
@@ -359,6 +589,7 @@ msgid "Get active"
 msgstr "Werde aktiv"
 
 #: lib/widgets/ContactWidget.php:25 lib/widgets/ContactWidget.php:31
+#: templates/molecules/m-person.twig:77
 msgid "Contact"
 msgstr "Kontakt"
 
@@ -382,35 +613,54 @@ msgstr "Die grüne Familie"
 msgid "Title:"
 msgstr "Titel:"
 
-#: vendor/mindkomm/timmy/lib/Timmy.php:220
+#: page.php:34
+msgid "Events"
+msgstr "Veranstaltungen"
+
+#: search.php:16 templates/atoms/a-search.twig:5
+msgctxt "Noun"
+msgid "Search"
+msgstr "Suche"
+
+#: search.php:17
+#, php-format
+msgid "Search results for: %s"
+msgstr "Suchresultate zu: %s"
+
+#: search.php:18
+#, php-format
+msgid "You've been searching for: %s"
+msgstr "Suchanfrage: %s"
+
+#: vendor/mindkomm/timmy/lib/Timmy.php:223
 msgid "Full Size"
 msgstr "Volle Größe"
 
-#: vendor/timber/timber/lib/Archives.php:160
+#: vendor/timber/timber/lib/Archives.php:172
 #, php-format
 msgid "%1$s %2$d"
 msgstr "%1$s %2$d"
 
-#: vendor/timber/timber/lib/Archives.php:162
+#: vendor/timber/timber/lib/Archives.php:174
 #, php-format
 msgid "%1$s"
 msgstr "%1$s"
 
-#: vendor/timber/timber/lib/Pagination.php:115
+#: vendor/timber/timber/lib/Pagination.php:119
 msgid "&laquo; Previous"
 msgstr "&laquo; Zurück"
 
-#: vendor/timber/timber/lib/Pagination.php:116
+#: vendor/timber/timber/lib/Pagination.php:120
 msgid "Next &raquo;"
 msgstr "Nächste &raquo;"
 
-#: vendor/timber/timber/lib/Pagination.php:179
-#: vendor/timber/timber/lib/TextHelper.php:26
-#: vendor/timber/timber/lib/TextHelper.php:44
+#: vendor/timber/timber/lib/Pagination.php:183
+#: vendor/timber/timber/lib/TextHelper.php:28
+#: vendor/timber/timber/lib/TextHelper.php:53
 msgid "&hellip;"
 msgstr "&hellip;"
 
-#: vendor/timber/timber/lib/TextHelper.php:53
+#: vendor/timber/timber/lib/TextHelper.php:62
 msgctxt "word count: words or characters?"
 msgid "words"
 msgstr "Worte"
@@ -437,63 +687,63 @@ msgid_plural "boos"
 msgstr[0] "boo"
 msgstr[1] "boo"
 
-#: vendor/timber/timber/tests/test-timber-menu.php:512
-#: vendor/timber/timber/tests/test-timber-menu.php:513
+#: vendor/timber/timber/tests/test-timber-menu.php:551
+#: vendor/timber/timber/tests/test-timber-menu.php:552
 msgid "Gallery"
 msgstr "Galerie"
 
-#: vendor/timber/timber/tests/wp-overrides.php:40
+#: vendor/timber/timber/tests/wp-overrides.php:48
 #, php-format
 msgid "\"%1$s\" from %2$s by %3$s."
 msgstr "„%1$s“ von %2$s durch %3$s."
 
-#: vendor/timber/timber/tests/wp-overrides.php:43
+#: vendor/timber/timber/tests/wp-overrides.php:51
 #, php-format
 msgid "\"%1$s\" from %2$s."
 msgstr "\"%1$s\" von %2$s."
 
-#: vendor/timber/timber/tests/wp-overrides.php:46
+#: vendor/timber/timber/tests/wp-overrides.php:54
 #, php-format
 msgid "\"%1$s\" by %2$s."
 msgstr "„%1$s“ durch %2$s."
 
-#: vendor/timber/timber/tests/wp-overrides.php:48
+#: vendor/timber/timber/tests/wp-overrides.php:56
 #, php-format
 msgid "\"%s\"."
 msgstr "\"%s\"."
 
-#: vendor/timber/timber/tests/wp-overrides.php:55
+#: vendor/timber/timber/tests/wp-overrides.php:63
 #, php-format
 msgid "%1$s by %2$s."
 msgstr "%1$s durch %2$s."
 
-#: vendor/timber/timber/tests/wp-overrides.php:67
+#: vendor/timber/timber/tests/wp-overrides.php:75
 #, php-format
 msgid "Released: %d."
 msgstr "Freigegeben: %d."
 
-#: vendor/timber/timber/tests/wp-overrides.php:72
+#: vendor/timber/timber/tests/wp-overrides.php:81
 #, php-format
 msgid "Track %1$s of %2$s."
 msgstr "Track %1$s von %2$s."
 
-#: vendor/timber/timber/tests/wp-overrides.php:74
+#: vendor/timber/timber/tests/wp-overrides.php:84
 #, php-format
 msgid "Track %1$s."
 msgstr "Track %1$s."
 
-#: vendor/timber/timber/tests/wp-overrides.php:78
+#: vendor/timber/timber/tests/wp-overrides.php:89
 #, php-format
 msgid "Genre: %s."
 msgstr "Genre: %s."
 
-#: vendor/timber/timber/tests/wp-overrides.php:143
+#: vendor/timber/timber/tests/wp-overrides.php:160
 msgid "The uploaded file exceeds the upload_max_filesize directive in php.ini."
 msgstr ""
 "Die hochgeladene Datei überschreitet die upload_max_filesize Begrenzung in "
 "der php.ini."
 
-#: vendor/timber/timber/tests/wp-overrides.php:144
+#: vendor/timber/timber/tests/wp-overrides.php:161
 msgid ""
 "The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in "
 "the HTML form."
@@ -501,35 +751,35 @@ msgstr ""
 "Die hochgeladene Datei überschreitet die MAX_FILE_SIZE Begrenzung, die im "
 "HTML-Formular angegeben wurde."
 
-#: vendor/timber/timber/tests/wp-overrides.php:145
+#: vendor/timber/timber/tests/wp-overrides.php:162
 msgid "The uploaded file was only partially uploaded."
 msgstr "Die hochgeladene Datei wurde nur teilweise hochgeladen."
 
-#: vendor/timber/timber/tests/wp-overrides.php:146
+#: vendor/timber/timber/tests/wp-overrides.php:163
 msgid "No file was uploaded."
 msgstr "Es wurde keine Datei hochgeladen."
 
-#: vendor/timber/timber/tests/wp-overrides.php:148
+#: vendor/timber/timber/tests/wp-overrides.php:165
 msgid "Missing a temporary folder."
 msgstr "Es fehlt ein temporärer Ordner."
 
-#: vendor/timber/timber/tests/wp-overrides.php:149
+#: vendor/timber/timber/tests/wp-overrides.php:166
 msgid "Failed to write file to disk."
 msgstr "Fehler beim Schreiben der Datei."
 
-#: vendor/timber/timber/tests/wp-overrides.php:150
+#: vendor/timber/timber/tests/wp-overrides.php:167
 msgid "File upload stopped by extension."
 msgstr "Hochladen der Datei aufgrund der Dateierweiterung gestoppt."
 
-#: vendor/timber/timber/tests/wp-overrides.php:167
+#: vendor/timber/timber/tests/wp-overrides.php:186
 msgid "Invalid form submission."
 msgstr "Fehlerhafte Eingabe im Formular."
 
-#: vendor/timber/timber/tests/wp-overrides.php:177
+#: vendor/timber/timber/tests/wp-overrides.php:197
 msgid "File is empty. Please upload something more substantial."
 msgstr "Die Datei ist leer. Bitte lade eine richtige Datei hoch."
 
-#: vendor/timber/timber/tests/wp-overrides.php:179
+#: vendor/timber/timber/tests/wp-overrides.php:199
 msgid ""
 "File is empty. Please upload something more substantial. This error could "
 "also be caused by uploads being disabled in your php.ini or by post_max_size "
@@ -540,49 +790,65 @@ msgstr ""
 "deaktiviert wurden oder der festgelegte Wert für post_max_size niedriger, "
 "als der Wert für upload_max_filesize angegeben wurde."
 
-#: vendor/timber/timber/tests/wp-overrides.php:185
+#: vendor/timber/timber/tests/wp-overrides.php:207
 msgid "Specified file failed upload test."
 msgstr "Die angegebene Datei hat den Upload-Test nicht bestanden."
 
-#: vendor/timber/timber/tests/wp-overrides.php:198
+#: vendor/timber/timber/tests/wp-overrides.php:223
 msgid "Sorry, this file type is not permitted for security reasons."
 msgstr ""
 "Entschuldigung, aber dieser Dateityp ist aus Sicherheitsgründen nicht "
 "erlaubt."
 
-#: vendor/timber/timber/tests/wp-overrides.php:223
+#: vendor/timber/timber/tests/wp-overrides.php:254
 #, php-format
 msgid "The uploaded file could not be moved to %s."
 msgstr "Die aufgeladene Datei konnte nicht nach %s verschoben werden."
 
-#: lib/form/templates/form-sent-page.twig:9
+#: lib/form/templates/form-sent-page.twig:2
+msgid "Form submissions"
+msgstr "Übermittelte Formulardaten"
+
+#: lib/form/templates/form-sent-page.twig:10
 msgid "Select bulk action"
 msgstr "Mehrfachaktion auswählen"
 
-#: lib/form/templates/form-sent-page.twig:11
+#: lib/form/templates/form-sent-page.twig:12
 msgid "bulk actions"
 msgstr ""
 
-#: lib/form/templates/form-sent-page.twig:12
-#: lib/form/templates/form-sent-page.twig:46
+#: lib/form/templates/form-sent-page.twig:13
+#: lib/form/templates/form-sent-page.twig:51
 msgid "Delete permanently"
 msgstr "Dauerhaft löschen"
 
-#: lib/form/templates/form-sent-page.twig:14
+#: lib/form/templates/form-sent-page.twig:15
 msgid "Apply"
 msgstr ""
 
-#: lib/form/templates/form-sent-page.twig:17
+#: lib/form/templates/form-sent-page.twig:18
 msgid "form(s) sent"
 msgstr ""
 
-#: lib/form/templates/form-sent-page.twig:28
+#: lib/form/templates/form-sent-page.twig:29
 msgid "Select all"
 msgstr "Alle auswählen"
 
-#: lib/form/templates/form-sent-page.twig:31
+#: lib/form/templates/form-sent-page.twig:32
 msgid "Date"
 msgstr "Datum"
+
+#: templates/404.twig:4
+msgid "Page not found"
+msgstr "Seite nicht gefunden"
+
+#: templates/404.twig:6
+msgid ""
+"Sorry, we couldn't find what you're looking for. Have you tried the "
+"searching?"
+msgstr ""
+"Uups, leider konnten wir den gewünschten Inhalt nicht finden. Vielleicht "
+"hilft die Suche?"
 
 #: templates/atoms/a-footer-meta.twig:7
 msgid "Meta navigation"
@@ -605,10 +871,20 @@ msgctxt "Date format. See http://php.net/manual/de/function.date.php"
 msgid "d. F Y"
 msgstr "d. F Y"
 
-#: templates/atoms/a-post-link.twig:45
-#: templates/molecules/m-front-article.twig:38
+#: templates/atoms/a-post-link.twig:48
+#: templates/molecules/m-front-article.twig:39
 msgid "Read more"
 msgstr "Weiterlesen"
+
+#: templates/atoms/a-post-meta.twig:9
+#, php-format
+msgid "Show all articles of the category %s"
+msgstr "Alle Artikel der Kategorie %s anzeigen"
+
+#: templates/atoms/a-search.twig:7 templates/atoms/a-search.twig:9
+msgctxt "Verb"
+msgid "Search"
+msgstr "Suchen"
 
 #: templates/atoms/a-simple-dialog.twig:5
 #: templates/atoms/a-simple-dialog.twig:7
@@ -627,17 +903,49 @@ msgstr "Sorry, kein Inhalt"
 msgid "Home"
 msgstr "Startseite"
 
-#: templates/molecules/m-event-details.twig:4
+#: templates/molecules/m-event-details.twig:6
 msgid "date and duration"
 msgstr "Datum und Dauer"
 
-#: templates/molecules/m-event-details.twig:13
+#: templates/molecules/m-event-details.twig:15
 msgid "place"
 msgstr "Platz"
 
-#: templates/molecules/m-event-details.twig:23
+#: templates/molecules/m-event-details.twig:25
 msgid "Save to calendar"
 msgstr "Kalendereintrag erstellen"
+
+#: templates/molecules/m-form.twig:126
+msgid "privacy policy"
+msgstr "Datenschutzerklärung"
+
+#: templates/molecules/m-form.twig:130
+#, php-format
+msgctxt "privacy policy"
+msgid "I agree to the data processing according to the %s."
+msgstr "Ich bin mit der Datenverarbeitung gemäss %s einverstanden."
+
+#: templates/molecules/m-form.twig:156
+msgid "Uups, something went wrong!"
+msgstr "Uups, etwas ist schief gelaufen!"
+
+#: templates/molecules/m-form.twig:158
+msgid ""
+"Sorry, there was an error submitting this form. If the error persists, "
+"please contact us by email."
+msgstr ""
+"Es tut uns leid, es gab einen Fehler beim versenden dieses Formulars. Bitte "
+"kontaktiere uns per E-Mail, falls dieser Fehler erneut auftritt."
+
+#: templates/molecules/m-form.twig:161
+msgid "Please check input"
+msgstr "Bitte überprüfe die Eingaben"
+
+#: templates/molecules/m-form.twig:163
+msgid "There seems to be an error in your input. Please recheck the fields."
+msgstr ""
+"Da scheint etwas noch nicht korrekt. Bitte überprüfe nochmals deine "
+"Formulareingaben."
 
 #: templates/molecules/m-link-list.twig:33
 #, php-format
@@ -645,45 +953,62 @@ msgctxt "Example: All 17 press releases"
 msgid "All %d %s"
 msgstr "Alle %d %s"
 
-#: templates/molecules/m-menu.twig:17
+#: templates/molecules/m-menu.twig:19
 msgid "Submenu"
 msgstr "Untermenü"
 
-#: templates/molecules/m-menu.twig:25
+#: templates/molecules/m-menu.twig:27
 msgid "Close submenu"
 msgstr "Untermenü schliessen"
 
-#: templates/molecules/m-menu.twig:27
+#: templates/molecules/m-menu.twig:29
 msgid "Close icon"
 msgstr "Symbol Schließen"
 
-#: templates/molecules/m-menu.twig:37 templates/molecules/m-menu.twig:41
-msgid "Search"
-msgstr "Suchen"
+#: templates/molecules/m-person.twig:66 templates/molecules/m-person.twig:67
+msgid "More"
+msgstr "Mehr"
 
-#: templates/molecules/m-share.twig:21 templates/molecules/m-share.twig:25
+#: templates/molecules/m-person.twig:67
+msgid "Less"
+msgstr "Weniger"
+
+#: templates/molecules/m-share.twig:2
+msgid "Show share buttons"
+msgstr "Teilen-Buttons anzeigen"
+
+#: templates/molecules/m-share.twig:4 templates/molecules/m-share.twig:40
 msgid "Share"
 msgstr "Teilen"
 
-#: templates/molecules/m-share.twig:23
-msgid "Toggle share buttons"
-msgstr "Teilen-Buttons anzeigen/verstecken"
+#: templates/molecules/m-share.twig:8
+msgid "Hide share buttons"
+msgstr "Teilen-Buttons verstecken"
+
+#: templates/molecules/m-share.twig:10
+msgid "Close"
+msgstr "Schliessen"
+
+#: templates/molecules/m-vote.twig:14
+msgctxt "A vote proposal is the subject"
+msgid "More about this subject"
+msgstr "Mehr zu dieser Vorlage"
 
 #: templates/organisms/o-front-article.twig:37
 msgid "Quotation mark"
 msgstr "Fragezeichen"
 
-#: templates/organisms/o-front-events.twig:21
+#: templates/organisms/o-front-events.twig:20
 msgid "Show all events"
 msgstr "Alle Veranstaltungen anzeigen"
 
-#: templates/organisms/o-people-slider.twig:17
-#: templates/organisms/o-people-slider.twig:19
+#: templates/organisms/o-people-grid.twig:24
+#: templates/organisms/o-people-grid.twig:26
 msgid "Slide to the left"
 msgstr "Nach links schieben"
 
-#: templates/organisms/o-people-slider.twig:24
-#: templates/organisms/o-people-slider.twig:26
+#: templates/organisms/o-people-grid.twig:32
+#: templates/organisms/o-people-grid.twig:34
 msgid "Slide to the right"
 msgstr "Nach rechts schieben"
 
@@ -700,9 +1025,59 @@ msgid "superhuit"
 msgstr ""
 
 #. Template Name of the plugin/theme
-msgid "Overview"
-msgstr "Übersicht"
+msgid "Overview Page"
+msgstr "Übersichtsseite"
 
 #. Template Name of the plugin/theme
 msgid "Press Release"
 msgstr "Pressemitteilung"
+
+#~ msgctxt "post type general name"
+#~ msgid "Alerts"
+#~ msgstr "Benachrichtigungen"
+
+#~ msgctxt "post type singular name"
+#~ msgid "Alert"
+#~ msgstr "Meldung"
+
+#~ msgctxt "admin menu"
+#~ msgid "Alerts"
+#~ msgstr "Benachrichtigungen"
+
+#~ msgctxt "add new on admin bar"
+#~ msgid "Alerts"
+#~ msgstr "Benachrichtigungen"
+
+#~ msgid "Add New Alert"
+#~ msgstr "Neue Benachrichtigung hinzufügen"
+
+#~ msgid "New Alert"
+#~ msgstr "Neuer Warn-Feed"
+
+#~ msgid "Edit Alert"
+#~ msgstr "Job-Alert bearbeiten"
+
+#~ msgid "Active"
+#~ msgstr "Aktiv"
+
+#~ msgid "End date"
+#~ msgstr "Enddatum"
+
+#~ msgctxt "formulaire"
+#~ msgid "Add"
+#~ msgstr "Hinzufügen"
+
+#~ msgid "Add form"
+#~ msgstr "Formular hinzufügen"
+
+#~ msgid "Local form settings"
+#~ msgstr "Lokale Formulareinstellungen"
+
+#~ msgid "First Name"
+#~ msgstr "Vorname"
+
+#~ msgid "Last Name"
+#~ msgstr "Nachname"
+
+#~ msgid "No content found."
+#~ msgstr "Kein Inhalt gefunden."
