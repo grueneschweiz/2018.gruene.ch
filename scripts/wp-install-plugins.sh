@@ -187,4 +187,8 @@ $WPCLI option patch update wpseo_titles hideeditbox-tax-media_category <<< "true
 $WPCLI option patch update wpseo_titles post_types-post-maintax <<< "category"
 
 # disable comment everywhere
-$WPCLI option patch update disable_comments_options remove_everywhere <<< "true"
+if [ $NETWORK ]; then
+    $WPCLI site option patch update disable_comments_options remove_everywhere <<< "true"
+else
+    $WPCLI option patch update disable_comments_options remove_everywhere <<< "true"
+fi

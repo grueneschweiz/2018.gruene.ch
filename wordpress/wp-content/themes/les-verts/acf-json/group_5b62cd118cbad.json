@@ -1,13 +1,30 @@
 {
     "key": "group_5b62cd118cbad",
     "title": "(Menu) Featured Subnav Item",
+    "location": [
+        [
+            {
+                "param": "nav_menu_item",
+                "operator": "==",
+                "value": "all"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
     "fields": [
         {
             "key": "field_5b62da7660cb3",
             "label": "Featured Menu Item",
             "name": "featured_menu_item",
             "type": "true_false",
-            "instructions": "Do only use this option, if this is a sub item (on level 2). Else it won't have any effect.",
+            "instructions": "This option only works on sub items (level 2). Else it won't have any effect.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -102,7 +119,7 @@
                     "label": "Teaser",
                     "name": "teaser",
                     "type": "textarea",
-                    "instructions": "",
+                    "instructions": "Max. 140 characters.",
                     "required": 1,
                     "conditional_logic": [
                         [
@@ -149,27 +166,10 @@
                     "placeholder": "",
                     "prepend": "",
                     "append": "",
-                    "maxlength": 20
+                    "maxlength": 60
                 }
             ]
         }
     ],
-    "location": [
-        [
-            {
-                "param": "nav_menu_item",
-                "operator": "==",
-                "value": "7"
-            }
-        ]
-    ],
-    "menu_order": 0,
-    "position": "normal",
-    "style": "default",
-    "label_placement": "top",
-    "instruction_placement": "label",
-    "hide_on_screen": "",
-    "active": 1,
-    "description": "",
-    "modified": 1540484900
+    "modified": 1543324738
 }

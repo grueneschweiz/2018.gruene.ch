@@ -1,6 +1,23 @@
 {
     "key": "group_5bbf71ef4ed64",
     "title": "[Template]Person",
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 0,
+    "description": "",
     "fields": [
         {
             "key": "field_5bbf725974660",
@@ -29,7 +46,7 @@
             "label": "Names supplement",
             "name": "supplement",
             "type": "text",
-            "instructions": "Will be displayed next to the name. Use it to mark the city, year of birth etc. or leave it blank.",
+            "instructions": "Displayed next to the name. Use it to mark the city, year of birth etc. or leave it blank.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -48,7 +65,7 @@
             "label": "Role",
             "name": "role",
             "type": "textarea",
-            "instructions": "",
+            "instructions": "Max 280 characters.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -82,22 +99,5 @@
             "delay": 0
         }
     ],
-    "location": [
-        [
-            {
-                "param": "post_type",
-                "operator": "==",
-                "value": "post"
-            }
-        ]
-    ],
-    "menu_order": 0,
-    "position": "normal",
-    "style": "default",
-    "label_placement": "top",
-    "instruction_placement": "label",
-    "hide_on_screen": "",
-    "active": 0,
-    "description": "",
-    "modified": 1539273808
+    "modified": 1543324747
 }

@@ -1,6 +1,23 @@
 {
     "key": "group_5bcee6dd2cfd7",
     "title": "[Template]Teaser",
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 0,
+    "description": "",
     "fields": [
         {
             "key": "field_5bcee7167c5c5",
@@ -16,7 +33,7 @@
                 "id": ""
             },
             "default_value": "",
-            "placeholder": "Provide a brief summary that attracts the readers interest. Make sure it contains the most important keywords.",
+            "placeholder": "Brief summary that attracts the readers interest. Make sure it contains the most important keywords.",
             "maxlength": "",
             "rows": 5,
             "new_lines": ""
@@ -41,22 +58,5 @@
             "ui_off_text": ""
         }
     ],
-    "location": [
-        [
-            {
-                "param": "post_type",
-                "operator": "==",
-                "value": "post"
-            }
-        ]
-    ],
-    "menu_order": 0,
-    "position": "normal",
-    "style": "default",
-    "label_placement": "top",
-    "instruction_placement": "label",
-    "hide_on_screen": "",
-    "active": 0,
-    "description": "",
-    "modified": 1540289280
+    "modified": 1543324750
 }

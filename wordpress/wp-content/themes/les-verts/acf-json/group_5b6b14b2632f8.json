@@ -1,6 +1,23 @@
 {
     "key": "group_5b6b14b2632f8",
     "title": "[Template]Position",
+    "location": [
+        [
+            {
+                "param": "page_type",
+                "operator": "==",
+                "value": "front_page"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 0,
+    "description": "",
     "fields": [
         {
             "key": "field_5b6b14c533c22",
@@ -19,7 +36,7 @@
             "placeholder": "",
             "prepend": "",
             "append": "",
-            "maxlength": 60
+            "maxlength": 80
         },
         {
             "key": "field_5b6b151133c23",
@@ -45,7 +62,7 @@
                     "label": "Position",
                     "name": "position",
                     "type": "text",
-                    "instructions": "Keep it very short, use just a few keywords.",
+                    "instructions": "Keep it very short, use just a few keywords. Max 120 characters.",
                     "required": 1,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -78,13 +95,13 @@
             "placeholder": "",
             "prepend": "",
             "append": "",
-            "maxlength": 60
+            "maxlength": 80
         },
         {
             "key": "field_5b6b24861e7f5",
-            "label": "Read More Button Link",
-            "name": "read_more_link",
-            "type": "url",
+            "label": "Read More Button Target",
+            "name": "read_more_target",
+            "type": "post_object",
             "instructions": "",
             "required": 1,
             "conditional_logic": 0,
@@ -93,26 +110,16 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "",
-            "placeholder": ""
+            "post_type": [
+                "post",
+                "page"
+            ],
+            "taxonomy": "",
+            "allow_null": 0,
+            "multiple": 0,
+            "return_format": "object",
+            "ui": 1
         }
     ],
-    "location": [
-        [
-            {
-                "param": "page_type",
-                "operator": "==",
-                "value": "front_page"
-            }
-        ]
-    ],
-    "menu_order": 0,
-    "position": "normal",
-    "style": "default",
-    "label_placement": "top",
-    "instruction_placement": "label",
-    "hide_on_screen": "",
-    "active": 0,
-    "description": "",
-    "modified": 1534189023
+    "modified": 1543324747
 }

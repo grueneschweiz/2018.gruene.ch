@@ -1,6 +1,56 @@
 {
     "key": "group_5b6c3c5890c40",
     "title": "Default",
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            },
+            {
+                "param": "post_template",
+                "operator": "==",
+                "value": "default"
+            }
+        ],
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "page"
+            },
+            {
+                "param": "post_template",
+                "operator": "==",
+                "value": "default"
+            },
+            {
+                "param": "page_type",
+                "operator": "!=",
+                "value": "front_page"
+            }
+        ]
+    ],
+    "menu_order": 10,
+    "position": "normal",
+    "style": "seamless",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [
+        "the_content",
+        "excerpt",
+        "discussion",
+        "comments",
+        "revisions",
+        "slug",
+        "author",
+        "format",
+        "featured_image",
+        "send-trackbacks"
+    ],
+    "active": 1,
+    "description": "",
     "fields": [
         {
             "key": "field_5b7c3141824bf",
@@ -67,7 +117,7 @@
                     "label": "Content",
                     "name": "content",
                     "type": "flexible_content",
-                    "instructions": "Add your main content here. The title will be added automatically (from above).",
+                    "instructions": "This is the main section of this page.",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -439,55 +489,5 @@
             ]
         }
     ],
-    "location": [
-        [
-            {
-                "param": "post_type",
-                "operator": "==",
-                "value": "post"
-            },
-            {
-                "param": "post_template",
-                "operator": "==",
-                "value": "default"
-            }
-        ],
-        [
-            {
-                "param": "post_type",
-                "operator": "==",
-                "value": "page"
-            },
-            {
-                "param": "post_template",
-                "operator": "==",
-                "value": "default"
-            },
-            {
-                "param": "page_type",
-                "operator": "!=",
-                "value": "front_page"
-            }
-        ]
-    ],
-    "menu_order": 10,
-    "position": "normal",
-    "style": "seamless",
-    "label_placement": "top",
-    "instruction_placement": "label",
-    "hide_on_screen": [
-        "the_content",
-        "excerpt",
-        "discussion",
-        "comments",
-        "revisions",
-        "slug",
-        "author",
-        "format",
-        "featured_image",
-        "send-trackbacks"
-    ],
-    "active": 1,
-    "description": "",
-    "modified": 1542808569
+    "modified": 1543324755
 }

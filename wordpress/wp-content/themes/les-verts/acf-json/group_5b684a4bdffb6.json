@@ -1,6 +1,23 @@
 {
     "key": "group_5b684a4bdffb6",
     "title": "[Template]Two Posts",
+    "location": [
+        [
+            {
+                "param": "page_type",
+                "operator": "==",
+                "value": "front_page"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 0,
+    "description": "",
     "fields": [
         {
             "key": "field_5b7d9fb145d30",
@@ -15,7 +32,7 @@
                 "class": "",
                 "id": ""
             },
-            "message": "Use this block to display two teasers of any post or page of this website.",
+            "message": "Displays two teasers of any post or page.",
             "new_lines": "wpautop",
             "esc_html": 0
         },
@@ -83,22 +100,5 @@
             "prefix_name": 1
         }
     ],
-    "location": [
-        [
-            {
-                "param": "page_type",
-                "operator": "==",
-                "value": "front_page"
-            }
-        ]
-    ],
-    "menu_order": 0,
-    "position": "normal",
-    "style": "default",
-    "label_placement": "top",
-    "instruction_placement": "label",
-    "hide_on_screen": "",
-    "active": 0,
-    "description": "",
-    "modified": 1534959706
+    "modified": 1543324750
 }

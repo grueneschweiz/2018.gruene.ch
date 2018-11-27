@@ -1,29 +1,49 @@
 {
     "key": "group_5b645b16b8a08",
     "title": "[Template]Front Main Campaign",
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ],
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "page"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 0,
+    "description": "",
     "fields": [
         {
-            "key": "field_5b645f6d33efa",
-            "label": "Main Page of the Campaign",
-            "name": "link",
-            "type": "post_object",
-            "instructions": "Select the campaign page. It should be clearly linked to the following campaign teaser and especially also contain the call to action.",
-            "required": 1,
+            "key": "field_5bfd36914df38",
+            "label": "Show Main Campaign",
+            "name": "show_main_campaign",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
             "conditional_logic": 0,
             "wrapper": {
                 "width": "",
                 "class": "",
                 "id": ""
             },
-            "post_type": [
-                "post",
-                "page"
-            ],
-            "taxonomy": [],
-            "allow_null": 0,
-            "multiple": 0,
-            "return_format": "object",
-            "ui": 1
+            "message": "Display primary campaign?",
+            "default_value": 1,
+            "ui": 1,
+            "ui_on_text": "Show",
+            "ui_off_text": "Hide"
         },
         {
             "key": "field_5b645b8533eeb",
@@ -32,7 +52,15 @@
             "type": "image",
             "instructions": "Make sure the image is at least 2000px wide.",
             "required": 1,
-            "conditional_logic": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5bfd36914df38",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -54,9 +82,17 @@
             "label": "Bars",
             "name": "bars",
             "type": "group",
-            "instructions": "The bars will be placed over the image in the corporate design, as you might guess 😉",
+            "instructions": "The bars will be placed over the image in the corporate design.",
             "required": 0,
-            "conditional_logic": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5bfd36914df38",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -434,13 +470,52 @@
             ]
         },
         {
+            "key": "field_5b645f6d33efa",
+            "label": "Main Page of the Campaign",
+            "name": "link",
+            "type": "post_object",
+            "instructions": "Select the campaign page that belongs to the following teaser.",
+            "required": 1,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5bfd36914df38",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "post",
+                "page"
+            ],
+            "taxonomy": "",
+            "allow_null": 0,
+            "multiple": 0,
+            "return_format": "object",
+            "ui": 1
+        },
+        {
             "key": "field_5b718e15c398d",
             "label": "Campaign Summary",
             "name": "summary",
             "type": "group",
             "instructions": "This refers to the upper left box below the image. Add a brief description of the campaign.",
-            "required": 1,
-            "conditional_logic": 0,
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5bfd36914df38",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -454,7 +529,7 @@
                     "name": "title",
                     "type": "text",
                     "instructions": "This is the main title. Keep it as short as possible!",
-                    "required": 1,
+                    "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
                         "width": "",
@@ -465,7 +540,7 @@
                     "placeholder": "",
                     "prepend": "",
                     "append": "",
-                    "maxlength": 40
+                    "maxlength": 80
                 },
                 {
                     "key": "field_5b645ec333ef8",
@@ -473,7 +548,7 @@
                     "name": "teaser",
                     "type": "textarea",
                     "instructions": "Write a brief teaser to attract the readers interest. Keept it short (200 to 400 characters).",
-                    "required": 1,
+                    "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
                         "width": "",
@@ -491,19 +566,19 @@
                     "label": "Read more button",
                     "name": "read_more_text",
                     "type": "text",
-                    "instructions": "The button text. It will be linked to the main page of the campaign (see above).",
-                    "required": 1,
+                    "instructions": "The button text.",
+                    "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
                         "width": "",
                         "class": "",
                         "id": ""
                     },
-                    "default_value": "Read more about the campain",
+                    "default_value": "Read more about this campaign",
                     "placeholder": "",
                     "prepend": "",
                     "append": "",
-                    "maxlength": 50
+                    "maxlength": 80
                 }
             ]
         },
@@ -512,9 +587,17 @@
             "label": "Call to Action",
             "name": "call_to_action",
             "type": "group",
-            "instructions": "This refers to the second box, the darker one. Use it to call out for something.",
-            "required": 1,
-            "conditional_logic": 0,
+            "instructions": "This refers to the second box, the darker one. Use it to call for action.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5bfd36914df38",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -527,7 +610,7 @@
                     "label": "Participate Title",
                     "name": "participate_title",
                     "type": "group",
-                    "instructions": "Use an encouraging title, like 'Let me be part of the success'.\r\n<br><br>Link this title with the page that contains an overview with all your participation possibilities.",
+                    "instructions": "Use an encouraging title, like 'Let me be part of the success'.",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -543,7 +626,7 @@
                             "name": "title",
                             "type": "text",
                             "instructions": "",
-                            "required": 1,
+                            "required": 0,
                             "conditional_logic": 0,
                             "wrapper": {
                                 "width": "",
@@ -554,14 +637,14 @@
                             "placeholder": "",
                             "prepend": "",
                             "append": "",
-                            "maxlength": ""
+                            "maxlength": 80
                         },
                         {
                             "key": "field_5b6821cd715d5",
                             "label": "Participate Title Link",
                             "name": "general_participation_link",
                             "type": "page_link",
-                            "instructions": "",
+                            "instructions": "Select the page that contains an overview with all your participation possibilities.",
                             "required": 0,
                             "conditional_logic": 0,
                             "wrapper": {
@@ -573,7 +656,7 @@
                                 "post",
                                 "page"
                             ],
-                            "taxonomy": [],
+                            "taxonomy": "",
                             "allow_null": 1,
                             "allow_archives": 1,
                             "multiple": 0
@@ -586,7 +669,7 @@
                     "name": "description",
                     "type": "textarea",
                     "instructions": "Tell the visiter briefly, what the form does. Example: Stay updated, subscribe to our newsletter; make a change, become a member; sign the petition",
-                    "required": 1,
+                    "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
                         "width": "",
@@ -604,8 +687,8 @@
                     "label": "Call to Action",
                     "name": "form",
                     "type": "post_object",
-                    "instructions": "Select the form containing your call to action",
-                    "required": 1,
+                    "instructions": "Select the form containing your call to action.",
+                    "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
                         "width": "",
@@ -624,29 +707,5 @@
             ]
         }
     ],
-    "location": [
-        [
-            {
-                "param": "post_type",
-                "operator": "==",
-                "value": "post"
-            }
-        ],
-        [
-            {
-                "param": "post_type",
-                "operator": "==",
-                "value": "page"
-            }
-        ]
-    ],
-    "menu_order": 0,
-    "position": "normal",
-    "style": "default",
-    "label_placement": "top",
-    "instruction_placement": "label",
-    "hide_on_screen": "",
-    "active": 0,
-    "description": "",
-    "modified": 1542807891
+    "modified": 1543324741
 }
