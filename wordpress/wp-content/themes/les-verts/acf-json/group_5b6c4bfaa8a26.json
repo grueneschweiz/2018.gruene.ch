@@ -21,7 +21,7 @@
         },
         {
             "key": "field_5b7d1c098d538",
-            "label": "Titel",
+            "label": "Title",
             "name": "title",
             "type": "text",
             "instructions": "Example: 'You might also be interested in' or ' Related content'",
@@ -329,5 +329,5 @@
     "hide_on_screen": "",
     "active": 0,
     "description": "",
-    "modified": 1543404843
+    "modified": 1543421049
 }

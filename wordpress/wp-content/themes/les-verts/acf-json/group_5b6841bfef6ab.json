@@ -168,7 +168,7 @@
                                 },
                                 {
                                     "key": "field_5baa45ac76615",
-                                    "label": "Titel",
+                                    "label": "Title",
                                     "name": "title",
                                     "type": "text",
                                     "instructions": "",
@@ -318,5 +318,5 @@
     "hide_on_screen": "",
     "active": 0,
     "description": "",
-    "modified": 1543410018
+    "modified": 1543421259
 }

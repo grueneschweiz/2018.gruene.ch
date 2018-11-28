@@ -164,12 +164,12 @@
                 "layout_5b6ae44c62e25": {
                     "key": "layout_5b6ae44c62e25",
                     "name": "events",
-                    "label": "Veranstaltungen",
+                    "label": "Events",
                     "display": "block",
                     "sub_fields": [
                         {
                             "key": "field_5b6ae45562e26",
-                            "label": "Veranstaltungen",
+                            "label": "Events",
                             "name": "events",
                             "type": "clone",
                             "instructions": "",
@@ -321,5 +321,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1543410429
+    "modified": 1543421501
 }

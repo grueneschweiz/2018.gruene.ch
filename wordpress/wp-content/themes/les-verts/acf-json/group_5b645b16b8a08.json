@@ -501,7 +501,7 @@
             "sub_fields": [
                 {
                     "key": "field_5b645e6b33ef7",
-                    "label": "Titel",
+                    "label": "Title",
                     "name": "title",
                     "type": "text",
                     "instructions": "This is the main title. Keep it as short as possible!",
@@ -707,5 +707,5 @@
     "hide_on_screen": "",
     "active": 0,
     "description": "",
-    "modified": 1543401535
+    "modified": 1543421348
 }

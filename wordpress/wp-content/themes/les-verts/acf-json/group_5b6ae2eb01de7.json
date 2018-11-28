@@ -63,7 +63,7 @@
         },
         {
             "key": "field_5b6ae4faa4259",
-            "label": "Volle Breite",
+            "label": "Full Width",
             "name": "full_width",
             "type": "true_false",
             "instructions": "If full width, the block will span the whole page (both columns) else it will only take the place of a single column block.",
@@ -111,5 +111,5 @@
     "hide_on_screen": "",
     "active": 0,
     "description": "",
-    "modified": 1543398198
+    "modified": 1543420761
 }
