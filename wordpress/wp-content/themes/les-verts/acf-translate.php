@@ -908,7 +908,7 @@ if( function_exists('acf_add_local_field_group') ):
                 'label' => __('Max events to show', 'lesverts'),
                 'name' => 'max_num',
                 'type' => 'number',
-                'instructions' => __('It will always be possible to show all events by clicking on the \'show all\' button.', 'lesverts'),
+                'instructions' => __('Visitors can always see all events by clicking the «Show all events»-Button.', 'lesverts'),
                 'required' => 1,
                 'conditional_logic' => 0,
                 'wrapper' => array(
@@ -926,10 +926,10 @@ if( function_exists('acf_add_local_field_group') ):
             ),
             array(
                 'key' => 'field_5b6ae4faa4259',
-                'label' => __('Full Width', 'lesverts'),
+                'label' => __('Volle Breite', 'lesverts'),
                 'name' => 'full_width',
                 'type' => 'true_false',
-                'instructions' => __('If full width is set to yes, the block will span the whole page (both columns) else it will only take the place of a single column block.', 'lesverts'),
+                'instructions' => __('If full width, the block will span the whole page (both columns) else it will only take the place of a single column block.', 'lesverts'),
                 'required' => 0,
                 'conditional_logic' => array(
                     array(
@@ -974,7 +974,6 @@ if( function_exists('acf_add_local_field_group') ):
         'hide_on_screen' => '',
         'active' => 0,
         'description' => '',
-        'modified' => 1543324741,
     ));
 
     acf_add_local_field_group(array(
@@ -983,7 +982,7 @@ if( function_exists('acf_add_local_field_group') ):
         'fields' => array(
             array(
                 'key' => 'field_5bfd36914df38',
-                'label' => __('Show Main Campaign', 'lesverts'),
+                'label' => __('Main Campaign', 'lesverts'),
                 'name' => 'show_main_campaign',
                 'type' => 'true_false',
                 'instructions' => '',
@@ -997,8 +996,39 @@ if( function_exists('acf_add_local_field_group') ):
                 'message' => __('Display primary campaign?', 'lesverts'),
                 'default_value' => 1,
                 'ui' => 1,
-                'ui_on_text' => __('Show', 'lesverts'),
-                'ui_off_text' => __('Hide', 'lesverts'),
+                'ui_on_text' => '',
+                'ui_off_text' => '',
+            ),
+            array(
+                'key' => 'field_5b645f6d33efa',
+                'label' => __('Campaign Page', 'lesverts'),
+                'name' => 'link',
+                'type' => 'post_object',
+                'instructions' => __('Select the post, that holds the whole campaign content.', 'lesverts'),
+                'required' => 1,
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_5bfd36914df38',
+                            'operator' => '==',
+                            'value' => '1',
+                        ),
+                    ),
+                ),
+                'wrapper' => array(
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ),
+                'post_type' => array(
+                    0 => 'post',
+                    1 => 'page',
+                ),
+                'taxonomy' => '',
+                'allow_null' => 0,
+                'multiple' => 0,
+                'return_format' => 'object',
+                'ui' => 1,
             ),
             array(
                 'key' => 'field_5b645b8533eeb',
@@ -1425,37 +1455,6 @@ if( function_exists('acf_add_local_field_group') ):
                 ),
             ),
             array(
-                'key' => 'field_5b645f6d33efa',
-                'label' => __('Main Page of the Campaign', 'lesverts'),
-                'name' => 'link',
-                'type' => 'post_object',
-                'instructions' => __('Select the campaign page that belongs to the following teaser.', 'lesverts'),
-                'required' => 1,
-                'conditional_logic' => array(
-                    array(
-                        array(
-                            'field' => 'field_5bfd36914df38',
-                            'operator' => '==',
-                            'value' => '1',
-                        ),
-                    ),
-                ),
-                'wrapper' => array(
-                    'width' => '',
-                    'class' => '',
-                    'id' => '',
-                ),
-                'post_type' => array(
-                    0 => 'post',
-                    1 => 'page',
-                ),
-                'taxonomy' => '',
-                'allow_null' => 0,
-                'multiple' => 0,
-                'return_format' => 'object',
-                'ui' => 1,
-            ),
-            array(
                 'key' => 'field_5b718e15c398d',
                 'label' => __('Campaign Summary', 'lesverts'),
                 'name' => 'summary',
@@ -1686,7 +1685,6 @@ if( function_exists('acf_add_local_field_group') ):
         'hide_on_screen' => '',
         'active' => 0,
         'description' => '',
-        'modified' => 1543324741,
     ));
 
     acf_add_local_field_group(array(
@@ -1714,7 +1712,7 @@ Provide the key facts, preferably in bullet points and add the main call to acti
             ),
             array(
                 'key' => 'field_5b7293675fb5d',
-                'label' => __('Title', 'lesverts'),
+                'label' => __('Titel', 'lesverts'),
                 'name' => 'title',
                 'type' => 'text',
                 'instructions' => '',
@@ -1736,7 +1734,7 @@ Provide the key facts, preferably in bullet points and add the main call to acti
                 'label' => __('Content', 'lesverts'),
                 'name' => 'content',
                 'type' => 'flexible_content',
-                'instructions' => __('Use a bullet points or text block to add a brief description. Then add a call to action.', 'lesverts'),
+                'instructions' => __('Add a brief description. Then add a call to action.', 'lesverts'),
                 'required' => 0,
                 'conditional_logic' => 0,
                 'wrapper' => array(
@@ -1745,56 +1743,6 @@ Provide the key facts, preferably in bullet points and add the main call to acti
                     'id' => '',
                 ),
                 'layouts' => array(
-                    '5b6c42780b3b3' => array(
-                        'key' => '5b6c42780b3b3',
-                        'name' => 'bullet_points',
-                        'label' => __('Bullet Points', 'lesverts'),
-                        'display' => 'block',
-                        'sub_fields' => array(
-                            array(
-                                'key' => 'field_5b6c4280d8fbf',
-                                'label' => '',
-                                'name' => 'bullet_points',
-                                'type' => 'repeater',
-                                'instructions' => '',
-                                'required' => 0,
-                                'conditional_logic' => 0,
-                                'wrapper' => array(
-                                    'width' => '',
-                                    'class' => '',
-                                    'id' => '',
-                                ),
-                                'collapsed' => 'field_5b6c4290d8fc0',
-                                'min' => 1,
-                                'max' => 0,
-                                'layout' => 'table',
-                                'button_label' => __('Add Bullet Point', 'lesverts'),
-                                'sub_fields' => array(
-                                    array(
-                                        'key' => 'field_5b6c4290d8fc0',
-                                        'label' => __('Bullet Point', 'lesverts'),
-                                        'name' => 'bullet_point',
-                                        'type' => 'textarea',
-                                        'instructions' => __('Max. 280 characters.', 'lesverts'),
-                                        'required' => 0,
-                                        'conditional_logic' => 0,
-                                        'wrapper' => array(
-                                            'width' => '',
-                                            'class' => '',
-                                            'id' => '',
-                                        ),
-                                        'default_value' => '',
-                                        'placeholder' => '',
-                                        'maxlength' => 280,
-                                        'rows' => 2,
-                                        'new_lines' => '',
-                                    ),
-                                ),
-                            ),
-                        ),
-                        'min' => '',
-                        'max' => '',
-                    ),
                     'layout_5b6c42dbd8fc1' => array(
                         'key' => 'layout_5b6c42dbd8fc1',
                         'name' => 'text',
@@ -1806,7 +1754,7 @@ Provide the key facts, preferably in bullet points and add the main call to acti
                                 'label' => '',
                                 'name' => 'text',
                                 'type' => 'wysiwyg',
-                                'instructions' => '',
+                                'instructions' => __('Use bullet points, if possible.', 'lesverts'),
                                 'required' => 0,
                                 'conditional_logic' => 0,
                                 'wrapper' => array(
@@ -1879,7 +1827,6 @@ Provide the key facts, preferably in bullet points and add the main call to acti
         'hide_on_screen' => '',
         'active' => 0,
         'description' => '',
-        'modified' => 1543324744,
     ));
 
     acf_add_local_field_group(array(
@@ -2144,7 +2091,7 @@ A good first starting point would be a <i>manual link list</i> block that lists 
                                         'max' => '',
                                     ),
                                 ),
-                                'button_label' => __('Add Linked Content', 'lesverts'),
+                                'button_label' => __('Add Link', 'lesverts'),
                                 'min' => 1,
                                 'max' => 4,
                             ),
@@ -2159,30 +2106,11 @@ A good first starting point would be a <i>manual link list</i> block that lists 
                         'display' => 'block',
                         'sub_fields' => array(
                             array(
-                                'key' => 'field_5b7c21a694fb8',
-                                'label' => __('About this Block', 'lesverts'),
-                                'name' => '',
-                                'type' => 'message',
-                                'instructions' => '',
-                                'required' => 0,
-                                'conditional_logic' => 0,
-                                'wrapper' => array(
-                                    'width' => '',
-                                    'class' => '',
-                                    'id' => '',
-                                ),
-                                'message' => __('Display the latest four posts, events or pages that meet the given filter criteria. 
-
-This list will automatically be updated if any new content meets the filter criteria (dynamic).', 'lesverts'),
-                                'new_lines' => 'wpautop',
-                                'esc_html' => 0,
-                            ),
-                            array(
                                 'key' => 'field_5b7c253151b70',
-                                'label' => __('Show Excerpt', 'lesverts'),
+                                'label' => __('Show Teaser', 'lesverts'),
                                 'name' => 'full_width',
                                 'type' => 'true_false',
-                                'instructions' => __('If true, the excerpt of every content element is shown. This block will then span the whole content area (both columns).', 'lesverts'),
+                                'instructions' => __('If true, the teaser of every content element is shown. This block will then span the whole content area (both columns).', 'lesverts'),
                                 'required' => 0,
                                 'conditional_logic' => 0,
                                 'wrapper' => array(
@@ -2197,34 +2125,13 @@ This list will automatically be updated if any new content meets the filter crit
                                 'ui_off_text' => '',
                             ),
                             array(
-                                'key' => 'field_5b7c16edb4d17',
-                                'label' => __('Block Title', 'lesverts'),
-                                'name' => 'block_title',
-                                'type' => 'clone',
-                                'instructions' => '',
-                                'required' => 0,
-                                'conditional_logic' => 0,
-                                'wrapper' => array(
-                                    'width' => '',
-                                    'class' => '',
-                                    'id' => '',
-                                ),
-                                'clone' => array(
-                                    0 => 'group_5b684e748247e',
-                                ),
-                                'display' => 'seamless',
-                                'layout' => 'block',
-                                'prefix_label' => 0,
-                                'prefix_name' => 0,
-                            ),
-                            array(
                                 'key' => 'field_5b7c1af09b255',
-                                'label' => __('Content Filter', 'lesverts'),
+                                'label' => __('Filter criteria', 'lesverts'),
                                 'name' => 'linked_content',
                                 'type' => 'group',
                                 'instructions' => __('The latest content that matches <strong>all</strong> of the selected categories and <strong>at least one</strong> of the selected tags will be displayed.<br><br>
 
-If <strong>no tags</strong> are selected, all content matching any of the categories will be displayed. If <strong>no categories</strong> are selected, all content matching any of the tags will be displayed.', 'lesverts'),
+If <strong>no tags</strong> are selected, content matching all of the categories will be displayed. If <strong>no categories</strong> are selected, all content matching any of the tags will be displayed.', 'lesverts'),
                                 'required' => 0,
                                 'conditional_logic' => 0,
                                 'wrapper' => array(
@@ -2280,6 +2187,46 @@ If <strong>no tags</strong> are selected, all content matching any of the catego
                                     ),
                                 ),
                             ),
+                            array(
+                                'key' => 'field_5b7c21a694fb8',
+                                'label' => __('About this Block', 'lesverts'),
+                                'name' => '',
+                                'type' => 'message',
+                                'instructions' => '',
+                                'required' => 0,
+                                'conditional_logic' => 0,
+                                'wrapper' => array(
+                                    'width' => '',
+                                    'class' => '',
+                                    'id' => '',
+                                ),
+                                'message' => __('Display the latest four posts, events or pages that meet the given filter criteria. 
+
+This list will automatically be updated if any new content meets the filter criteria (dynamic).', 'lesverts'),
+                                'new_lines' => 'wpautop',
+                                'esc_html' => 0,
+                            ),
+                            array(
+                                'key' => 'field_5b7c16edb4d17',
+                                'label' => __('Block Title', 'lesverts'),
+                                'name' => 'block_title',
+                                'type' => 'clone',
+                                'instructions' => '',
+                                'required' => 0,
+                                'conditional_logic' => 0,
+                                'wrapper' => array(
+                                    'width' => '',
+                                    'class' => '',
+                                    'id' => '',
+                                ),
+                                'clone' => array(
+                                    0 => 'group_5b684e748247e',
+                                ),
+                                'display' => 'seamless',
+                                'layout' => 'block',
+                                'prefix_label' => 0,
+                                'prefix_name' => 0,
+                            ),
                         ),
                         'min' => '',
                         'max' => '',
@@ -2307,7 +2254,6 @@ If <strong>no tags</strong> are selected, all content matching any of the catego
         'hide_on_screen' => '',
         'active' => 0,
         'description' => '',
-        'modified' => 1543324745,
     ));
 
     acf_add_local_field_group(array(
@@ -2954,7 +2900,7 @@ If <strong>no tags</strong> are selected, all content matching any of the catego
                 'label' => __('Post', 'lesverts'),
                 'name' => 'post',
                 'type' => 'post_object',
-                'instructions' => __('Select the post to display. The excerpt and the image of the post, will be displayed.', 'lesverts'),
+                'instructions' => __('Select the post to display. The teaser and the image of the post, will be displayed.', 'lesverts'),
                 'required' => 1,
                 'conditional_logic' => 0,
                 'wrapper' => array(
@@ -2966,8 +2912,7 @@ If <strong>no tags</strong> are selected, all content matching any of the catego
                     0 => 'post',
                     1 => 'page',
                 ),
-                'taxonomy' => array(
-                ),
+                'taxonomy' => '',
                 'allow_null' => 0,
                 'multiple' => 0,
                 'return_format' => 'object',
@@ -2991,7 +2936,6 @@ If <strong>no tags</strong> are selected, all content matching any of the catego
         'hide_on_screen' => '',
         'active' => 0,
         'description' => '',
-        'modified' => 1543324748,
     ));
 
     acf_add_local_field_group(array(
@@ -3623,10 +3567,10 @@ If <strong>no tags</strong> are selected, all content matching any of the catego
                 'sub_fields' => array(
                     array(
                         'key' => 'field_5baa445a76610',
-                        'label' => __('Proposal Link', 'lesverts'),
+                        'label' => __('Link', 'lesverts'),
                         'name' => 'proposal_link',
                         'type' => 'group',
-                        'instructions' => '',
+                        'instructions' => __('Where visitors can read more about this bill.', 'lesverts'),
                         'required' => 0,
                         'conditional_logic' => 0,
                         'wrapper' => array(
@@ -3881,7 +3825,6 @@ If <strong>no tags</strong> are selected, all content matching any of the catego
         'hide_on_screen' => '',
         'active' => 0,
         'description' => '',
-        'modified' => 1543324751,
     ));
 
     acf_add_local_field_group(array(
@@ -4011,7 +3954,7 @@ If <strong>no tags</strong> are selected, all content matching any of the catego
                         'sub_fields' => array(
                             array(
                                 'key' => 'field_5b684cf979d23',
-                                'label' => __('Vote proposition', 'lesverts'),
+                                'label' => __('Vote Proposal', 'lesverts'),
                                 'name' => 'vote',
                                 'type' => 'clone',
                                 'instructions' => '',
@@ -4073,7 +4016,7 @@ If <strong>no tags</strong> are selected, all content matching any of the catego
                         'sub_fields' => array(
                             array(
                                 'key' => 'field_5b68536b5538b',
-                                'label' => __('Two Posts / Page Teasers', 'lesverts'),
+                                'label' => __('Two Posts / Pages', 'lesverts'),
                                 'name' => 'double',
                                 'type' => 'clone',
                                 'instructions' => '',
@@ -4104,7 +4047,7 @@ If <strong>no tags</strong> are selected, all content matching any of the catego
                         'sub_fields' => array(
                             array(
                                 'key' => 'field_5b6854fa5538d',
-                                'label' => __('Latest media release', 'lesverts'),
+                                'label' => __('Latest Press Release', 'lesverts'),
                                 'name' => 'media',
                                 'type' => 'clone',
                                 'instructions' => '',
@@ -4130,7 +4073,7 @@ If <strong>no tags</strong> are selected, all content matching any of the catego
                     'layout_5b6ae44c62e25' => array(
                         'key' => 'layout_5b6ae44c62e25',
                         'name' => 'events',
-                        'label' => __('Events', 'lesverts'),
+                        'label' => __('Veranstaltungen', 'lesverts'),
                         'display' => 'block',
                         'sub_fields' => array(
                             array(
@@ -4223,7 +4166,7 @@ If <strong>no tags</strong> are selected, all content matching any of the catego
                     'layout_5b6dad5b864d5' => array(
                         'key' => 'layout_5b6dad5b864d5',
                         'name' => 'engagement_map',
-                        'label' => __('Engagement Map', 'lesverts'),
+                        'label' => __('Map Block', 'lesverts'),
                         'display' => 'block',
                         'sub_fields' => array(
                             array(
@@ -4287,7 +4230,6 @@ If <strong>no tags</strong> are selected, all content matching any of the catego
         ),
         'active' => 1,
         'description' => '',
-        'modified' => 1543324752,
     ));
 
     acf_add_local_field_group(array(
@@ -4636,7 +4578,6 @@ If <strong>no tags</strong> are selected, all content matching any of the catego
         ),
         'active' => 1,
         'description' => '',
-        'modified' => 1543324753,
     ));
 
     acf_add_local_field_group(array(

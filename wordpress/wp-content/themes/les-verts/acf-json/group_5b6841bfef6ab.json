@@ -1,23 +1,6 @@
 {
     "key": "group_5b6841bfef6ab",
     "title": "[Template]Vote Proposals",
-    "location": [
-        [
-            {
-                "param": "page_type",
-                "operator": "==",
-                "value": "front_page"
-            }
-        ]
-    ],
-    "menu_order": 0,
-    "position": "normal",
-    "style": "default",
-    "label_placement": "top",
-    "instruction_placement": "label",
-    "hide_on_screen": "",
-    "active": 0,
-    "description": "",
     "fields": [
         {
             "key": "field_5b7da085dc6f1",
@@ -78,10 +61,10 @@
             "sub_fields": [
                 {
                     "key": "field_5baa445a76610",
-                    "label": "Proposal Link",
+                    "label": "Link",
                     "name": "proposal_link",
                     "type": "group",
-                    "instructions": "",
+                    "instructions": "Where visitors can read more about this bill.",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -185,7 +168,7 @@
                                 },
                                 {
                                     "key": "field_5baa45ac76615",
-                                    "label": "Title",
+                                    "label": "Titel",
                                     "name": "title",
                                     "type": "text",
                                     "instructions": "",
@@ -318,5 +301,22 @@
             ]
         }
     ],
-    "modified": 1543324751
+    "location": [
+        [
+            {
+                "param": "page_type",
+                "operator": "==",
+                "value": "front_page"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 0,
+    "description": "",
+    "modified": 1543410018
 }

@@ -1,37 +1,6 @@
 {
     "key": "group_5b6c0884eb9b8",
     "title": "Person",
-    "location": [
-        [
-            {
-                "param": "post_type",
-                "operator": "==",
-                "value": "people"
-            }
-        ]
-    ],
-    "menu_order": 0,
-    "position": "normal",
-    "style": "default",
-    "label_placement": "top",
-    "instruction_placement": "label",
-    "hide_on_screen": [
-        "the_content",
-        "excerpt",
-        "discussion",
-        "comments",
-        "revisions",
-        "slug",
-        "author",
-        "format",
-        "page_attributes",
-        "featured_image",
-        "categories",
-        "tags",
-        "send-trackbacks"
-    ],
-    "active": 1,
-    "description": "",
     "fields": [
         {
             "key": "field_5bb4e39c23f7a",
@@ -78,7 +47,7 @@
         },
         {
             "key": "field_5b6c09509417f",
-            "label": "Contact",
+            "label": "Kontakt",
             "name": "contact",
             "type": "flexible_content",
             "instructions": "",
@@ -93,12 +62,12 @@
                 "5b6c09700cad3": {
                     "key": "5b6c09700cad3",
                     "name": "email",
-                    "label": "Email",
+                    "label": "E-Mail",
                     "display": "block",
                     "sub_fields": [
                         {
                             "key": "field_5b6c097794180",
-                            "label": "Email",
+                            "label": "E-Mail",
                             "name": "email",
                             "type": "email",
                             "instructions": "",
@@ -121,12 +90,12 @@
                 "layout_5b6c09a694181": {
                     "key": "layout_5b6c09a694181",
                     "name": "phone",
-                    "label": "Phone",
+                    "label": "Telefon",
                     "display": "block",
                     "sub_fields": [
                         {
                             "key": "field_5b6c09b294182",
-                            "label": "Phone",
+                            "label": "Telefon",
                             "name": "phone",
                             "type": "text",
                             "instructions": "",
@@ -321,7 +290,7 @@
                 },
                 {
                     "key": "field_5bbb2a71ceb1d",
-                    "label": "Testimonial Category",
+                    "label": "Testimonial Kategorie",
                     "name": "taxonomy",
                     "type": "taxonomy",
                     "instructions": "To present testimonials you will have to select the testimonials by category, so <strong>assign the same category to all testimonials you want to display in the same collection<\/strong>.",
@@ -344,5 +313,36 @@
             ]
         }
     ],
-    "modified": 1543324753
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "people"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [
+        "the_content",
+        "excerpt",
+        "discussion",
+        "comments",
+        "revisions",
+        "slug",
+        "author",
+        "format",
+        "page_attributes",
+        "featured_image",
+        "categories",
+        "tags",
+        "send-trackbacks"
+    ],
+    "active": 1,
+    "description": "",
+    "modified": 1543411585
 }

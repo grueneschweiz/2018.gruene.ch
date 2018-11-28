@@ -1,36 +1,6 @@
 {
     "key": "group_5b646018d7f1a",
     "title": "Front page",
-    "location": [
-        [
-            {
-                "param": "page_type",
-                "operator": "==",
-                "value": "front_page"
-            }
-        ]
-    ],
-    "menu_order": 0,
-    "position": "normal",
-    "style": "seamless",
-    "label_placement": "top",
-    "instruction_placement": "label",
-    "hide_on_screen": [
-        "the_content",
-        "excerpt",
-        "discussion",
-        "comments",
-        "slug",
-        "author",
-        "format",
-        "page_attributes",
-        "featured_image",
-        "categories",
-        "tags",
-        "send-trackbacks"
-    ],
-    "active": 1,
-    "description": "",
     "fields": [
         {
             "key": "field_5b646034e8b37",
@@ -75,7 +45,7 @@
                     "sub_fields": [
                         {
                             "key": "field_5b684cf979d23",
-                            "label": "Vote proposition",
+                            "label": "Vote Proposal",
                             "name": "vote",
                             "type": "clone",
                             "instructions": "",
@@ -137,7 +107,7 @@
                     "sub_fields": [
                         {
                             "key": "field_5b68536b5538b",
-                            "label": "Two Posts \/ Page Teasers",
+                            "label": "Two Posts \/ Pages",
                             "name": "double",
                             "type": "clone",
                             "instructions": "",
@@ -168,7 +138,7 @@
                     "sub_fields": [
                         {
                             "key": "field_5b6854fa5538d",
-                            "label": "Latest media release",
+                            "label": "Latest Press Release",
                             "name": "media",
                             "type": "clone",
                             "instructions": "",
@@ -194,12 +164,12 @@
                 "layout_5b6ae44c62e25": {
                     "key": "layout_5b6ae44c62e25",
                     "name": "events",
-                    "label": "Events",
+                    "label": "Veranstaltungen",
                     "display": "block",
                     "sub_fields": [
                         {
                             "key": "field_5b6ae45562e26",
-                            "label": "Events",
+                            "label": "Veranstaltungen",
                             "name": "events",
                             "type": "clone",
                             "instructions": "",
@@ -287,7 +257,7 @@
                 "layout_5b6dad5b864d5": {
                     "key": "layout_5b6dad5b864d5",
                     "name": "engagement_map",
-                    "label": "Engagement Map",
+                    "label": "Map Block",
                     "display": "block",
                     "sub_fields": [
                         {
@@ -321,5 +291,35 @@
             "max": ""
         }
     ],
-    "modified": 1543324752
+    "location": [
+        [
+            {
+                "param": "page_type",
+                "operator": "==",
+                "value": "front_page"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "seamless",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [
+        "the_content",
+        "excerpt",
+        "discussion",
+        "comments",
+        "slug",
+        "author",
+        "format",
+        "page_attributes",
+        "featured_image",
+        "categories",
+        "tags",
+        "send-trackbacks"
+    ],
+    "active": 1,
+    "description": "",
+    "modified": 1543410429
 }

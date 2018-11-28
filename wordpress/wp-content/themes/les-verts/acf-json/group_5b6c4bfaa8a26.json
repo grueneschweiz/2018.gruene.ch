@@ -1,23 +1,6 @@
 {
     "key": "group_5b6c4bfaa8a26",
     "title": "[Template]Link Lists",
-    "location": [
-        [
-            {
-                "param": "post_type",
-                "operator": "==",
-                "value": "post"
-            }
-        ]
-    ],
-    "menu_order": 0,
-    "position": "normal",
-    "style": "default",
-    "label_placement": "top",
-    "instruction_placement": "label",
-    "hide_on_screen": "",
-    "active": 0,
-    "description": "",
     "fields": [
         {
             "key": "field_5bfd14804bd11",
@@ -38,7 +21,7 @@
         },
         {
             "key": "field_5b7d1c098d538",
-            "label": "Title",
+            "label": "Titel",
             "name": "title",
             "type": "text",
             "instructions": "Example: 'You might also be interested in' or ' Related content'",
@@ -187,7 +170,7 @@
                                     "max": ""
                                 }
                             },
-                            "button_label": "Add Linked Content",
+                            "button_label": "Add Link",
                             "min": 1,
                             "max": 4
                         }
@@ -202,28 +185,11 @@
                     "display": "block",
                     "sub_fields": [
                         {
-                            "key": "field_5b7c21a694fb8",
-                            "label": "About this Block",
-                            "name": "",
-                            "type": "message",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "message": "Display the latest four posts, events or pages that meet the given filter criteria. \r\n\r\nThis list will automatically be updated if any new content meets the filter criteria (dynamic).",
-                            "new_lines": "wpautop",
-                            "esc_html": 0
-                        },
-                        {
                             "key": "field_5b7c253151b70",
-                            "label": "Show Excerpt",
+                            "label": "Show Teaser",
                             "name": "full_width",
                             "type": "true_false",
-                            "instructions": "If true, the excerpt of every content element is shown. This block will then span the whole content area (both columns).",
+                            "instructions": "If true, the teaser of every content element is shown. This block will then span the whole content area (both columns).",
                             "required": 0,
                             "conditional_logic": 0,
                             "wrapper": {
@@ -238,32 +204,11 @@
                             "ui_off_text": ""
                         },
                         {
-                            "key": "field_5b7c16edb4d17",
-                            "label": "Block Title",
-                            "name": "block_title",
-                            "type": "clone",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "clone": [
-                                "group_5b684e748247e"
-                            ],
-                            "display": "seamless",
-                            "layout": "block",
-                            "prefix_label": 0,
-                            "prefix_name": 0
-                        },
-                        {
                             "key": "field_5b7c1af09b255",
-                            "label": "Content Filter",
+                            "label": "Filter criteria",
                             "name": "linked_content",
                             "type": "group",
-                            "instructions": "The latest content that matches <strong>all<\/strong> of the selected categories and <strong>at least one<\/strong> of the selected tags will be displayed.<br><br>\r\n\r\nIf <strong>no tags<\/strong> are selected, all content matching any of the categories will be displayed. If <strong>no categories<\/strong> are selected, all content matching any of the tags will be displayed.",
+                            "instructions": "The latest content that matches <strong>all<\/strong> of the selected categories and <strong>at least one<\/strong> of the selected tags will be displayed.<br><br>\r\n\r\nIf <strong>no tags<\/strong> are selected, content matching all of the categories will be displayed. If <strong>no categories<\/strong> are selected, all content matching any of the tags will be displayed.",
                             "required": 0,
                             "conditional_logic": 0,
                             "wrapper": {
@@ -318,6 +263,44 @@
                                     "multiple": 0
                                 }
                             ]
+                        },
+                        {
+                            "key": "field_5b7c21a694fb8",
+                            "label": "About this Block",
+                            "name": "",
+                            "type": "message",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "message": "Display the latest four posts, events or pages that meet the given filter criteria. \r\n\r\nThis list will automatically be updated if any new content meets the filter criteria (dynamic).",
+                            "new_lines": "wpautop",
+                            "esc_html": 0
+                        },
+                        {
+                            "key": "field_5b7c16edb4d17",
+                            "label": "Block Title",
+                            "name": "block_title",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_5b684e748247e"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
                         }
                     ],
                     "min": "",
@@ -329,5 +312,22 @@
             "max": ""
         }
     ],
-    "modified": 1543324745
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 0,
+    "description": "",
+    "modified": 1543404843
 }
