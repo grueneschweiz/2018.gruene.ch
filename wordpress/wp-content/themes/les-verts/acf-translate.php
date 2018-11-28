@@ -5,7 +5,6 @@
  */
 
 die();
-
 if( function_exists('acf_add_local_field_group') ):
 	
 	acf_add_local_field_group(array(
@@ -4268,7 +4267,7 @@ This list will automatically be updated if any new content meets the filter crit
 			),
 			array(
 				'key' => 'field_5b6c09509417f',
-				'label' => __('Kontakt', 'lesverts'),
+				'label' => __('Contact', 'lesverts'),
 				'name' => 'contact',
 				'type' => 'flexible_content',
 				'instructions' => '',
@@ -4283,12 +4282,12 @@ This list will automatically be updated if any new content meets the filter crit
 					'5b6c09700cad3' => array(
 						'key' => '5b6c09700cad3',
 						'name' => 'email',
-						'label' => __('E-Mail', 'lesverts'),
+						'label' => __('Email', 'lesverts'),
 						'display' => 'block',
 						'sub_fields' => array(
 							array(
 								'key' => 'field_5b6c097794180',
-								'label' => __('E-Mail', 'lesverts'),
+								'label' => __('Email', 'lesverts'),
 								'name' => 'email',
 								'type' => 'email',
 								'instructions' => '',
@@ -4311,12 +4310,12 @@ This list will automatically be updated if any new content meets the filter crit
 					'layout_5b6c09a694181' => array(
 						'key' => 'layout_5b6c09a694181',
 						'name' => 'phone',
-						'label' => __('Telefon', 'lesverts'),
+						'label' => __('Phone', 'lesverts'),
 						'display' => 'block',
 						'sub_fields' => array(
 							array(
 								'key' => 'field_5b6c09b294182',
-								'label' => __('Telefon', 'lesverts'),
+								'label' => __('Phone', 'lesverts'),
 								'name' => 'phone',
 								'type' => 'text',
 								'instructions' => '',
@@ -4511,7 +4510,7 @@ This list will automatically be updated if any new content meets the filter crit
 					),
 					array(
 						'key' => 'field_5bbb2a71ceb1d',
-						'label' => __('Testimonial Kategorie', 'lesverts'),
+						'label' => __('Testimonial Category', 'lesverts'),
 						'name' => 'taxonomy',
 						'type' => 'taxonomy',
 						'instructions' => __('To present testimonials you will have to select the testimonials by category, so <strong>assign the same category to all testimonials you want to display in the same collection</strong>.', 'lesverts'),
@@ -4565,7 +4564,6 @@ This list will automatically be updated if any new content meets the filter crit
 		),
 		'active' => 1,
 		'description' => '',
-		'modified' => 1543411585,
 	));
 	
 	acf_add_local_field_group(array(
