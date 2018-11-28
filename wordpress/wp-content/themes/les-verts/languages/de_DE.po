@@ -45,9 +45,8 @@ msgid "middle center"
 msgstr "mitte mitte"
 
 #: acf-translate.php:71
-#, fuzzy
 msgid "middle right"
-msgstr "Nach rechts schieben"
+msgstr "mitte rechts"
 
 #: acf-translate.php:72
 msgid "bottom left"
@@ -85,9 +84,8 @@ msgstr "Diese Option funktioniert nur für Unterpunkte (Level 2). Auf anderen St
 #: acf-translate.php:1851 acf-translate.php:1993 acf-translate.php:2204
 #: acf-translate.php:2275 acf-translate.php:2771 acf-translate.php:3058
 #: acf-translate.php:3288 acf-translate.php:3413
-#, fuzzy
 msgid "Block Title"
-msgstr "Titel"
+msgstr "Block Titel"
 
 #: acf-translate.php:228 acf-translate.php:1029 acf-translate.php:3823
 #: acf-translate.php:5000 acf-translate.php:5005
@@ -104,9 +102,8 @@ msgid "Max. 140 characters."
 msgstr "Max. 140 Zeichen."
 
 #: acf-translate.php:279 acf-translate.php:351
-#, fuzzy
 msgid "Button Text"
-msgstr "Button"
+msgstr "Button-Text"
 
 #: acf-translate.php:282
 msgid "The button will link to this menu item"
@@ -117,14 +114,12 @@ msgid "(Widget) Buttons"
 msgstr "(Widget) Buttons"
 
 #: acf-translate.php:332
-#, fuzzy
 msgid "Buttons"
-msgstr "Button"
+msgstr "Buttons"
 
 #: acf-translate.php:347
-#, fuzzy
 msgid "Add Button"
-msgstr "Button"
+msgstr "Button hinzufügen"
 
 #: acf-translate.php:354
 msgid "Max. 40 characters."
@@ -132,18 +127,16 @@ msgstr "Max. 40 Zeichen."
 
 #: acf-translate.php:370 acf-translate.php:609 acf-translate.php:685
 #: acf-translate.php:2029 acf-translate.php:2034 acf-translate.php:3557
-#, fuzzy
 msgid "Link"
-msgstr "Button Link Seite"
+msgstr "Link"
 
 #: acf-translate.php:386
 msgid "Highlighted"
 msgstr "Hervorgehoben"
 
 #: acf-translate.php:427
-#, fuzzy
 msgid "(Widget) Contact"
-msgstr "Kontakt"
+msgstr "(Widget) Kontakt"
 
 #: acf-translate.php:431
 msgid "Address"
@@ -178,28 +171,24 @@ msgid "Link to the instagram profile"
 msgstr "Link zum Instagram Profil"
 
 #: acf-translate.php:541
-#, fuzzy
 msgid "Add Icon"
-msgstr "Zum Menü hinzufügen"
+msgstr "Icon hinzufügen"
 
 #: acf-translate.php:567
-#, fuzzy
 msgid "(Widget) Link List"
-msgstr "Linkliste"
+msgstr "(Widget) Linkliste"
 
 #: acf-translate.php:571
-#, fuzzy
 msgid "List"
-msgstr "Linkliste"
+msgstr "Liste"
 
 #: acf-translate.php:586 acf-translate.php:2087
 msgid "Add Link"
 msgstr "Link hinzufügen"
 
 #: acf-translate.php:590 acf-translate.php:2372
-#, fuzzy
 msgid "Label"
-msgstr "Beschriftung"
+msgstr "Bezeichnung"
 
 #: acf-translate.php:647
 msgid "[Template]Block title"
@@ -216,38 +205,33 @@ msgid "Title"
 msgstr "Titel"
 
 #: acf-translate.php:700 acf-translate.php:3572
-#, fuzzy
 msgid "Link Type"
-msgstr "Typ"
+msgstr "Link Typ"
 
 #: acf-translate.php:712 acf-translate.php:724 acf-translate.php:1872
 #: acf-translate.php:3517
-#, fuzzy
 msgid "Category"
-msgstr "Die letzten Beiträge der Kategorie"
+msgstr "Kategorie"
 
 #: acf-translate.php:713 acf-translate.php:3584
 msgid "Internal"
 msgstr "Intern"
 
 #: acf-translate.php:714 acf-translate.php:787 acf-translate.php:3649
-#, fuzzy
 msgid "URL"
-msgstr "Url zum Rohbild der Bilddatenbank."
+msgstr "URL"
 
 #: acf-translate.php:715
-#, fuzzy
 msgid "None"
-msgstr "Keine"
+msgstr "Kein"
 
 #: acf-translate.php:754 acf-translate.php:3594
 msgid "Internal Link"
 msgstr "Interner Link"
 
 #: acf-translate.php:811
-#, fuzzy
 msgid "No Link"
-msgstr "Linkliste"
+msgstr "Kein Link"
 
 #: acf-translate.php:830
 msgid "The block title will not be linked"
@@ -307,9 +291,8 @@ msgid "Bar alignment"
 msgstr "Ausrichtung der Balken"
 
 #: acf-translate.php:1096
-#, fuzzy
 msgid "Left"
-msgstr "Dieses Feld darf nicht leer gelassen werden"
+msgstr "Links"
 
 #: acf-translate.php:1097
 msgid "Right"
@@ -404,9 +387,8 @@ msgid "Write a brief teaser to attract the readers interest. Keept it short (200
 msgstr "Schreibe einen kurzen Teaser um die Aufmerksamkeit der Besuchenden anzuziehen. Halte dich kurz (200 bis 400 Zeichen)."
 
 #: acf-translate.php:1514
-#, fuzzy
 msgid "Read more button"
-msgstr "Option (eine aus mehreren)"
+msgstr "Weiterlesen-Button"
 
 #: acf-translate.php:1517
 msgid "The button text."
@@ -437,23 +419,20 @@ msgid "Select the page that contains an overview with all your participation pos
 msgstr "Wähle die Seite, die einen Überblick über alle Mitmachmöglichkeiten zeigt."
 
 #: acf-translate.php:1616
-#, fuzzy
 msgid "Participation Description"
-msgstr "Beschreibung"
+msgstr "Mitmach-Beschrieb"
 
 #: acf-translate.php:1619
 msgid "Tell the visiter briefly, what the form does. Example: Stay updated, subscribe to our newsletter; make a change, become a member; sign the petition"
 msgstr "Sag den Besuchenden kurz, was das Formular macht. Beispiele: Newsletter abonnieren ̣- auf dem Laufenden bleiben, Etwas ändern - Mitglied werden, Petition unterzeichnen"
 
 #: acf-translate.php:1638
-#, fuzzy
 msgid "Select the form containing your call to action."
-msgstr "Zeige deine wichtigsten Aufrufe zur Aktion"
+msgstr "Wähle das Formular mit dem Call to Action aus"
 
 #: acf-translate.php:1686
-#, fuzzy
 msgid "[Template]In Short"
-msgstr "Vorlage"
+msgstr "[Template]In Kürze"
 
 #: acf-translate.php:1701
 msgid "This is for visitors that don't want to read a lot.\n"
@@ -463,9 +442,8 @@ msgstr "Das ist für Besuchende, die nicht viel Lesen wollen. Streiche die wicht
 
 #: acf-translate.php:1728 acf-translate.php:2429 acf-translate.php:4611
 #: acf-translate.php:4877
-#, fuzzy
 msgid "Content"
-msgstr "Keine druckbaren Inhalte gegeben."
+msgstr "Inhalt"
 
 #: acf-translate.php:1743 acf-translate.php:2315 acf-translate.php:4674
 #: acf-translate.php:4679 acf-translate.php:4954 lib/form/acf/input.php:42
@@ -481,9 +459,8 @@ msgid "Add In Short Content Block"
 msgstr "«In Kürze»-Inhaltsblock hinzufügen"
 
 #: acf-translate.php:1828
-#, fuzzy
 msgid "[Template]Latest Press Release"
-msgstr "Pressemitteilung"
+msgstr "[Template]Neueste Medienmitteilung"
 
 #: acf-translate.php:1843
 msgid "Display the latest press release (as long as it is published under the category you set below). Posts where the flag 'Show on front page' is not set to false will be excluded.\n"
@@ -498,18 +475,16 @@ msgid "Select the category of your press releases."
 msgstr "Wähle die Kategorie der Medienmitteilungen."
 
 #: acf-translate.php:1914
-#, fuzzy
 msgid "[Template]Link Lists"
-msgstr "Linkliste"
+msgstr "[Template]Linkliste"
 
 #: acf-translate.php:1940
 msgid "Example: 'You might also be interested in' or ' Related content'"
 msgstr "Beispiel: «Das könnte dich auch noch interessieren» oder «Weitere Informationen»"
 
 #: acf-translate.php:1956
-#, fuzzy
 msgid "Link List Blocks"
-msgstr "Linkliste"
+msgstr "Linklisten Blöcke"
 
 #: acf-translate.php:1971
 msgid "Manual Link List (Static)"
@@ -540,27 +515,24 @@ msgid "Auto Link List (Dynamic)"
 msgstr "Automatische Linkliste (dynamisch)"
 
 #: acf-translate.php:2139
-#, fuzzy
 msgid "Categories"
-msgstr "Alle Kategorien"
+msgstr "Kategorien"
 
 #: acf-translate.php:2142
 msgid "Content is displayed if <strong>all categories match</strong>."
 msgstr "Inhalt der <strong>allen Kategorien entspricht</strong> wird angezeigt."
 
 #: acf-translate.php:2161
-#, fuzzy
 msgid "Tags"
-msgstr "Schlagwörter"
+msgstr "Schlagworte"
 
 #: acf-translate.php:2164
 msgid "Content is displayed if <strong>at lease one tag matches</strong>."
 msgstr "Inhalt der <strong>mindestens einem Schlagwort</strong> entspricht, wird angezeigt."
 
 #: acf-translate.php:2228
-#, fuzzy
 msgid "Add Link List Block"
-msgstr "Linkliste"
+msgstr "Linklisten-Block hinzufügen"
 
 #: acf-translate.php:2254
 msgid "[Template]Map Block"
@@ -587,14 +559,12 @@ msgid "Map Data"
 msgstr "Kartendaten"
 
 #: acf-translate.php:2375
-#, fuzzy
 msgid "This is used in the dropdown of the mobile version."
-msgstr "Dies wird in der grünen Leiste oberhalb der Menüleiste verwendet."
+msgstr "Dies wird im Dropdown der Handyversion genutzt."
 
 #: acf-translate.php:2391
-#, fuzzy
 msgid "ID"
-msgstr "Id"
+msgstr "ID"
 
 #: acf-translate.php:2394
 msgid "This must match the id in the svg."
@@ -609,14 +579,12 @@ msgid "The content block will be separated by margin and a slight line."
 msgstr "Der Inhaltsblock wird durch Abstand und eine feine Linie getrennt."
 
 #: acf-translate.php:2425
-#, fuzzy
 msgid "Add Content"
-msgstr "Zum Menü hinzufügen"
+msgstr "Inhalt hizufügen"
 
 #: acf-translate.php:2452
-#, fuzzy
 msgid "Full Width (hidden)"
-msgstr "Volle Breite"
+msgstr "Volle Breite (versteckt)"
 
 #: acf-translate.php:2482
 msgid "Region Selector Label"
@@ -627,9 +595,8 @@ msgid "This will only be displayed in the mobile version."
 msgstr "Dies wird nur in der Handyverison angezeigt. "
 
 #: acf-translate.php:2522
-#, fuzzy
 msgid "[Template]Person"
-msgstr "Vorlage"
+msgstr "[Template]Person"
 
 #: acf-translate.php:2526 acf-translate.php:2975 acf-translate.php:4223
 #: acf-translate.php:5112 lib/post-types/PeopleType.php:14
@@ -661,9 +628,8 @@ msgid "Additional Info"
 msgstr "Zusätzliche Info"
 
 #: acf-translate.php:2625
-#, fuzzy
 msgid "[Template]Position"
-msgstr "Vorlage"
+msgstr "[Template]Position"
 
 #: acf-translate.php:2629
 msgid "Position Block Title"
@@ -674,18 +640,16 @@ msgid "Position"
 msgstr "Position"
 
 #: acf-translate.php:2663
-#, fuzzy
 msgid "Add Position"
-msgstr "Neue Person hinzufügen"
+msgstr "Position hinzufügen"
 
 #: acf-translate.php:2670
 msgid "Keep it very short, use just a few keywords. Max 120 characters."
 msgstr "Halte es sehr kurz, nur ein paar Schlüsselworte. Max 120 Zeichen."
 
 #: acf-translate.php:2688
-#, fuzzy
 msgid "Read More Button Text"
-msgstr "Option (eine aus mehreren)"
+msgstr "Weiterlesen-Button-Text"
 
 #: acf-translate.php:2707
 msgid "Read More Button Target"
@@ -720,9 +684,8 @@ msgid "Select the post to display. The excerpt and the image of the post, will b
 msgstr "Wähle den anzuzeigenden Beitrag. Der Teaser und das Bild des Beitrages werden angezeigt."
 
 #: acf-translate.php:2935
-#, fuzzy
 msgid "[Template]Quote"
-msgstr "Vorlage"
+msgstr "[Template]Zitat"
 
 #: acf-translate.php:2950
 msgid "Displays a nicely formatted quote of any person you added in your people section. The image will automatically be pulled from the persons record."
@@ -758,9 +721,8 @@ msgid "Footer"
 msgstr "Footer"
 
 #: acf-translate.php:3103
-#, fuzzy
 msgid "Immediate call to action."
-msgstr "Zeige deine wichtigsten Aufrufe zur Aktion"
+msgstr "Unmittelbarer Call to Action"
 
 #: acf-translate.php:3115
 msgid "Call to Action Link"
@@ -771,9 +733,8 @@ msgid "Add anchor link to the call to action form."
 msgstr "Füge einen Ankerlink zum Call to Action Formular hinzu."
 
 #: acf-translate.php:3131
-#, fuzzy
 msgid "Call to Action Button Text"
-msgstr "Mitmachen-Button"
+msgstr "Call to Action Button Text"
 
 #: acf-translate.php:3157
 msgid "Call to Action Description"
@@ -784,9 +745,8 @@ msgid "One very short sentence that explains why someone should click the call t
 msgstr "Ein sehr kurzer Satz, der erklärt, warum jemand auf den Call to Action klicken soll. Beispiel: Ich will aktiv werden gegen Gentech."
 
 #: acf-translate.php:3205
-#, fuzzy
 msgid "[Template]Teaser"
-msgstr "Vorlage"
+msgstr "[Template]Teaser"
 
 #: acf-translate.php:3212
 msgid "<strong>The first 280 characters</strong> will be used as preview text on the front page, archive pages and for search results."
@@ -810,9 +770,8 @@ msgstr "Zeigt schicke Testimonials. Stelle sicher, dass die Testimonials im Bere
 
 #: acf-translate.php:3328 acf-translate.php:4124 acf-translate.php:4129
 #: acf-translate.php:4456
-#, fuzzy
 msgid "Testimonials"
-msgstr "Testimonial Kategorie"
+msgstr "Testimonials"
 
 #: acf-translate.php:3331
 msgid "Select the testimonials to display by its category."
@@ -855,9 +814,8 @@ msgid "[Template]Vote Proposals"
 msgstr "[Template]Abstimmungsempfehlung"
 
 #: acf-translate.php:3511
-#, fuzzy
 msgid "Displays voting recommendations."
-msgstr "Abstimmungsempfehlungen"
+msgstr "Zeigt Abstimmungsempfehlungen."
 
 #: acf-translate.php:3538
 msgid "Proposals"
@@ -876,9 +834,8 @@ msgid "External Link (URL)"
 msgstr "Externer Link (URL)"
 
 #: acf-translate.php:3707
-#, fuzzy
 msgid "Recommondation"
-msgstr "Abstimmungsempfehlungen"
+msgstr "Empfehlung"
 
 #: acf-translate.php:3710
 msgid "What do you recommend to vote?"
@@ -909,14 +866,12 @@ msgid "Page with link to all vote recommendations (national, cantonal, community
 msgstr "Seite mit Link zu allen Abstimmungsempfehlungen (national, kantonal, kommunal)"
 
 #: acf-translate.php:3771
-#, fuzzy
 msgid "Link Text"
-msgstr "Linkliste"
+msgstr "Linktext"
 
 #: acf-translate.php:3819
-#, fuzzy
 msgid "Event Description"
-msgstr "Beschreibung"
+msgstr "Veranstaltungsbeschrieb"
 
 #: acf-translate.php:3826
 msgid "Displayed in the teaser only."
@@ -927,14 +882,12 @@ msgid "Description"
 msgstr "Beschreibung"
 
 #: acf-translate.php:3898
-#, fuzzy
 msgid "Front page"
-msgstr "Titel auf der Frontseite"
+msgstr "Startseite"
 
 #: acf-translate.php:979 acf-translate.php:3902
-#, fuzzy
 msgid "Main Campaign"
-msgstr "Hauptnavigation"
+msgstr "Hauptkampagne"
 
 #: acf-translate.php:3923
 msgid "Content Blocks"
@@ -949,27 +902,24 @@ msgid "Single Post / Page Teaser"
 msgstr "Einzelner Beitrag- / Seiten-Teaser"
 
 #: acf-translate.php:3974 acf-translate.php:5350
-#, fuzzy
 msgid "Post / Page"
-msgstr "Vorherige Seite"
+msgstr "Beitrag / Seite"
 
 #: acf-translate.php:4000
 msgid "Double Post / Page Teaser"
 msgstr "Doppel Beitrags- / Seiten-Teaser"
 
 #: acf-translate.php:4031 acf-translate.php:4036
-#, fuzzy
 msgid "Latest Press Release"
-msgstr "Pressemitteilung"
+msgstr "Neuste Medienmitteilung"
 
 #: acf-translate.php:4062 acf-translate.php:4067 page.php:34
 msgid "Events"
 msgstr "Veranstaltungen"
 
 #: acf-translate.php:4093 acf-translate.php:4098
-#, fuzzy
 msgid "Positions"
-msgstr "Beschreibung"
+msgstr "Positionen"
 
 #: acf-translate.php:4155 acf-translate.php:4160
 msgid "Map Block"
@@ -980,9 +930,8 @@ msgid "Add Content Block"
 msgstr "Inhaltsblock hinzufügen"
 
 #: acf-translate.php:4227
-#, fuzzy
 msgid "Full Name"
-msgstr "Volle Größe"
+msgstr "Vor- und Nachname"
 
 #: acf-translate.php:4246
 msgid "Portrait Photo"
@@ -1002,42 +951,36 @@ msgid "Phone"
 msgstr "Telefon"
 
 #: acf-translate.php:4342 acf-translate.php:4347
-#, fuzzy
 msgid "Website"
-msgstr "Facebook Website Vorschaubild (Linkvorschau)"
+msgstr "Website"
 
 #: acf-translate.php:4373
-#, fuzzy
 msgid "Twitter Name"
-msgstr "Vorname"
+msgstr "Twittername"
 
 #: acf-translate.php:4376 acf-translate.php:4431
-#, fuzzy
 msgid "Use @name"
-msgstr "Benutzername"
+msgstr "Nimm @benutzername"
 
 #: acf-translate.php:4405
 msgid "Use the URL to the profile or page"
 msgstr "Nimm die URL zum Profil oder der Fan-Seite"
 
 #: acf-translate.php:4428
-#, fuzzy
 msgid "Instagram Name"
-msgstr "Nachname"
+msgstr "Instagramname"
 
 #: acf-translate.php:4450
-#, fuzzy
 msgid "Add Contact"
-msgstr "Kontakt"
+msgstr "Kontakt hinzufügen"
 
 #: acf-translate.php:4459
 msgid "Displayed by the testimonials block (≠ quote block)."
 msgstr "Wird vom Testimonial-Block angezeigt (≠ Zitat-Block)."
 
 #: acf-translate.php:4471
-#, fuzzy
 msgid "Add Testimonial"
-msgstr "Testimonial Kategorie"
+msgstr "Testimonial hinzufügen"
 
 #: acf-translate.php:4478
 msgid "Max 280 characters"
@@ -1102,9 +1045,8 @@ msgid "Default"
 msgstr "Standard"
 
 #: acf-translate.php:4853
-#, fuzzy
 msgid "Header Image"
-msgstr "Absender Name"
+msgstr "Header-Bild"
 
 #: acf-translate.php:4880
 msgid "This is the main section of this page."
@@ -1161,14 +1103,12 @@ msgid "Add Post / Page"
 msgstr "Beitrag / Seite hinzufügen"
 
 #: acf-translate.php:5353
-#, fuzzy
 msgid "Select the post or page, that should be displayed."
-msgstr "Wähle die Seite, zu der der Mitmachen-Button führen soll."
+msgstr "Wähle den Beitrag oder die Seite aus, die angezeigt werden soll."
 
 #: acf-translate.php:5416
-#, fuzzy
 msgid "Display Share Buttons"
-msgstr "Teilen-Buttons verstecken"
+msgstr "Teilen-Buttons anzeigen"
 
 #: acf-translate.php:5419
 msgid "You can hide the share buttons of this page, by disabling this option."
@@ -2063,14 +2003,12 @@ msgid "If full width, the block will span the whole page (both columns) else it 
 msgstr "Wenn ganze Breite</i> auf <i>ja</i> ist, nimmt der Block der ganze Platz ein (beide Spalten), sonst nur den Platz eines einspaltigen Blocks. "
 
 #: acf-translate.php:998
-#, fuzzy
 msgid "Campaign Page"
-msgstr "Hauptnavigation"
+msgstr "Kampagnenseite"
 
 #: acf-translate.php:1001
-#, fuzzy
 msgid "Select the post, that holds the whole campaign content."
-msgstr "Wähle die Seite, zu der der Mitmachen-Button führen soll."
+msgstr "Wähle den Beitrag dieser Kampagne aus."
 
 #: acf-translate.php:1731
 msgid "Add a brief description. Then add a call to action."
@@ -2089,9 +2027,8 @@ msgid "If true, the teaser of every content element is shown. This block will th
 msgstr "Wenn ja wird der Teaser jedes Inhaltselementes angezeigt. Dieser Block nimmt die gesammte Breite ein (beide Spalten)."
 
 #: acf-translate.php:2122
-#, fuzzy
 msgid "Filter criteria"
-msgstr "Filterkriterien einstellen"
+msgstr "Filterkriterien"
 
 #: acf-translate.php:2125
 msgid "The latest content that matches <strong>all</strong> of the selected categories and <strong>at least one</strong> of the selected tags will be displayed.<br><br>\n"
@@ -2102,23 +2039,20 @@ msgstr "Angezeigt wird der neuste Inhalt, der <strong>all</strong> ausgewählten
 "Wenn <strong>keine Schlagworte</strong> ausgewählt wurden, wird derjenige Inhalt angezeuigt, der allen Kategorien enspricht. Wenn <strong>keine Kategorien</strong> ausgewählt sind, werden diejenigen Inhalte angezeigt, die mindestens einem Schlagwort entsprechen."
 
 #: acf-translate.php:2894
-#, fuzzy
 msgid "Select the post to display. The teaser and the image of the post, will be displayed."
-msgstr "Wähle die Seite, zu der der Mitmachen-Button führen soll."
+msgstr "Wähle den anzuzeigenden Beitrag aus. Der Teaser und das Bild des Beitrages werden angezeigt."
 
 #: acf-translate.php:3560
 msgid "Where visitors can read more about this bill."
 msgstr "Wo Besuchende mehr über die Vorlage lesen können."
 
 #: acf-translate.php:3943
-#, fuzzy
 msgid "Vote Proposal"
-msgstr "Abstimmungsempfehlungen"
+msgstr "Abstimmungsempfehlung"
 
 #: acf-translate.php:4005
-#, fuzzy
 msgid "Two Posts / Pages"
-msgstr "Vorherige Seite"
+msgstr "Zwei Beiträge / Seiten"
 
 #: acf-translate.php:1929
 msgid "Use link list blocks to provide some additional information, the reader could be interested in.\n"
