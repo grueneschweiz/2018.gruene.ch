@@ -162,7 +162,7 @@ if $WPCLI plugin is-installed akismet; then
     $WPCLI plugin uninstall akismet --deactivate
 fi
 
-if $WPCLI plugin list is-installed hello; then
+if $WPCLI plugin is-installed hello; then
     $WPCLI plugin uninstall hello --deactivate
 fi
 
