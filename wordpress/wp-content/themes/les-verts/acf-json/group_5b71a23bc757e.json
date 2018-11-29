@@ -1,6 +1,31 @@
 {
     "key": "group_5b71a23bc757e",
     "title": "[Template]Post selector",
+    "fields": [
+        {
+            "key": "field_5b71a24cf3711",
+            "label": "Post",
+            "name": "post",
+            "type": "post_object",
+            "instructions": "Select the post to display. The teaser and the image of the post, will be displayed.",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "post",
+                "page"
+            ],
+            "taxonomy": "",
+            "allow_null": 0,
+            "multiple": 0,
+            "return_format": "object",
+            "ui": 1
+        }
+    ],
     "location": [
         [
             {
@@ -18,30 +43,5 @@
     "hide_on_screen": "",
     "active": 0,
     "description": "",
-    "modified": 1543324748,
-    "fields": [
-        {
-            "key": "field_5b71a24cf3711",
-            "label": "Post",
-            "name": "post",
-            "type": "post_object",
-            "instructions": "Select the post to display. The excerpt and the image of the post, will be displayed.",
-            "required": 1,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "post_type": [
-                "post",
-                "page"
-            ],
-            "taxonomy": [],
-            "allow_null": 0,
-            "multiple": 0,
-            "return_format": "object",
-            "ui": 1
-        }
-    ]
+    "modified": 1543404866
 }

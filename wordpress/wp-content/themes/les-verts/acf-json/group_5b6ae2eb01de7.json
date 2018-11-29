@@ -1,23 +1,6 @@
 {
     "key": "group_5b6ae2eb01de7",
     "title": "[Template]Events Block",
-    "location": [
-        [
-            {
-                "param": "page_type",
-                "operator": "==",
-                "value": "front_page"
-            }
-        ]
-    ],
-    "menu_order": 0,
-    "position": "normal",
-    "style": "default",
-    "label_placement": "top",
-    "instruction_placement": "label",
-    "hide_on_screen": "",
-    "active": 0,
-    "description": "",
     "fields": [
         {
             "key": "field_5b7da28b9c989",
@@ -62,7 +45,7 @@
             "label": "Max events to show",
             "name": "max_num",
             "type": "number",
-            "instructions": "It will always be possible to show all events by clicking on the 'show all' button.",
+            "instructions": "Visitors can always see all events by clicking the «Show all events»-Button.",
             "required": 1,
             "conditional_logic": 0,
             "wrapper": {
@@ -83,7 +66,7 @@
             "label": "Full Width",
             "name": "full_width",
             "type": "true_false",
-            "instructions": "If full width is set to yes, the block will span the whole page (both columns) else it will only take the place of a single column block.",
+            "instructions": "If full width, the block will span the whole page (both columns) else it will only take the place of a single column block.",
             "required": 0,
             "conditional_logic": [
                 [
@@ -111,5 +94,22 @@
             "ui_off_text": ""
         }
     ],
-    "modified": 1543324741
+    "location": [
+        [
+            {
+                "param": "page_type",
+                "operator": "==",
+                "value": "front_page"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 0,
+    "description": "",
+    "modified": 1543420761
 }

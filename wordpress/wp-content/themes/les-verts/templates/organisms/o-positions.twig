@@ -8,7 +8,7 @@
 				{% include 'molecules/m-front-article.twig' with {
 					'modifiers': ['m-front-article--list', 'm-front-article--no-image'],
 					'post': {
-						'link': position.read_more_link,
+						'link': position.read_more_target.link,
 						'title': position.title,
 						'list_items': position.position
 					}
