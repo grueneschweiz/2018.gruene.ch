@@ -17,6 +17,12 @@
             'action_id': action_id
         } only %}
     </div>
+{% elseif block.acf_fc_layout == 'image' or block %}
+	<div class="page__image">
+		{% include 'atoms/a-image.twig' with {
+			'image': block.image.id,
+		} only %}
+	</div>
 {% elseif block.acf_fc_layout == 'engagement_funnel' %}
     <div class="page__engagement_funnel">
         {% set action = block.engagement_funnel.get_field('configurations').0.base_action %}
