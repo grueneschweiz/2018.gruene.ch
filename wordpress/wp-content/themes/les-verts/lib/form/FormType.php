@@ -2,8 +2,6 @@
 
 namespace SUPT;
 
-use \Timber\Timber;
-
 require_once realpath( __DIR__ . '/../post-types/Model.php' );
 
 class FormType extends Model {
@@ -179,37 +177,37 @@ class FormType extends Model {
 	
 	public static function add_sent_page_menu() {
 		add_submenu_page( 'edit.php?post_type='.self::MODEL_NAME, __( 'Submissions', THEME_DOMAIN ),
-			__( 'Submissions', THEME_DOMAIN ), 'edit_pages', 'form_sent', array( __CLASS__, 'render_sent_page' ) );
+			__( 'Submissions', THEME_DOMAIN ), 'edit_pages', 'submissions', array( __CLASS__, 'display_submissions_page' ) );
 	}
 	
-	public static function render_sent_page() {
+	public static function display_submissions_page() {
+		require_once 'helpers'.DIRECTORY_SEPARATOR.'class-wp-list-table.php';
+		require_once 'Submissions_Table.php';
+		
 		$args = array(
-			'posts_per_page' => - 1,
+			'posts_per_page' => -1,
 			'post_type'      => self::MODEL_NAME,
 		);
 		
-		$context = [];
-		foreach ( get_posts( $args ) as $form ) {
-			$fields = array_map(
-				function ( $f ) {
-					return array(
-						'label' => $f['form_input_label'],
-						'slug' => supt_slugify($f['form_input_label']),
-						'type'  => $f['form_input_type']
-					);
-				},
-				get_field( 'form_fields', $form->ID )
-			);
-			
-			$context['forms'][] = array(
-				'id'     => $form->ID,
-				'title'  => $form->post_title,
-				'fields' => $fields,
-				'sents'  => array_reverse( get_post_meta( $form->ID, FormType::MODEL_NAME ) ),
-			);
+		$forms = get_posts($args);
+		
+		if (empty($forms)) {
+			echo '<h1>'.__('No forms available').'</h1>';
+			return;
 		}
 		
-		Timber::render( 'form-sent-page.twig', $context );
+		// todo: implement form selector
+		$form_id = $forms[0]->ID;
+		
+		$submissions = new Submissions_Table([
+			'plural' => __('form-submissions', THEME_DOMAIN),
+			'singular' => __('form-submission', THEME_DOMAIN),
+			'ajax' => false,
+			'screen' => null,
+		]);
+		$submissions->set_form_id($form_id);
+		$submissions->prepare_items();
+		$submissions->display();
 	}
 	
 }

@@ -225,6 +225,12 @@ class FormSubmission {
 	private function add_data() {
 		$fields = $this->get_fields();
 		
+		$this->data['_meta_'] = array(
+			'form_id' => $this->form_id,
+			'action_id' => $this->action_id,
+			'timestamp' => date('Y-m-d H:i:s')
+		);
+		
 		foreach ( $fields as $key => $field ) {
 			
 			// sanitize and validate checkboxes
@@ -264,12 +270,6 @@ class FormSubmission {
 				$this->data[ $key ] = $sanitized;
 			}
 		}
-		
-		$this->data['_meta_'] = array(
-			'form_id' => $this->form_id,
-			'action_id' => $this->action_id,
-			'timestamp' => date('Y-m-d H:i:s')
-		);
 	}
 	
 	/**
