@@ -42,6 +42,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 					'text'         => __( 'Text', THEME_DOMAIN ),
 					'email'        => __( 'Email', THEME_DOMAIN ),
 					'tel'          => __( 'Phone', THEME_DOMAIN ),
+					'number'       => __( 'Number', THEME_DOMAIN ),
 					'textarea'     => __( 'Textarea', THEME_DOMAIN ),
 					'radio'        => __( 'Radio button', THEME_DOMAIN ),
 					'checkbox'     => __( 'Check box', THEME_DOMAIN ),
