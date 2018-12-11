@@ -18,9 +18,9 @@ export default class MShare extends BaseView {
 	bind() {
 		super.bind();
 
-		this.on( 'click', MOBILE_SELECTOR, () => this.show());
-		this.on('click', LABEL_SELECTOR, () => this.show());
-		this.on( 'click', CLOSE_SELECTOR, () => this.hide());
+		this.on( 'click', MOBILE_SELECTOR, () => this.show() );
+		this.on( 'click', LABEL_SELECTOR, () => this.show() );
+		this.on( 'click', CLOSE_SELECTOR, () => this.hide() );
 	}
 
 	addPageBottomMargin() {
@@ -28,12 +28,16 @@ export default class MShare extends BaseView {
 	}
 
 	show() {
-		this.addClass( this.buttons, OPEN_STATE );
-		this.addClass( OPEN_STATE );
+		if (! this.isDesktop()) {
+			this.addClass( this.buttons, OPEN_STATE );
+			this.addClass( OPEN_STATE );
+		}
 	}
 
 	hide() {
-		this.removeClass( this.buttons, OPEN_STATE );
-		this.removeClass( OPEN_STATE );
+		if (! this.isDesktop()) {
+			this.removeClass( this.buttons, OPEN_STATE );
+			this.removeClass( OPEN_STATE );
+		}
 	}
 }

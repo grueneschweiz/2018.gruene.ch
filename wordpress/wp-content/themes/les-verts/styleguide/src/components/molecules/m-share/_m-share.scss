@@ -44,6 +44,7 @@ body.has-share-buttons {
 
 		@include media($_DESKTOP) {
 			padding: 0 1em 0 1.5em;
+			cursor: default;
 		}
 	}
 
