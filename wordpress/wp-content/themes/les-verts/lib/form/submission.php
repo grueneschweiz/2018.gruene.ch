@@ -267,7 +267,8 @@ class FormSubmission {
 		
 		$this->data['_meta_'] = array(
 			'form_id' => $this->form_id,
-			'action_id' => $this->action_id
+			'action_id' => $this->action_id,
+			'timestamp' => date('Y-m-d H:i:s')
 		);
 	}
 	
