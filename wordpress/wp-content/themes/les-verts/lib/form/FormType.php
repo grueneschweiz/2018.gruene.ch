@@ -57,10 +57,41 @@ class FormType extends Model {
 	}
 	
 	public static function register_acf_fields() {
+		require_once __DIR__ . '/acf/form-local-settings.php';
 		require_once __DIR__ . '/acf/input.php';
 		require_once __DIR__ . '/acf/form-details.php';
 		require_once __DIR__ . '/acf/mail-template.php';
-		require_once __DIR__ . '/acf/form-local-settings.php';
+		
+		self::maybe_remove_webling_field_settings();
+	}
+	
+	/**
+	 * Unless api key and url are defined, remove the Webling tab from the input
+	 * field config if api key and url
+	 */
+	private static function maybe_remove_webling_field_settings() {
+		$api_key = get_field( 'api_key', 'option' );
+		$api_url = get_field( 'api_url', 'option' );
+		
+		if (! $api_key || !$api_url) {
+			add_filter( 'acf/load_field/key=field_5a869960c1cf2', function ( $fields ) {
+				$fields_to_remove = [
+					'field_5c0fac32bdbd6',
+					'field_5c0fac61bdbd7',
+					'field_5c0fc373bdf7b',
+					'field_5c0fc5b4eece5',
+					'field_5c0fc84a086db',
+				];
+				
+				foreach ( $fields['sub_fields'] as $key => &$field ) {
+					if ( in_array( $field['key'], $fields_to_remove ) ) {
+						unset( $fields['sub_fields'][ $key ] );
+					}
+				}
+				
+				return $fields;
+			} );
+		}
 	}
 	
 	public static function register_actions_filters() {
