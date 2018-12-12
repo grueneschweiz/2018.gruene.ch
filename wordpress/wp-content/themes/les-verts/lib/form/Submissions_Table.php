@@ -4,8 +4,9 @@ namespace SUPT;
 
 
 class Submissions_Table extends WP_List_Table {
-	const POSTS_PER_PAGE = 50;
-	const NUMB_COLUMNS_TO_DISPLAY = 5;
+	const NUMB_COLUMNS_TO_DISPLAY = 7;
+	const DELETE_ACTION = 'delete';
+	const BULK_DELETE_ACTION = 'bulk-delete';
 	
 	/**
 	 * The id of the form, whose submissions shall be displayed
@@ -36,6 +37,17 @@ class Submissions_Table extends WP_List_Table {
 	private $forms;
 	
 	/**
+	 * Class constructor
+	 */
+	public function __construct() {
+		parent::__construct( [
+			'singular' => __( 'Submission', THEME_DOMAIN ),
+			'plural'   => __( 'Submissions', THEME_DOMAIN ),
+			'ajax'     => false
+		] );
+	}
+	
+	/**
 	 * Return a chached associative array with the column slug as key and the
 	 * name as value.
 	 *
@@ -46,7 +58,9 @@ class Submissions_Table extends WP_List_Table {
 			return $this->columns;
 		}
 		
-		$this->columns = [ '_meta_' => __( 'Timestamp', THEME_DOMAIN ) ];
+		$this->columns['cb']     = '<input type="checkbox" />';
+		$this->columns['_meta_'] = __( 'Timestamp', THEME_DOMAIN );
+		
 		foreach ( $this->get_form_fields() as $key => $field ) {
 			$this->columns[ $key ] = $field['form_input_label'];
 		}
@@ -105,10 +119,11 @@ class Submissions_Table extends WP_List_Table {
 			wp_die( __( 'No forms available', THEME_DOMAIN ) );
 		}
 		
-		if (!empty($_GET['select_form'])) {
-			$form_id = (int) filter_var($_GET['select_form'], FILTER_SANITIZE_NUMBER_INT);
-			if (in_array($form_id, array_keys($forms))){
+		if ( ! empty( $_GET['form_id'] ) ) {
+			$form_id = (int) filter_var( $_GET['form_id'], FILTER_SANITIZE_NUMBER_INT );
+			if ( in_array( $form_id, array_keys( $forms ) ) ) {
 				$this->form_id = $form_id;
+				
 				return $this->form_id;
 			} else {
 				wp_die( __( 'Invalid form', THEME_DOMAIN ) );
@@ -127,18 +142,45 @@ class Submissions_Table extends WP_List_Table {
 	public function prepare_items() {
 		$this->set_column_headers();
 		
-		$data        = get_post_meta( $this->get_form_id(), FormType::MODEL_NAME );
+		$this->process_action();
+		
+		// todo: implement the sorting
+		
+		$data        = $this->get_post_meta_with_id( $this->get_form_id(), FormType::MODEL_NAME );
 		$total_items = count( $data );
+		$per_page    = $this->get_items_per_page( 'submissions_per_page' );
 		
 		$this->set_pagination_args( array(
 			'total_items' => $total_items,
-			'per_page'    => self::POSTS_PER_PAGE,
-			'total_pages' => ceil( $total_items / self::POSTS_PER_PAGE )
+			'per_page'    => $per_page,
+			'total_pages' => ceil( $total_items / $per_page )
 		) );
 		
 		$current_page = $this->get_pagenum();
 		
-		$this->items = array_slice( $data, ( ( $current_page - 1 ) * self::POSTS_PER_PAGE ), self::POSTS_PER_PAGE );
+		$this->items = array_slice( $data, ( ( $current_page - 1 ) * $per_page ), $per_page );
+	}
+	
+	/**
+	 * Delete a submission
+	 *
+	 * @param int $id post meta id
+	 */
+	public function delete_item( $id ) {
+		global $wpdb;
+		
+		$wpdb->delete(
+			$wpdb->postmeta,
+			[ 'meta_id' => $id ],
+			[ '%d' ]
+		);
+	}
+	
+	/**
+	 * Text displayed when no submissions are available
+	 */
+	public function no_items() {
+		_e( 'Yet, there were no form submitted', THEME_DOMAIN );
 	}
 	
 	/**
@@ -193,11 +235,39 @@ class Submissions_Table extends WP_List_Table {
 			$date_format = get_option( 'date_format' );
 			$time_format = get_option( 'time_format' );
 			$format      = $date_format . ' - ' . $time_format;
-			
-			return date_i18n( $format, strtotime( $item['_meta_']['timestamp'] ) );
+			$timestamp   = date_i18n( $format, strtotime( $item['_meta_']['timestamp'] ) );
+		} else {
+			$timestamp = '';
 		}
 		
-		return '';
+		$delete_nonce = wp_create_nonce( FormType::MODEL_NAME . '_delete_submission-' . $item['ID'] );
+		
+		$actions = [
+			'view'              => sprintf(
+				'<a href="?post_type=%s&page=%s&action=%s&item=%d">' . __( 'View', THEME_DOMAIN ) . '</a>',
+				esc_attr( $_REQUEST['post_type'] ),
+				esc_attr( $_REQUEST['page'] ),
+				'view',
+				absint( $item['ID'] )
+			),
+			'edit'              => sprintf(
+				'<a href="?post_type=%s&page=%s&action=%s&item=%d">' . __( 'Edit', THEME_DOMAIN ) . '</a>',
+				esc_attr( $_REQUEST['post_type'] ),
+				esc_attr( $_REQUEST['page'] ),
+				'view',
+				absint( $item['ID'] )
+			),
+			self::DELETE_ACTION => sprintf(
+				'<a href="?post_type=%s&page=%s&action=%s&item=%d&_wpnonce=%s">' . __( 'Delete', THEME_DOMAIN ) . '</a>',
+				esc_attr( $_REQUEST['post_type'] ),
+				esc_attr( $_REQUEST['page'] ),
+				self::DELETE_ACTION,
+				absint( $item['ID'] ),
+				$delete_nonce
+			)
+		];
+		
+		return $timestamp . $this->row_actions( $actions );
 	}
 	
 	/**
@@ -222,25 +292,129 @@ class Submissions_Table extends WP_List_Table {
 		
 		return $this->forms;
 	}
-
-	function extra_tablenav( $which ) {
-		if ( $which == 'top' ) {
-			
-			$forms   = $this->get_forms();
-			$form_id = $this->get_form_id();
-			
-			echo '<form method="get" action="">';
-			echo '<input type="hidden" name="post_type" value="' . FormType::MODEL_NAME . '">';
-			echo '<input type="hidden" name="page" value="submissions">';
-			echo '<select name="select_form">';
-			foreach ( $forms as $form ) {
-				$selected = $form->ID === $form_id ? ' selected="selected"' : '';
-				echo "<option value='{$form->ID}'{$selected}>{$form->post_title}</option>";
-			}
-			echo '</select>';
-			
-			echo '<input type="submit" class="button action" value="' . __( 'Formular auswählen', THEME_DOMAIN ) . '">';
-			echo '</form>';
+	
+	/**
+	 * Add the form selector
+	 */
+	function the_form_selector() {
+		$forms   = $this->get_forms();
+		$form_id = $this->get_form_id();
+		
+		echo '<form method="get">';
+		echo '<input type="hidden" name="post_type" value="' . FormType::MODEL_NAME . '">';
+		echo '<input type="hidden" name="page" value="submissions">';
+		echo '<select name="form_id">';
+		foreach ( $forms as $form ) {
+			$selected = $form->ID === $form_id ? ' selected="selected"' : '';
+			echo "<option value='{$form->ID}'{$selected}>{$form->post_title}</option>";
 		}
+		echo '</select>';
+		
+		echo '<input type="submit" class="button button-primary" value="' . __( 'Formular auswählen', THEME_DOMAIN ) . '">';
+		echo '</form>';
+	}
+	
+	/**
+	 * Render the bulk edit checkbox
+	 *
+	 * @param array $item
+	 *
+	 * @return string
+	 */
+	function column_cb( $item ) {
+		return sprintf(
+			'<input type="checkbox" name="%s[]" value="%d" />',
+			self::BULK_DELETE_ACTION,
+			$item['ID']
+		);
+	}
+	
+	/**
+	 * Retrieve metadata with id for the specified object.
+	 *
+	 * @param int $post_id ID of the object metadata is for
+	 * @param string $meta_key Optional. Metadata key. If not specified, retrieve all metadata for
+	 *                        the specified object.
+	 *
+	 * @return array
+	 */
+	private function get_post_meta_with_id( $post_id, $meta_key = '' ) {
+		global $wpdb;
+		$results = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM $wpdb->postmeta WHERE post_id = %d AND meta_key = %s",
+			$post_id, $meta_key ) );
+		
+		if ( empty( $results ) ) {
+			return [];
+		}
+		
+		$data = [];
+		foreach ( $results as $result ) {
+			$id                = $result->meta_id;
+			$data[ $id ]       = (array) maybe_unserialize( $result->meta_value );
+			$data[ $id ]['ID'] = $id;
+		}
+		
+		return $data;
+	}
+	
+	/**
+	 * Handle form actions
+	 */
+	public function process_action() {
+		switch ($this->current_action()) {
+			case self::DELETE_ACTION:
+				$this->process_action_delete();
+				return;
+			case self::BULK_DELETE_ACTION:
+				$this->process_action_bulk_delete();
+				return;
+			// todo: case edit, case view
+			// note: we may have to exit for the cases edit and view
+		}
+	}
+	
+	/**
+	 * Handle bulk delete action
+	 */
+	private function process_action_bulk_delete() {
+		$nonce = esc_attr( $_REQUEST['_wpnonce'] );
+		if ( ! wp_verify_nonce( $nonce, 'bulk-submissions' ) ) {
+			wp_die( 'Invalid action.' );
+		} else {
+			foreach ( $_REQUEST[ self::BULK_DELETE_ACTION ] as $id ) {
+				$this->delete_item( absint( $id ) );
+			}
+			
+			return;
+		}
+	}
+	
+	/**
+	 * Handle delete action
+	 */
+	private function process_action_delete() {
+		$nonce = esc_attr( $_REQUEST['_wpnonce'] );
+		$id    = absint( $_REQUEST['item'] );
+		
+		if ( ! wp_verify_nonce( $nonce, FormType::MODEL_NAME . '_delete_submission-' . $id ) ) {
+			wp_die( 'Invalid action.' );
+		} else {
+			$this->delete_item( $id );
+			
+			return;
+		}
+	}
+	
+	/**
+	 * Returns an associative array containing the bulk action
+	 *
+	 * @return array
+	 */
+	public function get_bulk_actions() {
+		$actions = [
+			self::BULK_DELETE_ACTION => __( 'Delete', THEME_DOMAIN )
+		];
+		
+		return $actions;
 	}
 }

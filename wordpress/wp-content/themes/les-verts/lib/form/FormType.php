@@ -106,6 +106,9 @@ class FormType extends Model {
 		
 		add_action( 'admin_menu',
 			array( __CLASS__, 'add_sent_page_menu' ) );
+		
+		add_filter( 'set-screen-option',
+			array( __CLASS__, 'save_submissions_per_page_option' ), 10, 3 );
 	}
 	
 	/**
@@ -177,26 +180,46 @@ class FormType extends Model {
 	}
 	
 	public static function add_sent_page_menu() {
-		add_submenu_page( 'edit.php?post_type=' . self::MODEL_NAME, __( 'Submissions', THEME_DOMAIN ),
+		// add page
+		$hook = add_submenu_page( 'edit.php?post_type=' . self::MODEL_NAME, __( 'Submissions', THEME_DOMAIN ),
 			__( 'Submissions', THEME_DOMAIN ), 'edit_pages', 'submissions', array( __CLASS__, 'display_submissions_page' ) );
+		
+		// add screen option
+		add_action( "load-$hook", function () {
+			$args = [
+				'label'   => 'Submissions per page',
+				'default' => 20,
+				'option'  => 'submissions_per_page'
+			];
+			add_screen_option( 'per_page', $args );
+		} );
+	}
+	
+	public static function save_submissions_per_page_option( $status, $option, $value ) {
+		if ( 'submissions_per_page' == $option ) {
+			return $value;
+		}
 	}
 	
 	public static function display_submissions_page() {
 		require_once 'helpers' . DIRECTORY_SEPARATOR . 'class-wp-list-table.php';
 		require_once 'Submissions_Table.php';
 		
-		$submissions = new Submissions_Table( [
-			'plural'   => 'form-submissions',
-			'singular' => 'form-submission',
-		] );
+		$submissions = new Submissions_Table();
 		$submissions->prepare_items();
 		
 		?>
 		<div class="wrap">
-			<h2>
-				<?php _e( 'Form Submissions', THEME_DOMAIN ); ?>
-			</h2>
-			<?php $submissions->display() ?>
+			<h1 class="wp-heading-inline"><?php _e( 'Form Submissions', THEME_DOMAIN ); ?></h1>
+			<?php $submissions->the_form_selector() ?>
+			<form method="get">
+				<input type="hidden" name="post_type" value="<?php echo FormType::MODEL_NAME ?>">
+				<input type="hidden" name="page" value="submissions">
+				<?php if (!empty($_REQUEST['form_id'])) {
+					echo '<input type="hidden" name="form_id" value="'.absint($_REQUEST['form_id']).'"">';
+				}	?>
+				<?php $submissions->display() ?>
+			</form>
 		</div>
 		<?
 	}
