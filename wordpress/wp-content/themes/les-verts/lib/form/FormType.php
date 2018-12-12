@@ -71,7 +71,7 @@ class FormType extends Model {
 		$api_key = get_field( 'api_key', 'option' );
 		$api_url = get_field( 'api_url', 'option' );
 		
-		if (! $api_key || !$api_url) {
+		if ( ! $api_key || ! $api_url ) {
 			add_filter( 'acf/load_field/key=field_5a869960c1cf2', function ( $fields ) {
 				$fields_to_remove = [
 					'field_5c0fac32bdbd6',
@@ -119,7 +119,8 @@ class FormType extends Model {
 		
 		$folder_uri = get_template_directory_uri() . '/lib/form';
 		wp_enqueue_script( 'slugify', "$folder_uri/scripts/slug.min.js", false, THEME_VERSION, true );
-		wp_enqueue_script('form_populate_placeholder_tags', "$folder_uri/scripts/input-populate-placeholder-tags.js", false, THEME_VERSION, true );
+		wp_enqueue_script( 'form_populate_placeholder_tags', "$folder_uri/scripts/input-populate-placeholder-tags.js",
+			false, THEME_VERSION, true );
 	}
 	
 	/**
@@ -176,38 +177,27 @@ class FormType extends Model {
 	}
 	
 	public static function add_sent_page_menu() {
-		add_submenu_page( 'edit.php?post_type='.self::MODEL_NAME, __( 'Submissions', THEME_DOMAIN ),
+		add_submenu_page( 'edit.php?post_type=' . self::MODEL_NAME, __( 'Submissions', THEME_DOMAIN ),
 			__( 'Submissions', THEME_DOMAIN ), 'edit_pages', 'submissions', array( __CLASS__, 'display_submissions_page' ) );
 	}
 	
 	public static function display_submissions_page() {
-		require_once 'helpers'.DIRECTORY_SEPARATOR.'class-wp-list-table.php';
+		require_once 'helpers' . DIRECTORY_SEPARATOR . 'class-wp-list-table.php';
 		require_once 'Submissions_Table.php';
 		
-		$args = array(
-			'posts_per_page' => -1,
-			'post_type'      => self::MODEL_NAME,
-		);
-		
-		$forms = get_posts($args);
-		
-		if (empty($forms)) {
-			echo '<h1>'.__('No forms available').'</h1>';
-			return;
-		}
-		
-		// todo: implement form selector
-		$form_id = $forms[0]->ID;
-		
-		$submissions = new Submissions_Table([
-			'plural' => __('form-submissions', THEME_DOMAIN),
-			'singular' => __('form-submission', THEME_DOMAIN),
-			'ajax' => false,
-			'screen' => null,
-		]);
-		$submissions->set_form_id($form_id);
+		$submissions = new Submissions_Table( [
+			'plural'   => 'form-submissions',
+			'singular' => 'form-submission',
+		] );
 		$submissions->prepare_items();
-		$submissions->display();
+		
+		?>
+		<div class="wrap">
+			<h2>
+				<?php _e( 'Form Submissions', THEME_DOMAIN ); ?>
+			</h2>
+			<?php $submissions->display() ?>
+		</div>
+		<?
 	}
-	
 }
