@@ -10,4 +10,4 @@ require_once __DIR__ . '/submission.php';
 // Load the Custom post Tyle
 add_action( 'init', array( '\SUPT\FormType', 'register_type' ) );
 
-new FormSubmission();
+new SUPT\FormSubmission();
