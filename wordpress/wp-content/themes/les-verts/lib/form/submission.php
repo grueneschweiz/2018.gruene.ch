@@ -141,7 +141,7 @@ class FormSubmission {
 		}
 		
 		if ( $_POST['config_id'] ) {
-			$this->action_id = absint( $_POST['config_id'] );
+			$this->config_id = absint( $_POST['config_id'] );
 		}
 		
 		// todo: rethink the nonces if using caching
@@ -232,9 +232,9 @@ class FormSubmission {
 	private function send_response() {
 		status_header( $this->status );
 		
-		if ( $this->status == 200 ) {
+		if ( $this->status === 200 ) {
 			/**
-			 * Filters the id of the next form. The default will make this form the last form.
+			 * Filters the id of the next form. The default triggers the thank you page of the form.
 			 *
 			 * @param int id of the next form.
 			 */
@@ -513,10 +513,10 @@ class FormSubmission {
 			 *
 			 * @param array $data with
 			 *  'form_data'    => array with the validated and sanitized form data
-			 *  'action_id'    => int|null the engagement funnel action id
-			 *  'config_id'    => int|null the engagement funnel config id
+			 *  'action_id'    => int the engagement funnel action id
+			 *  'config_id'    => int the engagement funnel config id
 			 *  'post_meta_id' => int the id of the post meta table where the form data is stored
-			 *  'crm_id'       => int|null the id of the person in the crm
+			 *  'crm_id'       => int the id of the person in the crm
 			 */
 			do_action( FormType::MODEL_NAME . '-after-save',
 				array(
@@ -524,7 +524,7 @@ class FormSubmission {
 					'action_id'    => $this->action_id,
 					'config_id'    => $this->config_id,
 					'post_meta_id' => $post_meta_id,
-					'crm_id'       => empty( $crm_id ) ? null : $crm_id
+					'crm_id'       => empty( $crm_id ) ? -1 : $crm_id
 				)
 			);
 		}
