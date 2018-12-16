@@ -14,8 +14,8 @@
     <div class="page__form">
         {% include 'molecules/m-form.twig' with {
             'post': ACFPost(block.form),
-            'action_id': action_id,
-						'config_id': config_id
+            'action_id': block.action_id,
+						'config_id': block.config_id
         } only %}
     </div>
 {% elseif block.acf_fc_layout == 'image' or block.image %}
