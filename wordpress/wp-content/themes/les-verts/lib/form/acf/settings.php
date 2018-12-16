@@ -195,6 +195,35 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 				'append'            => '',
 				'maxlength'         => '',
 			),
+			array(
+				'key'               => 'field_5c1634144d16e',
+				'label'             => __( 'Group Id', THEME_DOMAIN ),
+				'name'              => 'group_id',
+				'type'              => 'number',
+				'instructions'      => __( 'The ID of the group, where <strong>new</strong> member records should be stored in.',
+					THEME_DOMAIN ),
+				'required'          => 1,
+				'conditional_logic' => array(
+					array(
+						array(
+							'field'    => 'field_5c0fde5a133b8',
+							'operator' => '!=empty',
+						),
+					),
+				),
+				'wrapper'           => array(
+					'width' => '',
+					'class' => '',
+					'id'    => '',
+				),
+				'default_value'     => '',
+				'placeholder'       => '',
+				'prepend'           => '',
+				'append'            => '',
+				'min'               => 100,
+				'max'               => '',
+				'step'              => 1,
+			),
 		),
 		'location'              => array(
 			array(

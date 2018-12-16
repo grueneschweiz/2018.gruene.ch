@@ -116,12 +116,15 @@ class FormSubmission {
 	 */
 	public function handle_submit() {
 		$this->add_submission_metadata();
-		$this->abort_if_invalid();
+		$this->abort_if_invalid_header();
 		$this->add_data();
+		$this->abort_if_invalid_data();
 		$this->add_crm_mapped_data();
 		$this->add_metadata();
 		$this->save();
 		$this->send_notifications();
+		
+		$this->status = 200;
 		$this->send_response();
 	}
 	
@@ -176,7 +179,7 @@ class FormSubmission {
 	 * - SUBMISSION_LIMIT_HOUR_IP_FORM_AGENT
 	 * - SUBMISSION_LIMIT_DAY_IP_FORM
 	 */
-	private function abort_if_invalid() {
+	private function abort_if_invalid_header() {
 		$valid = true;
 		
 		// check nonce
@@ -190,7 +193,7 @@ class FormSubmission {
 		}
 		
 		// check if form id corresponds to a form post type
-		if ( get_post_type( $this->form_id ) !== \SUPT\FormType::MODEL_NAME ) {
+		if ( get_post_type( $this->form_id ) !== FormType::MODEL_NAME ) {
 			$valid = false;
 		}
 		
@@ -212,6 +215,18 @@ class FormSubmission {
 	}
 	
 	/**
+	 * Stop execution with a 400 if the data threw a validation error
+	 */
+	private function abort_if_invalid_data() {
+		if ( ! empty($this->errors) ) {
+			$this->status   = 400;
+			$this->send_response();
+			
+			return;
+		}
+	}
+	
+	/**
 	 * Send response and die
 	 */
 	private function send_response() {
@@ -221,7 +236,7 @@ class FormSubmission {
 			/**
 			 * Filters the id of the next form. The default will make this form the last form.
 			 *
-			 * @param int
+			 * @param int id of the next form.
 			 */
 			$next_form_id = \apply_filters( FormType::MODEL_NAME . '-next-form-id', self::NEXT_FORM_ID_DEFAULT );
 			wp_send_json_success( $next_form_id );
@@ -472,17 +487,24 @@ class FormSubmission {
 		$data = (array) apply_filters( FormType::MODEL_NAME . '-before-local-save', $this->data );
 		
 		// save locally
-		$post_meta_id = add_post_meta( $this->form_id, \SUPT\FormType::MODEL_NAME, $data );
+		$post_meta_id = add_post_meta( $this->form_id, FormType::MODEL_NAME, $data );
 		
 		// safe to crm
-		if ( ! empty( $this->crm_data ) ) {
+		if ( ! empty( $this->crm_data ) && $this->get_email_address()) {
 			/**
 			 * Filters the submitted data, before it's sent to the crm.
 			 *
 			 * @param array $this ->crm_data
 			 */
 			$crm_data = (array) apply_filters( FormType::MODEL_NAME . '-before-crm-save', $this->crm_data );
-			$crm_id   = save_to_crm( $this->crm_data ); // todo
+			try {
+				include_once __DIR__ . DIRECTORY_SEPARATOR . 'helpers' . DIRECTORY_SEPARATOR . 'Crm_Dao.php';
+				$crm_dao  = new Crm_Dao();
+				/** @noinspection PhpParamsInspection */
+				$crm_id = $crm_dao->save( $this->get_email_address(), $crm_data );
+			} catch (\Exception $e) {
+				// todo: send mail
+			}
 		}
 		
 		if ( $post_meta_id ) {
@@ -496,7 +518,7 @@ class FormSubmission {
 			 *  'post_meta_id' => int the id of the post meta table where the form data is stored
 			 *  'crm_id'       => int|null the id of the person in the crm
 			 */
-			do_action( \SUPT\FormType::MODEL_NAME . '-after-save',
+			do_action( FormType::MODEL_NAME . '-after-save',
 				array(
 					'form_data'    => $data,
 					'action_id'    => $this->action_id,
@@ -517,7 +539,7 @@ class FormSubmission {
 		 *
 		 * @param array $data the form data
 		 */
-		$data = (array) apply_filters( \SUPT\FormType::MODEL_NAME . '-before-email-notification', $this->data );
+		$data = (array) apply_filters( FormType::MODEL_NAME . '-before-email-notification', $this->data );
 		
 		/**
 		 * Fires before the email notifications are sent.
@@ -526,7 +548,7 @@ class FormSubmission {
 		 *  'form_data' => array with the validated and sanitized form data
 		 *  'action_id' => int|null the engagement funnel form data
 		 */
-		do_action( \SUPT\FormType::MODEL_NAME . '-before-email-notification',
+		do_action( FormType::MODEL_NAME . '-before-email-notification',
 			array(
 				'form_data' => $data,
 				'action_id' => $this->action_id,
@@ -550,7 +572,7 @@ class FormSubmission {
 		 *
 		 * @param array $data the form data
 		 */
-		$from = apply_filters( \SUPT\FormType::MODEL_NAME . '-email-from',
+		$from = apply_filters( FormType::MODEL_NAME . '-email-from',
 			"$sender_name <noreply@{$this->get_domain()}>" );
 		
 		$reply_to        = $fields['form_reply_to']['value'];
@@ -593,13 +615,13 @@ class FormSubmission {
 			return $matches[ count( $matches ) - 1 ];
 		}
 		
-		new WP_Error( 'cant-get-domain', 'The domain could not be parsed from the site url', $url );
+		return new \WP_Error( 'cant-get-domain', 'The domain could not be parsed from the site url', $url );
 	}
 	
 	/**
 	 * Configure mailing service to use an SMTP account
 	 *
-	 * @param $phpmailer
+	 * @param \PHPMailer $phpmailer
 	 */
 	public function setup_SMTP( $phpmailer ) {
 		$config = get_field( 'form_smtp', 'options' );
