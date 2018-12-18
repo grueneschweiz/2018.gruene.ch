@@ -5,6 +5,7 @@ const SUBMIT_WRAPPER_SELECTOR = '.m-form__submit-wrapper';
 const SUCCESS_MESSAGE_SELECTOR = '.m-form__message--success';
 const ERROR_MESSAGE_SELECTOR = '.m-form__message--failure';
 const INVALID_MESSAGE_SELECTOR = '.m-form__message--invalid';
+const FORM_SELECTOR = '.m-form';
 
 const HIDDEN_STATE = 'is-hidden';
 const SHOWN_STATE = 'is-shown';
@@ -111,7 +112,13 @@ export default class MForm extends BaseView {
 			this.addClass( submitWrapper, HIDDEN_STATE );
 			this.addClass( successMessage, SHOWN_STATE );
 		} else {
-			this.element.innerHTML = data.html;
+			let parent = this.element.parentNode.parentNode;
+			parent.innerHTML = data.html;
+
+			let form = new MForm( parent.querySelector(FORM_SELECTOR) );
+			form.bind();
+
+			this.destroy();
 		}
 	}
 
