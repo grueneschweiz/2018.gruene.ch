@@ -73,8 +73,7 @@ export default class MForm extends BaseView {
 		this.ajax( url, 'POST', data )
 			.then( ( resp ) => {
 				if (resp instanceof Object && 'success' in resp && true === resp.success) {
-					// todo: render output
-					this.showSuccess();
+					this.showSuccess( resp.data );
 				} else {
 					return Promise.reject( resp );
 				}
@@ -105,11 +104,15 @@ export default class MForm extends BaseView {
 		this.submitButton.innerHTML = this.origSubmitLbl;
 	}
 
-	showSuccess() {
-		let submitWrapper = this.getScopedElement( SUBMIT_WRAPPER_SELECTOR );
-		let successMessage = this.getScopedElement( SUCCESS_MESSAGE_SELECTOR );
-		this.addClass( submitWrapper, HIDDEN_STATE );
-		this.addClass( successMessage, SHOWN_STATE );
+	showSuccess( data ) {
+		if (- 1 === data.next_action_id || ! data.html) {
+			let submitWrapper = this.getScopedElement( SUBMIT_WRAPPER_SELECTOR );
+			let successMessage = this.getScopedElement( SUCCESS_MESSAGE_SELECTOR );
+			this.addClass( submitWrapper, HIDDEN_STATE );
+			this.addClass( successMessage, SHOWN_STATE );
+		} else {
+			this.element.innerHTML = data.html;
+		}
 	}
 
 	showSending() {

@@ -25,33 +25,9 @@
 		} only %}
 	</div>
 {% elseif block.acf_fc_layout == 'engagement_funnel' %}
-    <div class="page__engagement_funnel">
-        {% set action = block.configuration.get_field('configurations').0.base_action %}
-        {% set content = action.get_field('content') %}
-				{% set config_id = block.configuration.id %}
-
-        {% if content.post_type == 'petition' %}
-            {% include 'content-block.twig' with {
-                'block': content,
-                'action_id': action.id,
-								'cconfig_id': config_id
-            } only %}
-        {% elseif content.post_type == 'theme_form' %}
-            {% include 'content-block.twig' with {'block': {
-                'form': content,
-                'action_id': action.id,
-								'config_id': config_id
-            }} only %}
-        {% else %}{# assume post #}
-            {% for block in content.get_field('main_content').content %}
-                {% include 'content-block.twig' with {
-                    'block': block,
-                    'action_id': action.id,
-										'config_id': config_id
-                } only %}
-            {% endfor %}
-        {% endif %}
-    </div>
+	<div class="page__engagement_funnel">
+		{% include 'engagement-funnel.twig' with {'block': block} only %}
+	</div>
 {% elseif block.acf_fc_layout == 'oembed' %}
     {{ block.oembed }}
 {% else %}

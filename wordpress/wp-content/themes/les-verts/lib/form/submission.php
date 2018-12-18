@@ -8,7 +8,7 @@ namespace SUPT;
 class FormSubmission {
 	
 	const ACTION_BASE_NAME = 'supt-form';
-	const NEXT_FORM_ID_DEFAULT = - 1;
+	const NEXT_ACTION_ID_DEFAULT = - 1;
 	const SUBMISSION_LIMIT_MINUTE_IP_FORM_AGENT = 2;
 	const SUBMISSION_LIMIT_MINUTE_IP_FORM = 5;
 	const SUBMISSION_LIMIT_HOUR_IP_FORM_AGENT = 10;
@@ -238,8 +238,24 @@ class FormSubmission {
 			 *
 			 * @param int id of the next form.
 			 */
-			$next_form_id = \apply_filters( FormType::MODEL_NAME . '-next-form-id', self::NEXT_FORM_ID_DEFAULT );
-			wp_send_json_success( $next_form_id );
+			$next_action_id = \apply_filters( FormType::MODEL_NAME . '-next-form-id', self::NEXT_ACTION_ID_DEFAULT );
+			
+			$html = '';
+			if ( self::NEXT_ACTION_ID_DEFAULT !== $next_action_id ) {
+				$context['block']['configuration'] = $this->config_id;
+				$context['block']['action']        = $next_action_id;
+				
+				$templates = [
+					get_stylesheet_directory() . '/templates/engagement-funnel.twig',
+					
+					// fallback if child theme doesn't implement it
+					get_template_directory() . '/templates/engagement-funnel.twig',
+				];
+				
+				$html = \Timber::compile( $templates, $context );
+			}
+			
+			wp_send_json_success( [ 'next_action_id' => $next_action_id, 'html' => $html ] );
 		} else {
 			wp_send_json_error( $this->errors );
 		}
@@ -478,6 +494,9 @@ class FormSubmission {
 		return false;
 	}
 	
+	/**
+	 * Save form data locally and, if crm data is set, to crm
+	 */
 	private function save() {
 		/**
 		 * Filters the submitted data, before it's persisted locally.

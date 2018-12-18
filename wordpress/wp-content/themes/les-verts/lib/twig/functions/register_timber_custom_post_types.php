@@ -19,8 +19,17 @@ add_filter( 'get_twig', function ( $twig ) {
 } );
 
 add_filter( 'get_twig', function ( $twig ) {
-	$twig->addFunction( new Twig_SimpleFunction( 'TribeEvent', function ( $query ) {
-			return new \SUPT\SUPTTribeEvent( $query, '\SUPT\SUPTTribeEvent' );
+	$twig->addFunction( new Twig_SimpleFunction( 'TribeEvent', function ( $post ) {
+			return new \SUPT\SUPTTribeEvent( $post, '\SUPT\SUPTTribeEvent' );
+		} )
+	);
+	
+	return $twig;
+} );
+
+add_filter( 'get_twig', function ( $twig ) {
+	$twig->addFunction( new Twig_SimpleFunction( 'EFPConfiguration', function ( $post ) {
+			return new \SUPT\EFPConfiguration( $post, '\SUPT\EFPConfiguration' );
 		} )
 	);
 	

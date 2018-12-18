@@ -100,6 +100,7 @@ require_once __DIR__ . '/timber/ACFPost.php';
 require_once __DIR__ . '/timber/SUPTPostQuery.php';
 require_once __DIR__ . '/timber/SUPTTribeEvent.php';
 require_once __DIR__ . '/timber/SUPTPerson.php';
+require_once __DIR__ . '/timber/EFPConfiguration.php';
 
 /**
  * WIDGETS
