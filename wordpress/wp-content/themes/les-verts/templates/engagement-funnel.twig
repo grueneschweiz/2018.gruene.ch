@@ -12,7 +12,7 @@
 	{% include 'content-block.twig' with {
 		'block': content,
 		'action_id': action.id,
-		'cconfig_id': config.id
+		'config_id': config.id
 	} only %}
 {% elseif content.post_type == 'theme_form' %}
 	{% include 'content-block.twig' with {'block': {

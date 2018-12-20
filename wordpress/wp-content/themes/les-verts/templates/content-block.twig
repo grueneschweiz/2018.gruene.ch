@@ -11,11 +11,17 @@
         {% include 'molecules/m-person.twig' with block only %}
     </div>
 {% elseif block.acf_fc_layout == 'form' or block.form %}
+	{% if block.action_id %}
+		{% set action_id = block.action_id %}
+	{% endif %}
+	{% if block.config_id %}
+		{% set config_id = block.config_id %}
+	{% endif %}
     <div class="page__form">
         {% include 'molecules/m-form.twig' with {
             'post': ACFPost(block.form),
-            'action_id': block.action_id,
-						'config_id': block.config_id
+					'action_id': action_id,
+					'config_id': config_id
         } only %}
     </div>
 {% elseif block.acf_fc_layout == 'image' or block.image %}
