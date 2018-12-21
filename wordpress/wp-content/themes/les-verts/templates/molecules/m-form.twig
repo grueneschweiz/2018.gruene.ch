@@ -16,104 +16,107 @@
 		{% set wrapper_classes = '' %}
 		{% set modifiers_classes = '' %}
 
-		{% if not field.form_input_full_width %}
-			{% if not custom_width_block_width %}
-				<div class="m-form__custom-width-block">
+		{% if not field.hidden_field %}
+
+			{% if not field.form_input_full_width %}
+				{% if not custom_width_block_width %}
+					<div class="m-form__custom-width-block">
+				{% endif %}
+
+				{% set custom_width_block_width = custom_width_block_width + field.form_input_width %}
+
+				{% if custom_width_block_width > 100 %}
+					</div><div class="m-form__custom-width-block">
+				{% endif %}
+
+				{% set custom_width = 'custom_width' %}
+				{% set style = '' %}
+				{% if field.form_input_width %}
+					{% set style = 'width: calc('~field.form_input_width~'% - 0.5em);' %}
+				{% endif %}
+				{% if field.form_input_min_width %}
+					{% set style = style ~ 'min-width:'~ field.form_input_min_width~'px;' %}
+				{% endif %}
+			{% elseif custom_width_block_width %}
+				{% set custom_width_block_width = 0 %}
+				</div>{# close .m-form__custom-width-block #}
 			{% endif %}
 
-			{% set custom_width_block_width = custom_width_block_width + field.form_input_width %}
 
-			{% if custom_width_block_width > 100 %}
-				</div><div class="m-form__custom-width-block">
+		<div class="m-form__element" {% if style %} style="{{ style }}"{% endif %}>
+			{% if 'confirmation' == field.form_input_type %}
+				{% include 'atoms/form-elements/a-checkoption.twig' with {
+					'name': field.form_input_label|slugify,
+					'label': field.form_input_label,
+					'type': 'checkbox',
+					'required': field.form_input_required,
+				} only %}
+
+			{% elseif 'select' == field.form_input_type %}
+				{% if modifiers %}
+					{% set modifiers_classes = 'a-select--' ~ modifiers %}
+				{% endif %}
+				{% include 'atoms/form-elements/a-select.twig' with {
+					'name': field.form_input_label|slugify,
+					'label': field.form_input_label,
+					'required': field.form_input_required,
+					'helptext': field.form_input_helptext,
+					'options': field.form_input_choices|split('\n'),
+					'modifiers_classes': modifiers_classes
+				} only %}
+
+			{% elseif 'radio' == field.form_input_type %}
+				<div class="m-form__option-label">{{ field.form_input_label|wptexturize }}</div>
+				<fieldset class="m-form__option-fieldset">
+					{% set name = field.form_input_label|slugify %}
+					<input type="hidden" name="{{ name }}" value="">{# make sure unclicked elements still show up in post data #}
+					{% for option in field.form_input_choices|split('\n') %}
+						{% set option = option|trim %}
+						{% include 'atoms/form-elements/a-checkoption.twig' with {
+							'name': name,
+							'label': option,
+							'required': field.form_input_required,
+							'type': 'radio',
+							'value': option
+						} only %}
+					{% endfor %}
+				</fieldset>
+
+			{% elseif 'checkbox' == field.form_input_type %}
+				<div class="m-form__checks-label">{{ field.form_input_label|wptexturize }}</div>
+				<fieldset class="m-form__checks-fieldset">
+					{% for option in field.form_input_choices|split('\n') %}
+						{% set option = option|trim %}
+						{% include 'atoms/form-elements/a-checkoption.twig' with {
+							'name': option|slugify,
+							'label': option,
+							'type': 'checkbox'
+						} only %}
+					{% endfor %}
+				</fieldset>
+
+			{% else %}{# if textarea, text, password, email etc #}
+				{% if custom_width %}
+					{% set wrapper_classes = 'a-input--' ~ custom_width %}
+				{% endif %}
+				{% if modifiers %}
+					{% set modifiers_classes = 'a-input--' ~ modifiers %}
+				{% endif %}
+				{% if 'textarea' == field.form_input_type %}
+					{% set modifiers_classes = modifiers_classes ~ ' a-input--textarea' %}
+				{% endif %}
+				{% include 'atoms/form-elements/a-input.twig' with {
+					'name': field.form_input_label|slugify,
+					'label': field.form_input_label,
+					'helptext': field.form_input_help_text,
+					'required': field.form_input_required,
+					'type': field.form_input_type,
+					'wrapper_classes': wrapper_classes,
+					'modifiers_classes': modifiers_classes
+				} only %}
 			{% endif %}
-
-			{% set custom_width = 'custom_width' %}
-			{% set style = '' %}
-			{% if field.form_input_width %}
-				{% set style = 'width: calc('~field.form_input_width~'% - 0.5em);' %}
-			{% endif %}
-			{% if field.form_input_min_width %}
-				{% set style = style ~ 'min-width:'~ field.form_input_min_width~'px;' %}
-			{% endif %}
-		{% elseif custom_width_block_width %}
-			{% set custom_width_block_width = 0 %}
-			</div>{# close .m-form__custom-width-block #}
-		{% endif %}
-
-
-	<div class="m-form__element" {% if style %} style="{{ style }}"{% endif %}>
-		{% if 'confirmation' == field.form_input_type %}
-			{% include 'atoms/form-elements/a-checkoption.twig' with {
-				'name': field.form_input_label|slugify,
-				'label': field.form_input_label,
-				'type': 'checkbox',
-				'required': field.form_input_required,
-			} only %}
-
-		{% elseif 'select' == field.form_input_type %}
-			{% if modifiers %}
-				{% set modifiers_classes = 'a-select--' ~ modifiers %}
-			{% endif %}
-			{% include 'atoms/form-elements/a-select.twig' with {
-				'name': field.form_input_label|slugify,
-				'label': field.form_input_label,
-				'required': field.form_input_required,
-				'helptext': field.form_input_helptext,
-				'options': field.form_input_choices|split('\n'),
-				'modifiers_classes': modifiers_classes
-			} only %}
-
-		{% elseif 'radio' == field.form_input_type %}
-			<div class="m-form__option-label">{{ field.form_input_label|wptexturize }}</div>
-			<fieldset class="m-form__option-fieldset">
-				{% set name = field.form_input_label|slugify %}
-				<input type="hidden" name="{{ name }}" value="">{# make sure unclicked elements still show up in post data #}
-				{% for option in field.form_input_choices|split('\n') %}
-					{% set option = option|trim %}
-					{% include 'atoms/form-elements/a-checkoption.twig' with {
-						'name': name,
-						'label': option,
-						'required': field.form_input_required,
-						'type': 'radio',
-						'value': option
-					} only %}
-				{% endfor %}
-			</fieldset>
-
-		{% elseif 'checkbox' == field.form_input_type %}
-			<div class="m-form__checks-label">{{ field.form_input_label|wptexturize }}</div>
-			<fieldset class="m-form__checks-fieldset">
-				{% for option in field.form_input_choices|split('\n') %}
-					{% set option = option|trim %}
-					{% include 'atoms/form-elements/a-checkoption.twig' with {
-						'name': option|slugify,
-						'label': option,
-						'type': 'checkbox'
-					} only %}
-				{% endfor %}
-			</fieldset>
-
-		{% else %}{# if textarea, text, password, email etc #}
-			{% if custom_width %}
-				{% set wrapper_classes = 'a-input--' ~ custom_width %}
-			{% endif %}
-			{% if modifiers %}
-				{% set modifiers_classes = 'a-input--' ~ modifiers %}
-			{% endif %}
-			{% if 'textarea' == field.form_input_type %}
-				{% set modifiers_classes = modifiers_classes ~ ' a-input--textarea' %}
-			{% endif %}
-			{% include 'atoms/form-elements/a-input.twig' with {
-				'name': field.form_input_label|slugify,
-				'label': field.form_input_label,
-				'helptext': field.form_input_help_text,
-				'required': field.form_input_required,
-				'type': field.form_input_type,
-				'wrapper_classes': wrapper_classes,
-				'modifiers_classes': modifiers_classes
-			} only %}
-		{% endif %}
-		</div>{# close .m-form__element#}
+			</div>{# close .m-form__element#}
+		{% endif %}{# close if not hidden field #}
 	{% endfor %}
 
 	{% if custom_width_block_width %}

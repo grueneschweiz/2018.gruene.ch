@@ -270,6 +270,9 @@ class FormSubmission {
 		$fields = $this->get_fields();
 		
 		foreach ( $fields as $key => $field ) {
+			if ( $field['hidden_field'] ) {
+				continue;
+			}
 			
 			// sanitize and validate checkboxes
 			if ( 'checkbox' === $field['form_input_type'] ) {
@@ -441,7 +444,11 @@ class FormSubmission {
 	private function add_crm_mapped_data() {
 		foreach ( $this->get_fields() as $key => $field ) {
 			if ( ! empty( $field['webling_field'] ) ) {
-				$this->crm_data[ $field['webling_field'] ] = $this->data[ $key ];
+				if ( $field['hidden_field'] ) {
+					$this->crm_data[ $field['webling_field'] ] = $field['hidden_field_value'];
+				} else {
+					$this->crm_data[ $field['webling_field'] ] = $this->data[ $key ];
+				}
 			}
 		}
 	}
