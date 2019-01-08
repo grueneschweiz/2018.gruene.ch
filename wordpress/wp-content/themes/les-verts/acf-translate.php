@@ -3704,7 +3704,7 @@ This list will automatically be updated if any new content meets the filter crit
 					),
 					array(
 						'key' => 'field_5b6844e919737',
-						'label' => __('Recommondation', 'lesverts'),
+						'label' => __('Recommendation', 'lesverts'),
 						'name' => 'flag',
 						'type' => 'radio',
 						'instructions' => __('What do you recommend to vote?', 'lesverts'),

@@ -210,7 +210,7 @@
                 },
                 {
                     "key": "field_5b6844e919737",
-                    "label": "Recommondation",
+                    "label": "Recommendation",
                     "name": "flag",
                     "type": "radio",
                     "instructions": "What do you recommend to vote?",
