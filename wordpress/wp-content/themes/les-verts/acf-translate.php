@@ -1840,7 +1840,7 @@ Provide the key facts, preferably in bullet points and add the main call to acti
 					'class' => '',
 					'id' => '',
 				),
-				'message' => __('Display the latest press release (as long as it is published under the category you set below). Posts where the flag \'Show on front page\' is not set to false will be excluded.
+				'message' => __('Display the latest press release (as long as it is published under the category you set below). Posts where the flag \'Show on front page\' is set to false will be excluded.
 
 If the press release contains a quote block, the quote will be displayed. Else the lead is shown.', 'lesverts'),
 				'new_lines' => 'wpautop',
