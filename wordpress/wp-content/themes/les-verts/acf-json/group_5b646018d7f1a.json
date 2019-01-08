@@ -40,12 +40,12 @@
                 "5b684af8c6b51": {
                     "key": "5b684af8c6b51",
                     "name": "vote",
-                    "label": "Vote Proposals",
+                    "label": "Vote Recommendations",
                     "display": "block",
                     "sub_fields": [
                         {
                             "key": "field_5b684cf979d23",
-                            "label": "Vote Proposal",
+                            "label": "Vote Recommendation",
                             "name": "vote",
                             "type": "clone",
                             "instructions": "",

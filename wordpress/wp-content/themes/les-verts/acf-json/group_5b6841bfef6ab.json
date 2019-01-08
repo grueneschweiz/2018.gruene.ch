@@ -1,6 +1,6 @@
 {
     "key": "group_5b6841bfef6ab",
-    "title": "[Template]Vote Proposals",
+    "title": "[Template]Vote Recommendations",
     "fields": [
         {
             "key": "field_5b7da085dc6f1",
@@ -42,7 +42,7 @@
         },
         {
             "key": "field_5b68447d19735",
-            "label": "Proposals",
+            "label": "Recommendations",
             "name": "proposals",
             "type": "repeater",
             "instructions": "",
@@ -57,7 +57,7 @@
             "min": 1,
             "max": 0,
             "layout": "table",
-            "button_label": "Add proposition",
+            "button_label": "Add recommendation",
             "sub_fields": [
                 {
                     "key": "field_5baa445a76610",

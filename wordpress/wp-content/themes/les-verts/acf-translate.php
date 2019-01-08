@@ -3493,7 +3493,7 @@ This list will automatically be updated if any new content meets the filter crit
 	
 	acf_add_local_field_group(array(
 		'key' => 'group_5b6841bfef6ab',
-		'title' => __('[Template]Vote Proposals', 'lesverts'),
+		'title' => __('[Template]Vote Recommendations', 'lesverts'),
 		'fields' => array(
 			array(
 				'key' => 'field_5b7da085dc6f1',
@@ -3535,7 +3535,7 @@ This list will automatically be updated if any new content meets the filter crit
 			),
 			array(
 				'key' => 'field_5b68447d19735',
-				'label' => __('Proposals', 'lesverts'),
+				'label' => __('Recommendations', 'lesverts'),
 				'name' => 'proposals',
 				'type' => 'repeater',
 				'instructions' => '',
@@ -3550,7 +3550,7 @@ This list will automatically be updated if any new content meets the filter crit
 				'min' => 1,
 				'max' => 0,
 				'layout' => 'table',
-				'button_label' => __('Add proposition', 'lesverts'),
+				'button_label' => __('Add recommendation', 'lesverts'),
 				'sub_fields' => array(
 					array(
 						'key' => 'field_5baa445a76610',
@@ -3935,12 +3935,12 @@ This list will automatically be updated if any new content meets the filter crit
 					'5b684af8c6b51' => array(
 						'key' => '5b684af8c6b51',
 						'name' => 'vote',
-						'label' => __('Vote Proposals', 'lesverts'),
+						'label' => __('Vote Recommendations', 'lesverts'),
 						'display' => 'block',
 						'sub_fields' => array(
 							array(
 								'key' => 'field_5b684cf979d23',
-								'label' => __('Vote Proposal', 'lesverts'),
+								'label' => __('Vote Recommendation', 'lesverts'),
 								'name' => 'vote',
 								'type' => 'clone',
 								'instructions' => '',
