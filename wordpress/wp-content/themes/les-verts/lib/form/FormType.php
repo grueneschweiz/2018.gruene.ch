@@ -121,7 +121,6 @@ class FormType extends Model {
 		}
 		
 		$folder_uri = get_template_directory_uri() . '/lib/form';
-		wp_enqueue_script( 'slugify', "$folder_uri/scripts/slug.min.js", false, THEME_VERSION, true );
 		wp_enqueue_script( 'form_populate_placeholder_tags', "$folder_uri/scripts/input-populate-placeholder-tags.js",
 			false, THEME_VERSION, true );
 	}

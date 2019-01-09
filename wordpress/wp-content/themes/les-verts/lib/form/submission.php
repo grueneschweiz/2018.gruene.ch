@@ -320,7 +320,7 @@ class FormSubmission {
 	 */
 	private function get_fields() {
 		if ( ! $this->fields ) {
-			$fields = get_field_objects( $this->form_id )['form_fields']['value'];
+			$fields = get_field('field_5a869960c1cf2', $this->form_id);
 			
 			foreach ( $fields as $field ) {
 				$key                  = supt_slugify( $field['form_input_label'] );

@@ -26,7 +26,7 @@
 
 		for(var i=0; i<fields.length; i++) {
 			if (fields[i].value){
-				tmp = slug(fields[i].value, {lower: true, replacement: '_'});
+				tmp = slugify( fields[ i ].value ).replace( /-/g, '_' );
 				placeholders.push('{{'+tmp+'}}');
 			}
 		}
@@ -57,4 +57,29 @@
 		updatePlaceholders();
 	}
 
+	/**
+	 * Mimics supt_slugify function written in php
+	 *
+	 * @param str
+	 * @returns {*}
+	 */
+	function slugify( str ) {
+		str = str.replace( /^\s+|\s+$/g, '' ); // trim
+		str = str.toLowerCase();
+
+		// remove accents, swap ñ for n, etc
+		var from = 'àáäâèéëêìíïîòóöôùúüûñç·/_,:;';
+		var to   = 'aaaaeeeeiiiioooouuuunc______';
+
+		for (var i = 0, l = from.length; i < l; i ++) {
+			str = str.replace( new RegExp( from.charAt( i ), 'g' ), to.charAt( i ) );
+		}
+
+		str = str.replace( '.', '_' ) // replace a dot by an underline
+			.replace( /[^a-z0-9 _-]/g, '' ) // remove invalid chars
+			.replace( /\s+/g, '_' ) // collapse whitespace and replace by an underline
+			.replace( /-+/g, '_' ); // collapse underlines
+
+		return str;
+	}
 } )();
