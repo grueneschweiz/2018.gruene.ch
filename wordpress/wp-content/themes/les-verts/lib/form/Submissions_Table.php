@@ -258,9 +258,10 @@ class Submissions_Table extends WP_List_Table {
 				absint( $item['ID'] )
 			),
 			self::DELETE_ACTION => sprintf(
-				'<a href="?post_type=%s&page=%s&action=%s&item=%d&_wpnonce=%s">' . __( 'Delete', THEME_DOMAIN ) . '</a>',
+				'<a href="?post_type=%s&page=%s&form_id=%d&action=%s&item=%d&_wpnonce=%s">' . __( 'Delete', THEME_DOMAIN ) . '</a>',
 				esc_attr( $_REQUEST['post_type'] ),
 				esc_attr( $_REQUEST['page'] ),
+				$this->get_form_id(),
 				self::DELETE_ACTION,
 				absint( $item['ID'] ),
 				$delete_nonce
