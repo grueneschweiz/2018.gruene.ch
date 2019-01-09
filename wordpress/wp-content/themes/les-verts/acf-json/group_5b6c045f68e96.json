@@ -1,23 +1,6 @@
 {
     "key": "group_5b6c045f68e96",
     "title": "[Template]Quote",
-    "location": [
-        [
-            {
-                "param": "post_type",
-                "operator": "==",
-                "value": "post"
-            }
-        ]
-    ],
-    "menu_order": 0,
-    "position": "normal",
-    "style": "default",
-    "label_placement": "top",
-    "instruction_placement": "label",
-    "hide_on_screen": "",
-    "active": 0,
-    "description": "",
     "fields": [
         {
             "key": "field_5b72a5ba9a5e6",
@@ -51,7 +34,7 @@
             },
             "default_value": "",
             "placeholder": "",
-            "maxlength": 280,
+            "maxlength": "",
             "rows": 4,
             "new_lines": ""
         },
@@ -97,5 +80,22 @@
             "maxlength": ""
         }
     ],
-    "modified": 1543324749
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 0,
+    "description": "",
+    "modified": 1547039495
 }

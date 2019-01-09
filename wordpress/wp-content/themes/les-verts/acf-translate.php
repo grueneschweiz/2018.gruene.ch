@@ -2966,7 +2966,7 @@ This list will automatically be updated if any new content meets the filter crit
 				),
 				'default_value' => '',
 				'placeholder' => '',
-				'maxlength' => 280,
+				'maxlength' => '',
 				'rows' => 4,
 				'new_lines' => '',
 			),
