@@ -1250,7 +1250,7 @@ msgstr "Felder"
 #: lib/form/FormType.php:184 lib/form/FormType.php:185
 #: lib/form/Submissions_Table.php:45
 msgid "Submissions"
-msgstr "Vorschläge"
+msgstr ""
 
 #: lib/form/acf/form-details.php:11
 msgid "Form fields"
@@ -1731,7 +1731,7 @@ msgstr "Hochladen der Datei aufgrund der Dateierweiterung gestoppt."
 
 #: vendor/timber/timber/tests/wp-overrides.php:186
 msgid "Invalid form submission."
-msgstr "Fehlerhafte Eingabe im Formular."
+msgstr ""
 
 #: vendor/timber/timber/tests/wp-overrides.php:197
 msgid "File is empty. Please upload something more substantial."
