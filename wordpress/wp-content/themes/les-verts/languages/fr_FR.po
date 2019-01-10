@@ -336,7 +336,7 @@ msgstr "Blanc"
 #. Singular oder Plural?
 #: acf-translate.php:1139
 msgid "Headlines"
-msgstr "Titre"
+msgstr "Titres"
 
 #: acf-translate.php:1185
 msgid "Add Green Headline"
@@ -496,7 +496,7 @@ msgstr "Exemple : «Cela pourrait également t'intéresser» ou «Informations s
 #. Leiter Verkauf oder Leiterverkauf?
 #: acf-translate.php:1956
 msgid "Link List Blocks"
-msgstr ""
+msgstr "Blocs de listes de liens"
 
 #: acf-translate.php:1971
 msgid "Manual Link List (Static)"
