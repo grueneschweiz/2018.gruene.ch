@@ -1,33 +1,63 @@
 /**
  * GOOGLE FONT LOAD
  */
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800');
-
-/**
- * LOCAL FILE LOAD EXAMPLE
- */
-// @font-face {
-// 	font-family: 'ApercuPro';
-//   font-style: normal;
-//   font-weight: 300;
-// 	src: url('/assets/fonts/ApercuPro-Light.eot');
-// 	src: local('Apercu Pro'),
-//     url('/assets/fonts/ApercuPro-Light.eot?#iefix') format('embedded-opentype'),
-//     url('/assets/fonts/ApercuPro-Light.woff2') format('woff2'),
-//     url('/assets/fonts/ApercuPro-Light.woff') format('woff'),
-//     url('/assets/fonts/ApercuPro-Light.ttf') format('truetype'),
-//     url('/assets/fonts/ApercuPro-Light.svg#ApercuPro-Light') format('svg');
-// }
-
 @font-face {
 	font-family: 'Sanuk Fat';
 	font-style: normal;
 	font-weight: 500;
-	src: url('fonts/SanukOT-Fat.otf');
-	//src: local('Apercu Pro'),
-	//url('/assets/fonts/ApercuPro-Medium.eot?#iefix') format('embedded-opentype'),
-	//url('/assets/fonts/ApercuPro-Medium.woff2') format('woff2'),
-	//url('/assets/fonts/ApercuPro-Medium.woff') format('woff'),
-	//url('/assets/fonts/ApercuPro-Medium.ttf') format('truetype'),
-	//url('/assets/fonts/ApercuPro-Medium.svg#ApercuPro-Medium') format('svg');
+	src: local('SanukOT-Fat'), local('SanukOT Fat'), url('fonts/SanukOT-Fat.otf');
+}
+
+/* open-sans-regular - latin */
+@font-face {
+	font-family: 'Open Sans';
+	font-style: normal;
+	font-weight: 400;
+	src: url('../fonts/open-sans-v15-latin-regular.eot'); /* IE9 Compat Modes */
+	src: local('Open Sans Regular'), local('OpenSans-Regular'),
+	url('fonts/open-sans-v15-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+	url('fonts/open-sans-v15-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+	url('fonts/open-sans-v15-latin-regular.woff') format('woff'), /* Modern Browsers */
+	url('fonts/open-sans-v15-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+	url('fonts/open-sans-v15-latin-regular.svg#OpenSans') format('svg'); /* Legacy iOS */
+}
+/* open-sans-600 - latin */
+@font-face {
+	font-family: 'Open Sans';
+	font-style: normal;
+	font-weight: 600;
+	src: url('../fonts/open-sans-v15-latin-600.eot'); /* IE9 Compat Modes */
+	src: local('Open Sans SemiBold'), local('OpenSans-SemiBold'),
+	url('fonts/open-sans-v15-latin-600.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+	url('fonts/open-sans-v15-latin-600.woff2') format('woff2'), /* Super Modern Browsers */
+	url('fonts/open-sans-v15-latin-600.woff') format('woff'), /* Modern Browsers */
+	url('fonts/open-sans-v15-latin-600.ttf') format('truetype'), /* Safari, Android, iOS */
+	url('fonts/open-sans-v15-latin-600.svg#OpenSans') format('svg'); /* Legacy iOS */
+}
+/* open-sans-800 - latin */
+@font-face {
+	font-family: 'Open Sans';
+	font-style: normal;
+	font-weight: 800;
+	src: url('../fonts/open-sans-v15-latin-800.eot'); /* IE9 Compat Modes */
+	src: local('Open Sans ExtraBold'), local('OpenSans-ExtraBold'),
+	url('fonts/open-sans-v15-latin-800.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+	url('fonts/open-sans-v15-latin-800.woff2') format('woff2'), /* Super Modern Browsers */
+	url('fonts/open-sans-v15-latin-800.woff') format('woff'), /* Modern Browsers */
+	url('fonts/open-sans-v15-latin-800.ttf') format('truetype'), /* Safari, Android, iOS */
+	url('fonts/open-sans-v15-latin-800.svg#OpenSans') format('svg'); /* Legacy iOS */
+}
+
+/* Alias for Arial Black fallback */
+@font-face {
+	font-family: 'OpenSansBold';
+	font-style: normal;
+	font-weight: 800;
+	src: url('../fonts/open-sans-v15-latin-800.eot'); /* IE9 Compat Modes */
+	src: local('Open Sans ExtraBold'), local('OpenSans-ExtraBold'),
+	url('fonts/open-sans-v15-latin-800.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+	url('fonts/open-sans-v15-latin-800.woff2') format('woff2'), /* Super Modern Browsers */
+	url('fonts/open-sans-v15-latin-800.woff') format('woff'), /* Modern Browsers */
+	url('fonts/open-sans-v15-latin-800.ttf') format('truetype'), /* Safari, Android, iOS */
+	url('fonts/open-sans-v15-latin-800.svg#OpenSans') format('svg'); /* Legacy iOS */
 }
