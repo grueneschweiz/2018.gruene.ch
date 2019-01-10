@@ -132,6 +132,10 @@ class StarterSite extends TimberSite {
 			// don't load jquery
 			wp_deregister_script( 'jquery' );
 			
+			// dont load block styles
+			wp_dequeue_style( 'wp-block-library' );
+			wp_deregister_style( 'wp-block-library' );
+			
 			// live reload of css for development
 			if ( WP_DEBUG ) {
 				// TODO find a way to load dynymically the BS file (cause the port number could be somthing else)
