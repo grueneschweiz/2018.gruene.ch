@@ -82,7 +82,7 @@ class Submissions_Table extends WP_List_Table {
 		$this->form_fields = [];
 		
 		foreach ( get_field( 'form_fields', $this->get_form_id() ) as $field ) {
-			$key                       = supt_slugify( $field['form_input_label'] );
+			$key                       = $field['slug'];
 			$this->form_fields[ $key ] = $field;
 		}
 		

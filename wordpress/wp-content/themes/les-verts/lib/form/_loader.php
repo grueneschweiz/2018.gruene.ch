@@ -1,7 +1,6 @@
 <?php
 // Helper
 require_once __DIR__ . '/helpers/send-email.php';
-require_once __DIR__ . '/helpers/slugify.php';
 
 require_once __DIR__ . '/FormType.php';
 require_once __DIR__ . '/settings-page.php';

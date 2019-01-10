@@ -323,14 +323,14 @@ class FormSubmission {
 			$fields = get_field('field_5a869960c1cf2', $this->form_id);
 			
 			foreach ( $fields as $field ) {
-				$key                  = supt_slugify( $field['form_input_label'] );
+				$key                  = $field['slug'];
 				$this->fields[ $key ] = $field;
 				
 				if ( 'checkbox' === $field['form_input_type'] ) {
 					$labels = explode( "\n", $field['form_input_choices'] );
-					foreach ( $labels as $label ) {
-						$valueKey                                    = supt_slugify( $label );
-						$this->fields[ $key ]['values'][ $valueKey ] = trim( $label );
+					for ( $i = 0; $i < count( $labels ); $i ++ ) {
+						$valueKey                                    = $key . '-' . $i;
+						$this->fields[ $key ]['values'][ $valueKey ] = trim( $labels[ $i ] );
 					}
 				}
 			}

@@ -1,41 +1,42 @@
 ( function() {
 
-	var fields_container = document.querySelector('.form_fields_repeater');
+	var fields_container = document.querySelector( '.form_fields_repeater' );
 	var fields = document.querySelectorAll( '.form_input_label input' );
+	var $slugFields = acf.getFields( { key: 'field_5c0fad19blkjh' } );
 	var descriptions = document.querySelectorAll( '.form_mail_template_placeholders' );
 
 	// mutation observer to handle addition and removal of fields
-	var observer = new MutationObserver(function(mutations) {
-		mutations.forEach(function() {
+	var observer = new MutationObserver( function( mutations ) {
+		mutations.forEach( function() {
 			fields = document.querySelectorAll( '.form_input_label input' );
+			$slugFields = acf.getFields( { key: 'field_5c0fad19blkjh' } );
 			bind();
 			populateInit();
-		});
-	});
+			hideSlugFields();
+		} );
+	} );
 
 	// Rebind events if the fields get added or removed
-	observer.observe(fields_container, {childList: true, subtree: true});
+	observer.observe( fields_container, { childList: true, subtree: true } );
 
 	/**
-	 * Add the placeholder tags to the mail template descriptions
+	 * Calculate the field slugs and update them
 	 */
-	function updatePlaceholders() {
+	function updateFieldSlugs() {
 		var placeholders = [];
-		var placeholder_string;
-		var tmp;
+		var slug;
 
-		for(var i=0; i<fields.length; i++) {
-			if (fields[i].value){
-				tmp = slugify( fields[ i ].value ).replace( /-/g, '_' );
-				placeholders.push('{{'+tmp+'}}');
+		for (var i = 0; i < fields.length; i ++) {
+			if (! fields[ i ].value) {
+				continue;
 			}
+
+			slug = slugify( fields[ i ].value );
+			placeholders.push( '{{' + slug + '}}' );
+			$slugFields[ i ].val( slug );
 		}
 
-		placeholder_string = placeholders.join(', ');
-
-		for(var j=0; j<descriptions.length; j++) {
-			descriptions[j].innerHTML = placeholder_string;
-		}
+		updateMailPlaceholders( placeholders );
 	}
 
 	// Run once DOM is ready
@@ -46,15 +47,33 @@
 
 	// Bind events
 	function bind() {
-		for(var i=0; i<fields.length; i++) {
-			fields[i].removeEventListener('blur', updatePlaceholders); // prevent multiple binding
-			fields[i].addEventListener('blur', updatePlaceholders);
+		for (var i = 0; i < fields.length; i ++) {
+			fields[ i ].removeEventListener( 'blur', updateFieldSlugs ); // prevent multiple binding
+			fields[ i ].addEventListener( 'blur', updateFieldSlugs );
 		}
 	}
 
 	// Populate initially
 	function populateInit() {
-		updatePlaceholders();
+		updateFieldSlugs();
+	}
+
+	// Make slug fields read only
+	function hideSlugFields() {
+		for (var i = 0; i < $slugFields.length; i ++) {
+			$slugFields[ i ].hide();
+		}
+	}
+
+	/**
+	 * Add the placeholder tags to the mail template descriptions
+	 */
+	function updateMailPlaceholders( placeholders ) {
+		var placeholder_string = placeholders.join( ', ' );
+
+		for (var j = 0; j < descriptions.length; j ++) {
+			descriptions[ j ].innerHTML = placeholder_string;
+		}
 	}
 
 	/**
@@ -69,7 +88,7 @@
 
 		// remove accents, swap ñ for n, etc
 		var from = 'àáäâèéëêìíïîòóöôùúüûñç·/_,:;';
-		var to   = 'aaaaeeeeiiiioooouuuunc______';
+		var to = 'aaaaeeeeiiiioooouuuunc______';
 
 		for (var i = 0, l = from.length; i < l; i ++) {
 			str = str.replace( new RegExp( from.charAt( i ), 'g' ), to.charAt( i ) );
