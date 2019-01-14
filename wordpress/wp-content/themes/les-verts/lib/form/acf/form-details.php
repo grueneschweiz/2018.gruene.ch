@@ -189,7 +189,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 						'label'             => __( 'Webling Field', THEME_DOMAIN ),
 						'name'              => 'webling_field',
 						'type'              => 'select',
-						'instructions'      => __( 'Select the field in Webling, that matches this field.', THEME_DOMAIN ),
+						'instructions'      => __( 'Select the field in Webling that matches this field.', THEME_DOMAIN ),
 						'required'          => 0,
 						'conditional_logic' => 0,
 						'wrapper'           => array(

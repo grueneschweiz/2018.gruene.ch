@@ -998,7 +998,7 @@ if( function_exists('acf_add_local_field_group') ):
 				'label' => __('Campaign Page', 'lesverts'),
 				'name' => 'link',
 				'type' => 'post_object',
-				'instructions' => __('Select the post, that holds the whole campaign content.', 'lesverts'),
+				'instructions' => __('Select the post that holds the whole campaign content.', 'lesverts'),
 				'required' => 1,
 				'conditional_logic' => array(
 					array(

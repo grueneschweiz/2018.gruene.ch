@@ -180,7 +180,7 @@ class Submissions_Table extends WP_List_Table {
 	 * Text displayed when no submissions are available
 	 */
 	public function no_items() {
-		_e( 'Yet, there were no form submitted', THEME_DOMAIN );
+		_e( 'Yet, there were no forms submitted.', THEME_DOMAIN );
 	}
 	
 	/**
@@ -311,7 +311,7 @@ class Submissions_Table extends WP_List_Table {
 		}
 		echo '</select>';
 		
-		echo '<input type="submit" class="button button-primary" value="' . __( 'Formular auswählen', THEME_DOMAIN ) . '">';
+		echo '<input type="submit" class="button button-primary" value="' . __( 'Select form', THEME_DOMAIN ) . '">';
 		echo '</form>';
 	}
 	
