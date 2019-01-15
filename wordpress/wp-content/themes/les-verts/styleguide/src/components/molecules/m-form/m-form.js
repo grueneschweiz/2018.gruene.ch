@@ -107,10 +107,14 @@ export default class MForm extends BaseView {
 
 	showSuccess( data ) {
 		if (- 1 === data.next_action_id || ! data.html) {
-			let submitWrapper = this.getScopedElement( SUBMIT_WRAPPER_SELECTOR );
-			let successMessage = this.getScopedElement( SUCCESS_MESSAGE_SELECTOR );
-			this.addClass( submitWrapper, HIDDEN_STATE );
-			this.addClass( successMessage, SHOWN_STATE );
+			if (data.redirect && - 1 === data.next_action_id) {
+				window.location.href = data.redirect;
+			} else {
+				let submitWrapper = this.getScopedElement( SUBMIT_WRAPPER_SELECTOR );
+				let successMessage = this.getScopedElement( SUCCESS_MESSAGE_SELECTOR );
+				this.addClass( submitWrapper, HIDDEN_STATE );
+				this.addClass( successMessage, SHOWN_STATE );
+			}
 		} else {
 			let parent = this.element.parentNode.parentNode;
 			parent.innerHTML = data.html;

@@ -255,7 +255,11 @@ class FormSubmission {
 				$html = \Timber::compile( $templates, $context );
 			}
 			
-			wp_send_json_success( [ 'next_action_id' => $next_action_id, 'html' => $html ] );
+			wp_send_json_success( [
+				'next_action_id' => $next_action_id,
+				'html'           => $html,
+				'redirect'       => $this->get_redirect_url()
+			] );
 		} else {
 			wp_send_json_error( $this->errors );
 		}
@@ -337,6 +341,27 @@ class FormSubmission {
 		}
 		
 		return $this->fields;
+	}
+	
+	/**
+	 * Get url to redirect to after success.
+	 *
+	 * Return empty string if no redirect is configured.
+	 *
+	 * @return string
+	 */
+	private function get_redirect_url() {
+		$form_success = get_field( 'form_success', $this->form_id );
+		
+		if ( 'inline' === $form_success['after_success_action'] ) {
+			return '';
+		}
+		
+		if ( empty( $form_success['redirect'] ) ) {
+			return '';
+		}
+		
+		return get_permalink( $form_success['redirect'] );
 	}
 	
 	/**

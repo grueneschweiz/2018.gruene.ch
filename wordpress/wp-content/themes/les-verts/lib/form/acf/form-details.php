@@ -449,7 +449,7 @@ Example interest field: Only the interests that can be selected in Webling are a
 				'label'             => __( 'Success', THEME_DOMAIN ),
 				'name'              => 'form_success',
 				'type'              => 'group',
-				'instructions'      => __( 'Shown when the form has been successfully sent.', THEME_DOMAIN ),
+				'instructions'      => __( 'What should happen after the form was successfully submitted?', THEME_DOMAIN ),
 				'required'          => 0,
 				'conditional_logic' => 0,
 				'wrapper'           => array(
@@ -460,13 +460,43 @@ Example interest field: Only the interests that can be selected in Webling are a
 				'layout'            => 'block',
 				'sub_fields'        => array(
 					array(
+						'key'               => 'field_5c3e2cc30be3f',
+						'label'             => '',
+						'name'              => 'after_success_action',
+						'type'              => 'button_group',
+						'instructions'      => '',
+						'required'          => 0,
+						'conditional_logic' => 0,
+						'wrapper'           => array(
+							'width' => '',
+							'class' => '',
+							'id'    => '',
+						),
+						'choices'           => array(
+							'inline'   => __( 'Show message (inline)', THEME_DOMAIN ),
+							'redirect' => __( 'Redirect to post / page', THEME_DOMAIN ),
+						),
+						'allow_null'        => 0,
+						'default_value'     => 'inline',
+						'layout'            => 'horizontal',
+						'return_format'     => 'value',
+					),
+					array(
 						'key'               => 'field_5ab13d9745e81',
 						'label'             => __( 'Title', THEME_DOMAIN ),
 						'name'              => 'form_success_title',
 						'type'              => 'text',
 						'instructions'      => '',
 						'required'          => 1,
-						'conditional_logic' => 0,
+						'conditional_logic' => array(
+							array(
+								array(
+									'field'    => 'field_5c3e2cc30be3f',
+									'operator' => '==',
+									'value'    => 'inline',
+								),
+							),
+						),
 						'wrapper'           => array(
 							'width' => '',
 							'class' => '',
@@ -485,7 +515,15 @@ Example interest field: Only the interests that can be selected in Webling are a
 						'type'              => 'wysiwyg',
 						'instructions'      => '',
 						'required'          => 0,
-						'conditional_logic' => 0,
+						'conditional_logic' => array(
+							array(
+								array(
+									'field'    => 'field_5c3e2cc30be3f',
+									'operator' => '==',
+									'value'    => 'inline',
+								),
+							),
+						),
 						'wrapper'           => array(
 							'width' => '',
 							'class' => '',
@@ -496,6 +534,38 @@ Example interest field: Only the interests that can be selected in Webling are a
 						'toolbar'           => 'basic',
 						'media_upload'      => 0,
 						'delay'             => 0,
+					),
+					array(
+						'key'               => 'field_5c3e2dc30be40',
+						'label'             => __( 'Redirect to', THEME_DOMAIN ),
+						'name'              => 'redirect',
+						'type'              => 'post_object',
+						'instructions'      => '',
+						'required'          => 0,
+						'conditional_logic' => array(
+							array(
+								array(
+									'field'    => 'field_5c3e2cc30be3f',
+									'operator' => '==',
+									'value'    => 'redirect',
+								),
+							),
+						),
+						'wrapper'           => array(
+							'width' => '',
+							'class' => '',
+							'id'    => '',
+						),
+						'post_type'         => array(
+							0 => 'post',
+							1 => 'page',
+							2 => 'tribe_events',
+						),
+						'taxonomy'          => '',
+						'allow_null'        => 0,
+						'multiple'          => 0,
+						'return_format'     => 'id',
+						'ui'                => 1,
 					),
 				),
 			),
