@@ -30,9 +30,20 @@ read -sp "Enter website admin password: " SITE_ADMIN_PASS
 printf "\n"
 read -p "Enter website admin email: " SITE_ADMIN_EMAIL
 read -p "Enter language code (Ex. 'de_DE' or 'fr_FR'): " SITE_LOCALE
+read -p "Multisite (y/N): " MULTISITE
+
+# make multisite variable a boolean
+MULTISITE=${MULTISITE,,} # tolower
+if [[ ${MULTISITE} =~ ^(yes|y) ]]; then
+	MULTISITE=1
+else
+	MULTISITE=
+fi
 
 # load environment
-source ~/.bash_profile
+if [[ -f ~/.bash_profile ]]; then
+    source ~/.bash_profile
+fi
 
 # install wp cli
 # see: https://www.cyon.ch/blog/Mit-WP-CLI-WordPress-auf-der-Kommandozeile-verwalten
@@ -75,7 +86,13 @@ wp core config \
 	--dbhost="$DB_HOST"
 
 # install wordpress
-wp core multisite-install \
+if [[ ${MULTISITE} ]]; then
+	INSTALL="multisite-install"
+else
+	INSTALL="install"
+fi
+
+wp core ${INSTALL} \
 	--url="$SITE_URL" \
 	--title="$SITE_TITLE" \
 	--admin_user="$SITE_ADMIN_USER"  \
@@ -83,6 +100,7 @@ wp core multisite-install \
 	--admin_email="$SITE_ADMIN_EMAIL"
 
 # set correct .htaccess
+if [[ ${MULTISITE} ]]; then
 echo "RewriteEngine On
 
 # force redirect to https
@@ -106,6 +124,7 @@ RewriteRule ^([_0-9a-zA-Z-]+/)?(.*\.php)$ \$2 [L]
 RewriteRule . index.php [L]" > .htaccess
 
 echo ".htaccess file created and rewrite rules set"
+fi
 
 # if composer command doesn't exist
 if ! [ -x "$(command -v composer)" ]; then
