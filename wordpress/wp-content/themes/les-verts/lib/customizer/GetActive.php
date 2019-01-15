@@ -67,7 +67,7 @@ class GetActive {
 				$wp_customize,
 				self::SETTING_GET_ACTIVE_POST_ID,
 				array(
-					'label'          => __( 'Button Link Page', THEME_DOMAIN ),
+					'label'          => __( 'Button Link (Page)', THEME_DOMAIN ),
 					'description'    => __( 'Select the page, where the get active button should lead to.', THEME_DOMAIN ),
 					'section'        => self::SECTION,
 					'settings'       => self::SETTING_GET_ACTIVE_POST_ID,
