@@ -128,4 +128,5 @@ dist
 node_modules
 fonts
 deploy.*
+!deploy.example.sh
 .wordpress
