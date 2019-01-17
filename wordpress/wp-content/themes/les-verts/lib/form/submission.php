@@ -159,7 +159,7 @@ class FormSubmission {
 		}
 		
 		if ( $_POST['predecessor_id'] ) {
-			$this->predecessor_id = absint( $_POST['predecessor_id'] );
+			$this->predecessor_id = intval( $_POST['predecessor_id'] );
 		}
 		
 		// todo: rethink the nonces if using caching
@@ -622,9 +622,7 @@ class FormSubmission {
 				
 				$new['_meta_']['descendant_id'] = $submission_id;
 				
-				$update = update_post_meta( $postmeta->post_id, FormType::MODEL_NAME, $new, $orig );
-				
-				var_dump( $update, $new, $orig );
+				update_post_meta( $postmeta->post_id, FormType::MODEL_NAME, $new, $orig );
 			}
 		}
 	}
