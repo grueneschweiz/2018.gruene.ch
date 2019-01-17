@@ -11,13 +11,17 @@ const HIDDEN_STATE = 'is-hidden';
 const SHOWN_STATE = 'is-shown';
 const INVALID_STATE = 'is-invalid';
 
-export default class MForm extends BaseView {
-	initialize() {
-		this.submitButton = this.getScopedElement( SUBMIT_BUTTON_SELECTOR );
+const LAST_SUBMISSION = 'pred';
 
-		this.submitted = false;
-		this.sendingTimer = null;
-		this.origSubmitLbl = this.submitButton.innerHTML;
+export default class MForm extends BaseView {
+	static getUrlParam( param, defaultValue ) {
+		const url = new URL( window.location.href );
+		const value = url.searchParams.get( param );
+		if (value) {
+			return value;
+		}
+
+		return defaultValue;
 	}
 
 	bind() {
@@ -25,6 +29,84 @@ export default class MForm extends BaseView {
 
 		/* @noinspection JSCheckFunctionSignaturesInspection */
 		this.on( 'submit', e => this.submit( e ) );
+	}
+
+	static buildRedirectUrl( url, formId ) {
+		url = new URL( url );
+		url.searchParams.set( LAST_SUBMISSION, formId );
+		return url.toString();
+	}
+
+	handleError( resp ) {
+		if (resp instanceof Object && 'data' in resp) {
+			for (const key of Object.keys( resp.data )) {
+				let el = this.getScopedElement( '[name=' + key + ']' );
+				this.addClass( el, INVALID_STATE );
+			}
+
+			let invalidMessage = this.getScopedElement( INVALID_MESSAGE_SELECTOR );
+			this.addClass( invalidMessage, SHOWN_STATE );
+
+		} else {
+
+			let errorMessage = this.getScopedElement( ERROR_MESSAGE_SELECTOR );
+			this.addClass( errorMessage, SHOWN_STATE );
+		}
+
+		clearInterval( this.sendingTimer );
+		this.submitButton.disabled = false;
+		this.submitted = false;
+		this.submitButton.innerHTML = this.origSubmitLbl;
+	}
+
+	initialize() {
+		this.submitButton = this.getScopedElement( SUBMIT_BUTTON_SELECTOR );
+
+		this.submitted = false;
+		this.sendingTimer = null;
+		this.origSubmitLbl = this.submitButton.innerHTML;
+		this.predecessorId = MForm.getUrlParam( LAST_SUBMISSION, - 1 );
+	}
+
+	showSending() {
+		let lbl = this.element.dataset.sendingLbl;
+		let counter = 0;
+		this.sendingTimer = setInterval( () => {
+			counter ++;
+			counter = counter <= 3 ? counter : 0;
+
+			let lblAdd = '';
+			for (let i = 0; i < counter; i ++) {
+				lblAdd += '.';
+			}
+
+			this.submitButton.innerHTML = lbl + '<span class="m-form__sending">' + lblAdd + '</span>';
+		}, 300 );
+	}
+
+	ajax( url, method, data = null ) {
+		return new Promise( function( resolve, reject ) {
+			let xhr = new XMLHttpRequest();
+			xhr.open( method, url );
+			xhr.send( data );
+			xhr.onreadystatechange = function() {
+				if (xhr.readyState === 4) {
+					let raw = xhr.responseText;
+					let resp = '';
+					try {
+						resp = JSON.parse( raw );
+					} catch (err) {
+						resp = {};
+					}
+
+					if (xhr.status === 200) {
+						resolve( resp );
+					} else {
+						reject( resp );
+					}
+				}
+			};
+		} );
 	}
 
 	submit( event ) {
@@ -71,6 +153,9 @@ export default class MForm extends BaseView {
 			data.append( 'config_id', this.element.dataset.configId );
 		}
 
+		// add the id of the last form
+		data.append( 'predecessor_id', this.predecessorId );
+
 		this.ajax( url, 'POST', data )
 			.then( ( resp ) => {
 				if (resp instanceof Object && 'success' in resp && true === resp.success) {
@@ -83,33 +168,12 @@ export default class MForm extends BaseView {
 		} );
 	}
 
-	handleError( resp ) {
-		if (resp instanceof Object && 'data' in resp) {
-			for (const key of Object.keys( resp.data )) {
-				let el = this.getScopedElement( '[name=' + key + ']' );
-				this.addClass( el, INVALID_STATE );
-			}
-
-			let invalidMessage = this.getScopedElement( INVALID_MESSAGE_SELECTOR );
-			this.addClass( invalidMessage, SHOWN_STATE );
-
-		} else {
-
-			let errorMessage = this.getScopedElement( ERROR_MESSAGE_SELECTOR );
-			this.addClass( errorMessage, SHOWN_STATE );
-		}
-
-		clearInterval( this.sendingTimer );
-		this.submitButton.disabled = false;
-		this.submitted = false;
-		this.submitButton.innerHTML = this.origSubmitLbl;
-	}
-
 	showSuccess( data ) {
 		if (- 1 === data.next_action_id || ! data.html) {
 			if (data.redirect && - 1 === data.next_action_id) {
-				window.location.href = data.redirect;
+				window.location.href = MForm.buildRedirectUrl( data.redirect, data.predecessor_id );
 			} else {
+				this.predecessorId = data.predecessor_id;
 				let submitWrapper = this.getScopedElement( SUBMIT_WRAPPER_SELECTOR );
 				let successMessage = this.getScopedElement( SUCCESS_MESSAGE_SELECTOR );
 				this.addClass( submitWrapper, HIDDEN_STATE );
@@ -124,46 +188,5 @@ export default class MForm extends BaseView {
 
 			this.destroy();
 		}
-	}
-
-	showSending() {
-		let lbl = this.element.dataset.sendingLbl;
-		let counter = 0;
-		this.sendingTimer = setInterval( () => {
-			counter ++;
-			counter = counter <= 3 ? counter : 0;
-
-			let lblAdd = '';
-			for (let i = 0; i < counter; i ++) {
-				lblAdd += '.';
-			}
-
-			this.submitButton.innerHTML = lbl + '<span class="m-form__sending">' + lblAdd + '</span>';
-		}, 300 );
-	}
-
-	ajax( url, method, data = null ) {
-		return new Promise( function( resolve, reject ) {
-			let xhr = new XMLHttpRequest();
-			xhr.open( method, url );
-			xhr.send( data );
-			xhr.onreadystatechange = function() {
-				if (xhr.readyState === 4) {
-					let raw = xhr.responseText;
-					let resp = '';
-					try {
-						resp = JSON.parse( raw );
-					} catch (err) {
-						resp = {};
-					}
-
-					if (xhr.status === 200) {
-						resolve( resp );
-					} else {
-						reject( resp );
-					}
-				}
-			};
-		} );
 	}
 }

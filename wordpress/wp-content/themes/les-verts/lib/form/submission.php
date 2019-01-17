@@ -36,6 +36,20 @@ class FormSubmission {
 	private $config_id = - 1;
 	
 	/**
+	 * The id of the post meta id of the last submission
+	 *
+	 * @var int
+	 */
+	private $predecessor_id = - 1;
+	
+	/**
+	 * The id of this submission (-1 before it is saved)
+	 *
+	 * @var int
+	 */
+	private $post_meta_id = - 1;
+	
+	/**
 	 * The submitters IP address
 	 *
 	 * @var string
@@ -142,6 +156,10 @@ class FormSubmission {
 		
 		if ( $_POST['config_id'] ) {
 			$this->config_id = absint( $_POST['config_id'] );
+		}
+		
+		if ( $_POST['predecessor_id'] ) {
+			$this->predecessor_id = absint( $_POST['predecessor_id'] );
 		}
 		
 		// todo: rethink the nonces if using caching
@@ -258,7 +276,8 @@ class FormSubmission {
 			wp_send_json_success( [
 				'next_action_id' => $next_action_id,
 				'html'           => $html,
-				'redirect'       => $this->get_redirect_url()
+				'redirect'       => $this->get_redirect_url(),
+				'predecessor_id' => $this->post_meta_id,
 			] );
 		} else {
 			wp_send_json_error( $this->errors );
@@ -483,11 +502,13 @@ class FormSubmission {
 	 */
 	private function add_metadata() {
 		$meta['_meta_'] = array(
-			'form_id'   => $this->form_id,
-			'action_id' => $this->action_id,
-			'config_id' => $this->config_id,
-			'timestamp' => date( 'Y-m-d H:i:s' ),
-			'email'     => $this->get_email_address(),
+			'form_id'        => $this->form_id,
+			'action_id'      => $this->action_id,
+			'config_id'      => $this->config_id,
+			'timestamp'      => date( 'Y-m-d H:i:s' ),
+			'email'          => $this->get_email_address(),
+			'predecessor_id' => $this->predecessor_id,
+			'descendant_id'  => - 1,
 		);
 		
 		// make sure to add the meta data before the actual data
@@ -538,7 +559,8 @@ class FormSubmission {
 		$data = (array) apply_filters( FormType::MODEL_NAME . '-before-local-save', $this->data );
 		
 		// save locally
-		$post_meta_id = add_post_meta( $this->form_id, FormType::MODEL_NAME, $data );
+		$this->post_meta_id = add_post_meta( $this->form_id, FormType::MODEL_NAME, $data );
+		$this->update_predecessor( $this->post_meta_id );
 		
 		// safe to crm
 		if ( ! empty( $this->crm_data ) && $this->get_email_address()) {
@@ -558,26 +580,52 @@ class FormSubmission {
 			}
 		}
 		
-		if ( $post_meta_id ) {
+		if ( $this->post_meta_id ) {
 			/**
 			 * Fires after the data is persisted.
 			 *
 			 * @param array $data with
-			 *  'form_data'    => array with the validated and sanitized form data
-			 *  'action_id'    => int the engagement funnel action id
-			 *  'config_id'    => int the engagement funnel config id
-			 *  'post_meta_id' => int the id of the post meta table where the form data is stored
-			 *  'crm_id'       => int the id of the person in the crm
+			 *  'form_data'      => array with the validated and sanitized form data
+			 *  'action_id'      => int the engagement funnel action id
+			 *  'config_id'      => int the engagement funnel config id
+			 *  'post_meta_id'   => int the id of the post meta table where the form data is stored
+			 *  'crm_id'         => int the id of the person in the crm
+			 *  'predecessor_id' => int the id of the predecessor submission
 			 */
 			do_action( FormType::MODEL_NAME . '-after-save',
 				array(
-					'form_data'    => $data,
-					'action_id'    => $this->action_id,
-					'config_id'    => $this->config_id,
-					'post_meta_id' => $post_meta_id,
-					'crm_id'       => empty( $crm_id ) ? -1 : $crm_id
+					'form_data'      => $data,
+					'action_id'      => $this->action_id,
+					'config_id'      => $this->config_id,
+					'post_meta_id'   => $this->post_meta_id,
+					'crm_id'         => empty( $crm_id ) ? - 1 : $crm_id,
+					'predecessor_id' => $this->predecessor_id,
 				)
 			);
+		}
+	}
+	
+	/**
+	 * Add the id of this submission to the previous submission
+	 *
+	 * @param int $submission_id the meta_id of the current submission
+	 */
+	private function update_predecessor( $submission_id ) {
+		if ( $this->predecessor_id >= 0 ) {
+			global $wpdb;
+			
+			$postmeta = $wpdb->get_row( "SELECT * FROM {$wpdb->postmeta} WHERE meta_id = {$this->predecessor_id}" );
+			
+			if ( $postmeta ) {
+				$orig = maybe_unserialize( $postmeta->meta_value );
+				$new  = $orig;
+				
+				$new['_meta_']['descendant_id'] = $submission_id;
+				
+				$update = update_post_meta( $postmeta->post_id, FormType::MODEL_NAME, $new, $orig );
+				
+				var_dump( $update, $new, $orig );
+			}
 		}
 	}
 	
