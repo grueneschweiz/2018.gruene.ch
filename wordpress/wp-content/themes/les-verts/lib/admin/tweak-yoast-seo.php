@@ -8,6 +8,10 @@ add_filter( 'wpseo_metabox_prio', function () {
 	return 'low';
 } );
 
+add_filter( 'wpseo_twitter_image_size', function () {
+	return 'large';
+} );
+
 
 add_filter( 'wpseo_breadcrumb_output_wrapper', function () {
 	return 'div';
