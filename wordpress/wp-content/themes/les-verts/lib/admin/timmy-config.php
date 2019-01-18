@@ -20,6 +20,22 @@ add_filter( 'image_size_names_choose', function ( $sizes ) {
 	return $sizes;
 }, 11 );
 
+/**
+ * Timmy removes the intermediate image sizes, but yoast SEOs og:image property depends on it.
+ * --> Add it again.
+ *
+ * @see https://github.com/mindkomm/timmy/issues/17
+ */
+add_filter( 'intermediate_image_sizes_advanced', function ( $metadata ) {
+	$metadata['large'] = array(
+		'width'  => 1200,
+		'height' => 0,
+		'crop'   => false,
+	);
+	
+	return $metadata;
+}, 11 );
+
 // configure sizes
 // NOTE: these are generated on image load as well as on page load if not existing
 // REMARK: please read this before adding unnecessary sizes: https://github.com/mindkomm/timmy#using-an-image-size-array-instead-of-a-key
@@ -53,7 +69,7 @@ add_filter( 'timmy/sizes', function () {
 		
 		// large - this is used by yoast as og image
 		'large'      => [
-			'resize'     => [ 1200, 1200 ],
+			'resize'     => [ 1200 ],
 			'name'       => 'Open Graph image',
 			'post_types' => [ 'all' ],
 			'show_in_ui' => false,
