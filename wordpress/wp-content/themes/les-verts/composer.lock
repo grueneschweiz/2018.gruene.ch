@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "4b10b81b39be12da8342365924877e27",
+	"content-hash": "19e3ca2c6b61430de26bdfbeeae041e2",
     "packages": [
         {
             "name": "altorouter/altorouter",
@@ -113,16 +113,16 @@
         },
         {
             "name": "composer/installers",
-            "version": "v1.5.0",
+					"version": "v1.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/installers.git",
-                "reference": "049797d727261bf27f2690430d935067710049c2"
+							"reference": "cfcca6b1b60bc4974324efb5783c13dca6932b5b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/installers/zipball/049797d727261bf27f2690430d935067710049c2",
-                "reference": "049797d727261bf27f2690430d935067710049c2",
+							"url": "https://api.github.com/repos/composer/installers/zipball/cfcca6b1b60bc4974324efb5783c13dca6932b5b",
+							"reference": "cfcca6b1b60bc4974324efb5783c13dca6932b5b",
                 "shasum": ""
             },
             "require": {
@@ -229,20 +229,20 @@
                 "zend",
                 "zikula"
             ],
-            "time": "2017-12-29T09:13:20+00:00"
+					"time": "2018-08-27T06:10:37+00:00"
         },
         {
             "name": "mindkomm/timmy",
-            "version": "0.13.6",
+					"version": "0.14.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mindkomm/timmy.git",
-                "reference": "e71166e5a3e81f477a4c961957183086a1bc28a1"
+							"reference": "481c0fb7841d93fadaa2ad4e4832207cf3df038b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mindkomm/timmy/zipball/e71166e5a3e81f477a4c961957183086a1bc28a1",
-                "reference": "e71166e5a3e81f477a4c961957183086a1bc28a1",
+							"url": "https://api.github.com/repos/mindkomm/timmy/zipball/481c0fb7841d93fadaa2ad4e4832207cf3df038b",
+							"reference": "481c0fb7841d93fadaa2ad4e4832207cf3df038b",
                 "shasum": ""
             },
             "require": {
@@ -256,7 +256,8 @@
                     "Timmy\\": "lib/"
                 },
                 "files": [
-                    "functions-images.php"
+									"functions-images.php",
+									"functions-deprecated.php"
                 ]
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -278,29 +279,32 @@
                 "timmy",
                 "wordpress"
             ],
-            "time": "2018-04-11T12:10:34+00:00"
+					"time": "2018-10-08T18:44:26+00:00"
         },
         {
             "name": "symfony/polyfill-ctype",
-            "version": "v1.8.0",
+					"version": "v1.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-ctype.git",
-                "reference": "7cc359f1b7b80fc25ed7796be7d96adc9b354bae"
+							"reference": "e3d826245268269cd66f8326bd8bc066687b4a19"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-ctype/zipball/7cc359f1b7b80fc25ed7796be7d96adc9b354bae",
-                "reference": "7cc359f1b7b80fc25ed7796be7d96adc9b354bae",
+							"url": "https://api.github.com/repos/symfony/polyfill-ctype/zipball/e3d826245268269cd66f8326bd8bc066687b4a19",
+							"reference": "e3d826245268269cd66f8326bd8bc066687b4a19",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.3"
             },
+					"suggest": {
+						"ext-ctype": "For best performance"
+					},
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.8-dev"
+									"dev-master": "1.9-dev"
                 }
             },
             "autoload": {
@@ -333,20 +337,20 @@
                 "polyfill",
                 "portable"
             ],
-            "time": "2018-04-30T19:57:29+00:00"
+					"time": "2018-08-06T14:22:27+00:00"
         },
         {
             "name": "symfony/polyfill-mbstring",
-            "version": "v1.8.0",
+					"version": "v1.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-mbstring.git",
-                "reference": "3296adf6a6454a050679cde90f95350ad604b171"
+							"reference": "c79c051f5b3a46be09205c73b80b346e4153e494"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/3296adf6a6454a050679cde90f95350ad604b171",
-                "reference": "3296adf6a6454a050679cde90f95350ad604b171",
+							"url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/c79c051f5b3a46be09205c73b80b346e4153e494",
+							"reference": "c79c051f5b3a46be09205c73b80b346e4153e494",
                 "shasum": ""
             },
             "require": {
@@ -358,7 +362,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.8-dev"
+									"dev-master": "1.9-dev"
                 }
             },
             "autoload": {
@@ -392,20 +396,20 @@
                 "portable",
                 "shim"
             ],
-            "time": "2018-04-26T10:06:28+00:00"
+					"time": "2018-09-21T13:07:52+00:00"
         },
         {
             "name": "timber/timber",
-            "version": "1.7.1",
+					"version": "1.8.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/timber/timber.git",
-                "reference": "a6a553d70b58d9e1f7c612511b72be60b0e98248"
+							"reference": "c194fe745b29152e36c6aa6f269e0fc1b536b8ec"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/timber/timber/zipball/a6a553d70b58d9e1f7c612511b72be60b0e98248",
-                "reference": "a6a553d70b58d9e1f7c612511b72be60b0e98248",
+							"url": "https://api.github.com/repos/timber/timber/zipball/c194fe745b29152e36c6aa6f269e0fc1b536b8ec",
+							"reference": "c194fe745b29152e36c6aa6f269e0fc1b536b8ec",
                 "shasum": ""
             },
             "require": {
@@ -416,8 +420,9 @@
                 "upstatement/routes": "0.4"
             },
             "require-dev": {
-                "phpunit/phpunit": "5.7.16",
-                "wpackagist-plugin/advanced-custom-fields": "4.4.*",
+							"johnpbloch/wordpress": "4.*",
+							"phpunit/phpunit": "5.7.16|6.*",
+							"wpackagist-plugin/advanced-custom-fields": "5.*",
                 "wpackagist-plugin/co-authors-plus": "3.2.*"
             },
             "suggest": {
@@ -453,36 +458,36 @@
                 "timber",
                 "twig"
             ],
-            "time": "2018-05-21T15:00:50+00:00"
+					"time": "2018-12-20T22:28:04+00:00"
         },
         {
             "name": "twig/twig",
-            "version": "v2.5.0",
+					"version": "v2.6.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "6a5f676b77a90823c2d4eaf76137b771adf31323"
+							"reference": "7d7342c8a4059fefb9b8d07db0cc14007021f9b7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/6a5f676b77a90823c2d4eaf76137b771adf31323",
-                "reference": "6a5f676b77a90823c2d4eaf76137b771adf31323",
+							"url": "https://api.github.com/repos/twigphp/Twig/zipball/7d7342c8a4059fefb9b8d07db0cc14007021f9b7",
+							"reference": "7d7342c8a4059fefb9b8d07db0cc14007021f9b7",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.0",
                 "symfony/polyfill-ctype": "^1.8",
-                "symfony/polyfill-mbstring": "~1.0"
+							"symfony/polyfill-mbstring": "^1.3"
             },
             "require-dev": {
                 "psr/container": "^1.0",
                 "symfony/debug": "^2.7",
-                "symfony/phpunit-bridge": "^3.3"
+							"symfony/phpunit-bridge": "^3.4.19|^4.1.8"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.5-dev"
+									"dev-master": "2.6-dev"
                 }
             },
             "autoload": {
@@ -520,7 +525,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2018-07-13T07:18:09+00:00"
+					"time": "2019-01-14T15:00:48+00:00"
         },
         {
             "name": "upstatement/routes",
