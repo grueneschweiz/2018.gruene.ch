@@ -35,17 +35,21 @@ if( class_exists( 'acf' ) ) {
  * - add a "help" section
  */
 
-//require_once __DIR__ .'/admin/acf-option-pages.php';
-require_once __DIR__ .'/admin/acf-protect-admin.php';
-require_once __DIR__ . '/admin/customize-tinymce.php';
-require_once __DIR__ .'/admin/admin-hide-pll-sync.php';
-require_once __DIR__ .'/admin/tweak-yoast-seo.php';
-require_once __DIR__ .'/admin/smush.php';
-require_once __DIR__ .'/admin/svg-support.php';
-require_once __DIR__ .'/admin/timmy-config.php';
-require_once __DIR__ .'/admin/translatable-post-types.php';
-require_once __DIR__ . '/admin/tweak-tribe-events.php';
+if ( is_admin() ) {
+	require_once __DIR__ . '/admin/acf-protect-admin.php';
+	require_once __DIR__ . '/admin/acf-featured-image.php';
+	require_once __DIR__ . '/admin/customize-tinymce.php';
+	require_once __DIR__ . '/admin/admin-hide-pll-sync.php';
+	require_once __DIR__ . '/admin/tweak-yoast-seo.php';
+	require_once __DIR__ . '/admin/smush.php';
+	require_once __DIR__ . '/admin/svg-support.php';
+	require_once __DIR__ . '/admin/tweak-tribe-events.php';
+}
+
+require_once __DIR__ . '/admin/timmy-config.php';
 require_once __DIR__ . '/admin/custom-menu-metabox.php';
+//require_once __DIR__ . '/admin/translatable-post-types.php';
+//require_once __DIR__ .'/admin/acf-option-pages.php';
 
 /**
  * CONTROLLERS
