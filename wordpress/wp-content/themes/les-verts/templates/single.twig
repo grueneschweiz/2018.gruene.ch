@@ -43,15 +43,17 @@
 					'tags': post.tags
 				} only %}
 			</aside>
-			<div class="page__shareable">
-				<aside class="page__share">
-					{% include 'molecules/m-share.twig' with {
-						'url': post.link,
-						'text': post.title,
-						'via': post.twitter_name,
-					} only %}
-				</aside>
-			</div>
+			{% if (post.share_buttons) %}
+				<div class="page__shareable">
+					<aside class="page__share">
+						{% include 'molecules/m-share.twig' with {
+							'url': post.link,
+							'text': post.title,
+							'via': post.twitter_name,
+						} only %}
+					</aside>
+				</div>
+			{% endif %}
 		</div>
 
 		{% if link_lists and link_lists.link_lists %}
