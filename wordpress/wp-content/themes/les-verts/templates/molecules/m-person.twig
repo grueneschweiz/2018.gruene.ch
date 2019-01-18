@@ -42,19 +42,22 @@
 						{% if 'facebook' == block.acf_fc_layout %}
 							<div class="m-person__social-icon">{% include 'atoms/a-social-icon.twig' with {
 									'link': block.facebook,
-									'type': 'facebook'
+									'type': 'facebook',
+									'title': __('Visit the facebook page of %s', constant('THEME_DOMAIN'))|format(person.full_name),
 								} %}</div>
 						{% endif %}
 						{% if 'twitter' == block.acf_fc_layout %}
 							<div class="m-person__social-icon">{% include 'atoms/a-social-icon.twig' with {
 									'link': block.twitter,
-									'type': 'twitter'
+									'type': 'twitter',
+									'title': __('Visit the twitter profile of %s', constant('THEME_DOMAIN'))|format(person.full_name),
 								} %}</div>
 						{% endif %}
 						{% if 'instagram' == block.acf_fc_layout %}
 							<div class="m-person__social-icon">{% include 'atoms/a-social-icon.twig' with {
 									'link': block.instagram,
-									'type': 'instagram'
+									'type': 'instagram',
+									'title': __('Visit the instagram profile of %s', constant('THEME_DOMAIN'))|format(person.full_name),
 								} %}</div>
 						{% endif %}
 					{% endfor %}

@@ -6,9 +6,19 @@
 	{% set link = link|social_link('instagram') %}
 {% endif %}
 
-<a href="{{ link }}" class="a-social-icon" target="_blank" aria-label="{{ type }}">
+{% if modifier %}
+	{% set svg = type~'--'~modifier %}
+{% else %}
+	{% set svg = type %}
+{% endif %}
+
+{% if not title %}
+	{% set title = type %}
+{% endif %}
+
+<a href="{{ link }}" class="a-social-icon" target="_blank" title="{{ title }}">
 	<svg role="img">
-		<title>{{ type }}</title>
-		<use xlink:href="#{{ type }}"></use>
+		<title>{{ title }}</title>
+		<use xlink:href="#{{ svg }}"></use>
 	</svg>
 </a>

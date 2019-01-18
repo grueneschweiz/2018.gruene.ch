@@ -14,25 +14,33 @@
     <div class="m-share__buttons">
         <div class="m-share__icon">
             {% include 'atoms/a-social-icon.twig' with {
-                'type': 'twitter--no-outline',
+							'type': 'twitter',
+							'modifier': 'no-outline',
+							'title': __('Share this page on twitter', constant('THEME_DOMAIN')),
                 'link': 'https://twitter.com/intent/tweet?url=' ~ (url|url_encode) ~ '&text=' ~ (text|url_encode) ~ '&via=' ~ (via|url_encode)
             } only %}
         </div>
         <div class="m-share__icon">
             {% include 'atoms/a-social-icon.twig' with {
-                'type': 'facebook--no-outline',
+							'type': 'facebook',
+							'modifier': 'no-outline',
+							'title': __('Share this page on facebook', constant('THEME_DOMAIN')),
                 'link': 'https://www.facebook.com/sharer.php?u=' ~ (url|url_encode)
             } only %}
         </div>
         <div class="m-share__icon">
             {% include 'atoms/a-social-icon.twig' with {
-                'type': 'mail--no-outline',
+							'type': 'mail',
+							'modifier': 'no-outline',
+							'title': __('Share this page by email', constant('THEME_DOMAIN')),
                 'link': 'mailto:?body=' ~ text ~ ' ' ~ url
             } only %}
         </div>
         <div class="m-share__icon">
             {% include 'atoms/a-social-icon.twig' with {
-                'type': 'whatsapp--no-outline',
+							'type': 'whatsapp',
+							'modifier': 'no-outline',
+							'title': __('Share this page by WhatsApp', constant('THEME_DOMAIN')),
                 'link': 'whatsapp://send?abid=BROADCAST_ID&text=' ~ (text~' '~url|url_encode)
             } only %}
         </div>
