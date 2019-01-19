@@ -25,10 +25,10 @@ export default class MMenuMobile extends MMenuBase {
 	bind() {
 		super.bind();
 
-		this.on( 'click', HAMBURGER_SELECTOR, () => this.toggleMainNavigation() );
+		this.on( 'click', HAMBURGER_SELECTOR, ( event ) => this.toggleMainNavigation( event ) );
 	}
 
-	toggleMainNavigation() {
+	toggleMainNavigation( event ) {
 		event.preventDefault();
 
 		if (this.mobileOpen) {

@@ -17,13 +17,13 @@ export default class AInput extends BaseView {
 		super.bind();
 
 		this.on( 'keyup', INPUT_SELECTOR, () => this.setStateClasses() );
-		this.on( 'focus', INPUT_SELECTOR, () => this.removeEmptyState() );
 		this.on( 'blur', INPUT_SELECTOR, () => this.manageEmptyState() );
+		// don't use the focus event, since it makes input fields unusable on FF mobile for Android
 	}
 
 	setStateClasses() {
 		this.addClass( this.input, TOUCHED_STATE );
-		this.off( 'keyup' );
+		this.manageEmptyState();
 	}
 
 	manageEmptyState() {
