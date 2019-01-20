@@ -21,7 +21,7 @@
 			<header><h3 id="m-person__full-name--{{ id }}"
 									class="m-person__full-name">{{ person.full_name }}</h3>{% if supplement %}<span
 					class="m-person__supplementary">{{ supplement }}</span>{% endif %}</header>
-			{% if person.role %}<p class="m-person__role">{{ person.role }}</p>{% endif %}
+			{% if role %}<p class="m-person__role">{{ role }}</p>{% endif %}
 			{% if not expandable and contact %}
 				<address class="m-person__address">
 					{% for block in contact %}
