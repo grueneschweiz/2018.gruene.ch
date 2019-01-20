@@ -8,12 +8,14 @@
 <article class="m-person{% if expandable %} m-person--expandable{% endif %}">
 	<div class="m-person__main">
 		<div class="m-person__image">
-			{% include 'atoms/a-image.twig' with {
-				'size': 'regular',
-				'image': person.image,
-				'no_caption': 1,
-				'no_copy': 1
-			} only %}
+			<div class="m-person__image-aspect-ratio-box">
+				{% include 'atoms/a-image.twig' with {
+					'size': 'regular',
+					'image': person.image,
+					'no_caption': 1,
+					'no_copy': 1
+				} only %}
+			</div>
 		</div>
 		<div class="m-person__basic-info">
 			<header><h3 id="m-person__full-name--{{ id }}"

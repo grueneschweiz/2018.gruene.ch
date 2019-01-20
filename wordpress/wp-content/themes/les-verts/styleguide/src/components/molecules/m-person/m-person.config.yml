@@ -3,10 +3,11 @@ status: ready
 context:
   full_name: Balthasar Glättli
   image:
-    image-src: '/img/glaettli.jpg'
+    image-src: '/img/wheat.jpg'
     alt: Balthasar Glättli
     title: Balthasar Glättli
     no_caption: 1
+
   supplementary: Zürich
   role: Nationalrat, Sicherheitskommission, Fraktionspräsident, Präsident Mieterverband Deutschschweiz
   email: balthasar.glaettli@gruene.ch

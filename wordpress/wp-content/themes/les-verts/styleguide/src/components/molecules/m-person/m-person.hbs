@@ -1,7 +1,9 @@
 <article class="m-person {{modifiers_classes}}">
 	<div class="m-person__main">
 		<div class="m-person__image">
-			{{> @a-image image}}
+			<div class="m-person__image-aspect-ratio-box">
+				{{> @a-image image}}
+			</div>
 		</div>
 		<div class="m-person__basic-info">
 			<header><h3 id="m-person__full-name--{{id}}" class="m-person__full-name">{{full_name}}</h3>{{#if supplementary}}<span class="m-person__supplementary">{{supplementary}}</span>{{/if}}</header>
