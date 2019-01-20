@@ -7,7 +7,8 @@
 				{% include 'atoms/a-social-icon.twig' with {
 					'type': media.acf_fc_layout,
 					'link': media.link,
-					'target': '_blank'
+					'target': '_blank',
+					'title': _x('Visit us on %s', 'facebook, twitter or instagram', constant('THEME_DOMAIN'))|format(media.acf_fc_layout)
 				} %}
 			{% endfor %}
 		</div>
