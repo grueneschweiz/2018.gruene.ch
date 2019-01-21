@@ -3,6 +3,18 @@
 
 	background-color: $color-grey-1;
 
+	font-size: 0.875rem;
+	@include media($size-small) {
+		font-size: 1rem;
+	}
+
+	&__text {
+		font-size: 0.875rem;
+		@include media($size-small) {
+			font-size: 1rem;
+		}
+	}
+
 	&__main {
 		display: flex;
 		flex-direction: column;
@@ -40,8 +52,9 @@
 	}
 
 	&__full-name {
-		@extend h4;
+		@include heading-font;
 		display: inline-block;
+		font-size: 1rem;
 	}
 
 	&__supplementary {
@@ -54,6 +67,8 @@
 	&__role {
 		margin: 0.75em 0;
 		hyphens: auto;
+
+		@extend .m-person__text;
 
 		@include media($intermediate-breakpoint) {
 			hyphens: none;
@@ -148,7 +163,6 @@
 			color: $color-text;
 		}
 	}
-
 
 	&__contact-title {
 		margin-top: 35px;

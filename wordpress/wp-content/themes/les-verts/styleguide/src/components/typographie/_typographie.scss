@@ -6,24 +6,6 @@ body {
 	color: $color-text;
 }
 
-/**
- * Headings
- */
-
-@mixin heading-font {
-	font-family: $font-title;
-	color: $color-primary;
-	letter-spacing: 0.018125em; // 0.025 For Sanuk; 0.018125em for Arial Black
-	line-height: 1.2727272727em;
-	margin-top: 0.6086956522em;
-	margin-bottom: 0.4057971015em;
-	hyphens: auto;
-
-	@include media($_DESKTOP) {
-		hyphens: initial; // sorry IE users
-	}
-}
-
 h1 {
 	@include heading-font;
 	font-size: 2rem; // 32/16
