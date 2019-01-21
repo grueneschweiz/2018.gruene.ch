@@ -52,6 +52,8 @@ class ACFPost extends \TimberPost {
 			$tmp = $this->generate_excerpt();
 		}
 		
+		$tmp = trim( $tmp );
+		
 		$this->__fullExcerpt = wptexturize( $tmp );
 		
 		return $this->__fullExcerpt;
