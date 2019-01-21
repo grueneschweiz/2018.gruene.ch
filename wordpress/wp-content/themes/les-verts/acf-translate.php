@@ -3475,7 +3475,7 @@ This list will automatically be updated if any new content meets the filter crit
 	acf_add_local_field_group(array(
 		'key' => 'group_5b6841bfef6ab',
 		'title' => __('[Template]Vote Recommendations', 'lesverts'),
-		'fields' => array(
+		'fields'                => array(
 			array(
 				'key' => 'field_5b7da085dc6f1',
 				'label' => __('About this Block', 'lesverts'),
@@ -3534,20 +3534,20 @@ This list will automatically be updated if any new content meets the filter crit
 				'button_label' => __('Add recommendation', 'lesverts'),
 				'sub_fields' => array(
 					array(
-						'key' => 'field_5baa445a76610',
-						'label' => __('Link', 'lesverts'),
-						'name' => 'proposal_link',
-						'type' => 'group',
-						'instructions' => __('Where visitors can read more about this bill.', 'lesverts'),
-						'required' => 0,
+						'key'               => 'field_5baa445a76610',
+						'label'             => __( 'Recommendation Link', 'lesverts' ),
+						'name'              => 'proposal_link',
+						'type'              => 'group',
+						'instructions'      => __('Where visitors can read more about this bill.', 'lesverts'),
+						'required'          => 0,
 						'conditional_logic' => 0,
-						'wrapper' => array(
+						'wrapper'           => array(
 							'width' => '70',
 							'class' => '',
 							'id' => '',
 						),
-						'layout' => 'block',
-						'sub_fields' => array(
+						'layout'            => 'block',
+						'sub_fields'        => array(
 							array(
 								'key' => 'field_5baa448d76611',
 								'label' => __('Link Type', 'lesverts'),
@@ -3571,12 +3571,12 @@ This list will automatically be updated if any new content meets the filter crit
 								'return_format' => 'value',
 							),
 							array(
-								'key' => 'field_5baa451976612',
-								'label' => __('Internal Link', 'lesverts'),
-								'name' => 'internal',
-								'type' => 'post_object',
-								'instructions' => '',
-								'required' => 0,
+								'key'               => 'field_5c46226447063',
+								'label'             => __('Internal Link', 'lesverts'),
+								'name'              => 'internal_link',
+								'type'              => 'group',
+								'instructions'      => '',
+								'required'          => 0,
 								'conditional_logic' => array(
 									array(
 										array(
@@ -3586,21 +3586,56 @@ This list will automatically be updated if any new content meets the filter crit
 										),
 									),
 								),
-								'wrapper' => array(
+								'wrapper'           => array(
 									'width' => '75',
 									'class' => '',
 									'id' => '',
 								),
-								'post_type' => array(
-									0 => 'post',
-									1 => 'page',
+								'layout'            => 'block',
+								'sub_fields'        => array(
+									array(
+										'key'               => 'field_5baa451976612',
+										'label'             => __( 'Post', 'lesverts' ),
+										'name'              => 'post',
+										'type'              => 'post_object',
+										'instructions'      => '',
+										'required'          => 0,
+										'conditional_logic' => 0,
+										'wrapper'           => array(
+											'width' => '',
+											'class' => '',
+											'id'    => '',
+										),
+										'post_type'         => array(
+											0 => 'post',
+											1 => 'page',
+										),
+										'taxonomy'          => '',
+										'allow_null'        => 0,
+										'multiple'          => 0,
+										'return_format'     => 'object',
+										'ui'                => 1,
+									),
+									array(
+										'key'               => 'field_5c4620e993f91',
+										'label'             => __( 'Title Overwrite (optional)', 'lesverts' ),
+										'name'              => 'title',
+										'type'              => 'text',
+										'instructions'      => __( 'Leave blank, to use the posts title.', 'lesverts' ),
+										'required'          => 0,
+										'conditional_logic' => 0,
+										'wrapper'           => array(
+											'width' => '',
+											'class' => '',
+											'id'    => '',
+										),
+										'default_value'     => '',
+										'placeholder'       => '',
+										'prepend'           => '',
+										'append'            => '',
+										'maxlength'         => '',
+									),
 								),
-								'taxonomy' => array(
-								),
-								'allow_null' => 0,
-								'multiple' => 0,
-								'return_format' => 'object',
-								'ui' => 1,
 							),
 							array(
 								'key' => 'field_5baa456476613',
@@ -3776,7 +3811,7 @@ This list will automatically be updated if any new content meets the filter crit
 				),
 			),
 		),
-		'location' => array(
+		'location'              => array(
 			array(
 				array(
 					'param' => 'page_type',
@@ -3785,14 +3820,15 @@ This list will automatically be updated if any new content meets the filter crit
 				),
 			),
 		),
-		'menu_order' => 0,
-		'position' => 'normal',
-		'style' => 'default',
-		'label_placement' => 'top',
+		'menu_order'            => 0,
+		'position'              => 'normal',
+		'style'                 => 'default',
+		'label_placement'       => 'top',
 		'instruction_placement' => 'label',
-		'hide_on_screen' => '',
-		'active' => 0,
-		'description' => '',
+		'hide_on_screen'        => '',
+		'active'                => 0,
+		'description'           => '',
+		'modified'              => 1548100965,
 	));
 	
 	acf_add_local_field_group(array(
