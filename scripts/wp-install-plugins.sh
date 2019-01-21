@@ -98,7 +98,7 @@ $WPCLI plugin activate advanced-custom-fields-pro $ACTIVATE_NETWORK_ARGUMENT
 $WPCLI package install git@github.com:superhuit-ch/wp-cli-acf-json.git
 
 ## Timber
-$WPCLI plugin install timber-library --version=1.7.1 $INSTALL_ACTIVATE_ARGUMENT
+$WPCLI plugin install timber-library --version=1.8.4 $INSTALL_ACTIVATE_ARGUMENT
 
 ## SVG support
 $WPCLI plugin install svg-support $INSTALL_ACTIVATE_ARGUMENT
