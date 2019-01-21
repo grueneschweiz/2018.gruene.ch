@@ -47,9 +47,12 @@ if ( is_admin() ) {
 
 require_once __DIR__ . '/admin/timmy-config.php';
 require_once __DIR__ . '/admin/custom-menu-metabox.php';
-require_once __DIR__ . '/admin/tweak-yoast-seo.php';
 //require_once __DIR__ . '/admin/translatable-post-types.php';
 //require_once __DIR__ .'/admin/acf-option-pages.php';
+
+if ( defined( 'WPSEO_FILE' ) ) {
+	require_once __DIR__ . '/admin/tweak-yoast-seo.php';
+}
 
 /**
  * CONTROLLERS
