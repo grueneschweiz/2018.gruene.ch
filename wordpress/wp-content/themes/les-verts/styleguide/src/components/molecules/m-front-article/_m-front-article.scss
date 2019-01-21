@@ -20,6 +20,7 @@
 		line-height: 1.4em;
 		color: $color-primary;
 		transition: color $transition-fast $transition-ease;
+		hyphens: auto;
 
 		@include hover {
 			color: $color-primary-dark;
