@@ -9,8 +9,8 @@
 			{% set tag = proposal.flag %}
 
 			{% if 'internal' == proposal.proposal_link.type %}
-				{% set acf_post = ACFPost(proposal.proposal_link.internal) %}
-				{% set label = acf_post.title %}
+				{% set acf_post = ACFPost(proposal.proposal_link.internal_link.post) %}
+				{% set label = proposal.proposal_link.internal_link.title|default(acf_post.title) %}
 				{% set link = acf_post.link %}
 				{% if num_proposals < 3 %}
 					{% set excerpt = acf_post.excerpt() %}

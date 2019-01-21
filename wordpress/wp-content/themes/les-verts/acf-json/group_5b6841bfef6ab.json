@@ -61,7 +61,7 @@
             "sub_fields": [
                 {
                     "key": "field_5baa445a76610",
-                    "label": "Link",
+                  "label": "Recommendation Link",
                     "name": "proposal_link",
                     "type": "group",
                     "instructions": "Where visitors can read more about this bill.",
@@ -97,35 +97,71 @@
                             "return_format": "value"
                         },
                         {
-                            "key": "field_5baa451976612",
+                          "key": "field_5c46226447063",
                             "label": "Internal Link",
-                            "name": "internal",
-                            "type": "post_object",
+                          "name": "internal_link",
+                          "type": "group",
                             "instructions": "",
                             "required": 0,
                             "conditional_logic": [
-                                [
-                                    {
-                                        "field": "field_5baa448d76611",
-                                        "operator": "==",
-                                        "value": "internal"
-                                    }
-                                ]
+                              [
+                                {
+                                  "field": "field_5baa448d76611",
+                                  "operator": "==",
+                                  "value": "internal"
+                                }
+                              ]
                             ],
                             "wrapper": {
                                 "width": "75",
                                 "class": "",
                                 "id": ""
                             },
-                            "post_type": [
+                          "layout": "block",
+                          "sub_fields": [
+                            {
+                              "key": "field_5baa451976612",
+                              "label": "Post",
+                              "name": "post",
+                              "type": "post_object",
+                              "instructions": "",
+                              "required": 0,
+                              "conditional_logic": 0,
+                              "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                              },
+                              "post_type": [
                                 "post",
                                 "page"
-                            ],
-                            "taxonomy": [],
-                            "allow_null": 0,
-                            "multiple": 0,
-                            "return_format": "object",
-                            "ui": 1
+                              ],
+                              "taxonomy": "",
+                              "allow_null": 0,
+                              "multiple": 0,
+                              "return_format": "object",
+                              "ui": 1
+                            },
+                            {
+                              "key": "field_5c4620e993f91",
+                              "label": "Title Overwrite (optional)",
+                              "name": "title",
+                              "type": "text",
+                              "instructions": "Leave blank, to use the posts title.",
+                              "required": 0,
+                              "conditional_logic": 0,
+                              "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                              },
+                              "default_value": "",
+                              "placeholder": "",
+                              "prepend": "",
+                              "append": "",
+                              "maxlength": ""
+                            }
+                          ]
                         },
                         {
                             "key": "field_5baa456476613",
@@ -318,5 +354,5 @@
     "hide_on_screen": "",
     "active": 0,
     "description": "",
-    "modified": 1543421259
+  "modified": 1548100965
 }
