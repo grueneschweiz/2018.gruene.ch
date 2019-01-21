@@ -142,6 +142,9 @@ $WPCLI plugin activate searchwp $ACTIVATE_NETWORK_ARGUMENT
 # Enhanced media library
 $WPCLI plugin install enhanced-media-library $INSTALL_ACTIVATE_ARGUMENT
 
+# Enable media replace
+$WPCLI plugin install enable-media-replace $INSTALL_ACTIVATE_ARGUMENT
+
 #====================
 # Theme
 #====================
@@ -205,3 +208,6 @@ if [ $NETWORK ]; then
 else
     $WPCLI option patch update disable_comments_options remove_everywhere <<< "true"
 fi
+
+# hide 'enable media replace' ads
+$WPCLI option update emr_news 1
