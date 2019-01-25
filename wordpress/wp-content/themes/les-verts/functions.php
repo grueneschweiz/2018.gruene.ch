@@ -143,17 +143,17 @@ class StarterSite extends TimberSite {
 			wp_deregister_style( 'wp-block-library' );
 			
 			// live reload of css for development
-			if ( WP_DEBUG ) {
-				// TODO find a way to load dynymically the BS file (cause the port number could be somthing else)
-				if ( is_multisite() ) { // Removing trailing slash to attach browser-sync
-					wp_enqueue_script( 'bs',
-						substr( network_site_url(), 0, - 1 ) . ':4000/browser-sync/browser-sync-client.js', false, null,
-						true );
-				} else {
-					wp_enqueue_script( 'bs', get_site_url() . ':4000/browser-sync/browser-sync-client.js', false, null,
-						true );
-				}
-			}
+//			if ( WP_DEBUG ) {
+//				// TODO find a way to load dynymically the BS file (cause the port number could be somthing else)
+//				if ( is_multisite() ) { // Removing trailing slash to attach browser-sync
+//					wp_enqueue_script( 'bs',
+//						substr( network_site_url(), 0, - 1 ) . ':4000/browser-sync/browser-sync-client.js', false, null,
+//						true );
+//				} else {
+//					wp_enqueue_script( 'bs', get_site_url() . ':4000/browser-sync/browser-sync-client.js', false, null,
+//						true );
+//				}
+//			}
 		}
 		
 		// admin bar styles
