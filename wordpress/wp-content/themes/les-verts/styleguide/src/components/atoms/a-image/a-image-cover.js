@@ -21,8 +21,6 @@ export default class AImageCover extends BaseView {
 		super.bind();
 
 		this.on('afterReplaceImage', () => this.objectFit());
-
-		//this.polyfill();
 	}
 
 	objectFit() {
