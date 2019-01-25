@@ -45,7 +45,6 @@
     "lodash.isfunction": "^3.0.9",
     "lodash.pullat": "^4.6.0",
     "lodash.throttle": "^4.1.1",
-    "object-fit-images": "^3.2.4",
     "swiper": "^4.4.6"
   },
   "devDependencies": {
