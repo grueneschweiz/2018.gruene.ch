@@ -1,10 +1,12 @@
 import BaseView from 'base-view';
 
+const BASE_CONTAINER_SELECTOR = '.a-image';
+
 const LAZY_STATE = 'a-image__image--lazy';
 const LAZY_LOADED = 'a-image__image--loaded';
 const DEBOUNCE_DELAY_MS = 300;
 
-export default class AInput extends BaseView {
+export default class AImageLazy extends BaseView {
 	initialize() {
 		this.ticking = false;
 		this.loading = false;
@@ -68,7 +70,16 @@ export default class AInput extends BaseView {
 		img.classList.add( LAZY_LOADED );
 		img.classList.remove( LAZY_STATE );
 
+		this.triggerAfterReplaceEvent( img.closest(BASE_CONTAINER_SELECTOR) );
+
 		this.destroy();
+	}
+
+	triggerAfterReplaceEvent(elem) {
+		// use the old fashioned way, cause we need it in IE
+		let event = document.createEvent('Event');
+		event.initEvent('afterReplaceImage', true, true);
+		elem.dispatchEvent(event);
 	}
 
 	destroy() {

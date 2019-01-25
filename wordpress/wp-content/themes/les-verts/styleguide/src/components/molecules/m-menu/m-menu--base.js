@@ -54,10 +54,12 @@ export class MMenuBase extends BaseView {
 
 		let elements = this.getScopedElements( SUBMENU_SELECTOR + ', ' + MAIN_ENTRY_SELECTOR );
 
-		elements.forEach( element => {
-			this.removeClass( element, OPEN_STATE );
-			element.setAttribute( 'aria-expanded', false );
-		} );
+		for (let key in elements) {
+			if (elements.hasOwnProperty(key)) {
+				this.removeClass( elements[key], OPEN_STATE );
+				elements[key].setAttribute( 'aria-expanded', false );
+			}
+		}
 
 		this.afterCloseSubNavigation();
 	}

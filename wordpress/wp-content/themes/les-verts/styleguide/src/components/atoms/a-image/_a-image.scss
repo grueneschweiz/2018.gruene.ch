@@ -27,6 +27,10 @@
 		overflow: hidden;
 	}
 
+	&--cover.object-fit-ie {
+		background-size: cover;
+	}
+
 	&__image--lazy {
 		filter: blur(2vw);
 		transform: scale(1.1);
@@ -39,7 +43,7 @@
 	}
 
 	&--cover &__image--fp {
-		@include object-fit(cover, 0 0);
+		object-fit: cover;
 
 		&-top {
 			&-left {
@@ -80,6 +84,55 @@
 
 			&-right {
 				object-position: 100% 100%;
+			}
+		}
+
+		&.object-fit-ie {
+			display: none;
+		}
+	}
+
+	// for the IE polyfill
+	&--cover.object-fit-ie.a-image__image-fp {
+		&-top {
+			&-left {
+				background-position: 0 0;
+			}
+
+			&-center {
+				background-position: 50% 0;
+			}
+
+			&-right {
+				background-position: 100% 0;
+			}
+		}
+
+		&-middle {
+			&-left {
+				background-position: 0 50%;
+			}
+
+			&-center {
+				background-position: 50% 50%;
+			}
+
+			&-right {
+				background-position: 100% 50%;
+			}
+		}
+
+		&-bottom {
+			&-left {
+				background-position: 0 100%;
+			}
+
+			&-center {
+				background-position: 50% 100%;
+			}
+
+			&-right {
+				background-position: 100% 100%;
 			}
 		}
 	}
