@@ -53,25 +53,6 @@
 }
 
 /**
- * Object Fit Polyfill, needs to include https://www.npmjs.com/package/object-fit-images
- * This mixin can be used to set the object-fit:
- * @include object-fit(contain);
- * or object-fit and object-position:
- * @include object-fit(cover, top);
- */
-@mixin object-fit($fit: fill, $position: null) {
-	-o-object-fit: $fit;
-	object-fit: $fit;
-	@if $position {
-		-o-object-position: $position;
-		object-position: $position;
-		font-family: 'object-fit: #{$fit}; object-position: #{$position}';
-	} @else {
-		font-family: 'object-fit: #{$fit}';
-	}
-}
-
-/**
  * Fluid Props
  */
 @mixin fluid-props($properties, $min-vw, $max-vw, $min-value, $max-value, $set-initial-properties: true, $suffix: null) {
