@@ -1,7 +1,9 @@
 <div class="m-menu">
-	<a class="m-menu__logo" href="/" title="{{ __('Home', constant('THEME_DOMAIN')) }}">
-		{% include 'atoms/a-logo.twig' with {'logo': menu.logo} only %}
-	</a>
+	{% if menu.logo.image.id %}
+		<a class="m-menu__logo" href="/" title="{{ __('Home', constant('THEME_DOMAIN')) }}">
+			{% include 'atoms/a-logo.twig' with {'logo': menu.logo} only %}
+		</a>
+	{% endif %}
 	<nav class="m-menu__nav{% if not (menu.cta or menu.language) %} m-menu__nav--no-menu-right{% endif %}">
 		<div class="m-menu__hamburger">
 			{% include 'atoms/a-hamburger.twig' %}

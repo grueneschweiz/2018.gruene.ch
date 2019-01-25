@@ -6,9 +6,11 @@
 					<span class="m-branding__unbreakeable">{{ unbreakeable|wptexturize }}</span>
 				{% endfor %}
 			</h1>
-			<a class="m-branding__logo" href="/" title="{{ __('Home', constant('THEME_DOMAIN')) }}">
-				{% include 'atoms/a-logo.twig' with {'logo': logo} only %}
-			</a>
+			{% if logo.image.id %}
+				<a class="m-branding__logo" href="/" title="{{ __('Home', constant('THEME_DOMAIN')) }}">
+					{% include 'atoms/a-logo.twig' with {'logo': logo} only %}
+				</a>
+			{% endif %}
 		</div>
 	</div>
 </section>
