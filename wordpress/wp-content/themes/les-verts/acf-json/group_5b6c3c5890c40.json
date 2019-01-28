@@ -406,6 +406,51 @@
                             ],
                             "min": "",
                             "max": ""
+                        },
+                        "layout_5c4f21cbd787c": {
+                            "key": "layout_5c4f21cbd787c",
+                            "name": "code",
+                            "label": "Code",
+                            "display": "block",
+                            "sub_fields": [
+                                {
+                                    "key": "field_5c4f21cbd787d",
+                                    "label": "About this Block",
+                                    "name": "",
+                                    "type": "message",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "message": "Acc custom code (advanced)",
+                                    "new_lines": "",
+                                    "esc_html": 0
+                                },
+                                {
+                                    "key": "field_5c4f21cbd787e",
+                                    "label": "Code",
+                                    "name": "code",
+                                    "type": "acf_code_field",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "placeholder": "",
+                                    "mode": "htmlmixed",
+                                    "theme": "neo"
+                                }
+                            ],
+                            "min": "",
+                            "max": ""
                         }
                     },
                     "button_label": "Add Content Block",
@@ -503,5 +548,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1544901735
+    "modified": 1548689976
 }

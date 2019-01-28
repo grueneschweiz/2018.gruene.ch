@@ -36,6 +36,8 @@
 	</div>
 {% elseif block.acf_fc_layout == 'oembed' %}
     {{ block.oembed }}
+{% elseif block.acf_fc_layout == 'code' %}
+		{{ block.code }}
 {% else %}
     {{ block.text }}
 {% endif %}
