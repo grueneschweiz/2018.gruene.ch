@@ -1,24 +1,6 @@
 {
     "key": "group_5b6da383ba62c",
     "title": "[Template]Map Block",
-    "location": [
-        [
-            {
-                "param": "page_type",
-                "operator": "==",
-                "value": "front_page"
-            }
-        ]
-    ],
-    "menu_order": 0,
-    "position": "normal",
-    "style": "default",
-    "label_placement": "top",
-    "instruction_placement": "label",
-    "hide_on_screen": "",
-    "active": 0,
-    "description": "",
-    "modified": 1543324746,
     "fields": [
         {
             "key": "field_5b71a8daf58b5",
@@ -100,7 +82,7 @@
             "key": "field_5b6daabace235",
             "label": "Map SVG",
             "name": "map",
-            "type": "textarea",
+            "type": "acf_code_field",
             "instructions": "Copy the SVG in here. Make sure the regions have the '.map-item' class and the id matches the id of the data.",
             "required": 1,
             "conditional_logic": 0,
@@ -111,9 +93,8 @@
             },
             "default_value": "",
             "placeholder": "",
-            "maxlength": "",
-            "rows": 20,
-            "new_lines": ""
+            "mode": "htmlmixed",
+            "theme": "neo"
         },
         {
             "key": "field_5b6dab1bce236",
@@ -263,5 +244,23 @@
             "append": "",
             "maxlength": ""
         }
-    ]
+    ],
+    "location": [
+        [
+            {
+                "param": "page_type",
+                "operator": "==",
+                "value": "front_page"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 0,
+    "description": "",
+    "modified": 1548690293
 }

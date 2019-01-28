@@ -145,6 +145,9 @@ $WPCLI plugin install enhanced-media-library $INSTALL_ACTIVATE_ARGUMENT
 # Enable media replace
 $WPCLI plugin install enable-media-replace $INSTALL_ACTIVATE_ARGUMENT
 
+# ACF Code Field
+$WPCLI plugin install acf-code-field $INSTALL_ACTIVATE_ARGUMENT
+
 #====================
 # Theme
 #====================
