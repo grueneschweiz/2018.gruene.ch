@@ -80,16 +80,18 @@
 				<time class="o-front-article__date"
 							datetime="{{ post.post_date|date('Y-m-d H:i') }}">{{ post.post_date|date() }}</time>
 				{% if oton %}
-					<a href="{{ author.link() }}" class="o-front-article__author">{{ author.title }}</a>
+					{#todo: add link again: <a href="{{ author.link() }}" class="o-front-article__author">{{ author.title }}</a>#}
+					<span class="o-front-article__author">{{ author.title }}</span>
 				{% endif %}
 			</div>
 			{% if oton %}
 				<div class="o-front-article__author-image">
+					{# todo: add link again: 'link_url': author.link(),#}
 					{% include 'atoms/a-image.twig' with {
 						'image': author.image,
 						'size': 'regular',
-						'link_url': author.link(),
-						'no_caption': 1
+						'no_caption': 1,
+						'no_copy': 1
 					} only %}
 				</div>
 			{% endif %}
