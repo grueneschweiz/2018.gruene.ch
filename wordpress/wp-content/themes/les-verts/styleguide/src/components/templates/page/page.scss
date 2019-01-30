@@ -164,6 +164,12 @@
 		@include media($page-grid-desktop) {
 			flex-grow: 1;
 		}
+
+		&--margin-top {
+			@include media($page-grid-desktop) {
+				margin-top: 124px;
+			}
+		}
 	}
 
 	//noinspection CssOverwrittenProperties

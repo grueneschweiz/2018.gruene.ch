@@ -33,18 +33,23 @@
 			{% endfor %}
 		</div>
 
+		{% if is_press_release or post.categories or post.tags %}
+			{% set has_post_meta = 1 %}
+		{% endif %}
 		<div
 			class="page__post-meta-wrapper {% if main_content.header_image %}page__row--2{% else %}page__row--1{% endif %}">
-			<aside class="page__post-meta">
-				{% include 'atoms/a-post-meta.twig' with {
-					'date': is_press_release ? post.date : false,
-					'datetime': post.post_date,
-					'categories': post.categories,
-					'tags': post.tags
-				} only %}
-			</aside>
+			{% if has_post_meta %}
+				<aside class="page__post-meta">
+					{% include 'atoms/a-post-meta.twig' with {
+						'date': is_press_release ? post.date : false,
+						'datetime': post.post_date,
+						'categories': post.categories,
+						'tags': post.tags
+					} only %}
+				</aside>
+			{% endif %}
 			{% if (post.share_buttons) %}
-				<div class="page__shareable">
+				<div class="page__shareable{% if not has_post_meta %} page__shareable--margin-top{% endif %}">
 					<aside class="page__share">
 						{% include 'molecules/m-share.twig' with {
 							'url': post.link,
