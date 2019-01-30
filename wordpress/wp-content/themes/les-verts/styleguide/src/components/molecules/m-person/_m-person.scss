@@ -2,16 +2,16 @@
 	$intermediate-breakpoint: 480px;
 
 	background-color: $color-grey-1;
-
+	@include fluid-props(margin-top, $fluid-min, $fluid-max, 20px, 40px);
 	font-size: 0.875rem;
 	@include media($size-small) {
 		font-size: 1rem;
 	}
 
 	&__text {
-		font-size: 0.875rem;
+		font-size: 0.875rem !important;
 		@include media($size-small) {
-			font-size: 1rem;
+			font-size: 1rem !important;
 		}
 	}
 
@@ -29,6 +29,10 @@
 		width: 100%;
 
 		@include media($intermediate-breakpoint) {
+			max-width: 170px;
+		}
+
+		@include media($size-small) {
 			max-width: 215px;
 		}
 	}
