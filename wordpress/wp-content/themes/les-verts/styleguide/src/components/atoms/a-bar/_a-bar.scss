@@ -6,21 +6,14 @@
 	line-height: 1em;
 
 	display: inline-block;
-	margin-bottom: 0.1em;
 	padding: 0.08em 0.2em 0.1em;
+	margin-bottom: 0.1em;
 
-	// hack for firefox on windows
-	&.windows {
-		@-moz-document url-prefix() {
-			padding: 0.2em 0.2em 0 0;
-		}
-	}
-
-	&--left, &--left.windows {
+	&--left {
 		padding-left: 5em;
 	}
 
-	&--right, &--right.windows {
+	&--right {
 		padding-right: 5em;
 	}
 

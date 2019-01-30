@@ -123,7 +123,7 @@ class StarterSite extends TimberSite {
 			THEME_VERSION );
 		
 		// js
-		$polyfills = 'HTMLPictureElement,CustomEvent,Element.prototype.closest,Object.assign,NodeList.prototype.forEach,Promise,matchMedia,Object.entries,URL';
+		$polyfills = 'HTMLPictureElement,CustomEvent,Element.prototype.closest,Object.assign,NodeList.prototype.forEach,Promise,matchMedia,Object.entries';
 		wp_enqueue_script( THEME_DOMAIN . '-polyfills',
 			'https://cdn.polyfill.io/v2/polyfill' . ( WP_DEBUG ? '' : '.min' ) . '.js?features=' . $polyfills,
 			false, null, true
