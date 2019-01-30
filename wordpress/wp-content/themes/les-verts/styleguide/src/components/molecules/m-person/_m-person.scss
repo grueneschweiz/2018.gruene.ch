@@ -44,10 +44,10 @@
 	}
 
 	&__basic-info {
-		margin: 20px;
+		margin: 8px 20px 20px;
 
 		@include media($size-small) {
-			margin: 24px;
+			margin: 12px 24px 24px;
 		}
 	}
 
