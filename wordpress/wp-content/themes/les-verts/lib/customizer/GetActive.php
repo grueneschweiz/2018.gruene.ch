@@ -20,7 +20,7 @@ class GetActive {
 	
 	const SECTION = THEME_DOMAIN. '_section';
 	const SETTING_GET_ACTIVE_LABEL = 'get_active_label';
-	const SETTING_GET_ACTIVE_POST_ID = 'get_active_post_id';
+	const SETTING_GET_ACTIVE_LINK = 'get_active_link';
 	
 	public static function register() {
 		add_action( 'customize_register', function ( $wp_customize ) {
@@ -42,7 +42,7 @@ class GetActive {
 			'default' => __('Get Active', THEME_DOMAIN),
 		) );
 		
-		$wp_customize->add_setting( self::SETTING_GET_ACTIVE_POST_ID, array(
+		$wp_customize->add_setting( self::SETTING_GET_ACTIVE_LINK, array(
 			'default' => null,
 		) );
 	}
@@ -65,13 +65,13 @@ class GetActive {
 		$wp_customize->add_control(
 			new \WP_Customize_Control(
 				$wp_customize,
-				self::SETTING_GET_ACTIVE_POST_ID,
+				self::SETTING_GET_ACTIVE_LINK,
 				array(
-					'label'          => __( 'Button Link (Page)', THEME_DOMAIN ),
-					'description'    => __( 'Select the page, where the get active button should lead to.', THEME_DOMAIN ),
+					'label'          => __( 'Button Link', THEME_DOMAIN ),
+					'description'    => __( 'Add the url, where the get active button should lead to.', THEME_DOMAIN ),
 					'section'        => self::SECTION,
-					'settings'       => self::SETTING_GET_ACTIVE_POST_ID,
-					'type'           => 'dropdown-pages',
+					'settings'       => self::SETTING_GET_ACTIVE_LINK,
+					'type'           => 'url',
 					'allow_addition' => true,
 				)
 			)

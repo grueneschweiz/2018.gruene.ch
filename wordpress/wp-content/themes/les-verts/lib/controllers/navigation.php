@@ -118,15 +118,15 @@ class Navigation_controller {
 	/**
 	 * Return array with label and link for the get active button.
 	 *
-	 * The values come from the customizer. If no page is defined, an empty
+	 * The values come from the customizer. If link is defined, an empty
 	 * array will be returned.
 	 *
 	 * @return array
 	 */
 	public static function get_menu_cta() {
-		$post_id = get_theme_mod( Customizer\GetActive::SETTING_GET_ACTIVE_POST_ID, false );
+		$link = get_theme_mod( Customizer\GetActive::SETTING_GET_ACTIVE_LINK, false );
 		
-		if ( ! $post_id ) {
+		if ( ! $link ) {
 			return [];
 		}
 		
@@ -138,7 +138,7 @@ class Navigation_controller {
 		
 		return [
 			'label' => $label,
-			'link'  => get_permalink( $post_id ),
+			'link'  => $link,
 		];
 	}
 }
