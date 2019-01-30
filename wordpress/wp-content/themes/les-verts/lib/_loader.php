@@ -43,6 +43,7 @@ if ( is_admin() ) {
 	require_once __DIR__ . '/admin/smush.php';
 	require_once __DIR__ . '/admin/svg-support.php';
 	require_once __DIR__ . '/admin/tweak-tribe-events.php';
+	require_once __DIR__ . '/admin/allow-code.php';
 }
 
 require_once __DIR__ . '/admin/timmy-config.php';
