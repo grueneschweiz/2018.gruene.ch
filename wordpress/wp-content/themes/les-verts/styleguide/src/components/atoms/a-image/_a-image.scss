@@ -158,8 +158,8 @@
 
 	&__copy {
 		position: absolute;
-		@include fluid-props(bottom right, $size-tiny, $size-large, 5px, 19px);
-		@include fluid-props(font-size, $size-tiny, $size-large, 5px, 10px);
+		@include fluid-props(bottom right, $size-tiny, $size-large, 5px, 10px);
+		@include fluid-props(font-size, $size-tiny, $size-large, 5px, 7px);
 		transform: translateX(calc(100% - 1em)) rotate(-90deg);
 		transform-origin: top left;
 
