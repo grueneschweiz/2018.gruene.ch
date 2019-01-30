@@ -97,6 +97,10 @@
 		grid-column-end: content-end;
 	}
 
+	&__main {
+		@include fluid-props(margin-bottom, $size-medium, $grid-max-width-max, 60px, 90px);
+	}
+
 	/**
 		* ==========
 		* Components
