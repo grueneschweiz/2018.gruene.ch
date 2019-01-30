@@ -19,7 +19,7 @@
 	{% endif %}
     <div class="page__form">
         {% include 'molecules/m-form.twig' with {
-            'post': ACFPost(block.form),
+					'post': ACFPost(block.form),
 					'action_id': action_id,
 					'config_id': config_id
         } only %}

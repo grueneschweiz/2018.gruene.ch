@@ -4,14 +4,8 @@
 	</h3>
 	<p class="m-campaign-cta__text">{{ desc|wptexturize }}</p>
 	{% if form %}
-		{% filter shortcodes %}
-			[torro_form id="{{ form }}"]
-		{% endfilter %}
+		{% include 'molecules/m-form.twig' with {
+			'post': ACFPost(form),
+		} only %}
 	{% endif %}
-	{#<form class="m-campaign-cta__grid">#}
-	{#<div class="m-campaign-cta__postal-code">{{> @a-input input-postal-code}}</div>#}
-	{#<div class="m-campaign-cta__email">{{> @a-input input-email}}</div>#}
-	{#<div class="m-campaign-cta__consent">{{> @a-checkoption checkbox}}</div>#}
-	{#<div class="m-campaign-cta__button">{{> @a-button button}}</div>#}
-	{#</form>#}
 </div>
