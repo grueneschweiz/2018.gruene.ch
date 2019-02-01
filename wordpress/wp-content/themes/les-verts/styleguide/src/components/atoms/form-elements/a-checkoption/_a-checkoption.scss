@@ -19,6 +19,12 @@
 		display: block;
 		background: url('img/checkbox.svg') no-repeat calc(-1.5rem + 2px) 0.125rem;
 		position: relative;
+
+		&.a-checkoption--legal {
+			font-size: 0.875rem;
+			line-height: 1.3em;
+			color: $color-text-light;
+		}
 	}
 
 	&__field:focus + &__label {
