@@ -1,5 +1,12 @@
 {
-    "require": {
-      "mindkomm/timmy": "^0.14.0"
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/soderlind/customizer-polylang"
     }
+  ],
+  "require": {
+    "soderlind/customizer-polylang": "dev-master",
+    "mindkomm/timmy": "^0.14.0"
+  }
 }

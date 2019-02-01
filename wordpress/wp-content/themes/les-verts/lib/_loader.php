@@ -21,6 +21,15 @@ if( class_exists( 'acf' ) ) {
 	// require_once __DIR__ .'/acf/custom-locations/localized-menu.php';
 }
 
+/**
+ * Polylang
+ * ========
+ *
+ * Tweaks needed for polylang
+ */
+if (function_exists('pll_current_language')) {
+  require_once __DIR__ . '/pll/translate-customizer.php';
+}
 
 /**
  * ADMIN
