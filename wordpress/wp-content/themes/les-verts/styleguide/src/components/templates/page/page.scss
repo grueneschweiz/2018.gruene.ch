@@ -98,7 +98,8 @@
 	}
 
 	&__main {
-		@include fluid-props(margin-bottom, $size-medium, $grid-max-width-max, 60px, 90px);
+		@include fluid-props(padding-bottom, $size-medium, $grid-max-width-max, 60px, 90px);
+		background-color: $color-white; // needed for front (so the main campaign is not visible in the bottom padding)
 	}
 
 	/**
