@@ -1136,7 +1136,7 @@ msgstr "Méta-navigation dans le pied de page"
 #. Ggf Namen der Widgets anpassen; footer menu (en) vs footer Links (de)
 #: functions.php:189
 msgid "This is the footer. Use it for your primary calls to action (Button widget), your contact details (Contact widget) and the footer menu (Link list widget)."
-msgstr "Voici le pied de page. Utilise-le pour les principaux appels à agir (gadget logiciel «Bouton»), tes coordonnées (gadget logiciel «Coordonnées») et les liens"
+msgstr "Voici le pied de page. Utilise-le pour tes principaux appels à agir (gadget logiciel «Bouton»), tes coordonnées (gadget logiciel «Coordonnées») et un menu de navigation (gadget logiciel «Liste de liens»)."
 
 #: lib/admin/acf-option-pages.php:21 lib/admin/acf-option-pages.php:22
 msgid "Global Options"
@@ -1435,7 +1435,7 @@ msgstr "Sera affiché sous la zone de saisie du texte (en petits caractères)"
 #. bitte überprüfen
 #: lib/form/acf/input.php:101
 msgid "Choices"
-msgstr "Types de choix"
+msgstr "Choix à proposer"
 
 #: lib/form/acf/input.php:104
 msgid "Enter each choice on a new line."
@@ -1488,7 +1488,7 @@ msgstr "Envoyer par SMTP"
 #. Heisst das, das der Benutzer SMTP brauchen muss/soll?
 #: lib/form/acf/settings.php:30
 msgid "If yes, send emails using SMTP"
-msgstr ""
+msgstr "Si l'option est sélectionnée, merci d'envoyer les courriels par SMTP."
 
 #: lib/form/acf/settings.php:69
 msgid "Server address"
@@ -1497,7 +1497,7 @@ msgstr "Adresse du serveur"
 #. Was ist das?
 #: lib/form/acf/settings.php:88
 msgid "Port"
-msgstr ""
+msgstr "Port"
 
 #: lib/form/acf/settings.php:109
 msgid "Username"
@@ -1534,7 +1534,7 @@ msgstr "Ajouter une nouvelle personne"
 #. Bevor oder nachdem die Person ausgewählt wurde? Falls danach: "cette personne"
 #: lib/post-types/PeopleType.php:16
 msgid "Edit Person"
-msgstr "Modifier une personne"
+msgstr "Modifier cette personne"
 
 #: lib/post-types/PeopleType.php:17
 msgid "New Person"
@@ -1651,7 +1651,7 @@ msgstr "Tu as cherché «%s»"
 #. I.S.v. "ursprüngliche Anzahl Pixel" oder "füllt den ganzen Platz"?
 #: vendor/mindkomm/timmy/lib/Timmy.php:223
 msgid "Full Size"
-msgstr "Taille originale"
+msgstr "Taille d'origine"
 
 #: lib/form/helpers/class-wp-list-table.php:581
 #: vendor/timber/timber/lib/Archives.php:172
@@ -1669,7 +1669,7 @@ msgstr "&laquo;"
 #. Plural? Weiblich? Was ist es?
 #: vendor/timber/timber/lib/Pagination.php:120
 msgid "Next &raquo;"
-msgstr ""
+msgstr "Page suivante &raquo;"
 
 #. Sonnenklar :-)
 #: vendor/timber/timber/lib/Pagination.php:183
@@ -1712,7 +1712,7 @@ msgstr[1] ""
 #. Ein Beispiel, wofür diese Platzhalter stehen, wäre hochwillkommen :-)
 #: vendor/timber/timber/tests/wp-overrides.php:48
 msgid "\"%1$s\" from %2$s by %3$s."
-msgstr "„%1$s“ de %2$s par %3$s."
+msgstr "Titre: „%1$s“; album: %2$s; auteur: %3$s."
 
 #. Zwei Zahlen?
 #: vendor/timber/timber/tests/wp-overrides.php:51
@@ -1887,7 +1887,7 @@ msgstr "Déclaration de protection des données"
 #: templates/molecules/m-form.twig:133
 msgctxt "privacy policy"
 msgid "I agree to the data processing according to the %s."
-msgstr "Je donne mon consentement au traitement des données selon %s."
+msgstr "Je donne mon consentement au traitement des données selon la %s."
 
 #: templates/molecules/m-form.twig:159
 msgid "Uups, something went wrong!"
@@ -1906,9 +1906,10 @@ msgid "There seems to be an error in your input. Please recheck the fields."
 msgstr "Il semble y avoir une erreur. Merci de vérifier encore une fois les données saisies dans le formulaire."
 
 #: templates/molecules/m-link-list.twig:33
+#, fuzzy
 msgctxt "Example: All 17 press releases"
 msgid "All %d %s"
-msgstr "Afficher l'ensemble des %s (%d au total)"
+msgstr "Afficher l'ensemble des %s"
 
 #: templates/molecules/m-menu.twig:19
 msgid "Submenu"
@@ -1921,16 +1922,16 @@ msgstr "Fermer le sous-menu"
 #. Geht es darum, das Symbol zu schliessen (dann Kleinschreibung), oder um das Symbol "Schliessen"?
 #: templates/molecules/m-menu.twig:29
 msgid "Close icon"
-msgstr ""
+msgstr "Symbole «Fermer»"
 
 #. Mehr anzeigen? Mehr Text? Das gleiche mit weniger
 #: templates/molecules/m-person.twig:66 templates/molecules/m-person.twig:67
 msgid "More"
-msgstr ""
+msgstr "Plus..."
 
 #: templates/molecules/m-person.twig:67
 msgid "Less"
-msgstr ""
+msgstr "Moins..."
 
 #: templates/molecules/m-share.twig:2
 msgid "Show share buttons"
