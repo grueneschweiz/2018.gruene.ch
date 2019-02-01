@@ -17,9 +17,11 @@
 	</main>
 
 	{% block footer %}
-	<footer id="footer">
-		{% include 'footer.twig' %}
-	</footer>
+	<div class="page__footer">
+		<footer id="footer">
+			{% include 'footer.twig' %}
+		</footer>
+	</div>
 	{{ function('wp_footer') }}
 	{% endblock %}
 	</div>
