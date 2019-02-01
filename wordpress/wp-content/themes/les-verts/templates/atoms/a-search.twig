@@ -1,5 +1,5 @@
 <div class="a-search{% if modifiers %} {{ modifiers|join(' ') }}{% endif %}">
-	<form role="search" method="get" id="searchform" class="a-search__form" action="{{ site.url }}">
+	<form role="search" method="get" id="searchform" class="a-search__form" action="{{ fn('get_site_url') }}">{# dont use site.url, it wont work correctly with polylang #}
 		<div>
 			<label class="screen-reader-text" for="s">{{ _x( 'Search for:', constant('THEME_DOMAIN') ) }}</label>
 			<input class="a-search__field" type="text" value="{{ fn('get_search_query') }}" name="s" id="s" placeholder="{{ _x('Search', 'Noun', constant('THEME_DOMAIN')) }}">
