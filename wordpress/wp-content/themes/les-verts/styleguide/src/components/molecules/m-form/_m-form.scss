@@ -42,6 +42,7 @@
 
 	&__submit-byline {
 		margin: 0.25em 0 0.4em;
+		line-height: 1.4em;
 
 		@include media($size-small) {
 			margin: 0 0 0 1em;
