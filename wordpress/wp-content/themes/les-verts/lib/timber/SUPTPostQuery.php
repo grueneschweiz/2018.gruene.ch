@@ -161,7 +161,7 @@ class SUPTPostQuery extends \Timber\PostQuery {
 			
 			if ( count($cats) > 1 ) {
 				$names = array();
-				foreach ( $cats() as $category ) {
+				foreach ( $cats as $category ) {
 					$names[] = $category->name;
 				}
 				$cat_string = implode( ', ', $names );
@@ -257,14 +257,14 @@ class SUPTPostQuery extends \Timber\PostQuery {
 			$category_slugs = [];
 			foreach ( $query['category__and'] as $cat_id ) {
 				$category         = get_category( $cat_id );
-				$category_slugs[] = $category->slug;
+				$category_slugs[] = urlencode( $category->slug );
 			}
-			
-			return [ 'category_name' => urlencode( implode( '+', $category_slugs ) ) ];
+
+			return [ 'category_name' => implode( '+', $category_slugs ) ];
 		}
 		
 		if ( ! empty( $query['category__in'] ) ) {
-			return [ 'cat' => urlencode( implode( ',', $query['category__in'] ) ) ];
+			return [ 'cat' => implode( ',', $query['category__in'] ) ];
 		}
 		
 		if ( ! empty( $query['category__not_in'] ) ) {
@@ -272,7 +272,7 @@ class SUPTPostQuery extends \Timber\PostQuery {
 				return $id * - 1;
 			}, $query['category__not_in'] );
 			
-			return [ 'cat' => urlencode( implode( ',', $not_cat_ids ) ) ];
+			return [ 'cat' => implode( ',', $not_cat_ids ) ];
 		}
 		
 		return array();
