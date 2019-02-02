@@ -12,33 +12,33 @@ class ACFPost extends \TimberPost {
 	private $__excerpt;
 	private $__fullExcerpt;
 	private $__twitterName;
-	
+
 	public function excerpt( $length = 280 ) {
 		// bail early to ensure we'll never compute it twice
 		if ( $this->__excerpt ) {
 			return $this->__excerpt;
 		}
-		
+
 		$this->__excerpt = $this->limit_length( $this->full_excerpt(), $length );
-		
+
 		return $this->__excerpt;
 	}
-	
+
 	private function limit_length( $text, $limit ) {
 		if ( strlen( $text ) > $limit ) {
 			// chop off at $limit
-			$hard_trimmed = substr( $text, 0,  $limit);
+			$hard_trimmed = substr( $text, 0, $limit );
 
 			// chop of last word part, so we stop with space
 			$soft_trim_pos = strrpos( $hard_trimmed, ' ' );
-			$trimmed = substr( $text, 0,  $soft_trim_pos);
+			$trimmed       = substr( $text, 0, $soft_trim_pos );
 
 			return $trimmed . ' [&hellip;]';
 		}
-		
+
 		return $text;
 	}
-	
+
 	public function full_excerpt() {
 		// bail early to ensure we'll never compute it twice
 		if ( $this->__fullExcerpt ) {
@@ -47,8 +47,8 @@ class ACFPost extends \TimberPost {
 
 		if ( ! empty( $this->teaser ) ) {
 			$teaser = (array) $this->teaser;
-			foreach($teaser as $t){
-				if (!empty($t)){
+			foreach ( $teaser as $t ) {
+				if ( ! empty( $t ) ) {
 					$tmp = $t;
 					break;
 				}
@@ -58,42 +58,42 @@ class ACFPost extends \TimberPost {
 		if ( ! empty( $this->excerpt ) ) {
 			$tmp = $this->excerpt;
 		}
-		
+
 		if ( empty( $tmp ) ) {
 			$tmp = $this->generate_excerpt();
 		}
 
 		$tmp = trim( $tmp );
-		
+
 		$this->__fullExcerpt = wptexturize( $tmp );
-		
+
 		return $this->__fullExcerpt;
 	}
-	
+
 	private function generate_excerpt() {
 		if ( empty( $this->content ) ) {
 			return '';
 		}
-		
+
 		foreach ( $this->content as $block ) {
 			if ( 'text' === $block['acf_fc_layout'] ) {
 				$text = strip_shortcodes( $block['text'] );
 				$text = apply_filters( 'the_content', $text );
 				$text = str_replace( ']]>', ']]&gt;', $text );
-				
+
 				return $text;
 			}
 		}
-		
+
 		return '';
 	}
-	
+
 	public function twitter_name() {
 		// bail early to ensure we'll never compute it twice
 		if ( null !== $this->__twitterName ) {
 			return $this->__twitterName;
 		}
-		
+
 		if ( class_exists( '\WPSEO_Options' ) ) {
 			$twitter_name        = apply_filters( 'wpseo_twitter_site', \WPSEO_Options::get( 'twitter_site' ) );
 			$twitter_name        = trim( $twitter_name, "@\t\n\r\0\x0B" ); // remove @ (if there is one) and trim
@@ -101,7 +101,7 @@ class ACFPost extends \TimberPost {
 		} else {
 			$this->__twitterName = '';
 		}
-		
+
 		return $this->__twitterName;
 	}
 }
