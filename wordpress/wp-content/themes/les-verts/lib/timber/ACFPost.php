@@ -39,11 +39,17 @@ class ACFPost extends \TimberPost {
 		if ( $this->__fullExcerpt ) {
 			return $this->__fullExcerpt;
 		}
-		
+
 		if ( ! empty( $this->teaser ) ) {
-			$tmp = $this->teaser;
+			$teaser = (array) $this->teaser;
+			foreach($teaser as $t){
+				if (!empty($t)){
+					$tmp = $t;
+					break;
+				}
+			}
 		}
-		
+
 		if ( ! empty( $this->excerpt ) ) {
 			$tmp = $this->excerpt;
 		}
@@ -51,7 +57,7 @@ class ACFPost extends \TimberPost {
 		if ( empty( $tmp ) ) {
 			$tmp = $this->generate_excerpt();
 		}
-		
+
 		$tmp = trim( $tmp );
 		
 		$this->__fullExcerpt = wptexturize( $tmp );
