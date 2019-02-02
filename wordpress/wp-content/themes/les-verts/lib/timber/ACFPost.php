@@ -26,8 +26,13 @@ class ACFPost extends \TimberPost {
 	
 	private function limit_length( $text, $limit ) {
 		if ( strlen( $text ) > $limit ) {
-			$trimmed = substr( $text, 0, strpos( $text, ' ', $limit ) );
-			
+			// chop off at $limit
+			$hard_trimmed = substr( $text, 0,  $limit);
+
+			// chop of last word part, so we stop with space
+			$soft_trim_pos = strrpos( $hard_trimmed, ' ' );
+			$trimmed = substr( $text, 0,  $soft_trim_pos);
+
 			return $trimmed . ' [&hellip;]';
 		}
 		
