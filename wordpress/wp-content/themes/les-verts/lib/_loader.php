@@ -174,6 +174,7 @@ require_once __DIR__ .'/tweaks/inject-svg-sprite.php';
 require_once __DIR__ .'/twig/functions/get_lang.php';
 require_once __DIR__.'/twig/functions/register_timber_custom_post_types.php';
 require_once __DIR__.'/twig/functions/get_people.php';
+require_once __DIR__.'/twig/functions/link_props.php';
 
 // filters
 require_once __DIR__ .'/twig/filters/email.php';

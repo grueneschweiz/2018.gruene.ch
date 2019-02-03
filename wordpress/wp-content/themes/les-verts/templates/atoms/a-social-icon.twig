@@ -16,7 +16,7 @@
 	{% set title = type %}
 {% endif %}
 
-<a href="{{ link }}" class="a-social-icon" target="_blank" title="{{ title }}">
+<a href="{{ link }}" {{ link_props(link) }} class="a-social-icon" title="{{ title }}">
 	<svg role="img">
 		<title>{{ title }}</title>
 		<use xlink:href="#{{ svg }}"></use>

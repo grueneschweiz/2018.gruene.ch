@@ -9,6 +9,6 @@
 		{% else %}
 			{% set url = link.url %}
 		{% endif %}
-		<a class="a-cat-title__link" href="{{ url }}">{{ title|wptexturize }}</a>
+		<a class="a-cat-title__link" href="{{ url }}" {{ link_props(url) }}>{{ title|wptexturize }}</a>
 	{% endif %}
 </h2>

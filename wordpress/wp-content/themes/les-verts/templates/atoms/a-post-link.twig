@@ -26,7 +26,7 @@
 {% if with_excerpt %}
 <article class="a-post-link {{ modifiers }}">
 	{% else %}
-	<a class="a-post-link a-post-link--link" href="{{ url }}" {% if target %} target="{{ target }}"{% endif %}>
+	<a class="a-post-link a-post-link--link" href="{{ url }}"{% if target %} target="{{ target }}" rel="noopener"{% else %} {{ link_props(url) }}{% endif %}>
 		{% endif %}
         {% if with_excerpt %}<a href="{{ url }}" class="a-post-link__title-link">{% endif %}
 			<h3 class="a-post-link__title">{{ title }}</h3>

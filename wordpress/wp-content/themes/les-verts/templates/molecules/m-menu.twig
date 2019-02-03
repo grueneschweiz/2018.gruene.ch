@@ -16,7 +16,7 @@
 					<a
 						class="m-menu__nav-link {% if item.current or item.current_item_ancestor %}m-menu__nav-link--active{% endif %}"
 						href="{{ item.link }}" role="menuitem" {% if loop.first %}tabindex="0" accesskey="1"{% endif %}
-						aria-haspopup="menu" aria-expanded="false">{{ item.title }}</a>
+						aria-haspopup="menu" aria-expanded="false" {{ link_props(item.link) }}>{{ item.title }}</a>
 					{% if item.children %}
 						<ul class="m-menu__submenu" role="menu"
 								aria-label="{{ __('Submenu', constant('THEME_DOMAIN')) }}">

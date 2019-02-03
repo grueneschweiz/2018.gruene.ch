@@ -20,7 +20,7 @@
 {% endif %}
 <figure class="a-image{% if not no_crop %} a-image--cover{% endif %}">
 	{% if link_url %}<a class="a-image__link" href="{{ link_url }}"
-											tabindex="-1"{% if target %} target="{{ taget }}"{% endif %}>{% endif %}
+											tabindex="-1"{% if target %} target="{{ taget }}" rel="noopener"{% else %} {{ link_props(link_url) }} {% endif %}>{% endif %}
 
 		{% if not not_lazy %}<noscript>{% endif %}
 			<img {{ image|get_timber_image_responsive(size) }}
