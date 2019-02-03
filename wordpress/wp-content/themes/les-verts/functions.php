@@ -24,6 +24,9 @@ new Timmy\Timmy();
 // Configure Timber
 Timber::$dirname = array( 'templates', 'views' );
 
+// used by the uniqueid twig filter. keep this in global scope.
+$supt_unique_id_counter = 0;
+
 // This is where the magic happens
 require_once __DIR__ . '/lib/_loader.php';
 

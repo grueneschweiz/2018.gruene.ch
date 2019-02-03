@@ -6,8 +6,8 @@
 				<ul class="a-footer-meta__list" role="menu"
 						aria-label="{{ __('Meta navigation', constant('THEME_DOMAIN')) }}">
 					{% for item in menu.footer_meta.items %}
-						<li class="a-footer-meta__item">
-							<a href="{{ item.link }}" class="a-footer-meta__link">{{ item.title }}</a>
+						<li role="none" class="a-footer-meta__item">
+							<a href="{{ item.link }}" role="menuitem" class="a-footer-meta__link">{{ item.title }}</a>
 						</li>
 					{% endfor %}
 				</ul>
