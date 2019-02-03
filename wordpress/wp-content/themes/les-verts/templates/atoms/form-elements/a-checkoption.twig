@@ -12,7 +12,7 @@ Parameters:
 <div class="a-checkoption">
 	{% if 'radio' == type %}
 		{% if not id %}
-			{% set id = name~random() %}
+			{% set id = name|uniqueid %}
 		{% endif %}
 	<input type="radio"
 				 name="{{ name }}"

@@ -2,7 +2,7 @@
 	{% set expandable = true %}
 {% endif %}
 
-{% set id = person.slug~random() %}
+{% set id = person.slug|uniqueid %}
 {% set contact = person.get_field('contact') %}
 
 <article class="m-person{% if expandable %} m-person--expandable{% endif %}">
