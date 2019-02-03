@@ -1,3 +1,4 @@
+{% set id = 'menu'|uniqueid %}
 <div class="m-menu">
 	{% if menu.logo.image.id %}
 		<a class="m-menu__logo" href="/" title="{{ __('Home', constant('THEME_DOMAIN')) }}">
@@ -6,9 +7,9 @@
 	{% endif %}
 	<nav class="m-menu__nav{% if not (menu.cta or menu.language) %} m-menu__nav--no-menu-right{% endif %}">
 		<div class="m-menu__hamburger">
-			{% include 'atoms/a-hamburger.twig' %}
+			{% include 'atoms/a-hamburger.twig' with {'id': id} only %}
 		</div>
-		<ul class="m-menu__nav-list" role="menubar"
+		<ul class="m-menu__nav-list" role="menubar" id="{{ id }}"
 				aria-label="{{ __('Main navigation', constant('THEME_DOMAIN')) }}">
 			{% for item in menu.main.items %}
 				<li class="m-menu__nav-item" role="none">
