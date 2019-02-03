@@ -177,18 +177,18 @@ class SUPTPostQuery extends \Timber\PostQuery {
 			
 			if ( ! empty( $cat_string ) && ! empty( $tag_string ) ) {
 				$this->_archive_description = sprintf(
-					__( 'Here you will find any content categorized under %s and tagged with %s.' ),
+					__( 'Here you will find any content categorized under %s and tagged with %s.', THEME_DOMAIN ),
 					$cat_string,
 					$tag_string
 				);
 			} else if ( ! empty( $cat_string ) ) {
 				$this->_archive_description = sprintf(
-					__( 'Here you will find any content categorized under %s.' ),
+					__( 'Here you will find any content categorized under %s.', THEME_DOMAIN ),
 					$cat_string
 				);
 			} else if ( ! empty( $tag_string ) ) {
 				$this->_archive_description = sprintf(
-					__( 'Here you will find any content tagged with %s.' ),
+					__( 'Here you will find any content tagged with %s.', THEME_DOMAIN ),
 					$tag_string
 				);
 			} else if ( is_tag() ) {
