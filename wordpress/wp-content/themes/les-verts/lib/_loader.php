@@ -21,6 +21,17 @@ if( class_exists( 'acf' ) ) {
 	// require_once __DIR__ .'/acf/custom-locations/localized-menu.php';
 }
 
+
+/**
+ * SearchWP
+ * ========
+ *
+ * Add repeater and flexible content fields
+ */
+if ( class_exists('SearchWP') ) {
+	require_once __DIR__ . '/searchwp/add-fields.php';
+}
+
 /**
  * Polylang
  * ========
