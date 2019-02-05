@@ -24,7 +24,7 @@ export default class ASelect extends BaseView {
 
 		this.on( 'focus', INPUT_SELECTOR, () => this.onSetFocus() );
 		this.on( 'blur', INPUT_SELECTOR, () => this.onRemoveFocus() );
-		this.on( 'change', INPUT_SELECTOR, () => this.onChange() );
+		this.on( 'change', INPUT_SELECTOR, () => this.onChange(), false, false );
 	}
 
 	onChange() {
