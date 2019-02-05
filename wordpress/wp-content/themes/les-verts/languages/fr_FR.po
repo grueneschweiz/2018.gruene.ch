@@ -1834,7 +1834,7 @@ msgstr "Page suivante"
 #: templates/atoms/a-post-link.twig:21
 msgctxt "Date format. See http://php.net/manual/de/function.date.php"
 msgid "d. F Y"
-msgstr "d. F Y"
+msgstr "d F Y"
 
 #: templates/atoms/a-post-link.twig:48
 #: templates/molecules/m-front-article.twig:39
@@ -1906,10 +1906,9 @@ msgid "There seems to be an error in your input. Please recheck the fields."
 msgstr "Il semble y avoir une erreur. Merci de vérifier encore une fois les données saisies dans le formulaire."
 
 #: templates/molecules/m-link-list.twig:33
-#, fuzzy
 msgctxt "Example: All 17 press releases"
 msgid "All %d %s"
-msgstr "Afficher l'ensemble des %s"
+msgstr "Afficher l'ensemble des %d %s"
 
 #: templates/molecules/m-menu.twig:19
 msgid "Submenu"
