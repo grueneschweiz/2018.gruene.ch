@@ -16,10 +16,6 @@
 # -l this is a multilingual setup
 #===========================================
 
-set -e # exit on error
-set -u # treat undefined variables as errors
-set -o pipefail # only consider pipe successful if all commands involved were successful
-
 INSTALL_ACTIVATE_ARGUMENT="--activate"
 ACTIVATE_NETWORK_ARGUMENT=
 NETWORK=
@@ -52,6 +48,10 @@ POLYLANG=`$WPCLI plugin list | grep polylang-pro`
 ACF=`$WPCLI plugin list | grep advanced-custom-fields-pro`
 SEARCHWP=`$WPCLI plugin list | grep searchwp`
 MISSING=0
+
+set -e # exit on error
+set -u # treat undefined variables as errors
+set -o pipefail # only consider pipe successful if all commands involved were successful
 
 RED='\033[0;31m'
 YELLOW='\033[1;33m'
