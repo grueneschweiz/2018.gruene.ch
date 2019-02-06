@@ -8,9 +8,10 @@
 	{% set title = post_object.title %}
 	{% set url = post_object.link %}
 	{% set categories = post_object.categories() %}
-	{% if post_object._wp_page_template.0 == 'single_press_release.php' or post_object._wp_page_template == 'single_press_release.php' %}
+	{% set date = 0 %}
+	{% for category in categories if category.has_date %}
 		{% set date = post_object.post_date %}
-	{% endif %}
+	{% endfor %}
 {% endif %}
 
 {% if type == 'autolist' and with_excerpt %}

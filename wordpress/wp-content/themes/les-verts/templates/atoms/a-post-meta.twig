@@ -1,6 +1,11 @@
+{% set date = 0 %}
+{% for category in categories if category.has_date %}
+		{% set date = nice_date %}
+{% endfor %}
+
 <div class="a-post-meta">
     {% if date %}
-        <time class="a-post-meta__date" datetime="{{ datetime|date('Y-m-d') }}">{{ date }}</time>
+        <time class="a-post-meta__date" datetime="{{ isodate|date('Y-m-d') }}">{{ date }}</time>
     {% endif %}
     {% if categories %}
         <div class="a-post-meta__categories">

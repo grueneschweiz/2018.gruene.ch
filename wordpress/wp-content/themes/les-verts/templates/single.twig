@@ -41,8 +41,8 @@
 			{% if has_post_meta %}
 				<aside class="page__post-meta">
 					{% include 'atoms/a-post-meta.twig' with {
-						'date': is_press_release ? post.date : false,
-						'datetime': post.post_date,
+						'iso_date': post.post_date,
+						'nice_date': post.date,
 						'categories': post.categories,
 						'tags': post.tags
 					} only %}
