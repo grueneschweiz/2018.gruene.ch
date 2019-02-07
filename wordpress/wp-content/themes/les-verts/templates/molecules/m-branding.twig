@@ -7,7 +7,8 @@
 				{% endfor %}
 			</h1>
 			{% if logo.image.id %}
-				<a class="m-branding__logo" href="/" title="{{ __('Home', constant('THEME_DOMAIN')) }}">
+				<a class="m-branding__logo" href="{{ fn('get_site_url') }}{# dont use site.url, it wont work correctly with polylang #}"
+					 title="{{ __('Home', constant('THEME_DOMAIN')) }}">
 					{% include 'atoms/a-logo.twig' with {'logo': logo} only %}
 				</a>
 			{% endif %}
