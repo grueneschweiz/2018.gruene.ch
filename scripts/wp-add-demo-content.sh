@@ -12,8 +12,10 @@ $WPCLI menu create language-navigation <<< "Language navigation"
 $WPCLI menu location assign language-navigation language-nav
 
 # Front Page
-# =========================
-
-# set static front page
+# ==========
 $WPCLI option update show_on_front <<< "page"
-$WPCLI option update page_on_front <<< "2" # todo: set correct id
+$WPCLI option update page_on_front <<< "$($WPCLI post list --post_type=page --field=ID --name=Startseite)"
+
+# Content
+# =======
+$WPCLI import --authors=skip wp-content/themes/les-verts/demo-content/content.xml
