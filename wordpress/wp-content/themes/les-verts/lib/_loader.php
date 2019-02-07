@@ -56,7 +56,7 @@ if ( function_exists( 'pll_current_language' ) ) {
  */
 
 if ( is_admin() ) {
-	require_once __DIR__ . '/admin/acf-protect-admin.php';
+	//require_once __DIR__ . '/admin/acf-protect-admin.php';
 	require_once __DIR__ . '/admin/acf-featured-image.php';
 	require_once __DIR__ . '/admin/customize-tinymce.php';
 	require_once __DIR__ . '/admin/admin-hide-pll-sync.php';
