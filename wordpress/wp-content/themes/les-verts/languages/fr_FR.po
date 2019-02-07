@@ -1157,7 +1157,7 @@ msgstr "Aujouter au menu"
 #: lib/controllers/navigation.php:38
 msgctxt "short date format"
 msgid "y-m-d"
-msgstr "j.m.a"
+msgstr "d.m.y"
 
 #: lib/controllers/navigation.php:42
 msgctxt "Example: 21.03.2018: Delegiertenversammlung"
