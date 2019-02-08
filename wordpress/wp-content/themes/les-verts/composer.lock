@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "a14651b496087f6b64efbd80648f5346",
+    "content-hash": "639175aea17e6cc4aa98ba147eaaca4f",
     "packages": [
         {
             "name": "altorouter/altorouter",
@@ -280,32 +280,6 @@
                 "wordpress"
             ],
             "time": "2018-10-08T18:44:26+00:00"
-        },
-        {
-            "name": "soderlind/customizer-polylang",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/soderlind/customizer-polylang.git",
-                "reference": "1db3eeec1741642441e3b14caea7788e337c44c2"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/soderlind/customizer-polylang/zipball/1db3eeec1741642441e3b14caea7788e337c44c2",
-                "reference": "1db3eeec1741642441e3b14caea7788e337c44c2",
-                "shasum": ""
-            },
-            "type": "library",
-            "autoload": {
-                "files": [
-                    "customizer-polylang.php"
-                ]
-            },
-            "support": {
-                "source": "https://github.com/soderlind/customizer-polylang/tree/master",
-                "issues": "https://github.com/soderlind/customizer-polylang/issues"
-            },
-            "time": "2019-01-28T20:56:32+00:00"
         },
         {
             "name": "symfony/polyfill-ctype",
@@ -608,9 +582,7 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "soderlind/customizer-polylang": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],

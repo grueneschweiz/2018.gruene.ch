@@ -47,8 +47,8 @@
 		<div class="m-menu__right">
 			{% if menu.cta %}
 				<div class="m-menu__cta">{% include 'atoms/a-button.twig' with {
-						'link': menu.cta.link,
-						'label': menu.cta.label,
+						'link': menu.cta.link|pll,
+						'label': menu.cta.label|pll,
 						'modifiers': ['a-button--outline', 'a-button--secondary']
 					} only %}</div>
 			{% endif %}

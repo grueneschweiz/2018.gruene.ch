@@ -33,16 +33,6 @@ if ( class_exists('SearchWP') ) {
 }
 
 /**
- * Polylang
- * ========
- *
- * Tweaks needed for polylang
- */
-if ( function_exists( 'pll_current_language' ) ) {
-	require_once __DIR__ . '/pll/translate-customizer.php';
-}
-
-/**
  * ADMIN
  * =====
  *
@@ -195,6 +185,7 @@ require_once __DIR__ . '/twig/filters/hexencode.php';
 require_once __DIR__ . '/twig/filters/nice_link.php';
 require_once __DIR__ . '/twig/filters/wptexturize.php';
 require_once __DIR__ . '/twig/filters/uniqueid.php';
+require_once __DIR__ . '/twig/filters/pll.php';
 
 /**
  * FORM LIBRARY

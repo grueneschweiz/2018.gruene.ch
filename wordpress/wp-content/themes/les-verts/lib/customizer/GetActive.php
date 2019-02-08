@@ -28,6 +28,7 @@ class GetActive {
 			self::add_settings( $wp_customize );
 			self::add_controls( $wp_customize );
 		} );
+		add_action( 'admin_init',  array(__CLASS__, 'add_strings_for_translation') );
 	}
 	
 	public static function add_section( $wp_customize ) {
@@ -76,5 +77,15 @@ class GetActive {
 				)
 			)
 		);
+	}
+
+	public static function add_strings_for_translation() {
+		if ( function_exists( 'pll_register_string' ) ) {
+			$label = get_theme_mod( self::SETTING_GET_ACTIVE_LABEL, false );
+			pll_register_string( self::SETTING_GET_ACTIVE_LABEL, $label, THEME_DOMAIN );
+
+			$link = get_theme_mod( self::SETTING_GET_ACTIVE_LINK, false );
+			pll_register_string( self::SETTING_GET_ACTIVE_LINK, $link, THEME_DOMAIN );
+		}
 	}
 }
