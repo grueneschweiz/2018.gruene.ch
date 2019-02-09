@@ -299,6 +299,12 @@ class Submissions_Table extends WP_List_Table {
 	 */
 	function the_form_selector() {
 		$forms   = $this->get_forms();
+
+		// sort by form title
+		uasort($forms, function($form1, $form2) {
+			return strcasecmp($form1->post_title, $form2->post_title);
+		});
+
 		$form_id = $this->get_form_id();
 		
 		echo '<form method="get">';
