@@ -167,7 +167,7 @@ class Submission_Export {
 
 		foreach ( $this->forms as $form_id => $form ) {
 			foreach ( get_field( 'form_fields', $form_id ) as $field ) {
-				$this->headers[ $form_id ][ $field['slug'] ] = $field['form_input_label'];
+				$this->headers[ $form_id ][ $field['slug'] ] = wp_trim_words( $field['form_input_label'], 4, '...' );
 			}
 		}
 	}
