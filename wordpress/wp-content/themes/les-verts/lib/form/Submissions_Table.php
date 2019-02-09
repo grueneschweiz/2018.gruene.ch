@@ -2,40 +2,44 @@
 
 namespace SUPT;
 
+require_once 'helpers/Get_Post_Meta_With_Id.php';
 
 class Submissions_Table extends WP_List_Table {
+	use Get_Post_Meta_With_Id;
+
 	const NUMB_COLUMNS_TO_DISPLAY = 7;
 	const DELETE_ACTION = 'delete';
 	const BULK_DELETE_ACTION = 'bulk-delete';
-	
+	const EXPORT_ACTION = 'export';
+
 	/**
 	 * The id of the form, whose submissions shall be displayed
 	 *
 	 * @var int
 	 */
 	private $form_id;
-	
+
 	/**
 	 * Cache for get_columns()
 	 *
 	 * @var array
 	 */
 	private $columns;
-	
+
 	/**
 	 * Cache for get_form_fields()
 	 *
 	 * @var array
 	 */
 	private $form_fields;
-	
+
 	/**
 	 * Cache for get_forms()
 	 *
 	 * @var array
 	 */
 	private $forms;
-	
+
 	/**
 	 * Class constructor
 	 */
@@ -46,7 +50,7 @@ class Submissions_Table extends WP_List_Table {
 			'ajax'     => false
 		] );
 	}
-	
+
 	/**
 	 * Return a chached associative array with the column slug as key and the
 	 * name as value.
@@ -57,17 +61,17 @@ class Submissions_Table extends WP_List_Table {
 		if ( $this->columns ) {
 			return $this->columns;
 		}
-		
+
 		$this->columns['cb']     = '<input type="checkbox" />';
 		$this->columns['_meta_'] = __( 'Timestamp', THEME_DOMAIN );
-		
+
 		foreach ( $this->get_form_fields() as $key => $field ) {
 			$this->columns[ $key ] = $field['form_input_label'];
 		}
-		
+
 		return $this->columns;
 	}
-	
+
 	/**
 	 * Return the cached fields of the current form in an associative array
 	 * that contains the field slug as key.
@@ -78,17 +82,17 @@ class Submissions_Table extends WP_List_Table {
 		if ( $this->form_fields ) {
 			return $this->form_fields;
 		}
-		
+
 		$this->form_fields = [];
-		
+
 		foreach ( get_field( 'form_fields', $this->get_form_id() ) as $field ) {
 			$key                       = $field['slug'];
 			$this->form_fields[ $key ] = $field;
 		}
-		
+
 		return $this->form_fields;
 	}
-	
+
 	/**
 	 * Return a list of sortable columns.
 	 *
@@ -99,10 +103,10 @@ class Submissions_Table extends WP_List_Table {
 		foreach ( $this->get_columns() as $column_slug => $column_value ) {
 			$sortable_columns[ $column_slug ] = $column_slug;
 		}
-		
+
 		return $sortable_columns;
 	}
-	
+
 	/**
 	 * Return the form id set in the GET param or the id of the newest form
 	 *
@@ -112,55 +116,55 @@ class Submissions_Table extends WP_List_Table {
 		if ( $this->form_id ) {
 			return $this->form_id;
 		}
-		
+
 		$forms = $this->get_forms();
-		
+
 		if ( empty( $forms ) ) {
 			wp_die( __( 'No forms available', THEME_DOMAIN ) );
 		}
-		
+
 		if ( ! empty( $_GET['form_id'] ) ) {
 			$form_id = (int) filter_var( $_GET['form_id'], FILTER_SANITIZE_NUMBER_INT );
 			if ( in_array( $form_id, array_keys( $forms ) ) ) {
 				$this->form_id = $form_id;
-				
+
 				return $this->form_id;
 			} else {
 				wp_die( __( 'Invalid form', THEME_DOMAIN ) );
 			}
 		}
-		
+
 		$newest_form   = array_pop( $forms );
 		$this->form_id = $newest_form->ID;
-		
+
 		return $this->form_id;
 	}
-	
+
 	/**
 	 * Prepares the list of items for displaying.
 	 */
 	public function prepare_items() {
 		$this->set_column_headers();
-		
+
 		$this->process_action();
-		
+
 		// todo: implement the sorting
-		
+
 		$data        = $this->get_post_meta_with_id( $this->get_form_id(), FormType::MODEL_NAME );
 		$total_items = count( $data );
 		$per_page    = $this->get_items_per_page( 'submissions_per_page' );
-		
+
 		$this->set_pagination_args( array(
 			'total_items' => $total_items,
 			'per_page'    => $per_page,
 			'total_pages' => ceil( $total_items / $per_page )
 		) );
-		
+
 		$current_page = $this->get_pagenum();
-		
+
 		$this->items = array_slice( $data, ( ( $current_page - 1 ) * $per_page ), $per_page );
 	}
-	
+
 	/**
 	 * Delete a submission
 	 *
@@ -168,21 +172,21 @@ class Submissions_Table extends WP_List_Table {
 	 */
 	public function delete_item( $id ) {
 		global $wpdb;
-		
+
 		$wpdb->delete(
 			$wpdb->postmeta,
 			[ 'meta_id' => $id ],
 			[ '%d' ]
 		);
 	}
-	
+
 	/**
 	 * Text displayed when no submissions are available
 	 */
 	public function no_items() {
 		_e( 'Yet, there were no forms submitted.', THEME_DOMAIN );
 	}
-	
+
 	/**
 	 * Define the table header columns
 	 */
@@ -190,18 +194,18 @@ class Submissions_Table extends WP_List_Table {
 		$columns = $this->get_columns();
 		$hidden  = [];
 		$count   = count( $columns );
-		
+
 		if ( $count > self::NUMB_COLUMNS_TO_DISPLAY ) {
 			$columns = array_slice( $columns, 0, self::NUMB_COLUMNS_TO_DISPLAY, true );
 			$hidden  = array_slice( $this->get_columns(), self::NUMB_COLUMNS_TO_DISPLAY, null, true );
 		}
-		
+
 		$sortable = $this->get_sortable_columns();
 		$first    = array_keys( $columns )[0];
-		
+
 		$this->_column_headers = array( $columns, $hidden, $sortable, $first );
 	}
-	
+
 	/**
 	 * Prepare output of the cell
 	 *
@@ -216,13 +220,13 @@ class Submissions_Table extends WP_List_Table {
 				return empty( $item[ $column_name ] ) ? '' : 'X';
 			case 'checkbox':
 				$values = empty( $item[ $column_name ] ) ? [] : $item[ $column_name ];
-				
+
 				return implode( ', ', $values );
 			default:
 				return empty( $item[ $column_name ] ) ? '' : $item[ $column_name ];
 		}
 	}
-	
+
 	/**
 	 * Return the localized timestamp
 	 *
@@ -239,9 +243,9 @@ class Submissions_Table extends WP_List_Table {
 		} else {
 			$timestamp = '';
 		}
-		
+
 		$delete_nonce = wp_create_nonce( FormType::MODEL_NAME . '_delete_submission-' . $item['ID'] );
-		
+
 		$actions = [
 			'view'              => sprintf(
 				'<a href="?post_type=%s&page=%s&action=%s&item=%d">' . __( 'View', THEME_DOMAIN ) . '</a>',
@@ -267,10 +271,10 @@ class Submissions_Table extends WP_List_Table {
 				$delete_nonce
 			)
 		];
-		
+
 		return $timestamp . $this->row_actions( $actions );
 	}
-	
+
 	/**
 	 * Return array with the forms indexed by the form id
 	 *
@@ -280,20 +284,20 @@ class Submissions_Table extends WP_List_Table {
 		if ( ! empty( $this->forms ) ) {
 			return $this->forms;
 		}
-		
+
 		$args = array(
 			'posts_per_page' => - 1,
 			'post_type'      => FormType::MODEL_NAME,
 		);
-		
+
 		$this->forms = [];
 		foreach ( get_posts( $args ) as $form ) {
 			$this->forms[ $form->ID ] = $form;
 		}
-		
+
 		return $this->forms;
 	}
-	
+
 	/**
 	 * Add the form selector
 	 */
@@ -306,7 +310,7 @@ class Submissions_Table extends WP_List_Table {
 		});
 
 		$form_id = $this->get_form_id();
-		
+
 		echo '<form method="get">';
 		echo '<input type="hidden" name="post_type" value="' . FormType::MODEL_NAME . '">';
 		echo '<input type="hidden" name="page" value="submissions">';
@@ -316,11 +320,36 @@ class Submissions_Table extends WP_List_Table {
 			echo "<option value='{$form->ID}'{$selected}>{$form->post_title}</option>";
 		}
 		echo '</select>';
-		
+
 		echo '<input type="submit" class="button button-primary" value="' . __( 'Select form', THEME_DOMAIN ) . '">';
 		echo '</form>';
 	}
-	
+
+	/**
+	 * Echo the markup for the export button
+	 */
+	function the_export_button() {
+		$nonce = wp_create_nonce( FormType::MODEL_NAME . '_export-' . $this->get_form_id() );
+		$url = sprintf( "?post_type=%s&page=%s&action=%s&form_id=%d&_wpnonce=%s&noheader=true",
+			esc_attr( $_REQUEST['post_type'] ),
+			esc_attr( $_REQUEST['page'] ),
+			self::EXPORT_ACTION,
+			$this->get_form_id(),
+			$nonce
+		);
+
+		echo "<a href='$url' class='button action'>".__('Export .xlsx', THEME_DOMAIN)."</a>";
+	}
+
+	/**
+	 * Return the title of the current form
+	 *
+	 * @return string
+	 */
+	function get_form_name() {
+		return $this->get_forms()[$this->get_form_id()]->post_title;
+	}
+
 	/**
 	 * Render the bulk edit checkbox
 	 *
@@ -335,35 +364,7 @@ class Submissions_Table extends WP_List_Table {
 			$item['ID']
 		);
 	}
-	
-	/**
-	 * Retrieve metadata with id for the specified object.
-	 *
-	 * @param int $post_id ID of the object metadata is for
-	 * @param string $meta_key Optional. Metadata key. If not specified, retrieve all metadata for
-	 *                        the specified object.
-	 *
-	 * @return array
-	 */
-	private function get_post_meta_with_id( $post_id, $meta_key = '' ) {
-		global $wpdb;
-		$results = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM $wpdb->postmeta WHERE post_id = %d AND meta_key = %s",
-			$post_id, $meta_key ) );
-		
-		if ( empty( $results ) ) {
-			return [];
-		}
-		
-		$data = [];
-		foreach ( $results as $result ) {
-			$id                = $result->meta_id;
-			$data[ $id ]       = (array) maybe_unserialize( $result->meta_value );
-			$data[ $id ]['ID'] = $id;
-		}
-		
-		return $data;
-	}
-	
+
 	/**
 	 * Handle form actions
 	 */
@@ -375,43 +376,71 @@ class Submissions_Table extends WP_List_Table {
 			case self::BULK_DELETE_ACTION:
 				$this->process_action_bulk_delete();
 				return;
+			case self::EXPORT_ACTION:
+				$this->process_action_export();
 			// todo: case edit, case view
 			// note: we may have to exit for the cases edit and view
 		}
 	}
-	
+
 	/**
 	 * Handle bulk delete action
 	 */
 	private function process_action_bulk_delete() {
 		$nonce = esc_attr( $_REQUEST['_wpnonce'] );
+
 		if ( ! wp_verify_nonce( $nonce, 'bulk-submissions' ) ) {
 			wp_die( 'Invalid action.' );
-		} else {
-			foreach ( $_REQUEST[ self::BULK_DELETE_ACTION ] as $id ) {
-				$this->delete_item( absint( $id ) );
-			}
-			
-			return;
+		}
+
+		if (! current_user_can('delete_private_posts')) {
+			wp_die( 'Insufficient privileges.' );
+		}
+
+		foreach ( $_REQUEST[ self::BULK_DELETE_ACTION ] as $id ) {
+			$this->delete_item( absint( $id ) );
 		}
 	}
-	
+
 	/**
 	 * Handle delete action
 	 */
 	private function process_action_delete() {
 		$nonce = esc_attr( $_REQUEST['_wpnonce'] );
 		$id    = absint( $_REQUEST['item'] );
-		
+
 		if ( ! wp_verify_nonce( $nonce, FormType::MODEL_NAME . '_delete_submission-' . $id ) ) {
 			wp_die( 'Invalid action.' );
-		} else {
-			$this->delete_item( $id );
-			
-			return;
 		}
+
+		if (! current_user_can('delete_private_posts')) {
+			wp_die( 'Insufficient privileges.' );
+		}
+
+		$this->delete_item( $id );
 	}
-	
+
+	/**
+	 * Handle export action
+	 */
+	private function process_action_export() {
+		$nonce = esc_attr( $_REQUEST['_wpnonce'] );
+		$id    = absint( $_REQUEST['form_id'] );
+
+		if ( ! wp_verify_nonce( $nonce, FormType::MODEL_NAME . '_export-' . $id ) ) {
+			wp_die( 'Invalid action.' );
+		}
+
+		if (! current_user_can('read_private_posts')) {
+			wp_die( 'Insufficient privileges.' );
+		}
+
+		require_once 'helpers/Submission_Export.php';
+		$exporter = new Submission_Export($this->get_form_id());
+		$exporter->run();
+		exit;
+	}
+
 	/**
 	 * Returns an associative array containing the bulk action
 	 *
@@ -421,7 +450,7 @@ class Submissions_Table extends WP_List_Table {
 		$actions = [
 			self::BULK_DELETE_ACTION => __( 'Delete', THEME_DOMAIN )
 		];
-		
+
 		return $actions;
 	}
 }

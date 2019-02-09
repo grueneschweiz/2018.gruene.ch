@@ -104,7 +104,7 @@ class FormType extends Model {
 			array( __CLASS__, 'order_by_title' ) );
 
 		add_action( 'admin_menu',
-			array( __CLASS__, 'add_sent_page_menu' ) );
+			array( __CLASS__, 'menu_add_submissions_page' ) );
 
 		add_filter( 'set-screen-option',
 			array( __CLASS__, 'save_submissions_per_page_option' ), 10, 3 );
@@ -199,7 +199,7 @@ class FormType extends Model {
 		return $query_vars;
 	}
 
-	public static function add_sent_page_menu() {
+	public static function menu_add_submissions_page() {
 		// add page
 		$hook = add_submenu_page( 'edit.php?post_type=' . self::MODEL_NAME, __( 'Submissions', THEME_DOMAIN ),
 			__( 'Submissions', THEME_DOMAIN ), 'edit_pages', 'submissions', array( __CLASS__, 'display_submissions_page' ) );
@@ -240,6 +240,14 @@ class FormType extends Model {
 				} ?>
 				<?php $submissions->display() ?>
 			</form>
+			<div style="margin-top: 3em;">
+				<h3><?php echo __( 'Export Submissions', THEME_DOMAIN ) ?></h3>
+				<p><?php echo sprintf(
+						__( 'Exports the submission of the form "%s" and all its linked forms. Usually its best to select the first form in the chain before exporting.', THEME_DOMAIN ),
+						$submissions->get_form_name()
+					) ?></p>
+				<?php $submissions->the_export_button() ?>
+			</div>
 		</div>
 		<?
 	}
