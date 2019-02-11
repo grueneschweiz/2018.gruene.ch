@@ -166,8 +166,30 @@ class Submission_Export {
 		$this->headers[ self::HEADER_META_KEY ]['timestamp'] = __( 'Timestamp', THEME_DOMAIN );
 
 		foreach ( $this->forms as $form_id => $form ) {
+			// the headers of the current form
 			foreach ( get_field( 'form_fields', $form_id ) as $field ) {
 				$this->headers[ $form_id ][ $field['slug'] ] = wp_trim_words( $field['form_input_label'], 4, '...' );
+			}
+
+			// add the headers of old forms
+			foreach ( $this->submissions as $submission ) {
+				if ( ! array_key_exists( $form_id, $submission ) ) {
+					continue;
+				}
+
+				$fields = array_keys( $submission[ $form_id ] );
+				foreach ( $fields as $field_slug ) {
+					if ( '_meta_' === $field_slug || 'ID' === $field_slug ) {
+						continue;
+					}
+
+					if ( ! array_key_exists( $field_slug, $this->headers[ $form_id ] ) ) {
+						$label     = __( 'old: ' . $field_slug );
+						$max_label = strlen( $label ) > 50 ? substr( $label, 0, 50 ) . '...' : $label;
+
+						$this->headers[ $form_id ][ $field_slug ] = $max_label;
+					}
+				}
 			}
 		}
 	}
