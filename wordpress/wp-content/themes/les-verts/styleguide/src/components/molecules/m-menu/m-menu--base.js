@@ -44,7 +44,6 @@ export class MMenuBase extends BaseView {
 		this.addClass( submenu, OPEN_STATE );
 		this.addClass( element, OPEN_STATE );
 		element.setAttribute( 'aria-expanded', true );
-		element.nextElementSibling.firstElementChild.firstElementChild.firstElementChild.focus();
 
 		this.afterOpenSubNavigation( element );
 	}
