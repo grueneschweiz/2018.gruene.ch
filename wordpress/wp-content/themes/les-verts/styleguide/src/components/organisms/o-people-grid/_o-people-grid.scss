@@ -81,13 +81,21 @@
 		display: none;
 		position: absolute;
 		z-index: 10;
-		height: 288px;
 		width: 108px;
-		@include fluid-props(top, $size-medium, $grid-max-width-max, $grid-item-padding-min + 180, $grid-item-padding-max + 180);
+		padding-top: 0;
+		padding-bottom: 0;
+		@include fluid-props(top, $size-small, $size-medium, 211px, 240px); // dont ask
+		@include fluid-props(top, $size-medium, $fluid-max, 240px, 269px); // dont ask
+		@include fluid-props(top, $fluid-max, 2000px, 269px, 282px); // dont ask
+		height: 252px;
 		cursor: pointer;
 
 		@include media($size-small) {
 			display: block;
+		}
+
+		@include media($_DESKTOP) {
+			height: 259px;
 		}
 
 		@media screen and (hover: none) {
