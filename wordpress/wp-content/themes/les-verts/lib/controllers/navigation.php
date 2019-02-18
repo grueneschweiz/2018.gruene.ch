@@ -28,16 +28,27 @@ class Navigation_controller {
 				$item->url = tribe_get_events_link();
 				$events    = tribe_get_events( array( 'start_date' => date( 'Y-m-d' ) ) );
 
+				$type = get_post_type_object( reset( $events )->post_type );
+
 				foreach ( $events as $key => &$event ) {
+					$event->url              = get_permalink( $event );
 					$event->menu_item_parent = $item->ID;
 					$event->object_id        = (string) $event->ID;
-					$event->db_id            = $event->ID;
+					$event->db_id            = 0;
 					$event->classes          = array();
+					$event->type             = $event->post_type;
+					$event->xfn              = '';
+					$event->object           = $event->post_type;
+					$event->attr_title       = '';
+					$event->description      = '';
+					$event->target           = '';
+					$event->type_label       = $type->label;
 
-					$date         = date(
+					$date = date(
 						_x( 'y-m-d', 'short date format', THEME_DOMAIN ),
 						strtotime( $event->EventStartDate )
 					);
+
 					$event->title = sprintf(
 						_x( '%s: %s', 'Example: 21.03.2018: Delegiertenversammlung', THEME_DOMAIN ),
 						$date,
