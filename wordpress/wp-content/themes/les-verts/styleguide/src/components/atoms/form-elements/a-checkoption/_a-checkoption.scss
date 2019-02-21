@@ -17,7 +17,9 @@
 		background-size: 2.25rem;
 		cursor: pointer;
 		display: block;
-		background: url('img/checkbox.svg') no-repeat calc(-1.5rem + 2px) 0.125rem;
+		background-repeat: no-repeat;
+		background-position: calc(-1.5rem + 2px) 0.125rem;
+		background-image: url('img/checkbox.svg');
 		position: relative;
 
 		&.a-checkoption--legal {
