@@ -29,6 +29,9 @@
     "multisite",
     "switzerland"
   ],
+  "browserslist": [
+    "cover 99.5% in CH"
+  ],
   "scripts": {
     "start": "gulp fractal:start",
     "start:all": "yarn wp:start && yarn start",

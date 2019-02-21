@@ -16,12 +16,6 @@ module.exports = function( args ) {
 		errLogToConsole: true
 	}))
 	.pipe(autoprefixer({
-		browsers: [
-			'last 2 versions',
-			'iOS >= 8',
-			'Safari >= 8',
-			'>= 5%'
-		],
 		cascade: false,
 		remove: false,
 		flexbox: true
