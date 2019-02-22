@@ -18,7 +18,8 @@ module.exports = function( args ) {
 	.pipe(autoprefixer({
 		cascade: false,
 		remove: false,
-		flexbox: true
+		flexbox: true,
+		grid: false,
 	}))
 	.pipe(gulp.dest(args.dest))
 	.pipe(cleanCss({

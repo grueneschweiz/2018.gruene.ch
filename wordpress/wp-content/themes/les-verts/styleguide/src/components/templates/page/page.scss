@@ -56,6 +56,11 @@
 		&--content-width {
 			max-width: $page-grid-content-max-width;
 		}
+
+		@include only_ie10_above() {
+			max-width: $page-grid-content-max-width;
+			margin: auto;
+		}
 	}
 
 	&__side {
@@ -95,6 +100,11 @@
 	&__content {
 		grid-column-start: content-start;
 		grid-column-end: content-end;
+
+		@include only_ie10_above() {
+			max-width: $page-grid-content-max-width;
+			margin: auto;
+		}
 	}
 
 	&__footer {
@@ -154,6 +164,10 @@
 			flex-direction: column;
 			padding-right: 40px;
 			height: 100%;
+		}
+
+		@include only_ie10_above() {
+			display: none; // sorry folks!
 		}
 	}
 

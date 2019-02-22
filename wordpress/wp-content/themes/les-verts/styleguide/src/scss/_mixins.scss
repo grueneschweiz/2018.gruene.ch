@@ -41,6 +41,12 @@
 	}
 }
 
+@mixin only_ie10_above() {
+	@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+		@content;
+	}
+}
+
 /**
  * Mixin for hover states.
  * TODO Will work only on no-touch devices
