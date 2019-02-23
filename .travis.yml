@@ -27,4 +27,5 @@ deploy:
   github_token: $GITHUB_TOKEN
   local_dir: styleguide/dist/build
   on:
-    branch: gh-pages
+    all_branches: true
+    condition: $TRAVIS_BRANCH =~ ^master|styleguide$
