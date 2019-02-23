@@ -75,8 +75,7 @@ export default function() {
 	} );
 
 	// Exposes the loaded views for dev purposes
-	// TODO remove after dev
-	window.COMPONENTS = LOADED_COMPONENTS;
+	// window.COMPONENTS = LOADED_COMPONENTS;
 
 	return LOADED_COMPONENTS;
 }
