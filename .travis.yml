@@ -6,6 +6,7 @@ branches:
   only:
     - master
     - styleguide
+    - release
 
 cache:
   directories:
@@ -48,7 +49,8 @@ deploy:
     file: release.zip
     skip_cleanup: true
     on:
-      branch: master
-      tags: true
+      all_branches: true
+      #branch: master
+      #tags: true
       repo: grueneschweiz/2018.gruene.ch
 
