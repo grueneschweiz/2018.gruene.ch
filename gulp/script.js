@@ -15,12 +15,12 @@ module.exports = function (config, done) {
 			paths: config.paths,
 			debug: true
 		})
-		.transform(babelify, { presets: ["env"] })
+		.transform(babelify, { presets: ["@babel/preset-env"] })
 		.bundle()
 		// .on( 'error', plumber.stop)		// Handle errors -> avoid gulp to crash on error
 		// .pipe(plumber())
 		.pipe(source(config.build_name))
-		.pipe(gulp.dest(config.dest))
+		.pipe(gulp.dest(config.dest));
 
 		// Only minify for production (cause it take too much time ~30s !!!)
 		if ( process.env.NODE_ENV === 'production' ) {

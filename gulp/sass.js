@@ -5,7 +5,7 @@ const cleanCss = require('gulp-clean-css');
 const rename = require('gulp-rename');
 const plumber = require('gulp-plumber');
 
-module.exports = function( args ) {
+module.exports = function( args, done ) {
 	gulp.src(args.src)
 	.pipe(plumber())
 	.pipe(sass({
@@ -28,4 +28,6 @@ module.exports = function( args ) {
 	}))
 	.pipe(rename({ basename: args.basename, extname: '.min.css' }))
 	.pipe(gulp.dest(args.dest));
-}
+
+	done();
+};

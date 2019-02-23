@@ -1,7 +1,7 @@
 const gulp = require('gulp');
 const svgSprite = require('gulp-svg-sprite');
 
-module.exports = function( options ) {
+module.exports = function( options, done ) {
 	gulp.src(options.src)
 		.pipe(svgSprite({
 			mode: {
@@ -48,4 +48,6 @@ module.exports = function( options ) {
 			}
 		}))
 		.pipe( gulp.dest(options.dest) );
-}
+
+	done();
+};

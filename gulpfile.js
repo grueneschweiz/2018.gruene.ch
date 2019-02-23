@@ -30,13 +30,13 @@ gulp.task( 'watch', watch_task.bind(null, CONFIG.watch) );
 
 gulp.task( 'sg:robot', sg_custom.robot.bind( null, CONFIG.fractal.overides.dest) );
 gulp.task( 'sg:overides', sg_custom.overides.bind( null, {src: CONFIG.fractal.overides.src, dest: CONFIG.fractal.overides.dest}) );
-gulp.task( 'sg:custom', ['sg:robot', 'sg:overides'] );
+gulp.task( 'sg:custom', gulp.series('sg:robot', 'sg:overides') );
 
-gulp.task( 'build', [ 'lint', 'scripts', 'modernizr', 'sass', 'svgsprite', 'images', 'fonts'] );
-gulp.task( 'production', () => process.env.NODE_ENV = 'production' ) // Set to production mode
-gulp.task( 'build:production', ['production', 'build'] );
+gulp.task( 'build', gulp.parallel(gulp.series('lint', 'scripts', 'modernizr'), 'sass', 'svgsprite', 'images', 'fonts') );
+gulp.task( 'production', (done) => {process.env.NODE_ENV = 'production'; done();} ); // Set to production mode
+gulp.task( 'build:production', gulp.series('production', 'build') );
 
-gulp.task( 'fractal:start', ['build', 'sg:custom', 'watch'], fractal.start.bind(gulp, CONFIG.fractal.server) ); // Fractal task: start the fractal dev server
-gulp.task( 'fractal:build', ['build:production'], fractal.build );
+gulp.task( 'fractal:start', gulp.series('build', 'sg:custom', 'watch'), fractal.start.bind(gulp, CONFIG.fractal.server) ); // Fractal task: start the fractal dev server
+gulp.task( 'fractal:build', gulp.series('build:production'), fractal.build );
 
-gulp.task( 'default', ['fractal:start'] );
+gulp.task( 'default', gulp.series('fractal:start') );
