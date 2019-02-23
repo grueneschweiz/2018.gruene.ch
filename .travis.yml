@@ -1,0 +1,29 @@
+language: node_js
+node_js:
+  - "11"
+dist: trusty
+sudo: false
+
+branches:
+  only:
+    - master
+
+cache:
+  directories:
+    - node_modules
+
+install:
+  - npm install -g yarn
+  - yarn
+
+script:
+  - yarn gulp sg:custom
+  - yarn fractal:build
+
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
+  local_dir: styleguide/dist/build
+  on:
+    branch: styleguide
