@@ -19,11 +19,23 @@
 		@include media($_DESKTOP) {
 			width: 100%;
 		}
+
+		@include only_ie10_above {
+			display: flex;
+			flex-wrap: wrap;
+			flex-direction: row;
+			align-content: flex-start;
+		}
 	}
 
 	&__item {
 		@include clean-li;
 		width: 100%;
+
+		@include only_ie10_above {
+			width: 120px;
+			margin-right: 20px;
+		}
 	}
 
 	&__link {
