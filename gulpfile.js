@@ -36,7 +36,7 @@ gulp.task( 'build', gulp.parallel(gulp.series('lint', 'scripts', 'modernizr'), '
 gulp.task( 'production', (done) => {process.env.NODE_ENV = 'production'; done();} ); // Set to production mode
 gulp.task( 'build:production', gulp.series('production', 'build') );
 
-gulp.task( 'fractal:start', gulp.series('build', 'sg:custom', 'watch'), fractal.start.bind(gulp, CONFIG.fractal.server) ); // Fractal task: start the fractal dev server
-gulp.task( 'fractal:build', gulp.series('build:production'), fractal.build );
+gulp.task( 'fractal:start', gulp.parallel('build', 'sg:custom', 'watch', fractal.start.bind(gulp, CONFIG.fractal.server) ) ); // Fractal task: start the fractal dev server
+gulp.task( 'fractal:build', gulp.series('build:production', fractal.build) );
 
 gulp.task( 'default', gulp.series('fractal:start') );
