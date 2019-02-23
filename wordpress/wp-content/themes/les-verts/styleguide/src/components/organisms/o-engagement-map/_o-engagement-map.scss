@@ -25,10 +25,32 @@
 			grid-template-columns: 40% 60%;
 			@include fluid-props(grid-gap, $size-medium, $grid-max-width-max, $grid-gap-min, $grid-gap-max);
 		}
+
+		@include only_ie10_above {
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+			align-items: stretch;
+		}
+	}
+
+	&__desc-wrapper {
+		@include only_ie10_above {
+			width: 40%;
+		}
 	}
 
 	&__map-wrapper {
 		position: relative;
+
+		@include only_ie10_above {
+			width: 60%;
+		}
+	}
+
+	&__map {
+		width: 100%; // IE compat
+		height: 100%; // IE compat
 	}
 
 	&__map.is-open {

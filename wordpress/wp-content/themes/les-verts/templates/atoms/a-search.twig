@@ -1,5 +1,5 @@
 <div class="a-search{% if modifiers %} {{ modifiers|join(' ') }}{% endif %}">
-	<form role="search" method="get" class="a-search__form" action="{{ fn('get_site_url') }}">{# dont use site.url, it wont work correctly with polylang #}
+	<form role="search" method="get" class="a-search__form" action="{{ fn('get_site_url') }}" autocomplete="off">{# dont use site.url, it wont work correctly with polylang #}
 		<div>
 			{% set id = 's'|uniqueid %}
 			<label class="screen-reader-text" for="{{ id }}">{{ _x( 'Search for:', constant('THEME_DOMAIN') ) }}</label>

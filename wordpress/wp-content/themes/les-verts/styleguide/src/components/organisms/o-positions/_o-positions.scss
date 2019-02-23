@@ -40,5 +40,11 @@
 				@include fluid-grid-item-props(padding-right);
 			}
 		}
+
+		@include only_ie10_above {
+			&:nth-of-type(even) {
+				padding: 30px 0;
+			}
+		}
 	}
 }

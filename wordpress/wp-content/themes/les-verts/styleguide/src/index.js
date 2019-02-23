@@ -3,6 +3,9 @@
 // Polyfills
 import 'utils/closest';
 
+// Helpers
+import 'utils/classList'
+
 // Components loader
 import load_components from './components/_component-loader';
 

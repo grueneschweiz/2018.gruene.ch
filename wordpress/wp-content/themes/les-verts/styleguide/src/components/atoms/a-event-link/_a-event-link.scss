@@ -15,6 +15,12 @@
 		grid-column-gap: 32px;
 	}
 
+	@include only_ie10_above {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+	}
+
 	&__image {
 		width: 100%;
 		height: 80px;
@@ -31,11 +37,16 @@
 		@include media($_DESKTOP) {
 			height: 94px;
 		}
+
+		@include only_ie10_above {
+			width: 148px;
+			margin-right: 32px;
+		}
 	}
 
 	&__title {
 		margin: 0;
-		align-self: flex-start;
+		align-self: start;
 		color: $color-text;
 		font-size: 1rem;
 		hyphens: auto;
@@ -56,13 +67,23 @@
 				top: 50%;
 			}
 		}
+
+		@include only_ie10_above {
+			width: calc(100% - 180px);
+			display: block;
+		}
 	}
 
 	&__meta {
 		font-size: 0.875rem;
 		line-height: 1.4em;
-		align-self: flex-end;
+		align-self: end;
 		margin-top: 0.8571428571em;
+
+		@include only_ie10_above {
+			margin-left: 180px;
+			margin-top: -32px;
+		}
 	}
 
 	&__datetime {
