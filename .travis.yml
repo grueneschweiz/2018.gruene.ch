@@ -27,7 +27,6 @@ before_install:
   - chmod +x /usr/local/bin/composer
 
 install:
-  - npm install -g yarn
   - yarn
 
 script:
@@ -46,8 +45,9 @@ deploy:
       repo: grueneschweiz/2018.gruene.ch
 
   - provider: releases
-    api_key:
-      secure: PWAMbWTVQHMVZgREws1HKwi6RT0lztSb9XeXxDAi5jd2dQOY6C/8nZNS7qHwhwv2jB70ktHFdz5HZLe2WkaVwxaRcgPoQWFuifuntpt7h21xRl1RyBdNBfi2IRQPhNPOb/pKYCeE9dNNQ7NDO2hjU31HnhFT/IS7KhwR9mVgDPHlyKLxmMMQvtFrngiIlg2BygILekJzXB7oNBKb0T19rfTBc0UomXMmuvvbxc+Fj0dX/At2kn7sKdwYvgGzeGzHVpuE765qNomZzvaLLohJHFJqpgVEprOr+g1TBRtbwissDH6H8hXVJse/k5Ou16u16Ff9cQGIiWzfQtyX1QXfa1Bhm+Vywd3n3jUVrUoc5K1sJcYLvOJuQYia+uoPRI8H1Sz1U6Y7oXzShGbQAyMVxfy95kMdCRWZXgBm3VbArJZJeYhUJA4ClGn/+qorCqiqGn3VFrNM2C4otnea3Kk/5qo5g5p7OnA5jrl1b0oKsgU+4qQaECRz19+S6dugkh8Ulzl4auzRbMtDgRY5yQa5ZRLbNb7rD05CitqUJno+mXQZBCzd9BqdH2swSnM8bONfVvjzBmcRFjAAZ2CohcdF8hmnkd/m4vCaKn2u6/KbWUueWcSsfsG9I+OCoqfnK9f7pUToDDeGt67YEMrLG0c1PQndlPDNuPcK8siY52btX9s=
+    github_token: $GITHUB_TOKEN
+#    api_key:
+#      secure: PWAMbWTVQHMVZgREws1HKwi6RT0lztSb9XeXxDAi5jd2dQOY6C/8nZNS7qHwhwv2jB70ktHFdz5HZLe2WkaVwxaRcgPoQWFuifuntpt7h21xRl1RyBdNBfi2IRQPhNPOb/pKYCeE9dNNQ7NDO2hjU31HnhFT/IS7KhwR9mVgDPHlyKLxmMMQvtFrngiIlg2BygILekJzXB7oNBKb0T19rfTBc0UomXMmuvvbxc+Fj0dX/At2kn7sKdwYvgGzeGzHVpuE765qNomZzvaLLohJHFJqpgVEprOr+g1TBRtbwissDH6H8hXVJse/k5Ou16u16Ff9cQGIiWzfQtyX1QXfa1Bhm+Vywd3n3jUVrUoc5K1sJcYLvOJuQYia+uoPRI8H1Sz1U6Y7oXzShGbQAyMVxfy95kMdCRWZXgBm3VbArJZJeYhUJA4ClGn/+qorCqiqGn3VFrNM2C4otnea3Kk/5qo5g5p7OnA5jrl1b0oKsgU+4qQaECRz19+S6dugkh8Ulzl4auzRbMtDgRY5yQa5ZRLbNb7rD05CitqUJno+mXQZBCzd9BqdH2swSnM8bONfVvjzBmcRFjAAZ2CohcdF8hmnkd/m4vCaKn2u6/KbWUueWcSsfsG9I+OCoqfnK9f7pUToDDeGt67YEMrLG0c1PQndlPDNuPcK8siY52btX9s=
     file: release.zip
     skip_cleanup: true
     on:
