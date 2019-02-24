@@ -53,3 +53,7 @@ deploy:
       tags: true
       repo: grueneschweiz/2018.gruene.ch
 
+notifications:
+  email: false
+  slack:
+    secure: McxZmG/0iL4XLGOfBdiTHA2cWmddZgYpWN08i7L7wRo4824ucbB58xCGsLQrbueQLTjoqs4ATNEt3gHuShYFLKscjeYmDiupuTQ44DEA8Sq03PJ/czJRnEbmutw8qxUO3gIvu2UcM6wBHHfPIesOS+k8V3r/RRQvHCNPFQzDkA4YGcekGTnj4gAAFetROK0Qc9HbRTBDuRj2Ad1yWq3O2EnCVEyzqCioQsMnxLfvikyI28fKL1PBRIZj+6IQejIekVWbTl6M/tDJW+ueHBeulJ0S9uYl03xN+Hy6u8Gs6njX/qmGo8ifMhfEN8oeWGZIx8gz8h4cRhJUwx4SWVVyMwJY9TqCzIR/FHLGXU4eIDKPb+SdIdLK4Z56u6vXPNxnFxGvZabumuWQcAnBpGlfKBzEmrZGhhzZ+8xbET4aLXUNGcuawILLBz87B5gpFgojB3jN6bAbT4lDtCaGGe/CcZJIJmUaYyXZkrH1p3uaJEjiv8hBMBM/JuGfnQxnv0JGF3FCvbtbcQ4N0XjPY3j9gEajWjTGoF3GsKyTMsGpNNAVYV/yySZxrxaJCmFEqAoOTokCSE8Wvekg35K5lo8CoEwVekEKr1q0/aK76GVOCIr/i/I7HUzJJ85UkZjZR/myQmUsqM/rqFYHL/IraRNAGjJuPozls+3XaK8rfD4YeV0=
