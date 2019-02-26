@@ -16,11 +16,11 @@ class SUPTPostQuery extends \Timber\PostQuery {
 	private $_archive_title;
 	private $_categories = array();
 	private $_tags = array();
-	
+
 	public function __construct( $query = false, $post_class = '\Timber\Post' ) {
 		parent::__construct( $query, $post_class );
 	}
-	
+
 	/**
 	 * Return the total number of posts
 	 *
@@ -38,13 +38,13 @@ class SUPTPostQuery extends \Timber\PostQuery {
 				global $wp_query;
 				$query = $wp_query;
 			}
-			
+
 			$this->_found_posts = $query->found_posts;
 		}
-		
+
 		return $this->_found_posts;
 	}
-	
+
 	/**
 	 * Return an accurate title according to the query
 	 *
@@ -54,9 +54,9 @@ class SUPTPostQuery extends \Timber\PostQuery {
 		if ( ! $this->_archive_title ) {
 			$tags = count( $this->get_tags() );
 			$cats = count( $this->get_categories() );
-			
+
 			if ( ( $tags && $cats ) || $cats > 1 || $tags > 1 ) {
-				$this->_archive_title = __( 'Filtered posts', THEME_DOMAIN );
+				$this->_archive_title = sprintf( __( '%d posts', THEME_DOMAIN ), $this->found_posts() );
 			} else if ( is_day() ) {
 				$this->_archive_title = sprintf(
 					__( 'Archive: %s', THEME_DOMAIN ),
@@ -82,10 +82,10 @@ class SUPTPostQuery extends \Timber\PostQuery {
 				$this->_archive_title = __( 'Archive', THEME_DOMAIN );
 			}
 		}
-		
+
 		return $this->_archive_title;
 	}
-	
+
 	/**
 	 * Return cached tags as term objects if this archive is queried by tags
 	 *
@@ -94,7 +94,7 @@ class SUPTPostQuery extends \Timber\PostQuery {
 	private function get_tags() {
 		if ( ! $this->_tags ) {
 			global $wp_query;
-			
+
 			if ( ! empty( $wp_query->query['tag'] ) ) {
 				$slugs = $this->parse_slugs( $wp_query->query['tag'] );
 				foreach ( $slugs as $slug ) {
@@ -104,10 +104,10 @@ class SUPTPostQuery extends \Timber\PostQuery {
 				$this->_tags[] = $wp_query->get_queried_object();
 			}
 		}
-		
+
 		return $this->_tags;
 	}
-	
+
 	/**
 	 * Helper function to get ab array of slugs out of the given string
 	 *
@@ -123,10 +123,10 @@ class SUPTPostQuery extends \Timber\PostQuery {
 		} else {
 			$slugs = [ $string ];
 		}
-		
+
 		return $slugs;
 	}
-	
+
 	/**
 	 * Return cached categories as term objects if this archive is queried by categories
 	 *
@@ -135,7 +135,7 @@ class SUPTPostQuery extends \Timber\PostQuery {
 	private function get_categories() {
 		if ( ! $this->_categories ) {
 			global $wp_query;
-			
+
 			if ( ! empty( $wp_query->query['category_name'] ) ) {
 				$slugs = $this->parse_slugs( $wp_query->query['category_name'] );
 				foreach ( $slugs as $slug ) {
@@ -145,10 +145,10 @@ class SUPTPostQuery extends \Timber\PostQuery {
 				$this->_categories[] = $wp_query->get_queried_object();
 			}
 		}
-		
+
 		return $this->_categories;
 	}
-	
+
 	/**
 	 * Get cached archive description
 	 *
@@ -158,23 +158,23 @@ class SUPTPostQuery extends \Timber\PostQuery {
 		if ( ! $this->_archive_description ) {
 			$tags = $this->get_tags();
 			$cats = $this->get_categories();
-			
-			if ( count($cats) > 1 ) {
+
+			if ( count( $cats ) > 1 ) {
 				$names = array();
 				foreach ( $cats as $category ) {
 					$names[] = $category->name;
 				}
 				$cat_string = implode( ', ', $names );
 			}
-			
-			if ( count($tags) > 1 ) {
+
+			if ( count( $tags ) > 1 ) {
 				$names = array();
 				foreach ( $tags as $tag ) {
 					$names[] = $tag->name;
 				}
 				$tag_string = implode( ', ', $names );
 			}
-			
+
 			if ( ! empty( $cat_string ) && ! empty( $tag_string ) ) {
 				$this->_archive_description = sprintf(
 					__( 'Here you will find any content categorized under %s and tagged with %s.', THEME_DOMAIN ),
@@ -197,10 +197,10 @@ class SUPTPostQuery extends \Timber\PostQuery {
 				$this->_archive_description = category_description();
 			}
 		}
-		
+
 		return $this->_archive_description;
 	}
-	
+
 	/**
 	 * Return cached url to an archive with the same category and tag settings.
 	 *
@@ -210,10 +210,10 @@ class SUPTPostQuery extends \Timber\PostQuery {
 		if ( ! $this->_archive_url ) {
 			$this->_archive_url = $this->build_archive_url();
 		}
-		
+
 		return $this->_archive_url;
 	}
-	
+
 	/**
 	 * Get the url that leads to the currently listed posts.
 	 *
@@ -223,16 +223,16 @@ class SUPTPostQuery extends \Timber\PostQuery {
 	 */
 	private function build_archive_url() {
 		$query = $this->get_query();
-		
+
 		$criteria = array();
 		$criteria = array_merge( $criteria, $this->category_url_array( $query ) );
 		$criteria = array_merge( $criteria, $this->tag_url_array( $query ) );
-		
+
 		$base = get_site_url();
-		
+
 		return add_query_arg( $criteria, $base );
 	}
-	
+
 	/**
 	 * Get the query vars from $query ready to be used as a url query where not
 	 * all query var arguments are supported.
@@ -248,11 +248,11 @@ class SUPTPostQuery extends \Timber\PostQuery {
 		if ( ! empty( $query['cat'] ) ) {
 			return [ 'cat' => $query['cat'] ];
 		}
-		
+
 		if ( ! empty( $query['category_name'] ) ) {
 			return [ 'category_name' => $query['category_name'] ];
 		}
-		
+
 		if ( ! empty( $query['category__and'] ) ) {
 			$category_slugs = [];
 			foreach ( $query['category__and'] as $cat_id ) {
@@ -262,22 +262,22 @@ class SUPTPostQuery extends \Timber\PostQuery {
 
 			return [ 'category_name' => implode( '+', $category_slugs ) ];
 		}
-		
+
 		if ( ! empty( $query['category__in'] ) ) {
 			return [ 'cat' => implode( ',', $query['category__in'] ) ];
 		}
-		
+
 		if ( ! empty( $query['category__not_in'] ) ) {
 			$not_cat_ids = array_map( function ( $id ) {
 				return $id * - 1;
 			}, $query['category__not_in'] );
-			
+
 			return [ 'cat' => implode( ',', $not_cat_ids ) ];
 		}
-		
+
 		return array();
 	}
-	
+
 	/**
 	 * Get the query vars from $query ready to be used as a url query where not
 	 * all query var arguments are supported.
@@ -293,46 +293,46 @@ class SUPTPostQuery extends \Timber\PostQuery {
 		if ( ! empty( $query['tag'] ) ) {
 			return [ 'tag' => $query['tag'] ];
 		}
-		
+
 		if ( ! empty( $query['tag_id'] ) ) {
 			$term = get_term( $query['tag_id'] );
-			
+
 			return [ 'tag' => $term->slug ];
 		}
-		
+
 		if ( ! empty( $query['tag__and'] ) ) {
 			$tag_slugs = [];
 			foreach ( $query['tag__and'] as $tag_id ) {
 				$term        = get_term( $tag_id );
 				$tag_slugs[] = $term->slug;
 			}
-			
+
 			return [ 'tag' => urlencode( implode( '+', $tag_slugs ) ) ];
 		}
-		
+
 		if ( ! empty( $query['tag_slug__and'] ) ) {
 			return [ 'tag' => urlencode( implode( '+', $query['tag_slug__and'] ) ) ];
 		}
-		
+
 		if ( ! empty( $query['tag__in'] ) ) {
 			$tag_slugs = [];
 			foreach ( $query['tag__in'] as $tag_id ) {
 				$term        = get_term( $tag_id );
 				$tag_slugs[] = $term->slug;
 			}
-			
+
 			return [ 'tag' => urlencode( implode( ',', $tag_slugs ) ) ];
 		}
-		
+
 		if ( ! empty( $query['tag_slug__in'] ) ) {
 			return [ 'tag' => urlencode( implode( ',', $query['tag_slug__in'] ) ) ];
 		}
-		
+
 		if ( ! empty( $query['tag__not_in'] ) ) {
 			return new \WP_Error( 'tag__not_in__unsupported',
 				__( 'The tag not in function is not supported.', THEME_DOMAIN ) );
 		}
-		
+
 		return array();
 	}
 }

@@ -3,52 +3,55 @@
 {% extends "base.twig" %}
 
 {% block content %}
-    <article class="page__grid page__grid--no-sidebar">
-        <header
-                class="page__full page__grid page__grid--no-sidebar page__header-wrapper page__header-wrapper--highlighted">
-            <div class="page__content page__header">
-                {% block archive_header %}
-                    <div class="page__breadcrumbs">
-                        {% include 'atoms/a-breadcrumbs.twig' %}
-                    </div>
-                    <h1>{{ title }}</h1>
-                    {% if archive_description %}
-                        <div class="page__header-text">
-                            <p>{{ archive_description|wptexturize|wpautop }}</p>
-                        </div>
-                    {% endif %}
-                {% endblock %}
-            </div>
-        </header>
-        <section class="page__content">
-            <header class="page__list-header">
-                {% include 'molecules/m-list-header.twig' with {
-                    'title': title,
-                    'counter': posts.found_posts()
-                } only %}
-            </header>
-            <ul class="page__list-articles">
-                {% for post in posts %}
-                    <li class="page__list-article {% if post.post_type == 'tribe_events' %}page__list-article--hover-link{% endif %}">
-                        {% if post.post_type == 'tribe_events' %}
-                            {% include 'atoms/a-event-link.twig' with {
-                                'post': post
-                            } only %}
-                        {% else %}
-                            {% set data = {
-                                'post_object': ACFPost(post),
-                                'modifiers': 'a-post-link--text-width',
-                                'with_excerpt': 1,
-                                'type': 'autolist',
-                            } %}
-                            {% include 'atoms/a-post-link.twig' with data only %}
-                        {% endif %}
-                    </li>
-                {% endfor %}
-            </ul>
-            <footer class="page__list-pagination">
-                {% include 'atoms/a-pagination.twig' with { 'posts': posts } only %}
-            </footer>
-        </section>
-    </article>
+	<article class="page__grid page__grid--no-sidebar">
+		<header
+			class="page__full page__grid page__grid--no-sidebar page__header-wrapper page__header-wrapper--highlighted">
+			<div class="page__content page__header">
+				{% block archive_header %}
+					<div class="page__breadcrumbs">
+						{% include 'atoms/a-breadcrumbs.twig' %}
+					</div>
+					<h1>{{ title }}</h1>
+					{% if archive_description %}
+						<div class="page__header-text">
+							<p>{{ archive_description|wptexturize|wpautop }}</p>
+						</div>
+					{% endif %}
+				{% endblock %}
+			</div>
+		</header>
+		<div class="page__content">
+			{% if list_header %}
+				<header class="page__list-header">
+					{% include 'molecules/m-list-header.twig' with {
+						'title': title,
+						'counter': posts.found_posts()
+					} only %}
+				</header>
+			{% endif %}
+			<ul class="page__list-articles">
+				{% for post in posts %}
+					<li
+						class="page__list-article {% if post.post_type == 'tribe_events' %}page__list-article--hover-link{% endif %}">
+						{% if post.post_type == 'tribe_events' %}
+							{% include 'atoms/a-event-link.twig' with {
+								'post': post
+							} only %}
+						{% else %}
+							{% set data = {
+								'post_object': ACFPost(post),
+								'modifiers': 'a-post-link--text-width',
+								'with_excerpt': 1,
+								'type': 'autolist',
+							} %}
+							{% include 'atoms/a-post-link.twig' with data only %}
+						{% endif %}
+					</li>
+				{% endfor %}
+			</ul>
+			<footer class="page__list-pagination">
+				{% include 'atoms/a-pagination.twig' with { 'posts': posts } only %}
+			</footer>
+		</div>
+	</article>
 {% endblock %}

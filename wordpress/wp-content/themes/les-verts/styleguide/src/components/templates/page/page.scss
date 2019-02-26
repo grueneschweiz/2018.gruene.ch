@@ -249,10 +249,11 @@
 	}
 
 	&__list-header {
-		@include fluid-props(margin-top margin-bottom, $fluid-min, $fluid-max, 40px, 80px);
+		@include fluid-props(margin-top, $fluid-min, $fluid-max, 40px, 60px);
 	}
 
 	&__list-articles {
+		@include fluid-props(margin-top, $fluid-min, $fluid-max, 40px, 60px);
 		@include clean-ul;
 	}
 
