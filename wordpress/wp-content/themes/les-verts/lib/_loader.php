@@ -28,7 +28,7 @@ if ( class_exists( 'acf' ) ) {
  *
  * Add repeater and flexible content fields
  */
-if ( class_exists('SearchWP') ) {
+if ( class_exists( 'SearchWP' ) ) {
 	require_once __DIR__ . '/searchwp/add-fields.php';
 }
 
@@ -46,7 +46,10 @@ if ( class_exists('SearchWP') ) {
  */
 
 if ( is_admin() ) {
-	//require_once __DIR__ . '/admin/acf-protect-admin.php';
+	if ( ! WP_DEBUG ) {
+		require_once __DIR__ . '/admin/acf-protect-admin.php';
+	}
+
 	require_once __DIR__ . '/admin/acf-featured-image.php';
 	require_once __DIR__ . '/admin/customize-tinymce.php';
 	require_once __DIR__ . '/admin/admin-hide-pll-sync.php';
