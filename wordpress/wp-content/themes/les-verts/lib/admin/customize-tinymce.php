@@ -24,7 +24,8 @@ add_filter( 'acf/fields/wysiwyg/toolbars', function( $toolbars ) {
 		2 => array(
 			'styleselect',
 			'strikethrough',
-			'underline',
+			'subscript',
+			'superscript',
 			'pastetext',
 			'removeformat',
 			'charmap',
