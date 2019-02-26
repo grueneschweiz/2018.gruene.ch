@@ -1,7 +1,7 @@
 <?php
 
 if ( function_exists( 'acf_add_local_field_group' ) ):
-	
+
 	acf_add_local_field_group( array(
 		'key'                   => 'group_59f33aa9b4e97',
 		'title'                 => 'Form details',
@@ -584,7 +584,7 @@ Example interest field: Only the interests that can be selected in Webling are a
 		'style'                 => 'default',
 		'label_placement'       => 'top',
 		'instruction_placement' => 'label',
-		'hide_on_screen'        => '',
+		'hide_on_screen'        => [ 'permalink' ],
 		'active'                => 1,
 		'description'           => '',
 	) );
