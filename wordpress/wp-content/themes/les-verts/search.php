@@ -9,8 +9,9 @@
  * @since   Timber 0.1
  */
 
-$templates = array( 'search.twig', 'archive.twig', 'index.twig' );
-$context   = Timber::get_context();
+$templates              = array( 'search.twig', 'archive.twig', 'index.twig' );
+$context                = Timber::get_context();
+$context['list_header'] = true;
 
 $context['posts']               = new \SUPT\SUPTPostQuery();
 $context['block_title']         = _x( 'Search', 'Noun', THEME_DOMAIN );

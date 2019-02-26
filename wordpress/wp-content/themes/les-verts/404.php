@@ -18,7 +18,7 @@ $posts = new \SUPT\SUPTPostQuery( array(
 ) );
 
 $context['posts']      = $posts;
-$context['title']      = __( 'Latest posts' );
+$context['title']      = __( 'Latest posts', THEME_DOMAIN );
 $context['page_class'] = 'page-404';
 
 Timber::render( '404.twig', $context );

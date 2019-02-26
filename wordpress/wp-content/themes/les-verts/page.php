@@ -27,15 +27,15 @@ $templates       = array( 'page-' . $post->post_name . '.twig', 'page.twig', 'si
 
 // handle events of the events calendar plugin
 if ( 'tribe_events' === get_post_type() ) {
-	if ( 'list' === get_query_var( 'eventDisplay' ) ) {
-		
+	if ( in_array( get_query_var( 'eventDisplay' ), [ 'list', 'month' ] ) ) {
+
 		// the list view
 		$context['posts'] = new \SUPT\SUPTPostQuery();
 		$context['title'] = __( 'Events', THEME_DOMAIN );
 		array_unshift( $templates, 'archive.twig' );
-		
+
 	} else {
-		
+
 		// the single view
 		array_unshift( $templates, 'event.twig' );
 	}
@@ -57,16 +57,16 @@ Timber::render( $templates, $context );
  * @param $context
  */
 function supt_get_latest_press_release( &$context ) {
-	if (empty($context['post']->custom['content_blocks'])) {
+	if ( empty( $context['post']->custom['content_blocks'] ) ) {
 		return;
 	}
-	
+
 	foreach ( $context['post']->custom['content_blocks'] as $id => $type ) {
 		if ( 'media' == $type ) {
 			// get post category
 			$id     = (int) $id;
 			$cat_id = $context['post']->custom["content_blocks_{$id}_category"];
-			
+
 			// get latest post query
 			$args = array(
 				'posts_per_page' => 1,
@@ -79,14 +79,14 @@ function supt_get_latest_press_release( &$context ) {
 					)
 				),
 			);
-			
+
 			// get the latest post
 			$press_post = Timber::get_posts( $args );
-			
+
 			if ( $press_post ) {
 				return $press_post[0];
 			}
-			
+
 			// the latest post is limited to one, so we're done now
 			return;
 		}
@@ -102,16 +102,16 @@ function supt_get_latest_press_release( &$context ) {
  */
 function supt_get_events( &$context ) {
 	$context['venues'] = null;
-	
-	if (empty($context['post']->custom['content_blocks'])) {
+
+	if ( empty( $context['post']->custom['content_blocks'] ) ) {
 		return;
 	}
-	
+
 	foreach ( $context['post']->custom['content_blocks'] as $id => $type ) {
 		if ( 'events' == $type ) {
-			
+
 			$post_per_page = (int) $context['post']->{"content_blocks_{$id}_max_num"};
-			
+
 			// get upcoming and running events
 			$args = array(
 				'post_type'      => 'tribe_events',
@@ -127,9 +127,9 @@ function supt_get_events( &$context ) {
 					)
 				),
 			);
-			
+
 			$events = Timber::get_posts( $args );
-			
+
 			// the latest post is limited to one, so we're done now
 			return $events;
 		}
