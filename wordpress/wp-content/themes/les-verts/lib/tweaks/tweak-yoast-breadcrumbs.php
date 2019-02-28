@@ -16,7 +16,7 @@ add_filter( 'wpseo_breadcrumb_output', function ( $out ) {
 
 	// add breadcrumbs for single events
 	if ( \is_singular( 'tribe_events' ) ) {
-		$queried_object  = \get_queried_object();
+		$queried_object = \get_queried_object();
 
 		$replace = '  <span class="breadcrumb_last">' . $queried_object->post_title . '</span></span></div>';
 
@@ -278,6 +278,13 @@ add_filter( 'wpseo_breadcrumb_links', function ( $crumbs ) {
 			$_url = '';
 		}
 
+		// add #menu-item-ID to the first level crumbs so we can
+		// intercept the links with js to open the nav instead of
+		// following the link.
+		if ( 1 === $breadcrumb->menu_breadcrumb_level ) {
+			$_url .= '#menu-item-' . $breadcrumb->ID;
+		}
+
 		$crumbs[] = array(
 			'text'       => $breadcrumb->title,
 			'url'        => $_url,
@@ -289,6 +296,3 @@ add_filter( 'wpseo_breadcrumb_links', function ( $crumbs ) {
 
 	return $crumbs;
 } );
-
-// todo: handle fist level entries to open nav, if there are any submenu entries
-// check if we can change the url directly in the generate_trail method to some hash we can catch using js

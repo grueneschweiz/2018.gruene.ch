@@ -20,6 +20,7 @@ import MPerson from './molecules/m-person/m-person';
 import AImageLazy from './atoms/a-image/a-image-lazy';
 import AImageCover from './atoms/a-image/a-image-cover';
 import MForm from './molecules/m-form/m-form';
+import ABreadcrumbs from "./atoms/a-breadcrumbs/a-breadcrumbs";
 
 // ================= STOP TO ADD HERE
 
@@ -43,6 +44,7 @@ const COMPONENTS_TO_LOAD = [
 	{ view: AImageLazy, name: 'AImageLazy', selector: '.a-image__image--lazy' },
 	{ view: AImageCover, name: 'AImageCover', selector: '.a-image' },
 	{ view: MForm, name: 'MForm', selector: '.m-form' },
+	{ view: ABreadcrumbs, name: 'ABreadcrumbs', selector: '.a-breadcrumbs' },
 ];
 
 const LOADED_COMPONENTS = {};
