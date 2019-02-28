@@ -13,16 +13,6 @@ add_filter( 'wpseo_breadcrumb_output_wrapper', function () {
  * Add a class to the second last breadcrumb so we can apply good mobile styles
  */
 add_filter( 'wpseo_breadcrumb_output', function ( $out ) {
-
-	// add breadcrumbs for single events
-	if ( \is_singular( 'tribe_events' ) ) {
-		$queried_object = \get_queried_object();
-
-		$replace = '  <span class="breadcrumb_last">' . $queried_object->post_title . '</span></span></div>';
-
-		$out = str_replace( '</div>', $replace, $out );
-	}
-
 	$last_class = 'breadcrumb_last';
 
 	// get position of 'breadcrumb_last'
@@ -61,9 +51,10 @@ add_filter( 'wpseo_breadcrumb_separator', function () {
  */
 class CustomMenuBreadcrumbs {
 
-	public $menu_location = '';
-	public $menu = false;
-	public $menu_items = array();
+	private $menu_location = '';
+	private $menu = false;
+	private $menu_items = array();
+	private $parent_menu_item = false;
 
 	public function __construct( $menu_location = '' ) {
 
@@ -195,26 +186,28 @@ class CustomMenuBreadcrumbs {
 	}
 
 	/**
-	 * Generate an array of WP_Post objects that constitutes a breadcrumb trail based on a Menu
+	 * Get the menu item of the current page
 	 *
-	 * @since       1.0.0
-	 * @return      array|string    Breadcrumb of WP_Post objects
+	 * If the current page is not linked in the menu, but an archive of it's primary
+	 * category is, then return the menu item of the archive and set the class
+	 * variable 'parent_menu_item' to true.
+	 *
+	 * @return false|\WP_Post false if no page and no archive is found in the menu.
 	 */
-	public function generate_trail() {
-		$object_id      = \get_queried_object_id();
-		$indirect_match = false;
+	private function get_current_menu_item() {
+		$object_id = \get_queried_object_id();
 
 		// for all regular menu elements
 		if ( $object_id ) {
 			$current_menu_item = $this->get_menu_item_object_by_object_id( $object_id );
 		}
 
-		// for posts where only the primary is linked in the menu
+		// for posts not the post itself but the primary category is linked in the menu
 		if ( empty( $current_menu_item ) ) {
 			$primary_category = $this->get_primary_category( \get_the_ID() );
 			if ( $primary_category ) {
-				$current_menu_item = $this->get_menu_item_object_by_object_id( $primary_category->term_id );
-				$indirect_match    = true;
+				$current_menu_item      = $this->get_menu_item_object_by_object_id( $primary_category->term_id );
+				$this->parent_menu_item = true;
 			}
 		}
 
@@ -223,36 +216,81 @@ class CustomMenuBreadcrumbs {
 			$current_menu_item = $this->get_menu_object_by_url( \tribe_get_events_link() );
 		}
 
+		return $current_menu_item;
+	}
+
+	/**
+	 * Generate an array of WP_Post objects that constitutes a breadcrumb trail based on a Menu
+	 *
+	 * @param array $wpseo_crumbs The original breadcrumbs from yoast wpseo
+	 *
+	 * @since       1.0.0
+	 * @return      array|string    Breadcrumb of WP_Post objects
+	 */
+	public function generate_trail( $wpseo_crumbs ) {
+		$current_menu_item = $this->get_current_menu_item();
+
+		// use the original breadcrumbs if we can't locate the menu item
 		if ( empty( $current_menu_item ) ) {
-			return '';
+			return $wpseo_crumbs;
 		}
 
 		// there's at least one level
-		$breadcrumb = array( $current_menu_item );
+		$breadcrumbs = array( $current_menu_item );
 
 		// work backwards from the current menu item all the way to the top
 		while ( $current_menu_item = $this->get_parent_menu_item_object( $current_menu_item ) ) {
-			$breadcrumb[] = $current_menu_item;
+			$breadcrumbs[] = $current_menu_item;
 		}
 
 		// since we worked backwards, we need to reverse everything
-		$breadcrumb = array_reverse( $breadcrumb );
+		$breadcrumbs = array_reverse( $breadcrumbs );
 
 		// add a level for each breadcrumb object
 		$i = 1;
-		foreach ( $breadcrumb as $key => $val ) {
+		foreach ( $breadcrumbs as $key => $val ) {
 			if ( ! isset( $val->menu_breadcrumb_level ) ) {
 				$val->menu_breadcrumb_level = $i;
-				$breadcrumb[ $key ]         = $val;
+				$breadcrumbs[ $key ]        = $val;
 			}
 			$i ++;
 		}
 
-		if ( ! $indirect_match ) {
-			array_pop( $breadcrumb );
+		/**
+		 * build final array of breadcrumbs that conforms wpseo's expected format
+		 */
+		// add the home breadcrumb
+		$final_crumbs = [ reset( $wpseo_crumbs ) ];
+
+		// add the custom breadcrumbs in the expected format
+		foreach ( $breadcrumbs as $key => $breadcrumb ) {
+
+			$_url = $breadcrumb->url;
+			if ( $_url === '#' ) {
+				$_url = '';
+			}
+
+			// add #menu-item-ID to the first level crumbs so we can
+			// intercept the links with js to open the nav instead of
+			// following the link.
+			if ( 1 === $breadcrumb->menu_breadcrumb_level ) {
+				$_url .= '#menu-item-' . $breadcrumb->ID;
+			}
+
+			$final_crumbs[] = array(
+				'text'       => $breadcrumb->title,
+				'url'        => $_url,
+				'allow_html' => false,
+			);
 		}
 
-		return $breadcrumb;
+		// add the breadcrumb of the current page if we could only locate the
+		// parent item of the current page in the menu.
+		if ( $this->parent_menu_item ) {
+			$final_crumbs[] = array_pop( $wpseo_crumbs );
+		}
+
+		return $final_crumbs;
 	}
 
 }
@@ -260,39 +298,8 @@ class CustomMenuBreadcrumbs {
 /**
  * Try to replace the breadcrumbs by the menu hierarchy. Use the default ones if this fails.
  */
-add_filter( 'wpseo_breadcrumb_links', function ( $crumbs ) {
+add_filter( 'wpseo_breadcrumb_links', function ( $wpseo_crumbs ) {
 	$menu_breadcrumbs = new CustomMenuBreadcrumbs( 'main-nav' );
-	$breadcrumbs      = $menu_breadcrumbs->generate_trail();
 
-	if ( empty( $breadcrumbs ) ) {
-		return $crumbs;
-	}
-
-	$last_crumb = array_pop( $crumbs );
-	$crumbs     = [ reset( $crumbs ) ];
-
-	foreach ( $breadcrumbs as $key => $breadcrumb ) {
-
-		$_url = $breadcrumb->url;
-		if ( $_url === '#' ) {
-			$_url = '';
-		}
-
-		// add #menu-item-ID to the first level crumbs so we can
-		// intercept the links with js to open the nav instead of
-		// following the link.
-		if ( 1 === $breadcrumb->menu_breadcrumb_level ) {
-			$_url .= '#menu-item-' . $breadcrumb->ID;
-		}
-
-		$crumbs[] = array(
-			'text'       => $breadcrumb->title,
-			'url'        => $_url,
-			'allow_html' => false,
-		);
-	}
-
-	$crumbs[] = $last_crumb;
-
-	return $crumbs;
+	return $menu_breadcrumbs->generate_trail( $wpseo_crumbs );
 } );
