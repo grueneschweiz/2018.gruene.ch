@@ -64,6 +64,7 @@
 
 	&__list {
 		@include clean-ul;
+		list-style-image: url(data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7); // fix edge bug
 	}
 
 	&__item {

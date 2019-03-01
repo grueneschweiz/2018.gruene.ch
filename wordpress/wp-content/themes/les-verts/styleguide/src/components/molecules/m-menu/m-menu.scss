@@ -275,6 +275,7 @@
 
 	&__submenu {
 		@include clean-ul;
+		list-style-image: url(data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7); // fix edge bug
 		position: absolute;
 		@include fluid-props(top, $size-medium, $grid-max-width-max, 80px, 100px);
 		left: 0;
