@@ -28,7 +28,7 @@ if ( class_exists( 'acf' ) ) {
  *
  * Add repeater and flexible content fields
  */
-if ( class_exists('SearchWP') ) {
+if ( class_exists( 'SearchWP' ) ) {
 	require_once __DIR__ . '/searchwp/add-fields.php';
 }
 
@@ -46,7 +46,10 @@ if ( class_exists('SearchWP') ) {
  */
 
 if ( is_admin() ) {
-	//require_once __DIR__ . '/admin/acf-protect-admin.php';
+	if ( ! WP_DEBUG ) {
+		require_once __DIR__ . '/admin/acf-protect-admin.php';
+	}
+
 	require_once __DIR__ . '/admin/acf-featured-image.php';
 	require_once __DIR__ . '/admin/customize-tinymce.php';
 	require_once __DIR__ . '/admin/admin-hide-pll-sync.php';
@@ -54,16 +57,14 @@ if ( is_admin() ) {
 	require_once __DIR__ . '/admin/svg-support.php';
 	require_once __DIR__ . '/admin/tweak-tribe-events.php';
 	require_once __DIR__ . '/admin/allow-code.php';
+	require_once __DIR__ . '/admin/custom-menu-metabox.php';
+
+	if ( defined( 'WPSEO_FILE' ) ) {
+		require_once __DIR__ . '/admin/tweak-yoast-seo.php';
+	}
 }
 
 require_once __DIR__ . '/admin/timmy-config.php';
-require_once __DIR__ . '/admin/custom-menu-metabox.php';
-//require_once __DIR__ . '/admin/translatable-post-types.php';
-//require_once __DIR__ .'/admin/acf-option-pages.php';
-
-if ( defined( 'WPSEO_FILE' ) ) {
-	require_once __DIR__ . '/admin/tweak-yoast-seo.php';
-}
 
 /**
  * CONTROLLERS
@@ -162,6 +163,11 @@ Customizer\GetActive::register();
  */
 
 require_once __DIR__ . '/tweaks/inject-svg-sprite.php';
+
+if ( defined( 'WPSEO_FILE' ) ) {
+	require_once __DIR__ . '/tweaks/tweak-yoast-social-media-stuff.php';
+	require_once __DIR__ . '/tweaks/tweak-yoast-breadcrumbs.php';
+}
 
 
 /**

@@ -217,7 +217,7 @@
 
 		&.is-open {
 			&:after {
-				@include fluid-props(bottom, $size-medium, $grid-max-width-max, -16.5px, -26px);
+				@include fluid-props(bottom, $size-medium, $grid-max-width-max, -14.7px, -24px);
 			}
 
 			@include media($_MOBILE) {
@@ -275,6 +275,7 @@
 
 	&__submenu {
 		@include clean-ul;
+		list-style-image: url(data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7); // fix edge bug
 		position: absolute;
 		@include fluid-props(top, $size-medium, $grid-max-width-max, 80px, 100px);
 		left: 0;
@@ -296,7 +297,8 @@
 			justify-content: center;
 			align-items: flex-start;
 			flex-direction: row;
-			padding: 0 14px 0 100px;
+			padding: 0 14px 50px 100px;
+			overflow-y: hidden;
 		}
 
 		&.is-open {
@@ -318,10 +320,6 @@
 			@include media($_MOBILE) {
 				min-height: calc(100vh - 151px + 20 * (100vh - 1024px) / 416);
 			}
-		}
-
-		&.is-not-scrollable {
-			overflow-y: auto;
 		}
 
 		&__section {

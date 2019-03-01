@@ -24,7 +24,8 @@ add_filter( 'acf/fields/wysiwyg/toolbars', function( $toolbars ) {
 		2 => array(
 			'styleselect',
 			'strikethrough',
-			'underline',
+			'subscript',
+			'superscript',
 			'pastetext',
 			'removeformat',
 			'charmap',
@@ -82,7 +83,7 @@ add_action( 'acf/input/admin_footer', function() {
 
 // custom css
 add_filter( 'tiny_mce_before_init', function( $mce_init ) {
-	$styleguide_css = get_stylesheet_directory_uri() . '/styleguide/dist/build/style.min.css';
+	$styleguide_css = get_stylesheet_directory_uri() . '/static/style' . ( WP_DEBUG ? '' : '.min' ) . '.css';
 	$content_css = get_stylesheet_directory_uri() . '/style-admin-editor.css';
 	if (isset($mce_init['content_css'])) {
 		$content_css_new =  $mce_init[ 'content_css' ].','.$styleguide_css.','.$content_css;
