@@ -2340,38 +2340,38 @@ msgstr ""
 
 #: templates/atoms/a-map.twig:1
 msgid "Geographical map"
-msgstr ""
+msgstr "Landkarte"
 
 #: templates/molecules/m-footer-contact.twig:11
 msgctxt "facebook, twitter or instagram"
 msgid "Visit us on %s"
-msgstr ""
+msgstr "Besuche uns auf %s"
 
 #: templates/molecules/m-person.twig:48
 msgid "Visit the facebook page of %s"
-msgstr ""
+msgstr "Besuche die Facebookseite von %s"
 
 #: templates/molecules/m-person.twig:55
 msgid "Visit the twitter profile of %s"
-msgstr ""
+msgstr "Besuche das Twitterprofil von %s"
 
 #: templates/molecules/m-person.twig:62
 msgid "Visit the instagram profile of %s"
-msgstr ""
+msgstr "Besuche das Instagramprofil von %s"
 
 #: templates/molecules/m-share.twig:19
 msgid "Share this page on twitter"
-msgstr ""
+msgstr "Teile diese Seite auf Twitter"
 
 #: templates/molecules/m-share.twig:27
 msgid "Share this page on facebook"
-msgstr ""
+msgstr "Teile diese Seite auf Facebook"
 
 #: templates/molecules/m-share.twig:35
 msgid "Share this page by email"
-msgstr ""
+msgstr "Teile diese Seite per Email"
 
 #: templates/molecules/m-share.twig:43
 msgid "Share this page by WhatsApp"
-msgstr ""
+msgstr "Teile diese Seite per WhatsApp"
 
