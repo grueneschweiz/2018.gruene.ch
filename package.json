@@ -1,6 +1,6 @@
 {
   "name": "les-verts-stack",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "desccription": "Les Verts (Die Gruene) new website with living styleguide made with Fractal.build, hosted on WordPress Multisite and with the latest technologies by superhuit.ch.",
   "main": "src/js/index.js",
   "repository": {
