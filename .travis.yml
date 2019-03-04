@@ -6,6 +6,8 @@ branches:
   only:
     - master
     - styleguide
+    # add regex for build tags (they are considered as branches)
+    - /^v?\d+\.\d+\.\d+(\.\d+)?$/
 
 cache:
   directories:
