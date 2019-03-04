@@ -64,6 +64,7 @@ if ( is_admin() ) {
 	}
 }
 
+require_once __DIR__ . '/admin/rest-disable-user.php';
 require_once __DIR__ . '/admin/timmy-config.php';
 
 /**
