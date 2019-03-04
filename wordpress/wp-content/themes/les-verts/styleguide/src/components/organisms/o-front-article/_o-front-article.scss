@@ -149,10 +149,11 @@
 			&::before, &:hover::before {
 				content: "\25A0";
 				color: $color-secondary;
-				transform: rotate(-5deg);
 				position: absolute;
 				left: -19px;
-				font-size: 0.75em;
+				transform: translateY(-0.1em) rotate(-5deg);
+				font-size: 0.9em;
+				-webkit-text-size-adjust: 50%;
 			}
 		}
 	}

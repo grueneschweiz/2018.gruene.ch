@@ -19,6 +19,8 @@ export default class MMenuDesktop extends MMenuBase {
 	}
 
 	afterOpenSubNavigation() {
+		this.clickedItem = this.currentSub;
+
 		this.submenu = this.getScopedElement(SUBMENU_SELECTOR + '.' + OPEN_STATE);
 
 		if (this.submenu.offsetHeight !== this.submenu.scrollHeight) {
@@ -31,6 +33,10 @@ export default class MMenuDesktop extends MMenuBase {
 	afterCloseSubNavigation() {
 		if (this.submenu) {
 			window.removeEventListener('scroll', this.scrollHandler);
+		}
+		if (this.clickedItem === document.activeElement) {
+			document.activeElement.blur();
+			this.clickedItem = null;
 		}
 	}
 

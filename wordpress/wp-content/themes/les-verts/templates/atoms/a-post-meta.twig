@@ -7,18 +7,15 @@
     {% if date %}
         <time class="a-post-meta__date" datetime="{{ isodate|date('Y-m-d') }}">{{ date }}</time>
     {% endif %}
-    {% if categories %}
-        <div class="a-post-meta__categories">
-            {% for category in categories %}
-                <a href="{{ category.link }}" class="a-post-meta__category"
-                   title="{{ __('Show all articles of the category %s', constant('THEME_DOMAIN'))|format(category.name) }}">{{ category.name }}{% if not loop.last %},{% endif %}</a>
-            {% endfor %}
-        </div>
-    {% endif %}
-    {% if tags %}
+    {% if tags or categories %}
         <div class="a-post-meta__tags">
+						{% for category in categories %}
+							<a href="{{ category.link }}" class="a-post-meta__category"
+								 title="{{ __('Show all articles of the category %s', constant('THEME_DOMAIN'))|format(category.name) }}">{{ category.name }}</a>
+						{% endfor %}
             {% for tag in tags %}
-                <a href="{{ tag.link }}" class="a-post-meta__tag">{{ tag.name }}</a>
+                <a href="{{ tag.link }}" class="a-post-meta__tag"
+									 title="{{ __('Show all articles tagged with %s', constant('THEME_DOMAIN'))|format(tag.name) }}">{{ tag.name }}</a>
             {% endfor %}
         </div>
     {% endif %}

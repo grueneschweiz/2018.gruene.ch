@@ -56,14 +56,15 @@ if ( is_admin() ) {
 	require_once __DIR__ . '/admin/smush.php';
 	require_once __DIR__ . '/admin/svg-support.php';
 	require_once __DIR__ . '/admin/tweak-tribe-events.php';
-	require_once __DIR__ . '/admin/allow-code.php';
 	require_once __DIR__ . '/admin/custom-menu-metabox.php';
+	require_once __DIR__ . '/admin/leverage-caps.php';
 
 	if ( defined( 'WPSEO_FILE' ) ) {
 		require_once __DIR__ . '/admin/tweak-yoast-seo.php';
 	}
 }
 
+require_once __DIR__ . '/admin/rest-disable-user.php';
 require_once __DIR__ . '/admin/timmy-config.php';
 
 /**

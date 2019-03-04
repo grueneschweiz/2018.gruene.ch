@@ -46,11 +46,13 @@ export default class MForm extends BaseView {
 
 			let invalidMessage = this.getScopedElement( INVALID_MESSAGE_SELECTOR );
 			this.addClass( invalidMessage, SHOWN_STATE );
+			invalidMessage.setAttribute('aria-hidden', 'false');
 
 		} else {
 
 			let errorMessage = this.getScopedElement( ERROR_MESSAGE_SELECTOR );
 			this.addClass( errorMessage, SHOWN_STATE );
+			errorMessage.setAttribute('aria-hidden', 'false');
 		}
 
 		clearInterval( this.sendingTimer );
@@ -115,6 +117,8 @@ export default class MForm extends BaseView {
 		// hide error messages
 		let errorMessage = this.getScopedElement( ERROR_MESSAGE_SELECTOR );
 		let invalidMessage = this.getScopedElement( INVALID_MESSAGE_SELECTOR );
+		errorMessage.setAttribute('aria-hidden', 'true');
+		invalidMessage.setAttribute('aria-hidden', 'true');
 		this.removeClass( errorMessage, SHOWN_STATE );
 		this.removeClass( invalidMessage, SHOWN_STATE );
 
@@ -176,6 +180,8 @@ export default class MForm extends BaseView {
 				this.predecessorId = data.predecessor_id;
 				let submitWrapper = this.getScopedElement( SUBMIT_WRAPPER_SELECTOR );
 				let successMessage = this.getScopedElement( SUCCESS_MESSAGE_SELECTOR );
+				submitWrapper.setAttribute('aria-hidden', 'true');
+				successMessage.setAttribute('aria-hidden', 'false');
 				this.addClass( submitWrapper, HIDDEN_STATE );
 				this.addClass( successMessage, SHOWN_STATE );
 			}

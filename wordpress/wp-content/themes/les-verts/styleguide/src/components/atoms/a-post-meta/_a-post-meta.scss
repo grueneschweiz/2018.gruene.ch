@@ -16,17 +16,11 @@
 		font-weight: $font-weight-bold;
 	}
 
-	&__categories {
-		@extend .a-post-meta__block;
-	}
-
 	&__tags {
 		@extend .a-post-meta__block;
 	}
 
-	&__date + &__categories,
-	&__date + &__tags,
-	&__categories + &__tags {
+	&__date + &__tags {
 		padding-top: 0;
 
 		&::before {
@@ -39,13 +33,18 @@
 		}
 	}
 
+	&__tag,
 	&__category {
 		@include clean-link;
-		color: $color-primary;
-		font-weight: $font-weight-bold;
-	}
+		transition: color $transition-ease $transition-fast;
+		display: inline-block; // only hyphenate if really necessary
 
-	&__tag {
-		@include clean-link;
+		&:hover {
+			color: $color-primary;
+		}
+
+		&:not(:last-child)::after {
+			content: ',';
+		}
 	}
 }

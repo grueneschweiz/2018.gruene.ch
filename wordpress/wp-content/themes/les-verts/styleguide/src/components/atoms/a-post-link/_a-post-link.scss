@@ -64,11 +64,12 @@
 		&:not(:first-child)::before {
 			content: "\25A0";
 			color: $color-grey-3;
-			transform: rotate(-5deg);
 			margin-right: 0.85em;
 			margin-left: 0.55em;
 			display: inline-block;
-			font-size: 0.75em;
+			transform: translateY(-0.1em) rotate(-5deg);
+			font-size: 0.9em;
+			-webkit-text-size-adjust: 50%;
 		}
 	}
 

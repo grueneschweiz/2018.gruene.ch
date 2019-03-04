@@ -153,16 +153,16 @@
 		<div class="m-form__submit-byline">{{ post.form_desc }}</div>
 	</div>
 
-	<div class="m-form__message m-form__message--success">
+	<div class="m-form__message m-form__message--success" aria-hidden="true">
 		<h2 class="m-form__message-title">{{ post.form_success_form_success_title|wptexturize }}</h2>
 		<p class="m-form__message-body">{{ post.form_success_form_success_text|wptexturize|wpautop }}</p>
 	</div>
-	<div class="m-form__message m-form__message--failure">
+	<div class="m-form__message m-form__message--failure" aria-hidden="true">
 		<h2 class="m-form__message-title">{{ __('Uups, something went wrong!', constant('THEME_DOMAIN')) }}</h2>
 		<p
 			class="m-form__message-body">{{ __('Sorry, there was an error submitting this form. If the error persists, please contact us by email.', constant('THEME_DOMAIN')) }}</p>
 	</div>
-	<div class="m-form__message m-form__message--invalid">
+	<div class="m-form__message m-form__message--invalid" aria-hidden="true">
 		<h2 class="m-form__message-title">{{ __('Please check input', constant('THEME_DOMAIN')) }}</h2>
 		<p
 			class="m-form__message-body">{{ __('There seems to be an error in your input. Please recheck the fields.', constant('THEME_DOMAIN')) }}</p>

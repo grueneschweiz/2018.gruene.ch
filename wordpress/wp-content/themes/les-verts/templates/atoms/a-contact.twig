@@ -1,12 +1,11 @@
-{# this is a helper file and exists only in twig but not in the styleguide #}
 {% if 'email' == acf_fc_layout %}
-	<a href="{{email|email|hexencode}}" class="a-person__contact a-person__contact--email">{{email|hexencode}}</a>
+	<a href="{{email|email|hexencode}}" class="a-contact a-contact--email">{{email|hexencode}}</a>
 {% endif %}
 
 {% if 'phone' == acf_fc_layout %}
-	<a href="{{phone|phone}}" class="a-person__contact a-person__contact--phone">{{phone}}</a>
+	<a href="{{phone|phone}}" class="a-contact a-contact--phone">{{phone}}</a>
 {% endif %}
 
 {% if 'website' == acf_fc_layout %}
-	<a href="{{website}}" target="_blank" class="a-person__contact a-person__contact--website">{{website|nice_link}}</a>
+	<a href="{{website}}" target="_blank" class="a-contact a-contact--website">{{website|nice_link}}</a>
 {% endif %}

@@ -1,0 +1,8 @@
+label: Contact
+status: ready
+display:
+  margin: 40px
+context:
+  email: asdf@asdf.asdf
+  modifiers:
+    - email

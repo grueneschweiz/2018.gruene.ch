@@ -1,10 +1,12 @@
 .a-link-button {
 	@include clean-link;
 
+	position: relative;
+
 	font-size: 0.875em;
-	display: inline-flex;
-	align-items: center;
-	line-height: 0.9em; // make sure the arrow wont be cut
+	display: inline-block;
+	padding-right: 1.5em;
+	line-height: 1.2em;
 	padding-left: 0;
 	@include fluid-props(padding-top padding-bottom, $fluid-min, $fluid-max, 6px, 10px);
 
@@ -17,22 +19,24 @@
 	letter-spacing: 0.08928em;
 
 	&::after {
-		content: " ";
+		content: "";
 		width: 0.6em;
 		height: 0.6em;
-		margin-left: 1.5em;
 		border-color: $color-primary;
 		border-top: 0.1666666667em solid; // 2/12
 		border-right: 0.1666666667em solid; // 2/12
-		transform: translateX(-0.5em) rotate(45deg);
+		transform: translateY(-50%) translateX(-0.5em) rotate(45deg);
 		transition: transform $transition-fast $transition-ease;
+		position: absolute;
+		right: 0;
+		top: 50%;
 	}
 
 	@include hover {
 		color: $color-primary-dark;
 
 		&::after {
-			transform: translateX(0.5em) rotate(45deg);
+			transform: translateY(-50%) translateX(0.5em) rotate(45deg);
 		}
 	}
 

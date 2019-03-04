@@ -2,18 +2,12 @@
 	{{# if date}}
 		<time class="a-post-meta__date" datetime="{{datetime}}">{{date}}</time>
 	{{/if}}
-	{{# if categories }}
-		<div class="a-post-meta__categories">
-			{{#each categories}}
+	<div class="a-post-meta__tags">
+		{{#each categories}}
 				<a href="{{this.link}}" class="a-post-meta__category">{{this.label}}</a>
-			{{/each}}
-		</div>
-	{{/if}}
-	{{# if tags }}
-		<div class="a-post-meta__tags">
-			{{#each tags}}
-				<a href="{{this.link}}" class="a-post-meta__tag">{{this.label}}</a>
-			{{/each}}
-		</div>
-	{{/if}}
+		{{/each}}
+		{{#each tags}}
+			<a href="{{this.link}}" class="a-post-meta__tag">{{this.label}}</a>
+		{{/each}}
+	</div>
 </div>

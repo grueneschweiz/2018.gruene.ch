@@ -21,6 +21,10 @@
 			@include fluid-props(margin-left, $size-medium, $grid-max-width-max, 16px, 33px);
 		}
 
+		&:focus {
+			border-left: solid 1px $color-primary;
+		}
+
 		.a-logo {
 			max-width: 100%;
 			max-height: 100%;
