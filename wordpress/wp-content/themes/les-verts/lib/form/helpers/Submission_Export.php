@@ -140,7 +140,7 @@ class Submission_Export {
 			$row['id'] = $id;
 
 			foreach ( $headers as $form_id => $fields ) {
-				if ( array_key_exists( $form_id, $submission ) && empty( $row['timestamp'] ) ) {
+				if ( array_key_exists( $form_id, $submission ) ) {
 					$row['timestamp'] = $submission[ $form_id ]['_meta_']['timestamp'];
 				}
 
