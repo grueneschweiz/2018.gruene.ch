@@ -2,12 +2,14 @@
 
 namespace SUPT;
 
-require_once realpath( __DIR__ . '/../post-types/Model.php' );
+require_once realpath( __DIR__ . '/../../post-types/Model.php' );
 
 class FormType extends Model {
 
 	const MODEL_NAME = 'theme_form';
 	const COLUMN_FIELD_NAME = 'fields';
+	const VIEW_ACTION = 'view';
+	const EDIT_ACTION = 'edit';
 
 	static function register_type() {
 		self::register_post_type();
@@ -54,10 +56,10 @@ class FormType extends Model {
 	}
 
 	public static function register_acf_fields() {
-		require_once __DIR__ . '/acf/form-local-settings.php';
-		require_once __DIR__ . '/acf/input.php';
-		require_once __DIR__ . '/acf/form-details.php';
-		require_once __DIR__ . '/acf/mail-template.php';
+		require_once __DIR__ . '/../acf/form-local-settings.php';
+		require_once __DIR__ . '/../acf/input.php';
+		require_once __DIR__ . '/../acf/form-details.php';
+		require_once __DIR__ . '/../acf/mail-template.php';
 
 		self::maybe_remove_webling_field_settings();
 	}
@@ -215,17 +217,24 @@ class FormType extends Model {
 		} );
 	}
 
-	public static function save_submissions_per_page_option( $status, $option, $value ) {
+	public static function save_submissions_per_page_option(
+		/** @noinspection PhpUnusedParameterInspection */
+		$status, $option, $value
+	) {
 		if ( 'submissions_per_page' == $option ) {
 			return $value;
 		}
 	}
 
 	public static function display_submissions_page() {
-		require_once 'helpers' . DIRECTORY_SEPARATOR . 'class-wp-list-table.php';
-		require_once 'Submissions_Table.php';
+		if ( isset( $_REQUEST['action'] ) && self::VIEW_ACTION === $_REQUEST['action'] ) {
+			return self::display_single_submission();
+		}
 
-		$submissions = new Submissions_Table();
+		require_once __DIR__ . '/../helpers/class-wp-list-table.php';
+		require_once 'SubmissionsTable.php';
+
+		$submissions = new SubmissionsTable();
 		$submissions->prepare_items();
 
 		?>
@@ -250,5 +259,10 @@ class FormType extends Model {
 			</div>
 		</div>
 		<?
+	}
+
+	public static function display_single_submission() {
+		// todo: implement this
+		wp_die( 'This is not yet implemented. Please be patient.' );
 	}
 }
