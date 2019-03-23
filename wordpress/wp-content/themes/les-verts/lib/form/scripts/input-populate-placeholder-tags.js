@@ -63,7 +63,7 @@
 		}
 
 		slug_exists = slugs.indexOf( slug ) || '_meta_' === slug; // _meta_ is
-																  // reserved
+		// reserved
 
 		while (- 1 !== slug_exists && slug_exists !== index) {
 			j ++;
@@ -118,6 +118,8 @@
 	/**
 	 * Mimics supt_slugify function written in php
 	 *
+	 * todo: replace with library function (p.ex. slug or slugify from npm)
+	 *
 	 * @param str
 	 * @returns {*}
 	 */
@@ -137,7 +139,7 @@
 			.replace( /[^a-z0-9 _-]/g, '' ) // remove invalid chars
 			.replace( /\s+/g, '_' ) // collapse whitespace and replace by an
 			// underline
-			.replace( /-+/g, '_' ); // collapse underlines
+			.replace( /_+/g, '_' ); // collapse underlines
 
 		return str;
 	}
