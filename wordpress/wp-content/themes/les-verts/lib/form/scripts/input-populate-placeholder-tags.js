@@ -44,6 +44,13 @@
 		updateMailPlaceholders( placeholders );
 	}
 
+	/**
+	 * Make sure the same slug never exists twice
+	 *
+	 * @param field_name
+	 * @param index
+	 * @returns {string}
+	 */
 	function getUniqueSlug( field_name, index ) {
 		var slug;
 		var slug_exists;
@@ -55,7 +62,8 @@
 			slug = slug.substr( 0, max_slug_len );
 		}
 
-		slug_exists = slugs.indexOf( slug );
+		slug_exists = slugs.indexOf( slug ) || '_meta_' === slug; // _meta_ is
+																  // reserved
 
 		while (- 1 !== slug_exists && slug_exists !== index) {
 			j ++;
