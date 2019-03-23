@@ -1,9 +1,12 @@
 ( function() {
+	var max_slug_len = 50; // plus '-X' for multiple identical slugs
 
 	var fields_container = document.querySelector( '.form_fields_repeater' );
 	var fields = document.querySelectorAll( '.form_input_label input' );
 	var $slugFields = acf.getFields( { key: 'field_5c0fad19blkjh' } );
-	var descriptions = document.querySelectorAll( '.form_mail_template_placeholders' );
+	var descriptions = document.querySelectorAll(
+		'.form_mail_template_placeholders' );
+	var slugs = [];
 
 	// mutation observer to handle addition and removal of fields
 	var observer = new MutationObserver( function( mutations ) {
@@ -31,12 +34,39 @@
 				continue;
 			}
 
-			slug = slugify( fields[ i ].value );
+			slug = getUniqueSlug( fields[ i ].value, i );
+			slugs[ i ] = slug;
+
 			placeholders.push( '{{' + slug + '}}' );
 			$slugFields[ i ].val( slug );
 		}
 
 		updateMailPlaceholders( placeholders );
+	}
+
+	function getUniqueSlug( field_name, index ) {
+		var slug;
+		var slug_exists;
+		var j = 0;
+
+		slug = slugify( field_name );
+
+		if (slug.length > max_slug_len) {
+			slug = slug.substr( 0, max_slug_len );
+		}
+
+		slug_exists = slugs.indexOf( slug );
+
+		while (- 1 !== slug_exists && slug_exists !== index) {
+			j ++;
+			slug_exists = slugs.indexOf( slug + '-' + j );
+		}
+
+		if (j) {
+			slug += '-' + j;
+		}
+
+		return slug;
 	}
 
 	// Run once DOM is ready
@@ -48,7 +78,8 @@
 	// Bind events
 	function bind() {
 		for (var i = 0; i < fields.length; i ++) {
-			fields[ i ].removeEventListener( 'blur', updateFieldSlugs ); // prevent multiple binding
+			fields[ i ].removeEventListener( 'blur', updateFieldSlugs ); // prevent
+			// multiple binding
 			fields[ i ].addEventListener( 'blur', updateFieldSlugs );
 		}
 	}
@@ -96,7 +127,8 @@
 
 		str = str.replace( '.', '_' ) // replace a dot by an underline
 			.replace( /[^a-z0-9 _-]/g, '' ) // remove invalid chars
-			.replace( /\s+/g, '_' ) // collapse whitespace and replace by an underline
+			.replace( /\s+/g, '_' ) // collapse whitespace and replace by an
+			// underline
 			.replace( /-+/g, '_' ); // collapse underlines
 
 		return str;
