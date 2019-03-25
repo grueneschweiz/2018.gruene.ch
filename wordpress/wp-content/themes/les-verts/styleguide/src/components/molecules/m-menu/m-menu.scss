@@ -43,7 +43,7 @@
 			top: 80px;
 			left: 0;
 			width: 100%;
-			padding: 22px 41px;
+			padding: 22px 38px;
 		}
 
 		@include media($_DESKTOP) {
@@ -116,7 +116,7 @@
 
 		@include media($_MOBILE) {
 			width: 100%;
-			padding: 27px 41px 40px;
+			padding: 27px 38px 40px;
 			position: absolute;
 			top: 0;
 			right: 0;
