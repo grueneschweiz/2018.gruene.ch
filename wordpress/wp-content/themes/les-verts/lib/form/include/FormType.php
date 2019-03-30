@@ -175,8 +175,10 @@ class FormType extends Model {
 		if ( $column_name == self::COLUMN_FIELD_NAME ) {
 			$fields = get_field( 'form_fields', $post_id );
 
-			echo implode( ', ', array_map( function ( $f ) {
-				return $f['form_input_label'] . ( $f['form_input_required'] ? '*' : '' );
+			echo implode( '; ', array_map( function ( $f ) {
+				$label = wp_trim_words( strip_tags( $f['form_input_label'] ), 4, '...' );
+
+				return $label . ( $f['form_input_required'] ? '*' : '' );
 			}, $fields ) );
 
 		}
