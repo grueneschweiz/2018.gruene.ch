@@ -68,8 +68,7 @@ class SubmissionsTable extends WP_List_Table {
 	 *
 	 * @return array
 	 */
-	private
-	function get_form_fields() {
+	private function get_form_fields() {
 		$form = $this->get_current_form();
 
 		return $form->get_fields();
@@ -80,8 +79,7 @@ class SubmissionsTable extends WP_List_Table {
 	 *
 	 * @return array
 	 */
-	public
-	function get_sortable_columns() {
+	public function get_sortable_columns() {
 		$sortable_columns = [];
 		foreach ( $this->get_columns() as $column_slug => $column_value ) {
 			$sortable_columns[ $column_slug ] = $column_slug;
@@ -95,8 +93,7 @@ class SubmissionsTable extends WP_List_Table {
 	 *
 	 * @return int
 	 */
-	private
-	function get_form_id() {
+	private function get_form_id() {
 		if ( $this->form_id ) {
 			return $this->form_id;
 		}
@@ -127,8 +124,7 @@ class SubmissionsTable extends WP_List_Table {
 	/**
 	 * Prepares the list of items for displaying.
 	 */
-	public
-	function prepare_items() {
+	public function prepare_items() {
 		$this->set_column_headers();
 
 		$this->process_action();
@@ -155,8 +151,7 @@ class SubmissionsTable extends WP_List_Table {
 	 *
 	 * @param int $id post meta id
 	 */
-	public
-	function delete_item(
+	public function delete_item(
 		$id
 	) {
 		require_once __DIR__ . '/SubmissionModel.php';
@@ -172,16 +167,14 @@ class SubmissionsTable extends WP_List_Table {
 	/**
 	 * Text displayed when no submissions are available
 	 */
-	public
-	function no_items() {
+	public function no_items() {
 		_e( 'Yet, there were no forms submitted.', THEME_DOMAIN );
 	}
 
 	/**
 	 * Define the table header columns
 	 */
-	private
-	function set_column_headers() {
+	private function set_column_headers() {
 		$columns = $this->get_columns();
 		$hidden  = [];
 		$count   = count( $columns );
@@ -205,8 +198,7 @@ class SubmissionsTable extends WP_List_Table {
 	 *
 	 * @return string
 	 */
-	protected
-	function column_default(
+	protected function column_default(
 		$item, $column_name
 	) {
 		$value = $item->{'get_' . $column_name}();
@@ -230,8 +222,7 @@ class SubmissionsTable extends WP_List_Table {
 	 *
 	 * @return string
 	 */
-	protected
-	function column__meta_(
+	protected function column__meta_(
 		$item
 	) {
 		if ( ! empty( $item->meta_get_timestamp() ) ) {
@@ -279,8 +270,7 @@ class SubmissionsTable extends WP_List_Table {
 	 *
 	 * @return FormModel[]
 	 */
-	private
-	function get_forms() {
+	private function get_forms() {
 		if ( ! empty( $this->forms ) ) {
 			return $this->forms;
 		}
