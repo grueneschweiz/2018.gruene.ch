@@ -102,6 +102,8 @@ class FormType extends Model {
 		add_action( 'manage_' . self::MODEL_NAME . '_posts_custom_column',
 			array( __CLASS__, 'populate_columns_fields' ),
 			10, 2 );
+		add_action( 'post_row_actions',
+			array( __CLASS__, 'alter_row_actions' ), 10, 2 );
 		add_action( 'request',
 			array( __CLASS__, 'order_by_title' ) );
 
@@ -178,6 +180,38 @@ class FormType extends Model {
 			}, $fields ) );
 
 		}
+	}
+
+	/**
+	 * Remove the quickedit and the view row actions and
+	 * add an action to view the submissions instead.
+	 *
+	 * @param array $actions
+	 * @param WP_Post $post
+	 */
+	public static function alter_row_actions( $actions, $post ) {
+		if ( $post->post_type === self::MODEL_NAME ) {
+			if ( isset( $actions['inline hide-if-no-js'] ) ) {
+				unset( $actions['inline hide-if-no-js'] );
+			}
+
+			if ( isset( $actions['view'] ) ) {
+				unset( $actions['view'] );
+			}
+
+			$url = sprintf( "?post_type=%s&page=submissions&form_id=%d",
+				self::MODEL_NAME,
+				$post->ID
+			);
+
+			$actions['submissions'] = sprintf( '<a href="%s" aria-label="%s">%s</a>',
+				$url,
+				sprintf( __( 'View submissions of %s', THEME_DOMAIN ), $post->post_title ),
+				__( 'Submissions', THEME_DOMAIN )
+			);
+		}
+
+		return $actions;
 	}
 
 	/**
