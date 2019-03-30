@@ -189,7 +189,9 @@ class FormType extends Model {
 	 * add an action to view the submissions instead.
 	 *
 	 * @param array $actions
-	 * @param WP_Post $post
+	 * @param \WP_Post $post
+	 *
+	 * @return array
 	 */
 	public static function alter_row_actions( $actions, $post ) {
 		if ( $post->post_type === self::MODEL_NAME ) {
@@ -206,9 +208,10 @@ class FormType extends Model {
 				$post->ID
 			);
 
+			/** @noinspection HtmlUnknownTarget */
 			$actions['submissions'] = sprintf( '<a href="%s" aria-label="%s">%s</a>',
 				$url,
-				sprintf( __( 'View submissions of %s', THEME_DOMAIN ), $post->post_title ),
+				sprintf( _x( 'View submissions of %s', 'form title', THEME_DOMAIN ), $post->post_title ),
 				__( 'Submissions', THEME_DOMAIN )
 			);
 		}
