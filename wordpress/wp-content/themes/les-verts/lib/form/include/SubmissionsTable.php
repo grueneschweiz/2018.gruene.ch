@@ -246,13 +246,13 @@ class SubmissionsTable extends WP_List_Table {
 				FormType::VIEW_ACTION,
 				$item->meta_get_id()
 			),
-			FormType::EDIT_ACTION => sprintf(
-				'<a href="?post_type=%s&page=%s&action=%s&item=%d">' . __( 'Edit', THEME_DOMAIN ) . '</a>',
-				esc_attr( $_REQUEST['post_type'] ),
-				esc_attr( $_REQUEST['page'] ),
-				FormType::EDIT_ACTION,
-				$item->meta_get_id()
-			),
+//			FormType::EDIT_ACTION => sprintf(
+//				'<a href="?post_type=%s&page=%s&action=%s&item=%d">' . __( 'Edit', THEME_DOMAIN ) . '</a>',
+//				esc_attr( $_REQUEST['post_type'] ),
+//				esc_attr( $_REQUEST['page'] ),
+//				FormType::EDIT_ACTION,
+//				$item->meta_get_id()
+//			),
 			self::DELETE_ACTION   => sprintf(
 				'<a href="?post_type=%s&page=%s&form_id=%d&action=%s&item=%d&_wpnonce=%s">' . __( 'Delete', THEME_DOMAIN ) . '</a>',
 				esc_attr( $_REQUEST['post_type'] ),
@@ -264,7 +264,7 @@ class SubmissionsTable extends WP_List_Table {
 			)
 		];
 
-		return $timestamp . $this->row_actions( $actions );
+		return "<strong>$timestamp</strong>" . $this->row_actions( $actions );
 	}
 
 	/**

@@ -72,15 +72,23 @@ class ViewSingle {
 
 		printf( '<div class="%s">', FormType::MODEL_NAME . '-submission' );
 		printf( '<h2>%s</h2>', $form->get_title() );
-		echo '<table>';
+		printf( '<table class="%s">', FormType::MODEL_NAME . '-submission-table widefat striped' );
+
 		foreach ( $submission->column_keys() as $col_key ) {
 			$item = $submission->{"get_pretty_$col_key"}();
 
-			printf( '<tr><th>%s</th><td>%s</td></tr>',
+			printf( '<tr><th scope="row"><strong>%s</strong></th><td>%s</td></tr>',
 				$item['label'], $item['value'] );
 		}
 
-		// todo: add meta data
+		$date_format = get_option( 'date_format' );
+		$time_format = get_option( 'time_format' );
+		$format      = $date_format . ' - ' . $time_format;
+		$timestamp   = date_i18n( $format, strtotime( $submission->meta_get_timestamp() ) );
+
+		printf( '<tr><th scope="row"><strong>%s</strong></th><td>%s</td></tr>',
+			__( 'Timestamp', THEME_DOMAIN ), $timestamp );
+
 		echo '</table></div>';
 	}
 }
