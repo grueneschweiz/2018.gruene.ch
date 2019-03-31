@@ -48,7 +48,7 @@ deploy:
   - provider: releases
     api_key:
       secure: YhvZmic9GQJUQrDTZZ0jr3QTIbqcsfftOLlkmlVAwMcK43qin83rp0COxzMzzt7HIOg23r02cnM4Le0hyZBP8aDafEzGbH+46yeJLmcT74FCRheswkNUfSBV1T6Mz04+FQL8GRdLcbzyTIICJAbskOpz5dXEyUBy4/gaUy7VNJJnffeT6U56h4QGOczwJeQK7O29PnaRjNqAFb6BzKa24QwTD7KXYZ0kCYbdwEmIXrG5L4nx6M216tZXADa1dXNVerJ1eoP7tbq5CYjB/VoWgOVirwfIsO6dEsZKpFs68afSUcDQqOHd1cV04XfDx4au0XM5M7xk8/Zy/W642ii4o+6nFz7gjDI2kGe/VqVmHiutGPCVOrhC8EIrRvroVhxSdHTW2PnLmKxalUtXjmCWdKQnEZQLGUSFsDSEBg6xEzdEcPR3NpJlq6iGpFRmPfFxFUVI3rCbId4DLKfK07aDpl3qQRx7go3qCgDIvBXfc8VS+LHONP1fjxEdJAYQxV1YAvNeMvs9NIKf74kXhjQzPgGlPP9L/JQ7Zsj7tyMY1VVHa9nHpznxSjlOjj24U6GiiZtGramWedCsjSWC8IoYeRRZrs/M5V6cXDfFXbV9o50APQ+BJDefgpqhoTHH8lXYnmsMP9+v0VRl+2yzFRLgNoTDeG78vIQG1VEmzRuMA+k=
-    file: release.zip
+    file: les-verts.zip
     skip_cleanup: true
     draft: true
     overwrite: true
