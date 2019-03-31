@@ -4,7 +4,7 @@
     "fields": [
         {
             "key": "field_5bfd36914df38",
-            "label": "Main Campaign",
+          "label": "Show Main Campaign",
             "name": "show_main_campaign",
             "type": "true_false",
             "instructions": "",
@@ -18,39 +18,8 @@
             "message": "Display primary campaign?",
             "default_value": 1,
             "ui": 1,
-            "ui_on_text": "",
-            "ui_off_text": ""
-        },
-        {
-            "key": "field_5b645f6d33efa",
-            "label": "Campaign Page",
-            "name": "link",
-            "type": "post_object",
-            "instructions": "Select the post, that holds the whole campaign content.",
-            "required": 1,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_5bfd36914df38",
-                        "operator": "==",
-                        "value": "1"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "post_type": [
-                "post",
-                "page"
-            ],
-            "taxonomy": "",
-            "allow_null": 0,
-            "multiple": 0,
-            "return_format": "object",
-            "ui": 1
+          "ui_on_text": "Show",
+          "ui_off_text": "Hide"
         },
         {
             "key": "field_5b645b8533eeb",
@@ -477,6 +446,38 @@
             ]
         },
         {
+          "key": "field_5b645f6d33efa",
+          "label": "Main Page of the Campaign",
+          "name": "link",
+          "type": "post_object",
+          "instructions": "Select the campaign page that belongs to the following teaser.",
+          "required": 1,
+          "conditional_logic": [
+            [
+              {
+                "field": "field_5bfd36914df38",
+                "operator": "==",
+                "value": "1"
+              }
+            ]
+          ],
+          "wrapper": {
+            "width": "",
+            "class": "",
+            "id": ""
+          },
+          "post_type": [
+            "post",
+            "page",
+            "tribe_events"
+          ],
+          "taxonomy": "",
+          "allow_null": 0,
+          "multiple": 0,
+          "return_format": "object",
+          "ui": 1
+        },
+      {
             "key": "field_5b718e15c398d",
             "label": "Campaign Summary",
             "name": "summary",
@@ -707,5 +708,5 @@
     "hide_on_screen": "",
     "active": 0,
     "description": "",
-    "modified": 1543421348
+  "modified": 1554058878
 }
