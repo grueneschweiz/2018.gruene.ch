@@ -2,6 +2,8 @@
 
 namespace SUPT;
 
+use Exception;
+
 class SubmissionsTable extends WP_List_Table {
 	const NUMB_COLUMNS_TO_DISPLAY = 7;
 	const DELETE_ACTION = 'delete';
@@ -34,7 +36,7 @@ class SubmissionsTable extends WP_List_Table {
 	}
 
 	/**
-	 * Return ssociative array with the column slug as key and the
+	 * Return associative array with the column slug as key and the
 	 * name as value.
 	 *
 	 * @return array
@@ -159,7 +161,7 @@ class SubmissionsTable extends WP_List_Table {
 		try {
 			$submission = new SubmissionModel( $id );
 			$submission->delete();
-		} catch ( \Exception $e ) {
+		} catch ( Exception $e ) {
 			wp_die( __( 'Could not remove form submission. Was it already deleted?', THEME_DOMAIN ) );
 		}
 	}
@@ -286,7 +288,7 @@ class SubmissionsTable extends WP_List_Table {
 		foreach ( get_posts( $args ) as $form ) {
 			try {
 				$this->forms[ $form->ID ] = new FormModel( $form->ID, $form );
-			} catch ( \Exception $e ) {
+			} catch ( Exception $e ) {
 				wp_die( $e->getMessage() );
 			}
 		}

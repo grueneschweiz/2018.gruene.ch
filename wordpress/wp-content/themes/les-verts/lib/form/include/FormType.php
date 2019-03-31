@@ -2,6 +2,9 @@
 
 namespace SUPT;
 
+use Exception;
+use WP_Post;
+
 require_once realpath( __DIR__ . '/../../post-types/Model.php' );
 
 class FormType extends Model {
@@ -189,7 +192,7 @@ class FormType extends Model {
 	 * add an action to view the submissions instead.
 	 *
 	 * @param array $actions
-	 * @param \WP_Post $post
+	 * @param WP_Post $post
 	 *
 	 * @return array
 	 */
@@ -301,7 +304,15 @@ class FormType extends Model {
 	}
 
 	public static function display_single_submission() {
-		// todo: implement this
-		wp_die( 'This is not yet implemented. Please be patient.' );
+		require_once __DIR__ . '/SubmissionModel.php';
+		require_once dirname( __DIR__ ) . '/admin/ViewSingle.php';
+
+		try {
+			$id         = absint( $_REQUEST['item'] );
+			$submission = new SubmissionModel( $id );
+			ViewSingle::display( $submission );
+		} catch ( Exception $e ) {
+			wp_die( __( 'Ups, something went wrong.', THEME_DOMAIN ) );
+		}
 	}
 }

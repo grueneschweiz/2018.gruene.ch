@@ -9,6 +9,9 @@
 namespace SUPT;
 
 
+use Exception;
+use WP_Post;
+
 class FormModel {
 	const CONFIRMATION = 'confirmation';
 	const NOTIFICATION = 'notification';
@@ -31,15 +34,15 @@ class FormModel {
 	 * FormModel constructor.
 	 *
 	 * @param int $id the form id
-	 * @param \WP_Post $post
+	 * @param WP_Post $post
 	 *
-	 * @throws \Exception
+	 * @throws Exception
 	 */
 	public function __construct( $id, $post = null ) {
 		$this->id = $id;
 
 		if ( get_post_type( $id ) !== FormType::MODEL_NAME ) {
-			throw new \Exception( "Invalid form id ($id)." );
+			throw new Exception( "Invalid form id ($id)." );
 		}
 
 		if ( $post ) {
@@ -70,6 +73,23 @@ class FormModel {
 	}
 
 	/**
+	 * Get single field
+	 *
+	 * @param $key
+	 *
+	 * @return mixed|null
+	 */
+	public function get_column( $key ) {
+		$columns = $this->get_columns();
+
+		if ( isset( $columns[ $key ] ) ) {
+			return $columns[ $key ];
+		}
+
+		return null;
+	}
+
+	/**
 	 * The form fields
 	 *
 	 * @return array
@@ -82,6 +102,23 @@ class FormModel {
 		}
 
 		return $this->fields;
+	}
+
+	/**
+	 * Get single field
+	 *
+	 * @param $key
+	 *
+	 * @return mixed|null
+	 */
+	public function get_field( $key ) {
+		$fields = $this->get_fields();
+
+		if ( isset( $fields[ $key ] ) ) {
+			return $fields[ $key ];
+		}
+
+		return null;
 	}
 
 	/**
@@ -98,7 +135,7 @@ class FormModel {
 			foreach ( $submissions as $id => $submission ) {
 				try {
 					$this->submissions[ $id ] = new SubmissionModel( $id, $submission );
-				} catch ( \Exception $e ) {
+				} catch ( Exception $e ) {
 					// yes, in this case we want to hide this exception
 					// (malformed submission)
 				}

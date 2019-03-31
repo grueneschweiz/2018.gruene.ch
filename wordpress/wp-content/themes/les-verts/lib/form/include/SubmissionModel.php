@@ -3,6 +3,10 @@
 namespace SUPT;
 
 
+use BadMethodCallException;
+use Exception;
+use InvalidArgumentException;
+
 class SubmissionModel {
 	const META_KEY = '_meta_';
 	const EMAIL_KEY = 'email';
@@ -10,6 +14,8 @@ class SubmissionModel {
 	const FORM_KEY = 'form_id';
 	const DESCENDANT_KEY = 'descendant_id';
 	const PREDECESSOR_KEY = 'predecessor_id';
+
+	const MAX_LABEL_LEN = 50;
 
 	private $id;
 	private $meta = [];
@@ -21,8 +27,8 @@ class SubmissionModel {
 	 * @param int|null $id
 	 * @param array $data
 	 *
-	 * @throws \InvalidArgumentException
-	 * @throws \Exception
+	 * @throws InvalidArgumentException
+	 * @throws Exception
 	 */
 	public function __construct( $id = null, $data = null ) {
 		$this->id = $id;
@@ -31,7 +37,7 @@ class SubmissionModel {
 			$data = $this->fetch_data_by_id( $id );
 
 			if ( ! $data ) {
-				throw new \Exception( 'No submission with this id.' );
+				throw new Exception( 'No submission with this id.' );
 			}
 		}
 
@@ -69,7 +75,7 @@ class SubmissionModel {
 		$data = (array) $data;
 
 		if ( ! array_key_exists( self::META_KEY, $data ) ) {
-			throw new \InvalidArgumentException( 'Invalid submission data.' );
+			throw new InvalidArgumentException( 'Invalid submission data.' );
 		}
 
 		$this->meta = $data[ self::META_KEY ];
@@ -87,6 +93,10 @@ class SubmissionModel {
 	 * @return bool|mixed|null
 	 */
 	public function __call( $name, $arguments ) {
+		if ( 0 === strpos( $name, 'get_pretty_' ) ) {
+			return $this->get_pretty( substr( $name, 11 ) );
+		}
+
 		if ( 0 === strpos( $name, 'get_' ) ) {
 			return $this->get( substr( $name, 4 ) );
 		}
@@ -97,13 +107,13 @@ class SubmissionModel {
 			return true;
 		}
 
-		throw new \BadMethodCallException( 'Method does not exist.' );
+		throw new BadMethodCallException( 'Method does not exist.' );
 	}
 
 	/**
 	 * Getter method for data
 	 *
-	 * @param $property
+	 * @param string $property
 	 *
 	 * @return mixed|null
 	 */
@@ -113,6 +123,48 @@ class SubmissionModel {
 		}
 
 		return null;
+	}
+
+	/**
+	 * Getter method for data with label
+	 *
+	 * @param string $property
+	 *
+	 * @return array|null
+	 */
+	private function get_pretty( $property ) {
+		// prepare value
+		if ( array_key_exists( $property, $this->data ) ) {
+			$value = $this->data[ $property ];
+		} else {
+			$value = '';
+		}
+
+		if ( is_array( $value ) ) {
+			$value = implode( ', ', $value );
+		}
+
+		// prepare label
+		try {
+			$label = $this->meta_get_form()->get_column( $property );
+		} catch ( Exception $e ) {
+			$label = null;
+		}
+
+		if ( empty( $label ) ) {
+			$label = sprintf( _x( 'Old: %s', 'Form element. Ex: Name', THEME_DOMAIN ), $property );
+		}
+
+		$label = wp_trim_words( $label, 4, '...' );
+
+		if ( strlen( $label ) > self::MAX_LABEL_LEN ) {
+			$label = substr( rtrim( $label, '.' ), 0, self::MAX_LABEL_LEN - 3 ) . '...';
+		}
+
+		return [
+			'label' => $label,
+			'value' => $value
+		];
 	}
 
 	/**
@@ -164,7 +216,7 @@ class SubmissionModel {
 
 		try {
 			return new SubmissionModel( $this->meta[ self::PREDECESSOR_KEY ] );
-		} catch ( \Exception $e ) {
+		} catch ( Exception $e ) {
 			return false;
 		}
 	}
@@ -203,7 +255,7 @@ class SubmissionModel {
 
 		try {
 			return new SubmissionModel( $this->meta[ self::DESCENDANT_KEY ] );
-		} catch ( \Exception $e ) {
+		} catch ( Exception $e ) {
 			return false;
 		}
 
@@ -295,7 +347,7 @@ class SubmissionModel {
 
 		try {
 			$form_id = $this->meta_get_form()->get_id();
-		} catch ( \Exception $e ) {
+		} catch ( Exception $e ) {
 			return false;
 		}
 
@@ -314,7 +366,7 @@ class SubmissionModel {
 	 *
 	 * @return FormModel
 	 *
-	 * @throws \Exception
+	 * @throws Exception
 	 */
 	public function meta_get_form() {
 		return new FormModel( (int) $this->meta[ self::FORM_KEY ] );
