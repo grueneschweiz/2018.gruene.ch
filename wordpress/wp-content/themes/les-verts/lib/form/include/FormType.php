@@ -2,12 +2,17 @@
 
 namespace SUPT;
 
-require_once realpath( __DIR__ . '/../post-types/Model.php' );
+use Exception;
+use WP_Post;
+
+require_once realpath( __DIR__ . '/../../post-types/Model.php' );
 
 class FormType extends Model {
 
 	const MODEL_NAME = 'theme_form';
 	const COLUMN_FIELD_NAME = 'fields';
+	const VIEW_ACTION = 'view';
+	const EDIT_ACTION = 'edit';
 
 	static function register_type() {
 		self::register_post_type();
@@ -54,10 +59,10 @@ class FormType extends Model {
 	}
 
 	public static function register_acf_fields() {
-		require_once __DIR__ . '/acf/form-local-settings.php';
-		require_once __DIR__ . '/acf/input.php';
-		require_once __DIR__ . '/acf/form-details.php';
-		require_once __DIR__ . '/acf/mail-template.php';
+		require_once __DIR__ . '/../acf/form-local-settings.php';
+		require_once __DIR__ . '/../acf/input.php';
+		require_once __DIR__ . '/../acf/form-details.php';
+		require_once __DIR__ . '/../acf/mail-template.php';
 
 		self::maybe_remove_webling_field_settings();
 	}
@@ -100,6 +105,8 @@ class FormType extends Model {
 		add_action( 'manage_' . self::MODEL_NAME . '_posts_custom_column',
 			array( __CLASS__, 'populate_columns_fields' ),
 			10, 2 );
+		add_action( 'post_row_actions',
+			array( __CLASS__, 'alter_row_actions' ), 10, 2 );
 		add_action( 'request',
 			array( __CLASS__, 'order_by_title' ) );
 
@@ -171,11 +178,48 @@ class FormType extends Model {
 		if ( $column_name == self::COLUMN_FIELD_NAME ) {
 			$fields = get_field( 'form_fields', $post_id );
 
-			echo implode( ', ', array_map( function ( $f ) {
-				return $f['form_input_label'] . ( $f['form_input_required'] ? '*' : '' );
+			echo implode( '; ', array_map( function ( $f ) {
+				$label = wp_trim_words( strip_tags( $f['form_input_label'] ), 4, '...' );
+
+				return $label . ( $f['form_input_required'] ? '*' : '' );
 			}, $fields ) );
 
 		}
+	}
+
+	/**
+	 * Remove the quickedit and the view row actions and
+	 * add an action to view the submissions instead.
+	 *
+	 * @param array $actions
+	 * @param WP_Post $post
+	 *
+	 * @return array
+	 */
+	public static function alter_row_actions( $actions, $post ) {
+		if ( $post->post_type === self::MODEL_NAME ) {
+			if ( isset( $actions['inline hide-if-no-js'] ) ) {
+				unset( $actions['inline hide-if-no-js'] );
+			}
+
+			if ( isset( $actions['view'] ) ) {
+				unset( $actions['view'] );
+			}
+
+			$url = sprintf( "?post_type=%s&page=submissions&form_id=%d",
+				self::MODEL_NAME,
+				$post->ID
+			);
+
+			/** @noinspection HtmlUnknownTarget */
+			$actions['submissions'] = sprintf( '<a href="%s" aria-label="%s">%s</a>',
+				$url,
+				sprintf( _x( 'View submissions of %s', 'form title', THEME_DOMAIN ), $post->post_title ),
+				__( 'Submissions', THEME_DOMAIN )
+			);
+		}
+
+		return $actions;
 	}
 
 	/**
@@ -215,17 +259,24 @@ class FormType extends Model {
 		} );
 	}
 
-	public static function save_submissions_per_page_option( $status, $option, $value ) {
+	public static function save_submissions_per_page_option(
+		/** @noinspection PhpUnusedParameterInspection */
+		$status, $option, $value
+	) {
 		if ( 'submissions_per_page' == $option ) {
 			return $value;
 		}
 	}
 
 	public static function display_submissions_page() {
-		require_once 'helpers' . DIRECTORY_SEPARATOR . 'class-wp-list-table.php';
-		require_once 'Submissions_Table.php';
+		if ( isset( $_REQUEST['action'] ) && self::VIEW_ACTION === $_REQUEST['action'] ) {
+			return self::display_single_submission();
+		}
 
-		$submissions = new Submissions_Table();
+		require_once __DIR__ . '/../helpers/class-wp-list-table.php';
+		require_once 'SubmissionsTable.php';
+
+		$submissions = new SubmissionsTable();
 		$submissions->prepare_items();
 
 		?>
@@ -250,5 +301,18 @@ class FormType extends Model {
 			</div>
 		</div>
 		<?
+	}
+
+	public static function display_single_submission() {
+		require_once __DIR__ . '/SubmissionModel.php';
+		require_once dirname( __DIR__ ) . '/admin/ViewSingle.php';
+
+		try {
+			$id         = absint( $_REQUEST['item'] );
+			$submission = new SubmissionModel( $id );
+			ViewSingle::display( $submission );
+		} catch ( Exception $e ) {
+			wp_die( __( 'Ups, something went wrong.', THEME_DOMAIN ) );
+		}
 	}
 }

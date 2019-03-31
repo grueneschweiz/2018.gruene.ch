@@ -2,172 +2,191 @@
 
 namespace SUPT;
 
+require_once __DIR__ . '/include/FormModel.php';
+require_once __DIR__ . '/include/SubmissionModel.php';
+
 /**
  * handle the form submission according to FormType fields
  */
 class FormSubmission {
-	
+
 	const ACTION_BASE_NAME = 'supt-form';
 	const NEXT_ACTION_ID_DEFAULT = - 1;
 	const SUBMISSION_LIMIT_MINUTE_IP_FORM_AGENT = 2;
 	const SUBMISSION_LIMIT_MINUTE_IP_FORM = 5;
 	const SUBMISSION_LIMIT_HOUR_IP_FORM_AGENT = 10;
 	const SUBMISSION_LIMIT_DAY_IP_FORM = 100;
-	
+
+	const CHECKBOX_TYPE = 'checkbox';
+	const CONFIRMATION_TYPE = 'confirmation';
+	const SELECT_TYPE = 'select';
+	const RADIO_TYPE = 'radio';
+	const EMAIL_TYPE = 'email';
+	const NUMBER_TYPE = 'number';
+	const PHONE_TYPE = 'phone';
+
 	/**
-	 * The form post
+	 * The form
 	 *
-	 * @var int
+	 * @var FormModel
 	 */
-	private $form_id = - 1;
-	
+	private $form = null;
+
 	/**
 	 * The id of the engagement funnel action
 	 *
 	 * @var int
 	 */
 	private $action_id = - 1;
-	
+
 	/**
 	 * The id of the engagement funnel config
 	 *
 	 * @var int
 	 */
 	private $config_id = - 1;
-	
+
 	/**
 	 * The id of the post meta id of the last submission
 	 *
 	 * @var int
 	 */
 	private $predecessor_id = - 1;
-	
+
 	/**
 	 * The id of this submission (-1 before it is saved)
 	 *
 	 * @var int
 	 */
 	private $post_meta_id = - 1;
-	
+
 	/**
 	 * The submitters IP address
 	 *
 	 * @var string
 	 */
 	private $ip;
-	
+
 	/**
 	 * The submitters user agent information
 	 *
 	 * @var string
 	 */
 	private $user_agent;
-	
+
 	/**
 	 * The forms nonce
 	 *
 	 * @var string
 	 */
 	private $nonce;
-	
+
 	/**
 	 * The response status code
 	 *
 	 * @var int
 	 */
 	private $status;
-	
+
 	/**
 	 * The form data
 	 *
 	 * @var array
 	 */
 	private $data;
-	
+
 	/**
 	 * The form data mapped to the crm keys
 	 *
 	 * @var array
 	 */
 	private $crm_data;
-	
+
 	/**
 	 * The email found in the submitted data
 	 *
 	 * @var string
 	 */
 	private $email;
-	
+
 	/**
 	 * The validation errors
 	 *
 	 * @var array
 	 */
 	private $errors;
-	
+
 	/**
 	 * Cache for the form fields (as defined in the backend)
 	 *
 	 * @var array
 	 */
 	private $fields;
-	
+
 	function __construct() {
 		$this->register_actions();
 	}
-	
+
 	private function register_actions() {
 		add_action( 'wp_ajax_supt_form_submit', array( $this, 'handle_submit' ) );
 		add_action( 'wp_ajax_nopriv_supt_form_submit', array( $this, 'handle_submit' ) );
-		
+
 		if ( ! WP_DEBUG && get_field( 'form_smtp_enabled', 'options' ) ) {
 			add_action( 'phpmailer_init', array( $this, 'setup_SMTP' ) );
 		}
 	}
-	
+
 	/**
 	 * Process form submission
 	 */
 	public function handle_submit() {
 		$this->add_submission_metadata();
 		$this->abort_if_invalid_header();
+		$this->abort_if_limit_exceeded();
 		$this->add_data();
 		$this->abort_if_invalid_data();
 		$this->add_crm_mapped_data();
 		$this->add_metadata();
 		$this->save();
 		$this->send_notifications();
-		
+
 		$this->status = 200;
 		$this->send_response();
 	}
-	
+
 	/**
 	 * Set ip, user_agent, form_id. And if present: action_id, config_id, nonce
 	 */
 	private function add_submission_metadata() {
 		$this->ip         = $this->get_user_ip();
 		$this->user_agent = $_SERVER['HTTP_USER_AGENT'];
-		$this->form_id    = absint( $_POST['form_id'] );
-		
+
+		try {
+			$this->form = new FormModel( absint( $_POST['form_id'] ) );
+		} catch ( \Exception $e ) {
+			$this->respond_with_error( 400, 'Submission not valid' );
+
+			return;
+		}
+
 		if ( $_POST['action_id'] ) {
 			$this->action_id = absint( $_POST['action_id'] );
 		}
-		
+
 		if ( $_POST['config_id'] ) {
 			$this->config_id = absint( $_POST['config_id'] );
 		}
-		
+
 		if ( $_POST['predecessor_id'] ) {
 			$this->predecessor_id = intval( $_POST['predecessor_id'] );
 		}
-		
+
 		// todo: rethink the nonces if using caching
 		if ( $_POST['nonce'] ) {
 			$this->nonce = $_POST['nonce'];
 		}
 	}
-	
+
 	/**
 	 * Get visitor ip. If behind proxy, try to find real ip.
 	 *
@@ -179,7 +198,7 @@ class FormSubmission {
 		if ( array_key_exists( 'HTTP_X_FORWARDED_FOR', $_SERVER ) && ! empty( $_SERVER['HTTP_X_FORWARDED_FOR'] ) ) {
 			if ( strpos( $_SERVER['HTTP_X_FORWARDED_FOR'], ',' ) > 0 ) {
 				$addr = explode( ",", $_SERVER['HTTP_X_FORWARDED_FOR'] );
-				
+
 				return trim( $addr[0] );
 			} else {
 				return $_SERVER['HTTP_X_FORWARDED_FOR'];
@@ -188,68 +207,76 @@ class FormSubmission {
 			return $_SERVER['REMOTE_ADDR'];
 		}
 	}
-	
+
 	/**
-	 * Check if form is submitted using ajax, has a valid nonce, form id and ip.
+	 * Check if form is submitted using ajax, has a valid nonce and ip.
+	 */
+	private function abort_if_invalid_header() {
+		$valid = true;
+
+		// check nonce
+		if ( ! wp_verify_nonce( $this->nonce, self::ACTION_BASE_NAME ) ) {
+			$valid = false;
+		}
+
+		// only accept ajax submissions
+		if ( ! ( defined( 'DOING_AJAX' ) && DOING_AJAX ) ) {
+			$valid = false;
+		}
+
+		// check for valid ip
+		if ( ! filter_var( $this->ip, FILTER_VALIDATE_IP ) ) {
+			$valid = false;
+		}
+
+		// exit here if any of the above checks failed
+		if ( ! $valid ) {
+			$this->respond_with_error( 400, 'Submission not valid' );
+
+			return;
+		}
+	}
+
+	/**
 	 * Limit form submissions according to
 	 * - SUBMISSION_LIMIT_MINUTE_IP_FORM_AGENT
 	 * - SUBMISSION_LIMIT_MINUTE_IP_FORM
 	 * - SUBMISSION_LIMIT_HOUR_IP_FORM_AGENT
 	 * - SUBMISSION_LIMIT_DAY_IP_FORM
 	 */
-	private function abort_if_invalid_header() {
-		$valid = true;
-		
-		// check nonce
-		if ( ! wp_verify_nonce( $this->nonce, self::ACTION_BASE_NAME ) ) {
-			$valid = false;
-		}
-		
-		// only accept ajax submissions
-		if ( ! ( defined( 'DOING_AJAX' ) && DOING_AJAX ) ) {
-			$valid = false;
-		}
-		
-		// check if form id corresponds to a form post type
-		if ( get_post_type( $this->form_id ) !== FormType::MODEL_NAME ) {
-			$valid = false;
-		}
-		
-		// check for valid ip
-		if ( ! filter_var( $this->ip, FILTER_VALIDATE_IP ) ) {
-			$valid = false;
-		}
-		
-		// exit here if any of the above checks failed
-		if ( ! $valid ) {
-			$this->errors[] = 'Submission not valid.';
-			$this->status   = 400;
-			$this->send_response();
-			
-			return;
-		}
-		
+	private function abort_if_limit_exceeded() {
 		// todo: implement submission limiting
 	}
-	
+
 	/**
 	 * Stop execution with a 400 if the data threw a validation error
 	 */
 	private function abort_if_invalid_data() {
-		if ( ! empty($this->errors) ) {
-			$this->status   = 400;
-			$this->send_response();
-			
+		if ( ! empty( $this->errors ) ) {
+			$this->respond_with_error( 400, $this->errors );
+
 			return;
 		}
 	}
-	
+
+	/**
+	 * Send error message to client and die
+	 *
+	 * @param int $code
+	 * @param string|array $messages
+	 */
+	private function respond_with_error( $code, $messages ) {
+		$this->errors = array_merge( $this->errors, (array) $messages );
+		$this->status = $code;
+		$this->send_response();
+	}
+
 	/**
 	 * Send response and die
 	 */
 	private function send_response() {
 		status_header( $this->status );
-		
+
 		if ( $this->status === 200 ) {
 			/**
 			 * Filters the id of the next form. The default triggers the thank you page of the form.
@@ -257,85 +284,86 @@ class FormSubmission {
 			 * @param int id of the next form.
 			 */
 			$next_action_id = \apply_filters( FormType::MODEL_NAME . '-next-form-id', self::NEXT_ACTION_ID_DEFAULT );
-			
+
 			$html = '';
 			if ( self::NEXT_ACTION_ID_DEFAULT !== $next_action_id ) {
 				$context['block']['configuration'] = $this->config_id;
 				$context['block']['action']        = $next_action_id;
-				
+
 				$templates = [
 					get_stylesheet_directory() . '/templates/engagement-funnel.twig',
-					
+
 					// fallback if child theme doesn't implement it
 					get_template_directory() . '/templates/engagement-funnel.twig',
 				];
-				
+
+				/** @noinspection PhpUndefinedClassInspection */
 				$html = \Timber::compile( $templates, $context );
 			}
-			
+
 			wp_send_json_success( [
 				'next_action_id' => $next_action_id,
 				'html'           => $html,
-				'redirect'       => $this->get_redirect_url(),
+				'redirect'       => $this->form->get_redirect_url(),
 				'predecessor_id' => $this->post_meta_id,
 			] );
 		} else {
 			wp_send_json_error( $this->errors );
 		}
-		
+
 		wp_die();
 	}
-	
+
 	/**
 	 * Populate data field with validated and sanitized form data.
 	 */
 	private function add_data() {
 		$fields = $this->get_fields();
-		
+
 		foreach ( $fields as $key => $field ) {
 			if ( $field['hidden_field'] ) {
 				continue;
 			}
-			
+
 			// sanitize and validate checkboxes
-			if ( 'checkbox' === $field['form_input_type'] ) {
+			if ( self::CHECKBOX_TYPE === $field['form_input_type'] ) {
 				$choices  = $field['form_input_choices'];
 				$options  = array_map( 'trim', explode( "\n", $choices ) );
 				$required = $field['form_input_required'];
-				
+
 				foreach ( $field['values'] as $value_key => $value ) {
 					$raw     = $this->get_field_data( $value_key );
-					$checked = $this->sanitize( $raw, 'checkbox' );
-					$valid   = $this->validate( $checked, 'checkbox', $options, $required );
-					
+					$checked = $this->sanitize( $raw, self::CHECKBOX_TYPE );
+					$valid   = $this->validate( $checked, self::CHECKBOX_TYPE, $options, $required );
+
 					if ( true !== $valid ) {
 						$this->errors[ $key ] = $valid;
 					}
-					
+
 					if ( $checked ) {
 						$this->data[ $key ][ $value_key ] = $value;
 					}
 				}
-				
+
 			} else {
 				$raw = $this->get_field_data( $key );
-				
+
 				$type      = $field['form_input_type'];
 				$choices   = $field['form_input_choices'];
 				$options   = array_map( 'trim', explode( "\n", $choices ) );
 				$required  = $field['form_input_required'];
 				$sanitized = $this->sanitize( $raw, $type );
 				$valid     = $this->validate( $sanitized, $type, $options, $required );
-				
+
 				if ( true !== $valid ) {
 					$this->errors[ $key ] = $valid;
 				}
-				
+
 				$this->data[ $key ] = $sanitized;
 			}
 		}
 	}
-	
+
 	/**
 	 * Return the form fields as defined in the backend, using cache
 	 *
@@ -343,13 +371,10 @@ class FormSubmission {
 	 */
 	private function get_fields() {
 		if ( ! $this->fields ) {
-			$fields = get_field('field_5a869960c1cf2', $this->form_id);
-			
-			foreach ( $fields as $field ) {
-				$key                  = $field['slug'];
-				$this->fields[ $key ] = $field;
-				
-				if ( 'checkbox' === $field['form_input_type'] ) {
+			$this->fields = $this->form->get_fields();
+
+			foreach ( $this->fields as $key => $field ) {
+				if ( self::CHECKBOX_TYPE === $field['form_input_type'] ) {
 					$labels = explode( "\n", $field['form_input_choices'] );
 					for ( $i = 0; $i < count( $labels ); $i ++ ) {
 						$valueKey                                    = $key . '-' . $i;
@@ -358,31 +383,10 @@ class FormSubmission {
 				}
 			}
 		}
-		
+
 		return $this->fields;
 	}
-	
-	/**
-	 * Get url to redirect to after success.
-	 *
-	 * Return empty string if no redirect is configured.
-	 *
-	 * @return string
-	 */
-	private function get_redirect_url() {
-		$form_success = get_field( 'form_success', $this->form_id );
-		
-		if ( 'inline' === $form_success['after_success_action'] ) {
-			return '';
-		}
-		
-		if ( empty( $form_success['redirect'] ) ) {
-			return '';
-		}
-		
-		return get_permalink( $form_success['redirect'] );
-	}
-	
+
 	/**
 	 * Get value from post variable or set error
 	 *
@@ -394,14 +398,14 @@ class FormSubmission {
 		if ( ! array_key_exists( $key, $_POST ) ) {
 			// if field was not transmitted
 			$this->errors[ $key ] = __( 'Missing data.', THEME_DOMAIN );
-			
+
 			return null;
 		}
-		
+
 		// get data
 		return trim( $_POST[ $key ] );
 	}
-	
+
 	/**
 	 * Basic sanitation.
 	 *
@@ -414,25 +418,25 @@ class FormSubmission {
 	 */
 	private function sanitize( $data, $type ) {
 		switch ( $type ) {
-			case 'checkbox':
-			case 'confirmation':
+			case self::CHECKBOX_TYPE:
+			case self::CONFIRMATION_TYPE:
 				return filter_var( $data, FILTER_VALIDATE_BOOLEAN );
-			case 'radio':
-			case 'select':
+			case self::RADIO_TYPE:
+			case self::SELECT_TYPE:
 				return $data;
-			case 'phone':
+			case self::PHONE_TYPE:
 				$allowed = '\d\+ -\\\(\)';
-				
+
 				return preg_replace( "/[^${allowed}]/", '', $data );
-			case 'email':
+			case self::EMAIL_TYPE:
 				return filter_var( $data, FILTER_SANITIZE_EMAIL );
-			case 'number':
+			case self::NUMBER_TYPE:
 				return filter_var( $data, FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION );
 			default:
 				return strip_tags( $data );
 		}
 	}
-	
+
 	/**
 	 * Validate data according to type
 	 *
@@ -446,42 +450,42 @@ class FormSubmission {
 	private function validate( $data, $type, $options, $required ) {
 		$valid   = true;
 		$message = __( 'Invalid input.', THEME_DOMAIN );
-		
+
 		switch ( $type ) {
-			case 'checkbox':
-			case 'confirmation':
+			case self::CHECKBOX_TYPE:
+			case self::CONFIRMATION_TYPE:
 				$valid = true;
 				break;
-			
-			case 'radio':
-			case 'select':
+
+			case self::RADIO_TYPE:
+			case self::SELECT_TYPE:
 				if ( empty( $data ) ) {
 					$valid = true;
 					break;
 				}
-				
+
 				$valid = in_array( $data, $options );
 				break;
-			
-			case 'email':
+
+			case self::EMAIL_TYPE:
 				$valid   = filter_var( $data, FILTER_VALIDATE_EMAIL );
 				$message = __( 'Invalid email.', THEME_DOMAIN );
 				break;
-			
-			case 'number':
+
+			case self::NUMBER_TYPE:
 				$valid   = is_numeric( $data );
 				$message = __( 'Invalid number', THEME_DOMAIN );
 				break;
 		}
-		
+
 		if ( $required && empty( trim( $data ) ) ) {
 			$valid   = false;
 			$message = __( 'This field is required.', THEME_DOMAIN );
 		}
-		
+
 		return (bool) $valid ? (bool) $valid : $message;
 	}
-	
+
 	/**
 	 * Add data from fields that were mapped to crm fields
 	 */
@@ -496,13 +500,13 @@ class FormSubmission {
 			}
 		}
 	}
-	
+
 	/**
 	 * Add some meta data to the form data
 	 */
 	private function add_metadata() {
 		$meta['_meta_'] = array(
-			'form_id'        => $this->form_id,
+			'form_id'        => $this->form->get_id(),
 			'action_id'      => $this->action_id,
 			'config_id'      => $this->config_id,
 			'timestamp'      => date( 'Y-m-d H:i:s' ),
@@ -510,12 +514,12 @@ class FormSubmission {
 			'predecessor_id' => $this->predecessor_id,
 			'descendant_id'  => - 1,
 		);
-		
+
 		// make sure to add the meta data before the actual data
 		// so we have it first in the submission table
 		$this->data = $meta + $this->data;
 	}
-	
+
 	/**
 	 * Find email in CRM data if not existent, return the value of the first non
 	 * empty field with type email.
@@ -526,7 +530,7 @@ class FormSubmission {
 		if ( null !== $this->email ) {
 			return $this->email;
 		}
-		
+
 		if ( $this->crm_data ) {
 			foreach ( $this->crm_data as $key => $value ) {
 				if ( $key === 'email1' && filter_var( $value, FILTER_VALIDATE_EMAIL ) ) {
@@ -534,19 +538,19 @@ class FormSubmission {
 				}
 			}
 		}
-		
+
 		foreach ( $this->get_fields() as $key => $field ) {
-			if ( 'email' === $field['form_input_type'] ) {
+			if ( self::EMAIL_TYPE === $field['form_input_type'] ) {
 				$email = $this->data[ $key ];
 				if ( ! empty( $email && filter_var( $email, FILTER_VALIDATE_EMAIL ) ) ) {
 					return $email;
 				}
 			}
 		}
-		
+
 		return false;
 	}
-	
+
 	/**
 	 * Save form data locally and, if crm data is set, to crm
 	 */
@@ -557,13 +561,23 @@ class FormSubmission {
 		 * @param array $this ->data
 		 */
 		$data = (array) apply_filters( FormType::MODEL_NAME . '-before-local-save', $this->data );
-		
+
 		// save locally
-		$this->post_meta_id = add_post_meta( $this->form_id, FormType::MODEL_NAME, $data );
+		try {
+			$submission = new SubmissionModel( null, $data );
+			$submission->save();
+			$this->post_meta_id = $submission->meta_get_id();
+		} catch ( \Exception $e ) {
+			// todo: send email
+			$this->respond_with_error( 500, 'Internal server error.' );
+
+			return;
+		}
+
 		$this->update_predecessor( $this->post_meta_id );
-		
+
 		// safe to crm
-		if ( ! empty( $this->crm_data ) && $this->get_email_address()) {
+		if ( ! empty( $this->crm_data ) && $this->get_email_address() ) {
 			/**
 			 * Filters the submitted data, before it's sent to the crm.
 			 *
@@ -571,15 +585,15 @@ class FormSubmission {
 			 */
 			$crm_data = (array) apply_filters( FormType::MODEL_NAME . '-before-crm-save', $this->crm_data );
 			try {
-				include_once __DIR__ . DIRECTORY_SEPARATOR . 'helpers' . DIRECTORY_SEPARATOR . 'Crm_Dao.php';
-				$crm_dao  = new Crm_Dao();
+				include_once __DIR__ . '/helpers/Crm_Dao.php';
+				$crm_dao = new Crm_Dao();
 				/** @noinspection PhpParamsInspection */
 				$crm_id = $crm_dao->save( $this->get_email_address(), $crm_data );
-			} catch (\Exception $e) {
+			} catch ( \Exception $e ) {
 				// todo: send mail
 			}
 		}
-		
+
 		if ( $this->post_meta_id ) {
 			/**
 			 * Fires after the data is persisted.
@@ -604,7 +618,7 @@ class FormSubmission {
 			);
 		}
 	}
-	
+
 	/**
 	 * Add the id of this submission to the previous submission
 	 *
@@ -612,21 +626,16 @@ class FormSubmission {
 	 */
 	private function update_predecessor( $submission_id ) {
 		if ( $this->predecessor_id >= 0 ) {
-			global $wpdb;
-			
-			$postmeta = $wpdb->get_row( "SELECT * FROM {$wpdb->postmeta} WHERE meta_id = {$this->predecessor_id}" );
-			
-			if ( $postmeta ) {
-				$orig = maybe_unserialize( $postmeta->meta_value );
-				$new  = $orig;
-				
-				$new['_meta_']['descendant_id'] = $submission_id;
-				
-				update_post_meta( $postmeta->post_id, FormType::MODEL_NAME, $new, $orig );
+			try {
+				$predecessor = new SubmissionModel( $this->predecessor_id );
+				$predecessor->meta_set_descendant( $submission_id );
+				$predecessor->save();
+			} catch ( \Exception $e ) {
+				// todo: send email
 			}
 		}
 	}
-	
+
 	/**
 	 * Send notification and confirmation mails
 	 */
@@ -637,7 +646,7 @@ class FormSubmission {
 		 * @param array $data the form data
 		 */
 		$data = (array) apply_filters( FormType::MODEL_NAME . '-before-email-notification', $this->data );
-		
+
 		/**
 		 * Fires before the email notifications are sent.
 		 *
@@ -651,19 +660,16 @@ class FormSubmission {
 				'action_id' => $this->action_id,
 			)
 		);
-		
-		$fields = get_field_objects( $this->form_id );
-		
-		$confirmation = $fields['form_send_confirmation']['value'];
-		$notification = $fields['form_send_notification']['value'];
-		
-		if ( ! $confirmation && ! $notification ) {
+
+		$form = $this->form;
+
+		if ( ! $form->has_confirmation() && ! $form->has_notification() ) {
 			// nothing to send
 			return;
 		}
-		
-		$sender_name = $fields['form_sender_name']['value'];
-		
+
+		$sender_name = $form->get_sender_name();
+
 		/**
 		 * Filters the sender address of email notifications
 		 *
@@ -671,37 +677,33 @@ class FormSubmission {
 		 */
 		$from = apply_filters( FormType::MODEL_NAME . '-email-from',
 			"$sender_name <noreply@{$this->get_domain()}>" );
-		
-		$reply_to        = $fields['form_reply_to']['value'];
+
+		$reply_to        = $form->get_reply_to_address();
 		$confirmation_to = $this->get_email_address();
-		
-		if ( $confirmation && $confirmation_to ) {
-			$confirmation_mail = $fields['form_confirmation_mail']['value'];
-			
+
+		if ( $form->has_confirmation() && $confirmation_to ) {
 			supt_form_send_email(
 				$confirmation_to,
 				$from,
 				$reply_to,
-				$confirmation_mail['form_mail_subject'],
-				$confirmation_mail['form_mail_template'],
+				$form->get_confirmation_subject(),
+				$form->get_confirmation_template(),
 				$this->data
 			);
 		}
-		
-		if ( $notification ) {
-			$notification_mail = $fields['form_notification_mail']['value'];
-			
+
+		if ( $form->has_notification() ) {
 			supt_form_send_email(
-				$notification_mail['form_confirmation_destination'],
+				$form->get_notification_destination(),
 				$from,
-				$reply_to,
-				$notification_mail['form_mail_subject'],
-				$notification_mail['form_mail_template'],
+				$this->get_email_address(),
+				$form->get_notification_subject(),
+				$form->get_notification_template(),
 				$this->data
 			);
 		}
 	}
-	
+
 	/**
 	 * Return domain of current blog
 	 */
@@ -711,10 +713,10 @@ class FormSubmission {
 		if ( $matches && is_array( $matches ) ) {
 			return $matches[ count( $matches ) - 1 ];
 		}
-		
+
 		return new \WP_Error( 'cant-get-domain', 'The domain could not be parsed from the site url', $url );
 	}
-	
+
 	/**
 	 * Configure mailing service to use an SMTP account
 	 *

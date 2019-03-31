@@ -5,11 +5,7 @@ namespace SUPT;
 use PhpOffice\PhpSpreadsheet\IOFactory;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 
-require_once 'Get_Post_Meta_With_Id.php';
-
-class Submission_Export {
-	use Get_Post_Meta_With_Id;
-
+class SubmissionExport {
 	const DIRECTION_BOTH = 0;
 	const DIRECTION_PREDECESSOR = 1;
 	const DIRECTION_DESCENDANT = 2;
@@ -17,9 +13,9 @@ class Submission_Export {
 	const HEADER_META_KEY = - 1;
 
 	/**
-	 * @var int
+	 * @var FormModel
 	 */
-	private $base_form_id;
+	private $base_form;
 
 	/**
 	 * @var array
@@ -29,7 +25,7 @@ class Submission_Export {
 	/**
 	 * The submission data including its predecessors and descendants
 	 *
-	 * @var array   [$base_submission_id => [$form_id => $form_data]]
+	 * @var SubmissionModel[][]  [$base_submission_id => [$form_id => $form_data]]
 	 */
 	private $submissions;
 
@@ -53,7 +49,13 @@ class Submission_Export {
 	 * @param int $form_id of the base form to export data from
 	 */
 	public function __construct( $form_id ) {
-		$this->base_form_id = $form_id;
+		include_once __DIR__ . '/FormModel.php';
+
+		try {
+			$this->base_form = new FormModel( $form_id );
+		} catch ( \Exception $e ) {
+			wp_die( $e->getMessage() );
+		}
 	}
 
 	/**
@@ -63,6 +65,9 @@ class Submission_Export {
 		$this->getSubmissions();
 		$this->getHeaders();
 		$this->getData();
+
+		// update submission table to use model
+		// create view and edit
 
 		try {
 			$this->writeToExcel();
@@ -84,7 +89,7 @@ class Submission_Export {
 		$spreadsheet->getProperties()->setCreator( $site_name )
 		            ->setLastModifiedBy( $site_name )
 		            ->setTitle( __( 'Website export', THEME_DOMAIN ) )
-		            ->setSubject( $base_form->blog_name );
+		            ->setSubject( $base_form->get_title() );
 
 		// prepare sheet;
 		$sheet = $spreadsheet->getActiveSheet()
@@ -93,7 +98,7 @@ class Submission_Export {
 		// add the headers
 		$column = 1;
 		foreach ( $this->headers as $form_id => $header ) {
-			$content = $form_id === self::HEADER_META_KEY ? '' : $this->forms[ $form_id ]->post_title;
+			$content = $form_id === self::HEADER_META_KEY ? '' : $this->forms[ $form_id ]->get_title();
 
 			// form name
 			$merge_first = $sheet->getCellByColumnAndRow( $column, 1 )->getCoordinate();
@@ -111,7 +116,7 @@ class Submission_Export {
 		// add the data
 		$sheet->fromArray( $this->data, '', 'A3' );
 
-		$filename = 'export_' . date( 'Ymd' ) . '-' . $base_form->post_name . '.xlsx';
+		$filename = 'export_' . date( 'Ymd' ) . '-' . $base_form->get_slug() . '.xlsx';
 
 		// Redirect output to a client’s web browser (Xlsx)
 		header( 'Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' );
@@ -140,17 +145,19 @@ class Submission_Export {
 			$row['id'] = $id;
 
 			foreach ( $headers as $form_id => $fields ) {
-				if ( array_key_exists( $form_id, $submission ) && empty( $row['timestamp'] ) ) {
-					$row['timestamp'] = $submission[ $form_id ]['_meta_']['timestamp'];
+				if ( ! array_key_exists( $form_id, $submission ) ) {
+					continue;
 				}
 
+				$row['timestamp'] = $submission[ $form_id ]->meta_get_timestamp();
+
 				foreach ( $fields as $slug => $unused ) {
-					if ( empty( $submission[ $form_id ][ $slug ] ) ) {
+					$field = $submission[ $form_id ]->{'get_' . $slug}();
+
+					if ( empty( $field ) ) {
 						$field = '';
-					} elseif ( is_array( $submission[ $form_id ][ $slug ] ) ) {
-						$field = implode( ', ', $submission[ $form_id ][ $slug ] );
-					} else {
-						$field = $submission[ $form_id ][ $slug ];
+					} elseif ( is_array( $field ) ) {
+						$field = implode( ', ', $field );
 					}
 
 					$row[ $form_id . '-' . $slug ] = $field;
@@ -158,6 +165,7 @@ class Submission_Export {
 			}
 
 			$this->data[] = $row;
+			unset( $row );
 		}
 	}
 
@@ -167,8 +175,8 @@ class Submission_Export {
 
 		foreach ( $this->forms as $form_id => $form ) {
 			// the headers of the current form
-			foreach ( get_field( 'form_fields', $form_id ) as $field ) {
-				$this->headers[ $form_id ][ $field['slug'] ] = wp_trim_words( $field['form_input_label'], 4, '...' );
+			foreach ( $form->get_columns() as $slug => $text ) {
+				$this->headers[ $form_id ][ $slug ] = wp_trim_words( strip_tags( $text ), 4, '...' );
 			}
 
 			// add the headers of old forms
@@ -177,12 +185,8 @@ class Submission_Export {
 					continue;
 				}
 
-				$fields = array_keys( $submission[ $form_id ] );
+				$fields = $submission[ $form_id ]->column_keys();
 				foreach ( $fields as $field_slug ) {
-					if ( '_meta_' === $field_slug || 'ID' === $field_slug ) {
-						continue;
-					}
-
 					if ( ! array_key_exists( $field_slug, $this->headers[ $form_id ] ) ) {
 						$label     = __( 'old: ' . $field_slug );
 						$max_label = strlen( $label ) > 50 ? substr( $label, 0, 50 ) . '...' : $label;
@@ -195,58 +199,49 @@ class Submission_Export {
 	}
 
 	private function getSubmissions() {
-		$base_submissions = $this->get_post_meta_with_id( $this->base_form_id, FormType::MODEL_NAME );
+		include_once __DIR__ . '/SubmissionModel.php';
+
+		$base_submissions = $this->base_form->get_submissions();
 
 		foreach ( $base_submissions as $submission ) {
 			$this->processSubmission( $submission );
 		}
 	}
 
+	/**
+	 * @param SubmissionModel $submission
+	 * @param bool $base_id
+	 * @param int $direction
+	 */
 	private function processSubmission( $submission, $base_id = false, $direction = self::DIRECTION_BOTH ) {
 		// add form id
-		$form_id                 = $submission['_meta_']['form_id'];
-		$this->forms[ $form_id ] = $this->getForm( $form_id );
+		try {
+			$form                           = $submission->meta_get_form();
+			$this->forms[ $form->get_id() ] = $form;
+		} catch ( \Exception $e ) {
+			wp_die( $e->getMessage() );
 
-		// add submission
-		$id = $base_id ? $base_id : $submission['ID'];
-
-		if ( empty( $this->submissions[ $id ] ) ) {
-			$this->submissions[ $id ] = array();
-		}
-
-		if ( array_key_exists( $form_id, $this->submissions[ $id ] ) ) {
-			return; // form config creates loop. break here to prevent endless recursion.
-		}
-
-		$this->submissions[ $id ][ $form_id ] = $submission;
-
-		$predecessor_id = $submission['_meta_']['predecessor_id'];
-		$descendant_id  = $submission['_meta_']['descendant_id'];
-
-		if ( $predecessor_id > 0 && $direction !== self::DIRECTION_DESCENDANT ) {
-			$this->getRelatedSubmissions( $submission['ID'], $predecessor_id, self::DIRECTION_PREDECESSOR );
-		}
-
-		if ( $descendant_id > 0 && $direction !== self::DIRECTION_PREDECESSOR ) {
-			$this->getRelatedSubmissions( $submission['ID'], $descendant_id, self::DIRECTION_DESCENDANT );
-		}
-	}
-
-	private function getRelatedSubmissions( $base_id, $related_id, $direction ) {
-		global $wpdb;
-
-		$data = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM $wpdb->postmeta WHERE meta_id = %d", $related_id ) );
-
-		if ( empty( $data ) ) {
 			return;
 		}
 
-		$submission = $this->unserialize_and_add_id( $data );
+		// add submission
+		$id = $base_id ? $base_id : $submission->meta_get_id();
 
-		$this->processSubmission( $submission, $base_id, $direction );
-	}
+		$this->submissions[ $id ][ $form->get_id() ] = $submission;
 
-	private function getForm( $id ) {
-		return get_post( $id );
+		if ( $direction !== self::DIRECTION_DESCENDANT ) {
+			$predecessor = $submission->meta_get_predecessor();
+			if ( $predecessor ) {
+				$this->processSubmission( $predecessor, $submission->meta_get_id(), self::DIRECTION_PREDECESSOR );
+			}
+		}
+
+		if ( $direction !== self::DIRECTION_PREDECESSOR ) {
+			$descendant = $submission->meta_get_descendant();
+
+			if ( $descendant ) {
+				$this->processSubmission( $descendant, $submission->meta_get_id(), self::DIRECTION_DESCENDANT );
+			}
+		}
 	}
 }

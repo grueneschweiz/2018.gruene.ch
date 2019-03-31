@@ -15,4 +15,4 @@ zip -r release.zip les-verts -x */styleguide/**\*
 cd ../../..
 
 # move zip into project root
-mv wordpress/wp-content/themes/release.zip release.zip
+mv wordpress/wp-content/themes/release.zip les-verts.zip
