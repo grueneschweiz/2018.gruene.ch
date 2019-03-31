@@ -193,9 +193,7 @@ class SubmissionsTable extends WP_List_Table {
 	 *
 	 * @param int $id post meta id
 	 */
-	public function delete_item(
-		$id
-	) {
+	public function delete_item( $id ) {
 		require_once __DIR__ . '/SubmissionModel.php';
 
 		try {
@@ -264,9 +262,7 @@ class SubmissionsTable extends WP_List_Table {
 	 *
 	 * @return string
 	 */
-	protected function column__meta_(
-		$item
-	) {
+	protected function column__meta_( $item ) {
 		if ( ! empty( $item->meta_get_timestamp() ) ) {
 			$date_format = get_option( 'date_format' );
 			$time_format = get_option( 'time_format' );
@@ -280,11 +276,12 @@ class SubmissionsTable extends WP_List_Table {
 
 		$actions = [
 			FormType::VIEW_ACTION => sprintf(
-				'<a href="?post_type=%s&page=%s&action=%s&item=%d">' . __( 'View', THEME_DOMAIN ) . '</a>',
+				'<a href="?post_type=%s&page=%s&action=%s&item=%d">%s</a>',
 				esc_attr( $_REQUEST['post_type'] ),
 				esc_attr( $_REQUEST['page'] ),
 				FormType::VIEW_ACTION,
-				$item->meta_get_id()
+				$item->meta_get_id(),
+				__( 'View', THEME_DOMAIN )
 			),
 //			FormType::EDIT_ACTION => sprintf(
 //				'<a href="?post_type=%s&page=%s&action=%s&item=%d">' . __( 'Edit', THEME_DOMAIN ) . '</a>',
@@ -294,13 +291,15 @@ class SubmissionsTable extends WP_List_Table {
 //				$item->meta_get_id()
 //			),
 			self::DELETE_ACTION   => sprintf(
-				'<a href="?post_type=%s&page=%s&form_id=%d&action=%s&item=%d&_wpnonce=%s">' . __( 'Delete', THEME_DOMAIN ) . '</a>',
+				'<a href="?post_type=%s&page=%s&form_id=%d&action=%s&item=%d&_wpnonce=%s" onclick="return confirm(\'%s\')">%s</a>',
 				esc_attr( $_REQUEST['post_type'] ),
 				esc_attr( $_REQUEST['page'] ),
 				$this->get_form_id(),
 				self::DELETE_ACTION,
 				$item->meta_get_id(),
-				$delete_nonce
+				$delete_nonce,
+				sprintf( _x( 'Delete submission of the %s?', 'Timestamp', THEME_DOMAIN ), $timestamp ),
+				__( 'Delete', THEME_DOMAIN )
 			)
 		];
 
