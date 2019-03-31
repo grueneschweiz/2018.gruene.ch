@@ -84,7 +84,7 @@ class SubmissionsTable extends WP_List_Table {
 	public function get_sortable_columns() {
 		$sortable_columns = [];
 		foreach ( $this->get_columns() as $column_slug => $column_value ) {
-			$sortable_columns[ $column_slug ] = $column_slug;
+			$sortable_columns[ $column_slug ] = array( $column_slug, false );
 		}
 
 		return $sortable_columns;
@@ -131,8 +131,6 @@ class SubmissionsTable extends WP_List_Table {
 
 		$this->process_action();
 
-		// todo: implement the sorting
-
 		$submissions = $this->get_current_form()->get_submissions();
 		$total_items = count( $submissions );
 		$per_page    = $this->get_items_per_page( 'submissions_per_page' );
@@ -145,7 +143,49 @@ class SubmissionsTable extends WP_List_Table {
 
 		$current_page = $this->get_pagenum();
 
+		$submissions = $this->process_sorting( $submissions );
+
 		$this->items = array_slice( $submissions, ( ( $current_page - 1 ) * $per_page ), $per_page );
+	}
+
+	/**
+	 * Sort data according to get parameters
+	 *
+	 * @param SubmissionModel[] $submissions
+	 *
+	 * @return SubmissionModel[]
+	 */
+	private function process_sorting( $submissions ) {
+		// set orderby
+		if ( isset( $_REQUEST['orderby'] ) && in_array( $_REQUEST['orderby'], array_keys( $this->get_sortable_columns() ) ) ) {
+			$orderby = $_REQUEST['orderby'];
+		} else {
+			$orderby = SubmissionModel::META_KEY;
+		}
+
+		// set order
+		if ( isset( $_REQUEST['order'] ) && in_array( $_REQUEST['order'], [ 'asc', 'desc' ] ) ) {
+			$order = $_REQUEST['order'];
+		} else {
+			$order = 'desc';
+		}
+
+		// set getter
+		if ( SubmissionModel::META_KEY === $orderby ) {
+			$orderby = 'meta_get_timestamp';
+		} else {
+			$orderby = "get_$orderby";
+		}
+
+		// sort
+		usort( $submissions, function ( $a, $b ) use ( $orderby, $order ) {
+			$value1 = $a->$orderby();
+			$value2 = $b->$orderby();
+
+			return 'asc' === $order ? $value1 <=> $value2 : $value2 <=> $value1;
+		} );
+
+		return $submissions;
 	}
 
 	/**
