@@ -23,7 +23,7 @@
 				{% endif %}
 			{% endif %}
 
-			<a href="{{ link }}" class="o-vote__proposal">
+			<a href="{{ link }}" {{ link_props(link) }} class="o-vote__proposal">
 				{% include 'molecules/m-vote.twig' with {
 					'label': label,
 					'tag': tag,
