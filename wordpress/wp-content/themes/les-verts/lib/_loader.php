@@ -46,7 +46,7 @@ if ( class_exists( 'SearchWP' ) ) {
  */
 
 if ( is_admin() ) {
-	if ( ! WP_DEBUG ) {
+	if ( ! ( defined( 'WP_DEBUG' ) && WP_DEBUG ) ) {
 		require_once __DIR__ . '/admin/acf-protect-admin.php';
 	}
 
