@@ -48,6 +48,14 @@ add_filter('tiny_mce_before_init', function($init) {
 });
 
 
+// allow &nbsp; and &shy;
+add_filter( 'tiny_mce_before_init', function ( $init ) {
+	$init['entities']        = '160,nbsp,173,shy';
+	$init['entity_encoding'] = 'named';
+
+	return $init;
+} );
+
 // custom js
 add_action( 'acf/input/admin_footer', function() {
 	?>
