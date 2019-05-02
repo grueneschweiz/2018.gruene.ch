@@ -11,6 +11,11 @@ add_filter( 'searchwp_lenient_accents', '__return_true' );
 add_filter( 'searchwp_admin_bar', '__return_false' );
 
 /**
+ * Order search results by date
+ */
+add_filter( 'searchwp_return_orderby_date', '__return_true' );
+
+/**
  * Set initial config on plugin activation
  */
 add_filter( 'searchwp_initial_engine_settings', function ( $settings ) {
