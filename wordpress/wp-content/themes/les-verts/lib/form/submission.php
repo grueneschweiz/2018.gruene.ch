@@ -332,7 +332,7 @@ class FormSubmission {
 
 			// sanitize and validate checkboxes
 			if ( self::CHECKBOX_TYPE === $field['form_input_type'] ) {
-				$choices = $field['form_input_choices'];
+				$choices = trim( $field['form_input_choices'] );
 				$options = array_map( 'trim', explode( "\n", $choices ) );
 
 				foreach ( $field['values'] as $value_key => $value ) {
@@ -353,7 +353,7 @@ class FormSubmission {
 				$raw = $this->get_field_data( $key );
 
 				$type      = $field['form_input_type'];
-				$choices   = $field['form_input_choices'];
+				$choices   = trim( $field['form_input_choices'] );
 				$options   = array_map( 'trim', explode( "\n", $choices ) );
 				$required  = $field['form_input_required'];
 				$sanitized = $this->sanitize( $raw, $type );
