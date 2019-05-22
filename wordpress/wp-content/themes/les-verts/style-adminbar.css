@@ -6,17 +6,8 @@
  * Since we use general styles in the typography stylesheet,
  * we have to reset it for the admin bar.
  */
-#wpadminbar a:before {
-    content: none;
-    position: static;
-    z-index: auto;
-    bottom: auto;
-    left: auto;
-    width: auto;
-    height: auto;
-    background: transparent;
-    -webkit-transition: none;
-    transition: none;
+#wpadminbar a {
+	box-shadow: none;
 }
 
 #wpadminbar #wp-admin-bar-tribe-events {
