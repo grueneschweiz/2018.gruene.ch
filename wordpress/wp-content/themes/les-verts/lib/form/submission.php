@@ -477,7 +477,7 @@ class FormSubmission {
 				break;
 
 			case self::NUMBER_TYPE:
-				$valid   = is_numeric( $data );
+				$valid   = is_numeric( $data ) || '' === $data;
 				$message = __( 'Invalid number', THEME_DOMAIN );
 				break;
 		}
