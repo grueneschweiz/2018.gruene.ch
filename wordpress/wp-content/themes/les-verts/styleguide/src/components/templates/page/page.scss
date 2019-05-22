@@ -156,10 +156,7 @@
 		@extend .page__side--full;
 		@extend .page__grid;
 
-		background-color: $color-grey-1;
-
 		@include media($page-grid-desktop) {
-			background-color: transparent;
 			display: flex;
 			flex-direction: column;
 			padding-right: 40px;
@@ -174,8 +171,15 @@
 	&__post-meta {
 		@extend .page__content;
 
+		background-color: $color-grey-1;
+		border-top: 2px solid $color-primary;
+		padding: 0 15px;
+
 		@include media($page-grid-desktop) {
+			background-color: transparent;
 			margin-top: 72px;
+			border-top: none;
+			padding: 0;
 		}
 	}
 
