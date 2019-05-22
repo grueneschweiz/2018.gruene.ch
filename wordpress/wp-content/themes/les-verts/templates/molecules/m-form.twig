@@ -27,6 +27,7 @@
 
 				{% if custom_width_block_width > 100 %}
 					</div><div class="m-form__custom-width-block">
+					{% set custom_width_block_width = field.form_input_width %}
 				{% endif %}
 
 				{% set custom_width = 'custom_width' %}
