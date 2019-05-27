@@ -83,8 +83,8 @@
                 },
                 "layout_5b6c498e69761": {
                     "key": "layout_5b6c498e69761",
-                    "name": "call_to_action",
-                    "label": "Call to Action",
+                  "name": "form",
+                  "label": "Form",
                     "display": "block",
                     "sub_fields": [
                         {
