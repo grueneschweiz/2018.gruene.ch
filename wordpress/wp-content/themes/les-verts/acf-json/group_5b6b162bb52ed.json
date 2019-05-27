@@ -1,24 +1,6 @@
 {
     "key": "group_5b6b162bb52ed",
     "title": "[Template]Positions",
-    "location": [
-        [
-            {
-                "param": "page_type",
-                "operator": "==",
-                "value": "front_page"
-            }
-        ]
-    ],
-    "menu_order": 0,
-    "position": "normal",
-    "style": "default",
-    "label_placement": "top",
-    "instruction_placement": "label",
-    "hide_on_screen": "",
-    "active": 0,
-    "description": "",
-    "modified": 1543324748,
     "fields": [
         {
             "key": "field_5b7da2d494e05",
@@ -83,7 +65,7 @@
                     "name": "position",
                     "type": "clone",
                     "instructions": "",
-                    "required": 1,
+                  "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
                         "width": "",
@@ -132,5 +114,23 @@
             "ui_on_text": "",
             "ui_off_text": ""
         }
+    ],
+  "location": [
+    [
+      {
+        "param": "page_type",
+        "operator": "==",
+        "value": "front_page"
+      }
     ]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "hide_on_screen": "",
+  "active": 0,
+  "description": "",
+  "modified": 1558979806
 }
