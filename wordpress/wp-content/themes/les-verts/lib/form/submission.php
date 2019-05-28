@@ -692,7 +692,8 @@ class FormSubmission {
 				$reply_to,
 				$form->get_confirmation_subject(),
 				$form->get_confirmation_template(),
-				$this->data
+				$this->data,
+				$this->post_meta_id
 			);
 		}
 
@@ -703,7 +704,8 @@ class FormSubmission {
 				$this->get_email_address(),
 				$form->get_notification_subject(),
 				$form->get_notification_template(),
-				$this->data
+				$this->data,
+				$this->post_meta_id
 			);
 		}
 	}
