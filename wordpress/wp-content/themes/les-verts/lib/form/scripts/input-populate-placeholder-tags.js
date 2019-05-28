@@ -106,16 +106,16 @@
 		populateInit();
 		setFieldLabelFieldVisibility();
 		hideSlugFields();
+		legacy_addOldConfirmationData();
 	} );
 
 	// Bind events
 	function bind() {
 		// for fields with tinymce
-		var editors = tinyMCE.editors;
-		for (var i = 0; i < editors.length; i ++) {
-			editors[ i ].off( 'Blur', updateWysiwygLabelField );
-			editors[ i ].on( 'Blur', updateWysiwygLabelField );
-		}
+		acf.add_action( 'wysiwyg_tinymce_init', function( editor ) {
+			editor.off( 'Blur', updateWysiwygLabelField );
+			editor.on( 'Blur', updateWysiwygLabelField );
+		} );
 
 		// for all normal fields
 		for (var k = 0; k < fields.length; k ++) {
@@ -171,6 +171,28 @@
 		for (var j = 0; j < descriptions.length; j ++) {
 			descriptions[ j ].innerHTML = placeholder_string;
 		}
+	}
+
+	/**
+	 * Add the confirmation data of non WYSIWYG fields to the WYSIWYG field
+	 */
+	function legacy_addOldConfirmationData() {
+		acf.add_action( 'wysiwyg_tinymce_init',
+			function( editor, id, mceInit, field ) {
+				var container = field.closest( '.acf-fields' );
+				var type = container.find( '.form_input_type select' ).val();
+
+				if ('confirmation' === type) {
+					var labelField = container.find( '.form_input_label input' );
+					var value = labelField[ 0 ].defaultValue;
+
+					if (value && '' === editor.getContent()) {
+						editor.setContent( value );
+						labelField.val( value );
+						updateFieldSlugs();
+					}
+				}
+			} );
 	}
 
 	/**
