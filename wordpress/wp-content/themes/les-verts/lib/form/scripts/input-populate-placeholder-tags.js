@@ -7,14 +7,22 @@
 	var descriptions = document.querySelectorAll(
 		'.form_mail_template_placeholders' );
 	var slugs = [];
+	var tabs = document.querySelectorAll(
+		'#acf-group_59f33aa9b4e97 .acf-tab-group' );
+	var typeFields = document.querySelectorAll( '.form_input_type select' );
 
 	// mutation observer to handle addition and removal of fields
 	var observer = new MutationObserver( function( mutations ) {
 		mutations.forEach( function() {
 			fields = document.querySelectorAll( '.form_input_label input' );
 			$slugFields = acf.getFields( { key: 'field_5c0fad19blkjh' } );
+			tabs = document.querySelectorAll(
+				'#acf-group_59f33aa9b4e97 .acf-tab-group' );
+			typeFields = document.querySelectorAll( '.form_input_type select' );
+
 			bind();
 			populateInit();
+			setFieldLabelFieldVisibility();
 			hideSlugFields();
 		} );
 	} );
@@ -27,14 +35,15 @@
 	 */
 	function updateFieldSlugs() {
 		var placeholders = [];
-		var slug;
+		var label, slug;
 
 		for (var i = 0; i < fields.length; i ++) {
-			if (! fields[ i ].value) {
+			if (!fields[ i ].value) {
 				continue;
 			}
 
-			slug = getUniqueSlug( fields[ i ].value, i );
+			label = fields[ i ].value.replace( /<\/?[^>]+(>|$)/g, '' );
+			slug = getUniqueSlug( label, i );
 			slugs[ i ] = slug;
 
 			placeholders.push( '{{' + slug + '}}' );
@@ -42,6 +51,20 @@
 		}
 
 		updateMailPlaceholders( placeholders );
+	}
+
+	/**
+	 * Pipe the wysiwyg content to the label field
+	 *
+	 * @param event
+	 */
+	function updateWysiwygLabelField( event ) {
+		var content = this.getContent();
+		var $target = jQuery( event.target.container ).
+			closest( '.acf-fields' ).
+			find( '.form_input_label input' );
+		$target.val( content );
+		updateFieldSlugs();
 	}
 
 	/**
@@ -81,14 +104,32 @@
 	document.addEventListener( 'DOMContentLoaded', function() {
 		bind();
 		populateInit();
+		setFieldLabelFieldVisibility();
+		hideSlugFields();
 	} );
 
 	// Bind events
 	function bind() {
-		for (var i = 0; i < fields.length; i ++) {
-			fields[ i ].removeEventListener( 'blur', updateFieldSlugs ); // prevent
-			// multiple binding
-			fields[ i ].addEventListener( 'blur', updateFieldSlugs );
+		// for fields with tinymce
+		var editors = tinyMCE.editors;
+		for (var i = 0; i < editors.length; i ++) {
+			editors[ i ].off( 'Blur', updateWysiwygLabelField );
+			editors[ i ].on( 'Blur', updateWysiwygLabelField );
+		}
+
+		// for all normal fields
+		for (var k = 0; k < fields.length; k ++) {
+			fields[ k ].removeEventListener( 'blur', updateFieldSlugs );
+			fields[ k ].addEventListener( 'blur', updateFieldSlugs );
+		}
+
+		for (var j = 0; j < tabs.length; j ++) {
+			tabs[ j ].addEventListener( 'click', hideSlugFields );
+		}
+
+		for (var l = 0; l < typeFields.length; l ++) {
+			typeFields[ l ].addEventListener( 'change',
+				setFieldLabelFieldVisibility );
 		}
 	}
 
@@ -97,10 +138,27 @@
 		updateFieldSlugs();
 	}
 
-	// Make slug fields read only
+	// hide slug fields
 	function hideSlugFields() {
 		for (var i = 0; i < $slugFields.length; i ++) {
 			$slugFields[ i ].hide();
+		}
+	}
+
+	function setFieldLabelFieldVisibility() {
+		var $target;
+
+		for (var i = 0; i < typeFields.length; i ++) {
+			$target = jQuery( typeFields[ i ] ).
+				closest( '.acf-fields' ).
+				find( '.form_input_label' );
+
+			if ('confirmation' === typeFields[ i ].value) {
+				$target.hide();
+			}
+			else {
+				$target.show();
+			}
 		}
 	}
 
