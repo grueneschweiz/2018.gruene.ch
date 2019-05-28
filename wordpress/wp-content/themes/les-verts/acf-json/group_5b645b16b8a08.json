@@ -446,38 +446,6 @@
             ]
         },
         {
-          "key": "field_5b645f6d33efa",
-          "label": "Main Page of the Campaign",
-          "name": "link",
-          "type": "post_object",
-          "instructions": "Select the campaign page that belongs to the following teaser.",
-          "required": 1,
-          "conditional_logic": [
-            [
-              {
-                "field": "field_5bfd36914df38",
-                "operator": "==",
-                "value": "1"
-              }
-            ]
-          ],
-          "wrapper": {
-            "width": "",
-            "class": "",
-            "id": ""
-          },
-          "post_type": [
-            "post",
-            "page",
-            "tribe_events"
-          ],
-          "taxonomy": "",
-          "allow_null": 0,
-          "multiple": 0,
-          "return_format": "object",
-          "ui": 1
-        },
-      {
             "key": "field_5b718e15c398d",
             "label": "Campaign Summary",
             "name": "summary",
@@ -541,9 +509,9 @@
                 {
                     "key": "field_5b645edb33ef9",
                     "label": "Read more button",
-                    "name": "read_more_text",
-                    "type": "text",
-                    "instructions": "The button text.",
+                  "name": "read_more",
+                  "type": "link",
+                  "instructions": "Link the main page of this campaign and set an accurate \"read more\" text for the link button.",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -551,11 +519,7 @@
                         "class": "",
                         "id": ""
                     },
-                    "default_value": "Read more about this campaign",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "maxlength": 80
+                  "return_format": "array"
                 }
             ]
         },
@@ -708,5 +672,5 @@
     "hide_on_screen": "",
     "active": 0,
     "description": "",
-  "modified": 1554058878
+  "modified": 1559047903
 }

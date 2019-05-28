@@ -4,6 +4,14 @@
 	{% if post.campaign_show_main_campaign %}
 	<section class="front__campaign">
 		{% set bars = post.get_field('campaign_bars') %}
+		{% if post.campaign_summary_read_more %}
+			{% set read_more_text = post.campaign_summary_read_more.title %}
+			{% set read_more_link = post.campaign_summary_read_more.url %}
+		{% else %}
+			{# this is a legacy handler. #}
+			{% set read_more_text = post.campaign_summary_read_more_text %}
+			{% set read_more_link = post.get_field('campaign_link').link() %}
+		{% endif %}
 		{% include 'organisms/o-campaign.twig' with {
 			'image': post.campaign_image,
 			'bars': {
@@ -17,8 +25,8 @@
 			'desc': {
 				'title': post.campaign_summary_title,
 				'teaser': post.campaign_summary_teaser,
-				'read_more_text': post.campaign_summary_read_more_text,
-				'link': post.get_field('campaign_link').link()
+				'read_more_text': read_more_text,
+				'link': read_more_link
 			},
 			'cta': {
 				'title': post.campaign_call_to_action_participate_title_title,
