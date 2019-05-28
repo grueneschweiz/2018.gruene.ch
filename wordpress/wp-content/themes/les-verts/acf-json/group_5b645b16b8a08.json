@@ -547,66 +547,27 @@
             "layout": "block",
             "sub_fields": [
                 {
-                    "key": "field_5b7d9b1980bb8",
-                    "label": "Participate Title",
-                    "name": "participate_title",
-                    "type": "group",
-                    "instructions": "Use an encouraging title, like 'Let me be part of the success'.",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "layout": "row",
-                    "sub_fields": [
-                        {
-                            "key": "field_5b681c8590acf",
-                            "label": "Participate Title",
-                            "name": "title",
-                            "type": "text",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "",
-                            "placeholder": "",
-                            "prepend": "",
-                            "append": "",
-                            "maxlength": 80
-                        },
-                        {
-                            "key": "field_5b6821cd715d5",
-                            "label": "Participate Title Link",
-                            "name": "general_participation_link",
-                            "type": "page_link",
-                            "instructions": "Select the page that contains an overview with all your participation possibilities.",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "post_type": [
-                                "post",
-                                "page"
-                            ],
-                            "taxonomy": "",
-                            "allow_null": 1,
-                            "allow_archives": 1,
-                            "multiple": 0
-                        }
-                    ]
+                  "key": "field_5b681c8590acf",
+                  "label": "Title",
+                  "name": "title",
+                  "type": "text",
+                  "instructions": "Use an encouraging title, like 'Let me be part of the success'.",
+                  "required": 0,
+                  "conditional_logic": 0,
+                  "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                  },
+                  "default_value": "",
+                  "placeholder": "",
+                  "prepend": "",
+                  "append": "",
+                  "maxlength": ""
                 },
                 {
                     "key": "field_5b681f7ccd058",
-                    "label": "Participation Description",
+                  "label": "Description",
                     "name": "description",
                     "type": "textarea",
                     "instructions": "Tell the visiter briefly, what the form does. Example: Stay updated, subscribe to our newsletter; make a change, become a member; sign the petition",
@@ -672,5 +633,5 @@
     "hide_on_screen": "",
     "active": 0,
     "description": "",
-  "modified": 1559047903
+  "modified": 1559051425
 }
