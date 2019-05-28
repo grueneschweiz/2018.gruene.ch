@@ -12,6 +12,12 @@
 			{% set read_more_text = post.campaign_summary_read_more_text %}
 			{% set read_more_link = post.get_field('campaign_link').link() %}
 		{% endif %}
+		{% if post.campaign_call_to_action_title %}
+			{% set cta_title = post.campaign_call_to_action_title %}
+		{% else %}
+			{# this is a legacy handler. #}
+			{% set cta_title = post.campaign_call_to_action_participate_title_title %}
+		{% endif %}
 		{% include 'organisms/o-campaign.twig' with {
 			'image': post.campaign_image,
 			'bars': {
@@ -29,7 +35,7 @@
 				'link': read_more_link
 			},
 			'cta': {
-				'title': post.campaign_call_to_action_participate_title_title,
+				'title': cta_title,
 				'desc': post.campaign_call_to_action_description,
 				'form': post.campaign_call_to_action_form,
 				'link': TimberPost(post.campaign_call_to_action_participate_title_general_participation_link).link(),
