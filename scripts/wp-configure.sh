@@ -11,13 +11,6 @@ if [ $NETWORK ]; then
     $WPCLI network meta update 1 fileupload_maxk 65536
 fi
 
-# sync acf fields
-ALL_SITES=
-if [ $NETWORK ]; then
-    ALL_SITES='--all_sites'
-fi
-$WPCLI acf-json sync $ALL_SITES
-
 # configure YOAST meta description fields
 $WPCLI option patch update wpseo_titles metadesc-tribe_events <<< "%%cf_description%%"
 $WPCLI option patch update wpseo_titles metadesc-post <<< "%%cf_teaser%%"
