@@ -85,8 +85,8 @@
 			slug = slug.substr( 0, max_slug_len );
 		}
 
-		slug_exists = slugs.indexOf( slug ) || '_meta_' === slug; // _meta_ is
-		// reserved
+		slug_exists = slugs.indexOf( slug ) || '_meta_' === slug ||
+			'submission_url' === slug; // _meta_ and submission_url are reserved
 
 		while (- 1 !== slug_exists && slug_exists !== index) {
 			j ++;
@@ -112,10 +112,13 @@
 	// Bind events
 	function bind() {
 		// for fields with tinymce
-		acf.add_action( 'wysiwyg_tinymce_init', function( editor ) {
-			editor.off( 'Blur', updateWysiwygLabelField );
-			editor.on( 'Blur', updateWysiwygLabelField );
-		} );
+		acf.add_action( 'wysiwyg_tinymce_init',
+			function( editor, id, mceInit, field ) {
+				if ('form_input_confirmation_text' === field.data( 'name' )) {
+					editor.off( 'Blur', updateWysiwygLabelField );
+					editor.on( 'Blur', updateWysiwygLabelField );
+				}
+			} );
 
 		// for all normal fields
 		for (var k = 0; k < fields.length; k ++) {
@@ -179,6 +182,10 @@
 	function legacy_addOldConfirmationData() {
 		acf.add_action( 'wysiwyg_tinymce_init',
 			function( editor, id, mceInit, field ) {
+				if ('form_input_confirmation_text' !== field.data( 'name' )) {
+					return;
+				}
+
 				var container = field.closest( '.acf-fields' );
 				var type = container.find( '.form_input_type select' ).val();
 
