@@ -8,20 +8,24 @@
     "packages": [
         {
             "name": "altorouter/altorouter",
-            "version": "v1.1.0",
+            "version": "v1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/dannyvankooten/AltoRouter.git",
-                "reference": "09d9d946c546bae6d22a7654cdb3b825ffda54b4"
+                "reference": "39c50092470128c12284d332bb57f306bb5b58e4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dannyvankooten/AltoRouter/zipball/09d9d946c546bae6d22a7654cdb3b825ffda54b4",
-                "reference": "09d9d946c546bae6d22a7654cdb3b825ffda54b4",
+                "url": "https://api.github.com/repos/dannyvankooten/AltoRouter/zipball/39c50092470128c12284d332bb57f306bb5b58e4",
+                "reference": "39c50092470128c12284d332bb57f306bb5b58e4",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "codeclimate/php-test-reporter": "dev-master",
+                "phpunit/phpunit": "4.5.*"
             },
             "type": "library",
             "autoload": {
@@ -55,7 +59,7 @@
                 "router",
                 "routing"
             ],
-            "time": "2014-04-16T09:44:40+00:00"
+            "time": "2015-11-30T00:47:43+00:00"
         },
         {
             "name": "asm89/twig-cache-extension",
@@ -448,16 +452,16 @@
         },
         {
             "name": "phpoffice/phpspreadsheet",
-            "version": "1.6.0",
+            "version": "1.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPOffice/PhpSpreadsheet.git",
-                "reference": "bf00f0cc5f55c354018f9a9ef15e6e3e1a229051"
+                "reference": "84e09df79855ed3da84e2eab6850eb7741d8cbda"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHPOffice/PhpSpreadsheet/zipball/bf00f0cc5f55c354018f9a9ef15e6e3e1a229051",
-                "reference": "bf00f0cc5f55c354018f9a9ef15e6e3e1a229051",
+                "url": "https://api.github.com/repos/PHPOffice/PhpSpreadsheet/zipball/84e09df79855ed3da84e2eab6850eb7741d8cbda",
+                "reference": "84e09df79855ed3da84e2eab6850eb7741d8cbda",
                 "shasum": ""
             },
             "require": {
@@ -538,7 +542,7 @@
                 "xls",
                 "xlsx"
             ],
-            "time": "2019-01-02T04:42:54+00:00"
+            "time": "2019-05-26T02:50:36+00:00"
         },
         {
             "name": "psr/simple-cache",
@@ -590,16 +594,16 @@
         },
         {
             "name": "symfony/polyfill-ctype",
-            "version": "v1.10.0",
+            "version": "v1.11.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-ctype.git",
-                "reference": "e3d826245268269cd66f8326bd8bc066687b4a19"
+                "reference": "82ebae02209c21113908c229e9883c419720738a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-ctype/zipball/e3d826245268269cd66f8326bd8bc066687b4a19",
-                "reference": "e3d826245268269cd66f8326bd8bc066687b4a19",
+                "url": "https://api.github.com/repos/symfony/polyfill-ctype/zipball/82ebae02209c21113908c229e9883c419720738a",
+                "reference": "82ebae02209c21113908c229e9883c419720738a",
                 "shasum": ""
             },
             "require": {
@@ -611,7 +615,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.9-dev"
+                    "dev-master": "1.11-dev"
                 }
             },
             "autoload": {
@@ -644,20 +648,20 @@
                 "polyfill",
                 "portable"
             ],
-            "time": "2018-08-06T14:22:27+00:00"
+            "time": "2019-02-06T07:57:58+00:00"
         },
         {
             "name": "symfony/polyfill-mbstring",
-            "version": "v1.10.0",
+            "version": "v1.11.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-mbstring.git",
-                "reference": "c79c051f5b3a46be09205c73b80b346e4153e494"
+                "reference": "fe5e94c604826c35a32fa832f35bd036b6799609"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/c79c051f5b3a46be09205c73b80b346e4153e494",
-                "reference": "c79c051f5b3a46be09205c73b80b346e4153e494",
+                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/fe5e94c604826c35a32fa832f35bd036b6799609",
+                "reference": "fe5e94c604826c35a32fa832f35bd036b6799609",
                 "shasum": ""
             },
             "require": {
@@ -669,7 +673,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.9-dev"
+                    "dev-master": "1.11-dev"
                 }
             },
             "autoload": {
@@ -703,20 +707,20 @@
                 "portable",
                 "shim"
             ],
-            "time": "2018-09-21T13:07:52+00:00"
+            "time": "2019-02-06T07:57:58+00:00"
         },
         {
             "name": "timber/timber",
-            "version": "1.8.4",
+            "version": "1.9.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/timber/timber.git",
-                "reference": "c194fe745b29152e36c6aa6f269e0fc1b536b8ec"
+                "reference": "de479c12de57d8e78839dd236035da6a1d3a5e8e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/timber/timber/zipball/c194fe745b29152e36c6aa6f269e0fc1b536b8ec",
-                "reference": "c194fe745b29152e36c6aa6f269e0fc1b536b8ec",
+                "url": "https://api.github.com/repos/timber/timber/zipball/de479c12de57d8e78839dd236035da6a1d3a5e8e",
+                "reference": "de479c12de57d8e78839dd236035da6a1d3a5e8e",
                 "shasum": ""
             },
             "require": {
@@ -724,11 +728,14 @@
                 "composer/installers": "~1.0",
                 "php": ">=5.3.0|7.*",
                 "twig/twig": "1.34.*|2.*",
-                "upstatement/routes": "0.4"
+                "upstatement/routes": "0.5"
             },
             "require-dev": {
+                "dealerdirect/phpcodesniffer-composer-installer": "^0.5.0",
                 "johnpbloch/wordpress": "4.*",
                 "phpunit/phpunit": "5.7.16|6.*",
+                "squizlabs/php_codesniffer": "3.*",
+                "wp-coding-standards/wpcs": "^2.0",
                 "wpackagist-plugin/advanced-custom-fields": "5.*",
                 "wpackagist-plugin/co-authors-plus": "3.2.*"
             },
@@ -765,20 +772,20 @@
                 "timber",
                 "twig"
             ],
-            "time": "2018-12-20T22:28:04+00:00"
+            "time": "2019-04-01T01:22:06+00:00"
         },
         {
             "name": "twig/twig",
-            "version": "v2.6.2",
+            "version": "v2.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "7d7342c8a4059fefb9b8d07db0cc14007021f9b7"
+                "reference": "5240e21982885b76629552d83b4ebb6d41ccde6b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/7d7342c8a4059fefb9b8d07db0cc14007021f9b7",
-                "reference": "7d7342c8a4059fefb9b8d07db0cc14007021f9b7",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/5240e21982885b76629552d83b4ebb6d41ccde6b",
+                "reference": "5240e21982885b76629552d83b4ebb6d41ccde6b",
                 "shasum": ""
             },
             "require": {
@@ -794,7 +801,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.6-dev"
+                    "dev-master": "2.10-dev"
                 }
             },
             "autoload": {
@@ -832,24 +839,24 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2019-01-14T15:00:48+00:00"
+            "time": "2019-05-14T12:03:52+00:00"
         },
         {
             "name": "upstatement/routes",
-            "version": "0.4",
+            "version": "0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Upstatement/routes.git",
-                "reference": "fae7d46f56e8b5775f072774941a5f0a25cb86f3"
+                "reference": "3267d28be0a73f197087d58384e1a358d85671b6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Upstatement/routes/zipball/fae7d46f56e8b5775f072774941a5f0a25cb86f3",
-                "reference": "fae7d46f56e8b5775f072774941a5f0a25cb86f3",
+                "url": "https://api.github.com/repos/Upstatement/routes/zipball/3267d28be0a73f197087d58384e1a358d85671b6",
+                "reference": "3267d28be0a73f197087d58384e1a358d85671b6",
                 "shasum": ""
             },
             "require": {
-                "altorouter/altorouter": "1.1.0",
+                "altorouter/altorouter": "^1.1.0",
                 "composer/installers": "~1.0",
                 "php": ">=5.3.0"
             },
@@ -883,7 +890,7 @@
                 "routes",
                 "routing"
             ],
-            "time": "2016-07-06T12:53:24+00:00"
+            "time": "2018-12-04T01:13:41+00:00"
         }
     ],
     "packages-dev": [],
