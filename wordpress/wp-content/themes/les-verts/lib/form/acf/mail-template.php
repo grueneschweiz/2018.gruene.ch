@@ -1,6 +1,6 @@
 <?php
 if ( function_exists( 'acf_add_local_field_group' ) ):
-	
+
 	acf_add_local_field_group( array(
 		'key'                   => 'group_5be2e2d8a21b0',
 		'title'                 => '[Template]Form Mail Config',
@@ -18,11 +18,22 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 					'class' => '',
 					'id'    => '',
 				),
-				'message'           => __( 'Use the following tags as placeholders in your mail. They will be replaced automatically: <strong><div class="form_mail_template_placeholders"></div></strong>
-
-<i>Advanced: You may use <a href="https://twig.symfony.com/" target="_blank">Twig</a> in this mail template.</i>',
-					THEME_DOMAIN ),
-				'new_lines'         => 'wpautop',
+				'message'           => sprintf(
+					_x(
+						'Use the following tags as placeholders in your mail. They will be replaced automatically: %s',
+						'Placeholders',
+						THEME_DOMAIN
+					) . _x( 'Use the special placeholder %s to link to the complete submission (with all linked forms).', 'Placeholder' )
+					. ' <i>' . _x(
+						'Advanced: You may use %s in this mail template.',
+						'Link',
+						THEME_DOMAIN
+					) . '</i>',
+					'<strong><div class="form_mail_template_placeholders"></div></strong>',
+					'<strong>{{submission_url}}</strong>',
+					'<a href="https://twig.symfony.com/" target="_blank">Twig</a>'
+				),
+				'new_lines'         => 0,
 				'esc_html'          => 0,
 			),
 			array(

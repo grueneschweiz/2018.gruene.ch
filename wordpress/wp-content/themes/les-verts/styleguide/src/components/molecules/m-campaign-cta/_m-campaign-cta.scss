@@ -11,21 +11,13 @@
 
 	&__title {
 		margin: 0;
-		line-height: 1em;
-	}
-
-	&__title-link {
-		@include clean-link;
+		line-height: 1.3em;
 		color: $color-text;
 		font-size: 1rem;
 
 		@include media($_DESKTOP) {
 			color: $color-secondary;
 			transition: color $transition-fast $transition-ease;
-
-			@include hover {
-				color: $color-secondary-dark;
-			}
 		}
 	}
 

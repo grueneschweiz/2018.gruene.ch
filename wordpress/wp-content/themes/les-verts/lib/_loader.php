@@ -29,7 +29,7 @@ if ( class_exists( 'acf' ) ) {
  * Add repeater and flexible content fields
  */
 if ( class_exists( 'SearchWP' ) ) {
-	require_once __DIR__ . '/searchwp/add-fields.php';
+	require_once __DIR__ . '/searchwp/fine-tune.php';
 }
 
 /**
@@ -46,7 +46,7 @@ if ( class_exists( 'SearchWP' ) ) {
  */
 
 if ( is_admin() ) {
-	if ( ! WP_DEBUG ) {
+	if ( ! ( defined( 'WP_DEBUG' ) && WP_DEBUG ) ) {
 		require_once __DIR__ . '/admin/acf-protect-admin.php';
 	}
 
@@ -102,8 +102,8 @@ require_once __DIR__ . '/post-types/PeopleType.php';
 
 // register post types & taxonomies
 add_action( 'init', function () {
-	\SUPT\PeopleType::register_post_types();
-	\SUPT\PeopleType::register_taxonomy();
+	PeopleType::register_post_types();
+	PeopleType::register_taxonomy();
 } );
 
 

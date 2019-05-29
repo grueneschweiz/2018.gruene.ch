@@ -16,7 +16,7 @@ RUN apt-get update && apt-get install -y \
 	libicu-dev \
 	g++ \
 	ssmtp \
-	nano
+	vim
 
 # Add PHP extensions
 RUN docker-php-ext-install intl

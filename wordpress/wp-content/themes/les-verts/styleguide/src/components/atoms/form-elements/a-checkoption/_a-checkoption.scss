@@ -22,8 +22,8 @@
 		background-image: url('img/checkbox.svg');
 		position: relative;
 
-		&.a-checkoption--legal {
-			font-size: 0.875rem;
+		&.a-checkoption--legal, &.a-checkoption--legal p {
+			font-size: 0.875rem !important;
 			line-height: 1.3em;
 			color: $color-text-light;
 		}

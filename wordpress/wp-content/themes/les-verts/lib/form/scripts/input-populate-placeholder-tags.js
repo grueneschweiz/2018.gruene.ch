@@ -7,14 +7,22 @@
 	var descriptions = document.querySelectorAll(
 		'.form_mail_template_placeholders' );
 	var slugs = [];
+	var tabs = document.querySelectorAll(
+		'#acf-group_59f33aa9b4e97 .acf-tab-group' );
+	var typeFields = document.querySelectorAll( '.form_input_type select' );
 
 	// mutation observer to handle addition and removal of fields
 	var observer = new MutationObserver( function( mutations ) {
 		mutations.forEach( function() {
 			fields = document.querySelectorAll( '.form_input_label input' );
 			$slugFields = acf.getFields( { key: 'field_5c0fad19blkjh' } );
+			tabs = document.querySelectorAll(
+				'#acf-group_59f33aa9b4e97 .acf-tab-group' );
+			typeFields = document.querySelectorAll( '.form_input_type select' );
+
 			bind();
 			populateInit();
+			setFieldLabelFieldVisibility();
 			hideSlugFields();
 		} );
 	} );
@@ -27,14 +35,15 @@
 	 */
 	function updateFieldSlugs() {
 		var placeholders = [];
-		var slug;
+		var label, slug;
 
 		for (var i = 0; i < fields.length; i ++) {
-			if (! fields[ i ].value) {
+			if (!fields[ i ].value) {
 				continue;
 			}
 
-			slug = getUniqueSlug( fields[ i ].value, i );
+			label = fields[ i ].value.replace( /<\/?[^>]+(>|$)/g, '' );
+			slug = getUniqueSlug( label, i );
 			slugs[ i ] = slug;
 
 			placeholders.push( '{{' + slug + '}}' );
@@ -42,6 +51,20 @@
 		}
 
 		updateMailPlaceholders( placeholders );
+	}
+
+	/**
+	 * Pipe the wysiwyg content to the label field
+	 *
+	 * @param event
+	 */
+	function updateWysiwygLabelField( event ) {
+		var content = this.getContent();
+		var $target = jQuery( event.target.container ).
+			closest( '.acf-fields' ).
+			find( '.form_input_label input' );
+		$target.val( content );
+		updateFieldSlugs();
 	}
 
 	/**
@@ -62,8 +85,8 @@
 			slug = slug.substr( 0, max_slug_len );
 		}
 
-		slug_exists = slugs.indexOf( slug ) || '_meta_' === slug; // _meta_ is
-		// reserved
+		slug_exists = slugs.indexOf( slug ) || '_meta_' === slug ||
+			'submission_url' === slug; // _meta_ and submission_url are reserved
 
 		while (- 1 !== slug_exists && slug_exists !== index) {
 			j ++;
@@ -81,14 +104,35 @@
 	document.addEventListener( 'DOMContentLoaded', function() {
 		bind();
 		populateInit();
+		setFieldLabelFieldVisibility();
+		hideSlugFields();
+		legacy_addOldConfirmationData();
 	} );
 
 	// Bind events
 	function bind() {
-		for (var i = 0; i < fields.length; i ++) {
-			fields[ i ].removeEventListener( 'blur', updateFieldSlugs ); // prevent
-			// multiple binding
-			fields[ i ].addEventListener( 'blur', updateFieldSlugs );
+		// for fields with tinymce
+		acf.add_action( 'wysiwyg_tinymce_init',
+			function( editor, id, mceInit, field ) {
+				if ('form_input_confirmation_text' === field.data( 'name' )) {
+					editor.off( 'Blur', updateWysiwygLabelField );
+					editor.on( 'Blur', updateWysiwygLabelField );
+				}
+			} );
+
+		// for all normal fields
+		for (var k = 0; k < fields.length; k ++) {
+			fields[ k ].removeEventListener( 'blur', updateFieldSlugs );
+			fields[ k ].addEventListener( 'blur', updateFieldSlugs );
+		}
+
+		for (var j = 0; j < tabs.length; j ++) {
+			tabs[ j ].addEventListener( 'click', hideSlugFields );
+		}
+
+		for (var l = 0; l < typeFields.length; l ++) {
+			typeFields[ l ].addEventListener( 'change',
+				setFieldLabelFieldVisibility );
 		}
 	}
 
@@ -97,10 +141,27 @@
 		updateFieldSlugs();
 	}
 
-	// Make slug fields read only
+	// hide slug fields
 	function hideSlugFields() {
 		for (var i = 0; i < $slugFields.length; i ++) {
 			$slugFields[ i ].hide();
+		}
+	}
+
+	function setFieldLabelFieldVisibility() {
+		var $target;
+
+		for (var i = 0; i < typeFields.length; i ++) {
+			$target = jQuery( typeFields[ i ] ).
+				closest( '.acf-fields' ).
+				find( '.form_input_label' );
+
+			if ('confirmation' === typeFields[ i ].value) {
+				$target.hide();
+			}
+			else {
+				$target.show();
+			}
 		}
 	}
 
@@ -113,6 +174,32 @@
 		for (var j = 0; j < descriptions.length; j ++) {
 			descriptions[ j ].innerHTML = placeholder_string;
 		}
+	}
+
+	/**
+	 * Add the confirmation data of non WYSIWYG fields to the WYSIWYG field
+	 */
+	function legacy_addOldConfirmationData() {
+		acf.add_action( 'wysiwyg_tinymce_init',
+			function( editor, id, mceInit, field ) {
+				if ('form_input_confirmation_text' !== field.data( 'name' )) {
+					return;
+				}
+
+				var container = field.closest( '.acf-fields' );
+				var type = container.find( '.form_input_type select' ).val();
+
+				if ('confirmation' === type) {
+					var labelField = container.find( '.form_input_label input' );
+					var value = labelField[ 0 ].defaultValue;
+
+					if (value && '' === editor.getContent()) {
+						editor.setContent( value );
+						labelField.val( value );
+						updateFieldSlugs();
+					}
+				}
+			} );
 	}
 
 	/**

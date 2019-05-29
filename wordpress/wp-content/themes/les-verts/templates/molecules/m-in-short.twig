@@ -1,7 +1,7 @@
 <div class="m-in-short">
 	<h2 class="m-in-short__title">{{ title|wptexturize }}</h2>
 	{% for block in content %}
-		{% if block.acf_fc_layout == 'call_to_action' %}
+		{% if block.acf_fc_layout == 'form' %}
 			{% include 'molecules/m-form.twig' with {
 				'post' : Post(block.form),
 				'modifiers': 'invers'

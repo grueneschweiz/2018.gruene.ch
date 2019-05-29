@@ -141,29 +141,13 @@
 }
 
 @mixin clean-link {
-	display: inline;
-	position: static;
 	color: initial; // sorry IE users
 	outline: initial; // sorry IE users
-	z-index: 0;
-
-	&:before {
-		content: normal;
-		position: static;
-		z-index: 0;
-		width: auto;
-		left: initial; // sorry IE users
-		height: auto;
-		background-color: transparent;
-		transition: none;
-	}
+	box-shadow: none;
 
 	@include hover {
-		&:before {
-			height: auto;
-			width: auto; // sorry IE users
-			left: initial; // sorry IE users
-		}
+		background-color: transparent;
+		box-shadow: none;
 	}
 }
 

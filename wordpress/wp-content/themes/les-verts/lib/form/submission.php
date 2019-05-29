@@ -2,6 +2,11 @@
 
 namespace SUPT;
 
+use Exception;
+use PHPMailer;
+use WP_Error;
+use function apply_filters;
+
 require_once __DIR__ . '/include/FormModel.php';
 require_once __DIR__ . '/include/SubmissionModel.php';
 
@@ -163,7 +168,7 @@ class FormSubmission {
 
 		try {
 			$this->form = new FormModel( absint( $_POST['form_id'] ) );
-		} catch ( \Exception $e ) {
+		} catch ( Exception $e ) {
 			$this->respond_with_error( 400, 'Submission not valid' );
 
 			return;
@@ -283,7 +288,7 @@ class FormSubmission {
 			 *
 			 * @param int id of the next form.
 			 */
-			$next_action_id = \apply_filters( FormType::MODEL_NAME . '-next-form-id', self::NEXT_ACTION_ID_DEFAULT );
+			$next_action_id = apply_filters( FormType::MODEL_NAME . '-next-form-id', self::NEXT_ACTION_ID_DEFAULT );
 
 			$html = '';
 			if ( self::NEXT_ACTION_ID_DEFAULT !== $next_action_id ) {
@@ -298,7 +303,7 @@ class FormSubmission {
 				];
 
 				/** @noinspection PhpUndefinedClassInspection */
-				$html = \Timber::compile( $templates, $context );
+				$html = Timber::compile( $templates, $context );
 			}
 
 			wp_send_json_success( [
@@ -327,14 +332,13 @@ class FormSubmission {
 
 			// sanitize and validate checkboxes
 			if ( self::CHECKBOX_TYPE === $field['form_input_type'] ) {
-				$choices  = $field['form_input_choices'];
-				$options  = array_map( 'trim', explode( "\n", $choices ) );
-				$required = $field['form_input_required'];
+				$choices = trim( $field['form_input_choices'] );
+				$options = array_map( 'trim', explode( "\n", $choices ) );
 
 				foreach ( $field['values'] as $value_key => $value ) {
 					$raw     = $this->get_field_data( $value_key );
 					$checked = $this->sanitize( $raw, self::CHECKBOX_TYPE );
-					$valid   = $this->validate( $checked, self::CHECKBOX_TYPE, $options, $required );
+					$valid   = $this->validate( $checked, self::CHECKBOX_TYPE, $options, false );
 
 					if ( true !== $valid ) {
 						$this->errors[ $key ] = $valid;
@@ -349,7 +353,7 @@ class FormSubmission {
 				$raw = $this->get_field_data( $key );
 
 				$type      = $field['form_input_type'];
-				$choices   = $field['form_input_choices'];
+				$choices   = trim( $field['form_input_choices'] );
 				$options   = array_map( 'trim', explode( "\n", $choices ) );
 				$required  = $field['form_input_required'];
 				$sanitized = $this->sanitize( $raw, $type );
@@ -473,7 +477,7 @@ class FormSubmission {
 				break;
 
 			case self::NUMBER_TYPE:
-				$valid   = is_numeric( $data );
+				$valid   = is_numeric( $data ) || '' === $data;
 				$message = __( 'Invalid number', THEME_DOMAIN );
 				break;
 		}
@@ -567,7 +571,7 @@ class FormSubmission {
 			$submission = new SubmissionModel( null, $data );
 			$submission->save();
 			$this->post_meta_id = $submission->meta_get_id();
-		} catch ( \Exception $e ) {
+		} catch ( Exception $e ) {
 			// todo: send email
 			$this->respond_with_error( 500, 'Internal server error.' );
 
@@ -589,7 +593,7 @@ class FormSubmission {
 				$crm_dao = new Crm_Dao();
 				/** @noinspection PhpParamsInspection */
 				$crm_id = $crm_dao->save( $this->get_email_address(), $crm_data );
-			} catch ( \Exception $e ) {
+			} catch ( Exception $e ) {
 				// todo: send mail
 			}
 		}
@@ -630,7 +634,7 @@ class FormSubmission {
 				$predecessor = new SubmissionModel( $this->predecessor_id );
 				$predecessor->meta_set_descendant( $submission_id );
 				$predecessor->save();
-			} catch ( \Exception $e ) {
+			} catch ( Exception $e ) {
 				// todo: send email
 			}
 		}
@@ -688,7 +692,8 @@ class FormSubmission {
 				$reply_to,
 				$form->get_confirmation_subject(),
 				$form->get_confirmation_template(),
-				$this->data
+				$this->data,
+				$this->post_meta_id
 			);
 		}
 
@@ -699,7 +704,8 @@ class FormSubmission {
 				$this->get_email_address(),
 				$form->get_notification_subject(),
 				$form->get_notification_template(),
-				$this->data
+				$this->data,
+				$this->post_meta_id
 			);
 		}
 	}
@@ -714,13 +720,13 @@ class FormSubmission {
 			return $matches[ count( $matches ) - 1 ];
 		}
 
-		return new \WP_Error( 'cant-get-domain', 'The domain could not be parsed from the site url', $url );
+		return new WP_Error( 'cant-get-domain', 'The domain could not be parsed from the site url', $url );
 	}
 
 	/**
 	 * Configure mailing service to use an SMTP account
 	 *
-	 * @param \PHPMailer $phpmailer
+	 * @param PHPMailer $phpmailer
 	 */
 	public function setup_SMTP( $phpmailer ) {
 		$config = get_field( 'form_smtp', 'options' );

@@ -41,11 +41,13 @@
 		@extend h3;
 
 		&::before {
-			content: '\00ab\00a0';
+			content: '\00ab';
+			padding-right: 0.05em;
 		}
 
 		&::after {
-			content: '\00a0\00bb';
+			content: '\00bb';
+			padding-left: 0.05em;
 		}
 	}
 
@@ -66,5 +68,15 @@
 				content: '';
 			}
 		}
+	}
+}
+
+body[class*="lang-fr"] .m-quote__quote {
+	&::before {
+		padding-right: 0.25em;
+	}
+
+	&::after {
+		padding-left: 0.25em;
 	}
 }

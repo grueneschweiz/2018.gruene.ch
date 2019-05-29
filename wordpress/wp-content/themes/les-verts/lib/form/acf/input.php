@@ -35,7 +35,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 				'conditional_logic' => 0,
 				'wrapper'           => array(
 					'width' => '50',
-					'class' => '',
+					'class' => 'form_input_type',
 					'id'    => '',
 				),
 				'choices'           => array(
@@ -58,6 +58,31 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 				'ajax'              => 0,
 				'return_format'     => 'value',
 				'placeholder'       => '',
+			),
+			array(
+				'key'               => 'field_59f33777cf0dc',
+				'label'             => __( 'Confirmation text', THEME_DOMAIN ),
+				'name'              => 'form_input_confirmation_text',
+				'type'              => 'wysiwyg',
+				'instructions'      => '',
+				'required'          => 1,
+				'conditional_logic' => array(
+					array(
+						'field'    => 'field_59f33814cf0dc',
+						'operator' => '==',
+						'value'    => 'confirmation',
+					),
+				),
+				'wrapper'           => array(
+					'width' => '100',
+					'class' => 'form_input_confirmation_text',
+					'id'    => '',
+				),
+				'default_value'     => '',
+				'tabs'              => 'visual',
+				'toolbar'           => 'basic',
+				'media_upload'      => 0,
+				'delay'             => 0,
 			),
 			array(
 				'key'               => 'field_5a86967afd21e',

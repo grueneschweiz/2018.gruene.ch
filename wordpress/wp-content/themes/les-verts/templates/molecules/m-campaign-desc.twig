@@ -1,12 +1,16 @@
 <div class="m-campaign-desc">
 	<h2 class="m-campaign-desc__title">
-		<a href="{{ link }}" class="m-campaign-desc__link">{{ title|wptexturize }}</a>
+		{% if read_more_text %}
+			<a href="{{ link }}" class="m-campaign-desc__link">{{ title|wptexturize }}</a>
+		{% else %}{{ title|wptexturize }}{% endif %}
 	</h2>
 	<p class="m-campaign-desc__desc">{{ teaser|wptexturize }}</p>
-	<div class="m-campaign-desc__more">
-		{% include 'atoms/a-link-button.twig' with {
-			'label': read_more_text,
-			'link': link
-		} only %}
-	</div>
+	{% if read_more_text %}
+		<div class="m-campaign-desc__more">
+			{% include 'atoms/a-link-button.twig' with {
+				'label': read_more_text,
+				'link': link
+			} only %}
+		</div>
+	{% endif %}
 </div>

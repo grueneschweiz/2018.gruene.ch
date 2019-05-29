@@ -67,7 +67,7 @@
             "name": "read_more_target",
             "type": "post_object",
             "instructions": "",
-            "required": 1,
+          "required": 0,
             "conditional_logic": 0,
             "wrapper": {
                 "width": "",
@@ -79,7 +79,7 @@
                 "page"
             ],
             "taxonomy": "",
-            "allow_null": 0,
+          "allow_null": 1,
             "multiple": 0,
             "return_format": "object",
             "ui": 1
@@ -102,5 +102,5 @@
     "hide_on_screen": "",
     "active": 0,
     "description": "",
-    "modified": 1547044485
+  "modified": 1558980124
 }

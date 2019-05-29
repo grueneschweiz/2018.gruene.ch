@@ -6,7 +6,7 @@
 	</head>
 {% endblock %}
 
-<body class="{{ body_class }}">
+<body class="{{ body_class }} lang-{{ fn('get_locale') }}">
 <div class="page {{ page_modifiers|join }}">
 	{% include 'organisms/o-header.twig' %}
 

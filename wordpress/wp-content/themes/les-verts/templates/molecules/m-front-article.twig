@@ -6,7 +6,8 @@
 
 <div class="m-front-article {{ modifiers|join(' ') }}">
 	<h3 class="m-front-article__title">
-		<a href="{{ post.link }}" class="m-front-article__title-link" tabindex="-1">{{ post.title }}</a>
+		{% if post.link %}<a href="{{ post.link }}" tabindex="-1" class="m-front-article__title-link">{{ post.title }}</a>
+		{% else %}{{ post.title }}{% endif %}
 	</h3>
 	{% if post.main_content_header_image %}
 		<div class="m-front-article__image">
@@ -33,10 +34,12 @@
 			{% endif %}
 		</p>
 	{% endif %}
-	<div class="m-front-article__link-button">
-		{% include 'atoms/a-link-button.twig' with {
-			'link': post.link,
-			'label': __('Read more', constant('THEME_DOMAIN'))
-		} only %}
-	</div>
+	{% if post.link %}
+		<div class="m-front-article__link-button">
+			{% include 'atoms/a-link-button.twig' with {
+				'link': post.link,
+				'label': __('Read more', constant('THEME_DOMAIN'))
+			} only %}
+		</div>
+	{% endif %}
 </div>

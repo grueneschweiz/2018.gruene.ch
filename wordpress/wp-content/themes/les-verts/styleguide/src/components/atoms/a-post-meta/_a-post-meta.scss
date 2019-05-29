@@ -5,6 +5,10 @@
 	line-height: 1.57em;
 	@include fluid-props(padding-top padding-bottom, $fluid-min, $size-medium, 4px, 40px);
 
+	@include media($_MOBILE) {
+		padding: 6px 0 8px;
+	}
+
 	&__block {
 		padding: 8px 0;
 		display: block;

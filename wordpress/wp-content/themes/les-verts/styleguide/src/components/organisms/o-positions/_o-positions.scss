@@ -26,6 +26,16 @@
 			grid-row-gap: 64px;
 			align-items: start;
 		}
+
+		&--1 {
+			grid-template-columns: 1fr;
+		}
+
+		&--3 {
+			@include media($grid-max-width-max) {
+				grid-template-columns: 1fr 1fr 1fr;
+			}
+		}
 	}
 
 	&__article {
@@ -38,6 +48,17 @@
 
 			&:nth-of-type(odd) {
 				@include fluid-grid-item-props(padding-right);
+			}
+		}
+
+		&--1, &--3 {
+			@include media($grid-max-width-max) {
+				&:nth-of-type(even) {
+					padding-left: 0;
+				}
+				&:nth-of-type(odd) {
+					padding-right: 0;
+				}
 			}
 		}
 

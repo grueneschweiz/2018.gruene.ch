@@ -4,7 +4,7 @@
     "fields": [
         {
             "key": "field_5bfd36914df38",
-            "label": "Main Campaign",
+          "label": "Show Main Campaign",
             "name": "show_main_campaign",
             "type": "true_false",
             "instructions": "",
@@ -18,39 +18,8 @@
             "message": "Display primary campaign?",
             "default_value": 1,
             "ui": 1,
-            "ui_on_text": "",
-            "ui_off_text": ""
-        },
-        {
-            "key": "field_5b645f6d33efa",
-            "label": "Campaign Page",
-            "name": "link",
-            "type": "post_object",
-            "instructions": "Select the post, that holds the whole campaign content.",
-            "required": 1,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_5bfd36914df38",
-                        "operator": "==",
-                        "value": "1"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "post_type": [
-                "post",
-                "page"
-            ],
-            "taxonomy": "",
-            "allow_null": 0,
-            "multiple": 0,
-            "return_format": "object",
-            "ui": 1
+          "ui_on_text": "Show",
+          "ui_off_text": "Hide"
         },
         {
             "key": "field_5b645b8533eeb",
@@ -540,9 +509,9 @@
                 {
                     "key": "field_5b645edb33ef9",
                     "label": "Read more button",
-                    "name": "read_more_text",
-                    "type": "text",
-                    "instructions": "The button text.",
+                  "name": "read_more",
+                  "type": "link",
+                  "instructions": "Link the main page of this campaign and set an accurate \"read more\" text for the link button.",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -550,11 +519,7 @@
                         "class": "",
                         "id": ""
                     },
-                    "default_value": "Read more about this campaign",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "maxlength": 80
+                  "return_format": "array"
                 }
             ]
         },
@@ -582,66 +547,27 @@
             "layout": "block",
             "sub_fields": [
                 {
-                    "key": "field_5b7d9b1980bb8",
-                    "label": "Participate Title",
-                    "name": "participate_title",
-                    "type": "group",
-                    "instructions": "Use an encouraging title, like 'Let me be part of the success'.",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "layout": "row",
-                    "sub_fields": [
-                        {
-                            "key": "field_5b681c8590acf",
-                            "label": "Participate Title",
-                            "name": "title",
-                            "type": "text",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "",
-                            "placeholder": "",
-                            "prepend": "",
-                            "append": "",
-                            "maxlength": 80
-                        },
-                        {
-                            "key": "field_5b6821cd715d5",
-                            "label": "Participate Title Link",
-                            "name": "general_participation_link",
-                            "type": "page_link",
-                            "instructions": "Select the page that contains an overview with all your participation possibilities.",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "post_type": [
-                                "post",
-                                "page"
-                            ],
-                            "taxonomy": "",
-                            "allow_null": 1,
-                            "allow_archives": 1,
-                            "multiple": 0
-                        }
-                    ]
+                  "key": "field_5b681c8590acf",
+                  "label": "Title",
+                  "name": "title",
+                  "type": "text",
+                  "instructions": "Use an encouraging title, like 'Let me be part of the success'.",
+                  "required": 0,
+                  "conditional_logic": 0,
+                  "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                  },
+                  "default_value": "",
+                  "placeholder": "",
+                  "prepend": "",
+                  "append": "",
+                  "maxlength": ""
                 },
                 {
                     "key": "field_5b681f7ccd058",
-                    "label": "Participation Description",
+                  "label": "Description",
                     "name": "description",
                     "type": "textarea",
                     "instructions": "Tell the visiter briefly, what the form does. Example: Stay updated, subscribe to our newsletter; make a change, become a member; sign the petition",
@@ -707,5 +633,5 @@
     "hide_on_screen": "",
     "active": 0,
     "description": "",
-    "modified": 1543421348
+  "modified": 1559051425
 }

@@ -2,9 +2,9 @@
 	<div class="o-positions__cat-title">
 		{% include 'atoms/a-cat-title.twig' with block_title only %}
 	</div>
-	<div class="o-positions__articles">
+	<div class="o-positions__articles o-positions__articles--{{ positions|length }}">
 		{% for position in positions %}
-			<div class="o-positions__article">
+			<div class="o-positions__article o-positions__article--{{ loop.length }}">
 				{% include 'molecules/m-front-article.twig' with {
 					'modifiers': ['m-front-article--list', 'm-front-article--no-image'],
 					'post': {

@@ -1,7 +1,5 @@
 <div class="m-campaign-cta">
-	<h3 class="m-campaign-cta__title">
-		<a href="{{ link }}" class="m-campaign-cta__title-link">{{ title|wptexturize }}</a>
-	</h3>
+	<h3 class="m-campaign-cta__title">{{ title|wptexturize }}</h3>
 	<p class="m-campaign-cta__text">{{ desc|wptexturize }}</p>
 	{% if form %}
 		{% include 'molecules/m-form.twig' with {
