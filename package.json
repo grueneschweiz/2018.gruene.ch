@@ -52,11 +52,11 @@
     "swiper": "^4.4.6"
   },
   "devDependencies": {
+    "@babel/core": "^7.3.3",
+    "@babel/preset-env": "^7.3.1",
     "@frctl/fractal": "^1.1.7",
     "@frctl/handlebars": "^1.1.5",
     "@frctl/mandelbrot": "^1.2.0",
-    "@babel/core": "^7.3.3",
-    "@babel/preset-env": "^7.3.1",
     "babelify": "^10.0.0",
     "browserify": "^16.2.3",
     "gulp": "^4.0.0",
