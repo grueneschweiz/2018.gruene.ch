@@ -126,7 +126,9 @@ wordpress/sitemap.xml.gz
 .data
 dist
 node_modules
-fonts
 deploy.*
 !deploy.example.sh
 .wordpress
+
+# sanuk
+5423054
