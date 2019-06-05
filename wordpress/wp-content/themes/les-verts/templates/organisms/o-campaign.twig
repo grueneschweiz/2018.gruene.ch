@@ -28,11 +28,7 @@
 		</div>
 		{% if cta.title or cta.desc or cta.form %}
 		<div class="o-campaign__cta">
-			{% include 'molecules/m-campaign-cta.twig' with {
-				'title': cta.title,
-				'desc': cta.desc,
-				'form': cta.form
-			} only %}
+			{% include 'molecules/m-campaign-cta.twig' with cta only %}
 		</div>
 		{% endif %}
 	</div>
