@@ -273,31 +273,32 @@ class SubmissionsTable extends WP_List_Table {
 		}
 
 		$delete_nonce = wp_create_nonce( FormType::MODEL_NAME . '_delete_submission-' . $item->meta_get_id() );
+		$delete_url   = admin_url( sprintf(
+			"edit.php?post_type=%s&page=%s&form_id=%d&action=%s&item=%d&_wpnonce=%s",
+			esc_attr( $_REQUEST['post_type'] ),
+			esc_attr( $_REQUEST['page'] ),
+			$this->get_form_id(),
+			self::DELETE_ACTION,
+			$item->meta_get_id(),
+			$delete_nonce
+		) );
+		$view_url     = admin_url( sprintf(
+			"edit.php?post_type=%s&page=%s&action=%s&item=%d",
+			esc_attr( $_REQUEST['post_type'] ),
+			esc_attr( $_REQUEST['page'] ),
+			FormType::VIEW_ACTION,
+			$item->meta_get_id()
+		) );
 
 		$actions = [
 			FormType::VIEW_ACTION => sprintf(
-				'<a href="?post_type=%s&page=%s&action=%s&item=%d">%s</a>',
-				esc_attr( $_REQUEST['post_type'] ),
-				esc_attr( $_REQUEST['page'] ),
-				FormType::VIEW_ACTION,
-				$item->meta_get_id(),
+				'<a href="%s">%s</a>',
+				$view_url,
 				__( 'View', THEME_DOMAIN )
 			),
-//			FormType::EDIT_ACTION => sprintf(
-//				'<a href="?post_type=%s&page=%s&action=%s&item=%d">' . __( 'Edit', THEME_DOMAIN ) . '</a>',
-//				esc_attr( $_REQUEST['post_type'] ),
-//				esc_attr( $_REQUEST['page'] ),
-//				FormType::EDIT_ACTION,
-//				$item->meta_get_id()
-//			),
 			self::DELETE_ACTION   => sprintf(
-				'<a href="?post_type=%s&page=%s&form_id=%d&action=%s&item=%d&_wpnonce=%s" onclick="return confirm(\'%s\')">%s</a>',
-				esc_attr( $_REQUEST['post_type'] ),
-				esc_attr( $_REQUEST['page'] ),
-				$this->get_form_id(),
-				self::DELETE_ACTION,
-				$item->meta_get_id(),
-				$delete_nonce,
+				'<a href="%s" onclick="return confirm(\'%s\')">%s</a>',
+				$delete_url,
 				sprintf( _x( 'Delete submission of the %s?', 'Timestamp', THEME_DOMAIN ), $timestamp ),
 				__( 'Delete', THEME_DOMAIN )
 			)
