@@ -87,6 +87,9 @@ class SubmissionsTable extends WP_List_Table {
 			$sortable_columns[ $column_slug ] = array( $column_slug, false );
 		}
 
+		// the checkboxes are not sortable ;)
+		unset( $sortable_columns['cb'] );
+
 		return $sortable_columns;
 	}
 
