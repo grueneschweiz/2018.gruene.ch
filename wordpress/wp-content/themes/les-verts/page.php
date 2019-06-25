@@ -21,16 +21,31 @@
  * @since    Timber 0.1
  */
 
-$context         = Timber::get_context();
-$context['post'] = new \SUPT\ACFPost();
-$templates       = array( 'page-' . $post->post_name . '.twig', 'page.twig', 'single.twig' );
+use SUPT\ACFPost;
+use SUPT\SUPTPostQuery;
+
+$context   = Timber::get_context();
+$post      = new ACFPost();
+$templates = array( 'page.twig', 'single.twig' );
+
+// if any post was found (check for name, because we always get a post object back
+if ( $post->post_name ) {
+	array_unshift( $templates, 'page-' . $post->post_name . '.twig' );
+
+	$context['post'] = $post;
+	$post_type       = $post->post_type;
+} else {
+	// else this must be an archive (event archives use this page)
+	global $wp_query;
+	$post_type        = $wp_query->query['post_type'];
+	$context['posts'] = new SUPTPostQuery();
+}
 
 // handle events of the events calendar plugin
-if ( 'tribe_events' === get_post_type() ) {
+if ( 'tribe_events' === $post_type ) {
 	if ( in_array( get_query_var( 'eventDisplay' ), [ 'list', 'month' ] ) ) {
 
 		// the list view
-		$context['posts'] = new \SUPT\SUPTPostQuery();
 		$context['title'] = __( 'Events', THEME_DOMAIN );
 		array_unshift( $templates, 'archive.twig' );
 
