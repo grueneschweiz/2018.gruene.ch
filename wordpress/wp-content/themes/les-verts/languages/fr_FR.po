@@ -271,7 +271,7 @@ msgid "Max events to show"
 msgstr "Nombre max. d'évènements à afficher"
 
 #. Bitte überprüfen
-#: acf-translate.php:926 acf-translate.php:2842 lib/form/acf/input.php:169
+#: acf-translate.php:926 acf-translate.php:2842 lib/form/acf/input.php:194
 msgid "Full Width"
 msgstr "Utiliser toute la largeur"
 
@@ -577,7 +577,7 @@ msgstr "Données de la carte"
 msgid "This is used in the dropdown of the mobile version."
 msgstr "Cet élément est utilisé dans la liste déroulate de la version mobile."
 
-#: acf-translate.php:2413 lib/form/helpers/Submission_Export.php:165
+#: acf-translate.php:2413 lib/form/include/SubmissionExport.php:173
 msgid "ID"
 msgstr "ID"
 
@@ -730,7 +730,7 @@ msgstr "[Modèle]Contribution individuelle"
 msgid "Display a teaser of any post or page."
 msgstr "Affiche une accroche (teaser) d'une contribution ou d'une page."
 
-#: acf-translate.php:3113 acf-translate.php:3787 functions.php:196
+#: acf-translate.php:3113 acf-translate.php:3787 functions.php:158
 msgid "Footer"
 msgstr "Pied de page"
 
@@ -1121,20 +1121,20 @@ msgstr "Afficher le bouton «Partager»"
 msgid "You can hide the share buttons of this page, by disabling this option."
 msgstr "Tu peux masquer les boutons «Partager» sur cette page en désactivant cette option."
 
-#: functions.php:116 templates/molecules/m-menu.twig:13
+#: functions.php:103 templates/molecules/m-menu.twig:14
 msgid "Main navigation"
 msgstr "Navigation principale"
 
-#: functions.php:117 templates/molecules/m-menu.twig:58
+#: functions.php:104 templates/molecules/m-menu.twig:60
 msgid "Language navigation"
 msgstr "Navigation par langue"
 
-#: functions.php:118
+#: functions.php:105
 msgid "Footer meta navigation"
 msgstr "Méta-navigation dans le pied de page"
 
 #. Ggf Namen der Widgets anpassen; footer menu (en) vs footer Links (de)
-#: functions.php:198
+#: functions.php:160
 msgid "This is the footer. Use it for your primary calls to action (Button widget), your contact details (Contact widget) and the footer menu (Link list widget)."
 msgstr "Voici le pied de page. Utilise-le pour tes principaux appels à agir (gadget logiciel «Bouton»), tes coordonnées (gadget logiciel «Coordonnées») et un menu de navigation (gadget logiciel «Liste de liens»)."
 
@@ -1154,17 +1154,17 @@ msgstr "Calendrier"
 msgid "Add to Menu"
 msgstr "Aujouter au menu"
 
-#: lib/controllers/navigation.php:48
+#: lib/controllers/navigation.php:62
 msgctxt "short date format"
 msgid "y-m-d"
 msgstr "d.m.y"
 
-#: lib/controllers/navigation.php:53
+#: lib/controllers/navigation.php:67
 msgctxt "Example: 21.03.2018: Delegiertenversammlung"
 msgid "%s: %s"
 msgstr "%s: %s"
 
-#: lib/controllers/navigation.php:147 lib/customizer/GetActive.php:43
+#: lib/controllers/navigation.php:161 lib/customizer/GetActive.php:43
 msgid "Get Active"
 msgstr "Participer"
 
@@ -1180,7 +1180,7 @@ msgstr "Texte du bouton"
 msgid "Set the label text for the get active button."
 msgstr "Définis le texte du bouton « Participer »"
 
-#: lib/customizer/Logo.php:47 lib/customizer/_Example.php:63
+#: lib/customizer/Logo.php:47
 msgid "Logo (light variant)"
 msgstr "Logo (version claire)"
 
@@ -1189,7 +1189,7 @@ msgctxt "'This' refers to the logo"
 msgid "This is used in the green bar above the menu."
 msgstr "Il sera utilisé dans la barre verte au-dessus de la barre de menu."
 
-#: lib/customizer/Logo.php:64 lib/customizer/_Example.php:77
+#: lib/customizer/Logo.php:64
 msgid "Logo (dark variant)"
 msgstr "Logo (version sombre)"
 
@@ -1206,75 +1206,75 @@ msgstr "Logos"
 msgid "some words about the logo like the size etc."
 msgstr "Quelques mots sur le logo (taille, etc.)"
 
-#: lib/form/FormType.php:21
+#: lib/form/include/FormType.php:26
 msgctxt "post type general name"
 msgid "Forms"
 msgstr "Formulaires"
 
-#: lib/form/FormType.php:22
+#: lib/form/include/FormType.php:27
 msgctxt "post type singular name"
 msgid "Form"
 msgstr "Formulaire"
 
-#: lib/form/FormType.php:23
+#: lib/form/include/FormType.php:28
 msgctxt "admin menu"
 msgid "Forms"
 msgstr "Formulaires"
 
-#: lib/form/FormType.php:24
+#: lib/form/include/FormType.php:29
 msgctxt "add new on admin bar"
 msgid "Form"
 msgstr "Formulaire"
 
-#: lib/form/FormType.php:25
+#: lib/form/include/FormType.php:30
 msgctxt "form"
 msgid "Add New"
 msgstr "Ajouter un nouveau formulaire"
 
-#: lib/form/FormType.php:26
+#: lib/form/include/FormType.php:31
 msgid "Add New Form"
 msgstr "Ajouter un nouveau formulaire"
 
-#: lib/form/FormType.php:27
+#: lib/form/include/FormType.php:32
 msgid "New Form"
 msgstr "Nouveau formulaire"
 
-#: lib/form/FormType.php:28
+#: lib/form/include/FormType.php:33
 msgid "Edit Form"
 msgstr "Modifier le formulaire"
 
 #. Annahme: ein bereits existierendes
-#: lib/form/FormType.php:29
+#: lib/form/include/FormType.php:34
 msgid "View Form"
 msgstr "Afficher le formulaire"
 
-#: lib/form/FormType.php:30
+#: lib/form/include/FormType.php:35
 msgid "All Forms"
 msgstr "Tous les formulaires"
 
-#: lib/form/FormType.php:31
+#: lib/form/include/FormType.php:36
 msgid "Find form"
 msgstr "Trouver un formulaire"
 
-#: lib/form/FormType.php:32
+#: lib/form/include/FormType.php:37
 msgid "Form:"
 msgstr "Formulaire :"
 
-#: lib/form/FormType.php:33
+#: lib/form/include/FormType.php:38
 msgid "No form found"
 msgstr "Aucun formulaire n'a pu être trouvé."
 
-#: lib/form/FormType.php:34
+#: lib/form/include/FormType.php:39
 msgid "No form in the trash"
 msgstr "La corbeille ne contient aucun formulaire"
 
-#: lib/form/FormType.php:159
+#: lib/form/include/FormType.php:166
 msgid "Fields"
 msgstr "Champs"
 
 #. Im Sinne von Vorschläge? Zusendungen? Eingaben?
-#: lib/form/FormType.php:204 lib/form/FormType.php:205
-#: lib/form/Submissions_Table.php:49
+#: lib/form/include/FormType.php:218 lib/form/include/FormType.php:248
+#: lib/form/include/FormType.php:249 lib/form/include/SubmissionsTable.php:33
 msgid "Submissions"
 msgstr ""
 
@@ -1416,40 +1416,40 @@ msgstr "Option (plusieurs choix possibles)"
 msgid "Drop down"
 msgstr "Liste déroulante"
 
-#: lib/form/acf/input.php:64
+#: lib/form/acf/input.php:89
 msgid "Help Text (optional)"
 msgstr "Texte d'explication (facultatif)"
 
-#: lib/form/acf/input.php:67
+#: lib/form/acf/input.php:92
 msgid "Displayed below the input field (small)"
 msgstr "Sera affiché sous la zone de saisie du texte (en petits caractères)"
 
 #. bitte überprüfen
-#: lib/form/acf/input.php:101
+#: lib/form/acf/input.php:126
 msgid "Choices"
 msgstr "Choix à proposer"
 
-#: lib/form/acf/input.php:104
+#: lib/form/acf/input.php:129
 msgid "Enter each choice on a new line."
 msgstr "Saisir un choix par ligne"
 
-#: lib/form/acf/input.php:142
+#: lib/form/acf/input.php:167
 msgid "Required"
 msgstr "Champ requis"
 
-#: lib/form/acf/input.php:145
+#: lib/form/acf/input.php:170
 msgid "Set the field as mandatory"
 msgstr "Définir comme champ requis"
 
-#: lib/form/acf/input.php:172
+#: lib/form/acf/input.php:197
 msgid "Uses the full width of the form."
 msgstr "Utilise toute la largeur du formulaire."
 
-#: lib/form/acf/input.php:201
+#: lib/form/acf/input.php:226
 msgid "Width %"
 msgstr "Largeur %"
 
-#: lib/form/acf/input.php:230
+#: lib/form/acf/input.php:255
 msgid "Min width (optional)"
 msgstr "Largeur minimale (facultatif)"
 
@@ -1461,11 +1461,11 @@ msgstr "Utilise les codes suivants en tant que joker pour ton courriel. Ils sero
 "\n"
 "<i>Fonctionnalité avancée: dans ce modèle de courriel, il est possible d'utiliser <a href=\"https://twig.symfony.com/\" target=\"_blank\">Twig</a>.</i>"
 
-#: lib/form/acf/mail-template.php:30
+#: lib/form/acf/mail-template.php:41
 msgid "Subject"
 msgstr "Sujet"
 
-#: lib/form/acf/mail-template.php:49
+#: lib/form/acf/mail-template.php:60
 msgid "Template"
 msgstr "Modèle"
 
@@ -1499,19 +1499,19 @@ msgstr "Nom d'utilisateur"
 msgid "Password"
 msgstr "Mot de passe"
 
-#: lib/form/submission.php:396
+#: lib/form/submission.php:404
 msgid "Missing data."
 msgstr "Données incomplètes"
 
-#: lib/form/submission.php:448
+#: lib/form/submission.php:456
 msgid "Invalid input."
 msgstr "Saisie invalide"
 
-#: lib/form/submission.php:468
+#: lib/form/submission.php:476
 msgid "Invalid email."
 msgstr "Adresse électronique invalide"
 
-#: lib/form/submission.php:479
+#: lib/form/submission.php:487
 msgid "This field is required."
 msgstr "Ce champ est requis."
 
@@ -1825,10 +1825,10 @@ msgstr "Page suivante"
 #: templates/atoms/a-post-link.twig:22
 msgctxt "Date format. See http://php.net/manual/de/function.date.php"
 msgid "d. F Y"
-msgstr "d F Y"
+msgstr "j F Y"
 
 #: templates/atoms/a-post-link.twig:49
-#: templates/molecules/m-front-article.twig:39
+#: templates/molecules/m-front-article.twig:41
 msgid "Read more"
 msgstr "Poursuivre la lecture"
 
@@ -1854,7 +1854,7 @@ msgstr "Recommandations de vote"
 msgid "Sorry, no content"
 msgstr "Nous sommes désolés, il n'y a pas de contenu."
 
-#: templates/molecules/m-branding.twig:11 templates/molecules/m-menu.twig:4
+#: templates/molecules/m-branding.twig:11 templates/molecules/m-menu.twig:5
 msgid "Home"
 msgstr "Page d'accueil"
 
@@ -1870,19 +1870,19 @@ msgstr "Place"
 msgid "Save to calendar"
 msgstr "Créer une entrée dans le calendrier"
 
-#: templates/molecules/m-form.twig:161
+#: templates/molecules/m-form.twig:163
 msgid "Uups, something went wrong!"
 msgstr "Oups, il y a eu une erreur!"
 
-#: templates/molecules/m-form.twig:163
+#: templates/molecules/m-form.twig:165
 msgid "Sorry, there was an error submitting this form. If the error persists, please contact us by email."
 msgstr "Nous sommes désolés, une erreur s'est produite lors de l'envoi du formulaire. Merci de nous contacter par courriel si cette erreur se reproduit."
 
-#: templates/molecules/m-form.twig:166
+#: templates/molecules/m-form.twig:168
 msgid "Please check input"
 msgstr "Merci de vérifier les informations saisies."
 
-#: templates/molecules/m-form.twig:168
+#: templates/molecules/m-form.twig:170
 msgid "There seems to be an error in your input. Please recheck the fields."
 msgstr "Il semble y avoir une erreur. Merci de vérifier encore une fois les données saisies dans le formulaire."
 
@@ -1891,16 +1891,16 @@ msgctxt "Example: All 17 press releases"
 msgid "All %d %s"
 msgstr "Afficher l'ensemble des %d %s"
 
-#: templates/molecules/m-menu.twig:22
+#: templates/molecules/m-menu.twig:24
 msgid "Submenu"
 msgstr "Sous-menu"
 
-#: templates/molecules/m-menu.twig:30
+#: templates/molecules/m-menu.twig:32
 msgid "Close submenu"
 msgstr "Fermer le sous-menu"
 
 #. Geht es darum, das Symbol zu schliessen (dann Kleinschreibung), oder um das Symbol "Schliessen"?
-#: templates/molecules/m-menu.twig:32
+#: templates/molecules/m-menu.twig:34
 msgid "Close icon"
 msgstr "Symbole «Fermer»"
 
@@ -2075,27 +2075,28 @@ msgstr "Recommandations de vote"
 msgid "Vote Recommendation"
 msgstr "Recommandation de vote"
 
-#: lib/form/FormType.php:233
+#: lib/form/include/FormType.php:284
 msgid "Form Submissions"
 msgstr ""
 
-#: lib/form/Submissions_Table.php:48
+#: lib/form/admin/ViewSingle.php:15 lib/form/include/SubmissionsTable.php:32
 msgid "Submission"
 msgstr ""
 
-#: lib/form/Submissions_Table.php:66 lib/form/helpers/Submission_Export.php:166
+#: lib/form/admin/ViewSingle.php:90 lib/form/include/SubmissionExport.php:174
+#: lib/form/include/SubmissionsTable.php:46
 msgid "Timestamp"
 msgstr ""
 
-#: lib/form/Submissions_Table.php:123
+#: lib/form/include/SubmissionsTable.php:109
 msgid "No forms available"
 msgstr ""
 
-#: lib/form/Submissions_Table.php:133
+#: lib/form/include/SubmissionsTable.php:119
 msgid "Invalid form"
 msgstr ""
 
-#: lib/form/Submissions_Table.php:251
+#: lib/form/include/SubmissionsTable.php:300
 msgid "View"
 msgstr ""
 
@@ -2103,7 +2104,8 @@ msgstr ""
 msgid "Edit"
 msgstr "Modifier"
 
-#: lib/form/Submissions_Table.php:265 lib/form/Submissions_Table.php:451
+#: lib/form/include/SubmissionsTable.php:306
+#: lib/form/include/SubmissionsTable.php:502
 msgid "Delete"
 msgstr "Supprimer"
 
@@ -2301,7 +2303,7 @@ msgstr ""
 msgid "Select All"
 msgstr ""
 
-#: lib/form/submission.php:473
+#: lib/form/submission.php:481
 msgid "Invalid number"
 msgstr ""
 
@@ -2309,11 +2311,11 @@ msgstr ""
 msgid "Select the post that holds the whole campaign content."
 msgstr "Sélectionne la contribution relatif à cette campagne."
 
-#: lib/form/Submissions_Table.php:187
+#: lib/form/include/SubmissionsTable.php:214
 msgid "Yet, there were no forms submitted."
 msgstr ""
 
-#: lib/form/Submissions_Table.php:324
+#: lib/form/include/SubmissionsTable.php:367
 msgid "Select form"
 msgstr ""
 
@@ -2353,15 +2355,15 @@ msgstr ""
 msgid "Add the url, where the get active button should lead to."
 msgstr ""
 
-#: lib/form/FormType.php:244
+#: lib/form/include/FormType.php:295
 msgid "Export Submissions"
 msgstr ""
 
-#: lib/form/FormType.php:246
+#: lib/form/include/FormType.php:297
 msgid "Exports the submission of the form \"%s\" and all its linked forms. Usually its best to select the first form in the chain before exporting."
 msgstr ""
 
-#: lib/form/Submissions_Table.php:341
+#: lib/form/include/SubmissionsTable.php:384
 msgid "Export .xlsx"
 msgstr ""
 
@@ -2381,15 +2383,15 @@ msgstr ""
 msgid "Redirect to"
 msgstr ""
 
-#: lib/form/helpers/Submission_Export.php:86
+#: lib/form/include/SubmissionExport.php:91
 msgid "Website export"
 msgstr ""
 
-#: lib/form/helpers/Submission_Export.php:91
+#: lib/form/include/SubmissionExport.php:96
 msgid "Export"
 msgstr ""
 
-#: lib/form/helpers/Submission_Export.php:187
+#: lib/form/include/SubmissionExport.php:191
 msgid "old: "
 msgstr ""
 
@@ -2440,5 +2442,76 @@ msgstr ""
 
 #: templates/molecules/m-share.twig:43
 msgid "Share this page by WhatsApp"
+msgstr ""
+
+#: lib/controllers/navigation.php:62
+msgctxt "short date format"
+msgid "Y-m-d"
+msgstr ""
+
+#: lib/form/include/FormType.php:217
+msgctxt "form title"
+msgid "View submissions of %s"
+msgstr ""
+
+#: lib/form/include/FormType.php:315
+msgid "Ups, something went wrong."
+msgstr ""
+
+#: lib/form/include/SubmissionModel.php:155
+msgctxt "Form element. Ex: Name"
+msgid "Old: %s"
+msgstr ""
+
+#: lib/form/include/SubmissionsTable.php:206
+msgid "Could not remove form submission. Was it already deleted?"
+msgstr ""
+
+#: lib/form/include/SubmissionsTable.php:305
+msgctxt "Timestamp"
+msgid "Delete submission of the %s?"
+msgstr ""
+
+#: templates/atoms/a-post-meta.twig:18
+msgid "Show all articles tagged with %s"
+msgstr ""
+
+#: lib/form/acf/input.php:64
+msgid "Confirmation text"
+msgstr ""
+
+#: lib/form/acf/mail-template.php:23
+msgctxt "Placeholders"
+msgid "Use the following tags as placeholders in your mail. They will be replaced automatically: %s"
+msgstr ""
+
+#: lib/form/acf/mail-template.php:26
+msgctxt "Placeholder"
+msgid "Use the special placeholder %s to link to the complete submission (with all linked forms)."
+msgstr ""
+
+#: lib/form/acf/mail-template.php:28
+msgctxt "Link"
+msgid "Advanced: You may use %s in this mail template."
+msgstr ""
+
+#: lib/form/helpers/send-email.php:69
+msgctxt "form submission"
+msgid "view complete submission online"
+msgstr ""
+
+#: templates/atoms/a-post-link.twig:22
+msgctxt "Date format. See http://php.net/manual/de/function.date.php"
+msgid "F jS, Y"
+msgstr "j F Y"
+
+#. Description of the plugin/theme
+#: 
+msgid "Custom theme for the GREENS of Switzerland. Designed by superhuit.ch, built by gruene.ch on top of superhuit's stack."
+msgstr ""
+
+#. Author of the plugin/theme
+#: 
+msgid "superhuit.ch & gruene.ch"
 msgstr ""
 
