@@ -881,7 +881,7 @@ msgstr "Doppel Beitrags- / Seiten-Teaser"
 msgid "Latest Press Release"
 msgstr "Neuste Medienmitteilung"
 
-#: acf-translate.php:4117 acf-translate.php:4122 page.php:34
+#: acf-translate.php:4117 acf-translate.php:4122 page.php:49
 msgid "Events"
 msgstr "Events"
 
@@ -2447,4 +2447,12 @@ msgstr ""
 #: 
 msgid "superhuit.ch & gruene.ch"
 msgstr ""
+
+#: page.php:54
+msgid "Upcoming events"
+msgstr "Kommende Events"
+
+#: page.php:59
+msgid "Previous events"
+msgstr "Vergangene Events"
 
