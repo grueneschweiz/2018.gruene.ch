@@ -914,7 +914,7 @@ msgstr "Accroche pour deux éléments (pages et/ou contributions)"
 msgid "Latest Press Release"
 msgstr "Communiqué de presse le plus récent"
 
-#: acf-translate.php:4117 acf-translate.php:4122 page.php:34
+#: acf-translate.php:4117 acf-translate.php:4122 page.php:49
 msgid "Events"
 msgstr "Évènements"
 
@@ -2513,5 +2513,13 @@ msgstr ""
 #. Author of the plugin/theme
 #: 
 msgid "superhuit.ch & gruene.ch"
+msgstr ""
+
+#: page.php:54
+msgid "Upcoming events"
+msgstr ""
+
+#: page.php:59
+msgid "Previous events"
 msgstr ""
 
