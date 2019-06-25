@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: Les Verts\n"
-"POT-Creation-Date: 2019-06-25 10:22+0200\n"
+"POT-Creation-Date: 2019-06-25 16:19+0200\n"
 "PO-Revision-Date: 2018-11-28 17:49+0100\n"
 "Last-Translator: Cyrill Bolliger <bolliger@gmx.ch>\n"
 "Language-Team: Cyrill Bolliger <bolliger@gmx.ch>\n"
@@ -1074,7 +1074,7 @@ msgstr ""
 msgid "Latest Press Release"
 msgstr ""
 
-#: acf-translate.php:4117 acf-translate.php:4122 page.php:34
+#: acf-translate.php:4117 acf-translate.php:4122 page.php:49
 msgid "Events"
 msgstr ""
 
@@ -2165,6 +2165,14 @@ msgstr ""
 
 #: lib/widgets/Widget.php:53
 msgid "Title:"
+msgstr ""
+
+#: page.php:54
+msgid "Upcoming events"
+msgstr ""
+
+#: page.php:59
+msgid "Previous events"
 msgstr ""
 
 #: search.php:17 templates/atoms/a-search.twig:6
