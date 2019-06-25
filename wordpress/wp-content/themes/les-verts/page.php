@@ -47,6 +47,19 @@ if ( 'tribe_events' === $post_type ) {
 
 		// the list view
 		$context['title'] = __( 'Events', THEME_DOMAIN );
+
+		if ( tribe_is_past() ) {
+			$context['events_link'] = [
+				'link'  => tribe_get_events_link(),
+				'label' => __( 'Upcoming events', THEME_DOMAIN )
+			];
+		} else {
+			$context['events_link'] = [
+				'link'  => tribe_get_previous_events_link(),
+				'label' => __( 'Previous events', THEME_DOMAIN )
+			];
+		}
+
 		array_unshift( $templates, 'archive.twig' );
 
 	} else {
