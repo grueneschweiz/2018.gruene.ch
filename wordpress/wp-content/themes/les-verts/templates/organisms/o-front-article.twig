@@ -78,7 +78,7 @@
 		<footer class="o-front-article__mm">
 			<div class="o-front-article__meta">
 				<time class="o-front-article__date"
-							datetime="{{ post.post_date|date('Y-m-d H:i') }}">{{ post.post_date|date() }}</time>
+							datetime="{{ post.post_date|date('Y-m-d H:i') }}">{{ post.post_date|date()|l10n_date }}</time>
 				{% if oton %}
 					{#todo: add link again: <a href="{{ author.link() }}" class="o-front-article__author">{{ author.title }}</a>#}
 					<span class="o-front-article__author">{{ author.title }}</span>

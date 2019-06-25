@@ -189,6 +189,7 @@ require_once __DIR__ . '/twig/filters/nice_link.php';
 require_once __DIR__ . '/twig/filters/wptexturize.php';
 require_once __DIR__ . '/twig/filters/uniqueid.php';
 require_once __DIR__ . '/twig/filters/pll.php';
+require_once __DIR__ . '/twig/filters/l10n_date.php';
 
 /**
  * FORM LIBRARY
