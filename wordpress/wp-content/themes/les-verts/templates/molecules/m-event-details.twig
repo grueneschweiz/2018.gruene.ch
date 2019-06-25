@@ -7,7 +7,7 @@
 			<use xlink:href="#clock"></use>
 		</svg>
 		<time class="m-event-details__time"
-					datetime="{{ event.timestamp }}">{{ event.time_string }}</time>
+					datetime="{{ event.timestamp }}">{{ event.time_string|l10n_date }}</time>
 	</div>
 	{% if event.venue %}
 		<div class="m-event-details__location-wrapper">

@@ -19,7 +19,7 @@
 {% endif %}
 
 {% if date %}
-	{% set date_format = _x('d. F Y', 'Date format. See http://php.net/manual/de/function.date.php', constant('THEME_DOMAIN')) %}
+	{% set date_format = _x('F jS, Y', 'Date format. See http://php.net/manual/de/function.date.php', constant('THEME_DOMAIN')) %}
 	{% set date = date|date(date_format) %}
 	{% set timestamp = date|date('Y-m-d H:i') %}
 {% endif %}
@@ -35,7 +35,7 @@
 		{% if with_excerpt %}
 			<header class="a-post-link__meta a-post-link__meta--header">
 				{% if date %}
-					<time class="a-post-link__meta-item" datetime="{{ timestamp }}">{{ date }}</time>
+					<time class="a-post-link__meta-item" datetime="{{ timestamp }}">{{ date|l10n_date }}</time>
 				{% endif %}
                 {% if categories %}
 					<div class="a-post-link__meta-item">{{ categories|join(', ') }}</div>
@@ -53,7 +53,7 @@
 				{% if date or categories %}
 					<footer class="a-post-link__meta a-post-link__meta--footer">
 						{% if date %}
-							<time class="a-post-link__meta-item" datetime="{{ timestamp }}">{{ date }}</time>
+							<time class="a-post-link__meta-item" datetime="{{ timestamp }}">{{ date|l10n_date }}</time>
 						{% endif %}
 						{% if categories %}
 							<div class="a-post-link__meta-item">{{ categories|join(', ') }}</div>

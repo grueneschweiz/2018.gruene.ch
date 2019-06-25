@@ -290,9 +290,18 @@
 		}
 	}
 
-	&__list-pagination {
+	&__list-footer {
 		width: 100%;
 		@include fluid-props(margin-top margin-bottom padding-bottom, $fluid-min, $fluid-max, 30px, 50px);
+	}
+
+	&__list-pagination {
+		display: flex;
+		justify-content: center;
+	}
+
+	&__list-events-nav {
+		margin-top: 15px;
 		display: flex;
 		justify-content: center;
 	}

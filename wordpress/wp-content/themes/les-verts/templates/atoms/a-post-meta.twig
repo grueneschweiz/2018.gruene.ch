@@ -5,7 +5,7 @@
 
 <div class="a-post-meta">
     {% if date %}
-        <time class="a-post-meta__date" datetime="{{ isodate|date('Y-m-d') }}">{{ date }}</time>
+			<time class="a-post-meta__date" datetime="{{ isodate|date('Y-m-d') }}">{{ date|l10n_date }}</time>
     {% endif %}
     {% if tags or categories %}
         <div class="a-post-meta__tags">

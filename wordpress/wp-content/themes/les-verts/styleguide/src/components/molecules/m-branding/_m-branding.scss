@@ -40,8 +40,4 @@
 		height: $height;
 		@include fluid-props(font-size, $fluid-min, $fluid-max, 24px, 34px);
 	}
-
-	&__unbreakeable {
-		white-space: nowrap;
-	}
 }

@@ -18,6 +18,12 @@
 			{# this is a legacy handler. #}
 			{% set cta_title = post.campaign_call_to_action_participate_title_title %}
 		{% endif %}
+		{% if post.campaign_call_to_action_type %}
+			{% set action_type = post.campaign_call_to_action_type %}
+		{% else %}
+			{# this is a legacy handler. #}
+			{% set action_type = 'form' %}
+		{% endif %}
 		{% include 'organisms/o-campaign.twig' with {
 			'image': post.campaign_image,
 			'bars': {
@@ -37,7 +43,10 @@
 			'cta': {
 				'title': cta_title,
 				'desc': post.campaign_call_to_action_description,
-				'form': post.campaign_call_to_action_form
+				'form': post.campaign_call_to_action_form,
+				'link': post.campaign_call_to_action_link,
+				'button': post.campaign_call_to_action_button,
+				'type': action_type
 			}
 		} only %}
 	</section>

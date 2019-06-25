@@ -12,7 +12,7 @@
 	<h3 class="a-event-link__title">{{ event.title }}</h3>
 	<div class="a-event-link__meta">
 		<time class="a-event-link__datetime"
-					datetime="{{ event.timestamp }}">{{ event.time_string }}</time>
+					datetime="{{ event.timestamp }}">{{ event.time_string|l10n_date }}</time>
 		{% if event.venue %}
 			<div class="a-event-link__place">{{ event.venue_string }}</div>
 		{% endif %}

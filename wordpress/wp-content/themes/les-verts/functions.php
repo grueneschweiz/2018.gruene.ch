@@ -1,6 +1,8 @@
 <?php
 
 // Composer dependencies
+use function SUPT\get_lang;
+
 require_once __DIR__ . '/vendor/autoload.php';
 
 // Constants
@@ -37,7 +39,7 @@ require_once __DIR__ . '/lib/_loader.php';
 class StarterSite extends TimberSite {
 	
 	function __construct() {
-		\Locale::setDefault( \SUPT\get_lang() );
+		Locale::setDefault( get_lang() );
 		
 		// Theme supports
 		// -> more info: https://developer.wordpress.org/reference/functions/add_theme_support/
@@ -90,21 +92,6 @@ class StarterSite extends TimberSite {
 		// Widgets
 		$context['widgets']['footer'] = Timber::get_widgets( 'footer-widget-area' );
 		
-		// Localized options
-		//$context['localized_options'] = get_fields( \SUPT\get_lang() );
-		
-		// Options overrides
-//		if (
-//			isset( $context['localized_options'] )
-//			&& isset( $context['localized_options']['gtm_override'] )
-//			&& $context['localized_options']['gtm_override']
-//		) {
-//			foreach ( [ 'gtm_enable', 'gtm_id' ] as $key ) {
-//				$val                        = isset( $context['localized_options'][ $key ] ) ? $context['localized_options'][ $key ] : null;
-//				$context['OPTIONS'][ $key ] = $val;
-//			}
-//		}
-		
 		// Are we in debut mode?
 		$context['WP_DEBUG'] = WP_DEBUG;
 		
@@ -144,19 +131,6 @@ class StarterSite extends TimberSite {
 			// dont load block styles
 			wp_dequeue_style( 'wp-block-library' );
 			wp_deregister_style( 'wp-block-library' );
-			
-			// live reload of css for development
-//			if ( WP_DEBUG ) {
-//				// TODO find a way to load dynymically the BS file (cause the port number could be somthing else)
-//				if ( is_multisite() ) { // Removing trailing slash to attach browser-sync
-//					wp_enqueue_script( 'bs',
-//						substr( network_site_url(), 0, - 1 ) . ':4000/browser-sync/browser-sync-client.js', false, null,
-//						true );
-//				} else {
-//					wp_enqueue_script( 'bs', get_site_url() . ':4000/browser-sync/browser-sync-client.js', false, null,
-//						true );
-//				}
-//			}
 		}
 		
 		// admin bar styles
@@ -164,18 +138,6 @@ class StarterSite extends TimberSite {
 			wp_enqueue_style( 'adminbar-style', get_stylesheet_directory_uri() . '/style-adminbar.css', false,
 				THEME_VERSION );
 		}
-		
-		// load scripts on specific pages
-		// if( is_page() ){
-		// 	global $wp_query;
-		
-		// 	if( in_array( get_page_template_slug($wp_query->post->ID), array( 'page-contact.php' ) )) {
-		// 		$gmap_key = get_field( 'maps_api_key', 'option' );
-		// 		if ( !empty($gmap_key) ) {
-		// 			wp_enqueue_script( 'gmap', "https://maps.googleapis.com/maps/api/js?key=$gmap_key", null, null, true );
-		// 		}
-		// 	}
-		// }
 	}
 	
 	function setup_admin_assets() {
@@ -216,6 +178,4 @@ class StarterSite extends TimberSite {
 /**
  * GO!
  */
-
-
 new StarterSite();

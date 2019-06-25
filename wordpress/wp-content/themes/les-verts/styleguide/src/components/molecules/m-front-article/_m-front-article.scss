@@ -55,3 +55,7 @@
 		@include fluid-props(margin-top, $fluid-min, $fluid-max, 0px, 24px);
 	}
 }
+
+.o-front-article--double .m-front-article {
+	justify-content: flex-start;
+}

@@ -580,18 +580,49 @@
                     },
                     "default_value": "",
                     "placeholder": "",
-                    "maxlength": 280,
-                    "rows": 2,
+                  "maxlength": "",
+                  "rows": "",
                     "new_lines": ""
                 },
                 {
+                  "key": "field_5cf77bf9983f1",
+                  "label": "Action Type",
+                  "name": "type",
+                  "type": "button_group",
+                  "instructions": "",
+                  "required": 0,
+                  "conditional_logic": 0,
+                  "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                  },
+                  "choices": {
+                    "form": "Form",
+                    "button": "Action Button",
+                    "link": "Link Button"
+                  },
+                  "allow_null": 0,
+                  "default_value": "form",
+                  "layout": "horizontal",
+                  "return_format": "value"
+                },
+              {
                     "key": "field_5b681f2590ad0",
-                    "label": "Call to Action",
+                "label": "Call to Action (Form)",
                     "name": "form",
                     "type": "post_object",
-                    "instructions": "Select the form containing your call to action.",
+                "instructions": "Displays directly the form with the call to action.",
                     "required": 0,
-                    "conditional_logic": 0,
+                "conditional_logic": [
+                  [
+                    {
+                      "field": "field_5cf77bf9983f1",
+                      "operator": "==",
+                      "value": "form"
+                    }
+                  ]
+                ],
                     "wrapper": {
                         "width": "",
                         "class": "",
@@ -601,10 +632,56 @@
                         "theme_form"
                     ],
                     "taxonomy": "",
-                    "allow_null": 0,
+                "allow_null": 1,
                     "multiple": 0,
                     "return_format": "id",
                     "ui": 1
+              },
+              {
+                "key": "field_5cf77c8b983f2",
+                "label": "Call to Action (Button)",
+                "name": "button",
+                "type": "link",
+                "instructions": "Displays the link to your action page as a magenta button.",
+                "required": 0,
+                "conditional_logic": [
+                  [
+                    {
+                      "field": "field_5cf77bf9983f1",
+                      "operator": "==",
+                      "value": "button"
+                    }
+                  ]
+                ],
+                "wrapper": {
+                  "width": "",
+                  "class": "",
+                  "id": ""
+                },
+                "return_format": "array"
+              },
+              {
+                "key": "field_5cf77d16983f3",
+                "label": "Call to Action (Link Button)",
+                "name": "link",
+                "type": "link",
+                "instructions": "Displays the link to further reading as link button (the green one with >).",
+                "required": 0,
+                "conditional_logic": [
+                  [
+                    {
+                      "field": "field_5cf77bf9983f1",
+                      "operator": "==",
+                      "value": "link"
+                    }
+                  ]
+                ],
+                "wrapper": {
+                  "width": "",
+                  "class": "",
+                  "id": ""
+                },
+                "return_format": "array"
                 }
             ]
         }
@@ -633,5 +710,5 @@
     "hide_on_screen": "",
     "active": 0,
     "description": "",
-  "modified": 1559051425
+  "modified": 1559732070
 }

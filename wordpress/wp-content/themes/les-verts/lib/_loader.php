@@ -14,11 +14,6 @@ namespace SUPT;
 
 if ( class_exists( 'acf' ) ) {
 	require_once __DIR__ . '/acf/acf-init.php';
-	//require_once __DIR__ .'/acf/acf-content-defaults.php';
-
-	// custom locations (= where to show which field groups)
-	// require_once __DIR__ .'/acf/custom-locations/localized-options.php';
-	// require_once __DIR__ .'/acf/custom-locations/localized-menu.php';
 }
 
 
@@ -66,6 +61,7 @@ if ( is_admin() ) {
 
 require_once __DIR__ . '/admin/rest-disable-user.php';
 require_once __DIR__ . '/admin/timmy-config.php';
+require_once __DIR__ . '/admin/update-handler.php';
 
 /**
  * CONTROLLERS
@@ -193,6 +189,7 @@ require_once __DIR__ . '/twig/filters/nice_link.php';
 require_once __DIR__ . '/twig/filters/wptexturize.php';
 require_once __DIR__ . '/twig/filters/uniqueid.php';
 require_once __DIR__ . '/twig/filters/pll.php';
+require_once __DIR__ . '/twig/filters/l10n_date.php';
 
 /**
  * FORM LIBRARY

@@ -1,9 +1,26 @@
 <div class="m-campaign-cta">
 	<h3 class="m-campaign-cta__title">{{ title|wptexturize }}</h3>
 	<p class="m-campaign-cta__text">{{ desc|wptexturize }}</p>
-	{% if form %}
+	{% if 'form' == type and form %}
 		{% include 'molecules/m-form.twig' with {
 			'post': ACFPost(form),
 		} only %}
+	{% else %}
+		<div class="m-campaign-cta__link">
+			{% if 'button' == type and button %}
+				{% include 'atoms/a-button.twig' with {
+					'link': button.url,
+					'label': button.title,
+					'target': button.target,
+					'modifiers': ['a-button--secondary']
+				} only %}
+			{% elseif 'link' == type and link %}
+				{% include 'atoms/a-link-button.twig' with {
+					'link': button.url,
+					'label': button.title,
+					'target': button.target
+				} only %}
+			{% endif %}
+		</div>
 	{% endif %}
 </div>
