@@ -18,7 +18,7 @@ add_action( 'after_setup_theme', function () {
 }, 0 );
 
 /**
- * Multisite prove wrapper to remove all acf definitions in the database.
+ * Multisite proof wrapper to remove all acf definitions in the database.
  *
  * @see remove_all_blogs_synchronized_acf()
  */
