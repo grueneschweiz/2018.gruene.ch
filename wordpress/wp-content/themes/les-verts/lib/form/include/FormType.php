@@ -117,6 +117,30 @@ class FormType extends Model {
 			array( __CLASS__, 'save_submissions_per_page_option' ), 10, 3 );
 
 		add_filter( 'pll_get_post_types', array( __CLASS__, 'enable_polylang_support' ), 10, 2 );
+
+		add_action( 'mtphr_post_duplicator_created', array( __CLASS__, 'duplicate_remove_submissions' ), 10, 2 );
+	}
+
+	/**
+	 * Prevent duplicated submissions when using post-duplicator to clone form
+	 *
+	 * @param int $original_id
+	 * @param int $duplicate_id
+	 */
+	public static function duplicate_remove_submissions( $original_id, $duplicate_id ) {
+		try {
+			$form = new FormModel( $duplicate_id );
+			foreach ( $form->get_submissions() as $submission ) {
+				$submission->delete();
+			}
+		} catch ( Exception $e ) {
+			add_action( 'admin_notices', function () {
+				$class   = 'notice notice-warning is-dismissible';
+				$message = __( 'Unfortunately not only the form, but also the submissions were copied and we could not delete them. So make sure you delete the submissions linked with your newly cloned form manually.', THEME_DOMAIN );
+
+				printf( '<div class="%1$s"><p>%2$s</p></div>', esc_attr( $class ), esc_html( $message ) );
+			} );
+		}
 	}
 
 	/**
