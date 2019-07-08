@@ -30,7 +30,7 @@ class Navigation_controller {
 
 		foreach ( $items as &$item ) {
 			if ( '#supt_agenda' == $item->url ) {
-				$item->url = tribe_get_events_link();
+				$item->url = tribe_get_next_events_link();
 				$events    = tribe_get_events( array( 'start_date' => date( 'Y-m-d' ) ) );
 
 				if ( empty( $events ) ) {

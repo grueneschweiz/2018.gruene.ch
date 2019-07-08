@@ -50,7 +50,7 @@ if ( 'tribe_events' === $post_type ) {
 
 		if ( tribe_is_past() ) {
 			$context['events_link'] = [
-				'link'  => tribe_get_events_link(),
+				'link'  => tribe_get_next_events_link(),
 				'label' => __( 'Upcoming events', THEME_DOMAIN )
 			];
 		} else {
