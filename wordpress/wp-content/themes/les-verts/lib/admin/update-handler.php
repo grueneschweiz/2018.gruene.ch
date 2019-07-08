@@ -10,7 +10,8 @@ add_action( 'after_setup_theme', function () {
 
 	// run the upgrade routine for versions smaller 0.6.0
 	if ( - 1 == version_compare( $current_version, '0.6.0' ) ) {
-		remove_all_blogs_synchronized_acf();
+		supt_remove_all_blogs_synchronized_acf();
+		supt_remove_timber_plugin();
 	}
 
 	// set the current version number
@@ -18,20 +19,22 @@ add_action( 'after_setup_theme', function () {
 }, 0 );
 
 /**
- * Multisite prove wrapper to remove all acf definitions in the database.
+ * Multisite proof wrapper to remove all acf definitions in the database.
  *
- * @see remove_all_blogs_synchronized_acf()
+ * @see supt_remove_all_blogs_synchronized_acf()
+ *
+ * @since 0.6.0
  */
-function remove_all_blogs_synchronized_acf() {
+function supt_remove_all_blogs_synchronized_acf() {
 	if ( is_multisite() ) {
 		$current_blog_id = get_current_blog_id();
 		foreach ( get_sites() as $blog ) {
 			switch_to_blog( $blog->blog_id );
-			remove_single_blog_synchronized_acf();
+			supt_remove_single_blog_synchronized_acf();
 		}
 		switch_to_blog( $current_blog_id );
 	} else {
-		remove_single_blog_synchronized_acf();
+		supt_remove_single_blog_synchronized_acf();
 	}
 }
 
@@ -40,8 +43,10 @@ function remove_all_blogs_synchronized_acf() {
  *
  * This brings consistency and performance. And it assures changes from
  * acf JSON take effect.
+ *
+ * @since 0.6.0
  */
-function remove_single_blog_synchronized_acf() {
+function supt_remove_single_blog_synchronized_acf() {
 	global $wpdb;
 
 	$posts = $wpdb->get_results( 'SELECT id FROM ' . $wpdb->posts . ' WHERE post_type IN ("acf-field", "acf-field-group")' );
@@ -55,5 +60,22 @@ function remove_single_blog_synchronized_acf() {
 	$meta = $wpdb->query( "DELETE FROM {$wpdb->postmeta} WHERE post_id IN ({$ids})" );
 	if ( false !== $meta ) {
 		$wpdb->query( "DELETE FROM {$wpdb->posts} WHERE ID IN ({$ids})" );
+	}
+}
+
+/**
+ * Remove the timber plugin, we use the composer version now
+ *
+ * @since 0.6.0
+ */
+function supt_remove_timber_plugin() {
+	require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+
+	$timber = 'timber-library/timber.php';
+
+	if ( is_plugin_active( $timber ) ) {
+		deactivate_plugins( $timber );
+		uninstall_plugin( $timber );
+		delete_plugins( array( $timber ) );
 	}
 }

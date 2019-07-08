@@ -2,6 +2,7 @@
 
 namespace SUPT;
 
+use Exception;
 use PhpOffice\PhpSpreadsheet\IOFactory;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 
@@ -18,7 +19,7 @@ class SubmissionExport {
 	private $base_form;
 
 	/**
-	 * @var array
+	 * @var FormModel[]
 	 */
 	private $forms;
 
@@ -53,7 +54,7 @@ class SubmissionExport {
 
 		try {
 			$this->base_form = new FormModel( $form_id );
-		} catch ( \Exception $e ) {
+		} catch ( Exception $e ) {
 			wp_die( $e->getMessage() );
 		}
 	}
@@ -87,13 +88,13 @@ class SubmissionExport {
 		$site_name = get_bloginfo( 'name' );
 		$base_form = reset( $this->forms );
 		$spreadsheet->getProperties()->setCreator( $site_name )
-		            ->setLastModifiedBy( $site_name )
-		            ->setTitle( __( 'Website export', THEME_DOMAIN ) )
-		            ->setSubject( $base_form->get_title() );
+			->setLastModifiedBy( $site_name )
+			->setTitle( __( 'Website export', THEME_DOMAIN ) )
+			->setSubject( $base_form->get_title() );
 
 		// prepare sheet;
 		$sheet = $spreadsheet->getActiveSheet()
-		                     ->setTitle( __( 'Export', THEME_DOMAIN ) );
+			->setTitle( __( 'Export', THEME_DOMAIN ) );
 
 		// add the headers
 		$column = 1;
@@ -116,7 +117,7 @@ class SubmissionExport {
 		// add the data
 		$sheet->fromArray( $this->data, '', 'A3' );
 
-		$filename = 'export_' . date( 'Ymd' ) . '-' . $base_form->get_slug() . '.xlsx';
+		$filename = 'export_' . date( 'Ymd' ) . '-' . sanitize_title( $base_form->get_title() ) . '.xlsx';
 
 		// Redirect output to a client’s web browser (Xlsx)
 		header( 'Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' );
@@ -203,6 +204,10 @@ class SubmissionExport {
 
 		$base_submissions = $this->base_form->get_submissions();
 
+		if ( empty( $base_submissions ) ) {
+			wp_die( __( 'Yet, there were no forms submitted, so there is nothing to export.' ) );
+		}
+
 		foreach ( $base_submissions as $submission ) {
 			$this->processSubmission( $submission );
 		}
@@ -218,7 +223,7 @@ class SubmissionExport {
 		try {
 			$form                           = $submission->meta_get_form();
 			$this->forms[ $form->get_id() ] = $form;
-		} catch ( \Exception $e ) {
+		} catch ( Exception $e ) {
 			wp_die( $e->getMessage() );
 
 			return;

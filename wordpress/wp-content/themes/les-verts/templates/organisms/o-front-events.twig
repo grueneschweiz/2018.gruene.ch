@@ -16,7 +16,7 @@
 	{% if block.max_num < fn('wp_count_posts','tribe_events') %}
 		<div class="o-front-events__more">
 			{% include 'atoms/a-link-button.twig' with {
-				'link': fn('tribe_get_events_link'),
+				'link': fn('tribe_get_listview_link', false),
 				'label': __('Show all events', constant('THEME_DOMAIN'))
 			} only %}
 		</div>

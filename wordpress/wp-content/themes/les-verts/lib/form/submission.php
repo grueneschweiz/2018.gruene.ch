@@ -468,6 +468,10 @@ class FormSubmission {
 					break;
 				}
 
+				foreach ( $options as $key => $val ) {
+					$options[ $key ] = trim( preg_replace( '/[&<>"\']/', '', $val ) );
+				}
+
 				$valid = in_array( $data, $options );
 				break;
 
