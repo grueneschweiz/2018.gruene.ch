@@ -94,9 +94,6 @@ fi
 $WPCLI plugin activate advanced-custom-fields-pro $ACTIVATE_NETWORK_ARGUMENT
 # $WPCLI eval 'acf_pro_update_license("INSERT LICENSE NUMBER HERE");'
 
-## Timber
-$WPCLI plugin install timber-library --version=1.8.4 $INSTALL_ACTIVATE_ARGUMENT
-
 ## SVG support
 $WPCLI plugin install svg-support $INSTALL_ACTIVATE_ARGUMENT
 
