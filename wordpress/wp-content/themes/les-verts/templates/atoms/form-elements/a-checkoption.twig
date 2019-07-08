@@ -17,7 +17,7 @@ Parameters:
 	<input type="radio"
 				 name="{{ name }}"
 				 id="{{ id }}"
-				 value="{{ value }}"
+				 value="{{ value|esc_form_value }}"
 				 {% if required %}required{% endif %}
 		     {% if checked %}checked="checked"{% endif %}
 				 class="a-checkoption__field">

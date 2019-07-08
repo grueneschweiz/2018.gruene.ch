@@ -9,18 +9,18 @@ Parameters:
 - options: array
 #}
 <div class="a-select {{ modifiers_classes }}">
-	<label for="{{ id }}" class="a-select__label {% if required %}a-select__label--required{% endif %}">
+	<label for="{{ id|default(name) }}" class="a-select__label {% if required %}a-select__label--required{% endif %}">
 		{{ label|wptexturize }}
 	</label>
 	<div class="a-select__background">
-		<select id="{{ id }}"
+		<select id="{{ id|default(name) }}"
 						class="a-select__field"
 						name="{{ name }}"
 						{% if required %}required="required"{% endif %}>
 			<option value=""> </option>
 			{% for option in options %}
 				{% set option = option|trim %}
-				<option value="{{ option }}">{{ option }}</option>
+				<option value="{{ option|esc_form_value }}">{{ option }}</option>
 			{% endfor %}
 		</select>
 	</div>
