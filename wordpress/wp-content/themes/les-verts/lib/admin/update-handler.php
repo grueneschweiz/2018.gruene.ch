@@ -69,7 +69,13 @@ function supt_remove_single_blog_synchronized_acf() {
  * @since 0.6.0
  */
 function supt_remove_timber_plugin() {
-	$multisite = is_multisite() ? ' --network' : '';
+	require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 
-	WP_CLI::runcommand( "plugin timber-library --uninstall$multisite" );
+	$timber = 'timber-library/timber.php';
+
+	if ( is_plugin_active( $timber ) ) {
+		deactivate_plugins( $timber );
+		uninstall_plugin( $timber );
+		delete_plugins( array( $timber ) );
+	}
 }
