@@ -11,6 +11,7 @@
 
 		& > p {
 			margin: 0;
+			hyphens: auto;
 
 			&:first-of-type {
 				margin-bottom: .75rem;
@@ -40,6 +41,17 @@
 		&:before, &:after {
 			color: $color-primary;
 			font-weight: $font-weight-bold;
+		}
+	}
+}
+
+.o-people-grid--vertical .m-person-slide {
+	&__caption {
+		padding-left: 0;
+		padding-right: 0;
+
+		& > p {
+			font-size: 1rem !important;
 		}
 	}
 }

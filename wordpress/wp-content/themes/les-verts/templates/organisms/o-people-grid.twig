@@ -1,9 +1,11 @@
 {% set testimonials = getPeopleTestimonialByTaxonomies(taxonomy) %}
 <div class="o-people-grid o-people-grid--{{ layout }}">
 	<div class="o-people-grid__wrapper">
-		<div class="o-people-grid__cat-title">
-			{% include 'atoms/a-cat-title.twig' with block_title only %}
-		</div>
+		{% if block_title %}
+			<div class="o-people-grid__cat-title">
+				{% include 'atoms/a-cat-title.twig' with block_title only %}
+			</div>
+		{% endif %}
 		{% if title %}
 			<h3 class="o-people-grid__title">{{ title }}</h3>
 		{% endif %}
