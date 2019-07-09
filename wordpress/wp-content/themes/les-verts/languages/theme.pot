@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: Les Verts\n"
-"POT-Creation-Date: 2019-06-25 16:19+0200\n"
+"POT-Creation-Date: 2019-07-09 14:55+0200\n"
 "PO-Revision-Date: 2018-11-28 17:49+0100\n"
 "Last-Translator: Cyrill Bolliger <bolliger@gmx.ch>\n"
 "Language-Team: Cyrill Bolliger <bolliger@gmx.ch>\n"
@@ -676,7 +676,7 @@ msgstr ""
 msgid "This is used in the dropdown of the mobile version."
 msgstr ""
 
-#: acf-translate.php:2413 lib/form/include/SubmissionExport.php:173
+#: acf-translate.php:2413 lib/form/include/SubmissionExport.php:174
 msgid "ID"
 msgstr ""
 
@@ -848,7 +848,7 @@ msgid ""
 "displayed."
 msgstr ""
 
-#: acf-translate.php:3113 acf-translate.php:3787 functions.php:158
+#: acf-translate.php:3113 acf-translate.php:3787 functions.php:152
 msgid "Footer"
 msgstr ""
 
@@ -1292,19 +1292,19 @@ msgstr ""
 msgid "You can hide the share buttons of this page, by disabling this option."
 msgstr ""
 
-#: functions.php:103 templates/molecules/m-menu.twig:14
+#: functions.php:97 templates/molecules/m-menu.twig:14
 msgid "Main navigation"
 msgstr ""
 
-#: functions.php:104 templates/molecules/m-menu.twig:60
+#: functions.php:98 templates/molecules/m-menu.twig:60
 msgid "Language navigation"
 msgstr ""
 
-#: functions.php:105
+#: functions.php:99
 msgid "Footer meta navigation"
 msgstr ""
 
-#: functions.php:160
+#: functions.php:154
 msgid ""
 "This is the footer. Use it for your primary calls to action (Button widget), "
 "your contact details (Contact widget) and the footer menu (Link list widget)."
@@ -1753,7 +1753,7 @@ msgstr ""
 msgid "Submission"
 msgstr ""
 
-#: lib/form/admin/ViewSingle.php:90 lib/form/include/SubmissionExport.php:174
+#: lib/form/admin/ViewSingle.php:90 lib/form/include/SubmissionExport.php:175
 #: lib/form/include/SubmissionsTable.php:46
 msgid "Timestamp"
 msgstr ""
@@ -1942,50 +1942,61 @@ msgstr ""
 msgid "No form in the trash"
 msgstr ""
 
-#: lib/form/include/FormType.php:166
+#: lib/form/include/FormType.php:139
+msgid ""
+"Unfortunately not only the form, but also the submissions were copied and we "
+"could not delete them. So make sure you delete the submissions linked with "
+"your newly cloned form manually."
+msgstr ""
+
+#: lib/form/include/FormType.php:190
 msgid "Fields"
 msgstr ""
 
-#: lib/form/include/FormType.php:217
+#: lib/form/include/FormType.php:241
 #, php-format
 msgctxt "form title"
 msgid "View submissions of %s"
 msgstr ""
 
-#: lib/form/include/FormType.php:218 lib/form/include/FormType.php:248
-#: lib/form/include/FormType.php:249 lib/form/include/SubmissionsTable.php:33
+#: lib/form/include/FormType.php:242 lib/form/include/FormType.php:272
+#: lib/form/include/FormType.php:273 lib/form/include/SubmissionsTable.php:33
 msgid "Submissions"
 msgstr ""
 
-#: lib/form/include/FormType.php:284
+#: lib/form/include/FormType.php:308
 msgid "Form Submissions"
 msgstr ""
 
-#: lib/form/include/FormType.php:295
+#: lib/form/include/FormType.php:319
 msgid "Export Submissions"
 msgstr ""
 
-#: lib/form/include/FormType.php:297
+#: lib/form/include/FormType.php:321
 #, php-format
 msgid ""
 "Exports the submission of the form \"%s\" and all its linked forms. Usually "
 "its best to select the first form in the chain before exporting."
 msgstr ""
 
-#: lib/form/include/FormType.php:315
+#: lib/form/include/FormType.php:339
 msgid "Ups, something went wrong."
 msgstr ""
 
-#: lib/form/include/SubmissionExport.php:91
+#: lib/form/include/SubmissionExport.php:92
 msgid "Website export"
 msgstr ""
 
-#: lib/form/include/SubmissionExport.php:96
+#: lib/form/include/SubmissionExport.php:97
 msgid "Export"
 msgstr ""
 
-#: lib/form/include/SubmissionExport.php:191
+#: lib/form/include/SubmissionExport.php:192
 msgid "old: "
+msgstr ""
+
+#: lib/form/include/SubmissionExport.php:208
+msgid "Yet, there were no forms submitted, so there is nothing to export."
 msgstr ""
 
 #: lib/form/include/SubmissionModel.php:155
@@ -2041,15 +2052,15 @@ msgstr ""
 msgid "Invalid input."
 msgstr ""
 
-#: lib/form/submission.php:476
+#: lib/form/submission.php:480
 msgid "Invalid email."
 msgstr ""
 
-#: lib/form/submission.php:481
+#: lib/form/submission.php:485
 msgid "Invalid number"
 msgstr ""
 
-#: lib/form/submission.php:487
+#: lib/form/submission.php:491
 msgid "This field is required."
 msgstr ""
 
