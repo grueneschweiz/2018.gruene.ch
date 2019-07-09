@@ -5,18 +5,62 @@
  */
 
 die();
-if( function_exists('acf_add_local_field_group') ):
-	
-	acf_add_local_field_group(array(
-		'key'                   => 'group_5b9ba36e445dd',
-		'title'                 => __( '(Event) Venue', THEME_DOMAIN ),
-		'fields'                => false,
+if ( function_exists( 'acf_add_local_field_group' ) ):
+
+	acf_add_local_field_group( array(
+		'key'                   => 'group_5c5ab079896c0',
+		'title'                 => __( '(Category) Date', THEME_DOMAIN ),
+		'fields'                => array(
+			array(
+				'key'               => 'field_5c5ab09d6c3f1',
+				'label'             => __( 'Has date', THEME_DOMAIN ),
+				'name'              => 'has_date',
+				'type'              => 'true_false',
+				'instructions'      => __( 'Should a date be displayed with all posts categorized in this category?', THEME_DOMAIN ),
+				'required'          => 0,
+				'conditional_logic' => 0,
+				'wrapper'           => array(
+					'width' => '',
+					'class' => '',
+					'id'    => '',
+				),
+				'message'           => '',
+				'default_value'     => 0,
+				'ui'                => 1,
+				'ui_on_text'        => '',
+				'ui_off_text'       => '',
+			),
+		),
 		'location'              => array(
 			array(
 				array(
-					'param' => 'post_type',
+					'param'    => 'taxonomy',
 					'operator' => '==',
-					'value' => 'tribe_venue',
+					'value'    => 'category',
+				),
+			),
+		),
+		'menu_order'            => 0,
+		'position'              => 'normal',
+		'style'                 => 'default',
+		'label_placement'       => 'top',
+		'instruction_placement' => 'label',
+		'hide_on_screen'        => '',
+		'active'                => true,
+		'description'           => '',
+		'modified'              => 1549460588,
+	) );
+
+	acf_add_local_field_group( array(
+		'key'                   => 'group_5b9ba36e445dd',
+		'title'                 => __( '(Event) Venue', THEME_DOMAIN ),
+		'fields'                => array(),
+		'location'              => array(
+			array(
+				array(
+					'param'    => 'post_type',
+					'operator' => '==',
+					'value'    => 'tribe_venue',
 				),
 			),
 		),
@@ -26,26 +70,26 @@ if( function_exists('acf_add_local_field_group') ):
 		'label_placement'       => 'top',
 		'instruction_placement' => 'label',
 		'hide_on_screen'        => array(
-			0 => 'the_content',
-			1 => 'excerpt',
-			2 => 'discussion',
-			3 => 'comments',
-			4 => 'revisions',
-			5 => 'slug',
-			6 => 'author',
-			7 => 'format',
-			8 => 'page_attributes',
-			9 => 'featured_image',
+			0  => 'the_content',
+			1  => 'excerpt',
+			2  => 'discussion',
+			3  => 'comments',
+			4  => 'revisions',
+			5  => 'slug',
+			6  => 'author',
+			7  => 'format',
+			8  => 'page_attributes',
+			9  => 'featured_image',
 			10 => 'categories',
 			11 => 'tags',
 			12 => 'send-trackbacks',
 		),
-		'active'                => 1,
+		'active'                => true,
 		'description'           => '',
-		'modified'              => 1536926705,
-	));
-	
-	acf_add_local_field_group(array(
+		'modified'              => 1543324738,
+	) );
+
+	acf_add_local_field_group( array(
 		'key'                   => 'group_5bd05fb159df1',
 		'title'                 => __( '(Media) Focal point', THEME_DOMAIN ),
 		'fields'                => array(
@@ -60,7 +104,7 @@ if( function_exists('acf_add_local_field_group') ):
 				'wrapper'           => array(
 					'width' => '',
 					'class' => '',
-					'id' => '',
+					'id'    => '',
 				),
 				'choices'           => array(
 					'top-left'      => __( 'top left', THEME_DOMAIN ),
@@ -87,9 +131,16 @@ if( function_exists('acf_add_local_field_group') ):
 		'location'              => array(
 			array(
 				array(
-					'param' => 'attachment',
+					'param'    => 'attachment',
 					'operator' => '==',
-					'value' => 'image/jpeg',
+					'value'    => 'image/jpeg',
+				),
+			),
+			array(
+				array(
+					'param'    => 'attachment',
+					'operator' => '==',
+					'value'    => 'image/png',
 				),
 			),
 		),
@@ -99,12 +150,12 @@ if( function_exists('acf_add_local_field_group') ):
 		'label_placement'       => 'top',
 		'instruction_placement' => 'label',
 		'hide_on_screen'        => '',
-		'active'                => 1,
+		'active'                => true,
 		'description'           => '',
-		'modified'              => 1540472631,
-	));
-	
-	acf_add_local_field_group(array(
+		'modified'              => 1549396371,
+	) );
+
+	acf_add_local_field_group( array(
 		'key'                   => 'group_5b647ca5e8da4',
 		'title'                 => __( '(Media) Image Copyright', THEME_DOMAIN ),
 		'fields'                => array(
@@ -119,7 +170,7 @@ if( function_exists('acf_add_local_field_group') ):
 				'wrapper'           => array(
 					'width' => '',
 					'class' => '',
-					'id' => '',
+					'id'    => '',
 				),
 				'default_value'     => '',
 				'placeholder'       => '',
@@ -131,9 +182,9 @@ if( function_exists('acf_add_local_field_group') ):
 		'location'              => array(
 			array(
 				array(
-					'param' => 'attachment',
+					'param'    => 'attachment',
 					'operator' => '==',
-					'value' => 'image',
+					'value'    => 'image',
 				),
 			),
 		),
@@ -143,12 +194,12 @@ if( function_exists('acf_add_local_field_group') ):
 		'label_placement'       => 'top',
 		'instruction_placement' => 'label',
 		'hide_on_screen'        => '',
-		'active'                => 1,
+		'active'                => true,
 		'description'           => '',
-		'modified'              => 1534184490,
-	));
-	
-	acf_add_local_field_group(array(
+		'modified'              => 1543324738,
+	) );
+
+	acf_add_local_field_group( array(
 		'key'                   => 'group_5b62cd118cbad',
 		'title'                 => __( '(Menu) Featured Subnav Item', THEME_DOMAIN ),
 		'fields'                => array(
@@ -157,14 +208,13 @@ if( function_exists('acf_add_local_field_group') ):
 				'label'             => __( 'Featured Menu Item', THEME_DOMAIN ),
 				'name'              => 'featured_menu_item',
 				'type'              => 'true_false',
-				'instructions'      => __( 'This option only works on sub items (level 2). Else it won\'t have any effect.',
-					THEME_DOMAIN ),
+				'instructions'      => __( 'This option only works on sub items (level 2). Else it won\'t have any effect.', THEME_DOMAIN ),
 				'required'          => 0,
 				'conditional_logic' => 0,
 				'wrapper'           => array(
 					'width' => '',
 					'class' => '',
-					'id' => '',
+					'id'    => '',
 				),
 				'message'           => '',
 				'default_value'     => 0,
@@ -173,28 +223,28 @@ if( function_exists('acf_add_local_field_group') ):
 				'ui_off_text'       => '',
 			),
 			array(
-				'key' => 'field_5b730997902d0',
-				'label' => '',
-				'name' => 'group',
-				'type' => 'group',
-				'instructions' => '',
-				'required' => 0,
+				'key'               => 'field_5b730997902d0',
+				'label'             => '',
+				'name'              => 'group',
+				'type'              => 'group',
+				'instructions'      => '',
+				'required'          => 0,
 				'conditional_logic' => array(
 					array(
 						array(
-							'field' => 'field_5b62da7660cb3',
+							'field'    => 'field_5b62da7660cb3',
 							'operator' => '==',
-							'value' => '1',
+							'value'    => '1',
 						),
 					),
 				),
-				'wrapper' => array(
+				'wrapper'           => array(
 					'width' => '',
 					'class' => '',
-					'id' => '',
+					'id'    => '',
 				),
-				'layout' => 'block',
-				'sub_fields' => array(
+				'layout'            => 'block',
+				'sub_fields'        => array(
 					array(
 						'key'               => 'field_5b71c942afd74',
 						'label'             => __( 'Block Title', THEME_DOMAIN ),
@@ -205,16 +255,16 @@ if( function_exists('acf_add_local_field_group') ):
 						'conditional_logic' => array(
 							array(
 								array(
-									'field' => 'field_5b62da7660cb3',
+									'field'    => 'field_5b62da7660cb3',
 									'operator' => '==',
-									'value' => '1',
+									'value'    => '1',
 								),
 							),
 						),
 						'wrapper'           => array(
 							'width' => '',
 							'class' => '',
-							'id' => '',
+							'id'    => '',
 						),
 						'clone'             => array(
 							0 => 'group_5b684e748247e',
@@ -235,7 +285,7 @@ if( function_exists('acf_add_local_field_group') ):
 						'wrapper'           => array(
 							'width' => '',
 							'class' => '',
-							'id' => '',
+							'id'    => '',
 						),
 						'return_format'     => 'id',
 						'preview_size'      => 'regular',
@@ -258,16 +308,16 @@ if( function_exists('acf_add_local_field_group') ):
 						'conditional_logic' => array(
 							array(
 								array(
-									'field' => 'field_5b62da7660cb3',
+									'field'    => 'field_5b62da7660cb3',
 									'operator' => '==',
-									'value' => '1',
+									'value'    => '1',
 								),
 							),
 						),
 						'wrapper'           => array(
 							'width' => '',
 							'class' => '',
-							'id' => '',
+							'id'    => '',
 						),
 						'default_value'     => '',
 						'placeholder'       => '',
@@ -285,16 +335,16 @@ if( function_exists('acf_add_local_field_group') ):
 						'conditional_logic' => array(
 							array(
 								array(
-									'field' => 'field_5b62da7660cb3',
+									'field'    => 'field_5b62da7660cb3',
 									'operator' => '==',
-									'value' => '1',
+									'value'    => '1',
 								),
 							),
 						),
 						'wrapper'           => array(
 							'width' => '',
 							'class' => '',
-							'id' => '',
+							'id'    => '',
 						),
 						'default_value'     => 'Show campaign',
 						'placeholder'       => '',
@@ -308,9 +358,9 @@ if( function_exists('acf_add_local_field_group') ):
 		'location'              => array(
 			array(
 				array(
-					'param' => 'nav_menu_item',
+					'param'    => 'nav_menu_item',
 					'operator' => '==',
-					'value' => 'all',
+					'value'    => 'all',
 				),
 			),
 		),
@@ -320,11 +370,12 @@ if( function_exists('acf_add_local_field_group') ):
 		'label_placement'       => 'top',
 		'instruction_placement' => 'label',
 		'hide_on_screen'        => '',
-		'active'                => 1,
+		'active'                => true,
 		'description'           => '',
-	));
-	
-	acf_add_local_field_group(array(
+		'modified'              => 1543324738,
+	) );
+
+	acf_add_local_field_group( array(
 		'key'                   => 'group_5b6d6d4f568ab',
 		'title'                 => __( '(Widget) Buttons', THEME_DOMAIN ),
 		'fields'                => array(
@@ -339,7 +390,7 @@ if( function_exists('acf_add_local_field_group') ):
 				'wrapper'           => array(
 					'width' => '',
 					'class' => '',
-					'id' => '',
+					'id'    => '',
 				),
 				'collapsed'         => 'field_5b6d6de749393',
 				'min'               => 1,
@@ -358,7 +409,7 @@ if( function_exists('acf_add_local_field_group') ):
 						'wrapper'           => array(
 							'width' => '',
 							'class' => '',
-							'id' => '',
+							'id'    => '',
 						),
 						'default_value'     => '',
 						'placeholder'       => '',
@@ -377,7 +428,7 @@ if( function_exists('acf_add_local_field_group') ):
 						'wrapper'           => array(
 							'width' => '',
 							'class' => '',
-							'id' => '',
+							'id'    => '',
 						),
 						'default_value'     => '',
 						'placeholder'       => '',
@@ -393,7 +444,7 @@ if( function_exists('acf_add_local_field_group') ):
 						'wrapper'           => array(
 							'width' => '',
 							'class' => '',
-							'id' => '',
+							'id'    => '',
 						),
 						'message'           => '',
 						'default_value'     => 0,
@@ -407,9 +458,9 @@ if( function_exists('acf_add_local_field_group') ):
 		'location'              => array(
 			array(
 				array(
-					'param' => 'widget',
+					'param'    => 'widget',
 					'operator' => '==',
-					'value' => 'supt_button_widget',
+					'value'    => 'supt_button_widget',
 				),
 			),
 		),
@@ -419,11 +470,12 @@ if( function_exists('acf_add_local_field_group') ):
 		'label_placement'       => 'top',
 		'instruction_placement' => 'label',
 		'hide_on_screen'        => '',
-		'active'                => 1,
+		'active'                => true,
 		'description'           => '',
-	));
-	
-	acf_add_local_field_group(array(
+		'modified'              => 1543324739,
+	) );
+
+	acf_add_local_field_group( array(
 		'key'                   => 'group_5b6d603e15f2a',
 		'title'                 => __( '(Widget) Contact', THEME_DOMAIN ),
 		'fields'                => array(
@@ -438,7 +490,7 @@ if( function_exists('acf_add_local_field_group') ):
 				'wrapper'           => array(
 					'width' => '',
 					'class' => '',
-					'id' => '',
+					'id'    => '',
 				),
 				'default_value'     => '',
 				'tabs'              => 'all',
@@ -457,10 +509,10 @@ if( function_exists('acf_add_local_field_group') ):
 				'wrapper'           => array(
 					'width' => '',
 					'class' => '',
-					'id' => '',
+					'id'    => '',
 				),
 				'layouts'           => array(
-					'5b6d66ff18a3e' => array(
+					'5b6d66ff18a3e'        => array(
 						'key'        => '5b6d66ff18a3e',
 						'name'       => 'facebook',
 						'label'      => __( 'Facebook', THEME_DOMAIN ),
@@ -477,7 +529,7 @@ if( function_exists('acf_add_local_field_group') ):
 								'wrapper'           => array(
 									'width' => '',
 									'class' => '',
-									'id' => '',
+									'id'    => '',
 								),
 								'default_value'     => '',
 								'placeholder'       => '',
@@ -503,7 +555,7 @@ if( function_exists('acf_add_local_field_group') ):
 								'wrapper'           => array(
 									'width' => '',
 									'class' => '',
-									'id' => '',
+									'id'    => '',
 								),
 								'default_value'     => '',
 								'placeholder'       => '',
@@ -529,7 +581,7 @@ if( function_exists('acf_add_local_field_group') ):
 								'wrapper'           => array(
 									'width' => '',
 									'class' => '',
-									'id' => '',
+									'id'    => '',
 								),
 								'default_value'     => '',
 								'placeholder'       => '',
@@ -547,9 +599,9 @@ if( function_exists('acf_add_local_field_group') ):
 		'location'              => array(
 			array(
 				array(
-					'param' => 'widget',
+					'param'    => 'widget',
 					'operator' => '==',
-					'value' => 'supt_contact_widget',
+					'value'    => 'supt_contact_widget',
 				),
 			),
 		),
@@ -559,11 +611,12 @@ if( function_exists('acf_add_local_field_group') ):
 		'label_placement'       => 'top',
 		'instruction_placement' => 'label',
 		'hide_on_screen'        => '',
-		'active'                => 1,
+		'active'                => true,
 		'description'           => '',
-	));
-	
-	acf_add_local_field_group(array(
+		'modified'              => 1543324739,
+	) );
+
+	acf_add_local_field_group( array(
 		'key'                   => 'group_5b6d9c4c1eaa5',
 		'title'                 => __( '(Widget) Link List', THEME_DOMAIN ),
 		'fields'                => array(
@@ -578,7 +631,7 @@ if( function_exists('acf_add_local_field_group') ):
 				'wrapper'           => array(
 					'width' => '',
 					'class' => '',
-					'id' => '',
+					'id'    => '',
 				),
 				'collapsed'         => 'field_5b6d9c713efbe',
 				'min'               => 0,
@@ -597,7 +650,7 @@ if( function_exists('acf_add_local_field_group') ):
 						'wrapper'           => array(
 							'width' => '',
 							'class' => '',
-							'id' => '',
+							'id'    => '',
 						),
 						'default_value'     => '',
 						'placeholder'       => '',
@@ -616,7 +669,7 @@ if( function_exists('acf_add_local_field_group') ):
 						'wrapper'           => array(
 							'width' => '',
 							'class' => '',
-							'id' => '',
+							'id'    => '',
 						),
 						'default_value'     => '',
 						'placeholder'       => '',
@@ -627,9 +680,9 @@ if( function_exists('acf_add_local_field_group') ):
 		'location'              => array(
 			array(
 				array(
-					'param' => 'widget',
+					'param'    => 'widget',
 					'operator' => '==',
-					'value' => 'supt_link_list_widget',
+					'value'    => 'supt_link_list_widget',
 				),
 			),
 		),
@@ -639,11 +692,12 @@ if( function_exists('acf_add_local_field_group') ):
 		'label_placement'       => 'top',
 		'instruction_placement' => 'label',
 		'hide_on_screen'        => '',
-		'active'                => 1,
+		'active'                => true,
 		'description'           => '',
-	));
-	
-	acf_add_local_field_group(array(
+		'modified'              => 1543324740,
+	) );
+
+	acf_add_local_field_group( array(
 		'key'                   => 'group_5b684e748247e',
 		'title'                 => __( '[Template]Block title', THEME_DOMAIN ),
 		'fields'                => array(
@@ -652,14 +706,13 @@ if( function_exists('acf_add_local_field_group') ):
 				'label'             => __( 'Block Title', THEME_DOMAIN ),
 				'name'              => 'block_title',
 				'type'              => 'group',
-				'instructions'      => __( 'Use a generic title like the category of the block. Then link it to this category.',
-					THEME_DOMAIN ),
+				'instructions'      => __( 'Use a generic title like the category of the block. Then link it to this category.', THEME_DOMAIN ),
 				'required'          => 0,
 				'conditional_logic' => 0,
 				'wrapper'           => array(
 					'width' => '',
 					'class' => '',
-					'id' => '',
+					'id'    => '',
 				),
 				'layout'            => 'row',
 				'sub_fields'        => array(
@@ -674,7 +727,7 @@ if( function_exists('acf_add_local_field_group') ):
 						'wrapper'           => array(
 							'width' => '',
 							'class' => '',
-							'id' => '',
+							'id'    => '',
 						),
 						'default_value'     => '',
 						'placeholder'       => '',
@@ -693,7 +746,7 @@ if( function_exists('acf_add_local_field_group') ):
 						'wrapper'           => array(
 							'width' => '',
 							'class' => '',
-							'id' => '',
+							'id'    => '',
 						),
 						'layout'            => 'table',
 						'sub_fields'        => array(
@@ -708,7 +761,7 @@ if( function_exists('acf_add_local_field_group') ):
 								'wrapper'           => array(
 									'width' => '25',
 									'class' => '',
-									'id' => '',
+									'id'    => '',
 								),
 								'choices'           => array(
 									'category' => __( 'Category', THEME_DOMAIN ),
@@ -731,16 +784,16 @@ if( function_exists('acf_add_local_field_group') ):
 								'conditional_logic' => array(
 									array(
 										array(
-											'field' => 'field_5b71975ea470c',
+											'field'    => 'field_5b71975ea470c',
 											'operator' => '==',
-											'value' => 'category',
+											'value'    => 'category',
 										),
 									),
 								),
 								'wrapper'           => array(
 									'width' => '75',
 									'class' => '',
-									'id' => '',
+									'id'    => '',
 								),
 								'taxonomy'          => 'category',
 								'field_type'        => 'select',
@@ -761,24 +814,23 @@ if( function_exists('acf_add_local_field_group') ):
 								'conditional_logic' => array(
 									array(
 										array(
-											'field' => 'field_5b71975ea470c',
+											'field'    => 'field_5b71975ea470c',
 											'operator' => '==',
-											'value' => 'internal',
+											'value'    => 'internal',
 										),
 									),
 								),
 								'wrapper'           => array(
 									'width' => '75',
 									'class' => '',
-									'id' => '',
+									'id'    => '',
 								),
 								'post_type'         => array(
 									0 => 'post',
 									1 => 'page',
 									2 => 'tribe_events',
 								),
-								'taxonomy'          => array(
-								),
+								'taxonomy'          => array(),
 								'allow_null'        => 0,
 								'multiple'          => 0,
 								'return_format'     => 'object',
@@ -794,16 +846,16 @@ if( function_exists('acf_add_local_field_group') ):
 								'conditional_logic' => array(
 									array(
 										array(
-											'field' => 'field_5b71975ea470c',
+											'field'    => 'field_5b71975ea470c',
 											'operator' => '==',
-											'value' => 'url',
+											'value'    => 'url',
 										),
 									),
 								),
 								'wrapper'           => array(
 									'width' => '75',
 									'class' => '',
-									'id' => '',
+									'id'    => '',
 								),
 								'default_value'     => '',
 								'placeholder'       => '',
@@ -818,16 +870,16 @@ if( function_exists('acf_add_local_field_group') ):
 								'conditional_logic' => array(
 									array(
 										array(
-											'field' => 'field_5b71975ea470c',
+											'field'    => 'field_5b71975ea470c',
 											'operator' => '==',
-											'value' => 'none',
+											'value'    => 'none',
 										),
 									),
 								),
 								'wrapper'           => array(
 									'width' => '75',
 									'class' => '',
-									'id' => '',
+									'id'    => '',
 								),
 								'message'           => __( 'The block title will not be linked', THEME_DOMAIN ),
 								'new_lines'         => 'wpautop',
@@ -841,9 +893,9 @@ if( function_exists('acf_add_local_field_group') ):
 		'location'              => array(
 			array(
 				array(
-					'param' => 'page_type',
+					'param'    => 'page_type',
 					'operator' => '==',
-					'value' => 'front_page',
+					'value'    => 'front_page',
 				),
 			),
 		),
@@ -853,11 +905,463 @@ if( function_exists('acf_add_local_field_group') ):
 		'label_placement'       => 'top',
 		'instruction_placement' => 'label',
 		'hide_on_screen'        => '',
-		'active'                => 0,
+		'active'                => false,
 		'description'           => '',
-	));
-	
-	acf_add_local_field_group(array(
+		'modified'              => 1543324740,
+	) );
+
+	acf_add_local_field_group( array(
+		'key'                   => 'group_5cee958e0d362',
+		'title'                 => __( '[Template]Default Content', THEME_DOMAIN ),
+		'fields'                => array(
+			array(
+				'key'               => 'field_5cee95b5caff7',
+				'label'             => __( 'Content', THEME_DOMAIN ),
+				'name'              => 'content',
+				'type'              => 'flexible_content',
+				'instructions'      => __( 'This is the main section of this page.', THEME_DOMAIN ),
+				'required'          => 0,
+				'conditional_logic' => 0,
+				'wrapper'           => array(
+					'width' => '',
+					'class' => '',
+					'id'    => '',
+				),
+				'layouts'           => array(
+					'5b6c41335aefe'        => array(
+						'key'        => '5b6c41335aefe',
+						'name'       => 'in_short',
+						'label'      => __( 'In Short', THEME_DOMAIN ),
+						'display'    => 'block',
+						'sub_fields' => array(
+							array(
+								'key'               => 'field_5b6c49f24c11d',
+								'label'             => __( 'In Short', THEME_DOMAIN ),
+								'name'              => 'in_short',
+								'type'              => 'clone',
+								'instructions'      => '',
+								'required'          => 0,
+								'conditional_logic' => 0,
+								'wrapper'           => array(
+									'width' => '',
+									'class' => '',
+									'id'    => '',
+								),
+								'clone'             => array(
+									0 => 'group_5b6c416ac235f',
+								),
+								'display'           => 'seamless',
+								'layout'            => 'block',
+								'prefix_label'      => 0,
+								'prefix_name'       => 0,
+							),
+						),
+						'min'        => '',
+						'max'        => '1',
+					),
+					'layout_5b6c4a2a4c11e' => array(
+						'key'        => 'layout_5b6c4a2a4c11e',
+						'name'       => 'quote',
+						'label'      => __( 'Quote', THEME_DOMAIN ),
+						'display'    => 'block',
+						'sub_fields' => array(
+							array(
+								'key'               => 'field_5b6c4a324c11f',
+								'label'             => __( 'Quote', THEME_DOMAIN ),
+								'name'              => 'quote',
+								'type'              => 'clone',
+								'instructions'      => '',
+								'required'          => 0,
+								'conditional_logic' => 0,
+								'wrapper'           => array(
+									'width' => '',
+									'class' => '',
+									'id'    => '',
+								),
+								'clone'             => array(
+									0 => 'group_5b6c045f68e96',
+								),
+								'display'           => 'seamless',
+								'layout'            => 'block',
+								'prefix_label'      => 0,
+								'prefix_name'       => 0,
+							),
+						),
+						'min'        => '',
+						'max'        => '',
+					),
+					'layout_5b6c4a5f4c120' => array(
+						'key'        => 'layout_5b6c4a5f4c120',
+						'name'       => 'text',
+						'label'      => __( 'Text', THEME_DOMAIN ),
+						'display'    => 'block',
+						'sub_fields' => array(
+							array(
+								'key'               => 'field_5b6c4a7a4c121',
+								'label'             => '',
+								'name'              => 'text',
+								'type'              => 'wysiwyg',
+								'instructions'      => '',
+								'required'          => 0,
+								'conditional_logic' => 0,
+								'wrapper'           => array(
+									'width' => '',
+									'class' => '',
+									'id'    => '',
+								),
+								'default_value'     => '',
+								'tabs'              => 'all',
+								'toolbar'           => 'full',
+								'media_upload'      => 1,
+								'delay'             => 0,
+							),
+							array(
+								'key'               => 'field_5b7d9304041de',
+								'label'             => __( 'About this Block', THEME_DOMAIN ),
+								'name'              => '',
+								'type'              => 'message',
+								'instructions'      => '',
+								'required'          => 0,
+								'conditional_logic' => 0,
+								'wrapper'           => array(
+									'width' => '',
+									'class' => '',
+									'id'    => '',
+								),
+								'message'           => __( 'Use this block to add text. If you need to add raw HTML, make sure you use the \'text\' mode instead of the \'visual\' mode.', THEME_DOMAIN ),
+								'new_lines'         => 'wpautop',
+								'esc_html'          => 0,
+							),
+						),
+						'min'        => '',
+						'max'        => '',
+					),
+					'layout_5b6c4aa24c122' => array(
+						'key'        => 'layout_5b6c4aa24c122',
+						'name'       => 'image',
+						'label'      => __( 'Image', THEME_DOMAIN ),
+						'display'    => 'block',
+						'sub_fields' => array(
+							array(
+								'key'               => 'field_5b6c4aab4c123',
+								'label'             => __( 'Image', THEME_DOMAIN ),
+								'name'              => 'image',
+								'type'              => 'image',
+								'instructions'      => '',
+								'required'          => 0,
+								'conditional_logic' => 0,
+								'wrapper'           => array(
+									'width' => '',
+									'class' => '',
+									'id'    => '',
+								),
+								'return_format'     => 'array',
+								'preview_size'      => 'regular',
+								'library'           => 'all',
+								'min_width'         => '',
+								'min_height'        => '',
+								'min_size'          => '',
+								'max_width'         => '',
+								'max_height'        => '',
+								'max_size'          => '',
+								'mime_types'        => '',
+							),
+						),
+						'min'        => '',
+						'max'        => '',
+					),
+					'layout_5b6c4af94c126' => array(
+						'key'        => 'layout_5b6c4af94c126',
+						'name'       => 'oembed',
+						'label'      => __( 'Video / Tweet / Post etc.', THEME_DOMAIN ),
+						'display'    => 'block',
+						'sub_fields' => array(
+							array(
+								'key'               => 'field_5b6c4b1b4c127',
+								'label'             => __( 'Video / Tweet / Post etc.', THEME_DOMAIN ),
+								'name'              => 'oembed',
+								'type'              => 'oembed',
+								'instructions'      => __( 'Make sure you use the url to the tweet, post or video itself and not to the timeline.', THEME_DOMAIN ),
+								'required'          => 0,
+								'conditional_logic' => 0,
+								'wrapper'           => array(
+									'width' => '',
+									'class' => '',
+									'id'    => '',
+								),
+								'width'             => 600,
+								'height'            => '',
+							),
+							array(
+								'key'               => 'field_5b72a37b414b7',
+								'label'             => __( 'About this Block', THEME_DOMAIN ),
+								'name'              => '',
+								'type'              => 'message',
+								'instructions'      => '',
+								'required'          => 0,
+								'conditional_logic' => 0,
+								'wrapper'           => array(
+									'width' => '',
+									'class' => '',
+									'id'    => '',
+								),
+								'message'           => __( 'Use this block to embed some posts, tweets, youtube videos etc. Just paste the link to the resource to embed and wait for the preview. If no preview appears, auto-embedding is not supported. You can then use a text block, switch to the text mode (on the upper right corner) and paste in the embed code provided from the platform that hosts the content.', THEME_DOMAIN ),
+								'new_lines'         => 'wpautop',
+								'esc_html'          => 0,
+							),
+						),
+						'min'        => '',
+						'max'        => '',
+					),
+					'layout_5bbf722de1080' => array(
+						'key'        => 'layout_5bbf722de1080',
+						'name'       => 'person',
+						'label'      => __( 'Person', THEME_DOMAIN ),
+						'display'    => 'block',
+						'sub_fields' => array(
+							array(
+								'key'               => 'field_5bbf74e57edfa',
+								'label'             => __( 'person', THEME_DOMAIN ),
+								'name'              => 'person',
+								'type'              => 'clone',
+								'instructions'      => '',
+								'required'          => 0,
+								'conditional_logic' => 0,
+								'wrapper'           => array(
+									'width' => '',
+									'class' => '',
+									'id'    => '',
+								),
+								'clone'             => array(
+									0 => 'group_5bbf71ef4ed64',
+								),
+								'display'           => 'seamless',
+								'layout'            => 'block',
+								'prefix_label'      => 0,
+								'prefix_name'       => 0,
+							),
+							array(
+								'key'               => 'field_5bbf746e7edf9',
+								'label'             => __( 'About this Block', THEME_DOMAIN ),
+								'name'              => '',
+								'type'              => 'message',
+								'instructions'      => '',
+								'required'          => 0,
+								'conditional_logic' => 0,
+								'wrapper'           => array(
+									'width' => '',
+									'class' => '',
+									'id'    => '',
+								),
+								'message'           => __( 'Use this block to present your members of parliament, your candidates etc.', THEME_DOMAIN ),
+								'new_lines'         => 'wpautop',
+								'esc_html'          => 0,
+							),
+						),
+						'min'        => '',
+						'max'        => '',
+					),
+					'layout_5bf563b4e8753' => array(
+						'key'        => 'layout_5bf563b4e8753',
+						'name'       => 'form',
+						'label'      => __( 'Form', THEME_DOMAIN ),
+						'display'    => 'block',
+						'sub_fields' => array(
+							array(
+								'key'               => 'field_5bf563b4e8754',
+								'label'             => __( 'About this Block', THEME_DOMAIN ),
+								'name'              => '',
+								'type'              => 'message',
+								'instructions'      => '',
+								'required'          => 0,
+								'conditional_logic' => 0,
+								'wrapper'           => array(
+									'width' => '',
+									'class' => '',
+									'id'    => '',
+								),
+								'message'           => __( 'Show a form', THEME_DOMAIN ),
+								'new_lines'         => '',
+								'esc_html'          => 0,
+							),
+							array(
+								'key'               => 'field_5bf563b4e8755',
+								'label'             => __( 'Form', THEME_DOMAIN ),
+								'name'              => 'form',
+								'type'              => 'post_object',
+								'instructions'      => '',
+								'required'          => 0,
+								'conditional_logic' => 0,
+								'wrapper'           => array(
+									'width' => '',
+									'class' => '',
+									'id'    => '',
+								),
+								'post_type'         => array(
+									0 => 'theme_form',
+								),
+								'taxonomy'          => '',
+								'allow_null'        => 0,
+								'multiple'          => 0,
+								'return_format'     => '',
+								'ui'                => 1,
+							),
+						),
+						'min'        => '',
+						'max'        => '',
+					),
+					'layout_5c1554094a513' => array(
+						'key'        => 'layout_5c1554094a513',
+						'name'       => 'engagement_funnel',
+						'label'      => __( 'Engagement Funnel', THEME_DOMAIN ),
+						'display'    => 'block',
+						'sub_fields' => array(
+							array(
+								'key'               => 'field_5c1554094a515',
+								'label'             => __( 'Configuration', THEME_DOMAIN ),
+								'name'              => 'configuration',
+								'type'              => 'post_object',
+								'instructions'      => '',
+								'required'          => 0,
+								'conditional_logic' => 0,
+								'wrapper'           => array(
+									'width' => '',
+									'class' => '',
+									'id'    => '',
+								),
+								'post_type'         => array(
+									0 => 'efpconfiguration',
+								),
+								'taxonomy'          => '',
+								'allow_null'        => 0,
+								'multiple'          => 0,
+								'return_format'     => 'object',
+								'ui'                => 1,
+							),
+							array(
+								'key'               => 'field_5c1554094a514',
+								'label'             => __( 'About this Block', THEME_DOMAIN ),
+								'name'              => '',
+								'type'              => 'message',
+								'instructions'      => '',
+								'required'          => 0,
+								'conditional_logic' => 0,
+								'wrapper'           => array(
+									'width' => '',
+									'class' => '',
+									'id'    => '',
+								),
+								'message'           => __( 'Add an engagement funnel (advanced)', THEME_DOMAIN ),
+								'new_lines'         => '',
+								'esc_html'          => 0,
+							),
+						),
+						'min'        => '',
+						'max'        => '',
+					),
+					'layout_5c4f21cbd787c' => array(
+						'key'        => 'layout_5c4f21cbd787c',
+						'name'       => 'code',
+						'label'      => __( 'Code', THEME_DOMAIN ),
+						'display'    => 'block',
+						'sub_fields' => array(
+							array(
+								'key'               => 'field_5c4f21cbd787e',
+								'label'             => __( 'Code', THEME_DOMAIN ),
+								'name'              => 'code',
+								'type'              => 'acf_code_field',
+								'instructions'      => '',
+								'required'          => 0,
+								'conditional_logic' => 0,
+								'wrapper'           => array(
+									'width' => '',
+									'class' => '',
+									'id'    => '',
+								),
+								'default_value'     => '',
+								'placeholder'       => '',
+								'mode'              => 'htmlmixed',
+								'theme'             => 'neo',
+							),
+							array(
+								'key'               => 'field_5c4f21cbd787d',
+								'label'             => __( 'About this Block', THEME_DOMAIN ),
+								'name'              => '',
+								'type'              => 'message',
+								'instructions'      => '',
+								'required'          => 0,
+								'conditional_logic' => 0,
+								'wrapper'           => array(
+									'width' => '',
+									'class' => '',
+									'id'    => '',
+								),
+								'message'           => __( 'Acc custom code (advanced)', THEME_DOMAIN ),
+								'new_lines'         => '',
+								'esc_html'          => 0,
+							),
+						),
+						'min'        => '',
+						'max'        => '',
+					),
+					'layout_5d24b10e70f29' => array(
+						'key'        => 'layout_5d24b10e70f29',
+						'name'       => 'testimonials',
+						'label'      => __( 'Testimonials', THEME_DOMAIN ),
+						'display'    => 'block',
+						'sub_fields' => array(
+							array(
+								'key'               => 'field_5d24b11e70f2a',
+								'label'             => '',
+								'name'              => '',
+								'type'              => 'clone',
+								'instructions'      => '',
+								'required'          => 0,
+								'conditional_logic' => 0,
+								'wrapper'           => array(
+									'width' => '',
+									'class' => '',
+									'id'    => '',
+								),
+								'clone'             => array(
+									0 => 'field_5b7da1211ced8',
+									1 => 'field_5b6c608604fce',
+								),
+								'display'           => 'seamless',
+								'layout'            => 'block',
+								'prefix_label'      => 0,
+								'prefix_name'       => 0,
+							),
+						),
+						'min'        => '',
+						'max'        => '1',
+					),
+				),
+				'button_label'      => __( 'Add Content Block', THEME_DOMAIN ),
+				'min'               => '',
+				'max'               => '',
+			),
+		),
+		'location'              => array(
+			array(
+				array(
+					'param'    => 'post_type',
+					'operator' => '==',
+					'value'    => 'post',
+				),
+			),
+		),
+		'menu_order'            => 0,
+		'position'              => 'normal',
+		'style'                 => 'default',
+		'label_placement'       => 'top',
+		'instruction_placement' => 'label',
+		'hide_on_screen'        => '',
+		'active'                => false,
+		'description'           => '',
+	) );
+
+	acf_add_local_field_group( array(
 		'key'                   => 'group_5b6ae2eb01de7',
 		'title'                 => __( '[Template]Events Block', THEME_DOMAIN ),
 		'fields'                => array(
@@ -872,7 +1376,7 @@ if( function_exists('acf_add_local_field_group') ):
 				'wrapper'           => array(
 					'width' => '',
 					'class' => '',
-					'id' => '',
+					'id'    => '',
 				),
 				'message'           => __( 'Displays a teaser of your most recent events.', THEME_DOMAIN ),
 				'new_lines'         => 'wpautop',
@@ -889,7 +1393,7 @@ if( function_exists('acf_add_local_field_group') ):
 				'wrapper'           => array(
 					'width' => '',
 					'class' => '',
-					'id' => '',
+					'id'    => '',
 				),
 				'clone'             => array(
 					0 => 'group_5b684e748247e',
@@ -904,14 +1408,13 @@ if( function_exists('acf_add_local_field_group') ):
 				'label'             => __( 'Max events to show', THEME_DOMAIN ),
 				'name'              => 'max_num',
 				'type'              => 'number',
-				'instructions'      => __( 'Visitors can always see all events by clicking the «Show all events»-Button.',
-					THEME_DOMAIN ),
+				'instructions'      => __( 'Visitors can always see all events by clicking the «Show all events»-Button.', THEME_DOMAIN ),
 				'required'          => 1,
 				'conditional_logic' => 0,
 				'wrapper'           => array(
 					'width' => '',
 					'class' => '',
-					'id' => '',
+					'id'    => '',
 				),
 				'default_value'     => 4,
 				'placeholder'       => '',
@@ -926,27 +1429,26 @@ if( function_exists('acf_add_local_field_group') ):
 				'label'             => __( 'Full Width', THEME_DOMAIN ),
 				'name'              => 'full_width',
 				'type'              => 'true_false',
-				'instructions'      => __( 'If full width, the block will span the whole page (both columns) else it will only take the place of a single column block.',
-					THEME_DOMAIN ),
+				'instructions'      => __( 'If full width, the block will span the whole page (both columns) else it will only take the place of a single column block.', THEME_DOMAIN ),
 				'required'          => 0,
 				'conditional_logic' => array(
 					array(
 						array(
-							'field' => 'field_5b6ae32ac26d0',
+							'field'    => 'field_5b6ae32ac26d0',
 							'operator' => '>',
-							'value' => '2',
+							'value'    => '2',
 						),
 						array(
-							'field' => 'field_5b6ae32ac26d0',
+							'field'    => 'field_5b6ae32ac26d0',
 							'operator' => '<',
-							'value' => '6',
+							'value'    => '6',
 						),
 					),
 				),
 				'wrapper'           => array(
 					'width' => '',
 					'class' => '',
-					'id' => '',
+					'id'    => '',
 				),
 				'message'           => '',
 				'default_value'     => 1,
@@ -958,9 +1460,9 @@ if( function_exists('acf_add_local_field_group') ):
 		'location'              => array(
 			array(
 				array(
-					'param' => 'page_type',
+					'param'    => 'page_type',
 					'operator' => '==',
-					'value' => 'front_page',
+					'value'    => 'front_page',
 				),
 			),
 		),
@@ -970,17 +1472,18 @@ if( function_exists('acf_add_local_field_group') ):
 		'label_placement'       => 'top',
 		'instruction_placement' => 'label',
 		'hide_on_screen'        => '',
-		'active'                => 0,
+		'active'                => false,
 		'description'           => '',
-	));
-	
-	acf_add_local_field_group(array(
+		'modified'              => 1543420761,
+	) );
+
+	acf_add_local_field_group( array(
 		'key'                   => 'group_5b645b16b8a08',
 		'title'                 => __( '[Template]Front Main Campaign', THEME_DOMAIN ),
 		'fields'                => array(
 			array(
 				'key'               => 'field_5bfd36914df38',
-				'label'             => __( 'Main Campaign', THEME_DOMAIN ),
+				'label'             => __( 'Show Main Campaign', THEME_DOMAIN ),
 				'name'              => 'show_main_campaign',
 				'type'              => 'true_false',
 				'instructions'      => '',
@@ -989,44 +1492,13 @@ if( function_exists('acf_add_local_field_group') ):
 				'wrapper'           => array(
 					'width' => '',
 					'class' => '',
-					'id' => '',
+					'id'    => '',
 				),
 				'message'           => __( 'Display primary campaign?', THEME_DOMAIN ),
 				'default_value'     => 1,
 				'ui'                => 1,
-				'ui_on_text'        => '',
-				'ui_off_text'       => '',
-			),
-			array(
-				'key'               => 'field_5b645f6d33efa',
-				'label'             => __( 'Campaign Page', THEME_DOMAIN ),
-				'name'              => 'link',
-				'type'              => 'post_object',
-				'instructions'      => __( 'Select the post that holds the whole campaign content.', THEME_DOMAIN ),
-				'required'          => 1,
-				'conditional_logic' => array(
-					array(
-						array(
-							'field' => 'field_5bfd36914df38',
-							'operator' => '==',
-							'value' => '1',
-						),
-					),
-				),
-				'wrapper'           => array(
-					'width' => '',
-					'class' => '',
-					'id' => '',
-				),
-				'post_type'         => array(
-					0 => 'post',
-					1 => 'page',
-				),
-				'taxonomy'          => '',
-				'allow_null'        => 0,
-				'multiple'          => 0,
-				'return_format'     => 'object',
-				'ui'                => 1,
+				'ui_on_text'        => __( 'Show', THEME_DOMAIN ),
+				'ui_off_text'       => __( 'Hide', THEME_DOMAIN ),
 			),
 			array(
 				'key'               => 'field_5b645b8533eeb',
@@ -1038,16 +1510,16 @@ if( function_exists('acf_add_local_field_group') ):
 				'conditional_logic' => array(
 					array(
 						array(
-							'field' => 'field_5bfd36914df38',
+							'field'    => 'field_5bfd36914df38',
 							'operator' => '==',
-							'value' => '1',
+							'value'    => '1',
 						),
 					),
 				),
 				'wrapper'           => array(
 					'width' => '',
 					'class' => '',
-					'id' => '',
+					'id'    => '',
 				),
 				'return_format'     => 'array',
 				'preview_size'      => 'regular',
@@ -1070,16 +1542,16 @@ if( function_exists('acf_add_local_field_group') ):
 				'conditional_logic' => array(
 					array(
 						array(
-							'field' => 'field_5bfd36914df38',
+							'field'    => 'field_5bfd36914df38',
 							'operator' => '==',
-							'value' => '1',
+							'value'    => '1',
 						),
 					),
 				),
 				'wrapper'           => array(
 					'width' => '',
 					'class' => '',
-					'id' => '',
+					'id'    => '',
 				),
 				'layout'            => 'block',
 				'sub_fields'        => array(
@@ -1094,7 +1566,7 @@ if( function_exists('acf_add_local_field_group') ):
 						'wrapper'           => array(
 							'width' => '',
 							'class' => '',
-							'id' => '',
+							'id'    => '',
 						),
 						'choices'           => array(
 							'left'  => __( 'Left', THEME_DOMAIN ),
@@ -1113,22 +1585,21 @@ if( function_exists('acf_add_local_field_group') ):
 						'label'             => __( 'Main Color', THEME_DOMAIN ),
 						'name'              => 'main_color',
 						'type'              => 'button_group',
-						'instructions'      => __( 'Select color of the upper headlines. Default is green. Use white, if the background is green already.',
-							THEME_DOMAIN ),
+						'instructions'      => __( 'Select color of the upper headlines. Default is green. Use white, if the background is green already.', THEME_DOMAIN ),
 						'required'          => 0,
 						'conditional_logic' => array(
 							array(
 								array(
-									'field' => 'field_5b64b19806123',
+									'field'    => 'field_5b64b19806123',
 									'operator' => '!=',
-									'value' => 'none',
+									'value'    => 'none',
 								),
 							),
 						),
 						'wrapper'           => array(
 							'width' => '30',
 							'class' => '',
-							'id' => '',
+							'id'    => '',
 						),
 						'choices'           => array(
 							'green' => __( 'Green', THEME_DOMAIN ),
@@ -1149,16 +1620,16 @@ if( function_exists('acf_add_local_field_group') ):
 						'conditional_logic' => array(
 							array(
 								array(
-									'field' => 'field_5b64b19806123',
+									'field'    => 'field_5b64b19806123',
 									'operator' => '!=',
-									'value' => 'none',
+									'value'    => 'none',
 								),
 							),
 						),
 						'wrapper'           => array(
 							'width' => '70',
 							'class' => '',
-							'id' => '',
+							'id'    => '',
 						),
 						'layout'            => 'block',
 						'sub_fields'        => array(
@@ -1172,16 +1643,16 @@ if( function_exists('acf_add_local_field_group') ):
 								'conditional_logic' => array(
 									array(
 										array(
-											'field' => 'field_5b718193dfd9f',
+											'field'    => 'field_5b718193dfd9f',
 											'operator' => '==',
-											'value' => 'green',
+											'value'    => 'green',
 										),
 									),
 								),
 								'wrapper'           => array(
 									'width' => '',
 									'class' => '',
-									'id' => '',
+									'id'    => '',
 								),
 								'collapsed'         => 'field_5b645c0833eed',
 								'min'               => 1,
@@ -1200,7 +1671,7 @@ if( function_exists('acf_add_local_field_group') ):
 										'wrapper'           => array(
 											'width' => '',
 											'class' => '',
-											'id' => '',
+											'id'    => '',
 										),
 										'default_value'     => '',
 										'placeholder'       => '',
@@ -1220,16 +1691,16 @@ if( function_exists('acf_add_local_field_group') ):
 								'conditional_logic' => array(
 									array(
 										array(
-											'field' => 'field_5b718193dfd9f',
+											'field'    => 'field_5b718193dfd9f',
 											'operator' => '==',
-											'value' => 'white',
+											'value'    => 'white',
 										),
 									),
 								),
 								'wrapper'           => array(
 									'width' => '',
 									'class' => '',
-									'id' => '',
+									'id'    => '',
 								),
 								'collapsed'         => 'field_5b645cf533eef',
 								'min'               => 1,
@@ -1248,7 +1719,7 @@ if( function_exists('acf_add_local_field_group') ):
 										'wrapper'           => array(
 											'width' => '',
 											'class' => '',
-											'id' => '',
+											'id'    => '',
 										),
 										'default_value'     => '',
 										'placeholder'       => '',
@@ -1269,7 +1740,7 @@ if( function_exists('acf_add_local_field_group') ):
 								'wrapper'           => array(
 									'width' => '',
 									'class' => '',
-									'id' => '',
+									'id'    => '',
 								),
 								'collapsed'         => 'field_5b645d6b33ef1',
 								'min'               => 1,
@@ -1288,7 +1759,7 @@ if( function_exists('acf_add_local_field_group') ):
 										'wrapper'           => array(
 											'width' => '',
 											'class' => '',
-											'id' => '',
+											'id'    => '',
 										),
 										'default_value'     => '',
 										'placeholder'       => '',
@@ -1305,22 +1776,21 @@ if( function_exists('acf_add_local_field_group') ):
 						'label'             => __( 'Subline Color', THEME_DOMAIN ),
 						'name'              => 'subline_color',
 						'type'              => 'button_group',
-						'instructions'      => __( 'Select color of the sublines. Default is white. Use green, if the background is white already.',
-							THEME_DOMAIN ),
+						'instructions'      => __( 'Select color of the sublines. Default is white. Use green, if the background is white already.', THEME_DOMAIN ),
 						'required'          => 0,
 						'conditional_logic' => array(
 							array(
 								array(
-									'field' => 'field_5b64b19806123',
+									'field'    => 'field_5b64b19806123',
 									'operator' => '!=',
-									'value' => 'none',
+									'value'    => 'none',
 								),
 							),
 						),
 						'wrapper'           => array(
 							'width' => '30',
 							'class' => '',
-							'id' => '',
+							'id'    => '',
 						),
 						'choices'           => array(
 							'white' => __( 'White', THEME_DOMAIN ),
@@ -1341,16 +1811,16 @@ if( function_exists('acf_add_local_field_group') ):
 						'conditional_logic' => array(
 							array(
 								array(
-									'field' => 'field_5b64b19806123',
+									'field'    => 'field_5b64b19806123',
 									'operator' => '!=',
-									'value' => 'none',
+									'value'    => 'none',
 								),
 							),
 						),
 						'wrapper'           => array(
 							'width' => '70',
 							'class' => '',
-							'id' => '',
+							'id'    => '',
 						),
 						'layout'            => 'block',
 						'sub_fields'        => array(
@@ -1364,16 +1834,16 @@ if( function_exists('acf_add_local_field_group') ):
 								'conditional_logic' => array(
 									array(
 										array(
-											'field' => 'field_5b72aad898025',
+											'field'    => 'field_5b72aad898025',
 											'operator' => '==',
-											'value' => 'green',
+											'value'    => 'green',
 										),
 									),
 								),
 								'wrapper'           => array(
 									'width' => '',
 									'class' => '',
-									'id' => '',
+									'id'    => '',
 								),
 								'collapsed'         => 'field_5b72aadd9802e',
 								'min'               => 0,
@@ -1392,7 +1862,7 @@ if( function_exists('acf_add_local_field_group') ):
 										'wrapper'           => array(
 											'width' => '',
 											'class' => '',
-											'id' => '',
+											'id'    => '',
 										),
 										'default_value'     => '',
 										'placeholder'       => '',
@@ -1412,16 +1882,16 @@ if( function_exists('acf_add_local_field_group') ):
 								'conditional_logic' => array(
 									array(
 										array(
-											'field' => 'field_5b72aad898025',
+											'field'    => 'field_5b72aad898025',
 											'operator' => '==',
-											'value' => 'white',
+											'value'    => 'white',
 										),
 									),
 								),
 								'wrapper'           => array(
 									'width' => '',
 									'class' => '',
-									'id' => '',
+									'id'    => '',
 								),
 								'collapsed'         => 'field_5b72aadd98030',
 								'min'               => 0,
@@ -1440,7 +1910,7 @@ if( function_exists('acf_add_local_field_group') ):
 										'wrapper'           => array(
 											'width' => '',
 											'class' => '',
-											'id' => '',
+											'id'    => '',
 										),
 										'default_value'     => '',
 										'placeholder'       => '',
@@ -1459,22 +1929,21 @@ if( function_exists('acf_add_local_field_group') ):
 				'label'             => __( 'Campaign Summary', THEME_DOMAIN ),
 				'name'              => 'summary',
 				'type'              => 'group',
-				'instructions'      => __( 'This refers to the upper left box below the image. Add a brief description of the campaign.',
-					THEME_DOMAIN ),
+				'instructions'      => __( 'This refers to the upper left box below the image. Add a brief description of the campaign.', THEME_DOMAIN ),
 				'required'          => 0,
 				'conditional_logic' => array(
 					array(
 						array(
-							'field' => 'field_5bfd36914df38',
+							'field'    => 'field_5bfd36914df38',
 							'operator' => '==',
-							'value' => '1',
+							'value'    => '1',
 						),
 					),
 				),
 				'wrapper'           => array(
 					'width' => '',
 					'class' => '',
-					'id' => '',
+					'id'    => '',
 				),
 				'layout'            => 'block',
 				'sub_fields'        => array(
@@ -1489,7 +1958,7 @@ if( function_exists('acf_add_local_field_group') ):
 						'wrapper'           => array(
 							'width' => '',
 							'class' => '',
-							'id' => '',
+							'id'    => '',
 						),
 						'default_value'     => '',
 						'placeholder'       => '',
@@ -1502,14 +1971,13 @@ if( function_exists('acf_add_local_field_group') ):
 						'label'             => __( 'Teaser', THEME_DOMAIN ),
 						'name'              => 'teaser',
 						'type'              => 'textarea',
-						'instructions'      => __( 'Write a brief teaser to attract the readers interest. Keept it short (200 to 400 characters).',
-							THEME_DOMAIN ),
+						'instructions'      => __( 'Write a brief teaser to attract the readers interest. Keept it short (200 to 400 characters).', THEME_DOMAIN ),
 						'required'          => 0,
 						'conditional_logic' => 0,
 						'wrapper'           => array(
 							'width' => '',
 							'class' => '',
-							'id' => '',
+							'id'    => '',
 						),
 						'default_value'     => '',
 						'placeholder'       => '',
@@ -1520,21 +1988,17 @@ if( function_exists('acf_add_local_field_group') ):
 					array(
 						'key'               => 'field_5b645edb33ef9',
 						'label'             => __( 'Read more button', THEME_DOMAIN ),
-						'name'              => 'read_more_text',
-						'type'              => 'text',
-						'instructions'      => __( 'The button text.', THEME_DOMAIN ),
+						'name'              => 'read_more',
+						'type'              => 'link',
+						'instructions'      => __( 'Link the main page of this campaign and set an accurate "read more" text for the link button.', THEME_DOMAIN ),
 						'required'          => 0,
 						'conditional_logic' => 0,
 						'wrapper'           => array(
 							'width' => '',
 							'class' => '',
-							'id' => '',
+							'id'    => '',
 						),
-						'default_value'     => 'Read more about this campaign',
-						'placeholder'       => '',
-						'prepend'           => '',
-						'append'            => '',
-						'maxlength'         => 80,
+						'return_format'     => 'array',
 					),
 				),
 			),
@@ -1543,126 +2007,160 @@ if( function_exists('acf_add_local_field_group') ):
 				'label'             => __( 'Call to Action', THEME_DOMAIN ),
 				'name'              => 'call_to_action',
 				'type'              => 'group',
-				'instructions'      => __( 'This refers to the second box, the darker one. Use it to call for action.',
-					THEME_DOMAIN ),
+				'instructions'      => __( 'This refers to the second box, the darker one. Use it to call for action.', THEME_DOMAIN ),
 				'required'          => 0,
 				'conditional_logic' => array(
 					array(
 						array(
-							'field' => 'field_5bfd36914df38',
+							'field'    => 'field_5bfd36914df38',
 							'operator' => '==',
-							'value' => '1',
+							'value'    => '1',
 						),
 					),
 				),
 				'wrapper'           => array(
 					'width' => '',
 					'class' => '',
-					'id' => '',
+					'id'    => '',
 				),
 				'layout'            => 'block',
 				'sub_fields'        => array(
 					array(
-						'key'               => 'field_5b7d9b1980bb8',
-						'label'             => __( 'Participate Title', THEME_DOMAIN ),
-						'name'              => 'participate_title',
-						'type'              => 'group',
-						'instructions'      => __( 'Use an encouraging title, like \'Let me be part of the success\'.',
-							THEME_DOMAIN ),
+						'key'               => 'field_5b681c8590acf',
+						'label'             => __( 'Title', THEME_DOMAIN ),
+						'name'              => 'title',
+						'type'              => 'text',
+						'instructions'      => __( 'Use an encouraging title, like \'Let me be part of the success\'.', THEME_DOMAIN ),
 						'required'          => 0,
 						'conditional_logic' => 0,
 						'wrapper'           => array(
 							'width' => '',
 							'class' => '',
-							'id' => '',
-						),
-						'layout'            => 'row',
-						'sub_fields'        => array(
-							array(
-								'key'               => 'field_5b681c8590acf',
-								'label'             => __( 'Participate Title', THEME_DOMAIN ),
-								'name'              => 'title',
-								'type'              => 'text',
-								'instructions'      => '',
-								'required'          => 0,
-								'conditional_logic' => 0,
-								'wrapper'           => array(
-									'width' => '',
-									'class' => '',
-									'id' => '',
-								),
-								'default_value'     => '',
-								'placeholder'       => '',
-								'prepend'           => '',
-								'append'            => '',
-								'maxlength'         => 80,
-							),
-							array(
-								'key'               => 'field_5b6821cd715d5',
-								'label'             => __( 'Participate Title Link', THEME_DOMAIN ),
-								'name'              => 'general_participation_link',
-								'type'              => 'page_link',
-								'instructions'      => __( 'Select the page that contains an overview with all your participation possibilities.',
-									THEME_DOMAIN ),
-								'required'          => 0,
-								'conditional_logic' => 0,
-								'wrapper'           => array(
-									'width' => '',
-									'class' => '',
-									'id' => '',
-								),
-								'post_type'         => array(
-									0 => 'post',
-									1 => 'page',
-								),
-								'taxonomy'          => '',
-								'allow_null'        => 1,
-								'allow_archives'    => 1,
-								'multiple'          => 0,
-							),
-						),
-					),
-					array(
-						'key'               => 'field_5b681f7ccd058',
-						'label'             => __( 'Participation Description', THEME_DOMAIN ),
-						'name'              => 'description',
-						'type'              => 'textarea',
-						'instructions'      => __( 'Tell the visiter briefly, what the form does. Example: Stay updated, subscribe to our newsletter; make a change, become a member; sign the petition',
-							THEME_DOMAIN ),
-						'required'          => 0,
-						'conditional_logic' => 0,
-						'wrapper'           => array(
-							'width' => '',
-							'class' => '',
-							'id' => '',
+							'id'    => '',
 						),
 						'default_value'     => '',
 						'placeholder'       => '',
-						'maxlength'         => 280,
-						'rows'              => 2,
-						'new_lines'         => '',
+						'prepend'           => '',
+						'append'            => '',
+						'maxlength'         => '',
 					),
 					array(
-						'key'               => 'field_5b681f2590ad0',
-						'label'             => __( 'Call to Action', THEME_DOMAIN ),
-						'name'              => 'form',
-						'type'              => 'post_object',
-						'instructions'      => __( 'Select the form containing your call to action.', THEME_DOMAIN ),
+						'key'               => 'field_5b681f7ccd058',
+						'label'             => __( 'Description', THEME_DOMAIN ),
+						'name'              => 'description',
+						'type'              => 'textarea',
+						'instructions'      => __( 'Tell the visiter briefly, what the form does. Example: Stay updated, subscribe to our newsletter; make a change, become a member; sign the petition', THEME_DOMAIN ),
 						'required'          => 0,
 						'conditional_logic' => 0,
 						'wrapper'           => array(
 							'width' => '',
 							'class' => '',
-							'id' => '',
+							'id'    => '',
+						),
+						'default_value'     => '',
+						'placeholder'       => '',
+						'maxlength'         => '',
+						'rows'              => '',
+						'new_lines'         => '',
+					),
+					array(
+						'key'               => 'field_5cf77bf9983f1',
+						'label'             => __( 'Action Type', THEME_DOMAIN ),
+						'name'              => 'type',
+						'type'              => 'button_group',
+						'instructions'      => '',
+						'required'          => 0,
+						'conditional_logic' => 0,
+						'wrapper'           => array(
+							'width' => '',
+							'class' => '',
+							'id'    => '',
+						),
+						'choices'           => array(
+							'form'   => __( 'Form', THEME_DOMAIN ),
+							'button' => __( 'Action Button', THEME_DOMAIN ),
+							'link'   => __( 'Link Button', THEME_DOMAIN ),
+						),
+						'allow_null'        => 0,
+						'default_value'     => 'form',
+						'layout'            => 'horizontal',
+						'return_format'     => 'value',
+					),
+					array(
+						'key'               => 'field_5b681f2590ad0',
+						'label'             => __( 'Call to Action (Form)', THEME_DOMAIN ),
+						'name'              => 'form',
+						'type'              => 'post_object',
+						'instructions'      => __( 'Displays directly the form with the call to action.', THEME_DOMAIN ),
+						'required'          => 0,
+						'conditional_logic' => array(
+							array(
+								array(
+									'field'    => 'field_5cf77bf9983f1',
+									'operator' => '==',
+									'value'    => 'form',
+								),
+							),
+						),
+						'wrapper'           => array(
+							'width' => '',
+							'class' => '',
+							'id'    => '',
 						),
 						'post_type'         => array(
 							0 => 'theme_form',
 						),
 						'taxonomy'          => '',
-						'allow_null'        => 0,
+						'allow_null'        => 1,
 						'multiple'          => 0,
 						'return_format'     => 'id',
 						'ui'                => 1,
+					),
+					array(
+						'key'               => 'field_5cf77c8b983f2',
+						'label'             => __( 'Call to Action (Button)', THEME_DOMAIN ),
+						'name'              => 'button',
+						'type'              => 'link',
+						'instructions'      => __( 'Displays the link to your action page as a magenta button.', THEME_DOMAIN ),
+						'required'          => 0,
+						'conditional_logic' => array(
+							array(
+								array(
+									'field'    => 'field_5cf77bf9983f1',
+									'operator' => '==',
+									'value'    => 'button',
+								),
+							),
+						),
+						'wrapper'           => array(
+							'width' => '',
+							'class' => '',
+							'id'    => '',
+						),
+						'return_format'     => 'array',
+					),
+					array(
+						'key'               => 'field_5cf77d16983f3',
+						'label'             => __( 'Call to Action (Link Button)', THEME_DOMAIN ),
+						'name'              => 'link',
+						'type'              => 'link',
+						'instructions'      => __( 'Displays the link to further reading as link button (the green one with >).', THEME_DOMAIN ),
+						'required'          => 0,
+						'conditional_logic' => array(
+							array(
+								array(
+									'field'    => 'field_5cf77bf9983f1',
+									'operator' => '==',
+									'value'    => 'link',
+								),
+							),
+						),
+						'wrapper'           => array(
+							'width' => '',
+							'class' => '',
+							'id'    => '',
+						),
+						'return_format'     => 'array',
 					),
 				),
 			),
@@ -1670,16 +2168,16 @@ if( function_exists('acf_add_local_field_group') ):
 		'location'              => array(
 			array(
 				array(
-					'param' => 'post_type',
+					'param'    => 'post_type',
 					'operator' => '==',
-					'value' => 'post',
+					'value'    => 'post',
 				),
 			),
 			array(
 				array(
-					'param' => 'post_type',
+					'param'    => 'post_type',
 					'operator' => '==',
-					'value' => 'page',
+					'value'    => 'page',
 				),
 			),
 		),
@@ -1689,11 +2187,12 @@ if( function_exists('acf_add_local_field_group') ):
 		'label_placement'       => 'top',
 		'instruction_placement' => 'label',
 		'hide_on_screen'        => '',
-		'active'                => 0,
+		'active'                => false,
 		'description'           => '',
-	));
-	
-	acf_add_local_field_group(array(
+		'modified'              => 1559732070,
+	) );
+
+	acf_add_local_field_group( array(
 		'key'                   => 'group_5b6c416ac235f',
 		'title'                 => __( '[Template]In Short', THEME_DOMAIN ),
 		'fields'                => array(
@@ -1708,7 +2207,7 @@ if( function_exists('acf_add_local_field_group') ):
 				'wrapper'           => array(
 					'width' => '',
 					'class' => '',
-					'id' => '',
+					'id'    => '',
 				),
 				'message'           => __( 'This is for visitors that don\'t want to read a lot.
 
@@ -1727,7 +2226,7 @@ Provide the key facts, preferably in bullet points and add the main call to acti
 				'wrapper'           => array(
 					'width' => '',
 					'class' => '',
-					'id' => '',
+					'id'    => '',
 				),
 				'default_value'     => 'The most important in brief',
 				'placeholder'       => '',
@@ -1746,7 +2245,7 @@ Provide the key facts, preferably in bullet points and add the main call to acti
 				'wrapper'           => array(
 					'width' => '',
 					'class' => '',
-					'id' => '',
+					'id'    => '',
 				),
 				'layouts'           => array(
 					'layout_5b6c42dbd8fc1' => array(
@@ -1766,7 +2265,7 @@ Provide the key facts, preferably in bullet points and add the main call to acti
 								'wrapper'           => array(
 									'width' => '',
 									'class' => '',
-									'id' => '',
+									'id'    => '',
 								),
 								'default_value'     => '',
 								'tabs'              => 'all',
@@ -1780,8 +2279,8 @@ Provide the key facts, preferably in bullet points and add the main call to acti
 					),
 					'layout_5b6c498e69761' => array(
 						'key'        => 'layout_5b6c498e69761',
-						'name'       => 'call_to_action',
-						'label'      => __( 'Call to Action', THEME_DOMAIN ),
+						'name'       => 'form',
+						'label'      => __( 'Form', THEME_DOMAIN ),
 						'display'    => 'block',
 						'sub_fields' => array(
 							array(
@@ -1795,7 +2294,7 @@ Provide the key facts, preferably in bullet points and add the main call to acti
 								'wrapper'           => array(
 									'width' => '',
 									'class' => '',
-									'id' => '',
+									'id'    => '',
 								),
 								'post_type'         => array(
 									0 => 'theme_form',
@@ -1819,9 +2318,9 @@ Provide the key facts, preferably in bullet points and add the main call to acti
 		'location'              => array(
 			array(
 				array(
-					'param' => 'post_type',
+					'param'    => 'post_type',
 					'operator' => '==',
-					'value' => 'post',
+					'value'    => 'post',
 				),
 			),
 		),
@@ -1831,11 +2330,12 @@ Provide the key facts, preferably in bullet points and add the main call to acti
 		'label_placement'       => 'top',
 		'instruction_placement' => 'label',
 		'hide_on_screen'        => '',
-		'active'                => 0,
+		'active'                => false,
 		'description'           => '',
-	));
-	
-	acf_add_local_field_group(array(
+		'modified'              => 1543420698,
+	) );
+
+	acf_add_local_field_group( array(
 		'key'                   => 'group_5b68487f04a16',
 		'title'                 => __( '[Template]Latest Press Release', THEME_DOMAIN ),
 		'fields'                => array(
@@ -1850,7 +2350,7 @@ Provide the key facts, preferably in bullet points and add the main call to acti
 				'wrapper'           => array(
 					'width' => '',
 					'class' => '',
-					'id' => '',
+					'id'    => '',
 				),
 				'message'           => __( 'Display the latest press release (as long as it is published under the category you set below). Posts where the flag \'Show on front page\' is set to false will be excluded.
 
@@ -1869,7 +2369,7 @@ If the press release contains a quote block, the quote will be displayed. Else t
 				'wrapper'           => array(
 					'width' => '',
 					'class' => '',
-					'id' => '',
+					'id'    => '',
 				),
 				'clone'             => array(
 					0 => 'group_5b684e748247e',
@@ -1890,7 +2390,7 @@ If the press release contains a quote block, the quote will be displayed. Else t
 				'wrapper'           => array(
 					'width' => '',
 					'class' => '',
-					'id' => '',
+					'id'    => '',
 				),
 				'taxonomy'          => 'category',
 				'field_type'        => 'select',
@@ -1905,9 +2405,9 @@ If the press release contains a quote block, the quote will be displayed. Else t
 		'location'              => array(
 			array(
 				array(
-					'param' => 'page_type',
+					'param'    => 'page_type',
 					'operator' => '==',
-					'value' => 'front_page',
+					'value'    => 'front_page',
 				),
 			),
 		),
@@ -1917,11 +2417,12 @@ If the press release contains a quote block, the quote will be displayed. Else t
 		'label_placement'       => 'top',
 		'instruction_placement' => 'label',
 		'hide_on_screen'        => '',
-		'active'                => 0,
+		'active'                => false,
 		'description'           => '',
-	));
-	
-	acf_add_local_field_group(array(
+		'modified'              => 1543324744,
+	) );
+
+	acf_add_local_field_group( array(
 		'key'                   => 'group_5b6c4bfaa8a26',
 		'title'                 => __( '[Template]Link Lists', THEME_DOMAIN ),
 		'fields'                => array(
@@ -1936,12 +2437,11 @@ If the press release contains a quote block, the quote will be displayed. Else t
 				'wrapper'           => array(
 					'width' => '',
 					'class' => '',
-					'id' => '',
+					'id'    => '',
 				),
-				'message'           => __( 'Use link list blocks to provide some additional information, the reader could be interested in.
+				'message'           => __( 'Use link list blocks to provide some additional information, the reader could be interested in. 
 
-A good first starting point would be a <i>manual link list</i> block that lists documents where the reader can dig deeper, like the debate in parliament etc. A second cool block <i>(auto link list)</i> could be the latest posts of the same category or with the same tag.',
-					THEME_DOMAIN ),
+A good first starting point would be a <i>manual link list</i> block that lists documents where the reader can dig deeper, like the debate in parliament etc. A second cool block <i>(auto link list)</i> could be the latest posts of the same category or with the same tag.', THEME_DOMAIN ),
 				'new_lines'         => 'wpautop',
 				'esc_html'          => 0,
 			),
@@ -1950,14 +2450,13 @@ A good first starting point would be a <i>manual link list</i> block that lists 
 				'label'             => __( 'Title', THEME_DOMAIN ),
 				'name'              => 'title',
 				'type'              => 'text',
-				'instructions'      => __( 'Example: \'You might also be interested in\' or \' Related content\'',
-					THEME_DOMAIN ),
+				'instructions'      => __( 'Example: \'You might also be interested in\' or \' Related content\'', THEME_DOMAIN ),
 				'required'          => 0,
 				'conditional_logic' => 0,
 				'wrapper'           => array(
 					'width' => '',
 					'class' => '',
-					'id' => '',
+					'id'    => '',
 				),
 				'default_value'     => '',
 				'placeholder'       => '',
@@ -1976,10 +2475,10 @@ A good first starting point would be a <i>manual link list</i> block that lists 
 				'wrapper'           => array(
 					'width' => '',
 					'class' => '',
-					'id' => '',
+					'id'    => '',
 				),
 				'layouts'           => array(
-					'5b7c16195e1e9' => array(
+					'5b7c16195e1e9'        => array(
 						'key'        => '5b7c16195e1e9',
 						'name'       => 'manual',
 						'label'      => __( 'Manual Link List (Static)', THEME_DOMAIN ),
@@ -1996,10 +2495,9 @@ A good first starting point would be a <i>manual link list</i> block that lists 
 								'wrapper'           => array(
 									'width' => '',
 									'class' => '',
-									'id' => '',
+									'id'    => '',
 								),
-								'message'           => __( 'Show a manually curated list of links. Links you add using this block will stay as you added them (static).',
-									THEME_DOMAIN ),
+								'message'           => __( 'Show a manually curated list of links. Links you add using this block will stay as you added them (static).', THEME_DOMAIN ),
 								'new_lines'         => 'wpautop',
 								'esc_html'          => 0,
 							),
@@ -2014,7 +2512,7 @@ A good first starting point would be a <i>manual link list</i> block that lists 
 								'wrapper'           => array(
 									'width' => '',
 									'class' => '',
-									'id' => '',
+									'id'    => '',
 								),
 								'clone'             => array(
 									0 => 'group_5b684e748247e',
@@ -2029,17 +2527,16 @@ A good first starting point would be a <i>manual link list</i> block that lists 
 								'label'             => __( 'Linked Content', THEME_DOMAIN ),
 								'name'              => 'linked_content',
 								'type'              => 'flexible_content',
-								'instructions'      => __( 'Add up to four links to posts, pages, events or external links.',
-									THEME_DOMAIN ),
+								'instructions'      => __( 'Add up to four links to posts, pages, events or external links.', THEME_DOMAIN ),
 								'required'          => 0,
 								'conditional_logic' => 0,
 								'wrapper'           => array(
 									'width' => '',
 									'class' => '',
-									'id' => '',
+									'id'    => '',
 								),
 								'layouts'           => array(
-									'5b7af950bce91' => array(
+									'5b7af950bce91'        => array(
 										'key'        => '5b7af950bce91',
 										'name'       => 'links',
 										'label'      => __( 'Link', THEME_DOMAIN ),
@@ -2056,7 +2553,7 @@ A good first starting point would be a <i>manual link list</i> block that lists 
 												'wrapper'           => array(
 													'width' => '',
 													'class' => '',
-													'id' => '',
+													'id'    => '',
 												),
 												'return_format'     => 'array',
 											),
@@ -2081,15 +2578,14 @@ A good first starting point would be a <i>manual link list</i> block that lists 
 												'wrapper'           => array(
 													'width' => '',
 													'class' => '',
-													'id' => '',
+													'id'    => '',
 												),
 												'post_type'         => array(
 													0 => 'post',
 													1 => 'page',
 													2 => 'tribe_events',
 												),
-												'taxonomy'          => array(
-												),
+												'taxonomy'          => array(),
 												'allow_null'        => 0,
 												'multiple'          => 0,
 												'return_format'     => 'object',
@@ -2119,14 +2615,13 @@ A good first starting point would be a <i>manual link list</i> block that lists 
 								'label'             => __( 'Show Teaser', THEME_DOMAIN ),
 								'name'              => 'full_width',
 								'type'              => 'true_false',
-								'instructions'      => __( 'If true, the teaser of every content element is shown. This block will then span the whole content area (both columns).',
-									THEME_DOMAIN ),
+								'instructions'      => __( 'If true, the teaser of every content element is shown. This block will then span the whole content area (both columns).', THEME_DOMAIN ),
 								'required'          => 0,
 								'conditional_logic' => 0,
 								'wrapper'           => array(
 									'width' => '',
 									'class' => '',
-									'id' => '',
+									'id'    => '',
 								),
 								'message'           => '',
 								'default_value'     => 0,
@@ -2141,32 +2636,30 @@ A good first starting point would be a <i>manual link list</i> block that lists 
 								'type'              => 'group',
 								'instructions'      => __( 'The latest content that matches <strong>all</strong> of the selected categories and <strong>at least one</strong> of the selected tags will be displayed.<br><br>
 
-If <strong>no tags</strong> are selected, content matching all of the categories will be displayed. If <strong>no categories</strong> are selected, all content matching any of the tags will be displayed.',
-									THEME_DOMAIN ),
+If <strong>no tags</strong> are selected, content matching all of the categories will be displayed. If <strong>no categories</strong> are selected, all content matching any of the tags will be displayed.', THEME_DOMAIN ),
 								'required'          => 0,
 								'conditional_logic' => 0,
 								'wrapper'           => array(
 									'width' => '',
 									'class' => '',
-									'id' => '',
+									'id'    => '',
 								),
 								'layout'            => 'row',
 								'sub_fields'        => array(
 									array(
-										'key'               => 'field_5b7c1b309b256',
-										'label'             => __( 'Categories', THEME_DOMAIN ),
-										'name'              => 'categories',
+										'key'               => 'field_5b7c1b539b257',
+										'label'             => __( 'Tags', THEME_DOMAIN ),
+										'name'              => 'tags',
 										'type'              => 'taxonomy',
-										'instructions'      => __( 'Content is displayed if <strong>all categories match</strong>.',
-											THEME_DOMAIN ),
+										'instructions'      => __( 'Content is displayed if <strong>at lease one tag matches</strong>.', THEME_DOMAIN ),
 										'required'          => 0,
 										'conditional_logic' => 0,
 										'wrapper'           => array(
 											'width' => '',
 											'class' => '',
-											'id' => '',
+											'id'    => '',
 										),
-										'taxonomy'          => 'category',
+										'taxonomy'          => 'post_tag',
 										'field_type'        => 'multi_select',
 										'allow_null'        => 0,
 										'add_term'          => 0,
@@ -2176,20 +2669,19 @@ If <strong>no tags</strong> are selected, content matching all of the categories
 										'multiple'          => 0,
 									),
 									array(
-										'key'               => 'field_5b7c1b539b257',
-										'label'             => __( 'Tags', THEME_DOMAIN ),
-										'name'              => 'tags',
+										'key'               => 'field_5b7c1b309b256',
+										'label'             => __( 'Categories', THEME_DOMAIN ),
+										'name'              => 'categories',
 										'type'              => 'taxonomy',
-										'instructions'      => __( 'Content is displayed if <strong>at lease one tag matches</strong>.',
-											THEME_DOMAIN ),
+										'instructions'      => __( 'Content is displayed if <strong>all categories match</strong>.', THEME_DOMAIN ),
 										'required'          => 0,
 										'conditional_logic' => 0,
 										'wrapper'           => array(
 											'width' => '',
 											'class' => '',
-											'id' => '',
+											'id'    => '',
 										),
-										'taxonomy'          => 'post_tag',
+										'taxonomy'          => 'category',
 										'field_type'        => 'multi_select',
 										'allow_null'        => 0,
 										'add_term'          => 0,
@@ -2211,9 +2703,9 @@ If <strong>no tags</strong> are selected, content matching all of the categories
 								'wrapper'           => array(
 									'width' => '',
 									'class' => '',
-									'id' => '',
+									'id'    => '',
 								),
-								'message'           => __( 'Display the latest four posts, events or pages that meet the given filter criteria.
+								'message'           => __( 'Display the latest four posts, events or pages that meet the given filter criteria. 
 
 This list will automatically be updated if any new content meets the filter criteria (dynamic).', THEME_DOMAIN ),
 								'new_lines'         => 'wpautop',
@@ -2230,7 +2722,7 @@ This list will automatically be updated if any new content meets the filter crit
 								'wrapper'           => array(
 									'width' => '',
 									'class' => '',
-									'id' => '',
+									'id'    => '',
 								),
 								'clone'             => array(
 									0 => 'group_5b684e748247e',
@@ -2253,9 +2745,9 @@ This list will automatically be updated if any new content meets the filter crit
 		'location'              => array(
 			array(
 				array(
-					'param' => 'post_type',
+					'param'    => 'post_type',
 					'operator' => '==',
-					'value' => 'post',
+					'value'    => 'post',
 				),
 			),
 		),
@@ -2265,11 +2757,12 @@ This list will automatically be updated if any new content meets the filter crit
 		'label_placement'       => 'top',
 		'instruction_placement' => 'label',
 		'hide_on_screen'        => '',
-		'active'                => 0,
+		'active'                => false,
 		'description'           => '',
-	));
-	
-	acf_add_local_field_group(array(
+		'modified'              => 1543421049,
+	) );
+
+	acf_add_local_field_group( array(
 		'key'                   => 'group_5b6da383ba62c',
 		'title'                 => __( '[Template]Map Block', THEME_DOMAIN ),
 		'fields'                => array(
@@ -2284,10 +2777,9 @@ This list will automatically be updated if any new content meets the filter crit
 				'wrapper'           => array(
 					'width' => '',
 					'class' => '',
-					'id' => '',
+					'id'    => '',
 				),
-				'message'           => __( 'This is an advanced block. You\'ll need to know the fundamentals of SVG to use it. It can be used to display a map of your region with a nice popup for every region if it is clicked. As well as an engaging text to become a member.',
-					THEME_DOMAIN ),
+				'message'           => __( 'This is an advanced block. You\'ll need to know the fundamentals of SVG to use it. It can be used to display a map of your region with a nice popup for every region if it is clicked. As well as an engaging text to become a member.', THEME_DOMAIN ),
 				'new_lines'         => 'wpautop',
 				'esc_html'          => 0,
 			),
@@ -2302,7 +2794,7 @@ This list will automatically be updated if any new content meets the filter crit
 				'wrapper'           => array(
 					'width' => '',
 					'class' => '',
-					'id' => '',
+					'id'    => '',
 				),
 				'clone'             => array(
 					0 => 'group_5b684e748247e',
@@ -2323,7 +2815,7 @@ This list will automatically be updated if any new content meets the filter crit
 				'wrapper'           => array(
 					'width' => '',
 					'class' => '',
-					'id' => '',
+					'id'    => '',
 				),
 				'default_value'     => 'Get Active – with us, in your region!',
 				'placeholder'       => '',
@@ -2342,7 +2834,7 @@ This list will automatically be updated if any new content meets the filter crit
 				'wrapper'           => array(
 					'width' => '',
 					'class' => '',
-					'id' => '',
+					'id'    => '',
 				),
 				'default_value'     => '',
 				'tabs'              => 'all',
@@ -2354,21 +2846,19 @@ This list will automatically be updated if any new content meets the filter crit
 				'key'               => 'field_5b6daabace235',
 				'label'             => __( 'Map SVG', THEME_DOMAIN ),
 				'name'              => 'map',
-				'type'              => 'textarea',
-				'instructions'      => __( 'Copy the SVG in here. Make sure the regions have the \'.map-item\' class and the id matches the id of the data.',
-					THEME_DOMAIN ),
+				'type'              => 'acf_code_field',
+				'instructions'      => __( 'Copy the SVG in here. Make sure the regions have the \'.map-item\' class and the id matches the id of the data.', THEME_DOMAIN ),
 				'required'          => 1,
 				'conditional_logic' => 0,
 				'wrapper'           => array(
 					'width' => '',
 					'class' => '',
-					'id' => '',
+					'id'    => '',
 				),
 				'default_value'     => '',
 				'placeholder'       => '',
-				'maxlength'         => '',
-				'rows'              => 20,
-				'new_lines'         => '',
+				'mode'              => 'htmlmixed',
+				'theme'             => 'neo',
 			),
 			array(
 				'key'               => 'field_5b6dab1bce236',
@@ -2381,7 +2871,7 @@ This list will automatically be updated if any new content meets the filter crit
 				'wrapper'           => array(
 					'width' => '',
 					'class' => '',
-					'id' => '',
+					'id'    => '',
 				),
 				'collapsed'         => 'field_5b6dac07ce238',
 				'min'               => 0,
@@ -2400,7 +2890,7 @@ This list will automatically be updated if any new content meets the filter crit
 						'wrapper'           => array(
 							'width' => '',
 							'class' => '',
-							'id' => '',
+							'id'    => '',
 						),
 						'default_value'     => '',
 						'placeholder'       => '',
@@ -2419,7 +2909,7 @@ This list will automatically be updated if any new content meets the filter crit
 						'wrapper'           => array(
 							'width' => '',
 							'class' => '',
-							'id' => '',
+							'id'    => '',
 						),
 						'default_value'     => '',
 						'placeholder'       => '',
@@ -2432,14 +2922,13 @@ This list will automatically be updated if any new content meets the filter crit
 						'label'             => __( 'Dialog Content', THEME_DOMAIN ),
 						'name'              => 'dialog_content',
 						'type'              => 'repeater',
-						'instructions'      => __( 'The content block will be separated by margin and a slight line.',
-							THEME_DOMAIN ),
+						'instructions'      => __( 'The content block will be separated by margin and a slight line.', THEME_DOMAIN ),
 						'required'          => 1,
 						'conditional_logic' => 0,
 						'wrapper'           => array(
 							'width' => '',
 							'class' => '',
-							'id' => '',
+							'id'    => '',
 						),
 						'collapsed'         => '',
 						'min'               => 1,
@@ -2458,7 +2947,7 @@ This list will automatically be updated if any new content meets the filter crit
 								'wrapper'           => array(
 									'width' => '',
 									'class' => '',
-									'id' => '',
+									'id'    => '',
 								),
 								'default_value'     => '',
 								'tabs'              => 'all',
@@ -2480,11 +2969,11 @@ This list will automatically be updated if any new content meets the filter crit
 				'conditional_logic' => array(
 					array(
 						array(
-							'field' => 'field_5b6daeb276afb',
+							'field'    => 'field_5b6daeb276afb',
 							'operator' => '!=empty',
 						),
 						array(
-							'field' => 'field_5b6daeb276afb',
+							'field'    => 'field_5b6daeb276afb',
 							'operator' => '==empty',
 						),
 					),
@@ -2492,7 +2981,7 @@ This list will automatically be updated if any new content meets the filter crit
 				'wrapper'           => array(
 					'width' => '',
 					'class' => '',
-					'id' => '',
+					'id'    => '',
 				),
 				'message'           => '',
 				'default_value'     => 1,
@@ -2511,7 +3000,7 @@ This list will automatically be updated if any new content meets the filter crit
 				'wrapper'           => array(
 					'width' => '',
 					'class' => '',
-					'id' => '',
+					'id'    => '',
 				),
 				'default_value'     => 'Select Region',
 				'placeholder'       => '',
@@ -2523,9 +3012,9 @@ This list will automatically be updated if any new content meets the filter crit
 		'location'              => array(
 			array(
 				array(
-					'param' => 'page_type',
+					'param'    => 'page_type',
 					'operator' => '==',
-					'value' => 'front_page',
+					'value'    => 'front_page',
 				),
 			),
 		),
@@ -2535,12 +3024,12 @@ This list will automatically be updated if any new content meets the filter crit
 		'label_placement'       => 'top',
 		'instruction_placement' => 'label',
 		'hide_on_screen'        => '',
-		'active'                => 0,
+		'active'                => false,
 		'description'           => '',
-		'modified'              => 1534960224,
-	));
-	
-	acf_add_local_field_group(array(
+		'modified'              => 1548690293,
+	) );
+
+	acf_add_local_field_group( array(
 		'key'                   => 'group_5bbf71ef4ed64',
 		'title'                 => __( '[Template]Person', THEME_DOMAIN ),
 		'fields'                => array(
@@ -2549,14 +3038,13 @@ This list will automatically be updated if any new content meets the filter crit
 				'label'             => __( 'Person', THEME_DOMAIN ),
 				'name'              => 'person',
 				'type'              => 'post_object',
-				'instructions'      => __( 'Select a person. Its name, photo and contact details will be displayed.',
-					THEME_DOMAIN ),
+				'instructions'      => __( 'Select a person. Its name, photo and contact details will be displayed.', THEME_DOMAIN ),
 				'required'          => 1,
 				'conditional_logic' => 0,
 				'wrapper'           => array(
 					'width' => '',
 					'class' => '',
-					'id' => '',
+					'id'    => '',
 				),
 				'post_type'         => array(
 					0 => 'people',
@@ -2572,14 +3060,13 @@ This list will automatically be updated if any new content meets the filter crit
 				'label'             => __( 'Names supplement', THEME_DOMAIN ),
 				'name'              => 'supplement',
 				'type'              => 'text',
-				'instructions'      => __( 'Displayed next to the name. Use it to mark the city, year of birth etc. or leave it blank.',
-					THEME_DOMAIN ),
+				'instructions'      => __( 'Displayed next to the name. Use it to mark the city, year of birth etc. or leave it blank.', THEME_DOMAIN ),
 				'required'          => 0,
 				'conditional_logic' => 0,
 				'wrapper'           => array(
 					'width' => '',
 					'class' => '',
-					'id' => '',
+					'id'    => '',
 				),
 				'default_value'     => '',
 				'placeholder'       => '',
@@ -2598,7 +3085,7 @@ This list will automatically be updated if any new content meets the filter crit
 				'wrapper'           => array(
 					'width' => '',
 					'class' => '',
-					'id' => '',
+					'id'    => '',
 				),
 				'default_value'     => '',
 				'placeholder'       => '',
@@ -2617,7 +3104,7 @@ This list will automatically be updated if any new content meets the filter crit
 				'wrapper'           => array(
 					'width' => '',
 					'class' => '',
-					'id' => '',
+					'id'    => '',
 				),
 				'default_value'     => '',
 				'tabs'              => 'all',
@@ -2629,9 +3116,9 @@ This list will automatically be updated if any new content meets the filter crit
 		'location'              => array(
 			array(
 				array(
-					'param' => 'post_type',
+					'param'    => 'post_type',
 					'operator' => '==',
-					'value' => 'post',
+					'value'    => 'post',
 				),
 			),
 		),
@@ -2641,11 +3128,12 @@ This list will automatically be updated if any new content meets the filter crit
 		'label_placement'       => 'top',
 		'instruction_placement' => 'label',
 		'hide_on_screen'        => '',
-		'active'                => 0,
+		'active'                => false,
 		'description'           => '',
-	));
-	
-	acf_add_local_field_group(array(
+		'modified'              => 1543324747,
+	) );
+
+	acf_add_local_field_group( array(
 		'key'                   => 'group_5b6b14b2632f8',
 		'title'                 => __( '[Template]Position', THEME_DOMAIN ),
 		'fields'                => array(
@@ -2660,7 +3148,7 @@ This list will automatically be updated if any new content meets the filter crit
 				'wrapper'           => array(
 					'width' => '',
 					'class' => '',
-					'id' => '',
+					'id'    => '',
 				),
 				'default_value'     => '',
 				'placeholder'       => '',
@@ -2679,7 +3167,7 @@ This list will automatically be updated if any new content meets the filter crit
 				'wrapper'           => array(
 					'width' => '',
 					'class' => '',
-					'id' => '',
+					'id'    => '',
 				),
 				'collapsed'         => 'field_5b6b152f33c24',
 				'min'               => 1,
@@ -2692,14 +3180,13 @@ This list will automatically be updated if any new content meets the filter crit
 						'label'             => __( 'Position', THEME_DOMAIN ),
 						'name'              => 'position',
 						'type'              => 'text',
-						'instructions'      => __( 'Keep it very short, use just a few keywords. Max 120 characters.',
-							THEME_DOMAIN ),
+						'instructions'      => __( 'Keep it very short, use just a few keywords. Max 120 characters.', THEME_DOMAIN ),
 						'required'          => 1,
 						'conditional_logic' => 0,
 						'wrapper'           => array(
 							'width' => '',
 							'class' => '',
-							'id' => '',
+							'id'    => '',
 						),
 						'default_value'     => '',
 						'placeholder'       => '',
@@ -2715,19 +3202,19 @@ This list will automatically be updated if any new content meets the filter crit
 				'name'              => 'read_more_target',
 				'type'              => 'post_object',
 				'instructions'      => '',
-				'required'          => 1,
+				'required'          => 0,
 				'conditional_logic' => 0,
 				'wrapper'           => array(
 					'width' => '',
 					'class' => '',
-					'id' => '',
+					'id'    => '',
 				),
 				'post_type'         => array(
 					0 => 'post',
 					1 => 'page',
 				),
 				'taxonomy'          => '',
-				'allow_null'        => 0,
+				'allow_null'        => 1,
 				'multiple'          => 0,
 				'return_format'     => 'object',
 				'ui'                => 1,
@@ -2736,9 +3223,9 @@ This list will automatically be updated if any new content meets the filter crit
 		'location'              => array(
 			array(
 				array(
-					'param' => 'page_type',
+					'param'    => 'page_type',
 					'operator' => '==',
-					'value' => 'front_page',
+					'value'    => 'front_page',
 				),
 			),
 		),
@@ -2748,11 +3235,12 @@ This list will automatically be updated if any new content meets the filter crit
 		'label_placement'       => 'top',
 		'instruction_placement' => 'label',
 		'hide_on_screen'        => '',
-		'active'                => 0,
+		'active'                => false,
 		'description'           => '',
-	));
-	
-	acf_add_local_field_group(array(
+		'modified'              => 1558980124,
+	) );
+
+	acf_add_local_field_group( array(
 		'key'                   => 'group_5b6b162bb52ed',
 		'title'                 => __( '[Template]Positions', THEME_DOMAIN ),
 		'fields'                => array(
@@ -2767,10 +3255,9 @@ This list will automatically be updated if any new content meets the filter crit
 				'wrapper'           => array(
 					'width' => '',
 					'class' => '',
-					'id' => '',
+					'id'    => '',
 				),
-				'message'           => __( 'Use this block to display a teaser of your political positions. Make sure you link a page, that will further detail your position.',
-					THEME_DOMAIN ),
+				'message'           => __( 'Use this block to display a teaser of your political positions. Make sure you link a page, that will further detail your position.', THEME_DOMAIN ),
 				'new_lines'         => 'wpautop',
 				'esc_html'          => 0,
 			),
@@ -2785,7 +3272,7 @@ This list will automatically be updated if any new content meets the filter crit
 				'wrapper'           => array(
 					'width' => '',
 					'class' => '',
-					'id' => '',
+					'id'    => '',
 				),
 				'clone'             => array(
 					0 => 'group_5b684e748247e',
@@ -2806,7 +3293,7 @@ This list will automatically be updated if any new content meets the filter crit
 				'wrapper'           => array(
 					'width' => '',
 					'class' => '',
-					'id' => '',
+					'id'    => '',
 				),
 				'collapsed'         => 'field_5b6b1687feb51',
 				'min'               => 1,
@@ -2820,12 +3307,12 @@ This list will automatically be updated if any new content meets the filter crit
 						'name'              => 'position',
 						'type'              => 'clone',
 						'instructions'      => '',
-						'required'          => 1,
+						'required'          => 0,
 						'conditional_logic' => 0,
 						'wrapper'           => array(
 							'width' => '',
 							'class' => '',
-							'id' => '',
+							'id'    => '',
 						),
 						'clone'             => array(
 							0 => 'group_5b6b14b2632f8',
@@ -2842,27 +3329,26 @@ This list will automatically be updated if any new content meets the filter crit
 				'label'             => __( 'Full Width', THEME_DOMAIN ),
 				'name'              => 'full_width',
 				'type'              => 'true_false',
-				'instructions'      => __( 'If full width is set to yes, the block will span the whole page (both columns) else it will only take the place of a single column block.',
-					THEME_DOMAIN ),
+				'instructions'      => __( 'If full width is set to yes, the block will span the whole page (both columns) else it will only take the place of a single column block.', THEME_DOMAIN ),
 				'required'          => 0,
 				'conditional_logic' => array(
 					array(
 						array(
-							'field' => 'field_5b6b1670feb50',
+							'field'    => 'field_5b6b1670feb50',
 							'operator' => '>',
-							'value' => '2',
+							'value'    => '2',
 						),
 						array(
-							'field' => 'field_5b6b1670feb50',
+							'field'    => 'field_5b6b1670feb50',
 							'operator' => '<',
-							'value' => '6',
+							'value'    => '6',
 						),
 					),
 				),
 				'wrapper'           => array(
 					'width' => '',
 					'class' => '',
-					'id' => '',
+					'id'    => '',
 				),
 				'message'           => '',
 				'default_value'     => 1,
@@ -2874,9 +3360,9 @@ This list will automatically be updated if any new content meets the filter crit
 		'location'              => array(
 			array(
 				array(
-					'param' => 'page_type',
+					'param'    => 'page_type',
 					'operator' => '==',
-					'value' => 'front_page',
+					'value'    => 'front_page',
 				),
 			),
 		),
@@ -2886,12 +3372,12 @@ This list will automatically be updated if any new content meets the filter crit
 		'label_placement'       => 'top',
 		'instruction_placement' => 'label',
 		'hide_on_screen'        => '',
-		'active'                => 0,
+		'active'                => false,
 		'description'           => '',
-		'modified'              => 1534960405,
-	));
-	
-	acf_add_local_field_group(array(
+		'modified'              => 1558979806,
+	) );
+
+	acf_add_local_field_group( array(
 		'key'                   => 'group_5b71a23bc757e',
 		'title'                 => __( '[Template]Post selector', THEME_DOMAIN ),
 		'fields'                => array(
@@ -2900,14 +3386,13 @@ This list will automatically be updated if any new content meets the filter crit
 				'label'             => __( 'Post', THEME_DOMAIN ),
 				'name'              => 'post',
 				'type'              => 'post_object',
-				'instructions'      => __( 'Select the post to display. The teaser and the image of the post, will be displayed.',
-					THEME_DOMAIN ),
+				'instructions'      => __( 'Select the post to display. The teaser and the image of the post, will be displayed.', THEME_DOMAIN ),
 				'required'          => 1,
 				'conditional_logic' => 0,
 				'wrapper'           => array(
 					'width' => '',
 					'class' => '',
-					'id' => '',
+					'id'    => '',
 				),
 				'post_type'         => array(
 					0 => 'post',
@@ -2923,9 +3408,9 @@ This list will automatically be updated if any new content meets the filter crit
 		'location'              => array(
 			array(
 				array(
-					'param' => 'post_type',
+					'param'    => 'post_type',
 					'operator' => '==',
-					'value' => 'post',
+					'value'    => 'post',
 				),
 			),
 		),
@@ -2935,12 +3420,12 @@ This list will automatically be updated if any new content meets the filter crit
 		'label_placement'       => 'top',
 		'instruction_placement' => 'label',
 		'hide_on_screen'        => '',
-		'active'                => 0,
+		'active'                => false,
 		'description'           => '',
 		'modified'              => 1543404866,
-	));
-	
-	acf_add_local_field_group(array(
+	) );
+
+	acf_add_local_field_group( array(
 		'key'                   => 'group_5b6c045f68e96',
 		'title'                 => __( '[Template]Quote', THEME_DOMAIN ),
 		'fields'                => array(
@@ -2955,10 +3440,9 @@ This list will automatically be updated if any new content meets the filter crit
 				'wrapper'           => array(
 					'width' => '',
 					'class' => '',
-					'id' => '',
+					'id'    => '',
 				),
-				'message'           => __( 'Displays a nicely formatted quote of any person you added in your people section. The image will automatically be pulled from the persons record.',
-					THEME_DOMAIN ),
+				'message'           => __( 'Displays a nicely formatted quote of any person you added in your people section. The image will automatically be pulled from the persons record.', THEME_DOMAIN ),
 				'new_lines'         => 'wpautop',
 				'esc_html'          => 0,
 			),
@@ -2973,7 +3457,7 @@ This list will automatically be updated if any new content meets the filter crit
 				'wrapper'           => array(
 					'width' => '',
 					'class' => '',
-					'id' => '',
+					'id'    => '',
 				),
 				'default_value'     => '',
 				'placeholder'       => '',
@@ -2986,20 +3470,18 @@ This list will automatically be updated if any new content meets the filter crit
 				'label'             => __( 'Person', THEME_DOMAIN ),
 				'name'              => 'person',
 				'type'              => 'post_object',
-				'instructions'      => __( 'Select a person defined in the \'Peoples\' menu. The name and the image of this person will be used to display the quote.',
-					THEME_DOMAIN ),
+				'instructions'      => __( 'Select a person defined in the \'Peoples\' menu. The name and the image of this person will be used to display the quote.', THEME_DOMAIN ),
 				'required'          => 1,
 				'conditional_logic' => 0,
 				'wrapper'           => array(
 					'width' => '',
 					'class' => '',
-					'id' => '',
+					'id'    => '',
 				),
 				'post_type'         => array(
 					0 => 'people',
 				),
-				'taxonomy'          => array(
-				),
+				'taxonomy'          => array(),
 				'allow_null'        => 0,
 				'multiple'          => 0,
 				'return_format'     => 'object',
@@ -3016,7 +3498,7 @@ This list will automatically be updated if any new content meets the filter crit
 				'wrapper'           => array(
 					'width' => '',
 					'class' => '',
-					'id' => '',
+					'id'    => '',
 				),
 				'default_value'     => '',
 				'placeholder'       => '',
@@ -3028,9 +3510,9 @@ This list will automatically be updated if any new content meets the filter crit
 		'location'              => array(
 			array(
 				array(
-					'param' => 'post_type',
+					'param'    => 'post_type',
 					'operator' => '==',
-					'value' => 'post',
+					'value'    => 'post',
 				),
 			),
 		),
@@ -3040,11 +3522,12 @@ This list will automatically be updated if any new content meets the filter crit
 		'label_placement'       => 'top',
 		'instruction_placement' => 'label',
 		'hide_on_screen'        => '',
-		'active'                => 0,
+		'active'                => false,
 		'description'           => '',
-	));
-	
-	acf_add_local_field_group(array(
+		'modified'              => 1547039495,
+	) );
+
+	acf_add_local_field_group( array(
 		'key'                   => 'group_5b6846d09aa72',
 		'title'                 => __( '[Template]Single Post', THEME_DOMAIN ),
 		'fields'                => array(
@@ -3059,7 +3542,7 @@ This list will automatically be updated if any new content meets the filter crit
 				'wrapper'           => array(
 					'width' => '',
 					'class' => '',
-					'id' => '',
+					'id'    => '',
 				),
 				'message'           => __( 'Display a teaser of any post or page.', THEME_DOMAIN ),
 				'new_lines'         => 'wpautop',
@@ -3076,7 +3559,7 @@ This list will automatically be updated if any new content meets the filter crit
 				'wrapper'           => array(
 					'width' => '',
 					'class' => '',
-					'id' => '',
+					'id'    => '',
 				),
 				'clone'             => array(
 					0 => 'group_5b684e748247e',
@@ -3091,14 +3574,13 @@ This list will automatically be updated if any new content meets the filter crit
 				'label'             => __( 'Post', THEME_DOMAIN ),
 				'name'              => 'post',
 				'type'              => 'clone',
-				'instructions'      => __( 'Select the post to display. The excerpt and the image of the post, will be displayed.',
-					THEME_DOMAIN ),
+				'instructions'      => __( 'Select the post to display. The excerpt and the image of the post, will be displayed.', THEME_DOMAIN ),
 				'required'          => 1,
 				'conditional_logic' => 0,
 				'wrapper'           => array(
 					'width' => '',
 					'class' => '',
-					'id' => '',
+					'id'    => '',
 				),
 				'clone'             => array(
 					0 => 'group_5b71a23bc757e',
@@ -3119,7 +3601,7 @@ This list will automatically be updated if any new content meets the filter crit
 				'wrapper'           => array(
 					'width' => '',
 					'class' => '',
-					'id' => '',
+					'id'    => '',
 				),
 				'layout'            => 'row',
 				'sub_fields'        => array(
@@ -3134,7 +3616,7 @@ This list will automatically be updated if any new content meets the filter crit
 						'wrapper'           => array(
 							'width' => '',
 							'class' => '',
-							'id' => '',
+							'id'    => '',
 						),
 						'default_value'     => '',
 						'placeholder'       => '',
@@ -3149,7 +3631,7 @@ This list will automatically be updated if any new content meets the filter crit
 						'conditional_logic' => array(
 							array(
 								array(
-									'field' => 'field_5b6847db6fb75',
+									'field'    => 'field_5b6847db6fb75',
 									'operator' => '!=empty',
 								),
 							),
@@ -3157,7 +3639,7 @@ This list will automatically be updated if any new content meets the filter crit
 						'wrapper'           => array(
 							'width' => '',
 							'class' => '',
-							'id' => '',
+							'id'    => '',
 						),
 						'default_value'     => 'Get active',
 						'placeholder'       => '',
@@ -3170,13 +3652,12 @@ This list will automatically be updated if any new content meets the filter crit
 						'label'             => __( 'Call to Action Description', THEME_DOMAIN ),
 						'name'              => 'cta_desc',
 						'type'              => 'text',
-						'instructions'      => __( 'One very short sentence that explains why someone should click the call to action. Example: I want to get active against GMO.',
-							THEME_DOMAIN ),
+						'instructions'      => __( 'One very short sentence that explains why someone should click the call to action. Example: I want to get active against GMO.', THEME_DOMAIN ),
 						'required'          => 1,
 						'conditional_logic' => array(
 							array(
 								array(
-									'field' => 'field_5b6847db6fb75',
+									'field'    => 'field_5b6847db6fb75',
 									'operator' => '!=empty',
 								),
 							),
@@ -3184,7 +3665,7 @@ This list will automatically be updated if any new content meets the filter crit
 						'wrapper'           => array(
 							'width' => '',
 							'class' => '',
-							'id' => '',
+							'id'    => '',
 						),
 						'default_value'     => '',
 						'placeholder'       => '',
@@ -3198,9 +3679,9 @@ This list will automatically be updated if any new content meets the filter crit
 		'location'              => array(
 			array(
 				array(
-					'param' => 'page_type',
+					'param'    => 'page_type',
 					'operator' => '==',
-					'value' => 'front_page',
+					'value'    => 'front_page',
 				),
 			),
 		),
@@ -3210,11 +3691,12 @@ This list will automatically be updated if any new content meets the filter crit
 		'label_placement'       => 'top',
 		'instruction_placement' => 'label',
 		'hide_on_screen'        => '',
-		'active'                => 0,
+		'active'                => false,
 		'description'           => '',
-	));
-	
-	acf_add_local_field_group(array(
+		'modified'              => 1543324749,
+	) );
+
+	acf_add_local_field_group( array(
 		'key'                   => 'group_5bcee6dd2cfd7',
 		'title'                 => __( '[Template]Teaser', THEME_DOMAIN ),
 		'fields'                => array(
@@ -3223,14 +3705,13 @@ This list will automatically be updated if any new content meets the filter crit
 				'label'             => __( 'Teaser', THEME_DOMAIN ),
 				'name'              => 'teaser',
 				'type'              => 'textarea',
-				'instructions'      => __( '<strong>The first 280 characters</strong> will be used as preview text on the front page, archive pages and for search results.',
-					THEME_DOMAIN ),
+				'instructions'      => __( '<strong>The first 280 characters</strong> will be used as preview text on the front page, archive pages and for search results.', THEME_DOMAIN ),
 				'required'          => 0,
 				'conditional_logic' => 0,
 				'wrapper'           => array(
 					'width' => '',
 					'class' => '',
-					'id' => '',
+					'id'    => '',
 				),
 				'default_value'     => '',
 				'placeholder'       => 'Brief summary that attracts the readers interest. Make sure it contains the most important keywords.',
@@ -3249,10 +3730,9 @@ This list will automatically be updated if any new content meets the filter crit
 				'wrapper'           => array(
 					'width' => '',
 					'class' => '',
-					'id' => '',
+					'id'    => '',
 				),
-				'message'           => __( 'If yes, the teaser will only be shown as preview text but not on the page itself.',
-					THEME_DOMAIN ),
+				'message'           => __( 'If yes, the teaser will only be shown as preview text but not on the page itself.', THEME_DOMAIN ),
 				'default_value'     => 1,
 				'ui'                => 1,
 				'ui_on_text'        => '',
@@ -3262,9 +3742,9 @@ This list will automatically be updated if any new content meets the filter crit
 		'location'              => array(
 			array(
 				array(
-					'param' => 'post_type',
+					'param'    => 'post_type',
 					'operator' => '==',
-					'value' => 'post',
+					'value'    => 'post',
 				),
 			),
 		),
@@ -3274,11 +3754,12 @@ This list will automatically be updated if any new content meets the filter crit
 		'label_placement'       => 'top',
 		'instruction_placement' => 'label',
 		'hide_on_screen'        => '',
-		'active'                => 0,
+		'active'                => false,
 		'description'           => '',
-	));
-	
-	acf_add_local_field_group(array(
+		'modified'              => 1543324750,
+	) );
+
+	acf_add_local_field_group( array(
 		'key'                   => 'group_5b6c6072e2d3f',
 		'title'                 => __( '[Template]Testimonials', THEME_DOMAIN ),
 		'fields'                => array(
@@ -3293,10 +3774,9 @@ This list will automatically be updated if any new content meets the filter crit
 				'wrapper'           => array(
 					'width' => '',
 					'class' => '',
-					'id' => '',
+					'id'    => '',
 				),
-				'message'           => __( 'Display some fancy testimonials. Make sure you add the testimonials with the corresponding <strong>category</strong> in the peoples section.',
-					THEME_DOMAIN ),
+				'message'           => __( 'Display some fancy testimonials. Make sure you add the testimonials with the corresponding <strong>category</strong> in the peoples section.', THEME_DOMAIN ),
 				'new_lines'         => 'wpautop',
 				'esc_html'          => 0,
 			),
@@ -3311,7 +3791,7 @@ This list will automatically be updated if any new content meets the filter crit
 				'wrapper'           => array(
 					'width' => '',
 					'class' => '',
-					'id' => '',
+					'id'    => '',
 				),
 				'clone'             => array(
 					0 => 'group_5b684e748247e',
@@ -3332,7 +3812,7 @@ This list will automatically be updated if any new content meets the filter crit
 				'wrapper'           => array(
 					'width' => '',
 					'class' => '',
-					'id' => '',
+					'id'    => '',
 				),
 				'default_value'     => '',
 				'placeholder'       => '',
@@ -3351,7 +3831,7 @@ This list will automatically be updated if any new content meets the filter crit
 				'wrapper'           => array(
 					'width' => '',
 					'class' => '',
-					'id' => '',
+					'id'    => '',
 				),
 				'taxonomy'          => 'testimonials',
 				'field_type'        => 'multi_select',
@@ -3373,7 +3853,7 @@ This list will automatically be updated if any new content meets the filter crit
 				'wrapper'           => array(
 					'width' => '',
 					'class' => '',
-					'id' => '',
+					'id'    => '',
 				),
 				'choices'           => array(
 					'vertical'   => __( 'Vertical', THEME_DOMAIN ),
@@ -3388,9 +3868,9 @@ This list will automatically be updated if any new content meets the filter crit
 		'location'              => array(
 			array(
 				array(
-					'param' => 'post_type',
+					'param'    => 'post_type',
 					'operator' => '==',
-					'value' => 'post',
+					'value'    => 'post',
 				),
 			),
 		),
@@ -3400,11 +3880,12 @@ This list will automatically be updated if any new content meets the filter crit
 		'label_placement'       => 'top',
 		'instruction_placement' => 'label',
 		'hide_on_screen'        => '',
-		'active'                => 0,
+		'active'                => false,
 		'description'           => '',
-	));
-	
-	acf_add_local_field_group(array(
+		'modified'              => 1543324750,
+	) );
+
+	acf_add_local_field_group( array(
 		'key'                   => 'group_5b684a4bdffb6',
 		'title'                 => __( '[Template]Two Posts', THEME_DOMAIN ),
 		'fields'                => array(
@@ -3419,7 +3900,7 @@ This list will automatically be updated if any new content meets the filter crit
 				'wrapper'           => array(
 					'width' => '',
 					'class' => '',
-					'id' => '',
+					'id'    => '',
 				),
 				'message'           => __( 'Displays two teasers of any post or page.', THEME_DOMAIN ),
 				'new_lines'         => 'wpautop',
@@ -3436,7 +3917,7 @@ This list will automatically be updated if any new content meets the filter crit
 				'wrapper'           => array(
 					'width' => '',
 					'class' => '',
-					'id' => '',
+					'id'    => '',
 				),
 				'clone'             => array(
 					0 => 'group_5b684e748247e',
@@ -3451,14 +3932,13 @@ This list will automatically be updated if any new content meets the filter crit
 				'label'             => __( 'Post 1', THEME_DOMAIN ),
 				'name'              => 'post_1',
 				'type'              => 'clone',
-				'instructions'      => __( 'Select the post to display. The excerpt and the image of the post, will be displayed.',
-					THEME_DOMAIN ),
+				'instructions'      => __( 'Select the post to display. The excerpt and the image of the post, will be displayed.', THEME_DOMAIN ),
 				'required'          => 1,
 				'conditional_logic' => 0,
 				'wrapper'           => array(
 					'width' => '',
 					'class' => '',
-					'id' => '',
+					'id'    => '',
 				),
 				'clone'             => array(
 					0 => 'group_5b71a23bc757e',
@@ -3479,7 +3959,7 @@ This list will automatically be updated if any new content meets the filter crit
 				'wrapper'           => array(
 					'width' => '',
 					'class' => '',
-					'id' => '',
+					'id'    => '',
 				),
 				'clone'             => array(
 					0 => 'group_5b71a23bc757e',
@@ -3493,9 +3973,9 @@ This list will automatically be updated if any new content meets the filter crit
 		'location'              => array(
 			array(
 				array(
-					'param' => 'page_type',
+					'param'    => 'page_type',
 					'operator' => '==',
-					'value' => 'front_page',
+					'value'    => 'front_page',
 				),
 			),
 		),
@@ -3505,11 +3985,12 @@ This list will automatically be updated if any new content meets the filter crit
 		'label_placement'       => 'top',
 		'instruction_placement' => 'label',
 		'hide_on_screen'        => '',
-		'active'                => 0,
+		'active'                => false,
 		'description'           => '',
-	));
-	
-	acf_add_local_field_group(array(
+		'modified'              => 1543324750,
+	) );
+
+	acf_add_local_field_group( array(
 		'key'                   => 'group_5b6841bfef6ab',
 		'title'                 => __( '[Template]Vote Recommendations', THEME_DOMAIN ),
 		'fields'                => array(
@@ -3524,7 +4005,7 @@ This list will automatically be updated if any new content meets the filter crit
 				'wrapper'           => array(
 					'width' => '',
 					'class' => '',
-					'id' => '',
+					'id'    => '',
 				),
 				'message'           => __( 'Displays voting recommendations.', THEME_DOMAIN ),
 				'new_lines'         => 'wpautop',
@@ -3541,7 +4022,7 @@ This list will automatically be updated if any new content meets the filter crit
 				'wrapper'           => array(
 					'width' => '',
 					'class' => '',
-					'id' => '',
+					'id'    => '',
 				),
 				'clone'             => array(
 					0 => 'group_5b684e748247e',
@@ -3562,7 +4043,7 @@ This list will automatically be updated if any new content meets the filter crit
 				'wrapper'           => array(
 					'width' => '',
 					'class' => '',
-					'id' => '',
+					'id'    => '',
 				),
 				'collapsed'         => '',
 				'min'               => 1,
@@ -3581,7 +4062,7 @@ This list will automatically be updated if any new content meets the filter crit
 						'wrapper'           => array(
 							'width' => '70',
 							'class' => '',
-							'id' => '',
+							'id'    => '',
 						),
 						'layout'            => 'block',
 						'sub_fields'        => array(
@@ -3596,7 +4077,7 @@ This list will automatically be updated if any new content meets the filter crit
 								'wrapper'           => array(
 									'width' => '25',
 									'class' => '',
-									'id' => '',
+									'id'    => '',
 								),
 								'choices'           => array(
 									'internal' => __( 'Internal', THEME_DOMAIN ),
@@ -3617,16 +4098,16 @@ This list will automatically be updated if any new content meets the filter crit
 								'conditional_logic' => array(
 									array(
 										array(
-											'field' => 'field_5baa448d76611',
+											'field'    => 'field_5baa448d76611',
 											'operator' => '==',
-											'value' => 'internal',
+											'value'    => 'internal',
 										),
 									),
 								),
 								'wrapper'           => array(
 									'width' => '75',
 									'class' => '',
-									'id' => '',
+									'id'    => '',
 								),
 								'layout'            => 'block',
 								'sub_fields'        => array(
@@ -3684,16 +4165,16 @@ This list will automatically be updated if any new content meets the filter crit
 								'conditional_logic' => array(
 									array(
 										array(
-											'field' => 'field_5baa448d76611',
+											'field'    => 'field_5baa448d76611',
 											'operator' => '==',
-											'value' => 'url',
+											'value'    => 'url',
 										),
 									),
 								),
 								'wrapper'           => array(
 									'width' => '75',
 									'class' => '',
-									'id' => '',
+									'id'    => '',
 								),
 								'layout'            => 'block',
 								'sub_fields'        => array(
@@ -3708,7 +4189,7 @@ This list will automatically be updated if any new content meets the filter crit
 										'wrapper'           => array(
 											'width' => '',
 											'class' => '',
-											'id' => '',
+											'id'    => '',
 										),
 										'default_value'     => '',
 										'placeholder'       => '',
@@ -3724,7 +4205,7 @@ This list will automatically be updated if any new content meets the filter crit
 										'wrapper'           => array(
 											'width' => '',
 											'class' => '',
-											'id' => '',
+											'id'    => '',
 										),
 										'default_value'     => '',
 										'placeholder'       => '',
@@ -3743,7 +4224,7 @@ This list will automatically be updated if any new content meets the filter crit
 										'wrapper'           => array(
 											'width' => '',
 											'class' => '',
-											'id' => '',
+											'id'    => '',
 										),
 										'default_value'     => '',
 										'placeholder'       => '',
@@ -3766,7 +4247,7 @@ This list will automatically be updated if any new content meets the filter crit
 						'wrapper'           => array(
 							'width' => '30',
 							'class' => '',
-							'id' => '',
+							'id'    => '',
 						),
 						'choices'           => array(
 							'yes'  => __( 'Yes', THEME_DOMAIN ),
@@ -3793,7 +4274,7 @@ This list will automatically be updated if any new content meets the filter crit
 				'wrapper'           => array(
 					'width' => '',
 					'class' => '',
-					'id' => '',
+					'id'    => '',
 				),
 				'layout'            => 'row',
 				'sub_fields'        => array(
@@ -3802,14 +4283,13 @@ This list will automatically be updated if any new content meets the filter crit
 						'label'             => __( 'All Votations Link', THEME_DOMAIN ),
 						'name'              => 'link',
 						'type'              => 'page_link',
-						'instructions'      => __( 'Page with link to all vote recommendations (national, cantonal, community).',
-							THEME_DOMAIN ),
+						'instructions'      => __( 'Page with link to all vote recommendations (national, cantonal, community).', THEME_DOMAIN ),
 						'required'          => 0,
 						'conditional_logic' => 0,
 						'wrapper'           => array(
 							'width' => '',
 							'class' => '',
-							'id' => '',
+							'id'    => '',
 						),
 						'post_type'         => array(
 							0 => 'page',
@@ -3830,7 +4310,7 @@ This list will automatically be updated if any new content meets the filter crit
 						'conditional_logic' => array(
 							array(
 								array(
-									'field' => 'field_5b687a7954f7d',
+									'field'    => 'field_5b687a7954f7d',
 									'operator' => '!=empty',
 								),
 							),
@@ -3838,7 +4318,7 @@ This list will automatically be updated if any new content meets the filter crit
 						'wrapper'           => array(
 							'width' => '',
 							'class' => '',
-							'id' => '',
+							'id'    => '',
 						),
 						'default_value'     => '',
 						'placeholder'       => '',
@@ -3852,9 +4332,9 @@ This list will automatically be updated if any new content meets the filter crit
 		'location'              => array(
 			array(
 				array(
-					'param' => 'page_type',
+					'param'    => 'page_type',
 					'operator' => '==',
-					'value' => 'front_page',
+					'value'    => 'front_page',
 				),
 			),
 		),
@@ -3864,12 +4344,12 @@ This list will automatically be updated if any new content meets the filter crit
 		'label_placement'       => 'top',
 		'instruction_placement' => 'label',
 		'hide_on_screen'        => '',
-		'active'                => 0,
+		'active'                => false,
 		'description'           => '',
 		'modified'              => 1548100965,
-	));
-	
-	acf_add_local_field_group(array(
+	) );
+
+	acf_add_local_field_group( array(
 		'key'                   => 'group_5b6ac8b4171c0',
 		'title'                 => __( 'Event Description', THEME_DOMAIN ),
 		'fields'                => array(
@@ -3884,7 +4364,7 @@ This list will automatically be updated if any new content meets the filter crit
 				'wrapper'           => array(
 					'width' => '',
 					'class' => '',
-					'id' => '',
+					'id'    => '',
 				),
 				'return_format'     => 'array',
 				'preview_size'      => 'full-width',
@@ -3908,7 +4388,7 @@ This list will automatically be updated if any new content meets the filter crit
 				'wrapper'           => array(
 					'width' => '',
 					'class' => '',
-					'id' => '',
+					'id'    => '',
 				),
 				'default_value'     => '',
 				'tabs'              => 'all',
@@ -3920,9 +4400,9 @@ This list will automatically be updated if any new content meets the filter crit
 		'location'              => array(
 			array(
 				array(
-					'param' => 'post_type',
+					'param'    => 'post_type',
 					'operator' => '==',
-					'value' => 'tribe_events',
+					'value'    => 'tribe_events',
 				),
 			),
 		),
@@ -3932,23 +4412,24 @@ This list will automatically be updated if any new content meets the filter crit
 		'label_placement'       => 'top',
 		'instruction_placement' => 'label',
 		'hide_on_screen'        => array(
-			0 => 'the_content',
-			1 => 'excerpt',
-			2 => 'discussion',
-			3 => 'comments',
-			4 => 'slug',
-			5 => 'author',
-			6 => 'format',
-			7 => 'page_attributes',
-			8 => 'featured_image',
-			9 => 'categories',
+			0  => 'the_content',
+			1  => 'excerpt',
+			2  => 'discussion',
+			3  => 'comments',
+			4  => 'slug',
+			5  => 'author',
+			6  => 'format',
+			7  => 'page_attributes',
+			8  => 'featured_image',
+			9  => 'categories',
 			10 => 'send-trackbacks',
 		),
-		'active'                => 1,
+		'active'                => true,
 		'description'           => '',
-	));
-	
-	acf_add_local_field_group(array(
+		'modified'              => 1543324752,
+	) );
+
+	acf_add_local_field_group( array(
 		'key'                   => 'group_5b646018d7f1a',
 		'title'                 => __( 'Front page', THEME_DOMAIN ),
 		'fields'                => array(
@@ -3963,7 +4444,7 @@ This list will automatically be updated if any new content meets the filter crit
 				'wrapper'           => array(
 					'width' => '',
 					'class' => '',
-					'id' => '',
+					'id'    => '',
 				),
 				'clone'             => array(
 					0 => 'group_5b645b16b8a08',
@@ -3984,10 +4465,10 @@ This list will automatically be updated if any new content meets the filter crit
 				'wrapper'           => array(
 					'width' => '',
 					'class' => '',
-					'id' => '',
+					'id'    => '',
 				),
 				'layouts'           => array(
-					'5b684af8c6b51' => array(
+					'5b684af8c6b51'        => array(
 						'key'        => '5b684af8c6b51',
 						'name'       => 'vote',
 						'label'      => __( 'Vote Recommendations', THEME_DOMAIN ),
@@ -4004,7 +4485,7 @@ This list will automatically be updated if any new content meets the filter crit
 								'wrapper'           => array(
 									'width' => '',
 									'class' => '',
-									'id' => '',
+									'id'    => '',
 								),
 								'clone'             => array(
 									0 => 'group_5b6841bfef6ab',
@@ -4035,7 +4516,7 @@ This list will automatically be updated if any new content meets the filter crit
 								'wrapper'           => array(
 									'width' => '',
 									'class' => '',
-									'id' => '',
+									'id'    => '',
 								),
 								'clone'             => array(
 									0 => 'group_5b6846d09aa72',
@@ -4066,7 +4547,7 @@ This list will automatically be updated if any new content meets the filter crit
 								'wrapper'           => array(
 									'width' => '',
 									'class' => '',
-									'id' => '',
+									'id'    => '',
 								),
 								'clone'             => array(
 									0 => 'group_5b684a4bdffb6',
@@ -4097,7 +4578,7 @@ This list will automatically be updated if any new content meets the filter crit
 								'wrapper'           => array(
 									'width' => '',
 									'class' => '',
-									'id' => '',
+									'id'    => '',
 								),
 								'clone'             => array(
 									0 => 'group_5b68487f04a16',
@@ -4128,7 +4609,7 @@ This list will automatically be updated if any new content meets the filter crit
 								'wrapper'           => array(
 									'width' => '',
 									'class' => '',
-									'id' => '',
+									'id'    => '',
 								),
 								'clone'             => array(
 									0 => 'group_5b6ae2eb01de7',
@@ -4159,7 +4640,7 @@ This list will automatically be updated if any new content meets the filter crit
 								'wrapper'           => array(
 									'width' => '',
 									'class' => '',
-									'id' => '',
+									'id'    => '',
 								),
 								'clone'             => array(
 									0 => 'group_5b6b162bb52ed',
@@ -4190,7 +4671,7 @@ This list will automatically be updated if any new content meets the filter crit
 								'wrapper'           => array(
 									'width' => '',
 									'class' => '',
-									'id' => '',
+									'id'    => '',
 								),
 								'clone'             => array(
 									0 => 'group_5b6c6072e2d3f',
@@ -4221,7 +4702,7 @@ This list will automatically be updated if any new content meets the filter crit
 								'wrapper'           => array(
 									'width' => '',
 									'class' => '',
-									'id' => '',
+									'id'    => '',
 								),
 								'clone'             => array(
 									0 => 'group_5b6da383ba62c',
@@ -4244,9 +4725,9 @@ This list will automatically be updated if any new content meets the filter crit
 		'location'              => array(
 			array(
 				array(
-					'param' => 'page_type',
+					'param'    => 'page_type',
 					'operator' => '==',
-					'value' => 'front_page',
+					'value'    => 'front_page',
 				),
 			),
 		),
@@ -4256,24 +4737,25 @@ This list will automatically be updated if any new content meets the filter crit
 		'label_placement'       => 'top',
 		'instruction_placement' => 'label',
 		'hide_on_screen'        => array(
-			0 => 'the_content',
-			1 => 'excerpt',
-			2 => 'discussion',
-			3 => 'comments',
-			4 => 'slug',
-			5 => 'author',
-			6 => 'format',
-			7 => 'page_attributes',
-			8 => 'featured_image',
-			9 => 'categories',
+			0  => 'the_content',
+			1  => 'excerpt',
+			2  => 'discussion',
+			3  => 'comments',
+			4  => 'slug',
+			5  => 'author',
+			6  => 'format',
+			7  => 'page_attributes',
+			8  => 'featured_image',
+			9  => 'categories',
 			10 => 'tags',
 			11 => 'send-trackbacks',
 		),
-		'active'                => 1,
+		'active'                => true,
 		'description'           => '',
-	));
-	
-	acf_add_local_field_group(array(
+		'modified'              => 1543421501,
+	) );
+
+	acf_add_local_field_group( array(
 		'key'                   => 'group_5b6c0884eb9b8',
 		'title'                 => __( 'Person', THEME_DOMAIN ),
 		'fields'                => array(
@@ -4288,7 +4770,7 @@ This list will automatically be updated if any new content meets the filter crit
 				'wrapper'           => array(
 					'width' => '',
 					'class' => '',
-					'id' => '',
+					'id'    => '',
 				),
 				'default_value'     => '',
 				'placeholder'       => '',
@@ -4307,7 +4789,7 @@ This list will automatically be updated if any new content meets the filter crit
 				'wrapper'           => array(
 					'width' => '',
 					'class' => '',
-					'id' => '',
+					'id'    => '',
 				),
 				'return_format'     => 'array',
 				'preview_size'      => 'thumbnail',
@@ -4331,10 +4813,10 @@ This list will automatically be updated if any new content meets the filter crit
 				'wrapper'           => array(
 					'width' => '',
 					'class' => '',
-					'id' => '',
+					'id'    => '',
 				),
 				'layouts'           => array(
-					'5b6c09700cad3' => array(
+					'5b6c09700cad3'        => array(
 						'key'        => '5b6c09700cad3',
 						'name'       => 'email',
 						'label'      => __( 'Email', THEME_DOMAIN ),
@@ -4351,7 +4833,7 @@ This list will automatically be updated if any new content meets the filter crit
 								'wrapper'           => array(
 									'width' => '',
 									'class' => '',
-									'id' => '',
+									'id'    => '',
 								),
 								'default_value'     => '',
 								'placeholder'       => '',
@@ -4379,7 +4861,7 @@ This list will automatically be updated if any new content meets the filter crit
 								'wrapper'           => array(
 									'width' => '',
 									'class' => '',
-									'id' => '',
+									'id'    => '',
 								),
 								'default_value'     => '',
 								'placeholder'       => '',
@@ -4408,7 +4890,7 @@ This list will automatically be updated if any new content meets the filter crit
 								'wrapper'           => array(
 									'width' => '',
 									'class' => '',
-									'id' => '',
+									'id'    => '',
 								),
 								'default_value'     => '',
 								'placeholder'       => '',
@@ -4434,7 +4916,7 @@ This list will automatically be updated if any new content meets the filter crit
 								'wrapper'           => array(
 									'width' => '',
 									'class' => '',
-									'id' => '',
+									'id'    => '',
 								),
 								'default_value'     => '',
 								'placeholder'       => '',
@@ -4463,7 +4945,7 @@ This list will automatically be updated if any new content meets the filter crit
 								'wrapper'           => array(
 									'width' => '',
 									'class' => '',
-									'id' => '',
+									'id'    => '',
 								),
 								'default_value'     => '',
 								'placeholder'       => '',
@@ -4489,7 +4971,7 @@ This list will automatically be updated if any new content meets the filter crit
 								'wrapper'           => array(
 									'width' => '',
 									'class' => '',
-									'id' => '',
+									'id'    => '',
 								),
 								'default_value'     => '',
 								'placeholder'       => '',
@@ -4517,7 +4999,7 @@ This list will automatically be updated if any new content meets the filter crit
 				'wrapper'           => array(
 					'width' => '',
 					'class' => '',
-					'id' => '',
+					'id'    => '',
 				),
 				'collapsed'         => 'field_5bbb2a71ceb1d',
 				'min'               => 0,
@@ -4536,7 +5018,7 @@ This list will automatically be updated if any new content meets the filter crit
 						'wrapper'           => array(
 							'width' => '',
 							'class' => '',
-							'id' => '',
+							'id'    => '',
 						),
 						'default_value'     => '',
 						'placeholder'       => '',
@@ -4555,7 +5037,7 @@ This list will automatically be updated if any new content meets the filter crit
 						'wrapper'           => array(
 							'width' => '',
 							'class' => '',
-							'id' => '',
+							'id'    => '',
 						),
 						'default_value'     => '',
 						'placeholder'       => '',
@@ -4568,14 +5050,13 @@ This list will automatically be updated if any new content meets the filter crit
 						'label'             => __( 'Testimonial Category', THEME_DOMAIN ),
 						'name'              => 'taxonomy',
 						'type'              => 'taxonomy',
-						'instructions'      => __( 'To present testimonials you will have to select the testimonials by category, so <strong>assign the same category to all testimonials you want to display in the same collection</strong>.',
-							THEME_DOMAIN ),
+						'instructions'      => __( 'To present testimonials you will have to select the testimonials by category, so <strong>assign the same category to all testimonials you want to display in the same collection</strong>.', THEME_DOMAIN ),
 						'required'          => 1,
 						'conditional_logic' => 0,
 						'wrapper'           => array(
 							'width' => '',
 							'class' => '',
-							'id' => '',
+							'id'    => '',
 						),
 						'taxonomy'          => 'testimonials',
 						'field_type'        => 'multi_select',
@@ -4592,9 +5073,9 @@ This list will automatically be updated if any new content meets the filter crit
 		'location'              => array(
 			array(
 				array(
-					'param' => 'post_type',
+					'param'    => 'post_type',
 					'operator' => '==',
-					'value' => 'people',
+					'value'    => 'people',
 				),
 			),
 		),
@@ -4604,25 +5085,26 @@ This list will automatically be updated if any new content meets the filter crit
 		'label_placement'       => 'top',
 		'instruction_placement' => 'label',
 		'hide_on_screen'        => array(
-			0 => 'the_content',
-			1 => 'excerpt',
-			2 => 'discussion',
-			3 => 'comments',
-			4 => 'revisions',
-			5 => 'slug',
-			6 => 'author',
-			7 => 'format',
-			8 => 'page_attributes',
-			9 => 'featured_image',
+			0  => 'the_content',
+			1  => 'excerpt',
+			2  => 'discussion',
+			3  => 'comments',
+			4  => 'revisions',
+			5  => 'slug',
+			6  => 'author',
+			7  => 'format',
+			8  => 'page_attributes',
+			9  => 'featured_image',
 			10 => 'categories',
 			11 => 'tags',
 			12 => 'send-trackbacks',
 		),
-		'active'                => 1,
+		'active'                => true,
 		'description'           => '',
-	));
-	
-	acf_add_local_field_group(array(
+		'modified'              => 1543422125,
+	) );
+
+	acf_add_local_field_group( array(
 		'key'                   => 'group_5b6c01111578c',
 		'title'                 => __( 'Press Release', THEME_DOMAIN ),
 		'fields'                => array(
@@ -4637,7 +5119,7 @@ This list will automatically be updated if any new content meets the filter crit
 				'wrapper'           => array(
 					'width' => '',
 					'class' => '',
-					'id' => '',
+					'id'    => '',
 				),
 				'clone'             => array(
 					0 => 'field_5bcee7167c5c5',
@@ -4658,7 +5140,7 @@ This list will automatically be updated if any new content meets the filter crit
 				'wrapper'           => array(
 					'width' => '',
 					'class' => '',
-					'id' => '',
+					'id'    => '',
 				),
 				'layout'            => 'block',
 				'sub_fields'        => array(
@@ -4673,10 +5155,10 @@ This list will automatically be updated if any new content meets the filter crit
 						'wrapper'           => array(
 							'width' => '',
 							'class' => '',
-							'id' => '',
+							'id'    => '',
 						),
 						'layouts'           => array(
-							'5b6c056ad4f71' => array(
+							'5b6c056ad4f71'        => array(
 								'key'        => '5b6c056ad4f71',
 								'name'       => 'quote',
 								'label'      => __( 'Quote', THEME_DOMAIN ),
@@ -4693,10 +5175,9 @@ This list will automatically be updated if any new content meets the filter crit
 										'wrapper'           => array(
 											'width' => '',
 											'class' => '',
-											'id' => '',
+											'id'    => '',
 										),
-										'message'           => __( 'If a quote is given, it will replace the lead text on the front page. On the archive page and in search results, the teaser will still be the lead.',
-											THEME_DOMAIN ),
+										'message'           => __( 'If a quote is given, it will replace the lead text on the front page. On the archive page and in search results, the teaser will still be the lead.', THEME_DOMAIN ),
 										'new_lines'         => 'wpautop',
 										'esc_html'          => 0,
 									),
@@ -4711,7 +5192,7 @@ This list will automatically be updated if any new content meets the filter crit
 										'wrapper'           => array(
 											'width' => '',
 											'class' => '',
-											'id' => '',
+											'id'    => '',
 										),
 										'clone'             => array(
 											0 => 'group_5b6c045f68e96',
@@ -4742,7 +5223,7 @@ This list will automatically be updated if any new content meets the filter crit
 										'wrapper'           => array(
 											'width' => '',
 											'class' => '',
-											'id' => '',
+											'id'    => '',
 										),
 										'default_value'     => '',
 										'tabs'              => 'all',
@@ -4772,7 +5253,7 @@ This list will automatically be updated if any new content meets the filter crit
 				'wrapper'           => array(
 					'width' => '',
 					'class' => '',
-					'id' => '',
+					'id'    => '',
 				),
 				'layout'            => 'block',
 				'sub_fields'        => array(
@@ -4787,7 +5268,7 @@ This list will automatically be updated if any new content meets the filter crit
 						'wrapper'           => array(
 							'width' => '',
 							'class' => '',
-							'id' => '',
+							'id'    => '',
 						),
 						'clone'             => array(
 							0 => 'group_5b6c4bfaa8a26',
@@ -4810,7 +5291,7 @@ This list will automatically be updated if any new content meets the filter crit
 				'wrapper'           => array(
 					'width' => '',
 					'class' => '',
-					'id' => '',
+					'id'    => '',
 				),
 				'layout'            => 'block',
 				'sub_fields'        => array(
@@ -4819,14 +5300,13 @@ This list will automatically be updated if any new content meets the filter crit
 						'label'             => __( 'Show on front page', THEME_DOMAIN ),
 						'name'              => 'show_on_front_page',
 						'type'              => 'true_false',
-						'instructions'      => __( 'Set this to false, to hide it from the \'Latest Press Release\' block on the front page.',
-							THEME_DOMAIN ),
+						'instructions'      => __( 'Set this to false, to hide it from the \'Latest Press Release\' block on the front page.', THEME_DOMAIN ),
 						'required'          => 0,
 						'conditional_logic' => 0,
 						'wrapper'           => array(
 							'width' => '',
 							'class' => '',
-							'id' => '',
+							'id'    => '',
 						),
 						'message'           => '',
 						'default_value'     => 1,
@@ -4840,9 +5320,9 @@ This list will automatically be updated if any new content meets the filter crit
 		'location'              => array(
 			array(
 				array(
-					'param' => 'post_template',
+					'param'    => 'post_template',
 					'operator' => '==',
-					'value' => 'single_press_release.php',
+					'value'    => 'single_press_release.php',
 				),
 			),
 		),
@@ -4862,11 +5342,12 @@ This list will automatically be updated if any new content meets the filter crit
 			7 => 'featured_image',
 			8 => 'send-trackbacks',
 		),
-		'active'                => 1,
+		'active'                => true,
 		'description'           => '',
-	));
-	
-	acf_add_local_field_group(array(
+		'modified'              => 1543324754,
+	) );
+
+	acf_add_local_field_group( array(
 		'key'                   => 'group_5b6c3c5890c40',
 		'title'                 => __( 'Default', THEME_DOMAIN ),
 		'fields'                => array(
@@ -4881,7 +5362,7 @@ This list will automatically be updated if any new content meets the filter crit
 				'wrapper'           => array(
 					'width' => '',
 					'class' => '',
-					'id' => '',
+					'id'    => '',
 				),
 				'clone'             => array(
 					0 => 'group_5bcee6dd2cfd7',
@@ -4902,7 +5383,7 @@ This list will automatically be updated if any new content meets the filter crit
 				'wrapper'           => array(
 					'width' => '',
 					'class' => '',
-					'id' => '',
+					'id'    => '',
 				),
 				'layout'            => 'block',
 				'sub_fields'        => array(
@@ -4917,7 +5398,7 @@ This list will automatically be updated if any new content meets the filter crit
 						'wrapper'           => array(
 							'width' => '',
 							'class' => '',
-							'id' => '',
+							'id'    => '',
 						),
 						'return_format'     => 'array',
 						'preview_size'      => 'regular',
@@ -4931,344 +5412,25 @@ This list will automatically be updated if any new content meets the filter crit
 						'mime_types'        => '',
 					),
 					array(
-						'key'               => 'field_5b6c41217bf2b',
+						'key'               => 'field_5cee97780b1eb',
 						'label'             => __( 'Content', THEME_DOMAIN ),
 						'name'              => 'content',
-						'type'              => 'flexible_content',
-						'instructions'      => __( 'This is the main section of this page.', THEME_DOMAIN ),
+						'type'              => 'clone',
+						'instructions'      => '',
 						'required'          => 0,
 						'conditional_logic' => 0,
 						'wrapper'           => array(
 							'width' => '',
 							'class' => '',
-							'id' => '',
+							'id'    => '',
 						),
-						'layouts'           => array(
-							'5b6c41335aefe' => array(
-								'key'        => '5b6c41335aefe',
-								'name'       => 'in_short',
-								'label'      => __( 'In Short', THEME_DOMAIN ),
-								'display'    => 'block',
-								'sub_fields' => array(
-									array(
-										'key'               => 'field_5b6c49f24c11d',
-										'label'             => __( 'In Short', THEME_DOMAIN ),
-										'name'              => 'in_short',
-										'type'              => 'clone',
-										'instructions'      => '',
-										'required'          => 0,
-										'conditional_logic' => 0,
-										'wrapper'           => array(
-											'width' => '',
-											'class' => '',
-											'id' => '',
-										),
-										'clone'             => array(
-											0 => 'group_5b6c416ac235f',
-										),
-										'display'           => 'seamless',
-										'layout'            => 'block',
-										'prefix_label'      => 0,
-										'prefix_name'       => 0,
-									),
-								),
-								'min'        => '',
-								'max'        => '1',
-							),
-							'layout_5b6c4a2a4c11e' => array(
-								'key'        => 'layout_5b6c4a2a4c11e',
-								'name'       => 'quote',
-								'label'      => __( 'Quote', THEME_DOMAIN ),
-								'display'    => 'block',
-								'sub_fields' => array(
-									array(
-										'key'               => 'field_5b6c4a324c11f',
-										'label'             => __( 'Quote', THEME_DOMAIN ),
-										'name'              => 'quote',
-										'type'              => 'clone',
-										'instructions'      => '',
-										'required'          => 0,
-										'conditional_logic' => 0,
-										'wrapper'           => array(
-											'width' => '',
-											'class' => '',
-											'id' => '',
-										),
-										'clone'             => array(
-											0 => 'group_5b6c045f68e96',
-										),
-										'display'           => 'seamless',
-										'layout'            => 'block',
-										'prefix_label'      => 0,
-										'prefix_name'       => 0,
-									),
-								),
-								'min'        => '',
-								'max'        => '',
-							),
-							'layout_5b6c4a5f4c120' => array(
-								'key'        => 'layout_5b6c4a5f4c120',
-								'name'       => 'text',
-								'label'      => __( 'Text', THEME_DOMAIN ),
-								'display'    => 'block',
-								'sub_fields' => array(
-									array(
-										'key'               => 'field_5b7d9304041de',
-										'label'             => __( 'About this Block', THEME_DOMAIN ),
-										'name'              => '',
-										'type'              => 'message',
-										'instructions'      => '',
-										'required'          => 0,
-										'conditional_logic' => 0,
-										'wrapper'           => array(
-											'width' => '',
-											'class' => '',
-											'id' => '',
-										),
-										'message'           => __( 'Use this block to add text. If you need to add raw HTML, make sure you use the \'text\' mode instead of the \'visual\' mode.',
-											THEME_DOMAIN ),
-										'new_lines'         => 'wpautop',
-										'esc_html'          => 0,
-									),
-									array(
-										'key' => 'field_5b6c4a7a4c121',
-										'label' => '',
-										'name' => 'text',
-										'type' => 'wysiwyg',
-										'instructions' => '',
-										'required' => 0,
-										'conditional_logic' => 0,
-										'wrapper' => array(
-											'width' => '',
-											'class' => '',
-											'id' => '',
-										),
-										'default_value' => '',
-										'tabs' => 'all',
-										'toolbar' => 'full',
-										'media_upload' => 1,
-										'delay' => 0,
-									),
-								),
-								'min'        => '',
-								'max'        => '',
-							),
-							'layout_5b6c4aa24c122' => array(
-								'key'        => 'layout_5b6c4aa24c122',
-								'name'       => 'image',
-								'label'      => __( 'Image', THEME_DOMAIN ),
-								'display'    => 'block',
-								'sub_fields' => array(
-									array(
-										'key'               => 'field_5b6c4aab4c123',
-										'label'             => __( 'Image', THEME_DOMAIN ),
-										'name'              => 'image',
-										'type'              => 'image',
-										'instructions'      => '',
-										'required'          => 0,
-										'conditional_logic' => 0,
-										'wrapper'           => array(
-											'width' => '',
-											'class' => '',
-											'id' => '',
-										),
-										'return_format'     => 'array',
-										'preview_size'      => 'regular',
-										'library'           => 'all',
-										'min_width'         => '',
-										'min_height'        => '',
-										'min_size'          => '',
-										'max_width'         => '',
-										'max_height'        => '',
-										'max_size'          => '',
-										'mime_types'        => '',
-									),
-								),
-								'min'        => '',
-								'max'        => '',
-							),
-							'layout_5b6c4ad24c124' => array(
-								'key'        => 'layout_5b6c4ad24c124',
-								'name'       => 'gallery',
-								'label'      => __( 'Gallery', THEME_DOMAIN ),
-								'display'    => 'block',
-								'sub_fields' => array(
-									array(
-										'key'               => 'field_5b6c4ad84c125',
-										'label'             => __( 'Gallery', THEME_DOMAIN ),
-										'name'              => 'gallery',
-										'type'              => 'gallery',
-										'instructions'      => '',
-										'required'          => 0,
-										'conditional_logic' => 0,
-										'wrapper'           => array(
-											'width' => '',
-											'class' => '',
-											'id' => '',
-										),
-										'min'               => '',
-										'max'               => '',
-										'insert'            => 'append',
-										'library'           => 'all',
-										'min_width'         => '',
-										'min_height'        => '',
-										'min_size'          => '',
-										'max_width'         => '',
-										'max_height'        => '',
-										'max_size'          => '',
-										'mime_types'        => '',
-									),
-								),
-								'min'        => '',
-								'max'        => '',
-							),
-							'layout_5b6c4af94c126' => array(
-								'key'        => 'layout_5b6c4af94c126',
-								'name'       => 'oembed',
-								'label'      => __( 'Video / Tweet / Post etc.', THEME_DOMAIN ),
-								'display'    => 'block',
-								'sub_fields' => array(
-									array(
-										'key'               => 'field_5b72a37b414b7',
-										'label'             => __( 'About this Block', THEME_DOMAIN ),
-										'name'              => '',
-										'type'              => 'message',
-										'instructions'      => '',
-										'required'          => 0,
-										'conditional_logic' => 0,
-										'wrapper'           => array(
-											'width' => '',
-											'class' => '',
-											'id' => '',
-										),
-										'message'           => __( 'Use this block to embed some posts, tweets, youtube videos etc. Just paste the link to the resource to embed and wait for the preview. If no preview appears, auto-embedding is not supported. You can then use a text block, switch to the text mode (on the upper right corner) and paste in the embed code provided from the platform that hosts the content.',
-											THEME_DOMAIN ),
-										'new_lines'         => 'wpautop',
-										'esc_html'          => 0,
-									),
-									array(
-										'key'               => 'field_5b6c4b1b4c127',
-										'label'             => __( 'Video / Tweet / Post etc.', THEME_DOMAIN ),
-										'name'              => 'oembed',
-										'type'              => 'oembed',
-										'instructions'      => __( 'Make sure you use the url to the tweet, post or video itself and not to the timeline.',
-											THEME_DOMAIN ),
-										'required'          => 0,
-										'conditional_logic' => 0,
-										'wrapper'           => array(
-											'width' => '',
-											'class' => '',
-											'id' => '',
-										),
-										'width'             => 600,
-										'height'            => '',
-									),
-								),
-								'min'        => '',
-								'max'        => '',
-							),
-							'layout_5bbf722de1080' => array(
-								'key'        => 'layout_5bbf722de1080',
-								'name'       => 'person',
-								'label'      => __( 'Person', THEME_DOMAIN ),
-								'display'    => 'block',
-								'sub_fields' => array(
-									array(
-										'key'               => 'field_5bbf746e7edf9',
-										'label'             => __( 'About this Block', THEME_DOMAIN ),
-										'name'              => '',
-										'type'              => 'message',
-										'instructions'      => '',
-										'required'          => 0,
-										'conditional_logic' => 0,
-										'wrapper'           => array(
-											'width' => '',
-											'class' => '',
-											'id' => '',
-										),
-										'message'           => __( 'Use this block to present your members of parliament, your candidates etc.',
-											THEME_DOMAIN ),
-										'new_lines'         => 'wpautop',
-										'esc_html'          => 0,
-									),
-									array(
-										'key'               => 'field_5bbf74e57edfa',
-										'label'             => __( 'person', THEME_DOMAIN ),
-										'name'              => 'person',
-										'type'              => 'clone',
-										'instructions'      => '',
-										'required'          => 0,
-										'conditional_logic' => 0,
-										'wrapper'           => array(
-											'width' => '',
-											'class' => '',
-											'id' => '',
-										),
-										'clone'             => array(
-											0 => 'group_5bbf71ef4ed64',
-										),
-										'display'           => 'seamless',
-										'layout'            => 'block',
-										'prefix_label'      => 0,
-										'prefix_name'       => 0,
-									),
-								),
-								'min'        => '',
-								'max'        => '',
-							),
-							'layout_5bf563b4e8753' => array(
-								'key'        => 'layout_5bf563b4e8753',
-								'name'       => 'form',
-								'label'      => __( 'Form', THEME_DOMAIN ),
-								'display'    => 'block',
-								'sub_fields' => array(
-									array(
-										'key'               => 'field_5bf563b4e8754',
-										'label'             => __( 'About this Block', THEME_DOMAIN ),
-										'name'              => '',
-										'type'              => 'message',
-										'instructions'      => '',
-										'required'          => 0,
-										'conditional_logic' => 0,
-										'wrapper'           => array(
-											'width' => '',
-											'class' => '',
-											'id' => '',
-										),
-										'message'           => __( 'Show a form', THEME_DOMAIN ),
-										'new_lines'         => '',
-										'esc_html'          => 0,
-									),
-									array(
-										'key'               => 'field_5bf563b4e8755',
-										'label'             => __( 'form', THEME_DOMAIN ),
-										'name'              => 'form',
-										'type'              => 'post_object',
-										'instructions'      => '',
-										'required'          => 0,
-										'conditional_logic' => 0,
-										'wrapper'           => array(
-											'width' => '',
-											'class' => '',
-											'id' => '',
-										),
-										'post_type'         => array(
-											0 => 'theme_form',
-										),
-										'taxonomy'          => '',
-										'allow_null'        => 0,
-										'multiple'          => 0,
-										'return_format'     => 'object',
-										'ui'                => 1,
-									),
-								),
-								'min'        => '',
-								'max'        => '',
-							),
+						'clone'             => array(
+							0 => 'group_5cee958e0d362',
 						),
-						'button_label'      => __( 'Add Content Block', THEME_DOMAIN ),
-						'min'               => '',
-						'max'               => '',
+						'display'           => 'seamless',
+						'layout'            => 'block',
+						'prefix_label'      => 0,
+						'prefix_name'       => 0,
 					),
 				),
 			),
@@ -5283,7 +5445,7 @@ This list will automatically be updated if any new content meets the filter crit
 				'wrapper'           => array(
 					'width' => '',
 					'class' => '',
-					'id' => '',
+					'id'    => '',
 				),
 				'layout'            => 'block',
 				'sub_fields'        => array(
@@ -5298,7 +5460,7 @@ This list will automatically be updated if any new content meets the filter crit
 						'wrapper'           => array(
 							'width' => '',
 							'class' => '',
-							'id' => '',
+							'id'    => '',
 						),
 						'clone'             => array(
 							0 => 'group_5b6c4bfaa8a26',
@@ -5314,31 +5476,31 @@ This list will automatically be updated if any new content meets the filter crit
 		'location'              => array(
 			array(
 				array(
-					'param' => 'post_type',
+					'param'    => 'post_type',
 					'operator' => '==',
-					'value' => 'post',
+					'value'    => 'post',
 				),
 				array(
-					'param' => 'post_template',
+					'param'    => 'post_template',
 					'operator' => '==',
-					'value' => 'default',
+					'value'    => 'default',
 				),
 			),
 			array(
 				array(
-					'param' => 'post_type',
+					'param'    => 'post_type',
 					'operator' => '==',
-					'value' => 'page',
+					'value'    => 'page',
 				),
 				array(
-					'param' => 'post_template',
+					'param'    => 'post_template',
 					'operator' => '==',
-					'value' => 'default',
+					'value'    => 'default',
 				),
 				array(
-					'param' => 'page_type',
+					'param'    => 'page_type',
 					'operator' => '!=',
-					'value' => 'front_page',
+					'value'    => 'front_page',
 				),
 			),
 		),
@@ -5359,11 +5521,12 @@ This list will automatically be updated if any new content meets the filter crit
 			8 => 'featured_image',
 			9 => 'send-trackbacks',
 		),
-		'active'                => 1,
+		'active'                => true,
 		'description'           => '',
-	));
-	
-	acf_add_local_field_group(array(
+		'modified'              => 1559140287,
+	) );
+
+	acf_add_local_field_group( array(
 		'key'                   => 'group_5b9a8a0bca273',
 		'title'                 => __( 'Overview', THEME_DOMAIN ),
 		'fields'                => array(
@@ -5378,7 +5541,7 @@ This list will automatically be updated if any new content meets the filter crit
 				'wrapper'           => array(
 					'width' => '',
 					'class' => '',
-					'id' => '',
+					'id'    => '',
 				),
 				'clone'             => array(
 					0 => 'field_5bcee7167c5c5',
@@ -5399,7 +5562,7 @@ This list will automatically be updated if any new content meets the filter crit
 				'wrapper'           => array(
 					'width' => '',
 					'class' => '',
-					'id' => '',
+					'id'    => '',
 				),
 				'collapsed'         => 'field_5b9a8b184a95e',
 				'min'               => 1,
@@ -5418,14 +5581,13 @@ This list will automatically be updated if any new content meets the filter crit
 						'wrapper'           => array(
 							'width' => '',
 							'class' => '',
-							'id' => '',
+							'id'    => '',
 						),
 						'post_type'         => array(
 							0 => 'post',
 							1 => 'page',
 						),
-						'taxonomy'          => array(
-						),
+						'taxonomy'          => array(),
 						'allow_null'        => 0,
 						'multiple'          => 0,
 						'return_format'     => 'id',
@@ -5437,14 +5599,14 @@ This list will automatically be updated if any new content meets the filter crit
 		'location'              => array(
 			array(
 				array(
-					'param' => 'post_type',
+					'param'    => 'post_type',
 					'operator' => '==',
-					'value' => 'post',
+					'value'    => 'post',
 				),
 				array(
-					'param' => 'post_template',
+					'param'    => 'post_template',
 					'operator' => '==',
-					'value' => 'single_overview.php',
+					'value'    => 'single_overview.php',
 				),
 			),
 		),
@@ -5465,27 +5627,27 @@ This list will automatically be updated if any new content meets the filter crit
 			8 => 'featured_image',
 			9 => 'send-trackbacks',
 		),
-		'active'                => 1,
+		'active'                => true,
 		'description'           => '',
-	));
-	
-	acf_add_local_field_group(array(
-		'key'      => 'group_5b76febf369b4',
-		'title'    => __( 'Social Media', THEME_DOMAIN ),
-		'fields'   => array(
+		'modified'              => 1543324758,
+	) );
+
+	acf_add_local_field_group( array(
+		'key'                   => 'group_5b76febf369b4',
+		'title'                 => __( 'Social Media', THEME_DOMAIN ),
+		'fields'                => array(
 			array(
 				'key'               => 'field_5b76fef28095e',
 				'label'             => __( 'Display Share Buttons', THEME_DOMAIN ),
 				'name'              => 'share_buttons',
 				'type'              => 'true_false',
-				'instructions'      => __( 'You can hide the share buttons of this page, by disabling this option.',
-					THEME_DOMAIN ),
+				'instructions'      => __( 'You can hide the share buttons of this page, by disabling this option.', THEME_DOMAIN ),
 				'required'          => 0,
 				'conditional_logic' => 0,
 				'wrapper'           => array(
 					'width' => '',
 					'class' => '',
-					'id' => '',
+					'id'    => '',
 				),
 				'message'           => '',
 				'default_value'     => 1,
@@ -5494,53 +5656,53 @@ This list will automatically be updated if any new content meets the filter crit
 				'ui_off_text'       => '',
 			),
 		),
-		'location' => array(
+		'location'              => array(
 			array(
 				array(
-					'param' => 'post_type',
+					'param'    => 'post_type',
 					'operator' => '==',
-					'value' => 'post',
+					'value'    => 'post',
 				),
 			),
 			array(
 				array(
-					'param' => 'post_type',
+					'param'    => 'post_type',
 					'operator' => '==',
-					'value' => 'page',
+					'value'    => 'page',
 				),
 				array(
-					'param' => 'page_type',
+					'param'    => 'page_type',
 					'operator' => '!=',
-					'value' => 'front_page',
+					'value'    => 'front_page',
 				),
 				array(
-					'param' => 'page_type',
+					'param'    => 'page_type',
 					'operator' => '!=',
-					'value' => 'posts_page',
+					'value'    => 'posts_page',
 				),
 				array(
-					'param' => 'page_template',
+					'param'    => 'page_template',
 					'operator' => '==',
-					'value' => 'default',
+					'value'    => 'default',
 				),
 			),
 			array(
 				array(
-					'param' => 'post_type',
+					'param'    => 'post_type',
 					'operator' => '==',
-					'value' => 'tribe_events',
+					'value'    => 'tribe_events',
 				),
 			),
 		),
-		'menu_order' => 20,
-		'position' => 'normal',
-		'style' => 'default',
-		'label_placement' => 'top',
+		'menu_order'            => 20,
+		'position'              => 'normal',
+		'style'                 => 'default',
+		'label_placement'       => 'top',
 		'instruction_placement' => 'label',
-		'hide_on_screen' => '',
-		'active' => 1,
-		'description' => '',
-		'modified' => 1538581339,
-	));
+		'hide_on_screen'        => '',
+		'active'                => true,
+		'description'           => '',
+		'modified'              => 1543324758,
+	) );
 
 endif;

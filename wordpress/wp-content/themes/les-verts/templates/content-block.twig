@@ -34,10 +34,17 @@
 	<div class="page__engagement_funnel">
 		{% include 'engagement-funnel.twig' with {'block': block} only %}
 	</div>
+{% elseif block.acf_fc_layout == 'testimonials' %}
+	<div class="page__testimonials">
+		{% include 'organisms/o-people-grid.twig' with {
+			'taxonomy': block.taxonomy,
+			'layout': 'vertical'
+		} only %}
+	</div>
 {% elseif block.acf_fc_layout == 'oembed' %}
-    {{ block.oembed }}
+	{{ block.oembed }}
 {% elseif block.acf_fc_layout == 'code' %}
-		{{ block.code }}
+	{{ block.code }}
 {% else %}
-    {{ block.text }}
+	{{ block.text }}
 {% endif %}

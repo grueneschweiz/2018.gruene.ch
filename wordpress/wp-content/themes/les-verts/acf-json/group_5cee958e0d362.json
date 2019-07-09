@@ -391,6 +391,38 @@
           ],
           "min": "",
           "max": ""
+        },
+        "layout_5d24b10e70f29": {
+          "key": "layout_5d24b10e70f29",
+          "name": "testimonials",
+          "label": "Testimonials",
+          "display": "block",
+          "sub_fields": [
+            {
+              "key": "field_5d24b11e70f2a",
+              "label": "",
+              "name": "",
+              "type": "clone",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              },
+              "clone": [
+                "field_5b7da1211ced8",
+                "field_5b6c608604fce"
+              ],
+              "display": "seamless",
+              "layout": "block",
+              "prefix_label": 0,
+              "prefix_name": 0
+            }
+          ],
+          "min": "",
+          "max": "1"
         }
       },
       "button_label": "Add Content Block",
@@ -415,5 +447,5 @@
   "hide_on_screen": "",
   "active": 0,
   "description": "",
-  "modified": 1559142508
+  "modified": 1562685911
 }
