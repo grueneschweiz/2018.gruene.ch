@@ -1234,7 +1234,7 @@ msgstr "Felder"
 #: lib/form/include/FormType.php:218 lib/form/include/FormType.php:248
 #: lib/form/include/FormType.php:249 lib/form/include/SubmissionsTable.php:33
 msgid "Submissions"
-msgstr ""
+msgstr "Rückmeldungen"
 
 #: lib/form/acf/form-details.php:11
 msgid "Form fields"
@@ -1274,7 +1274,7 @@ msgstr "Warum jemand dieses Formular ausfüllen sollte. Angezeigt neben dem Absc
 
 #: lib/form/acf/form-details.php:433
 msgid "After Submit"
-msgstr "Nach dem Abschicken"
+msgstr "Nach dem Absenden"
 
 #: lib/form/acf/form-details.php:449
 msgid "Success"
@@ -1331,7 +1331,7 @@ msgstr "An diese E-Mailadresse werden Benachrichtigungen gesandt, wenn ein Formu
 
 #: lib/form/acf/form-local-settings.php:192
 msgid "Sender Settings"
-msgstr "Absender Einstellungen"
+msgstr "Absender-Einstellungen"
 
 #: lib/form/acf/form-local-settings.php:223
 msgid "Sender Name"
@@ -1710,7 +1710,7 @@ msgstr "Hochladen der Datei aufgrund der Dateierweiterung gestoppt."
 
 #: vendor/timber/timber/tests/wp-overrides.php:167
 msgid "Invalid form submission."
-msgstr ""
+msgstr "Ungültige Formularrückmeldung."
 
 #: vendor/timber/timber/tests/wp-overrides.php:177
 msgid "File is empty. Please upload something more substantial."
@@ -2010,61 +2010,61 @@ msgstr "Abstimmungsempfehlung"
 
 #: lib/form/include/FormType.php:284
 msgid "Form Submissions"
-msgstr ""
+msgstr "Formular-Rückmeldungen"
 
 #: lib/form/admin/ViewSingle.php:15 lib/form/include/SubmissionsTable.php:32
 msgid "Submission"
-msgstr ""
+msgstr "Rückmeldung"
 
 #: lib/form/admin/ViewSingle.php:90 lib/form/include/SubmissionExport.php:174
 #: lib/form/include/SubmissionsTable.php:46
 msgid "Timestamp"
-msgstr ""
+msgstr "Zeitstempel"
 
 #: lib/form/include/SubmissionsTable.php:109
 msgid "No forms available"
-msgstr ""
+msgstr "Keine Formulare verfügbar"
 
 #: lib/form/include/SubmissionsTable.php:119
 msgid "Invalid form"
-msgstr ""
+msgstr "Ungültiges Formular"
 
 #: lib/form/include/SubmissionsTable.php:300
 msgid "View"
-msgstr ""
+msgstr "Anzeigen"
 
 #: lib/form/Submissions_Table.php:258
 msgid "Edit"
-msgstr ""
+msgstr "Bearbaiten"
 
 #: lib/form/include/SubmissionsTable.php:306
 #: lib/form/include/SubmissionsTable.php:502
 msgid "Delete"
-msgstr ""
+msgstr "Löschen"
 
 #: lib/form/acf/form-details.php:63
 msgid "Standard"
-msgstr ""
+msgstr "Standart"
 
 #: lib/form/acf/form-details.php:100
 msgid "Advanced"
-msgstr ""
+msgstr "Fortgeschritten"
 
 #: lib/form/acf/form-details.php:116
 msgid "DOM id"
-msgstr ""
+msgstr "DOM id"
 
 #: lib/form/acf/form-details.php:119
 msgid "Id in the HTML markup"
-msgstr ""
+msgstr "Id im HTML markup"
 
 #: lib/form/acf/form-details.php:135
 msgid "DOM Class"
-msgstr ""
+msgstr "DOM Klasse"
 
 #: lib/form/acf/form-details.php:138
 msgid "Class in the HTML markup (appended)"
-msgstr ""
+msgstr "Klasse im HTML markup (angefügt)"
 
 #: lib/form/acf/form-details.php:173 lib/form/acf/settings.php:149
 msgid "Webling"
@@ -2120,15 +2120,15 @@ msgstr ""
 
 #: lib/form/acf/input.php:45
 msgid "Number"
-msgstr ""
+msgstr "Nummer"
 
 #: lib/form/acf/settings.php:165
 msgid "API Url"
-msgstr ""
+msgstr "API Url"
 
 #: lib/form/acf/settings.php:181
 msgid "API Key"
-msgstr ""
+msgstr "API Key"
 
 #: lib/form/acf/settings.php:200
 msgid "Group Id"
@@ -2157,88 +2157,88 @@ msgstr "Mehrfachaktionen"
 #: lib/form/helpers/class-wp-list-table.php:504
 #: lib/form/helpers/class-wp-list-table.php:1282
 msgid "Show more details"
-msgstr ""
+msgstr "Details anzeigen"
 
 #: lib/form/helpers/class-wp-list-table.php:566
 msgid "Filter by date"
-msgstr ""
+msgstr "Nach Datum filtern"
 
 #: lib/form/helpers/class-wp-list-table.php:568
 msgid "All dates"
-msgstr ""
+msgstr "Alle Daten"
 
 #: lib/form/helpers/class-wp-list-table.php:631
 msgid "%s comment"
 msgid_plural "%s comments"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s Kommentar"
+msgstr[1] "%s Kommentare"
 
 #: lib/form/helpers/class-wp-list-table.php:632
 msgid "%s approved comment"
 msgid_plural "%s approved comments"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s freigegebener Kommentar"
+msgstr[1] "%s freigegebene Kommentare"
 
 #: lib/form/helpers/class-wp-list-table.php:633
 msgid "%s pending comment"
 msgid_plural "%s pending comments"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s ausstehender Kommentar"
+msgstr[1] "%s ausstehende Kommentare"
 
 #: lib/form/helpers/class-wp-list-table.php:638
 #: lib/form/helpers/class-wp-list-table.php:650
 #: lib/form/helpers/class-wp-list-table.php:663
 msgid "No comments"
-msgstr ""
+msgstr "Keine Kommentare"
 
 #: lib/form/helpers/class-wp-list-table.php:650
 msgid "No approved comments"
-msgstr ""
+msgstr "Keine freigegebenen Kommentare"
 
 #: lib/form/helpers/class-wp-list-table.php:663
 msgid "No pending comments"
-msgstr ""
+msgstr "Keine ausstehenden Kommentare"
 
 #: lib/form/helpers/class-wp-list-table.php:737
 #: lib/form/helpers/class-wp-list-table.php:1306
 msgid "%s item"
 msgid_plural "%s items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s Element"
+msgstr[1] "%s Elemente"
 
 #: lib/form/helpers/class-wp-list-table.php:773
 msgid "First page"
-msgstr ""
+msgstr "Erste Seite"
 
 #: lib/form/helpers/class-wp-list-table.php:783
 msgid "Previous page"
-msgstr ""
+msgstr "Vorherige Seite"
 
 #: lib/form/helpers/class-wp-list-table.php:790
 #: lib/form/helpers/class-wp-list-table.php:793
 msgid "Current Page"
-msgstr ""
+msgstr "Aktuelle Seite"
 
 #: lib/form/helpers/class-wp-list-table.php:799
 msgctxt "paging"
 msgid "%1$s of %2$s"
-msgstr ""
+msgstr "%1$s von %2$s"
 
 #: lib/form/helpers/class-wp-list-table.php:806
 msgid "Next page"
-msgstr ""
+msgstr "Nächste Seite"
 
 #: lib/form/helpers/class-wp-list-table.php:816
 msgid "Last page"
-msgstr ""
+msgstr "Letzte Seite"
 
 #: lib/form/helpers/class-wp-list-table.php:1036
 msgid "Select All"
-msgstr ""
+msgstr "Alle auswählen"
 
 #: lib/form/submission.php:481
 msgid "Invalid number"
-msgstr ""
+msgstr "Ungültige Zahl"
 
 #: acf-translate.php:1005
 msgid "Select the post that holds the whole campaign content."
@@ -2246,15 +2246,15 @@ msgstr "Wähle den Beitrag dieser Kampagne aus."
 
 #: lib/form/include/SubmissionsTable.php:214
 msgid "Yet, there were no forms submitted."
-msgstr ""
+msgstr "Es wurden noch keine Formulare ausgefüllt."
 
 #: lib/form/include/SubmissionsTable.php:367
 msgid "Select form"
-msgstr ""
+msgstr "Formular auswählen"
 
 #: lib/form/acf/form-details.php:154
 msgid "Field slug"
-msgstr ""
+msgstr "Feld Titelform"
 
 #: lib/form/acf/form-details.php:157
 msgid "Read Only. Hacky field to get the slug."
@@ -2262,7 +2262,7 @@ msgstr ""
 
 #: lib/form/acf/form-details.php:192
 msgid "Select the field in Webling that matches this field."
-msgstr ""
+msgstr "Wähle das Feld in Webling dass diesem Feld entspricht."
 
 #: templates/404.twig:6
 msgid "Sorry, we couldn't find what you're looking for. Have you tried the search?"
@@ -2270,63 +2270,63 @@ msgstr "Uups, leider konnten wir den gewünschten Inhalt nicht finden. Vielleich
 
 #: acf-translate.php:3575
 msgid "Recommendation Link"
-msgstr ""
+msgstr "Link der Empfehlung"
 
 #: acf-translate.php:3658
 msgid "Title Overwrite (optional)"
-msgstr ""
+msgstr "Titel überschreiben (optional)"
 
 #: acf-translate.php:3661
 msgid "Leave blank, to use the posts title."
-msgstr ""
+msgstr "Leer lassen um den Titel des Beitrags zu verwenden."
 
 #: lib/customizer/GetActive.php:71
 msgid "Button Link"
-msgstr ""
+msgstr "Link des Buttons"
 
 #: lib/customizer/GetActive.php:72
 msgid "Add the url, where the get active button should lead to."
-msgstr ""
+msgstr "Füge die URL hinzu, zuder der Mitmachen-Button führen soll."
 
 #: lib/form/include/FormType.php:295
 msgid "Export Submissions"
-msgstr ""
+msgstr "Rückmeldungen exportieren"
 
 #: lib/form/include/FormType.php:297
 msgid "Exports the submission of the form \"%s\" and all its linked forms. Usually its best to select the first form in the chain before exporting."
-msgstr ""
+msgstr "Exportiert die Rückmeldungen des Formulars \"%s\" und den damit verknüpften Formularen. Normalerweise ist es das beste, vor dem exportieren das erste Formular in der Kette auszuwählen."
 
 #: lib/form/include/SubmissionsTable.php:384
 msgid "Export .xlsx"
-msgstr ""
+msgstr "Exportieren als .xlsx"
 
 #: lib/form/acf/form-details.php:452
 msgid "What should happen after the form was successfully submitted?"
-msgstr ""
+msgstr "Was soll passieren, nachdem das Formular erfolgreich abgeschickt wurde?"
 
 #: lib/form/acf/form-details.php:476
 msgid "Show message (inline)"
-msgstr ""
+msgstr "Nachricht anzgeigen (gleiche Seite)"
 
 #: lib/form/acf/form-details.php:477
 msgid "Redirect to post / page"
-msgstr ""
+msgstr "Weiterleiten zu Beitrag / Seite"
 
 #: lib/form/acf/form-details.php:540
 msgid "Redirect to"
-msgstr ""
+msgstr "Weiterleiten zu"
 
 #: lib/form/include/SubmissionExport.php:91
 msgid "Website export"
-msgstr ""
+msgstr "Export Website"
 
 #: lib/form/include/SubmissionExport.php:96
 msgid "Export"
-msgstr ""
+msgstr "Export"
 
 #: lib/form/include/SubmissionExport.php:191
 msgid "old: "
-msgstr ""
+msgstr "alt: "
 
 #: lib/timber/SUPTPostQuery.php:59
 msgid "%d posts"
@@ -2385,53 +2385,53 @@ msgstr "d.m.Y"
 #: lib/form/include/FormType.php:217
 msgctxt "form title"
 msgid "View submissions of %s"
-msgstr ""
+msgstr "Rückmeldungen von %s anzeigen"
 
 #: lib/form/include/FormType.php:315
 msgid "Ups, something went wrong."
-msgstr ""
+msgstr "Ups, etwas ist schief gelaufen."
 
 #: lib/form/include/SubmissionModel.php:155
 msgctxt "Form element. Ex: Name"
 msgid "Old: %s"
-msgstr ""
+msgstr "Alt: %s"
 
 #: lib/form/include/SubmissionsTable.php:206
 msgid "Could not remove form submission. Was it already deleted?"
-msgstr ""
+msgstr "Rückmeldung konnte nicht gelöscht werden. Wurde sie bereits zuvor gelöscht?"
 
 #: lib/form/include/SubmissionsTable.php:305
 msgctxt "Timestamp"
 msgid "Delete submission of the %s?"
-msgstr ""
+msgstr "Rückmeldung vom %s löschen?"
 
 #: templates/atoms/a-post-meta.twig:18
 msgid "Show all articles tagged with %s"
-msgstr ""
+msgstr "Alle Artikel mit dem Tag %s anzeigen"
 
 #: lib/form/acf/input.php:64
 msgid "Confirmation text"
-msgstr ""
+msgstr "Bestätigungstext"
 
 #: lib/form/acf/mail-template.php:23
 msgctxt "Placeholders"
 msgid "Use the following tags as placeholders in your mail. They will be replaced automatically: %s"
-msgstr ""
+msgstr "Verwende die folgenden Tags als Platzhalter im Email. Sie werden automatisch ersetzt: %s"
 
 #: lib/form/acf/mail-template.php:26
 msgctxt "Placeholder"
 msgid "Use the special placeholder %s to link to the complete submission (with all linked forms)."
-msgstr ""
+msgstr "Verwende den Spezialplatzhalter %s um auf die vollständige Rückmeldung (inklusive aller verknüpften Formulare) zu verlinken."
 
 #: lib/form/acf/mail-template.php:28
 msgctxt "Link"
 msgid "Advanced: You may use %s in this mail template."
-msgstr ""
+msgstr "Fortgeschritten: Du kannst %s in dieser Emailvorlage verwenden."
 
 #: lib/form/helpers/send-email.php:69
 msgctxt "form submission"
 msgid "view complete submission online"
-msgstr ""
+msgstr "Komplette Rückmeldung online anzeigen"
 
 #: templates/atoms/a-post-link.twig:22
 msgctxt "Date format. See http://php.net/manual/de/function.date.php"
@@ -2441,12 +2441,12 @@ msgstr "j. F Y"
 #. Description of the plugin/theme
 #: 
 msgid "Custom theme for the GREENS of Switzerland. Designed by superhuit.ch, built by gruene.ch on top of superhuit's stack."
-msgstr ""
+msgstr "Massgeschneidertes Theme für die GRÜNEN in der Schweiz. Gestaltet von superhuit.ch, umgesetzt von gruene.ch auf dem Stack von superhuit."
 
 #. Author of the plugin/theme
 #: 
 msgid "superhuit.ch & gruene.ch"
-msgstr ""
+msgstr "superhuit.ch & gruene.ch"
 
 #: page.php:54
 msgid "Upcoming events"
