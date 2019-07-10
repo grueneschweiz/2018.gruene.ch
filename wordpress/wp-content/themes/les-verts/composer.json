@@ -4,6 +4,7 @@
     "mindkomm/timmy": "^0.14.0",
     "phpoffice/phpspreadsheet": "^1.6",
     "timber/timber": "^1.10",
-    "tgmpa/tgm-plugin-activation": "^2.6"
+    "tgmpa/tgm-plugin-activation": "^2.6",
+    "yahnis-elsts/plugin-update-checker": "^4.7"
   }
 }

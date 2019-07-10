@@ -59,6 +59,7 @@ if ( is_admin() ) {
 	}
 
 	require_once __DIR__ . '/admin/suggest-plugins.php';
+	require_once __DIR__ . '/admin/check-updates.php';
 }
 
 require_once __DIR__ . '/admin/rest-disable-user.php';
