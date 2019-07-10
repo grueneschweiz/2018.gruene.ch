@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-	"content-hash": "ecc3191f06777e47c152e442cfcba7d7",
+	"content-hash": "b3149c3b5bdb41a032b65896380cca2f",
     "packages": [
         {
             "name": "altorouter/altorouter",
@@ -713,8 +713,63 @@
             "time": "2019-02-06T07:57:58+00:00"
         },
         {
+					"name": "tgmpa/tgm-plugin-activation",
+					"version": "2.6.1",
+					"source": {
+						"type": "git",
+						"url": "https://github.com/TGMPA/TGM-Plugin-Activation.git",
+						"reference": "c626d0d91fc8ef24916e809c7b79eeafab1c1cac"
+					},
+					"dist": {
+						"type": "zip",
+						"url": "https://api.github.com/repos/TGMPA/TGM-Plugin-Activation/zipball/c626d0d91fc8ef24916e809c7b79eeafab1c1cac",
+						"reference": "c626d0d91fc8ef24916e809c7b79eeafab1c1cac",
+						"shasum": ""
+					},
+					"require": {
+						"php": ">=5.2"
+					},
+					"type": "library",
+					"autoload": {
+						"files": [
+							"class-tgm-plugin-activation.php"
+						]
+					},
+					"notification-url": "https://packagist.org/downloads/",
+					"license": [
+						"GPL-2.0+"
+					],
+					"authors": [
+						{
+							"name": "Thomas Griffin",
+							"homepage": "http://thomasgriffinmedia.com",
+							"role": "Developer"
+						},
+						{
+							"name": "Gary Jones",
+							"homepage": "https://github.com/GaryJones",
+							"role": "Developer"
+						},
+						{
+							"name": "Juliette Reinders Folmer",
+							"homepage": "https://github.com/jrfnl",
+							"role": "Developer"
+						}
+					],
+					"description": "TGM Plugin Activation is a PHP library that allows you to easily require or recommend plugins for your WordPress themes (and plugins).",
+					"homepage": "http://tgmpluginactivation.com",
+					"keywords": [
+						"activation",
+						"library",
+						"plugins",
+						"theme",
+						"wordpress"
+					],
+					"time": "2016-05-19T15:46:51+00:00"
+				},
+			{
             "name": "timber/timber",
-					"version": "1.10.1",
+				"version": "1.10.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/timber/timber.git",
@@ -775,7 +830,7 @@
                 "timber",
                 "twig"
             ],
-					"time": "2019-06-17T00:51:37+00:00"
+				"time": "2019-06-17T00:51:37+00:00"
         },
         {
             "name": "twig/twig",
