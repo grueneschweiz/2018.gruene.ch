@@ -26,6 +26,7 @@ mv wordpress/wp-content/themes/release.zip les-verts.zip
 # publish a copy in the styleguide so we have it available on the github pages
 # yes, this is hacky, do you have a better idea to have a permanent url that
 # holds always the latest release?
+mkdir wordpress/wp-content/themes/les-verts/styleguide/dist/build/theme
 cp les-verts.zip wordpress/wp-content/themes/les-verts/styleguide/dist/build/theme/les-verts.zip
 
 # get the version number
