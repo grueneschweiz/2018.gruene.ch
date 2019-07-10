@@ -12,7 +12,7 @@ namespace SUPT;
  * - custom rendering of a specific field
  */
 
-if ( class_exists( 'acf' ) ) {
+if ( class_exists( 'acf_pro' ) ) {
 	require_once __DIR__ . '/acf/acf-init.php';
 }
 
@@ -57,6 +57,9 @@ if ( is_admin() ) {
 	if ( defined( 'WPSEO_FILE' ) ) {
 		require_once __DIR__ . '/admin/tweak-yoast-seo.php';
 	}
+
+	require_once __DIR__ . '/admin/suggest-plugins.php';
+	require_once __DIR__ . '/admin/check-updates.php';
 }
 
 require_once __DIR__ . '/admin/rest-disable-user.php';
@@ -196,6 +199,6 @@ require_once __DIR__ . '/twig/filters/esc_form_value.php';
  * FORM LIBRARY
  * ============
  */
-if ( class_exists( 'acf' ) ) {
+if ( class_exists( 'acf_pro' ) ) {
 	require_once __DIR__ . '/form/_loader.php';
 }
