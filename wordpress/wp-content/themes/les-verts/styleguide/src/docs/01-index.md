@@ -1,4 +1,6 @@
 
+> Crap, **this guide is slightly outdated**. We'll do our best to update it again...
+
 This is a living documentation built to illustrate all the elements available for the whole family of Les Verts Website.
 
 ## Usage
