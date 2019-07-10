@@ -298,55 +298,6 @@
           "min": "",
           "max": ""
         },
-        "layout_5c1554094a513": {
-          "key": "layout_5c1554094a513",
-          "name": "engagement_funnel",
-          "label": "Engagement Funnel",
-          "display": "block",
-          "sub_fields": [
-            {
-              "key": "field_5c1554094a515",
-              "label": "Configuration",
-              "name": "configuration",
-              "type": "post_object",
-              "instructions": "",
-              "required": 0,
-              "conditional_logic": 0,
-              "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-              },
-              "post_type": [
-                "efpconfiguration"
-              ],
-              "taxonomy": "",
-              "allow_null": 0,
-              "multiple": 0,
-              "return_format": "object",
-              "ui": 1
-            },
-            {
-              "key": "field_5c1554094a514",
-              "label": "About this Block",
-              "name": "",
-              "type": "message",
-              "instructions": "",
-              "required": 0,
-              "conditional_logic": 0,
-              "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-              },
-              "message": "Add an engagement funnel (advanced)",
-              "new_lines": "",
-              "esc_html": 0
-            }
-          ],
-          "min": "",
-          "max": ""
-        },
         "layout_5c4f21cbd787c": {
           "key": "layout_5c4f21cbd787c",
           "name": "code",
@@ -384,7 +335,7 @@
                 "class": "",
                 "id": ""
               },
-              "message": "Acc custom code (advanced)",
+              "message": "Add custom code (advanced)",
               "new_lines": "",
               "esc_html": 0
             }
@@ -447,5 +398,5 @@
   "hide_on_screen": "",
   "active": 0,
   "description": "",
-  "modified": 1562685911
+  "modified": 1562765755
 }

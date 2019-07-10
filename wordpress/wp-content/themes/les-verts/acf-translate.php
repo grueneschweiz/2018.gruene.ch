@@ -5,18 +5,19 @@
  */
 
 die();
+
 if ( function_exists( 'acf_add_local_field_group' ) ):
 
 	acf_add_local_field_group( array(
 		'key'                   => 'group_5c5ab079896c0',
-		'title'                 => __( '(Category) Date', THEME_DOMAIN ),
+		'title'                 => __( '(Category) Date', 'lesverts' ),
 		'fields'                => array(
 			array(
 				'key'               => 'field_5c5ab09d6c3f1',
-				'label'             => __( 'Has date', THEME_DOMAIN ),
+				'label'             => __( 'Has date', 'lesverts' ),
 				'name'              => 'has_date',
 				'type'              => 'true_false',
-				'instructions'      => __( 'Should a date be displayed with all posts categorized in this category?', THEME_DOMAIN ),
+				'instructions'      => __( 'Should a date be displayed with all posts categorized in this category?', 'lesverts' ),
 				'required'          => 0,
 				'conditional_logic' => 0,
 				'wrapper'           => array(
@@ -53,7 +54,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 
 	acf_add_local_field_group( array(
 		'key'                   => 'group_5b9ba36e445dd',
-		'title'                 => __( '(Event) Venue', THEME_DOMAIN ),
+		'title'                 => __( '(Event) Venue', 'lesverts' ),
 		'fields'                => array(),
 		'location'              => array(
 			array(
@@ -91,11 +92,11 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 
 	acf_add_local_field_group( array(
 		'key'                   => 'group_5bd05fb159df1',
-		'title'                 => __( '(Media) Focal point', THEME_DOMAIN ),
+		'title'                 => __( '(Media) Focal point', 'lesverts' ),
 		'fields'                => array(
 			array(
 				'key'               => 'field_5bd06039df32d',
-				'label'             => __( 'Focal point', THEME_DOMAIN ),
+				'label'             => __( 'Focal point', 'lesverts' ),
 				'name'              => 'focal_point',
 				'type'              => 'select',
 				'instructions'      => '',
@@ -107,15 +108,15 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 					'id'    => '',
 				),
 				'choices'           => array(
-					'top-left'      => __( 'top left', THEME_DOMAIN ),
-					'top-center'    => __( 'top center', THEME_DOMAIN ),
-					'top-right'     => __( 'top right', THEME_DOMAIN ),
-					'middle-left'   => __( 'middle left', THEME_DOMAIN ),
-					'middle-center' => __( 'middle center', THEME_DOMAIN ),
-					'middle-right'  => __( 'middle right', THEME_DOMAIN ),
-					'bottom-left'   => __( 'bottom left', THEME_DOMAIN ),
-					'bottom-center' => __( 'bottom center', THEME_DOMAIN ),
-					'bottom-right'  => __( 'bottom right', THEME_DOMAIN ),
+					'top-left'      => __( 'top left', 'lesverts' ),
+					'top-center'    => __( 'top center', 'lesverts' ),
+					'top-right'     => __( 'top right', 'lesverts' ),
+					'middle-left'   => __( 'middle left', 'lesverts' ),
+					'middle-center' => __( 'middle center', 'lesverts' ),
+					'middle-right'  => __( 'middle right', 'lesverts' ),
+					'bottom-left'   => __( 'bottom left', 'lesverts' ),
+					'bottom-center' => __( 'bottom center', 'lesverts' ),
+					'bottom-right'  => __( 'bottom right', 'lesverts' ),
 				),
 				'default_value'     => array(
 					0 => 'middle-center',
@@ -157,11 +158,11 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 
 	acf_add_local_field_group( array(
 		'key'                   => 'group_5b647ca5e8da4',
-		'title'                 => __( '(Media) Image Copyright', THEME_DOMAIN ),
+		'title'                 => __( '(Media) Image Copyright', 'lesverts' ),
 		'fields'                => array(
 			array(
 				'key'               => 'field_5b647cb444899',
-				'label'             => __( 'Copyright Info', THEME_DOMAIN ),
+				'label'             => __( 'Copyright Info', 'lesverts' ),
 				'name'              => 'copyright',
 				'type'              => 'text',
 				'instructions'      => '',
@@ -201,14 +202,14 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 
 	acf_add_local_field_group( array(
 		'key'                   => 'group_5b62cd118cbad',
-		'title'                 => __( '(Menu) Featured Subnav Item', THEME_DOMAIN ),
+		'title'                 => __( '(Menu) Featured Subnav Item', 'lesverts' ),
 		'fields'                => array(
 			array(
 				'key'               => 'field_5b62da7660cb3',
-				'label'             => __( 'Featured Menu Item', THEME_DOMAIN ),
+				'label'             => __( 'Featured Menu Item', 'lesverts' ),
 				'name'              => 'featured_menu_item',
 				'type'              => 'true_false',
-				'instructions'      => __( 'This option only works on sub items (level 2). Else it won\'t have any effect.', THEME_DOMAIN ),
+				'instructions'      => __( 'This option only works on sub items (level 2). Else it won\'t have any effect.', 'lesverts' ),
 				'required'          => 0,
 				'conditional_logic' => 0,
 				'wrapper'           => array(
@@ -247,7 +248,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 				'sub_fields'        => array(
 					array(
 						'key'               => 'field_5b71c942afd74',
-						'label'             => __( 'Block Title', THEME_DOMAIN ),
+						'label'             => __( 'Block Title', 'lesverts' ),
 						'name'              => 'block_title',
 						'type'              => 'clone',
 						'instructions'      => '',
@@ -276,7 +277,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 					),
 					array(
 						'key'               => 'field_5b62ceb8766b1',
-						'label'             => __( 'Image', THEME_DOMAIN ),
+						'label'             => __( 'Image', 'lesverts' ),
 						'name'              => 'image',
 						'type'              => 'image',
 						'instructions'      => '',
@@ -300,10 +301,10 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 					),
 					array(
 						'key'               => 'field_5b62cf84766b4',
-						'label'             => __( 'Teaser', THEME_DOMAIN ),
+						'label'             => __( 'Teaser', 'lesverts' ),
 						'name'              => 'teaser',
 						'type'              => 'textarea',
-						'instructions'      => __( 'Max. 140 characters.', THEME_DOMAIN ),
+						'instructions'      => __( 'Max. 140 characters.', 'lesverts' ),
 						'required'          => 1,
 						'conditional_logic' => array(
 							array(
@@ -327,10 +328,10 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 					),
 					array(
 						'key'               => 'field_5b62cfc0766b5',
-						'label'             => __( 'Button Text', THEME_DOMAIN ),
+						'label'             => __( 'Button Text', 'lesverts' ),
 						'name'              => 'button_text',
 						'type'              => 'text',
-						'instructions'      => __( 'The button will link to this menu item', THEME_DOMAIN ),
+						'instructions'      => __( 'The button will link to this menu item', 'lesverts' ),
 						'required'          => 1,
 						'conditional_logic' => array(
 							array(
@@ -377,11 +378,11 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 
 	acf_add_local_field_group( array(
 		'key'                   => 'group_5b6d6d4f568ab',
-		'title'                 => __( '(Widget) Buttons', THEME_DOMAIN ),
+		'title'                 => __( '(Widget) Buttons', 'lesverts' ),
 		'fields'                => array(
 			array(
 				'key'               => 'field_5b6d6d7d49392',
-				'label'             => __( 'Buttons', THEME_DOMAIN ),
+				'label'             => __( 'Buttons', 'lesverts' ),
 				'name'              => 'buttons',
 				'type'              => 'repeater',
 				'instructions'      => '',
@@ -396,14 +397,14 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 				'min'               => 1,
 				'max'               => 5,
 				'layout'            => 'block',
-				'button_label'      => __( 'Add Button', THEME_DOMAIN ),
+				'button_label'      => __( 'Add Button', 'lesverts' ),
 				'sub_fields'        => array(
 					array(
 						'key'               => 'field_5b6d6de749393',
-						'label'             => __( 'Button Text', THEME_DOMAIN ),
+						'label'             => __( 'Button Text', 'lesverts' ),
 						'name'              => 'label',
 						'type'              => 'text',
-						'instructions'      => __( 'Max. 40 characters.', THEME_DOMAIN ),
+						'instructions'      => __( 'Max. 40 characters.', 'lesverts' ),
 						'required'          => 1,
 						'conditional_logic' => 0,
 						'wrapper'           => array(
@@ -419,7 +420,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 					),
 					array(
 						'key'               => 'field_5b6d6dfa49394',
-						'label'             => __( 'Link', THEME_DOMAIN ),
+						'label'             => __( 'Link', 'lesverts' ),
 						'name'              => 'link',
 						'type'              => 'url',
 						'instructions'      => '',
@@ -435,7 +436,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 					),
 					array(
 						'key'               => 'field_5b6d6e1349395',
-						'label'             => __( 'Highlighted', THEME_DOMAIN ),
+						'label'             => __( 'Highlighted', 'lesverts' ),
 						'name'              => 'highlighted',
 						'type'              => 'true_false',
 						'instructions'      => '',
@@ -477,11 +478,11 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 
 	acf_add_local_field_group( array(
 		'key'                   => 'group_5b6d603e15f2a',
-		'title'                 => __( '(Widget) Contact', THEME_DOMAIN ),
+		'title'                 => __( '(Widget) Contact', 'lesverts' ),
 		'fields'                => array(
 			array(
 				'key'               => 'field_5b6d66726dae9',
-				'label'             => __( 'Address', THEME_DOMAIN ),
+				'label'             => __( 'Address', 'lesverts' ),
 				'name'              => 'address',
 				'type'              => 'wysiwyg',
 				'instructions'      => '',
@@ -500,7 +501,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 			),
 			array(
 				'key'               => 'field_5b6d66eb6daeb',
-				'label'             => __( 'Social Media', THEME_DOMAIN ),
+				'label'             => __( 'Social Media', 'lesverts' ),
 				'name'              => 'social_media',
 				'type'              => 'flexible_content',
 				'instructions'      => '',
@@ -515,12 +516,12 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 					'5b6d66ff18a3e'        => array(
 						'key'        => '5b6d66ff18a3e',
 						'name'       => 'facebook',
-						'label'      => __( 'Facebook', THEME_DOMAIN ),
+						'label'      => __( 'Facebook', 'lesverts' ),
 						'display'    => 'block',
 						'sub_fields' => array(
 							array(
 								'key'               => 'field_5b6d67a21c8de',
-								'label'             => __( 'Link to the facebook fan page / profile', THEME_DOMAIN ),
+								'label'             => __( 'Link to the facebook fan page / profile', 'lesverts' ),
 								'name'              => 'link',
 								'type'              => 'url',
 								'instructions'      => '',
@@ -541,12 +542,12 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 					'layout_5b6d67df1c8df' => array(
 						'key'        => 'layout_5b6d67df1c8df',
 						'name'       => 'twitter',
-						'label'      => __( 'Twitter', THEME_DOMAIN ),
+						'label'      => __( 'Twitter', 'lesverts' ),
 						'display'    => 'block',
 						'sub_fields' => array(
 							array(
 								'key'               => 'field_5b6d67e81c8e0',
-								'label'             => __( 'Link to the twitter profile', THEME_DOMAIN ),
+								'label'             => __( 'Link to the twitter profile', 'lesverts' ),
 								'name'              => 'link',
 								'type'              => 'url',
 								'instructions'      => '',
@@ -567,12 +568,12 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 					'layout_5b6d680d1c8e1' => array(
 						'key'        => 'layout_5b6d680d1c8e1',
 						'name'       => 'instagram',
-						'label'      => __( 'Instagram', THEME_DOMAIN ),
+						'label'      => __( 'Instagram', 'lesverts' ),
 						'display'    => 'block',
 						'sub_fields' => array(
 							array(
 								'key'               => 'field_5b6d681c1c8e2',
-								'label'             => __( 'Link to the instagram profile', THEME_DOMAIN ),
+								'label'             => __( 'Link to the instagram profile', 'lesverts' ),
 								'name'              => 'link',
 								'type'              => 'url',
 								'instructions'      => '',
@@ -591,7 +592,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 						'max'        => '1',
 					),
 				),
-				'button_label'      => __( 'Add Icon', THEME_DOMAIN ),
+				'button_label'      => __( 'Add Icon', 'lesverts' ),
 				'min'               => '',
 				'max'               => '',
 			),
@@ -618,11 +619,11 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 
 	acf_add_local_field_group( array(
 		'key'                   => 'group_5b6d9c4c1eaa5',
-		'title'                 => __( '(Widget) Link List', THEME_DOMAIN ),
+		'title'                 => __( '(Widget) Link List', 'lesverts' ),
 		'fields'                => array(
 			array(
 				'key'               => 'field_5b6d9c573efbd',
-				'label'             => __( 'List', THEME_DOMAIN ),
+				'label'             => __( 'List', 'lesverts' ),
 				'name'              => 'list',
 				'type'              => 'repeater',
 				'instructions'      => '',
@@ -637,11 +638,11 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 				'min'               => 0,
 				'max'               => 0,
 				'layout'            => 'row',
-				'button_label'      => __( 'Add Link', THEME_DOMAIN ),
+				'button_label'      => __( 'Add Link', 'lesverts' ),
 				'sub_fields'        => array(
 					array(
 						'key'               => 'field_5b6d9c713efbe',
-						'label'             => __( 'Label', THEME_DOMAIN ),
+						'label'             => __( 'Label', 'lesverts' ),
 						'name'              => 'label',
 						'type'              => 'text',
 						'instructions'      => '',
@@ -660,7 +661,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 					),
 					array(
 						'key'               => 'field_5b6d9c923efbf',
-						'label'             => __( 'Link', THEME_DOMAIN ),
+						'label'             => __( 'Link', 'lesverts' ),
 						'name'              => 'link',
 						'type'              => 'url',
 						'instructions'      => '',
@@ -699,14 +700,14 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 
 	acf_add_local_field_group( array(
 		'key'                   => 'group_5b684e748247e',
-		'title'                 => __( '[Template]Block title', THEME_DOMAIN ),
+		'title'                 => __( '[Template]Block title', 'lesverts' ),
 		'fields'                => array(
 			array(
 				'key'               => 'field_5b7199bdd9d92',
-				'label'             => __( 'Block Title', THEME_DOMAIN ),
+				'label'             => __( 'Block Title', 'lesverts' ),
 				'name'              => 'block_title',
 				'type'              => 'group',
-				'instructions'      => __( 'Use a generic title like the category of the block. Then link it to this category.', THEME_DOMAIN ),
+				'instructions'      => __( 'Use a generic title like the category of the block. Then link it to this category.', 'lesverts' ),
 				'required'          => 0,
 				'conditional_logic' => 0,
 				'wrapper'           => array(
@@ -718,7 +719,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 				'sub_fields'        => array(
 					array(
 						'key'               => 'field_5b6860ce304b8',
-						'label'             => __( 'Title', THEME_DOMAIN ),
+						'label'             => __( 'Title', 'lesverts' ),
 						'name'              => 'title',
 						'type'              => 'text',
 						'instructions'      => '',
@@ -737,7 +738,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 					),
 					array(
 						'key'               => 'field_5b719aeeac444',
-						'label'             => __( 'Link', THEME_DOMAIN ),
+						'label'             => __( 'Link', 'lesverts' ),
 						'name'              => 'link',
 						'type'              => 'group',
 						'instructions'      => '',
@@ -752,7 +753,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 						'sub_fields'        => array(
 							array(
 								'key'               => 'field_5b71975ea470c',
-								'label'             => __( 'Link Type', THEME_DOMAIN ),
+								'label'             => __( 'Link Type', 'lesverts' ),
 								'name'              => 'type',
 								'type'              => 'button_group',
 								'instructions'      => '',
@@ -764,10 +765,10 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 									'id'    => '',
 								),
 								'choices'           => array(
-									'category' => __( 'Category', THEME_DOMAIN ),
-									'internal' => __( 'Internal', THEME_DOMAIN ),
-									'url'      => __( 'URL', THEME_DOMAIN ),
-									'none'     => __( 'None', THEME_DOMAIN ),
+									'category' => __( 'Category', 'lesverts' ),
+									'internal' => __( 'Internal', 'lesverts' ),
+									'url'      => __( 'URL', 'lesverts' ),
+									'none'     => __( 'None', 'lesverts' ),
 								),
 								'allow_null'        => 0,
 								'default_value'     => 'none',
@@ -776,7 +777,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 							),
 							array(
 								'key'               => 'field_5b6860fd304b9',
-								'label'             => __( 'Category', THEME_DOMAIN ),
+								'label'             => __( 'Category', 'lesverts' ),
 								'name'              => 'category',
 								'type'              => 'taxonomy',
 								'instructions'      => '',
@@ -806,7 +807,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 							),
 							array(
 								'key'               => 'field_5b71984fa470e',
-								'label'             => __( 'Internal Link', THEME_DOMAIN ),
+								'label'             => __( 'Internal Link', 'lesverts' ),
 								'name'              => 'internal',
 								'type'              => 'post_object',
 								'instructions'      => '',
@@ -838,7 +839,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 							),
 							array(
 								'key'               => 'field_5b7198bba470f',
-								'label'             => __( 'URL', THEME_DOMAIN ),
+								'label'             => __( 'URL', 'lesverts' ),
 								'name'              => 'url',
 								'type'              => 'url',
 								'instructions'      => '',
@@ -862,7 +863,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 							),
 							array(
 								'key'               => 'field_5b719bb003bf4',
-								'label'             => __( 'No Link', THEME_DOMAIN ),
+								'label'             => __( 'No Link', 'lesverts' ),
 								'name'              => '',
 								'type'              => 'message',
 								'instructions'      => '',
@@ -881,7 +882,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 									'class' => '',
 									'id'    => '',
 								),
-								'message'           => __( 'The block title will not be linked', THEME_DOMAIN ),
+								'message'           => __( 'The block title will not be linked', 'lesverts' ),
 								'new_lines'         => 'wpautop',
 								'esc_html'          => 0,
 							),
@@ -912,14 +913,14 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 
 	acf_add_local_field_group( array(
 		'key'                   => 'group_5cee958e0d362',
-		'title'                 => __( '[Template]Default Content', THEME_DOMAIN ),
+		'title'                 => __( '[Template]Default Content', 'lesverts' ),
 		'fields'                => array(
 			array(
 				'key'               => 'field_5cee95b5caff7',
-				'label'             => __( 'Content', THEME_DOMAIN ),
+				'label'             => __( 'Content', 'lesverts' ),
 				'name'              => 'content',
 				'type'              => 'flexible_content',
-				'instructions'      => __( 'This is the main section of this page.', THEME_DOMAIN ),
+				'instructions'      => __( 'This is the main section of this page.', 'lesverts' ),
 				'required'          => 0,
 				'conditional_logic' => 0,
 				'wrapper'           => array(
@@ -931,12 +932,12 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 					'5b6c41335aefe'        => array(
 						'key'        => '5b6c41335aefe',
 						'name'       => 'in_short',
-						'label'      => __( 'In Short', THEME_DOMAIN ),
+						'label'      => __( 'In Short', 'lesverts' ),
 						'display'    => 'block',
 						'sub_fields' => array(
 							array(
 								'key'               => 'field_5b6c49f24c11d',
-								'label'             => __( 'In Short', THEME_DOMAIN ),
+								'label'             => __( 'In Short', 'lesverts' ),
 								'name'              => 'in_short',
 								'type'              => 'clone',
 								'instructions'      => '',
@@ -962,12 +963,12 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 					'layout_5b6c4a2a4c11e' => array(
 						'key'        => 'layout_5b6c4a2a4c11e',
 						'name'       => 'quote',
-						'label'      => __( 'Quote', THEME_DOMAIN ),
+						'label'      => __( 'Quote', 'lesverts' ),
 						'display'    => 'block',
 						'sub_fields' => array(
 							array(
 								'key'               => 'field_5b6c4a324c11f',
-								'label'             => __( 'Quote', THEME_DOMAIN ),
+								'label'             => __( 'Quote', 'lesverts' ),
 								'name'              => 'quote',
 								'type'              => 'clone',
 								'instructions'      => '',
@@ -993,7 +994,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 					'layout_5b6c4a5f4c120' => array(
 						'key'        => 'layout_5b6c4a5f4c120',
 						'name'       => 'text',
-						'label'      => __( 'Text', THEME_DOMAIN ),
+						'label'      => __( 'Text', 'lesverts' ),
 						'display'    => 'block',
 						'sub_fields' => array(
 							array(
@@ -1017,7 +1018,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 							),
 							array(
 								'key'               => 'field_5b7d9304041de',
-								'label'             => __( 'About this Block', THEME_DOMAIN ),
+								'label'             => __( 'About this Block', 'lesverts' ),
 								'name'              => '',
 								'type'              => 'message',
 								'instructions'      => '',
@@ -1028,7 +1029,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 									'class' => '',
 									'id'    => '',
 								),
-								'message'           => __( 'Use this block to add text. If you need to add raw HTML, make sure you use the \'text\' mode instead of the \'visual\' mode.', THEME_DOMAIN ),
+								'message'           => __( 'Use this block to add text. If you need to add raw HTML, make sure you use the \'text\' mode instead of the \'visual\' mode.', 'lesverts' ),
 								'new_lines'         => 'wpautop',
 								'esc_html'          => 0,
 							),
@@ -1039,12 +1040,12 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 					'layout_5b6c4aa24c122' => array(
 						'key'        => 'layout_5b6c4aa24c122',
 						'name'       => 'image',
-						'label'      => __( 'Image', THEME_DOMAIN ),
+						'label'      => __( 'Image', 'lesverts' ),
 						'display'    => 'block',
 						'sub_fields' => array(
 							array(
 								'key'               => 'field_5b6c4aab4c123',
-								'label'             => __( 'Image', THEME_DOMAIN ),
+								'label'             => __( 'Image', 'lesverts' ),
 								'name'              => 'image',
 								'type'              => 'image',
 								'instructions'      => '',
@@ -1073,15 +1074,15 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 					'layout_5b6c4af94c126' => array(
 						'key'        => 'layout_5b6c4af94c126',
 						'name'       => 'oembed',
-						'label'      => __( 'Video / Tweet / Post etc.', THEME_DOMAIN ),
+						'label'      => __( 'Video / Tweet / Post etc.', 'lesverts' ),
 						'display'    => 'block',
 						'sub_fields' => array(
 							array(
 								'key'               => 'field_5b6c4b1b4c127',
-								'label'             => __( 'Video / Tweet / Post etc.', THEME_DOMAIN ),
+								'label'             => __( 'Video / Tweet / Post etc.', 'lesverts' ),
 								'name'              => 'oembed',
 								'type'              => 'oembed',
-								'instructions'      => __( 'Make sure you use the url to the tweet, post or video itself and not to the timeline.', THEME_DOMAIN ),
+								'instructions'      => __( 'Make sure you use the url to the tweet, post or video itself and not to the timeline.', 'lesverts' ),
 								'required'          => 0,
 								'conditional_logic' => 0,
 								'wrapper'           => array(
@@ -1094,7 +1095,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 							),
 							array(
 								'key'               => 'field_5b72a37b414b7',
-								'label'             => __( 'About this Block', THEME_DOMAIN ),
+								'label'             => __( 'About this Block', 'lesverts' ),
 								'name'              => '',
 								'type'              => 'message',
 								'instructions'      => '',
@@ -1105,7 +1106,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 									'class' => '',
 									'id'    => '',
 								),
-								'message'           => __( 'Use this block to embed some posts, tweets, youtube videos etc. Just paste the link to the resource to embed and wait for the preview. If no preview appears, auto-embedding is not supported. You can then use a text block, switch to the text mode (on the upper right corner) and paste in the embed code provided from the platform that hosts the content.', THEME_DOMAIN ),
+								'message'           => __( 'Use this block to embed some posts, tweets, youtube videos etc. Just paste the link to the resource to embed and wait for the preview. If no preview appears, auto-embedding is not supported. You can then use a text block, switch to the text mode (on the upper right corner) and paste in the embed code provided from the platform that hosts the content.', 'lesverts' ),
 								'new_lines'         => 'wpautop',
 								'esc_html'          => 0,
 							),
@@ -1116,12 +1117,12 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 					'layout_5bbf722de1080' => array(
 						'key'        => 'layout_5bbf722de1080',
 						'name'       => 'person',
-						'label'      => __( 'Person', THEME_DOMAIN ),
+						'label'      => __( 'Person', 'lesverts' ),
 						'display'    => 'block',
 						'sub_fields' => array(
 							array(
 								'key'               => 'field_5bbf74e57edfa',
-								'label'             => __( 'person', THEME_DOMAIN ),
+								'label'             => __( 'person', 'lesverts' ),
 								'name'              => 'person',
 								'type'              => 'clone',
 								'instructions'      => '',
@@ -1142,7 +1143,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 							),
 							array(
 								'key'               => 'field_5bbf746e7edf9',
-								'label'             => __( 'About this Block', THEME_DOMAIN ),
+								'label'             => __( 'About this Block', 'lesverts' ),
 								'name'              => '',
 								'type'              => 'message',
 								'instructions'      => '',
@@ -1153,7 +1154,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 									'class' => '',
 									'id'    => '',
 								),
-								'message'           => __( 'Use this block to present your members of parliament, your candidates etc.', THEME_DOMAIN ),
+								'message'           => __( 'Use this block to present your members of parliament, your candidates etc.', 'lesverts' ),
 								'new_lines'         => 'wpautop',
 								'esc_html'          => 0,
 							),
@@ -1164,12 +1165,12 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 					'layout_5bf563b4e8753' => array(
 						'key'        => 'layout_5bf563b4e8753',
 						'name'       => 'form',
-						'label'      => __( 'Form', THEME_DOMAIN ),
+						'label'      => __( 'Form', 'lesverts' ),
 						'display'    => 'block',
 						'sub_fields' => array(
 							array(
 								'key'               => 'field_5bf563b4e8754',
-								'label'             => __( 'About this Block', THEME_DOMAIN ),
+								'label'             => __( 'About this Block', 'lesverts' ),
 								'name'              => '',
 								'type'              => 'message',
 								'instructions'      => '',
@@ -1180,13 +1181,13 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 									'class' => '',
 									'id'    => '',
 								),
-								'message'           => __( 'Show a form', THEME_DOMAIN ),
+								'message'           => __( 'Show a form', 'lesverts' ),
 								'new_lines'         => '',
 								'esc_html'          => 0,
 							),
 							array(
 								'key'               => 'field_5bf563b4e8755',
-								'label'             => __( 'Form', THEME_DOMAIN ),
+								'label'             => __( 'Form', 'lesverts' ),
 								'name'              => 'form',
 								'type'              => 'post_object',
 								'instructions'      => '',
@@ -1210,64 +1211,15 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 						'min'        => '',
 						'max'        => '',
 					),
-					'layout_5c1554094a513' => array(
-						'key'        => 'layout_5c1554094a513',
-						'name'       => 'engagement_funnel',
-						'label'      => __( 'Engagement Funnel', THEME_DOMAIN ),
-						'display'    => 'block',
-						'sub_fields' => array(
-							array(
-								'key'               => 'field_5c1554094a515',
-								'label'             => __( 'Configuration', THEME_DOMAIN ),
-								'name'              => 'configuration',
-								'type'              => 'post_object',
-								'instructions'      => '',
-								'required'          => 0,
-								'conditional_logic' => 0,
-								'wrapper'           => array(
-									'width' => '',
-									'class' => '',
-									'id'    => '',
-								),
-								'post_type'         => array(
-									0 => 'efpconfiguration',
-								),
-								'taxonomy'          => '',
-								'allow_null'        => 0,
-								'multiple'          => 0,
-								'return_format'     => 'object',
-								'ui'                => 1,
-							),
-							array(
-								'key'               => 'field_5c1554094a514',
-								'label'             => __( 'About this Block', THEME_DOMAIN ),
-								'name'              => '',
-								'type'              => 'message',
-								'instructions'      => '',
-								'required'          => 0,
-								'conditional_logic' => 0,
-								'wrapper'           => array(
-									'width' => '',
-									'class' => '',
-									'id'    => '',
-								),
-								'message'           => __( 'Add an engagement funnel (advanced)', THEME_DOMAIN ),
-								'new_lines'         => '',
-								'esc_html'          => 0,
-							),
-						),
-						'min'        => '',
-						'max'        => '',
-					),
 					'layout_5c4f21cbd787c' => array(
 						'key'        => 'layout_5c4f21cbd787c',
 						'name'       => 'code',
-						'label'      => __( 'Code', THEME_DOMAIN ),
+						'label'      => __( 'Code', 'lesverts' ),
 						'display'    => 'block',
 						'sub_fields' => array(
 							array(
 								'key'               => 'field_5c4f21cbd787e',
-								'label'             => __( 'Code', THEME_DOMAIN ),
+								'label'             => __( 'Code', 'lesverts' ),
 								'name'              => 'code',
 								'type'              => 'acf_code_field',
 								'instructions'      => '',
@@ -1285,7 +1237,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 							),
 							array(
 								'key'               => 'field_5c4f21cbd787d',
-								'label'             => __( 'About this Block', THEME_DOMAIN ),
+								'label'             => __( 'About this Block', 'lesverts' ),
 								'name'              => '',
 								'type'              => 'message',
 								'instructions'      => '',
@@ -1296,7 +1248,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 									'class' => '',
 									'id'    => '',
 								),
-								'message'           => __( 'Acc custom code (advanced)', THEME_DOMAIN ),
+								'message'           => __( 'Add custom code (advanced)', 'lesverts' ),
 								'new_lines'         => '',
 								'esc_html'          => 0,
 							),
@@ -1307,7 +1259,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 					'layout_5d24b10e70f29' => array(
 						'key'        => 'layout_5d24b10e70f29',
 						'name'       => 'testimonials',
-						'label'      => __( 'Testimonials', THEME_DOMAIN ),
+						'label'      => __( 'Testimonials', 'lesverts' ),
 						'display'    => 'block',
 						'sub_fields' => array(
 							array(
@@ -1337,7 +1289,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 						'max'        => '1',
 					),
 				),
-				'button_label'      => __( 'Add Content Block', THEME_DOMAIN ),
+				'button_label'      => __( 'Add Content Block', 'lesverts' ),
 				'min'               => '',
 				'max'               => '',
 			),
@@ -1363,11 +1315,11 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 
 	acf_add_local_field_group( array(
 		'key'                   => 'group_5b6ae2eb01de7',
-		'title'                 => __( '[Template]Events Block', THEME_DOMAIN ),
+		'title'                 => __( '[Template]Events Block', 'lesverts' ),
 		'fields'                => array(
 			array(
 				'key'               => 'field_5b7da28b9c989',
-				'label'             => __( 'About this Block', THEME_DOMAIN ),
+				'label'             => __( 'About this Block', 'lesverts' ),
 				'name'              => '',
 				'type'              => 'message',
 				'instructions'      => '',
@@ -1378,13 +1330,13 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 					'class' => '',
 					'id'    => '',
 				),
-				'message'           => __( 'Displays a teaser of your most recent events.', THEME_DOMAIN ),
+				'message'           => __( 'Displays a teaser of your most recent events.', 'lesverts' ),
 				'new_lines'         => 'wpautop',
 				'esc_html'          => 0,
 			),
 			array(
 				'key'               => 'field_5b6ae7071a2b7',
-				'label'             => __( 'Block Title', THEME_DOMAIN ),
+				'label'             => __( 'Block Title', 'lesverts' ),
 				'name'              => 'block_title',
 				'type'              => 'clone',
 				'instructions'      => '',
@@ -1405,10 +1357,10 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 			),
 			array(
 				'key'               => 'field_5b6ae32ac26d0',
-				'label'             => __( 'Max events to show', THEME_DOMAIN ),
+				'label'             => __( 'Max events to show', 'lesverts' ),
 				'name'              => 'max_num',
 				'type'              => 'number',
-				'instructions'      => __( 'Visitors can always see all events by clicking the «Show all events»-Button.', THEME_DOMAIN ),
+				'instructions'      => __( 'Visitors can always see all events by clicking the «Show all events»-Button.', 'lesverts' ),
 				'required'          => 1,
 				'conditional_logic' => 0,
 				'wrapper'           => array(
@@ -1426,10 +1378,10 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 			),
 			array(
 				'key'               => 'field_5b6ae4faa4259',
-				'label'             => __( 'Full Width', THEME_DOMAIN ),
+				'label'             => __( 'Full Width', 'lesverts' ),
 				'name'              => 'full_width',
 				'type'              => 'true_false',
-				'instructions'      => __( 'If full width, the block will span the whole page (both columns) else it will only take the place of a single column block.', THEME_DOMAIN ),
+				'instructions'      => __( 'If full width, the block will span the whole page (both columns) else it will only take the place of a single column block.', 'lesverts' ),
 				'required'          => 0,
 				'conditional_logic' => array(
 					array(
@@ -1479,11 +1431,11 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 
 	acf_add_local_field_group( array(
 		'key'                   => 'group_5b645b16b8a08',
-		'title'                 => __( '[Template]Front Main Campaign', THEME_DOMAIN ),
+		'title'                 => __( '[Template]Front Main Campaign', 'lesverts' ),
 		'fields'                => array(
 			array(
 				'key'               => 'field_5bfd36914df38',
-				'label'             => __( 'Show Main Campaign', THEME_DOMAIN ),
+				'label'             => __( 'Show Main Campaign', 'lesverts' ),
 				'name'              => 'show_main_campaign',
 				'type'              => 'true_false',
 				'instructions'      => '',
@@ -1494,18 +1446,18 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 					'class' => '',
 					'id'    => '',
 				),
-				'message'           => __( 'Display primary campaign?', THEME_DOMAIN ),
+				'message'           => __( 'Display primary campaign?', 'lesverts' ),
 				'default_value'     => 1,
 				'ui'                => 1,
-				'ui_on_text'        => __( 'Show', THEME_DOMAIN ),
-				'ui_off_text'       => __( 'Hide', THEME_DOMAIN ),
+				'ui_on_text'        => __( 'Show', 'lesverts' ),
+				'ui_off_text'       => __( 'Hide', 'lesverts' ),
 			),
 			array(
 				'key'               => 'field_5b645b8533eeb',
-				'label'             => __( 'Image', THEME_DOMAIN ),
+				'label'             => __( 'Image', 'lesverts' ),
 				'name'              => 'image',
 				'type'              => 'image',
-				'instructions'      => __( 'Make sure the image is at least 2000px wide.', THEME_DOMAIN ),
+				'instructions'      => __( 'Make sure the image is at least 2000px wide.', 'lesverts' ),
 				'required'          => 1,
 				'conditional_logic' => array(
 					array(
@@ -1534,10 +1486,10 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 			),
 			array(
 				'key'               => 'field_5b718424ad3be',
-				'label'             => __( 'Bars', THEME_DOMAIN ),
+				'label'             => __( 'Bars', 'lesverts' ),
 				'name'              => 'bars',
 				'type'              => 'group',
-				'instructions'      => __( 'The bars will be placed over the image in the corporate design.', THEME_DOMAIN ),
+				'instructions'      => __( 'The bars will be placed over the image in the corporate design.', 'lesverts' ),
 				'required'          => 0,
 				'conditional_logic' => array(
 					array(
@@ -1557,7 +1509,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 				'sub_fields'        => array(
 					array(
 						'key'               => 'field_5b64b19806123',
-						'label'             => __( 'Bar alignment', THEME_DOMAIN ),
+						'label'             => __( 'Bar alignment', 'lesverts' ),
 						'name'              => 'bar_alignment',
 						'type'              => 'radio',
 						'instructions'      => '',
@@ -1569,9 +1521,9 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 							'id'    => '',
 						),
 						'choices'           => array(
-							'left'  => __( 'Left', THEME_DOMAIN ),
-							'right' => __( 'Right', THEME_DOMAIN ),
-							'none'  => __( 'Do not show bars', THEME_DOMAIN ),
+							'left'  => __( 'Left', 'lesverts' ),
+							'right' => __( 'Right', 'lesverts' ),
+							'none'  => __( 'Do not show bars', 'lesverts' ),
 						),
 						'allow_null'        => 0,
 						'other_choice'      => 0,
@@ -1582,10 +1534,10 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 					),
 					array(
 						'key'               => 'field_5b718193dfd9f',
-						'label'             => __( 'Main Color', THEME_DOMAIN ),
+						'label'             => __( 'Main Color', 'lesverts' ),
 						'name'              => 'main_color',
 						'type'              => 'button_group',
-						'instructions'      => __( 'Select color of the upper headlines. Default is green. Use white, if the background is green already.', THEME_DOMAIN ),
+						'instructions'      => __( 'Select color of the upper headlines. Default is green. Use white, if the background is green already.', 'lesverts' ),
 						'required'          => 0,
 						'conditional_logic' => array(
 							array(
@@ -1602,8 +1554,8 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 							'id'    => '',
 						),
 						'choices'           => array(
-							'green' => __( 'Green', THEME_DOMAIN ),
-							'white' => __( 'White', THEME_DOMAIN ),
+							'green' => __( 'Green', 'lesverts' ),
+							'white' => __( 'White', 'lesverts' ),
 						),
 						'allow_null'        => 0,
 						'default_value'     => 'green',
@@ -1612,7 +1564,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 					),
 					array(
 						'key'               => 'field_5b7184aaad3bf',
-						'label'             => __( 'Headlines', THEME_DOMAIN ),
+						'label'             => __( 'Headlines', 'lesverts' ),
 						'name'              => 'headlines',
 						'type'              => 'group',
 						'instructions'      => '',
@@ -1658,11 +1610,11 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 								'min'               => 1,
 								'max'               => 2,
 								'layout'            => '',
-								'button_label'      => __( 'Add Green Headline', THEME_DOMAIN ),
+								'button_label'      => __( 'Add Green Headline', 'lesverts' ),
 								'sub_fields'        => array(
 									array(
 										'key'               => 'field_5b645c0833eed',
-										'label'             => __( 'Green Headline', THEME_DOMAIN ),
+										'label'             => __( 'Green Headline', 'lesverts' ),
 										'name'              => 'bar',
 										'type'              => 'text',
 										'instructions'      => '',
@@ -1706,11 +1658,11 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 								'min'               => 1,
 								'max'               => 2,
 								'layout'            => '',
-								'button_label'      => __( 'Add White Headline', THEME_DOMAIN ),
+								'button_label'      => __( 'Add White Headline', 'lesverts' ),
 								'sub_fields'        => array(
 									array(
 										'key'               => 'field_5b645cf533eef',
-										'label'             => __( 'White Headline', THEME_DOMAIN ),
+										'label'             => __( 'White Headline', 'lesverts' ),
 										'name'              => 'bar',
 										'type'              => 'text',
 										'instructions'      => '',
@@ -1746,11 +1698,11 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 								'min'               => 1,
 								'max'               => 2,
 								'layout'            => '',
-								'button_label'      => __( 'Add Magenta Headline', THEME_DOMAIN ),
+								'button_label'      => __( 'Add Magenta Headline', 'lesverts' ),
 								'sub_fields'        => array(
 									array(
 										'key'               => 'field_5b645d6b33ef1',
-										'label'             => __( 'Magenta Headline', THEME_DOMAIN ),
+										'label'             => __( 'Magenta Headline', 'lesverts' ),
 										'name'              => 'bar',
 										'type'              => 'text',
 										'instructions'      => '',
@@ -1773,10 +1725,10 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 					),
 					array(
 						'key'               => 'field_5b72aad898025',
-						'label'             => __( 'Subline Color', THEME_DOMAIN ),
+						'label'             => __( 'Subline Color', 'lesverts' ),
 						'name'              => 'subline_color',
 						'type'              => 'button_group',
-						'instructions'      => __( 'Select color of the sublines. Default is white. Use green, if the background is white already.', THEME_DOMAIN ),
+						'instructions'      => __( 'Select color of the sublines. Default is white. Use green, if the background is white already.', 'lesverts' ),
 						'required'          => 0,
 						'conditional_logic' => array(
 							array(
@@ -1793,8 +1745,8 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 							'id'    => '',
 						),
 						'choices'           => array(
-							'white' => __( 'White', THEME_DOMAIN ),
-							'green' => __( 'Green', THEME_DOMAIN ),
+							'white' => __( 'White', 'lesverts' ),
+							'green' => __( 'Green', 'lesverts' ),
 						),
 						'allow_null'        => 0,
 						'default_value'     => 'white',
@@ -1803,7 +1755,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 					),
 					array(
 						'key'               => 'field_5b72aadc98026',
-						'label'             => __( 'Sublines', THEME_DOMAIN ),
+						'label'             => __( 'Sublines', 'lesverts' ),
 						'name'              => 'sublines',
 						'type'              => 'group',
 						'instructions'      => '',
@@ -1849,11 +1801,11 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 								'min'               => 0,
 								'max'               => 2,
 								'layout'            => 'table',
-								'button_label'      => __( 'Add Subline', THEME_DOMAIN ),
+								'button_label'      => __( 'Add Subline', 'lesverts' ),
 								'sub_fields'        => array(
 									array(
 										'key'               => 'field_5b72aadd9802e',
-										'label'             => __( 'Green Subline', THEME_DOMAIN ),
+										'label'             => __( 'Green Subline', 'lesverts' ),
 										'name'              => 'bar',
 										'type'              => 'text',
 										'instructions'      => '',
@@ -1897,11 +1849,11 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 								'min'               => 0,
 								'max'               => 2,
 								'layout'            => 'table',
-								'button_label'      => __( 'Add Subline', THEME_DOMAIN ),
+								'button_label'      => __( 'Add Subline', 'lesverts' ),
 								'sub_fields'        => array(
 									array(
 										'key'               => 'field_5b72aadd98030',
-										'label'             => __( 'White Subline', THEME_DOMAIN ),
+										'label'             => __( 'White Subline', 'lesverts' ),
 										'name'              => 'bar',
 										'type'              => 'text',
 										'instructions'      => '',
@@ -1926,10 +1878,10 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 			),
 			array(
 				'key'               => 'field_5b718e15c398d',
-				'label'             => __( 'Campaign Summary', THEME_DOMAIN ),
+				'label'             => __( 'Campaign Summary', 'lesverts' ),
 				'name'              => 'summary',
 				'type'              => 'group',
-				'instructions'      => __( 'This refers to the upper left box below the image. Add a brief description of the campaign.', THEME_DOMAIN ),
+				'instructions'      => __( 'This refers to the upper left box below the image. Add a brief description of the campaign.', 'lesverts' ),
 				'required'          => 0,
 				'conditional_logic' => array(
 					array(
@@ -1949,10 +1901,10 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 				'sub_fields'        => array(
 					array(
 						'key'               => 'field_5b645e6b33ef7',
-						'label'             => __( 'Title', THEME_DOMAIN ),
+						'label'             => __( 'Title', 'lesverts' ),
 						'name'              => 'title',
 						'type'              => 'text',
-						'instructions'      => __( 'This is the main title. Keep it as short as possible!', THEME_DOMAIN ),
+						'instructions'      => __( 'This is the main title. Keep it as short as possible!', 'lesverts' ),
 						'required'          => 0,
 						'conditional_logic' => 0,
 						'wrapper'           => array(
@@ -1968,10 +1920,10 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 					),
 					array(
 						'key'               => 'field_5b645ec333ef8',
-						'label'             => __( 'Teaser', THEME_DOMAIN ),
+						'label'             => __( 'Teaser', 'lesverts' ),
 						'name'              => 'teaser',
 						'type'              => 'textarea',
-						'instructions'      => __( 'Write a brief teaser to attract the readers interest. Keept it short (200 to 400 characters).', THEME_DOMAIN ),
+						'instructions'      => __( 'Write a brief teaser to attract the readers interest. Keept it short (200 to 400 characters).', 'lesverts' ),
 						'required'          => 0,
 						'conditional_logic' => 0,
 						'wrapper'           => array(
@@ -1987,10 +1939,10 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 					),
 					array(
 						'key'               => 'field_5b645edb33ef9',
-						'label'             => __( 'Read more button', THEME_DOMAIN ),
+						'label'             => __( 'Read more button', 'lesverts' ),
 						'name'              => 'read_more',
 						'type'              => 'link',
-						'instructions'      => __( 'Link the main page of this campaign and set an accurate "read more" text for the link button.', THEME_DOMAIN ),
+						'instructions'      => __( 'Link the main page of this campaign and set an accurate "read more" text for the link button.', 'lesverts' ),
 						'required'          => 0,
 						'conditional_logic' => 0,
 						'wrapper'           => array(
@@ -2004,10 +1956,10 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 			),
 			array(
 				'key'               => 'field_5b718f74c398e',
-				'label'             => __( 'Call to Action', THEME_DOMAIN ),
+				'label'             => __( 'Call to Action', 'lesverts' ),
 				'name'              => 'call_to_action',
 				'type'              => 'group',
-				'instructions'      => __( 'This refers to the second box, the darker one. Use it to call for action.', THEME_DOMAIN ),
+				'instructions'      => __( 'This refers to the second box, the darker one. Use it to call for action.', 'lesverts' ),
 				'required'          => 0,
 				'conditional_logic' => array(
 					array(
@@ -2027,10 +1979,10 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 				'sub_fields'        => array(
 					array(
 						'key'               => 'field_5b681c8590acf',
-						'label'             => __( 'Title', THEME_DOMAIN ),
+						'label'             => __( 'Title', 'lesverts' ),
 						'name'              => 'title',
 						'type'              => 'text',
-						'instructions'      => __( 'Use an encouraging title, like \'Let me be part of the success\'.', THEME_DOMAIN ),
+						'instructions'      => __( 'Use an encouraging title, like \'Let me be part of the success\'.', 'lesverts' ),
 						'required'          => 0,
 						'conditional_logic' => 0,
 						'wrapper'           => array(
@@ -2046,10 +1998,10 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 					),
 					array(
 						'key'               => 'field_5b681f7ccd058',
-						'label'             => __( 'Description', THEME_DOMAIN ),
+						'label'             => __( 'Description', 'lesverts' ),
 						'name'              => 'description',
 						'type'              => 'textarea',
-						'instructions'      => __( 'Tell the visiter briefly, what the form does. Example: Stay updated, subscribe to our newsletter; make a change, become a member; sign the petition', THEME_DOMAIN ),
+						'instructions'      => __( 'Tell the visiter briefly, what the form does. Example: Stay updated, subscribe to our newsletter; make a change, become a member; sign the petition', 'lesverts' ),
 						'required'          => 0,
 						'conditional_logic' => 0,
 						'wrapper'           => array(
@@ -2065,7 +2017,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 					),
 					array(
 						'key'               => 'field_5cf77bf9983f1',
-						'label'             => __( 'Action Type', THEME_DOMAIN ),
+						'label'             => __( 'Action Type', 'lesverts' ),
 						'name'              => 'type',
 						'type'              => 'button_group',
 						'instructions'      => '',
@@ -2077,9 +2029,9 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 							'id'    => '',
 						),
 						'choices'           => array(
-							'form'   => __( 'Form', THEME_DOMAIN ),
-							'button' => __( 'Action Button', THEME_DOMAIN ),
-							'link'   => __( 'Link Button', THEME_DOMAIN ),
+							'form'   => __( 'Form', 'lesverts' ),
+							'button' => __( 'Action Button', 'lesverts' ),
+							'link'   => __( 'Link Button', 'lesverts' ),
 						),
 						'allow_null'        => 0,
 						'default_value'     => 'form',
@@ -2088,10 +2040,10 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 					),
 					array(
 						'key'               => 'field_5b681f2590ad0',
-						'label'             => __( 'Call to Action (Form)', THEME_DOMAIN ),
+						'label'             => __( 'Call to Action (Form)', 'lesverts' ),
 						'name'              => 'form',
 						'type'              => 'post_object',
-						'instructions'      => __( 'Displays directly the form with the call to action.', THEME_DOMAIN ),
+						'instructions'      => __( 'Displays directly the form with the call to action.', 'lesverts' ),
 						'required'          => 0,
 						'conditional_logic' => array(
 							array(
@@ -2118,10 +2070,10 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 					),
 					array(
 						'key'               => 'field_5cf77c8b983f2',
-						'label'             => __( 'Call to Action (Button)', THEME_DOMAIN ),
+						'label'             => __( 'Call to Action (Button)', 'lesverts' ),
 						'name'              => 'button',
 						'type'              => 'link',
-						'instructions'      => __( 'Displays the link to your action page as a magenta button.', THEME_DOMAIN ),
+						'instructions'      => __( 'Displays the link to your action page as a magenta button.', 'lesverts' ),
 						'required'          => 0,
 						'conditional_logic' => array(
 							array(
@@ -2141,10 +2093,10 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 					),
 					array(
 						'key'               => 'field_5cf77d16983f3',
-						'label'             => __( 'Call to Action (Link Button)', THEME_DOMAIN ),
+						'label'             => __( 'Call to Action (Link Button)', 'lesverts' ),
 						'name'              => 'link',
 						'type'              => 'link',
-						'instructions'      => __( 'Displays the link to further reading as link button (the green one with >).', THEME_DOMAIN ),
+						'instructions'      => __( 'Displays the link to further reading as link button (the green one with >).', 'lesverts' ),
 						'required'          => 0,
 						'conditional_logic' => array(
 							array(
@@ -2194,11 +2146,11 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 
 	acf_add_local_field_group( array(
 		'key'                   => 'group_5b6c416ac235f',
-		'title'                 => __( '[Template]In Short', THEME_DOMAIN ),
+		'title'                 => __( '[Template]In Short', 'lesverts' ),
 		'fields'                => array(
 			array(
 				'key'               => 'field_5b7293fda545d',
-				'label'             => __( 'About this Block', THEME_DOMAIN ),
+				'label'             => __( 'About this Block', 'lesverts' ),
 				'name'              => '',
 				'type'              => 'message',
 				'instructions'      => '',
@@ -2211,13 +2163,13 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 				),
 				'message'           => __( 'This is for visitors that don\'t want to read a lot.
 
-Provide the key facts, preferably in bullet points and add the main call to action below.', THEME_DOMAIN ),
+Provide the key facts, preferably in bullet points and add the main call to action below.', 'lesverts' ),
 				'new_lines'         => 'wpautop',
 				'esc_html'          => 0,
 			),
 			array(
 				'key'               => 'field_5b7293675fb5d',
-				'label'             => __( 'Title', THEME_DOMAIN ),
+				'label'             => __( 'Title', 'lesverts' ),
 				'name'              => 'title',
 				'type'              => 'text',
 				'instructions'      => '',
@@ -2236,10 +2188,10 @@ Provide the key facts, preferably in bullet points and add the main call to acti
 			),
 			array(
 				'key'               => 'field_5b6c426cd8fbe',
-				'label'             => __( 'Content', THEME_DOMAIN ),
+				'label'             => __( 'Content', 'lesverts' ),
 				'name'              => 'content',
 				'type'              => 'flexible_content',
-				'instructions'      => __( 'Add a brief description. Then add a call to action.', THEME_DOMAIN ),
+				'instructions'      => __( 'Add a brief description. Then add a call to action.', 'lesverts' ),
 				'required'          => 0,
 				'conditional_logic' => 0,
 				'wrapper'           => array(
@@ -2251,7 +2203,7 @@ Provide the key facts, preferably in bullet points and add the main call to acti
 					'layout_5b6c42dbd8fc1' => array(
 						'key'        => 'layout_5b6c42dbd8fc1',
 						'name'       => 'text',
-						'label'      => __( 'Text', THEME_DOMAIN ),
+						'label'      => __( 'Text', 'lesverts' ),
 						'display'    => 'block',
 						'sub_fields' => array(
 							array(
@@ -2259,7 +2211,7 @@ Provide the key facts, preferably in bullet points and add the main call to acti
 								'label'             => '',
 								'name'              => 'text',
 								'type'              => 'wysiwyg',
-								'instructions'      => __( 'Use bullet points, if possible.', THEME_DOMAIN ),
+								'instructions'      => __( 'Use bullet points, if possible.', 'lesverts' ),
 								'required'          => 0,
 								'conditional_logic' => 0,
 								'wrapper'           => array(
@@ -2280,12 +2232,12 @@ Provide the key facts, preferably in bullet points and add the main call to acti
 					'layout_5b6c498e69761' => array(
 						'key'        => 'layout_5b6c498e69761',
 						'name'       => 'form',
-						'label'      => __( 'Form', THEME_DOMAIN ),
+						'label'      => __( 'Form', 'lesverts' ),
 						'display'    => 'block',
 						'sub_fields' => array(
 							array(
 								'key'               => 'field_5b6c499f69762',
-								'label'             => __( 'Form', THEME_DOMAIN ),
+								'label'             => __( 'Form', 'lesverts' ),
 								'name'              => 'form',
 								'type'              => 'post_object',
 								'instructions'      => '',
@@ -2310,7 +2262,7 @@ Provide the key facts, preferably in bullet points and add the main call to acti
 						'max'        => '',
 					),
 				),
-				'button_label'      => __( 'Add In Short Content Block', THEME_DOMAIN ),
+				'button_label'      => __( 'Add In Short Content Block', 'lesverts' ),
 				'min'               => 1,
 				'max'               => '',
 			),
@@ -2337,11 +2289,11 @@ Provide the key facts, preferably in bullet points and add the main call to acti
 
 	acf_add_local_field_group( array(
 		'key'                   => 'group_5b68487f04a16',
-		'title'                 => __( '[Template]Latest Press Release', THEME_DOMAIN ),
+		'title'                 => __( '[Template]Latest Press Release', 'lesverts' ),
 		'fields'                => array(
 			array(
 				'key'               => 'field_5b7193201a0ac',
-				'label'             => __( 'About this Block', THEME_DOMAIN ),
+				'label'             => __( 'About this Block', 'lesverts' ),
 				'name'              => '',
 				'type'              => 'message',
 				'instructions'      => '',
@@ -2354,13 +2306,13 @@ Provide the key facts, preferably in bullet points and add the main call to acti
 				),
 				'message'           => __( 'Display the latest press release (as long as it is published under the category you set below). Posts where the flag \'Show on front page\' is set to false will be excluded.
 
-If the press release contains a quote block, the quote will be displayed. Else the lead is shown.', THEME_DOMAIN ),
+If the press release contains a quote block, the quote will be displayed. Else the lead is shown.', 'lesverts' ),
 				'new_lines'         => 'wpautop',
 				'esc_html'          => 0,
 			),
 			array(
 				'key'               => 'field_5b68614337425',
-				'label'             => __( 'Block Title', THEME_DOMAIN ),
+				'label'             => __( 'Block Title', 'lesverts' ),
 				'name'              => 'block_title',
 				'type'              => 'clone',
 				'instructions'      => '',
@@ -2381,10 +2333,10 @@ If the press release contains a quote block, the quote will be displayed. Else t
 			),
 			array(
 				'key'               => 'field_5b730cf648300',
-				'label'             => __( 'Category', THEME_DOMAIN ),
+				'label'             => __( 'Category', 'lesverts' ),
 				'name'              => 'category',
 				'type'              => 'taxonomy',
-				'instructions'      => __( 'Select the category of your press releases.', THEME_DOMAIN ),
+				'instructions'      => __( 'Select the category of your press releases.', 'lesverts' ),
 				'required'          => 1,
 				'conditional_logic' => 0,
 				'wrapper'           => array(
@@ -2424,11 +2376,11 @@ If the press release contains a quote block, the quote will be displayed. Else t
 
 	acf_add_local_field_group( array(
 		'key'                   => 'group_5b6c4bfaa8a26',
-		'title'                 => __( '[Template]Link Lists', THEME_DOMAIN ),
+		'title'                 => __( '[Template]Link Lists', 'lesverts' ),
 		'fields'                => array(
 			array(
 				'key'               => 'field_5bfd14804bd11',
-				'label'             => __( 'About this Block', THEME_DOMAIN ),
+				'label'             => __( 'About this Block', 'lesverts' ),
 				'name'              => '',
 				'type'              => 'message',
 				'instructions'      => '',
@@ -2441,16 +2393,16 @@ If the press release contains a quote block, the quote will be displayed. Else t
 				),
 				'message'           => __( 'Use link list blocks to provide some additional information, the reader could be interested in. 
 
-A good first starting point would be a <i>manual link list</i> block that lists documents where the reader can dig deeper, like the debate in parliament etc. A second cool block <i>(auto link list)</i> could be the latest posts of the same category or with the same tag.', THEME_DOMAIN ),
+A good first starting point would be a <i>manual link list</i> block that lists documents where the reader can dig deeper, like the debate in parliament etc. A second cool block <i>(auto link list)</i> could be the latest posts of the same category or with the same tag.', 'lesverts' ),
 				'new_lines'         => 'wpautop',
 				'esc_html'          => 0,
 			),
 			array(
 				'key'               => 'field_5b7d1c098d538',
-				'label'             => __( 'Title', THEME_DOMAIN ),
+				'label'             => __( 'Title', 'lesverts' ),
 				'name'              => 'title',
 				'type'              => 'text',
-				'instructions'      => __( 'Example: \'You might also be interested in\' or \' Related content\'', THEME_DOMAIN ),
+				'instructions'      => __( 'Example: \'You might also be interested in\' or \' Related content\'', 'lesverts' ),
 				'required'          => 0,
 				'conditional_logic' => 0,
 				'wrapper'           => array(
@@ -2466,7 +2418,7 @@ A good first starting point would be a <i>manual link list</i> block that lists 
 			),
 			array(
 				'key'               => 'field_5b7c160fb4d15',
-				'label'             => __( 'Link List Blocks', THEME_DOMAIN ),
+				'label'             => __( 'Link List Blocks', 'lesverts' ),
 				'name'              => 'link_lists',
 				'type'              => 'flexible_content',
 				'instructions'      => '',
@@ -2481,12 +2433,12 @@ A good first starting point would be a <i>manual link list</i> block that lists 
 					'5b7c16195e1e9'        => array(
 						'key'        => '5b7c16195e1e9',
 						'name'       => 'manual',
-						'label'      => __( 'Manual Link List (Static)', THEME_DOMAIN ),
+						'label'      => __( 'Manual Link List (Static)', 'lesverts' ),
 						'display'    => 'block',
 						'sub_fields' => array(
 							array(
 								'key'               => 'field_5b7c20f594fb7',
-								'label'             => __( 'About this Block', THEME_DOMAIN ),
+								'label'             => __( 'About this Block', 'lesverts' ),
 								'name'              => '',
 								'type'              => 'message',
 								'instructions'      => '',
@@ -2497,13 +2449,13 @@ A good first starting point would be a <i>manual link list</i> block that lists 
 									'class' => '',
 									'id'    => '',
 								),
-								'message'           => __( 'Show a manually curated list of links. Links you add using this block will stay as you added them (static).', THEME_DOMAIN ),
+								'message'           => __( 'Show a manually curated list of links. Links you add using this block will stay as you added them (static).', 'lesverts' ),
 								'new_lines'         => 'wpautop',
 								'esc_html'          => 0,
 							),
 							array(
 								'key'               => 'field_5b7afba7b6b08',
-								'label'             => __( 'Block Title', THEME_DOMAIN ),
+								'label'             => __( 'Block Title', 'lesverts' ),
 								'name'              => 'block_title',
 								'type'              => 'clone',
 								'instructions'      => '',
@@ -2524,10 +2476,10 @@ A good first starting point would be a <i>manual link list</i> block that lists 
 							),
 							array(
 								'key'               => 'field_5b7af93309079',
-								'label'             => __( 'Linked Content', THEME_DOMAIN ),
+								'label'             => __( 'Linked Content', 'lesverts' ),
 								'name'              => 'linked_content',
 								'type'              => 'flexible_content',
-								'instructions'      => __( 'Add up to four links to posts, pages, events or external links.', THEME_DOMAIN ),
+								'instructions'      => __( 'Add up to four links to posts, pages, events or external links.', 'lesverts' ),
 								'required'          => 0,
 								'conditional_logic' => 0,
 								'wrapper'           => array(
@@ -2539,12 +2491,12 @@ A good first starting point would be a <i>manual link list</i> block that lists 
 									'5b7af950bce91'        => array(
 										'key'        => '5b7af950bce91',
 										'name'       => 'links',
-										'label'      => __( 'Link', THEME_DOMAIN ),
+										'label'      => __( 'Link', 'lesverts' ),
 										'display'    => 'row',
 										'sub_fields' => array(
 											array(
 												'key'               => 'field_5b7af96e0907a',
-												'label'             => __( 'Link', THEME_DOMAIN ),
+												'label'             => __( 'Link', 'lesverts' ),
 												'name'              => 'link',
 												'type'              => 'link',
 												'instructions'      => '',
@@ -2564,12 +2516,12 @@ A good first starting point would be a <i>manual link list</i> block that lists 
 									'layout_5b7afa685296a' => array(
 										'key'        => 'layout_5b7afa685296a',
 										'name'       => 'post_objects',
-										'label'      => __( 'Single Post / Page / Event', THEME_DOMAIN ),
+										'label'      => __( 'Single Post / Page / Event', 'lesverts' ),
 										'display'    => 'row',
 										'sub_fields' => array(
 											array(
 												'key'               => 'field_5b7af9910907b',
-												'label'             => __( 'Post / Page / Event', THEME_DOMAIN ),
+												'label'             => __( 'Post / Page / Event', 'lesverts' ),
 												'name'              => 'post_object',
 												'type'              => 'post_object',
 												'instructions'      => '',
@@ -2596,7 +2548,7 @@ A good first starting point would be a <i>manual link list</i> block that lists 
 										'max'        => '',
 									),
 								),
-								'button_label'      => __( 'Add Link', THEME_DOMAIN ),
+								'button_label'      => __( 'Add Link', 'lesverts' ),
 								'min'               => 1,
 								'max'               => 4,
 							),
@@ -2607,15 +2559,15 @@ A good first starting point would be a <i>manual link list</i> block that lists 
 					'layout_5b7c165bb4d16' => array(
 						'key'        => 'layout_5b7c165bb4d16',
 						'name'       => 'auto',
-						'label'      => __( 'Auto Link List (Dynamic)', THEME_DOMAIN ),
+						'label'      => __( 'Auto Link List (Dynamic)', 'lesverts' ),
 						'display'    => 'block',
 						'sub_fields' => array(
 							array(
 								'key'               => 'field_5b7c253151b70',
-								'label'             => __( 'Show Teaser', THEME_DOMAIN ),
+								'label'             => __( 'Show Teaser', 'lesverts' ),
 								'name'              => 'full_width',
 								'type'              => 'true_false',
-								'instructions'      => __( 'If true, the teaser of every content element is shown. This block will then span the whole content area (both columns).', THEME_DOMAIN ),
+								'instructions'      => __( 'If true, the teaser of every content element is shown. This block will then span the whole content area (both columns).', 'lesverts' ),
 								'required'          => 0,
 								'conditional_logic' => 0,
 								'wrapper'           => array(
@@ -2631,12 +2583,12 @@ A good first starting point would be a <i>manual link list</i> block that lists 
 							),
 							array(
 								'key'               => 'field_5b7c1af09b255',
-								'label'             => __( 'Filter criteria', THEME_DOMAIN ),
+								'label'             => __( 'Filter criteria', 'lesverts' ),
 								'name'              => 'linked_content',
 								'type'              => 'group',
 								'instructions'      => __( 'The latest content that matches <strong>all</strong> of the selected categories and <strong>at least one</strong> of the selected tags will be displayed.<br><br>
 
-If <strong>no tags</strong> are selected, content matching all of the categories will be displayed. If <strong>no categories</strong> are selected, all content matching any of the tags will be displayed.', THEME_DOMAIN ),
+If <strong>no tags</strong> are selected, content matching all of the categories will be displayed. If <strong>no categories</strong> are selected, all content matching any of the tags will be displayed.', 'lesverts' ),
 								'required'          => 0,
 								'conditional_logic' => 0,
 								'wrapper'           => array(
@@ -2648,10 +2600,10 @@ If <strong>no tags</strong> are selected, content matching all of the categories
 								'sub_fields'        => array(
 									array(
 										'key'               => 'field_5b7c1b539b257',
-										'label'             => __( 'Tags', THEME_DOMAIN ),
+										'label'             => __( 'Tags', 'lesverts' ),
 										'name'              => 'tags',
 										'type'              => 'taxonomy',
-										'instructions'      => __( 'Content is displayed if <strong>at lease one tag matches</strong>.', THEME_DOMAIN ),
+										'instructions'      => __( 'Content is displayed if <strong>at lease one tag matches</strong>.', 'lesverts' ),
 										'required'          => 0,
 										'conditional_logic' => 0,
 										'wrapper'           => array(
@@ -2670,10 +2622,10 @@ If <strong>no tags</strong> are selected, content matching all of the categories
 									),
 									array(
 										'key'               => 'field_5b7c1b309b256',
-										'label'             => __( 'Categories', THEME_DOMAIN ),
+										'label'             => __( 'Categories', 'lesverts' ),
 										'name'              => 'categories',
 										'type'              => 'taxonomy',
-										'instructions'      => __( 'Content is displayed if <strong>all categories match</strong>.', THEME_DOMAIN ),
+										'instructions'      => __( 'Content is displayed if <strong>all categories match</strong>.', 'lesverts' ),
 										'required'          => 0,
 										'conditional_logic' => 0,
 										'wrapper'           => array(
@@ -2694,7 +2646,7 @@ If <strong>no tags</strong> are selected, content matching all of the categories
 							),
 							array(
 								'key'               => 'field_5b7c21a694fb8',
-								'label'             => __( 'About this Block', THEME_DOMAIN ),
+								'label'             => __( 'About this Block', 'lesverts' ),
 								'name'              => '',
 								'type'              => 'message',
 								'instructions'      => '',
@@ -2707,13 +2659,13 @@ If <strong>no tags</strong> are selected, content matching all of the categories
 								),
 								'message'           => __( 'Display the latest four posts, events or pages that meet the given filter criteria. 
 
-This list will automatically be updated if any new content meets the filter criteria (dynamic).', THEME_DOMAIN ),
+This list will automatically be updated if any new content meets the filter criteria (dynamic).', 'lesverts' ),
 								'new_lines'         => 'wpautop',
 								'esc_html'          => 0,
 							),
 							array(
 								'key'               => 'field_5b7c16edb4d17',
-								'label'             => __( 'Block Title', THEME_DOMAIN ),
+								'label'             => __( 'Block Title', 'lesverts' ),
 								'name'              => 'block_title',
 								'type'              => 'clone',
 								'instructions'      => '',
@@ -2737,7 +2689,7 @@ This list will automatically be updated if any new content meets the filter crit
 						'max'        => '',
 					),
 				),
-				'button_label'      => __( 'Add Link List Block', THEME_DOMAIN ),
+				'button_label'      => __( 'Add Link List Block', 'lesverts' ),
 				'min'               => '',
 				'max'               => '',
 			),
@@ -2764,11 +2716,11 @@ This list will automatically be updated if any new content meets the filter crit
 
 	acf_add_local_field_group( array(
 		'key'                   => 'group_5b6da383ba62c',
-		'title'                 => __( '[Template]Map Block', THEME_DOMAIN ),
+		'title'                 => __( '[Template]Map Block', 'lesverts' ),
 		'fields'                => array(
 			array(
 				'key'               => 'field_5b71a8daf58b5',
-				'label'             => __( 'About this Block – Advanced !', THEME_DOMAIN ),
+				'label'             => __( 'About this Block – Advanced !', 'lesverts' ),
 				'name'              => '',
 				'type'              => 'message',
 				'instructions'      => '',
@@ -2779,13 +2731,13 @@ This list will automatically be updated if any new content meets the filter crit
 					'class' => '',
 					'id'    => '',
 				),
-				'message'           => __( 'This is an advanced block. You\'ll need to know the fundamentals of SVG to use it. It can be used to display a map of your region with a nice popup for every region if it is clicked. As well as an engaging text to become a member.', THEME_DOMAIN ),
+				'message'           => __( 'This is an advanced block. You\'ll need to know the fundamentals of SVG to use it. It can be used to display a map of your region with a nice popup for every region if it is clicked. As well as an engaging text to become a member.', 'lesverts' ),
 				'new_lines'         => 'wpautop',
 				'esc_html'          => 0,
 			),
 			array(
 				'key'               => 'field_5b6dae2576af9',
-				'label'             => __( 'Block Title', THEME_DOMAIN ),
+				'label'             => __( 'Block Title', 'lesverts' ),
 				'name'              => 'block_title',
 				'type'              => 'clone',
 				'instructions'      => '',
@@ -2806,7 +2758,7 @@ This list will automatically be updated if any new content meets the filter crit
 			),
 			array(
 				'key'               => 'field_5b6daeb276afb',
-				'label'             => __( 'Title', THEME_DOMAIN ),
+				'label'             => __( 'Title', 'lesverts' ),
 				'name'              => 'title',
 				'type'              => 'text',
 				'instructions'      => '',
@@ -2825,7 +2777,7 @@ This list will automatically be updated if any new content meets the filter crit
 			),
 			array(
 				'key'               => 'field_5b6daa7a89f92',
-				'label'             => __( 'Text', THEME_DOMAIN ),
+				'label'             => __( 'Text', 'lesverts' ),
 				'name'              => 'text',
 				'type'              => 'wysiwyg',
 				'instructions'      => '',
@@ -2844,10 +2796,10 @@ This list will automatically be updated if any new content meets the filter crit
 			),
 			array(
 				'key'               => 'field_5b6daabace235',
-				'label'             => __( 'Map SVG', THEME_DOMAIN ),
+				'label'             => __( 'Map SVG', 'lesverts' ),
 				'name'              => 'map',
 				'type'              => 'acf_code_field',
-				'instructions'      => __( 'Copy the SVG in here. Make sure the regions have the \'.map-item\' class and the id matches the id of the data.', THEME_DOMAIN ),
+				'instructions'      => __( 'Copy the SVG in here. Make sure the regions have the \'.map-item\' class and the id matches the id of the data.', 'lesverts' ),
 				'required'          => 1,
 				'conditional_logic' => 0,
 				'wrapper'           => array(
@@ -2862,7 +2814,7 @@ This list will automatically be updated if any new content meets the filter crit
 			),
 			array(
 				'key'               => 'field_5b6dab1bce236',
-				'label'             => __( 'Map Data', THEME_DOMAIN ),
+				'label'             => __( 'Map Data', 'lesverts' ),
 				'name'              => 'map_data',
 				'type'              => 'repeater',
 				'instructions'      => '',
@@ -2881,10 +2833,10 @@ This list will automatically be updated if any new content meets the filter crit
 				'sub_fields'        => array(
 					array(
 						'key'               => 'field_5b6dbc0abbe02',
-						'label'             => __( 'Label', THEME_DOMAIN ),
+						'label'             => __( 'Label', 'lesverts' ),
 						'name'              => 'label',
 						'type'              => 'text',
-						'instructions'      => __( 'This is used in the dropdown of the mobile version.', THEME_DOMAIN ),
+						'instructions'      => __( 'This is used in the dropdown of the mobile version.', 'lesverts' ),
 						'required'          => 1,
 						'conditional_logic' => 0,
 						'wrapper'           => array(
@@ -2900,10 +2852,10 @@ This list will automatically be updated if any new content meets the filter crit
 					),
 					array(
 						'key'               => 'field_5b6dab41ce237',
-						'label'             => __( 'ID', THEME_DOMAIN ),
+						'label'             => __( 'ID', 'lesverts' ),
 						'name'              => 'value',
 						'type'              => 'text',
-						'instructions'      => __( 'This must match the id in the svg.', THEME_DOMAIN ),
+						'instructions'      => __( 'This must match the id in the svg.', 'lesverts' ),
 						'required'          => 1,
 						'conditional_logic' => 0,
 						'wrapper'           => array(
@@ -2919,10 +2871,10 @@ This list will automatically be updated if any new content meets the filter crit
 					),
 					array(
 						'key'               => 'field_5b6dac07ce238',
-						'label'             => __( 'Dialog Content', THEME_DOMAIN ),
+						'label'             => __( 'Dialog Content', 'lesverts' ),
 						'name'              => 'dialog_content',
 						'type'              => 'repeater',
-						'instructions'      => __( 'The content block will be separated by margin and a slight line.', THEME_DOMAIN ),
+						'instructions'      => __( 'The content block will be separated by margin and a slight line.', 'lesverts' ),
 						'required'          => 1,
 						'conditional_logic' => 0,
 						'wrapper'           => array(
@@ -2934,11 +2886,11 @@ This list will automatically be updated if any new content meets the filter crit
 						'min'               => 1,
 						'max'               => 0,
 						'layout'            => 'row',
-						'button_label'      => __( 'Add Content', THEME_DOMAIN ),
+						'button_label'      => __( 'Add Content', 'lesverts' ),
 						'sub_fields'        => array(
 							array(
 								'key'               => 'field_5b6dac90ce239',
-								'label'             => __( 'Content', THEME_DOMAIN ),
+								'label'             => __( 'Content', 'lesverts' ),
 								'name'              => 'content',
 								'type'              => 'wysiwyg',
 								'instructions'      => '',
@@ -2961,7 +2913,7 @@ This list will automatically be updated if any new content meets the filter crit
 			),
 			array(
 				'key'               => 'field_5b6db68857582',
-				'label'             => __( 'Full Width (hidden)', THEME_DOMAIN ),
+				'label'             => __( 'Full Width (hidden)', 'lesverts' ),
 				'name'              => 'full_width',
 				'type'              => 'true_false',
 				'instructions'      => '',
@@ -2991,10 +2943,10 @@ This list will automatically be updated if any new content meets the filter crit
 			),
 			array(
 				'key'               => 'field_5b6dbb6ecf0b0',
-				'label'             => __( 'Region Selector Label', THEME_DOMAIN ),
+				'label'             => __( 'Region Selector Label', 'lesverts' ),
 				'name'              => 'map_selector_label',
 				'type'              => 'text',
-				'instructions'      => __( 'This will only be displayed in the mobile version.', THEME_DOMAIN ),
+				'instructions'      => __( 'This will only be displayed in the mobile version.', 'lesverts' ),
 				'required'          => 1,
 				'conditional_logic' => 0,
 				'wrapper'           => array(
@@ -3031,14 +2983,14 @@ This list will automatically be updated if any new content meets the filter crit
 
 	acf_add_local_field_group( array(
 		'key'                   => 'group_5bbf71ef4ed64',
-		'title'                 => __( '[Template]Person', THEME_DOMAIN ),
+		'title'                 => __( '[Template]Person', 'lesverts' ),
 		'fields'                => array(
 			array(
 				'key'               => 'field_5bbf725974660',
-				'label'             => __( 'Person', THEME_DOMAIN ),
+				'label'             => __( 'Person', 'lesverts' ),
 				'name'              => 'person',
 				'type'              => 'post_object',
-				'instructions'      => __( 'Select a person. Its name, photo and contact details will be displayed.', THEME_DOMAIN ),
+				'instructions'      => __( 'Select a person. Its name, photo and contact details will be displayed.', 'lesverts' ),
 				'required'          => 1,
 				'conditional_logic' => 0,
 				'wrapper'           => array(
@@ -3057,10 +3009,10 @@ This list will automatically be updated if any new content meets the filter crit
 			),
 			array(
 				'key'               => 'field_5bbf732574661',
-				'label'             => __( 'Names supplement', THEME_DOMAIN ),
+				'label'             => __( 'Names supplement', 'lesverts' ),
 				'name'              => 'supplement',
 				'type'              => 'text',
-				'instructions'      => __( 'Displayed next to the name. Use it to mark the city, year of birth etc. or leave it blank.', THEME_DOMAIN ),
+				'instructions'      => __( 'Displayed next to the name. Use it to mark the city, year of birth etc. or leave it blank.', 'lesverts' ),
 				'required'          => 0,
 				'conditional_logic' => 0,
 				'wrapper'           => array(
@@ -3076,10 +3028,10 @@ This list will automatically be updated if any new content meets the filter crit
 			),
 			array(
 				'key'               => 'field_5bbf73b674662',
-				'label'             => __( 'Role', THEME_DOMAIN ),
+				'label'             => __( 'Role', 'lesverts' ),
 				'name'              => 'role',
 				'type'              => 'textarea',
-				'instructions'      => __( 'Max 280 characters.', THEME_DOMAIN ),
+				'instructions'      => __( 'Max 280 characters.', 'lesverts' ),
 				'required'          => 0,
 				'conditional_logic' => 0,
 				'wrapper'           => array(
@@ -3095,7 +3047,7 @@ This list will automatically be updated if any new content meets the filter crit
 			),
 			array(
 				'key'               => 'field_5bbf73d274663',
-				'label'             => __( 'Additional Info', THEME_DOMAIN ),
+				'label'             => __( 'Additional Info', 'lesverts' ),
 				'name'              => 'wysiwyg',
 				'type'              => 'wysiwyg',
 				'instructions'      => '',
@@ -3135,11 +3087,11 @@ This list will automatically be updated if any new content meets the filter crit
 
 	acf_add_local_field_group( array(
 		'key'                   => 'group_5b6b14b2632f8',
-		'title'                 => __( '[Template]Position', THEME_DOMAIN ),
+		'title'                 => __( '[Template]Position', 'lesverts' ),
 		'fields'                => array(
 			array(
 				'key'               => 'field_5b6b14c533c22',
-				'label'             => __( 'Position Block Title', THEME_DOMAIN ),
+				'label'             => __( 'Position Block Title', 'lesverts' ),
 				'name'              => 'title',
 				'type'              => 'text',
 				'instructions'      => '',
@@ -3158,7 +3110,7 @@ This list will automatically be updated if any new content meets the filter crit
 			),
 			array(
 				'key'               => 'field_5b6b151133c23',
-				'label'             => __( 'Position', THEME_DOMAIN ),
+				'label'             => __( 'Position', 'lesverts' ),
 				'name'              => 'position',
 				'type'              => 'repeater',
 				'instructions'      => '',
@@ -3173,14 +3125,14 @@ This list will automatically be updated if any new content meets the filter crit
 				'min'               => 1,
 				'max'               => 4,
 				'layout'            => 'table',
-				'button_label'      => __( 'Add Position', THEME_DOMAIN ),
+				'button_label'      => __( 'Add Position', 'lesverts' ),
 				'sub_fields'        => array(
 					array(
 						'key'               => 'field_5b6b152f33c24',
-						'label'             => __( 'Position', THEME_DOMAIN ),
+						'label'             => __( 'Position', 'lesverts' ),
 						'name'              => 'position',
 						'type'              => 'text',
-						'instructions'      => __( 'Keep it very short, use just a few keywords. Max 120 characters.', THEME_DOMAIN ),
+						'instructions'      => __( 'Keep it very short, use just a few keywords. Max 120 characters.', 'lesverts' ),
 						'required'          => 1,
 						'conditional_logic' => 0,
 						'wrapper'           => array(
@@ -3198,7 +3150,7 @@ This list will automatically be updated if any new content meets the filter crit
 			),
 			array(
 				'key'               => 'field_5b6b24861e7f5',
-				'label'             => __( 'Read More Button Target', THEME_DOMAIN ),
+				'label'             => __( 'Read More Button Target', 'lesverts' ),
 				'name'              => 'read_more_target',
 				'type'              => 'post_object',
 				'instructions'      => '',
@@ -3242,11 +3194,11 @@ This list will automatically be updated if any new content meets the filter crit
 
 	acf_add_local_field_group( array(
 		'key'                   => 'group_5b6b162bb52ed',
-		'title'                 => __( '[Template]Positions', THEME_DOMAIN ),
+		'title'                 => __( '[Template]Positions', 'lesverts' ),
 		'fields'                => array(
 			array(
 				'key'               => 'field_5b7da2d494e05',
-				'label'             => __( 'About this Block', THEME_DOMAIN ),
+				'label'             => __( 'About this Block', 'lesverts' ),
 				'name'              => '',
 				'type'              => 'message',
 				'instructions'      => '',
@@ -3257,13 +3209,13 @@ This list will automatically be updated if any new content meets the filter crit
 					'class' => '',
 					'id'    => '',
 				),
-				'message'           => __( 'Use this block to display a teaser of your political positions. Make sure you link a page, that will further detail your position.', THEME_DOMAIN ),
+				'message'           => __( 'Use this block to display a teaser of your political positions. Make sure you link a page, that will further detail your position.', 'lesverts' ),
 				'new_lines'         => 'wpautop',
 				'esc_html'          => 0,
 			),
 			array(
 				'key'               => 'field_5b6b163dfeb4f',
-				'label'             => __( 'Block Title', THEME_DOMAIN ),
+				'label'             => __( 'Block Title', 'lesverts' ),
 				'name'              => 'block_title',
 				'type'              => 'clone',
 				'instructions'      => '',
@@ -3284,7 +3236,7 @@ This list will automatically be updated if any new content meets the filter crit
 			),
 			array(
 				'key'               => 'field_5b6b1670feb50',
-				'label'             => __( 'Positions Group', THEME_DOMAIN ),
+				'label'             => __( 'Positions Group', 'lesverts' ),
 				'name'              => 'positions',
 				'type'              => 'repeater',
 				'instructions'      => '',
@@ -3299,11 +3251,11 @@ This list will automatically be updated if any new content meets the filter crit
 				'min'               => 1,
 				'max'               => 4,
 				'layout'            => 'block',
-				'button_label'      => __( 'Add Position Block', THEME_DOMAIN ),
+				'button_label'      => __( 'Add Position Block', 'lesverts' ),
 				'sub_fields'        => array(
 					array(
 						'key'               => 'field_5b6b1687feb51',
-						'label'             => __( 'Position', THEME_DOMAIN ),
+						'label'             => __( 'Position', 'lesverts' ),
 						'name'              => 'position',
 						'type'              => 'clone',
 						'instructions'      => '',
@@ -3326,10 +3278,10 @@ This list will automatically be updated if any new content meets the filter crit
 			),
 			array(
 				'key'               => 'field_5b6b2b49866f7',
-				'label'             => __( 'Full Width', THEME_DOMAIN ),
+				'label'             => __( 'Full Width', 'lesverts' ),
 				'name'              => 'full_width',
 				'type'              => 'true_false',
-				'instructions'      => __( 'If full width is set to yes, the block will span the whole page (both columns) else it will only take the place of a single column block.', THEME_DOMAIN ),
+				'instructions'      => __( 'If full width is set to yes, the block will span the whole page (both columns) else it will only take the place of a single column block.', 'lesverts' ),
 				'required'          => 0,
 				'conditional_logic' => array(
 					array(
@@ -3379,14 +3331,14 @@ This list will automatically be updated if any new content meets the filter crit
 
 	acf_add_local_field_group( array(
 		'key'                   => 'group_5b71a23bc757e',
-		'title'                 => __( '[Template]Post selector', THEME_DOMAIN ),
+		'title'                 => __( '[Template]Post selector', 'lesverts' ),
 		'fields'                => array(
 			array(
 				'key'               => 'field_5b71a24cf3711',
-				'label'             => __( 'Post', THEME_DOMAIN ),
+				'label'             => __( 'Post', 'lesverts' ),
 				'name'              => 'post',
 				'type'              => 'post_object',
-				'instructions'      => __( 'Select the post to display. The teaser and the image of the post, will be displayed.', THEME_DOMAIN ),
+				'instructions'      => __( 'Select the post to display. The teaser and the image of the post, will be displayed.', 'lesverts' ),
 				'required'          => 1,
 				'conditional_logic' => 0,
 				'wrapper'           => array(
@@ -3427,11 +3379,11 @@ This list will automatically be updated if any new content meets the filter crit
 
 	acf_add_local_field_group( array(
 		'key'                   => 'group_5b6c045f68e96',
-		'title'                 => __( '[Template]Quote', THEME_DOMAIN ),
+		'title'                 => __( '[Template]Quote', 'lesverts' ),
 		'fields'                => array(
 			array(
 				'key'               => 'field_5b72a5ba9a5e6',
-				'label'             => __( 'About this Block', THEME_DOMAIN ),
+				'label'             => __( 'About this Block', 'lesverts' ),
 				'name'              => '',
 				'type'              => 'message',
 				'instructions'      => '',
@@ -3442,16 +3394,16 @@ This list will automatically be updated if any new content meets the filter crit
 					'class' => '',
 					'id'    => '',
 				),
-				'message'           => __( 'Displays a nicely formatted quote of any person you added in your people section. The image will automatically be pulled from the persons record.', THEME_DOMAIN ),
+				'message'           => __( 'Displays a nicely formatted quote of any person you added in your people section. The image will automatically be pulled from the persons record.', 'lesverts' ),
 				'new_lines'         => 'wpautop',
 				'esc_html'          => 0,
 			),
 			array(
 				'key'               => 'field_5b6c0475af343',
-				'label'             => __( 'Quote', THEME_DOMAIN ),
+				'label'             => __( 'Quote', 'lesverts' ),
 				'name'              => 'quote',
 				'type'              => 'textarea',
-				'instructions'      => __( 'Max 280 character.', THEME_DOMAIN ),
+				'instructions'      => __( 'Max 280 character.', 'lesverts' ),
 				'required'          => 1,
 				'conditional_logic' => 0,
 				'wrapper'           => array(
@@ -3467,10 +3419,10 @@ This list will automatically be updated if any new content meets the filter crit
 			),
 			array(
 				'key'               => 'field_5b6c049caf344',
-				'label'             => __( 'Person', THEME_DOMAIN ),
+				'label'             => __( 'Person', 'lesverts' ),
 				'name'              => 'person',
 				'type'              => 'post_object',
-				'instructions'      => __( 'Select a person defined in the \'Peoples\' menu. The name and the image of this person will be used to display the quote.', THEME_DOMAIN ),
+				'instructions'      => __( 'Select a person defined in the \'Peoples\' menu. The name and the image of this person will be used to display the quote.', 'lesverts' ),
 				'required'          => 1,
 				'conditional_logic' => 0,
 				'wrapper'           => array(
@@ -3489,10 +3441,10 @@ This list will automatically be updated if any new content meets the filter crit
 			),
 			array(
 				'key'               => 'field_5b6c0b8cb34c3',
-				'label'             => __( 'Role', THEME_DOMAIN ),
+				'label'             => __( 'Role', 'lesverts' ),
 				'name'              => 'role',
 				'type'              => 'text',
-				'instructions'      => __( 'Example: President of the Greens Uri', THEME_DOMAIN ),
+				'instructions'      => __( 'Example: President of the Greens Uri', 'lesverts' ),
 				'required'          => 1,
 				'conditional_logic' => 0,
 				'wrapper'           => array(
@@ -3529,11 +3481,11 @@ This list will automatically be updated if any new content meets the filter crit
 
 	acf_add_local_field_group( array(
 		'key'                   => 'group_5b6846d09aa72',
-		'title'                 => __( '[Template]Single Post', THEME_DOMAIN ),
+		'title'                 => __( '[Template]Single Post', 'lesverts' ),
 		'fields'                => array(
 			array(
 				'key'               => 'field_5b7d9f270b51d',
-				'label'             => __( 'About this Block', THEME_DOMAIN ),
+				'label'             => __( 'About this Block', 'lesverts' ),
 				'name'              => '',
 				'type'              => 'message',
 				'instructions'      => '',
@@ -3544,13 +3496,13 @@ This list will automatically be updated if any new content meets the filter crit
 					'class' => '',
 					'id'    => '',
 				),
-				'message'           => __( 'Display a teaser of any post or page.', THEME_DOMAIN ),
+				'message'           => __( 'Display a teaser of any post or page.', 'lesverts' ),
 				'new_lines'         => 'wpautop',
 				'esc_html'          => 0,
 			),
 			array(
 				'key'               => 'field_5b6861bb4db05',
-				'label'             => __( 'Block Title', THEME_DOMAIN ),
+				'label'             => __( 'Block Title', 'lesverts' ),
 				'name'              => 'block_title',
 				'type'              => 'clone',
 				'instructions'      => '',
@@ -3571,10 +3523,10 @@ This list will automatically be updated if any new content meets the filter crit
 			),
 			array(
 				'key'               => 'field_5b6846f16fb72',
-				'label'             => __( 'Post', THEME_DOMAIN ),
+				'label'             => __( 'Post', 'lesverts' ),
 				'name'              => 'post',
 				'type'              => 'clone',
-				'instructions'      => __( 'Select the post to display. The excerpt and the image of the post, will be displayed.', THEME_DOMAIN ),
+				'instructions'      => __( 'Select the post to display. The excerpt and the image of the post, will be displayed.', 'lesverts' ),
 				'required'          => 1,
 				'conditional_logic' => 0,
 				'wrapper'           => array(
@@ -3592,10 +3544,10 @@ This list will automatically be updated if any new content meets the filter crit
 			),
 			array(
 				'key'               => 'field_5b719f7e7fcc0',
-				'label'             => __( 'Footer', THEME_DOMAIN ),
+				'label'             => __( 'Footer', 'lesverts' ),
 				'name'              => 'footer',
 				'type'              => 'group',
-				'instructions'      => __( 'Immediate call to action.', THEME_DOMAIN ),
+				'instructions'      => __( 'Immediate call to action.', 'lesverts' ),
 				'required'          => 0,
 				'conditional_logic' => 0,
 				'wrapper'           => array(
@@ -3607,10 +3559,10 @@ This list will automatically be updated if any new content meets the filter crit
 				'sub_fields'        => array(
 					array(
 						'key'               => 'field_5b6847db6fb75',
-						'label'             => __( 'Call to Action Link', THEME_DOMAIN ),
+						'label'             => __( 'Call to Action Link', 'lesverts' ),
 						'name'              => 'cta_link',
 						'type'              => 'url',
-						'instructions'      => __( 'Add anchor link to the call to action form.', THEME_DOMAIN ),
+						'instructions'      => __( 'Add anchor link to the call to action form.', 'lesverts' ),
 						'required'          => 0,
 						'conditional_logic' => 0,
 						'wrapper'           => array(
@@ -3623,7 +3575,7 @@ This list will automatically be updated if any new content meets the filter crit
 					),
 					array(
 						'key'               => 'field_5b68476a6fb74',
-						'label'             => __( 'Call to Action Button Text', THEME_DOMAIN ),
+						'label'             => __( 'Call to Action Button Text', 'lesverts' ),
 						'name'              => 'cta_label',
 						'type'              => 'text',
 						'instructions'      => '',
@@ -3649,10 +3601,10 @@ This list will automatically be updated if any new content meets the filter crit
 					),
 					array(
 						'key'               => 'field_5b6847346fb73',
-						'label'             => __( 'Call to Action Description', THEME_DOMAIN ),
+						'label'             => __( 'Call to Action Description', 'lesverts' ),
 						'name'              => 'cta_desc',
 						'type'              => 'text',
-						'instructions'      => __( 'One very short sentence that explains why someone should click the call to action. Example: I want to get active against GMO.', THEME_DOMAIN ),
+						'instructions'      => __( 'One very short sentence that explains why someone should click the call to action. Example: I want to get active against GMO.', 'lesverts' ),
 						'required'          => 1,
 						'conditional_logic' => array(
 							array(
@@ -3698,14 +3650,14 @@ This list will automatically be updated if any new content meets the filter crit
 
 	acf_add_local_field_group( array(
 		'key'                   => 'group_5bcee6dd2cfd7',
-		'title'                 => __( '[Template]Teaser', THEME_DOMAIN ),
+		'title'                 => __( '[Template]Teaser', 'lesverts' ),
 		'fields'                => array(
 			array(
 				'key'               => 'field_5bcee7167c5c5',
-				'label'             => __( 'Teaser', THEME_DOMAIN ),
+				'label'             => __( 'Teaser', 'lesverts' ),
 				'name'              => 'teaser',
 				'type'              => 'textarea',
-				'instructions'      => __( '<strong>The first 280 characters</strong> will be used as preview text on the front page, archive pages and for search results.', THEME_DOMAIN ),
+				'instructions'      => __( '<strong>The first 280 characters</strong> will be used as preview text on the front page, archive pages and for search results.', 'lesverts' ),
 				'required'          => 0,
 				'conditional_logic' => 0,
 				'wrapper'           => array(
@@ -3721,7 +3673,7 @@ This list will automatically be updated if any new content meets the filter crit
 			),
 			array(
 				'key'               => 'field_5bcee79ac84ae',
-				'label'             => __( 'Use for preview only (hide on page)', THEME_DOMAIN ),
+				'label'             => __( 'Use for preview only (hide on page)', 'lesverts' ),
 				'name'              => 'teaser_hide_on_page',
 				'type'              => 'true_false',
 				'instructions'      => '',
@@ -3732,7 +3684,7 @@ This list will automatically be updated if any new content meets the filter crit
 					'class' => '',
 					'id'    => '',
 				),
-				'message'           => __( 'If yes, the teaser will only be shown as preview text but not on the page itself.', THEME_DOMAIN ),
+				'message'           => __( 'If yes, the teaser will only be shown as preview text but not on the page itself.', 'lesverts' ),
 				'default_value'     => 1,
 				'ui'                => 1,
 				'ui_on_text'        => '',
@@ -3761,11 +3713,11 @@ This list will automatically be updated if any new content meets the filter crit
 
 	acf_add_local_field_group( array(
 		'key'                   => 'group_5b6c6072e2d3f',
-		'title'                 => __( '[Template]Testimonials', THEME_DOMAIN ),
+		'title'                 => __( '[Template]Testimonials', 'lesverts' ),
 		'fields'                => array(
 			array(
 				'key'               => 'field_5b7da1211ced8',
-				'label'             => __( 'About this Block', THEME_DOMAIN ),
+				'label'             => __( 'About this Block', 'lesverts' ),
 				'name'              => '',
 				'type'              => 'message',
 				'instructions'      => '',
@@ -3776,13 +3728,13 @@ This list will automatically be updated if any new content meets the filter crit
 					'class' => '',
 					'id'    => '',
 				),
-				'message'           => __( 'Display some fancy testimonials. Make sure you add the testimonials with the corresponding <strong>category</strong> in the peoples section.', THEME_DOMAIN ),
+				'message'           => __( 'Display some fancy testimonials. Make sure you add the testimonials with the corresponding <strong>category</strong> in the peoples section.', 'lesverts' ),
 				'new_lines'         => 'wpautop',
 				'esc_html'          => 0,
 			),
 			array(
 				'key'               => 'field_5b6c6e387d12b',
-				'label'             => __( 'Block Title', THEME_DOMAIN ),
+				'label'             => __( 'Block Title', 'lesverts' ),
 				'name'              => 'block_title',
 				'type'              => 'clone',
 				'instructions'      => '',
@@ -3803,7 +3755,7 @@ This list will automatically be updated if any new content meets the filter crit
 			),
 			array(
 				'key'               => 'field_5bbb4e32cc149',
-				'label'             => __( 'Title', THEME_DOMAIN ),
+				'label'             => __( 'Title', 'lesverts' ),
 				'name'              => 'title',
 				'type'              => 'text',
 				'instructions'      => '',
@@ -3822,10 +3774,10 @@ This list will automatically be updated if any new content meets the filter crit
 			),
 			array(
 				'key'               => 'field_5b6c608604fce',
-				'label'             => __( 'Testimonials', THEME_DOMAIN ),
+				'label'             => __( 'Testimonials', 'lesverts' ),
 				'name'              => 'taxonomy',
 				'type'              => 'taxonomy',
-				'instructions'      => __( 'Select the testimonials to display by its category.', THEME_DOMAIN ),
+				'instructions'      => __( 'Select the testimonials to display by its category.', 'lesverts' ),
 				'required'          => 1,
 				'conditional_logic' => 0,
 				'wrapper'           => array(
@@ -3844,10 +3796,10 @@ This list will automatically be updated if any new content meets the filter crit
 			),
 			array(
 				'key'               => 'field_5bbb3fd187e20',
-				'label'             => __( 'Layout', THEME_DOMAIN ),
+				'label'             => __( 'Layout', 'lesverts' ),
 				'name'              => 'layout',
 				'type'              => 'button_group',
-				'instructions'      => __( 'Choose vertical for the front page', THEME_DOMAIN ),
+				'instructions'      => __( 'Choose vertical for the front page', 'lesverts' ),
 				'required'          => 0,
 				'conditional_logic' => 0,
 				'wrapper'           => array(
@@ -3856,8 +3808,8 @@ This list will automatically be updated if any new content meets the filter crit
 					'id'    => '',
 				),
 				'choices'           => array(
-					'vertical'   => __( 'Vertical', THEME_DOMAIN ),
-					'horizontal' => __( 'Horizontal', THEME_DOMAIN ),
+					'vertical'   => __( 'Vertical', 'lesverts' ),
+					'horizontal' => __( 'Horizontal', 'lesverts' ),
 				),
 				'allow_null'        => 0,
 				'default_value'     => 'horizontal',
@@ -3887,11 +3839,11 @@ This list will automatically be updated if any new content meets the filter crit
 
 	acf_add_local_field_group( array(
 		'key'                   => 'group_5b684a4bdffb6',
-		'title'                 => __( '[Template]Two Posts', THEME_DOMAIN ),
+		'title'                 => __( '[Template]Two Posts', 'lesverts' ),
 		'fields'                => array(
 			array(
 				'key'               => 'field_5b7d9fb145d30',
-				'label'             => __( 'About this Block', THEME_DOMAIN ),
+				'label'             => __( 'About this Block', 'lesverts' ),
 				'name'              => '',
 				'type'              => 'message',
 				'instructions'      => '',
@@ -3902,13 +3854,13 @@ This list will automatically be updated if any new content meets the filter crit
 					'class' => '',
 					'id'    => '',
 				),
-				'message'           => __( 'Displays two teasers of any post or page.', THEME_DOMAIN ),
+				'message'           => __( 'Displays two teasers of any post or page.', 'lesverts' ),
 				'new_lines'         => 'wpautop',
 				'esc_html'          => 0,
 			),
 			array(
 				'key'               => 'field_5b6861e519396',
-				'label'             => __( 'Block Title', THEME_DOMAIN ),
+				'label'             => __( 'Block Title', 'lesverts' ),
 				'name'              => 'block_title',
 				'type'              => 'clone',
 				'instructions'      => '',
@@ -3929,10 +3881,10 @@ This list will automatically be updated if any new content meets the filter crit
 			),
 			array(
 				'key'               => 'field_5b684a4be8d5e',
-				'label'             => __( 'Post 1', THEME_DOMAIN ),
+				'label'             => __( 'Post 1', 'lesverts' ),
 				'name'              => 'post_1',
 				'type'              => 'clone',
-				'instructions'      => __( 'Select the post to display. The excerpt and the image of the post, will be displayed.', THEME_DOMAIN ),
+				'instructions'      => __( 'Select the post to display. The excerpt and the image of the post, will be displayed.', 'lesverts' ),
 				'required'          => 1,
 				'conditional_logic' => 0,
 				'wrapper'           => array(
@@ -3950,7 +3902,7 @@ This list will automatically be updated if any new content meets the filter crit
 			),
 			array(
 				'key'               => 'field_5b684a644d73a',
-				'label'             => __( 'Post 2', THEME_DOMAIN ),
+				'label'             => __( 'Post 2', 'lesverts' ),
 				'name'              => 'post_2',
 				'type'              => 'clone',
 				'instructions'      => '',
@@ -3992,11 +3944,11 @@ This list will automatically be updated if any new content meets the filter crit
 
 	acf_add_local_field_group( array(
 		'key'                   => 'group_5b6841bfef6ab',
-		'title'                 => __( '[Template]Vote Recommendations', THEME_DOMAIN ),
+		'title'                 => __( '[Template]Vote Recommendations', 'lesverts' ),
 		'fields'                => array(
 			array(
 				'key'               => 'field_5b7da085dc6f1',
-				'label'             => __( 'About this Block', THEME_DOMAIN ),
+				'label'             => __( 'About this Block', 'lesverts' ),
 				'name'              => '',
 				'type'              => 'message',
 				'instructions'      => '',
@@ -4007,13 +3959,13 @@ This list will automatically be updated if any new content meets the filter crit
 					'class' => '',
 					'id'    => '',
 				),
-				'message'           => __( 'Displays voting recommendations.', THEME_DOMAIN ),
+				'message'           => __( 'Displays voting recommendations.', 'lesverts' ),
 				'new_lines'         => 'wpautop',
 				'esc_html'          => 0,
 			),
 			array(
 				'key'               => 'field_5b68621965af5',
-				'label'             => __( 'Category', THEME_DOMAIN ),
+				'label'             => __( 'Category', 'lesverts' ),
 				'name'              => 'category',
 				'type'              => 'clone',
 				'instructions'      => '',
@@ -4034,7 +3986,7 @@ This list will automatically be updated if any new content meets the filter crit
 			),
 			array(
 				'key'               => 'field_5b68447d19735',
-				'label'             => __( 'Recommendations', THEME_DOMAIN ),
+				'label'             => __( 'Recommendations', 'lesverts' ),
 				'name'              => 'proposals',
 				'type'              => 'repeater',
 				'instructions'      => '',
@@ -4049,14 +4001,14 @@ This list will automatically be updated if any new content meets the filter crit
 				'min'               => 1,
 				'max'               => 0,
 				'layout'            => 'table',
-				'button_label'      => __( 'Add recommendation', THEME_DOMAIN ),
+				'button_label'      => __( 'Add recommendation', 'lesverts' ),
 				'sub_fields'        => array(
 					array(
 						'key'               => 'field_5baa445a76610',
-						'label'             => __( 'Recommendation Link', THEME_DOMAIN ),
+						'label'             => __( 'Recommendation Link', 'lesverts' ),
 						'name'              => 'proposal_link',
 						'type'              => 'group',
-						'instructions'      => __( 'Where visitors can read more about this bill.', THEME_DOMAIN ),
+						'instructions'      => __( 'Where visitors can read more about this bill.', 'lesverts' ),
 						'required'          => 0,
 						'conditional_logic' => 0,
 						'wrapper'           => array(
@@ -4068,7 +4020,7 @@ This list will automatically be updated if any new content meets the filter crit
 						'sub_fields'        => array(
 							array(
 								'key'               => 'field_5baa448d76611',
-								'label'             => __( 'Link Type', THEME_DOMAIN ),
+								'label'             => __( 'Link Type', 'lesverts' ),
 								'name'              => 'type',
 								'type'              => 'button_group',
 								'instructions'      => '',
@@ -4080,8 +4032,8 @@ This list will automatically be updated if any new content meets the filter crit
 									'id'    => '',
 								),
 								'choices'           => array(
-									'internal' => __( 'Internal', THEME_DOMAIN ),
-									'url'      => __( 'External (URL)', THEME_DOMAIN ),
+									'internal' => __( 'Internal', 'lesverts' ),
+									'url'      => __( 'External (URL)', 'lesverts' ),
 								),
 								'allow_null'        => 0,
 								'default_value'     => 'internal',
@@ -4090,7 +4042,7 @@ This list will automatically be updated if any new content meets the filter crit
 							),
 							array(
 								'key'               => 'field_5c46226447063',
-								'label'             => __( 'Internal Link', THEME_DOMAIN ),
+								'label'             => __( 'Internal Link', 'lesverts' ),
 								'name'              => 'internal_link',
 								'type'              => 'group',
 								'instructions'      => '',
@@ -4113,7 +4065,7 @@ This list will automatically be updated if any new content meets the filter crit
 								'sub_fields'        => array(
 									array(
 										'key'               => 'field_5baa451976612',
-										'label'             => __( 'Post', THEME_DOMAIN ),
+										'label'             => __( 'Post', 'lesverts' ),
 										'name'              => 'post',
 										'type'              => 'post_object',
 										'instructions'      => '',
@@ -4136,10 +4088,10 @@ This list will automatically be updated if any new content meets the filter crit
 									),
 									array(
 										'key'               => 'field_5c4620e993f91',
-										'label'             => __( 'Title Overwrite (optional)', THEME_DOMAIN ),
+										'label'             => __( 'Title Overwrite (optional)', 'lesverts' ),
 										'name'              => 'title',
 										'type'              => 'text',
-										'instructions'      => __( 'Leave blank, to use the posts title.', THEME_DOMAIN ),
+										'instructions'      => __( 'Leave blank, to use the posts title.', 'lesverts' ),
 										'required'          => 0,
 										'conditional_logic' => 0,
 										'wrapper'           => array(
@@ -4157,7 +4109,7 @@ This list will automatically be updated if any new content meets the filter crit
 							),
 							array(
 								'key'               => 'field_5baa456476613',
-								'label'             => __( 'External Link (URL)', THEME_DOMAIN ),
+								'label'             => __( 'External Link (URL)', 'lesverts' ),
 								'name'              => 'external',
 								'type'              => 'group',
 								'instructions'      => '',
@@ -4180,7 +4132,7 @@ This list will automatically be updated if any new content meets the filter crit
 								'sub_fields'        => array(
 									array(
 										'key'               => 'field_5baa459776614',
-										'label'             => __( 'URL', THEME_DOMAIN ),
+										'label'             => __( 'URL', 'lesverts' ),
 										'name'              => 'url',
 										'type'              => 'url',
 										'instructions'      => '',
@@ -4196,7 +4148,7 @@ This list will automatically be updated if any new content meets the filter crit
 									),
 									array(
 										'key'               => 'field_5baa45ac76615',
-										'label'             => __( 'Title', THEME_DOMAIN ),
+										'label'             => __( 'Title', 'lesverts' ),
 										'name'              => 'title',
 										'type'              => 'text',
 										'instructions'      => '',
@@ -4215,7 +4167,7 @@ This list will automatically be updated if any new content meets the filter crit
 									),
 									array(
 										'key'               => 'field_5baa45b976616',
-										'label'             => __( 'Teaser', THEME_DOMAIN ),
+										'label'             => __( 'Teaser', 'lesverts' ),
 										'name'              => 'teaser',
 										'type'              => 'textarea',
 										'instructions'      => '',
@@ -4238,10 +4190,10 @@ This list will automatically be updated if any new content meets the filter crit
 					),
 					array(
 						'key'               => 'field_5b6844e919737',
-						'label'             => __( 'Recommendation', THEME_DOMAIN ),
+						'label'             => __( 'Recommendation', 'lesverts' ),
 						'name'              => 'flag',
 						'type'              => 'radio',
-						'instructions'      => __( 'What do you recommend to vote?', THEME_DOMAIN ),
+						'instructions'      => __( 'What do you recommend to vote?', 'lesverts' ),
 						'required'          => 1,
 						'conditional_logic' => 0,
 						'wrapper'           => array(
@@ -4250,9 +4202,9 @@ This list will automatically be updated if any new content meets the filter crit
 							'id'    => '',
 						),
 						'choices'           => array(
-							'yes'  => __( 'Yes', THEME_DOMAIN ),
-							'no'   => __( 'No', THEME_DOMAIN ),
-							'free' => __( '-', THEME_DOMAIN ),
+							'yes'  => __( 'Yes', 'lesverts' ),
+							'no'   => __( 'No', 'lesverts' ),
+							'free' => __( '-', 'lesverts' ),
 						),
 						'allow_null'        => 0,
 						'other_choice'      => 0,
@@ -4265,10 +4217,10 @@ This list will automatically be updated if any new content meets the filter crit
 			),
 			array(
 				'key'               => 'field_5b719d2713c9f',
-				'label'             => __( 'Footer', THEME_DOMAIN ),
+				'label'             => __( 'Footer', 'lesverts' ),
 				'name'              => 'footer',
 				'type'              => 'group',
-				'instructions'      => __( 'Only displayed, if link is set.', THEME_DOMAIN ),
+				'instructions'      => __( 'Only displayed, if link is set.', 'lesverts' ),
 				'required'          => 0,
 				'conditional_logic' => 0,
 				'wrapper'           => array(
@@ -4280,10 +4232,10 @@ This list will automatically be updated if any new content meets the filter crit
 				'sub_fields'        => array(
 					array(
 						'key'               => 'field_5b687a7954f7d',
-						'label'             => __( 'All Votations Link', THEME_DOMAIN ),
+						'label'             => __( 'All Votations Link', 'lesverts' ),
 						'name'              => 'link',
 						'type'              => 'page_link',
-						'instructions'      => __( 'Page with link to all vote recommendations (national, cantonal, community).', THEME_DOMAIN ),
+						'instructions'      => __( 'Page with link to all vote recommendations (national, cantonal, community).', 'lesverts' ),
 						'required'          => 0,
 						'conditional_logic' => 0,
 						'wrapper'           => array(
@@ -4302,7 +4254,7 @@ This list will automatically be updated if any new content meets the filter crit
 					),
 					array(
 						'key'               => 'field_5b687a2c54f7c',
-						'label'             => __( 'Link Text', THEME_DOMAIN ),
+						'label'             => __( 'Link Text', 'lesverts' ),
 						'name'              => 'link_label',
 						'type'              => 'text',
 						'instructions'      => '',
@@ -4351,14 +4303,14 @@ This list will automatically be updated if any new content meets the filter crit
 
 	acf_add_local_field_group( array(
 		'key'                   => 'group_5b6ac8b4171c0',
-		'title'                 => __( 'Event Description', THEME_DOMAIN ),
+		'title'                 => __( 'Event Description', 'lesverts' ),
 		'fields'                => array(
 			array(
 				'key'               => 'field_5b6ac8da50013',
-				'label'             => __( 'Image', THEME_DOMAIN ),
+				'label'             => __( 'Image', 'lesverts' ),
 				'name'              => 'image',
 				'type'              => 'image',
-				'instructions'      => __( 'Displayed in the teaser only.', THEME_DOMAIN ),
+				'instructions'      => __( 'Displayed in the teaser only.', 'lesverts' ),
 				'required'          => 1,
 				'conditional_logic' => 0,
 				'wrapper'           => array(
@@ -4379,7 +4331,7 @@ This list will automatically be updated if any new content meets the filter crit
 			),
 			array(
 				'key'               => 'field_5b6ac92d144e5',
-				'label'             => __( 'Description', THEME_DOMAIN ),
+				'label'             => __( 'Description', 'lesverts' ),
 				'name'              => 'description',
 				'type'              => 'wysiwyg',
 				'instructions'      => '',
@@ -4431,11 +4383,11 @@ This list will automatically be updated if any new content meets the filter crit
 
 	acf_add_local_field_group( array(
 		'key'                   => 'group_5b646018d7f1a',
-		'title'                 => __( 'Front page', THEME_DOMAIN ),
+		'title'                 => __( 'Front page', 'lesverts' ),
 		'fields'                => array(
 			array(
 				'key'               => 'field_5b646034e8b37',
-				'label'             => __( 'Main Campaign', THEME_DOMAIN ),
+				'label'             => __( 'Main Campaign', 'lesverts' ),
 				'name'              => 'campaign',
 				'type'              => 'clone',
 				'instructions'      => '',
@@ -4456,7 +4408,7 @@ This list will automatically be updated if any new content meets the filter crit
 			),
 			array(
 				'key'               => 'field_5b684af179d22',
-				'label'             => __( 'Content Blocks', THEME_DOMAIN ),
+				'label'             => __( 'Content Blocks', 'lesverts' ),
 				'name'              => 'content_blocks',
 				'type'              => 'flexible_content',
 				'instructions'      => '',
@@ -4471,12 +4423,12 @@ This list will automatically be updated if any new content meets the filter crit
 					'5b684af8c6b51'        => array(
 						'key'        => '5b684af8c6b51',
 						'name'       => 'vote',
-						'label'      => __( 'Vote Recommendations', THEME_DOMAIN ),
+						'label'      => __( 'Vote Recommendations', 'lesverts' ),
 						'display'    => 'block',
 						'sub_fields' => array(
 							array(
 								'key'               => 'field_5b684cf979d23',
-								'label'             => __( 'Vote Recommendation', THEME_DOMAIN ),
+								'label'             => __( 'Vote Recommendation', 'lesverts' ),
 								'name'              => 'vote',
 								'type'              => 'clone',
 								'instructions'      => '',
@@ -4502,12 +4454,12 @@ This list will automatically be updated if any new content meets the filter crit
 					'layout_5b68527d1477a' => array(
 						'key'        => 'layout_5b68527d1477a',
 						'name'       => 'single',
-						'label'      => __( 'Single Post / Page Teaser', THEME_DOMAIN ),
+						'label'      => __( 'Single Post / Page Teaser', 'lesverts' ),
 						'display'    => 'block',
 						'sub_fields' => array(
 							array(
 								'key'               => 'field_5b6852ec1477b',
-								'label'             => __( 'Post / Page', THEME_DOMAIN ),
+								'label'             => __( 'Post / Page', 'lesverts' ),
 								'name'              => 'single',
 								'type'              => 'clone',
 								'instructions'      => '',
@@ -4533,12 +4485,12 @@ This list will automatically be updated if any new content meets the filter crit
 					'layout_5b68533d5538a' => array(
 						'key'        => 'layout_5b68533d5538a',
 						'name'       => 'double',
-						'label'      => __( 'Double Post / Page Teaser', THEME_DOMAIN ),
+						'label'      => __( 'Double Post / Page Teaser', 'lesverts' ),
 						'display'    => 'block',
 						'sub_fields' => array(
 							array(
 								'key'               => 'field_5b68536b5538b',
-								'label'             => __( 'Two Posts / Pages', THEME_DOMAIN ),
+								'label'             => __( 'Two Posts / Pages', 'lesverts' ),
 								'name'              => 'double',
 								'type'              => 'clone',
 								'instructions'      => '',
@@ -4564,12 +4516,12 @@ This list will automatically be updated if any new content meets the filter crit
 					'layout_5b6854e05538c' => array(
 						'key'        => 'layout_5b6854e05538c',
 						'name'       => 'media',
-						'label'      => __( 'Latest Press Release', THEME_DOMAIN ),
+						'label'      => __( 'Latest Press Release', 'lesverts' ),
 						'display'    => 'block',
 						'sub_fields' => array(
 							array(
 								'key'               => 'field_5b6854fa5538d',
-								'label'             => __( 'Latest Press Release', THEME_DOMAIN ),
+								'label'             => __( 'Latest Press Release', 'lesverts' ),
 								'name'              => 'media',
 								'type'              => 'clone',
 								'instructions'      => '',
@@ -4595,12 +4547,12 @@ This list will automatically be updated if any new content meets the filter crit
 					'layout_5b6ae44c62e25' => array(
 						'key'        => 'layout_5b6ae44c62e25',
 						'name'       => 'events',
-						'label'      => __( 'Events', THEME_DOMAIN ),
+						'label'      => __( 'Events', 'lesverts' ),
 						'display'    => 'block',
 						'sub_fields' => array(
 							array(
 								'key'               => 'field_5b6ae45562e26',
-								'label'             => __( 'Events', THEME_DOMAIN ),
+								'label'             => __( 'Events', 'lesverts' ),
 								'name'              => 'events',
 								'type'              => 'clone',
 								'instructions'      => '',
@@ -4626,12 +4578,12 @@ This list will automatically be updated if any new content meets the filter crit
 					'layout_5b6b17209a92c' => array(
 						'key'        => 'layout_5b6b17209a92c',
 						'name'       => 'positions',
-						'label'      => __( 'Positions', THEME_DOMAIN ),
+						'label'      => __( 'Positions', 'lesverts' ),
 						'display'    => 'block',
 						'sub_fields' => array(
 							array(
 								'key'               => 'field_5b6b17259a92d',
-								'label'             => __( 'Positions', THEME_DOMAIN ),
+								'label'             => __( 'Positions', 'lesverts' ),
 								'name'              => 'positions',
 								'type'              => 'clone',
 								'instructions'      => '',
@@ -4657,12 +4609,12 @@ This list will automatically be updated if any new content meets the filter crit
 					'layout_5b6c6a2d64762' => array(
 						'key'        => 'layout_5b6c6a2d64762',
 						'name'       => 'testimonials',
-						'label'      => __( 'Testimonials', THEME_DOMAIN ),
+						'label'      => __( 'Testimonials', 'lesverts' ),
 						'display'    => 'block',
 						'sub_fields' => array(
 							array(
 								'key'               => 'field_5b6c6a3764763',
-								'label'             => __( 'Testimonials', THEME_DOMAIN ),
+								'label'             => __( 'Testimonials', 'lesverts' ),
 								'name'              => 'testimonials',
 								'type'              => 'clone',
 								'instructions'      => '',
@@ -4688,12 +4640,12 @@ This list will automatically be updated if any new content meets the filter crit
 					'layout_5b6dad5b864d5' => array(
 						'key'        => 'layout_5b6dad5b864d5',
 						'name'       => 'engagement_map',
-						'label'      => __( 'Map Block', THEME_DOMAIN ),
+						'label'      => __( 'Map Block', 'lesverts' ),
 						'display'    => 'block',
 						'sub_fields' => array(
 							array(
 								'key'               => 'field_5b6dad6b864d6',
-								'label'             => __( 'Map Block', THEME_DOMAIN ),
+								'label'             => __( 'Map Block', 'lesverts' ),
 								'name'              => 'map_block',
 								'type'              => 'clone',
 								'instructions'      => '',
@@ -4717,7 +4669,7 @@ This list will automatically be updated if any new content meets the filter crit
 						'max'        => '1',
 					),
 				),
-				'button_label'      => __( 'Add Content Block', THEME_DOMAIN ),
+				'button_label'      => __( 'Add Content Block', 'lesverts' ),
 				'min'               => '',
 				'max'               => '',
 			),
@@ -4757,11 +4709,11 @@ This list will automatically be updated if any new content meets the filter crit
 
 	acf_add_local_field_group( array(
 		'key'                   => 'group_5b6c0884eb9b8',
-		'title'                 => __( 'Person', THEME_DOMAIN ),
+		'title'                 => __( 'Person', 'lesverts' ),
 		'fields'                => array(
 			array(
 				'key'               => 'field_5bb4e39c23f7a',
-				'label'             => __( 'Full Name', THEME_DOMAIN ),
+				'label'             => __( 'Full Name', 'lesverts' ),
 				'name'              => 'full_name',
 				'type'              => 'text',
 				'instructions'      => '',
@@ -4780,7 +4732,7 @@ This list will automatically be updated if any new content meets the filter crit
 			),
 			array(
 				'key'               => 'field_5b6c08b39417e',
-				'label'             => __( 'Portrait Photo', THEME_DOMAIN ),
+				'label'             => __( 'Portrait Photo', 'lesverts' ),
 				'name'              => 'image',
 				'type'              => 'image',
 				'instructions'      => '',
@@ -4804,7 +4756,7 @@ This list will automatically be updated if any new content meets the filter crit
 			),
 			array(
 				'key'               => 'field_5b6c09509417f',
-				'label'             => __( 'Contact', THEME_DOMAIN ),
+				'label'             => __( 'Contact', 'lesverts' ),
 				'name'              => 'contact',
 				'type'              => 'flexible_content',
 				'instructions'      => '',
@@ -4819,12 +4771,12 @@ This list will automatically be updated if any new content meets the filter crit
 					'5b6c09700cad3'        => array(
 						'key'        => '5b6c09700cad3',
 						'name'       => 'email',
-						'label'      => __( 'Email', THEME_DOMAIN ),
+						'label'      => __( 'Email', 'lesverts' ),
 						'display'    => 'block',
 						'sub_fields' => array(
 							array(
 								'key'               => 'field_5b6c097794180',
-								'label'             => __( 'Email', THEME_DOMAIN ),
+								'label'             => __( 'Email', 'lesverts' ),
 								'name'              => 'email',
 								'type'              => 'email',
 								'instructions'      => '',
@@ -4847,12 +4799,12 @@ This list will automatically be updated if any new content meets the filter crit
 					'layout_5b6c09a694181' => array(
 						'key'        => 'layout_5b6c09a694181',
 						'name'       => 'phone',
-						'label'      => __( 'Phone', THEME_DOMAIN ),
+						'label'      => __( 'Phone', 'lesverts' ),
 						'display'    => 'block',
 						'sub_fields' => array(
 							array(
 								'key'               => 'field_5b6c09b294182',
-								'label'             => __( 'Phone', THEME_DOMAIN ),
+								'label'             => __( 'Phone', 'lesverts' ),
 								'name'              => 'phone',
 								'type'              => 'text',
 								'instructions'      => '',
@@ -4876,12 +4828,12 @@ This list will automatically be updated if any new content meets the filter crit
 					'layout_5b6c09ca94183' => array(
 						'key'        => 'layout_5b6c09ca94183',
 						'name'       => 'website',
-						'label'      => __( 'Website', THEME_DOMAIN ),
+						'label'      => __( 'Website', 'lesverts' ),
 						'display'    => 'block',
 						'sub_fields' => array(
 							array(
 								'key'               => 'field_5b6c09d394184',
-								'label'             => __( 'Website', THEME_DOMAIN ),
+								'label'             => __( 'Website', 'lesverts' ),
 								'name'              => 'website',
 								'type'              => 'url',
 								'instructions'      => '',
@@ -4902,15 +4854,15 @@ This list will automatically be updated if any new content meets the filter crit
 					'layout_5b6c0a1e94186' => array(
 						'key'        => 'layout_5b6c0a1e94186',
 						'name'       => 'twitter',
-						'label'      => __( 'Twitter', THEME_DOMAIN ),
+						'label'      => __( 'Twitter', 'lesverts' ),
 						'display'    => 'block',
 						'sub_fields' => array(
 							array(
 								'key'               => 'field_5b6c0a2494187',
-								'label'             => __( 'Twitter Name', THEME_DOMAIN ),
+								'label'             => __( 'Twitter Name', 'lesverts' ),
 								'name'              => 'twitter',
 								'type'              => 'text',
-								'instructions'      => __( 'Use @name', THEME_DOMAIN ),
+								'instructions'      => __( 'Use @name', 'lesverts' ),
 								'required'          => 0,
 								'conditional_logic' => 0,
 								'wrapper'           => array(
@@ -4931,15 +4883,15 @@ This list will automatically be updated if any new content meets the filter crit
 					'layout_5b6c0a5b94188' => array(
 						'key'        => 'layout_5b6c0a5b94188',
 						'name'       => 'facebook',
-						'label'      => __( 'Facebook', THEME_DOMAIN ),
+						'label'      => __( 'Facebook', 'lesverts' ),
 						'display'    => 'block',
 						'sub_fields' => array(
 							array(
 								'key'               => 'field_5b6c0a6294189',
-								'label'             => __( 'Facebook', THEME_DOMAIN ),
+								'label'             => __( 'Facebook', 'lesverts' ),
 								'name'              => 'facebook',
 								'type'              => 'url',
-								'instructions'      => __( 'Use the URL to the profile or page', THEME_DOMAIN ),
+								'instructions'      => __( 'Use the URL to the profile or page', 'lesverts' ),
 								'required'          => 0,
 								'conditional_logic' => 0,
 								'wrapper'           => array(
@@ -4957,15 +4909,15 @@ This list will automatically be updated if any new content meets the filter crit
 					'layout_5b6c0a909418a' => array(
 						'key'        => 'layout_5b6c0a909418a',
 						'name'       => 'instagram',
-						'label'      => __( 'Instagram', THEME_DOMAIN ),
+						'label'      => __( 'Instagram', 'lesverts' ),
 						'display'    => 'block',
 						'sub_fields' => array(
 							array(
 								'key'               => 'field_5b6c0ad89418b',
-								'label'             => __( 'Instagram Name', THEME_DOMAIN ),
+								'label'             => __( 'Instagram Name', 'lesverts' ),
 								'name'              => 'insta',
 								'type'              => 'text',
-								'instructions'      => __( 'Use @name', THEME_DOMAIN ),
+								'instructions'      => __( 'Use @name', 'lesverts' ),
 								'required'          => 0,
 								'conditional_logic' => 0,
 								'wrapper'           => array(
@@ -4984,16 +4936,16 @@ This list will automatically be updated if any new content meets the filter crit
 						'max'        => '1',
 					),
 				),
-				'button_label'      => __( 'Add Contact', THEME_DOMAIN ),
+				'button_label'      => __( 'Add Contact', 'lesverts' ),
 				'min'               => '',
 				'max'               => '',
 			),
 			array(
 				'key'               => 'field_5bbb2b59ceb1f',
-				'label'             => __( 'Testimonials', THEME_DOMAIN ),
+				'label'             => __( 'Testimonials', 'lesverts' ),
 				'name'              => 'testimonials',
 				'type'              => 'repeater',
-				'instructions'      => __( 'Displayed by the testimonials block (≠ quote block).', THEME_DOMAIN ),
+				'instructions'      => __( 'Displayed by the testimonials block (≠ quote block).', 'lesverts' ),
 				'required'          => 0,
 				'conditional_logic' => 0,
 				'wrapper'           => array(
@@ -5005,14 +4957,14 @@ This list will automatically be updated if any new content meets the filter crit
 				'min'               => 0,
 				'max'               => 0,
 				'layout'            => 'block',
-				'button_label'      => __( 'Add Testimonial', THEME_DOMAIN ),
+				'button_label'      => __( 'Add Testimonial', 'lesverts' ),
 				'sub_fields'        => array(
 					array(
 						'key'               => 'field_5bb4e16f39fc2',
-						'label'             => __( 'Quote', THEME_DOMAIN ),
+						'label'             => __( 'Quote', 'lesverts' ),
 						'name'              => 'quote',
 						'type'              => 'textarea',
-						'instructions'      => __( 'Max 280 characters', THEME_DOMAIN ),
+						'instructions'      => __( 'Max 280 characters', 'lesverts' ),
 						'required'          => 1,
 						'conditional_logic' => 0,
 						'wrapper'           => array(
@@ -5028,10 +4980,10 @@ This list will automatically be updated if any new content meets the filter crit
 					),
 					array(
 						'key'               => 'field_5bb4e14d39fc1',
-						'label'             => __( 'Role', THEME_DOMAIN ),
+						'label'             => __( 'Role', 'lesverts' ),
 						'name'              => 'role',
 						'type'              => 'text',
-						'instructions'      => __( 'Optional. Example: President Greens Fribourg, Business owner', THEME_DOMAIN ),
+						'instructions'      => __( 'Optional. Example: President Greens Fribourg, Business owner', 'lesverts' ),
 						'required'          => 0,
 						'conditional_logic' => 0,
 						'wrapper'           => array(
@@ -5047,10 +4999,10 @@ This list will automatically be updated if any new content meets the filter crit
 					),
 					array(
 						'key'               => 'field_5bbb2a71ceb1d',
-						'label'             => __( 'Testimonial Category', THEME_DOMAIN ),
+						'label'             => __( 'Testimonial Category', 'lesverts' ),
 						'name'              => 'taxonomy',
 						'type'              => 'taxonomy',
-						'instructions'      => __( 'To present testimonials you will have to select the testimonials by category, so <strong>assign the same category to all testimonials you want to display in the same collection</strong>.', THEME_DOMAIN ),
+						'instructions'      => __( 'To present testimonials you will have to select the testimonials by category, so <strong>assign the same category to all testimonials you want to display in the same collection</strong>.', 'lesverts' ),
 						'required'          => 1,
 						'conditional_logic' => 0,
 						'wrapper'           => array(
@@ -5106,11 +5058,11 @@ This list will automatically be updated if any new content meets the filter crit
 
 	acf_add_local_field_group( array(
 		'key'                   => 'group_5b6c01111578c',
-		'title'                 => __( 'Press Release', THEME_DOMAIN ),
+		'title'                 => __( 'Press Release', 'lesverts' ),
 		'fields'                => array(
 			array(
 				'key'               => 'field_5b9b7511d846f',
-				'label'             => __( 'Lead', THEME_DOMAIN ),
+				'label'             => __( 'Lead', 'lesverts' ),
 				'name'              => '',
 				'type'              => 'clone',
 				'instructions'      => '',
@@ -5131,7 +5083,7 @@ This list will automatically be updated if any new content meets the filter crit
 			),
 			array(
 				'key'               => 'field_5b9b73df97fd2',
-				'label'             => __( 'Main Content', THEME_DOMAIN ),
+				'label'             => __( 'Main Content', 'lesverts' ),
 				'name'              => 'main_content',
 				'type'              => 'group',
 				'instructions'      => '',
@@ -5146,7 +5098,7 @@ This list will automatically be updated if any new content meets the filter crit
 				'sub_fields'        => array(
 					array(
 						'key'               => 'field_5b6c055d04c40',
-						'label'             => __( 'Content', THEME_DOMAIN ),
+						'label'             => __( 'Content', 'lesverts' ),
 						'name'              => 'content',
 						'type'              => 'flexible_content',
 						'instructions'      => '',
@@ -5161,12 +5113,12 @@ This list will automatically be updated if any new content meets the filter crit
 							'5b6c056ad4f71'        => array(
 								'key'        => '5b6c056ad4f71',
 								'name'       => 'quote',
-								'label'      => __( 'Quote', THEME_DOMAIN ),
+								'label'      => __( 'Quote', 'lesverts' ),
 								'display'    => 'block',
 								'sub_fields' => array(
 									array(
 										'key'               => 'field_5b71c0d3fc187',
-										'label'             => __( 'Please Note', THEME_DOMAIN ),
+										'label'             => __( 'Please Note', 'lesverts' ),
 										'name'              => '',
 										'type'              => 'message',
 										'instructions'      => '',
@@ -5177,13 +5129,13 @@ This list will automatically be updated if any new content meets the filter crit
 											'class' => '',
 											'id'    => '',
 										),
-										'message'           => __( 'If a quote is given, it will replace the lead text on the front page. On the archive page and in search results, the teaser will still be the lead.', THEME_DOMAIN ),
+										'message'           => __( 'If a quote is given, it will replace the lead text on the front page. On the archive page and in search results, the teaser will still be the lead.', 'lesverts' ),
 										'new_lines'         => 'wpautop',
 										'esc_html'          => 0,
 									),
 									array(
 										'key'               => 'field_5b6c057a04c41',
-										'label'             => __( 'Quote', THEME_DOMAIN ),
+										'label'             => __( 'Quote', 'lesverts' ),
 										'name'              => 'quote',
 										'type'              => 'clone',
 										'instructions'      => '',
@@ -5209,12 +5161,12 @@ This list will automatically be updated if any new content meets the filter crit
 							'layout_5b6c07f004c42' => array(
 								'key'        => 'layout_5b6c07f004c42',
 								'name'       => 'text',
-								'label'      => __( 'Text', THEME_DOMAIN ),
+								'label'      => __( 'Text', 'lesverts' ),
 								'display'    => 'block',
 								'sub_fields' => array(
 									array(
 										'key'               => 'field_5b6c07fc04c43',
-										'label'             => __( 'Text', THEME_DOMAIN ),
+										'label'             => __( 'Text', 'lesverts' ),
 										'name'              => 'text',
 										'type'              => 'wysiwyg',
 										'instructions'      => '',
@@ -5236,7 +5188,7 @@ This list will automatically be updated if any new content meets the filter crit
 								'max'        => '',
 							),
 						),
-						'button_label'      => __( 'Add Content Block', THEME_DOMAIN ),
+						'button_label'      => __( 'Add Content Block', 'lesverts' ),
 						'min'               => '',
 						'max'               => '',
 					),
@@ -5244,7 +5196,7 @@ This list will automatically be updated if any new content meets the filter crit
 			),
 			array(
 				'key'               => 'field_5b6c4c5cb2fea',
-				'label'             => __( 'Link Lists', THEME_DOMAIN ),
+				'label'             => __( 'Link Lists', 'lesverts' ),
 				'name'              => 'link_lists',
 				'type'              => 'group',
 				'instructions'      => '',
@@ -5259,7 +5211,7 @@ This list will automatically be updated if any new content meets the filter crit
 				'sub_fields'        => array(
 					array(
 						'key'               => 'field_5b9b7369e4072',
-						'label'             => __( 'Link List', THEME_DOMAIN ),
+						'label'             => __( 'Link List', 'lesverts' ),
 						'name'              => 'linked_content',
 						'type'              => 'clone',
 						'instructions'      => '',
@@ -5282,7 +5234,7 @@ This list will automatically be updated if any new content meets the filter crit
 			),
 			array(
 				'key'               => 'field_5b9b758b2e6b6',
-				'label'             => __( 'Settings', THEME_DOMAIN ),
+				'label'             => __( 'Settings', 'lesverts' ),
 				'name'              => 'settings',
 				'type'              => 'group',
 				'instructions'      => '',
@@ -5297,10 +5249,10 @@ This list will automatically be updated if any new content meets the filter crit
 				'sub_fields'        => array(
 					array(
 						'key'               => 'field_5b6c01dc3a2b9',
-						'label'             => __( 'Show on front page', THEME_DOMAIN ),
+						'label'             => __( 'Show on front page', 'lesverts' ),
 						'name'              => 'show_on_front_page',
 						'type'              => 'true_false',
-						'instructions'      => __( 'Set this to false, to hide it from the \'Latest Press Release\' block on the front page.', THEME_DOMAIN ),
+						'instructions'      => __( 'Set this to false, to hide it from the \'Latest Press Release\' block on the front page.', 'lesverts' ),
 						'required'          => 0,
 						'conditional_logic' => 0,
 						'wrapper'           => array(
@@ -5349,11 +5301,11 @@ This list will automatically be updated if any new content meets the filter crit
 
 	acf_add_local_field_group( array(
 		'key'                   => 'group_5b6c3c5890c40',
-		'title'                 => __( 'Default', THEME_DOMAIN ),
+		'title'                 => __( 'Default', 'lesverts' ),
 		'fields'                => array(
 			array(
 				'key'               => 'field_5b7c3141824bf',
-				'label'             => __( 'Teaser', THEME_DOMAIN ),
+				'label'             => __( 'Teaser', 'lesverts' ),
 				'name'              => '',
 				'type'              => 'clone',
 				'instructions'      => '',
@@ -5374,7 +5326,7 @@ This list will automatically be updated if any new content meets the filter crit
 			),
 			array(
 				'key'               => 'field_5b7c2cb8fb969',
-				'label'             => __( 'Main Content', THEME_DOMAIN ),
+				'label'             => __( 'Main Content', 'lesverts' ),
 				'name'              => 'main_content',
 				'type'              => 'group',
 				'instructions'      => '',
@@ -5389,7 +5341,7 @@ This list will automatically be updated if any new content meets the filter crit
 				'sub_fields'        => array(
 					array(
 						'key'               => 'field_5b6c3dd87bf2a',
-						'label'             => __( 'Header Image', THEME_DOMAIN ),
+						'label'             => __( 'Header Image', 'lesverts' ),
 						'name'              => 'header_image',
 						'type'              => 'image',
 						'instructions'      => '',
@@ -5413,7 +5365,7 @@ This list will automatically be updated if any new content meets the filter crit
 					),
 					array(
 						'key'               => 'field_5cee97780b1eb',
-						'label'             => __( 'Content', THEME_DOMAIN ),
+						'label'             => __( 'Content', 'lesverts' ),
 						'name'              => 'content',
 						'type'              => 'clone',
 						'instructions'      => '',
@@ -5436,7 +5388,7 @@ This list will automatically be updated if any new content meets the filter crit
 			),
 			array(
 				'key'               => 'field_5b7c2ce4fb96a',
-				'label'             => __( 'Link Lists', THEME_DOMAIN ),
+				'label'             => __( 'Link Lists', 'lesverts' ),
 				'name'              => 'link_lists',
 				'type'              => 'group',
 				'instructions'      => '',
@@ -5451,7 +5403,7 @@ This list will automatically be updated if any new content meets the filter crit
 				'sub_fields'        => array(
 					array(
 						'key'               => 'field_5b6c4ce9059a7',
-						'label'             => __( 'Link List', THEME_DOMAIN ),
+						'label'             => __( 'Link List', 'lesverts' ),
 						'name'              => 'linked_content',
 						'type'              => 'clone',
 						'instructions'      => '',
@@ -5528,11 +5480,11 @@ This list will automatically be updated if any new content meets the filter crit
 
 	acf_add_local_field_group( array(
 		'key'                   => 'group_5b9a8a0bca273',
-		'title'                 => __( 'Overview', THEME_DOMAIN ),
+		'title'                 => __( 'Overview', 'lesverts' ),
 		'fields'                => array(
 			array(
 				'key'               => 'field_5b9a8a0be9449',
-				'label'             => __( 'Lead', THEME_DOMAIN ),
+				'label'             => __( 'Lead', 'lesverts' ),
 				'name'              => '',
 				'type'              => 'clone',
 				'instructions'      => '',
@@ -5553,7 +5505,7 @@ This list will automatically be updated if any new content meets the filter crit
 			),
 			array(
 				'key'               => 'field_5b9a8a0be959d',
-				'label'             => __( 'Main Content', THEME_DOMAIN ),
+				'label'             => __( 'Main Content', 'lesverts' ),
 				'name'              => 'posts',
 				'type'              => 'repeater',
 				'instructions'      => '',
@@ -5568,14 +5520,14 @@ This list will automatically be updated if any new content meets the filter crit
 				'min'               => 1,
 				'max'               => 0,
 				'layout'            => 'table',
-				'button_label'      => __( 'Add Post / Page', THEME_DOMAIN ),
+				'button_label'      => __( 'Add Post / Page', 'lesverts' ),
 				'sub_fields'        => array(
 					array(
 						'key'               => 'field_5b9a8b184a95e',
-						'label'             => __( 'Post / Page', THEME_DOMAIN ),
+						'label'             => __( 'Post / Page', 'lesverts' ),
 						'name'              => 'post',
 						'type'              => 'post_object',
-						'instructions'      => __( 'Select the post or page, that should be displayed.', THEME_DOMAIN ),
+						'instructions'      => __( 'Select the post or page, that should be displayed.', 'lesverts' ),
 						'required'          => 0,
 						'conditional_logic' => 0,
 						'wrapper'           => array(
@@ -5634,14 +5586,14 @@ This list will automatically be updated if any new content meets the filter crit
 
 	acf_add_local_field_group( array(
 		'key'                   => 'group_5b76febf369b4',
-		'title'                 => __( 'Social Media', THEME_DOMAIN ),
+		'title'                 => __( 'Social Media', 'lesverts' ),
 		'fields'                => array(
 			array(
 				'key'               => 'field_5b76fef28095e',
-				'label'             => __( 'Display Share Buttons', THEME_DOMAIN ),
+				'label'             => __( 'Display Share Buttons', 'lesverts' ),
 				'name'              => 'share_buttons',
 				'type'              => 'true_false',
-				'instructions'      => __( 'You can hide the share buttons of this page, by disabling this option.', THEME_DOMAIN ),
+				'instructions'      => __( 'You can hide the share buttons of this page, by disabling this option.', 'lesverts' ),
 				'required'          => 0,
 				'conditional_logic' => 0,
 				'wrapper'           => array(
