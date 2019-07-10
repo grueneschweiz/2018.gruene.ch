@@ -98,13 +98,7 @@ function supt_register_required_plugins() {
 			'name'     => 'ACF Code Field',
 			'slug'     => 'acf-code-field',
 			'required' => true,
-		),
-		array(
-			'name'     => 'Github Updater',
-			'slug'     => 'github-updater',
-			'source'   => 'https://github.com/afragen/github-updater/archive/master.zip',
-			'required' => true,
-		),
+		)
 	);
 
 	/*
@@ -133,7 +127,7 @@ function supt_register_required_plugins() {
 		// If false, a user cannot dismiss the nag message.
 		'dismiss_msg'  => '',
 		// If 'dismissable' is false, this message will be output at top of nag.
-		'is_automatic' => false,
+		'is_automatic' => true,
 		// Automatically activate plugins after installation or not.
 		'message'      => '',
 		// Message to output right before the plugins table.
