@@ -65,17 +65,18 @@ add_action( 'wpseo_add_opengraph_additional_images', function ( $og ) {
 			return;
 		}
 
-		$image_url = $image['url'];
+		$image_id = $image['id'];
 	} else {
 		$image_id = get_post_thumbnail_id( get_the_ID() );
-		$image    = wp_get_attachment_image_src( $image_id, apply_filters( 'wpseo_opengraph_image_size', 'full' ) );
-
-		if ( $image === null || empty( $image ) ) {
-			return;
-		}
-
-		$image_url = $image[0];
 	}
+
+	$image = wp_get_attachment_image_src( $image_id, apply_filters( 'wpseo_opengraph_image_size', 'full' ) );
+
+	if ( $image === null || empty( $image ) ) {
+		return;
+	}
+
+	$image_url = $image[0];
 
 	$og->add_image( array( 'url' => $image_url ) );
 } );
