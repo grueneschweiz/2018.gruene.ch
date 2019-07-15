@@ -31,6 +31,3 @@ fi
 
 # hide 'enable media replace' ads
 $WPCLI option update emr_news 1
-
-# configure searchwp
-$WPCLI eval-file 'wp-content/themes/les-verts/lib/searchwp/configure.php'
