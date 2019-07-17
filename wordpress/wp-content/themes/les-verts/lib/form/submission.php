@@ -174,20 +174,20 @@ class FormSubmission {
 			return;
 		}
 
-		if ( $_POST['action_id'] ) {
+		if ( isset( $_POST['action_id'] ) ) {
 			$this->action_id = absint( $_POST['action_id'] );
 		}
 
-		if ( $_POST['config_id'] ) {
+		if ( isset( $_POST['config_id'] ) ) {
 			$this->config_id = absint( $_POST['config_id'] );
 		}
 
-		if ( $_POST['predecessor_id'] ) {
+		if ( isset( $_POST['predecessor_id'] ) ) {
 			$this->predecessor_id = intval( $_POST['predecessor_id'] );
 		}
 
 		// todo: rethink the nonces if using caching
-		if ( $_POST['nonce'] ) {
+		if ( isset( $_POST['nonce'] ) ) {
 			$this->nonce = $_POST['nonce'];
 		}
 	}
@@ -326,7 +326,7 @@ class FormSubmission {
 		$fields = $this->get_fields();
 
 		foreach ( $fields as $key => $field ) {
-			if ( $field['hidden_field'] ) {
+			if ( isset( $field['hidden_field'] ) && $field['hidden_field'] ) {
 				continue;
 			}
 
