@@ -274,22 +274,23 @@ class FormModel {
 	 * @return string
 	 */
 	public function get_confirmation_template() {
-		return $this->get_mail_settings( self::CONFIRMATION )['form_mail_template'];
+		return $this->get_mail_template( self::CONFIRMATION );
 	}
 
 	/**
 	 * Cached confirmation or notification mail settings
 	 *
 	 * @param string $which self::CONFIRMATION or self::NOTIFICATION
+	 * @param bool $formatted see get_field()
 	 *
 	 * @return null|array
 	 */
-	private function get_mail_settings( $which ) {
-		if ( ! $this->{$which . '_settings'} ) {
-			$this->{$which . '_settings'} = get_field( "form_{$which}_mail", $this->id );
+	private function get_mail_settings( $which, $formatted = true ) {
+		if ( ! $this->{$which . '_settings'}[ $formatted ] ) {
+			$this->{$which . '_settings'}[ $formatted ] = get_field( "form_{$which}_mail", $this->id, $formatted );
 		}
 
-		return $this->{$which . '_settings'};
+		return $this->{$which . '_settings'}[ $formatted ];
 	}
 
 	/**
@@ -298,7 +299,21 @@ class FormModel {
 	 * @return string
 	 */
 	public function get_notification_template() {
-		return $this->get_mail_settings( self::NOTIFICATION )['form_mail_template'];
+		return $this->get_mail_template( self::NOTIFICATION );
+	}
+
+	/**
+	 * The mailtemplate with only wpautop() applied
+	 *
+	 * @param string $which self::CONFIRMATION or self::NOTIFICATION
+	 *
+	 * @return string
+	 */
+	private function get_mail_template( $which ) {
+		// we need this unformatted, else complex twig templates won't work
+		$raw_template = $this->get_mail_settings( $which, false )['field_5bf2bdfc61f42_field_5be2e5d83fdf7'];
+
+		return wpautop( $raw_template );
 	}
 
 	/**
@@ -307,7 +322,7 @@ class FormModel {
 	 * @return string
 	 */
 	public function get_confirmation_subject() {
-		return $this->get_mail_settings( self::CONFIRMATION )['form_mail_subject'];
+		return $this->get_mail_settings( self::CONFIRMATION, false )['field_5bf2bdfc61f42_field_5be2e5b13fdf6'];
 	}
 
 	/**
@@ -316,7 +331,7 @@ class FormModel {
 	 * @return string
 	 */
 	public function get_notification_subject() {
-		return $this->get_mail_settings( self::NOTIFICATION )['form_mail_subject'];
+		return $this->get_mail_settings( self::NOTIFICATION, false )['field_5bf2bdfc61f42_field_5be2e5b13fdf6'];
 	}
 
 	/**
