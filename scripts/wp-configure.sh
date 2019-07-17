@@ -31,3 +31,13 @@ fi
 
 # hide 'enable media replace' ads
 $WPCLI option update emr_news 1
+
+# configure tribe events
+$WPCLI option patch update tribe_events_calendar_options embedGoogleMaps <<< "false"
+$WPCLI option patch update tribe_events_calendar_options liveFiltersUpdate <<< "false"
+$WPCLI option patch update tribe_events_calendar_options defaultCurrencySymbol <<< "CHF"
+$WPCLI option patch update tribe_events_calendar_options reverseCurrencyPosition <<< "true"
+$WPCLI option patch update tribe_events_calendar_options stylesheetOption <<< "skeleton"
+$WPCLI option patch update tribe_events_calendar_options enable_month_view_cache <<< "false"
+$WPCLI option patch update tribe_events_calendar_options viewOption <<< "list"
+$WPCLI option patch update tribe_events_calendar_options datepickerFormat <<< "11"
