@@ -34,6 +34,10 @@ function supt_form_send_email(
 	$body    = Timber::compile_string( $template, $data );
 	$subject = Timber::compile_string( $subject, $data );
 
+	// Assert nice quotes (call after compiling!)
+	$body    = wptexturize( $body );
+	$subject = wptexturize( $subject );
+
 	$headers = array_merge(
 		array(
 			"From: $from",

@@ -174,20 +174,20 @@ class FormSubmission {
 			return;
 		}
 
-		if ( $_POST['action_id'] ) {
+		if ( isset( $_POST['action_id'] ) ) {
 			$this->action_id = absint( $_POST['action_id'] );
 		}
 
-		if ( $_POST['config_id'] ) {
+		if ( isset( $_POST['config_id'] ) ) {
 			$this->config_id = absint( $_POST['config_id'] );
 		}
 
-		if ( $_POST['predecessor_id'] ) {
+		if ( isset( $_POST['predecessor_id'] ) ) {
 			$this->predecessor_id = intval( $_POST['predecessor_id'] );
 		}
 
 		// todo: rethink the nonces if using caching
-		if ( $_POST['nonce'] ) {
+		if ( isset( $_POST['nonce'] ) ) {
 			$this->nonce = $_POST['nonce'];
 		}
 	}
@@ -326,7 +326,7 @@ class FormSubmission {
 		$fields = $this->get_fields();
 
 		foreach ( $fields as $key => $field ) {
-			if ( $field['hidden_field'] ) {
+			if ( isset( $field['hidden_field'] ) && $field['hidden_field'] ) {
 				continue;
 			}
 
@@ -336,7 +336,7 @@ class FormSubmission {
 				$options = array_map( 'trim', explode( "\n", $choices ) );
 
 				foreach ( $field['values'] as $value_key => $value ) {
-					$raw     = $this->get_field_data( $value_key );
+					$raw     = $this->get_field_data( $value_key, true );
 					$checked = $this->sanitize( $raw, self::CHECKBOX_TYPE );
 					$valid   = $this->validate( $checked, self::CHECKBOX_TYPE, $options, false );
 
@@ -395,12 +395,18 @@ class FormSubmission {
 	 * Get value from post variable or set error
 	 *
 	 * @param $key
+	 * @param $allow_empty
 	 *
 	 * @return string|null
 	 */
-	private function get_field_data( $key ) {
+	private function get_field_data( $key, $allow_empty = false ) {
+		// if field was not transmitted
 		if ( ! array_key_exists( $key, $_POST ) ) {
-			// if field was not transmitted
+
+			if ( $allow_empty ) {
+				return '';
+			}
+
 			$this->errors[ $key ] = __( 'Missing data.', THEME_DOMAIN );
 
 			return null;
