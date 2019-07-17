@@ -311,7 +311,9 @@ class FormModel {
 	 */
 	private function get_mail_template( $which ) {
 		// we need this unformatted, else complex twig templates won't work
-		$raw_template = $this->get_mail_settings( $which, false )['field_5bf2bdfc61f42_field_5be2e5d83fdf7'];
+		$parent_key = self::NOTIFICATION === $which ? 'field_5bf2bdfc61f42' : 'field_5bf2bc9461f40';
+
+		$raw_template = $this->get_mail_settings( $which, false )["{$parent_key}_field_5be2e5d83fdf7"];
 
 		return wpautop( $raw_template );
 	}
@@ -322,7 +324,7 @@ class FormModel {
 	 * @return string
 	 */
 	public function get_confirmation_subject() {
-		return $this->get_mail_settings( self::CONFIRMATION, false )['field_5bf2bdfc61f42_field_5be2e5b13fdf6'];
+		return $this->get_mail_settings( self::CONFIRMATION, false )['field_5bf2bc9461f40_field_5be2e5b13fdf6'];
 	}
 
 	/**
