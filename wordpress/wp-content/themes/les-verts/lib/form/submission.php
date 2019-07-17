@@ -336,7 +336,7 @@ class FormSubmission {
 				$options = array_map( 'trim', explode( "\n", $choices ) );
 
 				foreach ( $field['values'] as $value_key => $value ) {
-					$raw     = $this->get_field_data( $value_key );
+					$raw     = $this->get_field_data( $value_key, true );
 					$checked = $this->sanitize( $raw, self::CHECKBOX_TYPE );
 					$valid   = $this->validate( $checked, self::CHECKBOX_TYPE, $options, false );
 
@@ -395,12 +395,18 @@ class FormSubmission {
 	 * Get value from post variable or set error
 	 *
 	 * @param $key
+	 * @param $allow_empty
 	 *
 	 * @return string|null
 	 */
-	private function get_field_data( $key ) {
+	private function get_field_data( $key, $allow_empty = false ) {
+		// if field was not transmitted
 		if ( ! array_key_exists( $key, $_POST ) ) {
-			// if field was not transmitted
+
+			if ( $allow_empty ) {
+				return '';
+			}
+
 			$this->errors[ $key ] = __( 'Missing data.', THEME_DOMAIN );
 
 			return null;
