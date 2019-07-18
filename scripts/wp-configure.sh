@@ -41,3 +41,4 @@ $WPCLI option patch update tribe_events_calendar_options stylesheetOption <<< "s
 $WPCLI option patch update tribe_events_calendar_options enable_month_view_cache <<< "false"
 $WPCLI option patch update tribe_events_calendar_options viewOption <<< "list"
 $WPCLI option patch update tribe_events_calendar_options datepickerFormat <<< "11"
+$WPCLI option patch update tribe_events_calendar_options tribe_events_timezone_mode <<< "event"

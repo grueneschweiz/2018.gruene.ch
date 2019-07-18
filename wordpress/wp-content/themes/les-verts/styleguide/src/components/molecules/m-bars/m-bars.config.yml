@@ -1,6 +1,6 @@
 label: Bars
 status: ready
-default: left
+default: right
 context:
   modifiers:
   - left
