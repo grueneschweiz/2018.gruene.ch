@@ -85,8 +85,12 @@
 			slug = slug.substr( 0, max_slug_len );
 		}
 
-		slug_exists = slugs.indexOf( slug ) || '_meta_' === slug ||
-			'submission_url' === slug; // _meta_ and submission_url are reserved
+		// _meta_ and submission_url are reserved
+		if ('_meta_' === slug || 'submission_url' === slug) {
+			slug = 'custom_' + slug;
+		}
+
+		slug_exists = slugs.indexOf( slug );
 
 		while (- 1 !== slug_exists && slug_exists !== index) {
 			j ++;
