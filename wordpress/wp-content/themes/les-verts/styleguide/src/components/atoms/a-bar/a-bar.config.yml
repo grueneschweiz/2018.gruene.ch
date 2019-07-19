@@ -44,3 +44,9 @@ variants:
         - white
         - right
         - subline
+  - name: no sanuk
+    context:
+      modifiers:
+        - magenta
+        - left
+        - no-sanuk
