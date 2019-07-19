@@ -6,10 +6,10 @@
 	font-display: swap;
 	src: url('../fonts/5423054/38B772.eot'); /* IE9 Compat Modes */
 	src: local('Sanuk Fat'), local('Sanuk-Fat'),
-	url('fonts/5423054/38B772.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-	url('fonts/5423054/38B772.woff2') format('woff2'), /* Super Modern Browsers */
-	url('fonts/5423054/38B772.woff') format('woff'), /* Modern Browsers */
-	url('fonts/5423054/38B772.ttf') format('truetype') /* Safari, Android, iOS */
+	url('../../../sanuk/font.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+	url('../../../sanuk/font.woff2') format('woff2'), /* Super Modern Browsers */
+	url('../../../sanuk/font.woff') format('woff'), /* Modern Browsers */
+	url('../../../sanuk/font.ttf') format('truetype') /* Safari, Android, iOS */
 }
 
 /* Passion One Bold */

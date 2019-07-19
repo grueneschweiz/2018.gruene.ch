@@ -6,47 +6,50 @@ context:
   modifiers:
     - green
     - left
+    - no-sanuk
 variants:
   - name: magenta left
     context:
       modifiers:
       - magenta
       - left
+      - no-sanuk
   - name: white left
     context:
       modifiers:
         - white
         - left
+        - no-sanuk
   - name: green right
     context:
       modifiers:
       - magenta
       - right
+      - no-sanuk
   - name: magenta right
     context:
       modifiers:
       - magenta
       - right
+      - no-sanuk
   - name: white right
     context:
       modifiers:
       - white
       - right
+      - no-sanuk
   - name: subline left
     context:
       modifiers:
       - white
       - left
       - subline
+      - no-sanuk
   - name: subline right
     context:
       modifiers:
         - white
         - right
         - subline
-  - name: no sanuk
-    context:
-      modifiers:
-        - magenta
-        - left
         - no-sanuk
+

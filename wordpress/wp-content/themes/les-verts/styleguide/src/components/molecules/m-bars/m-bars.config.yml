@@ -10,17 +10,20 @@ context:
     modifiers:
     - green
     - left
+    - no-sanuk
   - bar-2:
     label: für Fair-Food
     modifiers:
     - magenta
     - left
+    - no-sanuk
   - bar-3:
     label: zusammen die Welt verändern
     modifiers:
     - white
     - left
     - subline
+    - no-sanuk
 variants:
   - name: right
     context:
@@ -32,14 +35,17 @@ variants:
         modifiers:
         - green
         - right
+        - no-sanuk
       - bar-2:
         label: für Fair-Food
         modifiers:
         - magenta
         - right
+        - no-sanuk
       - bar-3:
         label: zusammen die Welt verändern
         modifiers:
         - white
         - right
         - subline
+        - no-sanuk
