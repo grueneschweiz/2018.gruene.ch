@@ -1,11 +1,7 @@
-// console.log('JavaScript is awesome at superhuit!');
-
 // Polyfills
 import 'utils/closest';
-
 // Helpers
-import 'utils/classList'
-
+import 'utils/classList';
 // Components loader
 import load_components from './components/_component-loader';
 
