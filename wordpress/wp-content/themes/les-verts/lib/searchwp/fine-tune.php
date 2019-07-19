@@ -16,6 +16,18 @@ add_filter( 'searchwp_admin_bar', '__return_false' );
 add_filter( 'searchwp_return_orderby_date', '__return_true' );
 
 /**
+ * Load all posts
+ *
+ * Else we can't grab the categories and tags
+ */
+add_filter( 'searchwp_search_args', function ( $args ) {
+	$args['posts_per_page'] = - 1;
+
+	return $args;
+} );
+
+
+/**
  * Set initial config on plugin activation
  */
 add_filter( 'searchwp_initial_engine_settings', function ( $settings ) {

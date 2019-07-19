@@ -2,7 +2,7 @@
 	<form role="search" method="get" class="a-search__form" action="{{ fn('get_site_url') }}" autocomplete="off">{# dont use site.url, it wont work correctly with polylang #}
 		<div>
 			{% set id = 's'|uniqueid %}
-			<label class="screen-reader-text" for="{{ id }}">{{ _x( 'Search for:', constant('THEME_DOMAIN') ) }}</label>
+			<label class="screen-reader-text" for="{{ id }}">{{ __( 'Search for:', constant('THEME_DOMAIN') ) }}</label>
 			<input class="a-search__field" type="text" value="{{ fn('get_search_query') }}" name="s" id="{{ id }}" placeholder="{{ _x('Search', 'Noun', constant('THEME_DOMAIN')) }}">
 			<label class="a-search__submit-label">
 				<input class="a-search__submit" type="submit" value="{{ _x('Search', 'Verb', constant('THEME_DOMAIN')) }}">

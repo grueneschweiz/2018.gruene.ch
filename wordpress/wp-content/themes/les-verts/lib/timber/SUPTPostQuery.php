@@ -9,7 +9,11 @@
 namespace SUPT;
 
 
-class SUPTPostQuery extends \Timber\PostQuery {
+use Timber\PostQuery;
+use WP_Error;
+use WP_Query;
+
+class SUPTPostQuery extends PostQuery {
 	private $_found_posts = 0;
 	private $_archive_url;
 	private $_archive_description;
@@ -31,7 +35,7 @@ class SUPTPostQuery extends \Timber\PostQuery {
 			if ( $this->get_query() ) {
 				// works before the query was executed
 				// this is used for the link lists more button
-				$query = new \WP_Query( $this->get_query() );
+				$query = new WP_Query( $this->get_query() );
 			} else {
 				// works after the query was executed
 				// this is used on the archives page
@@ -52,8 +56,8 @@ class SUPTPostQuery extends \Timber\PostQuery {
 	 */
 	public function archive_title() {
 		if ( ! $this->_archive_title ) {
-			$tags = count( $this->get_tags() );
-			$cats = count( $this->get_categories() );
+			$tags = count( $this->get_query_tags() );
+			$cats = count( $this->get_query_categories() );
 
 			if ( ( $tags && $cats ) || $cats > 1 || $tags > 1 ) {
 				$this->_archive_title = sprintf( __( '%d posts', THEME_DOMAIN ), $this->found_posts() );
@@ -91,7 +95,7 @@ class SUPTPostQuery extends \Timber\PostQuery {
 	 *
 	 * @return mixed
 	 */
-	private function get_tags() {
+	private function get_query_tags() {
 		if ( ! $this->_tags ) {
 			global $wp_query;
 
@@ -132,7 +136,7 @@ class SUPTPostQuery extends \Timber\PostQuery {
 	 *
 	 * @return mixed
 	 */
-	private function get_categories() {
+	private function get_query_categories() {
 		if ( ! $this->_categories ) {
 			global $wp_query;
 
@@ -156,8 +160,8 @@ class SUPTPostQuery extends \Timber\PostQuery {
 	 */
 	public function archive_description() {
 		if ( ! $this->_archive_description ) {
-			$tags = $this->get_tags();
-			$cats = $this->get_categories();
+			$tags = $this->get_query_tags();
+			$cats = $this->get_query_categories();
 
 			if ( count( $cats ) > 1 ) {
 				$names = array();
@@ -242,7 +246,7 @@ class SUPTPostQuery extends \Timber\PostQuery {
 	 *
 	 * @param $query
 	 *
-	 * @return array|\WP_Error
+	 * @return array|WP_Error
 	 */
 	private function category_url_array( $query ) {
 		if ( ! empty( $query['cat'] ) ) {
@@ -287,7 +291,7 @@ class SUPTPostQuery extends \Timber\PostQuery {
 	 *
 	 * @param $query
 	 *
-	 * @return array|\WP_Error
+	 * @return array|WP_Error
 	 */
 	private function tag_url_array( $query ) {
 		if ( ! empty( $query['tag'] ) ) {
@@ -329,10 +333,120 @@ class SUPTPostQuery extends \Timber\PostQuery {
 		}
 
 		if ( ! empty( $query['tag__not_in'] ) ) {
-			return new \WP_Error( 'tag__not_in__unsupported',
+			return new WP_Error( 'tag__not_in__unsupported',
 				__( 'The tag not in function is not supported.', THEME_DOMAIN ) );
 		}
 
 		return array();
+	}
+
+	/**
+	 * Get all post types of the queries results, ordered by frequency (desc)
+	 *
+	 * @return array
+	 */
+	public function get_posts_post_types() {
+		global $wp_query;
+
+		// get all post types and their frequency
+		$post_types = array_reduce( $wp_query->posts, function ( $post_types, $post ) {
+			if ( ! isset( $post_types[ $post->post_type ] ) ) {
+				$post_types[ $post->post_type ] = 1;
+			} else {
+				$post_types[ $post->post_type ] += 1;
+			}
+
+			return $post_types;
+		} );
+
+		if ( empty( $post_types ) ) {
+			return array();
+		}
+
+		// the most frequent first
+		arsort( $post_types );
+
+		// we want the post type name instead of the frequency
+		foreach ( $post_types as $post_type => $count ) {
+			$post_types[ $post_type ] = get_post_type_object( $post_type )->label;
+		}
+
+		return $post_types;
+	}
+
+	/**
+	 * Get all categories of the queries results, ordered by frequency (desc)
+	 *
+	 * @return array
+	 */
+	public function get_posts_categories() {
+		global $wp_query;
+
+		// get all post categories and their frequency
+		$categories = array_reduce( $wp_query->posts, function ( $categories, $post ) {
+			$category_ids = wp_get_post_categories( $post->ID );
+
+			foreach ( $category_ids as $id ) {
+				if ( isset( $categories[ $id ] ) ) {
+					$categories[ $id ] += 1;
+				} else {
+					$categories[ $id ] = 1;
+				}
+			}
+
+			return $categories;
+		} );
+
+		if ( empty( $categories ) ) {
+			return array();
+		}
+
+		// the most frequent first
+		arsort( $categories );
+
+		// we want the category name instead of the frequency
+		foreach ( $categories as $id => $count ) {
+			$categories[ $id ] = get_category( $id )->name;
+		}
+
+		return $categories;
+	}
+
+	/**
+	 * Get all tags of the queries results, ordered by frequency (desc)
+	 *
+	 * @return array
+	 */
+	public function get_posts_tags() {
+		global $wp_query;
+
+		// get all post tags and their frequency
+		$tags = array_reduce( $wp_query->posts, function ( $tags, $post ) {
+			$tags_ids = wp_get_post_tags( $post->ID );
+
+			foreach ( $tags_ids as $term ) {
+				if ( isset( $tags[ $term->term_id ] ) ) {
+					$tags[ $term->term_id ] += 1;
+				} else {
+					$tags[ $term->term_id ] = 1;
+				}
+			}
+
+			return $tags;
+		} );
+
+		if ( empty( $tags ) ) {
+			return array();
+		}
+
+		// the most frequent first
+		arsort( $tags );
+
+		// we want the category name instead of the frequency
+		foreach ( $tags as $id => $count ) {
+			$tags[ $id ] = get_tag( $id )->name;
+		}
+
+		return $tags;
 	}
 }
