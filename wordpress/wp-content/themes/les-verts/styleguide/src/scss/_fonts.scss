@@ -6,10 +6,24 @@
 	font-display: swap;
 	src: url('../fonts/5423054/38B772.eot'); /* IE9 Compat Modes */
 	src: local('Sanuk Fat'), local('Sanuk-Fat'),
-	url('fonts/5423054/38B772.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-	url('fonts/5423054/38B772.woff2') format('woff2'), /* Super Modern Browsers */
-	url('fonts/5423054/38B772.woff') format('woff'), /* Modern Browsers */
-	url('fonts/5423054/38B772.ttf') format('truetype') /* Safari, Android, iOS */
+	url('../../../sanuk/font.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+	url('../../../sanuk/font.woff2') format('woff2'), /* Super Modern Browsers */
+	url('../../../sanuk/font.woff') format('woff'), /* Modern Browsers */
+	url('../../../sanuk/font.ttf') format('truetype') /* Safari, Android, iOS */
+}
+
+/* Passion One Bold */
+@font-face {
+	font-family: 'Passion One Bold';
+	font-style: normal;
+	font-weight: 700;
+	font-display: swap;
+	src: url('../fonts/passion-one-bold/PassionOne-Bold.eot'); /* IE9 Compat Modes */
+	src: local('Passion One Bold'), local('PassionOne-Bold'),
+	url('fonts/passion-one-bold/PassionOne-Bold.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+	url('fonts/passion-one-bold/PassionOne-Bold.woff2') format('woff2'), /* Super Modern Browsers */
+	url('fonts/passion-one-bold/PassionOne-Bold.woff') format('woff'), /* Modern Browsers */
+	url('fonts/passion-one-bold/PassionOne-Bold.ttf') format('truetype') /* Safari, Android, iOS */
 }
 
 /* open-sans-regular - latin */

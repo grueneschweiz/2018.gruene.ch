@@ -9,7 +9,11 @@
 namespace SUPT;
 
 
-class SUPTPostQuery extends \Timber\PostQuery {
+use Timber\PostQuery;
+use WP_Error;
+use WP_Query;
+
+class SUPTPostQuery extends PostQuery {
 	private $_found_posts = 0;
 	private $_archive_url;
 	private $_archive_description;
@@ -31,7 +35,7 @@ class SUPTPostQuery extends \Timber\PostQuery {
 			if ( $this->get_query() ) {
 				// works before the query was executed
 				// this is used for the link lists more button
-				$query = new \WP_Query( $this->get_query() );
+				$query = new WP_Query( $this->get_query() );
 			} else {
 				// works after the query was executed
 				// this is used on the archives page
@@ -52,8 +56,8 @@ class SUPTPostQuery extends \Timber\PostQuery {
 	 */
 	public function archive_title() {
 		if ( ! $this->_archive_title ) {
-			$tags = count( $this->get_tags() );
-			$cats = count( $this->get_categories() );
+			$tags = count( $this->get_query_tags() );
+			$cats = count( $this->get_query_categories() );
 
 			if ( ( $tags && $cats ) || $cats > 1 || $tags > 1 ) {
 				$this->_archive_title = sprintf( __( '%d posts', THEME_DOMAIN ), $this->found_posts() );
@@ -91,7 +95,7 @@ class SUPTPostQuery extends \Timber\PostQuery {
 	 *
 	 * @return mixed
 	 */
-	private function get_tags() {
+	private function get_query_tags() {
 		if ( ! $this->_tags ) {
 			global $wp_query;
 
@@ -132,7 +136,7 @@ class SUPTPostQuery extends \Timber\PostQuery {
 	 *
 	 * @return mixed
 	 */
-	private function get_categories() {
+	private function get_query_categories() {
 		if ( ! $this->_categories ) {
 			global $wp_query;
 
@@ -156,8 +160,8 @@ class SUPTPostQuery extends \Timber\PostQuery {
 	 */
 	public function archive_description() {
 		if ( ! $this->_archive_description ) {
-			$tags = $this->get_tags();
-			$cats = $this->get_categories();
+			$tags = $this->get_query_tags();
+			$cats = $this->get_query_categories();
 
 			if ( count( $cats ) > 1 ) {
 				$names = array();
@@ -242,7 +246,7 @@ class SUPTPostQuery extends \Timber\PostQuery {
 	 *
 	 * @param $query
 	 *
-	 * @return array|\WP_Error
+	 * @return array|WP_Error
 	 */
 	private function category_url_array( $query ) {
 		if ( ! empty( $query['cat'] ) ) {
@@ -287,7 +291,7 @@ class SUPTPostQuery extends \Timber\PostQuery {
 	 *
 	 * @param $query
 	 *
-	 * @return array|\WP_Error
+	 * @return array|WP_Error
 	 */
 	private function tag_url_array( $query ) {
 		if ( ! empty( $query['tag'] ) ) {
@@ -329,10 +333,80 @@ class SUPTPostQuery extends \Timber\PostQuery {
 		}
 
 		if ( ! empty( $query['tag__not_in'] ) ) {
-			return new \WP_Error( 'tag__not_in__unsupported',
+			return new WP_Error( 'tag__not_in__unsupported',
 				__( 'The tag not in function is not supported.', THEME_DOMAIN ) );
 		}
 
 		return array();
+	}
+
+	/**
+	 * Get all categories of the queries results, ordered by frequency (desc)
+	 *
+	 * @return array
+	 */
+	public function get_posts_categories() {
+		global $wp_query;
+
+		// get all post categories and their frequency
+		$categories = array_reduce( $wp_query->posts, function ( $categories, $post ) {
+			$category_ids = wp_get_post_categories( $post->ID );
+
+			foreach ( $category_ids as $id ) {
+				if ( isset( $categories[ $id ] ) ) {
+					$categories[ $id ] += 1;
+				} else {
+					$categories[ $id ] = 1;
+				}
+			}
+
+			return $categories;
+		} );
+
+		if ( empty( $categories ) ) {
+			return array();
+		}
+
+		// the most frequent first
+		arsort( $categories );
+
+		// current link
+		global $wp;
+		$current_url = add_query_arg( $wp->query_vars, home_url( $wp->request ) );
+		$append      = array_key_exists( 'cat', $wp->query_vars );
+
+		// we want the category name and link instead of the frequency
+		foreach ( $categories as $id => $count ) {
+			$categories[ $id ] = array(
+				'link'   => $this->get_search_link( $current_url, $wp->query_vars, 'cat', $id, $append ),
+				'name'   => get_category( $id )->name,
+				'active' => $append && in_array( $id, explode( ',', $wp->query_vars['cat'] ) ),
+			);
+		}
+
+		return $categories;
+	}
+
+	/**
+	 * Generate url with the given query parameter, preventing doubled query parameters and values.
+	 *
+	 * @param string $base_url the current url (including params, but without fragment)
+	 * @param array $base_query_vars the current url params
+	 * @param string $param_key the new url param key
+	 * @param string $param_value the new url param value
+	 * @param bool $append concatenate multiple values of same param by comma. replace if false
+	 *
+	 * @return string
+	 */
+	private function get_search_link( $base_url, $base_query_vars, $param_key, $param_value, $append ) {
+		if ( $append ) {
+			if ( in_array( $param_value, explode( ',', $base_query_vars[ $param_key ] ) ) ) {
+				return $base_url;
+			} else {
+				$param_value = $base_query_vars[ $param_key ] . ',' . $param_value;
+			}
+		}
+
+		return add_query_arg( $param_key, $param_value, $base_url );
 	}
 }

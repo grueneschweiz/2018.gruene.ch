@@ -16,6 +16,39 @@ add_filter( 'searchwp_admin_bar', '__return_false' );
 add_filter( 'searchwp_return_orderby_date', '__return_true' );
 
 /**
+ * Load all posts
+ *
+ * Else we can't grab the categories and tags
+ */
+add_filter( 'searchwp_search_args', function ( $args ) {
+	$args['posts_per_page'] = - 1;
+
+	return $args;
+} );
+
+/**
+ * Filter search results by category
+ */
+add_filter( 'searchwp_include', function ( $ids, $engine, $terms ) {
+	// Bail early, if no category filters are provided
+	if ( empty( $_GET['cat'] ) ) {
+		return $ids;
+	}
+
+	$category_ids = array_map( 'absint', explode( ',', $_GET['cat'] ) );
+
+	$args = array(
+		'category__and' => $category_ids,
+		'fields'        => 'ids',
+		'nopaging'      => true,
+	);
+
+	$ids = get_posts( $args );
+
+	return empty( $ids ) ? array( 0 ) : $ids;
+}, 10, 3 );
+
+/**
  * Set initial config on plugin activation
  */
 add_filter( 'searchwp_initial_engine_settings', function ( $settings ) {

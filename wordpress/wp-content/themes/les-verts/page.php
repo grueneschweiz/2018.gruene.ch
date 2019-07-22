@@ -73,6 +73,7 @@ if ( 'tribe_events' === $post_type ) {
 if ( is_front_page() ) {
 	$context['latest_press_release'] = supt_get_latest_press_release( $context );
 	$context['events']               = supt_get_events( $context );
+	$context['no_sanuk']             = ! file_exists( WP_CONTENT_DIR . '/sanuk/font.ttf' );
 	array_unshift( $templates, 'front-page.twig' );
 }
 

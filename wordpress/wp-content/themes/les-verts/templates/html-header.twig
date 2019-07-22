@@ -32,8 +32,15 @@
 				type="font/woff2" crossorigin>
 	<link rel="preload" href="{{ site.theme.link }}/static/fonts/open-sans/open-sans-v15-latin-800.woff2" as="font"
 				type="font/woff2" crossorigin>
-	<link rel="preload" href="{{ site.theme.link }}/static/fonts/5423054/38B772.woff2"
-				as="font" type="font/woff2" crossorigin>
+	{% if fn('is_front_page') %}
+		{% if no_sanuk %}
+			<link rel="preload" href="{{ site.theme.link }}/static/fonts/passion-one-bold/PassionOne-Bold.woff2" as="font"
+						type="font/woff2" crossorigin>
+		{% else %}
+			<link rel="preload" href="{{ site.theme.link }}/../../sanuk/font.woff2" as="font"
+						type="font/woff2" crossorigin>
+		{% endif %}
+	{% endif %}
 	<!--[if lt IE 9]>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
 	<![endif]-->

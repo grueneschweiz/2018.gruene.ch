@@ -2,9 +2,17 @@ label: List Header
 status: ready
 context:
   counter: 82
-  title: Medienmitteilungen
-  criteria-desc: 'Aus den Bereichen:'
+  title: 'Suchresultate zu <span class="m-list-header__term">Atomie</span> in der Kategorie <span class="m-list-header__term">Klima und Energie</span>'
+  criteria-desc: "Nach Kategorie filtern:"
+  button:
+    label: Alle Resultate Anzeigen
+    modifiers:
+      - outline
   criteria:
-  - Klima und Energie
-  - Atom
-  - Energiewende
+    - name: Klima und Energie
+      link: "#asdf"
+      active: true
+    - name: Atom
+      link: "#asdf"
+    - name: Energiewende
+      link: "#lkjh"

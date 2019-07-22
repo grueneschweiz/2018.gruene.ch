@@ -130,6 +130,3 @@ deploy.*
 !deploy.example.sh
 .wordpress
 wp-cli.phar
-
-# sanuk
-5423054

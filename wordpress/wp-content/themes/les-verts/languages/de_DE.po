@@ -1455,19 +1455,19 @@ msgstr "Benutzername"
 msgid "Password"
 msgstr "Passwort"
 
-#: lib/form/submission.php:404
+#: lib/form/submission.php:410
 msgid "Missing data."
 msgstr "Fehlende Daten."
 
-#: lib/form/submission.php:456
+#: lib/form/submission.php:462
 msgid "Invalid input."
 msgstr "Ungültige Eingabe."
 
-#: lib/form/submission.php:480
+#: lib/form/submission.php:486
 msgid "Invalid email."
 msgstr "Ungültige E-Mail."
 
-#: lib/form/submission.php:491
+#: lib/form/submission.php:497
 msgid "This field is required."
 msgstr "Dieses Feld ist erforderlich."
 
@@ -1527,28 +1527,28 @@ msgstr "Hochgeladen zu dieser Person"
 msgid "This taxonomy is used to organise the testimonials only."
 msgstr "Diese Klassifizierung wird nur verwendet, um die Testimonials zu organisieren."
 
-#: lib/timber/SUPTPostQuery.php:62 lib/timber/SUPTPostQuery.php:67
-#: lib/timber/SUPTPostQuery.php:72
+#: lib/timber/SUPTPostQuery.php:66 lib/timber/SUPTPostQuery.php:71
+#: lib/timber/SUPTPostQuery.php:76
 msgid "Archive: %s"
 msgstr "Archiv: %s"
 
-#: lib/timber/SUPTPostQuery.php:82
+#: lib/timber/SUPTPostQuery.php:86
 msgid "Archive"
 msgstr "Archiv"
 
-#: lib/timber/SUPTPostQuery.php:180
+#: lib/timber/SUPTPostQuery.php:184
 msgid "Here you will find any content categorized under %s and tagged with %s."
 msgstr "Hier findest du alle Inhalte der Kategorien %s mit den Schlagworten %s."
 
-#: lib/timber/SUPTPostQuery.php:186
+#: lib/timber/SUPTPostQuery.php:190
 msgid "Here you will find any content categorized under %s."
 msgstr "Hier findest du alle Inhalte der Kategorien %s."
 
-#: lib/timber/SUPTPostQuery.php:191
+#: lib/timber/SUPTPostQuery.php:195
 msgid "Here you will find any content tagged with %s."
 msgstr "Hier findest du alle Inhalte mit den Schlagworten %s."
 
-#: lib/timber/SUPTPostQuery.php:333
+#: lib/timber/SUPTPostQuery.php:337
 msgid "The tag not in function is not supported."
 msgstr "Die 'tag not in' Funktion wird nicht unterstützt."
 
@@ -1576,14 +1576,14 @@ msgstr "Die grüne Familie"
 msgid "Title:"
 msgstr "Titel:"
 
-#: search.php:17 templates/atoms/a-search.twig:6
+#: search.php:20 templates/atoms/a-search.twig:6
 msgctxt "Noun"
 msgid "Search"
 msgstr "Suche"
 
 #: search.php:18
 msgid "Search results for: %s"
-msgstr "Suchresultate zu: %s"
+msgstr "Suchergebnisse zu: %s"
 
 #: search.php:19
 msgid "You've been searching for: %s"
@@ -2238,7 +2238,7 @@ msgstr "Letzte Seite"
 msgid "Select All"
 msgstr "Alle auswählen"
 
-#: lib/form/submission.php:485
+#: lib/form/submission.php:491
 msgid "Invalid number"
 msgstr "Ungültige Zahl"
 
@@ -2330,7 +2330,7 @@ msgstr "Export"
 msgid "old: "
 msgstr "alt: "
 
-#: lib/timber/SUPTPostQuery.php:59
+#: lib/timber/SUPTPostQuery.php:63
 msgid "%d posts"
 msgstr "%d Beiträge"
 
@@ -2430,7 +2430,7 @@ msgctxt "Link"
 msgid "Advanced: You may use %s in this mail template."
 msgstr "Fortgeschritten: Du kannst %s in dieser Emailvorlage verwenden."
 
-#: lib/form/helpers/send-email.php:69
+#: lib/form/helpers/send-email.php:73
 msgctxt "form submission"
 msgid "view complete submission online"
 msgstr "Komplette Rückmeldung online anzeigen"
@@ -2573,4 +2573,34 @@ msgstr "Es wurden noch keine Formulare ausgefüllt, daher gibt es nichts zu expo
 #: acf-translate.php:1251
 msgid "Add custom code (advanced)"
 msgstr "Eigenen Code hinzufügen (für Fortgeschrittene)"
+
+#: lib/admin/import-handler.php:221
+msgid "<strong>WARNING:</strong> There were some shortcodes we couldn't process automatically. %sDownload the list%s of posts to review manually."
+msgstr "<strong>WARNUNG:</strong> Es gab eineige Shortcodes, die wir nicht automatisiert verarbeiten konnten. %sLade die Liste%s mit den zu kontrollierenden Beiträgen herunter."
+
+#: lib/admin/suggest-plugins.php:10
+msgid "This theme heavily depends on %sAdvanced Custom Fields Pro%s. You cannot run it without this plugin. Install it now (we haven't bundled it, because it's a premium plugin)."
+msgstr "Dieses Theme hängt stark von %sAdvanced Custom Fields Pro%s ab. Ohne dieses Plugin funkioniert es nicht. Installiere es jetzt (wir haben es nicht integriert, weil es ein Premium Plugin ist)."
+
+#: lib/admin/suggest-plugins.php:26
+msgid "The WordPress' search is very limited and searches titles only. We therefore suggest installing the %sSearchWP%s."
+msgstr "Die Suche von WordPress ist sehr eingeschränkt und sucht nur in den Titeln. Wir empfehlen darum %sSearchWP%s zu installieren."
+
+#: search.php:21
+msgid "Search result for: %s"
+msgid_plural "Search results for: %s"
+msgstr[0] "Suchergebnis für: %s"
+msgstr[1] "Suchergebnisse für: %s"
+
+#: templates/atoms/a-search.twig:5
+msgid "Search for:"
+msgstr "Suche nach:"
+
+#: templates/molecules/m-list-header.twig:10
+msgid "Filter by category:"
+msgstr "Filtern nach Kategorie:"
+
+#: templates/molecules/m-list-header.twig:25
+msgid "Show all results"
+msgstr "Alle Resultate anzeigen"
 

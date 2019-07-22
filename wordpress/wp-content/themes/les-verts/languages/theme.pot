@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: Les Verts\n"
-"POT-Creation-Date: 2019-07-10 15:52+0200\n"
+"POT-Creation-Date: 2019-07-22 19:52+0200\n"
 "PO-Revision-Date: 2018-11-28 17:49+0100\n"
 "Last-Translator: Cyrill Bolliger <bolliger@gmx.ch>\n"
 "Language-Team: Cyrill Bolliger <bolliger@gmx.ch>\n"
@@ -1364,6 +1364,28 @@ msgstr ""
 msgid "Add to Menu"
 msgstr ""
 
+#: lib/admin/import-handler.php:221
+#, php-format
+msgid ""
+"<strong>WARNING:</strong> There were some shortcodes we couldn't process "
+"automatically. %sDownload the list%s of posts to review manually."
+msgstr ""
+
+#: lib/admin/suggest-plugins.php:10
+#, php-format
+msgid ""
+"This theme heavily depends on %sAdvanced Custom Fields Pro%s. You cannot run "
+"it without this plugin. Install it now (we haven't bundled it, because it's "
+"a premium plugin)."
+msgstr ""
+
+#: lib/admin/suggest-plugins.php:26
+#, php-format
+msgid ""
+"The WordPress' search is very limited and searches titles only. We therefore "
+"suggest installing the %sSearchWP%s."
+msgstr ""
+
 #: lib/controllers/navigation.php:62
 msgctxt "short date format"
 msgid "y-m-d"
@@ -1914,7 +1936,7 @@ msgstr ""
 msgid "Select All"
 msgstr ""
 
-#: lib/form/helpers/send-email.php:69
+#: lib/form/helpers/send-email.php:73
 msgctxt "form submission"
 msgid "view complete submission online"
 msgstr ""
@@ -2082,23 +2104,23 @@ msgstr ""
 msgid "Export .xlsx"
 msgstr ""
 
-#: lib/form/submission.php:404
+#: lib/form/submission.php:410
 msgid "Missing data."
 msgstr ""
 
-#: lib/form/submission.php:456
+#: lib/form/submission.php:462
 msgid "Invalid input."
 msgstr ""
 
-#: lib/form/submission.php:480
+#: lib/form/submission.php:486
 msgid "Invalid email."
 msgstr ""
 
-#: lib/form/submission.php:485
+#: lib/form/submission.php:491
 msgid "Invalid number"
 msgstr ""
 
-#: lib/form/submission.php:491
+#: lib/form/submission.php:497
 msgid "This field is required."
 msgstr ""
 
@@ -2158,37 +2180,37 @@ msgstr ""
 msgid "This taxonomy is used to organise the testimonials only."
 msgstr ""
 
-#: lib/timber/SUPTPostQuery.php:59
+#: lib/timber/SUPTPostQuery.php:63
 #, php-format
 msgid "%d posts"
 msgstr ""
 
-#: lib/timber/SUPTPostQuery.php:62 lib/timber/SUPTPostQuery.php:67
-#: lib/timber/SUPTPostQuery.php:72
+#: lib/timber/SUPTPostQuery.php:66 lib/timber/SUPTPostQuery.php:71
+#: lib/timber/SUPTPostQuery.php:76
 #, php-format
 msgid "Archive: %s"
 msgstr ""
 
-#: lib/timber/SUPTPostQuery.php:82
+#: lib/timber/SUPTPostQuery.php:86
 msgid "Archive"
 msgstr ""
 
-#: lib/timber/SUPTPostQuery.php:180
+#: lib/timber/SUPTPostQuery.php:184
 #, php-format
 msgid "Here you will find any content categorized under %s and tagged with %s."
 msgstr ""
 
-#: lib/timber/SUPTPostQuery.php:186
+#: lib/timber/SUPTPostQuery.php:190
 #, php-format
 msgid "Here you will find any content categorized under %s."
 msgstr ""
 
-#: lib/timber/SUPTPostQuery.php:191
+#: lib/timber/SUPTPostQuery.php:195
 #, php-format
 msgid "Here you will find any content tagged with %s."
 msgstr ""
 
-#: lib/timber/SUPTPostQuery.php:333
+#: lib/timber/SUPTPostQuery.php:337
 msgid "The tag not in function is not supported."
 msgstr ""
 
@@ -2224,20 +2246,17 @@ msgstr ""
 msgid "Previous events"
 msgstr ""
 
-#: search.php:17 templates/atoms/a-search.twig:6
+#: search.php:20 templates/atoms/a-search.twig:6
 msgctxt "Noun"
 msgid "Search"
 msgstr ""
 
-#: search.php:18
+#: search.php:21
 #, php-format
-msgid "Search results for: %s"
-msgstr ""
-
-#: search.php:19
-#, php-format
-msgid "You've been searching for: %s"
-msgstr ""
+msgid "Search result for: %s"
+msgid_plural "Search results for: %s"
+msgstr[0] ""
+msgstr[1] ""
 
 #: vendor/mindkomm/timmy/lib/Timmy.php:223
 msgid "Full Size"
@@ -2459,6 +2478,10 @@ msgstr ""
 msgid "Show all articles tagged with %s"
 msgstr ""
 
+#: templates/atoms/a-search.twig:5
+msgid "Search for:"
+msgstr ""
+
 #: templates/atoms/a-search.twig:8 templates/atoms/a-search.twig:10
 msgctxt "Verb"
 msgid "Search"
@@ -2521,6 +2544,14 @@ msgstr ""
 #, php-format
 msgctxt "Example: All 17 press releases"
 msgid "All %d %s"
+msgstr ""
+
+#: templates/molecules/m-list-header.twig:10
+msgid "Filter by category:"
+msgstr ""
+
+#: templates/molecules/m-list-header.twig:25
+msgid "Show all results"
 msgstr ""
 
 #: templates/molecules/m-menu.twig:24

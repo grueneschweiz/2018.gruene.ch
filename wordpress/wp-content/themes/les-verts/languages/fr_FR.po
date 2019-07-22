@@ -1501,19 +1501,19 @@ msgstr "Nom d'utilisateur"
 msgid "Password"
 msgstr "Mot de passe"
 
-#: lib/form/submission.php:404
+#: lib/form/submission.php:410
 msgid "Missing data."
 msgstr "Données incomplètes"
 
-#: lib/form/submission.php:456
+#: lib/form/submission.php:462
 msgid "Invalid input."
 msgstr "Saisie invalide"
 
-#: lib/form/submission.php:480
+#: lib/form/submission.php:486
 msgid "Invalid email."
 msgstr "Adresse électronique invalide"
 
-#: lib/form/submission.php:491
+#: lib/form/submission.php:497
 msgid "This field is required."
 msgstr "Ce champ est requis."
 
@@ -1576,28 +1576,28 @@ msgstr "Fichiers mis en ligne concernant cette personne"
 msgid "This taxonomy is used to organise the testimonials only."
 msgstr "Ces catégories sont utilisées uniquement pour organiser les témoignages."
 
-#: lib/timber/SUPTPostQuery.php:62 lib/timber/SUPTPostQuery.php:67
-#: lib/timber/SUPTPostQuery.php:72
+#: lib/timber/SUPTPostQuery.php:66 lib/timber/SUPTPostQuery.php:71
+#: lib/timber/SUPTPostQuery.php:76
 msgid "Archive: %s"
 msgstr "Archives: %s"
 
-#: lib/timber/SUPTPostQuery.php:82
+#: lib/timber/SUPTPostQuery.php:86
 msgid "Archive"
 msgstr "Archives"
 
-#: lib/timber/SUPTPostQuery.php:180
+#: lib/timber/SUPTPostQuery.php:184
 msgid "Here you will find any content categorized under %s and tagged with %s."
 msgstr "Tu trouveras ici tous les contenus des catégories %s avec les mots-clés %s."
 
-#: lib/timber/SUPTPostQuery.php:186
+#: lib/timber/SUPTPostQuery.php:190
 msgid "Here you will find any content categorized under %s."
 msgstr "Tu trouveras ici tous les contenus des catégories %s."
 
-#: lib/timber/SUPTPostQuery.php:191
+#: lib/timber/SUPTPostQuery.php:195
 msgid "Here you will find any content tagged with %s."
 msgstr "Tu trouveras ici tous les contenus avec les mots-clés %s."
 
-#: lib/timber/SUPTPostQuery.php:333
+#: lib/timber/SUPTPostQuery.php:337
 msgid "The tag not in function is not supported."
 msgstr "La fonction «tag not in» ne peut pas être utilisée."
 
@@ -1625,7 +1625,7 @@ msgstr "La famille verte"
 msgid "Title:"
 msgstr "Titre:"
 
-#: search.php:17 templates/atoms/a-search.twig:6
+#: search.php:20 templates/atoms/a-search.twig:6
 msgctxt "Noun"
 msgid "Search"
 msgstr "Recherche"
@@ -2305,7 +2305,7 @@ msgstr ""
 msgid "Select All"
 msgstr ""
 
-#: lib/form/submission.php:485
+#: lib/form/submission.php:491
 msgid "Invalid number"
 msgstr ""
 
@@ -2397,7 +2397,7 @@ msgstr ""
 msgid "old: "
 msgstr ""
 
-#: lib/timber/SUPTPostQuery.php:59
+#: lib/timber/SUPTPostQuery.php:63
 msgid "%d posts"
 msgstr "%d contributions"
 
@@ -2497,7 +2497,7 @@ msgctxt "Link"
 msgid "Advanced: You may use %s in this mail template."
 msgstr ""
 
-#: lib/form/helpers/send-email.php:69
+#: lib/form/helpers/send-email.php:73
 msgctxt "form submission"
 msgid "view complete submission online"
 msgstr ""
@@ -2635,5 +2635,35 @@ msgstr ""
 
 #: acf-translate.php:1251
 msgid "Add custom code (advanced)"
+msgstr ""
+
+#: lib/admin/import-handler.php:221
+msgid "<strong>WARNING:</strong> There were some shortcodes we couldn't process automatically. %sDownload the list%s of posts to review manually."
+msgstr ""
+
+#: lib/admin/suggest-plugins.php:10
+msgid "This theme heavily depends on %sAdvanced Custom Fields Pro%s. You cannot run it without this plugin. Install it now (we haven't bundled it, because it's a premium plugin)."
+msgstr ""
+
+#: lib/admin/suggest-plugins.php:26
+msgid "The WordPress' search is very limited and searches titles only. We therefore suggest installing the %sSearchWP%s."
+msgstr ""
+
+#: search.php:21
+msgid "Search result for: %s"
+msgid_plural "Search results for: %s"
+msgstr[0] "Résultat de la recherche «%s»"
+msgstr[1] "Résultats de la recherche «%s»"
+
+#: templates/atoms/a-search.twig:5
+msgid "Search for:"
+msgstr ""
+
+#: templates/molecules/m-list-header.twig:10
+msgid "Filter by category:"
+msgstr ""
+
+#: templates/molecules/m-list-header.twig:25
+msgid "Show all results"
 msgstr ""
 

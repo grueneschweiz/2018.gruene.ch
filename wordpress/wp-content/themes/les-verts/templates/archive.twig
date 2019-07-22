@@ -25,7 +25,9 @@
 				<header class="page__list-header">
 					{% include 'molecules/m-list-header.twig' with {
 						'title': title,
-						'counter': posts.found_posts()
+						'counter': posts.found_posts(),
+						'categories': posts.get_posts_categories(),
+						'unfiltered_results_link': unfiltered_results_link
 					} only %}
 				</header>
 			{% endif %}
