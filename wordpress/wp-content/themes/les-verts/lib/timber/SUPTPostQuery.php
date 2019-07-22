@@ -341,40 +341,6 @@ class SUPTPostQuery extends PostQuery {
 	}
 
 	/**
-	 * Get all post types of the queries results, ordered by frequency (desc)
-	 *
-	 * @return array
-	 */
-	public function get_posts_post_types() {
-		global $wp_query;
-
-		// get all post types and their frequency
-		$post_types = array_reduce( $wp_query->posts, function ( $post_types, $post ) {
-			if ( ! isset( $post_types[ $post->post_type ] ) ) {
-				$post_types[ $post->post_type ] = 1;
-			} else {
-				$post_types[ $post->post_type ] += 1;
-			}
-
-			return $post_types;
-		} );
-
-		if ( empty( $post_types ) ) {
-			return array();
-		}
-
-		// the most frequent first
-		arsort( $post_types );
-
-		// we want the post type name instead of the frequency
-		foreach ( $post_types as $post_type => $count ) {
-			$post_types[ $post_type ] = get_post_type_object( $post_type )->label;
-		}
-
-		return $post_types;
-	}
-
-	/**
 	 * Get all categories of the queries results, ordered by frequency (desc)
 	 *
 	 * @return array
@@ -404,49 +370,43 @@ class SUPTPostQuery extends PostQuery {
 		// the most frequent first
 		arsort( $categories );
 
-		// we want the category name instead of the frequency
+		// current link
+		global $wp;
+		$current_url = add_query_arg( $wp->query_vars, home_url( $wp->request ) );
+		$append      = array_key_exists( 'cat', $wp->query_vars );
+
+		// we want the category name and link instead of the frequency
 		foreach ( $categories as $id => $count ) {
-			$categories[ $id ] = get_category( $id )->name;
+			$categories[ $id ] = array(
+				'link'   => $this->get_search_link( $current_url, $wp->query_vars, 'cat', $id, $append ),
+				'name'   => get_category( $id )->name,
+				'active' => $append && in_array( $id, explode( ',', $wp->query_vars['cat'] ) ),
+			);
 		}
 
 		return $categories;
 	}
 
 	/**
-	 * Get all tags of the queries results, ordered by frequency (desc)
+	 * Generate url with the given query parameter, preventing doubled query parameters and values.
 	 *
-	 * @return array
+	 * @param string $base_url the current url (including params, but without fragment)
+	 * @param array $base_query_vars the current url params
+	 * @param string $param_key the new url param key
+	 * @param string $param_value the new url param value
+	 * @param bool $append concatenate multiple values of same param by comma. replace if false
+	 *
+	 * @return string
 	 */
-	public function get_posts_tags() {
-		global $wp_query;
-
-		// get all post tags and their frequency
-		$tags = array_reduce( $wp_query->posts, function ( $tags, $post ) {
-			$tags_ids = wp_get_post_tags( $post->ID );
-
-			foreach ( $tags_ids as $term ) {
-				if ( isset( $tags[ $term->term_id ] ) ) {
-					$tags[ $term->term_id ] += 1;
-				} else {
-					$tags[ $term->term_id ] = 1;
-				}
+	private function get_search_link( $base_url, $base_query_vars, $param_key, $param_value, $append ) {
+		if ( $append ) {
+			if ( in_array( $param_value, explode( ',', $base_query_vars[ $param_key ] ) ) ) {
+				return $base_url;
+			} else {
+				$param_value = $base_query_vars[ $param_key ] . ',' . $param_value;
 			}
-
-			return $tags;
-		} );
-
-		if ( empty( $tags ) ) {
-			return array();
 		}
 
-		// the most frequent first
-		arsort( $tags );
-
-		// we want the category name instead of the frequency
-		foreach ( $tags as $id => $count ) {
-			$tags[ $id ] = get_tag( $id )->name;
-		}
-
-		return $tags;
+		return add_query_arg( $param_key, $param_value, $base_url );
 	}
 }

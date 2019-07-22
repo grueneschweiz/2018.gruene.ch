@@ -9,13 +9,18 @@
  * @since   Timber 0.1
  */
 
-$templates              = array( 'search.twig', 'archive.twig', 'index.twig' );
+use SUPT\SUPTPostQuery;
+
+$templates = array( 'search.twig', 'archive.twig', 'index.twig' );
+$query     = new SUPTPostQuery();
+
 $context                = Timber::get_context();
 $context['list_header'] = true;
+$context['posts']       = $query;
+$context['block_title'] = _x( 'Search', 'Noun', THEME_DOMAIN );
+$context['title']       = sprintf( _n( 'Search result for: %s', 'Search results for: %s', $query->found_posts(), THEME_DOMAIN ), get_search_query() );
 
-$context['posts']               = new \SUPT\SUPTPostQuery();
-$context['block_title']         = _x( 'Search', 'Noun', THEME_DOMAIN );
-$context['title']               = sprintf( __( 'Search results for: %s', THEME_DOMAIN ), get_search_query() );
-$context['archive_description'] = sprintf( __( "You've been searching for: %s", THEME_DOMAIN ), get_search_query() );
+global $wp;
+$context['unfiltered_results_link'] = remove_query_arg( 'cat', add_query_arg( $wp->query_vars, home_url( $wp->request ) ) );
 
 Timber::render( $templates, $context );
