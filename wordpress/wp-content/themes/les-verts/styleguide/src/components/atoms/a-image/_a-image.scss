@@ -165,6 +165,21 @@
 
 		color: $color-white;
 		text-transform: uppercase;
+
+		&--caption {
+			transform: none;
+			color: $color-text-light;
+		}
+	}
+
+	&__caption {
+		line-height: 1.4em;
+		font-size: 0.875rem;
+		color: $color-text-light;
+		padding: 0.5em 1em 1em;
+		background: $color-grey-1;
+		width: 100%;
+		display: block;
 	}
 }
 

@@ -6,7 +6,7 @@
 		<figcaption>
 			{{#if caption}}<span class="a-image__caption">{{caption}}</span>{{/if}}
 			{{#if copy}}
-				<small class="a-image__copy">&copy; {{copy}}</small>{{/if}}
+				<small class="a-image__copy{{#if caption}} a-image__copy--caption{{/if}}">&copy; {{copy}}</small>{{/if}}
 		</figcaption>
 	{{/unless}}
 </figure>
