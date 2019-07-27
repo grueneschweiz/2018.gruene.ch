@@ -37,6 +37,7 @@ class CrmDao {
 
 	/**
 	 * Crm_Dao constructor.
+	 * @throws \Exception
 	 */
 	public function __construct() {
 		$this->api_url = trailingslashit( \get_field( 'api_url', 'option' ) );
@@ -44,6 +45,14 @@ class CrmDao {
 		$this->obtain_token();
 	}
 
+	/**
+	 *
+	 *
+	 * @param $data
+	 *
+	 * @return array|mixed|object
+	 * @throws \Exception
+	 */
 	public function save( $data ) {
 		$crm_data = array();
 		foreach ( $data as $key => $crm_field_data ) {
@@ -53,7 +62,7 @@ class CrmDao {
 			);
 		}
 
-		$args = array( 'body' => json_encode( $crm_data ), array( 'timeout' => self::WP_REMOTE_TIMEOUT ) );
+		$args     = array( 'body' => json_encode( $crm_data ), array( 'timeout' => self::WP_REMOTE_TIMEOUT ) );
 		$response = wp_remote_post( $this->api_url . 'api/v1/member', $this->add_auth_header( $args ) );
 
 		if ( is_wp_error( $response ) ) {
@@ -63,6 +72,16 @@ class CrmDao {
 
 		/** @var \WP_HTTP_Requests_Response $resp */
 		$resp = $response['http_response'];
+		if ( in_array( $resp->get_status(), array( 401, 403 ) ) ) {
+			// if the token isn't valid, get a new one. if the new one is valid, retry to save
+			if ( ! $this->is_token_valid() ) {
+				$this->obtain_token( true );
+				if ( $this->is_token_valid() ) {
+					return $this->save( $data );
+				}
+			}
+		}
+
 		if ( $resp->get_status() !== 201 ) {
 			throw new \Exception( "Could save member to crm. Crm returned status code: {$resp->get_status()}" );
 		}
@@ -80,17 +99,18 @@ class CrmDao {
 	private function obtain_token( $force = false ) {
 		$this->token = get_option( self::OPTION_KEY_TOKEN, null );
 
-		if ( ! $this->token || $force || ! $this->is_token_valid() ) {
+		if ( ! $this->token || $force ) {
 			$data = array(
-				'body' => array(
+				'body'    => array(
 					'grant_type'    => 'client_credentials',
 					'client_id'     => \get_field( 'client_id', 'option' ),
 					'client_secret' => \get_field( 'client_secret', 'option' ),
 					'scope'         => ''
 				),
+				'timeout' => self::WP_REMOTE_TIMEOUT,
 			);
 
-			$response = wp_remote_post( $this->api_url . 'oauth/token', $data, array( 'timeout' => self::WP_REMOTE_TIMEOUT ) );
+			$response = wp_remote_post( $this->api_url . 'oauth/token', $data );
 
 			if ( is_wp_error( $response ) ) {
 				$error_message = $response->get_error_message();
@@ -140,7 +160,10 @@ class CrmDao {
 			throw new \Exception( "Could not validate oAuth token from crm: $error_message" );
 		}
 
-		return 200 === $response['http_response']->get_status();
+		/** @var \WP_HTTP_Requests_Response $resp */
+		$resp = $response['http_response'];
+
+		return 200 === $resp->get_status();
 	}
 
 	/**
