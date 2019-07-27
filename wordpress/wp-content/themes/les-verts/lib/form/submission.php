@@ -119,7 +119,7 @@ class FormSubmission {
 	 *
 	 * @var array
 	 */
-	private $errors;
+	private $errors = array();
 
 	/**
 	 * Cache for the form fields (as defined in the backend)
@@ -150,7 +150,6 @@ class FormSubmission {
 		$this->abort_if_limit_exceeded();
 		$this->add_data();
 		$this->abort_if_invalid_data();
-		$this->add_crm_mapped_data();
 		$this->add_metadata();
 		$this->save();
 		$this->send_notifications();
@@ -169,7 +168,7 @@ class FormSubmission {
 		try {
 			$this->form = new FormModel( absint( $_POST['form_id'] ) );
 		} catch ( Exception $e ) {
-			$this->respond_with_error( 400, 'Submission not valid' );
+			$this->respond_with_error( 400, array( 'Submission not valid' ) );
 
 			return;
 		}
@@ -236,7 +235,7 @@ class FormSubmission {
 
 		// exit here if any of the above checks failed
 		if ( ! $valid ) {
-			$this->respond_with_error( 400, 'Submission not valid' );
+			$this->respond_with_error( 400, array( 'Submission not valid' ) );
 
 			return;
 		}
@@ -333,7 +332,7 @@ class FormSubmission {
 			// sanitize and validate checkboxes
 			if ( self::CHECKBOX_TYPE === $field['form_input_type'] ) {
 				$choices = trim( $field['form_input_choices'] );
-				$options = array_map( 'trim', explode( "\n", $choices ) );
+				$options = FormModel::split_choices( $choices );
 
 				foreach ( $field['values'] as $value_key => $value ) {
 					$raw     = $this->get_field_data( $value_key, true );
@@ -354,7 +353,7 @@ class FormSubmission {
 
 				$type      = $field['form_input_type'];
 				$choices   = trim( $field['form_input_choices'] );
-				$options   = array_map( 'trim', explode( "\n", $choices ) );
+				$options   = FormModel::split_choices( $choices );
 				$required  = $field['form_input_required'];
 				$sanitized = $this->sanitize( $raw, $type );
 				$valid     = $this->validate( $sanitized, $type, $options, $required );
@@ -379,7 +378,7 @@ class FormSubmission {
 
 			foreach ( $this->fields as $key => $field ) {
 				if ( self::CHECKBOX_TYPE === $field['form_input_type'] ) {
-					$labels = explode( "\n", $field['form_input_choices'] );
+					$labels = FormModel::split_choices( $field['form_input_choices'] );
 					for ( $i = 0; $i < count( $labels ); $i ++ ) {
 						$valueKey                                    = $key . '-' . $i;
 						$this->fields[ $key ]['values'][ $valueKey ] = trim( $labels[ $i ] );
@@ -501,21 +500,6 @@ class FormSubmission {
 	}
 
 	/**
-	 * Add data from fields that were mapped to crm fields
-	 */
-	private function add_crm_mapped_data() {
-		foreach ( $this->get_fields() as $key => $field ) {
-			if ( ! empty( $field['webling_field'] ) ) {
-				if ( $field['hidden_field'] ) {
-					$this->crm_data[ $field['webling_field'] ] = $field['hidden_field_value'];
-				} else {
-					$this->crm_data[ $field['webling_field'] ] = $this->data[ $key ];
-				}
-			}
-		}
-	}
-
-	/**
 	 * Add some meta data to the form data
 	 */
 	private function add_metadata() {
@@ -583,7 +567,7 @@ class FormSubmission {
 			$this->post_meta_id = $submission->meta_get_id();
 		} catch ( Exception $e ) {
 			// todo: send email
-			$this->respond_with_error( 500, 'Internal server error.' );
+			$this->respond_with_error( 500, array( 'Internal server error.' ) );
 
 			return;
 		}
@@ -591,18 +575,24 @@ class FormSubmission {
 		$this->update_predecessor( $this->post_meta_id );
 
 		// safe to crm
-		if ( ! empty( $this->crm_data ) && $this->get_email_address() ) {
+		try {
+			$this->add_crm_mapped_data();
+		} catch ( \InvalidArgumentException $e ) {
+			// todo: !important! send email
+		}
+
+		if ( ! empty( $this->crm_data ) ) {
 			/**
 			 * Filters the submitted data, before it's sent to the crm.
 			 *
 			 * @param array $this ->crm_data
 			 */
 			$crm_data = (array) apply_filters( FormType::MODEL_NAME . '-before-crm-save', $this->crm_data );
+
 			try {
-				include_once __DIR__ . '/helpers/Crm_Dao.php';
-				$crm_dao = new Crm_Dao();
-				/** @noinspection PhpParamsInspection */
-				$crm_id = $crm_dao->save( $this->get_email_address(), $crm_data );
+				include_once __DIR__ . '/include/CrmDao.php';
+				$crm_dao = new CrmDao();
+				$crm_id  = $crm_dao->save( $crm_data );
 			} catch ( Exception $e ) {
 				// todo: send mail
 			}
@@ -746,5 +736,61 @@ class FormSubmission {
 		$phpmailer->Port     = $config['port'];
 		$phpmailer->Username = $config['username'];
 		$phpmailer->Password = $config['password'];
+	}
+
+	/**
+	 * Add data from fields that were mapped to crm fields
+	 *
+	 * @throws \InvalidArgumentException
+	 */
+	private function add_crm_mapped_data() {
+		require_once __DIR__ . '/include/CRMFieldData.php';
+
+		// add data from linked submissions first
+		if ( $this->predecessor_id >= 0 ) {
+			try {
+				$predecessor = new SubmissionModel( $this->predecessor_id );
+				$fields      = $predecessor->meta_get_form()->get_fields();
+
+				foreach ( $fields as $key => $field ) {
+					if ( ! empty( $field['crm_field'] ) ) {
+						$data                                  = $predecessor->{"get_$key"}();
+						$this->crm_data[ $field['crm_field'] ] = new CRMFieldData( $field, $data );
+					}
+				}
+			} catch ( Exception $e ) {
+				// todo: send email
+			}
+		}
+
+		// the add the current data
+		// (so in case we have overlapping fields, the current data will be used)
+		foreach ( $this->get_fields() as $key => $field ) {
+			if ( ! empty( $field['crm_field'] ) ) {
+				$data = $field['hidden_field'] ? $field['hidden_field_value'] : $this->data[ $key ];
+
+				$this->crm_data[ $field['crm_field'] ] = new CRMFieldData( $field, $data );
+			}
+		}
+
+		// add the group
+		$fake_field = array(
+			'crm_field'       => 'groups',
+			'insertion_modus' => 'append'
+		);
+		$data       = \get_field( 'group_id', 'option' );
+
+		$this->crm_data['groups'] = new CRMFieldData( $fake_field, $data );
+
+		// add the entry channel if not already set
+		if ( ! isset( $this->crm_data['entryChannel'] ) ) {
+			$fake_field = array(
+				'crm_field'       => 'entryChannel',
+				'insertion_modus' => 'addIfNew'
+			);
+			$data       = get_home_url() . ' - ' . $this->form->get_title();
+
+			$this->crm_data['entryChannel'] = new CRMFieldData( $fake_field, $data );
+		}
 	}
 }

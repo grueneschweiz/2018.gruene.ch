@@ -187,7 +187,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 					array(
 						'key'               => 'field_5c0fac61bdbd7',
 						'label'             => __( 'Webling Field', THEME_DOMAIN ),
-						'name'              => 'webling_field',
+						'name'              => 'crm_field',
 						'type'              => 'select',
 						'instructions'      => __( 'Select the field in Webling that matches this field.', THEME_DOMAIN ),
 						'required'          => 0,
@@ -240,6 +240,61 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 						'placeholder'       => '',
 					),
 					array(
+						'key'               => 'field_5alk49sf14pd4',
+						'label'             => __( 'Webling Choices', THEME_DOMAIN ),
+						'name'              => 'choice_map',
+						'type'              => 'textarea',
+						'instructions'      => __( 'Enter the exact corresponding options in Webling in the same order.', THEME_DOMAIN ),
+						'required'          => 1,
+						'conditional_logic' => array(
+							array(
+								array(
+									'field'    => 'field_5c0fac61bdbd7',
+									'operator' => '==',
+									'value'    => 'recordCategory',
+								),
+							),
+							array(
+								array(
+									'field'    => 'field_5c0fac61bdbd7',
+									'operator' => '==',
+									'value'    => 'language',
+								),
+							),
+							array(
+								array(
+									'field'    => 'field_5c0fac61bdbd7',
+									'operator' => '==',
+									'value'    => 'salutationInformal',
+								),
+							),
+							array(
+								array(
+									'field'    => 'field_5c0fac61bdbd7',
+									'operator' => '==',
+									'value'    => 'interests',
+								),
+							),
+							array(
+								array(
+									'field'    => 'field_5c0fac61bdbd7',
+									'operator' => '==',
+									'value'    => 'request',
+								),
+							),
+						),
+						'wrapper'           => array(
+							'width' => '',
+							'class' => '',
+							'id'    => '',
+						),
+						'default_value'     => '',
+						'placeholder'       => '',
+						'maxlength'         => '',
+						'rows'              => 4,
+						'new_lines'         => '',
+					),
+					array(
 						'key'               => 'field_5c0fc373bdf7b',
 						'label'             => __( 'Insertion Modus', THEME_DOMAIN ),
 						'name'              => 'insertion_modus',
@@ -266,6 +321,7 @@ Select replace for single value fields like the address line and append for mult
 							'replace'      => __( 'Replace', THEME_DOMAIN ),
 							'append'       => __( 'Append', THEME_DOMAIN ),
 							'replaceEmpty' => __( 'Add if empty', THEME_DOMAIN ),
+							'addIfNew'     => __( 'Add if new', THEME_DOMAIN ),
 						),
 						'default_value'     => array(),
 						'allow_null'        => 0,
