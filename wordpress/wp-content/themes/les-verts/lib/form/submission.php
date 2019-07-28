@@ -22,6 +22,10 @@ class FormSubmission {
 	const CRON_HOOK_CRM_SAVE = 'supt_form_save_to_crm';
 	const CRON_CRM_SAVE_RETRY_INTERVAL = 'hourly';
 
+	const OPTION_MAIL_SEND_QUEUE = 'supt_form_mail_send_queue';
+	const CRON_HOOK_MAIL_SEND = 'supt_form_mail_send';
+	const CRON_MAIL_SEND_RETRY_INTERVAL = 'hourly';
+
 	const SUBMISSION_LIMIT_MINUTE_IP_FORM_AGENT = 2;
 	const SUBMISSION_LIMIT_MINUTE_IP_FORM = 5;
 	const SUBMISSION_LIMIT_HOUR_IP_FORM_AGENT = 10;
@@ -140,7 +144,8 @@ class FormSubmission {
 	private function register_actions() {
 		add_action( 'wp_ajax_supt_form_submit', array( $this, 'handle_submit' ) );
 		add_action( 'wp_ajax_nopriv_supt_form_submit', array( $this, 'handle_submit' ) );
-		add_action( 'supt_form_save_to_crm', array( __CLASS__, 'save_to_crm' ) );
+		add_action( self::CRON_HOOK_CRM_SAVE, array( __CLASS__, 'save_to_crm' ) );
+		add_action( self::CRON_HOOK_MAIL_SEND, array( __CLASS__, 'send_mails' ) );
 
 		if ( ! WP_DEBUG && get_field( 'form_smtp_enabled', 'options' ) ) {
 			add_action( 'phpmailer_init', array( $this, 'setup_SMTP' ) );
@@ -159,7 +164,7 @@ class FormSubmission {
 		$this->add_metadata();
 		$this->save();
 		$this->add_to_saving_queue_of_crm();
-		$this->send_notifications();
+		$this->add_notifications_to_sending_queue();
 		spawn_cron();
 
 		$this->status = 200;
@@ -343,6 +348,8 @@ class FormSubmission {
 				$options = FormModel::split_choices( $choices );
 
 				foreach ( $field['values'] as $value_key => $value ) {
+					$this->data[ $key ] = array();
+
 					$raw     = $this->get_field_data( $value_key, true );
 					$checked = $this->sanitize( $raw, self::CHECKBOX_TYPE );
 					$valid   = $this->validate( $checked, self::CHECKBOX_TYPE, $options, false );
@@ -605,6 +612,9 @@ class FormSubmission {
 		}
 	}
 
+	/**
+	 * Add the data to save to the saving queue, processed by a cron job
+	 */
 	private function add_to_saving_queue_of_crm() {
 		try {
 			$this->add_crm_mapped_data();
@@ -630,7 +640,10 @@ class FormSubmission {
 
 			// schedule cron
 			if ( ! wp_next_scheduled( self::CRON_HOOK_CRM_SAVE ) ) {
-				wp_schedule_event( time(), self::CRON_CRM_SAVE_RETRY_INTERVAL, self::CRON_HOOK_CRM_SAVE );
+				wp_schedule_event(
+					time() - 1,
+					self::CRON_CRM_SAVE_RETRY_INTERVAL,
+					self::CRON_HOOK_CRM_SAVE );
 			}
 		}
 	}
@@ -653,9 +666,18 @@ class FormSubmission {
 	}
 
 	/**
-	 * Send notification and confirmation mails
+	 * Add the notification and confirmation mails to the sending queue, processed by a cron job
 	 */
-	private function send_notifications() {
+	private function add_notifications_to_sending_queue() {
+		$form = $this->form;
+
+		if ( ! $form->has_confirmation() && ! $form->has_notification() ) {
+			// nothing to send
+			return;
+		}
+
+		require_once __DIR__ .'/include/Mail.php';
+
 		/**
 		 * Filters the submitted data, before notifications are sent.
 		 *
@@ -677,13 +699,6 @@ class FormSubmission {
 			)
 		);
 
-		$form = $this->form;
-
-		if ( ! $form->has_confirmation() && ! $form->has_notification() ) {
-			// nothing to send
-			return;
-		}
-
 		$sender_name = $form->get_sender_name();
 
 		/**
@@ -697,8 +712,9 @@ class FormSubmission {
 		$reply_to        = $form->get_reply_to_address();
 		$confirmation_to = $this->get_email_address();
 
+		$confirmation = null;
 		if ( $form->has_confirmation() && $confirmation_to ) {
-			supt_form_send_email(
+			$confirmation = new Mail(
 				$confirmation_to,
 				$from,
 				$reply_to,
@@ -709,8 +725,9 @@ class FormSubmission {
 			);
 		}
 
+		$notification = null;
 		if ( $form->has_notification() ) {
-			supt_form_send_email(
+			$notification = new Mail(
 				$form->get_notification_destination(),
 				$from,
 				$this->get_email_address(),
@@ -719,6 +736,28 @@ class FormSubmission {
 				$this->data,
 				$this->post_meta_id
 			);
+		}
+
+		$to_send = get_option( self::OPTION_MAIL_SEND_QUEUE, array() );
+
+		if ( $confirmation ) {
+			$to_send[] = $confirmation;
+		}
+
+		if ( $notification ) {
+			$to_send[] = $notification;
+		}
+
+		update_option( self::OPTION_MAIL_SEND_QUEUE, $to_send, false );
+
+		// schedule cron
+		if ( ! wp_next_scheduled( self::CRON_HOOK_MAIL_SEND )
+		     && ( $notification || $confirmation )
+		) {
+			wp_schedule_event(
+				time() - 1,
+				self::CRON_MAIL_SEND_RETRY_INTERVAL,
+				self::CRON_HOOK_MAIL_SEND );
 		}
 	}
 
@@ -816,6 +855,8 @@ class FormSubmission {
 
 		$to_save = get_option( self::OPTION_CRM_SAVE_QUEUE, array() );
 		if ( empty( $to_save ) ) {
+			self::remove_cron( self::CRON_HOOK_CRM_SAVE );
+
 			return;
 		}
 
@@ -841,8 +882,50 @@ class FormSubmission {
 		if ( empty( $to_save ) ) {
 			// since everything was saved, we can now disable the cron job
 			// it will automatically be reenabled, if needed
-			$timestamp = wp_next_scheduled( self::CRON_HOOK_CRM_SAVE );
-			wp_unschedule_event( $timestamp, self::CRON_HOOK_CRM_SAVE );
+			self::remove_cron( self::CRON_HOOK_CRM_SAVE );
 		}
+	}
+
+	/**
+	 * Send out the pending mails
+	 *
+	 * Called by the WordPress cron job
+	 */
+	public static function send_mails() {
+		require_once __DIR__ . '/include/Mail.php';
+
+		/** @var Mail[] $to_send */
+		$to_send = get_option( self::OPTION_MAIL_SEND_QUEUE, array() );
+		if ( empty( $to_send ) ) {
+			self::remove_cron( self::CRON_HOOK_MAIL_SEND );
+
+			return;
+		}
+
+		foreach ( $to_send as $key => $mail ) {
+			$sent = $mail->send();
+
+			if ( $sent ) {
+				unset( $to_send[ $key ] );
+			}
+		}
+
+		update_option( self::OPTION_MAIL_SEND_QUEUE, $to_send );
+
+		if ( empty( $to_send ) ) {
+			// since everything was sent, we can now disable the cron job
+			// it will automatically be reenabled, if needed
+			self::remove_cron( self::CRON_HOOK_MAIL_SEND );
+		}
+	}
+
+	/**
+	 * Remove cron job
+	 *
+	 * @param string $hook
+	 */
+	private static function remove_cron( $hook ) {
+		$timestamp = wp_next_scheduled( $hook );
+		wp_unschedule_event( $timestamp, $hook );
 	}
 }
