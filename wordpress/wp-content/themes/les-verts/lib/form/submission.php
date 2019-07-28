@@ -17,6 +17,11 @@ class FormSubmission {
 
 	const ACTION_BASE_NAME = 'supt-form';
 	const NEXT_ACTION_ID_DEFAULT = - 1;
+
+	const OPTION_CRM_SAVE_QUEUE = 'supt_form_crm_save_queue';
+	const CRON_HOOK_CRM_SAVE = 'supt_form_save_to_crm';
+	const CRON_CRM_SAVE_RETRY_INTERVAL = 'hourly';
+
 	const SUBMISSION_LIMIT_MINUTE_IP_FORM_AGENT = 2;
 	const SUBMISSION_LIMIT_MINUTE_IP_FORM = 5;
 	const SUBMISSION_LIMIT_HOUR_IP_FORM_AGENT = 10;
@@ -135,6 +140,7 @@ class FormSubmission {
 	private function register_actions() {
 		add_action( 'wp_ajax_supt_form_submit', array( $this, 'handle_submit' ) );
 		add_action( 'wp_ajax_nopriv_supt_form_submit', array( $this, 'handle_submit' ) );
+		add_action( 'supt_form_save_to_crm', array( __CLASS__, 'save_to_crm' ) );
 
 		if ( ! WP_DEBUG && get_field( 'form_smtp_enabled', 'options' ) ) {
 			add_action( 'phpmailer_init', array( $this, 'setup_SMTP' ) );
@@ -152,7 +158,9 @@ class FormSubmission {
 		$this->abort_if_invalid_data();
 		$this->add_metadata();
 		$this->save();
+		$this->add_to_saving_queue_of_crm();
 		$this->send_notifications();
+		spawn_cron();
 
 		$this->status = 200;
 		$this->send_response();
@@ -574,7 +582,30 @@ class FormSubmission {
 
 		$this->update_predecessor( $this->post_meta_id );
 
-		// safe to crm
+		if ( $this->post_meta_id ) {
+			/**
+			 * Fires after the data is persisted.
+			 *
+			 * @param array $data with
+			 *  'form_data'      => array with the validated and sanitized form data
+			 *  'action_id'      => int the engagement funnel action id
+			 *  'config_id'      => int the engagement funnel config id
+			 *  'post_meta_id'   => int the id of the post meta table where the form data is stored
+			 *  'predecessor_id' => int the id of the predecessor submission
+			 */
+			do_action( FormType::MODEL_NAME . '-after-save',
+				array(
+					'form_data'      => $data,
+					'action_id'      => $this->action_id,
+					'config_id'      => $this->config_id,
+					'post_meta_id'   => $this->post_meta_id,
+					'predecessor_id' => $this->predecessor_id,
+				)
+			);
+		}
+	}
+
+	private function add_to_saving_queue_of_crm() {
 		try {
 			$this->add_crm_mapped_data();
 		} catch ( \InvalidArgumentException $e ) {
@@ -589,37 +620,18 @@ class FormSubmission {
 			 */
 			$crm_data = (array) apply_filters( FormType::MODEL_NAME . '-before-crm-save', $this->crm_data );
 
-			try {
-				include_once __DIR__ . '/include/CrmDao.php';
-				$crm_dao = new CrmDao();
-				$crm_id  = $crm_dao->save( $crm_data );
-			} catch ( Exception $e ) {
-				// todo: send mail
-			}
-		}
+			$to_save = get_option( self::OPTION_CRM_SAVE_QUEUE, array() );
 
-		if ( $this->post_meta_id ) {
-			/**
-			 * Fires after the data is persisted.
-			 *
-			 * @param array $data with
-			 *  'form_data'      => array with the validated and sanitized form data
-			 *  'action_id'      => int the engagement funnel action id
-			 *  'config_id'      => int the engagement funnel config id
-			 *  'post_meta_id'   => int the id of the post meta table where the form data is stored
-			 *  'crm_id'         => int the id of the person in the crm
-			 *  'predecessor_id' => int the id of the predecessor submission
-			 */
-			do_action( FormType::MODEL_NAME . '-after-save',
-				array(
-					'form_data'      => $data,
-					'action_id'      => $this->action_id,
-					'config_id'      => $this->config_id,
-					'post_meta_id'   => $this->post_meta_id,
-					'crm_id'         => empty( $crm_id ) ? - 1 : $crm_id,
-					'predecessor_id' => $this->predecessor_id,
-				)
-			);
+			// don't save double submissions twice
+			if ( ! in_array( $crm_data, $to_save ) ) {
+				$to_save[] = $crm_data;
+				update_option( self::OPTION_CRM_SAVE_QUEUE, $to_save, false );
+			}
+
+			// schedule cron
+			if ( ! wp_next_scheduled( self::CRON_HOOK_CRM_SAVE ) ) {
+				wp_schedule_event( time(), self::CRON_CRM_SAVE_RETRY_INTERVAL, self::CRON_HOOK_CRM_SAVE );
+			}
 		}
 	}
 
@@ -744,7 +756,7 @@ class FormSubmission {
 	 * @throws \InvalidArgumentException
 	 */
 	private function add_crm_mapped_data() {
-		require_once __DIR__ . '/include/CRMFieldData.php';
+		require_once __DIR__ . '/include/CrmFieldData.php';
 
 		// add data from linked submissions first
 		if ( $this->predecessor_id >= 0 ) {
@@ -755,7 +767,7 @@ class FormSubmission {
 				foreach ( $fields as $key => $field ) {
 					if ( ! empty( $field['crm_field'] ) ) {
 						$data                                  = $predecessor->{"get_$key"}();
-						$this->crm_data[ $field['crm_field'] ] = new CRMFieldData( $field, $data );
+						$this->crm_data[ $field['crm_field'] ] = new CrmFieldData( $field, $data );
 					}
 				}
 			} catch ( Exception $e ) {
@@ -769,7 +781,7 @@ class FormSubmission {
 			if ( ! empty( $field['crm_field'] ) ) {
 				$data = $field['hidden_field'] ? $field['hidden_field_value'] : $this->data[ $key ];
 
-				$this->crm_data[ $field['crm_field'] ] = new CRMFieldData( $field, $data );
+				$this->crm_data[ $field['crm_field'] ] = new CrmFieldData( $field, $data );
 			}
 		}
 
@@ -780,7 +792,7 @@ class FormSubmission {
 		);
 		$data       = \get_field( 'group_id', 'option' );
 
-		$this->crm_data['groups'] = new CRMFieldData( $fake_field, $data );
+		$this->crm_data['groups'] = new CrmFieldData( $fake_field, $data );
 
 		// add the entry channel if not already set
 		if ( ! isset( $this->crm_data['entryChannel'] ) ) {
@@ -790,7 +802,47 @@ class FormSubmission {
 			);
 			$data       = get_home_url() . ' - ' . $this->form->get_title();
 
-			$this->crm_data['entryChannel'] = new CRMFieldData( $fake_field, $data );
+			$this->crm_data['entryChannel'] = new CrmFieldData( $fake_field, $data );
+		}
+	}
+
+	/**
+	 * Save the new form submissions to the crm
+	 *
+	 * Called by the WordPress cron job
+	 */
+	public static function save_to_crm() {
+		require_once __DIR__ . '/include/CrmFieldData.php';
+
+		$to_save = get_option( self::OPTION_CRM_SAVE_QUEUE, array() );
+		if ( empty( $to_save ) ) {
+			return;
+		}
+
+		require_once __DIR__ . '/include/CrmDao.php';
+		$dao = new CrmDao();
+		foreach ( $to_save as $key => $submission ) {
+			$crm_id = false;
+
+			try {
+				$crm_id = $dao->save( $submission );
+			} catch ( Exception $e ) {
+				echo $e->getMessage();
+				// todo: if permanent error -> send mail, else do nothing
+			}
+
+			if ( $crm_id ) {
+				unset( $to_save[ $key ] );
+			}
+		}
+
+		update_option( self::OPTION_CRM_SAVE_QUEUE, $to_save );
+
+		if ( empty( $to_save ) ) {
+			// since everything was saved, we can now disable the cron job
+			// it will automatically be reenabled, if needed
+			$timestamp = wp_next_scheduled( self::CRON_HOOK_CRM_SAVE );
+			wp_unschedule_event( $timestamp, self::CRON_HOOK_CRM_SAVE );
 		}
 	}
 }

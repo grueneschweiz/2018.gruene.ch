@@ -6,7 +6,7 @@ namespace SUPT;
 
 use InvalidArgumentException;
 
-class CRMFieldData {
+class CrmFieldData {
 	const MODE_REPLACE = 'replace';
 	const MODE_REPLACE_EMPTY = 'replaceEmpty';
 	const MODE_APPEND = 'append';
