@@ -14,10 +14,6 @@ defined( 'ABSPATH' ) or die( 'Better secure than sorry!' );
  * @package SUPT
  */
 class CrmDao {
-	/**
-	 * Date format of the crm
-	 */
-	const CRM_DATE_FORMAT = 'Y-m-d H:i:s';
 	const OPTION_KEY_TOKEN = 'supt_form_crm_token';
 	const WP_REMOTE_TIMEOUT = 30; //seconds
 
@@ -83,7 +79,8 @@ class CrmDao {
 		}
 
 		if ( $resp->get_status() !== 201 ) {
-			throw new \Exception( "Could save member to crm. Crm returned status code: {$resp->get_status()}" );
+			$data_sent = print_r( $crm_data, true );
+			throw new \Exception( "Could save member to crm. Crm returned status code: {$resp->get_status()}. Reason: {$resp->get_data()}.\n\nData sent: {$data_sent}" );
 		}
 
 		return json_decode( $resp->get_data() );

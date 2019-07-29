@@ -198,7 +198,7 @@ class FormSubmission {
 			$this->predecessor_id = intval( $_POST['predecessor_id'] );
 		}
 
-		// todo: rethink the nonces if using caching
+		// @todo: rethink the nonces if using caching
 		if ( isset( $_POST['nonce'] ) ) {
 			$this->nonce = $_POST['nonce'];
 		}
@@ -262,7 +262,7 @@ class FormSubmission {
 	 * - SUBMISSION_LIMIT_DAY_IP_FORM
 	 */
 	private function abort_if_limit_exceeded() {
-		// todo: implement submission limiting
+		// @todo: implement submission limiting
 	}
 
 	/**
@@ -581,7 +581,7 @@ class FormSubmission {
 			$submission->save();
 			$this->post_meta_id = $submission->meta_get_id();
 		} catch ( Exception $e ) {
-			// todo: send email
+			$this->report_error( 'save form data locally', $data, $e );
 			$this->respond_with_error( 500, array( 'Internal server error.' ) );
 
 			return;
@@ -619,7 +619,7 @@ class FormSubmission {
 		try {
 			$this->add_crm_mapped_data();
 		} catch ( \InvalidArgumentException $e ) {
-			// todo: !important! send email
+			$this->report_error( 'map form data to crm', $this->data, $e );
 		}
 
 		if ( ! empty( $this->crm_data ) ) {
@@ -660,7 +660,7 @@ class FormSubmission {
 				$predecessor->meta_set_descendant( $submission_id );
 				$predecessor->save();
 			} catch ( Exception $e ) {
-				// todo: send email
+				$this->report_error( 'update predecessor', $this->data, $e );
 			}
 		}
 	}
@@ -676,7 +676,7 @@ class FormSubmission {
 			return;
 		}
 
-		require_once __DIR__ .'/include/Mail.php';
+		require_once __DIR__ . '/include/Mail.php';
 
 		/**
 		 * Filters the submitted data, before notifications are sent.
@@ -707,7 +707,7 @@ class FormSubmission {
 		 * @param array $data the form data
 		 */
 		$from = apply_filters( FormType::MODEL_NAME . '-email-from',
-			"$sender_name <noreply@{$this->get_domain()}>" );
+			"$sender_name <noreply@" . self::get_domain() . '>' );
 
 		$reply_to        = $form->get_reply_to_address();
 		$confirmation_to = $this->get_email_address();
@@ -764,7 +764,7 @@ class FormSubmission {
 	/**
 	 * Return domain of current blog
 	 */
-	private function get_domain() {
+	private static function get_domain() {
 		$url = get_site_url();
 		preg_match( "/^https?:\/\/(www.)?([^\/?:]*)/", $url, $matches );
 		if ( $matches && is_array( $matches ) ) {
@@ -802,15 +802,17 @@ class FormSubmission {
 			try {
 				$predecessor = new SubmissionModel( $this->predecessor_id );
 				$fields      = $predecessor->meta_get_form()->get_fields();
-
-				foreach ( $fields as $key => $field ) {
-					if ( ! empty( $field['crm_field'] ) ) {
-						$data                                  = $predecessor->{"get_$key"}();
-						$this->crm_data[ $field['crm_field'] ] = new CrmFieldData( $field, $data );
-					}
-				}
 			} catch ( Exception $e ) {
-				// todo: send email
+				$this->report_error( 'add crm mapped data of linked submissions', array(
+					'predecessor_id' => $this->predecessor_id,
+				), $e );
+			}
+
+			foreach ( $fields as $key => $field ) {
+				if ( ! empty( $field['crm_field'] ) ) {
+					$data                                  = $predecessor->{"get_$key"}();
+					$this->crm_data[ $field['crm_field'] ] = new CrmFieldData( $field, $data );
+				}
 			}
 		}
 
@@ -827,7 +829,7 @@ class FormSubmission {
 		// add the group
 		$fake_field = array(
 			'crm_field'       => 'groups',
-			'insertion_modus' => 'append'
+			'insertion_modus' => 'addIfNew'
 		);
 		$data       = \get_field( 'group_id', 'option' );
 
@@ -868,8 +870,7 @@ class FormSubmission {
 			try {
 				$crm_id = $dao->save( $submission );
 			} catch ( Exception $e ) {
-				echo $e->getMessage();
-				// todo: if permanent error -> send mail, else do nothing
+				self::report_static_error( 'save to crm', $submission, $e, 'FORM UNKNOWN - ASYNC CALL' );
 			}
 
 			if ( $crm_id ) {
@@ -927,5 +928,62 @@ class FormSubmission {
 	private static function remove_cron( $hook ) {
 		$timestamp = wp_next_scheduled( $hook );
 		wp_unschedule_event( $timestamp, $hook );
+	}
+
+	/**
+	 * Notify the site admin about the error
+	 *
+	 * @param string $action
+	 * @param mixed $data
+	 * @param Exception $exception
+	 */
+	private function report_error( $action, $data, $exception ) {
+		$form = $this->form->get_title();
+
+		self::report_static_error( $action, $data, $exception, $form );
+	}
+
+	/**
+	 * Notify the site admin about the error from a static context
+	 *
+	 * @param string $action
+	 * @param mixed $data
+	 * @param Exception $exception
+	 * @param string $form_name
+	 */
+	private static function report_static_error( $action, $data, $exception, $form_name ) {
+		$domain = self::get_domain();
+
+		if ( is_string( $data ) ) {
+			$data_str = $data;
+		} else {
+			$data_str = print_r( $data, true );
+		}
+
+		$error_msg = $exception->__toString();
+
+		$to      = get_bloginfo( 'admin_email' );
+		$subject = sprintf(
+			__( 'ERROR on form submission: %s - %s', THEME_DOMAIN ),
+			$form_name,
+			$domain
+		);
+		$message = sprintf(
+			__(
+				"Hi Admin of %s\n\n" .
+				"There was a problem submitting the form: %s\n" .
+				"The following action failed: %s\n\n" .
+				"The data:\n%s\n\n" .
+				"The error:\n%s",
+				THEME_DOMAIN
+			),
+			$domain,
+			$form_name,
+			$action,
+			$data_str,
+			$error_msg
+		);
+
+		wp_mail( $to, $subject, $message );
 	}
 }
