@@ -807,6 +807,8 @@ class FormSubmission {
 				$this->report_error( 'add crm mapped data of linked submissions', array(
 					'predecessor_id' => $this->predecessor_id,
 				), $e );
+
+				return;
 			}
 
 			foreach ( $fields as $key => $field ) {
@@ -829,7 +831,7 @@ class FormSubmission {
 
 		// add the group
 		$fake_field = array(
-			'crm_field'       => 'groups',
+			'crm_field'      => 'groups',
 			'insertion_mode' => 'addIfNew'
 		);
 		$data       = \get_field( 'group_id', 'option' );
@@ -839,12 +841,23 @@ class FormSubmission {
 		// add the entry channel if not already set
 		if ( ! isset( $this->crm_data['entryChannel'] ) ) {
 			$fake_field = array(
-				'crm_field'       => 'entryChannel',
+				'crm_field'      => 'entryChannel',
 				'insertion_mode' => 'addIfNew'
 			);
 			$data       = get_home_url() . ' - ' . $this->form->get_title();
 
 			$this->crm_data['entryChannel'] = new CrmFieldData( $fake_field, $data );
+		}
+
+		// add the language if not already set
+		$locale = substr( get_locale(), 0, 1 );
+		if ( in_array( $locale, array( 'd', 'f', 'i' ) ) ) {
+			$fake_field = array(
+				'crm_field'      => 'language',
+				'insertion_mode' => 'replaceEmpty'
+			);
+
+			$this->crm_data['language'] = new CrmFieldData( $fake_field, $locale );
 		}
 	}
 
