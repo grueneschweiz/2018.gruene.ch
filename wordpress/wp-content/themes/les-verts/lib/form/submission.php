@@ -348,9 +348,9 @@ class FormSubmission {
 				$choices = trim( $field['form_input_choices'] );
 				$options = FormModel::split_choices( $choices );
 
-				foreach ( $field['values'] as $value_key => $value ) {
-					$this->data[ $key ] = array();
+				$this->data[ $key ] = array();
 
+				foreach ( $field['values'] as $value_key => $value ) {
 					$raw     = $this->get_field_data( $value_key, true );
 					$checked = $this->sanitize( $raw, self::CHECKBOX_TYPE );
 					$valid   = $this->validate( $checked, self::CHECKBOX_TYPE, $options, false );
