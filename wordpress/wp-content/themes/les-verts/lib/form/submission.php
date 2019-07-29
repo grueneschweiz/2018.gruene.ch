@@ -31,13 +31,39 @@ class FormSubmission {
 	const SUBMISSION_LIMIT_HOUR_IP_FORM_AGENT = 10;
 	const SUBMISSION_LIMIT_DAY_IP_FORM = 100;
 
-	const CHECKBOX_TYPE = 'checkbox';
-	const CONFIRMATION_TYPE = 'confirmation';
-	const SELECT_TYPE = 'select';
-	const RADIO_TYPE = 'radio';
-	const EMAIL_TYPE = 'email';
-	const NUMBER_TYPE = 'number';
-	const PHONE_TYPE = 'phone';
+	const TYPE_CHECKBOX = 'checkbox';
+	const TYPE_CONFIRMATION = 'confirmation';
+	const TYPE_SELECT = 'select';
+	const TYPE_RADIO = 'radio';
+	const TYPE_EMAIL = 'email';
+	const TYPE_NUMBER = 'number';
+	const TYPE_PHONE = 'phone';
+	const TYPE_CRM_NEWSLETTER = 'crm_newsletter';
+	const TYPE_CRM_GREETING = 'crm_greeting';
+
+	const CRM_NEWSLETTER_VALUE = 'yes';
+	const CRM_GREETINGS_INFORMAL = array(
+		'hallo'  => 'nD',
+		'liebe'  => 'fD',
+		'lieber' => 'mD',
+		'salut'  => 'nF',
+		'chère'  => 'fF',
+		'cher'   => 'mF',
+	);
+	const CRM_GREETINGS_INFORMAL_TO_FORMAL = array(
+		'liebe'  => 'fD',
+		'lieber' => 'mD',
+		'chère'  => 'fF',
+		'cher'   => 'mF'
+	);
+	const CRM_GREETINGS_INFORMAL_TO_GENDER = array(
+		'hallo'  => 'n',
+		'liebe'  => 'f',
+		'lieber' => 'm',
+		'salut'  => 'n',
+		'chère'  => 'f',
+		'cher'   => 'm'
+	);
 
 	/**
 	 * The form
@@ -163,8 +189,8 @@ class FormSubmission {
 		$this->abort_if_invalid_data();
 		$this->add_metadata();
 		$this->save();
-		$this->add_to_saving_queue_of_crm();
 		$this->add_notifications_to_sending_queue();
+		$this->add_to_saving_queue_of_crm();
 		spawn_cron();
 
 		$this->status = 200;
@@ -344,7 +370,7 @@ class FormSubmission {
 			}
 
 			// sanitize and validate checkboxes
-			if ( self::CHECKBOX_TYPE === $field['form_input_type'] ) {
+			if ( self::TYPE_CHECKBOX === $field['form_input_type'] ) {
 				$choices = trim( $field['form_input_choices'] );
 				$options = FormModel::split_choices( $choices );
 
@@ -352,8 +378,8 @@ class FormSubmission {
 
 				foreach ( $field['values'] as $value_key => $value ) {
 					$raw     = $this->get_field_data( $value_key, true );
-					$checked = $this->sanitize( $raw, self::CHECKBOX_TYPE );
-					$valid   = $this->validate( $checked, self::CHECKBOX_TYPE, $options, false );
+					$checked = $this->sanitize( $raw, self::TYPE_CHECKBOX );
+					$valid   = $this->validate( $checked, self::TYPE_CHECKBOX, $options, false );
 
 					if ( true !== $valid ) {
 						$this->errors[ $key ] = $valid;
@@ -393,7 +419,7 @@ class FormSubmission {
 			$this->fields = $this->form->get_fields();
 
 			foreach ( $this->fields as $key => $field ) {
-				if ( self::CHECKBOX_TYPE === $field['form_input_type'] ) {
+				if ( self::TYPE_CHECKBOX === $field['form_input_type'] ) {
 					$labels = FormModel::split_choices( $field['form_input_choices'] );
 					for ( $i = 0; $i < count( $labels ); $i ++ ) {
 						$valueKey                                    = $key . '-' . $i;
@@ -443,19 +469,21 @@ class FormSubmission {
 	 */
 	private function sanitize( $data, $type ) {
 		switch ( $type ) {
-			case self::CHECKBOX_TYPE:
-			case self::CONFIRMATION_TYPE:
+			case self::TYPE_CHECKBOX:
+			case self::TYPE_CONFIRMATION:
+			case self::TYPE_CRM_NEWSLETTER:
 				return filter_var( $data, FILTER_VALIDATE_BOOLEAN );
-			case self::RADIO_TYPE:
-			case self::SELECT_TYPE:
+			case self::TYPE_RADIO:
+			case self::TYPE_SELECT:
+			case self::TYPE_CRM_GREETING:
 				return $data;
-			case self::PHONE_TYPE:
+			case self::TYPE_PHONE:
 				$allowed = '\d\+ -\\\(\)';
 
 				return preg_replace( "/[^${allowed}]/", '', $data );
-			case self::EMAIL_TYPE:
+			case self::TYPE_EMAIL:
 				return filter_var( $data, FILTER_SANITIZE_EMAIL );
-			case self::NUMBER_TYPE:
+			case self::TYPE_NUMBER:
 				return filter_var( $data, FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION );
 			default:
 				return strip_tags( $data );
@@ -477,13 +505,15 @@ class FormSubmission {
 		$message = __( 'Invalid input.', THEME_DOMAIN );
 
 		switch ( $type ) {
-			case self::CHECKBOX_TYPE:
-			case self::CONFIRMATION_TYPE:
+			case self::TYPE_CHECKBOX:
+			case self::TYPE_CONFIRMATION:
+			case self::TYPE_CRM_NEWSLETTER:
 				$valid = true;
 				break;
 
-			case self::RADIO_TYPE:
-			case self::SELECT_TYPE:
+			case self::TYPE_RADIO:
+			case self::TYPE_SELECT:
+			case self::TYPE_CRM_GREETING:
 				if ( empty( $data ) ) {
 					$valid = true;
 					break;
@@ -496,12 +526,12 @@ class FormSubmission {
 				$valid = in_array( $data, $options );
 				break;
 
-			case self::EMAIL_TYPE:
+			case self::TYPE_EMAIL:
 				$valid   = filter_var( $data, FILTER_VALIDATE_EMAIL );
 				$message = __( 'Invalid email.', THEME_DOMAIN );
 				break;
 
-			case self::NUMBER_TYPE:
+			case self::TYPE_NUMBER:
 				$valid   = is_numeric( $data ) || '' === $data;
 				$message = __( 'Invalid number', THEME_DOMAIN );
 				break;
@@ -554,7 +584,7 @@ class FormSubmission {
 		}
 
 		foreach ( $this->get_fields() as $key => $field ) {
-			if ( self::EMAIL_TYPE === $field['form_input_type'] ) {
+			if ( self::TYPE_EMAIL === $field['form_input_type'] ) {
 				$email = $this->data[ $key ];
 				if ( ! empty( $email && filter_var( $email, FILTER_VALIDATE_EMAIL ) ) ) {
 					return $email;
@@ -813,8 +843,9 @@ class FormSubmission {
 
 			foreach ( $fields as $key => $field ) {
 				if ( ! empty( $field['crm_field'] ) ) {
-					$data                                  = $predecessor->{"get_$key"}();
-					$this->crm_data[ $field['crm_field'] ] = new CrmFieldData( $field, $data );
+					$data = $predecessor->{"get_$key"}();
+
+					$this->add_crm_data_field( $field, $data );
 				}
 			}
 		}
@@ -825,7 +856,7 @@ class FormSubmission {
 			if ( ! empty( $field['crm_field'] ) ) {
 				$data = $field['hidden_field'] ? $field['hidden_field_value'] : $this->data[ $key ];
 
-				$this->crm_data[ $field['crm_field'] ] = new CrmFieldData( $field, $data );
+				$this->add_crm_data_field( $field, $data );
 			}
 		}
 
@@ -836,7 +867,7 @@ class FormSubmission {
 		);
 		$data       = \get_field( 'group_id', 'option' );
 
-		$this->crm_data['groups'] = new CrmFieldData( $fake_field, $data );
+		$this->add_crm_data_field( $fake_field, $data );
 
 		// add the entry channel if not already set
 		if ( ! isset( $this->crm_data['entryChannel'] ) ) {
@@ -846,7 +877,7 @@ class FormSubmission {
 			);
 			$data       = get_home_url() . ' - ' . $this->form->get_title();
 
-			$this->crm_data['entryChannel'] = new CrmFieldData( $fake_field, $data );
+			$this->add_crm_data_field( $fake_field, $data );
 		}
 
 		// add the language if not already set
@@ -857,8 +888,61 @@ class FormSubmission {
 				'insertion_mode' => 'replaceEmpty'
 			);
 
-			$this->crm_data['language'] = new CrmFieldData( $fake_field, $locale );
+			$this->add_crm_data_field( $fake_field, $data );
 		}
+	}
+
+	/**
+	 * Add the given field and data to $this->crm_data as CrmFieldData object.
+	 *
+	 * Special fields:
+	 * - Newsletter: Only add it, if it is a subscription (prevent accidental overwrite).
+	 * - Greeting: Also add gender and the formal greeting. Skip field if value is unknown.
+	 *
+	 * @param $field
+	 * @param $data
+	 */
+	private function add_crm_data_field( $field, $data ) {
+		if ( self::TYPE_CRM_NEWSLETTER === $field['form_input_type'] ) {
+			if ( ! $data ) {
+				// don't store the newsletter field, if it was left empty
+				// this prevents unwanted unsubscriptions
+				return;
+			}
+
+			$field['insertion_mode'] = 'replace';
+			$data                    = self::CRM_NEWSLETTER_VALUE;
+		}
+
+		if ( self::TYPE_CRM_GREETING === $field['form_input_type'] ) {
+			$key = strtolower( $data );
+			if ( ! array_key_exists( $key, self::CRM_GREETINGS_INFORMAL ) ) {
+				// don't process any other values than defined in self::CRM_GREETINGS_ACCEPTED
+				return;
+			}
+
+			$data = self::CRM_GREETINGS_INFORMAL[ $key ];
+
+			$fake_field = array(
+				'crm_field'      => 'gender',
+				'insertion_mode' => $field['insertion_mode']
+			);
+
+			$this->crm_data['gender'] = new CrmFieldData( $fake_field, self::CRM_GREETINGS_INFORMAL_TO_GENDER[ $key ] );
+
+			// skip the formal greeting for neutral gender
+			if ( array_key_exists( $key, self::CRM_GREETINGS_INFORMAL_TO_FORMAL ) ) {
+				$fake_field = array(
+					'crm_field'      => 'salutationFormal',
+					'insertion_mode' => $field['insertion_mode']
+				);
+
+				$this->crm_data['salutationFormal'] = new CrmFieldData( $fake_field, self::CRM_GREETINGS_INFORMAL_TO_FORMAL[ $key ] );
+			}
+		}
+
+		// for every field type
+		$this->crm_data[ $field['crm_field'] ] = new CrmFieldData( $field, $data );
 	}
 
 	/**

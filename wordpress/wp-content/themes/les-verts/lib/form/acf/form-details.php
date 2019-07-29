@@ -310,6 +310,56 @@ Select replace for single value fields like the address line and append for mult
 									'field'    => 'field_5c0fac61bdbd7',
 									'operator' => '!=empty',
 								),
+								array(
+									'field'    => 'field_5c0fac61bdbd7',
+									'operator' => '!=',
+									'value'    => 'newsletterCountryD',
+								),
+								array(
+									'field'    => 'field_5c0fac61bdbd7',
+									'operator' => '!=',
+									'value'    => 'newsletterCountryF',
+								),
+								array(
+									'field'    => 'field_5c0fac61bdbd7',
+									'operator' => '!=',
+									'value'    => 'newsletterCantonD',
+								),
+								array(
+									'field'    => 'field_5c0fac61bdbd7',
+									'operator' => '!=',
+									'value'    => 'newsletterCantonF',
+								),
+								array(
+									'field'    => 'field_5c0fac61bdbd7',
+									'operator' => '!=',
+									'value'    => 'newsletterMunicipality',
+								),
+								array(
+									'field'    => 'field_5c0fac61bdbd7',
+									'operator' => '!=',
+									'value'    => 'pressReleaseCountryD',
+								),
+								array(
+									'field'    => 'field_5c0fac61bdbd7',
+									'operator' => '!=',
+									'value'    => 'pressReleaseCountryF',
+								),
+								array(
+									'field'    => 'field_5c0fac61bdbd7',
+									'operator' => '!=',
+									'value'    => 'pressReleaseCantonD',
+								),
+								array(
+									'field'    => 'field_5c0fac61bdbd7',
+									'operator' => '!=',
+									'value'    => 'pressReleaseCantonF',
+								),
+								array(
+									'field'    => 'field_5c0fac61bdbd7',
+									'operator' => '!=',
+									'value'    => 'pressReleaseMunicipality',
+								),
 							),
 						),
 						'wrapper'           => array(
