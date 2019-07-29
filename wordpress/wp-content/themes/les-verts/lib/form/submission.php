@@ -339,6 +339,7 @@ class FormSubmission {
 
 		foreach ( $fields as $key => $field ) {
 			if ( isset( $field['hidden_field'] ) && $field['hidden_field'] ) {
+				$this->data[ $key ] = $field['hidden_field_value'];
 				continue;
 			}
 
