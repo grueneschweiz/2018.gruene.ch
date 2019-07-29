@@ -830,7 +830,7 @@ class FormSubmission {
 		// add the group
 		$fake_field = array(
 			'crm_field'       => 'groups',
-			'insertion_modus' => 'addIfNew'
+			'insertion_mode' => 'addIfNew'
 		);
 		$data       = \get_field( 'group_id', 'option' );
 
@@ -840,7 +840,7 @@ class FormSubmission {
 		if ( ! isset( $this->crm_data['entryChannel'] ) ) {
 			$fake_field = array(
 				'crm_field'       => 'entryChannel',
-				'insertion_modus' => 'addIfNew'
+				'insertion_mode' => 'addIfNew'
 			);
 			$data       = get_home_url() . ' - ' . $this->form->get_title();
 

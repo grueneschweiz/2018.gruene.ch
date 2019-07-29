@@ -296,10 +296,10 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 					),
 					array(
 						'key'               => 'field_5c0fc373bdf7b',
-						'label'             => __( 'Insertion Modus', THEME_DOMAIN ),
-						'name'              => 'insertion_modus',
+						'label'             => __( 'Insertion Mode', THEME_DOMAIN ),
+						'name'              => 'insertion_mode',
 						'type'              => 'select',
-						'instructions'      => __( '<strong>Warning</strong>: Selecting the wrong modus results in data loss!
+						'instructions'      => __( '<strong>Warning</strong>: Selecting the wrong mode results in data loss!
 <br><br>
 Select replace for single value fields like the address line and append for multi value fields like the interests field or a note field.',
 							THEME_DOMAIN ),

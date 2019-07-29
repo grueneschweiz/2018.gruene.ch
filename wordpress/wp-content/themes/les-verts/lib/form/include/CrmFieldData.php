@@ -58,7 +58,7 @@ class CrmFieldData {
 	 */
 	public function __construct( $field, $value ) {
 		$this->key = $field['crm_field'];
-		$this->set_mode( $field['insertion_modus'] );
+		$this->set_mode( $field['insertion_mode'] );
 
 		if ( $this->is_mapped_field() ) {
 			$this->set_substitution_map( $field['form_input_choices'], $field['choice_map'] );
