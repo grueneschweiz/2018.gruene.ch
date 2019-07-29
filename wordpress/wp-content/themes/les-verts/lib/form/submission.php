@@ -849,7 +849,7 @@ class FormSubmission {
 		// add the group
 		$fake_field = array(
 			'crm_field'      => 'groups',
-			'insertion_mode' => 'addIfNew'
+			'insertion_mode' => CrmFieldData::MODE_ADD_IF_NEW
 		);
 		$data       = \get_field( 'group_id', 'option' );
 
@@ -859,7 +859,7 @@ class FormSubmission {
 		if ( ! isset( $this->crm_data['entryChannel'] ) ) {
 			$fake_field = array(
 				'crm_field'      => 'entryChannel',
-				'insertion_mode' => 'addIfNew'
+				'insertion_mode' => CrmFieldData::MODE_ADD_IF_NEW
 			);
 			$data       = get_home_url() . ' - ' . $this->form->get_title();
 
@@ -871,10 +871,10 @@ class FormSubmission {
 		if ( in_array( $locale, array( 'd', 'f', 'i' ) ) ) {
 			$fake_field = array(
 				'crm_field'      => 'language',
-				'insertion_mode' => 'replaceEmpty'
+				'insertion_mode' => CrmFieldData::MODE_REPLACE_EMPTY
 			);
 
-			$this->add_crm_data_field( $fake_field, $data );
+			$this->add_crm_data_field( $fake_field, $locale );
 		}
 	}
 
@@ -933,7 +933,7 @@ class FormSubmission {
 				return;
 			}
 
-			$field['insertion_mode'] = 'replace';
+			$field['insertion_mode'] = CrmFieldData::MODE_REPLACE;
 			$data                    = self::CRM_NEWSLETTER_VALUE;
 		}
 

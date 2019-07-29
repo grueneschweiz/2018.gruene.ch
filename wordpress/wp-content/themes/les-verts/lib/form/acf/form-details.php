@@ -201,7 +201,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 							'firstName'                => 'Vorname / prénom',
 							'lastName'                 => 'Name / nom',
 							'recordCategory'           => 'Datensatzkategorie / type d’entrée',
-							'language'                 => 'Sprache / langue',
+							//'language'                 => 'Sprache / langue', // this is automatically added
 							'salutationInformal'       => 'Anrede / appel (informel)',
 							'address1'                 => 'Strasse / rue',
 							'zip'                      => 'PLZ / code postal',
