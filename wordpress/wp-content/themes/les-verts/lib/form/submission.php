@@ -823,32 +823,18 @@ class FormSubmission {
 	/**
 	 * Add data from fields that were mapped to crm fields
 	 *
+	 * Additionally add:
+	 * - The fields of the predecessor form
+	 * - The group (only if a new record is created)
+	 * - The entry channel (only if a new record is created)
+	 * - The language (only if none is set yet)
+	 *
 	 * @throws \InvalidArgumentException
 	 */
 	private function add_crm_mapped_data() {
 		require_once __DIR__ . '/include/CrmFieldData.php';
 
-		// add data from linked submissions first
-		if ( $this->predecessor_id >= 0 ) {
-			try {
-				$predecessor = new SubmissionModel( $this->predecessor_id );
-				$fields      = $predecessor->meta_get_form()->get_fields();
-			} catch ( Exception $e ) {
-				$this->report_error( 'add crm mapped data of linked submissions', array(
-					'predecessor_id' => $this->predecessor_id,
-				), $e );
-
-				return;
-			}
-
-			foreach ( $fields as $key => $field ) {
-				if ( ! empty( $field['crm_field'] ) ) {
-					$data = $predecessor->{"get_$key"}();
-
-					$this->add_crm_data_field( $field, $data );
-				}
-			}
-		}
+		$this->add_predecessor_form_data( $this->predecessor_id );
 
 		// the add the current data
 		// (so in case we have overlapping fields, the current data will be used)
@@ -889,6 +875,43 @@ class FormSubmission {
 			);
 
 			$this->add_crm_data_field( $fake_field, $data );
+		}
+	}
+
+	/**
+	 * Recursively add all data of the linked previous forms.
+	 *
+	 * If two forms contain the same field, the newer one is authoritative
+	 *
+	 * @param int $predecessor_id
+	 */
+	private function add_predecessor_form_data( $predecessor_id ) {
+		// add data from linked submissions first
+		if ( $predecessor_id >= 0 ) {
+			try {
+				$predecessor = new SubmissionModel( $predecessor_id );
+
+				$pre_predecessor = $predecessor->meta_get_predecessor();
+				if ( $pre_predecessor ) {
+					$this->add_predecessor_form_data( $pre_predecessor->meta_get_id() );
+				}
+
+				$fields = $predecessor->meta_get_form()->get_fields();
+			} catch ( Exception $e ) {
+				$this->report_error( 'add crm mapped data of linked submissions', array(
+					'predecessor_id' => $predecessor_id,
+				), $e );
+
+				return;
+			}
+
+			foreach ( $fields as $key => $field ) {
+				if ( ! empty( $field['crm_field'] ) ) {
+					$data = $predecessor->{"get_$key"}();
+
+					$this->add_crm_data_field( $field, $data );
+				}
+			}
 		}
 	}
 
