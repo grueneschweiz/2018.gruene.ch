@@ -240,6 +240,119 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 						'placeholder'       => '',
 					),
 					array(
+						'key'               => 'field_5d3f1c8af12df',
+						'label'             => __( 'Important Note', THEME_DOMAIN ),
+						'name'              => '',
+						'type'              => 'message',
+						'instructions'      => '',
+						'required'          => 0,
+						'conditional_logic' => array(
+							array(
+								array(
+									'field'    => 'field_5c0fac61bdbd7',
+									'operator' => '==',
+									'value'    => 'salutationInformal',
+								),
+							),
+						),
+						'wrapper'           => array(
+							'width' => '',
+							'class' => '',
+							'id'    => '',
+						),
+						'message'           => __( 'You must select the field type <em>Greeting (CRM)</em> (in the tab <em>standard</em>) for this field to work! Please follow also the note in the <em>standard</em> tab.', THEME_DOMAIN ),
+						'new_lines'         => 'wpautop',
+						'esc_html'          => 0,
+					),
+					array(
+						'key'               => 'field_5d3f1c8af09ab',
+						'label'             => __( 'Important Note', THEME_DOMAIN ),
+						'name'              => '',
+						'type'              => 'message',
+						'instructions'      => '',
+						'required'          => 0,
+						'conditional_logic' => array(
+							array(
+								array(
+									'field'    => 'field_5c0fac61bdbd7',
+									'operator' => '==',
+									'value'    => 'newsletterCountryD',
+								),
+							),
+							array(
+								array(
+									'field'    => 'field_5c0fac61bdbd7',
+									'operator' => '==',
+									'value'    => 'newsletterCountryF',
+								),
+							),
+							array(
+								array(
+									'field'    => 'field_5c0fac61bdbd7',
+									'operator' => '==',
+									'value'    => 'newsletterCantonD',
+								),
+							),
+							array(
+								array(
+									'field'    => 'field_5c0fac61bdbd7',
+									'operator' => '==',
+									'value'    => 'newsletterCantonF',
+								),
+							),
+							array(
+								array(
+									'field'    => 'field_5c0fac61bdbd7',
+									'operator' => '==',
+									'value'    => 'newsletterMunicipality',
+								),
+							),
+							array(
+								array(
+									'field'    => 'field_5c0fac61bdbd7',
+									'operator' => '==',
+									'value'    => 'pressReleaseCountryD',
+								),
+							),
+							array(
+								array(
+									'field'    => 'field_5c0fac61bdbd7',
+									'operator' => '==',
+									'value'    => 'pressReleaseCountryF',
+								),
+							),
+							array(
+								array(
+									'field'    => 'field_5c0fac61bdbd7',
+									'operator' => '==',
+									'value'    => 'pressReleaseCantonD',
+								),
+							),
+							array(
+								array(
+									'field'    => 'field_5c0fac61bdbd7',
+									'operator' => '==',
+									'value'    => 'pressReleaseCantonF',
+								),
+							),
+							array(
+								array(
+									'field'    => 'field_5c0fac61bdbd7',
+									'operator' => '==',
+									'value'    => 'pressReleaseMunicipality',
+								),
+							),
+						),
+						'wrapper'           => array(
+							'width' => '',
+							'class' => '',
+							'id'    => '',
+						),
+						'message'           => __( 'You must select the field type <em>Newsletter / Press release (CRM)</em> (in the tab <em>standard</em>) for this field to work!', THEME_DOMAIN ),
+						'new_lines'         => 'wpautop',
+						'esc_html'          => 0,
+					),
+					array(
 						'key'               => 'field_5alk49sf14pd4',
 						'label'             => __( 'Webling Choices', THEME_DOMAIN ),
 						'name'              => 'choice_map',
@@ -259,13 +372,6 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 									'field'    => 'field_5c0fac61bdbd7',
 									'operator' => '==',
 									'value'    => 'language',
-								),
-							),
-							array(
-								array(
-									'field'    => 'field_5c0fac61bdbd7',
-									'operator' => '==',
-									'value'    => 'salutationInformal',
 								),
 							),
 							array(

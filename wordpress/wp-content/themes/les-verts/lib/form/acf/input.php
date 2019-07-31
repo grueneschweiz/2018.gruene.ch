@@ -152,7 +152,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 					'class' => '',
 					'id' => '',
 				),
-				'message' => __('Please add <em>Hallo</em>, <em>Liebe</em>, <em>Lieber</em> or <em>salut</em>, <em>chère</em>, <em>cher</em>. All other values will be ignored!', 'lesverts'),
+				'message' => __('Please add <em>Hallo</em>, <em>Liebe</em>, <em>Lieber</em> or <em>salut</em>, <em>chère</em>, <em>cher</em>. All other values will be ignored!', THEME_DOMAIN),
 				'new_lines' => 'wpautop',
 				'esc_html' => 0,
 			),
