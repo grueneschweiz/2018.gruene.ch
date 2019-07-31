@@ -47,7 +47,7 @@ class Mail {
 	 *
 	 * @param string|array $to Array or comma-separated list of email addresses to send message.
 	 * @param string $from Array or comma-separated list of email addresses to send message.
-	 * @param string $reply_to
+	 * @param string|false $reply_to
 	 * @param string $subject Email subject (can be a twig template string)
 	 * @param string $template Twig template string
 	 * @param array $data Optional. Data for the template.
@@ -76,12 +76,17 @@ class Mail {
 		$body    = wptexturize( $body );
 		$subject = wptexturize( $subject );
 
+		$default_headers = array(
+			"From: $from",
+			'Content-Type: text/html; charset=UTF-8'
+		);
+
+		if ( $reply_to ) {
+			$default_headers[] = "Reply-To: $reply_to";
+		}
+
 		$headers = array_merge(
-			array(
-				"From: $from",
-				"Reply-To: $reply_to",
-				'Content-Type: text/html; charset=UTF-8'
-			),
+			$default_headers,
 			$headers
 		);
 

@@ -4,7 +4,6 @@ namespace SUPT;
 
 use Exception;
 use PHPMailer;
-use WP_Error;
 use function apply_filters;
 
 require_once __DIR__ . '/include/FormModel.php';
@@ -22,10 +21,6 @@ class FormSubmission {
 	const CRON_HOOK_CRM_SAVE = 'supt_form_save_to_crm';
 	const CRON_CRM_SAVE_RETRY_INTERVAL = 'hourly';
 
-	const OPTION_MAIL_SEND_QUEUE = 'supt_form_mail_send_queue';
-	const CRON_HOOK_MAIL_SEND = 'supt_form_mail_send';
-	const CRON_MAIL_SEND_RETRY_INTERVAL = 'hourly';
-
 	const SUBMISSION_LIMIT_MINUTE_IP_FORM_AGENT = 2;
 	const SUBMISSION_LIMIT_MINUTE_IP_FORM = 5;
 	const SUBMISSION_LIMIT_HOUR_IP_FORM_AGENT = 10;
@@ -40,6 +35,8 @@ class FormSubmission {
 	const TYPE_PHONE = 'phone';
 	const TYPE_CRM_NEWSLETTER = 'crm_newsletter';
 	const TYPE_CRM_GREETING = 'crm_greeting';
+
+	const CRM_EMAIL_FIELD = 'email1';
 
 	const CRM_NEWSLETTER_VALUE = 'yes';
 	const CRM_GREETINGS_INFORMAL = array(
@@ -171,7 +168,7 @@ class FormSubmission {
 		add_action( 'wp_ajax_supt_form_submit', array( $this, 'handle_submit' ) );
 		add_action( 'wp_ajax_nopriv_supt_form_submit', array( $this, 'handle_submit' ) );
 		add_action( self::CRON_HOOK_CRM_SAVE, array( __CLASS__, 'save_to_crm' ) );
-		add_action( self::CRON_HOOK_MAIL_SEND, array( __CLASS__, 'send_mails' ) );
+		add_action( 'supt_form_mail_send', array( __CLASS__, 'send_mails' ) );
 
 		if ( ! WP_DEBUG && get_field( 'form_smtp_enabled', 'options' ) ) {
 			add_action( 'phpmailer_init', array( $this, 'setup_SMTP' ) );
@@ -189,7 +186,7 @@ class FormSubmission {
 		$this->abort_if_invalid_data();
 		$this->add_metadata();
 		$this->save();
-		$this->add_notifications_to_sending_queue();
+		$this->add_mails_to_sending_queue();
 		$this->add_to_saving_queue_of_crm();
 		spawn_cron();
 
@@ -565,8 +562,8 @@ class FormSubmission {
 	}
 
 	/**
-	 * Find email in CRM data if not existent, return the value of the first non
-	 * empty field with type email.
+	 * Find email by looking for the crm email field. If none found,
+	 * return the value of the first non empty field with type email.
 	 *
 	 * @return string|false email or false if no email was found
 	 */
@@ -575,10 +572,13 @@ class FormSubmission {
 			return $this->email;
 		}
 
-		if ( $this->crm_data ) {
-			foreach ( $this->crm_data as $key => $value ) {
-				if ( $key === 'email1' && filter_var( $value, FILTER_VALIDATE_EMAIL ) ) {
-					return $value;
+		foreach ( $this->get_fields() as $key => $field ) {
+			if ( ! empty( $field['crm_field'] )
+			     && self::CRM_EMAIL_FIELD === $field['crm_field'] ) {
+
+				$email = $this->data[ $key ];
+				if ( ! empty( $email && filter_var( $email, FILTER_VALIDATE_EMAIL ) ) ) {
+					return $email;
 				}
 			}
 		}
@@ -586,8 +586,8 @@ class FormSubmission {
 		foreach ( $this->get_fields() as $key => $field ) {
 			if ( self::TYPE_EMAIL === $field['form_input_type'] ) {
 				$email = $this->data[ $key ];
-				if ( ! empty( $email && filter_var( $email, FILTER_VALIDATE_EMAIL ) ) ) {
-					return $email;
+				if ( ! empty( $email ) ) {
+					return $email; // already validated
 				}
 			}
 		}
@@ -699,110 +699,18 @@ class FormSubmission {
 	/**
 	 * Add the notification and confirmation mails to the sending queue, processed by a cron job
 	 */
-	private function add_notifications_to_sending_queue() {
-		$form = $this->form;
-
-		if ( ! $form->has_confirmation() && ! $form->has_notification() ) {
+	private function add_mails_to_sending_queue() {
+		if ( ! $this->form->has_confirmation() && ! $this->form->has_notification() ) {
 			// nothing to send
 			return;
 		}
 
-		require_once __DIR__ . '/include/Mail.php';
-
-		/**
-		 * Filters the submitted data, before notifications are sent.
-		 *
-		 * @param array $data the form data
-		 */
-		$data = (array) apply_filters( FormType::MODEL_NAME . '-before-email-notification', $this->data );
-
-		/**
-		 * Fires before the email notifications are sent.
-		 *
-		 * @param array $data with
-		 *  'form_data' => array with the validated and sanitized form data
-		 *  'action_id' => int|null the engagement funnel form data
-		 */
-		do_action( FormType::MODEL_NAME . '-before-email-notification',
-			array(
-				'form_data' => $data,
-				'action_id' => $this->action_id,
-			)
-		);
-
-		$sender_name = $form->get_sender_name();
-
-		/**
-		 * Filters the sender address of email notifications
-		 *
-		 * @param array $data the form data
-		 */
-		$from = apply_filters( FormType::MODEL_NAME . '-email-from',
-			"$sender_name <noreply@" . self::get_domain() . '>' );
-
-		$reply_to        = $form->get_reply_to_address();
-		$confirmation_to = $this->get_email_address();
-
-		$confirmation = null;
-		if ( $form->has_confirmation() && $confirmation_to ) {
-			$confirmation = new Mail(
-				$confirmation_to,
-				$from,
-				$reply_to,
-				$form->get_confirmation_subject(),
-				$form->get_confirmation_template(),
-				$this->data,
-				$this->post_meta_id
-			);
+		try {
+			$mailer = new Mailer( $this->post_meta_id );
+			$mailer->queue_mails();
+		} catch ( Exception $e ) {
+			Util::report_form_error( 'add mails to sending queue', $this->data, $e, $this->form->get_title() );
 		}
-
-		$notification = null;
-		if ( $form->has_notification() ) {
-			$notification = new Mail(
-				$form->get_notification_destination(),
-				$from,
-				$this->get_email_address(),
-				$form->get_notification_subject(),
-				$form->get_notification_template(),
-				$this->data,
-				$this->post_meta_id
-			);
-		}
-
-		$to_send = get_option( self::OPTION_MAIL_SEND_QUEUE, array() );
-
-		if ( $confirmation ) {
-			$to_send[] = $confirmation;
-		}
-
-		if ( $notification ) {
-			$to_send[] = $notification;
-		}
-
-		update_option( self::OPTION_MAIL_SEND_QUEUE, $to_send, false );
-
-		// schedule cron
-		if ( ! wp_next_scheduled( self::CRON_HOOK_MAIL_SEND )
-		     && ( $notification || $confirmation )
-		) {
-			wp_schedule_event(
-				time() - 1,
-				self::CRON_MAIL_SEND_RETRY_INTERVAL,
-				self::CRON_HOOK_MAIL_SEND );
-		}
-	}
-
-	/**
-	 * Return domain of current blog
-	 */
-	private static function get_domain() {
-		$url = get_site_url();
-		preg_match( "/^https?:\/\/(www.)?([^\/?:]*)/", $url, $matches );
-		if ( $matches && is_array( $matches ) ) {
-			return $matches[ count( $matches ) - 1 ];
-		}
-
-		return new WP_Error( 'cant-get-domain', 'The domain could not be parsed from the site url', $url );
 	}
 
 	/**
@@ -978,7 +886,7 @@ class FormSubmission {
 
 		$to_save = get_option( self::OPTION_CRM_SAVE_QUEUE, array() );
 		if ( empty( $to_save ) ) {
-			self::remove_cron( self::CRON_HOOK_CRM_SAVE );
+			Util::remove_cron( self::CRON_HOOK_CRM_SAVE );
 
 			return;
 		}
@@ -991,7 +899,7 @@ class FormSubmission {
 			try {
 				$crm_id = $dao->save( $submission );
 			} catch ( Exception $e ) {
-				self::report_static_error( 'save to crm', $submission, $e, 'FORM UNKNOWN - ASYNC CALL' );
+				Util::report_form_error( 'save to crm', $submission, $e, 'FORM UNKNOWN - ASYNC CALL' );
 			}
 
 			if ( $crm_id ) {
@@ -1004,7 +912,7 @@ class FormSubmission {
 		if ( empty( $to_save ) ) {
 			// since everything was saved, we can now disable the cron job
 			// it will automatically be reenabled, if needed
-			self::remove_cron( self::CRON_HOOK_CRM_SAVE );
+			Util::remove_cron( self::CRON_HOOK_CRM_SAVE );
 		}
 	}
 
@@ -1014,41 +922,8 @@ class FormSubmission {
 	 * Called by the WordPress cron job
 	 */
 	public static function send_mails() {
-		require_once __DIR__ . '/include/Mail.php';
-
-		/** @var Mail[] $to_send */
-		$to_send = get_option( self::OPTION_MAIL_SEND_QUEUE, array() );
-		if ( empty( $to_send ) ) {
-			self::remove_cron( self::CRON_HOOK_MAIL_SEND );
-
-			return;
-		}
-
-		foreach ( $to_send as $key => $mail ) {
-			$sent = $mail->send();
-
-			if ( $sent ) {
-				unset( $to_send[ $key ] );
-			}
-		}
-
-		update_option( self::OPTION_MAIL_SEND_QUEUE, $to_send );
-
-		if ( empty( $to_send ) ) {
-			// since everything was sent, we can now disable the cron job
-			// it will automatically be reenabled, if needed
-			self::remove_cron( self::CRON_HOOK_MAIL_SEND );
-		}
-	}
-
-	/**
-	 * Remove cron job
-	 *
-	 * @param string $hook
-	 */
-	private static function remove_cron( $hook ) {
-		$timestamp = wp_next_scheduled( $hook );
-		wp_unschedule_event( $timestamp, $hook );
+		require_once __DIR__ . '/include/Mailer.php';
+		Mailer::send_mails();
 	}
 
 	/**
@@ -1061,50 +936,6 @@ class FormSubmission {
 	private function report_error( $action, $data, $exception ) {
 		$form = $this->form->get_title();
 
-		self::report_static_error( $action, $data, $exception, $form );
-	}
-
-	/**
-	 * Notify the site admin about the error from a static context
-	 *
-	 * @param string $action
-	 * @param mixed $data
-	 * @param Exception $exception
-	 * @param string $form_name
-	 */
-	private static function report_static_error( $action, $data, $exception, $form_name ) {
-		$domain = self::get_domain();
-
-		if ( is_string( $data ) ) {
-			$data_str = $data;
-		} else {
-			$data_str = print_r( $data, true );
-		}
-
-		$error_msg = $exception->__toString();
-
-		$to      = get_bloginfo( 'admin_email' );
-		$subject = sprintf(
-			__( 'ERROR on form submission: %s - %s', THEME_DOMAIN ),
-			$form_name,
-			$domain
-		);
-		$message = sprintf(
-			__(
-				"Hi Admin of %s\n\n" .
-				"There was a problem submitting the form: %s\n" .
-				"The following action failed: %s\n\n" .
-				"The data:\n%s\n\n" .
-				"The error:\n%s",
-				THEME_DOMAIN
-			),
-			$domain,
-			$form_name,
-			$action,
-			$data_str,
-			$error_msg
-		);
-
-		wp_mail( $to, $subject, $message );
+		Util::report_form_error( $action, $data, $exception, $form );
 	}
 }

@@ -17,6 +17,10 @@ class SubmissionModel {
 
 	const MAX_LABEL_LEN = 50;
 
+	const DIRECTION_BOTH = 0;
+	const DIRECTION_PREDECESSOR = 1;
+	const DIRECTION_DESCENDANT = 1;
+
 	private $id;
 	private $meta = [];
 	private $data = [];
@@ -198,10 +202,45 @@ class SubmissionModel {
 	/**
 	 * The email address of the submitter
 	 *
-	 * @return string
+	 * @return string|false
 	 */
 	public function meta_get_email() {
 		return $this->meta[ self::EMAIL_KEY ];
+	}
+
+	/**
+	 * Return the first submitter email found in any linked submission
+	 *
+	 * If multiple submission have an email address, the priority is as follows:
+	 * 1. this form
+	 * 2. the descendants (closest descendant first)
+	 * 3. the predecessors (closest predecessor first)
+	 *
+	 * @return false|string
+	 */
+	public function meta_get_linked_email() {
+		$email = $this->meta_get_email();
+		if ( $email ) {
+			return $email;
+		}
+
+		$descendant = $this->meta_get_descendant();
+		if ( $descendant ) {
+			$email = $descendant->meta_get_linked_email();
+			if ( $email ) {
+				return $email;
+			}
+		}
+
+		$predecessor = $this->meta_get_predecessor();
+		if ( $predecessor ) {
+			$email = $predecessor->meta_get_linked_email();
+			if ( $email ) {
+				return $email;
+			}
+		}
+
+		return false;
 	}
 
 	/**
@@ -370,5 +409,45 @@ class SubmissionModel {
 	 */
 	public function meta_get_form() {
 		return new FormModel( (int) $this->meta[ self::FORM_KEY ] );
+	}
+
+	/**
+	 * Return the submission data as array
+	 *
+	 * @return array
+	 */
+	public function as_array() {
+		return $this->data;
+	}
+
+	/**
+	 * Return the submission with all linked data as array.
+	 *
+	 * If multiple submissions use the same key, the descendants value is returned.
+	 *
+	 * @param int $direction internal use
+	 *
+	 * @return array
+	 */
+	public function as_array_with_linked_data( $direction = self::DIRECTION_BOTH ) {
+		$data = $this->as_array();
+
+		if ( $direction !== self::DIRECTION_DESCENDANT ) {
+			$predecessor = $this->meta_get_predecessor();
+
+			if ( $predecessor ) {
+				$data = array_merge( $predecessor->as_array_with_linked_data( self::DIRECTION_PREDECESSOR ), $data );
+			}
+		}
+
+		if ( $direction !== self::DIRECTION_PREDECESSOR ) {
+			$descendant = $this->meta_get_descendant();
+
+			if ( $descendant ) {
+				$data = array_merge( $data, $descendant->as_array_with_linked_data( self::DIRECTION_DESCENDANT ) );
+			}
+		}
+
+		return $data;
 	}
 }

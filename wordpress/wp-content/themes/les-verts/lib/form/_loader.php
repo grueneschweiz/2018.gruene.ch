@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . '/include/Util.php';
 require_once __DIR__ . '/include/FormType.php';
 require_once __DIR__ . '/settings-page.php';
 require_once __DIR__ . '/submission.php';
