@@ -3,6 +3,7 @@
 
 namespace SUPT;
 
+require_once __DIR__ . '/Mail.php';
 
 class Mailer {
 	const OPTION_MAIL_SEND_QUEUE = 'supt_form_mail_send_queue';
@@ -22,18 +23,20 @@ class Mailer {
 	/**
 	 * Mailer constructor.
 	 *
-	 * @param $submission_id
+	 * @param int $submission_id
 	 *
 	 * @throws \Exception
 	 */
 	public function __construct( $submission_id ) {
-		require_once __DIR__ . '/Mail.php';
 		require_once __DIR__ . '/SubmissionModel.php';
 
 		$this->submission = new SubmissionModel( $submission_id );
 		$this->form       = $this->submission->meta_get_form();
 	}
 
+	/**
+	 * Add the mails for the submission to the sending queue
+	 */
 	public function queue_mails() {
 		$this->queue_confirmation();
 		$this->queue_notification();
@@ -155,8 +158,6 @@ class Mailer {
 	 * Called by the WordPress cron job
 	 */
 	public static function send_mails() {
-		require_once __DIR__ . '/Mail.php';
-
 		/** @var Mail[] $to_send */
 		$to_send = get_option( self::OPTION_MAIL_SEND_QUEUE, array() );
 		if ( empty( $to_send ) ) {

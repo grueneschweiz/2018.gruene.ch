@@ -17,10 +17,6 @@ class FormSubmission {
 	const ACTION_BASE_NAME = 'supt-form';
 	const NEXT_ACTION_ID_DEFAULT = - 1;
 
-	const OPTION_CRM_SAVE_QUEUE = 'supt_form_crm_save_queue';
-	const CRON_HOOK_CRM_SAVE = 'supt_form_save_to_crm';
-	const CRON_CRM_SAVE_RETRY_INTERVAL = 'hourly';
-
 	const SUBMISSION_LIMIT_MINUTE_IP_FORM_AGENT = 2;
 	const SUBMISSION_LIMIT_MINUTE_IP_FORM = 5;
 	const SUBMISSION_LIMIT_HOUR_IP_FORM_AGENT = 10;
@@ -37,30 +33,6 @@ class FormSubmission {
 	const TYPE_CRM_GREETING = 'crm_greeting';
 
 	const CRM_EMAIL_FIELD = 'email1';
-
-	const CRM_NEWSLETTER_VALUE = 'yes';
-	const CRM_GREETINGS_INFORMAL = array(
-		'hallo'  => 'nD',
-		'liebe'  => 'fD',
-		'lieber' => 'mD',
-		'salut'  => 'nF',
-		'chère'  => 'fF',
-		'cher'   => 'mF',
-	);
-	const CRM_GREETINGS_INFORMAL_TO_FORMAL = array(
-		'liebe'  => 'fD',
-		'lieber' => 'mD',
-		'chère'  => 'fF',
-		'cher'   => 'mF'
-	);
-	const CRM_GREETINGS_INFORMAL_TO_GENDER = array(
-		'hallo'  => 'n',
-		'liebe'  => 'f',
-		'lieber' => 'm',
-		'salut'  => 'n',
-		'chère'  => 'f',
-		'cher'   => 'm'
-	);
 
 	/**
 	 * The form
@@ -133,13 +105,6 @@ class FormSubmission {
 	private $data;
 
 	/**
-	 * The form data mapped to the crm keys
-	 *
-	 * @var array
-	 */
-	private $crm_data;
-
-	/**
 	 * The email found in the submitted data
 	 *
 	 * @var string
@@ -167,7 +132,7 @@ class FormSubmission {
 	private function register_actions() {
 		add_action( 'wp_ajax_supt_form_submit', array( $this, 'handle_submit' ) );
 		add_action( 'wp_ajax_nopriv_supt_form_submit', array( $this, 'handle_submit' ) );
-		add_action( self::CRON_HOOK_CRM_SAVE, array( __CLASS__, 'save_to_crm' ) );
+		add_action( 'supt_form_save_to_crm', array( __CLASS__, 'save_to_crm' ) );
 		add_action( 'supt_form_mail_send', array( __CLASS__, 'send_mails' ) );
 
 		if ( ! WP_DEBUG && get_field( 'form_smtp_enabled', 'options' ) ) {
@@ -644,42 +609,6 @@ class FormSubmission {
 	}
 
 	/**
-	 * Add the data to save to the saving queue, processed by a cron job
-	 */
-	private function add_to_saving_queue_of_crm() {
-		try {
-			$this->add_crm_mapped_data();
-		} catch ( \InvalidArgumentException $e ) {
-			$this->report_error( 'map form data to crm', $this->data, $e );
-		}
-
-		if ( ! empty( $this->crm_data ) ) {
-			/**
-			 * Filters the submitted data, before it's sent to the crm.
-			 *
-			 * @param array $this ->crm_data
-			 */
-			$crm_data = (array) apply_filters( FormType::MODEL_NAME . '-before-crm-save', $this->crm_data );
-
-			$to_save = get_option( self::OPTION_CRM_SAVE_QUEUE, array() );
-
-			// don't save double submissions twice
-			if ( ! in_array( $crm_data, $to_save ) ) {
-				$to_save[] = $crm_data;
-				update_option( self::OPTION_CRM_SAVE_QUEUE, $to_save, false );
-			}
-
-			// schedule cron
-			if ( ! wp_next_scheduled( self::CRON_HOOK_CRM_SAVE ) ) {
-				wp_schedule_event(
-					time() - 1,
-					self::CRON_CRM_SAVE_RETRY_INTERVAL,
-					self::CRON_HOOK_CRM_SAVE );
-			}
-		}
-	}
-
-	/**
 	 * Add the id of this submission to the previous submission
 	 *
 	 * @param int $submission_id the meta_id of the current submission
@@ -714,6 +643,20 @@ class FormSubmission {
 	}
 
 	/**
+	 * Add the data to save to the saving queue, processed by a cron job
+	 */
+	private function add_to_saving_queue_of_crm() {
+		require_once __DIR__ . '/include/CrmSaver.php';
+
+		try {
+			$saver = new CrmSaver( $this->post_meta_id );
+			$saver->queue();
+		} catch ( Exception $e ) {
+			Util::report_form_error( 'add data to saving queue of crm', $this->data, $e, $this->form->get_title() );
+		}
+	}
+
+	/**
 	 * Configure mailing service to use an SMTP account
 	 *
 	 * @param PHPMailer $phpmailer
@@ -729,194 +672,6 @@ class FormSubmission {
 	}
 
 	/**
-	 * Add data from fields that were mapped to crm fields
-	 *
-	 * Additionally add:
-	 * - The fields of the predecessor form
-	 * - The group (only if a new record is created)
-	 * - The entry channel (only if a new record is created)
-	 * - The language (only if none is set yet)
-	 *
-	 * @throws \InvalidArgumentException
-	 */
-	private function add_crm_mapped_data() {
-		require_once __DIR__ . '/include/CrmFieldData.php';
-
-		$this->add_predecessor_form_data( $this->predecessor_id );
-
-		// the add the current data
-		// (so in case we have overlapping fields, the current data will be used)
-		foreach ( $this->get_fields() as $key => $field ) {
-			if ( ! empty( $field['crm_field'] ) ) {
-				$data = $field['hidden_field'] ? $field['hidden_field_value'] : $this->data[ $key ];
-
-				$this->add_crm_data_field( $field, $data );
-			}
-		}
-
-		// add the group
-		$fake_field = array(
-			'crm_field'      => 'groups',
-			'insertion_mode' => CrmFieldData::MODE_ADD_IF_NEW
-		);
-		$data       = \get_field( 'group_id', 'option' );
-
-		$this->add_crm_data_field( $fake_field, $data );
-
-		// add the entry channel if not already set
-		if ( ! isset( $this->crm_data['entryChannel'] ) ) {
-			$fake_field = array(
-				'crm_field'      => 'entryChannel',
-				'insertion_mode' => CrmFieldData::MODE_ADD_IF_NEW
-			);
-			$data       = get_home_url() . ' - ' . $this->form->get_title();
-
-			$this->add_crm_data_field( $fake_field, $data );
-		}
-
-		// add the language if not already set
-		$locale = substr( get_locale(), 0, 1 );
-		if ( in_array( $locale, array( 'd', 'f', 'i' ) ) ) {
-			$fake_field = array(
-				'crm_field'      => 'language',
-				'insertion_mode' => CrmFieldData::MODE_REPLACE_EMPTY
-			);
-
-			$this->add_crm_data_field( $fake_field, $locale );
-		}
-	}
-
-	/**
-	 * Recursively add all data of the linked previous forms.
-	 *
-	 * If two forms contain the same field, the newer one is authoritative
-	 *
-	 * @param int $predecessor_id
-	 */
-	private function add_predecessor_form_data( $predecessor_id ) {
-		// add data from linked submissions first
-		if ( $predecessor_id >= 0 ) {
-			try {
-				$predecessor = new SubmissionModel( $predecessor_id );
-
-				$pre_predecessor = $predecessor->meta_get_predecessor();
-				if ( $pre_predecessor ) {
-					$this->add_predecessor_form_data( $pre_predecessor->meta_get_id() );
-				}
-
-				$fields = $predecessor->meta_get_form()->get_fields();
-			} catch ( Exception $e ) {
-				$this->report_error( 'add crm mapped data of linked submissions', array(
-					'predecessor_id' => $predecessor_id,
-				), $e );
-
-				return;
-			}
-
-			foreach ( $fields as $key => $field ) {
-				if ( ! empty( $field['crm_field'] ) ) {
-					$data = $predecessor->{"get_$key"}();
-
-					$this->add_crm_data_field( $field, $data );
-				}
-			}
-		}
-	}
-
-	/**
-	 * Add the given field and data to $this->crm_data as CrmFieldData object.
-	 *
-	 * Special fields:
-	 * - Newsletter: Only add it, if it is a subscription (prevent accidental overwrite).
-	 * - Greeting: Also add gender and the formal greeting. Skip field if value is unknown.
-	 *
-	 * @param $field
-	 * @param $data
-	 */
-	private function add_crm_data_field( $field, $data ) {
-		if ( self::TYPE_CRM_NEWSLETTER === $field['form_input_type'] ) {
-			if ( ! $data ) {
-				// don't store the newsletter field, if it was left empty
-				// this prevents unwanted unsubscriptions
-				return;
-			}
-
-			$field['insertion_mode'] = CrmFieldData::MODE_REPLACE;
-			$data                    = self::CRM_NEWSLETTER_VALUE;
-		}
-
-		if ( self::TYPE_CRM_GREETING === $field['form_input_type'] ) {
-			$key = strtolower( $data );
-			if ( ! array_key_exists( $key, self::CRM_GREETINGS_INFORMAL ) ) {
-				// don't process any other values than defined in self::CRM_GREETINGS_ACCEPTED
-				return;
-			}
-
-			$data = self::CRM_GREETINGS_INFORMAL[ $key ];
-
-			$fake_field = array(
-				'crm_field'      => 'gender',
-				'insertion_mode' => $field['insertion_mode']
-			);
-
-			$this->crm_data['gender'] = new CrmFieldData( $fake_field, self::CRM_GREETINGS_INFORMAL_TO_GENDER[ $key ] );
-
-			// skip the formal greeting for neutral gender
-			if ( array_key_exists( $key, self::CRM_GREETINGS_INFORMAL_TO_FORMAL ) ) {
-				$fake_field = array(
-					'crm_field'      => 'salutationFormal',
-					'insertion_mode' => $field['insertion_mode']
-				);
-
-				$this->crm_data['salutationFormal'] = new CrmFieldData( $fake_field, self::CRM_GREETINGS_INFORMAL_TO_FORMAL[ $key ] );
-			}
-		}
-
-		// for every field type
-		$this->crm_data[ $field['crm_field'] ] = new CrmFieldData( $field, $data );
-	}
-
-	/**
-	 * Save the new form submissions to the crm
-	 *
-	 * Called by the WordPress cron job
-	 */
-	public static function save_to_crm() {
-		require_once __DIR__ . '/include/CrmFieldData.php';
-
-		$to_save = get_option( self::OPTION_CRM_SAVE_QUEUE, array() );
-		if ( empty( $to_save ) ) {
-			Util::remove_cron( self::CRON_HOOK_CRM_SAVE );
-
-			return;
-		}
-
-		require_once __DIR__ . '/include/CrmDao.php';
-		$dao = new CrmDao();
-		foreach ( $to_save as $key => $submission ) {
-			$crm_id = false;
-
-			try {
-				$crm_id = $dao->save( $submission );
-			} catch ( Exception $e ) {
-				Util::report_form_error( 'save to crm', $submission, $e, 'FORM UNKNOWN - ASYNC CALL' );
-			}
-
-			if ( $crm_id ) {
-				unset( $to_save[ $key ] );
-			}
-		}
-
-		update_option( self::OPTION_CRM_SAVE_QUEUE, $to_save );
-
-		if ( empty( $to_save ) ) {
-			// since everything was saved, we can now disable the cron job
-			// it will automatically be reenabled, if needed
-			Util::remove_cron( self::CRON_HOOK_CRM_SAVE );
-		}
-	}
-
-	/**
 	 * Send out the pending mails
 	 *
 	 * Called by the WordPress cron job
@@ -924,6 +679,16 @@ class FormSubmission {
 	public static function send_mails() {
 		require_once __DIR__ . '/include/Mailer.php';
 		Mailer::send_mails();
+	}
+
+	/**
+	 * Save the form submissions to the crm
+	 *
+	 * Called by the WordPress cron job
+	 */
+	public static function save_to_crm() {
+		require_once __DIR__ . '/include/CrmSaver.php';
+		CrmSaver::save_to_crm();
 	}
 
 	/**
