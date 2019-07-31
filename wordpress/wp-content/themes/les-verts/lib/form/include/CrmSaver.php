@@ -158,7 +158,7 @@ class CrmSaver {
 
 		$key = $field['slug'];
 
-		return $this->submission->{"get_$key"};
+		return $this->submission->{"get_$key"}();
 	}
 
 	/**
@@ -297,30 +297,29 @@ class CrmSaver {
 	 *
 	 * If two forms contain the same field, the newer one is authoritative
 	 *
-	 * @param int $predecessor_id
+	 * @param SubmissionModel $predecessor
 	 */
-	private function add_predecessor_form_data( $predecessor_id ) {
+	private function add_predecessor_form_data( $predecessor ) {
 		// add data from linked submissions first
-		if ( $predecessor_id >= 0 ) {
-			try {
-				$predecessor = new SubmissionModel( $predecessor_id );
-
+		if ( $predecessor ) {
 				$pre_predecessor = $predecessor->meta_get_predecessor();
 				if ( $pre_predecessor ) {
-					$this->add_predecessor_form_data( $pre_predecessor->meta_get_id() );
+					$this->add_predecessor_form_data( $pre_predecessor );
 				}
 
+			try {
 				$fields = $predecessor->meta_get_form()->get_fields();
 			} catch ( Exception $e ) {
 				Util::report_form_error(
-					'add crm mapped data of linked submissions',
-					array( 'predecessor_id' => $predecessor_id ),
+					'add crm mapped data of predecessor submissions',
+					$predecessor,
 					$e,
 					$this->form->get_title()
 				);
 
 				return;
 			}
+
 
 			foreach ( $fields as $key => $field ) {
 				if ( ! empty( $field['crm_field'] ) ) {

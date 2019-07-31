@@ -638,6 +638,8 @@ class FormSubmission {
 			return;
 		}
 
+		require_once __DIR__ . '/include/Mailer.php';
+
 		try {
 			$mailer = new Mailer( $this->post_meta_id );
 			$mailer->queue_mails();

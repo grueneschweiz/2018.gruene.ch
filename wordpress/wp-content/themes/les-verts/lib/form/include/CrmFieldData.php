@@ -14,7 +14,6 @@ class CrmFieldData {
 
 	private static $mappedFields = [
 		'recordCategory',
-		'salutationInformal',
 		'interests',
 		'request'
 	];
