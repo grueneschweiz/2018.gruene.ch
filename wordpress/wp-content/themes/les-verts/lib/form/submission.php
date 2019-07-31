@@ -466,6 +466,10 @@ class FormSubmission {
 		$valid   = true;
 		$message = __( 'Invalid input.', THEME_DOMAIN );
 
+		if ( ! $required && '' === $data ) {
+			return $valid;
+		}
+
 		switch ( $type ) {
 			case self::TYPE_CHECKBOX:
 			case self::TYPE_CONFIRMATION:
@@ -476,7 +480,7 @@ class FormSubmission {
 			case self::TYPE_RADIO:
 			case self::TYPE_SELECT:
 			case self::TYPE_CRM_GREETING:
-				if ( empty( $data ) ) {
+				if ( empty( $data ) && '0' !== $data ) {
 					$valid = true;
 					break;
 				}
