@@ -662,6 +662,7 @@ class FormSubmission {
 	 * @param PHPMailer $phpmailer
 	 */
 	public function setup_SMTP( $phpmailer ) {
+		// todo: test and move into mailer
 		$config = get_field( 'form_smtp', 'options' );
 		$phpmailer->isSMTP();
 		$phpmailer->Host     = $config['host'];
