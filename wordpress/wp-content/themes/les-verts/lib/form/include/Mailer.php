@@ -4,9 +4,10 @@
 namespace SUPT;
 
 require_once __DIR__ . '/Mail.php';
+require_once __DIR__ . '/QueueDao.php';
 
 class Mailer {
-	const OPTION_MAIL_SEND_QUEUE = 'supt_form_mail_send_queue';
+	const QUEUE_KEY = 'mail';
 	const CRON_HOOK_MAIL_SEND = 'supt_form_mail_send';
 	const CRON_MAIL_SEND_RETRY_INTERVAL = 'hourly';
 
@@ -21,6 +22,11 @@ class Mailer {
 	private $form;
 
 	/**
+	 * @var QueueDao
+	 */
+	private $queue;
+
+	/**
 	 * Mailer constructor.
 	 *
 	 * @param int $submission_id
@@ -32,6 +38,16 @@ class Mailer {
 
 		$this->submission = new SubmissionModel( $submission_id );
 		$this->form       = $this->submission->meta_get_form();
+		$this->queue      = self::get_queue();
+	}
+
+	/**
+	 * Get the mail queue
+	 *
+	 * @return QueueDao
+	 */
+	private static function get_queue() {
+		return new QueueDao( self::QUEUE_KEY );
 	}
 
 	/**
@@ -60,7 +76,7 @@ class Mailer {
 				$this->submission->meta_get_id()
 			);
 
-			$this->queue_mail( $confirmation );
+			$this->queue->push( $confirmation );
 		}
 	}
 
@@ -79,19 +95,8 @@ class Mailer {
 				$this->submission->meta_get_id()
 			);
 
-			$this->queue_mail( $notification );
+			$this->queue->push( $notification );
 		}
-	}
-
-	/**
-	 * Add mail to sending queue
-	 *
-	 * @param Mail $mail
-	 */
-	private function queue_mail( $mail ) {
-		$to_send   = get_option( self::OPTION_MAIL_SEND_QUEUE, array() );
-		$to_send[] = $mail;
-		update_option( self::OPTION_MAIL_SEND_QUEUE, $to_send, false );
 	}
 
 	/**
@@ -158,25 +163,30 @@ class Mailer {
 	 * Called by the WordPress cron job
 	 */
 	public static function send_mails() {
-		/** @var Mail[] $to_send */
-		$to_send = get_option( self::OPTION_MAIL_SEND_QUEUE, array() );
-		if ( empty( $to_send ) ) {
-			Util::remove_cron( self::CRON_HOOK_MAIL_SEND );
+		$queue = self::get_queue();
+		$error = 0;
 
-			return;
-		}
-
-		foreach ( $to_send as $key => $mail ) {
+		/** @var Mail $mail */
+		$mail = $queue->pop();
+		while ( ! empty( $mail ) ) {
 			$sent = $mail->send();
 
-			if ( $sent ) {
-				unset( $to_send[ $key ] );
+			// on error
+			if ( ! $sent ) {
+				// push the item back
+				$queue->push( $mail );
+				$error ++;
+
+				// if there are only the errored mails left in the queue
+				if ( $error >= $queue->length() ) {
+					break;
+				}
 			}
+
+			$mail = $queue->pop();
 		}
 
-		update_option( self::OPTION_MAIL_SEND_QUEUE, $to_send );
-
-		if ( empty( $to_send ) ) {
+		if ( 0 === $queue->length() ) {
 			// since everything was sent, we can now disable the cron job
 			// it will automatically be reenabled, if needed
 			Util::remove_cron( self::CRON_HOOK_MAIL_SEND );

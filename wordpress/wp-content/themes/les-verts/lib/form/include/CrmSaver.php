@@ -6,9 +6,10 @@ namespace SUPT;
 use Exception;
 
 require_once __DIR__ . '/CrmFieldData.php';
+require_once __DIR__ . '/QueueDao.php';
 
 class CrmSaver {
-	const OPTION_CRM_SAVE_QUEUE = 'supt_form_crm_save_queue';
+	const QUEUE_KEY = 'crm_save';
 	const CRON_HOOK_CRM_SAVE = 'supt_form_save_to_crm';
 	const CRON_CRM_SAVE_RETRY_INTERVAL = 'hourly';
 
@@ -52,6 +53,11 @@ class CrmSaver {
 	private $crm_data = array();
 
 	/**
+	 * @var QueueDao
+	 */
+	private $queue;
+
+	/**
 	 * CrmSaver constructor.
 	 *
 	 * @param int $submission_id
@@ -63,6 +69,16 @@ class CrmSaver {
 
 		$this->submission = new SubmissionModel( $submission_id );
 		$this->form       = $this->submission->meta_get_form();
+		$this->queue      = self::get_queue();
+	}
+
+	/**
+	 * Get the save queue
+	 *
+	 * @return QueueDao
+	 */
+	private static function get_queue() {
+		return new QueueDao( self::QUEUE_KEY );
 	}
 
 	/**
@@ -72,7 +88,7 @@ class CrmSaver {
 		$data = $this->get_data();
 
 		if ( ! empty( $data ) ) {
-			$this->queue_data( $data );
+			$this->queue->push( $data );
 			$this->schedule_cron();
 		}
 	}
@@ -95,19 +111,6 @@ class CrmSaver {
 		 * @param CrmFieldData[] $data
 		 */
 		return (array) apply_filters( FormType::MODEL_NAME . '-before-crm-save', $data );
-	}
-
-	/**
-	 * Add data to saving queue
-	 *
-	 * @param CrmFieldData[] $data
-	 */
-	private function queue_data( $data ) {
-		$to_save = get_option( self::OPTION_CRM_SAVE_QUEUE, array() );
-		if ( ! in_array( $data, $to_save ) ) {
-			$to_save[] = $data;
-			update_option( self::OPTION_CRM_SAVE_QUEUE, $to_save, false );
-		}
 	}
 
 	/**
@@ -302,10 +305,10 @@ class CrmSaver {
 	private function add_predecessor_form_data( $predecessor ) {
 		// add data from linked submissions first
 		if ( $predecessor ) {
-				$pre_predecessor = $predecessor->meta_get_predecessor();
-				if ( $pre_predecessor ) {
-					$this->add_predecessor_form_data( $pre_predecessor );
-				}
+			$pre_predecessor = $predecessor->meta_get_predecessor();
+			if ( $pre_predecessor ) {
+				$this->add_predecessor_form_data( $pre_predecessor );
+			}
 
 			try {
 				$fields = $predecessor->meta_get_form()->get_fields();
@@ -337,16 +340,14 @@ class CrmSaver {
 	 * Called by the WordPress cron job
 	 */
 	public static function save_to_crm() {
-		$to_save = get_option( self::OPTION_CRM_SAVE_QUEUE, array() );
-		if ( empty( $to_save ) ) {
-			Util::remove_cron( self::CRON_HOOK_CRM_SAVE );
-
-			return;
-		}
-
 		require_once __DIR__ . '/CrmDao.php';
 		$dao = new CrmDao();
-		foreach ( $to_save as $key => $submission ) {
+
+		$queue = self::get_queue();
+		$error = 0;
+
+		$submission = $queue->pop();
+		while ( ! empty( $submission ) ) {
 			$crm_id = false;
 
 			try {
@@ -355,14 +356,20 @@ class CrmSaver {
 				Util::report_form_error( 'save to crm', $submission, $e, 'FORM UNKNOWN - ASYNC CALL' );
 			}
 
-			if ( $crm_id ) {
-				unset( $to_save[ $key ] );
+			// on error
+			if ( ! $crm_id ) {
+				// push the item back
+				$queue->push( $submission );
+				$error ++;
+
+				// if there are only the errored submissions left in the queue
+				if ( $error >= $queue->length() ) {
+					break;
+				}
 			}
 		}
 
-		update_option( self::OPTION_CRM_SAVE_QUEUE, $to_save );
-
-		if ( empty( $to_save ) ) {
+		if ( 0 === $queue->length() ) {
 			// since everything was saved, we can now disable the cron job
 			// it will automatically be reenabled, if needed
 			Util::remove_cron( self::CRON_HOOK_CRM_SAVE );
