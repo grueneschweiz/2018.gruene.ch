@@ -80,7 +80,7 @@ class CrmDao {
 
 		if ( $resp->get_status() !== 201 ) {
 			$data_sent = print_r( $crm_data, true );
-			throw new \Exception( "Could save member to crm. Crm returned status code: {$resp->get_status()}. Reason: {$resp->get_data()}.\n\nData sent: {$data_sent}" );
+			throw new \Exception( "Could save member to crm. Crm returned status code: {$resp->get_status()}. Reason: {$resp->get_data()}.\n\nData sent: {$data_sent}", $resp->get_status() );
 		}
 
 		return json_decode( $resp->get_data() );

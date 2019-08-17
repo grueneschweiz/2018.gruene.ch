@@ -40,7 +40,6 @@ class Util {
 
 		$error_msg = $exception->__toString();
 
-		$to      = get_bloginfo( 'admin_email' );
 		$subject = sprintf(
 			__( 'ERROR on form submission: %s - %s', THEME_DOMAIN ),
 			$form_name,
@@ -62,9 +61,27 @@ class Util {
 			$error_msg
 		);
 
-		wp_mail( $to, $subject, $message );
+		self::send_mail_to_admin($subject, $message);
 	}
 
+	/**
+	 * Send mail to blog admin
+	 *
+	 * @param string $subject
+	 * @param string $body
+	 */
+	public static function send_mail_to_admin($subject, $body) {
+		$to      = get_bloginfo( 'admin_email' );
+		wp_mail( $to, $subject, $body );
+	}
+
+	/**
+	 * Add new cron job, if not yet scheduled
+	 *
+	 * @param string $hook Action hook to execute when event is run.
+	 * @param int $start Unix timestamp (UTC) for when to run the event first.
+	 * @param string $recurrence How often the event should recur.
+	 */
 	public static function add_cron( $hook, $start, $recurrence ) {
 		if ( ! wp_next_scheduled( $hook ) ) {
 			wp_schedule_event(

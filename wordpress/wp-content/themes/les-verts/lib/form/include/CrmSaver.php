@@ -353,7 +353,13 @@ class CrmSaver {
 			try {
 				$crm_id = $dao->save( $submission );
 			} catch ( Exception $e ) {
-				Util::report_form_error( 'save to crm', $submission, $e, 'FORM UNKNOWN - ASYNC CALL' );
+				if ( 500 === $e->getCode() ) {
+					self::send_permanent_error_notification( $submission, $e->getMessage() );
+					$submission = $queue->pop();
+					continue; // don't requeue this item
+				} else {
+					Util::report_form_error( 'save to crm', $submission, $e, 'FORM UNKNOWN - ASYNC CALL' );
+				}
 			}
 
 			// on error
@@ -367,6 +373,8 @@ class CrmSaver {
 					break;
 				}
 			}
+
+			$submission = $queue->pop();
 		}
 
 		if ( 0 === $queue->length() ) {
@@ -374,5 +382,34 @@ class CrmSaver {
 			// it will automatically be reenabled, if needed
 			Util::remove_cron( self::CRON_HOOK_CRM_SAVE );
 		}
+	}
+
+	private static function send_permanent_error_notification( $submission, $err_message ) {
+		$domain = Util::get_domain();
+
+		$subject = sprintf(
+			__( '%s: PERMANENT ERROR saving form data to crm', THEME_DOMAIN ),
+			$domain
+		);
+
+		$message = sprintf(
+			__(
+				"Hi Admin of %s\n\n" .
+				"There was a PERMANENT ERROR saving the following data to the crm:\n%s\n\n" .
+				"The data was removed from the saving queue, so YOU MUST ADD IT MANUALLY. " .
+				"Please correct the form configuration, to prevent this error in the future. " .
+				"More details in the error message below.\n\n" .
+				"Have a nice day.\n",
+				"Your Website - %s\n\n",
+				"Error message:\n%s",
+				THEME_DOMAIN
+			),
+			$domain,
+			print_r( $submission, true ),
+			$domain,
+			$err_message
+		);
+
+		Util::send_mail_to_admin( $subject, $message );
 	}
 }
