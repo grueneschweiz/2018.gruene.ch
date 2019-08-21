@@ -2,6 +2,10 @@
 
 namespace SUPT;
 
+use Exception;
+use WP_HTTP_Requests_Response;
+use function get_field;
+
 /**
  * lock out script kiddies: die on direct call
  */
@@ -33,21 +37,41 @@ class CrmDao {
 
 	/**
 	 * Crm_Dao constructor.
-	 * @throws \Exception
+	 * @throws Exception
 	 */
 	public function __construct() {
-		$this->api_url = trailingslashit( \get_field( 'api_url', 'option' ) );
+		$this->api_url = self::get_api_url();
 
 		$this->obtain_token();
 	}
 
 	/**
+	 * Check if there is an api url configured
 	 *
+	 * @return bool
+	 */
+	public static function has_api_url() {
+		return ! empty( self::get_api_url() );
+	}
+
+	/**
+	 * The api url
+	 *
+	 * @return string
+	 */
+	private static function get_api_url() {
+		$url = get_field( 'api_url', 'option' );
+
+		return $url ? trailingslashit( $url ) : '';
+	}
+
+	/**
+	 * Send the data to the crm's api
 	 *
 	 * @param $data
 	 *
 	 * @return array|mixed|object
-	 * @throws \Exception
+	 * @throws Exception
 	 */
 	public function save( $data ) {
 		$crm_data = array();
@@ -63,10 +87,10 @@ class CrmDao {
 
 		if ( is_wp_error( $response ) ) {
 			$error_message = $response->get_error_message();
-			throw new \Exception( "Could save member to crm: $error_message" );
+			throw new Exception( "Could save member to crm: $error_message" );
 		}
 
-		/** @var \WP_HTTP_Requests_Response $resp */
+		/** @var WP_HTTP_Requests_Response $resp */
 		$resp = $response['http_response'];
 		if ( in_array( $resp->get_status(), array( 401, 403 ) ) ) {
 			// if the token isn't valid, get a new one. if the new one is valid, retry to save
@@ -80,7 +104,7 @@ class CrmDao {
 
 		if ( $resp->get_status() !== 201 ) {
 			$data_sent = print_r( $crm_data, true );
-			throw new \Exception( "Could save member to crm. Crm returned status code: {$resp->get_status()}. Reason: {$resp->get_data()}.\n\nData sent: {$data_sent}", $resp->get_status() );
+			throw new Exception( "Could save member to crm. Crm returned status code: {$resp->get_status()}. Reason: {$resp->get_data()}.\n\nData sent: {$data_sent}", $resp->get_status() );
 		}
 
 		return json_decode( $resp->get_data() );
@@ -91,7 +115,7 @@ class CrmDao {
 	 *
 	 * @param bool $force refresh token
 	 *
-	 * @throws \Exception
+	 * @throws Exception
 	 */
 	private function obtain_token( $force = false ) {
 		$this->token = get_option( self::OPTION_KEY_TOKEN, null );
@@ -100,8 +124,8 @@ class CrmDao {
 			$data = array(
 				'body'    => array(
 					'grant_type'    => 'client_credentials',
-					'client_id'     => \get_field( 'client_id', 'option' ),
-					'client_secret' => \get_field( 'client_secret', 'option' ),
+					'client_id'     => get_field( 'client_id', 'option' ),
+					'client_secret' => get_field( 'client_secret', 'option' ),
 					'scope'         => ''
 				),
 				'timeout' => self::WP_REMOTE_TIMEOUT,
@@ -111,13 +135,13 @@ class CrmDao {
 
 			if ( is_wp_error( $response ) ) {
 				$error_message = $response->get_error_message();
-				throw new \Exception( "Could not obtain oAuth token from crm: $error_message" );
+				throw new Exception( "Could not obtain oAuth token from crm: $error_message" );
 			}
 
-			/** @var \WP_HTTP_Requests_Response $resp */
+			/** @var WP_HTTP_Requests_Response $resp */
 			$resp = $response['http_response'];
 			if ( $resp->get_status() !== 200 ) {
-				throw new \Exception( "Could not obtain oAuth token from crm. Crm returned status code: {$resp->get_status()}" );
+				throw new Exception( "Could not obtain oAuth token from crm. Crm returned status code: {$resp->get_status()}" );
 			}
 
 			$token_data = json_decode( $resp->get_data() );
@@ -137,7 +161,7 @@ class CrmDao {
 	 * Test, if the token is valid
 	 *
 	 * @return bool
-	 * @throws \Exception
+	 * @throws Exception
 	 */
 	private function is_token_valid() {
 		// missing or incomplete token data
@@ -154,10 +178,10 @@ class CrmDao {
 
 		if ( is_wp_error( $response ) ) {
 			$error_message = $response->get_error_message();
-			throw new \Exception( "Could not validate oAuth token from crm: $error_message" );
+			throw new Exception( "Could not validate oAuth token from crm: $error_message" );
 		}
 
-		/** @var \WP_HTTP_Requests_Response $resp */
+		/** @var WP_HTTP_Requests_Response $resp */
 		$resp = $response['http_response'];
 
 		return 200 === $resp->get_status();
