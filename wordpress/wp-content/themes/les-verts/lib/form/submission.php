@@ -4,7 +4,6 @@ namespace SUPT;
 
 use Exception;
 use PHPMailer;
-use WP_Error;
 use function apply_filters;
 
 require_once __DIR__ . '/include/FormModel.php';
@@ -17,18 +16,23 @@ class FormSubmission {
 
 	const ACTION_BASE_NAME = 'supt-form';
 	const NEXT_ACTION_ID_DEFAULT = - 1;
+
 	const SUBMISSION_LIMIT_MINUTE_IP_FORM_AGENT = 2;
 	const SUBMISSION_LIMIT_MINUTE_IP_FORM = 5;
 	const SUBMISSION_LIMIT_HOUR_IP_FORM_AGENT = 10;
 	const SUBMISSION_LIMIT_DAY_IP_FORM = 100;
 
-	const CHECKBOX_TYPE = 'checkbox';
-	const CONFIRMATION_TYPE = 'confirmation';
-	const SELECT_TYPE = 'select';
-	const RADIO_TYPE = 'radio';
-	const EMAIL_TYPE = 'email';
-	const NUMBER_TYPE = 'number';
-	const PHONE_TYPE = 'phone';
+	const TYPE_CHECKBOX = 'checkbox';
+	const TYPE_CONFIRMATION = 'confirmation';
+	const TYPE_SELECT = 'select';
+	const TYPE_RADIO = 'radio';
+	const TYPE_EMAIL = 'email';
+	const TYPE_NUMBER = 'number';
+	const TYPE_PHONE = 'phone';
+	const TYPE_CRM_NEWSLETTER = 'crm_newsletter';
+	const TYPE_CRM_GREETING = 'crm_greeting';
+
+	const CRM_EMAIL_FIELD = 'email1';
 
 	/**
 	 * The form
@@ -101,13 +105,6 @@ class FormSubmission {
 	private $data;
 
 	/**
-	 * The form data mapped to the crm keys
-	 *
-	 * @var array
-	 */
-	private $crm_data;
-
-	/**
 	 * The email found in the submitted data
 	 *
 	 * @var string
@@ -119,7 +116,7 @@ class FormSubmission {
 	 *
 	 * @var array
 	 */
-	private $errors;
+	private $errors = array();
 
 	/**
 	 * Cache for the form fields (as defined in the backend)
@@ -135,6 +132,8 @@ class FormSubmission {
 	private function register_actions() {
 		add_action( 'wp_ajax_supt_form_submit', array( $this, 'handle_submit' ) );
 		add_action( 'wp_ajax_nopriv_supt_form_submit', array( $this, 'handle_submit' ) );
+		add_action( 'supt_form_save_to_crm', array( __CLASS__, 'save_to_crm' ) );
+		add_action( 'supt_form_mail_send', array( __CLASS__, 'send_mails' ) );
 
 		if ( ! WP_DEBUG && get_field( 'form_smtp_enabled', 'options' ) ) {
 			add_action( 'phpmailer_init', array( $this, 'setup_SMTP' ) );
@@ -150,10 +149,11 @@ class FormSubmission {
 		$this->abort_if_limit_exceeded();
 		$this->add_data();
 		$this->abort_if_invalid_data();
-		$this->add_crm_mapped_data();
 		$this->add_metadata();
 		$this->save();
-		$this->send_notifications();
+		$this->add_mails_to_sending_queue();
+		$this->add_to_saving_queue_of_crm();
+		spawn_cron();
 
 		$this->status = 200;
 		$this->send_response();
@@ -169,7 +169,7 @@ class FormSubmission {
 		try {
 			$this->form = new FormModel( absint( $_POST['form_id'] ) );
 		} catch ( Exception $e ) {
-			$this->respond_with_error( 400, 'Submission not valid' );
+			$this->respond_with_error( 400, array( 'Submission not valid' ) );
 
 			return;
 		}
@@ -186,7 +186,7 @@ class FormSubmission {
 			$this->predecessor_id = intval( $_POST['predecessor_id'] );
 		}
 
-		// todo: rethink the nonces if using caching
+		// @todo: rethink the nonces if using caching
 		if ( isset( $_POST['nonce'] ) ) {
 			$this->nonce = $_POST['nonce'];
 		}
@@ -236,7 +236,7 @@ class FormSubmission {
 
 		// exit here if any of the above checks failed
 		if ( ! $valid ) {
-			$this->respond_with_error( 400, 'Submission not valid' );
+			$this->respond_with_error( 400, array( 'Submission not valid' ) );
 
 			return;
 		}
@@ -250,7 +250,7 @@ class FormSubmission {
 	 * - SUBMISSION_LIMIT_DAY_IP_FORM
 	 */
 	private function abort_if_limit_exceeded() {
-		// todo: implement submission limiting
+		// @todo: implement submission limiting
 	}
 
 	/**
@@ -327,18 +327,21 @@ class FormSubmission {
 
 		foreach ( $fields as $key => $field ) {
 			if ( isset( $field['hidden_field'] ) && $field['hidden_field'] ) {
+				$this->data[ $key ] = $field['hidden_field_value'];
 				continue;
 			}
 
 			// sanitize and validate checkboxes
-			if ( self::CHECKBOX_TYPE === $field['form_input_type'] ) {
+			if ( self::TYPE_CHECKBOX === $field['form_input_type'] ) {
 				$choices = trim( $field['form_input_choices'] );
-				$options = array_map( 'trim', explode( "\n", $choices ) );
+				$options = FormModel::split_choices( $choices );
+
+				$this->data[ $key ] = array();
 
 				foreach ( $field['values'] as $value_key => $value ) {
 					$raw     = $this->get_field_data( $value_key, true );
-					$checked = $this->sanitize( $raw, self::CHECKBOX_TYPE );
-					$valid   = $this->validate( $checked, self::CHECKBOX_TYPE, $options, false );
+					$checked = $this->sanitize( $raw, self::TYPE_CHECKBOX );
+					$valid   = $this->validate( $checked, self::TYPE_CHECKBOX, $options, false );
 
 					if ( true !== $valid ) {
 						$this->errors[ $key ] = $valid;
@@ -354,7 +357,7 @@ class FormSubmission {
 
 				$type      = $field['form_input_type'];
 				$choices   = trim( $field['form_input_choices'] );
-				$options   = array_map( 'trim', explode( "\n", $choices ) );
+				$options   = FormModel::split_choices( $choices );
 				$required  = $field['form_input_required'];
 				$sanitized = $this->sanitize( $raw, $type );
 				$valid     = $this->validate( $sanitized, $type, $options, $required );
@@ -378,8 +381,8 @@ class FormSubmission {
 			$this->fields = $this->form->get_fields();
 
 			foreach ( $this->fields as $key => $field ) {
-				if ( self::CHECKBOX_TYPE === $field['form_input_type'] ) {
-					$labels = explode( "\n", $field['form_input_choices'] );
+				if ( self::TYPE_CHECKBOX === $field['form_input_type'] ) {
+					$labels = FormModel::split_choices( $field['form_input_choices'] );
 					for ( $i = 0; $i < count( $labels ); $i ++ ) {
 						$valueKey                                    = $key . '-' . $i;
 						$this->fields[ $key ]['values'][ $valueKey ] = trim( $labels[ $i ] );
@@ -428,19 +431,21 @@ class FormSubmission {
 	 */
 	private function sanitize( $data, $type ) {
 		switch ( $type ) {
-			case self::CHECKBOX_TYPE:
-			case self::CONFIRMATION_TYPE:
+			case self::TYPE_CHECKBOX:
+			case self::TYPE_CONFIRMATION:
+			case self::TYPE_CRM_NEWSLETTER:
 				return filter_var( $data, FILTER_VALIDATE_BOOLEAN );
-			case self::RADIO_TYPE:
-			case self::SELECT_TYPE:
+			case self::TYPE_RADIO:
+			case self::TYPE_SELECT:
+			case self::TYPE_CRM_GREETING:
 				return $data;
-			case self::PHONE_TYPE:
+			case self::TYPE_PHONE:
 				$allowed = '\d\+ -\\\(\)';
 
 				return preg_replace( "/[^${allowed}]/", '', $data );
-			case self::EMAIL_TYPE:
+			case self::TYPE_EMAIL:
 				return filter_var( $data, FILTER_SANITIZE_EMAIL );
-			case self::NUMBER_TYPE:
+			case self::TYPE_NUMBER:
 				return filter_var( $data, FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION );
 			default:
 				return strip_tags( $data );
@@ -461,15 +466,21 @@ class FormSubmission {
 		$valid   = true;
 		$message = __( 'Invalid input.', THEME_DOMAIN );
 
+		if ( ! $required && '' === $data ) {
+			return $valid;
+		}
+
 		switch ( $type ) {
-			case self::CHECKBOX_TYPE:
-			case self::CONFIRMATION_TYPE:
+			case self::TYPE_CHECKBOX:
+			case self::TYPE_CONFIRMATION:
+			case self::TYPE_CRM_NEWSLETTER:
 				$valid = true;
 				break;
 
-			case self::RADIO_TYPE:
-			case self::SELECT_TYPE:
-				if ( empty( $data ) ) {
+			case self::TYPE_RADIO:
+			case self::TYPE_SELECT:
+			case self::TYPE_CRM_GREETING:
+				if ( empty( $data ) && '0' !== $data ) {
 					$valid = true;
 					break;
 				}
@@ -481,12 +492,12 @@ class FormSubmission {
 				$valid = in_array( $data, $options );
 				break;
 
-			case self::EMAIL_TYPE:
+			case self::TYPE_EMAIL:
 				$valid   = filter_var( $data, FILTER_VALIDATE_EMAIL );
 				$message = __( 'Invalid email.', THEME_DOMAIN );
 				break;
 
-			case self::NUMBER_TYPE:
+			case self::TYPE_NUMBER:
 				$valid   = is_numeric( $data ) || '' === $data;
 				$message = __( 'Invalid number', THEME_DOMAIN );
 				break;
@@ -498,21 +509,6 @@ class FormSubmission {
 		}
 
 		return (bool) $valid ? (bool) $valid : $message;
-	}
-
-	/**
-	 * Add data from fields that were mapped to crm fields
-	 */
-	private function add_crm_mapped_data() {
-		foreach ( $this->get_fields() as $key => $field ) {
-			if ( ! empty( $field['webling_field'] ) ) {
-				if ( $field['hidden_field'] ) {
-					$this->crm_data[ $field['webling_field'] ] = $field['hidden_field_value'];
-				} else {
-					$this->crm_data[ $field['webling_field'] ] = $this->data[ $key ];
-				}
-			}
-		}
 	}
 
 	/**
@@ -535,8 +531,8 @@ class FormSubmission {
 	}
 
 	/**
-	 * Find email in CRM data if not existent, return the value of the first non
-	 * empty field with type email.
+	 * Find email by looking for the crm email field. If none found,
+	 * return the value of the first non empty field with type email.
 	 *
 	 * @return string|false email or false if no email was found
 	 */
@@ -545,19 +541,22 @@ class FormSubmission {
 			return $this->email;
 		}
 
-		if ( $this->crm_data ) {
-			foreach ( $this->crm_data as $key => $value ) {
-				if ( $key === 'email1' && filter_var( $value, FILTER_VALIDATE_EMAIL ) ) {
-					return $value;
+		foreach ( $this->get_fields() as $key => $field ) {
+			if ( ! empty( $field['crm_field'] )
+			     && self::CRM_EMAIL_FIELD === $field['crm_field'] ) {
+
+				$email = $this->data[ $key ];
+				if ( ! empty( $email && filter_var( $email, FILTER_VALIDATE_EMAIL ) ) ) {
+					return $email;
 				}
 			}
 		}
 
 		foreach ( $this->get_fields() as $key => $field ) {
-			if ( self::EMAIL_TYPE === $field['form_input_type'] ) {
+			if ( self::TYPE_EMAIL === $field['form_input_type'] ) {
 				$email = $this->data[ $key ];
-				if ( ! empty( $email && filter_var( $email, FILTER_VALIDATE_EMAIL ) ) ) {
-					return $email;
+				if ( ! empty( $email ) ) {
+					return $email; // already validated
 				}
 			}
 		}
@@ -582,31 +581,13 @@ class FormSubmission {
 			$submission->save();
 			$this->post_meta_id = $submission->meta_get_id();
 		} catch ( Exception $e ) {
-			// todo: send email
-			$this->respond_with_error( 500, 'Internal server error.' );
+			$this->report_error( 'save form data locally', $data, $e );
+			$this->respond_with_error( 500, array( 'Internal server error.' ) );
 
 			return;
 		}
 
 		$this->update_predecessor( $this->post_meta_id );
-
-		// safe to crm
-		if ( ! empty( $this->crm_data ) && $this->get_email_address() ) {
-			/**
-			 * Filters the submitted data, before it's sent to the crm.
-			 *
-			 * @param array $this ->crm_data
-			 */
-			$crm_data = (array) apply_filters( FormType::MODEL_NAME . '-before-crm-save', $this->crm_data );
-			try {
-				include_once __DIR__ . '/helpers/Crm_Dao.php';
-				$crm_dao = new Crm_Dao();
-				/** @noinspection PhpParamsInspection */
-				$crm_id = $crm_dao->save( $this->get_email_address(), $crm_data );
-			} catch ( Exception $e ) {
-				// todo: send mail
-			}
-		}
 
 		if ( $this->post_meta_id ) {
 			/**
@@ -617,7 +598,6 @@ class FormSubmission {
 			 *  'action_id'      => int the engagement funnel action id
 			 *  'config_id'      => int the engagement funnel config id
 			 *  'post_meta_id'   => int the id of the post meta table where the form data is stored
-			 *  'crm_id'         => int the id of the person in the crm
 			 *  'predecessor_id' => int the id of the predecessor submission
 			 */
 			do_action( FormType::MODEL_NAME . '-after-save',
@@ -626,7 +606,6 @@ class FormSubmission {
 					'action_id'      => $this->action_id,
 					'config_id'      => $this->config_id,
 					'post_meta_id'   => $this->post_meta_id,
-					'crm_id'         => empty( $crm_id ) ? - 1 : $crm_id,
 					'predecessor_id' => $this->predecessor_id,
 				)
 			);
@@ -645,92 +624,42 @@ class FormSubmission {
 				$predecessor->meta_set_descendant( $submission_id );
 				$predecessor->save();
 			} catch ( Exception $e ) {
-				// todo: send email
+				$this->report_error( 'update predecessor', $this->data, $e );
 			}
 		}
 	}
 
 	/**
-	 * Send notification and confirmation mails
+	 * Add the notification and confirmation mails to the sending queue, processed by a cron job
 	 */
-	private function send_notifications() {
-		/**
-		 * Filters the submitted data, before notifications are sent.
-		 *
-		 * @param array $data the form data
-		 */
-		$data = (array) apply_filters( FormType::MODEL_NAME . '-before-email-notification', $this->data );
-
-		/**
-		 * Fires before the email notifications are sent.
-		 *
-		 * @param array $data with
-		 *  'form_data' => array with the validated and sanitized form data
-		 *  'action_id' => int|null the engagement funnel form data
-		 */
-		do_action( FormType::MODEL_NAME . '-before-email-notification',
-			array(
-				'form_data' => $data,
-				'action_id' => $this->action_id,
-			)
-		);
-
-		$form = $this->form;
-
-		if ( ! $form->has_confirmation() && ! $form->has_notification() ) {
+	private function add_mails_to_sending_queue() {
+		if ( ! $this->form->has_confirmation() && ! $this->form->has_notification() ) {
 			// nothing to send
 			return;
 		}
 
-		$sender_name = $form->get_sender_name();
+		require_once __DIR__ . '/include/Mailer.php';
 
-		/**
-		 * Filters the sender address of email notifications
-		 *
-		 * @param array $data the form data
-		 */
-		$from = apply_filters( FormType::MODEL_NAME . '-email-from',
-			"$sender_name <noreply@{$this->get_domain()}>" );
-
-		$reply_to        = $form->get_reply_to_address();
-		$confirmation_to = $this->get_email_address();
-
-		if ( $form->has_confirmation() && $confirmation_to ) {
-			supt_form_send_email(
-				$confirmation_to,
-				$from,
-				$reply_to,
-				$form->get_confirmation_subject(),
-				$form->get_confirmation_template(),
-				$this->data,
-				$this->post_meta_id
-			);
-		}
-
-		if ( $form->has_notification() ) {
-			supt_form_send_email(
-				$form->get_notification_destination(),
-				$from,
-				$this->get_email_address(),
-				$form->get_notification_subject(),
-				$form->get_notification_template(),
-				$this->data,
-				$this->post_meta_id
-			);
+		try {
+			$mailer = new Mailer( $this->post_meta_id );
+			$mailer->queue_mails();
+		} catch ( Exception $e ) {
+			Util::report_form_error( 'add mails to sending queue', $this->data, $e, $this->form->get_title() );
 		}
 	}
 
 	/**
-	 * Return domain of current blog
+	 * Add the data to save to the saving queue, processed by a cron job
 	 */
-	private function get_domain() {
-		$url = get_site_url();
-		preg_match( "/^https?:\/\/(www.)?([^\/?:]*)/", $url, $matches );
-		if ( $matches && is_array( $matches ) ) {
-			return $matches[ count( $matches ) - 1 ];
-		}
+	private function add_to_saving_queue_of_crm() {
+		require_once __DIR__ . '/include/CrmSaver.php';
 
-		return new WP_Error( 'cant-get-domain', 'The domain could not be parsed from the site url', $url );
+		try {
+			$saver = new CrmSaver( $this->post_meta_id );
+			$saver->queue();
+		} catch ( Exception $e ) {
+			Util::report_form_error( 'add data to saving queue of crm', $this->data, $e, $this->form->get_title() );
+		}
 	}
 
 	/**
@@ -739,6 +668,7 @@ class FormSubmission {
 	 * @param PHPMailer $phpmailer
 	 */
 	public function setup_SMTP( $phpmailer ) {
+		// todo: test and move into mailer
 		$config = get_field( 'form_smtp', 'options' );
 		$phpmailer->isSMTP();
 		$phpmailer->Host     = $config['host'];
@@ -746,5 +676,38 @@ class FormSubmission {
 		$phpmailer->Port     = $config['port'];
 		$phpmailer->Username = $config['username'];
 		$phpmailer->Password = $config['password'];
+	}
+
+	/**
+	 * Send out the pending mails
+	 *
+	 * Called by the WordPress cron job
+	 */
+	public static function send_mails() {
+		require_once __DIR__ . '/include/Mailer.php';
+		Mailer::send_mails();
+	}
+
+	/**
+	 * Save the form submissions to the crm
+	 *
+	 * Called by the WordPress cron job
+	 */
+	public static function save_to_crm() {
+		require_once __DIR__ . '/include/CrmSaver.php';
+		CrmSaver::save_to_crm();
+	}
+
+	/**
+	 * Notify the site admin about the error
+	 *
+	 * @param string $action
+	 * @param mixed $data
+	 * @param Exception $exception
+	 */
+	private function report_error( $action, $data, $exception ) {
+		$form = $this->form->get_title();
+
+		Util::report_form_error( $action, $data, $exception, $form );
 	}
 }

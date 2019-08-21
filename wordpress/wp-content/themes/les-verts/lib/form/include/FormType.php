@@ -76,6 +76,7 @@ class FormType extends Model {
 		$api_url = get_field( 'api_url', 'option' );
 
 		if ( ! $api_key || ! $api_url ) {
+			// remove the webling tab
 			add_filter( 'acf/load_field/key=field_5a869960c1cf2', function ( $fields ) {
 				$fields_to_remove = [
 					'field_5c0fac32bdbd6',
@@ -93,6 +94,15 @@ class FormType extends Model {
 
 				return $fields;
 			} );
+
+			// remove the crm specific field types (prefixed with 'crm_')
+			add_filter( 'acf/load_field/key=field_59f33814cf0dc', function ( $field ) {
+				$field['choices'] = array_filter( $field['choices'], function ( $key ) {
+					return false === strpos( $key, 'crm_' );
+				}, ARRAY_FILTER_USE_KEY );
+
+				return $field;
+			} );
 		}
 	}
 
@@ -103,8 +113,7 @@ class FormType extends Model {
 		add_filter( 'manage_edit-' . self::MODEL_NAME . '_columns',
 			array( __CLASS__, 'register_columns_fields' ) );
 		add_action( 'manage_' . self::MODEL_NAME . '_posts_custom_column',
-			array( __CLASS__, 'populate_columns_fields' ),
-			10, 2 );
+			array( __CLASS__, 'populate_columns_fields' ), 10, 2 );
 		add_action( 'post_row_actions',
 			array( __CLASS__, 'alter_row_actions' ), 10, 2 );
 		add_action( 'request',

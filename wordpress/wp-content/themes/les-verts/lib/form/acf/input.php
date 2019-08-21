@@ -1,7 +1,7 @@
 <?php
 
 if ( function_exists( 'acf_add_local_field_group' ) ):
-	
+
 	acf_add_local_field_group( array(
 		'key'                   => 'group_59e71d68896a7',
 		'title'                 => 'a-input',
@@ -39,15 +39,17 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 					'id'    => '',
 				),
 				'choices'           => array(
-					'text'         => __( 'Text', THEME_DOMAIN ),
-					'email'        => __( 'Email', THEME_DOMAIN ),
-					'tel'          => __( 'Phone', THEME_DOMAIN ),
-					'number'       => __( 'Number', THEME_DOMAIN ),
-					'textarea'     => __( 'Textarea', THEME_DOMAIN ),
-					'radio'        => __( 'Radio button', THEME_DOMAIN ),
-					'checkbox'     => __( 'Check box', THEME_DOMAIN ),
-					'select'       => __( 'Drop down', THEME_DOMAIN ),
-					'confirmation' => __( 'Confirmation', THEME_DOMAIN ),
+					'text'           => __( 'Text', THEME_DOMAIN ),
+					'email'          => __( 'Email', THEME_DOMAIN ),
+					'tel'            => __( 'Phone', THEME_DOMAIN ),
+					'number'         => __( 'Number', THEME_DOMAIN ),
+					'textarea'       => __( 'Textarea', THEME_DOMAIN ),
+					'radio'          => __( 'Radio button', THEME_DOMAIN ),
+					'checkbox'       => __( 'Check box', THEME_DOMAIN ),
+					'select'         => __( 'Drop down', THEME_DOMAIN ),
+					'confirmation'   => __( 'Confirmation', THEME_DOMAIN ),
+					'crm_newsletter' => __( 'Newsletter / Press release (CRM)', THEME_DOMAIN ),
+					'crm_greeting'   => __( 'Greeting (CRM)', THEME_DOMAIN ),
 				),
 				'default_value'     => array(
 					0 => 'text',
@@ -108,6 +110,16 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 							'operator' => '!=',
 							'value'    => 'confirmation',
 						),
+						array(
+							'field'    => 'field_59f33814cf0dc',
+							'operator' => '!=',
+							'value'    => 'crm_newsletter',
+						),
+						array(
+							'field'    => 'field_59f33814cf0dc',
+							'operator' => '!=',
+							'value'    => 'crm_greeting',
+						),
 					),
 				),
 				'wrapper'           => array(
@@ -120,6 +132,29 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 				'prepend'           => '',
 				'append'            => '',
 				'maxlength'         => '',
+			),
+			array(
+				'key' => 'field_5d3f1c8af54be',
+				'label' => __('Important Note', THEME_DOMAIN),
+				'name' => '',
+				'type' => 'message',
+				'instructions' => '',
+				'required' => 0,
+				'conditional_logic' => array(
+					array(
+						'field'    => 'field_59f33814cf0dc',
+						'operator' => '==',
+						'value'    => 'crm_greeting',
+					),
+				),
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'message' => __('Please add <em>Hallo</em>, <em>Liebe</em>, <em>Lieber</em> or <em>salut</em>, <em>chère</em>, <em>cher</em>. All other values will be ignored!', THEME_DOMAIN),
+				'new_lines' => 'wpautop',
+				'esc_html' => 0,
 			),
 			array(
 				'key'               => 'field_5ab20e7f14b9a',
@@ -150,6 +185,13 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 							'value'    => 'select',
 						),
 					),
+					array(
+						array(
+							'field'    => 'field_59f33814cf0dc',
+							'operator' => '==',
+							'value'    => 'crm_greeting',
+						),
+					),
 				),
 				'wrapper'           => array(
 					'width' => '',
@@ -175,6 +217,11 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 							'field'    => 'field_59f33814cf0dc',
 							'operator' => '!=',
 							'value'    => 'checkbox',
+						),
+						array(
+							'field'    => 'field_59f33814cf0dc',
+							'operator' => '!=',
+							'value'    => 'crm_newsletter',
 						),
 					),
 				),

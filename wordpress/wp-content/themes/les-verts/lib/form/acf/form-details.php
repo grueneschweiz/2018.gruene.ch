@@ -187,7 +187,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 					array(
 						'key'               => 'field_5c0fac61bdbd7',
 						'label'             => __( 'Webling Field', THEME_DOMAIN ),
-						'name'              => 'webling_field',
+						'name'              => 'crm_field',
 						'type'              => 'select',
 						'instructions'      => __( 'Select the field in Webling that matches this field.', THEME_DOMAIN ),
 						'required'          => 0,
@@ -201,7 +201,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 							'firstName'                => 'Vorname / prénom',
 							'lastName'                 => 'Name / nom',
 							'recordCategory'           => 'Datensatzkategorie / type d’entrée',
-							'language'                 => 'Sprache / langue',
+							//'language'                 => 'Sprache / langue', // this is automatically added
 							'salutationInformal'       => 'Anrede / appel (informel)',
 							'address1'                 => 'Strasse / rue',
 							'zip'                      => 'PLZ / code postal',
@@ -240,11 +240,172 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 						'placeholder'       => '',
 					),
 					array(
+						'key'               => 'field_5d3f1c8af12df',
+						'label'             => __( 'Important Note', THEME_DOMAIN ),
+						'name'              => '',
+						'type'              => 'message',
+						'instructions'      => '',
+						'required'          => 0,
+						'conditional_logic' => array(
+							array(
+								array(
+									'field'    => 'field_5c0fac61bdbd7',
+									'operator' => '==',
+									'value'    => 'salutationInformal',
+								),
+							),
+						),
+						'wrapper'           => array(
+							'width' => '',
+							'class' => '',
+							'id'    => '',
+						),
+						'message'           => __( 'You must select the field type <em>Greeting (CRM)</em> (in the tab <em>standard</em>) for this field to work! Please follow also the note in the <em>standard</em> tab.', THEME_DOMAIN ),
+						'new_lines'         => 'wpautop',
+						'esc_html'          => 0,
+					),
+					array(
+						'key'               => 'field_5d3f1c8af09ab',
+						'label'             => __( 'Important Note', THEME_DOMAIN ),
+						'name'              => '',
+						'type'              => 'message',
+						'instructions'      => '',
+						'required'          => 0,
+						'conditional_logic' => array(
+							array(
+								array(
+									'field'    => 'field_5c0fac61bdbd7',
+									'operator' => '==',
+									'value'    => 'newsletterCountryD',
+								),
+							),
+							array(
+								array(
+									'field'    => 'field_5c0fac61bdbd7',
+									'operator' => '==',
+									'value'    => 'newsletterCountryF',
+								),
+							),
+							array(
+								array(
+									'field'    => 'field_5c0fac61bdbd7',
+									'operator' => '==',
+									'value'    => 'newsletterCantonD',
+								),
+							),
+							array(
+								array(
+									'field'    => 'field_5c0fac61bdbd7',
+									'operator' => '==',
+									'value'    => 'newsletterCantonF',
+								),
+							),
+							array(
+								array(
+									'field'    => 'field_5c0fac61bdbd7',
+									'operator' => '==',
+									'value'    => 'newsletterMunicipality',
+								),
+							),
+							array(
+								array(
+									'field'    => 'field_5c0fac61bdbd7',
+									'operator' => '==',
+									'value'    => 'pressReleaseCountryD',
+								),
+							),
+							array(
+								array(
+									'field'    => 'field_5c0fac61bdbd7',
+									'operator' => '==',
+									'value'    => 'pressReleaseCountryF',
+								),
+							),
+							array(
+								array(
+									'field'    => 'field_5c0fac61bdbd7',
+									'operator' => '==',
+									'value'    => 'pressReleaseCantonD',
+								),
+							),
+							array(
+								array(
+									'field'    => 'field_5c0fac61bdbd7',
+									'operator' => '==',
+									'value'    => 'pressReleaseCantonF',
+								),
+							),
+							array(
+								array(
+									'field'    => 'field_5c0fac61bdbd7',
+									'operator' => '==',
+									'value'    => 'pressReleaseMunicipality',
+								),
+							),
+						),
+						'wrapper'           => array(
+							'width' => '',
+							'class' => '',
+							'id'    => '',
+						),
+						'message'           => __( 'You must select the field type <em>Newsletter / Press release (CRM)</em> (in the tab <em>standard</em>) for this field to work!', THEME_DOMAIN ),
+						'new_lines'         => 'wpautop',
+						'esc_html'          => 0,
+					),
+					array(
+						'key'               => 'field_5alk49sf14pd4',
+						'label'             => __( 'Webling Choices', THEME_DOMAIN ),
+						'name'              => 'choice_map',
+						'type'              => 'textarea',
+						'instructions'      => __( 'Enter the exact corresponding options in Webling in the same order.', THEME_DOMAIN ),
+						'required'          => 1,
+						'conditional_logic' => array(
+							array(
+								array(
+									'field'    => 'field_5c0fac61bdbd7',
+									'operator' => '==',
+									'value'    => 'recordCategory',
+								),
+							),
+							array(
+								array(
+									'field'    => 'field_5c0fac61bdbd7',
+									'operator' => '==',
+									'value'    => 'language',
+								),
+							),
+							array(
+								array(
+									'field'    => 'field_5c0fac61bdbd7',
+									'operator' => '==',
+									'value'    => 'interests',
+								),
+							),
+							array(
+								array(
+									'field'    => 'field_5c0fac61bdbd7',
+									'operator' => '==',
+									'value'    => 'request',
+								),
+							),
+						),
+						'wrapper'           => array(
+							'width' => '',
+							'class' => '',
+							'id'    => '',
+						),
+						'default_value'     => '',
+						'placeholder'       => '',
+						'maxlength'         => '',
+						'rows'              => 4,
+						'new_lines'         => '',
+					),
+					array(
 						'key'               => 'field_5c0fc373bdf7b',
-						'label'             => __( 'Insertion Modus', THEME_DOMAIN ),
-						'name'              => 'insertion_modus',
+						'label'             => __( 'Insertion Mode', THEME_DOMAIN ),
+						'name'              => 'insertion_mode',
 						'type'              => 'select',
-						'instructions'      => __( '<strong>Warning</strong>: Selecting the wrong modus results in data loss!
+						'instructions'      => __( '<strong>Warning</strong>: Selecting the wrong mode results in data loss!
 <br><br>
 Select replace for single value fields like the address line and append for multi value fields like the interests field or a note field.',
 							THEME_DOMAIN ),
@@ -254,6 +415,56 @@ Select replace for single value fields like the address line and append for mult
 								array(
 									'field'    => 'field_5c0fac61bdbd7',
 									'operator' => '!=empty',
+								),
+								array(
+									'field'    => 'field_5c0fac61bdbd7',
+									'operator' => '!=',
+									'value'    => 'newsletterCountryD',
+								),
+								array(
+									'field'    => 'field_5c0fac61bdbd7',
+									'operator' => '!=',
+									'value'    => 'newsletterCountryF',
+								),
+								array(
+									'field'    => 'field_5c0fac61bdbd7',
+									'operator' => '!=',
+									'value'    => 'newsletterCantonD',
+								),
+								array(
+									'field'    => 'field_5c0fac61bdbd7',
+									'operator' => '!=',
+									'value'    => 'newsletterCantonF',
+								),
+								array(
+									'field'    => 'field_5c0fac61bdbd7',
+									'operator' => '!=',
+									'value'    => 'newsletterMunicipality',
+								),
+								array(
+									'field'    => 'field_5c0fac61bdbd7',
+									'operator' => '!=',
+									'value'    => 'pressReleaseCountryD',
+								),
+								array(
+									'field'    => 'field_5c0fac61bdbd7',
+									'operator' => '!=',
+									'value'    => 'pressReleaseCountryF',
+								),
+								array(
+									'field'    => 'field_5c0fac61bdbd7',
+									'operator' => '!=',
+									'value'    => 'pressReleaseCantonD',
+								),
+								array(
+									'field'    => 'field_5c0fac61bdbd7',
+									'operator' => '!=',
+									'value'    => 'pressReleaseCantonF',
+								),
+								array(
+									'field'    => 'field_5c0fac61bdbd7',
+									'operator' => '!=',
+									'value'    => 'pressReleaseMunicipality',
 								),
 							),
 						),
@@ -266,6 +477,7 @@ Select replace for single value fields like the address line and append for mult
 							'replace'      => __( 'Replace', THEME_DOMAIN ),
 							'append'       => __( 'Append', THEME_DOMAIN ),
 							'replaceEmpty' => __( 'Add if empty', THEME_DOMAIN ),
+							'addIfNew'     => __( 'Add if new', THEME_DOMAIN ),
 						),
 						'default_value'     => array(),
 						'allow_null'        => 0,

@@ -357,4 +357,26 @@ class FormModel {
 
 		return $this->has_notification;
 	}
+
+	/**
+	 * Get array of choices from choices string
+	 *
+	 * @param $string
+	 *
+	 * @return array
+	 */
+	public static function split_choices( $string ) {
+		$choices = explode( "\n", $string );
+
+		$return = array();
+		foreach ( $choices as $choice ) {
+			$choice = trim( $choice );
+
+			if ( '' !== $choice ) {
+				$return[] = $choice;
+			}
+		}
+
+		return $return;
+	}
 }

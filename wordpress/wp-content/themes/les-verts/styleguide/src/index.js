@@ -1,5 +1,5 @@
 // Polyfills
-import 'utils/closest';
+import 'utils/polyfills';
 // Helpers
 import 'utils/classList';
 // Components loader

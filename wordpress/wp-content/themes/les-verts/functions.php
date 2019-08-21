@@ -107,14 +107,9 @@ class StarterSite extends TimberSite {
 			THEME_VERSION );
 		
 		// js
-		$polyfills = 'HTMLPictureElement,CustomEvent,Element.prototype.closest,Object.assign,NodeList.prototype.forEach,Promise,matchMedia,Object.entries,URL';
-		wp_enqueue_script( THEME_DOMAIN . '-polyfills',
-			'https://cdn.polyfill.io/v2/polyfill' . ( WP_DEBUG ? '' : '.min' ) . '.js?features=' . $polyfills,
-			false, null, true
-		);
 		wp_enqueue_script( THEME_DOMAIN . '-app',
 			get_stylesheet_directory_uri() . '/static/js/app' . ( WP_DEBUG ? '' : '.min' ) . '.js',
-			array( THEME_DOMAIN . '-polyfills' ), THEME_VERSION, true
+			array(), THEME_VERSION, true
 		);
 		
 		// tweaks

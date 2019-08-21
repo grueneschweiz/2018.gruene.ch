@@ -178,8 +178,8 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 			),
 			array(
 				'key'               => 'field_5c0fde79133b9',
-				'label'             => __( 'API Key', THEME_DOMAIN ),
-				'name'              => 'api_key',
+				'label'             => __( 'API Key (Client Secret)', THEME_DOMAIN ),
+				'name'              => 'client_secret',
 				'type'              => 'text',
 				'instructions'      => '',
 				'required'          => 0,
@@ -194,6 +194,22 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 				'prepend'           => '',
 				'append'            => '',
 				'maxlength'         => '',
+			),
+			array(
+				'key'               => 'field_5c1634144as4f',
+				'label'             => __( 'Client Id', THEME_DOMAIN ),
+				'name'              => 'client_id',
+				'type'              => 'number',
+				'instructions'      => __( 'The ID of the oAuth2.0 Client.', THEME_DOMAIN ),
+				'required'          => 1,
+				'conditional_logic' => array(
+					array(
+						array(
+							'field'    => 'field_5c0fde5a133b8',
+							'operator' => '!=empty',
+						),
+					),
+				),
 			),
 			array(
 				'key'               => 'field_5c1634144d16e',
