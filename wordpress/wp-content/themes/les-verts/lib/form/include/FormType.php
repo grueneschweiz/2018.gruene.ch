@@ -84,6 +84,9 @@ class FormType extends Model {
 					'field_5c0fc373bdf7b',
 					'field_5c0fc5b4eece5',
 					'field_5c0fc84a086db',
+					'field_5d3f1c8af12df',
+					'field_5d3f1c8af09ab',
+					'field_5alk49sf14pd4',
 				];
 
 				foreach ( $fields['sub_fields'] as $key => &$field ) {
