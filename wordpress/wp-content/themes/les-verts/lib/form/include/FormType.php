@@ -72,7 +72,7 @@ class FormType extends Model {
 	 * field config if api key and url
 	 */
 	private static function maybe_remove_webling_field_settings() {
-		$api_key = get_field( 'api_key', 'option' );
+		$api_key = get_field( 'client_secret', 'option' );
 		$api_url = get_field( 'api_url', 'option' );
 
 		if ( ! $api_key || ! $api_url ) {
