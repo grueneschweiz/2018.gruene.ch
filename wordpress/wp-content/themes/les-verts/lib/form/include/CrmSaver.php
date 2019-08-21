@@ -4,6 +4,7 @@
 namespace SUPT;
 
 use Exception;
+use function get_field;
 
 require_once __DIR__ . '/CrmFieldData.php';
 require_once __DIR__ . '/QueueDao.php';
@@ -62,7 +63,7 @@ class CrmSaver {
 	 *
 	 * @param int $submission_id
 	 *
-	 * @throws \Exception
+	 * @throws Exception
 	 */
 	public function __construct( $submission_id ) {
 		require_once __DIR__ . '/SubmissionModel.php';
@@ -142,9 +143,14 @@ class CrmSaver {
 			}
 		}
 
-		$this->auto_add_group();
-		$this->auto_add_entry_channel();
-		$this->auto_add_language();
+		// only add the automatic field data, if no data was added from the form
+		// else every record would be added, even if the form wasn't configured to
+		// store data to the crm
+		if ( ! empty( $this->crm_data ) ) {
+			$this->auto_add_group();
+			$this->auto_add_entry_channel();
+			$this->auto_add_language();
+		}
 	}
 
 	/**
@@ -172,7 +178,7 @@ class CrmSaver {
 			'crm_field'      => 'groups',
 			'insertion_mode' => CrmFieldData::MODE_ADD_IF_NEW
 		);
-		$data       = \get_field( 'group_id', 'option' );
+		$data       = get_field( 'group_id', 'option' );
 
 		$this->add_crm_data_field( $fake_field, $data );
 	}
