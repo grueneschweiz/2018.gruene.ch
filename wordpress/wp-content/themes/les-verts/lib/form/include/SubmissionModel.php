@@ -19,7 +19,7 @@ class SubmissionModel {
 
 	const DIRECTION_BOTH = 0;
 	const DIRECTION_PREDECESSOR = 1;
-	const DIRECTION_DESCENDANT = 1;
+	const DIRECTION_DESCENDANT = 2;
 
 	private $id;
 	private $meta = [];
