@@ -353,12 +353,12 @@ class CrmSaver {
 			try {
 				$crm_id = $dao->save( $submission );
 			} catch ( Exception $e ) {
-				if ( 500 === $e->getCode() ) {
+				if ( self::is_non_permanent_error( $e->getCode() ) ) {
+					Util::report_form_error( 'save to crm', $submission, $e, 'FORM UNKNOWN - ASYNC CALL' );
+				} else {
 					self::send_permanent_error_notification( $submission, $e->getMessage() );
 					$submission = $queue->pop();
 					continue; // don't requeue this item
-				} else {
-					Util::report_form_error( 'save to crm', $submission, $e, 'FORM UNKNOWN - ASYNC CALL' );
 				}
 			}
 
@@ -384,6 +384,19 @@ class CrmSaver {
 		}
 	}
 
+	/**
+	 * Check if the given status code is likely to change if we retry the same request later
+	 *
+	 * @param int $code
+	 *
+	 * @return bool
+	 */
+	private static function is_non_permanent_error( $code ) {
+		$non_permanent = array( 401, 408, 429, 499, 503, 504, 599 );
+
+		return in_array( $code, $non_permanent );
+	}
+
 	private static function send_permanent_error_notification( $submission, $err_message ) {
 		$domain = Util::get_domain();
 
@@ -399,8 +412,8 @@ class CrmSaver {
 				"The data was removed from the saving queue, so YOU MUST ADD IT MANUALLY. " .
 				"Please correct the form configuration, to prevent this error in the future. " .
 				"More details in the error message below.\n\n" .
-				"Have a nice day.\n",
-				"Your Website - %s\n\n",
+				"Have a nice day.\n" .
+				"Your Website - %s\n\n" .
 				"Error message:\n%s",
 				THEME_DOMAIN
 			),
