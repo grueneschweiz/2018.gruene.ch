@@ -362,12 +362,22 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 						'conditional_logic' => array(
 							array(
 								array(
+									'field'    => 'field_5c0fc5b4eece5',
+									'operator' => '==',
+									'value'    => '0',
+								),
+								array(
 									'field'    => 'field_5c0fac61bdbd7',
 									'operator' => '==',
 									'value'    => 'recordCategory',
 								),
 							),
 							array(
+								array(
+									'field'    => 'field_5c0fc5b4eece5',
+									'operator' => '==',
+									'value'    => '0',
+								),
 								array(
 									'field'    => 'field_5c0fac61bdbd7',
 									'operator' => '==',
@@ -376,12 +386,22 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 							),
 							array(
 								array(
+									'field'    => 'field_5c0fc5b4eece5',
+									'operator' => '==',
+									'value'    => '0',
+								),
+								array(
 									'field'    => 'field_5c0fac61bdbd7',
 									'operator' => '==',
 									'value'    => 'interests',
 								),
 							),
 							array(
+								array(
+									'field'    => 'field_5c0fc5b4eece5',
+									'operator' => '==',
+									'value'    => '0',
+								),
 								array(
 									'field'    => 'field_5c0fac61bdbd7',
 									'operator' => '==',
@@ -474,10 +494,10 @@ Select replace for single value fields like the address line and append for mult
 							'id'    => '',
 						),
 						'choices'           => array(
-							'replace'      => __( 'Replace', THEME_DOMAIN ),
-							'append'       => __( 'Append', THEME_DOMAIN ),
 							'replaceEmpty' => __( 'Add if empty', THEME_DOMAIN ),
 							'addIfNew'     => __( 'Add if new', THEME_DOMAIN ),
+							'append'       => __( 'Append', THEME_DOMAIN ),
+							'replace'      => __( 'Replace', THEME_DOMAIN ),
 						),
 						'default_value'     => array(),
 						'allow_null'        => 0,
@@ -521,18 +541,28 @@ Select replace for single value fields like the address line and append for mult
 						'type'              => 'text',
 						'instructions'      => __( 'Make sure this value is accepted by Webling.
 <br><br>
-Example interest field: Only the interests that can be selected in Webling are accepted values.', THEME_DOMAIN ),
+Example greetings field: Only the greetings that can be selected in Webling are accepted values.', THEME_DOMAIN ),
 						'required'          => 0,
 						'conditional_logic' => array(
 							array(
+								array(
+									'field'    => 'field_5c0fc5b4eece5',
+									'operator' => '==',
+									'value'    => '1',
+								),
 								array(
 									'field'    => 'field_5c0fac61bdbd7',
 									'operator' => '!=empty',
 								),
 								array(
-									'field'    => 'field_5c0fc5b4eece5',
-									'operator' => '==',
-									'value'    => '1',
+									'field'    => 'field_5c0fac61bdbd7',
+									'operator' => '!=',
+									'value'    => 'interests',
+								),
+								array(
+									'field'    => 'field_5c0fac61bdbd7',
+									'operator' => '!=',
+									'value'    => 'request',
 								),
 							),
 						),
@@ -546,6 +576,52 @@ Example interest field: Only the interests that can be selected in Webling are a
 						'prepend'           => '',
 						'append'            => '',
 						'maxlength'         => '',
+					),
+					array(
+						'key'               => 'field_5c0fc84a09a4f',
+						'label'             => __( 'Field Value', THEME_DOMAIN ),
+						'name'              => 'hidden_field_choices',
+						'type'              => 'textarea',
+						'instructions'      => __( 'Make sure the values are accepted by Webling. Add one choice per line.
+<br><br>
+Example interest field: Only the interests that can be selected in Webling are accepted values.', THEME_DOMAIN ),
+						'required'          => 0,
+						'conditional_logic' => array(
+							array(
+								array(
+									'field'    => 'field_5c0fc5b4eece5',
+									'operator' => '==',
+									'value'    => '1',
+								),
+								array(
+									'field'    => 'field_5c0fac61bdbd7',
+									'operator' => '==',
+									'value'    => 'interests',
+								),
+							),
+							array(
+								array(
+									'field'    => 'field_5c0fc5b4eece5',
+									'operator' => '==',
+									'value'    => '1',
+								),
+								array(
+									'field'    => 'field_5c0fac61bdbd7',
+									'operator' => '==',
+									'value'    => 'request',
+								),
+							),
+						),
+						'wrapper'           => array(
+							'width' => '',
+							'class' => '',
+							'id'    => '',
+						),
+						'default_value'     => '',
+						'placeholder'       => '',
+						'maxlength'         => '',
+						'rows'              => 4,
+						'new_lines'         => '',
 					),
 				),
 			),
