@@ -4,7 +4,6 @@
 namespace SUPT;
 
 use Exception;
-use function get_field;
 
 require_once __DIR__ . '/CrmFieldData.php';
 require_once __DIR__ . '/QueueDao.php';
