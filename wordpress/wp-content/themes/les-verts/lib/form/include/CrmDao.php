@@ -42,51 +42,6 @@ class CrmDao {
 	}
 
 	/**
-	 *
-	 *
-	 * @param $data
-	 *
-	 * @return array|mixed|object
-	 * @throws \Exception
-	 */
-	public function save( $data ) {
-		$crm_data = array();
-		foreach ( $data as $key => $crm_field_data ) {
-			$crm_data[ $key ] = array(
-				'value' => $crm_field_data->get_value(),
-				'mode'  => $crm_field_data->get_mode(),
-			);
-		}
-
-		$args     = array( 'body' => json_encode( $crm_data ), array( 'timeout' => self::WP_REMOTE_TIMEOUT ) );
-		$response = wp_remote_post( $this->api_url . 'api/v1/member', $this->add_auth_header( $args ) );
-
-		if ( is_wp_error( $response ) ) {
-			$error_message = $response->get_error_message();
-			throw new \Exception( "Could save member to crm: $error_message" );
-		}
-
-		/** @var \WP_HTTP_Requests_Response $resp */
-		$resp = $response['http_response'];
-		if ( in_array( $resp->get_status(), array( 401, 403 ) ) ) {
-			// if the token isn't valid, get a new one. if the new one is valid, retry to save
-			if ( ! $this->is_token_valid() ) {
-				$this->obtain_token( true );
-				if ( $this->is_token_valid() ) {
-					return $this->save( $data );
-				}
-			}
-		}
-
-		if ( $resp->get_status() !== 201 ) {
-			$data_sent = print_r( $crm_data, true );
-			throw new \Exception( "Could save member to crm. Crm returned status code: {$resp->get_status()}. Reason: {$resp->get_data()}.\n\nData sent: {$data_sent}", $resp->get_status() );
-		}
-
-		return json_decode( $resp->get_data() );
-	}
-
-	/**
 	 * Get valid token, either from local storage or a new one from the oAuth server
 	 *
 	 * @param bool $force refresh token
@@ -134,6 +89,70 @@ class CrmDao {
 	}
 
 	/**
+	 * Send the given data to the crm api
+	 *
+	 * @param CrmFieldData[] $data
+	 *
+	 * @return array|mixed|object
+	 * @throws \Exception
+	 */
+	public function save( $data ) {
+		$crm_data = array();
+		foreach ( $data as $key => $crm_field_data ) {
+			$crm_data[ $key ] = array(
+				'value' => $crm_field_data->get_value(),
+				'mode'  => $crm_field_data->get_mode(),
+			);
+		}
+
+		$args     = array( 'body' => json_encode( $crm_data ), array( 'timeout' => self::WP_REMOTE_TIMEOUT ) );
+		$response = wp_remote_post( $this->api_url . 'api/v1/member', $this->add_auth_header( $args ) );
+
+		if ( is_wp_error( $response ) ) {
+			$error_message = $response->get_error_message();
+			throw new \Exception( "Could save member to crm: $error_message" );
+		}
+
+		/** @var \WP_HTTP_Requests_Response $resp */
+		$resp = $response['http_response'];
+		if ( in_array( $resp->get_status(), array( 401, 403 ) ) ) {
+			// if the token isn't valid, get a new one. if the new one is valid, retry to save
+			if ( ! $this->is_token_valid() ) {
+				$this->obtain_token( true );
+				if ( $this->is_token_valid() ) {
+					return $this->save( $data );
+				}
+			}
+		}
+
+		if ( $resp->get_status() !== 201 ) {
+			$data_sent = print_r( $crm_data, true );
+			throw new \Exception( "Could save member to crm. Crm returned status code: {$resp->get_status()}. Reason: {$resp->get_data()}.\n\nData sent: {$data_sent}", $resp->get_status() );
+		}
+
+		return json_decode( $resp->get_data() );
+	}
+
+	/**
+	 * Add the authorization header to the given wp_remote_METHOD args
+	 *
+	 * @param array $args of wp_remote_METHOD
+	 *
+	 * @return array
+	 */
+	private function add_auth_header( $args = array() ) {
+		$bearer_token = "Bearer {$this->token['token']}";
+
+		if ( ! array_key_exists( 'headers', $args ) ) {
+			$args['headers'] = array();
+		}
+
+		$args['headers'] = array_merge( $args['headers'], array( 'Authorization' => $bearer_token ) );
+
+		return $args;
+	}
+
+	/**
 	 * Test, if the token is valid
 	 *
 	 * @return bool
@@ -161,24 +180,5 @@ class CrmDao {
 		$resp = $response['http_response'];
 
 		return 200 === $resp->get_status();
-	}
-
-	/**
-	 * Add the authorization header to the given wp_remote_METHOD args
-	 *
-	 * @param array $args of wp_remote_METHOD
-	 *
-	 * @return array
-	 */
-	private function add_auth_header( $args = array() ) {
-		$bearer_token = "Bearer {$this->token['token']}";
-
-		if ( ! array_key_exists( 'headers', $args ) ) {
-			$args['headers'] = array();
-		}
-
-		$args['headers'] = array_merge( $args['headers'], array( 'Authorization' => $bearer_token ) );
-
-		return $args;
 	}
 }

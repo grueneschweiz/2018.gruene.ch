@@ -62,7 +62,7 @@ class CrmSaver {
 	 *
 	 * @param int $submission_id
 	 *
-	 * @throws \Exception
+	 * @throws Exception
 	 */
 	public function __construct( $submission_id ) {
 		require_once __DIR__ . '/SubmissionModel.php';
@@ -79,259 +79,6 @@ class CrmSaver {
 	 */
 	private static function get_queue() {
 		return new QueueDao( self::QUEUE_KEY );
-	}
-
-	/**
-	 * Add the submission to saving queue
-	 */
-	public function queue() {
-		$data = $this->get_data();
-
-		if ( ! empty( $data ) ) {
-			$this->queue->push( $data );
-			$this->schedule_cron();
-		}
-	}
-
-	/**
-	 * Get the filtered data for the crm
-	 *
-	 * @return array
-	 */
-	private function get_data() {
-		if ( empty( $this->crm_data ) ) {
-			$this->add_crm_mapped_data();
-		}
-
-		$data = $this->crm_data;
-
-		/**
-		 * Filters the submitted data, right before it's saved in the crm.
-		 *
-		 * @param CrmFieldData[] $data
-		 */
-		return (array) apply_filters( FormType::MODEL_NAME . '-before-crm-save', $data );
-	}
-
-	/**
-	 * Ensure the saving cron is scheduled
-	 */
-	private function schedule_cron() {
-		Util::add_cron( self::CRON_HOOK_CRM_SAVE, time() - 1, self::CRON_CRM_SAVE_RETRY_INTERVAL );
-	}
-
-	/**
-	 * Add data from fields that were mapped to crm fields
-	 *
-	 * Additionally add:
-	 * - The fields of the predecessor form
-	 * - The group (only if a new record is created)
-	 * - The entry channel (only if a new record is created)
-	 * - The language (only if none is set yet)
-	 */
-	private function add_crm_mapped_data() {
-		$this->add_predecessor_form_data( $this->submission->meta_get_predecessor() );
-
-		// the add the current data
-		// (so in case we have overlapping fields, the current data will be used)
-		foreach ( $this->form->get_fields() as $field ) {
-			if ( ! empty( $field['crm_field'] ) ) {
-				$data = $this->get_field_data( $field );
-
-				$this->add_crm_data_field_with_special_fields( $field, $data );
-			}
-		}
-
-		$this->auto_add_group();
-		$this->auto_add_entry_channel();
-		$this->auto_add_language();
-	}
-
-	/**
-	 * Get the corresponding data of the given field, respecting the hidden field value
-	 *
-	 * @param array $field
-	 *
-	 * @return null|mixed
-	 */
-	private function get_field_data( $field ) {
-		if ( $field['hidden_field'] ) {
-			return $field['hidden_field_value'];
-		}
-
-		$key = $field['slug'];
-
-		return $this->submission->{"get_$key"}();
-	}
-
-	/**
-	 * Add the crm group as defined in the settings
-	 */
-	private function auto_add_group() {
-		$fake_field = array(
-			'crm_field'      => 'groups',
-			'insertion_mode' => CrmFieldData::MODE_ADD_IF_NEW
-		);
-		$data       = \get_field( 'group_id', 'option' );
-
-		$this->add_crm_data_field( $fake_field, $data );
-	}
-
-	/**
-	 * Add the entry channel, if not set before.
-	 *
-	 * The value will follow the pattern 'example.tld - form title'
-	 */
-	private function auto_add_entry_channel() {
-		if ( ! isset( $this->crm_data['entryChannel'] ) ) {
-			$fake_field = array(
-				'crm_field'      => 'entryChannel',
-				'insertion_mode' => CrmFieldData::MODE_ADD_IF_NEW
-			);
-			$data       = Util::get_domain() . ' - ' . $this->form->get_title();
-
-			$this->add_crm_data_field( $fake_field, $data );
-		}
-	}
-
-	/**
-	 * Add the language, derived from the current website language.
-	 */
-	private function auto_add_language() {
-		$locale = substr( get_locale(), 0, 1 );
-		if ( in_array( $locale, array( 'd', 'f', 'i' ) ) ) {
-			$fake_field = array(
-				'crm_field'      => 'language',
-				'insertion_mode' => CrmFieldData::MODE_REPLACE_EMPTY
-			);
-
-			$this->add_crm_data_field( $fake_field, $locale );
-		}
-	}
-
-	/**
-	 * Add the given field and data to $this->crm_data as CrmFieldData object.
-	 *
-	 * Special fields:
-	 * - Newsletter: Only add it, if it is a subscription (prevent accidental overwrite).
-	 * - Greeting: Also add gender and the formal greeting. Skip field if value is unknown.
-	 *
-	 * @param $field
-	 * @param $data
-	 */
-	private function add_crm_data_field_with_special_fields( $field, $data ) {
-		if ( FormSubmission::TYPE_CRM_NEWSLETTER === $field['form_input_type'] ) {
-			$this->add_newsletter( $field, $data );
-
-			return;
-		}
-
-		if ( FormSubmission::TYPE_CRM_GREETING === $field['form_input_type'] ) {
-			$this->add_greeting( $field, $data );
-
-			return;
-		}
-
-		$this->add_crm_data_field( $field, $data );
-	}
-
-	/**
-	 * Add the different greetings and the gender field
-	 *
-	 * @param $field
-	 * @param $data
-	 */
-	private function add_greeting( $field, $data ) {
-		$key = strtolower( $data );
-		if ( ! array_key_exists( $key, self::CRM_GREETINGS_INFORMAL ) ) {
-			// don't process any other values than defined in self::CRM_GREETINGS_ACCEPTED
-			return;
-		}
-
-		$this->add_crm_data_field( $field, self::CRM_GREETINGS_INFORMAL[ $key ] );
-
-		$fake_field = array(
-			'crm_field'      => 'gender',
-			'insertion_mode' => $field['insertion_mode']
-		);
-		$this->add_crm_data_field( $fake_field, self::CRM_GREETINGS_INFORMAL_TO_GENDER[ $key ] );
-
-		// skip the formal greeting for neutral gender
-		if ( array_key_exists( $key, self::CRM_GREETINGS_INFORMAL_TO_FORMAL ) ) {
-			$fake_field = array(
-				'crm_field'      => 'salutationFormal',
-				'insertion_mode' => $field['insertion_mode']
-			);
-			$this->add_crm_data_field( $fake_field, self::CRM_GREETINGS_INFORMAL_TO_FORMAL[ $key ] );
-		}
-	}
-
-	/**
-	 * If a newsletter subscription was checked, add the subscription.
-	 *
-	 * @param array $field as returned by the form model
-	 * @param null|array|string $data use array for multiselect fields only
-	 */
-	private function add_newsletter( $field, $data ) {
-		if ( ! $data ) {
-			// don't store the newsletter field, if it was left empty
-			// this prevents unwanted unsubscriptions
-			return;
-		}
-
-		$field['insertion_mode'] = CrmFieldData::MODE_REPLACE;
-		$data                    = self::CRM_NEWSLETTER_VALUE;
-
-		$this->add_crm_data_field( $field, $data );
-	}
-
-	/**
-	 * Add the given field and data as CrmFieldData to $this->crm_data
-	 *
-	 * @param array $field as returned by the form model
-	 * @param null|array|string $data use array for multiselect fields only
-	 */
-	private function add_crm_data_field( $field, $data ) {
-		$this->crm_data[ $field['crm_field'] ] = new CrmFieldData( $field, $data );
-	}
-
-	/**
-	 * Recursively add all data of the linked previous forms.
-	 *
-	 * If two forms contain the same field, the newer one is authoritative
-	 *
-	 * @param SubmissionModel $predecessor
-	 */
-	private function add_predecessor_form_data( $predecessor ) {
-		// add data from linked submissions first
-		if ( $predecessor ) {
-			$pre_predecessor = $predecessor->meta_get_predecessor();
-			if ( $pre_predecessor ) {
-				$this->add_predecessor_form_data( $pre_predecessor );
-			}
-
-			try {
-				$fields = $predecessor->meta_get_form()->get_fields();
-			} catch ( Exception $e ) {
-				Util::report_form_error(
-					'add crm mapped data of predecessor submissions',
-					$predecessor,
-					$e,
-					$this->form->get_title()
-				);
-
-				return;
-			}
-
-
-			foreach ( $fields as $key => $field ) {
-				if ( ! empty( $field['crm_field'] ) ) {
-					$data = $predecessor->{"get_$key"}();
-
-					$this->add_crm_data_field_with_special_fields( $field, $data );
-				}
-			}
-		}
 	}
 
 	/**
@@ -424,5 +171,287 @@ class CrmSaver {
 		);
 
 		Util::send_mail_to_admin( $subject, $message );
+	}
+
+	/**
+	 * Add the submission to saving queue
+	 */
+	public function queue() {
+		$data = $this->get_data();
+
+		if ( ! empty( $data ) ) {
+			$this->queue->push( $data );
+			$this->schedule_cron();
+		}
+	}
+
+	/**
+	 * Get the filtered data for the crm
+	 *
+	 * @return array
+	 */
+	private function get_data() {
+		if ( empty( $this->crm_data ) ) {
+			$this->add_crm_mapped_data();
+		}
+
+		$data = $this->crm_data;
+
+		/**
+		 * Filters the submitted data, right before it's saved in the crm.
+		 *
+		 * @param CrmFieldData[] $data
+		 */
+		return (array) apply_filters( FormType::MODEL_NAME . '-before-crm-save', $data );
+	}
+
+	/**
+	 * Add data from fields that were mapped to crm fields
+	 *
+	 * Additionally add:
+	 * - The fields of the predecessor form
+	 * - The group (only if a new record is created)
+	 * - The entry channel (only if a new record is created)
+	 * - The language (only if none is set yet)
+	 */
+	private function add_crm_mapped_data() {
+		$this->add_predecessor_form_data( $this->submission->meta_get_predecessor() );
+		$this->add_form_fields_data( $this->form->get_fields() );
+
+		$this->auto_add_group();
+		$this->auto_add_entry_channel();
+		$this->auto_add_language();
+	}
+
+	/**
+	 * Recursively add all data of the linked previous forms.
+	 *
+	 * If two forms contain the same field, the newer one is authoritative
+	 *
+	 * @param SubmissionModel $predecessor
+	 */
+	private function add_predecessor_form_data( $predecessor ) {
+		// add data from linked submissions first
+		if ( $predecessor ) {
+			$pre_predecessor = $predecessor->meta_get_predecessor();
+			if ( $pre_predecessor ) {
+				$this->add_predecessor_form_data( $pre_predecessor );
+			}
+
+			try {
+				$form_fields = $predecessor->meta_get_form()->get_fields();
+			} catch ( Exception $e ) {
+				Util::report_form_error(
+					'add crm mapped data of predecessor submissions',
+					$predecessor,
+					$e,
+					$this->form->get_title()
+				);
+
+				return;
+			}
+
+			$this->add_form_fields_data( $form_fields );
+		}
+	}
+
+	/**
+	 * Load all data belonging to the given form fields into $this->crm_data
+	 *
+	 * @param FormField[] $form_fields
+	 */
+	private function add_form_fields_data( $form_fields ) {
+		foreach ( $form_fields as $key => $form_field ) {
+			if ( $form_field->has_crm_config() ) {
+				$data = $this->get_field_data( $form_field );
+
+				$this->add_crm_data_field_with_special_fields( $form_field, $data );
+			}
+		}
+	}
+
+	/**
+	 * Get the corresponding data of the given field, respecting the hidden field value
+	 *
+	 * @param FormField $form_field
+	 *
+	 * @return null|mixed
+	 */
+	private function get_field_data( $form_field ) {
+		if ( $form_field->has_fixed_crm_value() ) {
+			return $form_field->get_fixed_crm_value();
+		}
+
+		$key = $form_field->get_slug();
+
+		return $this->submission->{"get_$key"}();
+	}
+
+	/**
+	 * Add the given field and data to $this->crm_data as CrmFieldData object.
+	 *
+	 * Special fields:
+	 * - Newsletter: Only add it, if it is a subscription (prevent accidental overwrite).
+	 * - Greeting: Also add gender and the formal greeting. Skip field if value is unknown.
+	 *
+	 * @param FormField $form_field
+	 * @param string|array $data
+	 */
+	private function add_crm_data_field_with_special_fields( $form_field, $data ) {
+		if ( $form_field->is_crm_newsletter() ) {
+			$this->add_newsletter( $form_field, $data );
+
+			return;
+		}
+
+		if ( $form_field->is_crm_greeting() ) {
+			$this->add_greeting( $form_field, $data );
+
+			return;
+		}
+
+		$this->add_crm_data_field_from_form_field( $form_field, $data );
+	}
+
+	/**
+	 * If a newsletter subscription was checked, add the subscription.
+	 *
+	 * @param FormField $form_field
+	 * @param null|array|string $data use array for multiselect fields only
+	 */
+	private function add_newsletter( $form_field, $data ) {
+		if ( ! $data ) {
+			// don't store the newsletter field, if it was left empty
+			// this prevents unwanted unsubscriptions
+			return;
+		}
+
+		$form_field->set_insertion_mode( CrmFieldData::MODE_REPLACE );
+		$data = self::CRM_NEWSLETTER_VALUE;
+
+		$this->add_crm_data_field_from_form_field( $form_field, $data );
+	}
+
+	/**
+	 * Add the given field and data as CrmFieldData to $this->crm_data
+	 *
+	 * @param FormField $form_field
+	 * @param null|array|string $data use array for multiselect fields only
+	 */
+	private function add_crm_data_field_from_form_field( $form_field, $data ) {
+		$this->add_crm_data(
+			$form_field->get_crm_field(),
+			$form_field->get_insertion_mode(),
+			$form_field->get_choices(),
+			$form_field->get_crm_choice_map(),
+			$data
+		);
+	}
+
+	/**
+	 * Add the given field and data as CrmFieldData to $this->crm_data
+	 *
+	 * @param string $crm_key the crm field key
+	 * @param string $insertion_mode the insertion mode
+	 * @param array $choices the possible choices (if mapped field)
+	 * @param array $crm_choices the replacements for the choices
+	 * @param null|array|string $data use array for multiselect fields only
+	 */
+	private function add_crm_data( $crm_key, $insertion_mode, $choices, $crm_choices, $data ) {
+		$this->crm_data[ $crm_key ] = new CrmFieldData(
+			$crm_key,
+			$insertion_mode,
+			$choices,
+			$crm_choices,
+			$data
+		);
+	}
+
+	/**
+	 * Add the different greetings and the gender field
+	 *
+	 * @param FormField $form_field
+	 * @param string $data
+	 */
+	private function add_greeting( $form_field, $data ) {
+		$key = strtolower( $data );
+		if ( ! array_key_exists( $key, self::CRM_GREETINGS_INFORMAL ) ) {
+			// don't process any other values than defined in self::CRM_GREETINGS_INFORMAL
+			return;
+		}
+
+		$this->add_crm_data_field_from_form_field( $form_field, self::CRM_GREETINGS_INFORMAL[ $key ] );
+
+		$this->add_crm_data(
+			'gender',
+			$form_field->get_insertion_mode(),
+			array(),
+			array(),
+			self::CRM_GREETINGS_INFORMAL_TO_GENDER[ $key ]
+		);
+
+		// skip the formal greeting for neutral gender
+		if ( array_key_exists( $key, self::CRM_GREETINGS_INFORMAL_TO_FORMAL ) ) {
+			$this->add_crm_data(
+				'salutationFormal',
+				$form_field->get_insertion_mode(),
+				array(),
+				array(),
+				self::CRM_GREETINGS_INFORMAL_TO_FORMAL[ $key ]
+			);
+		}
+	}
+
+	/**
+	 * Add the crm group as defined in the settings
+	 */
+	private function auto_add_group() {
+		$this->add_crm_data(
+			'groups',
+			CrmFieldData::MODE_ADD_IF_NEW,
+			array(),
+			array(),
+			\get_field( 'group_id', 'option' )
+		);
+	}
+
+	/**
+	 * Add the entry channel, if not set before.
+	 *
+	 * The value will follow the pattern 'example.tld - form title'
+	 */
+	private function auto_add_entry_channel() {
+		if ( ! isset( $this->crm_data['entryChannel'] ) ) {
+			$this->add_crm_data(
+				'entryChannel',
+				CrmFieldData::MODE_ADD_IF_NEW,
+				array(),
+				array(),
+				Util::get_domain() . ' - ' . $this->form->get_title()
+			);
+		}
+	}
+
+	/**
+	 * Add the language, derived from the current website language.
+	 */
+	private function auto_add_language() {
+		$locale = substr( get_locale(), 0, 1 );
+		if ( in_array( $locale, array( 'd', 'f', 'i' ) ) ) {
+			$this->add_crm_data(
+				'language',
+				CrmFieldData::MODE_REPLACE_EMPTY,
+				array(),
+				array(),
+				$locale
+			);
+		}
+	}
+
+	/**
+	 * Ensure the saving cron is scheduled
+	 */
+	private function schedule_cron() {
+		Util::add_cron( self::CRON_HOOK_CRM_SAVE, time() - 1, self::CRON_CRM_SAVE_RETRY_INTERVAL );
 	}
 }

@@ -47,19 +47,22 @@ class CrmFieldData {
 	private $substitution_map;
 
 	/**
-	 * CRMFieldData constructor.
+	 * Constructor
 	 *
-	 * @param array $field as returned by the form model
+	 * @param string $key the crm field key
+	 * @param string $mode the insertion mode
+	 * @param array $choices the possible choices (if mapped field)
+	 * @param array $replacements the replacements for the choices
 	 * @param null|array|string $value use array for multiselect fields only
 	 *
 	 * @throws InvalidArgumentException
 	 */
-	public function __construct( $field, $value ) {
-		$this->key = $field['crm_field'];
-		$this->set_mode( $field['insertion_mode'] );
+	public function __construct( $key, $mode, $choices, $replacements, $value ) {
+		$this->key = $key;
+		$this->set_mode( $mode );
 
 		if ( $this->is_mapped_field() ) {
-			$this->set_substitution_map( $field['form_input_choices'], $field['choice_map'] );
+			$this->set_substitution_map( $choices, $replacements );
 		}
 
 		$this->set_value( $value );
@@ -86,19 +89,6 @@ class CrmFieldData {
 	}
 
 	/**
-	 * Set the value, mapped if necessary
-	 *
-	 * @param array|string $value
-	 */
-	private function set_value( $value ) {
-		if ( $this->is_mapped_field() ) {
-			$this->value = is_array( $value ) ? array_map( [ $this, 'map_value' ], $value ) : $this->map_value( $value );
-		} else {
-			$this->value = $value;
-		}
-	}
-
-	/**
 	 * Tells if the values of this field have to be mapped to the crm values
 	 *
 	 * @return bool
@@ -110,21 +100,31 @@ class CrmFieldData {
 	/**
 	 * Populate the the choice substitution map
 	 *
-	 * @param string $search
-	 * @param string $replace
+	 * @param array $search
+	 * @param array $replace
 	 *
 	 * @throws InvalidArgumentException
 	 */
 	private function set_substitution_map( $search, $replace ) {
-		$search  = FormModel::split_choices( $search );
-		$replace = FormModel::split_choices( $replace );
-
 		if ( count( $search ) !== count( $replace ) ) {
 			throw new InvalidArgumentException( 'The the webling choices must match the choices in the form.' );
 		}
 
 		foreach ( $search as $k => $s ) {
 			$this->substitution_map[ $s ] = $replace[ $k ];
+		}
+	}
+
+	/**
+	 * Set the value, mapped if necessary
+	 *
+	 * @param array|string $value
+	 */
+	private function set_value( $value ) {
+		if ( $this->is_mapped_field() ) {
+			$this->value = is_array( $value ) ? array_map( [ $this, 'map_value' ], $value ) : $this->map_value( $value );
+		} else {
+			$this->value = $value;
 		}
 	}
 
