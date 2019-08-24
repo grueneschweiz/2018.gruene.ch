@@ -4,6 +4,7 @@
 namespace SUPT;
 
 use Exception;
+use function get_field;
 
 require_once __DIR__ . '/CrmFieldData.php';
 require_once __DIR__ . '/QueueDao.php';
@@ -218,9 +219,14 @@ class CrmSaver {
 		$this->add_predecessor_form_data( $this->submission->meta_get_predecessor() );
 		$this->add_form_fields_data( $this->form->get_fields() );
 
-		$this->auto_add_group();
-		$this->auto_add_entry_channel();
-		$this->auto_add_language();
+		// only add the automatic field data, if no data was added from the form
+		// else every record would be added, even if the form wasn't configured to
+		// store data to the crm
+		if ( ! empty( $this->crm_data ) ) {
+			$this->auto_add_group();
+			$this->auto_add_entry_channel();
+			$this->auto_add_language();
+		}
 	}
 
 	/**

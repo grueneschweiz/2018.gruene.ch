@@ -563,6 +563,13 @@ class FormSubmission {
 	 * Add the data to save to the saving queue, processed by a cron job
 	 */
 	private function add_to_saving_queue_of_crm() {
+		require_once __DIR__ . '/include/CrmDao.php';
+
+		// bail early, if the crm api isn't configured
+		if ( ! CrmDao::has_api_url() ) {
+			return;
+		}
+
 		require_once __DIR__ . '/include/CrmSaver.php';
 
 		try {
