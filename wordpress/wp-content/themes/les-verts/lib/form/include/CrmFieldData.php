@@ -47,6 +47,13 @@ class CrmFieldData {
 	private $substitution_map;
 
 	/**
+	 * Set to false to completely disable choice replacement
+	 *
+	 * @var bool
+	 */
+	private $replace;
+
+	/**
 	 * Constructor
 	 *
 	 * @param string $key the crm field key
@@ -54,14 +61,16 @@ class CrmFieldData {
 	 * @param array $choices the possible choices (if mapped field)
 	 * @param array $replacements the replacements for the choices
 	 * @param null|array|string $value use array for multiselect fields only
+	 * @param bool $replace skip choice replacement if false
 	 *
 	 * @throws InvalidArgumentException
 	 */
-	public function __construct( $key, $mode, $choices, $replacements, $value ) {
+	public function __construct( $key, $mode, $choices, $replacements, $value, $replace ) {
 		$this->key = $key;
 		$this->set_mode( $mode );
+		$this->replace = $replace;
 
-		if ( $this->is_mapped_field() ) {
+		if ( $this->should_map_values() ) {
 			$this->set_substitution_map( $choices, $replacements );
 		}
 
@@ -89,12 +98,12 @@ class CrmFieldData {
 	}
 
 	/**
-	 * Tells if the values of this field have to be mapped to the crm values
+	 * Check if the values of this field have to be mapped to the crm values
 	 *
 	 * @return bool
 	 */
-	private function is_mapped_field() {
-		return in_array( $this->key, self::$mappedFields );
+	private function should_map_values() {
+		return $this->replace && in_array( $this->key, self::$mappedFields );
 	}
 
 	/**
@@ -121,7 +130,7 @@ class CrmFieldData {
 	 * @param array|string $value
 	 */
 	private function set_value( $value ) {
-		if ( $this->is_mapped_field() ) {
+		if ( $this->should_map_values() ) {
 			$this->value = is_array( $value ) ? array_map( [ $this, 'map_value' ], $value ) : $this->map_value( $value );
 		} else {
 			$this->value = $value;

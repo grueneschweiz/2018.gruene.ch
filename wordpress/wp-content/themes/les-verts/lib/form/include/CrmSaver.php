@@ -349,7 +349,8 @@ class CrmSaver {
 			$form_field->get_insertion_mode(),
 			$form_field->get_choices(),
 			$form_field->get_crm_choice_map(),
-			$data
+			$data,
+			! $form_field->has_fixed_crm_value()
 		);
 	}
 
@@ -361,14 +362,16 @@ class CrmSaver {
 	 * @param array $choices the possible choices (if mapped field)
 	 * @param array $crm_choices the replacements for the choices
 	 * @param null|array|string $data use array for multiselect fields only
+	 * @param bool $replace should the choices be replaced with the crm_choices?
 	 */
-	private function add_crm_data( $crm_key, $insertion_mode, $choices, $crm_choices, $data ) {
+	private function add_crm_data( $crm_key, $insertion_mode, $choices, $crm_choices, $data, $replace ) {
 		$this->crm_data[ $crm_key ] = new CrmFieldData(
 			$crm_key,
 			$insertion_mode,
 			$choices,
 			$crm_choices,
-			$data
+			$data,
+			$replace
 		);
 	}
 
@@ -392,7 +395,8 @@ class CrmSaver {
 			$form_field->get_insertion_mode(),
 			array(),
 			array(),
-			self::CRM_GREETINGS_INFORMAL_TO_GENDER[ $key ]
+			self::CRM_GREETINGS_INFORMAL_TO_GENDER[ $key ],
+			false
 		);
 
 		// skip the formal greeting for neutral gender
@@ -402,7 +406,8 @@ class CrmSaver {
 				$form_field->get_insertion_mode(),
 				array(),
 				array(),
-				self::CRM_GREETINGS_INFORMAL_TO_FORMAL[ $key ]
+				self::CRM_GREETINGS_INFORMAL_TO_FORMAL[ $key ],
+				false
 			);
 		}
 	}
@@ -416,7 +421,8 @@ class CrmSaver {
 			CrmFieldData::MODE_ADD_IF_NEW,
 			array(),
 			array(),
-			\get_field( 'group_id', 'option' )
+			\get_field( 'group_id', 'option' ),
+			false
 		);
 	}
 
@@ -432,7 +438,8 @@ class CrmSaver {
 				CrmFieldData::MODE_ADD_IF_NEW,
 				array(),
 				array(),
-				Util::get_domain() . ' - ' . $this->form->get_title()
+				Util::get_domain() . ' - ' . $this->form->get_title(),
+				false
 			);
 		}
 	}
@@ -448,7 +455,8 @@ class CrmSaver {
 				CrmFieldData::MODE_REPLACE_EMPTY,
 				array(),
 				array(),
-				$locale
+				$locale,
+				false
 			);
 		}
 	}
