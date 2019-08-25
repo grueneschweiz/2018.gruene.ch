@@ -256,7 +256,14 @@ class CrmSaver {
 				return;
 			}
 
+			// set the predecessor data, so it can be added
+			$submission = $this->submission;
+			$this->submission = $predecessor;
+
 			$this->add_form_fields_data( $form_fields );
+
+			// restore the current submission
+			$this->submission = $submission;
 		}
 	}
 
