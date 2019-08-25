@@ -337,7 +337,7 @@ class FormSubmission {
 					$checked = $field->sanitize( $raw );
 					$valid   = $field->validate( $checked );
 
-					if ( true !== $valid ) {
+					if ( ! $valid ) {
 						$this->errors[ $key ] = __( 'Invalid value.', THEME_DOMAIN );
 					}
 
@@ -352,7 +352,7 @@ class FormSubmission {
 				$sanitized = $field->sanitize( $raw );
 				$valid     = $field->validate( $sanitized );
 
-				if ( true !== $valid ) {
+				if ( ! $valid ) {
 					$this->errors[ $key ] = __( 'Invalid or missing value.', THEME_DOMAIN );
 				}
 

@@ -5,13 +5,15 @@ namespace SUPT;
 
 
 class FormField {
+	const TYPE_TEXT = 'text';
+	const TYPE_TEXTAREA = 'textarea';
 	const TYPE_CHECKBOX = 'checkbox';
 	const TYPE_CONFIRMATION = 'confirmation';
 	const TYPE_SELECT = 'select';
 	const TYPE_RADIO = 'radio';
 	const TYPE_EMAIL = 'email';
 	const TYPE_NUMBER = 'number';
-	const TYPE_PHONE = 'phone';
+	const TYPE_PHONE = 'tel';
 	const TYPE_CRM_NEWSLETTER = 'crm_newsletter';
 	const TYPE_CRM_GREETING = 'crm_greeting';
 
@@ -205,6 +207,15 @@ class FormField {
 
 			case self::TYPE_NUMBER:
 				$valid = is_numeric( $data ) || '' === $data;
+				break;
+
+			case self::TYPE_TEXT:
+			case self::TYPE_TEXTAREA:
+				$valid = is_string( $data );
+				break;
+
+			case self::TYPE_PHONE:
+				$valid = is_string( $data ) || is_numeric($data);
 				break;
 		}
 
