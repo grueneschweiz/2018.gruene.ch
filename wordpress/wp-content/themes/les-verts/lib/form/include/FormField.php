@@ -21,6 +21,7 @@ class FormField {
 		self::TYPE_SELECT,
 		self::TYPE_RADIO,
 		self::TYPE_CRM_GREETING,
+		self::TYPE_CHECKBOX,
 	);
 
 	const CRM_EMAIL_FIELD = 'email1';
