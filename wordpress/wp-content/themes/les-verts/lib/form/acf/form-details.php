@@ -231,6 +231,8 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 							'memberStatusMunicipality' => 'Mitgliedschaft Kommunal / affiliation communale',
 							'memberStatusYoung'        => 'Mitgliedschaft Junge Grüne / affiliation Jeunes Verts',
 							'entryChannel'             => 'Gewinnungskanal / acquisition',
+							'membershipStart'          => 'Beginn Mitgliedschaft / date d’entrée',
+							'responsibility'           => 'Zuständigkeit / compétence',
 							'interests'                => 'Interessen / intérêts',
 							'request'                  => 'Anfragen für / disponibilités',
 							'profession'               => 'Beruf / profession',

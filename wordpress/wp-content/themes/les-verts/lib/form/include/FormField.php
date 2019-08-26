@@ -28,6 +28,7 @@ class FormField {
 	const CRM_EMAIL_FIELD = 'email1';
 	const CRM_INTERESTS_FIELD = 'interests';
 	const CRM_REQUEST_FIELD = 'request';
+	const CRM_MEMBERSHIP_START_FIELD = 'membershipStart';
 
 	const CRM_MULTISELECT_FIELDS = array(
 		self::CRM_INTERESTS_FIELD,
@@ -89,6 +90,10 @@ class FormField {
 					$this->crm_value = $config['hidden_field_value'];
 				}
 			}
+
+			if ( $this->is_crm_membership_start() && $this->has_fixed_crm_value() ) {
+				$this->crm_value = date( 'Y-m-d', strtotime( $this->crm_value ) );
+			}
 		}
 	}
 
@@ -126,6 +131,10 @@ class FormField {
 
 	public function has_fixed_crm_value() {
 		return true === $this->crm_hidden;
+	}
+
+	private function is_crm_membership_start() {
+		return $this->has_crm_config() && self::CRM_MEMBERSHIP_START_FIELD === $this->crm_field;
 	}
 
 	public function get_slug() {
