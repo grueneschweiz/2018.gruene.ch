@@ -43,6 +43,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 					'email'          => __( 'Email', THEME_DOMAIN ),
 					'tel'            => __( 'Phone', THEME_DOMAIN ),
 					'number'         => __( 'Number', THEME_DOMAIN ),
+					'date'           => __( 'Date', THEME_DOMAIN ),
 					'textarea'       => __( 'Textarea', THEME_DOMAIN ),
 					'radio'          => __( 'Radio button', THEME_DOMAIN ),
 					'checkbox'       => __( 'Check box', THEME_DOMAIN ),
@@ -134,12 +135,12 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 				'maxlength'         => '',
 			),
 			array(
-				'key' => 'field_5d3f1c8af54be',
-				'label' => __('Important Note', THEME_DOMAIN),
-				'name' => '',
-				'type' => 'message',
-				'instructions' => '',
-				'required' => 0,
+				'key'               => 'field_5d3f1c8af54be',
+				'label'             => __( 'Important Note', THEME_DOMAIN ),
+				'name'              => '',
+				'type'              => 'message',
+				'instructions'      => '',
+				'required'          => 0,
 				'conditional_logic' => array(
 					array(
 						'field'    => 'field_59f33814cf0dc',
@@ -147,14 +148,14 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 						'value'    => 'crm_greeting',
 					),
 				),
-				'wrapper' => array(
+				'wrapper'           => array(
 					'width' => '',
 					'class' => '',
-					'id' => '',
+					'id'    => '',
 				),
-				'message' => __('Please add <em>Hallo</em>, <em>Liebe</em>, <em>Lieber</em> or <em>salut</em>, <em>chère</em>, <em>cher</em>. All other values will be ignored!', THEME_DOMAIN),
-				'new_lines' => 'wpautop',
-				'esc_html' => 0,
+				'message'           => __( 'Please add <em>Hallo</em>, <em>Liebe</em>, <em>Lieber</em> or <em>salut</em>, <em>chère</em>, <em>cher</em>. All other values will be ignored!', THEME_DOMAIN ),
+				'new_lines'         => 'wpautop',
+				'esc_html'          => 0,
 			),
 			array(
 				'key'               => 'field_5ab20e7f14b9a',

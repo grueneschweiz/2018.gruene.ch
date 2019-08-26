@@ -116,15 +116,22 @@
 				{% if 'textarea' == field.form_input_type %}
 					{% set modifiers_classes = modifiers_classes ~ ' a-input--textarea' %}
 				{% endif %}
+				{% if 'date' == field.form_input_type %}
+					{% set pattern = '^\\s*(\\d{1,2}|\\d{4})\\s?[ .\\/-]\\s?(\\d{1,2}|\\w+)\\s?[ .\\/-]\\s?(\\d{1,2}|\\d{4})\\s*$' %}
+					{% set type = 'text' %}
+				{% endif %}
 				{% include 'atoms/form-elements/a-input.twig' with {
 					'name': field.slug,
 					'label': field.form_input_label,
 					'helptext': field.form_input_help_text,
 					'required': field.form_input_required,
-					'type': field.form_input_type,
+					'type': type|default(field.form_input_type),
 					'wrapper_classes': wrapper_classes,
-					'modifiers_classes': modifiers_classes
+					'modifiers_classes': modifiers_classes,
+					'pattern': pattern
 				} only %}
+				{% set type = '' %}
+				{% set pattern = '' %}
 			{% endif %}
 			</div>{# close .m-form__element#}
 		{% endif %}{# close if not hidden field #}

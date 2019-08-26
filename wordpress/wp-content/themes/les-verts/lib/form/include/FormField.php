@@ -13,6 +13,7 @@ class FormField {
 	const TYPE_RADIO = 'radio';
 	const TYPE_EMAIL = 'email';
 	const TYPE_NUMBER = 'number';
+	const TYPE_DATE = 'date';
 	const TYPE_PHONE = 'tel';
 	const TYPE_CRM_NEWSLETTER = 'crm_newsletter';
 	const TYPE_CRM_GREETING = 'crm_greeting';
@@ -218,6 +219,9 @@ class FormField {
 			case self::TYPE_PHONE:
 				$valid = is_string( $data ) || is_numeric($data);
 				break;
+
+			case self::TYPE_DATE:
+				$valid = '' === $data || (bool) $data;
 		}
 
 		if ( ! is_bool( $data ) && $this->required && empty( trim( $data ) ) ) {
@@ -259,8 +263,47 @@ class FormField {
 			case self::TYPE_NUMBER:
 				return filter_var( $data, FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION );
 
+			case self::TYPE_DATE:
+				return $this->parse_date( $data );
+
 			default:
 				return strip_tags( $data );
 		}
+	}
+
+	/**
+	 * Return date in YYYY-MM-DD format from given string,
+	 * '' if string is empty, false if date couldn't be parsed.
+	 *
+	 * @param string $string
+	 *
+	 * @return false|string
+	 */
+	private function parse_date( $string ) {
+		$string = trim($string);
+
+		if (empty($string)){
+			return '';
+		}
+
+		$tmp1 = date_parse( $string );
+		$tmp2 = date_parse_from_format( 'd.m.y', $string );
+		$tmp3 = date_parse_from_format( 'Y-m-d', $string );
+
+		if ( $tmp1['error_count'] && $tmp2['error_count'] && $tmp3['error_count'] ) {
+			return false;
+		}
+
+		if ( ! $tmp1['error_count'] && $tmp1['year'] ) {
+			$date = $tmp1;
+		} elseif ( ! $tmp2['error_count'] ) {
+			$date = $tmp2;
+		} else {
+			$date = $tmp3;
+		}
+
+		$datestring = $date['year'] . "-" . $date['month'] . "-" . $date['day'];
+
+		return date( 'Y-m-d', strtotime( $datestring ) );
 	}
 }
