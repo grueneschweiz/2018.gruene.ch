@@ -201,7 +201,7 @@ msgstr "Nutze einen generischen Titel wie beispielsweise die Kategorie. Verlinke
 #: acf-translate.php:722 acf-translate.php:1904 acf-translate.php:1982
 #: acf-translate.php:2172 acf-translate.php:2402 acf-translate.php:2761
 #: acf-translate.php:3758 acf-translate.php:4151
-#: lib/form/acf/form-details.php:486
+#: lib/form/acf/form-details.php:816
 msgid "Title"
 msgstr "Titel"
 
@@ -259,7 +259,7 @@ msgstr "Zeigt ein Teaser der nächsten Events."
 msgid "Max events to show"
 msgstr "Max. angezeigter Events"
 
-#: acf-translate.php:1381 acf-translate.php:3281 lib/form/acf/input.php:194
+#: acf-translate.php:1381 acf-translate.php:3281 lib/form/acf/input.php:242
 msgid "Full Width"
 msgstr "Volle Breite"
 
@@ -391,10 +391,6 @@ msgstr "Schreibe einen kurzen Teaser um die Aufmerksamkeit der Besuchenden anzuz
 msgid "Read more button"
 msgstr "Weiterlesen-Button"
 
-#: acf-translate.php:1525
-msgid "The button text."
-msgstr "Der Button-Text."
-
 #: acf-translate.php:1959
 msgid "Call to Action"
 msgstr "Call to Action"
@@ -403,33 +399,13 @@ msgstr "Call to Action"
 msgid "This refers to the second box, the darker one. Use it to call for action."
 msgstr "Dies gehört zur zweiten Box, der dünkleren. Nutze sie für einen Call to Action."
 
-#: acf-translate.php:1567 acf-translate.php:1583
-msgid "Participate Title"
-msgstr "Mitmachtitel"
-
 #: acf-translate.php:1985
 msgid "Use an encouraging title, like 'Let me be part of the success'."
 msgstr "Nimm einen ermutigenden Titel wie «Ich will Teil des Erfolges werden»."
 
-#: acf-translate.php:1602
-msgid "Participate Title Link"
-msgstr "Link des Mitmachtitels"
-
-#: acf-translate.php:1605
-msgid "Select the page that contains an overview with all your participation possibilities."
-msgstr "Wähle die Seite, die einen Überblick über alle Mitmachmöglichkeiten zeigt."
-
-#: acf-translate.php:1627
-msgid "Participation Description"
-msgstr "Mitmach-Beschrieb"
-
 #: acf-translate.php:2004
 msgid "Tell the visiter briefly, what the form does. Example: Stay updated, subscribe to our newsletter; make a change, become a member; sign the petition"
 msgstr "Sag den Besuchenden kurz, was das Formular macht. Beispiele: Newsletter abonnieren ̣- auf dem Laufenden bleiben, Etwas ändern - Mitglied werden, Petition unterzeichnen"
-
-#: acf-translate.php:1650
-msgid "Select the form containing your call to action."
-msgstr "Wähle das Formular mit dem Call to Action aus"
 
 #: acf-translate.php:2149
 msgid "[Template]In Short"
@@ -706,7 +682,7 @@ msgstr "[Template]Einzelner Beitrag"
 msgid "Display a teaser of any post or page."
 msgstr "Zeige einen Teaser eines Beitrages oder einer Seite an."
 
-#: acf-translate.php:3547 acf-translate.php:4220 functions.php:152
+#: acf-translate.php:3547 acf-translate.php:4220 functions.php:147
 msgid "Footer"
 msgstr "Footer"
 
@@ -852,7 +828,7 @@ msgid "Displayed in the teaser only."
 msgstr "Wird nur im Teaser angezeigt."
 
 #: acf-translate.php:2001 acf-translate.php:4334
-#: lib/form/acf/form-details.php:413
+#: lib/form/acf/form-details.php:743
 msgid "Description"
 msgstr "Beschreibung"
 
@@ -1031,8 +1007,8 @@ msgstr "In Kürze"
 msgid "Use this block to add text. If you need to add raw HTML, make sure you use the 'text' mode instead of the 'visual' mode."
 msgstr "Nutze diesen Block um Text hinzuzufügen. Solltest du HTML einfügen müssen, nutze den <i>Text</i>- statt den <i>visuellen</i>modus."
 
-#: vendor/timber/timber/tests/test-timber-menu.php:533
-#: vendor/timber/timber/tests/test-timber-menu.php:534
+#: vendor/timber/timber/tests/test-timber-menu.php:558
+#: vendor/timber/timber/tests/test-timber-menu.php:559
 msgid "Gallery"
 msgstr "Galerie"
 
@@ -1059,10 +1035,6 @@ msgstr "Person"
 #: acf-translate.php:1184
 msgid "Show a form"
 msgstr "Formular anzeigen"
-
-#: acf-translate.php:5244
-msgid "form"
-msgstr "Formular"
 
 #: acf-translate.php:5483
 msgid "Overview"
@@ -1096,7 +1068,7 @@ msgstr "Sprachnavigation"
 msgid "Footer meta navigation"
 msgstr "Footer-Meta-Navigation"
 
-#: functions.php:154
+#: functions.php:149
 msgid "This is the footer. Use it for your primary calls to action (Button widget), your contact details (Contact widget) and the footer menu (Link list widget)."
 msgstr "Das ist der Footer. Verwende ihn für deine wichtigsten Aufrufe zur Aktion (Button-Widget), deine Kontaktdaten (Kontakt-Widget) und eine Footer-Navigation (Linkliste-Widget)."
 
@@ -1160,14 +1132,6 @@ msgctxt "'This' refers to the logo"
 msgid "This is used in the menubar."
 msgstr "Dies wird in der Menüleiste verwendet."
 
-#: lib/customizer/_Example.php:39
-msgid "Logos"
-msgstr "Logos"
-
-#: lib/customizer/_Example.php:64 lib/customizer/_Example.php:78
-msgid "some words about the logo like the size etc."
-msgstr "einige Wörter über das Logo wie die Größe etc."
-
 #: lib/form/include/FormType.php:26
 msgctxt "post type general name"
 msgid "Forms"
@@ -1229,12 +1193,12 @@ msgstr "Kein Formular gefunden"
 msgid "No form in the trash"
 msgstr "Kein Formular im Papierkorb"
 
-#: lib/form/include/FormType.php:190
+#: lib/form/include/FormType.php:202
 msgid "Fields"
 msgstr "Felder"
 
-#: lib/form/include/FormType.php:242 lib/form/include/FormType.php:272
-#: lib/form/include/FormType.php:273 lib/form/include/SubmissionsTable.php:33
+#: lib/form/include/FormType.php:254 lib/form/include/FormType.php:284
+#: lib/form/include/FormType.php:285 lib/form/include/SubmissionsTable.php:33
 msgid "Submissions"
 msgstr "Rückmeldungen"
 
@@ -1250,43 +1214,43 @@ msgstr "Definiere die Eingabefelder."
 msgid "Add field"
 msgstr "Feld hinzufügen"
 
-#: lib/form/acf/form-details.php:342
+#: lib/form/acf/form-details.php:672
 msgid "Submit"
 msgstr "Absenden"
 
-#: lib/form/acf/form-details.php:369
+#: lib/form/acf/form-details.php:699
 msgid "Configure the submit buttons."
 msgstr "Konfiguriere die Buttons um das Formular abzuschicken."
 
-#: lib/form/acf/form-details.php:375 lib/widgets/ButtonWidget.php:23
+#: lib/form/acf/form-details.php:705 lib/widgets/ButtonWidget.php:23
 msgid "Button"
 msgstr "Button"
 
-#: lib/form/acf/form-details.php:394
+#: lib/form/acf/form-details.php:724
 msgid "Button Submitting"
 msgstr "Button während dem Senden"
 
-#: lib/form/acf/form-details.php:405
+#: lib/form/acf/form-details.php:735
 msgid "Sending"
 msgstr "Am senden"
 
-#: lib/form/acf/form-details.php:416
+#: lib/form/acf/form-details.php:746
 msgid "Why someone should fill in this form. Displayed next to the submit button."
 msgstr "Warum jemand dieses Formular ausfüllen sollte. Angezeigt neben dem Abschicken-Button."
 
-#: lib/form/acf/form-details.php:433
+#: lib/form/acf/form-details.php:763
 msgid "After Submit"
 msgstr "Nach dem Absenden"
 
-#: lib/form/acf/form-details.php:449
+#: lib/form/acf/form-details.php:779
 msgid "Success"
 msgstr "Erfolg"
 
-#: lib/form/acf/form-details.php:505
+#: lib/form/acf/form-details.php:835
 msgid "Thank you for your support!"
 msgstr "Herzlichen Dank für deine Unterstützung!"
 
-#: lib/form/acf/form-details.php:513
+#: lib/form/acf/form-details.php:843
 msgid "Message"
 msgstr "Mitteilung"
 
@@ -1294,7 +1258,7 @@ msgstr "Mitteilung"
 msgid "Mails"
 msgstr "E-Mails"
 
-#: lib/form/acf/form-local-settings.php:11 lib/form/acf/input.php:50
+#: lib/form/acf/form-local-settings.php:11 lib/form/acf/input.php:51
 msgid "Confirmation"
 msgstr "Bestätigung"
 
@@ -1356,68 +1320,62 @@ msgid "Field Label"
 msgstr "Feldbeschriftung"
 
 #: lib/form/acf/input.php:30
+#: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:2642
 msgid "Type"
 msgstr "Typ"
 
-#: lib/form/acf/input.php:46
+#: lib/form/acf/input.php:47
 msgid "Textarea"
 msgstr "Textbereich"
 
-#: lib/form/acf/input.php:47
+#: lib/form/acf/input.php:48
 msgid "Radio button"
 msgstr "Option (eine aus mehreren)"
 
-#: lib/form/acf/input.php:48
+#: lib/form/acf/input.php:49
 msgid "Check box"
 msgstr "Option (mehrere möglich)"
 
-#: lib/form/acf/input.php:49
+#: lib/form/acf/input.php:50
 msgid "Drop down"
 msgstr "Dropdown"
 
-#: lib/form/acf/input.php:89
+#: lib/form/acf/input.php:92
 msgid "Help Text (optional)"
 msgstr "Hilfe-Text (optional)"
 
-#: lib/form/acf/input.php:92
+#: lib/form/acf/input.php:95
 msgid "Displayed below the input field (small)"
 msgstr "Angezeigt unter dem Eingabefeld (klein)"
 
-#: lib/form/acf/input.php:126
+#: lib/form/acf/input.php:162
 msgid "Choices"
 msgstr "Auswahlmöglichkeiten"
 
-#: lib/form/acf/input.php:129
+#: lib/form/acf/input.php:165
 msgid "Enter each choice on a new line."
 msgstr "Eine Auswahl pro Zeile eingeben."
 
-#: lib/form/acf/input.php:167
+#: lib/form/acf/input.php:210
+#: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:2366
 msgid "Required"
 msgstr "Pflichtfeld"
 
-#: lib/form/acf/input.php:170
+#: lib/form/acf/input.php:213
 msgid "Set the field as mandatory"
 msgstr "Feld als erforderlich markieren"
 
-#: lib/form/acf/input.php:197
+#: lib/form/acf/input.php:245
 msgid "Uses the full width of the form."
 msgstr "Nutzt die volle Breite des Formulars."
 
-#: lib/form/acf/input.php:226
+#: lib/form/acf/input.php:274
 msgid "Width %"
 msgstr "Breite %"
 
-#: lib/form/acf/input.php:255
+#: lib/form/acf/input.php:303
 msgid "Min width (optional)"
 msgstr "Min. Breite (optional)"
-
-#: lib/form/acf/mail-template.php:21
-msgid "Use the following tags as placeholders in your mail. They will be replaced automatically: <strong><div class=\"form_mail_template_placeholders\"></div></strong>\n"
-"\n"
-"<i>Advanced: You may use <a href=\"https://twig.symfony.com/\" target=\"_blank\">Twig</a> in this mail template.</i>"
-msgstr "Benutze die folgenden Codes als Platzhalter für dein E-Mail. Sie werden automatisch ersetzt: <strong><div class=\"form_mail_template_placeholders\"></div></strong>\n"
-"\n"
-"<i>Für Fortgeschrittene: In dieser E-Mailvorlage kann <a href=\"https://twig.symfony.com/\" target=\"_blank\">Twig</a> verwendet werden.</i>"
 
 #: lib/form/acf/mail-template.php:41
 msgid "Subject"
@@ -1455,21 +1413,9 @@ msgstr "Benutzername"
 msgid "Password"
 msgstr "Passwort"
 
-#: lib/form/submission.php:410
+#: lib/form/submission.php:393
 msgid "Missing data."
 msgstr "Fehlende Daten."
-
-#: lib/form/submission.php:462
-msgid "Invalid input."
-msgstr "Ungültige Eingabe."
-
-#: lib/form/submission.php:486
-msgid "Invalid email."
-msgstr "Ungültige E-Mail."
-
-#: lib/form/submission.php:497
-msgid "This field is required."
-msgstr "Dieses Feld ist erforderlich."
 
 #: lib/post-types/PeopleType.php:13
 msgid "People"
@@ -1581,15 +1527,7 @@ msgctxt "Noun"
 msgid "Search"
 msgstr "Suche"
 
-#: search.php:18
-msgid "Search results for: %s"
-msgstr "Suchergebnisse zu: %s"
-
-#: search.php:19
-msgid "You've been searching for: %s"
-msgstr "Suchanfrage: %s"
-
-#: vendor/mindkomm/timmy/lib/Timmy.php:223
+#: vendor/mindkomm/timmy/lib/Timmy.php:233
 msgid "Full Size"
 msgstr "Volle Größe"
 
@@ -1612,12 +1550,11 @@ msgid "Next &raquo;"
 msgstr "Nächste &raquo;"
 
 #: vendor/timber/timber/lib/Pagination.php:179
-#: vendor/timber/timber/lib/TextHelper.php:26
-#: vendor/timber/timber/lib/TextHelper.php:44
+#: vendor/timber/timber/lib/TextHelper.php:41
 msgid "&hellip;"
 msgstr "&hellip;"
 
-#: vendor/timber/timber/lib/TextHelper.php:53
+#: vendor/timber/timber/lib/TextHelper.php:50
 msgctxt "word count: words or characters?"
 msgid "words"
 msgstr "Wörter"
@@ -1762,11 +1699,6 @@ msgstr "Vorherige Seite"
 msgid "Next Page"
 msgstr "Nächste Seite"
 
-#: templates/atoms/a-post-link.twig:22
-msgctxt "Date format. See http://php.net/manual/de/function.date.php"
-msgid "d. F Y"
-msgstr "d. F Y"
-
 #: templates/atoms/a-post-link.twig:49
 #: templates/molecules/m-front-article.twig:41
 msgid "Read more"
@@ -1810,19 +1742,19 @@ msgstr "Platz"
 msgid "Save to calendar"
 msgstr "Kalendereintrag erstellen"
 
-#: templates/molecules/m-form.twig:163
+#: templates/molecules/m-form.twig:179
 msgid "Uups, something went wrong!"
 msgstr "Uups, etwas ist schief gelaufen!"
 
-#: templates/molecules/m-form.twig:165
+#: templates/molecules/m-form.twig:181
 msgid "Sorry, there was an error submitting this form. If the error persists, please contact us by email."
 msgstr "Es tut uns leid, es gab einen Fehler beim versenden dieses Formulars. Bitte kontaktiere uns per E-Mail, falls dieser Fehler erneut auftritt."
 
-#: templates/molecules/m-form.twig:168
+#: templates/molecules/m-form.twig:184
 msgid "Please check input"
 msgstr "Bitte überprüfe die Eingaben"
 
-#: templates/molecules/m-form.twig:170
+#: templates/molecules/m-form.twig:186
 msgid "There seems to be an error in your input. Please recheck the fields."
 msgstr "Da scheint etwas noch nicht korrekt. Bitte überprüfe nochmals deine Formulareingaben."
 
@@ -1895,16 +1827,6 @@ msgstr "Nach rechts schieben"
 msgid "Les Verts"
 msgstr "Die Grünen"
 
-#. Description of the plugin/theme
-#: 
-msgid "Handcrafted custom theme for Les Verts, by superhuit.ch."
-msgstr "Handgefertigtes, massgeschneidertes Theme für die Grünen, von superhuit.ch"
-
-#. Author of the plugin/theme
-#: 
-msgid "superhuit"
-msgstr "superhuit"
-
 #. Template Name of the plugin/theme
 #: 
 msgid "Overview Page"
@@ -1917,10 +1839,6 @@ msgstr "Besuchende können durch einen Klick auf «Alle Events anzeigen» immer 
 #: acf-translate.php:1384
 msgid "If full width, the block will span the whole page (both columns) else it will only take the place of a single column block."
 msgstr "Wenn <i>ganze Breite</i> auf <i>ja</i> ist, nimmt der Block der ganze Platz ein (beide Spalten), sonst nur den Platz eines einspaltigen Blocks."
-
-#: acf-translate.php:1002
-msgid "Campaign Page"
-msgstr "Kampagnenseite"
 
 #: acf-translate.php:2194
 msgid "Add a brief description. Then add a call to action."
@@ -1962,22 +1880,6 @@ msgstr "Wo Besuchende mehr über die Vorlage lesen können."
 msgid "Two Posts / Pages"
 msgstr "Zwei Beiträge / Seiten"
 
-#: acf-translate.php:1941
-msgid "Use link list blocks to provide some additional information, the reader could be interested in.\n"
-"\n"
-"A good first starting point would be a <i>manual link list</i> block that lists documents where the reader can dig deeper, like the debate in parliament etc. A second cool block <i>(auto link list)</i> could be the latest posts of the same category or with the same tag."
-msgstr "Verwende Linklisten-Blocks um der Leserschaft interessante zusätzliche Inhalte anzubieten.\n"
-"\n"
-"Ein guter Startpunkt könnte eine <i>manuelle Linkliste</i> sein, mit Inhalten um das Thema zu vertiefen, beispielsweise die Parlamentsdebatte etc. Ein zweiter cooler Block könnte eine <i>automatische Linkliste</i> sein, mit den neusten Inhalten den selben Kategorien oder einem übereinstimmenden Schlagwort."
-
-#: acf-translate.php:2216
-msgid "Display the latest four posts, events or pages that meet the given filter criteria.\n"
-"\n"
-"This list will automatically be updated if any new content meets the filter criteria (dynamic)."
-msgstr "Zeige die neusten vier Beiträge, Events oder Seiten an, die den Filterkriterien entsprechen.\n"
-"\n"
-"Diese Liste wird automatisch aktualisiert sobald neuer Inhalt den Filterkriterien entspricht (dynamisch)."
-
 #: acf-translate.php:2307
 msgid "Display the latest press release (as long as it is published under the category you set below). Posts where the flag 'Show on front page' is set to false will be excluded.\n"
 "\n"
@@ -2010,7 +1912,7 @@ msgstr "Abstimmungsempfehlungen"
 msgid "Vote Recommendation"
 msgstr "Abstimmungsempfehlung"
 
-#: lib/form/include/FormType.php:308
+#: lib/form/include/FormType.php:320
 msgid "Form Submissions"
 msgstr "Formular-Rückmeldungen"
 
@@ -2019,27 +1921,23 @@ msgid "Submission"
 msgstr "Rückmeldung"
 
 #: lib/form/admin/ViewSingle.php:90 lib/form/include/SubmissionExport.php:175
-#: lib/form/include/SubmissionsTable.php:46
+#: lib/form/include/SubmissionsTable.php:107
 msgid "Timestamp"
 msgstr "Zeitstempel"
 
-#: lib/form/include/SubmissionsTable.php:109
+#: lib/form/include/SubmissionsTable.php:177
 msgid "No forms available"
 msgstr "Keine Formulare verfügbar"
 
-#: lib/form/include/SubmissionsTable.php:119
+#: lib/form/include/SubmissionsTable.php:187
 msgid "Invalid form"
 msgstr "Ungültiges Formular"
 
-#: lib/form/include/SubmissionsTable.php:300
+#: lib/form/include/SubmissionsTable.php:496
 msgid "View"
 msgstr "Anzeigen"
 
-#: lib/form/Submissions_Table.php:258
-msgid "Edit"
-msgstr "Bearbaiten"
-
-#: lib/form/include/SubmissionsTable.php:306
+#: lib/form/include/SubmissionsTable.php:414
 #: lib/form/include/SubmissionsTable.php:502
 msgid "Delete"
 msgstr "Löschen"
@@ -2070,55 +1968,39 @@ msgstr "Klasse im HTML markup (angefügt)"
 
 #: lib/form/acf/form-details.php:173 lib/form/acf/settings.php:149
 msgid "Webling"
-msgstr ""
+msgstr "Webling"
 
 #: lib/form/acf/form-details.php:189
 msgid "Webling Field"
-msgstr ""
+msgstr "Webling-Feld"
 
-#: lib/form/acf/form-details.php:244
-msgid "Insertion Modus"
-msgstr ""
-
-#: lib/form/acf/form-details.php:247
-msgid "<strong>Warning</strong>: Selecting the wrong modus results in data loss!\n"
-"<br><br>\n"
-"Select replace for single value fields like the address line and append for multi value fields like the interests field or a note field."
-msgstr ""
-
-#: lib/form/acf/form-details.php:266
+#: lib/form/acf/form-details.php:542
 msgid "Replace"
-msgstr ""
+msgstr "Ersetzen"
 
-#: lib/form/acf/form-details.php:267
+#: lib/form/acf/form-details.php:541
 msgid "Append"
-msgstr ""
+msgstr "Anfügen"
 
-#: lib/form/acf/form-details.php:268
+#: lib/form/acf/form-details.php:539
 msgid "Add if empty"
-msgstr ""
+msgstr "Einfügen wenn leer"
 
-#: lib/form/acf/form-details.php:280
+#: lib/form/acf/form-details.php:554
 msgid "Hidden Field"
-msgstr ""
+msgstr "Verstecktes Feld"
 
-#: lib/form/acf/form-details.php:283
+#: lib/form/acf/form-details.php:557
 msgid "Use this option to add a value to every persons record that submits this form."
-msgstr ""
+msgstr "Nutze diese Option um für jede Person, die dieses Formular abschickt, einen Wert einzufügen."
 
-#: lib/form/acf/form-details.php:299
+#: lib/form/acf/form-details.php:573
 msgid "Hide this field from the website visitor"
-msgstr ""
+msgstr "Verstecke dieses Feld vor den Websitebesucher*innen."
 
-#: lib/form/acf/form-details.php:307
+#: lib/form/acf/form-details.php:581 lib/form/acf/form-details.php:624
 msgid "Field Value"
-msgstr ""
-
-#: lib/form/acf/form-details.php:310
-msgid "Make sure this value is accepted by Webling.\n"
-"<br><br>\n"
-"Example interest field: Only the interests that can be selected in Webling are accepted values."
-msgstr ""
+msgstr "Feldwert"
 
 #: lib/form/acf/input.php:45
 msgid "Number"
@@ -2128,17 +2010,13 @@ msgstr "Nummer"
 msgid "API Url"
 msgstr "API Url"
 
-#: lib/form/acf/settings.php:181
-msgid "API Key"
-msgstr "API Key"
-
-#: lib/form/acf/settings.php:200
+#: lib/form/acf/settings.php:216
 msgid "Group Id"
-msgstr ""
+msgstr "Gruppen-ID"
 
-#: lib/form/acf/settings.php:203
+#: lib/form/acf/settings.php:219
 msgid "The ID of the group, where <strong>new</strong> member records should be stored in."
-msgstr ""
+msgstr "Die ID der Gruppe, in welcher <strong>neue</strong> Datensätze gespeichert werden sollen."
 
 #: lib/form/helpers/class-wp-list-table.php:161
 msgid "List View"
@@ -2238,19 +2116,11 @@ msgstr "Letzte Seite"
 msgid "Select All"
 msgstr "Alle auswählen"
 
-#: lib/form/submission.php:491
-msgid "Invalid number"
-msgstr "Ungültige Zahl"
-
-#: acf-translate.php:1005
-msgid "Select the post that holds the whole campaign content."
-msgstr "Wähle den Beitrag dieser Kampagne aus."
-
-#: lib/form/include/SubmissionsTable.php:214
+#: lib/form/include/SubmissionsTable.php:335
 msgid "Yet, there were no forms submitted."
 msgstr "Es wurden noch keine Formulare ausgefüllt."
 
-#: lib/form/include/SubmissionsTable.php:367
+#: lib/form/include/SubmissionsTable.php:363
 msgid "Select form"
 msgstr "Formular auswählen"
 
@@ -2260,7 +2130,7 @@ msgstr "Feld Titelform"
 
 #: lib/form/acf/form-details.php:157
 msgid "Read Only. Hacky field to get the slug."
-msgstr ""
+msgstr "Nur lesen. Feld für den Platzhalter (hacky slug)."
 
 #: lib/form/acf/form-details.php:192
 msgid "Select the field in Webling that matches this field."
@@ -2288,33 +2158,33 @@ msgstr "Link des Buttons"
 
 #: lib/customizer/GetActive.php:72
 msgid "Add the url, where the get active button should lead to."
-msgstr "Füge die URL hinzu, zuder der Mitmachen-Button führen soll."
+msgstr "Füge die URL hinzu, zu welcher der Mitmachen-Button führen soll."
 
-#: lib/form/include/FormType.php:319
+#: lib/form/include/FormType.php:331
 msgid "Export Submissions"
 msgstr "Rückmeldungen exportieren"
 
-#: lib/form/include/FormType.php:321
+#: lib/form/include/FormType.php:333
 msgid "Exports the submission of the form \"%s\" and all its linked forms. Usually its best to select the first form in the chain before exporting."
 msgstr "Exportiert die Rückmeldungen des Formulars \"%s\" und den damit verknüpften Formularen. Normalerweise ist es das beste, vor dem exportieren das erste Formular in der Kette auszuwählen."
 
-#: lib/form/include/SubmissionsTable.php:384
+#: lib/form/include/SubmissionsTable.php:380
 msgid "Export .xlsx"
 msgstr "Exportieren als .xlsx"
 
-#: lib/form/acf/form-details.php:452
+#: lib/form/acf/form-details.php:782
 msgid "What should happen after the form was successfully submitted?"
 msgstr "Was soll passieren, nachdem das Formular erfolgreich abgeschickt wurde?"
 
-#: lib/form/acf/form-details.php:476
+#: lib/form/acf/form-details.php:806
 msgid "Show message (inline)"
 msgstr "Nachricht anzgeigen (gleiche Seite)"
 
-#: lib/form/acf/form-details.php:477
+#: lib/form/acf/form-details.php:807
 msgid "Redirect to post / page"
 msgstr "Weiterleiten zu Beitrag / Seite"
 
-#: lib/form/acf/form-details.php:540
+#: lib/form/acf/form-details.php:870
 msgid "Redirect to"
 msgstr "Weiterleiten zu"
 
@@ -2336,11 +2206,11 @@ msgstr "%d Beiträge"
 
 #: vendor/timber/timber/tests/test-timber-revisions.php:18
 msgid "Box"
-msgstr ""
+msgstr "Box"
 
 #: vendor/timber/timber/tests/test-timber-revisions.php:19
 msgid "Post Type Description"
-msgstr ""
+msgstr "Post Type Description."
 
 #: templates/atoms/a-map.twig:1
 msgid "Geographical map"
@@ -2379,30 +2249,25 @@ msgstr "Teile diese Seite per Email"
 msgid "Share this page by WhatsApp"
 msgstr "Teile diese Seite per WhatsApp"
 
-#: lib/controllers/navigation.php:62
-msgctxt "short date format"
-msgid "Y-m-d"
-msgstr "d.m.Y"
-
-#: lib/form/include/FormType.php:241
+#: lib/form/include/FormType.php:253
 msgctxt "form title"
 msgid "View submissions of %s"
 msgstr "Rückmeldungen von %s anzeigen"
 
-#: lib/form/include/FormType.php:339
+#: lib/form/include/FormType.php:351
 msgid "Ups, something went wrong."
 msgstr "Ups, etwas ist schief gelaufen."
 
-#: lib/form/include/SubmissionModel.php:155
+#: lib/form/include/SubmissionModel.php:159
 msgctxt "Form element. Ex: Name"
 msgid "Old: %s"
 msgstr "Alt: %s"
 
-#: lib/form/include/SubmissionsTable.php:206
+#: lib/form/include/SubmissionsTable.php:247
 msgid "Could not remove form submission. Was it already deleted?"
 msgstr "Rückmeldung konnte nicht gelöscht werden. Wurde sie bereits zuvor gelöscht?"
 
-#: lib/form/include/SubmissionsTable.php:305
+#: lib/form/include/SubmissionsTable.php:501
 msgctxt "Timestamp"
 msgid "Delete submission of the %s?"
 msgstr "Rückmeldung vom %s löschen?"
@@ -2411,7 +2276,7 @@ msgstr "Rückmeldung vom %s löschen?"
 msgid "Show all articles tagged with %s"
 msgstr "Alle Artikel mit dem Tag %s anzeigen"
 
-#: lib/form/acf/input.php:64
+#: lib/form/acf/input.php:67
 msgid "Confirmation text"
 msgstr "Bestätigungstext"
 
@@ -2430,7 +2295,7 @@ msgctxt "Link"
 msgid "Advanced: You may use %s in this mail template."
 msgstr "Fortgeschritten: Du kannst %s in dieser Emailvorlage verwenden."
 
-#: lib/form/helpers/send-email.php:73
+#: lib/form/include/Mail.php:133
 msgctxt "form submission"
 msgid "view complete submission online"
 msgstr "Komplette Rückmeldung online anzeigen"
@@ -2472,27 +2337,11 @@ msgstr "Soll bei allen Posts dieser Kategorie das Datum angezeigt werden?"
 
 #: acf-translate.php:916
 msgid "[Template]Default Content"
-msgstr ""
-
-#: acf-translate.php:1216
-msgid "Engagement Funnel"
-msgstr ""
-
-#: acf-translate.php:1221
-msgid "Configuration"
-msgstr "Konfiguration"
-
-#: acf-translate.php:1254
-msgid "Add an engagement funnel (advanced)"
-msgstr ""
+msgstr "[Template]Standardinhalt"
 
 #: acf-translate.php:1217 acf-translate.php:1222
 msgid "Code"
 msgstr "Code"
-
-#: acf-translate.php:1299
-msgid "Acc custom code (advanced)"
-msgstr ""
 
 #: acf-translate.php:1438
 msgid "Show Main Campaign"
@@ -2562,7 +2411,7 @@ msgstr "Zeigt die letzten vier Beiträge, Veranstaltungen oder Seiten an, die de
 "\n"
 "Diese Liste wird automatisch aktualisiert, wenn ein neuer Inhalt die Filterkriterien erfüllt (dynamisch)."
 
-#: lib/form/include/FormType.php:139
+#: lib/form/include/FormType.php:151
 msgid "Unfortunately not only the form, but also the submissions were copied and we could not delete them. So make sure you delete the submissions linked with your newly cloned form manually."
 msgstr "Leider wurden nicht nur das Formular, sondern auch die Rückmeldungen kopiert und wir konnten sie nicht löschen. Lösche die mit dem neu geklonten Formular verknüpften Rückmeldungen manuell."
 
@@ -2603,4 +2452,584 @@ msgstr "Filtern nach Kategorie:"
 #: templates/molecules/m-list-header.twig:25
 msgid "Show all results"
 msgstr "Alle Resultate anzeigen"
+
+#: lib/form/acf/form-details.php:251 lib/form/acf/form-details.php:276
+#: lib/form/acf/input.php:139
+msgid "Important Note"
+msgstr "Wichtiger Hinweis"
+
+#: lib/form/acf/form-details.php:270
+msgid "You must select the field type <em>Greeting (CRM)</em> (in the tab <em>standard</em>) for this field to work! Please follow also the note in the <em>standard</em> tab."
+msgstr "Wähle den Feldtyp <em>Anrede (CRM)</em> (in der Registerkarte <em>Standard</em>), damit dieses Feld funktioniert! Bitte beachte auch den Hinweis in der Registerkarte <em>Standard</em>."
+
+#: lib/form/acf/form-details.php:399
+msgid "Webling Choices"
+msgstr "Webling Optionen"
+
+#: lib/form/acf/form-details.php:402
+msgid "Enter the exact corresponding options in Webling in the same order."
+msgstr "Gib die exakt übereinstimmenden Optionen von Webling in der gleichen Reihenfolge ein."
+
+#: lib/form/acf/form-details.php:467
+msgid "Insertion Mode"
+msgstr "Einfügemodus"
+
+#: lib/form/acf/form-details.php:470
+msgid "<strong>Warning</strong>: Selecting the wrong mode results in data loss!\n"
+"<br><br>\n"
+"Select replace for single value fields like the address line and append for multi value fields like the interests field or a note field."
+msgstr "<strong>Warnung</strong>: Die Auswahl des falschen Modus' führt zu Datenverlust!\n"
+"<br><br>\n"
+"Wähle Ersetzen für Einzelwertfelder wie die Adresszeile und Anfügen für mehrwertige Felder wie das Interessenfeld oder ein Notizfeld."
+
+#: lib/form/acf/form-details.php:540
+msgid "Add if new"
+msgstr "Einfügen, wenn neu"
+
+#: lib/form/acf/input.php:156
+msgid "Please add <em>Hallo</em>, <em>Liebe</em>, <em>Lieber</em> or <em>salut</em>, <em>chère</em>, <em>cher</em>. All other values will be ignored!"
+msgstr "Bitte füge <em>Hallo</em>, <em>Liebe</em>, <em>Lieber</em> or <em>salut</em>, <em>chère</em>, <em>cher</em> ein. Alle anderen Werte werden ingoriert!"
+
+#: lib/form/acf/settings.php:181
+msgid "API Key (Client Secret)"
+msgstr "API Key (Client Secret)"
+
+#: lib/form/acf/settings.php:200
+msgid "Client Id"
+msgstr "Client ID"
+
+#: lib/form/acf/settings.php:203
+msgid "The ID of the oAuth2.0 Client."
+msgstr "Die ID des oAuth2.0 Clients."
+
+#: lib/form/include/CrmSaver.php:151
+msgid "%s: PERMANENT ERROR saving form data to crm"
+msgstr "%s: PERMANENTER FEHLER beim Speichern der Formulardaten in das CRM"
+
+#: lib/form/include/Util.php:44
+msgid "ERROR on form submission: %s - %s"
+msgstr "FEHLER beim Abschicken des Formulars: %s - %s"
+
+#: lib/form/include/Util.php:50
+msgid "Hi Admin of %s\n"
+"\n"
+"There was a problem submitting the form: %s\n"
+"The following action failed: %s\n"
+"\n"
+"The data:\n"
+"%s\n"
+"\n"
+"The error:\n"
+"%s"
+msgstr "Hallo Admin von %s\n"
+"\n"
+"Es gab ein Problem beim Abschicken des Formulars: %s\n"
+"Die folgende Aktion hat fehlgeschlagen: %s\n"
+"\n"
+"Die Daten:\n"
+"%s\n"
+"\n"
+"Der Fehler:\n"
+"%s"
+
+#: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:334
+msgid "Install Required Plugins"
+msgstr "Notwendige Plugins Installieren"
+
+#: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:335
+msgid "Install Plugins"
+msgstr "Plugins Installieren"
+
+#. translators: %s: plugin name.
+#: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:337
+msgid "Installing Plugin: %s"
+msgstr "Installiere Plugin: %s"
+
+#. translators: %s: plugin name.
+#: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:339
+msgid "Updating Plugin: %s"
+msgstr "Aktualisiere Plugin: %s"
+
+#: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:340
+msgid "Something went wrong with the plugin API."
+msgstr "Etwas ist schief gelaufen mit der Plugin API."
+
+#. translators: 1: plugin name(s).
+#: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:343
+msgid "This theme requires the following plugin: %1$s."
+msgid_plural "This theme requires the following plugins: %1$s."
+msgstr[0] "Dieses Theme benötigt das folgende Plugin: %1$s."
+msgstr[1] "Dieses Theme benötigt die folgenden Plugins: %1$s."
+
+#. translators: 1: plugin name(s).
+#: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:349
+msgid "This theme recommends the following plugin: %1$s."
+msgid_plural "This theme recommends the following plugins: %1$s."
+msgstr[0] "Dieses Theme empfiehlt das folgende Plugin: %1$s."
+msgstr[1] "Dieses Theme empfiehlt die folgenden Plugins: %1$s."
+
+#. translators: 1: plugin name(s).
+#: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:355
+msgid "The following plugin needs to be updated to its latest version to ensure maximum compatibility with this theme: %1$s."
+msgid_plural "The following plugins need to be updated to their latest version to ensure maximum compatibility with this theme: %1$s."
+msgstr[0] "Das folgende Plugin muss auf die neuste Version aktualisiert werden um eine maximale Kompatibilität mit diesem Theme sicherzustellen: %1$s."
+msgstr[1] "Die folgenden Plugins müssen auf die neuste Version aktualisiert werden um eine maximale Kompatibilität mit diesem Theme sicherzustellen: %1$s."
+
+#. translators: 1: plugin name(s).
+#: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:361
+msgid "There is an update available for: %1$s."
+msgid_plural "There are updates available for the following plugins: %1$s."
+msgstr[0] "Eine Aktualisierung ist verfügbar für: %1$s."
+msgstr[1] "Aktualisierungen sind verfügbar für: %1$s."
+
+#. translators: 1: plugin name(s).
+#: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:367
+msgid "The following required plugin is currently inactive: %1$s."
+msgid_plural "The following required plugins are currently inactive: %1$s."
+msgstr[0] "Das folgende notwendige Plugin ist zur Zeit nicht aktiviert: %1$s."
+msgstr[1] "Die folgenden notwendigen Plugins sind zur Zeit nicht aktiviert: %1$s."
+
+#. translators: 1: plugin name(s).
+#: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:373
+msgid "The following recommended plugin is currently inactive: %1$s."
+msgid_plural "The following recommended plugins are currently inactive: %1$s."
+msgstr[0] "Das folgende empfohlene Plugin ist zur Zeit nicht aktiviert: %1$s."
+msgstr[1] "Die folgenden empfohlenen Plugins sind zur Zeit nicht aktiviert: %1$s."
+
+#: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:378
+msgid "Begin installing plugin"
+msgid_plural "Begin installing plugins"
+msgstr[0] "Installiere Plugin"
+msgstr[1] "Installiere Plugins"
+
+#: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:383
+msgid "Begin updating plugin"
+msgid_plural "Begin updating plugins"
+msgstr[0] "Aktualisiere Plugin"
+msgstr[1] "Aktualisiere Plugins"
+
+#: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:388
+msgid "Begin activating plugin"
+msgid_plural "Begin activating plugins"
+msgstr[0] "Aktiviere Plugin"
+msgstr[1] "Akitiviere Plugins"
+
+#: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:392
+msgid "Return to Required Plugins Installer"
+msgstr "Zurück zum Installer für notwendige Plugins"
+
+#: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:393
+#: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:920
+#: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:2626
+#: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:3673
+msgid "Return to the Dashboard"
+msgstr "Zurück zum Dashboard"
+
+#: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:394
+#: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:3252
+msgid "Plugin activated successfully."
+msgstr "Plugin erfolgreich aktiviert."
+
+#: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:395
+#: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:3045
+msgid "The following plugin was activated successfully:"
+msgid_plural "The following plugins were activated successfully:"
+msgstr[0] "Das folgende Plugin wurde erfolgreich aktiviert:"
+msgstr[1] "Die folgenden Plugins wurden erfolgreich aktiviert:"
+
+#. translators: 1: plugin name.
+#: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:397
+msgid "No action taken. Plugin %1$s was already active."
+msgstr "Keine Aktion ausgeführt. Plugin %1$s war schon aktiv."
+
+#. translators: 1: plugin name.
+#: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:399
+msgid "Plugin not activated. A higher version of %s is needed for this theme. Please update the plugin."
+msgstr "Plugin nicht aktiviert. Eine neuere Version von %s ist notwendig für dieses Theme. Bitte Plugin aktualisieren."
+
+#. translators: 1: dashboard link.
+#: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:401
+msgid "All plugins installed and activated successfully. %1$s"
+msgstr "Alle Plugins erfolgreich installiert und aktiviert. %1$s"
+
+#: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:402
+msgid "Dismiss this notice"
+msgstr "Hinweis verwerfen"
+
+#: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:403
+msgid "There are one or more required or recommended plugins to install, update or activate."
+msgstr "Ein oder mehrere notwendige oder empfohlene Plugins zum Installieren, Aktualisieren oder Aktivieren."
+
+#: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:404
+msgid "Please contact the administrator of this site for help."
+msgstr "Bitte kontaktiere den Administrator dieser Seite für Hilfe."
+
+#: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:607
+msgid "This plugin needs to be updated to be compatible with your theme."
+msgstr "Dieses Plugin muss aktialisiert werden um mit deinem Theme kompatibel zu sein."
+
+#: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:608
+msgid "Update Required"
+msgstr "Aktualisierung Notwendig"
+
+#: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:725
+msgid "Set the parent_slug config variable instead."
+msgstr "Setze stattdessen die parent_slug Variable."
+
+#: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:1027
+msgid "The remote plugin package does not contain a folder with the desired slug and renaming did not work."
+msgstr "Das entfernte Pluginpaket enthält keinen Ordner mit dem gewünschten Slug und umbenennen funktionierte nicht."
+
+#: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:1027
+#: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:1030
+msgid "Please contact the plugin provider and ask them to package their plugin according to the WordPress guidelines."
+msgstr "Bitte kontaktiere den Pluginanbieter und bitte ihn das Plugin gemäss den WordPress Empfehlungen zu verpacken."
+
+#: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:1030
+msgid "The remote plugin package consists of more than one file, but the files are not packaged in a folder."
+msgstr "Das entfernte Pluginpaket hat mehr als eine Datei, aber die Dateien sind in keinem Ordner."
+
+#: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:1214
+#: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:3041
+msgctxt "plugin A *and* plugin B"
+msgid "and"
+msgstr "und"
+
+#. translators: %s: version number
+#: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:2075
+msgid "TGMPA v%s"
+msgstr "TGMPA v%s"
+
+#: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:2369
+msgid "Recommended"
+msgstr "Empfohlen"
+
+#: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:2385
+msgid "WordPress Repository"
+msgstr "WordPress Repository"
+
+#: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:2388
+msgid "External Source"
+msgstr "Externe Quelle"
+
+#: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:2391
+msgid "Pre-Packaged"
+msgstr "Vor-Verpacked"
+
+#: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:2408
+msgid "Not Installed"
+msgstr "Nicht Installiert"
+
+#: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:2412
+msgid "Installed But Not Activated"
+msgstr "Installiert aber nicht Aktiviert"
+
+#: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:2414
+msgid "Active"
+msgstr "Aktive"
+
+#: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:2420
+msgid "Required Update not Available"
+msgstr "Benötigte Aktualisierung nicht Verfügbar"
+
+#: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:2423
+msgid "Requires Update"
+msgstr "Benötigt Aktualisierung"
+
+#: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:2426
+msgid "Update recommended"
+msgstr "Aktualisierung empfohlen"
+
+#. translators: 1: install status, 2: update status
+#: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:2435
+msgctxt "Install/Update Status"
+msgid "%1$s, %2$s"
+msgstr "%1$s, %2$s"
+
+#. translators: 1: number of plugins.
+#: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:2481
+msgctxt "plugins"
+msgid "All <span class=\"count\">(%s)</span>"
+msgid_plural "All <span class=\"count\">(%s)</span>"
+msgstr[0] "Alle <span class=\"count\">(%s)</span>"
+msgstr[1] "Alle <span class=\"count\">(%s)</span>"
+
+#. translators: 1: number of plugins.
+#: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:2485
+msgid "To Install <span class=\"count\">(%s)</span>"
+msgid_plural "To Install <span class=\"count\">(%s)</span>"
+msgstr[0] "Installieren <span class=\"count\">(%s)</span>"
+msgstr[1] "Installieren <span class=\"count\">(%s)</span>"
+
+#. translators: 1: number of plugins.
+#: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:2489
+msgid "Update Available <span class=\"count\">(%s)</span>"
+msgid_plural "Update Available <span class=\"count\">(%s)</span>"
+msgstr[0] "Aktualisierung Verfügbar <span class=\"count\">(%s)</span>"
+msgstr[1] "Aktualisierungen Verfügbar <span class=\"count\">(%s)</span>"
+
+#. translators: 1: number of plugins.
+#: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:2493
+msgid "To Activate <span class=\"count\">(%s)</span>"
+msgid_plural "To Activate <span class=\"count\">(%s)</span>"
+msgstr[0] "Aktivieren <span class=\"count\">(%s)</span>"
+msgstr[1] "Aktivieren <span class=\"count\">(%s)</span>"
+
+#: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:2575
+msgctxt "as in: \"version nr unknown\""
+msgid "unknown"
+msgstr "unbekannt"
+
+#: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:2583
+msgid "Installed version:"
+msgstr "Installierte Version:"
+
+#: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:2591
+msgid "Minimum required version:"
+msgstr "Minimale notwendige Version:"
+
+#: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:2603
+msgid "Available version:"
+msgstr "Verfügbare Version:"
+
+#: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:2626
+msgid "No plugins to install, update or activate."
+msgstr "Keine Plugins zum Installieren, Aktualisieren oder Aktivieren."
+
+#: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:2640
+msgid "Plugin"
+msgstr "Plugin"
+
+#: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:2641
+msgid "Source"
+msgstr "Quelle"
+
+#: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:2646
+msgid "Version"
+msgstr "Version"
+
+#: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:2647
+msgid "Status"
+msgstr "Status"
+
+#. translators: %2$s: plugin name in screen reader markup
+#: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:2696
+msgid "Install %2$s"
+msgstr "Installiere %2$s"
+
+#. translators: %2$s: plugin name in screen reader markup
+#: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:2701
+msgid "Update %2$s"
+msgstr "Aktualisiere %2$s"
+
+#. translators: %2$s: plugin name in screen reader markup
+#: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:2707
+msgid "Activate %2$s"
+msgstr "Aktiviere %2$s"
+
+#: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:2777
+msgid "Upgrade message from the plugin author:"
+msgstr "Upgrade-Nachricht vom Pluginauthor:"
+
+#: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:2810
+msgid "Install"
+msgstr "Installieren"
+
+#: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:2816
+msgid "Update"
+msgstr "Aktualisieren"
+
+#: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:2819
+msgid "Activate"
+msgstr "Aktivieren"
+
+#: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:2850
+msgid "No plugins were selected to be installed. No action taken."
+msgstr "Keine Plugins wurden zum Installieren ausgewählt. Keine Aktion ausgeführt."
+
+#: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:2852
+msgid "No plugins were selected to be updated. No action taken."
+msgstr "Keine Plugins wurden zum Aktualisieren ausgewählt. Keine Aktion ausgeführt."
+
+#: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:2893
+msgid "No plugins are available to be installed at this time."
+msgstr "Zur Zeit sind keine Plugins zur Installation verfügbar."
+
+#: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:2895
+msgid "No plugins are available to be updated at this time."
+msgstr "Zur Zeit sind keine Plugins zum Aktualisieren verfügabr."
+
+#: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:3001
+msgid "No plugins were selected to be activated. No action taken."
+msgstr "Keine Plugins wurden zum Aktivieren ausgewählt. Keine Aktion ausgeführt."
+
+#: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:3027
+msgid "No plugins are available to be activated at this time."
+msgstr "Zur Zeit sind keine Plugins zum Aktivieren verfügbar."
+
+#: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:3251
+msgid "Plugin activation failed."
+msgstr "Plugin Aktivierung fehlgeschlagen."
+
+#. translators: 1: plugin name, 2: action number 3: total number of actions.
+#: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:3591
+msgid "Updating Plugin %1$s (%2$d/%3$d)"
+msgstr "Aktualisiere Plugin %1$s (%2$d/%3$d)"
+
+#. translators: 1: plugin name, 2: error message.
+#: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:3594
+msgid "An error occurred while installing %1$s: <strong>%2$s</strong>."
+msgstr "Ein Fehler ist aufgetreten während der Installation %1$s: <strong>%2$s</strong>."
+
+#. translators: 1: plugin name.
+#: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:3596
+msgid "The installation of %1$s failed."
+msgstr "Die Installation von %1$s schlug fehl."
+
+#: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:3600
+msgid "The installation and activation process is starting. This process may take a while on some hosts, so please be patient."
+msgstr "Der Installtions- und Aktivierungsprozess hat begonnen. Dieser Prozess kann auf gewissen Hosts eine Weile dauern. Bitte habe etwas Geduld."
+
+#. translators: 1: plugin name.
+#: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:3602
+msgid "%1$s installed and activated successfully."
+msgstr "%1$s erfolgreich installiert und aktiviert."
+
+#: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:3602
+#: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:3610
+msgid "Show Details"
+msgstr "Details Anzeigen."
+
+#: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:3602
+#: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:3610
+msgid "Hide Details"
+msgstr "Details Verbergen."
+
+#: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:3603
+msgid "All installations and activations have been completed."
+msgstr "Alle Installationen und Aktivierungen wurden fertiggestellt."
+
+#. translators: 1: plugin name, 2: action number 3: total number of actions.
+#: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:3605
+msgid "Installing and Activating Plugin %1$s (%2$d/%3$d)"
+msgstr "Installiere und Aktiviere Plugin %1$s (%2$d/%3$d)"
+
+#: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:3608
+msgid "The installation process is starting. This process may take a while on some hosts, so please be patient."
+msgstr "Der Installationsprozess started. Dieser Prozess kann auf gewissen Hosts eine Weile dauern. Bitte habe etwas Geduld."
+
+#. translators: 1: plugin name.
+#: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:3610
+msgid "%1$s installed successfully."
+msgstr "%1$s erfolgreich installiert."
+
+#: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:3611
+msgid "All installations have been completed."
+msgstr "Alle Installationen wurden fertiggestellt."
+
+#. translators: 1: plugin name, 2: action number 3: total number of actions.
+#: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:3613
+msgid "Installing Plugin %1$s (%2$d/%3$d)"
+msgstr "Installiere Plugin %1$s (%2$d/%3$d)"
+
+#: vendor/yahnis-elsts/plugin-update-checker/Puc/v4p7/Plugin/Ui.php:54
+msgid "View details"
+msgstr "Details Anschauen."
+
+#: vendor/yahnis-elsts/plugin-update-checker/Puc/v4p7/Plugin/Ui.php:77
+msgid "More information about %s"
+msgstr "Mehr Informationen zu %s"
+
+#: vendor/yahnis-elsts/plugin-update-checker/Puc/v4p7/Plugin/Ui.php:128
+msgid "Check for updates"
+msgstr "Auf Aktualisierungen prüfen"
+
+#: vendor/yahnis-elsts/plugin-update-checker/Puc/v4p7/Plugin/Ui.php:213
+msgctxt "the plugin title"
+msgid "The %s plugin is up to date."
+msgstr "Das %s Plugin ist auf dem neusten Stand."
+
+#: vendor/yahnis-elsts/plugin-update-checker/Puc/v4p7/Plugin/Ui.php:215
+msgctxt "the plugin title"
+msgid "A new version of the %s plugin is available."
+msgstr "Eine neue Version des %s Plugins ist verfügbar."
+
+#: vendor/yahnis-elsts/plugin-update-checker/Puc/v4p7/Plugin/Ui.php:217
+msgctxt "the plugin title"
+msgid "Could not determine if updates are available for %s."
+msgstr "Es konnte nicht festgestellt werden ob Aktualisierungen für %s verfügbar sind."
+
+#: vendor/yahnis-elsts/plugin-update-checker/Puc/v4p7/Plugin/Ui.php:223
+msgid "Unknown update checker status \"%s\""
+msgstr "Unbekannter Status der Aktualisierungsprüfung \"%s\"."
+
+#: vendor/yahnis-elsts/plugin-update-checker/Puc/v4p7/Vcs/PluginUpdateChecker.php:98
+msgid "There is no changelog available."
+msgstr "Kein Changelog verfügbar."
+
+#: lib/form/acf/form-details.php:393
+msgid "You must select the field type <em>Subscription (CRM)</em> (in the tab <em>standard</em>) for this field to work!"
+msgstr "Wähle den Feld Typ <em>Abonnement (CRM)</em> (in der Registerkarte <em>Standard</em>) damit dieses Feld funktioniert!"
+
+#: lib/form/acf/form-details.php:584
+msgid "Make sure this value is accepted by Webling.\n"
+"<br><br>\n"
+"Example greetings field: Only the greetings that can be selected in Webling are accepted values."
+msgstr "Versichere dich, dass dieser Wert von Webling akzeptiert wird.\n"
+"<br><br>\n"
+"Beispiel Anrede Feld: Nur diejenigen Anreden die in Webling ausgewählt werden können, sind akzeptierte Werte."
+
+#: lib/form/acf/form-details.php:627
+msgid "Make sure the values are accepted by Webling. Add one choice per line.\n"
+"<br><br>\n"
+"Example interest field: Only the interests that can be selected in Webling are accepted values."
+msgstr "Versichere dich, dass die Werte von Webling akzeptiert wrerden. Eine Option pro Zeile.\n"
+"<br><br>\n"
+"Beispiel Interessensfeld: Nur die Interessen, die im Webling ausgewählt werden können, sind akzeptierte Werte."
+
+#: lib/form/acf/input.php:46
+msgid "Date"
+msgstr "Datum"
+
+#: lib/form/acf/input.php:52
+msgid "Special: Subscription (CRM)"
+msgstr "Spezial: Abonnement (CRM)"
+
+#: lib/form/acf/input.php:53
+msgid "Special: Greeting (CRM)"
+msgstr "Spezial: Anrede (CRM)"
+
+#: lib/form/include/CrmSaver.php:157
+msgid "Hi Admin of %s\n"
+"\n"
+"There was a PERMANENT ERROR saving the following data to the crm:\n"
+"%s\n"
+"\n"
+"The data was removed from the saving queue, so YOU MUST ADD IT MANUALLY. Please correct the form configuration, to prevent this error in the future. More details in the error message below.\n"
+"\n"
+"Have a nice day.\n"
+"Your Website - %s\n"
+"\n"
+"Error message:\n"
+"%s"
+msgstr "Hallo Admin von %s\n"
+"\n"
+"Es gab einen PERMANENTEN FEHLER beim Speichern der folgenden Daten in das CRM:\n"
+"%s\n"
+"\n"
+"die Daten wurden von der Speicherliste gestrichen, du MUSST SIE ALSO MANUELL HINZUFÜGEN. Bitte korrigiere die Konfiguration des Formulars, damit dieser Fehler in Zukunft nicht mehr auftritt. Mehr Details in der untenstehenden Fehlermeldung.\n"
+"\n"
+"Have a nice day.\n"
+"Deine Website - %s\n"
+"\n"
+"Fehlermeldung:\n"
+"%s"
+
+#: lib/form/submission.php:341
+msgid "Invalid value."
+msgstr "Ungültiger Wert."
+
+#: lib/form/submission.php:356
+msgid "Invalid or missing value."
+msgstr "Ungültiger oder fehlender Wert."
 
