@@ -13,7 +13,7 @@ class CrmSaver {
 	const CRON_HOOK_CRM_SAVE = 'supt_form_save_to_crm';
 	const CRON_CRM_SAVE_RETRY_INTERVAL = 'hourly';
 
-	const CRM_NEWSLETTER_VALUE = 'yes';
+	const CRM_SUBSCRIPTION_VALUE = 'yes';
 	const CRM_GREETINGS_INFORMAL = array(
 		'hallo'  => 'nD',
 		'liebe'  => 'fD',
@@ -257,7 +257,7 @@ class CrmSaver {
 			}
 
 			// set the predecessor data, so it can be added
-			$submission = $this->submission;
+			$submission       = $this->submission;
 			$this->submission = $predecessor;
 
 			$this->add_form_fields_data( $form_fields );
@@ -310,13 +310,15 @@ class CrmSaver {
 	 * @param string|array $data
 	 */
 	private function add_crm_data_field_with_special_fields( $form_field, $data ) {
-		if ( $form_field->is_crm_subscription() ) {
-			$this->add_newsletter( $form_field, $data );
+		if ( $form_field->is_crm_subscription_type()
+		     || ( $form_field->has_fixed_crm_value() && $form_field->is_crm_subscription() )
+		) {
+			$this->add_subscription( $form_field, $data );
 
 			return;
 		}
 
-		if ( $form_field->is_crm_greeting() ) {
+		if ( $form_field->is_crm_greeting_type() ) {
 			$this->add_greeting( $form_field, $data );
 
 			return;
@@ -326,12 +328,12 @@ class CrmSaver {
 	}
 
 	/**
-	 * If a newsletter subscription was checked, add the subscription.
+	 * If a newsletter or magazine subscription was checked, add the subscription.
 	 *
 	 * @param FormField $form_field
 	 * @param null|array|string $data use array for multiselect fields only
 	 */
-	private function add_newsletter( $form_field, $data ) {
+	private function add_subscription( $form_field, $data ) {
 		if ( ! $data ) {
 			// don't store the newsletter field, if it was left empty
 			// this prevents unwanted unsubscriptions
@@ -339,7 +341,7 @@ class CrmSaver {
 		}
 
 		$form_field->set_insertion_mode( CrmFieldData::MODE_REPLACE );
-		$data = self::CRM_NEWSLETTER_VALUE;
+		$data = self::CRM_SUBSCRIPTION_VALUE;
 
 		$this->add_crm_data_field_from_form_field( $form_field, $data );
 	}

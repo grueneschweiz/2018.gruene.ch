@@ -528,6 +528,31 @@ Select replace for single value fields like the address line and append for mult
 									'operator' => '!=',
 									'value'    => 'pressReleaseMunicipality',
 								),
+								array(
+									'field'    => 'field_5c0fac61bdbd7',
+									'operator' => '!=',
+									'value'    => 'magazineCountryD',
+								),
+								array(
+									'field'    => 'field_5c0fac61bdbd7',
+									'operator' => '!=',
+									'value'    => 'magazineCountryF',
+								),
+								array(
+									'field'    => 'field_5c0fac61bdbd7',
+									'operator' => '!=',
+									'value'    => 'magazineCantonD',
+								),
+								array(
+									'field'    => 'field_5c0fac61bdbd7',
+									'operator' => '!=',
+									'value'    => 'magazineCantonF',
+								),
+								array(
+									'field'    => 'field_5c0fac61bdbd7',
+									'operator' => '!=',
+									'value'    => 'magazineMunicipality',
+								)
 							),
 						),
 						'wrapper'           => array(

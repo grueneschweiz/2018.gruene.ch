@@ -430,11 +430,11 @@ class SubmissionsTable extends WP_List_Table {
 	) {
 		$value = $item->{'get_' . $column_name}();
 
-		if ( $this->get_form_fields()[ $column_name ]->is_confirmation() ) {
+		if ( $this->get_form_fields()[ $column_name ]->is_confirmation_type() ) {
 			return empty( $value ) ? '' : 'X';
 		}
 
-		if ( $this->get_form_fields()[ $column_name ]->is_checkbox() ) {
+		if ( $this->get_form_fields()[ $column_name ]->is_checkbox_type() ) {
 			$values = empty( $value ) ? array() : $value;
 
 			return implode( ', ', $values );

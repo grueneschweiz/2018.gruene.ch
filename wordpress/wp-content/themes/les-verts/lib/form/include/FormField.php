@@ -15,7 +15,7 @@ class FormField {
 	const TYPE_NUMBER = 'number';
 	const TYPE_DATE = 'date';
 	const TYPE_PHONE = 'tel';
-	const TYPE_CRM_SUBSCRIPTION = 'crm_newsletter';
+	const TYPE_CRM_SUBSCRIPTION = 'crm_subscription';
 	const TYPE_CRM_GREETING = 'crm_greeting';
 
 	const CHOICE_TYPES = array(
@@ -32,6 +32,24 @@ class FormField {
 	const CRM_MULTISELECT_FIELDS = array(
 		self::CRM_INTERESTS_FIELD,
 		self::CRM_REQUEST_FIELD,
+	);
+
+	const CRM_SUBSCRIPTION_FIELDS = array(
+		'magazineCountryD',
+		'magazineCountryF',
+		'magazineCantonD',
+		'magazineCantonF',
+		'magazineMunicipality',
+		'newsletterCountryD',
+		'newsletterCountryF',
+		'newsletterCantonD',
+		'newsletterCantonF',
+		'newsletterMunicipality',
+		'pressReleaseCountryD',
+		'pressReleaseCountryF',
+		'pressReleaseCantonD',
+		'pressReleaseCantonF',
+		'pressReleaseMunicipality',
 	);
 
 	private $label;
@@ -126,7 +144,7 @@ class FormField {
 		$this->crm_insertion_mode = $mode;
 	}
 
-	public function is_checkbox() {
+	public function is_checkbox_type() {
 		return self::TYPE_CHECKBOX === $this->type;
 	}
 
@@ -134,19 +152,23 @@ class FormField {
 		return $this->has_crm_config() && self::CRM_EMAIL_FIELD === $this->crm_field;
 	}
 
-	public function is_crm_subscription() {
+	public function is_crm_subscription_type() {
 		return self::TYPE_CRM_SUBSCRIPTION === $this->type;
 	}
 
-	public function is_crm_greeting() {
+	public function is_crm_subscription() {
+		return $this->has_crm_config() && in_array( $this->crm_field, self::CRM_SUBSCRIPTION_FIELDS );
+	}
+
+	public function is_crm_greeting_type() {
 		return self::TYPE_CRM_GREETING === $this->type;
 	}
 
-	public function is_email() {
+	public function is_email_type() {
 		return self::TYPE_EMAIL === $this->type;
 	}
 
-	public function is_confirmation() {
+	public function is_confirmation_type() {
 		return self::TYPE_CONFIRMATION === $this->type;
 	}
 
@@ -217,7 +239,7 @@ class FormField {
 				break;
 
 			case self::TYPE_PHONE:
-				$valid = is_string( $data ) || is_numeric($data);
+				$valid = is_string( $data ) || is_numeric( $data );
 				break;
 
 			case self::TYPE_DATE:
@@ -280,9 +302,9 @@ class FormField {
 	 * @return false|string
 	 */
 	private function parse_date( $string ) {
-		$string = trim($string);
+		$string = trim( $string );
 
-		if (empty($string)){
+		if ( empty( $string ) ) {
 			return '';
 		}
 

@@ -329,7 +329,7 @@ class FormSubmission {
 			}
 
 			// sanitize and validate checkboxes
-			if ( $field->is_checkbox() ) {
+			if ( $field->is_checkbox_type() ) {
 				$this->data[ $key ] = array();
 
 				foreach ( $field->get_choices() as $value_key => $value ) {
@@ -451,7 +451,7 @@ class FormSubmission {
 		}
 
 		foreach ( $this->get_fields() as $key => $field ) {
-			if ( $field->is_email() ) {
+			if ( $field->is_email_type() ) {
 				$email = $this->data[ $key ];
 				if ( ! empty( $email ) ) {
 					return $email; // already validated
