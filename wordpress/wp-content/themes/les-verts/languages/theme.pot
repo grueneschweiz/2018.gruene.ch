@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: Les Verts\n"
-"POT-Creation-Date: 2019-08-21 18:13+0200\n"
+"POT-Creation-Date: 2019-08-26 15:08+0200\n"
 "PO-Revision-Date: 2018-11-28 17:49+0100\n"
 "Last-Translator: Cyrill Bolliger <bolliger@gmx.ch>\n"
 "Language-Team: Cyrill Bolliger <bolliger@gmx.ch>\n"
@@ -229,7 +229,7 @@ msgstr ""
 #: acf-translate.php:722 acf-translate.php:1904 acf-translate.php:1982
 #: acf-translate.php:2172 acf-translate.php:2402 acf-translate.php:2761
 #: acf-translate.php:3758 acf-translate.php:4151
-#: lib/form/acf/form-details.php:698
+#: lib/form/acf/form-details.php:816
 msgid "Title"
 msgstr ""
 
@@ -384,7 +384,7 @@ msgid ""
 "Visitors can always see all events by clicking the «Show all events»-Button."
 msgstr ""
 
-#: acf-translate.php:1381 acf-translate.php:3281 lib/form/acf/input.php:241
+#: acf-translate.php:1381 acf-translate.php:3281 lib/form/acf/input.php:242
 msgid "Full Width"
 msgstr ""
 
@@ -558,7 +558,7 @@ msgid "Use an encouraging title, like 'Let me be part of the success'."
 msgstr ""
 
 #: acf-translate.php:2001 acf-translate.php:4334
-#: lib/form/acf/form-details.php:625
+#: lib/form/acf/form-details.php:743
 msgid "Description"
 msgstr ""
 
@@ -1495,37 +1495,37 @@ msgstr ""
 msgid "Select the field in Webling that matches this field."
 msgstr ""
 
-#: lib/form/acf/form-details.php:244 lib/form/acf/form-details.php:269
-#: lib/form/acf/input.php:138
+#: lib/form/acf/form-details.php:251 lib/form/acf/form-details.php:276
+#: lib/form/acf/input.php:139
 msgid "Important Note"
 msgstr ""
 
-#: lib/form/acf/form-details.php:263
+#: lib/form/acf/form-details.php:270
 msgid ""
 "You must select the field type <em>Greeting (CRM)</em> (in the tab "
 "<em>standard</em>) for this field to work! Please follow also the note in "
 "the <em>standard</em> tab."
 msgstr ""
 
-#: lib/form/acf/form-details.php:351
+#: lib/form/acf/form-details.php:393
 msgid ""
-"You must select the field type <em>Newsletter / Press release (CRM)</em> (in "
-"the tab <em>standard</em>) for this field to work!"
+"You must select the field type <em>Subscription (CRM)</em> (in the tab "
+"<em>standard</em>) for this field to work!"
 msgstr ""
 
-#: lib/form/acf/form-details.php:357
+#: lib/form/acf/form-details.php:399
 msgid "Webling Choices"
 msgstr ""
 
-#: lib/form/acf/form-details.php:360
+#: lib/form/acf/form-details.php:402
 msgid "Enter the exact corresponding options in Webling in the same order."
 msgstr ""
 
-#: lib/form/acf/form-details.php:405
+#: lib/form/acf/form-details.php:467
 msgid "Insertion Mode"
 msgstr ""
 
-#: lib/form/acf/form-details.php:408
+#: lib/form/acf/form-details.php:470
 msgid ""
 "<strong>Warning</strong>: Selecting the wrong mode results in data loss!\n"
 "<br><br>\n"
@@ -1533,102 +1533,110 @@ msgid ""
 "multi value fields like the interests field or a note field."
 msgstr ""
 
-#: lib/form/acf/form-details.php:477
-msgid "Replace"
-msgstr ""
-
-#: lib/form/acf/form-details.php:478
-msgid "Append"
-msgstr ""
-
-#: lib/form/acf/form-details.php:479
+#: lib/form/acf/form-details.php:539
 msgid "Add if empty"
 msgstr ""
 
-#: lib/form/acf/form-details.php:480
+#: lib/form/acf/form-details.php:540
 msgid "Add if new"
 msgstr ""
 
-#: lib/form/acf/form-details.php:492
+#: lib/form/acf/form-details.php:541
+msgid "Append"
+msgstr ""
+
+#: lib/form/acf/form-details.php:542
+msgid "Replace"
+msgstr ""
+
+#: lib/form/acf/form-details.php:554
 msgid "Hidden Field"
 msgstr ""
 
-#: lib/form/acf/form-details.php:495
+#: lib/form/acf/form-details.php:557
 msgid ""
 "Use this option to add a value to every persons record that submits this "
 "form."
 msgstr ""
 
-#: lib/form/acf/form-details.php:511
+#: lib/form/acf/form-details.php:573
 msgid "Hide this field from the website visitor"
 msgstr ""
 
-#: lib/form/acf/form-details.php:519
+#: lib/form/acf/form-details.php:581 lib/form/acf/form-details.php:624
 msgid "Field Value"
 msgstr ""
 
-#: lib/form/acf/form-details.php:522
+#: lib/form/acf/form-details.php:584
 msgid ""
 "Make sure this value is accepted by Webling.\n"
+"<br><br>\n"
+"Example greetings field: Only the greetings that can be selected in Webling "
+"are accepted values."
+msgstr ""
+
+#: lib/form/acf/form-details.php:627
+msgid ""
+"Make sure the values are accepted by Webling. Add one choice per line.\n"
 "<br><br>\n"
 "Example interest field: Only the interests that can be selected in Webling "
 "are accepted values."
 msgstr ""
 
-#: lib/form/acf/form-details.php:554
+#: lib/form/acf/form-details.php:672
 msgid "Submit"
 msgstr ""
 
-#: lib/form/acf/form-details.php:581
+#: lib/form/acf/form-details.php:699
 msgid "Configure the submit buttons."
 msgstr ""
 
-#: lib/form/acf/form-details.php:587 lib/widgets/ButtonWidget.php:23
+#: lib/form/acf/form-details.php:705 lib/widgets/ButtonWidget.php:23
 msgid "Button"
 msgstr ""
 
-#: lib/form/acf/form-details.php:606
+#: lib/form/acf/form-details.php:724
 msgid "Button Submitting"
 msgstr ""
 
-#: lib/form/acf/form-details.php:617
+#: lib/form/acf/form-details.php:735
 msgid "Sending"
 msgstr ""
 
-#: lib/form/acf/form-details.php:628
+#: lib/form/acf/form-details.php:746
 msgid ""
 "Why someone should fill in this form. Displayed next to the submit button."
 msgstr ""
 
-#: lib/form/acf/form-details.php:645
+#: lib/form/acf/form-details.php:763
 msgid "After Submit"
 msgstr ""
 
-#: lib/form/acf/form-details.php:661
+#: lib/form/acf/form-details.php:779
 msgid "Success"
 msgstr ""
 
-#: lib/form/acf/form-details.php:664
+#: lib/form/acf/form-details.php:782
 msgid "What should happen after the form was successfully submitted?"
 msgstr ""
 
-#: lib/form/acf/form-details.php:688
+#: lib/form/acf/form-details.php:806
 msgid "Show message (inline)"
 msgstr ""
 
-#: lib/form/acf/form-details.php:689
+#: lib/form/acf/form-details.php:807
 msgid "Redirect to post / page"
 msgstr ""
 
-#: lib/form/acf/form-details.php:717
+#: lib/form/acf/form-details.php:835
 msgid "Thank you for your support!"
 msgstr ""
 
-#: lib/form/acf/form-details.php:725
+#: lib/form/acf/form-details.php:843
 msgid "Message"
 msgstr ""
 
-#: lib/form/acf/form-details.php:752
+#: lib/form/acf/form-details.php:870
 msgid "Redirect to"
 msgstr ""
 
@@ -1636,7 +1644,7 @@ msgstr ""
 msgid "Mails"
 msgstr ""
 
-#: lib/form/acf/form-local-settings.php:11 lib/form/acf/input.php:50
+#: lib/form/acf/form-local-settings.php:11 lib/form/acf/input.php:51
 msgid "Confirmation"
 msgstr ""
 
@@ -1709,73 +1717,77 @@ msgid "Number"
 msgstr ""
 
 #: lib/form/acf/input.php:46
-msgid "Textarea"
+msgid "Date"
 msgstr ""
 
 #: lib/form/acf/input.php:47
-msgid "Radio button"
+msgid "Textarea"
 msgstr ""
 
 #: lib/form/acf/input.php:48
-msgid "Check box"
+msgid "Radio button"
 msgstr ""
 
 #: lib/form/acf/input.php:49
+msgid "Check box"
+msgstr ""
+
+#: lib/form/acf/input.php:50
 msgid "Drop down"
 msgstr ""
 
-#: lib/form/acf/input.php:51
-msgid "Newsletter / Press release (CRM)"
-msgstr ""
-
 #: lib/form/acf/input.php:52
-msgid "Greeting (CRM)"
+msgid "Special: Subscription (CRM)"
 msgstr ""
 
-#: lib/form/acf/input.php:66
+#: lib/form/acf/input.php:53
+msgid "Special: Greeting (CRM)"
+msgstr ""
+
+#: lib/form/acf/input.php:67
 msgid "Confirmation text"
 msgstr ""
 
-#: lib/form/acf/input.php:91
+#: lib/form/acf/input.php:92
 msgid "Help Text (optional)"
 msgstr ""
 
-#: lib/form/acf/input.php:94
+#: lib/form/acf/input.php:95
 msgid "Displayed below the input field (small)"
 msgstr ""
 
-#: lib/form/acf/input.php:155
+#: lib/form/acf/input.php:156
 msgid ""
 "Please add <em>Hallo</em>, <em>Liebe</em>, <em>Lieber</em> or <em>salut</"
 "em>, <em>chère</em>, <em>cher</em>. All other values will be ignored!"
 msgstr ""
 
-#: lib/form/acf/input.php:161
+#: lib/form/acf/input.php:162
 msgid "Choices"
 msgstr ""
 
-#: lib/form/acf/input.php:164
+#: lib/form/acf/input.php:165
 msgid "Enter each choice on a new line."
 msgstr ""
 
-#: lib/form/acf/input.php:209
+#: lib/form/acf/input.php:210
 #: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:2366
 msgid "Required"
 msgstr ""
 
-#: lib/form/acf/input.php:212
+#: lib/form/acf/input.php:213
 msgid "Set the field as mandatory"
 msgstr ""
 
-#: lib/form/acf/input.php:244
+#: lib/form/acf/input.php:245
 msgid "Uses the full width of the form."
 msgstr ""
 
-#: lib/form/acf/input.php:273
+#: lib/form/acf/input.php:274
 msgid "Width %"
 msgstr ""
 
-#: lib/form/acf/input.php:302
+#: lib/form/acf/input.php:303
 msgid "Min width (optional)"
 msgstr ""
 
@@ -1868,7 +1880,7 @@ msgid "Submission"
 msgstr ""
 
 #: lib/form/admin/ViewSingle.php:90 lib/form/include/SubmissionExport.php:175
-#: lib/form/include/SubmissionsTable.php:46
+#: lib/form/include/SubmissionsTable.php:107
 msgid "Timestamp"
 msgstr ""
 
@@ -1990,12 +2002,12 @@ msgstr ""
 msgid "Select All"
 msgstr ""
 
-#: lib/form/include/CrmSaver.php:391
+#: lib/form/include/CrmSaver.php:151
 #, php-format
 msgid "%s: PERMANENT ERROR saving form data to crm"
 msgstr ""
 
-#: lib/form/include/CrmSaver.php:397
+#: lib/form/include/CrmSaver.php:157
 #, php-format
 msgid ""
 "Hi Admin of %s\n"
@@ -2008,6 +2020,10 @@ msgid ""
 "More details in the error message below.\n"
 "\n"
 "Have a nice day.\n"
+"Your Website - %s\n"
+"\n"
+"Error message:\n"
+"%s"
 msgstr ""
 
 #: lib/form/include/FormType.php:26
@@ -2139,43 +2155,43 @@ msgctxt "Form element. Ex: Name"
 msgid "Old: %s"
 msgstr ""
 
-#: lib/form/include/SubmissionsTable.php:109
+#: lib/form/include/SubmissionsTable.php:177
 msgid "No forms available"
 msgstr ""
 
-#: lib/form/include/SubmissionsTable.php:119
+#: lib/form/include/SubmissionsTable.php:187
 msgid "Invalid form"
 msgstr ""
 
-#: lib/form/include/SubmissionsTable.php:206
+#: lib/form/include/SubmissionsTable.php:247
 msgid "Could not remove form submission. Was it already deleted?"
 msgstr ""
 
-#: lib/form/include/SubmissionsTable.php:214
+#: lib/form/include/SubmissionsTable.php:335
 msgid "Yet, there were no forms submitted."
 msgstr ""
 
-#: lib/form/include/SubmissionsTable.php:300
-msgid "View"
+#: lib/form/include/SubmissionsTable.php:363
+msgid "Select form"
 msgstr ""
 
-#: lib/form/include/SubmissionsTable.php:305
-#, php-format
-msgctxt "Timestamp"
-msgid "Delete submission of the %s?"
+#: lib/form/include/SubmissionsTable.php:380
+msgid "Export .xlsx"
 msgstr ""
 
-#: lib/form/include/SubmissionsTable.php:306
+#: lib/form/include/SubmissionsTable.php:414
 #: lib/form/include/SubmissionsTable.php:502
 msgid "Delete"
 msgstr ""
 
-#: lib/form/include/SubmissionsTable.php:367
-msgid "Select form"
+#: lib/form/include/SubmissionsTable.php:496
+msgid "View"
 msgstr ""
 
-#: lib/form/include/SubmissionsTable.php:384
-msgid "Export .xlsx"
+#: lib/form/include/SubmissionsTable.php:501
+#, php-format
+msgctxt "Timestamp"
+msgid "Delete submission of the %s?"
 msgstr ""
 
 #: lib/form/include/Util.php:44
@@ -2198,24 +2214,16 @@ msgid ""
 "%s"
 msgstr ""
 
-#: lib/form/submission.php:413
+#: lib/form/submission.php:341
+msgid "Invalid value."
+msgstr ""
+
+#: lib/form/submission.php:356
+msgid "Invalid or missing value."
+msgstr ""
+
+#: lib/form/submission.php:393
 msgid "Missing data."
-msgstr ""
-
-#: lib/form/submission.php:467
-msgid "Invalid input."
-msgstr ""
-
-#: lib/form/submission.php:497
-msgid "Invalid email."
-msgstr ""
-
-#: lib/form/submission.php:502
-msgid "Invalid number"
-msgstr ""
-
-#: lib/form/submission.php:508
-msgid "This field is required."
 msgstr ""
 
 #: lib/post-types/PeopleType.php:13
@@ -3100,21 +3108,21 @@ msgctxt "facebook, twitter or instagram"
 msgid "Visit us on %s"
 msgstr ""
 
-#: templates/molecules/m-form.twig:172
+#: templates/molecules/m-form.twig:179
 msgid "Uups, something went wrong!"
 msgstr ""
 
-#: templates/molecules/m-form.twig:174
+#: templates/molecules/m-form.twig:181
 msgid ""
 "Sorry, there was an error submitting this form. If the error persists, "
 "please contact us by email."
 msgstr ""
 
-#: templates/molecules/m-form.twig:177
+#: templates/molecules/m-form.twig:184
 msgid "Please check input"
 msgstr ""
 
-#: templates/molecules/m-form.twig:179
+#: templates/molecules/m-form.twig:186
 msgid "There seems to be an error in your input. Please recheck the fields."
 msgstr ""
 
