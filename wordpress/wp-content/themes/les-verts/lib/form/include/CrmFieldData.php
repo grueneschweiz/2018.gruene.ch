@@ -47,19 +47,31 @@ class CrmFieldData {
 	private $substitution_map;
 
 	/**
-	 * CRMFieldData constructor.
+	 * Set to false to completely disable choice replacement
 	 *
-	 * @param array $field as returned by the form model
+	 * @var bool
+	 */
+	private $replace;
+
+	/**
+	 * Constructor
+	 *
+	 * @param string $key the crm field key
+	 * @param string $mode the insertion mode
+	 * @param array $choices the possible choices (if mapped field)
+	 * @param array $replacements the replacements for the choices
 	 * @param null|array|string $value use array for multiselect fields only
+	 * @param bool $replace skip choice replacement if false
 	 *
 	 * @throws InvalidArgumentException
 	 */
-	public function __construct( $field, $value ) {
-		$this->key = $field['crm_field'];
-		$this->set_mode( $field['insertion_mode'] );
+	public function __construct( $key, $mode, $choices, $replacements, $value, $replace ) {
+		$this->key = $key;
+		$this->set_mode( $mode );
+		$this->replace = $replace;
 
-		if ( $this->is_mapped_field() ) {
-			$this->set_substitution_map( $field['form_input_choices'], $field['choice_map'] );
+		if ( $this->should_map_values() ) {
+			$this->set_substitution_map( $choices, $replacements );
 		}
 
 		$this->set_value( $value );
@@ -79,10 +91,37 @@ class CrmFieldData {
 			self::MODE_REPLACE_EMPTY,
 			self::MODE_ADD_IF_NEW
 		] ) ) {
-			throw new InvalidArgumentException( 'Invalid crm insertion mode' );
+			throw new InvalidArgumentException( "Invalid crm insertion mode '$mode' in field '{$this->key}'" );
 		}
 
 		$this->mode = $mode;
+	}
+
+	/**
+	 * Check if the values of this field have to be mapped to the crm values
+	 *
+	 * @return bool
+	 */
+	private function should_map_values() {
+		return $this->replace && in_array( $this->key, self::$mappedFields );
+	}
+
+	/**
+	 * Populate the the choice substitution map
+	 *
+	 * @param array $search
+	 * @param array $replace
+	 *
+	 * @throws InvalidArgumentException
+	 */
+	private function set_substitution_map( $search, $replace ) {
+		if ( count( $search ) !== count( $replace ) ) {
+			throw new InvalidArgumentException( 'The the webling choices must match the choices in the form.' );
+		}
+
+		foreach ( $search as $k => $s ) {
+			$this->substitution_map[ $s ] = $replace[ $k ];
+		}
 	}
 
 	/**
@@ -91,40 +130,10 @@ class CrmFieldData {
 	 * @param array|string $value
 	 */
 	private function set_value( $value ) {
-		if ( $this->is_mapped_field() ) {
+		if ( $this->should_map_values() ) {
 			$this->value = is_array( $value ) ? array_map( [ $this, 'map_value' ], $value ) : $this->map_value( $value );
 		} else {
 			$this->value = $value;
-		}
-	}
-
-	/**
-	 * Tells if the values of this field have to be mapped to the crm values
-	 *
-	 * @return bool
-	 */
-	private function is_mapped_field() {
-		return in_array( $this->key, self::$mappedFields );
-	}
-
-	/**
-	 * Populate the the choice substitution map
-	 *
-	 * @param string $search
-	 * @param string $replace
-	 *
-	 * @throws InvalidArgumentException
-	 */
-	private function set_substitution_map( $search, $replace ) {
-		$search  = FormModel::split_choices( $search );
-		$replace = FormModel::split_choices( $replace );
-
-		if ( count( $search ) !== count( $replace ) ) {
-			throw new InvalidArgumentException( 'The the webling choices must match the choices in the form.' );
-		}
-
-		foreach ( $search as $k => $s ) {
-			$this->substitution_map[ $s ] = $replace[ $k ];
 		}
 	}
 

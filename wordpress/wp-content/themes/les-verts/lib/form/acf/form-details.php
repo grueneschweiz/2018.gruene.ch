@@ -204,10 +204,17 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 							//'language'                 => 'Sprache / langue', // this is automatically added
 							'salutationInformal'       => 'Anrede / appel (informel)',
 							'address1'                 => 'Strasse / rue',
+							'address2'                 => 'Adresszusatz / complément d’adresse',
 							'zip'                      => 'PLZ / code postal',
 							'city'                     => 'Ort / localité',
 							'email1'                   => 'E-Mail / courriel 1',
 							'mobilePhone'              => 'Mobile / mobile',
+							'birthday'                 => 'Geburtstag / anniversaire',
+							'magazineCountryD'         => 'Greenfo DE',
+							'magazineCountryF'         => 'Greenfo FR',
+							'magazineCantonD'          => 'Kantonale Zeitschrift DE',
+							'magazineCantonF'          => 'journal cantonal FR',
+							'magazineMunicipality'     => 'Zeitschrift Kommunal / journal communal',
 							'newsletterCountryD'       => 'Newsletter national DE',
 							'newsletterCountryF'       => 'infolettre nationale FR',
 							'newsletterCantonD'        => 'Newsletter kantonal DE',
@@ -224,6 +231,8 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 							'memberStatusMunicipality' => 'Mitgliedschaft Kommunal / affiliation communale',
 							'memberStatusYoung'        => 'Mitgliedschaft Junge Grüne / affiliation Jeunes Verts',
 							'entryChannel'             => 'Gewinnungskanal / acquisition',
+							'membershipStart'          => 'Beginn Mitgliedschaft / date d’entrée',
+							'responsibility'           => 'Zuständigkeit / compétence',
 							'interests'                => 'Interessen / intérêts',
 							'request'                  => 'Anfragen für / disponibilités',
 							'profession'               => 'Beruf / profession',
@@ -342,13 +351,48 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 									'value'    => 'pressReleaseMunicipality',
 								),
 							),
+							array(
+								array(
+									'field'    => 'field_5c0fac61bdbd7',
+									'operator' => '==',
+									'value'    => 'magazineCountryD',
+								),
+							),
+							array(
+								array(
+									'field'    => 'field_5c0fac61bdbd7',
+									'operator' => '==',
+									'value'    => 'magazineCountryF',
+								),
+							),
+							array(
+								array(
+									'field'    => 'field_5c0fac61bdbd7',
+									'operator' => '==',
+									'value'    => 'magazineCantonD',
+								),
+							),
+							array(
+								array(
+									'field'    => 'field_5c0fac61bdbd7',
+									'operator' => '==',
+									'value'    => 'magazineCantonF',
+								),
+							),
+							array(
+								array(
+									'field'    => 'field_5c0fac61bdbd7',
+									'operator' => '==',
+									'value'    => 'magazineMunicipality',
+								),
+							),
 						),
 						'wrapper'           => array(
 							'width' => '',
 							'class' => '',
 							'id'    => '',
 						),
-						'message'           => __( 'You must select the field type <em>Newsletter / Press release (CRM)</em> (in the tab <em>standard</em>) for this field to work!', THEME_DOMAIN ),
+						'message'           => __( 'You must select the field type <em>Subscription (CRM)</em> (in the tab <em>standard</em>) for this field to work!', THEME_DOMAIN ),
 						'new_lines'         => 'wpautop',
 						'esc_html'          => 0,
 					),
@@ -362,12 +406,22 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 						'conditional_logic' => array(
 							array(
 								array(
+									'field'    => 'field_5c0fc5b4eece5',
+									'operator' => '==',
+									'value'    => '0',
+								),
+								array(
 									'field'    => 'field_5c0fac61bdbd7',
 									'operator' => '==',
 									'value'    => 'recordCategory',
 								),
 							),
 							array(
+								array(
+									'field'    => 'field_5c0fc5b4eece5',
+									'operator' => '==',
+									'value'    => '0',
+								),
 								array(
 									'field'    => 'field_5c0fac61bdbd7',
 									'operator' => '==',
@@ -376,12 +430,22 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 							),
 							array(
 								array(
+									'field'    => 'field_5c0fc5b4eece5',
+									'operator' => '==',
+									'value'    => '0',
+								),
+								array(
 									'field'    => 'field_5c0fac61bdbd7',
 									'operator' => '==',
 									'value'    => 'interests',
 								),
 							),
 							array(
+								array(
+									'field'    => 'field_5c0fc5b4eece5',
+									'operator' => '==',
+									'value'    => '0',
+								),
 								array(
 									'field'    => 'field_5c0fac61bdbd7',
 									'operator' => '==',
@@ -466,6 +530,31 @@ Select replace for single value fields like the address line and append for mult
 									'operator' => '!=',
 									'value'    => 'pressReleaseMunicipality',
 								),
+								array(
+									'field'    => 'field_5c0fac61bdbd7',
+									'operator' => '!=',
+									'value'    => 'magazineCountryD',
+								),
+								array(
+									'field'    => 'field_5c0fac61bdbd7',
+									'operator' => '!=',
+									'value'    => 'magazineCountryF',
+								),
+								array(
+									'field'    => 'field_5c0fac61bdbd7',
+									'operator' => '!=',
+									'value'    => 'magazineCantonD',
+								),
+								array(
+									'field'    => 'field_5c0fac61bdbd7',
+									'operator' => '!=',
+									'value'    => 'magazineCantonF',
+								),
+								array(
+									'field'    => 'field_5c0fac61bdbd7',
+									'operator' => '!=',
+									'value'    => 'magazineMunicipality',
+								)
 							),
 						),
 						'wrapper'           => array(
@@ -474,10 +563,10 @@ Select replace for single value fields like the address line and append for mult
 							'id'    => '',
 						),
 						'choices'           => array(
-							'replace'      => __( 'Replace', THEME_DOMAIN ),
-							'append'       => __( 'Append', THEME_DOMAIN ),
 							'replaceEmpty' => __( 'Add if empty', THEME_DOMAIN ),
 							'addIfNew'     => __( 'Add if new', THEME_DOMAIN ),
+							'append'       => __( 'Append', THEME_DOMAIN ),
+							'replace'      => __( 'Replace', THEME_DOMAIN ),
 						),
 						'default_value'     => array(),
 						'allow_null'        => 0,
@@ -521,18 +610,28 @@ Select replace for single value fields like the address line and append for mult
 						'type'              => 'text',
 						'instructions'      => __( 'Make sure this value is accepted by Webling.
 <br><br>
-Example interest field: Only the interests that can be selected in Webling are accepted values.', THEME_DOMAIN ),
+Example greetings field: Only the greetings that can be selected in Webling are accepted values.', THEME_DOMAIN ),
 						'required'          => 0,
 						'conditional_logic' => array(
 							array(
+								array(
+									'field'    => 'field_5c0fc5b4eece5',
+									'operator' => '==',
+									'value'    => '1',
+								),
 								array(
 									'field'    => 'field_5c0fac61bdbd7',
 									'operator' => '!=empty',
 								),
 								array(
-									'field'    => 'field_5c0fc5b4eece5',
-									'operator' => '==',
-									'value'    => '1',
+									'field'    => 'field_5c0fac61bdbd7',
+									'operator' => '!=',
+									'value'    => 'interests',
+								),
+								array(
+									'field'    => 'field_5c0fac61bdbd7',
+									'operator' => '!=',
+									'value'    => 'request',
 								),
 							),
 						),
@@ -546,6 +645,52 @@ Example interest field: Only the interests that can be selected in Webling are a
 						'prepend'           => '',
 						'append'            => '',
 						'maxlength'         => '',
+					),
+					array(
+						'key'               => 'field_5c0fc84a09a4f',
+						'label'             => __( 'Field Value', THEME_DOMAIN ),
+						'name'              => 'hidden_field_choices',
+						'type'              => 'textarea',
+						'instructions'      => __( 'Make sure the values are accepted by Webling. Add one choice per line.
+<br><br>
+Example interest field: Only the interests that can be selected in Webling are accepted values.', THEME_DOMAIN ),
+						'required'          => 0,
+						'conditional_logic' => array(
+							array(
+								array(
+									'field'    => 'field_5c0fc5b4eece5',
+									'operator' => '==',
+									'value'    => '1',
+								),
+								array(
+									'field'    => 'field_5c0fac61bdbd7',
+									'operator' => '==',
+									'value'    => 'interests',
+								),
+							),
+							array(
+								array(
+									'field'    => 'field_5c0fc5b4eece5',
+									'operator' => '==',
+									'value'    => '1',
+								),
+								array(
+									'field'    => 'field_5c0fac61bdbd7',
+									'operator' => '==',
+									'value'    => 'request',
+								),
+							),
+						),
+						'wrapper'           => array(
+							'width' => '',
+							'class' => '',
+							'id'    => '',
+						),
+						'default_value'     => '',
+						'placeholder'       => '',
+						'maxlength'         => '',
+						'rows'              => 4,
+						'new_lines'         => '',
 					),
 				),
 			),

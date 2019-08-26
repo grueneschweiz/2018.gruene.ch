@@ -22,18 +22,6 @@ class FormSubmission {
 	const SUBMISSION_LIMIT_HOUR_IP_FORM_AGENT = 10;
 	const SUBMISSION_LIMIT_DAY_IP_FORM = 100;
 
-	const TYPE_CHECKBOX = 'checkbox';
-	const TYPE_CONFIRMATION = 'confirmation';
-	const TYPE_SELECT = 'select';
-	const TYPE_RADIO = 'radio';
-	const TYPE_EMAIL = 'email';
-	const TYPE_NUMBER = 'number';
-	const TYPE_PHONE = 'phone';
-	const TYPE_CRM_NEWSLETTER = 'crm_newsletter';
-	const TYPE_CRM_GREETING = 'crm_greeting';
-
-	const CRM_EMAIL_FIELD = 'email1';
-
 	/**
 	 * The form
 	 *
@@ -121,7 +109,7 @@ class FormSubmission {
 	/**
 	 * Cache for the form fields (as defined in the backend)
 	 *
-	 * @var array
+	 * @var FormField[]
 	 */
 	private $fields;
 
@@ -138,6 +126,26 @@ class FormSubmission {
 		if ( ! WP_DEBUG && get_field( 'form_smtp_enabled', 'options' ) ) {
 			add_action( 'phpmailer_init', array( $this, 'setup_SMTP' ) );
 		}
+	}
+
+	/**
+	 * Send out the pending mails
+	 *
+	 * Called by the WordPress cron job
+	 */
+	public static function send_mails() {
+		require_once __DIR__ . '/include/Mailer.php';
+		Mailer::send_mails();
+	}
+
+	/**
+	 * Save the form submissions to the crm
+	 *
+	 * Called by the WordPress cron job
+	 */
+	public static function save_to_crm() {
+		require_once __DIR__ . '/include/CrmSaver.php';
+		CrmSaver::save_to_crm();
 	}
 
 	/**
@@ -214,57 +222,6 @@ class FormSubmission {
 	}
 
 	/**
-	 * Check if form is submitted using ajax, has a valid nonce and ip.
-	 */
-	private function abort_if_invalid_header() {
-		$valid = true;
-
-		// check nonce
-		if ( ! wp_verify_nonce( $this->nonce, self::ACTION_BASE_NAME ) ) {
-			$valid = false;
-		}
-
-		// only accept ajax submissions
-		if ( ! ( defined( 'DOING_AJAX' ) && DOING_AJAX ) ) {
-			$valid = false;
-		}
-
-		// check for valid ip
-		if ( ! filter_var( $this->ip, FILTER_VALIDATE_IP ) ) {
-			$valid = false;
-		}
-
-		// exit here if any of the above checks failed
-		if ( ! $valid ) {
-			$this->respond_with_error( 400, array( 'Submission not valid' ) );
-
-			return;
-		}
-	}
-
-	/**
-	 * Limit form submissions according to
-	 * - SUBMISSION_LIMIT_MINUTE_IP_FORM_AGENT
-	 * - SUBMISSION_LIMIT_MINUTE_IP_FORM
-	 * - SUBMISSION_LIMIT_HOUR_IP_FORM_AGENT
-	 * - SUBMISSION_LIMIT_DAY_IP_FORM
-	 */
-	private function abort_if_limit_exceeded() {
-		// @todo: implement submission limiting
-	}
-
-	/**
-	 * Stop execution with a 400 if the data threw a validation error
-	 */
-	private function abort_if_invalid_data() {
-		if ( ! empty( $this->errors ) ) {
-			$this->respond_with_error( 400, $this->errors );
-
-			return;
-		}
-	}
-
-	/**
 	 * Send error message to client and die
 	 *
 	 * @param int $code
@@ -320,31 +277,68 @@ class FormSubmission {
 	}
 
 	/**
+	 * Check if form is submitted using ajax, has a valid nonce and ip.
+	 */
+	private function abort_if_invalid_header() {
+		$valid = true;
+
+		// check nonce
+		if ( ! wp_verify_nonce( $this->nonce, self::ACTION_BASE_NAME ) ) {
+			$valid = false;
+		}
+
+		// only accept ajax submissions
+		if ( ! ( defined( 'DOING_AJAX' ) && DOING_AJAX ) ) {
+			$valid = false;
+		}
+
+		// check for valid ip
+		if ( ! filter_var( $this->ip, FILTER_VALIDATE_IP ) ) {
+			$valid = false;
+		}
+
+		// exit here if any of the above checks failed
+		if ( ! $valid ) {
+			$this->respond_with_error( 400, array( 'Submission not valid' ) );
+
+			return;
+		}
+	}
+
+	/**
+	 * Limit form submissions according to
+	 * - SUBMISSION_LIMIT_MINUTE_IP_FORM_AGENT
+	 * - SUBMISSION_LIMIT_MINUTE_IP_FORM
+	 * - SUBMISSION_LIMIT_HOUR_IP_FORM_AGENT
+	 * - SUBMISSION_LIMIT_DAY_IP_FORM
+	 */
+	private function abort_if_limit_exceeded() {
+		// @todo: implement submission limiting
+	}
+
+	/**
 	 * Populate data field with validated and sanitized form data.
 	 */
 	private function add_data() {
 		$fields = $this->get_fields();
 
 		foreach ( $fields as $key => $field ) {
-			if ( isset( $field['hidden_field'] ) && $field['hidden_field'] ) {
-				$this->data[ $key ] = $field['hidden_field_value'];
+			if ( $field->has_fixed_crm_value() ) {
+				$this->data[ $key ] = $field->get_fixed_crm_value();
 				continue;
 			}
 
 			// sanitize and validate checkboxes
-			if ( self::TYPE_CHECKBOX === $field['form_input_type'] ) {
-				$choices = trim( $field['form_input_choices'] );
-				$options = FormModel::split_choices( $choices );
-
+			if ( $field->is_checkbox_type() ) {
 				$this->data[ $key ] = array();
 
-				foreach ( $field['values'] as $value_key => $value ) {
+				foreach ( $field->get_choices() as $value_key => $value ) {
 					$raw     = $this->get_field_data( $value_key, true );
-					$checked = $this->sanitize( $raw, self::TYPE_CHECKBOX );
-					$valid   = $this->validate( $checked, self::TYPE_CHECKBOX, $options, false );
+					$checked = $field->sanitize( $raw );
+					$valid   = $field->validate( $checked );
 
-					if ( true !== $valid ) {
-						$this->errors[ $key ] = $valid;
+					if ( ! $valid ) {
+						$this->errors[ $key ] = __( 'Invalid value.', THEME_DOMAIN );
 					}
 
 					if ( $checked ) {
@@ -355,15 +349,11 @@ class FormSubmission {
 			} else {
 				$raw = $this->get_field_data( $key );
 
-				$type      = $field['form_input_type'];
-				$choices   = trim( $field['form_input_choices'] );
-				$options   = FormModel::split_choices( $choices );
-				$required  = $field['form_input_required'];
-				$sanitized = $this->sanitize( $raw, $type );
-				$valid     = $this->validate( $sanitized, $type, $options, $required );
+				$sanitized = $field->sanitize( $raw );
+				$valid     = $field->validate( $sanitized );
 
-				if ( true !== $valid ) {
-					$this->errors[ $key ] = $valid;
+				if ( ! $valid ) {
+					$this->errors[ $key ] = __( 'Invalid or missing value.', THEME_DOMAIN );
 				}
 
 				$this->data[ $key ] = $sanitized;
@@ -374,21 +364,11 @@ class FormSubmission {
 	/**
 	 * Return the form fields as defined in the backend, using cache
 	 *
-	 * @return array
+	 * @return FormField[]
 	 */
 	private function get_fields() {
 		if ( ! $this->fields ) {
 			$this->fields = $this->form->get_fields();
-
-			foreach ( $this->fields as $key => $field ) {
-				if ( self::TYPE_CHECKBOX === $field['form_input_type'] ) {
-					$labels = FormModel::split_choices( $field['form_input_choices'] );
-					for ( $i = 0; $i < count( $labels ); $i ++ ) {
-						$valueKey                                    = $key . '-' . $i;
-						$this->fields[ $key ]['values'][ $valueKey ] = trim( $labels[ $i ] );
-					}
-				}
-			}
 		}
 
 		return $this->fields;
@@ -420,95 +400,14 @@ class FormSubmission {
 	}
 
 	/**
-	 * Basic sanitation.
-	 *
-	 * Note: Radio and select data stays unchanged.
-	 *
-	 * @param $data
-	 * @param $type
-	 *
-	 * @return bool|string
+	 * Stop execution with a 400 if the data threw a validation error
 	 */
-	private function sanitize( $data, $type ) {
-		switch ( $type ) {
-			case self::TYPE_CHECKBOX:
-			case self::TYPE_CONFIRMATION:
-			case self::TYPE_CRM_NEWSLETTER:
-				return filter_var( $data, FILTER_VALIDATE_BOOLEAN );
-			case self::TYPE_RADIO:
-			case self::TYPE_SELECT:
-			case self::TYPE_CRM_GREETING:
-				return $data;
-			case self::TYPE_PHONE:
-				$allowed = '\d\+ -\\\(\)';
+	private function abort_if_invalid_data() {
+		if ( ! empty( $this->errors ) ) {
+			$this->respond_with_error( 400, $this->errors );
 
-				return preg_replace( "/[^${allowed}]/", '', $data );
-			case self::TYPE_EMAIL:
-				return filter_var( $data, FILTER_SANITIZE_EMAIL );
-			case self::TYPE_NUMBER:
-				return filter_var( $data, FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION );
-			default:
-				return strip_tags( $data );
+			return;
 		}
-	}
-
-	/**
-	 * Validate data according to type
-	 *
-	 * @param string|bool $data to validate
-	 * @param string $type possible values: checkbox, confirmation, radio, select, email, phone, text, textarea
-	 * @param array $options possible values for select and radio fields
-	 * @param bool $required
-	 *
-	 * @return bool
-	 */
-	private function validate( $data, $type, $options, $required ) {
-		$valid   = true;
-		$message = __( 'Invalid input.', THEME_DOMAIN );
-
-		if ( ! $required && '' === $data ) {
-			return $valid;
-		}
-
-		switch ( $type ) {
-			case self::TYPE_CHECKBOX:
-			case self::TYPE_CONFIRMATION:
-			case self::TYPE_CRM_NEWSLETTER:
-				$valid = true;
-				break;
-
-			case self::TYPE_RADIO:
-			case self::TYPE_SELECT:
-			case self::TYPE_CRM_GREETING:
-				if ( empty( $data ) && '0' !== $data ) {
-					$valid = true;
-					break;
-				}
-
-				foreach ( $options as $key => $val ) {
-					$options[ $key ] = trim( preg_replace( '/[&<>"\']/', '', $val ) );
-				}
-
-				$valid = in_array( $data, $options );
-				break;
-
-			case self::TYPE_EMAIL:
-				$valid   = filter_var( $data, FILTER_VALIDATE_EMAIL );
-				$message = __( 'Invalid email.', THEME_DOMAIN );
-				break;
-
-			case self::TYPE_NUMBER:
-				$valid   = is_numeric( $data ) || '' === $data;
-				$message = __( 'Invalid number', THEME_DOMAIN );
-				break;
-		}
-
-		if ( $required && empty( trim( $data ) ) ) {
-			$valid   = false;
-			$message = __( 'This field is required.', THEME_DOMAIN );
-		}
-
-		return (bool) $valid ? (bool) $valid : $message;
 	}
 
 	/**
@@ -542,8 +441,7 @@ class FormSubmission {
 		}
 
 		foreach ( $this->get_fields() as $key => $field ) {
-			if ( ! empty( $field['crm_field'] )
-			     && self::CRM_EMAIL_FIELD === $field['crm_field'] ) {
+			if ( $field->is_crm_email() ) {
 
 				$email = $this->data[ $key ];
 				if ( ! empty( $email && filter_var( $email, FILTER_VALIDATE_EMAIL ) ) ) {
@@ -553,7 +451,7 @@ class FormSubmission {
 		}
 
 		foreach ( $this->get_fields() as $key => $field ) {
-			if ( self::TYPE_EMAIL === $field['form_input_type'] ) {
+			if ( $field->is_email_type() ) {
 				$email = $this->data[ $key ];
 				if ( ! empty( $email ) ) {
 					return $email; // already validated
@@ -610,6 +508,19 @@ class FormSubmission {
 				)
 			);
 		}
+	}
+
+	/**
+	 * Notify the site admin about the error
+	 *
+	 * @param string $action
+	 * @param mixed $data
+	 * @param Exception $exception
+	 */
+	private function report_error( $action, $data, $exception ) {
+		$form = $this->form->get_title();
+
+		Util::report_form_error( $action, $data, $exception, $form );
 	}
 
 	/**
@@ -683,38 +594,5 @@ class FormSubmission {
 		$phpmailer->Port     = $config['port'];
 		$phpmailer->Username = $config['username'];
 		$phpmailer->Password = $config['password'];
-	}
-
-	/**
-	 * Send out the pending mails
-	 *
-	 * Called by the WordPress cron job
-	 */
-	public static function send_mails() {
-		require_once __DIR__ . '/include/Mailer.php';
-		Mailer::send_mails();
-	}
-
-	/**
-	 * Save the form submissions to the crm
-	 *
-	 * Called by the WordPress cron job
-	 */
-	public static function save_to_crm() {
-		require_once __DIR__ . '/include/CrmSaver.php';
-		CrmSaver::save_to_crm();
-	}
-
-	/**
-	 * Notify the site admin about the error
-	 *
-	 * @param string $action
-	 * @param mixed $data
-	 * @param Exception $exception
-	 */
-	private function report_error( $action, $data, $exception ) {
-		$form = $this->form->get_title();
-
-		Util::report_form_error( $action, $data, $exception, $form );
 	}
 }

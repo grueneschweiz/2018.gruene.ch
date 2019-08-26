@@ -58,21 +58,6 @@ class FormModel {
 	}
 
 	/**
-	 * The forms columns
-	 *
-	 * @return array
-	 */
-	public function get_columns() {
-		$columns = [];
-
-		foreach ( $this->get_fields() as $key => $field ) {
-			$columns[ $key ] = $field['form_input_label'];
-		}
-
-		return $columns;
-	}
-
-	/**
 	 * Get single field
 	 *
 	 * @param $key
@@ -90,14 +75,31 @@ class FormModel {
 	}
 
 	/**
-	 * The form fields
+	 * The forms columns
 	 *
 	 * @return array
 	 */
+	public function get_columns() {
+		$columns = [];
+
+		foreach ( $this->get_fields() as $key => $field ) {
+			$columns[ $key ] = $field->get_label();
+		}
+
+		return $columns;
+	}
+
+	/**
+	 * The form fields
+	 *
+	 * @return FormField[]
+	 */
 	public function get_fields() {
 		if ( empty( $this->fields ) ) {
+			require_once __DIR__ . '/FormField.php';
+
 			foreach ( get_field( 'form_fields', $this->id ) as $field ) {
-				$this->fields[ $field['slug'] ] = $field;
+				$this->fields[ $field['slug'] ] = new FormField( $field );
 			}
 		}
 
@@ -278,6 +280,22 @@ class FormModel {
 	}
 
 	/**
+	 * The mailtemplate with only wpautop() applied
+	 *
+	 * @param string $which self::CONFIRMATION or self::NOTIFICATION
+	 *
+	 * @return string
+	 */
+	private function get_mail_template( $which ) {
+		// we need this unformatted, else complex twig templates won't work
+		$parent_key = self::NOTIFICATION === $which ? 'field_5bf2bdfc61f42' : 'field_5bf2bc9461f40';
+
+		$raw_template = $this->get_mail_settings( $which, false )["{$parent_key}_field_5be2e5d83fdf7"];
+
+		return wpautop( $raw_template );
+	}
+
+	/**
 	 * Cached confirmation or notification mail settings
 	 *
 	 * @param string $which self::CONFIRMATION or self::NOTIFICATION
@@ -300,22 +318,6 @@ class FormModel {
 	 */
 	public function get_notification_template() {
 		return $this->get_mail_template( self::NOTIFICATION );
-	}
-
-	/**
-	 * The mailtemplate with only wpautop() applied
-	 *
-	 * @param string $which self::CONFIRMATION or self::NOTIFICATION
-	 *
-	 * @return string
-	 */
-	private function get_mail_template( $which ) {
-		// we need this unformatted, else complex twig templates won't work
-		$parent_key = self::NOTIFICATION === $which ? 'field_5bf2bdfc61f42' : 'field_5bf2bc9461f40';
-
-		$raw_template = $this->get_mail_settings( $which, false )["{$parent_key}_field_5be2e5d83fdf7"];
-
-		return wpautop( $raw_template );
 	}
 
 	/**
@@ -356,27 +358,5 @@ class FormModel {
 		}
 
 		return $this->has_notification;
-	}
-
-	/**
-	 * Get array of choices from choices string
-	 *
-	 * @param $string
-	 *
-	 * @return array
-	 */
-	public static function split_choices( $string ) {
-		$choices = explode( "\n", $string );
-
-		$return = array();
-		foreach ( $choices as $choice ) {
-			$choice = trim( $choice );
-
-			if ( '' !== $choice ) {
-				$return[] = $choice;
-			}
-		}
-
-		return $return;
 	}
 }
