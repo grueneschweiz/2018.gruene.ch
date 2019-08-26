@@ -204,10 +204,17 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 							//'language'                 => 'Sprache / langue', // this is automatically added
 							'salutationInformal'       => 'Anrede / appel (informel)',
 							'address1'                 => 'Strasse / rue',
+							'address2'                 => 'Adresszusatz / complément d’adresse',
 							'zip'                      => 'PLZ / code postal',
 							'city'                     => 'Ort / localité',
 							'email1'                   => 'E-Mail / courriel 1',
 							'mobilePhone'              => 'Mobile / mobile',
+							'birthday'                 => 'Geburtstag / anniversaire',
+							'magazineCountryD'         => 'Greenfo DE',
+							'magazineCountryF'         => 'Greenfo FR',
+							'magazineCantonD'          => 'Kantonale Zeitschrift DE',
+							'magazineCantonF'          => 'journal cantonal FR',
+							'magazineMunicipality'     => 'Zeitschrift Kommunal / journal communal',
 							'newsletterCountryD'       => 'Newsletter national DE',
 							'newsletterCountryF'       => 'infolettre nationale FR',
 							'newsletterCantonD'        => 'Newsletter kantonal DE',
@@ -342,13 +349,48 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 									'value'    => 'pressReleaseMunicipality',
 								),
 							),
+							array(
+								array(
+									'field'    => 'field_5c0fac61bdbd7',
+									'operator' => '==',
+									'value'    => 'magazineCountryD',
+								),
+							),
+							array(
+								array(
+									'field'    => 'field_5c0fac61bdbd7',
+									'operator' => '==',
+									'value'    => 'magazineCountryF',
+								),
+							),
+							array(
+								array(
+									'field'    => 'field_5c0fac61bdbd7',
+									'operator' => '==',
+									'value'    => 'magazineCantonD',
+								),
+							),
+							array(
+								array(
+									'field'    => 'field_5c0fac61bdbd7',
+									'operator' => '==',
+									'value'    => 'magazineCantonF',
+								),
+							),
+							array(
+								array(
+									'field'    => 'field_5c0fac61bdbd7',
+									'operator' => '==',
+									'value'    => 'magazineMunicipality',
+								),
+							),
 						),
 						'wrapper'           => array(
 							'width' => '',
 							'class' => '',
 							'id'    => '',
 						),
-						'message'           => __( 'You must select the field type <em>Newsletter / Press release (CRM)</em> (in the tab <em>standard</em>) for this field to work!', THEME_DOMAIN ),
+						'message'           => __( 'You must select the field type <em>Subscription (CRM)</em> (in the tab <em>standard</em>) for this field to work!', THEME_DOMAIN ),
 						'new_lines'         => 'wpautop',
 						'esc_html'          => 0,
 					),

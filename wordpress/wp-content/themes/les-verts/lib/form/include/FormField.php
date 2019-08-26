@@ -15,7 +15,7 @@ class FormField {
 	const TYPE_NUMBER = 'number';
 	const TYPE_DATE = 'date';
 	const TYPE_PHONE = 'tel';
-	const TYPE_CRM_NEWSLETTER = 'crm_newsletter';
+	const TYPE_CRM_SUBSCRIPTION = 'crm_newsletter';
 	const TYPE_CRM_GREETING = 'crm_greeting';
 
 	const CHOICE_TYPES = array(
@@ -134,8 +134,8 @@ class FormField {
 		return $this->has_crm_config() && self::CRM_EMAIL_FIELD === $this->crm_field;
 	}
 
-	public function is_crm_newsletter() {
-		return self::TYPE_CRM_NEWSLETTER === $this->type;
+	public function is_crm_subscription() {
+		return self::TYPE_CRM_SUBSCRIPTION === $this->type;
 	}
 
 	public function is_crm_greeting() {
@@ -183,7 +183,7 @@ class FormField {
 		switch ( $this->type ) {
 			case self::TYPE_CHECKBOX:
 			case self::TYPE_CONFIRMATION:
-			case self::TYPE_CRM_NEWSLETTER:
+			case self::TYPE_CRM_SUBSCRIPTION:
 				$valid = true;
 				break;
 
@@ -244,7 +244,7 @@ class FormField {
 		switch ( $this->type ) {
 			case self::TYPE_CHECKBOX:
 			case self::TYPE_CONFIRMATION:
-			case self::TYPE_CRM_NEWSLETTER:
+			case self::TYPE_CRM_SUBSCRIPTION:
 				return filter_var( $data, FILTER_VALIDATE_BOOLEAN );
 
 			case self::TYPE_RADIO:

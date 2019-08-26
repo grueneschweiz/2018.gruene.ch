@@ -49,8 +49,8 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 					'checkbox'       => __( 'Check box', THEME_DOMAIN ),
 					'select'         => __( 'Drop down', THEME_DOMAIN ),
 					'confirmation'   => __( 'Confirmation', THEME_DOMAIN ),
-					'crm_newsletter' => __( 'Newsletter / Press release (CRM)', THEME_DOMAIN ),
-					'crm_greeting'   => __( 'Greeting (CRM)', THEME_DOMAIN ),
+					'crm_newsletter' => __( 'Special: Subscription (CRM)', THEME_DOMAIN ),
+					'crm_greeting'   => __( 'Special: Greeting (CRM)', THEME_DOMAIN ),
 				),
 				'default_value'     => array(
 					0 => 'text',

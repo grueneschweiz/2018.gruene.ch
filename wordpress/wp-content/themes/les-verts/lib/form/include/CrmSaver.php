@@ -310,7 +310,7 @@ class CrmSaver {
 	 * @param string|array $data
 	 */
 	private function add_crm_data_field_with_special_fields( $form_field, $data ) {
-		if ( $form_field->is_crm_newsletter() ) {
+		if ( $form_field->is_crm_subscription() ) {
 			$this->add_newsletter( $form_field, $data );
 
 			return;
