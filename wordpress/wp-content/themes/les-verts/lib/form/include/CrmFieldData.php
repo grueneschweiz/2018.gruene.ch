@@ -91,7 +91,7 @@ class CrmFieldData {
 			self::MODE_REPLACE_EMPTY,
 			self::MODE_ADD_IF_NEW
 		] ) ) {
-			throw new InvalidArgumentException( 'Invalid crm insertion mode' );
+			throw new InvalidArgumentException( "Invalid crm insertion mode '$mode' in field '{$this->key}'" );
 		}
 
 		$this->mode = $mode;
