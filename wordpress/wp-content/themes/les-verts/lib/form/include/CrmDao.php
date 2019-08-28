@@ -82,7 +82,7 @@ class CrmDao {
 			);
 		}
 
-		$args     = array( 'body' => json_encode( $crm_data ), array( 'timeout' => self::WP_REMOTE_TIMEOUT ) );
+		$args     = array( 'body' => json_encode( $crm_data ), 'timeout' => self::WP_REMOTE_TIMEOUT );
 		$response = wp_remote_post( $this->api_url . 'api/v1/member', $this->add_auth_header( $args ) );
 
 		if ( is_wp_error( $response ) ) {
