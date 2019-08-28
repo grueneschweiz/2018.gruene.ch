@@ -1,9 +1,6 @@
-#
 # Installs WordPress with wp-cli (wp.cli.org) installed
-# Docker Hub: https://registry.hub.docker.com/u/conetix/wordpress-with-wp-cli/
-# Github Repo: https://github.com/conetix/docker-wordpress-wp-cli
 
-FROM wordpress:4.9-php7.1-apache
+FROM wordpress:latest
 
 # Add sudo in order to run wp-cli as the www-data user
 RUN apt-get update && apt-get install -y \
@@ -15,7 +12,7 @@ RUN apt-get update && apt-get install -y \
 	zlib1g-dev \
 	libicu-dev \
 	g++ \
-	ssmtp \
+	msmtp \
 	vim
 
 # Add PHP extensions
