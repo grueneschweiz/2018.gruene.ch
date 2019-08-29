@@ -1592,7 +1592,7 @@ msgstr "\"%1$s\" von %2$s."
 #. translators: 1: audio track title, 2: artist name
 #: vendor/timber/timber/tests/wp-overrides.php:46
 msgid "\"%1$s\" by %2$s."
-msgstr "„%1$s“ durch %2$s."
+msgstr "„%1$s“ von %2$s."
 
 #: vendor/timber/timber/tests/wp-overrides.php:48
 msgid "\"%s\"."
@@ -2357,7 +2357,7 @@ msgstr "Verstecken"
 
 #: acf-translate.php:1945
 msgid "Link the main page of this campaign and set an accurate \"read more\" text for the link button."
-msgstr "Verlinke die Hauptseite dieser Kampagne und setzte einen passenden \"Weiterlesen\" Text für den Link button."
+msgstr "Verlinke die Hauptseite dieser Kampagne und setze einen passenden \"Weiterlesen\" Text für den Link button."
 
 #: acf-translate.php:2020
 msgid "Action Type"
@@ -2393,7 +2393,7 @@ msgstr "Call to Action (Link Button)"
 
 #: acf-translate.php:2099
 msgid "Displays the link to further reading as link button (the green one with >)."
-msgstr "Zeigt den Link zum Weiterlesen als Link Button (der grüne mit em >)."
+msgstr "Zeigt den Link zum Weiterlesen als Link Button (der grüne mit dem >)."
 
 #: acf-translate.php:2394
 msgid "Use link list blocks to provide some additional information, the reader could be interested in. \n"
