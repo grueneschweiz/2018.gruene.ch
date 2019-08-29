@@ -1236,11 +1236,11 @@ msgstr "La corbeille ne contient aucun formulaire"
 msgid "Fields"
 msgstr "Champs"
 
-#. Im Sinne von Vorschläge? Zusendungen? Eingaben?
+#. Zusammenhang für mich immer noch nicht wirklich klar
 #: lib/form/include/FormType.php:254 lib/form/include/FormType.php:284
 #: lib/form/include/FormType.php:285 lib/form/include/SubmissionsTable.php:33
 msgid "Submissions"
-msgstr ""
+msgstr "Réponses"
 
 #: lib/form/acf/form-details.php:11
 msgid "Form fields"
@@ -1643,12 +1643,12 @@ msgstr "Titre: „%1$s“; album: %2$s; auteur: %3$s."
 #. Zwei Zahlen?
 #: vendor/timber/timber/tests/wp-overrides.php:43
 msgid "\"%1$s\" from %2$s."
-msgstr ""
+msgstr "\"%1$s\" de %2$s."
 
 #. translators: 1: audio track title, 2: artist name
 #: vendor/timber/timber/tests/wp-overrides.php:46
 msgid "\"%1$s\" by %2$s."
-msgstr ""
+msgstr "„%1$s“ de %2$s."
 
 #: vendor/timber/timber/tests/wp-overrides.php:48
 msgid "\"%s\"."
@@ -1657,23 +1657,24 @@ msgstr "\"%s\"."
 #. translators: 1: audio album title, 2: artist name
 #: vendor/timber/timber/tests/wp-overrides.php:55
 msgid "%1$s by %2$s."
-msgstr ""
+msgstr "%1$s de %2$s."
 
 #: vendor/timber/timber/tests/wp-overrides.php:67
 msgid "Released: %d."
-msgstr ""
+msgstr "Publié: %d"
 
+#. Annahme: Anzahl, und nicht Künstler
 #: vendor/timber/timber/tests/wp-overrides.php:72
 msgid "Track %1$s of %2$s."
-msgstr ""
+msgstr "Piste %1$s sur %2$s."
 
 #: vendor/timber/timber/tests/wp-overrides.php:74
 msgid "Track %1$s."
-msgstr ""
+msgstr "Piste %1$s."
 
 #: vendor/timber/timber/tests/wp-overrides.php:78
 msgid "Genre: %s."
-msgstr ""
+msgstr "Genre: %s"
 
 #. -Begrenzung
 #: vendor/timber/timber/tests/wp-overrides.php:143
@@ -1707,7 +1708,7 @@ msgstr "Le téléchargement du fichier a été interrompu en raison de l'extensi
 
 #: vendor/timber/timber/tests/wp-overrides.php:167
 msgid "Invalid form submission."
-msgstr ""
+msgstr "Réponse invalide dans le formulaire"
 
 #: vendor/timber/timber/tests/wp-overrides.php:177
 msgid "File is empty. Please upload something more substantial."
@@ -1977,28 +1978,28 @@ msgstr "Recommandation de vote"
 
 #: lib/form/include/FormType.php:320
 msgid "Form Submissions"
-msgstr ""
+msgstr "Réponses dans le formulaire"
 
 #: lib/form/admin/ViewSingle.php:15 lib/form/include/SubmissionsTable.php:32
 msgid "Submission"
-msgstr ""
+msgstr "Réponses"
 
 #: lib/form/admin/ViewSingle.php:90 lib/form/include/SubmissionExport.php:175
 #: lib/form/include/SubmissionsTable.php:107
 msgid "Timestamp"
-msgstr ""
+msgstr "Cachet horodaté"
 
 #: lib/form/include/SubmissionsTable.php:177
 msgid "No forms available"
-msgstr ""
+msgstr "Aucun formulaire n'est disponible"
 
 #: lib/form/include/SubmissionsTable.php:187
 msgid "Invalid form"
-msgstr ""
+msgstr "Formulaire non valide"
 
 #: lib/form/include/SubmissionsTable.php:496
 msgid "View"
-msgstr ""
+msgstr "Afficher"
 
 #: lib/form/include/SubmissionsTable.php:414
 #: lib/form/include/SubmissionsTable.php:502
@@ -2013,21 +2014,23 @@ msgstr "Standard"
 msgid "Advanced"
 msgstr "Avancé"
 
+#. Vorschlag: N° d'identification du domaine
 #: lib/form/acf/form-details.php:116
 msgid "DOM id"
-msgstr ""
+msgstr "DOM id"
 
 #: lib/form/acf/form-details.php:119
 msgid "Id in the HTML markup"
-msgstr ""
+msgstr "N° d'identification (id) dans le balisage HTML"
 
 #: lib/form/acf/form-details.php:135
 msgid "DOM Class"
-msgstr ""
+msgstr "Classe DOM"
 
+#. Angefügt als Datei oder einfach (hinten) dazugeschrieben
 #: lib/form/acf/form-details.php:138
 msgid "Class in the HTML markup (appended)"
-msgstr ""
+msgstr "Classe dans le balisage HTML (pièce jointe)"
 
 #: lib/form/acf/form-details.php:173 lib/form/acf/settings.php:149
 msgid "Webling"
@@ -2035,35 +2038,35 @@ msgstr "Webling"
 
 #: lib/form/acf/form-details.php:189
 msgid "Webling Field"
-msgstr ""
+msgstr "Champ Webling"
 
 #: lib/form/acf/form-details.php:542
 msgid "Replace"
-msgstr ""
+msgstr "Remplacer"
 
 #: lib/form/acf/form-details.php:541
 msgid "Append"
-msgstr ""
+msgstr "Ajouter"
 
 #: lib/form/acf/form-details.php:539
 msgid "Add if empty"
-msgstr ""
+msgstr "Ajouter si vide"
 
 #: lib/form/acf/form-details.php:554
 msgid "Hidden Field"
-msgstr ""
+msgstr "Champ masqué"
 
 #: lib/form/acf/form-details.php:557
 msgid "Use this option to add a value to every persons record that submits this form."
-msgstr ""
+msgstr "Utilise cette option pour ajouter une valeur individuelle pour chaque personne remplissant le formulaire"
 
 #: lib/form/acf/form-details.php:573
 msgid "Hide this field from the website visitor"
-msgstr ""
+msgstr "Masquer ce champ pour les visiteurs/visiteuses du site"
 
 #: lib/form/acf/form-details.php:581 lib/form/acf/form-details.php:624
 msgid "Field Value"
-msgstr ""
+msgstr "Valeur du champ"
 
 #: lib/form/acf/input.php:45
 msgid "Number"
@@ -2071,15 +2074,15 @@ msgstr "Nombre"
 
 #: lib/form/acf/settings.php:165
 msgid "API Url"
-msgstr ""
+msgstr "Adresse URL de l'API (interface de programmation d’application)"
 
 #: lib/form/acf/settings.php:216
 msgid "Group Id"
-msgstr ""
+msgstr "N° d'identification du groupe"
 
 #: lib/form/acf/settings.php:219
 msgid "The ID of the group, where <strong>new</strong> member records should be stored in."
-msgstr ""
+msgstr "Désigne le n° d'identification du groupe dans lequel les <strong>nouveaux</strong> jeux de données doivent être enregistrés"
 
 #: lib/form/helpers/class-wp-list-table.php:161
 msgid "List View"
@@ -2100,104 +2103,105 @@ msgstr "Actions multiples"
 #: lib/form/helpers/class-wp-list-table.php:504
 #: lib/form/helpers/class-wp-list-table.php:1282
 msgid "Show more details"
-msgstr ""
+msgstr "Afficher les détails"
 
 #: lib/form/helpers/class-wp-list-table.php:566
 msgid "Filter by date"
-msgstr ""
+msgstr "Filtrer par date"
 
 #: lib/form/helpers/class-wp-list-table.php:568
 msgid "All dates"
-msgstr ""
+msgstr "Toutes les dates"
 
 #: lib/form/helpers/class-wp-list-table.php:631
 msgid "%s comment"
 msgid_plural "%s comments"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s commentaire"
+msgstr[1] "%s commentaires"
 
 #: lib/form/helpers/class-wp-list-table.php:632
 msgid "%s approved comment"
 msgid_plural "%s approved comments"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s commentaire publié"
+msgstr[1] "%s commentaires publiés"
 
 #: lib/form/helpers/class-wp-list-table.php:633
 msgid "%s pending comment"
 msgid_plural "%s pending comments"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s commentaire en attente"
+msgstr[1] "%s commentaires en attente"
 
 #: lib/form/helpers/class-wp-list-table.php:638
 #: lib/form/helpers/class-wp-list-table.php:650
 #: lib/form/helpers/class-wp-list-table.php:663
 msgid "No comments"
-msgstr ""
+msgstr "Pas de commentaires"
 
 #: lib/form/helpers/class-wp-list-table.php:650
 msgid "No approved comments"
-msgstr ""
+msgstr "Pas de commentaires publiés"
 
 #: lib/form/helpers/class-wp-list-table.php:663
 msgid "No pending comments"
-msgstr ""
+msgstr "Pas de commentaires en attente"
 
 #: lib/form/helpers/class-wp-list-table.php:737
 #: lib/form/helpers/class-wp-list-table.php:1306
 msgid "%s item"
 msgid_plural "%s items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s élément"
+msgstr[1] "%s éléments"
 
 #: lib/form/helpers/class-wp-list-table.php:773
 msgid "First page"
-msgstr ""
+msgstr "Première page"
 
 #: lib/form/helpers/class-wp-list-table.php:783
 msgid "Previous page"
-msgstr ""
+msgstr "Page précédente"
 
 #: lib/form/helpers/class-wp-list-table.php:790
 #: lib/form/helpers/class-wp-list-table.php:793
 msgid "Current Page"
-msgstr ""
+msgstr "Page actuelle"
 
 #: lib/form/helpers/class-wp-list-table.php:799
 msgctxt "paging"
 msgid "%1$s of %2$s"
-msgstr ""
+msgstr "%1$s sur %2$s"
 
 #: lib/form/helpers/class-wp-list-table.php:806
 msgid "Next page"
-msgstr ""
+msgstr "Page suivante"
 
 #: lib/form/helpers/class-wp-list-table.php:816
 msgid "Last page"
-msgstr ""
+msgstr "Dernière page"
 
 #: lib/form/helpers/class-wp-list-table.php:1036
 msgid "Select All"
-msgstr ""
+msgstr "Tout sélectionner"
 
 #: lib/form/include/SubmissionsTable.php:335
 msgid "Yet, there were no forms submitted."
-msgstr ""
+msgstr "Aucun formulaire n'a encore été rempli"
 
 #: lib/form/include/SubmissionsTable.php:363
 msgid "Select form"
-msgstr ""
+msgstr "Choisir un formulaire"
 
+#. gemäss https://fr.wikipedia.org/wiki/Slug_(journalisme) und http://www.granddictionnaire.com/Resultat.aspx (Suchbegriff slug)
 #: lib/form/acf/form-details.php:154
 msgid "Field slug"
-msgstr ""
+msgstr "Champ Forme"
 
 #: lib/form/acf/form-details.php:157
 msgid "Read Only. Hacky field to get the slug."
-msgstr ""
+msgstr "Lecture seule. Champ pour le joker (hacky slug)."
 
 #: lib/form/acf/form-details.php:192
 msgid "Select the field in Webling that matches this field."
-msgstr ""
+msgstr "Sélectionne le champ de Webling qui correspond à ce champ."
 
 #: templates/404.twig:6
 msgid "Sorry, we couldn't find what you're looking for. Have you tried the search?"
@@ -2205,31 +2209,31 @@ msgstr "Pardon, mais nous n'avons pas trouvé le contenu recherché. La fonction
 
 #: acf-translate.php:4008
 msgid "Recommendation Link"
-msgstr ""
+msgstr "Lien de la recommandation"
 
 #: acf-translate.php:4091
 msgid "Title Overwrite (optional)"
-msgstr ""
+msgstr "Écraser le titre (facultatif)"
 
 #: acf-translate.php:4094
 msgid "Leave blank, to use the posts title."
-msgstr ""
+msgstr "Laisser vide pour utiliser le titre de l'article"
 
 #: lib/customizer/GetActive.php:71
 msgid "Button Link"
-msgstr ""
+msgstr "Lien du bouton"
 
 #: lib/customizer/GetActive.php:72
 msgid "Add the url, where the get active button should lead to."
-msgstr ""
+msgstr "Ajoute l'URL vers"
 
 #: lib/form/include/FormType.php:331
 msgid "Export Submissions"
-msgstr ""
+msgstr "Exporter les saisies"
 
 #: lib/form/include/FormType.php:333
 msgid "Exports the submission of the form \"%s\" and all its linked forms. Usually its best to select the first form in the chain before exporting."
-msgstr ""
+msgstr "Exporte les réponses du formulaire \"%s\" et des formulaires qui y sont liés. En général, l'idéal est de sélectionner le premier formulaire d'une chaine avant de procéder à l'exportation."
 
 #: lib/form/include/SubmissionsTable.php:380
 msgid "Export .xlsx"
@@ -2237,7 +2241,7 @@ msgstr "Exporter au format .xlsx"
 
 #: lib/form/acf/form-details.php:782
 msgid "What should happen after the form was successfully submitted?"
-msgstr ""
+msgstr "Quelle doit être l'étape suivant l'envoi réussi du formulaire ?"
 
 #: lib/form/acf/form-details.php:806
 msgid "Show message (inline)"
@@ -2249,19 +2253,21 @@ msgstr "rediriger vers un article / une page"
 
 #: lib/form/acf/form-details.php:870
 msgid "Redirect to"
-msgstr ""
+msgstr "Transmettre à"
 
+#. Annahme: Export der Webseite irgendwohin
 #: lib/form/include/SubmissionExport.php:92
 msgid "Website export"
-msgstr ""
+msgstr "Exportation du site"
 
 #: lib/form/include/SubmissionExport.php:97
 msgid "Export"
-msgstr ""
+msgstr "Exportation"
 
+#. Annahme: bezeichnet frühere Version von irgendetwas
 #: lib/form/include/SubmissionExport.php:192
 msgid "old: "
-msgstr ""
+msgstr "auparavant: "
 
 #: lib/timber/SUPTPostQuery.php:63
 msgid "%d posts"
@@ -2277,91 +2283,91 @@ msgstr "Post Type Description"
 
 #: templates/atoms/a-map.twig:1
 msgid "Geographical map"
-msgstr ""
+msgstr "Carte géographique"
 
 #: templates/molecules/m-footer-contact.twig:11
 msgctxt "facebook, twitter or instagram"
 msgid "Visit us on %s"
-msgstr ""
+msgstr "Rends-nous visite sur %s"
 
 #: templates/molecules/m-person.twig:48
 msgid "Visit the facebook page of %s"
-msgstr ""
+msgstr "Rends-toi sur la page Facebook de %s"
 
 #: templates/molecules/m-person.twig:55
 msgid "Visit the twitter profile of %s"
-msgstr ""
+msgstr "Rends-toi sur le profil Twitter de %s"
 
 #: templates/molecules/m-person.twig:62
 msgid "Visit the instagram profile of %s"
-msgstr ""
+msgstr "Rends-toi sur le profil Instagram de %s"
 
 #: templates/molecules/m-share.twig:19
 msgid "Share this page on twitter"
-msgstr ""
+msgstr "Partage ce site "
 
 #: templates/molecules/m-share.twig:27
 msgid "Share this page on facebook"
-msgstr ""
+msgstr "Partage ce site sur Facebook"
 
 #: templates/molecules/m-share.twig:35
 msgid "Share this page by email"
-msgstr ""
+msgstr "Partage ce site par courriel"
 
 #: templates/molecules/m-share.twig:43
 msgid "Share this page by WhatsApp"
-msgstr ""
+msgstr "Partage ce site par WhatsApp"
 
 #: lib/form/include/FormType.php:253
 msgctxt "form title"
 msgid "View submissions of %s"
-msgstr ""
+msgstr "Afficher les saisies de %s"
 
 #: lib/form/include/FormType.php:351
 msgid "Ups, something went wrong."
-msgstr ""
+msgstr "Oups, il y a eu un problème."
 
 #: lib/form/include/SubmissionModel.php:159
 msgctxt "Form element. Ex: Name"
 msgid "Old: %s"
-msgstr ""
+msgstr "Auparavant: %s"
 
 #: lib/form/include/SubmissionsTable.php:247
 msgid "Could not remove form submission. Was it already deleted?"
-msgstr ""
+msgstr "La saisie n'a pas pu être supprimée. A-t-elle déjà été supprimée précédemment ?"
 
 #: lib/form/include/SubmissionsTable.php:501
 msgctxt "Timestamp"
 msgid "Delete submission of the %s?"
-msgstr ""
+msgstr "Supprimer la saisie de %s ?"
 
 #: templates/atoms/a-post-meta.twig:18
 msgid "Show all articles tagged with %s"
-msgstr ""
+msgstr "Afficher tous les articles avec l'étiquette (tag) %s."
 
 #: lib/form/acf/input.php:67
 msgid "Confirmation text"
-msgstr ""
+msgstr "Texte de confirmation"
 
 #: lib/form/acf/mail-template.php:23
 msgctxt "Placeholders"
 msgid "Use the following tags as placeholders in your mail. They will be replaced automatically: %s"
-msgstr ""
+msgstr "Utilise les étiquettes suivantes en tant joker que dans le courriel. Elles seront remplacés automatiquement : %s."
 
 #: lib/form/acf/mail-template.php:26
 msgctxt "Placeholder"
 msgid "Use the special placeholder %s to link to the complete submission (with all linked forms)."
-msgstr ""
+msgstr "Utilise le joker spécial %s pour créer un lien vers la saisie complète (et vers tous les formulaires liés)."
 
 #: lib/form/acf/mail-template.php:28
 msgctxt "Link"
 msgid "Advanced: You may use %s in this mail template."
-msgstr ""
+msgstr "Utilisateur/trice avancé/e: tu peux utiliser %s dans ce modèle de courriel"
 
 #: lib/form/include/Mail.php:133
 msgctxt "form submission"
 msgid "view complete submission online"
-msgstr ""
+msgstr "Afficher en ligne l'intégralité de la saisie"
 
 #: templates/atoms/a-post-link.twig:22
 msgctxt "Date format. See http://php.net/manual/de/function.date.php"
@@ -2371,24 +2377,24 @@ msgstr "j F Y"
 #. Description of the plugin/theme
 #: 
 msgid "Custom theme for the GREENS of Switzerland. Designed by superhuit.ch, built by gruene.ch on top of superhuit's stack."
-msgstr ""
+msgstr "Thème réalisé sur mesure pour les Verts en Suisse. Conçu par superhuit.ch, appliqué par verts.ch sur la pile de superhuit."
 
 #. Author of the plugin/theme
 #: 
 msgid "superhuit.ch & gruene.ch"
-msgstr ""
+msgstr "superhuit.ch & verts.ch"
 
 #: page.php:54
 msgid "Upcoming events"
-msgstr ""
+msgstr "Évènements à venir"
 
 #: page.php:59
 msgid "Previous events"
-msgstr ""
+msgstr "Archives des évènements"
 
 #: acf-translate.php:13
 msgid "(Category) Date"
-msgstr ""
+msgstr "Date"
 
 #: acf-translate.php:17
 msgid "Has date"
@@ -2396,95 +2402,104 @@ msgstr "Est daté"
 
 #: acf-translate.php:20
 msgid "Should a date be displayed with all posts categorized in this category?"
-msgstr ""
+msgstr "Indiquer la date pour toutes les publications de cette catégorie ?"
 
 #: acf-translate.php:916
 msgid "[Template]Default Content"
-msgstr ""
+msgstr "[Modèle]Contenu standard"
 
 #: acf-translate.php:1217 acf-translate.php:1222
 msgid "Code"
-msgstr ""
+msgstr "Code"
 
 #: acf-translate.php:1438
 msgid "Show Main Campaign"
-msgstr ""
+msgstr "Afficher la campagne principale"
 
 #: acf-translate.php:1452
 msgid "Show"
-msgstr ""
+msgstr "Afficher"
 
 #: acf-translate.php:1453
 msgid "Hide"
-msgstr ""
+msgstr "Masquer"
 
+#. setzte - setze
 #: acf-translate.php:1945
 msgid "Link the main page of this campaign and set an accurate \"read more\" text for the link button."
-msgstr ""
+msgstr "Crée un lien vers la page principale de cette campagne et définis un texte adapté pour le lien-bouton « poursuivre la lecture »."
 
 #: acf-translate.php:2020
 msgid "Action Type"
-msgstr ""
+msgstr "Type d'action"
 
 #: acf-translate.php:2033
 msgid "Action Button"
-msgstr ""
+msgstr "Bouton Action"
 
 #: acf-translate.php:2034
 msgid "Link Button"
-msgstr ""
+msgstr "lien-bouton"
 
 #: acf-translate.php:2043
 msgid "Call to Action (Form)"
-msgstr ""
+msgstr "Appel à agir (formulaire)"
 
 #: acf-translate.php:2046
 msgid "Displays directly the form with the call to action."
-msgstr ""
+msgstr "Affiche directement le formulaire avec l'appel à agir"
 
 #: acf-translate.php:2073
 msgid "Call to Action (Button)"
-msgstr ""
+msgstr "Appel à agir (bouton)"
 
 #: acf-translate.php:2076
 msgid "Displays the link to your action page as a magenta button."
-msgstr ""
+msgstr "Affiche le lien vers ta page Action sous la forme d'un bouton magenta"
 
 #: acf-translate.php:2096
 msgid "Call to Action (Link Button)"
-msgstr ""
+msgstr "Appel à agir (lien-bouton)"
 
+#. em -> dem (in der deutschen Version)
 #: acf-translate.php:2099
 msgid "Displays the link to further reading as link button (the green one with >)."
-msgstr ""
+msgstr "Affiche le lien pour poursuivre la lecture en tant que lien-bouton (il s'agit du bouton vert avec la flèche >)."
 
+#. (auto link list) => (liste de liens automatique)
 #: acf-translate.php:2394
 msgid "Use link list blocks to provide some additional information, the reader could be interested in. \n"
 "\n"
 "A good first starting point would be a <i>manual link list</i> block that lists documents where the reader can dig deeper, like the debate in parliament etc. A second cool block <i>(auto link list)</i> could be the latest posts of the same category or with the same tag."
-msgstr ""
+msgstr "Utilise des listes de liens pour rendre disponibles des informations supplémentaires qui pourraient intéresser les lecteurs/trices.\n"
+"\n"
+"Une <i>liste de liens manuels</i> énumérant les documents avec lesquels les lecteurs/trices peuvent approfondir un sujet serait un bon point de départ. Elle peut par exemple contenir un renvoi vers le débat au parlement.\n"
+"Un autre bloc utile <i>(liste de liens automatique)</i> pourrait contenir les publications les plus récentes de la même catégorie ou avec la même étiquette."
 
 #: acf-translate.php:2660
 msgid "Display the latest four posts, events or pages that meet the given filter criteria. \n"
 "\n"
 "This list will automatically be updated if any new content meets the filter criteria (dynamic)."
-msgstr ""
+msgstr "Affiche les quatre dernières contributions, évènements ou pages correspondant aux critères de filtrage sélectionnés.\n"
+"\n"
+"Cette liste est mise à jour automatiquementn lorsqu'un nouveau contenu correspondant aux critères de filtrage est mis en ligne (liste dynamique)."
 
 #: lib/form/include/FormType.php:151
 msgid "Unfortunately not only the form, but also the submissions were copied and we could not delete them. So make sure you delete the submissions linked with your newly cloned form manually."
-msgstr ""
+msgstr "Malheureusement, les réponses ont été copiées avec le formulaire, et nous n'avons pas pu les effacer. Merci d'effacer manuellement les réponses liées avec le nouveau formulaire (cloné)."
 
 #: lib/form/include/SubmissionExport.php:208
 msgid "Yet, there were no forms submitted, so there is nothing to export."
-msgstr ""
+msgstr "Il n'y a rien à exporter, car aucun formulaire n'a encore été rempli."
 
 #: acf-translate.php:1251
 msgid "Add custom code (advanced)"
-msgstr ""
+msgstr "Ajouter du code personnalisé (utilisateurs/trices avancé/es)"
 
+#. einige (statt eineige)
 #: lib/admin/import-handler.php:221
 msgid "<strong>WARNING:</strong> There were some shortcodes we couldn't process automatically. %sDownload the list%s of posts to review manually."
-msgstr ""
+msgstr "<strong>AVERTISSEMENT:</strong> Nous avons rencontré  %sLade die Liste%s "
 
 #: lib/admin/suggest-plugins.php:10
 msgid "This theme heavily depends on %sAdvanced Custom Fields Pro%s. You cannot run it without this plugin. Install it now (we haven't bundled it, because it's a premium plugin)."
@@ -2502,28 +2517,29 @@ msgstr[1] "Résultats de la recherche «%s»"
 
 #: templates/atoms/a-search.twig:5
 msgid "Search for:"
-msgstr ""
+msgstr "Chercher"
 
 #: templates/molecules/m-list-header.twig:10
 msgid "Filter by category:"
-msgstr ""
+msgstr "Filtrer par catégorie"
 
 #: templates/molecules/m-list-header.twig:25
 msgid "Show all results"
-msgstr ""
+msgstr "Afficher tous les résultats"
 
 #: lib/form/acf/form-details.php:251 lib/form/acf/form-details.php:276
 #: lib/form/acf/input.php:139
 msgid "Important Note"
-msgstr ""
+msgstr "Remarque importante"
 
+#. Anrede CRM => Appel CRM
 #: lib/form/acf/form-details.php:270
 msgid "You must select the field type <em>Greeting (CRM)</em> (in the tab <em>standard</em>) for this field to work! Please follow also the note in the <em>standard</em> tab."
-msgstr ""
+msgstr "Sélectionne un type de champ <em>Appel (CRM)</em> (dans l'onglet <em>Standard</em>) pour que ce champ fonctionne! Merci de tenir compte également de la remarque dans l'onglet <em>Standard</em>."
 
 #: lib/form/acf/form-details.php:399
 msgid "Webling Choices"
-msgstr ""
+msgstr "Options Webling"
 
 #: lib/form/acf/form-details.php:402
 msgid "Enter the exact corresponding options in Webling in the same order."
