@@ -51,16 +51,18 @@
 					</li>
 				{% endfor %}
 			</ul>
-			<footer class="page__list-footer">
-				<div class="page__list-pagination">
-					{% include 'atoms/a-pagination.twig' with { 'posts': posts } only %}
-				</div>
-				{% if events_link %}
-					<div class="page__list-events-nav">
-						{% include 'atoms/a-link-button.twig' with events_link only %}
+			{% block archive_footer %}
+				<footer class="page__list-footer">
+					<div class="page__list-pagination">
+						{% include 'atoms/a-pagination.twig' with { 'posts': posts } only %}
 					</div>
-				{% endif %}
-			</footer>
+					{% if events_link %}
+						<div class="page__list-events-nav">
+							{% include 'atoms/a-link-button.twig' with events_link only %}
+						</div>
+					{% endif %}
+				</footer>
+			{% endblock %}
 		</div>
 	</article>
 {% endblock %}
