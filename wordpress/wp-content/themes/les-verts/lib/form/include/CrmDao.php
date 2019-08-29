@@ -46,15 +46,6 @@ class CrmDao {
 	}
 
 	/**
-	 * Check if there is an api url configured
-	 *
-	 * @return bool
-	 */
-	public static function has_api_url() {
-		return ! empty( self::get_api_url() );
-	}
-
-	/**
 	 * The api url
 	 *
 	 * @return string
@@ -63,6 +54,62 @@ class CrmDao {
 		$url = get_field( 'api_url', 'option' );
 
 		return $url ? trailingslashit( $url ) : '';
+	}
+
+	/**
+	 * Get valid token, either from local storage or a new one from the oAuth server
+	 *
+	 * @param bool $force refresh token
+	 *
+	 * @throws Exception
+	 */
+	private function obtain_token( $force = false ) {
+		$this->token = get_option( self::OPTION_KEY_TOKEN, null );
+
+		if ( ! $this->token || $force ) {
+			$data = array(
+				'body'    => array(
+					'grant_type'    => 'client_credentials',
+					'client_id'     => get_field( 'client_id', 'option' ),
+					'client_secret' => get_field( 'client_secret', 'option' ),
+					'scope'         => ''
+				),
+				'timeout' => self::WP_REMOTE_TIMEOUT,
+			);
+
+			$response = wp_remote_post( $this->api_url . 'oauth/token', $data );
+
+			if ( is_wp_error( $response ) ) {
+				$error_message = $response->get_error_message();
+				throw new Exception( "Could not obtain oAuth token from crm: $error_message" );
+			}
+
+			/** @var WP_HTTP_Requests_Response $resp */
+			$resp = $response['http_response'];
+			if ( $resp->get_status() !== 200 ) {
+				throw new Exception( "Could not obtain oAuth token from crm. Crm returned status code: {$resp->get_status()}" );
+			}
+
+			$token_data = json_decode( $resp->get_data() );
+
+			$token = array(
+				// expire token after half of his validity period
+				'renew' => time() + ( $token_data->expires_in / 2 ),
+				'token' => $token_data->access_token,
+			);
+
+			$this->token = $token;
+			update_option( self::OPTION_KEY_TOKEN, $token, false );
+		}
+	}
+
+	/**
+	 * Check if there is an api url configured
+	 *
+	 * @return bool
+	 */
+	public static function has_api_url() {
+		return ! empty( self::get_api_url() );
 	}
 
 	/**
@@ -115,50 +162,22 @@ class CrmDao {
 	}
 
 	/**
-	 * Get valid token, either from local storage or a new one from the oAuth server
+	 * Add the authorization header to the given wp_remote_METHOD args
 	 *
-	 * @param bool $force refresh token
+	 * @param array $args of wp_remote_METHOD
 	 *
-	 * @throws Exception
+	 * @return array
 	 */
-	private function obtain_token( $force = false ) {
-		$this->token = get_option( self::OPTION_KEY_TOKEN, null );
+	private function add_auth_header( $args = array() ) {
+		$bearer_token = "Bearer {$this->token['token']}";
 
-		if ( ! $this->token || $force ) {
-			$data = array(
-				'body'    => array(
-					'grant_type'    => 'client_credentials',
-					'client_id'     => get_field( 'client_id', 'option' ),
-					'client_secret' => get_field( 'client_secret', 'option' ),
-					'scope'         => ''
-				),
-				'timeout' => self::WP_REMOTE_TIMEOUT,
-			);
-
-			$response = wp_remote_post( $this->api_url . 'oauth/token', $data );
-
-			if ( is_wp_error( $response ) ) {
-				$error_message = $response->get_error_message();
-				throw new Exception( "Could not obtain oAuth token from crm: $error_message" );
-			}
-
-			/** @var WP_HTTP_Requests_Response $resp */
-			$resp = $response['http_response'];
-			if ( $resp->get_status() !== 200 ) {
-				throw new Exception( "Could not obtain oAuth token from crm. Crm returned status code: {$resp->get_status()}" );
-			}
-
-			$token_data = json_decode( $resp->get_data() );
-
-			$token = array(
-				// expire token after half of his validity period
-				'renew' => time() + ( $token_data->expires_in / 2 ),
-				'token' => $token_data->access_token,
-			);
-
-			$this->token = $token;
-			update_option( self::OPTION_KEY_TOKEN, $token, false );
+		if ( ! array_key_exists( 'headers', $args ) ) {
+			$args['headers'] = array();
 		}
+
+		$args['headers'] = array_merge( $args['headers'], array( 'Authorization' => $bearer_token ) );
+
+		return $args;
 	}
 
 	/**
@@ -189,24 +208,5 @@ class CrmDao {
 		$resp = $response['http_response'];
 
 		return 200 === $resp->get_status();
-	}
-
-	/**
-	 * Add the authorization header to the given wp_remote_METHOD args
-	 *
-	 * @param array $args of wp_remote_METHOD
-	 *
-	 * @return array
-	 */
-	private function add_auth_header( $args = array() ) {
-		$bearer_token = "Bearer {$this->token['token']}";
-
-		if ( ! array_key_exists( 'headers', $args ) ) {
-			$args['headers'] = array();
-		}
-
-		$args['headers'] = array_merge( $args['headers'], array( 'Authorization' => $bearer_token ) );
-
-		return $args;
 	}
 }
