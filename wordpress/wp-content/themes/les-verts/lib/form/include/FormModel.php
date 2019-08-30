@@ -31,6 +31,30 @@ class FormModel {
 		$notification_settings;
 
 	/**
+	 * Get an instance of every form
+	 *
+	 * @return FormModel[]
+	 */
+	public static function get_forms() {
+		$args = array(
+			'posts_per_page' => - 1,
+			'post_type'      => FormType::MODEL_NAME,
+		);
+
+		$forms = array();
+		foreach ( get_posts( $args ) as $form ) {
+			try {
+				$forms[ $form->ID ] = new FormModel( $form->ID, $form );
+			} catch (Exception $e) {
+				// exception impossible in this special case:
+				// we do only query for form type so it can't be not of type form
+			}
+		}
+
+		return $forms;
+	}
+
+	/**
 	 * FormModel constructor.
 	 *
 	 * @param int $id the form id

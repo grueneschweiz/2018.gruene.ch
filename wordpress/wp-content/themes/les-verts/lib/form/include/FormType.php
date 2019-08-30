@@ -128,9 +128,56 @@ class FormType extends Model {
 		add_filter( 'set-screen-option',
 			array( __CLASS__, 'save_submissions_per_page_option' ), 10, 3 );
 
-		add_filter( 'pll_get_post_types', array( __CLASS__, 'enable_polylang_support' ), 10, 2 );
+		add_filter( 'pll_get_post_types',
+			array( __CLASS__, 'enable_polylang_support' ), 10, 2 );
 
-		add_action( 'mtphr_post_duplicator_created', array( __CLASS__, 'duplicate_remove_submissions' ), 10, 2 );
+		add_action( 'mtphr_post_duplicator_created',
+			array( __CLASS__, 'duplicate_remove_submissions' ), 10, 2 );
+
+		add_filter( 'wp_privacy_personal_data_exporters',
+			array( __CLASS__, 'register_gdpr_exporter' ) );
+		add_filter( 'wp_privacy_personal_data_erasers',
+			array( __CLASS__, 'register_gdpr_eraser' ) );
+	}
+
+	/**
+	 * Register exporter for personal data of this plugin
+	 *
+	 * @param array $exporters the registered exporter functions
+	 *
+	 * @return array with the exporter function for this plugin added
+	 *
+	 * @see https://developer.wordpress.org/plugins/privacy/adding-the-personal-data-exporter-to-your-plugin/
+	 */
+	public static function register_gdpr_exporter( array $exporters ): array {
+		require_once __DIR__ . '/GDPRHelper.php';
+
+		$exporters[ self::MODEL_NAME ] = array(
+			'exporter_friendly_name' => __( 'Forms', THEME_DOMAIN ),
+			'callback'               => array( GDPRHelper::class, 'exporter' ),
+		);
+
+		return $exporters;
+	}
+
+	/**
+	 * Register eraser for personal data of this plugin
+	 *
+	 * @param array $erasers the registered eraser functions
+	 *
+	 * @return array with the eraser function for this plugin added
+	 *
+	 * @see https://developer.wordpress.org/plugins/privacy/adding-the-personal-data-eraser-to-your-plugin/
+	 */
+	public static function register_gdpr_eraser( array $erasers ): array {
+		require_once __DIR__ . '/GDPRHelper.php';
+
+		$erasers[ self::MODEL_NAME ] = array(
+			'eraser_friendly_name' => __( 'Forms', THEME_DOMAIN ),
+			'callback'             => array( GDPRHelper::class, 'eraser' ),
+		);
+
+		return $erasers;
 	}
 
 	/**

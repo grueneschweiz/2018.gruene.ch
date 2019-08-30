@@ -450,4 +450,33 @@ class SubmissionModel {
 
 		return $data;
 	}
+
+	/**
+	 * Delete this submission with all its linked submissions
+	 *
+	 * @param int $direction internal use
+	 *
+	 * @return bool indicates ONLY if the root element was deleted.
+	 *              we explicitly don't want to signal a fail, if a
+	 *              linked element wasn't existent.
+	 */
+	public function delete_including_linked_submissions( $direction = self::DIRECTION_BOTH ) {
+		if ( $direction !== self::DIRECTION_DESCENDANT ) {
+			$predecessor = $this->meta_get_predecessor();
+
+			if ( $predecessor ) {
+				$predecessor->delete_including_linked_submissions( self::DIRECTION_PREDECESSOR );
+			}
+		}
+
+		if ( $direction !== self::DIRECTION_PREDECESSOR ) {
+			$descendant = $this->meta_get_descendant();
+
+			if ( $descendant ) {
+				$descendant->delete_including_linked_submissions( self::DIRECTION_DESCENDANT );
+			}
+		}
+
+		return $this->delete();
+	}
 }
