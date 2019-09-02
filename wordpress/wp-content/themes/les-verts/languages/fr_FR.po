@@ -8,9 +8,10 @@ msgstr ""
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
+#. Articles ist männlich
 #: 404.php:21
 msgid "Latest posts"
-msgstr "Dernières articles"
+msgstr "Derniers articles"
 
 #: acf-translate.php:57
 msgid "(Event) Venue"
@@ -2021,7 +2022,7 @@ msgstr "DOM id"
 
 #: lib/form/acf/form-details.php:119
 msgid "Id in the HTML markup"
-msgstr "N° d'identification (id) dans le balisage HTML"
+msgstr "N° d'identification (ID) dans le balisage HTML"
 
 #: lib/form/acf/form-details.php:135
 msgid "DOM Class"
@@ -2030,7 +2031,7 @@ msgstr "Classe DOM"
 #. Angefügt als Datei oder einfach (hinten) dazugeschrieben
 #: lib/form/acf/form-details.php:138
 msgid "Class in the HTML markup (appended)"
-msgstr "Classe dans le balisage HTML (pièce jointe)"
+msgstr "Classe dans le balisage HTML (ajoutée)"
 
 #: lib/form/acf/form-details.php:173 lib/form/acf/settings.php:149
 msgid "Webling"
@@ -2078,7 +2079,7 @@ msgstr "Adresse URL de l'API (interface de programmation d’application)"
 
 #: lib/form/acf/settings.php:216
 msgid "Group Id"
-msgstr "N° d'identification du groupe"
+msgstr "N° d'identification (ID) du groupe"
 
 #: lib/form/acf/settings.php:219
 msgid "The ID of the group, where <strong>new</strong> member records should be stored in."
@@ -2193,7 +2194,7 @@ msgstr "Choisir un formulaire"
 #. gemäss https://fr.wikipedia.org/wiki/Slug_(journalisme) und http://www.granddictionnaire.com/Resultat.aspx (Suchbegriff slug)
 #: lib/form/acf/form-details.php:154
 msgid "Field slug"
-msgstr "Champ Forme"
+msgstr "Champ slug"
 
 #: lib/form/acf/form-details.php:157
 msgid "Read Only. Hacky field to get the slug."
@@ -2258,7 +2259,7 @@ msgstr "Transmettre à"
 #. Annahme: Export der Webseite irgendwohin
 #: lib/form/include/SubmissionExport.php:92
 msgid "Website export"
-msgstr "Exportation du site"
+msgstr "Exportation depuis le site"
 
 #: lib/form/include/SubmissionExport.php:97
 msgid "Export"
@@ -2377,7 +2378,7 @@ msgstr "j F Y"
 #. Description of the plugin/theme
 #: 
 msgid "Custom theme for the GREENS of Switzerland. Designed by superhuit.ch, built by gruene.ch on top of superhuit's stack."
-msgstr "Thème réalisé sur mesure pour les Verts en Suisse. Conçu par superhuit.ch, appliqué par verts.ch sur la pile de superhuit."
+msgstr "Thème réalisé sur mesure pour les VERTS en Suisse. Conçu par superhuit.ch, appliqué par verts.ch sur le stack (pile de logiciels) de superhuit."
 
 #. Author of the plugin/theme
 #: 
@@ -2503,7 +2504,7 @@ msgstr "<strong>AVERTISSEMENT:</strong> Nous avons rencontré des shortcodes que
 
 #: lib/admin/suggest-plugins.php:10
 msgid "This theme heavily depends on %sAdvanced Custom Fields Pro%s. You cannot run it without this plugin. Install it now (we haven't bundled it, because it's a premium plugin)."
-msgstr "Ce thème dépend fortement du module d'extension (plugin) %sAdvanced Custom Fields Pro%s, sans lequel il ne peut pas fonctionner. Installe le module maintenant (nous ne l'avons pas intégré par défaut, car il s'agit d'un module d'extension premium)."
+msgstr "Ce thème dépend fortement de l'extension (plugin) %sAdvanced Custom Fields Pro%s, sans lequel il ne peut pas fonctionner. Installe l'extension maintenant (nous ne l'avons pas intégrée par défaut, car il s'agit d'une extension premium)."
 
 #: lib/admin/suggest-plugins.php:26
 msgid "The WordPress' search is very limited and searches titles only. We therefore suggest installing the %sSearchWP%s."
@@ -2535,54 +2536,67 @@ msgstr "Remarque importante"
 #. Anrede CRM => Appel CRM
 #: lib/form/acf/form-details.php:270
 msgid "You must select the field type <em>Greeting (CRM)</em> (in the tab <em>standard</em>) for this field to work! Please follow also the note in the <em>standard</em> tab."
-msgstr "Sélectionne un type de champ <em>Appel (CRM)</em> (dans l'onglet <em>Standard</em>) pour que ce champ fonctionne! Merci de tenir compte également de la remarque dans l'onglet <em>Standard</em>."
+msgstr "Sélectionne un type de champ <em>Appel (GRC)</em> (dans l'onglet <em>Standard</em>) pour que ce champ fonctionne! Merci de tenir compte également de la remarque dans l'onglet <em>Standard</em>."
 
 #: lib/form/acf/form-details.php:399
 msgid "Webling Choices"
 msgstr "Options Webling"
 
+#. Annahme: es geht um Optionen, die man in Webling verändern kann, und nicht durch Webling vorgegeben sind.
 #: lib/form/acf/form-details.php:402
 msgid "Enter the exact corresponding options in Webling in the same order."
-msgstr "Saisis exactement les options de Webling en respectant strictement leur ordre"
+msgstr "Saisis exactement les options prévues par Webling en respectant strictement leur ordre."
 
 #: lib/form/acf/form-details.php:467
 msgid "Insertion Mode"
 msgstr "Mode insertion"
 
+#. Warnung ist hier kleingeschrieben, anders als bei 
+#. 
+#. <strong>WARNUNG:</strong> Es gab eineige Shortcodes, die wir nicht automatisiert verarbeiten konnten. %sLade die Liste%s mit den zu kontrollierenden Beiträgen herunter.
 #: lib/form/acf/form-details.php:470
 msgid "<strong>Warning</strong>: Selecting the wrong mode results in data loss!\n"
 "<br><br>\n"
 "Select replace for single value fields like the address line and append for multi value fields like the interests field or a note field."
-msgstr ""
+msgstr "<strong>Avertissement</strong>: Si le mode sélectionné n'est pas le bon, des données seront perdues !\n"
+"<br><br>\n"
+"Sélectionne le mode Remplacement pour des champs à valeur unique (p. ex. le champ Adresse) et le mode Insertion pour les champs pouvant contenir plusieurs valeurs (p. ex. le champ Intérêts ou un champ Commentaires).\n"
+"\n"
+""
 
 #: lib/form/acf/form-details.php:540
 msgid "Add if new"
-msgstr ""
+msgstr "Ajouter si nouveau"
 
+#. or => oder
 #: lib/form/acf/input.php:156
 msgid "Please add <em>Hallo</em>, <em>Liebe</em>, <em>Lieber</em> or <em>salut</em>, <em>chère</em>, <em>cher</em>. All other values will be ignored!"
-msgstr ""
+msgstr "Merci d'insérer <em>Hallo</em>, <em>Liebe</em>, <em>Lieber</em> ou <em>salut</em>, <em>chère</em>, <em>cher</em>. Toutes les autres valeurs seront ignorées!"
 
+#. Eckige Klammer ggf. löschen
 #: lib/form/acf/settings.php:181
 msgid "API Key (Client Secret)"
-msgstr ""
+msgstr "Clé API (Client Secret [clé secrète de l'application cliente])"
 
 #: lib/form/acf/settings.php:200
 msgid "Client Id"
-msgstr ""
+msgstr "ID client"
 
 #: lib/form/acf/settings.php:203
 msgid "The ID of the oAuth2.0 Client."
-msgstr ""
+msgstr "L'ID du client oAuth2.0"
 
 #: lib/form/include/CrmSaver.php:151
 msgid "%s: PERMANENT ERROR saving form data to crm"
-msgstr ""
+msgstr "%s: ERREUR PERMANENTE lors de l'enregistrement des données du formulaire dans le système GRC"
 
 #: lib/form/include/Util.php:44
 msgid "ERROR on form submission: %s - %s"
-msgstr ""
+msgstr "ERREUR lors de l'envoi du formulaire : %s - %s"
 
+#. ist fehlgeschlagen (https://www.duden.de/rechtschreibung/Versuch)
+#. 
+#. Was ist genau mit Aktion gemeint?
 #: lib/form/include/Util.php:50
 msgid "Hi Admin of %s\n"
 "\n"
@@ -2594,7 +2608,16 @@ msgid "Hi Admin of %s\n"
 "\n"
 "The error:\n"
 "%s"
-msgstr ""
+msgstr "Chère administratrice / cher administrateur de %s\n"
+"\n"
+"Des problèmes sont survenus lors de l'envoi du formulaire : %s\n"
+"Le processus suivant n'a pas fonctionné : %s\n"
+"\n"
+"Données concernées :\n"
+"%s\n"
+"\n"
+"Description de l'erreur :\n"
+"%s"
 
 #: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:334
 msgid "Install Required Plugins"
@@ -2607,12 +2630,12 @@ msgstr "Installer les extensions"
 #. translators: %s: plugin name.
 #: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:337
 msgid "Installing Plugin: %s"
-msgstr "Installation de l’extension : %s"
+msgstr "Installation de l'extension %s"
 
 #. translators: %s: plugin name.
 #: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:339
 msgid "Updating Plugin: %s"
-msgstr "Mise à jour du plugin : %s"
+msgstr "Mise à jour de l'extension %s"
 
 #: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:340
 msgid "Something went wrong with the plugin API."
@@ -2636,22 +2659,22 @@ msgstr[1] "Ce thème recommande les extensions suivantes : %1$s."
 #: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:355
 msgid "The following plugin needs to be updated to its latest version to ensure maximum compatibility with this theme: %1$s."
 msgid_plural "The following plugins need to be updated to their latest version to ensure maximum compatibility with this theme: %1$s."
-msgstr[0] "L’extension suivante doit être mis à jour vers sa dernière version afin d’assurer une compatibilité maximale avec ce thème : %1$s."
+msgstr[0] "L’extension suivante doit être mise à jour vers sa dernière version afin d’assurer une compatibilité maximale avec ce thème : %1$s."
 msgstr[1] "Les extensions suivantes doivent être mises à jour vers leurs dernières versions afin d’assurer une compatibilité maximale avec ce thème : %1$s."
 
 #. translators: 1: plugin name(s).
 #: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:361
 msgid "There is an update available for: %1$s."
 msgid_plural "There are updates available for the following plugins: %1$s."
-msgstr[0] "Il y’a une mise à jour disponible pour : %1$s."
-msgstr[1] "Il y’a des mises à jour disponibles pour les extensions suivantes : %1$s."
+msgstr[0] "Une mise à jour est disponible pour %1$s."
+msgstr[1] "Des mises à jour sont disponibles pour les extensions suivantes : %1$s."
 
 #. translators: 1: plugin name(s).
 #: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:367
 msgid "The following required plugin is currently inactive: %1$s."
 msgid_plural "The following required plugins are currently inactive: %1$s."
 msgstr[0] "L’extension requise suivante est actuellement inactive : %1$s."
-msgstr[1] "Les extensions requise suivantes sont actuellement inactives : %1$s."
+msgstr[1] "Les extensions requises suivantes sont actuellement inactives : %1$s."
 
 #. translators: 1: plugin name(s).
 #: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:373
@@ -2794,7 +2817,7 @@ msgstr "Activé"
 
 #: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:2420
 msgid "Required Update not Available"
-msgstr "Mise à jour requise indisponible"
+msgstr "La mise à jour requise n'est pas disponible"
 
 #: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:2423
 msgid "Requires Update"
@@ -2822,22 +2845,22 @@ msgstr[1] "Tous les <span class=\"count\">(%s)</span>"
 #: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:2485
 msgid "To Install <span class=\"count\">(%s)</span>"
 msgid_plural "To Install <span class=\"count\">(%s)</span>"
-msgstr[0] "A installer <span class=\"count\">(%s)</span>"
-msgstr[1] "A installer <span class=\"count\">(%s)</span>"
+msgstr[0] "<span class=\"count\">(%s)</span> extensions à installer"
+msgstr[1] "<span class=\"count\">(%s)</span> extensions à installer"
 
 #. translators: 1: number of plugins.
 #: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:2489
 msgid "Update Available <span class=\"count\">(%s)</span>"
 msgid_plural "Update Available <span class=\"count\">(%s)</span>"
-msgstr[0] "Mise à jour disponible <span class=\"count\">(%s)</span>"
-msgstr[1] "Mise à jour disponible <span class=\"count\">(%s)</span>"
+msgstr[0] "<span class=\"count\">(%s)</span> mise à jour disponible"
+msgstr[1] "<span class=\"count\">(%s)</span> mises à jour disponibles"
 
 #. translators: 1: number of plugins.
 #: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:2493
 msgid "To Activate <span class=\"count\">(%s)</span>"
 msgid_plural "To Activate <span class=\"count\">(%s)</span>"
-msgstr[0] "A activer <span class=\"count\">(%s)</span>"
-msgstr[1] "A activer <span class=\"count\">(%s)</span>"
+msgstr[0] "<span class=\"count\">(%s)</span> à activer"
+msgstr[1] "<span class=\"count\">(%s)</span> à activer"
 
 #: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:2575
 msgctxt "as in: \"version nr unknown\""
@@ -2998,11 +3021,11 @@ msgstr "Installation de l’extension %1$s (%2$d/%3$d)"
 
 #: vendor/yahnis-elsts/plugin-update-checker/Puc/v4p7/Plugin/Ui.php:54
 msgid "View details"
-msgstr ""
+msgstr "Voir les détails"
 
 #: vendor/yahnis-elsts/plugin-update-checker/Puc/v4p7/Plugin/Ui.php:77
 msgid "More information about %s"
-msgstr ""
+msgstr "Plus d'informations sur %s"
 
 #: vendor/yahnis-elsts/plugin-update-checker/Puc/v4p7/Plugin/Ui.php:128
 msgid "Check for updates"
@@ -3021,7 +3044,7 @@ msgstr "Une nouvelle version de l’extension %s est disponible."
 #: vendor/yahnis-elsts/plugin-update-checker/Puc/v4p7/Plugin/Ui.php:217
 msgctxt "the plugin title"
 msgid "Could not determine if updates are available for %s."
-msgstr ""
+msgstr "Il n'a pas été possible de constater si des mises à jour étaient disponibles pour %s."
 
 #: vendor/yahnis-elsts/plugin-update-checker/Puc/v4p7/Plugin/Ui.php:223
 msgid "Unknown update checker status \"%s\""
@@ -3033,28 +3056,36 @@ msgstr "Il n’y a aucun journal de mise à jour disponible."
 
 #: lib/form/acf/form-details.php:393
 msgid "You must select the field type <em>Subscription (CRM)</em> (in the tab <em>standard</em>) for this field to work!"
-msgstr ""
+msgstr "Sélectionne le type de champ <em>Abonnement (GRC)</em> (dans l'onglet <em>Standard</em>) pour que le champ fonctionne !"
 
+#. Anredefeld (oder Feld Anrede) (so wie auch "Interessensfeld" in einem Wort geschrieben wurde)
 #: lib/form/acf/form-details.php:584
 msgid "Make sure this value is accepted by Webling.\n"
 "<br><br>\n"
 "Example greetings field: Only the greetings that can be selected in Webling are accepted values."
-msgstr ""
+msgstr "Assure-toi que cette valeur soit acceptée par Webling.\n"
+"<br><br>\n"
+"Exemple pour le champ Appel : seuls les appels pouvant être sélectionnés dans Webling sont admissibles."
 
 #: lib/form/acf/form-details.php:627
 msgid "Make sure the values are accepted by Webling. Add one choice per line.\n"
 "<br><br>\n"
 "Example interest field: Only the interests that can be selected in Webling are accepted values."
-msgstr ""
+msgstr "Assure-toi que cette valeur soit acceptée par Webling.\n"
+"Une option par ligne.\n"
+"<br><br>\n"
+"Exemple pour le champ Intérêts : seuls les intérêts pouvant être sélectionnés dans Webling sont admissibles."
 
 #: lib/form/acf/input.php:46
 msgid "Date"
-msgstr ""
+msgstr "Date"
 
+#. Was ist mit Special gemeint?
 #: lib/form/acf/input.php:52
 msgid "Special: Subscription (CRM)"
 msgstr ""
 
+#. Was ist mit Special gemeint?
 #: lib/form/acf/input.php:53
 msgid "Special: Greeting (CRM)"
 msgstr ""
@@ -3072,13 +3103,24 @@ msgid "Hi Admin of %s\n"
 "\n"
 "Error message:\n"
 "%s"
-msgstr ""
+msgstr "Chère administratrice / Cher administrateur de %s\n"
+"\n"
+"Une ERREUR PERMANENTE s'est produite lors de l'enregistrement des données suivants dans le système GRC : %s\n"
+"\n"
+"Les données ont été supprimées de la liste des enregistrements, tu DOIS DONC LES AJOUTER MANUELLEMENT. Merci de corriger la configuration du formulaire pour éviter que cette erreur ne se reproduise. Des informations supplémentaires figurent dans le message d'erreur ci-dessous.\n"
+"\n"
+"Bonne journée,\n"
+"\n"
+"Ton site web - %s\n"
+"\n"
+"Message d'erreur : \n"
+"%s"
 
 #: lib/form/submission.php:341
 msgid "Invalid value."
-msgstr ""
+msgstr "Valeur invalide"
 
 #: lib/form/submission.php:356
 msgid "Invalid or missing value."
-msgstr ""
+msgstr "Valeur invalide ou non renseignée"
 
