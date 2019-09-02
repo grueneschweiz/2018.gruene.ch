@@ -138,24 +138,9 @@ class SubmissionsTable extends WP_List_Table {
 	 * @return FormModel[]
 	 */
 	private function get_forms() {
-		if ( ! empty( $this->forms ) ) {
-			return $this->forms;
-		}
-
-		require_once __DIR__ . '/FormModel.php';
-
-		$args = array(
-			'posts_per_page' => - 1,
-			'post_type'      => FormType::MODEL_NAME,
-		);
-
-		$this->forms = [];
-		foreach ( get_posts( $args ) as $form ) {
-			try {
-				$this->forms[ $form->ID ] = new FormModel( $form->ID, $form );
-			} catch ( Exception $e ) {
-				wp_die( $e->getMessage() );
-			}
+		if ( empty( $this->forms ) ) {
+			require_once __DIR__ . '/FormModel.php';
+			$this->forms = FormModel::get_forms();
 		}
 
 		return $this->forms;

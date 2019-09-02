@@ -97,7 +97,7 @@
 					{% endfor %}
 				</fieldset>
 
-			{% elseif 'crm_newsletter' == field.form_input_type %}
+			{% elseif 'crm_subscription' == field.form_input_type %}
 				<fieldset class="m-form__checks-fieldset">
 					{% include 'atoms/form-elements/a-checkoption.twig' with {
 						'name': field.slug,

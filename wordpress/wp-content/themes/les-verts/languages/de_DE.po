@@ -1359,7 +1359,7 @@ msgstr "Eine Auswahl pro Zeile eingeben."
 #: lib/form/acf/input.php:210
 #: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:2366
 msgid "Required"
-msgstr "Pflichtfeld"
+msgstr "Erforderlich"
 
 #: lib/form/acf/input.php:213
 msgid "Set the field as mandatory"
@@ -1592,7 +1592,7 @@ msgstr "\"%1$s\" von %2$s."
 #. translators: 1: audio track title, 2: artist name
 #: vendor/timber/timber/tests/wp-overrides.php:46
 msgid "\"%1$s\" by %2$s."
-msgstr "„%1$s“ durch %2$s."
+msgstr "„%1$s“ von %2$s."
 
 #: vendor/timber/timber/tests/wp-overrides.php:48
 msgid "\"%s\"."
@@ -2357,7 +2357,7 @@ msgstr "Verstecken"
 
 #: acf-translate.php:1945
 msgid "Link the main page of this campaign and set an accurate \"read more\" text for the link button."
-msgstr "Verlinke die Hauptseite dieser Kampagne und setzte einen passenden \"Weiterlesen\" Text für den Link button."
+msgstr "Verlinke die Hauptseite dieser Kampagne und setze einen passenden \"Weiterlesen\" Text für den Link button."
 
 #: acf-translate.php:2020
 msgid "Action Type"
@@ -2393,7 +2393,7 @@ msgstr "Call to Action (Link Button)"
 
 #: acf-translate.php:2099
 msgid "Displays the link to further reading as link button (the green one with >)."
-msgstr "Zeigt den Link zum Weiterlesen als Link Button (der grüne mit em >)."
+msgstr "Zeigt den Link zum Weiterlesen als Link Button (der grüne mit dem >)."
 
 #: acf-translate.php:2394
 msgid "Use link list blocks to provide some additional information, the reader could be interested in. \n"
@@ -2425,7 +2425,7 @@ msgstr "Eigenen Code hinzufügen (für Fortgeschrittene)"
 
 #: lib/admin/import-handler.php:221
 msgid "<strong>WARNING:</strong> There were some shortcodes we couldn't process automatically. %sDownload the list%s of posts to review manually."
-msgstr "<strong>WARNUNG:</strong> Es gab eineige Shortcodes, die wir nicht automatisiert verarbeiten konnten. %sLade die Liste%s mit den zu kontrollierenden Beiträgen herunter."
+msgstr "<strong>WARNUNG:</strong> Es gab einige Shortcodes, die wir nicht automatisiert verarbeiten konnten. %sLade die Liste%s mit den zu kontrollierenden Beiträgen herunter."
 
 #: lib/admin/suggest-plugins.php:10
 msgid "This theme heavily depends on %sAdvanced Custom Fields Pro%s. You cannot run it without this plugin. Install it now (we haven't bundled it, because it's a premium plugin)."
@@ -2488,7 +2488,7 @@ msgstr "Einfügen, wenn neu"
 
 #: lib/form/acf/input.php:156
 msgid "Please add <em>Hallo</em>, <em>Liebe</em>, <em>Lieber</em> or <em>salut</em>, <em>chère</em>, <em>cher</em>. All other values will be ignored!"
-msgstr "Bitte füge <em>Hallo</em>, <em>Liebe</em>, <em>Lieber</em> or <em>salut</em>, <em>chère</em>, <em>cher</em> ein. Alle anderen Werte werden ingoriert!"
+msgstr "Bitte füge <em>Hallo</em>, <em>Liebe</em>, <em>Lieber</em> oder <em>salut</em>, <em>chère</em>, <em>cher</em> ein. Alle anderen Werte werden ingoriert!"
 
 #: lib/form/acf/settings.php:181
 msgid "API Key (Client Secret)"
@@ -2524,7 +2524,7 @@ msgid "Hi Admin of %s\n"
 msgstr "Hallo Admin von %s\n"
 "\n"
 "Es gab ein Problem beim Abschicken des Formulars: %s\n"
-"Die folgende Aktion hat fehlgeschlagen: %s\n"
+"Die folgende Aktion ist fehlgeschlagen: %s\n"
 "\n"
 "Die Daten:\n"
 "%s\n"
@@ -2534,11 +2534,11 @@ msgstr "Hallo Admin von %s\n"
 
 #: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:334
 msgid "Install Required Plugins"
-msgstr "Notwendige Plugins Installieren"
+msgstr "Erforderliche Plugins installieren"
 
 #: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:335
 msgid "Install Plugins"
-msgstr "Plugins Installieren"
+msgstr "Installiere Plugins"
 
 #. translators: %s: plugin name.
 #: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:337
@@ -2552,14 +2552,14 @@ msgstr "Aktualisiere Plugin: %s"
 
 #: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:340
 msgid "Something went wrong with the plugin API."
-msgstr "Etwas ist schief gelaufen mit der Plugin API."
+msgstr "Etwas mit der Plugin-API schlug fehl."
 
 #. translators: 1: plugin name(s).
 #: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:343
 msgid "This theme requires the following plugin: %1$s."
 msgid_plural "This theme requires the following plugins: %1$s."
-msgstr[0] "Dieses Theme benötigt das folgende Plugin: %1$s."
-msgstr[1] "Dieses Theme benötigt die folgenden Plugins: %1$s."
+msgstr[0] "Dieses Theme erfordert folgendes Plugin: %1$s."
+msgstr[1] "Dieses Theme erfordert folgende Plugins: %1$s."
 
 #. translators: 1: plugin name(s).
 #: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:349
@@ -2572,63 +2572,63 @@ msgstr[1] "Dieses Theme empfiehlt die folgenden Plugins: %1$s."
 #: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:355
 msgid "The following plugin needs to be updated to its latest version to ensure maximum compatibility with this theme: %1$s."
 msgid_plural "The following plugins need to be updated to their latest version to ensure maximum compatibility with this theme: %1$s."
-msgstr[0] "Das folgende Plugin muss auf die neuste Version aktualisiert werden um eine maximale Kompatibilität mit diesem Theme sicherzustellen: %1$s."
-msgstr[1] "Die folgenden Plugins müssen auf die neuste Version aktualisiert werden um eine maximale Kompatibilität mit diesem Theme sicherzustellen: %1$s."
+msgstr[0] "Das folgende Plugin muss auf die neueste Version aktualisiert werden, um maximale Kompatibilität mit diesem Theme sicherzustellen: %1$s."
+msgstr[1] "Die folgenden Plugins müssen auf die neueste Version aktualisiert werden, um maximale Kompatibilität mit diesem Theme sicherzustellen: %1$s."
 
 #. translators: 1: plugin name(s).
 #: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:361
 msgid "There is an update available for: %1$s."
 msgid_plural "There are updates available for the following plugins: %1$s."
-msgstr[0] "Eine Aktualisierung ist verfügbar für: %1$s."
-msgstr[1] "Aktualisierungen sind verfügbar für: %1$s."
+msgstr[0] "Es ist ein Update verfügbar für: %1$s."
+msgstr[1] "Es sind Updates verfügbar für: %1$s."
 
 #. translators: 1: plugin name(s).
 #: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:367
 msgid "The following required plugin is currently inactive: %1$s."
 msgid_plural "The following required plugins are currently inactive: %1$s."
-msgstr[0] "Das folgende notwendige Plugin ist zur Zeit nicht aktiviert: %1$s."
-msgstr[1] "Die folgenden notwendigen Plugins sind zur Zeit nicht aktiviert: %1$s."
+msgstr[0] "Das folgende erforderliche Plugin ist derzeit deaktiviert: %1$s."
+msgstr[1] "Die folgenden erforderlichen Plugins sind derzeit deaktiviert: %1$s."
 
 #. translators: 1: plugin name(s).
 #: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:373
 msgid "The following recommended plugin is currently inactive: %1$s."
 msgid_plural "The following recommended plugins are currently inactive: %1$s."
-msgstr[0] "Das folgende empfohlene Plugin ist zur Zeit nicht aktiviert: %1$s."
-msgstr[1] "Die folgenden empfohlenen Plugins sind zur Zeit nicht aktiviert: %1$s."
+msgstr[0] "Das folgende empfohlene Plugin ist derzeit deaktiviert: %1$s."
+msgstr[1] "Die folgenden empfohlenen Plugins sind derzeit deaktiviert: %1$s."
 
 #: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:378
 msgid "Begin installing plugin"
 msgid_plural "Begin installing plugins"
-msgstr[0] "Installiere Plugin"
-msgstr[1] "Installiere Plugins"
+msgstr[0] "Beginne Installieren des Plugins"
+msgstr[1] "Beginne Installieren der Plugins"
 
 #: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:383
 msgid "Begin updating plugin"
 msgid_plural "Begin updating plugins"
-msgstr[0] "Aktualisiere Plugin"
-msgstr[1] "Aktualisiere Plugins"
+msgstr[0] "Beginne Aktualisieren des Plugins"
+msgstr[1] "Beginne Aktualisieren der Plugins"
 
 #: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:388
 msgid "Begin activating plugin"
 msgid_plural "Begin activating plugins"
-msgstr[0] "Aktiviere Plugin"
-msgstr[1] "Akitiviere Plugins"
+msgstr[0] "Beginne Aktivieren des Plugins"
+msgstr[1] "Beginne Aktivieren der Plugins"
 
 #: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:392
 msgid "Return to Required Plugins Installer"
-msgstr "Zurück zum Installer für notwendige Plugins"
+msgstr "Zum Installer für erforderliche Plugins zurückkehren"
 
 #: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:393
 #: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:920
 #: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:2626
 #: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:3673
 msgid "Return to the Dashboard"
-msgstr "Zurück zum Dashboard"
+msgstr "Zum Dashboard zurückkehren"
 
 #: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:394
 #: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:3252
 msgid "Plugin activated successfully."
-msgstr "Plugin erfolgreich aktiviert."
+msgstr "Plugin wurde erfolgreich aktiviert"
 
 #: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:395
 #: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:3045
@@ -2640,54 +2640,54 @@ msgstr[1] "Die folgenden Plugins wurden erfolgreich aktiviert:"
 #. translators: 1: plugin name.
 #: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:397
 msgid "No action taken. Plugin %1$s was already active."
-msgstr "Keine Aktion ausgeführt. Plugin %1$s war schon aktiv."
+msgstr "Nichts wurde verändert. Plugin %1$s war bereits aktiviert."
 
 #. translators: 1: plugin name.
 #: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:399
 msgid "Plugin not activated. A higher version of %s is needed for this theme. Please update the plugin."
-msgstr "Plugin nicht aktiviert. Eine neuere Version von %s ist notwendig für dieses Theme. Bitte Plugin aktualisieren."
+msgstr "Plugin wurde nicht aktiviert. Es ist eine spätere Version von %s erforderlich für dieses Theme. Bitte aktualisiere das Plugin."
 
 #. translators: 1: dashboard link.
 #: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:401
 msgid "All plugins installed and activated successfully. %1$s"
-msgstr "Alle Plugins erfolgreich installiert und aktiviert. %1$s"
+msgstr "Alle Plugins wurden erfolgreich installiert und aktiviert. %1$s"
 
 #: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:402
 msgid "Dismiss this notice"
-msgstr "Hinweis verwerfen"
+msgstr "Benachrichtigung verwerfen"
 
 #: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:403
 msgid "There are one or more required or recommended plugins to install, update or activate."
-msgstr "Ein oder mehrere notwendige oder empfohlene Plugins zum Installieren, Aktualisieren oder Aktivieren."
+msgstr "Es sind ein oder mehrere erforderliche oder empfohlene Plugins zum installieren, aktualisieren oder aktivieren verfügbar."
 
 #: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:404
 msgid "Please contact the administrator of this site for help."
-msgstr "Bitte kontaktiere den Administrator dieser Seite für Hilfe."
+msgstr "Bitte wende dich sich an den Administrator dieser Seite um Hilfe zu erhalten."
 
 #: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:607
 msgid "This plugin needs to be updated to be compatible with your theme."
-msgstr "Dieses Plugin muss aktialisiert werden um mit deinem Theme kompatibel zu sein."
+msgstr "Dieses Plugin muss aktualisiert werden, mit deinem Theme kompatibel zu sein."
 
 #: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:608
 msgid "Update Required"
-msgstr "Aktualisierung Notwendig"
+msgstr "Aktualisierung erforderlich"
 
 #: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:725
 msgid "Set the parent_slug config variable instead."
-msgstr "Setze stattdessen die parent_slug Variable."
+msgstr "Setze die parent_slug Variable stattdessen."
 
 #: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:1027
 msgid "The remote plugin package does not contain a folder with the desired slug and renaming did not work."
-msgstr "Das entfernte Pluginpaket enthält keinen Ordner mit dem gewünschten Slug und umbenennen funktionierte nicht."
+msgstr "Das externe Plugin-Paket enthält keine Ordner mit der gewünschten Benennung (slug) und Umbenennung hat nicht funktioniert."
 
 #: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:1027
 #: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:1030
 msgid "Please contact the plugin provider and ask them to package their plugin according to the WordPress guidelines."
-msgstr "Bitte kontaktiere den Pluginanbieter und bitte ihn das Plugin gemäss den WordPress Empfehlungen zu verpacken."
+msgstr "Bitte kontaktiere den Plugin-Anbieter und bitte ihn, seine Plugins nach den Wordpress-Richtlinien zu verpacken."
 
 #: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:1030
 msgid "The remote plugin package consists of more than one file, but the files are not packaged in a folder."
-msgstr "Das entfernte Pluginpaket hat mehr als eine Datei, aber die Dateien sind in keinem Ordner."
+msgstr "Das externe Plugin-Paket besteht aus mehr als einer Datei, aber die Dateien sind nicht in einem Ordner verpackt."
 
 #: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:1214
 #: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:3041
@@ -2714,27 +2714,27 @@ msgstr "Externe Quelle"
 
 #: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:2391
 msgid "Pre-Packaged"
-msgstr "Vor-Verpacked"
+msgstr "Gepackt"
 
 #: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:2408
 msgid "Not Installed"
-msgstr "Nicht Installiert"
+msgstr "Nicht installiert"
 
 #: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:2412
 msgid "Installed But Not Activated"
-msgstr "Installiert aber nicht Aktiviert"
+msgstr "Installiert, aber nicht aktiviert"
 
 #: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:2414
 msgid "Active"
-msgstr "Aktive"
+msgstr "Aktviviert"
 
 #: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:2420
 msgid "Required Update not Available"
-msgstr "Benötigte Aktualisierung nicht Verfügbar"
+msgstr "Erforderliche Aktualisierung ist nicht verfügbar"
 
 #: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:2423
 msgid "Requires Update"
-msgstr "Benötigt Aktualisierung"
+msgstr "Aktualisierung erforderlich"
 
 #: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:2426
 msgid "Update recommended"
@@ -2758,22 +2758,22 @@ msgstr[1] "Alle <span class=\"count\">(%s)</span>"
 #: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:2485
 msgid "To Install <span class=\"count\">(%s)</span>"
 msgid_plural "To Install <span class=\"count\">(%s)</span>"
-msgstr[0] "Installieren <span class=\"count\">(%s)</span>"
-msgstr[1] "Installieren <span class=\"count\">(%s)</span>"
+msgstr[0] "<span class=\"count\">(%s)</span> zu installieren"
+msgstr[1] "<span class=\"count\">(%s)</span> zu installieren"
 
 #. translators: 1: number of plugins.
 #: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:2489
 msgid "Update Available <span class=\"count\">(%s)</span>"
 msgid_plural "Update Available <span class=\"count\">(%s)</span>"
-msgstr[0] "Aktualisierung Verfügbar <span class=\"count\">(%s)</span>"
-msgstr[1] "Aktualisierungen Verfügbar <span class=\"count\">(%s)</span>"
+msgstr[0] "<span class=\"count\">(%s)</span> Aktualisierung verfügbar"
+msgstr[1] "<span class=\"count\">(%s)</span> Aktualisierungen verfügbar"
 
 #. translators: 1: number of plugins.
 #: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:2493
 msgid "To Activate <span class=\"count\">(%s)</span>"
 msgid_plural "To Activate <span class=\"count\">(%s)</span>"
-msgstr[0] "Aktivieren <span class=\"count\">(%s)</span>"
-msgstr[1] "Aktivieren <span class=\"count\">(%s)</span>"
+msgstr[0] "<span class=\"count\">(%s)</span> zu aktivieren"
+msgstr[1] "<span class=\"count\">(%s)</span> zu aktivieren"
 
 #: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:2575
 msgctxt "as in: \"version nr unknown\""
@@ -2786,15 +2786,15 @@ msgstr "Installierte Version:"
 
 #: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:2591
 msgid "Minimum required version:"
-msgstr "Minimale notwendige Version:"
+msgstr "Erforderlicher Versionsstand:"
 
 #: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:2603
 msgid "Available version:"
-msgstr "Verfügbare Version:"
+msgstr "Verfügbarer Versionstand:"
 
 #: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:2626
 msgid "No plugins to install, update or activate."
-msgstr "Keine Plugins zum Installieren, Aktualisieren oder Aktivieren."
+msgstr "Keine Plugins zu installieren, aktualisieren oder aktivieren."
 
 #: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:2640
 msgid "Plugin"
@@ -2829,7 +2829,7 @@ msgstr "Aktiviere %2$s"
 
 #: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:2777
 msgid "Upgrade message from the plugin author:"
-msgstr "Upgrade-Nachricht vom Pluginauthor:"
+msgstr "Upgrade-Nachricht des Plugin-Autors:"
 
 #: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:2810
 msgid "Install"
@@ -2845,31 +2845,31 @@ msgstr "Aktivieren"
 
 #: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:2850
 msgid "No plugins were selected to be installed. No action taken."
-msgstr "Keine Plugins wurden zum Installieren ausgewählt. Keine Aktion ausgeführt."
+msgstr "Es wurden keine Plugins zur Installation ausgewählt. Nichts wurde verändert."
 
 #: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:2852
 msgid "No plugins were selected to be updated. No action taken."
-msgstr "Keine Plugins wurden zum Aktualisieren ausgewählt. Keine Aktion ausgeführt."
+msgstr "Es wurden keine Plugins zur Aktualisierung ausgewählt. Nichts wurde verändert."
 
 #: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:2893
 msgid "No plugins are available to be installed at this time."
-msgstr "Zur Zeit sind keine Plugins zur Installation verfügbar."
+msgstr "Zurzeit sind keine Plugins zur Installation verfügbar."
 
 #: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:2895
 msgid "No plugins are available to be updated at this time."
-msgstr "Zur Zeit sind keine Plugins zum Aktualisieren verfügabr."
+msgstr "Zurzeit sind keine Plugins zur Aktualisierung verfügbar."
 
 #: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:3001
 msgid "No plugins were selected to be activated. No action taken."
-msgstr "Keine Plugins wurden zum Aktivieren ausgewählt. Keine Aktion ausgeführt."
+msgstr "Es wurden keine Plugins zur Aktivierung ausgewählt. Nichts wurde verändert."
 
 #: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:3027
 msgid "No plugins are available to be activated at this time."
-msgstr "Zur Zeit sind keine Plugins zum Aktivieren verfügbar."
+msgstr "Zurzeit sind keine Plugins zur Aktivierung verfügbar."
 
 #: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:3251
 msgid "Plugin activation failed."
-msgstr "Plugin Aktivierung fehlgeschlagen."
+msgstr "Aktivieren des Plugins fehlgeschlagen."
 
 #. translators: 1: plugin name, 2: action number 3: total number of actions.
 #: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:3591
@@ -2879,16 +2879,16 @@ msgstr "Aktualisiere Plugin %1$s (%2$d/%3$d)"
 #. translators: 1: plugin name, 2: error message.
 #: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:3594
 msgid "An error occurred while installing %1$s: <strong>%2$s</strong>."
-msgstr "Ein Fehler ist aufgetreten während der Installation %1$s: <strong>%2$s</strong>."
+msgstr "Ein Fehler beim Installieren von %1$s ist aufgetreten: <strong>%2$s</strong>."
 
 #. translators: 1: plugin name.
 #: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:3596
 msgid "The installation of %1$s failed."
-msgstr "Die Installation von %1$s schlug fehl."
+msgstr "Die Installation von %1$s ist fehlgeschlagen."
 
 #: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:3600
 msgid "The installation and activation process is starting. This process may take a while on some hosts, so please be patient."
-msgstr "Der Installtions- und Aktivierungsprozess hat begonnen. Dieser Prozess kann auf gewissen Hosts eine Weile dauern. Bitte habe etwas Geduld."
+msgstr "Die Installation und Aktivierung hat begonnen. Dieser Prozess kann einige Zeit in Anspruch nehmen, bitte habe einen Moment Geduld."
 
 #. translators: 1: plugin name.
 #: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:3602
@@ -2898,25 +2898,25 @@ msgstr "%1$s erfolgreich installiert und aktiviert."
 #: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:3602
 #: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:3610
 msgid "Show Details"
-msgstr "Details Anzeigen."
+msgstr "Zeige Details"
 
 #: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:3602
 #: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:3610
 msgid "Hide Details"
-msgstr "Details Verbergen."
+msgstr "Details ausblenden"
 
 #: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:3603
 msgid "All installations and activations have been completed."
-msgstr "Alle Installationen und Aktivierungen wurden fertiggestellt."
+msgstr "Alle Installationen und Aktivierungen sind erfolgreich abgeschlossen."
 
 #. translators: 1: plugin name, 2: action number 3: total number of actions.
 #: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:3605
 msgid "Installing and Activating Plugin %1$s (%2$d/%3$d)"
-msgstr "Installiere und Aktiviere Plugin %1$s (%2$d/%3$d)"
+msgstr "Installieren und Aktivieren von Plugin %1$s (%2$d/%3$d)"
 
 #: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:3608
 msgid "The installation process is starting. This process may take a while on some hosts, so please be patient."
-msgstr "Der Installationsprozess started. Dieser Prozess kann auf gewissen Hosts eine Weile dauern. Bitte habe etwas Geduld."
+msgstr "Die Installation hat begonnen. Dieser Prozess kann einige Zeit in Anspruch nehmen, bitte habe einen Moment Geduld."
 
 #. translators: 1: plugin name.
 #: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:3610
@@ -2925,7 +2925,7 @@ msgstr "%1$s erfolgreich installiert."
 
 #: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:3611
 msgid "All installations have been completed."
-msgstr "Alle Installationen wurden fertiggestellt."
+msgstr "Alle Installationen sind abgeschlossen."
 
 #. translators: 1: plugin name, 2: action number 3: total number of actions.
 #: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:3613
@@ -2942,7 +2942,7 @@ msgstr "Mehr Informationen zu %s"
 
 #: vendor/yahnis-elsts/plugin-update-checker/Puc/v4p7/Plugin/Ui.php:128
 msgid "Check for updates"
-msgstr "Auf Aktualisierungen prüfen"
+msgstr "Nach Update suchen"
 
 #: vendor/yahnis-elsts/plugin-update-checker/Puc/v4p7/Plugin/Ui.php:213
 msgctxt "the plugin title"
@@ -2961,11 +2961,11 @@ msgstr "Es konnte nicht festgestellt werden ob Aktualisierungen für %s verfügb
 
 #: vendor/yahnis-elsts/plugin-update-checker/Puc/v4p7/Plugin/Ui.php:223
 msgid "Unknown update checker status \"%s\""
-msgstr "Unbekannter Status der Aktualisierungsprüfung \"%s\"."
+msgstr "Unbekannter Update Status \"%s\""
 
 #: vendor/yahnis-elsts/plugin-update-checker/Puc/v4p7/Vcs/PluginUpdateChecker.php:98
 msgid "There is no changelog available."
-msgstr "Kein Changelog verfügbar."
+msgstr "Es ist keine Liste von Programmänderungen verfügbar."
 
 #: lib/form/acf/form-details.php:393
 msgid "You must select the field type <em>Subscription (CRM)</em> (in the tab <em>standard</em>) for this field to work!"
@@ -2977,7 +2977,7 @@ msgid "Make sure this value is accepted by Webling.\n"
 "Example greetings field: Only the greetings that can be selected in Webling are accepted values."
 msgstr "Versichere dich, dass dieser Wert von Webling akzeptiert wird.\n"
 "<br><br>\n"
-"Beispiel Anrede Feld: Nur diejenigen Anreden die in Webling ausgewählt werden können, sind akzeptierte Werte."
+"Beispiel Feld Anrede: Nur diejenigen Anreden die in Webling ausgewählt werden können, sind akzeptierte Werte."
 
 #: lib/form/acf/form-details.php:627
 msgid "Make sure the values are accepted by Webling. Add one choice per line.\n"
@@ -2985,7 +2985,7 @@ msgid "Make sure the values are accepted by Webling. Add one choice per line.\n"
 "Example interest field: Only the interests that can be selected in Webling are accepted values."
 msgstr "Versichere dich, dass die Werte von Webling akzeptiert wrerden. Eine Option pro Zeile.\n"
 "<br><br>\n"
-"Beispiel Interessensfeld: Nur die Interessen, die im Webling ausgewählt werden können, sind akzeptierte Werte."
+"Beispiel Feld Interessen: Nur die Interessen, die im Webling ausgewählt werden können, sind akzeptierte Werte."
 
 #: lib/form/acf/input.php:46
 msgid "Date"
