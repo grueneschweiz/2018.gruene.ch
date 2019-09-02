@@ -2425,7 +2425,7 @@ msgstr "Eigenen Code hinzufügen (für Fortgeschrittene)"
 
 #: lib/admin/import-handler.php:221
 msgid "<strong>WARNING:</strong> There were some shortcodes we couldn't process automatically. %sDownload the list%s of posts to review manually."
-msgstr "<strong>WARNUNG:</strong> Es gab eineige Shortcodes, die wir nicht automatisiert verarbeiten konnten. %sLade die Liste%s mit den zu kontrollierenden Beiträgen herunter."
+msgstr "<strong>WARNUNG:</strong> Es gab einige Shortcodes, die wir nicht automatisiert verarbeiten konnten. %sLade die Liste%s mit den zu kontrollierenden Beiträgen herunter."
 
 #: lib/admin/suggest-plugins.php:10
 msgid "This theme heavily depends on %sAdvanced Custom Fields Pro%s. You cannot run it without this plugin. Install it now (we haven't bundled it, because it's a premium plugin)."
@@ -2488,7 +2488,7 @@ msgstr "Einfügen, wenn neu"
 
 #: lib/form/acf/input.php:156
 msgid "Please add <em>Hallo</em>, <em>Liebe</em>, <em>Lieber</em> or <em>salut</em>, <em>chère</em>, <em>cher</em>. All other values will be ignored!"
-msgstr "Bitte füge <em>Hallo</em>, <em>Liebe</em>, <em>Lieber</em> or <em>salut</em>, <em>chère</em>, <em>cher</em> ein. Alle anderen Werte werden ingoriert!"
+msgstr "Bitte füge <em>Hallo</em>, <em>Liebe</em>, <em>Lieber</em> oder <em>salut</em>, <em>chère</em>, <em>cher</em> ein. Alle anderen Werte werden ingoriert!"
 
 #: lib/form/acf/settings.php:181
 msgid "API Key (Client Secret)"
@@ -2524,7 +2524,7 @@ msgid "Hi Admin of %s\n"
 msgstr "Hallo Admin von %s\n"
 "\n"
 "Es gab ein Problem beim Abschicken des Formulars: %s\n"
-"Die folgende Aktion hat fehlgeschlagen: %s\n"
+"Die folgende Aktion ist fehlgeschlagen: %s\n"
 "\n"
 "Die Daten:\n"
 "%s\n"
@@ -2580,7 +2580,7 @@ msgstr[1] "Die folgenden Plugins müssen auf die neueste Version aktualisiert we
 msgid "There is an update available for: %1$s."
 msgid_plural "There are updates available for the following plugins: %1$s."
 msgstr[0] "Es ist ein Update verfügbar für: %1$s."
-msgstr[1] "Es sind ein Updates verfügbar für: %1$s."
+msgstr[1] "Es sind Updates verfügbar für: %1$s."
 
 #. translators: 1: plugin name(s).
 #: vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php:367
@@ -2977,7 +2977,7 @@ msgid "Make sure this value is accepted by Webling.\n"
 "Example greetings field: Only the greetings that can be selected in Webling are accepted values."
 msgstr "Versichere dich, dass dieser Wert von Webling akzeptiert wird.\n"
 "<br><br>\n"
-"Beispiel Anrede Feld: Nur diejenigen Anreden die in Webling ausgewählt werden können, sind akzeptierte Werte."
+"Beispiel Feld Anrede: Nur diejenigen Anreden die in Webling ausgewählt werden können, sind akzeptierte Werte."
 
 #: lib/form/acf/form-details.php:627
 msgid "Make sure the values are accepted by Webling. Add one choice per line.\n"
@@ -2985,7 +2985,7 @@ msgid "Make sure the values are accepted by Webling. Add one choice per line.\n"
 "Example interest field: Only the interests that can be selected in Webling are accepted values."
 msgstr "Versichere dich, dass die Werte von Webling akzeptiert wrerden. Eine Option pro Zeile.\n"
 "<br><br>\n"
-"Beispiel Interessensfeld: Nur die Interessen, die im Webling ausgewählt werden können, sind akzeptierte Werte."
+"Beispiel Feld Interessen: Nur die Interessen, die im Webling ausgewählt werden können, sind akzeptierte Werte."
 
 #: lib/form/acf/input.php:46
 msgid "Date"
