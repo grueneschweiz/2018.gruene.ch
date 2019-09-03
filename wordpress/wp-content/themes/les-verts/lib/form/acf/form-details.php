@@ -888,8 +888,8 @@ Example interest field: Only the interests that can be selected in Webling are a
 						),
 						'default_value'     => '',
 						'tabs'              => 'all',
-						'toolbar'           => 'basic',
-						'media_upload'      => 0,
+						'toolbar'           => 'full',
+						'media_upload'      => 1,
 						'delay'             => 0,
 					),
 					array(
