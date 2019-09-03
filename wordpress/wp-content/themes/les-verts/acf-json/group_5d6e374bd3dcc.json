@@ -1,0 +1,177 @@
+{
+    "key": "group_5d6e374bd3dcc",
+    "title": "[Template]Map",
+    "fields": [
+        {
+            "key": "field_5d6e37bf5918e",
+            "label": "About this Block – Advanced !",
+            "name": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "This is an advanced block. You'll need to know the fundamentals of SVG to use it. It can be used to display a map of your region with a nice popup for every region if it is clicked. As well as an engaging text to become a member.",
+            "new_lines": "",
+            "esc_html": 0
+        },
+        {
+            "key": "field_5d6e37df5918f",
+            "label": "Map SVG",
+            "name": "map",
+            "type": "acf_code_field",
+            "instructions": "Copy the SVG in here. Make sure the regions have the '.map-item' class and the id matches the id of the data.",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "mode": "htmlmixed",
+            "theme": "neo"
+        },
+        {
+            "key": "field_5d6e381759190",
+            "label": "Map Data",
+            "name": "map_data",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "field_5d6e383459191",
+            "min": 0,
+            "max": 0,
+            "layout": "block",
+            "button_label": "",
+            "sub_fields": [
+                {
+                    "key": "field_5d6e383459191",
+                    "label": "Label",
+                    "name": "label",
+                    "type": "text",
+                    "instructions": "This is used in the dropdown of the mobile version.",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_5d6e384b59192",
+                    "label": "ID",
+                    "name": "value",
+                    "type": "text",
+                    "instructions": "This must match the id in the svg.",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_5d6e386c59193",
+                    "label": "Dialog Content",
+                    "name": "dialog_content",
+                    "type": "repeater",
+                    "instructions": "The content block will be separated by margin and a slight line.",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "collapsed": "",
+                    "min": 1,
+                    "max": 0,
+                    "layout": "row",
+                    "button_label": "Add Content",
+                    "sub_fields": [
+                        {
+                            "key": "field_5d6e388759194",
+                            "label": "Content",
+                            "name": "content",
+                            "type": "wysiwyg",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "tabs": "all",
+                            "toolbar": "full",
+                            "media_upload": 0,
+                            "delay": 0
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "field_5d6e396259195",
+            "label": "Region Selector Label",
+            "name": "region_selector_label",
+            "type": "text",
+            "instructions": "This will only be displayed in the mobile version.",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "Select Region",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 0,
+    "description": "",
+    "modified": 1567504908
+}

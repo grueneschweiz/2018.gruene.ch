@@ -8,7 +8,7 @@ class PeopleType extends Model {
 	
 	const MODEL_NAME = 'people';
 	
-	public static function register_post_types() {
+	public static function register_post_type() {
 		$labels = array(
 			'name'                  => __( 'People', THEME_DOMAIN ),
 			'singular_name'         => __( 'Person', THEME_DOMAIN ),
