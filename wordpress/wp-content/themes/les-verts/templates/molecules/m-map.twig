@@ -1,0 +1,31 @@
+<div class="m-map">
+	<div class="m-map__map">
+		{% include 'atoms/a-map.twig' with {
+			'svg': map
+		} only %}
+	</div>
+	<div class="m-map__selector">
+		{% include 'atoms/a-select.twig' with {
+			'id': 'party-selector',
+			'name': 'party-selector',
+			'label': map_selector_label,
+			'options': map_data
+		} only %}
+	</div>
+	<div class="m-map__dialog-wrapper">
+		{% for item in map_data %}
+			{% set content = '' %}
+			{% for c in item.dialog_content %}
+				{% set content = content~'<div class="a-simple-dialog__content">'~c.content~'</div>' %}
+			{% endfor %}
+			<div class="m-map__dialog">
+				{% include 'atoms/a-simple-dialog.twig' with {
+					'id': item.value,
+					'content': content,
+					'modifiers': 'a-simple-dialog--reduced-top-bottom-padding'
+				} only %}
+			</div>
+		{% endfor %}
+	</div>
+	<div class="m-map__modal"></div>
+</div>

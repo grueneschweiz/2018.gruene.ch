@@ -1,12 +1,12 @@
-import BaseView from './../../../js/base-view';
-import browserSupportsClassList from './../../../js/utils/classList';
+import BaseView from '../../../js/base-view';
+import browserSupportsClassList from '../../../js/utils/classList';
 
 const SELECT_SELECTOR = '#party-selector';
-const DIALOG_WRAPPER_SELECTOR = '.o-engagement-map__dialog';
-const MAP_SELECTOR = '.o-engagement-map__map';
+const DIALOG_WRAPPER_SELECTOR = '.m-map__dialog';
+const MAP_SELECTOR = '.m-map__map';
 const MAP_SECTION_SELECTOR = MAP_SELECTOR + ' .map-item';
 const DIALOG_CLOSE_SELECTOR = '.a-simple-dialog__close';
-const MODAL_SELECTOR = '.o-engagement-map__modal';
+const MODAL_SELECTOR = '.m-map__modal';
 
 const DIALOG_ID_PREFIX = 'a-simple-dialog--';
 
@@ -15,7 +15,7 @@ const ALIGN_LEFT_STATE = 'pull-left';
 const ACTIVE_STATE = 'is-active';
 
 /*eslint no-console: ["error", { allow: ["error"] }] */
-export default class OEngagementMap extends BaseView {
+export default class MMap extends BaseView {
 
 	initialize() {
 		super.initialize();
@@ -45,7 +45,7 @@ export default class OEngagementMap extends BaseView {
 	mapClickHandler(event) {
 		this.select.value = event.delegateTarget.id;
 		this.select.dispatchEvent(new Event('change'));
-		this.setPosition(event.offsetX);
+		this.setPosition(event.pageX);
 	}
 
 	selectHandler() {
@@ -139,7 +139,10 @@ export default class OEngagementMap extends BaseView {
 			return;
 		}
 
-		if ((this.map.clientWidth - clickOffsetX) < this.dialog.clientWidth) {
+		let mapOffsetX = this.map.getBoundingClientRect().left;
+		let relClickOffsetX = clickOffsetX - mapOffsetX;
+
+		if ((this.map.clientWidth - relClickOffsetX) < this.dialog.clientWidth) {
 			this.addClass(this.dialog, ALIGN_LEFT_STATE);
 		}
 	}

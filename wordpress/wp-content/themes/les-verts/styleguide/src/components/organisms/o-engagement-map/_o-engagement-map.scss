@@ -41,75 +41,8 @@
 	}
 
 	&__map-wrapper {
-		position: relative;
-
 		@include only_ie10_above {
 			width: 60%;
-		}
-	}
-
-	&__map {
-		width: 100%; // IE compat
-		height: 100%; // IE compat
-	}
-
-	&__map.is-open {
-		@include media($_DESKTOP) {
-			filter: opacity(40%);
-		}
-	}
-
-	&__selector {
-		margin-top: 35px;
-
-		@include media($_DESKTOP) {
-			display: none;
-		}
-	}
-
-	&__dialog {
-		display: none;
-
-		&.is-open {
-			display: block;
-
-			@include media($_DESKTOP) {
-				display: inline-block;
-			}
-		}
-
-		@include media($_DESKTOP) {
-			position: absolute;
-			z-index: 2;
-			top: 0;
-			right: 0;
-
-			&.pull-left {
-				right: auto;
-				left: 0;
-			}
-		}
-	}
-
-	&__modal {
-		display: none;
-
-		@include media($_DESKTOP) {
-			position: fixed;
-			z-index: 1;
-			left: 0;
-			top: 0;
-			width: 100%;
-			height: 100%;
-			overflow: auto;
-			background: $color-white;
-			opacity: 0;
-			transition: opacity $transition-fast $transition-ease;
-
-			&.is-open {
-				display: block;
-				opacity: 0.75;
-			}
 		}
 	}
 }

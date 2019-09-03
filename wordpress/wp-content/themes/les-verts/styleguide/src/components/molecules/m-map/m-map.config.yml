@@ -1,88 +1,71 @@
-label: Engagement map
+label: Map
 status: ready
 context:
-  cat-title:
-    label: Mitmachen
-    link: '#'
-  title: Engagiere dich, mit uns – bei dir!
-  text-before: <p>Als Basisbewegung setezn wir uns für eine ökologische und solidarische Schweiz und Welt ein.</p>
-    <p>Wir sind stark, dank Menschen wie dir, die sich stets für eine lebenswerte Zukunft einsetzen.</p>
-    <p>Gemeinsam können wir die ökologische Transformation der Wirtschaft meistern, den sozialen Zusammenhalt und die Solidarität stärken, Frieden sichern.</p>
-  button:
-    label: Mitglied werden
-    link: '#'
-    modifiers:
-    - secondary
-  text-after: <p>Unter 30 Jahre alt? Schau doch auch bei den <a href="https://jungegruene.ch/mitmachen">Jungen Grünen</a> rein.
   select:
     id: party-selector
     required: false
     label: Kanton auswählen
     name: party-selector
     options:
-    - label: Aargau
-      value: ag
-    - label: Appenzell Innerhoden
-      value: ai
-    - label: Appenzell Ausserhoden
-      value: ar
-    - label: Bern
-      value: be
-    - label: Basel-Landschaft
-      value: bl
-    - label: Basel-Stadt
-      value: bs
-    - label: Freiburg
-      value: fr
-    - label: Genf
-      value: gr
-    - label: Glarus
-      value: gl
-    - label: Graubünden
-      value: gr
-    - label: Jura
-      value: ju
-    - label: Luzern
-      value: lu
-    - label: Neuenburg
-      value: ne
-    - label: Nidwalden
-      value: nw
-    - label: Obwalden
-      value: ow
-    - label: St.Gallen
-      value: sg
-    - label: Solothurn
-      value: so
-    - label: Schwyz
-      value: sz
-    - label: Thurgau
-      value: tg
-    - label: Tessin
-      value: ti
-    - label: Uri
-      value: ur
-    - label: Waadt
-      value: vd
-    - label: Wallis
-      value: vs
-    - label: Zug
-      value: zg
-    - label: Zürich
-      value: zh
+      - label: Aargau
+        value: ag
+      - label: Appenzell Innerhoden
+        value: ai
+      - label: Appenzell Ausserhoden
+        value: ar
+      - label: Bern
+        value: be
+      - label: Basel-Landschaft
+        value: bl
+      - label: Basel-Stadt
+        value: bs
+      - label: Freiburg
+        value: fr
+      - label: Genf
+        value: gr
+      - label: Glarus
+        value: gl
+      - label: Graubünden
+        value: gr
+      - label: Jura
+        value: ju
+      - label: Luzern
+        value: lu
+      - label: Neuenburg
+        value: ne
+      - label: Nidwalden
+        value: nw
+      - label: Obwalden
+        value: ow
+      - label: St.Gallen
+        value: sg
+      - label: Solothurn
+        value: so
+      - label: Schwyz
+        value: sz
+      - label: Thurgau
+        value: tg
+      - label: Tessin
+        value: ti
+      - label: Uri
+        value: ur
+      - label: Waadt
+        value: vd
+      - label: Wallis
+        value: vs
+      - label: Zug
+        value: zg
+      - label: Zürich
+        value: zh
   dialogs:
-  - id: ag
-    modifiers:
-    - reduced-top-bottom-padding
-    content: '<div class="a-simple-dialog__content"><p><strong>Grüne Aargau</strong><br>Musterstrasse 99<br>0000 Beispielort</p><p><a href="">012 345 67 89</a></p><p><a class="a-link-button a-link-button--grey" href="">E-Mail senden</a></p><p><a class="a-button a-button--outline a-button--full-width" href="">Website</a></p></div><div class="a-simple-dialog__content"><p><a href="">Junge Grüne Aargau</a></p></div>'
-  - id: be
-    modifiers:
-    - reduced-top-bottom-padding
-    content: '<div class="a-simple-dialog__content"><p><strong>Grüne Aargau</strong><br>Musterstrasse 99<br>0000 Beispielort</p><p><a href="">012 345 67 89</a></p><p><a class="a-link-button a-link-button--grey" href="">E-Mail senden</a></p><p><a class="a-button a-button--outline a-button--full-width" href="">Website</a></p></div><div class="a-simple-dialog__content"><p><a href="">Junge Grüne Aargau</a></p></div>'
-  - id: sg
-    modifiers:
-    - reduced-top-bottom-padding
-    content: '<div class="a-simple-dialog__content"><p><strong>Grüne Aargau</strong><br>Musterstrasse 99<br>0000 Beispielort</p><p><a href="">012 345 67 89</a></p><p><a class="a-link-button a-link-button--grey" href="">E-Mail senden</a></p><p><a class="a-button a-button--outline a-button--full-width" href="">Website</a></p></div><div class="a-simple-dialog__content"><p><a href="">Junge Grüne Aargau</a></p></div>'
+    - id: ag
+      modifiers:
+        - reduced-top-bottom-padding
+      content: '<div class="a-simple-dialog__content"><p><strong>Grüne Aargau</strong><br>Musterstrasse 99<br>0000 Beispielort</p><p><a href="">012 345 67 89</a></p><p><a class="a-link-button a-link-button--grey" href="">E-Mail senden</a></p><p><a class="a-button a-button--outline a-button--full-width" href="">Website</a></p></div><div class="a-simple-dialog__content"><p><a href="">Junge Grüne Aargau</a></p></div>'
+    - id: be
+      modifiers:
+        - reduced-top-bottom-padding
+      content: '<div class="a-simple-dialog__content"><p><strong>Grüne Aargau</strong><br>Musterstrasse 99<br>0000 Beispielort</p><p><a href="">012 345 67 89</a></p><p><a class="a-link-button a-link-button--grey" href="">E-Mail senden</a></p><p><a class="a-button a-button--outline a-button--full-width" href="">Website</a></p></div><div class="a-simple-dialog__content"><p><a href="">Junge Grüne Aargau</a></p></div>'
   svg: '<svg viewBox="0 0 838 542" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
             <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                 <g id="comp/map/default/_LG" transform="translate(-32.000000, -36.000000)">

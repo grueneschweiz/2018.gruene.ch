@@ -13,7 +13,7 @@ import ASelect from 'atoms/form-elements/a-select/a-select.js';
 import OHeader from './organisms/o-header/o-header';
 import OCampaign from './organisms/o-campaign/o-campaign';
 import OPeopleGrid from './organisms/o-people-grid/o-people-grid';
-import OEngagementMap from './organisms/o-engagement-map/o-engagement-map';
+import MMap from './molecules/m-map/m-map';
 import MShare from './molecules/m-share/m-share';
 import ASearch from './atoms/a-search/a-search';
 import MPerson from './molecules/m-person/m-person';
@@ -38,7 +38,7 @@ const COMPONENTS_TO_LOAD = [
 	{ view: AInput, name: 'AInput', selector: '.a-input' },
 	{ view: ASelect, name: 'ASelect', selector: '.a-select' },
 	{ view: OPeopleGrid, name: 'OPeopleGrid', selector: '.o-people-grid--horizontal' },
-	{ view: OEngagementMap, name: 'OEngagementMap', selector: '.o-engagement-map' },
+	{ view: MMap, name: 'MMap', selector: '.m-map' },
 	{ view: MShare, name: 'MShare', selector: '.m-share' },
 	{ view: MPerson, name: 'MPerson', selector: '.m-person--expandable' },
 	{ view: AImageLazy, name: 'AImageLazy', selector: '.a-image__image--lazy' },
