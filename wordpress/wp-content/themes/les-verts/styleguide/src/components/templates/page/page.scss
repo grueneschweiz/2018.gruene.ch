@@ -42,6 +42,10 @@
 		@include media($page-grid-wide) {
 			grid-template-columns: [full-start] 1fr [wide-start] $page-grid-wide-side-max-width [side-left-start] $page-grid-side-width [side-left-end content-start] $page-grid-content-max-width [content-end side-right-start] $page-grid-side-width [side-right-end] $page-grid-wide-side-max-width [wide-end] 1fr [full-end];
 		}
+
+		@media print {
+			display: block;
+		}
 	}
 
 	&__full {
