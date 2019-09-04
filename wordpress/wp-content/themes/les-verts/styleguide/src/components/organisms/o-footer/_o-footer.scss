@@ -2,6 +2,10 @@
 	background: $color-grey-1;
 	width: 100%;
 
+	@media print {
+		display: none;
+	}
+
 	&__main {
 		max-width: $grid-max-width-max;
 		width: 100%;
