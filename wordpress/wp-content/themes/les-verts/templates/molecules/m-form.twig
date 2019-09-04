@@ -6,7 +6,7 @@
 			method="post"
 			enctype="multipart/form-data"
 			data-sending-lbl="{{ post.form_submitting }}"
-			data-nonce="{{ fn('wp_create_nonce', 'supt-form') }}"
+			data-nonce="{{ fn('supt_theme_form_create_nonce') }}"
 			{% if action_id %}data-action-id="{{ action_id }}"{% endif %}
 	{% if config_id %}data-config-id="{{ config_id }}"{% endif %}
 			data-form-id="{{ post.id }}">

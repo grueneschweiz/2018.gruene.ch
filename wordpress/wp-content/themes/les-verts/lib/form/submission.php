@@ -280,12 +280,10 @@ class FormSubmission {
 	 * Check if form is submitted using ajax, has a valid nonce and ip.
 	 */
 	private function abort_if_invalid_header() {
-		$valid = true;
+		require_once __DIR__ . '/include/Nonce.php';
 
 		// check nonce
-		if ( ! wp_verify_nonce( $this->nonce, self::ACTION_BASE_NAME ) ) {
-			$valid = false;
-		}
+		$valid = Nonce::consume( $this->nonce );
 
 		// only accept ajax submissions
 		if ( ! ( defined( 'DOING_AJAX' ) && DOING_AJAX ) ) {
