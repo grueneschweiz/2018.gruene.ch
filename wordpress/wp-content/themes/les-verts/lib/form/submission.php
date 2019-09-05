@@ -246,11 +246,6 @@ class FormSubmission {
 			$valid = false;
 		}
 
-		// check for valid ip
-		if ( ! filter_var( $this->ip, FILTER_VALIDATE_IP ) ) {
-			$valid = false;
-		}
-
 		// exit here if any of the above checks failed
 		if ( ! $valid ) {
 			$this->respond_with_error( 400, array( 'Submission not valid' ) );
