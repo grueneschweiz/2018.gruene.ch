@@ -23,6 +23,10 @@ body.has-share-buttons {
 		padding: 4px 8px 4px 4px;
 	}
 
+	@media print {
+		display: none;
+	}
+
 	&__icon {
 		height: $icon-size;
 		width: $icon-size;

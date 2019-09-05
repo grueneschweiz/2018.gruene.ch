@@ -1,0 +1,16 @@
+<div class="m-map">
+    <div class="m-map__map">
+			{{> @a-map }}
+    </div>
+    <div class="m-map__selector">
+			{{> @a-select select}}
+    </div>
+    <div class="m-map__dialog-wrapper">
+			{{#each dialogs}}
+          <div class="m-map__dialog">
+						{{> @a-simple-dialog this}}
+          </div>
+			{{/each}}
+    </div>
+    <div class="m-map__modal"></div>
+</div>

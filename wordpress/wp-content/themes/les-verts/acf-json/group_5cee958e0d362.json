@@ -1,402 +1,470 @@
 {
-  "key": "group_5cee958e0d362",
-  "title": "[Template]Default Content",
-  "fields": [
-    {
-      "key": "field_5cee95b5caff7",
-      "label": "Content",
-      "name": "content",
-      "type": "flexible_content",
-      "instructions": "This is the main section of this page.",
-      "required": 0,
-      "conditional_logic": 0,
-      "wrapper": {
-        "width": "",
-        "class": "",
-        "id": ""
-      },
-      "layouts": {
-        "5b6c41335aefe": {
-          "key": "5b6c41335aefe",
-          "name": "in_short",
-          "label": "In Short",
-          "display": "block",
-          "sub_fields": [
-            {
-              "key": "field_5b6c49f24c11d",
-              "label": "In Short",
-              "name": "in_short",
-              "type": "clone",
-              "instructions": "",
-              "required": 0,
-              "conditional_logic": 0,
-              "wrapper": {
+    "key": "group_5cee958e0d362",
+    "title": "[Template]Default Content",
+    "fields": [
+        {
+            "key": "field_5cee95b5caff7",
+            "label": "Content",
+            "name": "content",
+            "type": "flexible_content",
+            "instructions": "This is the main section of this page.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
                 "width": "",
                 "class": "",
                 "id": ""
-              },
-              "clone": [
-                "group_5b6c416ac235f"
-              ],
-              "display": "seamless",
-              "layout": "block",
-              "prefix_label": 0,
-              "prefix_name": 0
-            }
-          ],
-          "min": "",
-          "max": "1"
-        },
-        "layout_5b6c4a2a4c11e": {
-          "key": "layout_5b6c4a2a4c11e",
-          "name": "quote",
-          "label": "Quote",
-          "display": "block",
-          "sub_fields": [
-            {
-              "key": "field_5b6c4a324c11f",
-              "label": "Quote",
-              "name": "quote",
-              "type": "clone",
-              "instructions": "",
-              "required": 0,
-              "conditional_logic": 0,
-              "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-              },
-              "clone": [
-                "group_5b6c045f68e96"
-              ],
-              "display": "seamless",
-              "layout": "block",
-              "prefix_label": 0,
-              "prefix_name": 0
-            }
-          ],
-          "min": "",
-          "max": ""
-        },
-        "layout_5b6c4a5f4c120": {
-          "key": "layout_5b6c4a5f4c120",
-          "name": "text",
-          "label": "Text",
-          "display": "block",
-          "sub_fields": [
-            {
-              "key": "field_5b6c4a7a4c121",
-              "label": "",
-              "name": "text",
-              "type": "wysiwyg",
-              "instructions": "",
-              "required": 0,
-              "conditional_logic": 0,
-              "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-              },
-              "default_value": "",
-              "tabs": "all",
-              "toolbar": "full",
-              "media_upload": 1,
-              "delay": 0
             },
-            {
-              "key": "field_5b7d9304041de",
-              "label": "About this Block",
-              "name": "",
-              "type": "message",
-              "instructions": "",
-              "required": 0,
-              "conditional_logic": 0,
-              "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-              },
-              "message": "Use this block to add text. If you need to add raw HTML, make sure you use the 'text' mode instead of the 'visual' mode.",
-              "new_lines": "wpautop",
-              "esc_html": 0
-            }
-          ],
-          "min": "",
-          "max": ""
-        },
-        "layout_5b6c4aa24c122": {
-          "key": "layout_5b6c4aa24c122",
-          "name": "image",
-          "label": "Image",
-          "display": "block",
-          "sub_fields": [
-            {
-              "key": "field_5b6c4aab4c123",
-              "label": "Image",
-              "name": "image",
-              "type": "image",
-              "instructions": "",
-              "required": 0,
-              "conditional_logic": 0,
-              "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-              },
-              "return_format": "array",
-              "preview_size": "regular",
-              "library": "all",
-              "min_width": "",
-              "min_height": "",
-              "min_size": "",
-              "max_width": "",
-              "max_height": "",
-              "max_size": "",
-              "mime_types": ""
-            }
-          ],
-          "min": "",
-          "max": ""
-        },
-        "layout_5b6c4af94c126": {
-          "key": "layout_5b6c4af94c126",
-          "name": "oembed",
-          "label": "Video \/ Tweet \/ Post etc.",
-          "display": "block",
-          "sub_fields": [
-            {
-              "key": "field_5b6c4b1b4c127",
-              "label": "Video \/ Tweet \/ Post etc.",
-              "name": "oembed",
-              "type": "oembed",
-              "instructions": "Make sure you use the url to the tweet, post or video itself and not to the timeline.",
-              "required": 0,
-              "conditional_logic": 0,
-              "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-              },
-              "width": 600,
-              "height": ""
+            "layouts": {
+                "5b6c41335aefe": {
+                    "key": "5b6c41335aefe",
+                    "name": "in_short",
+                    "label": "In Short",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_5b6c49f24c11d",
+                            "label": "In Short",
+                            "name": "in_short",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_5b6c416ac235f"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": "1"
+                },
+                "layout_5b6c4a2a4c11e": {
+                    "key": "layout_5b6c4a2a4c11e",
+                    "name": "quote",
+                    "label": "Quote",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_5b6c4a324c11f",
+                            "label": "Quote",
+                            "name": "quote",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_5b6c045f68e96"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_5b6c4a5f4c120": {
+                    "key": "layout_5b6c4a5f4c120",
+                    "name": "text",
+                    "label": "Text",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_5b7d9304041de",
+                            "label": "About this Block",
+                            "name": "",
+                            "type": "message",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "message": "Use this block to add text. If you need to add raw HTML, make sure you use the 'text' mode instead of the 'visual' mode.",
+                            "new_lines": "wpautop",
+                            "esc_html": 0
+                        },
+                        {
+                            "key": "field_5b6c4a7a4c121",
+                            "label": "",
+                            "name": "text",
+                            "type": "wysiwyg",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "tabs": "all",
+                            "toolbar": "full",
+                            "media_upload": 1,
+                            "delay": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_5b6c4aa24c122": {
+                    "key": "layout_5b6c4aa24c122",
+                    "name": "image",
+                    "label": "Image",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_5d6e6840e0423",
+                            "label": "About this block",
+                            "name": "about_this_block",
+                            "type": "text",
+                            "instructions": "Adds an image that scales automatically to the device size (responsive). This is the preferred method to add images.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "maxlength": ""
+                        },
+                        {
+                            "key": "field_5b6c4aab4c123",
+                            "label": "Image",
+                            "name": "image",
+                            "type": "image",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "array",
+                            "preview_size": "regular",
+                            "library": "all",
+                            "min_width": "",
+                            "min_height": "",
+                            "min_size": "",
+                            "max_width": "",
+                            "max_height": "",
+                            "max_size": "",
+                            "mime_types": ""
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_5b6c4af94c126": {
+                    "key": "layout_5b6c4af94c126",
+                    "name": "oembed",
+                    "label": "Video \/ Tweet \/ Post etc.",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_5b72a37b414b7",
+                            "label": "About this Block",
+                            "name": "",
+                            "type": "message",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "message": "Use this block to embed some posts, tweets, youtube videos etc. Just paste the link to the resource to embed and wait for the preview. If no preview appears, auto-embedding is not supported. You can then use a text block, switch to the text mode (on the upper right corner) and paste in the embed code provided from the platform that hosts the content.",
+                            "new_lines": "wpautop",
+                            "esc_html": 0
+                        },
+                        {
+                            "key": "field_5b6c4b1b4c127",
+                            "label": "Video \/ Tweet \/ Post etc.",
+                            "name": "oembed",
+                            "type": "oembed",
+                            "instructions": "Make sure you use the url to the tweet, post or video itself and not to the timeline.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "width": 790,
+                            "height": 444
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_5bbf722de1080": {
+                    "key": "layout_5bbf722de1080",
+                    "name": "person",
+                    "label": "Person",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_5bbf746e7edf9",
+                            "label": "About this Block",
+                            "name": "",
+                            "type": "message",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "message": "Use this block to present your members of parliament, your candidates etc.",
+                            "new_lines": "wpautop",
+                            "esc_html": 0
+                        },
+                        {
+                            "key": "field_5bbf74e57edfa",
+                            "label": "Person",
+                            "name": "person",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_5bbf71ef4ed64"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_5bf563b4e8753": {
+                    "key": "layout_5bf563b4e8753",
+                    "name": "form",
+                    "label": "Form",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_5bf563b4e8754",
+                            "label": "About this Block",
+                            "name": "",
+                            "type": "message",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "message": "Show a form",
+                            "new_lines": "",
+                            "esc_html": 0
+                        },
+                        {
+                            "key": "field_5bf563b4e8755",
+                            "label": "Form",
+                            "name": "form",
+                            "type": "post_object",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "post_type": [
+                                "theme_form"
+                            ],
+                            "taxonomy": "",
+                            "allow_null": 0,
+                            "multiple": 0,
+                            "return_format": "",
+                            "ui": 1
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_5c4f21cbd787c": {
+                    "key": "layout_5c4f21cbd787c",
+                    "name": "code",
+                    "label": "Code",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_5c4f21cbd787d",
+                            "label": "About this Block",
+                            "name": "",
+                            "type": "message",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "message": "Add custom code (advanced)",
+                            "new_lines": "",
+                            "esc_html": 0
+                        },
+                        {
+                            "key": "field_5c4f21cbd787e",
+                            "label": "Code",
+                            "name": "code",
+                            "type": "acf_code_field",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "",
+                            "mode": "htmlmixed",
+                            "theme": "neo"
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_5d24b10e70f29": {
+                    "key": "layout_5d24b10e70f29",
+                    "name": "testimonials",
+                    "label": "Testimonials",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_5d24b11e70f2a",
+                            "label": "",
+                            "name": "",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "field_5b7da1211ced8",
+                                "field_5b6c608604fce"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": "1"
+                },
+                "layout_5d6e67bae0421": {
+                    "key": "layout_5d6e67bae0421",
+                    "name": "block",
+                    "label": "Block",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_5d6e68d6e0424",
+                            "label": "About this Block",
+                            "name": "",
+                            "type": "message",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "message": "You want to share content over multiple pages? Create the content as block post type, then pull it in here.",
+                            "new_lines": "",
+                            "esc_html": 0
+                        },
+                        {
+                            "key": "field_5d6e67cde0422",
+                            "label": "Block",
+                            "name": "block",
+                            "type": "post_object",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "post_type": [
+                                "block"
+                            ],
+                            "taxonomy": "",
+                            "allow_null": 0,
+                            "multiple": 0,
+                            "return_format": "object",
+                            "ui": 1
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                }
             },
-            {
-              "key": "field_5b72a37b414b7",
-              "label": "About this Block",
-              "name": "",
-              "type": "message",
-              "instructions": "",
-              "required": 0,
-              "conditional_logic": 0,
-              "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-              },
-              "message": "Use this block to embed some posts, tweets, youtube videos etc. Just paste the link to the resource to embed and wait for the preview. If no preview appears, auto-embedding is not supported. You can then use a text block, switch to the text mode (on the upper right corner) and paste in the embed code provided from the platform that hosts the content.",
-              "new_lines": "wpautop",
-              "esc_html": 0
-            }
-          ],
-          "min": "",
-          "max": ""
-        },
-        "layout_5bbf722de1080": {
-          "key": "layout_5bbf722de1080",
-          "name": "person",
-          "label": "Person",
-          "display": "block",
-          "sub_fields": [
-            {
-              "key": "field_5bbf74e57edfa",
-              "label": "person",
-              "name": "person",
-              "type": "clone",
-              "instructions": "",
-              "required": 0,
-              "conditional_logic": 0,
-              "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-              },
-              "clone": [
-                "group_5bbf71ef4ed64"
-              ],
-              "display": "seamless",
-              "layout": "block",
-              "prefix_label": 0,
-              "prefix_name": 0
-            },
-            {
-              "key": "field_5bbf746e7edf9",
-              "label": "About this Block",
-              "name": "",
-              "type": "message",
-              "instructions": "",
-              "required": 0,
-              "conditional_logic": 0,
-              "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-              },
-              "message": "Use this block to present your members of parliament, your candidates etc.",
-              "new_lines": "wpautop",
-              "esc_html": 0
-            }
-          ],
-          "min": "",
-          "max": ""
-        },
-        "layout_5bf563b4e8753": {
-          "key": "layout_5bf563b4e8753",
-          "name": "form",
-          "label": "Form",
-          "display": "block",
-          "sub_fields": [
-            {
-              "key": "field_5bf563b4e8754",
-              "label": "About this Block",
-              "name": "",
-              "type": "message",
-              "instructions": "",
-              "required": 0,
-              "conditional_logic": 0,
-              "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-              },
-              "message": "Show a form",
-              "new_lines": "",
-              "esc_html": 0
-            },
-            {
-              "key": "field_5bf563b4e8755",
-              "label": "Form",
-              "name": "form",
-              "type": "post_object",
-              "instructions": "",
-              "required": 0,
-              "conditional_logic": 0,
-              "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-              },
-              "post_type": [
-                "theme_form"
-              ],
-              "taxonomy": "",
-              "allow_null": 0,
-              "multiple": 0,
-              "return_format": "",
-              "ui": 1
-            }
-          ],
-          "min": "",
-          "max": ""
-        },
-        "layout_5c4f21cbd787c": {
-          "key": "layout_5c4f21cbd787c",
-          "name": "code",
-          "label": "Code",
-          "display": "block",
-          "sub_fields": [
-            {
-              "key": "field_5c4f21cbd787e",
-              "label": "Code",
-              "name": "code",
-              "type": "acf_code_field",
-              "instructions": "",
-              "required": 0,
-              "conditional_logic": 0,
-              "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-              },
-              "default_value": "",
-              "placeholder": "",
-              "mode": "htmlmixed",
-              "theme": "neo"
-            },
-            {
-              "key": "field_5c4f21cbd787d",
-              "label": "About this Block",
-              "name": "",
-              "type": "message",
-              "instructions": "",
-              "required": 0,
-              "conditional_logic": 0,
-              "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-              },
-              "message": "Add custom code (advanced)",
-              "new_lines": "",
-              "esc_html": 0
-            }
-          ],
-          "min": "",
-          "max": ""
-        },
-        "layout_5d24b10e70f29": {
-          "key": "layout_5d24b10e70f29",
-          "name": "testimonials",
-          "label": "Testimonials",
-          "display": "block",
-          "sub_fields": [
-            {
-              "key": "field_5d24b11e70f2a",
-              "label": "",
-              "name": "",
-              "type": "clone",
-              "instructions": "",
-              "required": 0,
-              "conditional_logic": 0,
-              "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-              },
-              "clone": [
-                "field_5b7da1211ced8",
-                "field_5b6c608604fce"
-              ],
-              "display": "seamless",
-              "layout": "block",
-              "prefix_label": 0,
-              "prefix_name": 0
-            }
-          ],
-          "min": "",
-          "max": "1"
+            "button_label": "Add Content Block",
+            "min": "",
+            "max": ""
         }
-      },
-      "button_label": "Add Content Block",
-      "min": "",
-      "max": ""
-    }
-  ],
-  "location": [
-    [
-      {
-        "param": "post_type",
-        "operator": "==",
-        "value": "post"
-      }
-    ]
-  ],
-  "menu_order": 0,
-  "position": "normal",
-  "style": "default",
-  "label_placement": "top",
-  "instruction_placement": "label",
-  "hide_on_screen": "",
-  "active": 0,
-  "description": "",
-  "modified": 1562765755
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 0,
+    "description": "",
+    "modified": 1567517063
 }

@@ -19,7 +19,7 @@ defined( 'ABSPATH' ) or die( 'Better secure than sorry!' );
  */
 class CrmDao {
 	const OPTION_KEY_TOKEN = 'supt_form_crm_token';
-	const WP_REMOTE_TIMEOUT = 30; //seconds
+	const WP_REMOTE_TIMEOUT = 45; //seconds
 
 	/**
 	 * The api URL with a trailing slash
@@ -134,7 +134,7 @@ class CrmDao {
 
 		if ( is_wp_error( $response ) ) {
 			$error_message = $response->get_error_message();
-			if ( false !== strpos( 'Operation timed out', $error_message ) ) {
+			if ( false !== strpos( $error_message, 'Operation timed out' ) ) {
 				throw new Exception( "Could save member to crm: $error_message.", 408 );
 			} else {
 				throw new Exception( "Could save member to crm: $error_message." );

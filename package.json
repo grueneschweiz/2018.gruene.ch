@@ -39,7 +39,7 @@
     "fractal:build": "gulp fractal:build",
     "wp:start": "docker-compose up -d",
     "wp:init": "./scripts/wp-init-local.sh",
-    "add:component": "./scripts/styleguide-add-component.sh",
+    "component:add": "./scripts/styleguide-add-component.sh",
     "make:release": "./scripts/make-release.sh"
   },
   "dependencies": {

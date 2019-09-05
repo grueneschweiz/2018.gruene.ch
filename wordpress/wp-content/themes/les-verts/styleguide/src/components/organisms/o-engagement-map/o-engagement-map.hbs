@@ -12,20 +12,7 @@
 			{{{text-after}}}
 		</div>
 		<div class="o-engagement-map__map-wrapper">
-			<div class="o-engagement-map__map">
-				{{> @a-map }}
-			</div>
-			<div class="o-engagement-map__selector">
-				{{> @a-select select}}
-			</div>
-			<div class="o-engagement-map__dialog-wrapper">
-				{{#each dialogs}}
-					<div class="o-engagement-map__dialog">
-						{{> @a-simple-dialog this}}
-					</div>
-				{{/each}}
-			</div>
+			{{> @m-map }}
 		</div>
 	</div>
-	<div class="o-engagement-map__modal"></div>
 </article>

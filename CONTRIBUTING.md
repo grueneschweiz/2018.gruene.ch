@@ -133,4 +133,4 @@ If you want to edit them in the backend though, wp will show "Available for sync
 * `yarn fractal:build` - Build the styleguide as a static site in _`./wordpress/wp-content/themes/les-verts/styleguide/dist/build`_
 * `yarn fractal sass:generate` - auto-update the _loader.scss file with existing components
 * `yarn wp:init` - Initialise the local WordPress instance
-* `yarn add:component type component_name` - Create a new component for the styleguide.
+* `yarn component:add type component_name` - Create a new component for the styleguide.

@@ -5,6 +5,10 @@
 	width: 100%;
 	height: $height;
 
+	@media print {
+		display: none;
+	}
+
 	&__wrapper {
 		@extend .grid-width;
 		display: table;

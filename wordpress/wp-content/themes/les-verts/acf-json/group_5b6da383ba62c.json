@@ -3,10 +3,10 @@
     "title": "[Template]Map Block",
     "fields": [
         {
-            "key": "field_5b71a8daf58b5",
-            "label": "About this Block – Advanced !",
+            "key": "field_5d6e39d65a070",
+            "label": "",
             "name": "",
-            "type": "message",
+            "type": "clone",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -15,9 +15,13 @@
                 "class": "",
                 "id": ""
             },
-            "message": "This is an advanced block. You'll need to know the fundamentals of SVG to use it. It can be used to display a map of your region with a nice popup for every region if it is clicked. As well as an engaging text to become a member.",
-            "new_lines": "wpautop",
-            "esc_html": 0
+            "clone": [
+                "field_5d6e37bf5918e"
+            ],
+            "display": "seamless",
+            "layout": "block",
+            "prefix_label": 0,
+            "prefix_name": 0
         },
         {
             "key": "field_5b6dae2576af9",
@@ -79,123 +83,6 @@
             "delay": 0
         },
         {
-            "key": "field_5b6daabace235",
-            "label": "Map SVG",
-            "name": "map",
-            "type": "acf_code_field",
-            "instructions": "Copy the SVG in here. Make sure the regions have the '.map-item' class and the id matches the id of the data.",
-            "required": 1,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "mode": "htmlmixed",
-            "theme": "neo"
-        },
-        {
-            "key": "field_5b6dab1bce236",
-            "label": "Map Data",
-            "name": "map_data",
-            "type": "repeater",
-            "instructions": "",
-            "required": 1,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "collapsed": "field_5b6dac07ce238",
-            "min": 0,
-            "max": 0,
-            "layout": "block",
-            "button_label": "",
-            "sub_fields": [
-                {
-                    "key": "field_5b6dbc0abbe02",
-                    "label": "Label",
-                    "name": "label",
-                    "type": "text",
-                    "instructions": "This is used in the dropdown of the mobile version.",
-                    "required": 1,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "maxlength": ""
-                },
-                {
-                    "key": "field_5b6dab41ce237",
-                    "label": "ID",
-                    "name": "value",
-                    "type": "text",
-                    "instructions": "This must match the id in the svg.",
-                    "required": 1,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "maxlength": ""
-                },
-                {
-                    "key": "field_5b6dac07ce238",
-                    "label": "Dialog Content",
-                    "name": "dialog_content",
-                    "type": "repeater",
-                    "instructions": "The content block will be separated by margin and a slight line.",
-                    "required": 1,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "collapsed": "",
-                    "min": 1,
-                    "max": 0,
-                    "layout": "row",
-                    "button_label": "Add Content",
-                    "sub_fields": [
-                        {
-                            "key": "field_5b6dac90ce239",
-                            "label": "Content",
-                            "name": "content",
-                            "type": "wysiwyg",
-                            "instructions": "",
-                            "required": 1,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "",
-                            "tabs": "all",
-                            "toolbar": "full",
-                            "media_upload": 0,
-                            "delay": 0
-                        }
-                    ]
-                }
-            ]
-        },
-        {
             "key": "field_5b6db68857582",
             "label": "Full Width (hidden)",
             "name": "full_width",
@@ -226,11 +113,11 @@
             "ui_off_text": ""
         },
         {
-            "key": "field_5b6dbb6ecf0b0",
-            "label": "Region Selector Label",
-            "name": "map_selector_label",
-            "type": "text",
-            "instructions": "This will only be displayed in the mobile version.",
+            "key": "field_5d6e399e5a06f",
+            "label": "Map Block",
+            "name": "map_block",
+            "type": "post_object",
+            "instructions": "Select the block with the map.",
             "required": 1,
             "conditional_logic": 0,
             "wrapper": {
@@ -238,11 +125,14 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "Select Region",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
+            "post_type": [
+                "block"
+            ],
+            "taxonomy": "",
+            "allow_null": 0,
+            "multiple": 0,
+            "return_format": "object",
+            "ui": 1
         }
     ],
     "location": [
@@ -262,5 +152,5 @@
     "hide_on_screen": "",
     "active": 0,
     "description": "",
-    "modified": 1548690293
+    "modified": 1567507149
 }

@@ -14,6 +14,7 @@ namespace SUPT;
 
 if ( class_exists( 'acf_pro' ) ) {
 	require_once __DIR__ . '/acf/acf-init.php';
+	require_once __DIR__ . '/acf/cached-oembeds.php';
 }
 
 
@@ -99,11 +100,13 @@ Navigation_controller::register();
  */
 
 require_once __DIR__ . '/post-types/PeopleType.php';
+require_once __DIR__ . '/post-types/BlockType.php';
 
 // register post types & taxonomies
 add_action( 'init', function () {
-	PeopleType::register_post_types();
+	PeopleType::register_post_type();
 	PeopleType::register_taxonomy();
+	BlockType::register_post_type();
 } );
 
 

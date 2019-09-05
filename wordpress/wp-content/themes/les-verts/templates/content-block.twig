@@ -41,10 +41,16 @@
 			'layout': 'vertical'
 		} only %}
 	</div>
+{% elseif block.acf_fc_layout == 'map' %}
+	{% include 'molecules/m-map.twig' with block only %}
 {% elseif block.acf_fc_layout == 'oembed' %}
 	{{ block.oembed }}
 {% elseif block.acf_fc_layout == 'code' %}
 	{{ block.code }}
+{% elseif block.acf_fc_layout == 'block' %}
+	{% for element in block.block.get_field('content') %}
+		{% include 'content-block.twig' with {'block': element} %}
+	{% endfor %}
 {% else %}
 	{{ block.text }}
 {% endif %}

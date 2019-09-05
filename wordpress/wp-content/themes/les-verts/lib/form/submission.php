@@ -14,13 +14,7 @@ require_once __DIR__ . '/include/SubmissionModel.php';
  */
 class FormSubmission {
 
-	const ACTION_BASE_NAME = 'supt-form';
 	const NEXT_ACTION_ID_DEFAULT = - 1;
-
-	const SUBMISSION_LIMIT_MINUTE_IP_FORM_AGENT = 2;
-	const SUBMISSION_LIMIT_MINUTE_IP_FORM = 5;
-	const SUBMISSION_LIMIT_HOUR_IP_FORM_AGENT = 10;
-	const SUBMISSION_LIMIT_DAY_IP_FORM = 100;
 
 	/**
 	 * The form
@@ -56,20 +50,6 @@ class FormSubmission {
 	 * @var int
 	 */
 	private $post_meta_id = - 1;
-
-	/**
-	 * The submitters IP address
-	 *
-	 * @var string
-	 */
-	private $ip;
-
-	/**
-	 * The submitters user agent information
-	 *
-	 * @var string
-	 */
-	private $user_agent;
 
 	/**
 	 * The forms nonce
@@ -152,9 +132,9 @@ class FormSubmission {
 	 * Process form submission
 	 */
 	public function handle_submit() {
+		$this->abort_if_limit_exceeded();
 		$this->add_submission_metadata();
 		$this->abort_if_invalid_header();
-		$this->abort_if_limit_exceeded();
 		$this->add_data();
 		$this->abort_if_invalid_data();
 		$this->add_metadata();
@@ -171,9 +151,6 @@ class FormSubmission {
 	 * Set ip, user_agent, form_id. And if present: action_id, config_id, nonce
 	 */
 	private function add_submission_metadata() {
-		$this->ip         = $this->get_user_ip();
-		$this->user_agent = $_SERVER['HTTP_USER_AGENT'];
-
 		try {
 			$this->form = new FormModel( absint( $_POST['form_id'] ) );
 		} catch ( Exception $e ) {
@@ -197,27 +174,6 @@ class FormSubmission {
 		// @todo: rethink the nonces if using caching
 		if ( isset( $_POST['nonce'] ) ) {
 			$this->nonce = $_POST['nonce'];
-		}
-	}
-
-	/**
-	 * Get visitor ip. If behind proxy, try to find real ip.
-	 *
-	 * @see https://stackoverflow.com/a/13646848
-	 *
-	 * @return string
-	 */
-	private function get_user_ip() {
-		if ( array_key_exists( 'HTTP_X_FORWARDED_FOR', $_SERVER ) && ! empty( $_SERVER['HTTP_X_FORWARDED_FOR'] ) ) {
-			if ( strpos( $_SERVER['HTTP_X_FORWARDED_FOR'], ',' ) > 0 ) {
-				$addr = explode( ",", $_SERVER['HTTP_X_FORWARDED_FOR'] );
-
-				return trim( $addr[0] );
-			} else {
-				return $_SERVER['HTTP_X_FORWARDED_FOR'];
-			}
-		} else {
-			return $_SERVER['REMOTE_ADDR'];
 		}
 	}
 
@@ -280,20 +236,13 @@ class FormSubmission {
 	 * Check if form is submitted using ajax, has a valid nonce and ip.
 	 */
 	private function abort_if_invalid_header() {
-		$valid = true;
+		require_once __DIR__ . '/include/Nonce.php';
 
 		// check nonce
-		if ( ! wp_verify_nonce( $this->nonce, self::ACTION_BASE_NAME ) ) {
-			$valid = false;
-		}
+		$valid = Nonce::consume( $this->nonce );
 
 		// only accept ajax submissions
 		if ( ! ( defined( 'DOING_AJAX' ) && DOING_AJAX ) ) {
-			$valid = false;
-		}
-
-		// check for valid ip
-		if ( ! filter_var( $this->ip, FILTER_VALIDATE_IP ) ) {
 			$valid = false;
 		}
 
@@ -306,14 +255,22 @@ class FormSubmission {
 	}
 
 	/**
-	 * Limit form submissions according to
-	 * - SUBMISSION_LIMIT_MINUTE_IP_FORM_AGENT
-	 * - SUBMISSION_LIMIT_MINUTE_IP_FORM
-	 * - SUBMISSION_LIMIT_HOUR_IP_FORM_AGENT
-	 * - SUBMISSION_LIMIT_DAY_IP_FORM
+	 * Limit form submissions per ip and ip user agent combination.
+	 *
+	 * Prevent spamming and dos attacks.
 	 */
 	private function abort_if_limit_exceeded() {
-		// @todo: implement submission limiting
+		require_once __DIR__ . '/include/Limiter.php';
+
+		$limiter = new Limiter();
+
+		if (! $limiter->below_limit()) {
+			$this->respond_with_error( 429, array( 'Too many requests. Please try again later.' ) );
+
+			return;
+		}
+
+		$limiter->log_attempt();
 	}
 
 	/**
