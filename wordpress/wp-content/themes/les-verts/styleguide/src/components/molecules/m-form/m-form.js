@@ -5,6 +5,7 @@ const SUBMIT_WRAPPER_SELECTOR = '.m-form__submit-wrapper';
 const SUCCESS_MESSAGE_SELECTOR = '.m-form__message--success';
 const ERROR_MESSAGE_SELECTOR = '.m-form__message--failure';
 const INVALID_MESSAGE_SELECTOR = '.m-form__message--invalid';
+const SERVER_FEEDBACK_MESSAGE_SELECTOR = '.m-form__message-error';
 const FORM_SELECTOR = '.m-form';
 
 const HIDDEN_STATE = 'is-hidden';
@@ -39,26 +40,61 @@ export default class MForm extends BaseView {
 
 	handleError( resp ) {
 		if (resp instanceof Object && 'data' in resp) {
-			for (const key of Object.keys( resp.data )) {
-				let el = this.getScopedElement( '[name=' + key + ']' );
-				this.addClass( el, INVALID_STATE );
+			if ('nonce' in resp.data) {
+				this.element.dataset.nonce = resp.data.nonce;
 			}
 
-			let invalidMessage = this.getScopedElement( INVALID_MESSAGE_SELECTOR );
-			this.addClass( invalidMessage, SHOWN_STATE );
-			invalidMessage.setAttribute('aria-hidden', 'false');
-
-		} else {
-
-			let errorMessage = this.getScopedElement( ERROR_MESSAGE_SELECTOR );
-			this.addClass( errorMessage, SHOWN_STATE );
-			errorMessage.setAttribute('aria-hidden', 'false');
+			if ('general' in resp.data) {
+				this.showErrorMessage( resp.data.general );
+			}
+			else if ('validation' in resp.data) {
+				this.showInvalidMessage( resp.data.validation );
+			}
+			else {
+				this.showErrorMessage( '' );
+			}
 		}
+		else {
+			this.showErrorMessage( '' );
+		}
+	}
 
+	clearSendingState() {
 		clearInterval( this.sendingTimer );
 		this.submitButton.disabled = false;
 		this.submitted = false;
 		this.submitButton.innerHTML = this.origSubmitLbl;
+	}
+
+	showInvalidMessage( messages ) {
+		let invalidMessage = this.getScopedElement( INVALID_MESSAGE_SELECTOR );
+		let serverMessage = invalidMessage.querySelector(
+			SERVER_FEEDBACK_MESSAGE_SELECTOR );
+		let message = '';
+
+		for (const key of Object.keys( messages )) {
+			let el = this.getScopedElement( '[name=' + key + ']' );
+			this.addClass( el, INVALID_STATE );
+			message += `<li>${messages[ key ]}</li>`;
+		}
+
+		serverMessage.innerHTML = `<ul>${message}</ul>`;
+		this.addClass( invalidMessage, SHOWN_STATE );
+		invalidMessage.setAttribute( 'aria-hidden', 'false' );
+
+		this.clearSendingState();
+	}
+
+	showErrorMessage( message ) {
+		let errorMessage = this.getScopedElement( ERROR_MESSAGE_SELECTOR );
+		let serverMessage = errorMessage.querySelector(
+			SERVER_FEEDBACK_MESSAGE_SELECTOR );
+
+		serverMessage.innerHTML = `<ul><li>${message}</li></ul>`;
+		this.addClass( errorMessage, SHOWN_STATE );
+		errorMessage.setAttribute( 'aria-hidden', 'false' );
+
+		this.clearSendingState();
 	}
 
 	initialize() {
@@ -82,7 +118,8 @@ export default class MForm extends BaseView {
 				lblAdd += '.';
 			}
 
-			this.submitButton.innerHTML = lbl + '<span class="m-form__sending">' + lblAdd + '</span>';
+			this.submitButton.innerHTML = lbl + '<span class="m-form__sending">' +
+				lblAdd + '</span>';
 		}, 300 );
 	}
 
@@ -97,13 +134,15 @@ export default class MForm extends BaseView {
 					let resp = '';
 					try {
 						resp = JSON.parse( raw );
-					} catch (err) {
+					}
+					catch ( err ) {
 						resp = {};
 					}
 
 					if (xhr.status === 200) {
 						resolve( resp );
-					} else {
+					}
+					else {
 						reject( resp );
 					}
 				}
@@ -117,8 +156,8 @@ export default class MForm extends BaseView {
 		// hide error messages
 		let errorMessage = this.getScopedElement( ERROR_MESSAGE_SELECTOR );
 		let invalidMessage = this.getScopedElement( INVALID_MESSAGE_SELECTOR );
-		errorMessage.setAttribute('aria-hidden', 'true');
-		invalidMessage.setAttribute('aria-hidden', 'true');
+		errorMessage.setAttribute( 'aria-hidden', 'true' );
+		invalidMessage.setAttribute( 'aria-hidden', 'true' );
 		this.removeClass( errorMessage, SHOWN_STATE );
 		this.removeClass( invalidMessage, SHOWN_STATE );
 
@@ -160,36 +199,43 @@ export default class MForm extends BaseView {
 		// add the id of the last form
 		data.append( 'predecessor_id', this.predecessorId );
 
-		this.ajax( url, 'POST', data )
-			.then( ( resp ) => {
-				if (resp instanceof Object && 'success' in resp && true === resp.success) {
-					this.showSuccess( resp.data );
-				} else {
-					return Promise.reject( resp );
-				}
-			} ).catch( ( resp ) => {
+		this.ajax( url, 'POST', data ).then( ( resp ) => {
+			if (resp instanceof Object
+				&& 'success' in resp
+				&& true ===	resp.success)
+			{
+				this.showSuccess( resp.data );
+			}	else {
+				return Promise.reject( resp );
+			}
+		} ).catch( ( resp ) => {
 			this.handleError( resp );
 		} );
 	}
 
 	showSuccess( data ) {
-		if (- 1 === data.next_action_id || ! data.html) {
+		if (- 1 === data.next_action_id || !data.html) {
 			if (data.redirect && - 1 === data.next_action_id) {
-				window.location.href = MForm.buildRedirectUrl( data.redirect, data.predecessor_id );
-			} else {
+				window.location.href = MForm.buildRedirectUrl(
+					data.redirect,
+					data.predecessor_id
+				);
+			}
+			else {
 				this.predecessorId = data.predecessor_id;
 				let submitWrapper = this.getScopedElement( SUBMIT_WRAPPER_SELECTOR );
 				let successMessage = this.getScopedElement( SUCCESS_MESSAGE_SELECTOR );
-				submitWrapper.setAttribute('aria-hidden', 'true');
-				successMessage.setAttribute('aria-hidden', 'false');
+				submitWrapper.setAttribute( 'aria-hidden', 'true' );
+				successMessage.setAttribute( 'aria-hidden', 'false' );
 				this.addClass( submitWrapper, HIDDEN_STATE );
 				this.addClass( successMessage, SHOWN_STATE );
 			}
-		} else {
+		}
+		else {
 			let parent = this.element.parentNode.parentNode;
 			parent.innerHTML = data.html;
 
-			let form = new MForm( parent.querySelector(FORM_SELECTOR) );
+			let form = new MForm( parent.querySelector( FORM_SELECTOR ) );
 			form.bind();
 
 			this.destroy();

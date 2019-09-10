@@ -15,6 +15,8 @@ require_once __DIR__ . '/include/SubmissionModel.php';
 class FormSubmission {
 
 	const NEXT_ACTION_ID_DEFAULT = - 1;
+	const ERROR_GENERAL = 1;
+	const ERROR_VALIDATION = 2;
 
 	/**
 	 * The form
@@ -84,7 +86,7 @@ class FormSubmission {
 	 *
 	 * @var array
 	 */
-	private $errors = array();
+	private $validation_errors = array();
 
 	/**
 	 * Cache for the form fields (as defined in the backend)
@@ -143,18 +145,74 @@ class FormSubmission {
 		$this->add_to_saving_queue_of_crm();
 		spawn_cron();
 
-		$this->status = 200;
 		$this->send_response();
 	}
 
 	/**
-	 * Set ip, user_agent, form_id. And if present: action_id, config_id, nonce
+	 * Limit form submissions per ip and ip user agent combination.
+	 *
+	 * Prevent spamming and dos attacks.
+	 */
+	private function abort_if_limit_exceeded() {
+		require_once __DIR__ . '/include/Limiter.php';
+
+		$limiter = new Limiter();
+
+		if ( ! $limiter->below_limit() ) {
+			$this->respond_with_general_error(
+				429,
+				__( 'Too many requests. Please try again later.', THEME_DOMAIN )
+			);
+
+			return;
+		}
+
+		$limiter->log_attempt();
+	}
+
+	/**
+	 * Send error message to client and die
+	 *
+	 * @param int $status_code http status code
+	 * @param mixed $messages the error message(s)
+	 * @param bool $new_nonce should a new nonce be sent?
+	 */
+	private function respond_with_general_error( $status_code, $messages, $new_nonce = false ) {
+		$this->send_error_response( self::ERROR_GENERAL, $status_code, $messages, $new_nonce );
+	}
+
+	/**
+	 * Send error message to client and die
+	 *
+	 * @param string $type 'validation' or 'general'
+	 * @param int $status_code http status code
+	 * @param mixed $errors the error message(s)
+	 * @param bool $nonce should a new nonce be sent?
+	 */
+	private function send_error_response( $type, $status_code, $errors, $nonce ) {
+		if ( self::ERROR_VALIDATION === $type ) {
+			$data['validation'] = $errors;
+		} else {
+			$data['general'] = $errors;
+		}
+
+		if ( $nonce ) {
+			require_once __DIR__ . '/include/Nonce.php';
+			$data['nonce'] = Nonce::create();
+		}
+
+		wp_send_json_error( $data, $status_code );
+		wp_die();
+	}
+
+	/**
+	 * Set form. And if present: action_id, config_id, predecessor_id, nonce
 	 */
 	private function add_submission_metadata() {
 		try {
 			$this->form = new FormModel( absint( $_POST['form_id'] ) );
 		} catch ( Exception $e ) {
-			$this->respond_with_error( 400, array( 'Submission not valid' ) );
+			$this->respond_with_general_error( 400, 'Invalid form.' );
 
 			return;
 		}
@@ -178,99 +236,21 @@ class FormSubmission {
 	}
 
 	/**
-	 * Send error message to client and die
-	 *
-	 * @param int $code
-	 * @param string|array $messages
-	 */
-	private function respond_with_error( $code, $messages ) {
-		$this->errors = array_merge( $this->errors, (array) $messages );
-		$this->status = $code;
-		$this->send_response();
-	}
-
-	/**
-	 * Send response and die
-	 */
-	private function send_response() {
-		status_header( $this->status );
-
-		if ( $this->status === 200 ) {
-			/**
-			 * Filters the id of the next form. The default triggers the thank you page of the form.
-			 *
-			 * @param int id of the next form.
-			 */
-			$next_action_id = apply_filters( FormType::MODEL_NAME . '-next-form-id', self::NEXT_ACTION_ID_DEFAULT );
-
-			$html = '';
-			if ( self::NEXT_ACTION_ID_DEFAULT !== $next_action_id ) {
-				$context['block']['configuration'] = $this->config_id;
-				$context['block']['action']        = $next_action_id;
-
-				$templates = [
-					get_stylesheet_directory() . '/templates/engagement-funnel.twig',
-
-					// fallback if child theme doesn't implement it
-					get_template_directory() . '/templates/engagement-funnel.twig',
-				];
-
-				/** @noinspection PhpUndefinedClassInspection */
-				$html = Timber::compile( $templates, $context );
-			}
-
-			wp_send_json_success( [
-				'next_action_id' => $next_action_id,
-				'html'           => $html,
-				'redirect'       => $this->form->get_redirect_url(),
-				'predecessor_id' => $this->post_meta_id,
-			] );
-		} else {
-			wp_send_json_error( $this->errors );
-		}
-
-		wp_die();
-	}
-
-	/**
-	 * Check if form is submitted using ajax, has a valid nonce and ip.
+	 * Check if form is submitted using ajax and has a valid nonce.
 	 */
 	private function abort_if_invalid_header() {
 		require_once __DIR__ . '/include/Nonce.php';
 
-		// check nonce
-		$valid = Nonce::consume( $this->nonce );
+		if ( ! Nonce::consume( $this->nonce ) ) {
+			$this->respond_with_general_error( 400, 'Invalid nonce.' );
+
+			return;
+		}
 
 		// only accept ajax submissions
 		if ( ! ( defined( 'DOING_AJAX' ) && DOING_AJAX ) ) {
-			$valid = false;
+			$this->respond_with_general_error( 400, 'Submission not valid.' );
 		}
-
-		// exit here if any of the above checks failed
-		if ( ! $valid ) {
-			$this->respond_with_error( 400, array( 'Submission not valid' ) );
-
-			return;
-		}
-	}
-
-	/**
-	 * Limit form submissions per ip and ip user agent combination.
-	 *
-	 * Prevent spamming and dos attacks.
-	 */
-	private function abort_if_limit_exceeded() {
-		require_once __DIR__ . '/include/Limiter.php';
-
-		$limiter = new Limiter();
-
-		if (! $limiter->below_limit()) {
-			$this->respond_with_error( 429, array( 'Too many requests. Please try again later.' ) );
-
-			return;
-		}
-
-		$limiter->log_attempt();
 	}
 
 	/**
@@ -295,7 +275,10 @@ class FormSubmission {
 					$valid   = $field->validate( $checked );
 
 					if ( ! $valid ) {
-						$this->errors[ $key ] = __( 'Invalid value.', THEME_DOMAIN );
+						$this->validation_errors[ $key ] = sprintf(
+							__( '%s: Invalid value.', THEME_DOMAIN ),
+							$field->get_label()
+						);
 					}
 
 					if ( $checked ) {
@@ -310,7 +293,10 @@ class FormSubmission {
 				$valid     = $field->validate( $sanitized );
 
 				if ( ! $valid ) {
-					$this->errors[ $key ] = __( 'Invalid or missing value.', THEME_DOMAIN );
+					$this->validation_errors[ $key ] = sprintf(
+						__( '%s: Invalid or missing value.', THEME_DOMAIN ),
+						$field->get_label()
+					);
 				}
 
 				$this->data[ $key ] = $sanitized;
@@ -347,7 +333,7 @@ class FormSubmission {
 				return '';
 			}
 
-			$this->errors[ $key ] = __( 'Missing data.', THEME_DOMAIN );
+			$this->validation_errors[ $key ] = sprintf( __( '%s: Missing data.', THEME_DOMAIN ), $key );
 
 			return null;
 		}
@@ -360,8 +346,8 @@ class FormSubmission {
 	 * Stop execution with a 400 if the data threw a validation error
 	 */
 	private function abort_if_invalid_data() {
-		if ( ! empty( $this->errors ) ) {
-			$this->respond_with_error( 400, $this->errors );
+		if ( ! empty( $this->validation_errors ) ) {
+			$this->send_error_response( self::ERROR_VALIDATION, 400, $this->validation_errors, true );
 
 			return;
 		}
@@ -437,7 +423,7 @@ class FormSubmission {
 			$this->post_meta_id = $submission->meta_get_id();
 		} catch ( Exception $e ) {
 			$this->report_error( 'save form data locally', $data, $e );
-			$this->respond_with_error( 500, array( 'Internal server error.' ) );
+			$this->respond_with_general_error( 500, 'Internal server error.', true );
 
 			return;
 		}
@@ -535,6 +521,46 @@ class FormSubmission {
 		} catch ( Exception $e ) {
 			Util::report_form_error( 'add data to saving queue of crm', $this->data, $e, $this->form->get_title() );
 		}
+	}
+
+	/**
+	 * Send response and die
+	 */
+	private function send_response() {
+		/**
+		 * Filters the id of the next form. The default triggers the thank you page of the form.
+		 *
+		 * @param int id of the next form.
+		 */
+		$next_action_id = apply_filters( FormType::MODEL_NAME . '-next-form-id', self::NEXT_ACTION_ID_DEFAULT );
+
+		$html = '';
+		if ( self::NEXT_ACTION_ID_DEFAULT !== $next_action_id ) {
+			$context['block']['configuration'] = $this->config_id;
+			$context['block']['action']        = $next_action_id;
+
+			$templates = [
+				get_stylesheet_directory() . '/templates/engagement-funnel.twig',
+
+				// fallback if child theme doesn't implement it
+				get_template_directory() . '/templates/engagement-funnel.twig',
+			];
+
+			/** @noinspection PhpUndefinedClassInspection */
+			$html = Timber::compile( $templates, $context );
+		}
+
+		wp_send_json_success(
+			array(
+				'next_action_id' => $next_action_id,
+				'html'           => $html,
+				'redirect'       => $this->form->get_redirect_url(),
+				'predecessor_id' => $this->post_meta_id,
+			),
+			200
+		);
+
+		wp_die();
 	}
 
 	/**

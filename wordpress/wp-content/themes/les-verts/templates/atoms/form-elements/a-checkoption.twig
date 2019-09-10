@@ -9,11 +9,13 @@ Parameters:
 - checked: bool (optional)
 - modifiers_classes: string (optional)
 #}
+
+{% if not id %}
+	{% set id = name|uniqueid %}
+{% endif %}
+
 <div class="a-checkoption">
 	{% if 'radio' == type %}
-		{% if not id %}
-			{% set id = name|uniqueid %}
-		{% endif %}
 	<input type="radio"
 				 name="{{ name }}"
 				 id="{{ id }}"
