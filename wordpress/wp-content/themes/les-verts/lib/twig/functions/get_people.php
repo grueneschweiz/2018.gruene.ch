@@ -17,7 +17,8 @@ add_filter( 'get_twig', function ( $twig ) {
 				
 				$query = array(
 					'post_type'  => 'people',
-					'meta_query' => $meta_query
+					'meta_query' => $meta_query,
+					'nopaging' => true,
 				);
 				
 				if ( $random ) {
