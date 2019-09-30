@@ -31,7 +31,11 @@ class Navigation_controller {
 		foreach ( $items as &$item ) {
 			if ( '#supt_agenda' == $item->url ) {
 				$item->url = tribe_get_listview_link( false );
-				$events    = tribe_get_events( array( 'start_date' => date( 'Y-m-d' ), 'category' => 0 ) );
+				$events    = tribe_get_events( array(
+					'start_date'       => date( 'Y-m-d' ),
+					'category'         => 0,
+					'schedule_details' => true
+				) );
 
 				if ( empty( $events ) ) {
 					continue;
@@ -53,19 +57,9 @@ class Navigation_controller {
 					$event->target           = '';
 					$event->type_label       = $type->label;
 
-					/**
-					 * legacy for compatibility with the events calendar < 4.9.0
-					 */
-					$raw_date = isset( $event->event_date ) ? $event->event_date : $event->EventStartDate;
-
-					$date = date(
-						_x( 'y-m-d', 'short date format', THEME_DOMAIN ),
-						strtotime( $raw_date )
-					);
-
 					$event->title = sprintf(
 						_x( '%s: %s', 'Example: 21.03.2018: Delegiertenversammlung', THEME_DOMAIN ),
-						$date,
+						self::get_start_date( $event ),
 						$event->post_title
 					);
 
@@ -75,6 +69,38 @@ class Navigation_controller {
 		}
 
 		return $items;
+	}
+
+	/**
+	 * Get the local start date of the given event and return it localized short date format
+	 *
+	 * @param \WP_Post $event
+	 *
+	 * @return false|string
+	 */
+	private static function get_start_date( $event ) {
+		/**
+		 * legacy for compatibility with the events calendar < 4.9.0
+		 */
+		$raw_date = isset( $event->event_date ) ? $event->event_date : $event->EventStartDate;
+
+		if ( empty( $raw_date ) ) {
+			$utc_date = $event->event_date_utc;
+
+			try {
+				// get UTC time and convert it to local time
+				$dt = new \DateTime( $utc_date, new \DateTimeZone( 'UTC' ) );
+				$dt->setTimezone( new \DateTimeZone( get_option( 'timezone_string' ) ) );
+				$raw_date = $dt->format( 'Y-m-d H:i:s' );
+			} catch ( \Exception $e ) {
+				$raw_date = $utc_date;
+			}
+		}
+
+		return date(
+			_x( 'y-m-d', 'short date format', THEME_DOMAIN ),
+			strtotime( $raw_date )
+		);
 	}
 
 	public static function add_to_context( $context ) {
