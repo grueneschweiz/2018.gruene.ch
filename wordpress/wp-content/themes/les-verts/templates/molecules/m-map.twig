@@ -5,11 +5,11 @@
 		} only %}
 	</div>
 	<div class="m-map__selector">
-		{% include 'atoms/a-select.twig' with {
+		{% include 'atoms/form-elements/a-select.twig' with {
 			'id': 'party-selector',
 			'name': 'party-selector',
 			'label': map_selector_label,
-			'options': map_data
+			'keyed_options': map_data
 		} only %}
 	</div>
 	<div class="m-map__dialog-wrapper">
