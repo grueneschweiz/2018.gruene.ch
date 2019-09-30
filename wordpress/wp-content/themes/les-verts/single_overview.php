@@ -1,7 +1,7 @@
 <?php
 /*
  * Template Name: Overview Page
- * Template Post Type: post
+ * Template Post Type: post, page
  */
 
 $context         = Timber::get_context();
