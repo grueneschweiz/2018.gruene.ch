@@ -167,6 +167,7 @@ Customizer\GetActive::register();
  */
 
 require_once __DIR__ . '/tweaks/inject-svg-sprite.php';
+require_once __DIR__ . '/tweaks/responsive-local-video.php';
 
 if ( defined( 'WPSEO_FILE' ) ) {
 	require_once __DIR__ . '/tweaks/tweak-yoast-social-media-stuff.php';
