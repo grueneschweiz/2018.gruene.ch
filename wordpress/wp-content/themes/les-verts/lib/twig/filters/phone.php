@@ -2,11 +2,11 @@
 
 namespace SUPT;
 
-use \Twig_SimpleFilter;
+use Twig\TwigFilter;
 
 add_filter( 'get_twig', function ( $twig ) {
 	$twig->addFilter(
-		new Twig_SimpleFilter( 'phone', function ( $string ) {
+		new TwigFilter( 'phone', function ( $string ) {
 			// strip spaces
 			$string = str_replace(' ', '', trim($string));
 			
