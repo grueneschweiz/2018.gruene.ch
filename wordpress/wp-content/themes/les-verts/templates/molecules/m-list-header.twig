@@ -3,7 +3,7 @@
 <div class="m-list-header">
 	<h2 class="m-list-header__title-wrapper">
 		<span class="m-list-header__counter">{{ counter }}</span>
-		<span class="m-list-header__title">{{ title }}</span>
+		<span class="m-list-header__title">{{ title|wptexturize }}</span>
 	</h2>
 	{% if categories %}
 		<div class="m-list-header__criteria">
@@ -15,7 +15,7 @@
 					{% endif %}
 					<li class="m-list-header__criteria-item">
 						<a href="{{ category.link }}"
-							 class="m-list-header__criteria-link{% if category.active %} m-list-header__criteria-link--active{% endif %}">{{ category.name }}</a>
+							 class="m-list-header__criteria-link{% if category.active %} m-list-header__criteria-link--active{% endif %}">{{ category.name|wptexturize }}</a>
 					</li>
 				{% endfor %}
 			</ul>

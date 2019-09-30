@@ -30,7 +30,7 @@
 	<a class="a-post-link a-post-link--link" href="{{ url }}"{% if target %} target="{{ target }}" rel="noopener"{% else %} {{ link_props(url) }}{% endif %}>
 		{% endif %}
         {% if with_excerpt %}<a href="{{ url }}" class="a-post-link__title-link">{% endif %}
-			<h3 class="a-post-link__title">{{ title }}</h3>
+			<h3 class="a-post-link__title">{{ title|wptexturize }}</h3>
             {% if with_excerpt %}</a>{% endif %}
 		{% if with_excerpt %}
 			<header class="a-post-link__meta a-post-link__meta--header">
@@ -43,7 +43,7 @@
 			</header>
 		{% endif %}
 		{% if with_excerpt %}
-			<p class="a-post-link__excerpt">{{ excerpt }}</p>
+			<p class="a-post-link__excerpt">{{ excerpt|wptexturize }}</p>
 			{% include 'atoms/a-link-button.twig' with {
 				'link': url,
 				'label': __('Read more', constant('THEME_DOMAIN'))

@@ -37,7 +37,7 @@
 		<figcaption>
 			{% if not no_caption and img.caption %}<span class="a-image__caption">{{ img.caption|wptexturize }}</span>{% endif %}
 			{% if not no_copy and img.copyright %}
-				<small class="a-image__copy{% if not no_caption and img.caption %} a-image__copy--caption{% endif %}">&copy; {{ img.copyright }}</small>
+				<small class="a-image__copy{% if not no_caption and img.caption %} a-image__copy--caption{% endif %}">&copy; {{ img.copyright|wptexturize }}</small>
 			{% endif %}
 		</figcaption>
 	{% endif %}

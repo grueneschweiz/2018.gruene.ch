@@ -16,7 +16,7 @@
 				<use xlink:href="#location"></use>
 			</svg>
 			<span
-				class="m-event-details__location">{{ event.venue_string }}</span>
+				class="m-event-details__location">{{ event.venue_string|wptexturize }}</span>
 		</div>
 	{% endif %}
 	<div class="m-event-details__link-button">

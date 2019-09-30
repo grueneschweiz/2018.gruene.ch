@@ -19,9 +19,9 @@
 		</div>
 		<div class="m-person__basic-info">
 			<header><h3 id="m-person__full-name--{{ id }}"
-									class="m-person__full-name">{{ person.full_name }}</h3>{% if supplement %}<span
-					class="m-person__supplementary">{{ supplement }}</span>{% endif %}</header>
-			{% if role %}<p class="m-person__role">{{ role }}</p>{% endif %}
+									class="m-person__full-name">{{ person.full_name|wptexturize }}</h3>{% if supplement %}<span
+					class="m-person__supplementary">{{ supplement|wptexturize }}</span>{% endif %}</header>
+			{% if role %}<p class="m-person__role">{{ role|wptexturize }}</p>{% endif %}
 			{% if not expandable and contact %}
 				<address class="m-person__address">
 					{% for block in contact %}

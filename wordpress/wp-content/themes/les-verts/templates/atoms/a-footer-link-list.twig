@@ -1,9 +1,9 @@
 <section class="a-footer-link-list">
-	{{ title }}
+	{{ title|wptexturize }}
 	<ul class="a-footer-link-list__list">
 		{% for item in list %}
 			<li class="a-footer-link-list__item">
-				<a href="{{ item.link }}" {{ link_props(item.link) }} class="a-footer-link-list__link">{{ item.label }}</a>
+				<a href="{{ item.link }}" {{ link_props(item.link) }} class="a-footer-link-list__link">{{ item.label|wptexturize }}</a>
 			</li>
 		{% endfor %}
 	</ul>

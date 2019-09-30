@@ -52,5 +52,5 @@
 		{% include 'content-block.twig' with {'block': element} %}
 	{% endfor %}
 {% else %}
-	{{ block.text }}
+	{{ block.text|shortcodes|wptexturize|wpautop }}
 {% endif %}

@@ -1,5 +1,5 @@
 <div class="o-linked-content{% if link_lists|length == 1 and not link_lists.0.full_width %} o-linked-content--single-block{% endif %}">
-	<h2 class="o-linked-content__title">{{ title }}</h2>
+	<h2 class="o-linked-content__title">{{ title|wptexturize }}</h2>
 	<div class="o-linked-content__wrapper">
 		{% for block in link_lists %}
 			<div
