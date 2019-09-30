@@ -8,7 +8,7 @@
 		{% include 'atoms/form-elements/a-select.twig' with {
 			'id': 'party-selector',
 			'name': 'party-selector',
-			'label': map_selector_label,
+			'label': __('Select region', constant('THEME_DOMAIN')),
 			'keyed_options': map_data
 		} only %}
 	</div>
