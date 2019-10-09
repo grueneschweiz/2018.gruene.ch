@@ -166,7 +166,16 @@ if( function_exists('acf_add_local_field_group') ):
 				'label' => __('Copyright Info', 'lesverts'),
 				'name' => 'copyright',
 				'type' => 'text',
-				'instructions' => '',
+				'instructions' => __('If you add one of the following licenses (p.ex: <emph>Tunick Spencer (CC BY)</emph>), we\'ll automatically add a link to the license. Recognized licenses:
+<ul style="display: inline">
+<li style="display: inline"><a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a></li>
+<li style="display: inline"><a href="https://creativecommons.org/licenses/by/4.0/">CC BY</a></li>
+<li style="display: inline"><a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA</a></li>
+<li style="display: inline"><a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC</a></li>
+<li style="display: inline"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA</a></li>
+<li style="display: inline"><a href="https://creativecommons.org/licenses/by-nd/4.0/">CC BY-ND</a></li>
+<li style="display: inline"><a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">CC BY-NC-ND</a></li>
+</ul>', 'lesverts'),
 				'required' => 0,
 				'conditional_logic' => 0,
 				'wrapper' => array(
@@ -178,7 +187,7 @@ if( function_exists('acf_add_local_field_group') ):
 				'placeholder' => '',
 				'prepend' => '',
 				'append' => '',
-				'maxlength' => 120,
+				'maxlength' => '',
 			),
 		),
 		'location' => array(
@@ -198,7 +207,6 @@ if( function_exists('acf_add_local_field_group') ):
 		'hide_on_screen' => '',
 		'active' => true,
 		'description' => '',
-		'modified' => 1543324738,
 	));
 
 	acf_add_local_field_group(array(
