@@ -165,10 +165,28 @@
 
 		color: $color-white;
 		text-transform: uppercase;
+		mix-blend-mode: difference;
 
 		&--caption {
 			transform: none;
 			color: $color-text-light;
+			mix-blend-mode: normal;
+		}
+
+		&--small {
+			bottom: 6px;
+			right: 3px;
+			font-size: 6px;
+		}
+
+		a {
+			box-shadow: none;
+			color: inherit;
+
+			@include hover {
+				background: none;
+				box-shadow: none;
+			}
 		}
 	}
 

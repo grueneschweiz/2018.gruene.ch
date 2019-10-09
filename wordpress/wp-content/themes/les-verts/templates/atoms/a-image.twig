@@ -7,6 +7,7 @@
 	no_caption: optional. boolean.
 	no_copy: optional. boolean.
 	not_lazy: optional. boolean.
+	small_copy: optional. boolen.
 #}
 {% set img = TimberImage(image) %}
 {% if not size %}
@@ -37,7 +38,7 @@
 		<figcaption>
 			{% if not no_caption and img.caption %}<span class="a-image__caption">{{ img.caption|wptexturize }}</span>{% endif %}
 			{% if not no_copy and img.copyright %}
-				<small class="a-image__copy{% if not no_caption and img.caption %} a-image__copy--caption{% endif %}">&copy; {{ img.copyright|wptexturize }}</small>
+				<small class="a-image__copy{% if not no_caption and img.caption %} a-image__copy--caption{% endif %} a-image__copy--small{% if small_copy %}{% endif %}">&copy; {{ img.copyright|wptexturize|license }}</small>
 			{% endif %}
 		</figcaption>
 	{% endif %}
