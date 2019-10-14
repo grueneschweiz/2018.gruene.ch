@@ -7,6 +7,7 @@ Parameters:
 - required: bool
 - modifiers_classes: string (optional)
 - options: array
+- keyed_options: array      #used for map block, use option OR keyed_options but not both
 #}
 <div class="a-select {{ modifiers_classes }}">
 	<label for="{{ id|default(name) }}" class="a-select__label {% if required %}a-select__label--required{% endif %}">
@@ -21,6 +22,9 @@ Parameters:
 			{% for option in options %}
 				{% set option = option|trim %}
 				<option value="{{ option|esc_form_value }}">{{ option }}</option>
+			{% endfor %}
+			{% for option in keyed_options %}
+				<option value="{{ option.value|trim|esc_form_value }}">{{ option.label }}</option>
 			{% endfor %}
 		</select>
 	</div>

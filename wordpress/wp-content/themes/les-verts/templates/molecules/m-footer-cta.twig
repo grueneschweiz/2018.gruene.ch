@@ -1,5 +1,5 @@
 <section class="m-footer-cta">
-	{{ title }}
+	{{ title|wptexturize }}
 	{% for button in buttons %}
 		<div class="m-footer-cta__button">
 			{% set mod = 'a-button--outline' %}

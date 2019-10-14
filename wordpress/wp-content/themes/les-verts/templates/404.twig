@@ -1,9 +1,9 @@
 {% extends "archive.twig" %}
 
 {% block archive_header %}
-	<h1>{{ __('Page not found', constant('THEME_DOMAIN')) }}</h1>
+	<h1>{{ __('Page not found', constant('THEME_DOMAIN'))|wptexturize }}</h1>
 	<div class="page__header-text">
-		<p>{{ __("Sorry, we couldn't find what you're looking for. Have you tried the search?", constant('THEME_DOMAIN')) }}</p>
+		<p>{{ __("Sorry, we couldn't find what you're looking for. Have you tried the search?", constant('THEME_DOMAIN'))|wptexturize }}</p>
 		<div class="page__header-search">
             {% include 'atoms/a-search.twig' with {'modifiers': ['a-search--inverted', 'a-search--expanded']} %}
 		</div>

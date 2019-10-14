@@ -2,11 +2,11 @@
 
 namespace SUPT;
 
-use \Twig_SimpleFilter;
+use Twig\TwigFilter;
 
 add_filter( 'get_twig', function ( $twig ) {
 	$twig->addFilter(
-		new Twig_SimpleFilter( 'hexencode', function ( $string ) {
+		new TwigFilter( 'hexencode', function ( $string ) {
 			$hex = '';
 			for ( $i = 0; $i < strlen( $string ); $i ++ ) {
 				$ord     = ord( $string[ $i ] );

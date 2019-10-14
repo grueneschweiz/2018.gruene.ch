@@ -6,8 +6,8 @@
 
 <div class="m-front-article {{ modifiers|join(' ') }}">
 	<h3 class="m-front-article__title">
-		{% if post.link %}<a href="{{ post.link }}" tabindex="-1" class="m-front-article__title-link">{{ post.title }}</a>
-		{% else %}{{ post.title }}{% endif %}
+		{% if post.link %}<a href="{{ post.link }}" tabindex="-1" class="m-front-article__title-link">{{ post.title|wptexturize }}</a>
+		{% else %}{{ post.title|wptexturize }}{% endif %}
 	</h3>
 	{% if post.main_content_header_image %}
 		<div class="m-front-article__image">
@@ -30,7 +30,7 @@
 			{% if excerpt %}
 				{{ excerpt|wptexturize }}
 			{% else %}
-				{{ post.excerpt() }}
+				{{ post.excerpt()|wptexturize }}
 			{% endif %}
 		</p>
 	{% endif %}

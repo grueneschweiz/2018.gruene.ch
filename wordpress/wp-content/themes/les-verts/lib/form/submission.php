@@ -104,10 +104,21 @@ class FormSubmission {
 		add_action( 'wp_ajax_nopriv_supt_form_submit', array( $this, 'handle_submit' ) );
 		add_action( 'supt_form_save_to_crm', array( __CLASS__, 'save_to_crm' ) );
 		add_action( 'supt_form_mail_send', array( __CLASS__, 'send_mails' ) );
+		add_action( 'supt_form_remove_expired_nonces', array( __CLASS__, 'remove_expired_nonces' ) );
 
 		if ( ! WP_DEBUG && get_field( 'form_smtp_enabled', 'options' ) ) {
 			add_action( 'phpmailer_init', array( $this, 'setup_SMTP' ) );
 		}
+	}
+
+	/**
+	 * Remove the expired nonces
+	 *
+	 * Called by the WordPress cron job
+	 */
+	public static function remove_expired_nonces() {
+		require_once __DIR__ . '/include/Nonce.php';
+		Nonce::remove_expired();
 	}
 
 	/**

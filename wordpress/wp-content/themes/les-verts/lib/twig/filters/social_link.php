@@ -2,11 +2,11 @@
 
 namespace SUPT;
 
-use \Twig_SimpleFilter;
+use Twig\TwigFilter;
 
 add_filter( 'get_twig', function ( $twig ) {
 	$twig->addFilter(
-		new Twig_SimpleFilter( 'social_link', function ( $string, $type ) {
+		new TwigFilter( 'social_link', function ( $string, $type ) {
 			
 			$string = trim( $string );
 			

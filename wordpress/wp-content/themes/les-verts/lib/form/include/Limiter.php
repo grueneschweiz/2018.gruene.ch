@@ -128,7 +128,7 @@ class Limiter {
 	/**
 	 * Remove old attempts from log.
 	 *
-	 * Delets hash entries, where no new entry during the keeping period was made.
+	 * Deletes hash entries, where no new entry during the keeping period was made.
 	 * This method ensures the log doesn't explode.
 	 */
 	private function remove_old() {

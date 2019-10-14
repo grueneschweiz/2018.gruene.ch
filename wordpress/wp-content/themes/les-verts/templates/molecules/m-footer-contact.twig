@@ -1,7 +1,7 @@
 <section class="m-footer-contact">
-	{{ title }}
+	{{ title|wptexturize }}
 	<div class="m-footer-contact__flex">
-		<div class="m-footer-contact__text">{{ address }}</div>
+		<div class="m-footer-contact__text">{{ address|wptexturize }}</div>
 		<div class="m-footer-contact__social">
 			{% for media in social_media %}
 				{% include 'atoms/a-social-icon.twig' with {

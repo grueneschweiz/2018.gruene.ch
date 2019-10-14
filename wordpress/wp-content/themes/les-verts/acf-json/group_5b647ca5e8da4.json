@@ -1,6 +1,27 @@
 {
     "key": "group_5b647ca5e8da4",
     "title": "(Media) Image Copyright",
+    "fields": [
+        {
+            "key": "field_5b647cb444899",
+            "label": "Copyright Info",
+            "name": "copyright",
+            "type": "text",
+            "instructions": "If you add one of the following licenses (p.ex: <emph>Tunick Spencer (CC BY)<\/emph>), we'll automatically add a link to the license. Recognized licenses:\r\n<ul style=\"display: inline\">\r\n<li style=\"display: inline\"><a href=\"https:\/\/creativecommons.org\/publicdomain\/zero\/1.0\/\">CC0<\/a><\/li>\r\n<li style=\"display: inline\"><a href=\"https:\/\/creativecommons.org\/licenses\/by\/4.0\/\">CC BY<\/a><\/li>\r\n<li style=\"display: inline\"><a href=\"https:\/\/creativecommons.org\/licenses\/by-sa\/4.0\/\">CC BY-SA<\/a><\/li>\r\n<li style=\"display: inline\"><a href=\"https:\/\/creativecommons.org\/licenses\/by-nc\/4.0\/\">CC BY-NC<\/a><\/li>\r\n<li style=\"display: inline\"><a href=\"https:\/\/creativecommons.org\/licenses\/by-nc-sa\/4.0\/\">CC BY-NC-SA<\/a><\/li>\r\n<li style=\"display: inline\"><a href=\"https:\/\/creativecommons.org\/licenses\/by-nd\/4.0\/\">CC BY-ND<\/a><\/li>\r\n<li style=\"display: inline\"><a href=\"https:\/\/creativecommons.org\/licenses\/by-nc-nd\/4.0\/\">CC BY-NC-ND<\/a><\/li>\r\n<\/ul>",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        }
+    ],
     "location": [
         [
             {
@@ -18,26 +39,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1543324738,
-    "fields": [
-        {
-            "key": "field_5b647cb444899",
-            "label": "Copyright Info",
-            "name": "copyright",
-            "type": "text",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": 120
-        }
-    ]
+    "modified": 1570648072
 }

@@ -199,6 +199,7 @@ require_once __DIR__ . '/twig/filters/uniqueid.php';
 require_once __DIR__ . '/twig/filters/pll.php';
 require_once __DIR__ . '/twig/filters/l10n_date.php';
 require_once __DIR__ . '/twig/filters/esc_form_value.php';
+require_once __DIR__ . '/twig/filters/license.php';
 
 /**
  * FORM LIBRARY

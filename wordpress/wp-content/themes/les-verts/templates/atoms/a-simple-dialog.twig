@@ -1,6 +1,6 @@
 <div class="a-simple-dialog {{ modifiers|join(' ') }}" {% if id %}id="a-simple-dialog--{{ id }}"{% endif %}>
 	<div class="a-simple-dialog__main">
-		{{ content }}
+		{{ content|wptexturize }}
 	</div>
 	<button class="a-simple-dialog__close" aria-label="{{ __('Close dialog', constant('THEME_DOMAIN')) }}">
 		<svg role="img">

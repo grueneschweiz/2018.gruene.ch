@@ -12,7 +12,7 @@
 	<h3 class="o-engagement-map__title">{{ title|wptexturize }}</h3>
 	<div class="o-engagement-map__main-wrapper">
 		<div class="o-engagement-map__desc-wrapper">
-			{{ text }}
+			{{ text|wptexturize }}
 		</div>
 		<div class="o-engagement-map__map-wrapper">
 			{% include 'molecules/m-map.twig' with map_field only %}

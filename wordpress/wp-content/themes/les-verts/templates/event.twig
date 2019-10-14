@@ -8,7 +8,7 @@
 					<div class="page__breadcrumbs">
 						{% include 'atoms/a-breadcrumbs.twig' %}
 					</div>
-					<h1>{{ post.title }}</h1>
+					<h1>{{ post.title|wptexturize }}</h1>
 					<div class="page__header-text">
 						{% include 'molecules/m-event-details.twig' with {
 							'post': post,
@@ -16,7 +16,7 @@
 					</div>
 				</div>
 			</header>
-			{{ post.description|wpautop|shortcodes }}
+			{{ post.description|shortcodes|wptexturize|wpautop }}
 		</div>
 		<div class="page__post-meta-wrapper page__row--1">
 			<aside class="page__post-meta">

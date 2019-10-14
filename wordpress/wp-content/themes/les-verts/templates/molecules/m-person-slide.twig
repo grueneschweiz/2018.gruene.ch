@@ -7,14 +7,14 @@
 				'image': post.image,
 				'size': 'regular',
 				'no_caption': 1,
-				'no_copy': 1
+				'small_copy': 1
 			} %}
 		</div>
 		<figcaption class="m-person-slide__caption">
-			<p class="m-person-slide__quote">{{ post.quote(taxonomies) }}</p>
+			<p class="m-person-slide__quote">{{ post.quote(taxonomies)|wptexturize }}</p>
 			<p class="m-person-slide__meta">
-				<span class="m-person-slide__author">{{ post.full_name }}</span>{% if role %},
-				<span class="m-person-slide__job">{{ role }}</span>{% endif %}
+				<span class="m-person-slide__author">{{ post.full_name|wptexturize }}</span>{% if role %},
+				<span class="m-person-slide__job">{{ role|wptexturize }}</span>{% endif %}
 			</p>
 		</figcaption>
 	</figure>

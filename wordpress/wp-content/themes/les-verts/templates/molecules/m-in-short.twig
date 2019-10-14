@@ -7,7 +7,7 @@
 				'modifiers': 'invers'
 			} only %}
 		{% else %}
-			{{ block.text }}
+			{{ block.text|wptexturize }}
 		{% endif %}
 	{% endfor %}
 </div>

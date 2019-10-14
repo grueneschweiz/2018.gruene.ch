@@ -1,7 +1,7 @@
 {% extends "archive.twig" %}
 
 {% block archive_header %}
-	<h1>{{ block_title }}</h1>
+	<h1>{{ block_title|wptexturize }}</h1>
 	<div class="page__header-text">
 		<div class="page__header-search">
 			{% include 'atoms/a-search.twig' with {'modifiers': ['a-search--inverted', 'a-search--expanded']} %}

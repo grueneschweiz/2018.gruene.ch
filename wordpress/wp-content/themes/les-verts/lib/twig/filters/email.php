@@ -2,11 +2,11 @@
 
 namespace SUPT;
 
-use \Twig_SimpleFilter;
+use Twig\TwigFilter;
 
 add_filter( 'get_twig', function ( $twig ) {
 	$twig->addFilter(
-		new Twig_SimpleFilter( 'email', function ( $string ) {
+		new TwigFilter( 'email', function ( $string ) {
 			$string = trim($string);
 			
 			// make sure the mailto is in the link
