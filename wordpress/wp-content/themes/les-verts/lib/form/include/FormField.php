@@ -4,6 +4,8 @@
 namespace SUPT;
 
 
+use IntlDateFormatter;
+
 class FormField {
 	const TYPE_TEXT = 'text';
 	const TYPE_TEXTAREA = 'textarea';
@@ -317,24 +319,13 @@ class FormField {
 			return '';
 		}
 
-		$tmp1 = date_parse( $string );
-		$tmp2 = date_parse_from_format( 'd.m.y', $string );
-		$tmp3 = date_parse_from_format( 'Y-m-d', $string );
+		$formatter = new IntlDateFormatter( get_locale(), IntlDateFormatter::SHORT, IntlDateFormatter::NONE );
+		$unixtime  = $formatter->parse( $string );
 
-		if ( $tmp1['error_count'] && $tmp2['error_count'] && $tmp3['error_count'] ) {
+		if ( false === $unixtime ) {
 			return false;
 		}
 
-		if ( ! $tmp1['error_count'] && $tmp1['year'] ) {
-			$date = $tmp1;
-		} elseif ( ! $tmp2['error_count'] ) {
-			$date = $tmp2;
-		} else {
-			$date = $tmp3;
-		}
-
-		$datestring = $date['year'] . "-" . $date['month'] . "-" . $date['day'];
-
-		return date( 'Y-m-d', strtotime( $datestring ) );
+		return date( 'Y-m-d', $unixtime );
 	}
 }
