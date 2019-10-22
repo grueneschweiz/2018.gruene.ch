@@ -2,10 +2,13 @@
 
 
 /**
- * Make social links translatable
+ * Registers strings for translation
  */
 if ( defined( 'POLYLANG_DIR' ) && function_exists( 'pll__' ) ) {
 	add_action( 'admin_init', function () {
+		/**
+		 * Register WP SEO options to be translatable
+		 */
 		$options      = get_option( 'wpseo_social' );
 		$translatable = array(
 			'facebook_site',
@@ -17,20 +20,65 @@ if ( defined( 'POLYLANG_DIR' ) && function_exists( 'pll__' ) ) {
 				pll_register_string( $key, $value, 'wordpress-seo' );
 			}
 		}
+
+		/**
+		 * Register default open graph image to be translatable (URL)
+		 */
+		pll_register_string(
+			'og_default_image',
+			WPSEO_Options::get( 'og_default_image', '' ),
+			'wordpress-seo'
+		);
 	} );
 
+	/**
+	 * Translate default open graph image (URL)
+	 */
+	add_filter( 'wpseo_add_opengraph_additional_images', function ( $og_image ) {
+		/** @var WPSEO_OpenGraph_Image $og_image */
+		if ( ! $og_image->has_images() ) {
+			$default_image_url = WPSEO_Options::get( 'og_default_image', '' );
+			$og_image->add_image_by_url( pll__( $default_image_url ) );
+		}
+
+		return $og_image;
+	}, 9999 );
+
+	add_filter( 'wpseo_twitter_image', function ( $image_url ) {
+		$default_image_url = WPSEO_Options::get( 'og_default_image', '' );
+
+		if ( $default_image_url === $image_url ) {
+			$image_url = pll__( $default_image_url );
+		}
+
+		return $image_url;
+	}, 9999 );
+
+
+	/**
+	 * Translate twitter site
+	 */
 	add_filter( 'wpseo_twitter_site', function ( $name ) {
 		return pll__( $name );
 	} );
 
+	/**
+	 * Translate twitter creator account
+	 */
 	add_filter( 'wpseo_twitter_creator_account', function ( $name ) {
 		return pll__( $name );
 	} );
 
+	/**
+	 * Translate open graph article publisher
+	 */
 	add_filter( 'wpseo_og_article:publisher', function ( $url ) {
 		return pll__( $url );
 	} );
 
+	/**
+	 * Translate open graph facebook author
+	 */
 	add_filter( 'wpseo_opengraph_author_facebook', function ( $url ) {
 		return pll__( $url );
 	} );
