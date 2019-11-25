@@ -19,7 +19,7 @@ msgstr "(Évènement) Lieu"
 
 #: acf-translate.php:96
 msgid "(Media) Focal point"
-msgstr "(médias) Point focal"
+msgstr "(Médias) Point focal"
 
 #: acf-translate.php:100
 msgid "Focal point"
@@ -2925,115 +2925,119 @@ msgstr "Chère administratrice / Cher administrateur de %s\n"
 
 #: acf-translate.php:1050
 msgid "About this block"
-msgstr ""
+msgstr "Informations sur ce bloc"
 
 #: acf-translate.php:1053
 msgid "Adds an image that scales automatically to the device size (responsive). This is the preferred method to add images."
-msgstr ""
+msgstr "Ajoute une image qui s'adapte automatiquement à la taille de l'écran. Ce procoédé consitue le moyen recommandé d'ajouter des images."
 
 #: acf-translate.php:1315 acf-translate.php:1337
 #: lib/post-types/BlockType.php:14
 msgid "Block"
-msgstr ""
+msgstr "Bloc"
 
+#. Post type / Posttyp: type d'article
 #: acf-translate.php:1331
 msgid "You want to share content over multiple pages? Create the content as block post type, then pull it in here."
-msgstr ""
+msgstr "Souhaites-tu afficher du contenu sur plusieurs pages ? Crée le contenu en tant que type de publications bloc et insère-le ensuite ici."
 
 #: acf-translate.php:2790
 msgid "[Template]Map"
-msgstr ""
+msgstr "[Modèle]carte"
 
 #: acf-translate.php:3065
 msgid "Select the block with the map."
-msgstr ""
+msgstr "Sélectionne le bloc avec la carte."
 
 #: acf-translate.php:4425 lib/post-types/BlockType.php:13
 msgid "Blocks"
-msgstr ""
+msgstr "Blocs"
 
 #: acf-translate.php:4444
 msgid "Map"
-msgstr ""
+msgstr "Carte"
 
 #: acf-translate.php:4504
 msgid "Add Block"
-msgstr ""
+msgstr "Ajouter un bloc"
 
 #: lib/form/include/FormType.php:156 lib/form/include/FormType.php:176
 #: lib/form/include/GDPRHelper.php:37
 msgid "Forms"
-msgstr ""
+msgstr "Formulaires"
 
 #: lib/form/submission.php:164
 msgid "Too many requests. Please try again later."
-msgstr ""
+msgstr "Le nombre de requêtes est trop important. Merci de réessayer plus tard."
 
 #: lib/form/submission.php:286
 msgid "%s: Invalid value."
-msgstr ""
+msgstr "%s : valeur non valide"
 
 #: lib/form/submission.php:304
 msgid "%s: Invalid or missing value."
-msgstr ""
+msgstr "%s : valeur non valide ou manquante"
 
 #: lib/form/submission.php:343
 msgid "%s: Missing data."
-msgstr ""
+msgstr "%s : données manquantes"
 
 #: lib/post-types/BlockType.php:15
 msgid "Add New Block"
-msgstr ""
+msgstr "Ajouter un nouveau bloc"
 
+#. Annahme: ein bestimmter
 #: lib/post-types/BlockType.php:16
 msgid "Edit Block"
-msgstr ""
+msgstr "Modifier le bloc"
 
 #: lib/post-types/BlockType.php:17
 msgid "New Block"
-msgstr ""
+msgstr "Nouveau bloc"
 
 #: lib/post-types/BlockType.php:18
 msgid "View Block"
-msgstr ""
+msgstr "Afficher le bloc"
 
 #: lib/post-types/BlockType.php:19
 msgid "View Blocks"
-msgstr ""
+msgstr "Afficher les blocs"
 
 #: lib/post-types/BlockType.php:20
 msgid "Search Blocks"
-msgstr ""
+msgstr "Rechercher des blocs"
 
 #: lib/post-types/BlockType.php:21
 msgid "No blocks found"
-msgstr ""
+msgstr "La recherche de blocs n'a livré aucun résultat."
 
 #: lib/post-types/BlockType.php:22
 msgid "No blocks found in trash"
-msgstr ""
+msgstr "La recherche de blocs dans la corbeille n'a livré aucun résultat."
 
 #: lib/post-types/BlockType.php:23
 msgid "All Blocks"
-msgstr ""
+msgstr "Tous les blocs"
 
 #: lib/post-types/BlockType.php:24
 msgid "Block Archives"
-msgstr ""
+msgstr "Archives de blocs"
 
 #: lib/post-types/BlockType.php:25
 msgid "Block Attributes"
-msgstr ""
+msgstr "Attributs de blocs"
 
+#. Annahme: es geht um Elemente, welche bereits in der Ordner der Bearbeitungsseite hochgeladen wurden, aber für die Anwenderin noch nicht sichtbar sind. 
+#. Sonst: Éléments mis en ligne en lien avec ce bloc
 #: lib/post-types/BlockType.php:26
 msgid "Uploaded to this block"
-msgstr ""
+msgstr "Éléments mis en ligne en lien avec ce bloc"
 
 #: templates/molecules/m-form.twig:185
 msgid "There seems to be an error in your input. Please recheck the fields:"
-msgstr ""
+msgstr "Il semble qu'une erreur s'est produite lors de la saisie. Merci de vérifier les erreurs suivantes :"
 
 #: templates/molecules/m-map.twig:11
 msgid "Select region"
-msgstr ""
+msgstr "Sélectionner la région :"
 

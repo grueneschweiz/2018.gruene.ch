@@ -114,3 +114,23 @@ add_filter( 'searchwp_initial_engine_settings', function ( $settings ) {
 
 	return $settings;
 } );
+
+/**
+ * Add person name from people blocks to search results
+ */
+add_filter( 'searchwp_custom_fields', function ( $customFieldValue, $customFieldName ) {
+	// match only people blocks (that are part of the default content block)
+	if ( ! preg_match( '/^[^_].+content_\d+_person$/', $customFieldName ) ) {
+		return $customFieldValue;
+	}
+
+	$contentToIndex = '';
+
+	foreach ( $customFieldValue as $person ) {
+		if ( is_numeric( $person ) ) {
+			$contentToIndex .= get_field( 'full_name', $person ) . ' ';
+		}
+	}
+
+	return $contentToIndex;
+}, 10, 2 );

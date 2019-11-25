@@ -13,10 +13,14 @@ RUN apt-get update && apt-get install -y \
 	libicu-dev \
 	g++ \
 	msmtp \
+	libgmp-dev \
 	vim
 
 # Add PHP extensions
 RUN docker-php-ext-install intl
+RUN docker-php-ext-install bcmath
+RUN docker-php-ext-configure gmp
+RUN docker-php-ext-install gmp
 
 # Add WP-CLI
 RUN curl -o /bin/wp-cli.phar https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
