@@ -1,23 +1,6 @@
 {
     "key": "group_5b6c6072e2d3f",
     "title": "[Template]Testimonials",
-    "location": [
-        [
-            {
-                "param": "post_type",
-                "operator": "==",
-                "value": "post"
-            }
-        ]
-    ],
-    "menu_order": 0,
-    "position": "normal",
-    "style": "default",
-    "label_placement": "top",
-    "instruction_placement": "label",
-    "hide_on_screen": "",
-    "active": 0,
-    "description": "",
     "fields": [
         {
             "key": "field_5b7da1211ced8",
@@ -99,27 +82,52 @@
             "multiple": 0
         },
         {
-            "key": "field_5bbb3fd187e20",
-            "label": "Layout",
+            "key": "field_5ddd2e538374c",
+            "label": "Layout (hidden)",
             "name": "layout",
-            "type": "button_group",
-            "instructions": "Choose vertical for the front page",
+            "type": "text",
+            "instructions": "",
             "required": 0,
-            "conditional_logic": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5bbb4e32cc149",
+                        "operator": "!=empty"
+                    },
+                    {
+                        "field": "field_5bbb4e32cc149",
+                        "operator": "==empty"
+                    }
+                ]
+            ],
             "wrapper": {
                 "width": "",
                 "class": "",
                 "id": ""
             },
-            "choices": {
-                "vertical": "Vertical",
-                "horizontal": "Horizontal"
-            },
-            "allow_null": 0,
             "default_value": "horizontal",
-            "layout": "horizontal",
-            "return_format": "value"
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
         }
     ],
-    "modified": 1543324750
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 0,
+    "description": "",
+    "modified": 1574776459
 }
