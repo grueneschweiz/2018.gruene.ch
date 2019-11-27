@@ -3,6 +3,8 @@ import inView from '../../../js/service/inview';
 
 const BAR_SELECTOR = '.a-progress__bar';
 const VALUE_SELECTOR = '.a-progress__value';
+const LEGEND_VALUE_SELECTOR = '.a-progress__legend-value';
+
 const DEBOUNCE_DELAY_MS = 300;
 const STEPS = 200;
 const STEP_DELAY = 25; // ms
@@ -18,6 +20,7 @@ export default class AProgress extends BaseView {
 	startAnimation() {
 		this.bar = this.getScopedElement( BAR_SELECTOR );
 		this.value = this.getScopedElement( VALUE_SELECTOR );
+		this.legend_value = this.getScopedElement( LEGEND_VALUE_SELECTOR );
 
 		this.min = this.bar.getAttribute( 'aria-valuemin' );
 		this.max = this.bar.getAttribute( 'aria-valuemax' );
@@ -40,7 +43,7 @@ export default class AProgress extends BaseView {
 			// we need this extra step to circumvent float calculation errors
 			const current = ( this.spread / ( this.max - this.min ) );
 			this.bar.style.width = current * 100 + '%';
-			this.value.innerText = this.current;
+			this.setLabelValue( this.current );
 
 		} else {
 
@@ -54,8 +57,16 @@ export default class AProgress extends BaseView {
 			this.state_percent += step_percent;
 
 			this.bar.style.width = this.state_percent * 100 + '%';
-			this.value.innerText = Math.round( this.state );
+			this.setLabelValue( Math.round( this.state ) );
 		}
+	}
+
+	setLabelValue(value) {
+		if (this.legend_value) {
+			this.legend_value.innerText = value;
+		}
+
+		this.value.innerText = value;
 	}
 
 	destroy() {
