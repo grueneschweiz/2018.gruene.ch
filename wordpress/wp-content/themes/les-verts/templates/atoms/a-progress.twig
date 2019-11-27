@@ -1,0 +1,23 @@
+{% set progress_bar = Progress_Bar(block) %}
+
+<div class="a-progress">
+	{% if progress_bar.legend %}
+	<p class="a-progress__legend">{{ progress_bar.legend }}</p>
+	{% else %}
+	<small class="a-progress__max">{{progress_bar.goal}}{% if unit %}&nbsp;{{unit}}{% endif %}</small>
+	{% endif %}
+	<div class="a-progress__container">
+		<div
+			class="a-progress__bar"
+			role="progressbar"
+			style="width: {{progress_bar.current_percent}}%"
+			aria-valuenow="{{progress_bar.current}}"
+			aria-valuemin="0"
+			aria-valuemax="{{progress_bar.goal}}"
+		>
+						<span class="a-progress__current{% if progress_bar.current_percent < 40 %} a-progress__current--right{% endif %}">
+							<span class="a-progress__value">{{ progress_bar.current }}</span>{% if unit %}&nbsp;{{unit}}{% endif %}
+						</span>
+		</div>
+	</div>
+</div>

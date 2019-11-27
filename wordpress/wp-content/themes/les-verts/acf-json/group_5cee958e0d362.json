@@ -317,6 +317,37 @@
                     "min": "",
                     "max": ""
                 },
+                "layout_5ddec73648efd": {
+                    "key": "layout_5ddec73648efd",
+                    "name": "progress_bar",
+                    "label": "Progress bar",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_5ddec74348efe",
+                            "label": "",
+                            "name": "",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_5ddebe3fd4db3"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
                 "layout_5c4f21cbd787c": {
                     "key": "layout_5c4f21cbd787c",
                     "name": "code",
@@ -466,5 +497,5 @@
     "hide_on_screen": "",
     "active": 0,
     "description": "",
-    "modified": 1567517063
+    "modified": 1574881163
 }
