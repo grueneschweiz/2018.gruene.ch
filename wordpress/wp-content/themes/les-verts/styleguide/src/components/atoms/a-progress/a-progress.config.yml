@@ -1,0 +1,19 @@
+label: Progress bar
+status: ready
+context:
+  min: 1
+  max: 50000
+  current: 37896
+  current_percent: 75.79351587
+  unit: CHF
+variants:
+  - name: Sentence
+    context:
+      sentence: true
+      modifiers:
+        - sentence
+  - name: Low counter
+    context:
+      low_counter: true
+      current: 14000
+      current_percent: 28
