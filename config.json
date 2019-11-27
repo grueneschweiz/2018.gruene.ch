@@ -35,7 +35,7 @@
   },
   "javascript": {
     "src": "./styleguide/src/**/*.js",
-    "entries": ["./styleguide/src/index.js", "./node_modules/swiper/dist/js/swiper.esm.js"],
+    "entries": ["./styleguide/src/index.js", "./node_modules/swiper/js/swiper.esm.js"],
     "paths": ["./styleguide/src/", "./styleguide/src/components", "./styleguide/src/js"],
     "dest": "./styleguide/dist/static/js",
     "build_name": "app.js"
