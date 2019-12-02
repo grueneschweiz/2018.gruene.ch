@@ -155,6 +155,7 @@ $WPCLI theme delete twentyfifteen
 $WPCLI theme delete twentysixteen
 $WPCLI theme delete twentyseventeen
 $WPCLI theme delete twentynineteen
+$WPCLI theme delete twentytwenty
 
 if $WPCLI plugin is-installed akismet; then
     $WPCLI plugin uninstall akismet --deactivate
