@@ -133,9 +133,6 @@ $WPCLI plugin install classic-editor $INSTALL_ACTIVATE_ARGUMENT
 # SearchWP
 $WPCLI plugin activate searchwp $ACTIVATE_NETWORK_ARGUMENT
 
-# Enhanced media library
-$WPCLI plugin install enhanced-media-library $INSTALL_ACTIVATE_ARGUMENT
-
 # Enable media replace
 $WPCLI plugin install enable-media-replace $INSTALL_ACTIVATE_ARGUMENT
 
