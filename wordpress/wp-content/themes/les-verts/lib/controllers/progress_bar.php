@@ -89,19 +89,25 @@ class Progress_controller {
 			return 10;
 		}
 
-		// todo: fix me (test with 101)
+		// the goal is at around 110% of the current value
+		$unrounded_goal = $current * 1.1;
 
-		$digits         = ceil( log10( $current ) );
-		$unrounded_goal = $current * 1.2;
+		// the step size is basically the next round number (20 for 11,
+		// 100 for 98, 6000 for 5123 etc.)
+		$digits         = ceil( log10( $unrounded_goal ) );
+		$step_size = 10 ** ( $digits - 1 );
 
-		$norming_divisor = 10 ** ( $digits - 1 );
-		$normed_goal     = $unrounded_goal / $norming_divisor;
+		// if unrounded goal is below 40, 400, 4000 etc. halve the step size
+		// so we have a goal of 35, 350, 3500 etc. for values of 31, 310, 3100
+		// instead of 40, 400, 4000.
+		if ( $unrounded_goal < 4 * $step_size ) {
+			$step_size /= 2;
+		}
 
-		// allow X5 values below 4X
-		// 35 is a valid goal, 45 gets 50. 350 is valid, 450 gets 500
-		$rounding_factor = $unrounded_goal / $normed_goal < 4 ? 2 : 1;
+		// increase the goal as soon as we reach 97% fulfillment
+		$step_count = ceil( $current * 1.03 / $step_size );
 
-		$this->goal_cache = round( $normed_goal * $rounding_factor ) * $norming_divisor / $rounding_factor;
+		$this->goal_cache = $step_count * $step_size;
 
 		return $this->goal_cache;
 	}
