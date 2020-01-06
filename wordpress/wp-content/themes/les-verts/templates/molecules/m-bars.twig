@@ -9,22 +9,26 @@
 <div class="m-bars m-bars--{{ alignment }}">
 	<div class="m-bars__rotator">
 		<div class="m-bars__positioner">
-			{% for bar in headlines_green %}
-				<div class="m-bars__bar">
-					{% include 'atoms/a-bar.twig' with {
-						'label': bar.bar,
-						'modifiers': ['a-bar--green', bar_alignment_class, no_sanuk]
-					} only %}
-				</div>
-			{% endfor %}
-			{% for bar in headlines_white %}
-				<div class="m-bars__bar">
-					{% include 'atoms/a-bar.twig' with {
-						'label': bar.bar,
-						'modifiers': ['a-bar--white', bar_alignment_class, no_sanuk]
-					} only %}
-				</div>
-			{% endfor %}
+			{% if 'green' == main_color %}
+				{% for bar in headlines_green %}
+					<div class="m-bars__bar">
+						{% include 'atoms/a-bar.twig' with {
+							'label': bar.bar,
+							'modifiers': ['a-bar--green', bar_alignment_class, no_sanuk]
+						} only %}
+					</div>
+				{% endfor %}
+			{% endif %}
+			{% if 'white' == main_color %}
+				{% for bar in headlines_white %}
+					<div class="m-bars__bar">
+						{% include 'atoms/a-bar.twig' with {
+							'label': bar.bar,
+							'modifiers': ['a-bar--white', bar_alignment_class, no_sanuk]
+						} only %}
+					</div>
+				{% endfor %}
+			{% endif %}
 			{% for bar in headlines_magenta %}
 				<div class="m-bars__bar">
 					{% include 'atoms/a-bar.twig' with {
