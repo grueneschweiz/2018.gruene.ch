@@ -45,6 +45,7 @@
 
 	&__basic-info {
 		margin: 8px 20px 20px;
+		width: 100%;
 
 		@include media($size-small) {
 			margin: 12px 24px 24px;

@@ -1,0 +1,221 @@
+{
+    "key": "group_5ddebe3fd4db3",
+    "title": "[Template]Progress Bar",
+    "fields": [
+        {
+            "key": "field_5ddebe5f8a22d",
+            "label": "About this Block",
+            "name": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "Shows a progress meter. This is particularly useful for petitions.",
+            "new_lines": "",
+            "esc_html": 0
+        },
+        {
+            "key": "field_5ddebf318a22e",
+            "label": "Datasource",
+            "name": "datasource",
+            "type": "button_group",
+            "instructions": "If form is selected, the number of form submissions will be displayed. Enter manually let's you specify the number displayed in a input field here.",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "form": "Form",
+                "manual": "Enter manually"
+            },
+            "allow_null": 0,
+            "default_value": "form",
+            "layout": "horizontal",
+            "return_format": "value"
+        },
+        {
+            "key": "field_5ddec02e8a22f",
+            "label": "Form",
+            "name": "form",
+            "type": "post_object",
+            "instructions": "The progress meter will display the number of submissions.",
+            "required": 1,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5ddebf318a22e",
+                        "operator": "==",
+                        "value": "form"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "theme_form"
+            ],
+            "taxonomy": "",
+            "allow_null": 0,
+            "multiple": 0,
+            "return_format": "id",
+            "ui": 1
+        },
+        {
+            "key": "field_5ddec0aa8a230",
+            "label": "Submissions to add",
+            "name": "offset",
+            "type": "number",
+            "instructions": "Sometimes you do also have another datasource you want to add or you just don't want to start with zero. <strong>Specify the number you want to add to the total of submissions.<\/strong>",
+            "required": 1,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5ddebf318a22e",
+                        "operator": "==",
+                        "value": "form"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "min": 0,
+            "max": "",
+            "step": ""
+        },
+        {
+            "key": "field_5ddec1a08a231",
+            "label": "Current progress",
+            "name": "current",
+            "type": "number",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5ddebf318a22e",
+                        "operator": "==",
+                        "value": "manual"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "min": 0,
+            "max": "",
+            "step": ""
+        },
+        {
+            "key": "field_5ddec1fe8a232",
+            "label": "Goal",
+            "name": "goal",
+            "type": "button_group",
+            "instructions": "Specifies the maximum value (at which value the progress bar reaches the end). You may either set the goal manually or, if you choose adaptive, the goal will increase automatically with the current progress. The algorithm chooses the goal so that the progress bar reaches the right halve and the goal is a nice number (however, the goal never goes below ten).",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "adaptive": "Adaptive",
+                "manual": "Manual"
+            },
+            "allow_null": 0,
+            "default_value": "adaptive",
+            "layout": "horizontal",
+            "return_format": "value"
+        },
+        {
+            "key": "field_5ddec29a8a233",
+            "label": "Goal Value",
+            "name": "goal_value",
+            "type": "number",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5ddec1fe8a232",
+                        "operator": "==",
+                        "value": "manual"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "min": 0,
+            "max": "",
+            "step": ""
+        },
+        {
+            "key": "field_5ddec4478a234",
+            "label": "Legend (optional)",
+            "name": "legend",
+            "type": "text",
+            "instructions": "If specified, a legend is shown above the progress bar. You can use the following placeholders: <code>{{current}}<\/code>, <code>{{goal}}<\/code>\r\n\r\nExample: {{current}} have signed. Can we reach {{goal}}?",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 0,
+    "description": "",
+    "modified": 1574881022
+}

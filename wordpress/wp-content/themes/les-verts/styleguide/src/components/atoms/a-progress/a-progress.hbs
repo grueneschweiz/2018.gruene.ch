@@ -1,0 +1,21 @@
+<div class="a-progress">
+		{{#if legend}}
+				<p class="a-progress__legend"><strong><span class="a-progress__legend-value">{{current}}</span> haben unterschrieben.</strong> Erreichen wir {{goal}}?</p>
+		{{else}}
+			<small class="a-progress__max">{{max}}{{#if unit}}&nbsp;{{unit}}{{/if}}</small>
+		{{/if}}
+    <div class="a-progress__container">
+        <div
+                class="a-progress__bar"
+                role="progressbar"
+                style="width: {{current_percent}}%"
+                aria-valuenow="{{current}}"
+                aria-valuemin="{{min}}"
+                aria-valuemax="{{goal}}"
+				>
+						<span class="a-progress__current{{#if low_counter}} a-progress__current--right{{/if}}">
+							<span class="a-progress__value">{{ current }}</span>{{#if unit}}&nbsp;{{unit}}{{/if}}
+						</span>
+				</div>
+    </div>
+</div>

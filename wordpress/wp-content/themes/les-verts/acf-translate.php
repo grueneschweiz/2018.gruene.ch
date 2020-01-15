@@ -1240,6 +1240,37 @@ if( function_exists('acf_add_local_field_group') ):
 						'min' => '',
 						'max' => '',
 					),
+					'layout_5ddec73648efd' => array(
+						'key' => 'layout_5ddec73648efd',
+						'name' => 'progress_bar',
+						'label' => __('Progress bar', 'lesverts'),
+						'display' => 'block',
+						'sub_fields' => array(
+							array(
+								'key' => 'field_5ddec74348efe',
+								'label' => '',
+								'name' => '',
+								'type' => 'clone',
+								'instructions' => '',
+								'required' => 0,
+								'conditional_logic' => 0,
+								'wrapper' => array(
+									'width' => '',
+									'class' => '',
+									'id' => '',
+								),
+								'clone' => array(
+									0 => 'group_5ddebe3fd4db3',
+								),
+								'display' => 'seamless',
+								'layout' => 'block',
+								'prefix_label' => 0,
+								'prefix_name' => 0,
+							),
+						),
+						'min' => '',
+						'max' => '',
+					),
 					'layout_5c4f21cbd787c' => array(
 						'key' => 'layout_5c4f21cbd787c',
 						'name' => 'code',
@@ -3504,6 +3535,229 @@ This list will automatically be updated if any new content meets the filter crit
 	));
 
 	acf_add_local_field_group(array(
+		'key' => 'group_5ddebe3fd4db3',
+		'title' => __('[Template]Progress Bar', 'lesverts'),
+		'fields' => array(
+			array(
+				'key' => 'field_5ddebe5f8a22d',
+				'label' => __('About this Block', 'lesverts'),
+				'name' => '',
+				'type' => 'message',
+				'instructions' => '',
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'message' => __('Shows a progress meter. This is particularly useful for petitions.', 'lesverts'),
+				'new_lines' => '',
+				'esc_html' => 0,
+			),
+			array(
+				'key' => 'field_5ddebf318a22e',
+				'label' => __('Datasource', 'lesverts'),
+				'name' => 'datasource',
+				'type' => 'button_group',
+				'instructions' => __('If form is selected, the number of form submissions will be displayed. Enter manually let\'s you specify the number displayed in a input field here.', 'lesverts'),
+				'required' => 1,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'choices' => array(
+					'form' => __('Form', 'lesverts'),
+					'manual' => __('Enter manually', 'lesverts'),
+				),
+				'allow_null' => 0,
+				'default_value' => 'form',
+				'layout' => 'horizontal',
+				'return_format' => 'value',
+			),
+			array(
+				'key' => 'field_5ddec02e8a22f',
+				'label' => __('Form', 'lesverts'),
+				'name' => 'form',
+				'type' => 'post_object',
+				'instructions' => __('The progress meter will display the number of submissions.', 'lesverts'),
+				'required' => 1,
+				'conditional_logic' => array(
+					array(
+						array(
+							'field' => 'field_5ddebf318a22e',
+							'operator' => '==',
+							'value' => 'form',
+						),
+					),
+				),
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'post_type' => array(
+					0 => 'theme_form',
+				),
+				'taxonomy' => '',
+				'allow_null' => 0,
+				'multiple' => 0,
+				'return_format' => 'id',
+				'ui' => 1,
+			),
+			array(
+				'key' => 'field_5ddec0aa8a230',
+				'label' => __('Submissions to add', 'lesverts'),
+				'name' => 'offset',
+				'type' => 'number',
+				'instructions' => __('Sometimes you do also have another datasource you want to add or you just don\'t want to start with zero. <strong>Specify the number you want to add to the total of submissions.</strong>', 'lesverts'),
+				'required' => 1,
+				'conditional_logic' => array(
+					array(
+						array(
+							'field' => 'field_5ddebf318a22e',
+							'operator' => '==',
+							'value' => 'form',
+						),
+					),
+				),
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'default_value' => 0,
+				'placeholder' => '',
+				'prepend' => '',
+				'append' => '',
+				'min' => 0,
+				'max' => '',
+				'step' => '',
+			),
+			array(
+				'key' => 'field_5ddec1a08a231',
+				'label' => __('Current progress', 'lesverts'),
+				'name' => 'current',
+				'type' => 'number',
+				'instructions' => '',
+				'required' => 1,
+				'conditional_logic' => array(
+					array(
+						array(
+							'field' => 'field_5ddebf318a22e',
+							'operator' => '==',
+							'value' => 'manual',
+						),
+					),
+				),
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'default_value' => '',
+				'placeholder' => '',
+				'prepend' => '',
+				'append' => '',
+				'min' => 0,
+				'max' => '',
+				'step' => '',
+			),
+			array(
+				'key' => 'field_5ddec1fe8a232',
+				'label' => __('Goal', 'lesverts'),
+				'name' => 'goal',
+				'type' => 'button_group',
+				'instructions' => __('Specifies the maximum value (at which value the progress bar reaches the end). You may either set the goal manually or, if you choose adaptive, the goal will increase automatically with the current progress. The algorithm chooses the goal so that the progress bar reaches the right halve and the goal is a nice number (however, the goal never goes below ten).', 'lesverts'),
+				'required' => 1,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'choices' => array(
+					'adaptive' => __('Adaptive', 'lesverts'),
+					'manual' => __('Manual', 'lesverts'),
+				),
+				'allow_null' => 0,
+				'default_value' => 'adaptive',
+				'layout' => 'horizontal',
+				'return_format' => 'value',
+			),
+			array(
+				'key' => 'field_5ddec29a8a233',
+				'label' => __('Goal Value', 'lesverts'),
+				'name' => 'goal_value',
+				'type' => 'number',
+				'instructions' => '',
+				'required' => 1,
+				'conditional_logic' => array(
+					array(
+						array(
+							'field' => 'field_5ddec1fe8a232',
+							'operator' => '==',
+							'value' => 'manual',
+						),
+					),
+				),
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'default_value' => '',
+				'placeholder' => '',
+				'prepend' => '',
+				'append' => '',
+				'min' => 0,
+				'max' => '',
+				'step' => '',
+			),
+			array(
+				'key' => 'field_5ddec4478a234',
+				'label' => __('Legend (optional)', 'lesverts'),
+				'name' => 'legend',
+				'type' => 'text',
+				'instructions' => __('If specified, a legend is shown above the progress bar. You can use the following placeholders: <code>{{current}}</code>, <code>{{goal}}</code>
+
+Example: {{current}} have signed. Can we reach {{goal}}?', 'lesverts'),
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'default_value' => '',
+				'placeholder' => '',
+				'prepend' => '',
+				'append' => '',
+				'maxlength' => '',
+			),
+		),
+		'location' => array(
+			array(
+				array(
+					'param' => 'post_type',
+					'operator' => '==',
+					'value' => 'post',
+				),
+			),
+		),
+		'menu_order' => 0,
+		'position' => 'normal',
+		'style' => 'default',
+		'label_placement' => 'top',
+		'instruction_placement' => 'label',
+		'hide_on_screen' => '',
+		'active' => false,
+		'description' => '',
+	));
+
+	acf_add_local_field_group(array(
 		'key' => 'group_5b6c045f68e96',
 		'title' => __('[Template]Quote', 'lesverts'),
 		'fields' => array(
@@ -3922,26 +4176,34 @@ This list will automatically be updated if any new content meets the filter crit
 				'multiple' => 0,
 			),
 			array(
-				'key' => 'field_5bbb3fd187e20',
-				'label' => __('Layout', 'lesverts'),
+				'key' => 'field_5ddd2e538374c',
+				'label' => __('Layout (hidden)', 'lesverts'),
 				'name' => 'layout',
-				'type' => 'button_group',
-				'instructions' => __('Choose vertical for the front page', 'lesverts'),
+				'type' => 'text',
+				'instructions' => '',
 				'required' => 0,
-				'conditional_logic' => 0,
+				'conditional_logic' => array(
+					array(
+						array(
+							'field' => 'field_5bbb4e32cc149',
+							'operator' => '!=empty',
+						),
+						array(
+							'field' => 'field_5bbb4e32cc149',
+							'operator' => '==empty',
+						),
+					),
+				),
 				'wrapper' => array(
 					'width' => '',
 					'class' => '',
 					'id' => '',
 				),
-				'choices' => array(
-					'vertical' => __('Vertical', 'lesverts'),
-					'horizontal' => __('Horizontal', 'lesverts'),
-				),
-				'allow_null' => 0,
 				'default_value' => 'horizontal',
-				'layout' => 'horizontal',
-				'return_format' => 'value',
+				'placeholder' => '',
+				'prepend' => '',
+				'append' => '',
+				'maxlength' => '',
 			),
 		),
 		'location' => array(
@@ -3961,7 +4223,6 @@ This list will automatically be updated if any new content meets the filter crit
 		'hide_on_screen' => '',
 		'active' => false,
 		'description' => '',
-		'modified' => 1543324750,
 	));
 
 	acf_add_local_field_group(array(

@@ -133,9 +133,6 @@ $WPCLI plugin install classic-editor $INSTALL_ACTIVATE_ARGUMENT
 # SearchWP
 $WPCLI plugin activate searchwp $ACTIVATE_NETWORK_ARGUMENT
 
-# Enhanced media library
-$WPCLI plugin install enhanced-media-library $INSTALL_ACTIVATE_ARGUMENT
-
 # Enable media replace
 $WPCLI plugin install enable-media-replace $INSTALL_ACTIVATE_ARGUMENT
 
@@ -158,6 +155,7 @@ $WPCLI theme delete twentyfifteen
 $WPCLI theme delete twentysixteen
 $WPCLI theme delete twentyseventeen
 $WPCLI theme delete twentynineteen
+$WPCLI theme delete twentytwenty
 
 if $WPCLI plugin is-installed akismet; then
     $WPCLI plugin uninstall akismet --deactivate

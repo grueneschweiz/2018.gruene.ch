@@ -31,30 +31,6 @@ class FormModel {
 		$notification_settings;
 
 	/**
-	 * Get an instance of every form
-	 *
-	 * @return FormModel[]
-	 */
-	public static function get_forms() {
-		$args = array(
-			'posts_per_page' => - 1,
-			'post_type'      => FormType::MODEL_NAME,
-		);
-
-		$forms = array();
-		foreach ( get_posts( $args ) as $form ) {
-			try {
-				$forms[ $form->ID ] = new FormModel( $form->ID, $form );
-			} catch (Exception $e) {
-				// exception impossible in this special case:
-				// we do only query for form type so it can't be not of type form
-			}
-		}
-
-		return $forms;
-	}
-
-	/**
 	 * FormModel constructor.
 	 *
 	 * @param int $id the form id
@@ -72,6 +48,30 @@ class FormModel {
 		if ( $post ) {
 			$this->post = $post;
 		}
+	}
+
+	/**
+	 * Get an instance of every form
+	 *
+	 * @return FormModel[]
+	 */
+	public static function get_forms() {
+		$args = array(
+			'posts_per_page' => - 1,
+			'post_type'      => FormType::MODEL_NAME,
+		);
+
+		$forms = array();
+		foreach ( get_posts( $args ) as $form ) {
+			try {
+				$forms[ $form->ID ] = new FormModel( $form->ID, $form );
+			} catch ( Exception $e ) {
+				// exception impossible in this special case:
+				// we do only query for form type so it can't be not of type form
+			}
+		}
+
+		return $forms;
 	}
 
 	/**
@@ -196,6 +196,25 @@ class FormModel {
 		}
 
 		return $data;
+	}
+
+	/**
+	 * Retrieve total number of form submissions
+	 *
+	 * @return int
+	 */
+	public function get_submission_count() {
+		global $wpdb;
+
+		$count = $wpdb->get_var(
+			$wpdb->prepare(
+				"SELECT COUNT(*) FROM $wpdb->postmeta WHERE post_id = %d AND meta_key = %s",
+				$this->id,
+				FormType::MODEL_NAME
+			)
+		);
+
+		return $count ? $count : 0;
 	}
 
 	/**

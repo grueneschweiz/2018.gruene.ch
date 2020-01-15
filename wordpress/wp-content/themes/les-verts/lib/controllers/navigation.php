@@ -29,12 +29,15 @@ class Navigation_controller {
 		}
 
 		foreach ( $items as &$item ) {
+
 			if ( '#supt_agenda' == $item->url ) {
 				$item->url = tribe_get_listview_link( false );
 				$events    = tribe_get_events( array(
 					'start_date'       => date( 'Y-m-d' ),
 					'category'         => 0,
-					'schedule_details' => true
+					'schedule_details' => true,
+					'orderby'          => 'event_date_utc',
+					'order'            => 'ASC'
 				) );
 
 				if ( empty( $events ) ) {
@@ -56,6 +59,7 @@ class Navigation_controller {
 					$event->description      = '';
 					$event->target           = '';
 					$event->type_label       = $type->label;
+					$event->menu_order       = 10000 + $key; // hack to enforce the items order (in some rare edge cases, there weren't)
 
 					$event->title = sprintf(
 						_x( '%s: %s', 'Example: 21.03.2018: Delegiertenversammlung', THEME_DOMAIN ),

@@ -1,15 +1,19 @@
 {% if block.acf_fc_layout == 'in_short' %}
-    <div class="page__box">
-        {% include 'molecules/m-in-short.twig' with block only %}
-    </div>
+	<div class="page__box">
+		{% include 'molecules/m-in-short.twig' with block only %}
+	</div>
 {% elseif block.acf_fc_layout == 'quote' %}
-    <div class="page__quote">
-        {% include 'molecules/m-quote.twig' with block only %}
-    </div>
+	<div class="page__quote">
+		{% include 'molecules/m-quote.twig' with block only %}
+	</div>
 {% elseif block.acf_fc_layout == 'person' %}
-    <div class="page__person">
-        {% include 'molecules/m-person.twig' with block only %}
-    </div>
+	<div class="page__person">
+		{% include 'molecules/m-person.twig' with block only %}
+	</div>
+{% elseif block.acf_fc_layout == 'progress_bar' %}
+	<div class="page__progress">
+		{% include 'atoms/a-progress.twig' with {'block': block} only %}
+	</div>
 {% elseif block.acf_fc_layout == 'form' or block.form %}
 	{% if block.action_id %}
 		{% set action_id = block.action_id %}
@@ -17,13 +21,13 @@
 	{% if block.config_id %}
 		{% set config_id = block.config_id %}
 	{% endif %}
-    <div class="page__form">
-        {% include 'molecules/m-form.twig' with {
-					'post': ACFPost(block.form),
-					'action_id': action_id,
-					'config_id': config_id
-        } only %}
-    </div>
+	<div class="page__form">
+		{% include 'molecules/m-form.twig' with {
+			'post': ACFPost(block.form),
+			'action_id': action_id,
+			'config_id': config_id
+		} only %}
+	</div>
 {% elseif block.acf_fc_layout == 'image' or block.image %}
 	<div class="page__image">
 		{% include 'atoms/a-image.twig' with {

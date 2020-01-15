@@ -107,13 +107,13 @@ li > ol, li > ul {
 ol {
 	counter-reset: item;
 
-	li {
+	> li {
 		counter-increment: item;
 
-		li {
+		> li {
 			padding-left: 2.5em;
 
-			li {
+			> li {
 				padding-left: 3em;
 			}
 		}

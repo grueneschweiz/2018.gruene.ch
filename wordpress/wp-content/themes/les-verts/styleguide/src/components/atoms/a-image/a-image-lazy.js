@@ -1,4 +1,5 @@
 import BaseView from 'base-view';
+import inView from '../../../js/service/inview';
 
 const BASE_CONTAINER_SELECTOR = '.a-image';
 
@@ -8,34 +9,17 @@ const DEBOUNCE_DELAY_MS = 300;
 
 export default class AImageLazy extends BaseView {
 	initialize() {
-		this.ticking = false;
 		this.loading = false;
 	}
 
 	bind() {
 		super.bind();
 
-		// use this variable to have a reference to destroy it later on
-		this.eventHandler = () => this.requestTick();
-
-		window.addEventListener( 'scroll', this.eventHandler, false );
-		window.addEventListener( 'resize', this.eventHandler, false );
-
-		this.requestTick();
-	}
-
-	requestTick() {
-		this.timer = this.timer || setTimeout( () => {
-			this.timer = null;
-			if (! this.ticking && ! this.loading) {
-				this.ticking = true;
-				window.requestAnimationFrame( this.maybeLoadImage.bind( this ) );
-			}
-		}, DEBOUNCE_DELAY_MS );
+		inView(this.element, DEBOUNCE_DELAY_MS).then(() => this.maybeLoadImage());
 	}
 
 	maybeLoadImage() {
-		if (this.inView()) {
+		if (!this.loading){
 			this.loading = true;
 			let img = this.loadFullImage();
 			if (img.complete) {
@@ -44,16 +28,6 @@ export default class AImageLazy extends BaseView {
 				img.onload = () => this.replaceImage( img );
 			}
 		}
-		this.ticking = false;
-	}
-
-	inView() {
-		let windowTop = window.pageYOffset;
-		let windowBottom = windowTop + window.innerHeight;
-		let imgRect = this.element.getBoundingClientRect();
-		let imgTop = windowTop + imgRect.top;
-		let imgBottom = imgTop + imgRect.height;
-		return ( windowTop < imgBottom && windowBottom > imgTop );
 	}
 
 	loadFullImage() {
@@ -80,12 +54,5 @@ export default class AImageLazy extends BaseView {
 		let event = document.createEvent('Event');
 		event.initEvent('afterReplaceImage', true, true);
 		elem.dispatchEvent(event);
-	}
-
-	destroy() {
-		window.removeEventListener( 'scroll', this.eventHandler );
-		window.removeEventListener( 'resize', this.eventHandler );
-
-		super.destroy();
 	}
 }

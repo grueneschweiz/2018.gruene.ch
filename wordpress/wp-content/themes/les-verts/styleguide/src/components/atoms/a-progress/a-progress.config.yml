@@ -1,0 +1,17 @@
+label: Progress bar
+status: ready
+context:
+  min: 1
+  goal: 50000
+  current: 37896
+  current_percent: 75.79351587
+  unit: CHF
+variants:
+  - name: Legend
+    context:
+      legend: true
+  - name: Low counter
+    context:
+      low_counter: true
+      current: 14000
+      current_percent: 28
