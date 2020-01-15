@@ -1,6 +1,6 @@
 <div class="m-campaign-cta">
 	<h3 class="m-campaign-cta__title">{{ title|wptexturize }}</h3>
-	<p class="m-campaign-cta__text">{{ desc|wptexturize }}</p>
+	<p class="m-campaign-cta__text">{{ desc|shortcodes|wptexturize }}</p>
 	{% if 'form' == type and form %}
 		{% include 'molecules/m-form.twig' with {
 			'post': ACFPost(form),

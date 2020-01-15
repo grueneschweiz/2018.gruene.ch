@@ -14,10 +14,10 @@ class Progress_controller {
 
 	public function __construct( $array ) {
 		if ( 'form' === $array['datasource'] ) {
-			$this->form_id = $array['form'];
-			$this->offset  = $array['offset'];
+			$this->form_id = (int) $array['form'];
+			$this->offset  = (int) $array['offset'];
 		} else {
-			$this->current_value = $array['current'];
+			$this->current_value = (int) $array['current'];
 		}
 
 		if ( 'manual' === $array['goal'] ) {
@@ -94,7 +94,7 @@ class Progress_controller {
 
 		// the step size is basically the next round number (20 for 11,
 		// 100 for 98, 6000 for 5123 etc.)
-		$digits         = ceil( log10( $unrounded_goal ) );
+		$digits    = ceil( log10( $unrounded_goal ) );
 		$step_size = 10 ** ( $digits - 1 );
 
 		// if unrounded goal is below 40, 400, 4000 etc. halve the step size
