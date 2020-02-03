@@ -21,7 +21,7 @@
 	{% endif %}
 	<div class="m-event-details__link-button">
 		{% include 'atoms/a-link-button.twig' with {
-			'link': fn('tribe_get_single_ical_link'),
+			'link': fn('add_query_arg', 'ical', '1'),
 			'label': __('Save to calendar', constant('THEME_DOMAIN')) ~ ' (ics)'
 		} only %}
 	</div>
