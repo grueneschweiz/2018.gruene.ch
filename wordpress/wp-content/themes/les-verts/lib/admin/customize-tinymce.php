@@ -8,7 +8,6 @@ add_filter( 'acf/fields/wysiwyg/toolbars', function ( $toolbars ) {
 		1 => array(
 			'formatselect',
 			'bold',
-			'italic',
 			'bullist',
 			'numlist',
 			'blockquote',
