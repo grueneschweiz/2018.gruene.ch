@@ -40,6 +40,13 @@ class Navigation_controller {
 					'order'            => 'ASC'
 				) );
 
+				if ( self::get_menu_item_level( $item, $items ) != 1 ) {
+					// auto events do only work on the first menu level.
+					// it even leads to a bug, if it was added on first and second level
+					// so lets escape early to prevent this.
+					continue;
+				}
+
 				if ( empty( $events ) ) {
 					continue;
 				}
@@ -73,6 +80,33 @@ class Navigation_controller {
 		}
 
 		return $items;
+	}
+
+	/**
+	 * Returns the level of the menu entry (zero indexed)
+	 *
+	 * @param $item
+	 * @param $menu
+	 *
+	 * @return int
+	 */
+	private static function get_menu_item_level( $item, $menu ) {
+		if ( empty( $item->menu_item_parent ) ) {
+			return 0;
+		}
+
+		$parent_id = (int) $item->menu_item_parent;
+
+		foreach ( $menu as $loop_item ) {
+			if ( $loop_item->ID !== $parent_id ) {
+				continue;
+			}
+
+			return self::get_menu_item_level( $loop_item, $menu ) + 1;
+		}
+
+		// there is a paren't item, but it isn't in the menu
+		return 0;
 	}
 
 	/**
