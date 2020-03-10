@@ -13,8 +13,12 @@ namespace SUPT;
  */
 
 if ( class_exists( 'acf_pro' ) ) {
-	require_once __DIR__ . '/acf/acf-init.php';
 	require_once __DIR__ . '/acf/cached-oembeds.php';
+
+	if (is_admin()) {
+		require_once __DIR__ . '/acf/acf-init.php';
+		require_once __DIR__ . '/acf/acf-people-title.php';
+	}
 }
 
 
