@@ -25,3 +25,4 @@ context:
     - title: Misc
       values:
         red: "#EF0606"
+        warning: "#fff7dc"

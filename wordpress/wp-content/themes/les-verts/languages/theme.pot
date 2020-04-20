@@ -3,14 +3,14 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: Les Verts\n"
-"POT-Creation-Date: 2020-01-15 20:25+0100\n"
+"POT-Creation-Date: 2020-04-20 17:16+0200\n"
 "PO-Revision-Date: 2018-11-28 17:49+0100\n"
 "Last-Translator: Cyrill Bolliger <bolliger@gmx.ch>\n"
 "Language-Team: Cyrill Bolliger <bolliger@gmx.ch>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.2.4\n"
+"X-Generator: Poedit 2.3\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
 "X-Poedit-WPHeader: style.css\n"
@@ -1318,7 +1318,7 @@ msgid "Portrait Photo"
 msgstr ""
 
 #: acf-translate.php:5266 lib/widgets/ContactWidget.php:25
-#: lib/widgets/ContactWidget.php:31 templates/molecules/m-person.twig:82
+#: lib/widgets/ContactWidget.php:31
 msgid "Contact"
 msgstr ""
 
@@ -1381,7 +1381,6 @@ msgid ""
 "to display in the same collection</strong>."
 msgstr ""
 
-#. Template Name of the plugin/theme
 #: acf-translate.php:5568
 msgid "Press Release"
 msgstr ""
@@ -1445,11 +1444,11 @@ msgstr ""
 msgid "You can hide the share buttons of this page, by disabling this option."
 msgstr ""
 
-#: functions.php:97 templates/molecules/m-menu.twig:14
+#: functions.php:97
 msgid "Main navigation"
 msgstr ""
 
-#: functions.php:98 templates/molecules/m-menu.twig:60
+#: functions.php:98
 msgid "Language navigation"
 msgstr ""
 
@@ -1501,18 +1500,18 @@ msgid ""
 "suggest installing the %sSearchWP%s."
 msgstr ""
 
-#: lib/controllers/navigation.php:65
+#: lib/controllers/navigation.php:74
 #, php-format
 msgctxt "Example: 21.03.2018: Delegiertenversammlung"
 msgid "%s: %s"
 msgstr ""
 
-#: lib/controllers/navigation.php:105
+#: lib/controllers/navigation.php:141
 msgctxt "short date format"
 msgid "y-m-d"
 msgstr ""
 
-#: lib/controllers/navigation.php:191 lib/customizer/GetActive.php:43
+#: lib/controllers/navigation.php:227 lib/customizer/GetActive.php:43
 msgid "Get Active"
 msgstr ""
 
@@ -2547,15 +2546,15 @@ msgstr ""
 msgid "Title:"
 msgstr ""
 
-#: page.php:54
+#: page.php:55
 msgid "Upcoming events"
 msgstr ""
 
-#: page.php:59
+#: page.php:60
 msgid "Previous events"
 msgstr ""
 
-#: search.php:20 templates/atoms/a-search.twig:6
+#: search.php:20
 msgctxt "Noun"
 msgid "Search"
 msgstr ""
@@ -3062,8 +3061,8 @@ msgid_plural "boos"
 msgstr[0] ""
 msgstr[1] ""
 
-#: vendor/timber/timber/tests/test-timber-menu.php:590
-#: vendor/timber/timber/tests/test-timber-menu.php:591
+#: vendor/timber/timber/tests/test-timber-menu.php:558
+#: vendor/timber/timber/tests/test-timber-menu.php:559
 msgid "Gallery"
 msgstr ""
 
@@ -3182,279 +3181,42 @@ msgstr ""
 msgid "The uploaded file could not be moved to %s."
 msgstr ""
 
-#: vendor/yahnis-elsts/plugin-update-checker/Puc/v4p8/Plugin/Ui.php:54
+#: vendor/yahnis-elsts/plugin-update-checker/Puc/v4p7/Plugin/Ui.php:54
 msgid "View details"
 msgstr ""
 
-#: vendor/yahnis-elsts/plugin-update-checker/Puc/v4p8/Plugin/Ui.php:77
+#: vendor/yahnis-elsts/plugin-update-checker/Puc/v4p7/Plugin/Ui.php:77
 #, php-format
 msgid "More information about %s"
 msgstr ""
 
-#: vendor/yahnis-elsts/plugin-update-checker/Puc/v4p8/Plugin/Ui.php:128
+#: vendor/yahnis-elsts/plugin-update-checker/Puc/v4p7/Plugin/Ui.php:128
 msgid "Check for updates"
 msgstr ""
 
-#: vendor/yahnis-elsts/plugin-update-checker/Puc/v4p8/Plugin/Ui.php:213
+#: vendor/yahnis-elsts/plugin-update-checker/Puc/v4p7/Plugin/Ui.php:213
 #, php-format
 msgctxt "the plugin title"
 msgid "The %s plugin is up to date."
 msgstr ""
 
-#: vendor/yahnis-elsts/plugin-update-checker/Puc/v4p8/Plugin/Ui.php:215
+#: vendor/yahnis-elsts/plugin-update-checker/Puc/v4p7/Plugin/Ui.php:215
 #, php-format
 msgctxt "the plugin title"
 msgid "A new version of the %s plugin is available."
 msgstr ""
 
-#: vendor/yahnis-elsts/plugin-update-checker/Puc/v4p8/Plugin/Ui.php:217
+#: vendor/yahnis-elsts/plugin-update-checker/Puc/v4p7/Plugin/Ui.php:217
 #, php-format
 msgctxt "the plugin title"
 msgid "Could not determine if updates are available for %s."
 msgstr ""
 
-#: vendor/yahnis-elsts/plugin-update-checker/Puc/v4p8/Plugin/Ui.php:223
+#: vendor/yahnis-elsts/plugin-update-checker/Puc/v4p7/Plugin/Ui.php:223
 #, php-format
 msgid "Unknown update checker status \"%s\""
 msgstr ""
 
-#: vendor/yahnis-elsts/plugin-update-checker/Puc/v4p8/Vcs/PluginUpdateChecker.php:98
+#: vendor/yahnis-elsts/plugin-update-checker/Puc/v4p7/Vcs/PluginUpdateChecker.php:98
 msgid "There is no changelog available."
-msgstr ""
-
-#: templates/404.twig:4
-msgid "Page not found"
-msgstr ""
-
-#: templates/404.twig:6
-msgid ""
-"Sorry, we couldn't find what you're looking for. Have you tried the search?"
-msgstr ""
-
-#: templates/atoms/a-footer-meta.twig:7
-msgid "Meta navigation"
-msgstr ""
-
-#: templates/atoms/a-hamburger.twig:2
-msgid "Toggle navigation"
-msgstr ""
-
-#: templates/atoms/a-map.twig:1
-msgid "Geographical map"
-msgstr ""
-
-#: templates/atoms/a-pagination.twig:13 templates/atoms/a-pagination.twig:15
-msgid "Previous Page"
-msgstr ""
-
-#: templates/atoms/a-pagination.twig:36 templates/atoms/a-pagination.twig:38
-msgid "Next Page"
-msgstr ""
-
-#: templates/atoms/a-post-link.twig:22
-msgctxt "Date format. See http://php.net/manual/de/function.date.php"
-msgid "F jS, Y"
-msgstr ""
-
-#: templates/atoms/a-post-link.twig:49
-#: templates/molecules/m-front-article.twig:41
-msgid "Read more"
-msgstr ""
-
-#: templates/atoms/a-post-meta.twig:14
-#, php-format
-msgid "Show all articles of the category %s"
-msgstr ""
-
-#: templates/atoms/a-post-meta.twig:18
-#, php-format
-msgid "Show all articles tagged with %s"
-msgstr ""
-
-#: templates/atoms/a-search.twig:5
-msgid "Search for:"
-msgstr ""
-
-#: templates/atoms/a-search.twig:8 templates/atoms/a-search.twig:10
-msgctxt "Verb"
-msgid "Search"
-msgstr ""
-
-#: templates/atoms/a-simple-dialog.twig:5
-#: templates/atoms/a-simple-dialog.twig:7
-msgid "Close dialog"
-msgstr ""
-
-#: templates/atoms/a-vote-tag.twig:1
-msgid "Vote recommendations"
-msgstr ""
-
-#: templates/base.twig:15
-msgid "Sorry, no content"
-msgstr ""
-
-#: templates/molecules/m-branding.twig:11 templates/molecules/m-menu.twig:5
-msgid "Home"
-msgstr ""
-
-#: templates/molecules/m-event-details.twig:6
-msgid "date and duration"
-msgstr ""
-
-#: templates/molecules/m-event-details.twig:15
-msgid "place"
-msgstr ""
-
-#: templates/molecules/m-event-details.twig:25
-msgid "Save to calendar"
-msgstr ""
-
-#: templates/molecules/m-footer-contact.twig:11
-#, php-format
-msgctxt "facebook, twitter or instagram"
-msgid "Visit us on %s"
-msgstr ""
-
-#: templates/molecules/m-form.twig:179
-msgid "Uups, something went wrong!"
-msgstr ""
-
-#: templates/molecules/m-form.twig:180
-msgid ""
-"Sorry, there was an error submitting this form. If the error persists, "
-"please contact us by email."
-msgstr ""
-
-#: templates/molecules/m-form.twig:184
-msgid "Please check input"
-msgstr ""
-
-#: templates/molecules/m-form.twig:185
-msgid "There seems to be an error in your input. Please recheck the fields:"
-msgstr ""
-
-#: templates/molecules/m-link-list.twig:33
-#, php-format
-msgctxt "Example: All 17 press releases"
-msgid "All %d %s"
-msgstr ""
-
-#: templates/molecules/m-list-header.twig:10
-msgid "Filter by category:"
-msgstr ""
-
-#: templates/molecules/m-list-header.twig:25
-msgid "Show all results"
-msgstr ""
-
-#: templates/molecules/m-map.twig:11
-msgid "Select region"
-msgstr ""
-
-#: templates/molecules/m-menu.twig:24
-msgid "Submenu"
-msgstr ""
-
-#: templates/molecules/m-menu.twig:32
-msgid "Close submenu"
-msgstr ""
-
-#: templates/molecules/m-menu.twig:34
-msgid "Close icon"
-msgstr ""
-
-#: templates/molecules/m-person.twig:48
-#, php-format
-msgid "Visit the facebook page of %s"
-msgstr ""
-
-#: templates/molecules/m-person.twig:55
-#, php-format
-msgid "Visit the twitter profile of %s"
-msgstr ""
-
-#: templates/molecules/m-person.twig:62
-#, php-format
-msgid "Visit the instagram profile of %s"
-msgstr ""
-
-#: templates/molecules/m-person.twig:71 templates/molecules/m-person.twig:72
-msgid "More"
-msgstr ""
-
-#: templates/molecules/m-person.twig:72
-msgid "Less"
-msgstr ""
-
-#: templates/molecules/m-share.twig:2
-msgid "Show share buttons"
-msgstr ""
-
-#: templates/molecules/m-share.twig:4 templates/molecules/m-share.twig:48
-msgid "Share"
-msgstr ""
-
-#: templates/molecules/m-share.twig:8
-msgid "Hide share buttons"
-msgstr ""
-
-#: templates/molecules/m-share.twig:10
-msgid "Close"
-msgstr ""
-
-#: templates/molecules/m-share.twig:19
-msgid "Share this page on twitter"
-msgstr ""
-
-#: templates/molecules/m-share.twig:27
-msgid "Share this page on facebook"
-msgstr ""
-
-#: templates/molecules/m-share.twig:35
-msgid "Share this page by email"
-msgstr ""
-
-#: templates/molecules/m-share.twig:43
-msgid "Share this page by WhatsApp"
-msgstr ""
-
-#: templates/molecules/m-vote.twig:14
-msgctxt "A vote proposal is the subject"
-msgid "More about this subject"
-msgstr ""
-
-#: templates/organisms/o-front-article.twig:39
-msgid "Quotation mark"
-msgstr ""
-
-#: templates/organisms/o-front-events.twig:20
-msgid "Show all events"
-msgstr ""
-
-#: templates/organisms/o-people-grid.twig:26
-#: templates/organisms/o-people-grid.twig:28
-msgid "Slide to the left"
-msgstr ""
-
-#: templates/organisms/o-people-grid.twig:34
-#: templates/organisms/o-people-grid.twig:36
-msgid "Slide to the right"
-msgstr ""
-
-#. Theme Name of the plugin/theme
-msgid "Les Verts"
-msgstr ""
-
-#. Description of the plugin/theme
-msgid ""
-"Custom theme for the GREENS of Switzerland. Designed by superhuit.ch, built "
-"by gruene.ch on top of superhuit's stack."
-msgstr ""
-
-#. Author of the plugin/theme
-msgid "superhuit.ch & gruene.ch"
-msgstr ""
-
-#. Template Name of the plugin/theme
-msgid "Overview Page"
 msgstr ""
