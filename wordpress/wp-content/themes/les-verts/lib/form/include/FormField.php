@@ -71,7 +71,7 @@ class FormField {
 		$this->type      = $config['form_input_type'];
 		$this->required  = $config['form_input_required'];
 		$this->slug      = $config['slug'];
-		$this->crm_field = $config['crm_field'];
+		$this->crm_field = isset( $config['crm_field'] ) ? $config['crm_field'] : null;
 
 		if ( $this->is_choice_type() ) {
 			$this->choices = $this->split_choices( $config['form_input_choices'] );
