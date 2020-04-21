@@ -1,7 +1,7 @@
 {% set fields = post.get_field('form_fields') %}
 {% set custom_width_block_width = 0 %}
 
-{% if 'public' == post.status %}
+{% if 'publish' == post.status %}
 	<form class="m-form"
 				action="{{ fn('admin_url', 'admin-ajax.php') }}{# yes, this is the correct ajax url #}"
 				method="post"
