@@ -3,14 +3,14 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: Les Verts\n"
-"POT-Creation-Date: 2020-01-15 20:25+0100\n"
+"POT-Creation-Date: 2020-05-04 17:58+0200\n"
 "PO-Revision-Date: 2018-11-28 17:49+0100\n"
 "Last-Translator: Cyrill Bolliger <bolliger@gmx.ch>\n"
 "Language-Team: Cyrill Bolliger <bolliger@gmx.ch>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.2.4\n"
+"X-Generator: Poedit 2.3\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
 "X-Poedit-WPHeader: style.css\n"
@@ -1501,18 +1501,18 @@ msgid ""
 "suggest installing the %sSearchWP%s."
 msgstr ""
 
-#: lib/controllers/navigation.php:65
+#: lib/controllers/navigation.php:74
 #, php-format
 msgctxt "Example: 21.03.2018: Delegiertenversammlung"
 msgid "%s: %s"
 msgstr ""
 
-#: lib/controllers/navigation.php:105
+#: lib/controllers/navigation.php:141
 msgctxt "short date format"
 msgid "y-m-d"
 msgstr ""
 
-#: lib/controllers/navigation.php:191 lib/customizer/GetActive.php:43
+#: lib/controllers/navigation.php:227 lib/customizer/GetActive.php:43
 msgid "Get Active"
 msgstr ""
 
@@ -2547,11 +2547,11 @@ msgstr ""
 msgid "Title:"
 msgstr ""
 
-#: page.php:54
+#: page.php:55
 msgid "Upcoming events"
 msgstr ""
 
-#: page.php:59
+#: page.php:60
 msgid "Previous events"
 msgstr ""
 
@@ -3062,8 +3062,8 @@ msgid_plural "boos"
 msgstr[0] ""
 msgstr[1] ""
 
-#: vendor/timber/timber/tests/test-timber-menu.php:590
-#: vendor/timber/timber/tests/test-timber-menu.php:591
+#: vendor/timber/timber/tests/test-timber-menu.php:558
+#: vendor/timber/timber/tests/test-timber-menu.php:559
 msgid "Gallery"
 msgstr ""
 
@@ -3182,43 +3182,43 @@ msgstr ""
 msgid "The uploaded file could not be moved to %s."
 msgstr ""
 
-#: vendor/yahnis-elsts/plugin-update-checker/Puc/v4p8/Plugin/Ui.php:54
+#: vendor/yahnis-elsts/plugin-update-checker/Puc/v4p7/Plugin/Ui.php:54
 msgid "View details"
 msgstr ""
 
-#: vendor/yahnis-elsts/plugin-update-checker/Puc/v4p8/Plugin/Ui.php:77
+#: vendor/yahnis-elsts/plugin-update-checker/Puc/v4p7/Plugin/Ui.php:77
 #, php-format
 msgid "More information about %s"
 msgstr ""
 
-#: vendor/yahnis-elsts/plugin-update-checker/Puc/v4p8/Plugin/Ui.php:128
+#: vendor/yahnis-elsts/plugin-update-checker/Puc/v4p7/Plugin/Ui.php:128
 msgid "Check for updates"
 msgstr ""
 
-#: vendor/yahnis-elsts/plugin-update-checker/Puc/v4p8/Plugin/Ui.php:213
+#: vendor/yahnis-elsts/plugin-update-checker/Puc/v4p7/Plugin/Ui.php:213
 #, php-format
 msgctxt "the plugin title"
 msgid "The %s plugin is up to date."
 msgstr ""
 
-#: vendor/yahnis-elsts/plugin-update-checker/Puc/v4p8/Plugin/Ui.php:215
+#: vendor/yahnis-elsts/plugin-update-checker/Puc/v4p7/Plugin/Ui.php:215
 #, php-format
 msgctxt "the plugin title"
 msgid "A new version of the %s plugin is available."
 msgstr ""
 
-#: vendor/yahnis-elsts/plugin-update-checker/Puc/v4p8/Plugin/Ui.php:217
+#: vendor/yahnis-elsts/plugin-update-checker/Puc/v4p7/Plugin/Ui.php:217
 #, php-format
 msgctxt "the plugin title"
 msgid "Could not determine if updates are available for %s."
 msgstr ""
 
-#: vendor/yahnis-elsts/plugin-update-checker/Puc/v4p8/Plugin/Ui.php:223
+#: vendor/yahnis-elsts/plugin-update-checker/Puc/v4p7/Plugin/Ui.php:223
 #, php-format
 msgid "Unknown update checker status \"%s\""
 msgstr ""
 
-#: vendor/yahnis-elsts/plugin-update-checker/Puc/v4p8/Vcs/PluginUpdateChecker.php:98
+#: vendor/yahnis-elsts/plugin-update-checker/Puc/v4p7/Vcs/PluginUpdateChecker.php:98
 msgid "There is no changelog available."
 msgstr ""
 
@@ -3243,11 +3243,11 @@ msgstr ""
 msgid "Geographical map"
 msgstr ""
 
-#: templates/atoms/a-pagination.twig:13 templates/atoms/a-pagination.twig:15
+#: templates/atoms/a-pagination.twig:4 templates/atoms/a-pagination.twig:6
 msgid "Previous Page"
 msgstr ""
 
-#: templates/atoms/a-pagination.twig:36 templates/atoms/a-pagination.twig:38
+#: templates/atoms/a-pagination.twig:27 templates/atoms/a-pagination.twig:29
 msgid "Next Page"
 msgstr ""
 
@@ -3315,22 +3315,28 @@ msgctxt "facebook, twitter or instagram"
 msgid "Visit us on %s"
 msgstr ""
 
-#: templates/molecules/m-form.twig:179
+#: templates/molecules/m-form.twig:180
 msgid "Uups, something went wrong!"
 msgstr ""
 
-#: templates/molecules/m-form.twig:180
+#: templates/molecules/m-form.twig:182
 msgid ""
 "Sorry, there was an error submitting this form. If the error persists, "
 "please contact us by email."
 msgstr ""
 
-#: templates/molecules/m-form.twig:184
+#: templates/molecules/m-form.twig:186
 msgid "Please check input"
 msgstr ""
 
-#: templates/molecules/m-form.twig:185
+#: templates/molecules/m-form.twig:188
 msgid "There seems to be an error in your input. Please recheck the fields:"
+msgstr ""
+
+#: templates/molecules/m-form.twig:195
+msgid ""
+"The form that would normally show up here was closed and is therefore not "
+"available."
 msgstr ""
 
 #: templates/molecules/m-link-list.twig:33

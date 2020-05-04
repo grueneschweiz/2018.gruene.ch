@@ -1,0 +1,4 @@
+label: Warning
+status: ready
+context:
+  message: 'Dies ist eine freundliche Fehlermeldung.'
