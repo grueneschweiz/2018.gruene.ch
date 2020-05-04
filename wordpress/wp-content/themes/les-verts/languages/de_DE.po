@@ -1066,17 +1066,17 @@ msgstr "Agenda"
 msgid "Add to Menu"
 msgstr "Zum Menü hinzufügen"
 
-#: lib/controllers/navigation.php:105
+#: lib/controllers/navigation.php:141
 msgctxt "short date format"
 msgid "y-m-d"
 msgstr "d.m.y"
 
-#: lib/controllers/navigation.php:65
+#: lib/controllers/navigation.php:74
 msgctxt "Example: 21.03.2018: Delegiertenversammlung"
 msgid "%s: %s"
 msgstr "%s: %s"
 
-#: lib/controllers/navigation.php:191 lib/customizer/GetActive.php:43
+#: lib/controllers/navigation.php:227 lib/customizer/GetActive.php:43
 msgid "Get Active"
 msgstr "Mitmachen"
 
@@ -1527,11 +1527,11 @@ msgstr "Meta-Navigation"
 msgid "Toggle navigation"
 msgstr "Navigation anzeigen"
 
-#: templates/atoms/a-pagination.twig:13 templates/atoms/a-pagination.twig:15
+#: templates/atoms/a-pagination.twig:4 templates/atoms/a-pagination.twig:6
 msgid "Previous Page"
 msgstr "Vorherige Seite"
 
-#: templates/atoms/a-pagination.twig:36 templates/atoms/a-pagination.twig:38
+#: templates/atoms/a-pagination.twig:27 templates/atoms/a-pagination.twig:29
 msgid "Next Page"
 msgstr "Nächste Seite"
 
@@ -1578,15 +1578,15 @@ msgstr "Platz"
 msgid "Save to calendar"
 msgstr "Kalendereintrag erstellen"
 
-#: templates/molecules/m-form.twig:179
+#: templates/molecules/m-form.twig:180
 msgid "Uups, something went wrong!"
 msgstr "Uups, etwas ist schief gelaufen!"
 
-#: templates/molecules/m-form.twig:180
+#: templates/molecules/m-form.twig:182
 msgid "Sorry, there was an error submitting this form. If the error persists, please contact us by email."
 msgstr "Es tut uns leid, es gab einen Fehler beim versenden dieses Formulars. Bitte kontaktiere uns per E-Mail, falls dieser Fehler erneut auftritt."
 
-#: templates/molecules/m-form.twig:184
+#: templates/molecules/m-form.twig:186
 msgid "Please check input"
 msgstr "Bitte überprüfe die Eingaben"
 
@@ -2139,11 +2139,11 @@ msgstr "Massgeschneidertes Theme für die GRÜNEN in der Schweiz. Gestaltet von 
 msgid "superhuit.ch & gruene.ch"
 msgstr "superhuit.ch & gruene.ch"
 
-#: page.php:54
+#: page.php:55
 msgid "Upcoming events"
 msgstr "Kommende Events"
 
-#: page.php:59
+#: page.php:60
 msgid "Previous events"
 msgstr "Vergangene Events"
 
@@ -2756,38 +2756,38 @@ msgstr "Alle Installationen sind abgeschlossen."
 msgid "Installing Plugin %1$s (%2$d/%3$d)"
 msgstr "Installiere Plugin %1$s (%2$d/%3$d)"
 
-#: vendor/yahnis-elsts/plugin-update-checker/Puc/v4p8/Plugin/Ui.php:54
+#: vendor/yahnis-elsts/plugin-update-checker/Puc/v4p7/Plugin/Ui.php:54
 msgid "View details"
 msgstr "Details Anschauen."
 
-#: vendor/yahnis-elsts/plugin-update-checker/Puc/v4p8/Plugin/Ui.php:77
+#: vendor/yahnis-elsts/plugin-update-checker/Puc/v4p7/Plugin/Ui.php:77
 msgid "More information about %s"
 msgstr "Mehr Informationen zu %s"
 
-#: vendor/yahnis-elsts/plugin-update-checker/Puc/v4p8/Plugin/Ui.php:128
+#: vendor/yahnis-elsts/plugin-update-checker/Puc/v4p7/Plugin/Ui.php:128
 msgid "Check for updates"
 msgstr "Nach Update suchen"
 
-#: vendor/yahnis-elsts/plugin-update-checker/Puc/v4p8/Plugin/Ui.php:213
+#: vendor/yahnis-elsts/plugin-update-checker/Puc/v4p7/Plugin/Ui.php:213
 msgctxt "the plugin title"
 msgid "The %s plugin is up to date."
 msgstr "Das %s Plugin ist auf dem neusten Stand."
 
-#: vendor/yahnis-elsts/plugin-update-checker/Puc/v4p8/Plugin/Ui.php:215
+#: vendor/yahnis-elsts/plugin-update-checker/Puc/v4p7/Plugin/Ui.php:215
 msgctxt "the plugin title"
 msgid "A new version of the %s plugin is available."
 msgstr "Eine neue Version des %s Plugins ist verfügbar."
 
-#: vendor/yahnis-elsts/plugin-update-checker/Puc/v4p8/Plugin/Ui.php:217
+#: vendor/yahnis-elsts/plugin-update-checker/Puc/v4p7/Plugin/Ui.php:217
 msgctxt "the plugin title"
 msgid "Could not determine if updates are available for %s."
 msgstr "Es konnte nicht festgestellt werden ob Aktualisierungen für %s verfügbar sind."
 
-#: vendor/yahnis-elsts/plugin-update-checker/Puc/v4p8/Plugin/Ui.php:223
+#: vendor/yahnis-elsts/plugin-update-checker/Puc/v4p7/Plugin/Ui.php:223
 msgid "Unknown update checker status \"%s\""
 msgstr "Unbekannter Update Status \"%s\""
 
-#: vendor/yahnis-elsts/plugin-update-checker/Puc/v4p8/Vcs/PluginUpdateChecker.php:98
+#: vendor/yahnis-elsts/plugin-update-checker/Puc/v4p7/Vcs/PluginUpdateChecker.php:98
 msgid "There is no changelog available."
 msgstr "Es ist keine Liste von Programmänderungen verfügbar."
 
@@ -2955,7 +2955,7 @@ msgstr "Blockattribute"
 msgid "Uploaded to this block"
 msgstr "Hochgeladen zu diesem Block"
 
-#: templates/molecules/m-form.twig:185
+#: templates/molecules/m-form.twig:188
 msgid "There seems to be an error in your input. Please recheck the fields:"
 msgstr "Es scheint einen Eingabefehler gegeben zu haben. Bitte überprüfe die folgenden Felder:"
 
@@ -3143,8 +3143,8 @@ msgid_plural "boos"
 msgstr[0] ""
 msgstr[1] ""
 
-#: vendor/timber/timber/tests/test-timber-menu.php:590
-#: vendor/timber/timber/tests/test-timber-menu.php:591
+#: vendor/timber/timber/tests/test-timber-menu.php:558
+#: vendor/timber/timber/tests/test-timber-menu.php:559
 msgid "Gallery"
 msgstr ""
 
@@ -3247,4 +3247,8 @@ msgstr ""
 #: vendor/timber/timber/tests/wp-overrides.php:223
 msgid "The uploaded file could not be moved to %s."
 msgstr ""
+
+#: templates/molecules/m-form.twig:195
+msgid "The form that would normally show up here was closed and is therefore not available."
+msgstr "Das Formular, das hier üblicherweise angezeigt würde, wurde geschlossen und ist deswegen nicht verfügbar."
 
