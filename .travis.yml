@@ -26,6 +26,7 @@ before_install:
   - chmod +x /usr/local/bin/composer
 
 install:
+  - ln -sf wordpress/wp-content/themes/les-verts/styleguide/ styleguide
   - yarn --frozen-lockfile
 
 script:
