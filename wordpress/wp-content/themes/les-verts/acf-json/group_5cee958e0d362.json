@@ -131,23 +131,21 @@
                     "display": "block",
                     "sub_fields": [
                         {
-                            "key": "field_5d6e6840e0423",
-                            "label": "About this block",
-                            "name": "about_this_block",
-                            "type": "text",
-                            "instructions": "Adds an image that scales automatically to the device size (responsive). This is the preferred method to add images.",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "",
-                            "placeholder": "",
-                            "prepend": "",
-                            "append": "",
-                            "maxlength": ""
+                          "key": "field_5d6e6840e0423",
+                          "label": "About this block",
+                          "name": "",
+                          "type": "message",
+                          "instructions": "",
+                          "required": 0,
+                          "conditional_logic": 0,
+                          "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                          },
+                          "message": "Adds an image that scales automatically to the device size (responsive). This is the preferred method to add images.",
+                          "new_lines": "wpautop",
+                          "esc_html": 0
                         },
                         {
                             "key": "field_5b6c4aab4c123",
@@ -497,5 +495,5 @@
     "hide_on_screen": "",
     "active": 0,
     "description": "",
-    "modified": 1574881163
+  "modified": 1588609148
 }
