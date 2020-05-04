@@ -2,6 +2,10 @@ dist: xenial
 
 sudo: true
 
+language: node_js
+node_js:
+  - 12
+
 branches:
   only:
     - master
@@ -15,12 +19,6 @@ cache:
     - vendor
 
 before_install:
-  # install yarn and php
-  - curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
-  - echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-  - sudo apt-get update
-  - sudo apt-get install -y yarn
-
   # install composer
   - sudo apt-get install -y php
   - curl -sS https://getcomposer.org/installer | php
@@ -28,7 +26,7 @@ before_install:
   - chmod +x /usr/local/bin/composer
 
 install:
-  - yarn
+  - yarn --frozen-lockfile
 
 script:
   - yarn gulp sg:custom
