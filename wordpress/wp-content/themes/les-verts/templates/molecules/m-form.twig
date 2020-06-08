@@ -174,7 +174,7 @@
 
 		<div class="m-form__message m-form__message--success" aria-hidden="true">
 			<h2 class="m-form__message-title">{{ post.form_success_form_success_title|wptexturize }}</h2>
-			<p class="m-form__message-body">{{ post.form_success_form_success_text|wptexturize|wpautop }}</p>
+			<p class="m-form__message-body">{{ post.form_success_form_success_text|shortcodes|wptexturize|wpautop }}</p>
 		</div>
 		<div class="m-form__message m-form__message--failure" aria-hidden="true">
 			<h2 class="m-form__message-title">{{ __('Uups, something went wrong!', constant('THEME_DOMAIN')) }}</h2>
