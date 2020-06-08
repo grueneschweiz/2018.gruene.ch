@@ -69,1003 +69,989 @@ msgstr "(Médias) Droits d'auteur de l'image"
 msgid "Copyright Info"
 msgstr "Information sur les droits d'auteur"
 
-#: acf-translate.php:206
+#: acf-translate.php:214
 msgid "(Menu) Featured Subnav Item"
 msgstr "(Menu) Sous-rubrique du menu mise en évidence"
 
-#: acf-translate.php:210
+#: acf-translate.php:218
 msgid "Featured Menu Item"
 msgstr "Rubrique du menu mise en évidence"
 
-#: acf-translate.php:213
+#: acf-translate.php:221
 msgid "This option only works on sub items (level 2). Else it won't have any effect."
 msgstr "Cette option n'est disponible que pour les sous-rubriques (niveau 2). Elle n'a pas d'effet sur les autres niveaux."
 
 #. Block Titel (=> Blocktitel)
 #. 	Annahme: es geht um einen Inhaltsblock
-#: acf-translate.php:252 acf-translate.php:708 acf-translate.php:1409
-#: acf-translate.php:2385 acf-translate.php:2528 acf-translate.php:2739
-#: acf-translate.php:2973 acf-translate.php:3336 acf-translate.php:3624
-#: acf-translate.php:3856 acf-translate.php:3982
+#: acf-translate.php:260 acf-translate.php:716 acf-translate.php:1448
+#: acf-translate.php:2424 acf-translate.php:2567 acf-translate.php:2778
+#: acf-translate.php:3012 acf-translate.php:3375 acf-translate.php:3886
+#: acf-translate.php:4118 acf-translate.php:4251
 msgid "Block Title"
 msgstr "Titre du bloc"
 
-#: acf-translate.php:281 acf-translate.php:1045 acf-translate.php:1069
-#: acf-translate.php:1527 acf-translate.php:4548
+#: acf-translate.php:289 acf-translate.php:1053 acf-translate.php:1077
+#: acf-translate.php:1566 acf-translate.php:4817
 msgid "Image"
 msgstr "Image"
 
-#: acf-translate.php:305 acf-translate.php:1993 acf-translate.php:3776
-#: acf-translate.php:4289 acf-translate.php:5470
+#: acf-translate.php:313 acf-translate.php:2032 acf-translate.php:4038
+#: acf-translate.php:4558 acf-translate.php:5739
 msgid "Teaser"
 msgstr "Accroche (teaser)"
 
-#: acf-translate.php:308
+#: acf-translate.php:316
 msgid "Max. 140 characters."
 msgstr "Max. 140 caractères"
 
-#: acf-translate.php:332 acf-translate.php:405
+#: acf-translate.php:340 acf-translate.php:413
 msgid "Button Text"
 msgstr "Texte du bouton"
 
 #. Tendenziell würde ich bei rubrique du menu «du menu» weglassen, da es eindeutiger ist als Punkt (betrifft mehrere Segmente)
-#: acf-translate.php:335
+#: acf-translate.php:343
 msgid "The button will link to this menu item"
 msgstr "Un lien sera créé entre le bouton et cette rubrique du menu."
 
-#: acf-translate.php:382
+#: acf-translate.php:390
 msgid "(Widget) Buttons"
 msgstr "(Gadget logiciel / widget) Boutons"
 
-#: acf-translate.php:386
+#: acf-translate.php:394
 msgid "Buttons"
 msgstr "Boutons"
 
 #. Button hinzufügen
 #. 	Vor (=>un) / nach (=>le) dem Definieren seiner Parameter?
-#: acf-translate.php:401
+#: acf-translate.php:409
 msgid "Add Button"
 msgstr "Ajouter un bouton"
 
-#: acf-translate.php:408
+#: acf-translate.php:416
 msgid "Max. 40 characters."
 msgstr "Max. 40 caractères"
 
-#: acf-translate.php:424 acf-translate.php:665 acf-translate.php:742
-#: acf-translate.php:2564 acf-translate.php:2569
+#: acf-translate.php:432 acf-translate.php:673 acf-translate.php:750
+#: acf-translate.php:2603 acf-translate.php:2608
 msgid "Link"
 msgstr "Lien"
 
-#: acf-translate.php:440
+#: acf-translate.php:448
 msgid "Highlighted"
 msgstr "Mis en évidence"
 
-#: acf-translate.php:482
+#: acf-translate.php:490
 msgid "(Widget) Contact"
 msgstr "(Gadget logiciel / widget) Contact"
 
-#: acf-translate.php:486
+#: acf-translate.php:494
 msgid "Address"
 msgstr "Adresse"
 
-#: acf-translate.php:505 acf-translate.php:5763
+#: acf-translate.php:513 acf-translate.php:6032
 msgid "Social Media"
 msgstr "Réseaux sociaux"
 
-#: acf-translate.php:520 acf-translate.php:5124 acf-translate.php:5129
+#: acf-translate.php:528 acf-translate.php:5393 acf-translate.php:5398
 msgid "Facebook"
 msgstr "Facebook"
 
 #. Link zur Facebook Fan Seite / zum Profil (=> Facebook-Fanseite)
 #. 	Annahme: Fan-Seite = Seite und Profil meint auch Facebookprofil
-#: acf-translate.php:525
+#: acf-translate.php:533
 msgid "Link to the facebook fan page / profile"
 msgstr "Lien vers la page ou le profil Facebook"
 
-#: acf-translate.php:546 acf-translate.php:5095
+#: acf-translate.php:554 acf-translate.php:5364
 msgid "Twitter"
 msgstr "Twitter"
 
 #. Link zum Twitter Profil (=> Link zum Twitterprofil ODER Twitter-Profil)
 #. 	Das Gleiche mit Instagram weiter unten
-#: acf-translate.php:551
+#: acf-translate.php:559
 msgid "Link to the twitter profile"
 msgstr "Lien vers le profil Twitter"
 
-#: acf-translate.php:572 acf-translate.php:5150
+#: acf-translate.php:580 acf-translate.php:5419
 msgid "Instagram"
 msgstr "Instagram"
 
-#: acf-translate.php:577
+#: acf-translate.php:585
 msgid "Link to the instagram profile"
 msgstr "Lien vers le profil Instagram"
 
-#: acf-translate.php:596
+#: acf-translate.php:604
 msgid "Add Icon"
 msgstr "Ajouter une icône"
 
-#: acf-translate.php:623
+#: acf-translate.php:631
 msgid "(Widget) Link List"
 msgstr "(Gadget logiciel / widget) Liste de liens"
 
-#: acf-translate.php:627
+#: acf-translate.php:635
 msgid "List"
 msgstr "Liste"
 
-#: acf-translate.php:642 acf-translate.php:2622
+#: acf-translate.php:650 acf-translate.php:2661
 msgid "Add Link"
 msgstr "Ajouter un lien"
 
-#: acf-translate.php:646 acf-translate.php:2848
+#: acf-translate.php:654 acf-translate.php:2887
 msgid "Label"
 msgstr "Désignation"
 
 #. Blocktitel oder Block-Titel
-#: acf-translate.php:704
+#: acf-translate.php:712
 msgid "[Template]Block title"
 msgstr "[Modèle]Titre de bloc"
 
-#: acf-translate.php:711
+#: acf-translate.php:719
 msgid "Use a generic title like the category of the block. Then link it to this category."
 msgstr "Utilise un titre générique, par exemple la catégorie, puis crée un lien entre le titre et la catégorie."
 
-#: acf-translate.php:723 acf-translate.php:1974 acf-translate.php:2052
-#: acf-translate.php:2242 acf-translate.php:2472 acf-translate.php:2994
-#: acf-translate.php:3877 acf-translate.php:4270
-#: lib/form/acf/form-details.php:843
+#: acf-translate.php:731 acf-translate.php:2013 acf-translate.php:2091
+#: acf-translate.php:2281 acf-translate.php:2511 acf-translate.php:3033
+#: acf-translate.php:4139 acf-translate.php:4539
+#: lib/form/acf/form-details.php:856
 msgid "Title"
 msgstr "Titre"
 
-#: acf-translate.php:757 acf-translate.php:4142
+#: acf-translate.php:765 acf-translate.php:4411
 msgid "Link Type"
 msgstr "Type de lien"
 
-#: acf-translate.php:769 acf-translate.php:781 acf-translate.php:2406
-#: acf-translate.php:4087
+#: acf-translate.php:777 acf-translate.php:789 acf-translate.php:2445
+#: acf-translate.php:4356
 msgid "Category"
 msgstr "Catégorie"
 
-#: acf-translate.php:770 acf-translate.php:4154
+#: acf-translate.php:778 acf-translate.php:4423
 msgid "Internal"
 msgstr "Interne"
 
-#: acf-translate.php:771 acf-translate.php:844 acf-translate.php:4254
+#: acf-translate.php:779 acf-translate.php:852 acf-translate.php:4523
 msgid "URL"
 msgstr "URL"
 
 #. Kein was?
-#: acf-translate.php:772
+#: acf-translate.php:780
 msgid "None"
 msgstr "- (aucun)"
 
-#: acf-translate.php:811 acf-translate.php:4164
+#: acf-translate.php:819 acf-translate.php:4433
 msgid "Internal Link"
 msgstr "Lien interne"
 
-#: acf-translate.php:868
+#: acf-translate.php:876
 msgid "No Link"
 msgstr "Pas de lien"
 
 #. Blocktitel
-#: acf-translate.php:887
+#: acf-translate.php:895
 msgid "The block title will not be linked"
 msgstr "Il ne sera pas créé de lien vers le titre de ce bloc."
 
-#: acf-translate.php:1388
+#: acf-translate.php:1427
 msgid "[Template]Events Block"
 msgstr "[Modèle] Bloc \"Évènements\""
 
-#: acf-translate.php:1004 acf-translate.php:1103 acf-translate.php:1146
-#: acf-translate.php:1194 acf-translate.php:1243 acf-translate.php:1320
-#: acf-translate.php:1392 acf-translate.php:2223 acf-translate.php:2366
-#: acf-translate.php:2453 acf-translate.php:2511 acf-translate.php:2720
-#: acf-translate.php:3319 acf-translate.php:3504 acf-translate.php:3607
-#: acf-translate.php:3839 acf-translate.php:3965 acf-translate.php:4070
+#: acf-translate.php:1012 acf-translate.php:1111 acf-translate.php:1154
+#: acf-translate.php:1202 acf-translate.php:1282 acf-translate.php:1359
+#: acf-translate.php:1431 acf-translate.php:2262 acf-translate.php:2405
+#: acf-translate.php:2492 acf-translate.php:2550 acf-translate.php:2759
+#: acf-translate.php:3358 acf-translate.php:3543 acf-translate.php:3766
+#: acf-translate.php:3869 acf-translate.php:4101 acf-translate.php:4234
+#: acf-translate.php:4339
 msgid "About this Block"
 msgstr "Au sujet de ce bloc"
 
-#: acf-translate.php:1403
+#: acf-translate.php:1442
 msgid "Displays a teaser of your most recent events."
 msgstr "Affiche une accroche (un teaser) avec les prochaines manifestations"
 
-#: acf-translate.php:1430
+#: acf-translate.php:1469
 msgid "Max events to show"
 msgstr "Nombre max. d'évènements à afficher"
 
 #. Bitte überprüfen
-#: acf-translate.php:1451 acf-translate.php:3399 lib/form/acf/input.php:242
+#: acf-translate.php:1490 acf-translate.php:3438 lib/form/acf/input.php:242
 msgid "Full Width"
 msgstr "Utiliser toute la largeur"
 
-#: acf-translate.php:3402
+#: acf-translate.php:3441
 msgid "If full width is set to yes, the block will span the whole page (both columns) else it will only take the place of a single column block."
 msgstr "Si l'option <i>«Utiliser toute la longueur»</i> est activée (case <i>«oui»</i> cochée), le bloc occupera toute la place (deux colonnes). Autrement, il s'affichera sur la largeur d'une seule colonne."
 
-#: acf-translate.php:1504
+#: acf-translate.php:1543
 msgid "[Template]Front Main Campaign"
 msgstr "[Modèle] Page d'accueil de la campagne principale"
 
-#: acf-translate.php:1519
+#: acf-translate.php:1558
 msgid "Display primary campaign?"
 msgstr "Afficher la campagne principale?"
 
-#: acf-translate.php:1530
+#: acf-translate.php:1569
 msgid "Make sure the image is at least 2000px wide."
 msgstr "La largeur minimale de l'image est de 2000 px."
 
-#: acf-translate.php:1559
+#: acf-translate.php:1598
 msgid "Bars"
 msgstr "Barres"
 
 #. also "vor", nicht oberhalb (habe ich richtig verstanden, dass es hier um den Text wie bei "Zersiedelung stoppen" beim dritten Slider auf https://www.gruene.ch/gruene/de.html geht?)
-#: acf-translate.php:1562
+#: acf-translate.php:1601
 msgid "The bars will be placed over the image in the corporate design."
 msgstr "Les barres sont affichées devant l'image, conformément à la charte graphique."
 
-#: acf-translate.php:1582
+#: acf-translate.php:1621
 msgid "Bar alignment"
 msgstr "Orientation des barres"
 
-#: acf-translate.php:1594
+#: acf-translate.php:1633
 msgid "Left"
 msgstr "À gauche"
 
-#: acf-translate.php:1595
+#: acf-translate.php:1634
 msgid "Right"
 msgstr "À droite"
 
-#: acf-translate.php:1596
+#: acf-translate.php:1635
 msgid "Do not show bars"
 msgstr "Pas de barres"
 
-#: acf-translate.php:1607
+#: acf-translate.php:1646
 msgid "Main Color"
 msgstr "Couleur principale"
 
 #. Braucht es eine Unterscheidung zwischen "Titel" und "Headline"?
-#: acf-translate.php:1610
+#: acf-translate.php:1649
 msgid "Select color of the upper headlines. Default is green. Use white, if the background is green already."
 msgstr "Choisis la couleur du titre supérieur. Le vert est la couleur par défaut ; le blanc doit être choisi si l'arrière-plan est vert."
 
-#: acf-translate.php:1627 acf-translate.php:1819
+#: acf-translate.php:1666 acf-translate.php:1858
 msgid "Green"
 msgstr "Vert"
 
-#: acf-translate.php:1628 acf-translate.php:1818
+#: acf-translate.php:1667 acf-translate.php:1857
 msgid "White"
 msgstr "Blanc"
 
 #. Singular oder Plural?
-#: acf-translate.php:1637
+#: acf-translate.php:1676
 msgid "Headlines"
 msgstr "Titres"
 
-#: acf-translate.php:1683
+#: acf-translate.php:1722
 msgid "Add Green Headline"
 msgstr "Ajouter un titre vert"
 
-#: acf-translate.php:1687
+#: acf-translate.php:1726
 msgid "Green Headline"
 msgstr "Titre vert"
 
-#: acf-translate.php:1731
+#: acf-translate.php:1770
 msgid "Add White Headline"
 msgstr "Ajouter un titre blanc"
 
-#: acf-translate.php:1735
+#: acf-translate.php:1774
 msgid "White Headline"
 msgstr "Titre blanc"
 
-#: acf-translate.php:1771
+#: acf-translate.php:1810
 msgid "Add Magenta Headline"
 msgstr "Ajouter un titre magenta"
 
-#: acf-translate.php:1775
+#: acf-translate.php:1814
 msgid "Magenta Headline"
 msgstr "Titre magenta"
 
 #. im CD habe ich "subline" auch mit "sous-titre" übersetzt
-#: acf-translate.php:1798
+#: acf-translate.php:1837
 msgid "Subline Color"
 msgstr "Couleur du sous-titre"
 
-#: acf-translate.php:1801
+#: acf-translate.php:1840
 msgid "Select color of the sublines. Default is white. Use green, if the background is white already."
 msgstr "Choisis la couleur des sous-titres. Le blanc est la couleur par défaut. Opte pour le vert si l'arrière-plan est déjà blanc."
 
-#: acf-translate.php:1828
+#: acf-translate.php:1867
 msgid "Sublines"
 msgstr "Sous-titres"
 
-#: acf-translate.php:1874 acf-translate.php:1922
+#: acf-translate.php:1913 acf-translate.php:1961
 msgid "Add Subline"
 msgstr "Ajouter un sous-titre"
 
-#: acf-translate.php:1878
+#: acf-translate.php:1917
 msgid "Green Subline"
 msgstr "Sous-titre vert"
 
-#: acf-translate.php:1926
+#: acf-translate.php:1965
 msgid "White Subline"
 msgstr "Sous-titre blanc"
 
-#: acf-translate.php:1951
+#: acf-translate.php:1990
 msgid "Campaign Summary"
 msgstr "Résumé de la campagne"
 
-#: acf-translate.php:1954
+#: acf-translate.php:1993
 msgid "This refers to the upper left box below the image. Add a brief description of the campaign."
 msgstr "Ceci ce réfère à l'encadré en haut à gauche, en dessous de l'image. Merci d'insérer une brève description de la campagne."
 
-#: acf-translate.php:1977
+#: acf-translate.php:2016
 msgid "This is the main title. Keep it as short as possible!"
 msgstr "Ceci est le titre principal. Il doit être aussi court que possible."
 
-#: acf-translate.php:1996
+#: acf-translate.php:2035
 msgid "Write a brief teaser to attract the readers interest. Keept it short (200 to 400 characters)."
 msgstr "Rédige une brève accroche (teaser) pour attirer l'attention de la lectrice / du lecteur. Sois concis (200 à 400 caractères)."
 
-#: acf-translate.php:2012
+#: acf-translate.php:2051
 msgid "Read more button"
 msgstr "Bouton «Poursuivre la lecture»"
 
-#: acf-translate.php:2029
+#: acf-translate.php:2068
 msgid "Call to Action"
 msgstr "Appel à agir"
 
-#: acf-translate.php:2032
+#: acf-translate.php:2071
 msgid "This refers to the second box, the darker one. Use it to call for action."
 msgstr "Ceci se réfère au deuxième encadré, plus foncé. Utilise-le pour lancer un appel à agir."
 
-#: acf-translate.php:2055
+#: acf-translate.php:2094
 msgid "Use an encouraging title, like 'Let me be part of the success'."
 msgstr "Choisis un titre encourageant, comme «Je veux contribuer à la réussite de cette campagne.»."
 
-#: acf-translate.php:2074
+#: acf-translate.php:2113
 msgid "Tell the visiter briefly, what the form does. Example: Stay updated, subscribe to our newsletter; make a change, become a member; sign the petition"
 msgstr "Informe brièvement le lecteur / la lectrice de la finalité du formulaire : S'abonner à une lettre d'information pour rester au courant / Devenir membre pour changer les choses / Signer une pétition."
 
-#: acf-translate.php:2219
+#: acf-translate.php:2258
 msgid "[Template]In Short"
 msgstr "[Modèle]En bref"
 
 #. nicht viel *lesen
-#: acf-translate.php:2234
+#: acf-translate.php:2273
 msgid "This is for visitors that don't want to read a lot.\n"
 "\n"
 "Provide the key facts, preferably in bullet points and add the main call to action below."
 msgstr "Ce texte s'adresse aux visiteurs/visiteuses pressé/es. Attire l'attention sur les principaux facteurs, idéalement sous la forme d'une liste à puces."
 
-#: acf-translate.php:922 acf-translate.php:2261 acf-translate.php:2905
-#: acf-translate.php:4429 acf-translate.php:5339 acf-translate.php:5530
+#: acf-translate.php:930 acf-translate.php:2300 acf-translate.php:2944
+#: acf-translate.php:4698 acf-translate.php:5608 acf-translate.php:5799
 msgid "Content"
 msgstr "Contenu"
 
-#: acf-translate.php:999 acf-translate.php:2276 acf-translate.php:3013
+#: acf-translate.php:1007 acf-translate.php:2315 acf-translate.php:3052
 #: lib/form/acf/input.php:42
 msgid "Text"
 msgstr "Texte"
 
-#: acf-translate.php:1189 acf-translate.php:1211 acf-translate.php:2102
-#: acf-translate.php:2305 acf-translate.php:2310
+#: acf-translate.php:1197 acf-translate.php:1219 acf-translate.php:2141
+#: acf-translate.php:2344 acf-translate.php:2349 acf-translate.php:3572
+#: acf-translate.php:3582
 msgid "Form"
 msgstr "Formulaire"
 
-#: acf-translate.php:2335
+#: acf-translate.php:2374
 msgid "Add In Short Content Block"
 msgstr "Ajouter un bloc de contenu «En bref»"
 
-#: acf-translate.php:2362
+#: acf-translate.php:2401
 msgid "[Template]Latest Press Release"
 msgstr "[Modèle]Dernier communiqué de presse"
 
-#: acf-translate.php:2409
+#: acf-translate.php:2448
 msgid "Select the category of your press releases."
 msgstr "Choisis la catégorie des communiqués de presse"
 
-#: acf-translate.php:2449
+#: acf-translate.php:2488
 msgid "[Template]Link Lists"
 msgstr "[Modèle]Liste de liens"
 
-#: acf-translate.php:2475
+#: acf-translate.php:2514
 msgid "Example: 'You might also be interested in' or ' Related content'"
 msgstr "Exemple : «Cela pourrait également t'intéresser» ou «Informations supplémentaires»"
 
 #. Leiterverkauf oder Leiter Verkauf? Mit anderen Worten: Sind es Listen von Links, die zu Blöcken verweisen, oder Blöcke mit Listen von Links (aufgrund des englischen Textes würde ich auf diese Variante tippen)? Oder sonst etwas?
-#: acf-translate.php:2491
+#: acf-translate.php:2530
 msgid "Link List Blocks"
 msgstr "Blocs de listes de liens"
 
-#: acf-translate.php:2506
+#: acf-translate.php:2545
 msgid "Manual Link List (Static)"
 msgstr "Liste de liens manuels (statiques)"
 
-#: acf-translate.php:2522
+#: acf-translate.php:2561
 msgid "Show a manually curated list of links. Links you add using this block will stay as you added them (static)."
 msgstr "Montre une liste de liens sélectionnés. Ces liens resteront tels que tu les ajoutes (statiques)."
 
-#: acf-translate.php:2549
+#: acf-translate.php:2588
 msgid "Linked Content"
 msgstr "Contenu mis en lien"
 
-#: acf-translate.php:2552
+#: acf-translate.php:2591
 msgid "Add up to four links to posts, pages, events or external links."
 msgstr "Ajoute jusqu'à quatre liens vers des articles, des pages ou des évènements, ou des liens externes."
 
-#: acf-translate.php:2589
+#: acf-translate.php:2628
 msgid "Single Post / Page / Event"
 msgstr "Article / page / évènement unique"
 
-#: acf-translate.php:2594
+#: acf-translate.php:2633
 msgid "Post / Page / Event"
 msgstr "Article / page / évènement"
 
-#: acf-translate.php:2633
+#: acf-translate.php:2672
 msgid "Auto Link List (Dynamic)"
 msgstr "Liste de liens automatique (dynamique)"
 
-#: acf-translate.php:2674
+#: acf-translate.php:2713
 msgid "Categories"
 msgstr "Catégories"
 
-#: acf-translate.php:2677
+#: acf-translate.php:2716
 msgid "Content is displayed if <strong>all categories match</strong>."
 msgstr "Le contenu qui <strong>correspond à toutes les catégories</strong> est affiché."
 
-#: acf-translate.php:2696
+#: acf-translate.php:2735
 msgid "Tags"
 msgstr "Mots-clés"
 
-#: acf-translate.php:2699
+#: acf-translate.php:2738
 msgid "Content is displayed if <strong>at lease one tag matches</strong>."
 msgstr "Le contenu qui <strong>correspond à au moins un mot-clé</strong> est affiché."
 
-#: acf-translate.php:2763
+#: acf-translate.php:2802
 msgid "Add Link List Block"
 msgstr "Ajouter un bloc de listes de liens"
 
-#: acf-translate.php:2948
+#: acf-translate.php:2987
 msgid "[Template]Map Block"
 msgstr "[Modèle] Bloc «carte»"
 
-#: acf-translate.php:2794
+#: acf-translate.php:2833
 msgid "About this Block – Advanced !"
 msgstr "Au sujet de ce bloc – ça se corse !"
 
-#: acf-translate.php:2805
+#: acf-translate.php:2844
 msgid "This is an advanced block. You'll need to know the fundamentals of SVG to use it. It can be used to display a map of your region with a nice popup for every region if it is clicked. As well as an engaging text to become a member."
 msgstr "Ce bloc est destiné aux utilisateurs / utilisatrices avancé/es. Des connaissances de bases en SVG (graphiques vectoriels adaptables) sont nécessaires pour le configurer. Ce bloc permet de créer une carte qui affiche, chaque fois que l'on clique sur une région, une magnifique fenêtre surgissante et un texte motivant le lecteur ou la lectrice à devenir membre."
 
 #. Pluriel (DE) ou singulier (EN) (ou Karten-SVG, mit Bindestrich?)
-#: acf-translate.php:2811
+#: acf-translate.php:2850
 msgid "Map SVG"
 msgstr "SVG carte"
 
 #. and die => und die
-#: acf-translate.php:2814
+#: acf-translate.php:2853
 msgid "Copy the SVG in here. Make sure the regions have the '.map-item' class and the id matches the id of the data."
 msgstr "Insère le SVG ici. Assure-toi que les régions disposent de la classe '.map-item' et que l'ID corresponde à l'ID des données."
 
-#: acf-translate.php:2829
+#: acf-translate.php:2868
 msgid "Map Data"
 msgstr "Données de la carte"
 
-#: acf-translate.php:2851
+#: acf-translate.php:2890
 msgid "This is used in the dropdown of the mobile version."
 msgstr "Cet élément est utilisé dans la liste déroulate de la version mobile."
 
-#: acf-translate.php:2867 lib/form/include/SubmissionExport.php:174
+#: acf-translate.php:2906 lib/form/include/SubmissionExport.php:174
 msgid "ID"
 msgstr "ID"
 
-#: acf-translate.php:2870
+#: acf-translate.php:2909
 msgid "This must match the id in the svg."
 msgstr "L'ID doit correspondre à l'iD dans le SVG."
 
 #. Popup-Inhalt
-#: acf-translate.php:2886
+#: acf-translate.php:2925
 msgid "Dialog Content"
 msgstr "Contenu de la fenêtre surgissante"
 
-#: acf-translate.php:2889
+#: acf-translate.php:2928
 msgid "The content block will be separated by margin and a slight line."
 msgstr "Le bloc de contenu sera séparé par une marge et une ligne fine."
 
 #. oder "un" wenn es sich um ein konkretes/bereits existierendes Element handelt
-#: acf-translate.php:2901
+#: acf-translate.php:2940
 msgid "Add Content"
 msgstr "Ajouter du contenu"
 
-#: acf-translate.php:3032
+#: acf-translate.php:3071
 msgid "Full Width (hidden)"
 msgstr "Utiliser toute la largeur (caché)"
 
-#: acf-translate.php:3104
+#: acf-translate.php:3143
 msgid "[Template]Person"
 msgstr "[Modèle]Personne"
 
-#: acf-translate.php:1141 acf-translate.php:1163 acf-translate.php:3108
-#: acf-translate.php:3540 acf-translate.php:4950
+#: acf-translate.php:1149 acf-translate.php:1171 acf-translate.php:3147
+#: acf-translate.php:3802 acf-translate.php:5219
 #: lib/post-types/PeopleType.php:14
 msgid "Person"
 msgstr "Personne"
 
-#: acf-translate.php:3111
+#: acf-translate.php:3150
 msgid "Select a person. Its name, photo and contact details will be displayed."
 msgstr "Choisis une personne. Son nom, sa photo et ses coordonnées seront affichées."
 
-#: acf-translate.php:3130
+#: acf-translate.php:3169
 msgid "Names supplement"
 msgstr "Complément de nom"
 
-#: acf-translate.php:3133
+#: acf-translate.php:3172
 msgid "Displayed next to the name. Use it to mark the city, year of birth etc. or leave it blank."
 msgstr "Cet élément sera affiché à côté du nom. Utilise-le pour indiquer la commune, la date de naissance ou une autre information, ou laisse-le vide."
 
-#: acf-translate.php:3149 acf-translate.php:3563 acf-translate.php:5221
+#: acf-translate.php:3188 acf-translate.php:3825 acf-translate.php:5490
 msgid "Role"
 msgstr "Rôle"
 
-#: acf-translate.php:3152
+#: acf-translate.php:3191
 msgid "Max 280 characters."
 msgstr "Max. 280 caractères"
 
-#: acf-translate.php:3168
+#: acf-translate.php:3207
 msgid "Additional Info"
 msgstr "Informations supplémentaires"
 
-#: acf-translate.php:3208
+#: acf-translate.php:3247
 msgid "[Template]Position"
 msgstr "[Modèle]Position"
 
-#: acf-translate.php:3212
+#: acf-translate.php:3251
 msgid "Position Block Title"
 msgstr "Titre du bloc «position»"
 
-#: acf-translate.php:3231 acf-translate.php:3250 acf-translate.php:3376
+#: acf-translate.php:3270 acf-translate.php:3289 acf-translate.php:3415
 msgid "Position"
 msgstr "Position"
 
-#: acf-translate.php:3246
+#: acf-translate.php:3285
 msgid "Add Position"
 msgstr "Ajouter une position"
 
-#: acf-translate.php:3253
+#: acf-translate.php:3292
 msgid "Keep it very short, use just a few keywords. Max 120 characters."
 msgstr "Sois très bref: contente-toi de quelques mots-clés. Max. 120 caractères"
 
-#: acf-translate.php:3271
+#: acf-translate.php:3310
 msgid "Read More Button Target"
 msgstr "Destination du bouton «Poursuivre la lecture»"
 
-#: acf-translate.php:3315
+#: acf-translate.php:3354
 msgid "[Template]Positions"
 msgstr "[Modèle]Positions"
 
-#: acf-translate.php:3330
+#: acf-translate.php:3369
 msgid "Use this block to display a teaser of your political positions. Make sure you link a page, that will further detail your position."
 msgstr "Utilise ce bloc pour afficher une accroche (teaser) des positions politiques. Assure-toi de mettre en lien une page qui présente ces positions de manière plus détaillée."
 
 #. Positionengruppe / Positionen-gruppe
-#: acf-translate.php:3357
+#: acf-translate.php:3396
 msgid "Positions Group"
 msgstr "Groupe «positions»"
 
-#: acf-translate.php:3372
+#: acf-translate.php:3411
 msgid "Add Position Block"
 msgstr "Ajouter un groupe «positions»"
 
-#: acf-translate.php:3452
+#: acf-translate.php:3491
 msgid "[Template]Post selector"
 msgstr "[Modèle]Sélectionner un article"
 
-#: acf-translate.php:3456 acf-translate.php:3645 acf-translate.php:4187
+#: acf-translate.php:3495 acf-translate.php:3907 acf-translate.php:4456
 msgid "Post"
 msgstr "Article"
 
-#: acf-translate.php:3648 acf-translate.php:4006
+#: acf-translate.php:3910 acf-translate.php:4275
 msgid "Select the post to display. The excerpt and the image of the post, will be displayed."
 msgstr "Choisis l'article à afficher. L'accroche (teaser) et l'image de l'article seront affichées."
 
-#: acf-translate.php:3500
+#: acf-translate.php:3762
 msgid "[Template]Quote"
 msgstr "[Modèle]Citation"
 
-#: acf-translate.php:3515
+#: acf-translate.php:3777
 msgid "Displays a nicely formatted quote of any person you added in your people section. The image will automatically be pulled from the persons record."
 msgstr "Affiche une citation avec un formatage professionnel d'une personne que tu as ajoutée dans la rubrique «Personnes»."
 
-#: acf-translate.php:968 acf-translate.php:973 acf-translate.php:3521
-#: acf-translate.php:5202
+#: acf-translate.php:976 acf-translate.php:981 acf-translate.php:3783
+#: acf-translate.php:5471
 msgid "Quote"
 msgstr "Citation"
 
-#: acf-translate.php:3524
+#: acf-translate.php:3786
 msgid "Max 280 character."
 msgstr "Max. 280 caractères"
 
-#: acf-translate.php:3543
+#: acf-translate.php:3805
 msgid "Select a person defined in the 'Peoples' menu. The name and the image of this person will be used to display the quote."
 msgstr "Choisis une personne qui a été définie dans la rubrique «Personnes». Le nom et la photo de cette personne seront affichés avec la citation."
 
-#: acf-translate.php:3566
+#: acf-translate.php:3828
 msgid "Example: President of the Greens Uri"
 msgstr "Exemple: Présidente des Verts du canton d'Uri"
 
-#: acf-translate.php:3603
+#: acf-translate.php:3865
 msgid "[Template]Single Post"
 msgstr "[Modèle]Article individuelle"
 
-#: acf-translate.php:3618
+#: acf-translate.php:3880
 msgid "Display a teaser of any post or page."
 msgstr "Affiche une accroche (teaser) d'un article ou d'une page."
 
-#: acf-translate.php:3666 acf-translate.php:4339 functions.php:147
+#: acf-translate.php:3928 acf-translate.php:4608 functions.php:147
 msgid "Footer"
 msgstr "Pied de page"
 
-#: acf-translate.php:3669
+#: acf-translate.php:3931
 msgid "Immediate call to action."
 msgstr "Appel à agir immédiatement"
 
-#: acf-translate.php:3681
+#: acf-translate.php:3943
 msgid "Call to Action Link"
 msgstr "Lien vers l'appel à agir"
 
-#: acf-translate.php:3684
+#: acf-translate.php:3946
 msgid "Add anchor link to the call to action form."
 msgstr "Ajoute une ancre (lien interne à la page) vers le formulaire de l'appel à agir."
 
-#: acf-translate.php:3697
+#: acf-translate.php:3959
 msgid "Call to Action Button Text"
 msgstr "Texte du bouton de l'appel à agir"
 
-#: acf-translate.php:3723
+#: acf-translate.php:3985
 msgid "Call to Action Description"
 msgstr "Description de l'appel à agir"
 
-#: acf-translate.php:3726
+#: acf-translate.php:3988
 msgid "One very short sentence that explains why someone should click the call to action. Example: I want to get active against GMO."
 msgstr "Une phrase très courte donnant une raison de cliquer sur l'appel à agir. Exemple: Je veux me mobiliser contre les OGM."
 
-#: acf-translate.php:3772
+#: acf-translate.php:4034
 msgid "[Template]Teaser"
 msgstr "[Modèle]Accroche (teaser)"
 
 #. Suchmachinen oder interne Suche oder beides?
-#: acf-translate.php:3779
+#: acf-translate.php:4041
 msgid "<strong>The first 280 characters</strong> will be used as preview text on the front page, archive pages and for search results."
 msgstr "Les <strong>280 premiers caractères</strong> sont affichés en tant qu'aperçu sur la page d'accueil, dans les pages d'archivage ainsi que dans les résultats d'une recherche."
 
-#: acf-translate.php:3795
+#: acf-translate.php:4057
 msgid "Use for preview only (hide on page)"
 msgstr "Afficher uniquement en tant qu'aperçu (masquer sur cette page)"
 
 #. dt. TeAser
-#: acf-translate.php:3806
+#: acf-translate.php:4068
 msgid "If yes, the teaser will only be shown as preview text but not on the page itself."
 msgstr "Si cette option est sélectionnée, l'accroche (teaser) ne sera affichée qu'en tant qu'aperçu, mais pas sur la page elle-même."
 
-#: acf-translate.php:3835
+#: acf-translate.php:4097
 msgid "[Template]Testimonials"
 msgstr "[Modèle]Témoignages"
 
-#: acf-translate.php:3850
+#: acf-translate.php:4112
 msgid "Display some fancy testimonials. Make sure you add the testimonials with the corresponding <strong>category</strong> in the peoples section."
 msgstr "Affiche des témoignages\n"
 "Vérifie que les témoignages figurent dans la même <strong>category</strong> dans la rubrique «Personnes»."
 
-#: acf-translate.php:1283 acf-translate.php:3896 acf-translate.php:4850
-#: acf-translate.php:4855 acf-translate.php:5183
+#: acf-translate.php:1322 acf-translate.php:4158 acf-translate.php:5119
+#: acf-translate.php:5124 acf-translate.php:5452
 msgid "Testimonials"
 msgstr "Témoignages"
 
 #. Was für Kategorien? Personen, z.B. Politikerin/Wirtschaft/NGO/...?
-#: acf-translate.php:3899
+#: acf-translate.php:4161
 msgid "Select the testimonials to display by its category."
 msgstr "Choisis les témoignages à afficher en fonction de leur catégorie."
 
-#: acf-translate.php:3918
-msgid "Layout"
-msgstr "Mise en page"
-
-#: acf-translate.php:3921
-msgid "Choose vertical for the front page"
-msgstr "Choisis <i>vertical</i> pour la page d'accueil"
-
-#: acf-translate.php:3930
-msgid "Vertical"
-msgstr "Vertical"
-
-#: acf-translate.php:3931
-msgid "Horizontal"
-msgstr "Horizontal"
-
-#: acf-translate.php:3961
+#: acf-translate.php:4230
 msgid "[Template]Two Posts"
 msgstr "[Modèle]Deux articles"
 
 #. zeigT?
-#: acf-translate.php:3976
+#: acf-translate.php:4245
 msgid "Displays two teasers of any post or page."
 msgstr "Affiche deux accroches (teaser) d'un article ou d'une page"
 
-#: acf-translate.php:4003
+#: acf-translate.php:4272
 msgid "Post 1"
 msgstr "Article n° 1"
 
-#: acf-translate.php:4024
+#: acf-translate.php:4293
 msgid "Post 2"
 msgstr "Article n° 2"
 
 #. Dans le segment précédent, il est question de "proposals" ("recommEndation" s'écrit ainsi en anglais)
-#: acf-translate.php:4081
+#: acf-translate.php:4350
 msgid "Displays voting recommendations."
 msgstr "Montre les recommandations de vote"
 
-#: acf-translate.php:4155
+#: acf-translate.php:4424
 msgid "External (URL)"
 msgstr "Externe (URL)"
 
-#: acf-translate.php:4231
+#: acf-translate.php:4500
 msgid "External Link (URL)"
 msgstr "Lien externe (URL)"
 
-#: acf-translate.php:4315
+#: acf-translate.php:4584
 msgid "What do you recommend to vote?"
 msgstr "Quelle est ta recommandation pour cette votation?"
 
-#: acf-translate.php:4324
+#: acf-translate.php:4593
 msgid "Yes"
 msgstr "Oui"
 
-#: acf-translate.php:4325
+#: acf-translate.php:4594
 msgid "No"
 msgstr "Non"
 
-#: acf-translate.php:4326
+#: acf-translate.php:4595
 msgid "-"
 msgstr "-"
 
-#: acf-translate.php:4342
+#: acf-translate.php:4611
 msgid "Only displayed, if link is set."
 msgstr "N'est affiché que si un lien a été défini."
 
-#: acf-translate.php:4354
+#: acf-translate.php:4623
 msgid "All Votations Link"
 msgstr "Tous les liens vers les votations"
 
-#: acf-translate.php:4357
+#: acf-translate.php:4626
 msgid "Page with link to all vote recommendations (national, cantonal, community)."
 msgstr "Page avec liens vers toutes les recommandations de vote (niveaux national, cantonal et municipal)"
 
-#: acf-translate.php:4376
+#: acf-translate.php:4645
 msgid "Link Text"
 msgstr "Texte du lien"
 
-#: acf-translate.php:4544
+#: acf-translate.php:4813
 msgid "Event Description"
 msgstr "Description de l'évènement"
 
-#: acf-translate.php:4551
+#: acf-translate.php:4820
 msgid "Displayed in the teaser only."
 msgstr "Est affiché uniquement dans l'accroche (teaser)"
 
-#: acf-translate.php:2071 acf-translate.php:4572
-#: lib/form/acf/form-details.php:770
+#: acf-translate.php:2110 acf-translate.php:4841
+#: lib/form/acf/form-details.php:783
 msgid "Description"
 msgstr "Description"
 
-#: acf-translate.php:4624
+#: acf-translate.php:4893
 msgid "Front page"
 msgstr "Page d'accueil"
 
-#: acf-translate.php:4628
+#: acf-translate.php:4897
 msgid "Main Campaign"
 msgstr "Campagne principale"
 
-#: acf-translate.php:4649
+#: acf-translate.php:4918
 msgid "Content Blocks"
 msgstr "Blocs de contenu"
 
-#: acf-translate.php:4695
+#: acf-translate.php:4964
 msgid "Single Post / Page Teaser"
 msgstr "Accroche (teaser) individuelle"
 
-#: acf-translate.php:4700 acf-translate.php:5689
+#: acf-translate.php:4969 acf-translate.php:5958
 msgid "Post / Page"
 msgstr "Article / page"
 
 #. Bitte überprüfen - was ist mit Doppel gemeint?
-#: acf-translate.php:4726
+#: acf-translate.php:4995
 msgid "Double Post / Page Teaser"
 msgstr "Accroche (teaser) pour deux éléments (pages et/ou articles)"
 
-#: acf-translate.php:4757 acf-translate.php:4762
+#: acf-translate.php:5026 acf-translate.php:5031
 msgid "Latest Press Release"
 msgstr "Communiqué de presse le plus récent"
 
-#: acf-translate.php:4788 acf-translate.php:4793 page.php:49
+#: acf-translate.php:5057 acf-translate.php:5062 page.php:49
 msgid "Events"
 msgstr "Évènements"
 
-#: acf-translate.php:4819 acf-translate.php:4824
+#: acf-translate.php:5088 acf-translate.php:5093
 msgid "Positions"
 msgstr "Positions"
 
 #. Kartenblock ? Oder Mehrzahl?
-#: acf-translate.php:3062 acf-translate.php:4881 acf-translate.php:4886
+#: acf-translate.php:3101 acf-translate.php:5150 acf-translate.php:5155
 msgid "Map Block"
 msgstr "Bloc «cartes»"
 
-#: acf-translate.php:1362 acf-translate.php:4910
+#: acf-translate.php:1401 acf-translate.php:5179
 msgid "Add Content Block"
 msgstr "Ajouter un bloc «contenu»"
 
-#: acf-translate.php:4954
+#: acf-translate.php:5223
 msgid "Full Name"
 msgstr "Nom et prénom"
 
-#: acf-translate.php:4973
+#: acf-translate.php:5242
 msgid "Portrait Photo"
 msgstr "Photo (portrait)"
 
-#: acf-translate.php:4997 lib/widgets/ContactWidget.php:25
+#: acf-translate.php:5266 lib/widgets/ContactWidget.php:25
 #: lib/widgets/ContactWidget.php:31 templates/molecules/m-person.twig:82
 msgid "Contact"
 msgstr "Coordonnées"
 
-#: acf-translate.php:5012 acf-translate.php:5017 lib/form/acf/input.php:43
+#: acf-translate.php:5281 acf-translate.php:5286 lib/form/acf/input.php:43
 msgid "Email"
 msgstr "Courriel"
 
-#: acf-translate.php:5040 acf-translate.php:5045 lib/form/acf/input.php:44
+#: acf-translate.php:5309 acf-translate.php:5314 lib/form/acf/input.php:44
 msgid "Phone"
 msgstr "Téléphone"
 
-#: acf-translate.php:5069 acf-translate.php:5074
+#: acf-translate.php:5338 acf-translate.php:5343
 msgid "Website"
 msgstr "Site web"
 
-#: acf-translate.php:5100
+#: acf-translate.php:5369
 msgid "Twitter Name"
 msgstr "Pseudo Twitter"
 
-#: acf-translate.php:5103 acf-translate.php:5158
+#: acf-translate.php:5372 acf-translate.php:5427
 msgid "Use @name"
 msgstr "Utilise @nomd'utilisateur"
 
-#: acf-translate.php:5132
+#: acf-translate.php:5401
 msgid "Use the URL to the profile or page"
 msgstr "Utilise l'URL du profil ou de la page "
 
-#: acf-translate.php:5155
+#: acf-translate.php:5424
 msgid "Instagram Name"
 msgstr "Pseudo Instagram"
 
 #. Eine Person oder einen Kontaktkanal?
-#: acf-translate.php:5177
+#: acf-translate.php:5446
 msgid "Add Contact"
 msgstr "Ajouter des coordonnées"
 
-#: acf-translate.php:5186
+#: acf-translate.php:5455
 msgid "Displayed by the testimonials block (≠ quote block)."
 msgstr "Sera affiché par le bloc «témoignage» (≠ bloc «citation»)."
 
-#: acf-translate.php:5198
+#: acf-translate.php:5467
 msgid "Add Testimonial"
 msgstr "Ajouter un témoignage"
 
-#: acf-translate.php:5205
+#: acf-translate.php:5474
 msgid "Max 280 characters"
 msgstr "Max. 280 caractères"
 
-#: acf-translate.php:5224
+#: acf-translate.php:5493
 msgid "Optional. Example: President Greens Fribourg, Business owner"
 msgstr "Facultatif. Exemple: Présidente des Verts du canton d'Argovie, entrepreneuse"
 
-#: acf-translate.php:5240 lib/post-types/PeopleType.php:50
+#: acf-translate.php:5509 lib/post-types/PeopleType.php:50
 msgid "Testimonial Category"
 msgstr "Catégorie de témoignage"
 
-#: acf-translate.php:5243
+#: acf-translate.php:5512
 msgid "To present testimonials you will have to select the testimonials by category, so <strong>assign the same category to all testimonials you want to display in the same collection</strong>."
 msgstr "Pour afficher des témoignages, tu dois les choisir dans une catégorie. Par conséquent, il est nécessaire d'<strong>attribuer la même catégorie à tous les témoignages devant être affichés dans la même collection</strong>."
 
 #. Template Name of the plugin/theme
-#: acf-translate.php:5299
+#: acf-translate.php:5568
 msgid "Press Release"
 msgstr "Communiqué de presse"
 
-#: acf-translate.php:5303 acf-translate.php:5649
+#: acf-translate.php:5572 acf-translate.php:5918
 msgid "Lead"
 msgstr "Chapeau"
 
-#: acf-translate.php:5324 acf-translate.php:5491 acf-translate.php:5670
+#: acf-translate.php:5593 acf-translate.php:5760 acf-translate.php:5939
 msgid "Main Content"
 msgstr "Contenu principal"
 
 #. Au pluriel en anglais, mais pas en allemand. Je mets le pluriel, car c'est la seule distinction d'avec le segment suivant.
-#: acf-translate.php:5362 acf-translate.php:5553
+#: acf-translate.php:5631 acf-translate.php:5822
 msgid "Link Lists"
 msgstr "Listes de liens"
 
-#: acf-translate.php:5377 acf-translate.php:5568
+#: acf-translate.php:5646 acf-translate.php:5837
 #: lib/widgets/LinkListWidget.php:23
 msgid "Link List"
 msgstr "Liste de liens"
 
-#: acf-translate.php:5400
+#: acf-translate.php:5669
 msgid "Settings"
 msgstr "Paramètres"
 
-#: acf-translate.php:5415
+#: acf-translate.php:5684
 msgid "Show on front page"
 msgstr "Afficher sur la page d'accueil"
 
 #. stellen, um (mit Komma)
-#: acf-translate.php:5418
+#: acf-translate.php:5687
 msgid "Set this to false, to hide it from the 'Latest Press Release' block on the front page."
 msgstr "Désactiver cette option pour éviter l'affichage de cet élément dans le bloc <i>Communiqués de presse les plus récents</i> sur la page d'accueil."
 
-#: acf-translate.php:5466
+#: acf-translate.php:5735
 msgid "Default"
 msgstr "Par défaut"
 
-#: acf-translate.php:5506
+#: acf-translate.php:5775
 msgid "Header Image"
 msgstr "Image du titre"
 
-#: acf-translate.php:925
+#: acf-translate.php:933
 msgid "This is the main section of this page."
 msgstr "Cet élément est la zone principale de la page."
 
-#: acf-translate.php:937 acf-translate.php:942
+#: acf-translate.php:945 acf-translate.php:950
 msgid "In Short"
 msgstr "En bref"
 
-#: acf-translate.php:1015
+#: acf-translate.php:1023
 msgid "Use this block to add text. If you need to add raw HTML, make sure you use the 'text' mode instead of the 'visual' mode."
 msgstr "Utilise ce bloc pour ajouter du texte. Assure-toi d'utiliser le mode <i>texte</i> plutôt que le mode <i>visuel</i> s'il te faut ajouter du code HTML."
 
-#: acf-translate.php:1098 acf-translate.php:1120
+#: acf-translate.php:1106 acf-translate.php:1128
 msgid "Video / Tweet / Post etc."
 msgstr "Vidéo / tweet / post etc."
 
-#: acf-translate.php:1114
+#: acf-translate.php:1122
 msgid "Use this block to embed some posts, tweets, youtube videos etc. Just paste the link to the resource to embed and wait for the preview. If no preview appears, auto-embedding is not supported. You can then use a text block, switch to the text mode (on the upper right corner) and paste in the embed code provided from the platform that hosts the content."
 msgstr "Utilise ce bloc pour intégrer des tweets, des posts, des vidéos youtube, etc. Pour cela, ajoute simplement l'URL de la ressource à intégrer et attends que l'aperçu s'affiche. Dans ce cas, utilise un bloc de texte, passe au mode texte (en haut à droite) et ajoute le code fourni par la plateforme où se trouve le contenu en question (<i>Embed-Code</i>)."
 
-#: acf-translate.php:1123
+#: acf-translate.php:1131
 msgid "Make sure you use the url to the tweet, post or video itself and not to the timeline."
 msgstr "Utilise l'URL du tweet, du post ou de la vidéo en tant que tel(le), et non pas l'URL de l'ensemble du fil d'actualité."
 
-#: acf-translate.php:1157
+#: acf-translate.php:1165
 msgid "Use this block to present your members of parliament, your candidates etc."
 msgstr "Utilise ce bloc pour présenter tes parlementaires, candidat/es, etc."
 
-#: acf-translate.php:1205
+#: acf-translate.php:1213
 msgid "Show a form"
 msgstr "Afficher un formulaire"
 
-#: acf-translate.php:5645
+#: acf-translate.php:5914
 msgid "Overview"
 msgstr "Vue d'ensemble"
 
-#: acf-translate.php:5685
+#: acf-translate.php:5954
 msgid "Add Post / Page"
 msgstr "Ajouter un article ou une page"
 
-#: acf-translate.php:5692
+#: acf-translate.php:5961
 msgid "Select the post or page, that should be displayed."
 msgstr "Choisis l'article ou la page à afficher."
 
-#: acf-translate.php:5767
+#: acf-translate.php:6036
 msgid "Display Share Buttons"
 msgstr "Afficher le bouton «Partager»"
 
 #. of => auf
-#: acf-translate.php:5770
+#: acf-translate.php:6039
 msgid "You can hide the share buttons of this page, by disabling this option."
 msgstr "Tu peux masquer les boutons «Partager» sur cette page en désactivant cette option."
 
@@ -1102,17 +1088,17 @@ msgstr "Calendrier"
 msgid "Add to Menu"
 msgstr "Aujouter au menu"
 
-#: lib/controllers/navigation.php:101
+#: lib/controllers/navigation.php:141
 msgctxt "short date format"
 msgid "y-m-d"
 msgstr "d.m.y"
 
-#: lib/controllers/navigation.php:61
+#: lib/controllers/navigation.php:74
 msgctxt "Example: 21.03.2018: Delegiertenversammlung"
 msgid "%s: %s"
 msgstr "%s: %s"
 
-#: lib/controllers/navigation.php:187 lib/customizer/GetActive.php:43
+#: lib/controllers/navigation.php:227 lib/customizer/GetActive.php:43
 msgid "Get Active"
 msgstr "Participer"
 
@@ -1230,43 +1216,43 @@ msgstr "Définis les champs du formulaire."
 msgid "Add field"
 msgstr "Ajouter un champ"
 
-#: lib/form/acf/form-details.php:699
+#: lib/form/acf/form-details.php:712
 msgid "Submit"
 msgstr "Envoyer"
 
-#: lib/form/acf/form-details.php:726
+#: lib/form/acf/form-details.php:739
 msgid "Configure the submit buttons."
 msgstr "Configure les boutons pour envoyer le formulaire."
 
-#: lib/form/acf/form-details.php:732 lib/widgets/ButtonWidget.php:23
+#: lib/form/acf/form-details.php:745 lib/widgets/ButtonWidget.php:23
 msgid "Button"
 msgstr "Bouton"
 
-#: lib/form/acf/form-details.php:751
+#: lib/form/acf/form-details.php:764
 msgid "Button Submitting"
 msgstr "Bouton pendant l'envoi"
 
-#: lib/form/acf/form-details.php:762
+#: lib/form/acf/form-details.php:775
 msgid "Sending"
 msgstr "Envoi en cours"
 
-#: lib/form/acf/form-details.php:773
+#: lib/form/acf/form-details.php:786
 msgid "Why someone should fill in this form. Displayed next to the submit button."
 msgstr "Donne des raisons pour remplir le formulaire. Est affiché à côté du bouton «Envoyer»."
 
-#: lib/form/acf/form-details.php:790
+#: lib/form/acf/form-details.php:803
 msgid "After Submit"
 msgstr "Après l'envoi"
 
-#: lib/form/acf/form-details.php:806
+#: lib/form/acf/form-details.php:819
 msgid "Success"
 msgstr "Réussite"
 
-#: lib/form/acf/form-details.php:862
+#: lib/form/acf/form-details.php:875
 msgid "Thank you for your support!"
 msgstr "Merci beaucoup de ton soutien!"
 
-#: lib/form/acf/form-details.php:870
+#: lib/form/acf/form-details.php:883
 msgid "Message"
 msgstr "Message"
 
@@ -1548,6 +1534,7 @@ msgstr "Recherche"
 
 #. translators: 1: month name, 2: 4-digit year
 #: lib/form/helpers/class-wp-list-table.php:581
+#: vendor/timber/timber/lib/Archives.php:160
 msgid "%1$s %2$d"
 msgstr "%1$s %2$d"
 
@@ -1572,11 +1559,11 @@ msgstr "Meta-navigation"
 msgid "Toggle navigation"
 msgstr "Afficher la navigation"
 
-#: templates/atoms/a-pagination.twig:13 templates/atoms/a-pagination.twig:15
+#: templates/atoms/a-pagination.twig:4 templates/atoms/a-pagination.twig:6
 msgid "Previous Page"
 msgstr "Page précédente"
 
-#: templates/atoms/a-pagination.twig:36 templates/atoms/a-pagination.twig:38
+#: templates/atoms/a-pagination.twig:27 templates/atoms/a-pagination.twig:29
 msgid "Next Page"
 msgstr "Page suivante"
 
@@ -1623,15 +1610,15 @@ msgstr "Place"
 msgid "Save to calendar"
 msgstr "Créer une entrée dans le calendrier"
 
-#: templates/molecules/m-form.twig:179
+#: templates/molecules/m-form.twig:180
 msgid "Uups, something went wrong!"
 msgstr "Oups, il y a eu une erreur!"
 
-#: templates/molecules/m-form.twig:180
+#: templates/molecules/m-form.twig:182
 msgid "Sorry, there was an error submitting this form. If the error persists, please contact us by email."
 msgstr "Nous sommes désolés, une erreur s'est produite lors de l'envoi du formulaire. Merci de nous contacter par courriel si cette erreur se reproduit."
 
-#: templates/molecules/m-form.twig:184
+#: templates/molecules/m-form.twig:186
 msgid "Please check input"
 msgstr "Merci de vérifier les informations saisies."
 
@@ -1711,36 +1698,36 @@ msgstr "Les Verts"
 msgid "Overview Page"
 msgstr "Page synoptique"
 
-#: acf-translate.php:1433
+#: acf-translate.php:1472
 msgid "Visitors can always see all events by clicking the «Show all events»-Button."
 msgstr "En cliquant sur <strong>no categories</strong>"
 
 #. <i> vor "ganze Breite"
-#: acf-translate.php:1454
+#: acf-translate.php:1493
 msgid "If full width, the block will span the whole page (both columns) else it will only take the place of a single column block."
 msgstr "Si l'option <i>Utiliser toute la largeur</i> est sélectionnée, le bloc occupera toute la place (les deux colonnes). Autrement, il prendra la place d'un bloc d'une colonne de large."
 
-#: acf-translate.php:2264
+#: acf-translate.php:2303
 msgid "Add a brief description. Then add a call to action."
 msgstr "Insère tout d'abord une brève description, puis un appel à agir."
 
-#: acf-translate.php:2284
+#: acf-translate.php:2323
 msgid "Use bullet points, if possible."
 msgstr "Utilise une liste à puces si possible."
 
-#: acf-translate.php:2638
+#: acf-translate.php:2677
 msgid "Show Teaser"
 msgstr "Afficher l'accroche (teaser)"
 
-#: acf-translate.php:2641
+#: acf-translate.php:2680
 msgid "If true, the teaser of every content element is shown. This block will then span the whole content area (both columns)."
 msgstr "Si cette option est sélectionnée, l'accroche (teaser) de chaque élément de contenu est affiché. Ce bloc occupe toute la largeur (les deux colonnes)."
 
-#: acf-translate.php:2657
+#: acf-translate.php:2696
 msgid "Filter criteria"
 msgstr "Critères du filtre"
 
-#: acf-translate.php:2660
+#: acf-translate.php:2699
 msgid "The latest content that matches <strong>all</strong> of the selected categories and <strong>at least one</strong> of the selected tags will be displayed.<br><br>\n"
 "\n"
 "If <strong>no tags</strong> are selected, content matching all of the categories will be displayed. If <strong>no categories</strong> are selected, all content matching any of the tags will be displayed."
@@ -1748,19 +1735,19 @@ msgstr "Le contenu affiché est le contenu le plus récent qui correspond à <st
 "\n"
 "Si <strong>aucun</strong> mot-clé n'est sélectionné, tout contenu correspondant à toutes les catégories sera affiché. Si <strong>aucune catégorie</strong> n'est sélectionnée, tout contenu correspondant à au moins un mot-clé sera affiché."
 
-#: acf-translate.php:3459
+#: acf-translate.php:3498
 msgid "Select the post to display. The teaser and the image of the post, will be displayed."
 msgstr "Sélectionne l'article à afficher. L'accroche (teaser) et l'image de l'article seront affichées."
 
-#: acf-translate.php:4130
+#: acf-translate.php:4399
 msgid "Where visitors can read more about this bill."
 msgstr "Où les lectrices / lecteurs peuvent trouver davantages d'informations sur cet objet"
 
-#: acf-translate.php:4731
+#: acf-translate.php:5000
 msgid "Two Posts / Pages"
 msgstr "Deux articles / pages"
 
-#: acf-translate.php:2377
+#: acf-translate.php:2416
 msgid "Display the latest press release (as long as it is published under the category you set below). Posts where the flag 'Show on front page' is set to false will be excluded.\n"
 "\n"
 "If the press release contains a quote block, the quote will be displayed. Else the lead is shown."
@@ -1768,27 +1755,27 @@ msgstr "Affiche le dernier communiqué de presse (à condition qu'il ait été p
 "\n"
 "Si le communiqué de presse contient un bloc «citation», c'est celui-ci qui sera affiché. Autrement, ce sera le chapeau."
 
-#: acf-translate.php:4066
+#: acf-translate.php:4335
 msgid "[Template]Vote Recommendations"
 msgstr "[Modèle]Recommandations de vote"
 
-#: acf-translate.php:4108
+#: acf-translate.php:4377
 msgid "Recommendations"
 msgstr "Recommandations"
 
-#: acf-translate.php:4123
+#: acf-translate.php:4392
 msgid "Add recommendation"
 msgstr "Ajouter une recommandation"
 
-#: acf-translate.php:4312
+#: acf-translate.php:4581
 msgid "Recommendation"
 msgstr "Recommandation"
 
-#: acf-translate.php:4664
+#: acf-translate.php:4933
 msgid "Vote Recommendations"
 msgstr "Recommandations de vote"
 
-#: acf-translate.php:4669
+#: acf-translate.php:4938
 msgid "Vote Recommendation"
 msgstr "Recommandation de vote"
 
@@ -1856,31 +1843,31 @@ msgstr "Webling"
 msgid "Webling Field"
 msgstr "Champ Webling"
 
-#: lib/form/acf/form-details.php:569
+#: lib/form/acf/form-details.php:582
 msgid "Replace"
 msgstr "Remplacer"
 
-#: lib/form/acf/form-details.php:568
+#: lib/form/acf/form-details.php:581
 msgid "Append"
 msgstr "Ajouter"
 
-#: lib/form/acf/form-details.php:566
+#: lib/form/acf/form-details.php:579
 msgid "Add if empty"
 msgstr "Ajouter si vide"
 
-#: lib/form/acf/form-details.php:581
+#: lib/form/acf/form-details.php:594
 msgid "Hidden Field"
 msgstr "Champ masqué"
 
-#: lib/form/acf/form-details.php:584
+#: lib/form/acf/form-details.php:597
 msgid "Use this option to add a value to every persons record that submits this form."
 msgstr "Utilise cette option pour ajouter une valeur individuelle pour chaque personne remplissant le formulaire"
 
-#: lib/form/acf/form-details.php:600
+#: lib/form/acf/form-details.php:613
 msgid "Hide this field from the website visitor"
 msgstr "Masquer ce champ pour les visiteurs/visiteuses du site"
 
-#: lib/form/acf/form-details.php:608 lib/form/acf/form-details.php:651
+#: lib/form/acf/form-details.php:621 lib/form/acf/form-details.php:664
 msgid "Field Value"
 msgstr "Valeur du champ"
 
@@ -2023,15 +2010,15 @@ msgstr "Sélectionne le champ de Webling qui correspond à ce champ."
 msgid "Sorry, we couldn't find what you're looking for. Have you tried the search?"
 msgstr "Pardon, mais nous n'avons pas trouvé le contenu recherché. La fonction «Recherche» peut t'aider à trouver davantage de résultats."
 
-#: acf-translate.php:4127
+#: acf-translate.php:4396
 msgid "Recommendation Link"
 msgstr "Lien de la recommandation"
 
-#: acf-translate.php:4210
+#: acf-translate.php:4479
 msgid "Title Overwrite (optional)"
 msgstr "Écraser le titre (facultatif)"
 
-#: acf-translate.php:4213
+#: acf-translate.php:4482
 msgid "Leave blank, to use the posts title."
 msgstr "Laisser vide pour utiliser le titre de l'article"
 
@@ -2055,19 +2042,19 @@ msgstr "Exporte les réponses du formulaire \"%s\" et des formulaires qui y sont
 msgid "Export .xlsx"
 msgstr "Exporter au format .xlsx"
 
-#: lib/form/acf/form-details.php:809
+#: lib/form/acf/form-details.php:822
 msgid "What should happen after the form was successfully submitted?"
 msgstr "Quelle doit être l'étape suivant l'envoi réussi du formulaire ?"
 
-#: lib/form/acf/form-details.php:833
+#: lib/form/acf/form-details.php:846
 msgid "Show message (inline)"
 msgstr "Afficher un message (même page)"
 
-#: lib/form/acf/form-details.php:834
+#: lib/form/acf/form-details.php:847
 msgid "Redirect to post / page"
 msgstr "rediriger vers un article / une page"
 
-#: lib/form/acf/form-details.php:897
+#: lib/form/acf/form-details.php:910
 msgid "Redirect to"
 msgstr "Transmettre à"
 
@@ -2192,11 +2179,11 @@ msgstr "Thème réalisé sur mesure pour les VERTS en Suisse. Conçu par superhu
 msgid "superhuit.ch & gruene.ch"
 msgstr "superhuit.ch & verts.ch"
 
-#: page.php:54
+#: page.php:55
 msgid "Upcoming events"
 msgstr "Évènements à venir"
 
-#: page.php:59
+#: page.php:60
 msgid "Previous events"
 msgstr "Archives des évènements"
 
@@ -2212,70 +2199,70 @@ msgstr "Est daté"
 msgid "Should a date be displayed with all posts categorized in this category?"
 msgstr "Indiquer la date pour toutes les publications de cette catégorie ?"
 
-#: acf-translate.php:918
+#: acf-translate.php:926
 msgid "[Template]Default Content"
 msgstr "[Modèle]Contenu standard"
 
-#: acf-translate.php:1238 acf-translate.php:1260 acf-translate.php:4475
+#: acf-translate.php:1277 acf-translate.php:1299 acf-translate.php:4744
 msgid "Code"
 msgstr "Code"
 
-#: acf-translate.php:1508
+#: acf-translate.php:1547
 msgid "Show Main Campaign"
 msgstr "Afficher la campagne principale"
 
-#: acf-translate.php:1522
+#: acf-translate.php:1561
 msgid "Show"
 msgstr "Afficher"
 
-#: acf-translate.php:1523
+#: acf-translate.php:1562
 msgid "Hide"
 msgstr "Masquer"
 
 #. setzte - setze
-#: acf-translate.php:2015
+#: acf-translate.php:2054
 msgid "Link the main page of this campaign and set an accurate \"read more\" text for the link button."
 msgstr "Crée un lien vers la page principale de cette campagne et définis un texte adapté pour le lien-bouton « poursuivre la lecture »."
 
-#: acf-translate.php:2090
+#: acf-translate.php:2129
 msgid "Action Type"
 msgstr "Type d'action"
 
-#: acf-translate.php:2103
+#: acf-translate.php:2142
 msgid "Action Button"
 msgstr "Bouton Action"
 
-#: acf-translate.php:2104
+#: acf-translate.php:2143
 msgid "Link Button"
 msgstr "lien-bouton"
 
-#: acf-translate.php:2113
+#: acf-translate.php:2152
 msgid "Call to Action (Form)"
 msgstr "Appel à agir (formulaire)"
 
-#: acf-translate.php:2116
+#: acf-translate.php:2155
 msgid "Displays directly the form with the call to action."
 msgstr "Affiche directement le formulaire avec l'appel à agir"
 
-#: acf-translate.php:2143
+#: acf-translate.php:2182
 msgid "Call to Action (Button)"
 msgstr "Appel à agir (bouton)"
 
-#: acf-translate.php:2146
+#: acf-translate.php:2185
 msgid "Displays the link to your action page as a magenta button."
 msgstr "Affiche le lien vers ta page Action sous la forme d'un bouton magenta"
 
-#: acf-translate.php:2166
+#: acf-translate.php:2205
 msgid "Call to Action (Link Button)"
 msgstr "Appel à agir (lien-bouton)"
 
 #. em -> dem (in der deutschen Version)
-#: acf-translate.php:2169
+#: acf-translate.php:2208
 msgid "Displays the link to further reading as link button (the green one with >)."
 msgstr "Affiche le lien pour poursuivre la lecture en tant que lien-bouton (il s'agit du bouton vert avec la flèche >)."
 
 #. (auto link list) => (liste de liens automatique)
-#: acf-translate.php:2464
+#: acf-translate.php:2503
 msgid "Use link list blocks to provide some additional information, the reader could be interested in. \n"
 "\n"
 "A good first starting point would be a <i>manual link list</i> block that lists documents where the reader can dig deeper, like the debate in parliament etc. A second cool block <i>(auto link list)</i> could be the latest posts of the same category or with the same tag."
@@ -2284,7 +2271,7 @@ msgstr "Utilise des listes de liens pour rendre disponibles des informations sup
 "Une <i>liste de liens manuels</i> énumérant les documents avec lesquels les lecteurs/trices peuvent approfondir un sujet serait un bon point de départ. Elle peut par exemple contenir un renvoi vers le débat au parlement.\n"
 "Un autre bloc utile <i>(liste de liens automatique)</i> pourrait contenir les publications les plus récentes de la même catégorie ou avec la même étiquette."
 
-#: acf-translate.php:2731
+#: acf-translate.php:2770
 msgid "Display the latest four posts, events or pages that meet the given filter criteria. \n"
 "\n"
 "This list will automatically be updated if any new content meets the filter criteria (dynamic)."
@@ -2300,7 +2287,7 @@ msgstr "Malheureusement, les réponses ont été copiées avec le formulaire, et
 msgid "Yet, there were no forms submitted, so there is nothing to export."
 msgstr "Il n'y a rien à exporter, car aucun formulaire n'a encore été rempli."
 
-#: acf-translate.php:1254
+#: acf-translate.php:1293
 msgid "Add custom code (advanced)"
 msgstr "Ajouter du code personnalisé (utilisateurs/trices avancé/es)"
 
@@ -2335,33 +2322,33 @@ msgstr "Filtrer par catégorie"
 msgid "Show all results"
 msgstr "Afficher tous les résultats"
 
-#: lib/form/acf/form-details.php:253 lib/form/acf/form-details.php:278
+#: lib/form/acf/form-details.php:266 lib/form/acf/form-details.php:291
 #: lib/form/acf/input.php:139
 msgid "Important Note"
 msgstr "Remarque importante"
 
 #. Anrede CRM => Appel CRM
-#: lib/form/acf/form-details.php:272
+#: lib/form/acf/form-details.php:285
 msgid "You must select the field type <em>Greeting (CRM)</em> (in the tab <em>standard</em>) for this field to work! Please follow also the note in the <em>standard</em> tab."
 msgstr "Sélectionne un type de champ <em>Appel (GRC)</em> (dans l'onglet <em>Standard</em>) pour que ce champ fonctionne ! Merci de tenir compte également de la remarque dans l'onglet <em>Standard</em>."
 
-#: lib/form/acf/form-details.php:401
+#: lib/form/acf/form-details.php:414
 msgid "Webling Choices"
 msgstr "Options Webling"
 
 #. Annahme: es geht um Optionen, die man in Webling verändern kann, und nicht durch Webling vorgegeben sind.
-#: lib/form/acf/form-details.php:404
+#: lib/form/acf/form-details.php:417
 msgid "Enter the exact corresponding options in Webling in the same order."
 msgstr "Saisis exactement les options prévues par Webling en respectant strictement leur ordre."
 
-#: lib/form/acf/form-details.php:469
+#: lib/form/acf/form-details.php:482
 msgid "Insertion Mode"
 msgstr "Mode insertion"
 
 #. Warnung ist hier kleingeschrieben, anders als bei 
 #. 
 #. <strong>WARNUNG:</strong> Es gab eineige Shortcodes, die wir nicht automatisiert verarbeiten konnten. %sLade die Liste%s mit den zu kontrollierenden Beiträgen herunter.
-#: lib/form/acf/form-details.php:472
+#: lib/form/acf/form-details.php:485
 msgid "<strong>Warning</strong>: Selecting the wrong mode results in data loss!\n"
 "<br><br>\n"
 "Select replace for single value fields like the address line and append for multi value fields like the interests field or a note field."
@@ -2371,7 +2358,7 @@ msgstr "<strong>Avertissement</strong>: Si le mode sélectionné n'est pas le bo
 "\n"
 ""
 
-#: lib/form/acf/form-details.php:567
+#: lib/form/acf/form-details.php:580
 msgid "Add if new"
 msgstr "Ajouter si nouveau"
 
@@ -2861,12 +2848,12 @@ msgstr "Un problème inconnu est survenu \"%s\""
 msgid "There is no changelog available."
 msgstr "Il n’y a aucun journal de mise à jour disponible."
 
-#: lib/form/acf/form-details.php:395
+#: lib/form/acf/form-details.php:408
 msgid "You must select the field type <em>Subscription (CRM)</em> (in the tab <em>standard</em>) for this field to work!"
 msgstr "Sélectionne le type de champ <em>Abonnement (GRC)</em> (dans l'onglet <em>Standard</em>) pour que le champ fonctionne !"
 
 #. Anredefeld (oder Feld Anrede) (so wie auch "Interessensfeld" in einem Wort geschrieben wurde)
-#: lib/form/acf/form-details.php:611
+#: lib/form/acf/form-details.php:624
 msgid "Make sure this value is accepted by Webling.\n"
 "<br><br>\n"
 "Example greetings field: Only the greetings that can be selected in Webling are accepted values."
@@ -2874,7 +2861,7 @@ msgstr "Assure-toi que cette valeur soit acceptée par Webling.\n"
 "<br><br>\n"
 "Exemple pour le champ Appel : seuls les appels pouvant être sélectionnés dans Webling sont admissibles."
 
-#: lib/form/acf/form-details.php:654
+#: lib/form/acf/form-details.php:667
 msgid "Make sure the values are accepted by Webling. Add one choice per line.\n"
 "<br><br>\n"
 "Example interest field: Only the interests that can be selected in Webling are accepted values."
@@ -2923,41 +2910,41 @@ msgstr "Chère administratrice / Cher administrateur de %s\n"
 "Message d'erreur : \n"
 "%s"
 
-#: acf-translate.php:1050
+#: acf-translate.php:1058
 msgid "About this block"
 msgstr "Informations sur ce bloc"
 
-#: acf-translate.php:1053
+#: acf-translate.php:1061
 msgid "Adds an image that scales automatically to the device size (responsive). This is the preferred method to add images."
 msgstr "Ajoute une image qui s'adapte automatiquement à la taille de l'écran. Ce procoédé consitue le moyen recommandé d'ajouter des images."
 
-#: acf-translate.php:1315 acf-translate.php:1337
+#: acf-translate.php:1354 acf-translate.php:1376
 #: lib/post-types/BlockType.php:14
 msgid "Block"
 msgstr "Bloc"
 
 #. Post type / Posttyp: type d'article
-#: acf-translate.php:1331
+#: acf-translate.php:1370
 msgid "You want to share content over multiple pages? Create the content as block post type, then pull it in here."
 msgstr "Souhaites-tu afficher du contenu sur plusieurs pages ? Crée le contenu en tant que type de publications bloc et insère-le ensuite ici."
 
-#: acf-translate.php:2790
+#: acf-translate.php:2829
 msgid "[Template]Map"
 msgstr "[Modèle]carte"
 
-#: acf-translate.php:3065
+#: acf-translate.php:3104
 msgid "Select the block with the map."
 msgstr "Sélectionne le bloc avec la carte."
 
-#: acf-translate.php:4425 lib/post-types/BlockType.php:13
+#: acf-translate.php:4694 lib/post-types/BlockType.php:13
 msgid "Blocks"
 msgstr "Blocs"
 
-#: acf-translate.php:4444
+#: acf-translate.php:4713
 msgid "Map"
 msgstr "Carte"
 
-#: acf-translate.php:4504
+#: acf-translate.php:4773
 msgid "Add Block"
 msgstr "Ajouter un bloc"
 
@@ -2966,19 +2953,19 @@ msgstr "Ajouter un bloc"
 msgid "Forms"
 msgstr "Formulaires"
 
-#: lib/form/submission.php:164
+#: lib/form/submission.php:175
 msgid "Too many requests. Please try again later."
 msgstr "Le nombre de requêtes est trop important. Merci de réessayer plus tard."
 
-#: lib/form/submission.php:286
+#: lib/form/submission.php:290
 msgid "%s: Invalid value."
 msgstr "%s : valeur non valide"
 
-#: lib/form/submission.php:304
+#: lib/form/submission.php:308
 msgid "%s: Invalid or missing value."
 msgstr "%s : valeur non valide ou manquante"
 
-#: lib/form/submission.php:343
+#: lib/form/submission.php:347
 msgid "%s: Missing data."
 msgstr "%s : données manquantes"
 
@@ -3033,11 +3020,288 @@ msgstr "Attributs de blocs"
 msgid "Uploaded to this block"
 msgstr "Éléments mis en ligne en lien avec ce bloc"
 
-#: templates/molecules/m-form.twig:185
+#: templates/molecules/m-form.twig:188
 msgid "There seems to be an error in your input. Please recheck the fields:"
 msgstr "Il semble qu'une erreur s'est produite lors de la saisie. Merci de vérifier les erreurs suivantes :"
 
 #: templates/molecules/m-map.twig:11
 msgid "Select region"
 msgstr "Sélectionner la région :"
+
+#: acf-translate.php:169
+msgid "If you add one of the following licenses (p.ex: <emph>Tunick Spencer (CC BY)</emph>), we'll automatically add a link to the license. Recognized licenses:\n"
+"<ul style=\"display: inline\">\n"
+"<li style=\"display: inline\"><a href=\"https://creativecommons.org/publicdomain/zero/1.0/\">CC0</a></li>\n"
+"<li style=\"display: inline\"><a href=\"https://creativecommons.org/licenses/by/4.0/\">CC BY</a></li>\n"
+"<li style=\"display: inline\"><a href=\"https://creativecommons.org/licenses/by-sa/4.0/\">CC BY-SA</a></li>\n"
+"<li style=\"display: inline\"><a href=\"https://creativecommons.org/licenses/by-nc/4.0/\">CC BY-NC</a></li>\n"
+"<li style=\"display: inline\"><a href=\"https://creativecommons.org/licenses/by-nc-sa/4.0/\">CC BY-NC-SA</a></li>\n"
+"<li style=\"display: inline\"><a href=\"https://creativecommons.org/licenses/by-nd/4.0/\">CC BY-ND</a></li>\n"
+"<li style=\"display: inline\"><a href=\"https://creativecommons.org/licenses/by-nc-nd/4.0/\">CC BY-NC-ND</a></li>\n"
+"</ul>"
+msgstr ""
+
+#: acf-translate.php:1246
+msgid "Progress bar"
+msgstr ""
+
+#: acf-translate.php:3539
+msgid "[Template]Progress Bar"
+msgstr ""
+
+#: acf-translate.php:3554
+msgid "Shows a progress meter. This is particularly useful for petitions."
+msgstr ""
+
+#: acf-translate.php:3560
+msgid "Datasource"
+msgstr ""
+
+#: acf-translate.php:3563
+msgid "If form is selected, the number of form submissions will be displayed. Enter manually let's you specify the number displayed in a input field here."
+msgstr ""
+
+#: acf-translate.php:3573
+msgid "Enter manually"
+msgstr ""
+
+#: acf-translate.php:3585
+msgid "The progress meter will display the number of submissions."
+msgstr ""
+
+#: acf-translate.php:3612
+msgid "Submissions to add"
+msgstr ""
+
+#: acf-translate.php:3615
+msgid "Sometimes you do also have another datasource you want to add or you just don't want to start with zero. <strong>Specify the number you want to add to the total of submissions.</strong>"
+msgstr ""
+
+#: acf-translate.php:3641
+msgid "Current progress"
+msgstr ""
+
+#: acf-translate.php:3670
+msgid "Goal"
+msgstr ""
+
+#: acf-translate.php:3673
+msgid "Specifies the maximum value (at which value the progress bar reaches the end). You may either set the goal manually or, if you choose adaptive, the goal will increase automatically with the current progress. The algorithm chooses the goal so that the progress bar reaches the right halve and the goal is a nice number (however, the goal never goes below ten)."
+msgstr ""
+
+#: acf-translate.php:3682
+msgid "Adaptive"
+msgstr ""
+
+#: acf-translate.php:3683
+msgid "Manual"
+msgstr ""
+
+#: acf-translate.php:3692
+msgid "Goal Value"
+msgstr ""
+
+#: acf-translate.php:3721
+msgid "Legend (optional)"
+msgstr ""
+
+#: acf-translate.php:3724
+msgid "If specified, a legend is shown above the progress bar. You can use the following placeholders: <code>{{current}}</code>, <code>{{goal}}</code>\n"
+"\n"
+"Example: {{current}} have signed. Can we reach {{goal}}?"
+msgstr ""
+
+#: acf-translate.php:4180
+msgid "Layout (hidden)"
+msgstr ""
+
+#: lib/shortcodes/progress.php:58
+msgid "Invalid shortcode"
+msgstr ""
+
+#: lib/shortcodes/progress.php:59
+msgid "Valid examples:"
+msgstr ""
+
+#: lib/shortcodes/progress.php:60
+msgid "Data from form"
+msgstr ""
+
+#: lib/shortcodes/progress.php:61
+msgid "Data manually entered"
+msgstr ""
+
+#: lib/shortcodes/progress.php:62
+msgid "automatic goal"
+msgstr ""
+
+#: lib/shortcodes/progress.php:63
+msgid "manual goal"
+msgstr ""
+
+#: lib/shortcodes/progress.php:64
+msgid "with legend"
+msgstr ""
+
+#: lib/shortcodes/progress.php:65
+msgid "{{current}} have signed. Can we reach {{goal}}?"
+msgstr ""
+
+#: vendor/mindkomm/timmy/lib/Timmy.php:233
+msgid "Full Size"
+msgstr ""
+
+#: vendor/timber/timber/lib/Archives.php:162
+msgid "%1$s"
+msgstr ""
+
+#: vendor/timber/timber/lib/Pagination.php:115
+msgid "&laquo; Previous"
+msgstr ""
+
+#: vendor/timber/timber/lib/Pagination.php:116
+msgid "Next &raquo;"
+msgstr ""
+
+#: vendor/timber/timber/lib/Pagination.php:179
+#: vendor/timber/timber/lib/TextHelper.php:41
+msgid "&hellip;"
+msgstr ""
+
+#. translators: If your word count is based on single characters (East Asian characters), enter 'characters'. Otherwise, enter 'words'. Do not translate into your own language.
+#: vendor/timber/timber/lib/TextHelper.php:50
+msgctxt "word count: words or characters?"
+msgid "words"
+msgstr ""
+
+#: vendor/timber/timber/tests/test-timber-gettext.php:8
+#: vendor/timber/timber/tests/test-timber-gettext.php:21
+msgid "my_boo"
+msgstr ""
+
+#: vendor/timber/timber/tests/test-timber-gettext.php:29
+#: vendor/timber/timber/tests/test-timber-gettext.php:31
+msgid "foo"
+msgid_plural "foos"
+msgstr[0] ""
+msgstr[1] ""
+
+#: vendor/timber/timber/tests/test-timber-gettext.php:37
+#: vendor/timber/timber/tests/test-timber-gettext.php:44
+#: vendor/timber/timber/tests/test-timber-gettext.php:52
+#: vendor/timber/timber/tests/test-timber-gettext.php:54
+msgctxt "my"
+msgid "boo"
+msgid_plural "boos"
+msgstr[0] ""
+msgstr[1] ""
+
+#: vendor/timber/timber/tests/test-timber-menu.php:558
+#: vendor/timber/timber/tests/test-timber-menu.php:559
+msgid "Gallery"
+msgstr ""
+
+#: vendor/timber/timber/tests/test-timber-revisions.php:18
+msgid "Box"
+msgstr ""
+
+#: vendor/timber/timber/tests/test-timber-revisions.php:19
+msgid "Post Type Description"
+msgstr ""
+
+#. translators: 1: audio track title, 2: album title, 3: artist name
+#: vendor/timber/timber/tests/wp-overrides.php:40
+msgid "\"%1$s\" from %2$s by %3$s."
+msgstr ""
+
+#. translators: 1: audio track title, 2: album title
+#: vendor/timber/timber/tests/wp-overrides.php:43
+msgid "\"%1$s\" from %2$s."
+msgstr ""
+
+#. translators: 1: audio track title, 2: artist name
+#: vendor/timber/timber/tests/wp-overrides.php:46
+msgid "\"%1$s\" by %2$s."
+msgstr ""
+
+#: vendor/timber/timber/tests/wp-overrides.php:48
+msgid "\"%s\"."
+msgstr ""
+
+#. translators: 1: audio album title, 2: artist name
+#: vendor/timber/timber/tests/wp-overrides.php:55
+msgid "%1$s by %2$s."
+msgstr ""
+
+#: vendor/timber/timber/tests/wp-overrides.php:67
+msgid "Released: %d."
+msgstr ""
+
+#: vendor/timber/timber/tests/wp-overrides.php:72
+msgid "Track %1$s of %2$s."
+msgstr ""
+
+#: vendor/timber/timber/tests/wp-overrides.php:74
+msgid "Track %1$s."
+msgstr ""
+
+#: vendor/timber/timber/tests/wp-overrides.php:78
+msgid "Genre: %s."
+msgstr ""
+
+#: vendor/timber/timber/tests/wp-overrides.php:143
+msgid "The uploaded file exceeds the upload_max_filesize directive in php.ini."
+msgstr ""
+
+#: vendor/timber/timber/tests/wp-overrides.php:144
+msgid "The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in the HTML form."
+msgstr ""
+
+#: vendor/timber/timber/tests/wp-overrides.php:145
+msgid "The uploaded file was only partially uploaded."
+msgstr ""
+
+#: vendor/timber/timber/tests/wp-overrides.php:146
+msgid "No file was uploaded."
+msgstr ""
+
+#: vendor/timber/timber/tests/wp-overrides.php:148
+msgid "Missing a temporary folder."
+msgstr ""
+
+#: vendor/timber/timber/tests/wp-overrides.php:149
+msgid "Failed to write file to disk."
+msgstr ""
+
+#: vendor/timber/timber/tests/wp-overrides.php:150
+msgid "File upload stopped by extension."
+msgstr ""
+
+#: vendor/timber/timber/tests/wp-overrides.php:167
+msgid "Invalid form submission."
+msgstr ""
+
+#: vendor/timber/timber/tests/wp-overrides.php:177
+msgid "File is empty. Please upload something more substantial."
+msgstr ""
+
+#: vendor/timber/timber/tests/wp-overrides.php:179
+msgid "File is empty. Please upload something more substantial. This error could also be caused by uploads being disabled in your php.ini or by post_max_size being defined as smaller than upload_max_filesize in php.ini."
+msgstr ""
+
+#: vendor/timber/timber/tests/wp-overrides.php:185
+msgid "Specified file failed upload test."
+msgstr ""
+
+#: vendor/timber/timber/tests/wp-overrides.php:198
+msgid "Sorry, this file type is not permitted for security reasons."
+msgstr ""
+
+#: vendor/timber/timber/tests/wp-overrides.php:223
+msgid "The uploaded file could not be moved to %s."
+msgstr ""
+
+#: templates/molecules/m-form.twig:195
+msgid "The form that would normally show up here was closed and is therefore not available."
+msgstr ""
 
