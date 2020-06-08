@@ -28,8 +28,12 @@ if ( class_exists( 'acf_pro' ) ) {
  *
  * Add repeater and flexible content fields
  */
-if ( class_exists( 'SearchWP' ) ) {
-	require_once __DIR__ . '/searchwp/fine-tune.php';
+if ( defined( 'SEARCHWP_VERSION' ) ) {
+	if ( version_compare( SEARCHWP_VERSION, '4.0.0', '<' ) ) {
+		require_once __DIR__ . '/searchwp/fine-tune-3.php';
+	} else {
+		require_once __DIR__ . '/searchwp/fine-tune-4.php';
+	}
 }
 
 /**

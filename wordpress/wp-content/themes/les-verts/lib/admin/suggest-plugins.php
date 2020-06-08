@@ -19,7 +19,7 @@ if ( ! class_exists( 'acf_pro' ) ) {
 /**
  * We cannot bundle SearchWP in a free theme, so we just add a notice!
  */
-if ( ! class_exists( 'SearchWP' ) ) {
+if ( ! defined( 'SEARCHWP_VERSION' ) ) {
 	add_action( 'admin_notices', function () {
 		$class   = 'notice notice-info';
 		$message = sprintf(

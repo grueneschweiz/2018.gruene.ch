@@ -738,22 +738,6 @@ msgstr "Testimonials"
 msgid "Select the testimonials to display by its category."
 msgstr "Wähle die anzuzeigenden Testimonials nach Kategorie."
 
-#: acf-translate.php:3918
-msgid "Layout"
-msgstr "Layout"
-
-#: acf-translate.php:3921
-msgid "Choose vertical for the front page"
-msgstr "Wähle <i>vertikal</i> für die Startseite"
-
-#: acf-translate.php:3930
-msgid "Vertical"
-msgstr "Vertikal"
-
-#: acf-translate.php:3931
-msgid "Horizontal"
-msgstr "Horizontal"
-
 #: acf-translate.php:4230
 msgid "[Template]Two Posts"
 msgstr "[Template]Zwei Beiträge"
