@@ -1,11 +1,10 @@
 <?php
 
+use SearchWP\Mod;
+
 /**
  * Hide admin bar button
  */
-
-use SearchWP\Mod;
-
 add_filter( 'searchwp\admin_bar', '__return_false' );
 
 /**
@@ -16,12 +15,12 @@ add_filter( 'searchwp\query\mods', function ( $mods ) {
 
 	// Build Mod to sort results by date
 	$mod = new Mod();
-	$mod->order_by( "{$wpdb->posts}.post_date", 'DESC' );
+	$mod->order_by( "{$wpdb->posts}.post_date", 'DESC', 9 );
 
 	$mods[] = $mod;
 
 	return $mods;
-}, 20 );
+} );
 
 /**
  * Load all posts
