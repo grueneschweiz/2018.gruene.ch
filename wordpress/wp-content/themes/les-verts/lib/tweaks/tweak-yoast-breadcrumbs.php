@@ -2,6 +2,18 @@
 
 namespace SUPT;
 
+use WP_Post;
+use WP_Term;
+use WPSEO_Primary_Term;
+use function absint;
+use function get_nav_menu_locations;
+use function get_queried_object_id;
+use function get_term;
+use function get_the_ID;
+use function tribe_get_events_link;
+use function wp_get_nav_menu_items;
+use function wp_get_nav_menu_object;
+
 /**
  * Configure breadcrumbs
  */
@@ -61,12 +73,12 @@ class CustomMenuBreadcrumbs {
 		$this->menu_location = $menu_location;
 
 		// for convenience everything is built on Menu location (e.g. user changes out an entire Menu)
-		$menu_locations = \get_nav_menu_locations();
+		$menu_locations = get_nav_menu_locations();
 
 		// make sure the location exists
 		if ( isset( $menu_locations[ $this->menu_location ] ) ) {
-			$this->menu       = \wp_get_nav_menu_object( $menu_locations[ $this->menu_location ] );
-			$this->menu_items = \wp_get_nav_menu_items( $this->menu->term_id );
+			$this->menu       = wp_get_nav_menu_object( $menu_locations[ $this->menu_location ] );
+			$this->menu_items = wp_get_nav_menu_items( $this->menu->term_id );
 		}
 	}
 
@@ -75,16 +87,16 @@ class CustomMenuBreadcrumbs {
 	 *
 	 * @param int $post_id
 	 *
-	 * @return false|\WP_Term
+	 * @return false|WP_Term
 	 */
 	private function get_primary_category( $post_id ) {
 		if ( ! class_exists( '\WPSEO_Primary_Term' ) ) {
 			return false;
 		}
 
-		$wpseo_primary_term = new \WPSEO_Primary_Term( 'category', $post_id );
+		$wpseo_primary_term = new WPSEO_Primary_Term( 'category', $post_id );
 		$wpseo_primary_term = $wpseo_primary_term->get_primary_term();
-		$primary            = \get_term( $wpseo_primary_term );
+		$primary            = get_term( $wpseo_primary_term );
 
 		if ( is_wp_error( $primary ) || null === $primary ) {
 			return false;
@@ -96,9 +108,9 @@ class CustomMenuBreadcrumbs {
 	/**
 	 * Retrieve the most specific Menu item object for the current Menu by the given object id
 	 *
-	 * @param       string|int       The id of the object we want to find the menu entry of
+	 * @param string|int       The id of the object we want to find the menu entry of
 	 *
-	 * @return      false|\WP_Post    The current Menu item
+	 * @return      false|WP_Post    The current Menu item
 	 */
 	private function get_menu_item_object_by_object_id( $object_id ) {
 		if ( empty( $this->menu_items ) ) {
@@ -115,7 +127,7 @@ class CustomMenuBreadcrumbs {
 				// if we already had a matching object, check if this is a child of the last match
 				// if so, use this child element.
 				if ( $match ) {
-					if ( \absint( $menu_item->menu_item_parent ) === \absint( $match->ID ) ) {
+					if ( absint( $menu_item->menu_item_parent ) === absint( $match->ID ) ) {
 						$match = $menu_item;
 					}
 					// else skip it and stick to the first match
@@ -131,9 +143,9 @@ class CustomMenuBreadcrumbs {
 	/**
 	 * Retrieve the most specific Menu item object for the current Menu by the given url
 	 *
-	 * @param       string           The exact url to match against
+	 * @param string           The exact url to match against
 	 *
-	 * @return      false|\WP_Post    The current Menu item
+	 * @return      false|WP_Post    The current Menu item
 	 */
 	private function get_menu_object_by_url( $url ) {
 		if ( empty( $this->menu_items ) || empty( $url ) ) {
@@ -148,7 +160,7 @@ class CustomMenuBreadcrumbs {
 				// if we already had a matching object, check if this is a child of the last match
 				// if so, use this child element.
 				if ( $match ) {
-					if ( \absint( $menu_item->menu_item_parent ) === \absint( $match->ID ) ) {
+					if ( absint( $menu_item->menu_item_parent ) === absint( $match->ID ) ) {
 						$match = $menu_item;
 					}
 					// else skip it and stick to the first match
@@ -164,11 +176,11 @@ class CustomMenuBreadcrumbs {
 	/**
 	 * Retrieve the current Menu item object's parent Menu item object
 	 *
+	 * @param WP_Post $current_menu_item The current Menu item object
+	 *
+	 * @return      bool|WP_Post                    The parent Menu object
 	 * @since       1.0.0
 	 *
-	 * @param       \WP_Post $current_menu_item The current Menu item object
-	 *
-	 * @return      bool|\WP_Post                    The parent Menu object
 	 */
 	private function get_parent_menu_item_object( $current_menu_item ) {
 
@@ -177,7 +189,7 @@ class CustomMenuBreadcrumbs {
 		}
 
 		foreach ( $this->menu_items as $menu_item ) {
-			if ( \absint( $current_menu_item->menu_item_parent ) == \absint( $menu_item->ID ) ) {
+			if ( absint( $current_menu_item->menu_item_parent ) == absint( $menu_item->ID ) ) {
 				return $menu_item;
 			}
 		}
@@ -192,10 +204,10 @@ class CustomMenuBreadcrumbs {
 	 * category is, then return the menu item of the archive and set the class
 	 * variable 'parent_menu_item' to true.
 	 *
-	 * @return false|\WP_Post false if no page and no archive is found in the menu.
+	 * @return false|WP_Post false if no page and no archive is found in the menu.
 	 */
 	private function get_current_menu_item() {
-		$object_id = \get_queried_object_id();
+		$object_id = get_queried_object_id();
 
 		// for all regular menu elements
 		if ( $object_id ) {
@@ -204,7 +216,7 @@ class CustomMenuBreadcrumbs {
 
 		// for posts not the post itself but the primary category is linked in the menu
 		if ( empty( $current_menu_item ) ) {
-			$primary_category = $this->get_primary_category( \get_the_ID() );
+			$primary_category = $this->get_primary_category( get_the_ID() );
 			if ( $primary_category ) {
 				$current_menu_item      = $this->get_menu_item_object_by_object_id( $primary_category->term_id );
 				$this->parent_menu_item = true;
@@ -213,7 +225,7 @@ class CustomMenuBreadcrumbs {
 
 		// hits the events archive of the events calendar from tribe
 		if ( empty( $current_menu_item ) && empty( $object_id ) && function_exists( '\tribe_get_events_link' ) ) {
-			$current_menu_item = $this->get_menu_object_by_url( \tribe_get_events_link() );
+			$current_menu_item = $this->get_menu_object_by_url( tribe_get_events_link() );
 		}
 
 		return $current_menu_item;
@@ -224,8 +236,8 @@ class CustomMenuBreadcrumbs {
 	 *
 	 * @param array $wpseo_crumbs The original breadcrumbs from yoast wpseo
 	 *
-	 * @since       1.0.0
 	 * @return      array|string    Breadcrumb of WP_Post objects
+	 * @since       1.0.0
 	 */
 	public function generate_trail( $wpseo_crumbs ) {
 		$current_menu_item = $this->get_current_menu_item();
@@ -266,14 +278,12 @@ class CustomMenuBreadcrumbs {
 		foreach ( $breadcrumbs as $key => $breadcrumb ) {
 
 			$_url = $breadcrumb->url;
-			if ( $_url === '#' ) {
-				$_url = '';
-			}
 
 			// add #menu-item-ID to the first level crumbs so we can
 			// intercept the links with js to open the nav instead of
 			// following the link.
 			if ( 1 === $breadcrumb->menu_breadcrumb_level ) {
+				$_url = rtrim( $_url, '#' ); // cut trailing hashes, because were appending a hash
 				$_url .= '#menu-item-' . $breadcrumb->ID;
 			}
 
