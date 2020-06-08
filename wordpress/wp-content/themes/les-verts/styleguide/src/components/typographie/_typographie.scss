@@ -110,10 +110,10 @@ ol {
 	> li {
 		counter-increment: item;
 
-		> li {
+		> ol > li {
 			padding-left: 2.5em;
 
-			> li {
+			> ol > li {
 				padding-left: 3em;
 			}
 		}
