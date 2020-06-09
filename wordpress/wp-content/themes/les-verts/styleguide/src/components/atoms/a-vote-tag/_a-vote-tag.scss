@@ -1,6 +1,4 @@
 .a-vote-tag {
-	@include clean-link;
-
 	display: inline-block;
 	padding: 0.3333em 0.3333em 0.4167em;
 	border-radius: 2px;
@@ -20,6 +18,7 @@
 
 	&--free {
 		background-color: $color-grey-2;
+		color: $color-text;
 	}
 
 	&--no {

@@ -6,7 +6,7 @@
 		{% set num_proposals = proposals|length %}
 
 		{% for proposal in proposals %}
-			{% set tag = proposal.flag %}
+			{% set tag = proposal.flag.value %}
 
 			{% if 'internal' == proposal.proposal_link.type %}
 				{% set acf_post = ACFPost(proposal.proposal_link.internal_link.post) %}

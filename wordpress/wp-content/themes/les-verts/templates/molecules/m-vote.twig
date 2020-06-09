@@ -1,10 +1,7 @@
 <div class="m-vote{% if excerpt %} m-vote--excerpt{% endif %}">
 	<h3 class="m-vote__title">{{ label }}</h3>
 	<div class="m-vote__tag">
-		{% include 'atoms/a-vote-tag.twig' with {
-			'modifier': tag.value,
-			'label': tag.label,
-		} only %}
+		{% include 'atoms/a-vote-tag.twig' with { 'tag': tag } only %}
 	</div>
 	{% if excerpt %}
 		<p class="m-vote__excerpt">{{ excerpt }}</p>
