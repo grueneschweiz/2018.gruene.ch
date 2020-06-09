@@ -1,2 +1,10 @@
+{% if 'yes' == tag %}
+	{% set label = __( 'Yes', constant('THEME_DOMAIN') ) %}
+{% elseif 'no' == tag %}
+	{% set label = __( 'No', constant('THEME_DOMAIN') ) %}
+{% else %}
+	{% set label = '&mdash;' %}
+{% endif %}
+
 <div aria-label="{{ __('Vote recommendations', constant('THEME_DOMAIN')) }}"
-		 class="a-vote-tag a-vote-tag--{{ modifier }}">{{ label }}</div>
+		 class="a-vote-tag a-vote-tag--{{ tag }}">{{ label }}</div>
