@@ -97,7 +97,7 @@
 			height: 259px;
 		}
 
-		@media screen and (hover: none) {
+		@media screen and (hover: none) and (max-width: 1023px) {
 			// don't combine this query with the one above to work around the missing support in firefox
 			display: none;
 		}
