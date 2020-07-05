@@ -17,7 +17,7 @@
 	font-weight: 700;
 	text-indent: 130px;
 	display: block;
-	margin-top: 5px;
+	margin-top: 0;
 	text-transform: lowercase;
 	background-size: 100%;
 	width: 130px;
@@ -27,11 +27,11 @@
 
 .Header-logo {
 	position: absolute;
-	top: -5px;
+	top: 0;
 	left: 0;
 	display: block;
 	width: 150px;
-	height: 50px;
+	height: 40px;
 	z-index: -1;
 }
 
