@@ -105,23 +105,23 @@ class StarterSite extends TimberSite {
 		wp_enqueue_style( THEME_DOMAIN . '-screen',
 			get_stylesheet_directory_uri() . '/static/style' . ( WP_DEBUG ? '' : '.min' ) . '.css', false,
 			THEME_VERSION );
-		
+
 		// js
 		wp_enqueue_script( THEME_DOMAIN . '-app',
 			get_stylesheet_directory_uri() . '/static/js/app' . ( WP_DEBUG ? '' : '.min' ) . '.js',
 			array(), THEME_VERSION, true
 		);
-		
+
 		// tweaks
-		if ( ! is_admin() ) {
+		if ( ! is_user_logged_in() ) {
 			// don't load jquery
 			wp_deregister_script( 'jquery' );
-			
+
 			// dont load block styles
 			wp_dequeue_style( 'wp-block-library' );
 			wp_deregister_style( 'wp-block-library' );
 		}
-		
+
 		// admin bar styles
 		if ( is_admin_bar_showing() ) {
 			wp_enqueue_style( 'adminbar-style', get_stylesheet_directory_uri() . '/style-adminbar.css', false,
