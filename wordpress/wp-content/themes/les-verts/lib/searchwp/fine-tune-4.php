@@ -15,7 +15,7 @@ add_filter( 'searchwp\query\mods', function ( $mods ) {
 
 	// Build Mod to sort results by date
 	$mod = new Mod();
-	$mod->order_by( "{$wpdb->posts}.post_date", 'DESC', 9 );
+	$mod->order_by( "s1.post_date", 'DESC', 9 );
 
 	$mods[] = $mod;
 
