@@ -18,11 +18,14 @@ add_filter( 'user_has_cap', function ( $allcaps, $cap, $args, $user ) {
  * Don't use the 'user_has_cap' hook from above, as this doesn't work on multisite.
  * @see https://kellenmace.com/add-unfiltered_html-capability-to-admins-or-editors-in-wordpress-multisite/
  */
-add_filter( 'map_meta_cap', function ( $caps, $cap, $user_id ) {
-	// allow editors and admins to add code
-	if ( 'unfiltered_html' === $cap && user_can( $user_id, 'editor' ) ) {
-		$caps = array( 'unfiltered_html' );
+add_filter( 'map_meta_cap', function ( $caps, $cap ) {
+	if ( 'unfiltered_html' === $cap ) {
+		$user = wp_get_current_user();
+
+		if ( in_array( 'editor', $user->roles ) || in_array( 'administrator', $user->roles ) ) {
+			$caps = [ 'unfiltered_html' ];
+		}
 	}
 
 	return $caps;
-}, 1, 3 );
+}, 1, 2 );
