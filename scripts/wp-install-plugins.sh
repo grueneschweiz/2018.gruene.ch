@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #===========================================
-# Install & prepare everything
+# Install plugins and remove unused stuff
 #===========================================
 #
 # README:
@@ -16,8 +16,10 @@
 # -l this is a multilingual setup
 #===========================================
 
-INSTALL_ACTIVATE_ARGUMENT="--activate"
-ACTIVATE_NETWORK_ARGUMENT=
+set -e
+
+ACTIVATE_NETWORK=
+INSTALL_ACTIVATE="--activate"
 NETWORK=
 MULTILANG=
 
@@ -25,8 +27,8 @@ while getopts "nl" opt; do
   case $opt in
     n)
     	NETWORK=1
-    	ACTIVATE_ARGUMENT="--activate-network"
-    	ACTIVATE_NETWORK_ARGUMENT="--network"
+    	ACTIVATE_NETWORK="--network"
+    	INSTALL_ACTIVATE="--activate-network"
       echo "WP multi site support enabled."
       ;;
     l)
@@ -84,72 +86,85 @@ fi
 #============================
 
 # Polylang
-if [ $MULTILANG ];
-then
-$WPCLI plugin activate polylang-pro $ACTIVATE_NETWORK_ARGUMENT
-# TODO: activate license key
+if [ $MULTILANG ]; then
+	$WPCLI plugin activate polylang-pro $ACTIVATE_NETWORK
+	# TODO: activate license key
 fi
 
 ## Advanced Custom Fields PRO
-$WPCLI plugin activate advanced-custom-fields-pro $ACTIVATE_NETWORK_ARGUMENT
+$WPCLI plugin activate advanced-custom-fields-pro $ACTIVATE_NETWORK
 # $WPCLI eval 'acf_pro_update_license("INSERT LICENSE NUMBER HERE");'
 
 ## SVG support
-$WPCLI plugin install svg-support $INSTALL_ACTIVATE_ARGUMENT
+$WPCLI plugin install svg-support $INSTALL_ACTIVATE
 
 # YAOST seo plugin
-$WPCLI plugin install wordpress-seo $INSTALL_ACTIVATE_ARGUMENT
+$WPCLI plugin install wordpress-seo $INSTALL_ACTIVATE
 
 # Make yoast SEO work with acf
-$WPCLI plugin install acf-content-analysis-for-yoast-seo $INSTALL_ACTIVATE_ARGUMENT
+$WPCLI plugin install acf-content-analysis-for-yoast-seo $INSTALL_ACTIVATE
 
 # Smush Image Compression
-$WPCLI plugin install wp-smushit $INSTALL_ACTIVATE_ARGUMENT
+$WPCLI plugin install wp-smushit $INSTALL_ACTIVATE
 
 # Disable emojis code bloat
-$WPCLI plugin install disable-emojis $INSTALL_ACTIVATE_ARGUMENT
+$WPCLI plugin install disable-emojis $INSTALL_ACTIVATE
 
 # Disable embed code bloat
-$WPCLI plugin install disable-embeds $INSTALL_ACTIVATE_ARGUMENT
+$WPCLI plugin install disable-embeds $INSTALL_ACTIVATE
 
 # Wordpress importer
-$WPCLI plugin install wordpress-importer $INSTALL_ACTIVATE_ARGUMENT
+$WPCLI plugin install wordpress-importer
 
 # Theme and plugin translation for polylang
-$WPCLI plugin install theme-translation-for-polylang $INSTALL_ACTIVATE_ARGUMENT
+if [ $MULTILANG ]; then
+	$WPCLI plugin install theme-translation-for-polylang $INSTALL_ACTIVATE
+fi
 
 # Disable comments system
-$WPCLI plugin install disable-comments $INSTALL_ACTIVATE_ARGUMENT
+$WPCLI plugin install disable-comments $INSTALL_ACTIVATE
 
 # Events
-$WPCLI plugin install the-events-calendar $INSTALL_ACTIVATE_ARGUMENT
+$WPCLI plugin install the-events-calendar $INSTALL_ACTIVATE
 
 # Duplicate posts
-$WPCLI plugin install post-duplicator $INSTALL_ACTIVATE_ARGUMENT
+$WPCLI plugin install post-duplicator $INSTALL_ACTIVATE
 
 # Disable gutenberg
-$WPCLI plugin install classic-editor $INSTALL_ACTIVATE_ARGUMENT
+$WPCLI plugin install classic-editor $INSTALL_ACTIVATE
 
 # SearchWP
-$WPCLI plugin activate searchwp $ACTIVATE_NETWORK_ARGUMENT
+$WPCLI plugin activate searchwp $ACTIVATE_NETWORK
+if [ $MULTILANG ]; then
+	$WPCLI plugin activate searchwp-polylang $ACTIVATE_NETWORK
+fi
 
 # Enable media replace
-$WPCLI plugin install enable-media-replace $INSTALL_ACTIVATE_ARGUMENT
+$WPCLI plugin install enable-media-replace $INSTALL_ACTIVATE
 
 # ACF Code Field
-$WPCLI plugin install acf-code-field $INSTALL_ACTIVATE_ARGUMENT
+$WPCLI plugin install acf-code-field $INSTALL_ACTIVATE
+
+# Disable Administration Email Verification Prompt
+$WPCLI plugin install disable-administration-email-verification-prompt $INSTALL_ACTIVATE
+
+# Limit Login Attempts
+$WPCLI plugin install limit-login-attempts-reloaded $INSTALL_ACTIVATE
+
+# Maintenance Mode
+$WPCLI plugin install wp-maintenance-mode
 
 #====================
 # Theme
 #====================
 if [ $NETWORK ]; then
-    $WPCLI theme enable les-verts $ACTIVATE_NETWORK_ARGUMENT
+    $WPCLI theme enable les-verts $ACTIVATE_NETWORK
 fi
 
 $WPCLI theme activate les-verts
 
 #====================
-# Delete useless themes & extensions
+# Delete unused themes & extensions
 #====================
 $WPCLI theme delete twentyfifteen
 $WPCLI theme delete twentysixteen
