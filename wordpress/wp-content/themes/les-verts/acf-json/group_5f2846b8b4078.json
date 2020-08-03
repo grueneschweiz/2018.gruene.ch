@@ -1,0 +1,56 @@
+{
+  "key": "group_5f2846b8b4078",
+  "title": "Posts Page",
+  "fields": [
+    {
+      "key": "field_5f2846b91a433",
+      "label": "Teaser",
+      "name": "",
+      "type": "clone",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "clone": [
+        "field_5bcee7167c5c5"
+      ],
+      "display": "group",
+      "layout": "block",
+      "prefix_label": 0,
+      "prefix_name": 0
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "page_type",
+        "operator": "==",
+        "value": "posts_page"
+      }
+    ]
+  ],
+  "menu_order": 10,
+  "position": "normal",
+  "style": "seamless",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "hide_on_screen": [
+    "the_content",
+    "excerpt",
+    "discussion",
+    "comments",
+    "revisions",
+    "slug",
+    "author",
+    "format",
+    "featured_image",
+    "send-trackbacks"
+  ],
+  "active": 1,
+  "description": "",
+  "modified": 1596475240
+}
