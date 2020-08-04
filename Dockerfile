@@ -30,6 +30,11 @@ RUN chmod +x /bin/wp-cli.phar /bin/wp
 # Install Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
+# Copy wp-config.php into container
+# (dont mount it, cause it gets updated by a sed srcipt.
+# mounting it therefore crashes the boot process.)	
+COPY wordpress/wp-config.php /var/www/html/wp-config.php
+
 # Show php logs in stderr
 RUN touch /usr/local/etc/php/conf.d/php_error.ini
 RUN echo "log_errors = on" >> /usr/local/etc/php/conf.d/php_error.ini

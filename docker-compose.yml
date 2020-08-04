@@ -15,10 +15,9 @@ services:
     working_dir: /var/www/html
     volumes:
       - ./wordpress/wp-content/:/var/www/html/wp-content:cached
-      - ./wordpress/wp-config.php:/var/www/html/wp-config.php:cached
-      - ./wordpress/.htaccess:/var/www/html/.htaccess:cached
-      - ./scripts/php.ini:/usr/local/etc/php/php.ini:cached
-      - ./scripts/ssmtp.conf:/etc/ssmtp/ssmtp.conf:cached
+      - ./wordpress/.htaccess:/var/www/html/.htaccess
+      - ./scripts/php.ini:/usr/local/etc/php/php.ini
+      - ./scripts/ssmtp.conf:/etc/ssmtp/ssmtp.conf
     container_name: wp_docker_les_verts
     environment:
       WORDPRESS_DB_HOST: db:3306
