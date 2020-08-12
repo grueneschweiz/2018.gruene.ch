@@ -39,6 +39,11 @@ add_filter( 'wpseo_breadcrumb_output', function ( $out ) {
 	$before       = substr( $out, 0, $last_pos );
 	$last_element = strrpos( $before, '<a ' );
 
+	// bail early if there is no link -> only one element
+	if ( false === $last_element ) {
+		return $out;
+	}
+
 	// replace the '<a ' with '<a class="breadcrumb_second_last" '
 	$out = substr_replace( $out, '<a class="breadcrumb_second_last" ', $last_element, 3 );
 

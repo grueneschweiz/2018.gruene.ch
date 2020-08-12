@@ -30,6 +30,11 @@ RUN chmod +x /bin/wp-cli.phar /bin/wp
 # Install Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
+# Copy wp-config.php into container
+# (dont mount it, cause it gets updated by a sed srcipt.
+# mounting it therefore crashes the boot process.)	
+COPY wordpress/wp-config.php /var/www/html/wp-config.php
+
 # Show php logs in stderr
 RUN touch /usr/local/etc/php/conf.d/php_error.ini
 RUN echo "log_errors = on" >> /usr/local/etc/php/conf.d/php_error.ini
@@ -38,14 +43,6 @@ RUN echo "error_log = /dev/stderr" >> /usr/local/etc/php/conf.d/php_error.ini
 # Change uid and gid of apache to docker user uid/gid
 RUN usermod -u 1000 www-data && groupmod -g 1000 www-data
 
-# Copy some config files
-COPY wordpress/.htaccess /var/www/html/.htaccess
-COPY wordpress/wp-config.php /var/www/html/wp-config.php
-
-# Create directory for wp-cli packages
-RUN mkdir -p /var/www/.wp-cli/packages
-RUN chmod -R 777 /var/www/.wp-cli
-
 # Cleanup
 RUN apt-get clean
 RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
@@ -53,3 +50,6 @@ RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 # Install Xdebug
 RUN pecl install xdebug
 RUN apachectl restart
+
+# Set working directory
+WORKDIR /var/www/html

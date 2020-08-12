@@ -53,8 +53,3 @@ add_filter( 'searchwp\query\results', function ( $results ) {
 
 	return $results;
 }, 20, 1 );
-
-/**
- * Add person name from people blocks to search results
- */
-// todo

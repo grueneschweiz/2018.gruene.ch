@@ -1,11 +1,13 @@
-version: '2'
+version: '3'
+
+volumes:
+  database:
+
 services:
   wordpress:
     depends_on:
       - db
     build: .
-    links:
-      - db
     ports:
       # MUST be on port 80, because multisite
       # doesn't support ports in base url
@@ -13,6 +15,7 @@ services:
     working_dir: /var/www/html
     volumes:
       - ./wordpress/wp-content/:/var/www/html/wp-content:cached
+      - ./wordpress/.htaccess:/var/www/html/.htaccess
       - ./scripts/php.ini:/usr/local/etc/php/php.ini
       - ./scripts/ssmtp.conf:/etc/ssmtp/ssmtp.conf
     container_name: wp_docker_les_verts
@@ -27,7 +30,7 @@ services:
   db:
     image: mysql:5.7
     volumes:
-      - "./.data/db:/var/lib/mysql:delegated"
+      - database:/var/lib/mysql:delegated
     environment:
       MYSQL_ROOT_PASSWORD: wordpress
       MYSQL_DATABASE: wordpress

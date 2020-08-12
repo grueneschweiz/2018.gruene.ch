@@ -184,6 +184,10 @@ if ( defined( 'WPSEO_FILE' ) ) {
 	require_once __DIR__ . '/tweaks/tweak-yoast-breadcrumbs.php';
 }
 
+if ( defined( 'TRIBE_EVENTS_FILE' ) ) {
+	require_once __DIR__ . '/tweaks/deregister-tribe-events-styles.php';
+}
+
 
 /**
  * TWIG
