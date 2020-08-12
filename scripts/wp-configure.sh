@@ -75,3 +75,6 @@ $WPCLI option patch insert --json tribe_events_calendar_options tribeDisableTrib
 $WPCLI option patch insert --json tribe_events_calendar_options donate-link false
 $WPCLI option patch insert tribe_events_calendar_options viewOption list
 $WPCLI option patch insert tribe_events_calendar_options datepickerFormat "11"
+
+# configure searchwp
+$WPCLI option set --json searchwp_engines '{"default":{"label":"Default","settings":{"stemming":true,"adminengine":false},"sources":{"post.post":{"attributes":{"title":80,"content":5,"slug":60,"excerpt":40,"meta":{"*":1},"taxonomy":{"category":50,"post_tag":50}},"rules":[],"options":[]},"post.page":{"attributes":{"title":80,"content":5,"slug":60,"meta":{"*":1}},"rules":[],"options":[]},"post.tribe_events":{"attributes":{"title":80,"content":5,"slug":60,"excerpt":40,"comments":1,"meta":{"*":1}},"rules":[],"options":[]}}}}'
