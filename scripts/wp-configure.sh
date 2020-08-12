@@ -16,12 +16,10 @@
 set -e
 
 NETWORK=
-while getopts "nl" opt; do
+while getopts "n" opt; do
   case $opt in
     n)
     	NETWORK=1
-    	ACTIVATE_ARGUMENT="--activate-network"
-    	ACTIVATE_NETWORK_ARGUMENT="--network"
       echo "WP multi site support enabled."
       ;;
     ?)
