@@ -8,20 +8,14 @@ add_action( 'tribe_asset_enqueue', function ( $enqueue, $asset ) {
 		"tribe-events-full-calendar-style",
 		"tribe-events-calendar-full-mobile-style",
 		"tribe-events-views-v2-full",
-		"tribe-events-views-v2-bootstrap-datepicker",
 		"tribe-events-views-v2-skeleton",
 		"tribe-events-calendar-style",
 		"tribe-events-calendar-mobile-style",
-		"tribe-events-bar",
-		"tribe-events-dynamic",
-		"tribe-events-calendar-script",
-		"tribe-events-views-v2-breakpoints",
+		"tribe-events-admin-menu",
 		"tribe-events-views-v2-bootstrap-datepicker-styles",
 		"tribe-tooltip",
-		"promoter",
-		"tribe-events-views-v2-manager"
+		"promoter"
 	);
 
 	return ! in_array( $asset->slug, $remove );
 }, 10, 2 );
-
