@@ -75,6 +75,9 @@ class CrmDao {
 					'scope'         => ''
 				),
 				'timeout' => self::WP_REMOTE_TIMEOUT,
+				'headers' => array(
+					'Accept' => 'application/json',
+				)
 			);
 
 			$response = wp_remote_post( $this->api_url . 'oauth/token', $data );
@@ -130,11 +133,11 @@ class CrmDao {
 		}
 
 		$args     = array( 'body' => json_encode( $crm_data ), 'timeout' => self::WP_REMOTE_TIMEOUT );
-		$response = wp_remote_post( $this->api_url . 'api/v1/member', $this->add_auth_header( $args ) );
+		$response = wp_remote_post( $this->api_url . 'api/v1/member', $this->add_headers( $args ) );
 
 		if ( is_wp_error( $response ) ) {
 			$error_message = $response->get_error_message();
-			if ( $this->is_timeout_error($error_message) ) {
+			if ( $this->is_timeout_error( $error_message ) ) {
 				throw new Exception( "Could save member to crm: $error_message.", 408 );
 			} else {
 				throw new Exception( "Could save member to crm: $error_message." );
@@ -181,14 +184,19 @@ class CrmDao {
 	 *
 	 * @return array
 	 */
-	private function add_auth_header( $args = array() ) {
+	private function add_headers( $args = array() ) {
 		$bearer_token = "Bearer {$this->token['token']}";
 
 		if ( ! array_key_exists( 'headers', $args ) ) {
 			$args['headers'] = array();
 		}
 
-		$args['headers'] = array_merge( $args['headers'], array( 'Authorization' => $bearer_token ) );
+		$headers = array(
+			'Authorization' => $bearer_token,
+			'Accept'        => 'application/json'
+		);
+
+		$args['headers'] = array_merge( $args['headers'], $headers );
 
 		return $args;
 	}
@@ -210,7 +218,7 @@ class CrmDao {
 			return false;
 		}
 
-		$response = wp_remote_get( $this->api_url . 'api/v1/auth', $this->add_auth_header( array( 'timeout' => self::WP_REMOTE_TIMEOUT ) ) );
+		$response = wp_remote_get( $this->api_url . 'api/v1/auth', $this->add_headers( array( 'timeout' => self::WP_REMOTE_TIMEOUT ) ) );
 
 		if ( is_wp_error( $response ) ) {
 			$error_message = $response->get_error_message();
