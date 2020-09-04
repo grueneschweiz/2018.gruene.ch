@@ -3,7 +3,7 @@
 set -e
 
 usage() {
-	echo "Usage: $0 --db_name=<name> --db_username=<user> --site_url=<url> --site_title=<title> --site_admin_username=<name> --site_admin_email=<email> --site_locale=<de_DE|fr_FR> [--db_host=<host>] [--db_pass=<password>] [--site_admin_pass=<password>] [--install_path=<path>] [--multisite] [-?|--help]"
+	echo "Usage: $0 --db_name <name> --db_username <user> --site_url <url> --site_title <title> --site_admin_username <name> --site_admin_email <email> --site_locale <de_DE|fr_FR> [--db_host <host>] [--db_pass <password>] [--site_admin_pass <password>] [--install_path <path>] [--multisite] [-?|--help]"
 	echo "Options:"
 	echo "  --install_path PATH         absolute path. defaults to directory of this script"
 	echo "  --db_host HOST              hostname of the database. defaults to 'localhost'"
@@ -92,6 +92,10 @@ while [[ $# -gt 0 ]]
 			usage
 			exit 0
 			;;
+			*)
+			echo "Unknown argument $1."
+			usage
+			exit 1
 	esac
 done
 
@@ -102,7 +106,7 @@ if [ -z "$DB_HOST" ]; then
 fi
 
 if [ -z "$DB_NAME" ]; then
-	arg_error "--db_host"
+	arg_error "--db_name"
 fi
 
 if [ -z "$DB_USER" ]; then
@@ -129,7 +133,7 @@ if [ -z "$SITE_LOCALE" ]; then
 	arg_error "--site_locale"
 fi
 
-if [ 'de_DE' != "$SITE_LOCALE" ] || [ 'fr_FR' != "$SITE_LOCALE" ]; then
+if [ 'de_DE' != "$SITE_LOCALE" ] && [ 'fr_FR' != "$SITE_LOCALE" ]; then
 	echo "Invalid argument: --site_locale"
 	echo "Accepted values: 'de_DE', 'fr_FR'"
 	ERROR=1
