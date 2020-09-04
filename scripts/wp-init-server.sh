@@ -140,7 +140,7 @@ if [ 'de_DE' != "$SITE_LOCALE" ] && [ 'fr_FR' != "$SITE_LOCALE" ]; then
 fi
 
 if [ -z "$INSTALL_PATH" ]; then
-	INSTALL_PATH=$(dirname "$0")
+	INSTALL_PATH=$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )
 fi
 
 if [ ! -d "$INSTALL_PATH" ]; then
