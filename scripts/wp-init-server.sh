@@ -19,6 +19,11 @@ usage() {
 	echo "  -?, --help                  this help text"
 }
 
+arg_error() {
+	echo "Missing argument: $1"
+	ERROR=1
+}
+
 while [[ $# -gt 0 ]]
 	do
 	key="$1"
@@ -84,47 +89,63 @@ while [[ $# -gt 0 ]]
 			shift # past argument
 			;;
 			-?|--help)
-			echo usage
+			usage
 			exit 0
 			;;
 	esac
 done
+
+ERROR=
 
 if [ -z "$DB_HOST" ]; then
 	DB_HOST=localhost
 fi
 
 if [ -z "$DB_NAME" ]; then
-	echo arg_error "--db_host"
+	arg_error "--db_host"
 fi
 
 if [ -z "$DB_USER" ]; then
-	echo arg_error "--db_username"
+	arg_error "--db_username"
 fi
 
 if [ -z "$SITE_URL" ]; then
-	echo arg_error "--site_url"
+	arg_error "--site_url"
 fi
 
 if [ -z "$SITE_TITLE" ]; then
-	echo arg_error "--site_title"
+	arg_error "--site_title"
 fi
 
 if [ -z "$SITE_ADMIN_USER" ]; then
-	echo arg_error "--site_admin_username"
+	arg_error "--site_admin_username"
 fi
 
 if [ -z "$SITE_ADMIN_EMAIL" ]; then
-	echo arg_error "--site_admin_email"
+	arg_error "--site_admin_email"
 fi
 
 if [ -z "$SITE_LOCALE" ]; then
-	echo arg_error "--site_locale"
+	arg_error "--site_locale"
 fi
 
 if [ 'de_DE' != "$SITE_LOCALE" ] || [ 'fr_FR' != "$SITE_LOCALE" ]; then
 	echo "Invalid argument: --site_locale"
 	echo "Accepted values: 'de_DE', 'fr_FR'"
+	ERROR=1
+fi
+
+if [ -z "$INSTALL_PATH" ]; then
+	INSTALL_PATH=$(dirname "$0")
+fi
+
+if [ ! -d "$INSTALL_PATH" ]; then
+	echo "'$INSTALL_PATH' is no existing directory. Aborting."
+	ERROR=1
+fi
+
+if [ -n "$ERROR" ]; then
+	echo "Usage see: $0 --help"
 	exit 1
 fi
 
@@ -135,18 +156,6 @@ fi
 if [ -z "$SITE_ADMIN_PASS" ]; then
 	read -sp "Enter password for wordpress admin user '$SITE_ADMIN_USER': " SITE_ADMIN_PASS
 fi
-
-if [ -z "$INSTALL_PATH" ]; then
-	INSTALL_PATH=$(dirname "$0")
-fi
-
-if [ -d "$INSTALL_PATH" ]; then
-	echo "Starting installation in: $INSTALL_PATH"
-else
-	echo "'$INSTALL_PATH' is no existing directory. Aborting."
-	exit 1
-fi
-
 
 # load environment
 if [[ -f ~/.bash_profile ]]; then
@@ -181,6 +190,7 @@ fi
 
 # install wordpress
 ###################
+echo "Starting installation in: $INSTALL_PATH"
 
 # download wordpress
 cd "${INSTALL_PATH}"
@@ -247,9 +257,3 @@ else
 	echo "Updating composer"
 	composer self-update
 fi
-
-arg_error() {
-	echo "Missing argument: $1"
-	echo "Usage see: $0 --help"
-	exit 1
-}
