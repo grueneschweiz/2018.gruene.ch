@@ -155,10 +155,12 @@ fi
 
 if [ -z "$DB_PASS" ]; then
 	read -sp "Enter password for database user '$DB_USER': " DB_PASS
+	echo ""
 fi
 
 if [ -z "$SITE_ADMIN_PASS" ]; then
 	read -sp "Enter password for wordpress admin user '$SITE_ADMIN_USER': " SITE_ADMIN_PASS
+	echo ""
 fi
 
 # load environment
