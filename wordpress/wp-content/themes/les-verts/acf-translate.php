@@ -109,19 +109,17 @@ if( function_exists('acf_add_local_field_group') ):
 					'id' => '',
 				),
 				'choices' => array(
-					'top-left' => __('top left', 'lesverts'),
-					'top-center' => __('top center', 'lesverts'),
-					'top-right' => __('top right', 'lesverts'),
-					'middle-left' => __('middle left', 'lesverts'),
-					'middle-center' => __('middle center', 'lesverts'),
-					'middle-right' => __('middle right', 'lesverts'),
-					'bottom-left' => __('bottom left', 'lesverts'),
-					'bottom-center' => __('bottom center', 'lesverts'),
-					'bottom-right' => __('bottom right', 'lesverts'),
+					'top-left'      => __( 'top left', 'lesverts' ),
+					'top-center'    => __( 'top center', 'lesverts' ),
+					'top-right'     => __( 'top right', 'lesverts' ),
+					'middle-left'   => __( 'middle left', 'lesverts' ),
+					'middle-center' => __( 'middle center', 'lesverts' ),
+					'middle-right'  => __( 'middle right', 'lesverts' ),
+					'bottom-left'   => __( 'bottom left', 'lesverts' ),
+					'bottom-center' => __( 'bottom center', 'lesverts' ),
+					'bottom-right'  => __( 'bottom right', 'lesverts' ),
 				),
-				'default_value' => array(
-					0 => 'middle-center',
-				),
+				'default_value' => 'middle-center',
 				'allow_null' => 0,
 				'multiple' => 0,
 				'ui' => 0,
@@ -207,6 +205,7 @@ if( function_exists('acf_add_local_field_group') ):
 		'hide_on_screen' => '',
 		'active' => true,
 		'description' => '',
+		'modified' => 1570648072,
 	));
 
 	acf_add_local_field_group(array(
@@ -1054,23 +1053,21 @@ if( function_exists('acf_add_local_field_group') ):
 						'display' => 'block',
 						'sub_fields' => array(
 							array(
-								'key' => 'field_5d6e6840e0423',
-								'label' => __('About this block', 'lesverts'),
-								'name' => 'about_this_block',
-								'type' => 'text',
-								'instructions' => __('Adds an image that scales automatically to the device size (responsive). This is the preferred method to add images.', 'lesverts'),
-								'required' => 0,
+								'key'               => 'field_5d6e6840e0423',
+								'label'             => __( 'About this block', 'lesverts' ),
+								'name'              => '',
+								'type'              => 'message',
+								'instructions'      => '',
+								'required'          => 0,
 								'conditional_logic' => 0,
-								'wrapper' => array(
+								'wrapper'           => array(
 									'width' => '',
 									'class' => '',
-									'id' => '',
+									'id'    => '',
 								),
-								'default_value' => '',
-								'placeholder' => '',
-								'prepend' => '',
-								'append' => '',
-								'maxlength' => '',
+								'message'           => __( 'Adds an image that scales automatically to the device size (responsive). This is the preferred method to add images.', 'lesverts' ),
+								'new_lines'         => 'wpautop',
+								'esc_html'          => 0,
 							),
 							array(
 								'key' => 'field_5b6c4aab4c123',
@@ -1420,6 +1417,7 @@ if( function_exists('acf_add_local_field_group') ):
 		'hide_on_screen' => '',
 		'active' => false,
 		'description' => '',
+		'modified' => 1588609148,
 	));
 
 	acf_add_local_field_group(array(
@@ -2980,6 +2978,7 @@ This list will automatically be updated if any new content meets the filter crit
 		'hide_on_screen' => '',
 		'active' => false,
 		'description' => '',
+		'modified' => 1569854763,
 	));
 
 	acf_add_local_field_group(array(
@@ -3136,6 +3135,7 @@ This list will automatically be updated if any new content meets the filter crit
 		'hide_on_screen' => '',
 		'active' => false,
 		'description' => '',
+		'modified' => 1567507149,
 	));
 
 	acf_add_local_field_group(array(
@@ -3491,27 +3491,90 @@ This list will automatically be updated if any new content meets the filter crit
 		'title' => __('[Template]Post selector', 'lesverts'),
 		'fields' => array(
 			array(
-				'key' => 'field_5b71a24cf3711',
-				'label' => __('Post', 'lesverts'),
-				'name' => 'post',
-				'type' => 'post_object',
-				'instructions' => __('Select the post to display. The teaser and the image of the post, will be displayed.', 'lesverts'),
-				'required' => 1,
+				'key'               => 'field_5f5b53349d479',
+				'label'             => __( 'Post Selection Mode', 'lesverts' ),
+				'name'              => 'post_selection',
+				'type'              => 'button_group',
+				'instructions'      => __( 'Choose \'Manual\' to select the post or page that should be displayed. \'Automatic\' will display the latest post of the given category.', 'lesverts' ),
+				'required'          => 1,
 				'conditional_logic' => 0,
-				'wrapper' => array(
+				'wrapper'           => array(
 					'width' => '',
 					'class' => '',
-					'id' => '',
+					'id'    => '',
 				),
-				'post_type' => array(
+				'choices'           => array(
+					'manual' => __( 'Manual', 'lesverts' ),
+					'latest' => __( 'Automatic (latest)', 'lesverts' ),
+				),
+				'allow_null'        => 0,
+				'default_value'     => 'manual',
+				'layout'            => 'horizontal',
+				'return_format'     => 'value',
+				'translations'      => 'copy_once',
+			),
+			array(
+				'key'               => 'field_5b71a24cf3711',
+				'label'             => __( 'Post', 'lesverts' ),
+				'name'              => 'post',
+				'type'              => 'post_object',
+				'instructions'      => __( 'Select the post to display. The teaser and the image of the post, will be displayed.', 'lesverts' ),
+				'required'          => 1,
+				'conditional_logic' => array(
+					array(
+						array(
+							'field'    => 'field_5f5b53349d479',
+							'operator' => '==',
+							'value'    => 'manual',
+						),
+					),
+				),
+				'wrapper'           => array(
+					'width' => '',
+					'class' => '',
+					'id'    => '',
+				),
+				'post_type'         => array(
 					0 => 'post',
 					1 => 'page',
 				),
-				'taxonomy' => '',
-				'allow_null' => 0,
-				'multiple' => 0,
-				'return_format' => 'object',
-				'ui' => 1,
+				'taxonomy'          => '',
+				'allow_null'        => 0,
+				'multiple'          => 0,
+				'return_format'     => 'object',
+				'translations'      => 'copy_once',
+				'ui'                => 1,
+			),
+			array(
+				'key'               => 'field_5f5b54b49d47b',
+				'label'             => __( 'Category', 'lesverts' ),
+				'name'              => 'category',
+				'type'              => 'taxonomy',
+				'instructions'      => __( 'Select the category of which the lasted post should be displayed. The teaser and the image of the post, will be shown.', 'lesverts' ),
+				'required'          => 1,
+				'conditional_logic' => array(
+					array(
+						array(
+							'field'    => 'field_5f5b53349d479',
+							'operator' => '==',
+							'value'    => 'latest',
+						),
+					),
+				),
+				'wrapper'           => array(
+					'width' => '',
+					'class' => '',
+					'id'    => '',
+				),
+				'taxonomy'          => 'category',
+				'field_type'        => 'select',
+				'allow_null'        => 0,
+				'add_term'          => 0,
+				'save_terms'        => 0,
+				'load_terms'        => 0,
+				'return_format'     => 'id',
+				'translations'      => 'copy_once',
+				'multiple'          => 0,
 			),
 		),
 		'location' => array(
@@ -3531,7 +3594,6 @@ This list will automatically be updated if any new content meets the filter crit
 		'hide_on_screen' => '',
 		'active' => false,
 		'description' => '',
-		'modified' => 1543404866,
 	));
 
 	acf_add_local_field_group(array(
@@ -3755,6 +3817,7 @@ Example: {{current}} have signed. Can we reach {{goal}}?', 'lesverts'),
 		'hide_on_screen' => '',
 		'active' => false,
 		'description' => '',
+		'modified' => 1574881022,
 	));
 
 	acf_add_local_field_group(array(
@@ -4223,6 +4286,7 @@ Example: {{current}} have signed. Can we reach {{goal}}?', 'lesverts'),
 		'hide_on_screen' => '',
 		'active' => false,
 		'description' => '',
+		'modified' => 1574776459,
 	));
 
 	acf_add_local_field_group(array(
@@ -4268,46 +4332,46 @@ Example: {{current}} have signed. Can we reach {{goal}}?', 'lesverts'),
 				'prefix_name' => 0,
 			),
 			array(
-				'key' => 'field_5b684a4be8d5e',
-				'label' => __('Post 1', 'lesverts'),
-				'name' => 'post_1',
-				'type' => 'clone',
-				'instructions' => __('Select the post to display. The excerpt and the image of the post, will be displayed.', 'lesverts'),
-				'required' => 1,
+				'key'               => 'field_5b684a4be8d5e',
+				'label'             => __('Post 1', 'lesverts'),
+				'name'              => 'post_1',
+				'type'              => 'clone',
+				'instructions'      => __('Select the post to display. The excerpt and the image of the post, will be displayed.', 'lesverts'),
+				'required'          => 1,
 				'conditional_logic' => 0,
-				'wrapper' => array(
+				'wrapper'           => array(
 					'width' => '',
 					'class' => '',
-					'id' => '',
+					'id'    => '',
 				),
-				'clone' => array(
+				'clone'             => array(
 					0 => 'group_5b71a23bc757e',
 				),
-				'display' => 'seamless',
-				'layout' => 'block',
-				'prefix_label' => 0,
-				'prefix_name' => 1,
+				'display'           => 'group',
+				'layout'            => 'block',
+				'prefix_label'      => 0,
+				'prefix_name'       => 1,
 			),
 			array(
-				'key' => 'field_5b684a644d73a',
-				'label' => __('Post 2', 'lesverts'),
-				'name' => 'post_2',
-				'type' => 'clone',
-				'instructions' => '',
-				'required' => 1,
+				'key'               => 'field_5b684a644d73a',
+				'label'             => __('Post 2', 'lesverts'),
+				'name'              => 'post_2',
+				'type'              => 'clone',
+				'instructions'      => '',
+				'required'          => 1,
 				'conditional_logic' => 0,
-				'wrapper' => array(
+				'wrapper'           => array(
 					'width' => '',
 					'class' => '',
-					'id' => '',
+					'id'    => '',
 				),
-				'clone' => array(
+				'clone'             => array(
 					0 => 'group_5b71a23bc757e',
 				),
-				'display' => 'seamless',
-				'layout' => 'block',
-				'prefix_label' => 0,
-				'prefix_name' => 1,
+				'display'           => 'group',
+				'layout'            => 'block',
+				'prefix_label'      => 0,
+				'prefix_name'       => 1,
 			),
 		),
 		'location' => array(
@@ -4327,7 +4391,6 @@ Example: {{current}} have signed. Can we reach {{goal}}?', 'lesverts'),
 		'hide_on_screen' => '',
 		'active' => false,
 		'description' => '',
-		'modified' => 1543324750,
 	));
 
 	acf_add_local_field_group(array(
@@ -4790,22 +4853,23 @@ Example: {{current}} have signed. Can we reach {{goal}}?', 'lesverts'),
 		'label_placement' => 'top',
 		'instruction_placement' => 'label',
 		'hide_on_screen' => array(
-			0 => 'permalink',
-			1 => 'the_content',
-			2 => 'excerpt',
-			3 => 'discussion',
-			4 => 'comments',
-			5 => 'slug',
-			6 => 'author',
-			7 => 'format',
-			8 => 'page_attributes',
-			9 => 'featured_image',
+			0  => 'permalink',
+			1  => 'the_content',
+			2  => 'excerpt',
+			3  => 'discussion',
+			4  => 'comments',
+			5  => 'slug',
+			6  => 'author',
+			7  => 'format',
+			8  => 'page_attributes',
+			9  => 'featured_image',
 			10 => 'categories',
 			11 => 'tags',
 			12 => 'send-trackbacks',
 		),
 		'active' => true,
 		'description' => '',
+		'modified' => 1567523863,
 	));
 
 	acf_add_local_field_group(array(
@@ -5728,6 +5792,7 @@ Example: {{current}} have signed. Can we reach {{goal}}?', 'lesverts'),
 		),
 		'active' => true,
 		'description' => '',
+		'modified' => 1567419960,
 	));
 
 	acf_add_local_field_group(array(
@@ -5876,14 +5941,19 @@ Example: {{current}} have signed. Can we reach {{goal}}?', 'lesverts'),
 					'value' => 'page',
 				),
 				array(
-					'param' => 'post_template',
+					'param'    => 'post_template',
 					'operator' => '==',
-					'value' => 'default',
+					'value'    => 'default',
 				),
 				array(
-					'param' => 'page_type',
+					'param'    => 'page_type',
 					'operator' => '!=',
-					'value' => 'front_page',
+					'value'    => 'front_page',
+				),
+				array(
+					'param'    => 'page_type',
+					'operator' => '!=',
+					'value'    => 'posts_page',
 				),
 			),
 		),
@@ -5906,7 +5976,7 @@ Example: {{current}} have signed. Can we reach {{goal}}?', 'lesverts'),
 		),
 		'active' => true,
 		'description' => '',
-		'modified' => 1559140287,
+		'modified' => 1596474993,
 	));
 
 	acf_add_local_field_group(array(
@@ -6025,16 +6095,74 @@ Example: {{current}} have signed. Can we reach {{goal}}?', 'lesverts'),
 		),
 		'active' => true,
 		'description' => '',
-	));
+		'modified' => 1569833931,
+	) );
 
-	acf_add_local_field_group(array(
-		'key' => 'group_5b76febf369b4',
-		'title' => __('Social Media', 'lesverts'),
+	acf_add_local_field_group( array(
+		'key'                   => 'group_5f2846b8b4078',
+		'title'                 => __( 'Posts Page', 'lesverts' ),
+		'fields'                => array(
+			array(
+				'key'               => 'field_5f2846b91a433',
+				'label'             => __( 'Teaser', 'lesverts' ),
+				'name'              => '',
+				'type'              => 'clone',
+				'instructions'      => '',
+				'required'          => 0,
+				'conditional_logic' => 0,
+				'wrapper'           => array(
+					'width' => '',
+					'class' => '',
+					'id'    => '',
+				),
+				'clone'             => array(
+					0 => 'field_5bcee7167c5c5',
+				),
+				'display'           => 'group',
+				'layout'            => 'block',
+				'prefix_label'      => 0,
+				'prefix_name'       => 0,
+			),
+		),
+		'location'              => array(
+			array(
+				array(
+					'param'    => 'page_type',
+					'operator' => '==',
+					'value'    => 'posts_page',
+				),
+			),
+		),
+		'menu_order'            => 10,
+		'position'              => 'normal',
+		'style'                 => 'seamless',
+		'label_placement'       => 'top',
+		'instruction_placement' => 'label',
+		'hide_on_screen'        => array(
+			0 => 'the_content',
+			1 => 'excerpt',
+			2 => 'discussion',
+			3 => 'comments',
+			4 => 'revisions',
+			5 => 'slug',
+			6 => 'author',
+			7 => 'format',
+			8 => 'featured_image',
+			9 => 'send-trackbacks',
+		),
+		'active'                => true,
+		'description'           => '',
+		'modified'              => 1596475240,
+	) );
+
+	acf_add_local_field_group( array(
+		'key'    => 'group_5b76febf369b4',
+		'title'  => __( 'Social Media', 'lesverts' ),
 		'fields' => array(
 			array(
-				'key' => 'field_5b76fef28095e',
-				'label' => __('Display Share Buttons', 'lesverts'),
-				'name' => 'share_buttons',
+				'key'               => 'field_5b76fef28095e',
+				'label'             => __( 'Display Share Buttons', 'lesverts' ),
+				'name'              => 'share_buttons',
 				'type' => 'true_false',
 				'instructions' => __('You can hide the share buttons of this page, by disabling this option.', 'lesverts'),
 				'required' => 0,
