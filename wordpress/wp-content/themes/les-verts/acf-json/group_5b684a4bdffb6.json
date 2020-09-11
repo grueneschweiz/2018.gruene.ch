@@ -1,23 +1,6 @@
 {
     "key": "group_5b684a4bdffb6",
     "title": "[Template]Two Posts",
-    "location": [
-        [
-            {
-                "param": "page_type",
-                "operator": "==",
-                "value": "front_page"
-            }
-        ]
-    ],
-    "menu_order": 0,
-    "position": "normal",
-    "style": "default",
-    "label_placement": "top",
-    "instruction_placement": "label",
-    "hide_on_screen": "",
-    "active": 0,
-    "description": "",
     "fields": [
         {
             "key": "field_5b7d9fb145d30",
@@ -63,20 +46,20 @@
             "name": "post_1",
             "type": "clone",
             "instructions": "Select the post to display. The excerpt and the image of the post, will be displayed.",
-            "required": 1,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "clone": [
-                "group_5b71a23bc757e"
-            ],
-            "display": "seamless",
-            "layout": "block",
-            "prefix_label": 0,
-            "prefix_name": 1
+          "required": 1,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "",
+            "class": "",
+            "id": ""
+          },
+          "clone": [
+            "group_5b71a23bc757e"
+          ],
+          "display": "group",
+          "layout": "block",
+          "prefix_label": 0,
+          "prefix_name": 1
         },
         {
             "key": "field_5b684a644d73a",
@@ -84,21 +67,38 @@
             "name": "post_2",
             "type": "clone",
             "instructions": "",
-            "required": 1,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "clone": [
-                "group_5b71a23bc757e"
-            ],
-            "display": "seamless",
-            "layout": "block",
-            "prefix_label": 0,
-            "prefix_name": 1
+          "required": 1,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "",
+            "class": "",
+            "id": ""
+          },
+          "clone": [
+            "group_5b71a23bc757e"
+          ],
+          "display": "group",
+          "layout": "block",
+          "prefix_label": 0,
+          "prefix_name": 1
         }
     ],
-    "modified": 1543324750
+  "location": [
+    [
+      {
+        "param": "page_type",
+        "operator": "==",
+        "value": "front_page"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "hide_on_screen": "",
+  "active": false,
+  "description": "",
+  "modified": 1599821566
 }

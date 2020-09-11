@@ -73,6 +73,7 @@ if ( 'tribe_events' === $post_type ) {
 // handle front page
 if ( is_front_page() ) {
 	$context['latest_press_release'] = supt_get_latest_press_release( $context );
+	$context['latest_posts']         = supt_get_latest_posts( $context );
 	$context['events']               = supt_get_events( $context );
 	$context['no_sanuk']             = ! file_exists( WP_CONTENT_DIR . '/sanuk/font.ttf' );
 	array_unshift( $templates, 'front-page.twig' );
@@ -163,5 +164,100 @@ function supt_get_events( &$context ) {
 			// the latest post is limited to one, so we're done now
 			return $events;
 		}
+	}
+}
+
+/**
+ * Get the content of the post / page block if set to automatic post selection.
+ *
+ * Asserts, that no post is twice on the front page (unless added twice manually).
+ *
+ * @param $context
+ *
+ * @return array the latest posts
+ */
+function supt_get_latest_posts( $context ) {
+	if ( empty( $context['post']->custom['content_blocks'] ) ) {
+		return array();
+	}
+
+	$configs = [];
+	foreach ( $context['post']->custom['content_blocks'] as $id => $type ) {
+		if ( $type !== 'single' && $type !== 'double' ) {
+			continue;
+		}
+
+		$configs = array_merge( $configs, supt_get_post_config_selectors( $id, $type ) );
+	}
+
+	$loaded_posts = [];
+	if ( $context['latest_press_release'] ) {
+		$loaded_posts[] = $context['latest_press_release']->id;
+	}
+
+	$latest_posts = [];
+	foreach ( $configs as $config ) {
+		$data = $context['post'];
+
+		if ( 'manual' === $data->{$config['selection']} ) {
+			$loaded_posts[] = (int) $data->{$config['post']};
+		}
+	}
+
+	foreach ( $configs as $config ) {
+		if ( 'latest' === $data->{$config['selection']} ) {
+			$cat_id   = $data->{$config['category']};
+			$post_ids = get_posts(
+				array(
+					'numberposts'  => 1,
+					'category'     => $cat_id,
+					'exclude'      => $loaded_posts,
+					'fields'       => 'ids',
+					'has_password' => false,
+					'post_status'  => 'publish',
+					'orderby'      => 'date',
+					'order'        => 'DESC',
+				)
+			);
+
+			if ( $post_ids ) {
+				$loaded_posts = array_merge(
+					$loaded_posts,
+					$post_ids
+				);
+
+				$latest_posts[ $config['id'][0] ][ $config['id'][1] ] = $post_ids[0];
+			}
+		}
+	}
+
+	return $latest_posts;
+}
+
+function supt_get_post_config_selectors( $id, $type ) {
+	if ( 'single' === $type ) {
+		return array(
+			array(
+				'selection' => "content_blocks_{$id}_post_selection",
+				'post'      => "content_blocks_{$id}_post",
+				'category'  => "content_blocks_{$id}_category",
+				'id'        => array( $id, 0 ),
+			)
+		);
+	} else {
+		return array(
+			array(
+				'selection' => "content_blocks_{$id}_post_1_post_selection",
+				'post'      => "content_blocks_{$id}_post_1_post",
+				'category'  => "content_blocks_{$id}_post_1_category",
+				'id'        => array( $id, 0 ),
+			),
+			array(
+				'selection' => "content_blocks_{$id}_post_2_post_selection",
+				'post'      => "content_blocks_{$id}_post_2_post",
+				'category'  => "content_blocks_{$id}_post_2_category",
+				'id'        => array( $id, 1 ),
+			),
+		);
 	}
 }

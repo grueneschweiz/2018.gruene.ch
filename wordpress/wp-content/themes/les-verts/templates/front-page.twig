@@ -81,7 +81,8 @@
 					{% else %}
 						{% include 'organisms/o-front-article.twig' with {
 							'block': block,
-							'latest_press_release': loop.parent.latest_press_release
+							'latest_press_release': loop.parent.latest_press_release,
+							'latest_posts': attribute(latest_posts, loop.index0)
 						} only %}
 					{% endif %}
 				</div>

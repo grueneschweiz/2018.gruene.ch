@@ -1,43 +1,166 @@
 #!/usr/bin/env bash
 
-# do the interactive things fist, so you can get a coffee while it installs
-echo "Enter installation path"
-while :
-do
-	read -ep "Path: " INSTALL_PATH
-	if [ -d "$INSTALL_PATH" ]; then
-		# directory exists
-		echo "Directory exists."
-		break
-	fi
+set -e
 
-	echo "Directory '$INSTALL_PATH' not found."
-	continue
+usage() {
+	echo "Usage: $0 --db_name <name> --db_username <user> --site_url <url> --site_title <title> --site_admin_username <name> --site_admin_email <email> --site_locale <de_DE|fr_FR> [--db_host <host>] [--db_pass <password>] [--site_admin_pass <password>] [--install_path <path>] [--multisite] [-?|--help]"
+	echo "Options:"
+	echo "  --install_path PATH         absolute path. defaults to directory of this script"
+	echo "  --db_host HOST              hostname of the database. defaults to 'localhost'"
+	echo "  --db_name NAME              database name"
+	echo "  --db_username USER          name of the database user"
+	echo "  --db_pass PASS              database password. the script will prompt for the password if it is not provided as option."
+	echo "  --site_url URL              the url, under which the site will be available. network url if multisite option is given."
+	echo "  --site_title TITLE          the sites title. network title if multisite option is given."
+	echo "  --site_admin_username USER  the username of the wordpress admin. network admin if multisite option is given."
+	echo "  --site_admin_pass PASS      the password of the wordpress admin. the script will prompt for the password if it is not provided as option."
+	echo "  --site_locale LANG          the language, in which the site will be installed. accepts 'de_DE' and 'fr_FR'"
+	echo "  --multisite                 the presence triggers a multisite installation"
+	echo "  -?, --help                  this help text"
+}
+
+arg_error() {
+	echo "Missing argument: $1"
+	ERROR=1
+}
+
+while [[ $# -gt 0 ]]
+	do
+	key="$1"
+
+	case $key in
+			--install_path)
+			INSTALL_PATH="$2"
+			shift # past argument
+			shift # past value
+			;;
+			--db_host)
+			DB_HOST="$2"
+			shift # past argument
+			shift # past value
+			;;
+			--db_name)
+			DB_NAME="$2"
+			shift # past argument
+			shift # past value
+			;;
+			--db_username)
+			DB_USER="$2"
+			shift # past argument
+			shift # past value
+			;;
+			--db_pass)
+			DB_PASS="$2"
+			shift # past argument
+			shift # past value
+			;;
+			--site_url)
+			SITE_URL="$2"
+			shift # past argument
+			shift # past value
+			;;
+			--site_title)
+			SITE_TITLE="$2"
+			shift # past argument
+			shift # past value
+			;;
+			--site_admin_username)
+			SITE_ADMIN_USER="$2"
+			shift # past argument
+			shift # past value
+			;;
+			--site_admin_pass)
+			SITE_ADMIN_PASS="$2"
+			shift # past argument
+			shift # past value
+			;;
+			--site_admin_email)
+			SITE_ADMIN_EMAIL="$2"
+			shift # past argument
+			shift # past value
+			;;
+			--site_locale)
+			SITE_LOCALE="$2"
+			shift # past argument
+			shift # past value
+			;;
+			--multisite)
+			MULTISITE=1
+			shift # past argument
+			;;
+			-?|--help)
+			usage
+			exit 0
+			;;
+			*)
+			echo "Unknown argument $1."
+			usage
+			exit 1
+	esac
 done
 
-echo "Configure database"
-read -p "Enter DB host: " DB_HOST
-read -p "Enter DB name: " DB_NAME
-read -p "Enter DB user: " DB_USER
-read -sp "Enter DB password: " DB_PASS
-printf "\n"
+ERROR=
 
-echo "Configure website"
-read -p "Enter website url: " SITE_URL
-read -p "Enter website title: " SITE_TITLE
-read -p "Enter website admin user: " SITE_ADMIN_USER
-read -sp "Enter website admin password: " SITE_ADMIN_PASS
-printf "\n"
-read -p "Enter website admin email: " SITE_ADMIN_EMAIL
-read -p "Enter language code (Ex. 'de_DE' or 'fr_FR'): " SITE_LOCALE
-read -p "Multisite (y/N): " MULTISITE
+if [ -z "$DB_HOST" ]; then
+	DB_HOST=localhost
+fi
 
-# make multisite variable a boolean
-MULTISITE=${MULTISITE,,} # tolower
-if [[ ${MULTISITE} =~ ^(yes|y) ]]; then
-	MULTISITE=1
-else
-	MULTISITE=
+if [ -z "$DB_NAME" ]; then
+	arg_error "--db_name"
+fi
+
+if [ -z "$DB_USER" ]; then
+	arg_error "--db_username"
+fi
+
+if [ -z "$SITE_URL" ]; then
+	arg_error "--site_url"
+fi
+
+if [ -z "$SITE_TITLE" ]; then
+	arg_error "--site_title"
+fi
+
+if [ -z "$SITE_ADMIN_USER" ]; then
+	arg_error "--site_admin_username"
+fi
+
+if [ -z "$SITE_ADMIN_EMAIL" ]; then
+	arg_error "--site_admin_email"
+fi
+
+if [ -z "$SITE_LOCALE" ]; then
+	arg_error "--site_locale"
+fi
+
+if [ 'de_DE' != "$SITE_LOCALE" ] && [ 'fr_FR' != "$SITE_LOCALE" ]; then
+	echo "Invalid argument: --site_locale"
+	echo "Accepted values: 'de_DE', 'fr_FR'"
+	ERROR=1
+fi
+
+if [ -z "$INSTALL_PATH" ]; then
+	INSTALL_PATH=$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )
+fi
+
+if [ ! -d "$INSTALL_PATH" ]; then
+	echo "'$INSTALL_PATH' is no existing directory. Aborting."
+	ERROR=1
+fi
+
+if [ -n "$ERROR" ]; then
+	echo "Usage see: $0 --help"
+	exit 1
+fi
+
+if [ -z "$DB_PASS" ]; then
+	read -sp "Enter password for database user '$DB_USER': " DB_PASS
+	echo ""
+fi
+
+if [ -z "$SITE_ADMIN_PASS" ]; then
+	read -sp "Enter password for wordpress admin user '$SITE_ADMIN_USER': " SITE_ADMIN_PASS
+	echo ""
 fi
 
 # load environment
@@ -73,9 +196,10 @@ fi
 
 # install wordpress
 ###################
+echo "Starting installation in: $INSTALL_PATH"
 
 # download wordpress
-cd ${INSTALL_PATH}
+cd "${INSTALL_PATH}"
 wp core download --locale="$SITE_LOCALE"
 
 # configure database

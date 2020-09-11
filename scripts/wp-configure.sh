@@ -40,6 +40,11 @@ if [ $NETWORK ]; then
     $WPCLI network meta update 1 fileupload_maxk 65536
 fi
 
+# allow site admins to add new users
+if [ $NETWORK ]; then
+    $WPCLI site option set add_new_users 1
+fi
+
 # configure YOAST meta description fields
 $WPCLI option patch update wpseo_titles metadesc-tribe_events <<< "%%cf_description%%"
 $WPCLI option patch update wpseo_titles metadesc-post <<< "%%cf_teaser%%"

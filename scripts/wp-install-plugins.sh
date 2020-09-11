@@ -46,9 +46,9 @@ done
 # Ensure proprietary plugins are uploaded
 #============================
 
-POLYLANG=`$WPCLI plugin list | grep polylang-pro`
-ACF=`$WPCLI plugin list | grep advanced-custom-fields-pro`
-SEARCHWP=`$WPCLI plugin list | grep searchwp`
+POLYLANG=$($WPCLI plugin list | grep polylang-pro) || POLYLANG=
+ACF=$($WPCLI plugin list | grep advanced-custom-fields-pro) || ACF=
+SEARCHWP=$($WPCLI plugin list | grep searchwp) || SEARCHWP=
 MISSING=0
 
 set -e # exit on error
