@@ -16,9 +16,9 @@
 				} only %}
 			{% elseif 'link' == type and link %}
 				{% include 'atoms/a-link-button.twig' with {
-					'link': button.url,
-					'label': button.title,
-					'target': button.target
+					'link': link.url,
+					'label': link.title,
+					'target': link.target
 				} only %}
 			{% endif %}
 		</div>
