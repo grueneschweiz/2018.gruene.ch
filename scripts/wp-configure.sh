@@ -7,27 +7,16 @@
 # README:
 # * this script should not break things on
 #   existing website in production
-#
-# PARAMETERS:
-# -n treat this installation as multi site
-#    (network)
 #===========================================
 
 set -e
 
+# detect if it's a multisite installation
 NETWORK=
-while getopts "n" opt; do
-  case $opt in
-    n)
-    	NETWORK=1
-      echo "WP multi site support enabled."
-      ;;
-    ?)
-      echo "Invalid option: -$OPTARG" >&2
-      exit 1
-      ;;
-  esac
-done
+if wp site list; then
+	NETWORK=1
+	echo "WP multisite detected."
+fi
 
 # set time zone
 $WPCLI option update timezone_string "Europe/Zurich"
