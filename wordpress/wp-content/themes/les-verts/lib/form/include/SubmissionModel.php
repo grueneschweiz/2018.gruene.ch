@@ -14,6 +14,7 @@ class SubmissionModel {
 	const FORM_KEY = 'form_id';
 	const DESCENDANT_KEY = 'descendant_id';
 	const PREDECESSOR_KEY = 'predecessor_id';
+	const REFERER_KEY = 'referer_url';
 
 	const MAX_LABEL_LEN = 50;
 
@@ -311,6 +312,15 @@ class SubmissionModel {
 		} else {
 			$this->meta[ self::DESCENDANT_KEY ] = (int) $descendant;
 		}
+	}
+
+	/**
+	 * The url of the page, where the form was submitted
+	 *
+	 * @return string
+	 */
+	public function meta_get_referer() {
+		return $this->meta[ self::REFERER_KEY ];
 	}
 
 	/**

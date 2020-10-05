@@ -23,14 +23,28 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 						'Use the following tags as placeholders in your mail. They will be replaced automatically: %s',
 						'Placeholders',
 						THEME_DOMAIN
-					) . _x( 'Use the special placeholder %s to link to the complete submission (with all linked forms).', 'Placeholder' )
-					. ' <i>' . _x(
+					)
+					. _x(
+						'Use the special placeholder %s to link to the complete submission (with all linked forms).',
+						'Placeholder',
+						THEME_DOMAIN
+					)
+					. ' '
+					. _x(
+						'%s shows the url to the page or post, where the form was embedded.',
+						'Placeholder',
+						THEME_DOMAIN
+					)
+					. ' <i>'
+					. _x(
 						'Advanced: You may use %s in this mail template.',
 						'Link',
 						THEME_DOMAIN
-					) . '</i>',
+					)
+					. '</i>',
 					'<strong><div class="form_mail_template_placeholders"></div></strong>',
 					'<strong>{{submission_url}}</strong>',
+					'<strong>{{referer_url}}</strong>',
 					'<a href="https://twig.symfony.com/" target="_blank">Twig</a>'
 				),
 				'new_lines'         => 0,

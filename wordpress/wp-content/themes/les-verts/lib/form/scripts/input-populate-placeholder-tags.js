@@ -85,8 +85,9 @@
 			slug = slug.substr( 0, max_slug_len );
 		}
 
-		// _meta_ and submission_url are reserved
-		if ('_meta_' === slug || 'submission_url' === slug) {
+		// _meta_, request_url and referer_url are reserved
+		if ('_meta_' === slug || 'referer_url' === slug || 'submission_url' ===
+			slug) {
 			slug = 'custom_' + slug;
 		}
 

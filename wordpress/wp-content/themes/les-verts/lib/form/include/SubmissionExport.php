@@ -151,6 +151,7 @@ class SubmissionExport {
 				}
 
 				$row['timestamp'] = $submission[ $form_id ]->meta_get_timestamp();
+				$row['referer']   = $submission[ $form_id ]->meta_get_referer();
 
 				foreach ( $fields as $slug => $unused ) {
 					$field = $submission[ $form_id ]->{'get_' . $slug}();
@@ -173,6 +174,7 @@ class SubmissionExport {
 	private function getHeaders() {
 		$this->headers[ self::HEADER_META_KEY ]['id']        = __( 'ID' );
 		$this->headers[ self::HEADER_META_KEY ]['timestamp'] = __( 'Timestamp', THEME_DOMAIN );
+		$this->headers[ self::HEADER_META_KEY ]['referer']   = __( 'Referer', THEME_DOMAIN );
 
 		foreach ( $this->forms as $form_id => $form ) {
 			// the headers of the current form

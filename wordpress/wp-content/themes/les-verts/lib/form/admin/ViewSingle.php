@@ -89,6 +89,15 @@ class ViewSingle {
 		printf( '<tr><th scope="row"><strong>%s</strong></th><td>%s</td></tr>',
 			__( 'Timestamp', THEME_DOMAIN ), $timestamp );
 
+		$referer = $submission->meta_get_referer();
+
+		printf(
+			'<tr><th scope="row"><strong>%s</strong></th><td><a href="%s" target="_blank">%s</a></td></tr>',
+			__( 'Referer', THEME_DOMAIN ),
+			$referer,
+			$referer
+		);
+
 		echo '</table></div>';
 	}
 }
