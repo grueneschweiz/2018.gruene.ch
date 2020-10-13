@@ -2293,7 +2293,7 @@ msgstr "Einfügen, wenn neu"
 
 #: lib/form/acf/input.php:156
 msgid "Please add <em>Hallo</em>, <em>Liebe</em>, <em>Lieber</em> or <em>salut</em>, <em>chère</em>, <em>cher</em>. All other values will be ignored!"
-msgstr "Bitte füge <em>Hallo</em>, <em>Liebe</em>, <em>Lieber</em> oder <em>salut</em>, <em>chère</em>, <em>cher</em> ein. Alle anderen Werte werden ingoriert!"
+msgstr "Bitte füge <em>Hallo</em>, <em>Liebe</em>, <em>Lieber</em> oder <em>salut</em>, <em>chère</em>, <em>cher</em> ein. Alle anderen Werte werden ignoriert!"
 
 #: lib/form/acf/settings.php:181
 msgid "API Key (Client Secret)"
