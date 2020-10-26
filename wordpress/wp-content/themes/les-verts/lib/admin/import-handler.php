@@ -2,6 +2,14 @@
 
 namespace SUPT;
 
+use WP_Query;
+use function get_field;
+use function get_post;
+use function get_post_thumbnail_id;
+use function update_field;
+use function wp_reset_postdata;
+use function wp_update_post;
+
 add_action( 'import_end', array( '\SUPT\Importer', 'import' ) );
 
 class Importer {
@@ -25,7 +33,7 @@ class Importer {
 	}
 
 	private function update_events() {
-		$query = new \WP_Query( array(
+		$query = new WP_Query( array(
 			'post_type'   => array( 'tribe_events' ),
 			'post_status' => 'any',
 			'nopaging'    => true
@@ -33,7 +41,7 @@ class Importer {
 
 		while ( $query->have_posts() ) {
 			$query->the_post();
-			$post       = \get_post();
+			$post       = get_post();
 			$this->post = $post;
 
 			/**
@@ -48,20 +56,20 @@ class Importer {
 			/**
 			 * copy featured image
 			 */
-			$image_id = (int) \get_post_thumbnail_id();
+			$image_id = (int) get_post_thumbnail_id();
 			if ( $image_id ) {
 				update_field( 'image', $image_id );
 			}
 
 			// save the changes on the original post
-			\wp_update_post( $post );
+			wp_update_post( $post );
 		}
 
-		\wp_reset_postdata();
+		wp_reset_postdata();
 	}
 
 	private function update_posts_and_pages() {
-		$query = new \WP_Query( array(
+		$query = new WP_Query( array(
 			'post_type'   => array( 'page', 'post' ),
 			'post_status' => 'any',
 			'nopaging'    => true
@@ -69,9 +77,9 @@ class Importer {
 
 		while ( $query->have_posts() ) {
 			$query->the_post();
-			$post       = \get_post();
+			$post       = get_post();
 			$this->post = $post;
-			$content    = \get_field( 'main_content', false );
+			$content    = get_field( 'main_content', false );
 
 			/**
 			 * move body text
@@ -82,6 +90,7 @@ class Importer {
 
 			if ( trim( $post->post_content ) ) {
 				$post_content = $this->process_shortcodes( $post->post_content );
+				$post_content = $this->strip_block_editor_tags( $post_content );
 
 				$idx                        = empty( $content['content'] ) ? 0 : count( $content );
 				$content['content'][ $idx ] = array(
@@ -96,26 +105,26 @@ class Importer {
 			 * move excerpt
 			 */
 			if ( ! empty( $post->post_excerpt ) ) {
-				\update_field( 'teaser', $post->post_excerpt );
+				update_field( 'teaser', $post->post_excerpt );
 				$post->post_excerpt = '';
 			}
 
 			/**
 			 * copy featured image
 			 */
-			$image_id = (int) \get_post_thumbnail_id();
+			$image_id = (int) get_post_thumbnail_id();
 			if ( $image_id ) {
 				$content['header_image'] = $image_id;
 			}
 
 			// save the new meta fields
-			\update_field( 'main_content', $content );
+			update_field( 'main_content', $content );
 
 			// save the changes on the original post
-			\wp_update_post( $post );
+			wp_update_post( $post );
 		}
 
-		\wp_reset_postdata();
+		wp_reset_postdata();
 	}
 
 	private function process_shortcodes( $content ) {
@@ -224,5 +233,21 @@ class Importer {
 		);
 
 		printf( '<div class="%1$s"><p>%2$s</p></div>', $class, $message );
+	}
+
+	private function strip_block_editor_tags( $content ) {
+		// strip block editor's paragraph tags
+		$p_regex = "/<!-- wp:paragraph -->\s*<p>\s*(.*?)\s*<\/p>\s*<!-- \/wp:paragraph -->/i";
+		$content = preg_replace( $p_regex, '$1', $content );
+
+		// remove any other tags except for the good old more tag
+		$comment_regex = "<!--(?!\s*more\s*).*?-->";
+		$content       = preg_replace( $comment_regex, '', $content );
+
+		// remove multiple consecutive newline chars
+		$newlines_regex = "/\n+/";
+		$content        = preg_replace( $newlines_regex, "\n", $content );
+
+		return $content;
 	}
 }
