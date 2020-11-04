@@ -241,7 +241,7 @@ class Importer {
 		$content = preg_replace( $p_regex, '$1', $content );
 
 		// remove any other tags except for the good old more tag
-		$comment_regex = "<!--(?!\s*more\s*).*?-->";
+		$comment_regex = "/<!--(?!\s*more\s*).*?-->/";
 		$content       = preg_replace( $comment_regex, '', $content );
 
 		// remove multiple consecutive newline chars
