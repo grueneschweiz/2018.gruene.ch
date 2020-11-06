@@ -10,7 +10,17 @@ use function update_field;
 use function wp_reset_postdata;
 use function wp_update_post;
 
-add_action( 'import_end', array( '\SUPT\Importer', 'import' ) );
+/**
+ * Run immediately if called by the cli, else hook into the import_end action.
+ *
+ * The import_end hook is not called, if the import is done by cli. So we have
+ * to call this class manually.
+ */
+if ( defined( 'WP_CLI' ) && WP_CLI ) {
+	Importer::import();
+} else {
+	add_action( 'import_end', array( '\SUPT\Importer', 'import' ) );
+}
 
 class Importer {
 	private $post;
