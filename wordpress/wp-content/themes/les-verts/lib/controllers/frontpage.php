@@ -3,6 +3,7 @@
 
 namespace SUPT;
 
+use Timber\Timber;
 use WP_Query;
 use function get_posts;
 
