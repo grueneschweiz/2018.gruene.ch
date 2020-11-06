@@ -24,7 +24,9 @@
 		@extend .a-post-meta__block;
 	}
 
-	&__date + &__tags {
+	&__date + &__author,
+	&__date + &__tags,
+	&__author + &__tags {
 		padding-top: 0;
 
 		&::before {
@@ -50,5 +52,12 @@
 		&:not(:last-child)::after {
 			content: ',';
 		}
+	}
+
+	&__author {
+		@include clean-link;
+		@extend .a-post-meta__block;
+		color: $color-primary;
+		font-weight: $font-weight-bold;
 	}
 }

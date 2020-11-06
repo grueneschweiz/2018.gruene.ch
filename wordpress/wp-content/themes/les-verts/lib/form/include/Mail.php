@@ -52,6 +52,7 @@ class Mail {
 	 * @param string $template Twig template string
 	 * @param array $data Optional. Data for the template.
 	 * @param int|null $post_meta_id Id of the form submission.
+	 * @param string $referer_url The url of the page, where the form was submitted.
 	 * @param array $headers Optional. Additional headers.
 	 * @param string|array $attachment Optional. Files to attach.
 	 */
@@ -63,12 +64,13 @@ class Mail {
 		$template,
 		$data = array(),
 		$post_meta_id = null,
+		$referer_url = '',
 		$headers = array(),
 		$attachment = null
 	) {
 
 		// Render the email from template
-		$data    = $this->prepare_data_for_email( $data, $post_meta_id );
+		$data    = $this->prepare_data_for_email( $data, $post_meta_id, $referer_url );
 		$body    = Timber::compile_string( $template, $data );
 		$subject = Timber::compile_string( $subject, $data );
 
@@ -113,14 +115,15 @@ class Mail {
 	}
 
 	/**
-	 * Flatten checkbox arrays, add submission url
+	 * Flatten checkbox arrays, add submission and request urls
 	 *
 	 * @param array $data
 	 * @param int|null $post_meta_id
+	 * @param string $referer_url
 	 *
 	 * @return array
 	 */
-	private function prepare_data_for_email( $data, $post_meta_id ) {
+	private function prepare_data_for_email( $data, $post_meta_id, $referer_url ) {
 		foreach ( $data as $key => &$value ) {
 			// flatten arrays
 			if ( is_array( $value ) ) {
@@ -129,9 +132,11 @@ class Mail {
 		}
 
 		if ( $post_meta_id ) {
-			$url                    = admin_url( 'edit.php?post_type=' . FormType::MODEL_NAME . '&page=submissions&action=view&item=' . $post_meta_id );
-			$data['submission_url'] = "<a href='$url'>" . _x( 'view complete submission online', 'form submission', THEME_DOMAIN ) . "</a>";
+			$submission_url         = admin_url( 'edit.php?post_type=' . FormType::MODEL_NAME . '&page=submissions&action=view&item=' . $post_meta_id );
+			$data['submission_url'] = "<a href='$submission_url'>" . _x( 'view complete submission online', 'form submission', THEME_DOMAIN ) . "</a>";
 		}
+
+		$data['referer_url'] = $referer_url;
 
 		return $data;
 	}

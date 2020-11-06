@@ -54,6 +54,13 @@ class FormSubmission {
 	private $post_meta_id = - 1;
 
 	/**
+	 * The url to the page that contains the form
+	 *
+	 * @var string
+	 */
+	private $referer_url = '';
+
+	/**
 	 * The forms nonce
 	 *
 	 * @var string
@@ -228,6 +235,10 @@ class FormSubmission {
 			return;
 		}
 
+		if ( isset( $_SERVER['HTTP_REFERER'] ) ) {
+			$this->referer_url = $this->get_safe_referer();
+		}
+
 		if ( isset( $_POST['action_id'] ) ) {
 			$this->action_id = absint( $_POST['action_id'] );
 		}
@@ -244,6 +255,14 @@ class FormSubmission {
 		if ( isset( $_POST['nonce'] ) ) {
 			$this->nonce = $_POST['nonce'];
 		}
+	}
+
+	private function get_safe_referer() {
+		return htmlspecialchars(
+			strip_tags(
+				filter_var( $_SERVER['HTTP_REFERER'], FILTER_SANITIZE_URL )
+			)
+		);
 	}
 
 	/**
@@ -376,6 +395,7 @@ class FormSubmission {
 			'email'          => $this->get_email_address(),
 			'predecessor_id' => $this->predecessor_id,
 			'descendant_id'  => - 1,
+			'referer_url'    => $this->referer_url,
 		);
 
 		// make sure to add the meta data before the actual data

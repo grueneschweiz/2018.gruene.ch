@@ -101,7 +101,24 @@ class CustomMenuBreadcrumbs {
 
 		$wpseo_primary_term = new WPSEO_Primary_Term( 'category', $post_id );
 		$wpseo_primary_term = $wpseo_primary_term->get_primary_term();
-		$primary            = get_term( $wpseo_primary_term );
+
+		if ( $wpseo_primary_term ) {
+			$primary = get_term( $wpseo_primary_term );
+		} else {
+			/**
+			 * Fallback for imported posts
+			 *
+			 * Just take the first category.
+			 *
+			 * @since 0.16.1
+			 */
+			$categories = wp_get_post_categories( $post_id );
+			if ( empty( $categories ) ) {
+				return false;
+			}
+
+			$primary = get_term( $categories[0] );
+		}
 
 		if ( is_wp_error( $primary ) || null === $primary ) {
 			return false;

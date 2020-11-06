@@ -1,22 +1,31 @@
 {% set date = 0 %}
-{% for category in categories if category.has_date %}
+{% set author_name = 0 %}
+{% for category in categories %}
+	{% if category.has_date %}
 		{% set date = nice_date %}
+	{% endif %}
+	{% if category.has_author %}
+		{% set author_name = author.name %}
+	{% endif %}
 {% endfor %}
 
 <div class="a-post-meta">
-    {% if date %}
-			<time class="a-post-meta__date" datetime="{{ isodate|date('Y-m-d') }}">{{ date|l10n_date }}</time>
-    {% endif %}
-    {% if tags or categories %}
-        <div class="a-post-meta__tags">
-						{% for category in categories %}
-							<a href="{{ category.link }}" class="a-post-meta__category"
-								 title="{{ __('Show all articles of the category %s', constant('THEME_DOMAIN'))|format(category.name) }}">{{ category.name|wptexturize }}</a>
-						{% endfor %}
-            {% for tag in tags %}
-                <a href="{{ tag.link }}" class="a-post-meta__tag"
-									 title="{{ __('Show all articles tagged with %s', constant('THEME_DOMAIN'))|format(tag.name) }}">{{ tag.name|wptexturize }}</a>
-            {% endfor %}
+	{% if date %}
+		<time class="a-post-meta__date" datetime="{{ isodate|date('Y-m-d') }}">{{ date|l10n_date }}</time>
+	{% endif %}
+	{% if author_name %}
+		<a href="{{ author.link }}" class="a-post-meta__author">{{ author_name }}</a>
+	{% endif %}
+	{% if tags or categories %}
+		<div class="a-post-meta__tags">
+			{% for category in categories %}
+				<a href="{{ category.link }}" class="a-post-meta__category"
+					 title="{{ __('Show all articles of the category %s', constant('THEME_DOMAIN'))|format(category.name) }}">{{ category.name|wptexturize }}</a>
+			{% endfor %}
+			{% for tag in tags %}
+				<a href="{{ tag.link }}" class="a-post-meta__tag"
+					 title="{{ __('Show all articles tagged with %s', constant('THEME_DOMAIN'))|format(tag.name) }}">{{ tag.name|wptexturize }}</a>
+			{% endfor %}
         </div>
     {% endif %}
 </div>

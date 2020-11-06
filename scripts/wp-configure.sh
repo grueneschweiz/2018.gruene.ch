@@ -7,27 +7,16 @@
 # README:
 # * this script should not break things on
 #   existing website in production
-#
-# PARAMETERS:
-# -n treat this installation as multi site
-#    (network)
 #===========================================
 
 set -e
 
+# detect if it's a multisite installation
 NETWORK=
-while getopts "n" opt; do
-  case $opt in
-    n)
-    	NETWORK=1
-      echo "WP multi site support enabled."
-      ;;
-    ?)
-      echo "Invalid option: -$OPTARG" >&2
-      exit 1
-      ;;
-  esac
-done
+if wp site list; then
+	NETWORK=1
+	echo "WP multisite detected."
+fi
 
 # set time zone
 $WPCLI option update timezone_string "Europe/Zurich"
@@ -80,6 +69,7 @@ $WPCLI option patch insert --json tribe_events_calendar_options tribeDisableTrib
 $WPCLI option patch insert --json tribe_events_calendar_options donate-link false
 $WPCLI option patch insert tribe_events_calendar_options viewOption list
 $WPCLI option patch insert tribe_events_calendar_options datepickerFormat "11"
+$WPCLI option patch insert --json tribe_events_calendar_options views_v2_enabled false
 
 # configure searchwp
 $WPCLI option set --json searchwp_engines '{"default":{"label":"Default","settings":{"stemming":true,"adminengine":false},"sources":{"post.post":{"attributes":{"title":80,"content":5,"slug":60,"excerpt":40,"meta":{"*":1},"taxonomy":{"category":50,"post_tag":50}},"rules":[],"options":[]},"post.page":{"attributes":{"title":80,"content":5,"slug":60,"meta":{"*":1}},"rules":[],"options":[]},"post.tribe_events":{"attributes":{"title":80,"content":5,"slug":60,"excerpt":40,"comments":1,"meta":{"*":1}},"rules":[],"options":[]}}}}'

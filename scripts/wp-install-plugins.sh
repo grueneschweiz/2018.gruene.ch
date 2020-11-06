@@ -11,8 +11,6 @@
 #   existing website in production
 #
 # PARAMETERS:
-# -n treat this installation as multi site
-#    (network)
 # -l this is a multilingual setup
 #===========================================
 
@@ -23,14 +21,16 @@ INSTALL_ACTIVATE="--activate"
 NETWORK=
 MULTILANG=
 
+# detect if it's a multisite installation
+if wp site list; then
+	NETWORK=1
+	ACTIVATE_NETWORK="--network"
+	INSTALL_ACTIVATE="--activate-network"
+	echo "WP multisite detected."
+fi
+
 while getopts "nl" opt; do
-  case $opt in
-    n)
-    	NETWORK=1
-    	ACTIVATE_NETWORK="--network"
-    	INSTALL_ACTIVATE="--activate-network"
-      echo "WP multi site support enabled."
-      ;;
+	case $opt in
     l)
     	MULTILANG=1
       echo "Multi language support enabled."

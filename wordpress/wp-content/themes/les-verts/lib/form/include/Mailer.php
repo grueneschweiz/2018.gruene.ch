@@ -3,6 +3,8 @@
 
 namespace SUPT;
 
+use Exception;
+
 require_once __DIR__ . '/Mail.php';
 require_once __DIR__ . '/QueueDao.php';
 
@@ -31,7 +33,7 @@ class Mailer {
 	 *
 	 * @param int $submission_id
 	 *
-	 * @throws \Exception
+	 * @throws Exception
 	 */
 	public function __construct( $submission_id ) {
 		require_once __DIR__ . '/SubmissionModel.php';
@@ -73,7 +75,8 @@ class Mailer {
 				$this->form->get_confirmation_subject(),
 				$this->form->get_confirmation_template(),
 				$this->get_data(),
-				$this->submission->meta_get_id()
+				$this->submission->meta_get_id(),
+				$this->submission->meta_get_referer()
 			);
 
 			$this->queue->push( $confirmation );
@@ -92,7 +95,8 @@ class Mailer {
 				$this->form->get_notification_subject(),
 				$this->form->get_notification_template(),
 				$this->get_data(),
-				$this->submission->meta_get_id()
+				$this->submission->meta_get_id(),
+				$this->submission->meta_get_referer()
 			);
 
 			$this->queue->push( $notification );

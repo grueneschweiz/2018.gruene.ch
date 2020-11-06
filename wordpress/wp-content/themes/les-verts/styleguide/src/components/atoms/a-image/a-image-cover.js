@@ -8,7 +8,8 @@ const COMPATIBILITY_STATE = 'object-fit-ie';
 const LAZY_LOAD_WAIT_MS = 200;
 
 /**
- * Since IE and Edge don't support object-fit, use background: cover css for them
+ * Since IE and Edge don't support object-fit, use background: cover css for
+ * them
  *
  * @see https://medium.com/@primozcigler/neat-trick-for-css-object-fit-fallback-on-edge-and-other-browsers-afbc53bbb2c3
  */
@@ -20,7 +21,10 @@ export default class AImageCover extends BaseView {
 	bind() {
 		super.bind();
 
-		this.on('afterReplaceImage', () => this.objectFit());
+		this.on( 'afterReplaceImage', () => {
+			this.setSizes();
+			this.objectFit();
+		} );
 	}
 
 	objectFit() {
@@ -63,12 +67,23 @@ export default class AImageCover extends BaseView {
 	}
 
 	getUrl() {
-		const img = this.getScopedElement(COVER_IMAGE_SELECTOR);
+		const img = this.getScopedElement( COVER_IMAGE_SELECTOR );
 
 		if (img) {
 			return img.src;
 		}
 
 		return '';
+	}
+
+	setSizes() {
+		const img = this.getScopedElement( COVER_IMAGE_SELECTOR );
+		const cDims = this.element.getBoundingClientRect();
+		const cRatio = cDims.width / cDims.height;
+		const iRatio = img.naturalWidth / img.naturalHeight;
+
+		const zoom = iRatio > cRatio ? iRatio / cRatio : cRatio / iRatio;
+
+		img.sizes = cDims.width * zoom + 'px';
 	}
 }
