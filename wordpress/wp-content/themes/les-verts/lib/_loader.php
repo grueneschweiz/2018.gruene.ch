@@ -92,11 +92,13 @@ require_once __DIR__ . '/admin/update-handler.php';
 require_once __DIR__ . '/controllers/branding.php';
 require_once __DIR__ . '/controllers/navigation.php';
 require_once __DIR__ . '/controllers/progress_bar.php';
+require_once __DIR__ . '/controllers/frontpage.php';
 
 // register
 Branding_controller::register();
 Navigation_controller::register();
 Progress_controller::register();
+Frontpage_controller::register();
 
 
 /**

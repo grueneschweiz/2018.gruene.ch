@@ -309,17 +309,17 @@
         "the_content",
         "excerpt",
         "discussion",
-        "comments",
-        "slug",
-        "author",
-        "format",
-        "page_attributes",
-        "featured_image",
-        "categories",
-        "tags",
-        "send-trackbacks"
+      "comments",
+      "slug",
+      "author",
+      "format",
+      "page_attributes",
+      "featured_image",
+      "categories",
+      "tags",
+      "send-trackbacks"
     ],
-    "active": 1,
-    "description": "",
-    "modified": 1543421501
+  "active": true,
+  "description": "",
+  "modified": 1604686054
 }
