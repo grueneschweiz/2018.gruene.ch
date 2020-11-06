@@ -3,6 +3,7 @@ status: ready
 context:
   date: 03.10.2018
   datetime: 2018-10-03
+  author: Hansrudolf Hugentobler
   categories:
   - label: Medienmitteilungen
     link:
@@ -19,3 +20,7 @@ context:
     link:
   - label: SBB
     link:
+variants:
+  - name: Without Author
+    context:
+      author:

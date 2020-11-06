@@ -2,9 +2,12 @@
 	{{# if date}}
 		<time class="a-post-meta__date" datetime="{{datetime}}">{{date}}</time>
 	{{/if}}
+	{{# if author }}
+		<a href="#" class="a-post-meta__author">{{author}}</a>
+	{{/if}}
 	<div class="a-post-meta__tags">
 		{{#each categories}}
-				<a href="{{this.link}}" class="a-post-meta__category">{{this.label}}</a>
+			<a href="{{this.link}}" class="a-post-meta__category">{{this.label}}</a>
 		{{/each}}
 		{{#each tags}}
 			<a href="{{this.link}}" class="a-post-meta__tag">{{this.label}}</a>
