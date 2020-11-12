@@ -132,10 +132,13 @@
 		}
 
 		for (var j = 0; j < tabs.length; j ++) {
+			tabs[ j ].removeEventListener( 'click', hideSlugFields );
 			tabs[ j ].addEventListener( 'click', hideSlugFields );
 		}
 
 		for (var l = 0; l < typeFields.length; l ++) {
+			typeFields[ l ].removeEventListener( 'change',
+				setFieldLabelFieldVisibility );
 			typeFields[ l ].addEventListener( 'change',
 				setFieldLabelFieldVisibility );
 		}
