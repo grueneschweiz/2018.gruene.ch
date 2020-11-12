@@ -1,5 +1,5 @@
 ( function() {
-	var max_slug_len = 50; // plus '-X' for multiple identical slugs
+	var max_slug_len = 50; // plus '_X' for multiple identical slugs
 
 	var fields_container = document.querySelector( '.form_fields_repeater' );
 	var fields = document.querySelectorAll( '.form_input_label input' );
@@ -95,11 +95,11 @@
 
 		while (- 1 !== slug_exists && slug_exists !== index) {
 			j ++;
-			slug_exists = slugs.indexOf( slug + '-' + j );
+			slug_exists = slugs.indexOf( slug + '_' + j );
 		}
 
 		if (j) {
-			slug += '-' + j;
+			slug += '_' + j;
 		}
 
 		return slug;
@@ -132,10 +132,13 @@
 		}
 
 		for (var j = 0; j < tabs.length; j ++) {
+			tabs[ j ].removeEventListener( 'click', hideSlugFields );
 			tabs[ j ].addEventListener( 'click', hideSlugFields );
 		}
 
 		for (var l = 0; l < typeFields.length; l ++) {
+			typeFields[ l ].removeEventListener( 'change',
+				setFieldLabelFieldVisibility );
 			typeFields[ l ].addEventListener( 'change',
 				setFieldLabelFieldVisibility );
 		}
@@ -220,7 +223,7 @@
 		str = str.toLowerCase();
 
 		// remove accents, swap ñ for n, etc
-		var from = 'àáäâèéëêìíïîòóöôùúüûñç·/_,:;';
+		var from = 'àáäâèéëêìíïîòóöôùúüûñç·/-,:;';
 		var to = 'aaaaeeeeiiiioooouuuunc______';
 
 		for (var i = 0, l = from.length; i < l; i ++) {
