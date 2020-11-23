@@ -602,11 +602,15 @@ class FormSubmission {
 	public function setup_SMTP( $phpmailer ) {
 		// todo: test and move into mailer
 		$config = get_field( 'form_smtp', 'options' );
+
+		$security = $config['form_smtp_security'] === 'none' ? '' : $config['form_smtp_security'];
+
 		$phpmailer->isSMTP();
-		$phpmailer->Host     = $config['host'];
-		$phpmailer->SMTPAuth = true;
-		$phpmailer->Port     = $config['port'];
-		$phpmailer->Username = $config['username'];
-		$phpmailer->Password = $config['password'];
+		$phpmailer->Host       = $config['form_smtp_host'];
+		$phpmailer->SMTPAuth   = true;
+		$phpmailer->SMTPSecure = $security;
+		$phpmailer->Port       = $config['form_smtp_port'];
+		$phpmailer->Username   = $config['form_smtp_username'];
+		$phpmailer->Password   = $config['form_smtp_password'];
 	}
 }
