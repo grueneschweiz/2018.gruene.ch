@@ -2,10 +2,14 @@
 
 namespace SUPT;
 
+use DateTime;
+use DateTimeZone;
+use Exception;
 use Timber\Image;
 use Timber\Menu;
 use Timber\MenuItem;
 use Timber\Term;
+use WP_Post;
 
 class Navigation_controller {
 
@@ -34,9 +38,8 @@ class Navigation_controller {
 				// trailing slash leads to bug in tribe events 5.0.* (white page)
 				$item->url = rtrim( tribe_get_listview_link( false ), '/' );
 
-				$events    = tribe_get_events( array(
+				$events = tribe_get_events( array(
 					'start_date'       => date( 'Y-m-d' ),
-					'category'         => 0,
 					'schedule_details' => true,
 					'orderby'          => 'event_date_utc',
 					'order'            => 'ASC'
@@ -114,7 +117,7 @@ class Navigation_controller {
 	/**
 	 * Get the local start date of the given event and return it localized short date format
 	 *
-	 * @param \WP_Post $event
+	 * @param WP_Post $event
 	 *
 	 * @return false|string
 	 */
@@ -129,10 +132,10 @@ class Navigation_controller {
 
 			try {
 				// get UTC time and convert it to local time
-				$dt = new \DateTime( $utc_date, new \DateTimeZone( 'UTC' ) );
-				$dt->setTimezone( new \DateTimeZone( get_option( 'timezone_string' ) ) );
+				$dt = new DateTime( $utc_date, new DateTimeZone( 'UTC' ) );
+				$dt->setTimezone( new DateTimeZone( get_option( 'timezone_string' ) ) );
 				$raw_date = $dt->format( 'Y-m-d H:i:s' );
-			} catch ( \Exception $e ) {
+			} catch ( Exception $e ) {
 				$raw_date = $utc_date;
 			}
 		}
