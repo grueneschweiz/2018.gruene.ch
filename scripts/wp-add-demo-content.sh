@@ -21,5 +21,5 @@ $WPCLI import --authors=skip wp-content/themes/les-verts/demo-content/content.xm
 
 # Front Page
 # ==========
-$WPCLI option update show_on_front <<< "page"
-$WPCLI option update page_on_front <<< "$($WPCLI post list --post_type=page --field=ID --name=Startseite)"
+$WPCLI option update show_on_front "page"
+$WPCLI option update page_on_front "$($WPCLI post list --post_type=page --field=ID --name=Startseite)"
