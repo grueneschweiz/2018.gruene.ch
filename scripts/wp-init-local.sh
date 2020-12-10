@@ -23,6 +23,11 @@ yarn build
 # Create dist symlink
 docker exec wp_docker_les_verts bash -c "cd wp-content/themes/les-verts && ln -sf styleguide/dist/static static"
 
+# Import demo content
+docker cp scripts/wp-add-demo-content.sh wp_docker_les_verts:/var/www/html/wp-add-demo-content.sh
+docker exec wp_docker_les_verts bash -c "WPCLI='wp --color' wp plugin activate wordpress-importer"
+docker exec wp_docker_les_verts bash -c "chmod +x wp-add-demo-content.sh && WPCLI='wp --color' ./wp-add-demo-content.sh"
+
 ######################
 # ENABLE IDE SUPPORT #
 ######################
