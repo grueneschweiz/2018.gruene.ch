@@ -23,11 +23,11 @@
 #### WordPress
 
 1. `docker-compose up -d` - Create docker containers & launch them
+1. Add the required proprietary plugins `polylang-pro`, `advanced-custom-fields-pro`, `searchwp`, `searchwp-polylang`
+   into `wordpress/wp-content/plugins`.
 1. `yarn wp:init` - Install WordPress with all dependencies
-1. `yarn && yarn build` - install styleguide dependencies & build the assets (CSS, JS) for production
 1. View your Site [http://localhost](http://localhost)
 1. Site backend [http://localhost/wp-admin](http://localhost/wp-admin/) - login: **admin**, password: **admin**
-1. Install the suggestet plugins
 
 > Contact us if you need help installing [Advanced Custom Fields Pro](https://www.advancedcustomfields.com/pro/), 
 [Polylang Pro](https://polylang.pro/) and [SearchWP](https://searchwp.com/).
