@@ -18,7 +18,7 @@ docker exec wp_docker_les_verts bash -c "chmod +x wp-install-plugins.sh && WPCLI
 docker exec wp_docker_les_verts bash -c "chmod +x wp-configure.sh && WPCLI='wp --color' ./wp-configure.sh"
 
 # Build dependencies so wo can make the symlink for the static files
-yarn build
+yarn install && yarn build
 
 # Create dist symlink
 docker exec wp_docker_les_verts bash -c "cd wp-content/themes/les-verts && ln -sf styleguide/dist/static static"
