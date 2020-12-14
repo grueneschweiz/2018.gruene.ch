@@ -40,11 +40,14 @@ export default class AImageLazy extends BaseView {
 	}
 
 	replaceImage( img ) {
-		this.element.parentNode.replaceChild( img, this.element );
+		if (this.element.parentNode) {
+			this.element.parentNode.replaceChild( img, this.element );
+		}
+
 		img.classList.add( LAZY_LOADED );
 		img.classList.remove( LAZY_STATE );
 
-		this.triggerAfterReplaceEvent( img.closest(BASE_CONTAINER_SELECTOR) );
+		this.triggerAfterReplaceEvent( img.closest( BASE_CONTAINER_SELECTOR ) );
 
 		this.destroy();
 	}
