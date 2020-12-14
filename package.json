@@ -49,7 +49,7 @@
     "lodash.isfunction": "^3.0.9",
     "lodash.pullat": "^4.6.0",
     "lodash.throttle": "^4.1.1",
-    "swiper": "^5.2.1"
+    "swiper": "^6.4.1"
   },
   "devDependencies": {
     "@babel/core": "^7.3.3",

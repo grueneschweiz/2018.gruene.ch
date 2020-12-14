@@ -1,5 +1,5 @@
 import BaseView from './../../../js/base-view';
-import { Swiper, Keyboard, Navigation, A11y } from 'swiper/js/swiper.esm.js';
+import Swiper, { A11y, Keyboard, Navigation } from 'swiper';
 
 // Install modules
 Swiper.use([Keyboard, Navigation, A11y]);
