@@ -17,8 +17,8 @@ class Frontpage_controller {
 			$context['post']                 = new ACFPost();
 			$context['latest_press_release'] = self::get_latest_press_release( $context );
 			$context['latest_posts']         = self::get_latest_posts( $context );
-			$context['events']               = self::get_events( $context );
 			$context['no_sanuk']             = ! file_exists( WP_CONTENT_DIR . '/sanuk/font.ttf' );
+			self::add_events_details( $context );
 		}
 
 		return $context;
@@ -169,9 +169,7 @@ class Frontpage_controller {
 	 *
 	 * @return WP_Query
 	 */
-	private static function get_events( &$context ) {
-		$context['venues'] = null;
-
+	private static function add_events_details( &$context ) {
 		if ( empty( $context['post']->custom['content_blocks'] ) ) {
 			return;
 		}
@@ -180,6 +178,8 @@ class Frontpage_controller {
 			if ( 'events' == $type ) {
 
 				$post_per_page = (int) $context['post']->{"content_blocks_{$id}_max_num"};
+				$category      = $context['post']->{"content_blocks_{$id}_event_category"};
+				$has_category  = 'category' === $context['post']->{"content_blocks_{$id}_show"};
 
 				// get upcoming and running events
 				$args = array(
@@ -197,10 +197,22 @@ class Frontpage_controller {
 					),
 				);
 
-				$events = Timber::get_posts( $args );
+				$category = empty( $category ) ? null : $category;
 
-				// the latest post is limited to one, so we're done now
-				return $events;
+				if ( $has_category && $category ) {
+					$args['tax_query'] = array(
+						array(
+							'taxonomy' => 'tribe_events_cat',
+							'field'    => 'term_id',
+							'terms'    => $category,
+						)
+					);
+				}
+
+				$context['events']      = new SUPTPostQuery( $args );
+				$context['events_link'] = tribe_get_listview_link( $category );
+
+				// the events block is limited to one, so we're done now
 			}
 		}
 	}

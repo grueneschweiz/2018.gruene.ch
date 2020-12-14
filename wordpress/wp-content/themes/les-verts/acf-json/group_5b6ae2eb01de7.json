@@ -53,25 +53,79 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": 4,
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "min": 2,
-            "max": "",
-            "step": 2
+          "default_value": 4,
+          "placeholder": "",
+          "prepend": "",
+          "append": "",
+          "min": 2,
+          "max": "",
+          "step": 2
         },
-        {
-            "key": "field_5b6ae4faa4259",
-            "label": "Full Width",
-            "name": "full_width",
-            "type": "true_false",
-            "instructions": "If full width, the block will span the whole page (both columns) else it will only take the place of a single column block.",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_5b6ae32ac26d0",
+      {
+        "key": "field_5fd768b29a6e7",
+        "label": "Event Category",
+        "name": "show",
+        "type": "button_group",
+        "instructions": "",
+        "required": 1,
+        "conditional_logic": 0,
+        "wrapper": {
+          "width": "",
+          "class": "",
+          "id": ""
+        },
+        "choices": {
+          "all": "Show all upcoming events",
+          "category": "Only show events of specific category"
+        },
+        "allow_null": 0,
+        "default_value": "all",
+        "layout": "horizontal",
+        "return_format": "value",
+        "translations": "sync"
+      },
+      {
+        "key": "field_5fd2a2ea57612",
+        "label": "Select Category",
+        "name": "event_category",
+        "type": "taxonomy",
+        "instructions": "Select the category of events to display.",
+        "required": 0,
+        "conditional_logic": [
+          [
+            {
+              "field": "field_5fd768b29a6e7",
+              "operator": "==",
+              "value": "category"
+            }
+          ]
+        ],
+        "wrapper": {
+          "width": "",
+          "class": "",
+          "id": ""
+        },
+        "taxonomy": "tribe_events_cat",
+        "field_type": "select",
+        "allow_null": 0,
+        "add_term": 0,
+        "save_terms": 0,
+        "load_terms": 0,
+        "return_format": "id",
+        "translations": "copy_once",
+        "multiple": 0
+      },
+      {
+        "key": "field_5b6ae4faa4259",
+        "label": "Full Width",
+        "name": "full_width",
+        "type": "true_false",
+        "instructions": "If full width, the block will span the whole page (both columns) else it will only take the place of a single column block.",
+        "required": 0,
+        "conditional_logic": [
+          [
+            {
+              "field": "field_5b6ae32ac26d0",
                         "operator": ">",
                         "value": "2"
                     },
@@ -99,17 +153,17 @@
             {
                 "param": "page_type",
                 "operator": "==",
-                "value": "front_page"
+              "value": "front_page"
             }
         ]
     ],
-    "menu_order": 0,
-    "position": "normal",
-    "style": "default",
-    "label_placement": "top",
-    "instruction_placement": "label",
-    "hide_on_screen": "",
-    "active": 0,
-    "description": "",
-    "modified": 1543420761
+  "menu_order": 0,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "hide_on_screen": "",
+  "active": false,
+  "description": "",
+  "modified": 1607954026
 }
