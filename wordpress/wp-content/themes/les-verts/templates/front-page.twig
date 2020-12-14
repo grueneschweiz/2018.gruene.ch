@@ -71,7 +71,7 @@
 							{% include 'organisms/o-front-events.twig' with {
 								'block': block,
 								'events': loop.parent.events,
-								'venues': loop.parent.venues
+								'events_link': loop.parent.events_link
 							} only %}
 						{% endif %}
 					{% elseif block.acf_fc_layout == 'positions' %}

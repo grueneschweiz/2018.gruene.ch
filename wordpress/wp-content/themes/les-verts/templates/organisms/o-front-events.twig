@@ -13,10 +13,10 @@
 			</div>
 		{% endfor %}
 	</div>
-	{% if block.max_num < fn('wp_count_posts','tribe_events') %}
+	{% if block.max_num < events.found_posts %}
 		<div class="o-front-events__more">
 			{% include 'atoms/a-link-button.twig' with {
-				'link': fn('tribe_get_listview_link', false),
+				'link': events_link,
 				'label': __('Show all events', constant('THEME_DOMAIN'))
 			} only %}
 		</div>

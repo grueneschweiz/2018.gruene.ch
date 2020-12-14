@@ -49,6 +49,7 @@ done
 POLYLANG=$($WPCLI plugin list | grep polylang-pro) || POLYLANG=
 ACF=$($WPCLI plugin list | grep advanced-custom-fields-pro) || ACF=
 SEARCHWP=$($WPCLI plugin list | grep searchwp) || SEARCHWP=
+SEARCHWP_POLYLANG=$($WPCLI plugin list | grep searchwp-polylang) || SEARCHWP_POLYLANG=
 MISSING=0
 
 set -e # exit on error
@@ -57,22 +58,29 @@ set -o pipefail # only consider pipe successful if all commands involved were su
 
 RED='\033[0;31m'
 YELLOW='\033[1;33m'
+NC='\033[0;00m'
 
 if [ ! "$POLYLANG" ] && [ $MULTILANG ];
 then
-      echo -e "${RED}ERROR: ${YELLOW}Missing plugin 'polylang-pro'. Upload it, then rerun this script."
+      echo -e "${RED}ERROR: ${YELLOW}Missing plugin 'polylang-pro'. Upload it, then rerun this script.${NC}"
       MISSING=1
 fi
 
 if [ ! "$ACF" ];
 then
-      echo -e "${RED}ERROR: ${YELLOW}Missing plugin 'advanced-custom-fields-pro'. Upload it, then rerun this script."
+      echo -e "${RED}ERROR: ${YELLOW}Missing plugin 'advanced-custom-fields-pro'. Upload it, then rerun this script.${NC}"
       MISSING=1
 fi
 
 if [ ! "$SEARCHWP" ];
 then
-      echo -e "${RED}ERROR: ${YELLOW}Missing plugin 'searchwp'. Upload it, then rerun this script."
+      echo -e "${RED}ERROR: ${YELLOW}Missing plugin 'searchwp'. Upload it, then rerun this script.${NC}"
+      MISSING=1
+fi
+
+if [ ! "$SEARCHWP_POLYLANG" ];
+then
+      echo -e "${RED}ERROR: ${YELLOW}Missing plugin 'searchwp-polylang'. Upload it, then rerun this script.${NC}"
       MISSING=1
 fi
 
@@ -88,7 +96,6 @@ fi
 # Polylang
 if [ $MULTILANG ]; then
 	$WPCLI plugin activate polylang-pro $ACTIVATE_NETWORK
-	# TODO: activate license key
 fi
 
 ## Advanced Custom Fields PRO

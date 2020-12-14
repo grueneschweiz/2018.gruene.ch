@@ -7,6 +7,7 @@ context:
   required: required
   label: Select your choice
   name: select
+  helptext: Where do you live?
   options:
   - label: Bern
     value: bern
