@@ -274,17 +274,48 @@
                                 "id": ""
                             },
                             "clone": [
-                                "group_5b6da383ba62c"
+                              "group_5b6da383ba62c"
                             ],
-                            "display": "seamless",
-                            "layout": "block",
-                            "prefix_label": 0,
-                            "prefix_name": 0
+                          "display": "seamless",
+                          "layout": "block",
+                          "prefix_label": 0,
+                          "prefix_name": 0
                         }
                     ],
-                    "min": "",
-                    "max": "1"
-                }
+                  "min": "",
+                  "max": "1"
+                },
+              "layout_5fdbdba216ca7": {
+                "key": "layout_5fdbdba216ca7",
+                "name": "block",
+                "label": "Block",
+                "display": "block",
+                "sub_fields": [
+                  {
+                    "key": "field_5fdbe573c8146",
+                    "label": "",
+                    "name": "",
+                    "type": "clone",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                      "width": "",
+                      "class": "",
+                      "id": ""
+                    },
+                    "clone": [
+                      "group_5fdbe45d039e4"
+                    ],
+                    "display": "seamless",
+                    "layout": "block",
+                    "prefix_label": 0,
+                    "prefix_name": 0
+                  }
+                ],
+                "min": "",
+                "max": ""
+              }
             },
             "button_label": "Add Content Block",
             "min": "",
@@ -306,9 +337,9 @@
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": [
-        "the_content",
-        "excerpt",
-        "discussion",
+      "the_content",
+      "excerpt",
+      "discussion",
       "comments",
       "slug",
       "author",
@@ -321,5 +352,5 @@
     ],
   "active": true,
   "description": "",
-  "modified": 1604686054
+  "modified": 1608246882
 }
