@@ -429,45 +429,27 @@
                     "label": "Block",
                     "display": "block",
                     "sub_fields": [
-                        {
-                            "key": "field_5d6e68d6e0424",
-                            "label": "About this Block",
-                            "name": "",
-                            "type": "message",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "message": "You want to share content over multiple pages? Create the content as block post type, then pull it in here.",
-                            "new_lines": "",
-                            "esc_html": 0
+                      {
+                        "key": "field_5fdbe4f88af4b",
+                        "label": "",
+                        "name": "",
+                        "type": "clone",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                          "width": "",
+                          "class": "",
+                          "id": ""
                         },
-                        {
-                            "key": "field_5d6e67cde0422",
-                            "label": "Block",
-                            "name": "block",
-                            "type": "post_object",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "post_type": [
-                                "block"
-                            ],
-                            "taxonomy": "",
-                            "allow_null": 0,
-                            "multiple": 0,
-                            "return_format": "object",
-                            "ui": 1
-                        }
+                        "clone": [
+                          "group_5fdbe45d039e4"
+                        ],
+                        "display": "seamless",
+                        "layout": "block",
+                        "prefix_label": 0,
+                        "prefix_name": 0
+                      }
                     ],
                     "min": "",
                     "max": ""
@@ -483,17 +465,17 @@
             {
                 "param": "post_type",
                 "operator": "==",
-                "value": "post"
+              "value": "post"
             }
         ]
     ],
-    "menu_order": 0,
-    "position": "normal",
-    "style": "default",
-    "label_placement": "top",
-    "instruction_placement": "label",
-    "hide_on_screen": "",
-    "active": 0,
-    "description": "",
-  "modified": 1588609148
+  "menu_order": 0,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "hide_on_screen": "",
+  "active": false,
+  "description": "",
+  "modified": 1608246560
 }

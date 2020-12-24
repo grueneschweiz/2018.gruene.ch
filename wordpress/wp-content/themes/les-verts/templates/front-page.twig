@@ -78,6 +78,10 @@
 						{% include 'organisms/o-positions.twig' with block only %}
 					{% elseif block.acf_fc_layout == 'engagement_map' %}
 						{% include 'organisms/o-engagement-map.twig' with block only %}
+					{% elseif block.acf_fc_layout == 'block' %}
+						{% for b in block.block.get_field('content') %}
+							{% include 'content-block.twig' with {'block':b} only %}
+						{% endfor %}
 					{% else %}
 						{% include 'organisms/o-front-article.twig' with {
 							'block': block,
