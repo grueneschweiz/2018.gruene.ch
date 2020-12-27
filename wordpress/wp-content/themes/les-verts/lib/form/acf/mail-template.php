@@ -25,13 +25,13 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 						THEME_DOMAIN
 					)
 					. _x(
-						'Use the special placeholder %s to link to the complete submission (with all linked forms).',
+						'%s shows the url to the page or post, where the form was embedded.',
 						'Placeholder',
 						THEME_DOMAIN
 					)
 					. ' '
 					. _x(
-						'%s shows the url to the page or post, where the form was embedded.',
+						'For logged in users only: Use the special placeholder %s to link to the complete submission (with all linked forms).',
 						'Placeholder',
 						THEME_DOMAIN
 					)
@@ -43,8 +43,8 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 					)
 					. '</i>',
 					'<strong><div class="form_mail_template_placeholders"></div></strong>',
-					'<strong>{{submission_url}}</strong>',
 					'<strong>{{referer_url}}</strong>',
+					'<strong>{{submission_url}}</strong>',
 					'<a href="https://twig.symfony.com/" target="_blank">Twig</a>'
 				),
 				'new_lines'         => 0,
