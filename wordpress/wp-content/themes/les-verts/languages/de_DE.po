@@ -1757,7 +1757,7 @@ msgstr "Löschen"
 
 #: lib/form/acf/form-details.php:63
 msgid "Standard"
-msgstr "Standart"
+msgstr "Standard"
 
 #: lib/form/acf/form-details.php:100
 msgid "Advanced"
