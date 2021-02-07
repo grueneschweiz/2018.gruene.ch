@@ -72,7 +72,7 @@ class Mail {
 		// Render the email from template
 		$data    = $this->prepare_data_for_email( $data, $post_meta_id, $referer_url );
 		$body    = Timber::compile_string( $template, $data );
-		$subject = Timber::compile_string( $subject, $data );
+		$subject = html_entity_decode( Timber::compile_string( $subject, $data ), ENT_QUOTES | ENT_HTML5 );
 
 		// Assert nice quotes (call after compiling!)
 		$body    = wptexturize( $body );
