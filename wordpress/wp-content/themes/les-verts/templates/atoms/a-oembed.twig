@@ -1,0 +1,9 @@
+{% if fn('preg_match', '/<\\s*iframe[^>]*src=["\']https?:\\/\\/(((www)|m)\\.)?youtu\\.?be[^>]*>/mi', oembed ) %}
+	{% set modifier = 'a-oembed--youtube' %}
+{% endif %}
+{% if fn('preg_match', '/<\\s*iframe[^>]*src=["\']https?:\\/\\/player\.vimeo\.com[^>]*>/mi', oembed ) %}
+	{% set modifier = 'a-oembed--vimeo' %}
+{% endif %}
+
+<div class="a-oembed {{ modifier }}">{{ oembed|shortcodes }}</div>
+
