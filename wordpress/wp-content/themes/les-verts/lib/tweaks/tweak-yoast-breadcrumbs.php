@@ -128,13 +128,14 @@ class CustomMenuBreadcrumbs {
 	}
 
 	/**
-	 * Retrieve the most specific Menu item object for the current Menu by the given object id
+	 * Retrieve the most specific menu item object for the current menu by the given object id
 	 *
-	 * @param string|int       The id of the object we want to find the menu entry of
+	 * @param string|int $object_id The id of the object we want to find the menu entry of
+	 * @param bool $is_term_id Controls if the object id represents a taxonomy
 	 *
 	 * @return      false|WP_Post    The current Menu item
 	 */
-	private function get_menu_item_object_by_object_id( $object_id ) {
+	private function get_menu_item_object_by_object_id( $object_id, $is_term_id = false ) {
 		if ( empty( $this->menu_items ) ) {
 			return false;
 		}
@@ -146,6 +147,14 @@ class CustomMenuBreadcrumbs {
 		foreach ( $this->menu_items as $menu_item ) {
 			// if the current object id match
 			if ( isset( $menu_item->object_id ) && $object_id === $menu_item->object_id ) {
+				// if the given id was a term_id, the menu item must represent a taxonomy
+				if ( $is_term_id && isset( $menu_item->type ) && $menu_item->type !== 'taxonomy' ) {
+					continue;
+				}
+				// if it was not a term_id, the menu item must not represent a taxonomy
+				if ( ! $is_term_id && isset( $menu_item->type ) && $menu_item->type === 'taxonomy' ) {
+					continue;
+				}
 				// if we already had a matching object, check if this is a child of the last match
 				// if so, use this child element.
 				if ( $match ) {
@@ -240,7 +249,7 @@ class CustomMenuBreadcrumbs {
 		if ( empty( $current_menu_item ) ) {
 			$primary_category = $this->get_primary_category( get_the_ID() );
 			if ( $primary_category ) {
-				$current_menu_item      = $this->get_menu_item_object_by_object_id( $primary_category->term_id );
+				$current_menu_item      = $this->get_menu_item_object_by_object_id( $primary_category->term_id, true );
 				$this->parent_menu_item = true;
 			}
 		}
