@@ -1,0 +1,15 @@
+label: O-Embed
+status: ready
+display:
+  padding: 40px
+context:
+  oembed: '<iframe title="50 Jahre Frauenstimmrecht – Pia Hollenstein" width="790" height="444" src="https://www.youtube.com/embed/mAXFl-VRcj0?feature=oembed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>'
+  modifiers:
+    - youtube
+variants:
+  - name: Vimeo
+    context:
+      oembed: '<iframe title="Microsoft &amp;ndash; Responsive Potential" src="https://player.vimeo.com/video/300044793?dnt=1&amp;app_id=122963" width="790" height="444" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen=""></iframe>'
+      modifiers:
+        - vimeo
+

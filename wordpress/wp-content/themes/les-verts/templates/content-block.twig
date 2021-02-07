@@ -48,7 +48,7 @@
 {% elseif block.acf_fc_layout == 'map' %}
 	{% include 'molecules/m-map.twig' with block only %}
 {% elseif block.acf_fc_layout == 'oembed' %}
-	{{ block.oembed }}
+	{% include 'atoms/a-oembed.twig' with block only %}
 {% elseif block.acf_fc_layout == 'code' %}
 	{{ block.code }}
 {% elseif block.acf_fc_layout == 'block' %}
