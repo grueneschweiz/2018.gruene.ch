@@ -4,6 +4,7 @@
 namespace SUPT;
 
 use Exception;
+use function get_field;
 
 require_once __DIR__ . '/CrmFieldData.php';
 require_once __DIR__ . '/QueueDao.php';
@@ -294,9 +295,14 @@ class CrmSaver {
 			return $form_field->get_fixed_crm_value();
 		}
 
-		$key = $form_field->get_slug();
+		$key   = $form_field->get_slug();
+		$value = $this->submission->{"get_$key"}();
 
-		return $this->submission->{"get_$key"}();
+		if ( is_array( $value ) && ! $form_field->is_crm_multiselect_type() ) {
+			$value = implode( ', ', $value );
+		}
+
+		return $value;
 	}
 
 	/**
@@ -430,7 +436,7 @@ class CrmSaver {
 			CrmFieldData::MODE_ADD_IF_NEW,
 			array(),
 			array(),
-			\get_field( 'group_id', 'option' ),
+			get_field( 'group_id', 'option' ),
 			false
 		);
 	}
