@@ -86,7 +86,7 @@ class FormField {
 			}
 
 			if ( $this->has_fixed_crm_value() ) {
-				if ( in_array( $this->crm_field, self::CRM_MULTISELECT_FIELDS ) ) {
+				if ( $this->is_crm_multiselect_type() ) {
 					$this->crm_value = $this->split_choices( $config['hidden_field_choices'] );
 				} else {
 					$this->crm_value = $config['hidden_field_value'];
@@ -101,6 +101,10 @@ class FormField {
 
 	private function is_choice_type() {
 		return in_array( $this->type, self::CHOICE_TYPES );
+	}
+
+	public function is_crm_multiselect_type() {
+		return in_array( $this->crm_field, self::CRM_MULTISELECT_FIELDS, true );
 	}
 
 	/**

@@ -17,7 +17,7 @@
 			{% set wrapper_classes = '' %}
 			{% set modifiers_classes = '' %}
 
-			{% if not field.hidden_field %}
+			{% if not field.hidden_field or field.crm_field is empty %}
 
 				{% if not field.form_input_full_width %}
 					{% if not custom_width_block_width %}
