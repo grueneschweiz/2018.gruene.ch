@@ -251,23 +251,24 @@
             "button_label": "Add Testimonial",
             "sub_fields": [
                 {
-                    "key": "field_5bb4e16f39fc2",
-                    "label": "Quote",
-                    "name": "quote",
-                    "type": "textarea",
-                    "instructions": "Max 280 characters",
-                    "required": 1,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "placeholder": "",
-                    "maxlength": 280,
-                    "rows": 3,
-                    "new_lines": ""
+                  "key": "field_5bb4e16f39fc2",
+                  "label": "Quote",
+                  "name": "quote",
+                  "type": "textarea",
+                  "instructions": "Max 280 characters",
+                  "required": 0,
+                  "conditional_logic": 0,
+                  "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                  },
+                  "default_value": "",
+                  "placeholder": "",
+                  "maxlength": 280,
+                  "rows": 3,
+                  "new_lines": "",
+                  "translations": "translate"
                 },
                 {
                     "key": "field_5bb4e14d39fc1",
@@ -332,17 +333,17 @@
         "excerpt",
         "discussion",
         "comments",
-        "revisions",
-        "slug",
-        "author",
-        "format",
-        "page_attributes",
-        "featured_image",
-        "categories",
-        "tags",
-        "send-trackbacks"
+      "revisions",
+      "slug",
+      "author",
+      "format",
+      "page_attributes",
+      "featured_image",
+      "categories",
+      "tags",
+      "send-trackbacks"
     ],
-    "active": 1,
-    "description": "",
-    "modified": 1543422125
+  "active": true,
+  "description": "",
+  "modified": 1614790852
 }

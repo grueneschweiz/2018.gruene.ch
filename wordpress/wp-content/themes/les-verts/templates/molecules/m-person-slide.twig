@@ -11,7 +11,10 @@
 			} %}
 		</div>
 		<figcaption class="m-person-slide__caption">
-			<p class="m-person-slide__quote">{{ post.quote(taxonomies)|wptexturize }}</p>
+			{% set quote = post.quote(taxonomies)|trim %}
+			{% if not quote is empty %}
+				<p class="m-person-slide__quote">{{ quote|wptexturize }}</p>
+			{% endif %}
 			<p class="m-person-slide__meta">
 				<span class="m-person-slide__author">{{ post.full_name|wptexturize }}</span>{% if role %},
 				<span class="m-person-slide__job">{{ role|wptexturize }}</span>{% endif %}
