@@ -22,6 +22,10 @@ RUN docker-php-ext-install bcmath
 RUN docker-php-ext-configure gmp
 RUN docker-php-ext-install gmp
 
+# install & enable xdebug
+RUN pecl install xdebug
+RUN docker-php-ext-enable xdebug
+
 # Add WP-CLI
 RUN curl -o /bin/wp-cli.phar https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
 COPY wp-su.sh /bin/wp
@@ -46,11 +50,6 @@ RUN usermod -u 1000 www-data && groupmod -g 1000 www-data
 # Cleanup
 RUN apt-get clean
 RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-
-# Install Xdebug
-RUN yes | pecl install xdebug \
-    && echo "zend_extension=$(find /usr/local/lib/php/extensions/ -name xdebug.so)" > /usr/local/etc/php/conf.d/xdebug.ini
-RUN apachectl restart
 
 # Set working directory
 WORKDIR /var/www/html
