@@ -140,10 +140,10 @@ class Mail {
 	 * @return array
 	 */
 	private function prepare_data_for_email( $data, $post_meta_id, $referer_url ) {
-		foreach ( $data as $key => &$value ) {
+		foreach ( $data as $key => $value ) {
 			// flatten arrays
 			if ( is_array( $value ) ) {
-				$value = join( $value, ', ' );
+				$data[ $key ] = implode( ', ', $value );
 			}
 		}
 
