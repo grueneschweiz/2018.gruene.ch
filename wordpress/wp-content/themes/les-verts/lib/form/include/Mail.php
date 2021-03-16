@@ -43,6 +43,13 @@ class Mail {
 	private $attachment;
 
 	/**
+	 * Counter for the sending attempts
+	 *
+	 * @var int
+	 */
+	private $sending_attempts = 0;
+
+	/**
 	 * Send email with with the body rendered from a twig template string
 	 *
 	 * @param string|array $to Array or comma-separated list of email addresses to send message.
@@ -105,6 +112,8 @@ class Mail {
 	 * @return bool
 	 */
 	public function send() {
+		$this->sending_attempts ++;
+
 		return wp_mail(
 			$this->to,
 			$this->subject,
@@ -112,6 +121,13 @@ class Mail {
 			$this->headers,
 			$this->attachment
 		);
+	}
+
+	/**
+	 * @return int
+	 */
+	public function get_sending_attempts() {
+		return $this->sending_attempts;
 	}
 
 	/**
