@@ -38,12 +38,12 @@ add_filter( 'get_twig', function ( $twig ) {
 				$separators = '-|\.|&middot;|&#183;|\x{00B7}';
 				$endings    = "(($separators)[es]{1,2}){1,2}";
 			} else if ( 0 === strpos( $locale, 'de' ) ) {
-				$endings = "\*\w*";
+				$endings = "\*\w*+";
 			} else {
 				return $string;
 			}
 
-			$pattern = "(?!<[^>]+)\b(\w+($endings))\b(?![^<]+?>)";
+			$pattern = "(?!<[^>]+)\b(\w+$endings)\b(?![^<]+?>)";
 			$string  = preg_replace( "/$pattern/iu", "<span class='nowrap'>$1</span>", $string );
 
 			return $string;
