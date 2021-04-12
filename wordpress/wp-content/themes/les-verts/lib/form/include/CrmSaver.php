@@ -105,7 +105,6 @@ class CrmSaver {
 					Util::report_form_error( 'save to crm', $submission, $e, 'FORM UNKNOWN - ASYNC CALL' );
 				} else {
 					self::send_permanent_error_notification( $submission, $e->getMessage() );
-					$submission = $queue->pop();
 					continue; // don't requeue this item
 				}
 			}
