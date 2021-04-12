@@ -68,6 +68,15 @@ class QueueDao {
 	}
 
 	/**
+	 * True if there are some items in the queue
+	 *
+	 * @return bool
+	 */
+	public function has_items(): bool {
+		return 0 < $this->length();
+	}
+
+	/**
 	 * Get the cached queue items
 	 *
 	 * @return array

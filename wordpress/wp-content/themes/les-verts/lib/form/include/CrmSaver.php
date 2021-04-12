@@ -8,11 +8,14 @@ use function get_field;
 
 require_once __DIR__ . '/CrmFieldData.php';
 require_once __DIR__ . '/QueueDao.php';
+require_once __DIR__ . '/CrmQueueItem.php';
 
 class CrmSaver {
 	const QUEUE_KEY = 'crm_save';
 	const CRON_HOOK_CRM_SAVE = 'supt_form_save_to_crm';
 	const CRON_CRM_SAVE_RETRY_INTERVAL = 'hourly';
+	const MAX_SAVE_ATTEMPTS = 3;
+	const MIN_ATTEMPT_TIMEOUT = 3600; // seconds
 
 	const CRM_SUBSCRIPTION_VALUE = 'yes';
 	const CRM_GREETINGS_INFORMAL = array(
@@ -87,41 +90,55 @@ class CrmSaver {
 	 *
 	 * Called by the WordPress cron job
 	 */
-	public static function save_to_crm() {
+	public static function save_to_crm( bool $force = false ) {
 		require_once __DIR__ . '/CrmDao.php';
-		$dao = new CrmDao();
+		$crm_dao = new CrmDao();
 
 		$queue = self::get_queue();
-		$error = 0;
+		$skip  = 0;
 
-		$submission = $queue->pop();
-		while ( ! empty( $submission ) ) {
-			$crm_id = false;
-
-			try {
-				$crm_id = $dao->save( $submission );
-			} catch ( Exception $e ) {
-				if ( self::is_non_permanent_error( $e->getCode() ) ) {
-					Util::report_form_error( 'save to crm', $submission, $e, 'FORM UNKNOWN - ASYNC CALL' );
-				} else {
-					self::send_permanent_error_notification( $submission, $e->getMessage() );
-					continue; // don't requeue this item
-				}
+		while ( $queue->has_items() ) {
+			if ( $skip >= $queue->length() ) {
+				// if there are only the skipped submissions left in the queue
+				break;
 			}
+
+			/** @var CrmQueueItem $item */
+			$item = $queue->pop();
+
+			if ( ! $item->has_data() ) {
+				// the item will be lost, which is what we want, since there is no data
+				continue;
+			}
+
+			// if we have exceeded the max attempts and we don't want to force save (=ignore max attempts)
+			if ( ! $force && $item->get_attempts() >= self::MAX_SAVE_ATTEMPTS ) {
+				// push the item back and skip it
+				$queue->push( $item );
+				$skip ++;
+				continue;
+			}
+
+			// if not enough time has passed since the last attempt and we don't want to force save (=ignore max attempts)
+			if ( ! $force
+			     && $item->last_attempt_seconds_ago()
+			     && $item->last_attempt_seconds_ago() < self::MIN_ATTEMPT_TIMEOUT
+			) {
+				// push the item back and skip it
+				$queue->push( $item );
+				$skip ++;
+				continue;
+			}
+
+			$item->add_attempt();
+			$crm_id = self::save( $item, $crm_dao );
 
 			// on error
 			if ( ! $crm_id ) {
 				// push the item back
-				$queue->push( $submission );
-				$error ++;
-
-				// if there are only the errored submissions left in the queue
-				if ( $error >= $queue->length() ) {
-					break;
-				}
+				$queue->push( $item );
+				$skip ++;
 			}
-
-			$submission = $queue->pop();
 		}
 
 		if ( 0 === $queue->length() ) {
@@ -129,6 +146,34 @@ class CrmSaver {
 			// it will automatically be reenabled, if needed
 			Util::remove_cron( self::CRON_HOOK_CRM_SAVE );
 		}
+	}
+
+	/**
+	 * @param CrmQueueItem $item
+	 * @param CrmDao $dao
+	 *
+	 * @return false|mixed false on error else the crm id
+	 */
+	private static function save( CrmQueueItem $item, CrmDao $dao ) {
+		$crm_id = false;
+
+		try {
+			$crm_id = $dao->save( $item->get_data() );
+		} catch ( Exception $e ) {
+			if ( self::is_non_permanent_error( $e->getCode() ) ) {
+				try {
+					$form      = new FormModel( $item->get_form_id() );
+					$form_name = $form->get_title();
+				} catch ( Exception $e ) {
+					$form_name = 'DELETED FORM';
+				}
+				Util::report_form_error( 'save to crm', $item, $e, $form_name );
+			} else if ( $item->get_attempts() >= self::MAX_SAVE_ATTEMPTS ) {
+				self::send_permanent_error_notification( $item, $e->getMessage() );
+			}
+		}
+
+		return $crm_id;
 	}
 
 	/**
@@ -180,7 +225,8 @@ class CrmSaver {
 		$data = $this->get_data();
 
 		if ( ! empty( $data ) ) {
-			$this->queue->push( $data );
+			$item = new CrmQueueItem( $data, $this->submission );
+			$this->queue->push( $item );
 			$this->schedule_cron();
 		}
 	}
