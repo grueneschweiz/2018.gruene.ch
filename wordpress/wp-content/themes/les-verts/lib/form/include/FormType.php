@@ -42,14 +42,9 @@ class FormType extends Model {
 				'public'              => false,
 				'show_ui'             => true,
 				'exclude_from_search' => true,
-				'publicly_queryable'  => true,
+				'publicly_queryable'  => false,
 				'show_in_nav_menus'   => false,
 				'has_archive'         => false, // false = do not generate an archive (list) page
-//				'rewrite'             => array(
-//					'slug'       => 'form',
-//					'with_front' => false,
-//					'pages'      => false,
-//				),
 				'supports'            => array(
 					'title',
 					'revisions',
