@@ -187,7 +187,6 @@ if ( defined( 'WPSEO_FILE' ) ) {
 }
 
 if ( defined( 'TRIBE_EVENTS_FILE' ) ) {
-	require_once __DIR__ . '/tweaks/deregister-tribe-events-styles.php';
 	add_filter( 'tribe_events_force_ugly_link', '__return_true' );
 }
 
