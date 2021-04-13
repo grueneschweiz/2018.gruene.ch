@@ -40,3 +40,9 @@ wp-content/
     font.woff2
 ```
 Verify, you name the files, exactly as above and you provide all those file formats.
+
+---
+
+# Hints
+
+* The expensive tasks after form submission are processed asynchronously (using wp cron). Use the WP_CLI to manage the jobs `wp form`.
