@@ -49,7 +49,7 @@ class Mailer {
 	 *
 	 * @return QueueDao
 	 */
-	private static function get_queue() {
+	public static function get_queue(): QueueDao {
 		return new QueueDao( self::QUEUE_KEY );
 	}
 

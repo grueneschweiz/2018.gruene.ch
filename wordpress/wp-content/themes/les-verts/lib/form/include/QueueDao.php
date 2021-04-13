@@ -4,7 +4,7 @@
 namespace SUPT;
 
 /**
- * Data queue that writes changes immediately but caches reads. Based on WordPress' options api.
+ * Data queue. Based on WordPress' options api.
  *
  * @package SUPT
  */
@@ -15,13 +15,6 @@ class QueueDao {
 	 * @var string
 	 */
 	private $key;
-
-	/**
-	 * The queue items
-	 *
-	 * @var array
-	 */
-	private $items;
 
 	/**
 	 * CronQueue constructor.
@@ -77,16 +70,12 @@ class QueueDao {
 	}
 
 	/**
-	 * Get the cached queue items
+	 * Get the queue items
 	 *
 	 * @return array
 	 */
-	private function get_all() {
-		if ( null === $this->items ) {
-			$this->items = get_option( $this->key, array() );
-		}
-
-		return $this->items;
+	public function get_all() {
+		return get_option( $this->key, array() );
 	}
 
 	/**
@@ -96,6 +85,24 @@ class QueueDao {
 	 */
 	private function save( $queue ) {
 		update_option( $this->key, $queue, false );
-		$this->items = $queue;
+	}
+
+	/**
+	 * Remove all items from queue
+	 */
+	public function clear() {
+		$this->save( array() );
+	}
+
+	/**
+	 * Remove item with given index from queue
+	 *
+	 * @param int $index
+	 */
+	public function remove( int $index ) {
+		$queue = $this->get_all();
+		unset( $queue[ $index ] );
+		$reindexed = array_values( $queue );
+		$this->save( $reindexed );
 	}
 }

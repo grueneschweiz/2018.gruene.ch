@@ -75,6 +75,10 @@ class CrmQueueItem {
 		return new SubmissionModel( $this->submission_id );
 	}
 
+	public function get_submission_id(): int {
+		return $this->submission_id;
+	}
+
 	public function add_attempt(): int {
 		$this->last_attempt = new DateTime();
 

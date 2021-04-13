@@ -157,4 +157,22 @@ class Mail {
 		return $data;
 	}
 
+	/**
+	 * @return array|string
+	 */
+	public function get_to() {
+		return $this->to;
+	}
+
+	public function get_subject(): string {
+		return $this->subject;
+	}
+
+	public function get_headers(): array {
+		return $this->headers;
+	}
+
+	public function get_body(): string {
+		return $this->body;
+	}
 }
