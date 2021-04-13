@@ -2711,7 +2711,7 @@ msgstr ""
 
 #: templates/molecules/m-form.twig:195
 msgid "The form that would normally show up here was closed and is therefore not available."
-msgstr ""
+msgstr "Le formulaire qui devrait normalement s'afficher ici est clos et n'est donc pas disponible."
 
 #: acf-translate.php:3634
 msgid "Post Selection Mode"

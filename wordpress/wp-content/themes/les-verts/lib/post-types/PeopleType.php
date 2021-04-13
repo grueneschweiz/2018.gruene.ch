@@ -28,7 +28,7 @@ class PeopleType extends Model {
 		$args   = array(
 			'labels'              => $labels,
 			'exclude_from_search' => false,
-			'publicly_queryable'  => true, // todo: implement single person page view
+			'publicly_queryable'  => false,
 			'show_ui'             => true,
 			'show_in_nav_menus'   => true,
 			'menu_icon'           => 'dashicons-groups',

@@ -12,6 +12,7 @@ class Mailer {
 	const QUEUE_KEY = 'mail';
 	const CRON_HOOK_MAIL_SEND = 'supt_form_mail_send';
 	const CRON_MAIL_SEND_RETRY_INTERVAL = 'hourly';
+	const SENDING_RETRIES = 3;
 
 	/**
 	 * @var SubmissionModel
@@ -48,7 +49,7 @@ class Mailer {
 	 *
 	 * @return QueueDao
 	 */
-	private static function get_queue() {
+	public static function get_queue(): QueueDao {
 		return new QueueDao( self::QUEUE_KEY );
 	}
 
@@ -177,9 +178,12 @@ class Mailer {
 
 			// on error
 			if ( ! $sent ) {
-				// push the item back
-				$queue->push( $mail );
-				$error ++;
+
+				// requeue mail on error if number of retries is not exceeded
+				if ( $mail->get_sending_attempts() < self::SENDING_RETRIES ) {
+					$queue->push( $mail );
+					$error ++;
+				}
 
 				// if there are only the errored mails left in the queue
 				if ( $error >= $queue->length() ) {

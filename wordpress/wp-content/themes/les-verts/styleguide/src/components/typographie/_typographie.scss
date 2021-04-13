@@ -182,3 +182,12 @@ sup {
 sub {
 	bottom: -0.25em;
 }
+
+/**
+ * Prevent wrapping of gendered words
+ *
+ * @see THEME_DIR/lib/twig/filters/wptexturize.php
+ */
+span.nowrap {
+	white-space: nowrap;
+}

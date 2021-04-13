@@ -164,13 +164,13 @@ class SubmissionsTable extends WP_List_Table {
 
 		if ( ! empty( $_GET['form_id'] ) ) {
 			$form_id = (int) filter_var( $_GET['form_id'], FILTER_SANITIZE_NUMBER_INT );
-			if ( in_array( $form_id, array_keys( $forms ) ) ) {
+			if ( array_key_exists( $form_id, $forms ) ) {
 				$this->form_id = $form_id;
 
 				return $this->form_id;
-			} else {
-				wp_die( __( 'Invalid form', THEME_DOMAIN ) );
 			}
+
+			wp_die( __( 'Invalid form', THEME_DOMAIN ) );
 		}
 
 		$newest_form   = reset( $forms );
@@ -239,7 +239,7 @@ class SubmissionsTable extends WP_List_Table {
 	private function process_action_bulk_delete() {
 		$nonce = esc_attr( $_REQUEST['_wpnonce'] );
 
-		if ( ! wp_verify_nonce( $nonce, 'bulk-submissions' ) ) {
+		if ( ! wp_verify_nonce( $nonce, 'bulk-' . $this->_args['plural'] ) ) {
 			wp_die( 'Invalid action.' );
 		}
 
@@ -282,7 +282,7 @@ class SubmissionsTable extends WP_List_Table {
 	 */
 	private function process_sorting( $submissions ) {
 		// set orderby
-		if ( isset( $_REQUEST['orderby'] ) && in_array( $_REQUEST['orderby'], array_keys( $this->get_sortable_columns() ) ) ) {
+		if ( isset( $_REQUEST['orderby'] ) && array_key_exists( $_REQUEST['orderby'], $this->get_sortable_columns() ) ) {
 			$orderby = $_REQUEST['orderby'];
 		} else {
 			$orderby = SubmissionModel::META_KEY;

@@ -43,6 +43,13 @@ class Mail {
 	private $attachment;
 
 	/**
+	 * Counter for the sending attempts
+	 *
+	 * @var int
+	 */
+	private $sending_attempts = 0;
+
+	/**
 	 * Send email with with the body rendered from a twig template string
 	 *
 	 * @param string|array $to Array or comma-separated list of email addresses to send message.
@@ -105,6 +112,8 @@ class Mail {
 	 * @return bool
 	 */
 	public function send() {
+		$this->sending_attempts ++;
+
 		return wp_mail(
 			$this->to,
 			$this->subject,
@@ -112,6 +121,13 @@ class Mail {
 			$this->headers,
 			$this->attachment
 		);
+	}
+
+	/**
+	 * @return int
+	 */
+	public function get_sending_attempts() {
+		return $this->sending_attempts;
 	}
 
 	/**
@@ -124,10 +140,10 @@ class Mail {
 	 * @return array
 	 */
 	private function prepare_data_for_email( $data, $post_meta_id, $referer_url ) {
-		foreach ( $data as $key => &$value ) {
+		foreach ( $data as $key => $value ) {
 			// flatten arrays
 			if ( is_array( $value ) ) {
-				$value = join( $value, ', ' );
+				$data[ $key ] = implode( ', ', $value );
 			}
 		}
 
@@ -141,4 +157,22 @@ class Mail {
 		return $data;
 	}
 
+	/**
+	 * @return array|string
+	 */
+	public function get_to() {
+		return $this->to;
+	}
+
+	public function get_subject(): string {
+		return $this->subject;
+	}
+
+	public function get_headers(): array {
+		return $this->headers;
+	}
+
+	public function get_body(): string {
+		return $this->body;
+	}
 }

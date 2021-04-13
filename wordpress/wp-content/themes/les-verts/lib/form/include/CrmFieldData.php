@@ -155,4 +155,8 @@ class CrmFieldData {
 	public function get_mode() {
 		return $this->mode;
 	}
+
+	public function get_key(): string {
+		return $this->key;
+	}
 }

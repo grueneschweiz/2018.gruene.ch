@@ -39,18 +39,18 @@
             ],
             "authors": [
                 {
-                    "name": "Danny van Kooten",
-                    "email": "dannyvankooten@gmail.com",
-                    "homepage": "http://dannyvankooten.com/"
-                },
-                {
-                    "name": "Koen Punt",
-                    "homepage": "https://github.com/koenpunt"
-                },
-                {
-                    "name": "niahoo",
-									"homepage": "https://github.com/niahoo"
-								}
+									"name": "Danny van Kooten",
+									"email": "dannyvankooten@gmail.com",
+									"homepage": "http://dannyvankooten.com/"
+								},
+							{
+								"name": "Koen Punt",
+								"homepage": "https://github.com/koenpunt"
+							},
+							{
+								"name": "niahoo",
+								"homepage": "https://github.com/niahoo"
+							}
 						],
 					"description": "A lightning fast router for PHP",
 					"homepage": "https://github.com/dannyvankooten/AltoRouter",
@@ -65,66 +65,66 @@
 					},
 					"time": "2015-11-30T00:47:43+00:00"
 				},
-        {
-            "name": "asm89/twig-cache-extension",
-            "version": "1.4.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/asm89/twig-cache-extension.git",
-							"reference": "13787226956ec766f4770722082288097aebaaf3"
-						},
-					"dist": {
-						"type": "zip",
-						"url": "https://api.github.com/repos/asm89/twig-cache-extension/zipball/13787226956ec766f4770722082288097aebaaf3",
-						"reference": "13787226956ec766f4770722082288097aebaaf3",
-						"shasum": ""
-					},
-					"require": {
-						"php": ">=5.3.2",
-						"twig/twig": "^1.0|^2.0"
-					},
-					"require-dev": {
-						"doctrine/cache": "~1.0",
-						"phpunit/phpunit": "^5.0 || ^4.8.10"
-					},
-					"suggest": {
-						"psr/cache-implementation": "To make use of PSR-6 cache implementation via PsrCacheAdapter."
-					},
-					"type": "library",
-					"extra": {
-						"branch-alias": {
-							"dev-master": "1.4-dev"
-						}
-					},
-					"autoload": {
-						"psr-4": {
-							"": "lib/"
-						}
-					},
-					"notification-url": "https://packagist.org/downloads/",
-					"license": [
-						"MIT"
-					],
-					"authors": [
-						{
-							"name": "Alexander",
-							"email": "iam.asm89@gmail.com"
-						}
-					],
-					"description": "Cache fragments of templates directly within Twig.",
-					"homepage": "https://github.com/asm89/twig-cache-extension",
-					"keywords": [
-						"cache",
-						"extension",
-						"twig"
-					],
-					"support": {
-						"issues": "https://github.com/asm89/twig-cache-extension/issues",
-						"source": "https://github.com/asm89/twig-cache-extension/tree/1.4.0"
-					},
-					"abandoned": "twig/cache-extension",
-					"time": "2020-01-01T20:47:37+00:00"
+			{
+				"name": "asm89/twig-cache-extension",
+				"version": "1.4.0",
+				"source": {
+					"type": "git",
+					"url": "https://github.com/asm89/twig-cache-extension.git",
+					"reference": "13787226956ec766f4770722082288097aebaaf3"
 				},
+				"dist": {
+					"type": "zip",
+					"url": "https://api.github.com/repos/asm89/twig-cache-extension/zipball/13787226956ec766f4770722082288097aebaaf3",
+					"reference": "13787226956ec766f4770722082288097aebaaf3",
+					"shasum": ""
+				},
+				"require": {
+					"php": ">=5.3.2",
+					"twig/twig": "^1.0|^2.0"
+				},
+				"require-dev": {
+					"doctrine/cache": "~1.0",
+					"phpunit/phpunit": "^5.0 || ^4.8.10"
+				},
+				"suggest": {
+					"psr/cache-implementation": "To make use of PSR-6 cache implementation via PsrCacheAdapter."
+				},
+				"type": "library",
+				"extra": {
+					"branch-alias": {
+						"dev-master": "1.4-dev"
+					}
+				},
+				"autoload": {
+					"psr-4": {
+						"": "lib/"
+					}
+				},
+				"notification-url": "https://packagist.org/downloads/",
+				"license": [
+					"MIT"
+				],
+				"authors": [
+					{
+						"name": "Alexander",
+						"email": "iam.asm89@gmail.com"
+					}
+				],
+				"description": "Cache fragments of templates directly within Twig.",
+				"homepage": "https://github.com/asm89/twig-cache-extension",
+				"keywords": [
+					"cache",
+					"extension",
+					"twig"
+				],
+				"support": {
+					"issues": "https://github.com/asm89/twig-cache-extension/issues",
+					"source": "https://github.com/asm89/twig-cache-extension/tree/1.4.0"
+				},
+				"abandoned": "twig/cache-extension",
+				"time": "2020-01-01T20:47:37+00:00"
+			},
 			{
 				"name": "composer/installers",
 				"version": "v1.10.0",
@@ -573,16 +573,16 @@
 			},
 			{
 				"name": "mindkomm/timmy",
-				"version": "0.14.5",
+				"version": "0.14.6",
 				"source": {
 					"type": "git",
 					"url": "https://github.com/mindkomm/timmy.git",
-					"reference": "f1d9e8ffb60f1c73b676338d3d7772b222f91349"
+					"reference": "9812b9860bdd6f1500ad86685fc02b6c2794fefb"
 				},
 				"dist": {
 					"type": "zip",
-					"url": "https://api.github.com/repos/mindkomm/timmy/zipball/f1d9e8ffb60f1c73b676338d3d7772b222f91349",
-					"reference": "f1d9e8ffb60f1c73b676338d3d7772b222f91349",
+					"url": "https://api.github.com/repos/mindkomm/timmy/zipball/9812b9860bdd6f1500ad86685fc02b6c2794fefb",
+					"reference": "9812b9860bdd6f1500ad86685fc02b6c2794fefb",
 					"shasum": ""
 				},
 				"require": {
@@ -627,7 +627,7 @@
 					"issues": "https://github.com/mindkomm/timmy/issues",
 					"source": "https://github.com/mindkomm/timmy"
 				},
-				"time": "2020-09-11T14:06:47+00:00"
+				"time": "2021-03-30T06:25:00+00:00"
 			},
 			{
 				"name": "myclabs/php-enum",
@@ -1291,16 +1291,16 @@
 			},
 			{
 				"name": "twig/twig",
-				"version": "v2.14.3",
+				"version": "v2.14.4",
 				"source": {
 					"type": "git",
 					"url": "https://github.com/twigphp/Twig.git",
-					"reference": "8bc568d460d88b25c00c046256ec14a787ea60d9"
+					"reference": "0b4ba691fb99ec7952d25deb36c0a83061b93bbf"
 				},
 				"dist": {
 					"type": "zip",
-					"url": "https://api.github.com/repos/twigphp/Twig/zipball/8bc568d460d88b25c00c046256ec14a787ea60d9",
-					"reference": "8bc568d460d88b25c00c046256ec14a787ea60d9",
+					"url": "https://api.github.com/repos/twigphp/Twig/zipball/0b4ba691fb99ec7952d25deb36c0a83061b93bbf",
+					"reference": "0b4ba691fb99ec7952d25deb36c0a83061b93bbf",
 					"shasum": ""
 				},
 				"require": {
@@ -1354,7 +1354,7 @@
 				],
 				"support": {
 					"issues": "https://github.com/twigphp/Twig/issues",
-					"source": "https://github.com/twigphp/Twig/tree/v2.14.3"
+					"source": "https://github.com/twigphp/Twig/tree/v2.14.4"
 				},
 				"funding": [
 					{
@@ -1366,7 +1366,7 @@
 						"type": "tidelift"
 					}
 				],
-				"time": "2021-01-05T15:34:33+00:00"
+				"time": "2021-03-10T10:05:55+00:00"
 			},
 			{
 				"name": "upstatement/routes",
@@ -1426,16 +1426,16 @@
 			},
 			{
 				"name": "yahnis-elsts/plugin-update-checker",
-				"version": "v4.10",
+				"version": "v4.11",
 				"source": {
 					"type": "git",
 					"url": "https://github.com/YahnisElsts/plugin-update-checker.git",
-					"reference": "0edd15f67822464af8a23285ce367b30d515a855"
+					"reference": "3155f2d3f1ca5e7ed3f25b256f020e370515af43"
 				},
 				"dist": {
 					"type": "zip",
-					"url": "https://api.github.com/repos/YahnisElsts/plugin-update-checker/zipball/0edd15f67822464af8a23285ce367b30d515a855",
-					"reference": "0edd15f67822464af8a23285ce367b30d515a855",
+					"url": "https://api.github.com/repos/YahnisElsts/plugin-update-checker/zipball/3155f2d3f1ca5e7ed3f25b256f020e370515af43",
+					"reference": "3155f2d3f1ca5e7ed3f25b256f020e370515af43",
 					"shasum": ""
 				},
 				"require": {
@@ -1445,7 +1445,7 @@
 				"type": "library",
 				"autoload": {
 					"files": [
-						"load-v4p10.php"
+						"load-v4p11.php"
 					]
 				},
 				"notification-url": "https://packagist.org/downloads/",
@@ -1470,9 +1470,9 @@
 				],
 				"support": {
 					"issues": "https://github.com/YahnisElsts/plugin-update-checker/issues",
-					"source": "https://github.com/YahnisElsts/plugin-update-checker/tree/wp55-auto-updates"
+					"source": "https://github.com/YahnisElsts/plugin-update-checker/tree/v4.11"
 				},
-				"time": "2020-08-21T11:36:45+00:00"
+				"time": "2021-03-15T16:07:52+00:00"
 			}
 		],
 	"packages-dev": [],
