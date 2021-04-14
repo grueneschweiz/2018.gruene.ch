@@ -2144,7 +2144,7 @@ msgstr "Texte de confirmation"
 #: lib/form/acf/mail-template.php:23
 msgctxt "Placeholders"
 msgid "Use the following tags as placeholders in your mail. They will be replaced automatically: %s"
-msgstr "Utilise les étiquettes suivantes en tant joker que dans le courriel. Elles seront remplacés automatiquement : %s."
+msgstr "Utilise les étiquettes suivantes en tant joker que dans le courriel. Elles seront remplacés automatiquement : %s"
 
 #: lib/form/acf/mail-template.php:28
 msgctxt "Placeholder"
@@ -2780,11 +2780,11 @@ msgstr ""
 
 #: lib/form/acf/settings.php:122
 msgid "SSL"
-msgstr ""
+msgstr "SSL"
 
 #: lib/form/acf/settings.php:123
 msgid "TLS"
-msgstr ""
+msgstr "TLS"
 
 #: lib/form/admin/ViewSingle.php:96 lib/form/include/SubmissionExport.php:177
 msgid "Referer"
@@ -2793,7 +2793,7 @@ msgstr ""
 #. Template Name of the plugin/theme
 #: 
 msgid "Front Page"
-msgstr ""
+msgstr "Accueil"
 
 #: acf-translate.php:754
 msgid "[Template]Block"
