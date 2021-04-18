@@ -16,6 +16,10 @@ use SUPT\Nonce;
  * @return string
  */
 function supt_theme_form_create_nonce() {
+	// disable litespeed caching
+	do_action( 'litespeed_control_set_nocache' );
+
+	// disable wp super cache
 	if ( ! defined( 'DONOTCACHEPAGE' ) ) {
 		define( 'DONOTCACHEPAGE', true );
 	}
@@ -38,8 +42,13 @@ function supt_theme_form_submission_count($form_id) {
 	try {
 		$form = new FormModel( $form_id );
 	} catch ( Exception $e ) {
-		return -1;
+		return - 1;
 	}
 
 	return $form->get_submission_count();
+}
+
+
+function supt_get_nonce_api_url(): string {
+	return get_rest_url( null, SUPT_FORM_API_V1_BASE . SUPT_FORM_API_ENDPOINT_NONCE );
 }
