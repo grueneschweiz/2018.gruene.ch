@@ -73,3 +73,13 @@ $WPCLI option patch insert --json tribe_events_calendar_options views_v2_enabled
 
 # configure searchwp
 $WPCLI option set --json searchwp_engines '{"default":{"label":"Default","settings":{"stemming":true,"adminengine":false},"sources":{"post.post":{"attributes":{"title":80,"content":5,"slug":60,"excerpt":40,"meta":{"*":1},"taxonomy":{"category":50,"post_tag":50}},"rules":[],"options":[]},"post.page":{"attributes":{"title":80,"content":5,"slug":60,"meta":{"*":1}},"rules":[],"options":[]},"post.tribe_events":{"attributes":{"title":80,"content":5,"slug":60,"excerpt":40,"comments":1,"meta":{"*":1}},"rules":[],"options":[]}}}}'
+
+# configure wp super cache
+$WPCLI super-cache enable
+$WPCLI eval 'wp_cache_setting("cache_max_time",86400);'
+$WPCLI eval 'wp_cache_setting("cache_time_interval",3600);'
+$WPCLI eval 'wp_cache_setting("wp_cache_not_logged_in",0);'
+$WPCLI eval 'wp_cache_setting("cache_rebuild_files",1);'
+$WPCLI eval 'wp_cache_setting("wp_supercache_304",1);'
+$WPCLI eval 'wp_cache_setting("wp_cache_mfunc_enabled",1);'
+$WPCLI eval 'wp_cache_setting("wp_cache_clear_on_post_edit",1);'
