@@ -8,14 +8,18 @@
  */
 
 use SUPT\FormModel;
+use SUPT\Limiter;
 use SUPT\Nonce;
 
 /**
  * Get a form submission nonce
  *
- * @return string
+ * @return string|WP_Error
  */
 function supt_theme_form_create_nonce() {
+	require_once __DIR__ . '/include/Nonce.php';
+	require_once __DIR__ . '/include/Limiter.php';
+
 	// disable litespeed caching
 	do_action( 'litespeed_control_set_nocache' );
 
@@ -24,8 +28,17 @@ function supt_theme_form_create_nonce() {
 		define( 'DONOTCACHEPAGE', true );
 	}
 
-	require_once __DIR__ . '/include/Nonce.php';
+	// add some rate limiting
+	$limiter = new Limiter( 'nonce' );
+	if ( ! $limiter->below_limit() ) {
+		return new WP_Error(
+			429,
+			__( 'Too many requests. Please try again later.', THEME_DOMAIN )
+		);
+	}
+	$limiter->log_attempt();
 
+	// reply with nonce
 	return Nonce::create();
 }
 
