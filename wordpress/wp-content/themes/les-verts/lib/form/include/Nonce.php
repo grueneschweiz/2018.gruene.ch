@@ -4,7 +4,7 @@
 namespace SUPT;
 
 /**
- * Session based nonces.
+ * Real nonces.
  *
  * Opposed to the WordPress built-in nonces, those nonces are limited to single
  * use and are deleted once verified. The time to live is limited by the TTL
