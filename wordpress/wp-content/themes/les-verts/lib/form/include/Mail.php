@@ -77,9 +77,10 @@ class Mail {
 	) {
 
 		// Render the email from template
-		$data    = $this->prepare_data_for_email( $data, $post_meta_id, $referer_url );
-		$body    = Timber::compile_string( $template, $data );
-		$subject = html_entity_decode( Timber::compile_string( $subject, $data ), ENT_QUOTES | ENT_HTML5 );
+		$data     = $this->prepare_data_for_email( $data, $post_meta_id, $referer_url );
+		$template = $this->sanitize_twig_tags( $template );
+		$body     = Timber::compile_string( $template, $data );
+		$subject  = html_entity_decode( Timber::compile_string( $subject, $data ), ENT_QUOTES | ENT_HTML5 );
 
 		// Assert nice quotes (call after compiling!)
 		$body    = wptexturize( $body );
@@ -174,5 +175,26 @@ class Mail {
 
 	public function get_body(): string {
 		return $this->body;
+	}
+
+	/**
+	 * Remove any html tags from inside twig expressions {{<removed>not removed<removed>}}.
+	 *
+	 * @param string $template
+	 *
+	 * @return string
+	 */
+	private function sanitize_twig_tags( string $template ): string {
+		$tag_pattern = '/({{.*}})/';
+		$parts       = preg_split( $tag_pattern, $template, 0, PREG_SPLIT_NO_EMPTY | PREG_SPLIT_DELIM_CAPTURE );
+		$return      = '';
+		foreach ( $parts as $part ) {
+			if ( preg_match( $tag_pattern, $part ) ) {
+				$part = strip_tags( $part );
+			}
+			$return .= $part;
+		}
+
+		return $return;
 	}
 }
