@@ -19,7 +19,10 @@ add_filter('tribe_events_register_event_cat_type_args', function($args) {
  */
 add_filter( 'tribe_events_ugly_link_baseurl', function ( $base_url ) {
 	if ( function_exists( 'pll_home_url' ) ) {
-		return pll_home_url();
+		$default_home_url   = rtrim( pll_home_url( pll_default_language() ), '/' );
+		$localized_home_url = rtrim( pll_home_url(), '/' );
+
+		return str_replace( $default_home_url, $localized_home_url, $base_url );
 	}
 
 	return $base_url;
