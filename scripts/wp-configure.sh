@@ -78,8 +78,6 @@ $WPCLI option set --json searchwp_engines '{"default":{"label":"Default","settin
 $WPCLI super-cache enable
 $WPCLI eval 'wp_cache_setting("cache_max_time",86400);'
 $WPCLI eval 'wp_cache_setting("cache_time_interval",3600);'
-$WPCLI eval 'wp_cache_setting("wp_cache_not_logged_in",0);'
+$WPCLI eval 'wp_cache_setting("wp_cache_not_logged_in",2);'
 $WPCLI eval 'wp_cache_setting("cache_rebuild_files",1);'
-$WPCLI eval 'wp_cache_setting("wp_supercache_304",1);'
-$WPCLI eval 'wp_cache_setting("wp_cache_mfunc_enabled",1);'
 $WPCLI eval 'wp_cache_setting("wp_cache_clear_on_post_edit",1);'
