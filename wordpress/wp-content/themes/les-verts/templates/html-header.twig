@@ -19,6 +19,13 @@
 	<script type="text/javascript">
 		var html = document.getElementsByTagName( 'html' )[ 0 ];
 		html.className = html.className.replace( /(?:^|\s)no-js(?!\S)/g, 'js' );
+
+		{% if ( not fn('is_customize_preview') ) %}
+		if (window.sessionStorage.getItem( 'branding' )) {
+			html.classList.add( 'no-branding' );
+		}
+		window.sessionStorage.setItem( 'branding', true );
+		{% endif %}
 	</script>
 	<meta name="description"
 				content="{{ post._yoast_wpseo_metadesc ?: post.description_short|striptags|replace({"\n": " ", "\r": " "}) ?: post.content_short|striptags|replace({"\n": " ", "\r": " "}) }}">

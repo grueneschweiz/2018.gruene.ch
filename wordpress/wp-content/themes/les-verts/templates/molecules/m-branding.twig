@@ -16,14 +16,3 @@
 		</div>
 	</div>
 </section>
-
-{% if ( not fn('is_customize_preview') ) and shadow %}
-	<script>
-		( function() {
-			if (window.sessionStorage.getItem( 'branding' )) {
-				document.querySelectorAll( '.m-branding' ).forEach( branding => branding.style.display = 'none' );
-			}
-			window.sessionStorage.setItem( 'branding', true );
-		} )();
-	</script>
-{% endif %}
