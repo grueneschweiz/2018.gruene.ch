@@ -48,15 +48,18 @@ if ( 'tribe_events' === $post_type ) {
 		// the list view
 		$context['title'] = __( 'Events', THEME_DOMAIN );
 
+		$event_cat_slug = get_query_var( 'tribe_events_cat' );
+		$term           = get_term_by( 'slug', $event_cat_slug, 'tribe_events_cat' );
+		$term_id        = $term instanceof WP_Term ? $term->term_id : null;
+
 		if ( tribe_is_past() ) {
 			$context['events_link'] = [
-				// trailing slash leads to bug in tribe events 5.0.* (white page)
-				'link'  => rtrim( tribe_get_next_events_link(), '/' ),
+				'link'  => tribe_get_listview_link( $term_id ),
 				'label' => __( 'Upcoming events', THEME_DOMAIN )
 			];
 		} else {
 			$context['events_link'] = [
-				'link'  => tribe_get_previous_events_link(),
+				'link'  => tribe_get_listview_past_link( $term_id ),
 				'label' => __( 'Previous events', THEME_DOMAIN )
 			];
 		}
