@@ -161,6 +161,13 @@ $WPCLI plugin install limit-login-attempts-reloaded $INSTALL_ACTIVATE
 # Maintenance Mode
 $WPCLI plugin install wp-maintenance-mode
 
+# WP Super Cache
+$WPCLI plugin install wp-super-cache $INSTALL_ACTIVATE
+
+# WP Super Cache CLI
+php -d memory_limit=2048M $WPCLI package install wp-cli/wp-super-cache-cli
+# if installation fails: go to ~/.wp-cli/packages and run composer install
+
 #====================
 # Theme
 #====================

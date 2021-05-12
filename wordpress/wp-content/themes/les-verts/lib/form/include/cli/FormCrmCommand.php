@@ -153,8 +153,8 @@ class FormCrmCommand {
 	 *
 	 * ## OPTIONS
 	 *
-	 * <idx>
-	 * : The queue idx.
+	 * [<idx>]
+	 * : The queue index of the item to delete.
 	 *
 	 * [--all]
 	 * : Delete all crm data in the queue.

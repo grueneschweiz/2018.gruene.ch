@@ -2,7 +2,10 @@
 	<div class="o-header__display">
 		{% if branding %}
 			<div class="o-header__branding">
-				{% include 'molecules/m-branding.twig' with branding only %}
+				{% include 'molecules/m-branding.twig' with {
+					branding: branding,
+					shadow: false,
+				} only %}
 			</div>
 		{% endif %}
 		<div class="o-header__menu">
@@ -11,7 +14,10 @@
 	</div>
 	<div class="o-header__shadow" aria-hidden="true">
 		{% if branding %}
-			{% include 'molecules/m-branding.twig' with branding only %}
+			{% include 'molecules/m-branding.twig' with  {
+				branding: branding,
+				shadow: true,
+			} only %}
 		{% endif %}
 		{% include 'molecules/m-menu.twig' only %}
 	</div>

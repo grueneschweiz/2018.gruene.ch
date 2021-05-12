@@ -36,7 +36,7 @@ class Navigation_controller {
 
 			if ( '#supt_agenda' == $item->url ) {
 				// trailing slash leads to bug in tribe events 5.0.* (white page)
-				$item->url = rtrim( tribe_get_listview_link( false ), '/' );
+				$item->url = rtrim( tribe_get_listview_link(), '/' );
 
 				$events = tribe_get_events( array(
 					'start_date'       => date( 'Y-m-d' ),

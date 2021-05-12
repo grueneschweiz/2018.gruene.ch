@@ -10,7 +10,7 @@ use function get_nav_menu_locations;
 use function get_queried_object_id;
 use function get_term;
 use function get_the_ID;
-use function tribe_get_events_link;
+use function tribe_get_listview_link;
 use function wp_get_nav_menu_items;
 use function wp_get_nav_menu_object;
 
@@ -255,8 +255,8 @@ class CustomMenuBreadcrumbs {
 		}
 
 		// hits the events archive of the events calendar from tribe
-		if ( empty( $current_menu_item ) && empty( $object_id ) && function_exists( '\tribe_get_events_link' ) ) {
-			$current_menu_item = $this->get_menu_object_by_url( tribe_get_events_link() );
+		if ( empty( $current_menu_item ) && empty( $object_id ) && function_exists( '\tribe_get_listview_link' ) ) {
+			$current_menu_item = $this->get_menu_object_by_url( tribe_get_listview_link() );
 		}
 
 		return $current_menu_item;

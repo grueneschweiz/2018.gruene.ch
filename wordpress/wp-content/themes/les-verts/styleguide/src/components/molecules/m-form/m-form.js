@@ -75,14 +75,12 @@ export default class MForm extends BaseView {
 		for (const key of Object.keys( messages )) {
 			let el = this.getScopedElement( '[name=' + key + ']' );
 			this.addClass( el, INVALID_STATE );
-			message += `<li>${messages[ key ]}</li>`;
+			message += `<li>${ messages[ key ] }</li>`;
 		}
 
-		serverMessage.innerHTML = `<ul>${message}</ul>`;
+		serverMessage.innerHTML = `<ul>${ message }</ul>`;
 		this.addClass( invalidMessage, SHOWN_STATE );
 		invalidMessage.setAttribute( 'aria-hidden', 'false' );
-
-		this.clearSendingState();
 	}
 
 	showErrorMessage( message ) {
@@ -90,11 +88,9 @@ export default class MForm extends BaseView {
 		let serverMessage = errorMessage.querySelector(
 			SERVER_FEEDBACK_MESSAGE_SELECTOR );
 
-		serverMessage.innerHTML = `<ul><li>${message}</li></ul>`;
+		serverMessage.innerHTML = `<ul><li>${ message }</li></ul>`;
 		this.addClass( errorMessage, SHOWN_STATE );
 		errorMessage.setAttribute( 'aria-hidden', 'false' );
-
-		this.clearSendingState();
 	}
 
 	initialize() {
@@ -131,7 +127,7 @@ export default class MForm extends BaseView {
 			xhr.onreadystatechange = function() {
 				if (xhr.readyState === 4) {
 					let raw = xhr.responseText;
-					let resp = '';
+					let resp;
 					try {
 						resp = JSON.parse( raw );
 					}
@@ -171,7 +167,33 @@ export default class MForm extends BaseView {
 		// mark as sending
 		this.showSending();
 
-		let url = this.element.action;
+		// the form data
+		const data = this.getFormData();
+		const url = this.element.action;
+
+		// get a nonce, then submit the form
+		this.getNonce().
+			then( nonce => data.append( 'nonce', nonce ) ).
+			then( () => this.sendForm( url, data ) ).
+			then( resp => this.showSuccess( resp ) ).
+			catch( resp => this.handleError( resp ) ).
+			finally( this.clearSendingState );
+	}
+
+	sendForm( url, data ) {
+		return this.ajax( url, 'POST', data ).then( ( resp ) => {
+			if (resp instanceof Object
+				&& 'success' in resp
+				&& true === resp.success) {
+				return Promise.resolve( resp.data );
+			}
+			else {
+				return Promise.reject( resp );
+			}
+		} );
+	}
+
+	getFormData() {
 		let data = new FormData( this.element );
 
 		/**
@@ -179,9 +201,6 @@ export default class MForm extends BaseView {
 		 */
 		// add wordpress action
 		data.append( 'action', 'supt_form_submit' );
-
-		// add nonce
-		data.append( 'nonce', this.element.dataset.nonce );
 
 		// add form id
 		data.append( 'form_id', this.element.dataset.formId );
@@ -199,18 +218,7 @@ export default class MForm extends BaseView {
 		// add the id of the last form
 		data.append( 'predecessor_id', this.predecessorId );
 
-		this.ajax( url, 'POST', data ).then( ( resp ) => {
-			if (resp instanceof Object
-				&& 'success' in resp
-				&& true ===	resp.success)
-			{
-				this.showSuccess( resp.data );
-			}	else {
-				return Promise.reject( resp );
-			}
-		} ).catch( ( resp ) => {
-			this.handleError( resp );
-		} );
+		return data;
 	}
 
 	showSuccess( data ) {
@@ -240,5 +248,9 @@ export default class MForm extends BaseView {
 
 			this.destroy();
 		}
+	}
+
+	getNonce() {
+		return this.ajax( this.element.dataset.nonce, 'GET' );
 	}
 }

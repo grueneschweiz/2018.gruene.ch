@@ -7,7 +7,7 @@
 				method="post"
 				enctype="multipart/form-data"
 				data-sending-lbl="{{ post.form_submitting }}"
-				data-nonce="{{ fn('supt_theme_form_create_nonce') }}"
+				data-nonce="{{ fn('supt_get_nonce_api_url') }}"
 				{% if action_id %}data-action-id="{{ action_id }}"{% endif %}
 		{% if config_id %}data-config-id="{{ config_id }}"{% endif %}
 				data-form-id="{{ post.id }}">

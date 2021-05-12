@@ -5,7 +5,7 @@ namespace SUPT;
 
 
 class Limiter {
-	const OPTION_KEY = FormType::MODEL_NAME . '_submission_attempts';
+	const OPTION_BASE_KEY = FormType::MODEL_NAME . '-limiter-';
 
 	/**
 	 * This must be greater or equal to the greatest submission limit period!
@@ -59,11 +59,19 @@ class Limiter {
 	private $attempts;
 
 	/**
+	 * The wp option_name that holds the submissions
+	 *
+	 * @var string
+	 */
+	private $option_key;
+
+	/**
 	 * Limiter constructor.
 	 */
-	public function __construct() {
+	public function __construct( string $for ) {
 		$this->ip         = $this->get_user_ip();
 		$this->user_agent = $_SERVER['HTTP_USER_AGENT'];
+		$this->option_key = self::OPTION_BASE_KEY . $for;
 	}
 
 	/**
@@ -119,7 +127,7 @@ class Limiter {
 
 	private function get_attempts() {
 		if ( empty( $this->attempts ) ) {
-			$this->attempts = get_option( self::OPTION_KEY, array() );
+			$this->attempts = get_option( $this->option_key, array() );
 		}
 
 		return $this->attempts;
@@ -147,7 +155,7 @@ class Limiter {
 	}
 
 	private function save() {
-		update_option( self::OPTION_KEY, $this->get_attempts() );
+		update_option( $this->option_key, $this->get_attempts() );
 	}
 
 	/**

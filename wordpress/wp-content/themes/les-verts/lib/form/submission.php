@@ -174,7 +174,7 @@ class FormSubmission {
 	private function abort_if_limit_exceeded() {
 		require_once __DIR__ . '/include/Limiter.php';
 
-		$limiter = new Limiter();
+		$limiter = new Limiter( 'submission' );
 
 		if ( ! $limiter->below_limit() ) {
 			$this->respond_with_general_error(

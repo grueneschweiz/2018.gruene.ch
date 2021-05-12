@@ -84,13 +84,13 @@ class CrmDao {
 
 			if ( is_wp_error( $response ) ) {
 				$error_message = $response->get_error_message();
-				throw new Exception( "Could not obtain oAuth token from crm: $error_message" );
+				throw new Exception( get_home_url() . ": Could not obtain oAuth token from crm: $error_message" );
 			}
 
 			/** @var WP_HTTP_Requests_Response $resp */
 			$resp = $response['http_response'];
 			if ( $resp->get_status() !== 200 ) {
-				throw new Exception( "Could not obtain oAuth token from crm. Crm returned status code: {$resp->get_status()}" );
+				throw new Exception( get_home_url() . ": Could not obtain oAuth token from crm. Crm returned status code: {$resp->get_status()}" );
 			}
 
 			$token_data = json_decode( $resp->get_data() );

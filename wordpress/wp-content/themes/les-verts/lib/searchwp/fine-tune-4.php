@@ -53,3 +53,33 @@ add_filter( 'searchwp\query\results', function ( $results ) {
 
 	return $results;
 }, 20, 1 );
+
+/**
+ * Tell SearchWP to index the persons name from a Relationship ACF field instead of the post ID
+ *
+ * @link https://searchwp.com/documentation/knowledge-base/process-acf-fields-to-index-expected-data/
+ */
+add_filter( 'searchwp\source\post\attributes\meta', function ( $meta_value, $args ) {
+	$acf_field_name = 'person'; // The ACF Relationship field name.
+
+	// If we're not indexing the Read Next field, return the existing meta value.
+	// This logic also works for sub-fields of an ACF field as well.
+	if ( $acf_field_name !== substr( $args['meta_key'], strlen( $args['meta_key'] ) - strlen( $acf_field_name ) ) ) {
+		return $meta_value;
+	}
+
+	// We're going to store all of our Titles together as one string for SearchWP to index.
+	$content_to_index = '';
+	if ( is_array( $meta_value ) && ! empty( $meta_value ) ) {
+		foreach ( $meta_value as $acf_relationship_item ) {
+			if ( is_numeric( $acf_relationship_item ) ) {
+				// ACF stores only the post ID but we want the name.
+				$acf_relationship_item = absint( $acf_relationship_item );
+				$content_to_index      .= ' ' . get_field( 'full_name', $acf_relationship_item );
+			}
+		}
+	}
+
+	// Return the string of content we want to index instead of the data stored by ACF.
+	return $content_to_index;
+}, 20, 2 );
