@@ -100,4 +100,24 @@ class Util {
 		$timestamp = wp_next_scheduled( $hook );
 		wp_unschedule_event( $timestamp, $hook );
 	}
+
+	/**
+	 * Return the group id for possible duplicates, defined in the form settings
+	 *
+	 * @return int|false false if not defined
+	 */
+	public static function get_setting_duplicate_group_id() {
+		$group_id = get_field( 'group_id_duplicates', 'option' );
+
+		return empty( $group_id ) ? false : (int) $group_id;
+	}
+
+	/**
+	 * Return the group id for new records, defined in the form settings
+	 *
+	 * @return int
+	 */
+	public static function get_setting_default_group_id() {
+		return (int) get_field( 'group_id', 'option' );
+	}
 }

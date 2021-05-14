@@ -4,7 +4,6 @@
 namespace SUPT;
 
 use Exception;
-use function get_field;
 
 require_once __DIR__ . '/CrmFieldData.php';
 require_once __DIR__ . '/QueueDao.php';
@@ -92,7 +91,15 @@ class CrmSaver {
 	 */
 	public static function save_to_crm( bool $force = false ) {
 		require_once __DIR__ . '/CrmDao.php';
-		$crm_dao = new CrmDao();
+		try {
+			$crm_dao = new CrmDao();
+		} catch ( Exception $e ) {
+			$subject = "Error: permanent CRM authentication failure.";
+			$message = $e->getMessage();
+			Util::send_mail_to_admin( $subject, $message );
+
+			return;
+		}
 
 		$queue = self::get_queue();
 		$skip  = 0;
@@ -156,9 +163,11 @@ class CrmSaver {
 	 */
 	private static function save( CrmQueueItem $item, CrmDao $dao ) {
 		$crm_id = false;
+		$data   = $item->get_data();
 
 		try {
-			$crm_id = $dao->save( $item->get_data() );
+			$data   = self::match_and_add_group( $data, $dao );
+			$crm_id = $dao->save( $data );
 		} catch ( Exception $e ) {
 			if ( self::is_non_permanent_error( $e->getCode() ) ) {
 				try {
@@ -174,6 +183,43 @@ class CrmSaver {
 		}
 
 		return $crm_id;
+	}
+
+	/**
+	 * Adds the correct group to the data.
+	 *
+	 * If a group for possible duplicates is defined in the settings, the data
+	 * is matched against the crm and the group is chosen according to the match
+	 * response. If it is an exact match or no match, the record the default
+	 * group is added to data. Else the group id for possible duplicates is set.
+	 *
+	 * If no group for possible duplicates is defined, the default group id is
+	 * used. No matching against the crm is performed in this case.
+	 *
+	 * @param array $data
+	 * @param CrmDao $dao
+	 *
+	 * @return array
+	 * @throws Exception
+	 */
+	private static function match_and_add_group( array $data, CrmDao $dao ): array {
+		if ( Util::get_setting_duplicate_group_id() ) {
+			$match = $dao->match( $data );
+			$group = self::determine_group( $match );
+		} else {
+			$group = Util::get_setting_default_group_id();
+		}
+
+		$data['groups'] = new CrmFieldData(
+			'groups',
+			CrmFieldData::MODE_ADD_IF_NEW,
+			array(),
+			array(),
+			$group,
+			false
+		);
+
+		return $data;
 	}
 
 	/**
@@ -268,7 +314,6 @@ class CrmSaver {
 		// else every record would be added, even if the form wasn't configured to
 		// store data to the crm
 		if ( ! empty( $this->crm_data ) ) {
-			$this->auto_add_group();
 			$this->auto_add_entry_channel();
 			$this->auto_add_language();
 		}
@@ -473,17 +518,26 @@ class CrmSaver {
 	}
 
 	/**
-	 * Add the crm group as defined in the settings
+	 * Return the group the record should be added to, considering
+	 * if a group id for possible duplicates was defined.
+	 *
+	 * @param string $match any of the CrmDao::MATCH_* constants
+	 *
+	 * @return int the group id
 	 */
-	private function auto_add_group() {
-		$this->add_crm_data(
-			'groups',
-			CrmFieldData::MODE_ADD_IF_NEW,
-			array(),
-			array(),
-			get_field( 'group_id', 'option' ),
-			false
-		);
+	private static function determine_group( string $match ): int {
+		$duplicate_group_id = Util::get_setting_duplicate_group_id();
+		$default_group_id   = Util::get_setting_default_group_id();
+
+		if ( ! $duplicate_group_id ) {
+			return $default_group_id;
+		}
+
+		if ( in_array( $match, array( CrmDao::MATCH_NONE, CrmDao::MATCH_EXACT ), true ) ) {
+			return $default_group_id;
+		}
+
+		return $duplicate_group_id;
 	}
 
 	/**

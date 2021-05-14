@@ -239,12 +239,42 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 			),
 			array(
 				'key'               => 'field_5c1634144d16e',
-				'label'             => __( 'Group Id', THEME_DOMAIN ),
+				'label'             => __( 'Group ID (default)', THEME_DOMAIN ),
 				'name'              => 'group_id',
 				'type'              => 'number',
 				'instructions'      => __( 'The ID of the group, where <strong>new</strong> member records should be stored in.',
 					THEME_DOMAIN ),
 				'required'          => 1,
+				'conditional_logic' => array(
+					array(
+						array(
+							'field'    => 'field_5c0fde5a133b8',
+							'operator' => '!=empty',
+						),
+					),
+				),
+				'wrapper'           => array(
+					'width' => '',
+					'class' => '',
+					'id'    => '',
+				),
+				'default_value'     => '',
+				'placeholder'       => '',
+				'prepend'           => '',
+				'append'            => '',
+				'min'               => 100,
+				'max'               => '',
+				'step'              => 1,
+			),
+			array(
+				'key'               => 'field_5c1634144d17f',
+				'label'             => __( 'Group ID (possible duplicates)', THEME_DOMAIN ),
+				'name'              => 'group_id_duplicates',
+				'type'              => 'number',
+				'instructions'      =>
+					__( 'The ID of the group, where <strong>possible duplicate</strong> member records should be stored in.', THEME_DOMAIN )
+					. ' ' . __( 'If left empty, possible duplicates will be stored in the same group as new member records.', THEME_DOMAIN ),
+				'required'          => 0,
 				'conditional_logic' => array(
 					array(
 						array(
