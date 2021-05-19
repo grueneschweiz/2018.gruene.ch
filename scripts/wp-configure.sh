@@ -9,11 +9,11 @@
 #   existing website in production
 #===========================================
 
-set -e
+set -euo pipefail
 
 # detect if it's a multisite installation
 NETWORK=
-if wp site list; then
+if $WPCLI site list; then
 	NETWORK=1
 	echo "WP multisite detected."
 fi
