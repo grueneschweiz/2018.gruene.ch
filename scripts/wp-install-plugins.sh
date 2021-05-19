@@ -165,7 +165,7 @@ $WPCLI plugin install wp-maintenance-mode
 $WPCLI plugin install wp-super-cache $INSTALL_ACTIVATE
 
 # WP Super Cache CLI
-php -d memory_limit=2048M $WPCLI package install wp-cli/wp-super-cache-cli
+php -d memory_limit=2048M $(which $WPCLI) package install wp-cli/wp-super-cache-cli
 # if installation fails: go to ~/.wp-cli/packages and run composer install
 
 #====================
