@@ -22,14 +22,14 @@ NETWORK=
 MULTILANG=
 
 # detect if it's a multisite installation
-if wp site list; then
+if $WPCLI site list; then
 	NETWORK=1
 	ACTIVATE_NETWORK="--network"
 	INSTALL_ACTIVATE="--activate-network"
 	echo "WP multisite detected."
 fi
 
-while getopts "nl" opt; do
+while getopts "l" opt; do
 	case $opt in
     l)
     	MULTILANG=1
