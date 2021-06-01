@@ -320,7 +320,7 @@ class SubmissionModel {
 	 * @return string
 	 */
 	public function meta_get_referer() {
-		return $this->meta[ self::REFERER_KEY ];
+		return $this->meta[ self::REFERER_KEY ] ?? '';
 	}
 
 	/**
