@@ -251,7 +251,6 @@ class FormSubmission {
 			$this->predecessor_id = intval( $_POST['predecessor_id'] );
 		}
 
-		// @todo: rethink the nonces if using caching
 		if ( isset( $_POST['nonce'] ) ) {
 			$this->nonce = $_POST['nonce'];
 		}
