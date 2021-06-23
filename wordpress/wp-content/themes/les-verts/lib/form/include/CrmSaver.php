@@ -91,6 +91,16 @@ class CrmSaver {
 	 */
 	public static function save_to_crm( bool $force = false ) {
 		require_once __DIR__ . '/CrmDao.php';
+
+		$queue = self::get_queue();
+
+		// bail early, if the crm api isn't configured
+		if ( ! CrmDao::has_api_url() ) {
+			Util::remove_cron( self::CRON_HOOK_CRM_SAVE );
+
+			return;
+		}
+
 		try {
 			$crm_dao = new CrmDao();
 		} catch ( Exception $e ) {
@@ -101,7 +111,6 @@ class CrmSaver {
 			return;
 		}
 
-		$queue = self::get_queue();
 		$skip  = 0;
 
 		while ( $queue->has_items() ) {
