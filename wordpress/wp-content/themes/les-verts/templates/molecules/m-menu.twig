@@ -40,9 +40,11 @@
 					{% endif %}
 				</li>
 			{% endfor %}
-			<li class="m-menu__nav-item" role="none">
-				{% include 'atoms/a-search.twig' with {'modifiers':['a-search--covering']} %}
-			</li>
+			{% if menu.search %}
+				<li class="m-menu__nav-item" role="none">
+					{% include 'atoms/a-search.twig' with {'modifiers':['a-search--covering']} %}
+				</li>
+			{% endif %}
 		</ul>
 	</nav>
 	{% if menu.cta or menu.language %}

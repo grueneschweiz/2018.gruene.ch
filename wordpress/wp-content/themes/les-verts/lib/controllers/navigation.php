@@ -156,6 +156,7 @@ class Navigation_controller {
 		$context['menu']['cta']         = self::get_menu_cta();
 		$context['menu']['footer']      = new Menu( 'footer-nav', [ 'depth' => 2 ] );
 		$context['menu']['footer_meta'] = new Menu( 'footer-meta-nav', [ 'depth' => 1 ] );
+		$context['menu']['search']      = is_plugin_active( 'searchwp/index.php' );
 
 		$img_id                  = get_theme_mod( Customizer\Logo::SETTING_LOGO_DARK, false );
 		$context['menu']['logo'] = [
