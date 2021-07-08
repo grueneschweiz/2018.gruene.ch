@@ -1,3 +1,6 @@
+// makes php storm happy. normally it would be enough to add it in styles.scss
+@use 'sass:math';
+
 .m-menu {
 	font-size: 0.9375rem; // 15/16
 	border-bottom: 0.125rem solid $color-grey-1;
@@ -342,7 +345,7 @@
 
 			@for $i from 1 through 4 {
 				&:nth-of-type(#{$i}) {
-					animation-delay: $i * $transition-fast / 8;
+					animation-delay: math.div($i * $transition-fast, 8);
 				}
 			}
 
