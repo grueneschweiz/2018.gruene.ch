@@ -393,4 +393,20 @@
 			}
 		}
 	}
+
+	&--force-mobile {
+		.m-menu {
+			&__right {
+				display: none;
+			}
+
+			&__nav-list {
+				display: none;
+			}
+
+			&__hamburger {
+				display: block;
+			}
+		}
+	}
 }

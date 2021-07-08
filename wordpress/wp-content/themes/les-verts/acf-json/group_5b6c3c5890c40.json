@@ -137,28 +137,28 @@
                 "value": "default"
             }
         ],
-        [
-            {
-                "param": "post_type",
-                "operator": "==",
-                "value": "page"
-            },
-          {
-            "param": "post_template",
-            "operator": "==",
-            "value": "default"
-          },
-          {
-            "param": "page_type",
-            "operator": "!=",
-            "value": "front_page"
-          },
-          {
-            "param": "page_type",
-            "operator": "!=",
-            "value": "posts_page"
-          }
-        ]
+      [
+        {
+          "param": "post_type",
+          "operator": "==",
+          "value": "page"
+        },
+        {
+          "param": "post_template",
+          "operator": "==",
+          "value": "default"
+        },
+        {
+          "param": "page_type",
+          "operator": "!=",
+          "value": "front_page"
+        },
+        {
+          "param": "page_type",
+          "operator": "!=",
+          "value": "posts_page"
+        }
+      ]
     ],
     "menu_order": 10,
     "position": "normal",
@@ -167,17 +167,17 @@
     "instruction_placement": "label",
     "hide_on_screen": [
         "the_content",
-        "excerpt",
-        "discussion",
-        "comments",
-        "revisions",
-        "slug",
-        "author",
-        "format",
-        "featured_image",
-        "send-trackbacks"
+      "excerpt",
+      "discussion",
+      "comments",
+      "revisions",
+      "slug",
+      "author",
+      "format",
+      "featured_image",
+      "send-trackbacks"
     ],
-    "active": 1,
-    "description": "",
-  "modified": 1596474993
+  "active": true,
+  "description": "",
+  "modified": 1625750667
 }
