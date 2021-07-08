@@ -61,7 +61,7 @@ class Util {
 			$error_msg
 		);
 
-		self::send_mail_to_admin($subject, $message);
+		self::send_mail_to_admin( $subject, $message );
 	}
 
 	/**
@@ -70,24 +70,51 @@ class Util {
 	 * @param string $subject
 	 * @param string $body
 	 */
-	public static function send_mail_to_admin($subject, $body) {
-		$to      = get_bloginfo( 'admin_email' );
+	public static function send_mail_to_admin( $subject, $body ) {
+		$to = get_bloginfo( 'admin_email' );
 		wp_mail( $to, $subject, $body );
 	}
 
 	/**
-	 * Add new cron job, if not yet scheduled
+	 * Add new cron job, if not yet scheduled. Else reschedule.
+	 * Notify site admin by email, if scheduling failed.
 	 *
 	 * @param string $hook Action hook to execute when event is run.
 	 * @param int $start Unix timestamp (UTC) for when to run the event first.
 	 * @param string $recurrence How often the event should recur.
 	 */
 	public static function add_cron( $hook, $start, $recurrence ) {
-		if ( ! wp_next_scheduled( $hook ) ) {
-			wp_schedule_event(
-				$start,
-				$recurrence,
-				$hook );
+		if ( false !== wp_next_scheduled( $hook ) ) {
+			self::remove_cron( $hook );
+		}
+
+		$scheduled = wp_schedule_event(
+			$start,
+			$recurrence,
+			$hook
+		);
+
+		if ( ! $scheduled ) {
+			$domain  = self::get_domain();
+			$subject = sprintf(
+				__( 'ERROR scheduling wp_cron: %s', THEME_DOMAIN ),
+				$domain
+			);
+			$message = sprintf(
+				__(
+					"Hi Admin\n\n" .
+					"The wp_cron job %s could not be scheduled on %s.\n" .
+					"Fix this soon, else the form submission won't work as expected.\n" .
+					"There is no further info about the error, as WordPress only returns 'false' :(",
+					THEME_DOMAIN
+				),
+				$hook,
+				$domain
+			);
+			self::send_mail_to_admin(
+				$subject,
+				$message
+			);
 		}
 	}
 
@@ -97,8 +124,18 @@ class Util {
 	 * @param string $hook
 	 */
 	public static function remove_cron( $hook ) {
-		$timestamp = wp_next_scheduled( $hook );
-		wp_unschedule_event( $timestamp, $hook );
+		wp_unschedule_hook( $hook );
+	}
+
+	/**
+	 * Unschedule any cron jobs from the mailer and the crm saver
+	 */
+	public static function remove_all_crons() {
+		require_once 'Mailer.php';
+		require_once 'CrmSaver.php';
+
+		self::remove_cron( Mailer::CRON_HOOK_MAIL_SEND );
+		self::remove_cron( CrmSaver::CRON_HOOK_CRM_SAVE );
 	}
 
 	/**

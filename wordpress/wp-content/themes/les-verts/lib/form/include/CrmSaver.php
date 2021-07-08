@@ -156,12 +156,6 @@ class CrmSaver {
 				$skip ++;
 			}
 		}
-
-		if ( 0 === $queue->length() ) {
-			// since everything was saved, we can now disable the cron job
-			// it will automatically be reenabled, if needed
-			Util::remove_cron( self::CRON_HOOK_CRM_SAVE );
-		}
 	}
 
 	/**

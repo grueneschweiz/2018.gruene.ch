@@ -18,3 +18,6 @@ new SUPT\FormSubmission();
 if ( defined( 'WP_CLI' ) && WP_CLI ) {
 	require_once __DIR__ . '/include/cli/FormCommand.php';
 }
+
+// Remove cron jobs on deactivation of the theme
+add_action( 'switch_theme', array( SUPT\Util::class, 'remove_all_crons' ) );
