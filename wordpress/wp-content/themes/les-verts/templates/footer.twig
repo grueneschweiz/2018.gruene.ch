@@ -1,7 +1,9 @@
 <footer class="o-footer">
-	<section class="o-footer__main">
-		{{ widgets.footer }}
-	</section>
+	{% if widgets.footer %}
+		<section class="o-footer__main">
+			{{ widgets.footer }}
+		</section>
+	{% endif %}
 	<section class="o-footer__meta">
 		{% include 'atoms/a-footer-meta.twig' %}
 	</section>
