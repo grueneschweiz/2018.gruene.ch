@@ -1,0 +1,63 @@
+.a-footer-meta {
+	background: $color-primary;
+	width: 100%;
+	font-size: 0.875rem;
+
+	&__wrapper {
+		max-width: $grid-max-width-max;
+		width: 100%;
+		margin-left: auto;
+		margin-right: auto;
+		@include fluid-grid-item-props(padding-left padding-right);
+		padding-top: 1.625em;
+		padding-bottom: 1.625em;
+		display: flex;
+		justify-content: space-between;
+		flex-wrap: wrap;
+
+		@include media($_DESKTOP) {
+			padding-top: 1.875em;
+			padding-bottom: 1.875em;
+		}
+	}
+
+	&__copy {
+		color: $color-white;
+		line-height: 1.75em;
+		margin-right: 4em;
+	}
+
+	&__list {
+		margin: 0;
+	}
+
+	&__item {
+		display: inline-block;
+		margin-right: 0.8em;
+
+		&:first-of-type {
+			padding-left: 0;
+		}
+
+		&:last-of-type {
+			margin-right: 0;
+		}
+
+		&:first-of-type:before {
+			content: none;
+		}
+
+		&:before {
+			color: $color-white;
+		}
+	}
+
+	&__link {
+		@include clean-link;
+		color: $color-white;
+
+		@include hover {
+			text-decoration: underline;
+		}
+	}
+}

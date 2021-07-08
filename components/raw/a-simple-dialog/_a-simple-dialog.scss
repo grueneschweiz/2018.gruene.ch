@@ -1,0 +1,47 @@
+.a-simple-dialog {
+	@include media($_DESKTOP) {
+		display: flex;
+	}
+
+	&__main {
+		background: $color-grey-1;
+	}
+
+	// if several blocks are used, a-simple-dialog__content can be injected
+	&__content {
+		padding: 30px;
+		border-bottom: solid 1px $color-grey-2;
+	}
+
+	&--reduced-top-bottom-padding &__content {
+		padding-top: 6px;
+		padding-bottom: 6px;
+	}
+
+	&__content:last-of-type {
+		border-bottom: none;
+	}
+
+	&__close {
+		display: none;
+
+		@include media($_DESKTOP) {
+			background: $color-primary;
+			width: 40px;
+			height: 40px;
+			padding: 5px;
+			display: block;
+			transition: background-color $transition-fast $transition-ease;
+
+			@include hover {
+				background: $color-primary-dark;
+			}
+		}
+
+		svg {
+			width: 30px;
+			height: 30px;
+			stroke: $color-white;
+		}
+	}
+}

@@ -1,0 +1,46 @@
+.front {
+
+	&__grid-wrapper {
+		width: 100%;
+		background: $color-white;
+		@include fluid-props(margin-top, $fluid-min, $fluid-max, -260px, -170px);
+		@include media($size-large) {
+			margin-top: -170px; // dont supercharge on 2k screens
+		}
+		padding-top: 300px;
+
+		&--no-campaign {
+			margin-top: 0;
+			padding-top: 0;
+		}
+	}
+
+	&__grid {
+		@include media($_DESKTOP) {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			@include fluid-props(grid-column-gap, $size-medium, $grid-max-width-max, $grid-gap-min, $grid-gap-max);
+			@include fluid-props(grid-row-gap, $size-medium, $grid-max-width-max, 6px, 72px);
+			align-items: start;
+			max-width: $grid-max-width-max;
+			width: calc(100% - 2 * #{$grid-min-side-margin});
+			margin: 0 $grid-min-side-margin;
+		}
+
+		@include media($grid-max-width-max + 2 * $grid-min-side-margin) {
+			margin-left: auto;
+			margin-right: auto;
+			width: $grid-max-width-max;
+		}
+	}
+
+	&__article {
+		@include media($_DESKTOP) {
+			height: 100%;
+		}
+
+		&--2-col {
+			grid-column: 1 / 3;
+		}
+	}
+}

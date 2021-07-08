@@ -1,0 +1,24 @@
+.Header {
+	background-color: #84B414;
+}
+
+.Header-title-wrapper {
+	display: flex;
+	margin-left: 1em;
+}
+
+.Header-logo {
+	height: 40px;
+	fill: #ffffff;
+}
+
+.Header-title {
+	color: white;
+	text-transform: lowercase;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+.Header-title:hover {
+	color: white;
+}

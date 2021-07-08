@@ -1,0 +1,27 @@
+.m-event-details {
+	line-height: 1.75em;
+	@include fluid-props(margin-bottom, $fluid-min, $fluid-max, 40px, 80px);
+
+	@include media($size-small) {
+		font-size: 1.125rem;
+	}
+
+	@include media($size-medium) {
+		font-size: 1.25rem;
+	}
+
+	&__icon {
+		height: 1em;
+		width: 1em;
+		transform: translateY(0.1em);
+	}
+
+	&__time-wrapper &__icon {
+		fill: $color-primary;
+ 	}
+
+	&__location-wrapper &__icon {
+		stroke: $color-primary;
+	}
+
+}

@@ -1,0 +1,75 @@
+.o-campaign {
+	position: relative;
+
+	&__image-wrapper {
+		position: fixed;
+		width: 100%;
+		z-index: -1;
+	}
+
+	&__image {
+		width: 100%;
+		height: 60vh;
+	}
+
+	&__bars {
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		top: 0;
+		@include fluid-props(font-size, $fluid-min, $fluid-max, 20px, 72px);
+
+		@include media($size-large) {
+			font-size: 72px;
+		}
+
+		.m-bars {
+			position: absolute;
+			@include fluid-props(bottom, $fluid-min, $size-medium, 15px, 40px);
+			@include media($_DESKTOP) {
+				bottom: 60px;
+			}
+			@include media($size-large) {
+				bottom: 40px;
+			}
+		}
+	}
+
+	&__spacer {
+		position: relative;
+		z-index: -1;
+		visibility: hidden;
+	}
+
+	&__cta-wrapper {
+		margin-left: 10px;
+		margin-right: 10px;
+		@include fluid-props(margin-top, $fluid-min, $fluid-max, -10px, -60px);
+
+		@include media($_DESKTOP) {
+			width: calc(100% - 2 * #{$grid-min-side-margin});
+			margin: -4em $grid-min-side-margin;
+			display: grid;
+			grid-template-columns: 1fr 60px 16px 16px 60px 1fr;
+			grid-template-rows: repeat(12, 1fr);
+		}
+
+		@include media($grid-max-width-max + 2 * $grid-min-side-margin) {
+			margin-left: auto;
+			margin-right: auto;
+			width: $grid-max-width-max;
+		}
+	}
+
+	&__desc {
+		grid-column: 1 / 6;
+		grid-row: 1 / 12;
+		align-self: start;
+	}
+
+	&__cta {
+		grid-column: 4 / 7;
+		grid-row: 2 / 13;
+		align-self: end;
+	}
+}

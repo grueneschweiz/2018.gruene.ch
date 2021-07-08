@@ -1,0 +1,51 @@
+.doc-wrapper {
+	display: flex;
+	align-items: flex-start;
+}
+
+.doc-grid-summary {
+	position: sticky;
+	top: 1em;
+	order: 2;
+	margin-left: 5em;
+	flex-basis: 15em;
+	box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+	background-color: #fafafa;
+	display: none;
+}
+
+.doc-grid-summary h4 {
+	text-transform: uppercase;
+	font-size: 13px;
+	padding: 1em;
+	border-bottom: 1px solid #eee;
+
+}
+
+.doc-grid-summary > ul {
+	font-size: 14px;
+	padding: .8em;
+}
+.doc-grid-summary li {
+	padding: 2px 0 0 2px;
+}
+
+.doc-grid-summary ul ul {
+	margin-left: 1.5em;
+	list-style: circle;
+	margin-bottom: .5em;
+}
+
+.doc-grid-summary a {
+	text-decoration: none;
+}
+.doc-grid-summary a:hover {
+	text-decoration: underline;
+}
+
+
+@media (min-width: 60em) {
+	.doc-grid-summary {
+		display: block;
+	}
+}

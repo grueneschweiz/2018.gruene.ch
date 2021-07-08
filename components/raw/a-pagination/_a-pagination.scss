@@ -1,0 +1,69 @@
+.a-pagination {
+	&__list {
+		@include clean-ul;
+		display: inline-block;
+		margin: 0 0.75em;
+	}
+
+	&__item {
+		@include clean-li;
+		display: inline-block;
+	}
+
+	&__link {
+		@include clean-link;
+		display: inline-block;
+		transition: color $transition-fast $transition-ease;
+		@include fluid-props(margin-left margin-right, $fluid-min, $size-medium, 5px, 16px);
+		color: $color-primary;
+
+		@include hover {
+			color: $color-primary-dark;
+		}
+
+		&--icon {
+			stroke: $color-primary;
+			transition: stroke $transition-fast $transition-ease;
+
+			@include hover {
+				stroke: $color-primary-dark;
+			}
+
+			svg {
+				height: 0.7rem;
+				max-width: 1rem;
+			}
+		}
+
+		&--disabled {
+			stroke: $color-grey-2;
+
+			@include hover {
+				stroke: $color-grey-2;
+			}
+		}
+
+		&--first,
+		&--prev {
+			transform: rotate(180deg);
+		}
+
+		&--first,
+		&--last {
+			margin: 0;
+		}
+
+		&--prev,
+		&--next {
+			margin: 0 0.5em;
+		}
+
+		&--current {
+			color: $color-text;
+
+			@include hover {
+				color: $color-text;
+			}
+		}
+	}
+}

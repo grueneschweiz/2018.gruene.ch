@@ -1,0 +1,15 @@
+.o-header {
+	&__display {
+		position: fixed;
+		width: 100%;
+		z-index: $z-index-header;
+
+		@media print {
+			position: absolute;
+		}
+	}
+
+	&__shadow {
+		visibility: hidden;
+	}
+}

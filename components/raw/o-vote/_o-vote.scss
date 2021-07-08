@@ -1,0 +1,59 @@
+.o-vote {
+	@extend .grid-item;
+	height: 100%;
+	padding-left: 0;
+	padding-right: 0;
+	display: flex;
+	flex-direction: column;
+
+	&__cat-title {
+		margin-bottom: 22px;
+		@include fluid-grid-item-props(margin-left);
+	}
+
+	&__proposals {
+		display: flex;
+		flex-direction: column;
+		flex-grow: 0.5;
+		flex-shrink: 0;
+	}
+
+	&__proposal {
+		@include clean-link;
+		flex-grow: 1;
+		flex-shrink: 0;
+		display: flex;
+		align-items: center;
+		align-content: center;
+		transition: background $transition-fast $transition-ease;
+		position: relative;
+		@include fluid-grid-item-props(padding-left padding-right);
+
+		&:after {
+			content: ' ';
+			width: calc(100% - 82px);
+			height: 1px;
+			background: $color-grey-2;
+			position: absolute;
+			bottom: 1px;
+			@include fluid-grid-item-props(left);
+
+			@include media($_DESKTOP) {
+				width: calc(100% - 2 * (41px + 19 * (100vw - 1024px) / 416));
+			}
+
+			@include media(1470px) {
+				width: calc(100% - #{2*$grid-item-padding-max});
+			}
+		}
+
+		@include hover {
+			background: $color-grey-1;
+		}
+	}
+
+	&__more {
+		padding-top: 16px;
+		@include fluid-grid-item-props(padding-left padding-right);
+	}
+}

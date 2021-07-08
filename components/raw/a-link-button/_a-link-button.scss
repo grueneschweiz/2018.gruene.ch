@@ -1,0 +1,58 @@
+.a-link-button {
+	@include clean-link;
+
+	position: relative;
+
+	font-size: 0.875em;
+	display: inline-block;
+	padding-right: 1.5em;
+	line-height: 1.2em;
+	padding-left: 0;
+	@include fluid-props(padding-top padding-bottom, $fluid-min, $fluid-max, 6px, 10px);
+
+	color: $color-primary;
+	font-family: $font-secondary;
+	font-weight: $font-weight-bold;
+	text-transform: uppercase;
+	cursor: pointer;
+	transition: color $transition-fast $transition-ease;
+	letter-spacing: 0.08928em;
+
+	&::after {
+		content: "";
+		width: 0.6em;
+		height: 0.6em;
+		border-color: $color-primary;
+		border-top: 0.1666666667em solid; // 2/12
+		border-right: 0.1666666667em solid; // 2/12
+		transform: translateY(-50%) translateX(-0.5em) rotate(45deg);
+		transition: transform $transition-fast $transition-ease;
+		position: absolute;
+		right: 0;
+		top: 50%;
+	}
+
+	@include hover {
+		color: $color-primary-dark;
+
+		&::after {
+			transform: translateY(-50%) translateX(0.5em) rotate(45deg);
+		}
+	}
+
+	&--grey {
+		color: $color-grey-3;
+
+		@include hover {
+			color: $color-text-light;
+		}
+	}
+
+	&--white {
+		color: $color-white;
+
+		@include hover {
+			color: $color-white;
+		}
+	}
+}
