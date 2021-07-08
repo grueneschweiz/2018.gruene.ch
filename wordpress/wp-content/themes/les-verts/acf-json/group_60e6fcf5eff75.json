@@ -1,0 +1,137 @@
+{
+  "key": "group_60e6fcf5eff75",
+  "title": "Landing Page",
+  "fields": [
+    {
+      "key": "field_60e6fcf637d55",
+      "label": "Teaser",
+      "name": "",
+      "type": "clone",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "clone": [
+        "group_5bcee6dd2cfd7"
+      ],
+      "display": "group",
+      "layout": "block",
+      "prefix_label": 0,
+      "prefix_name": 0
+    },
+    {
+      "key": "field_60e6fcf637d90",
+      "label": "Main Content",
+      "name": "main_content",
+      "type": "group",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "layout": "block",
+      "sub_fields": [
+        {
+          "key": "field_60e6fcf654e7f",
+          "label": "Header Image",
+          "name": "header_image",
+          "type": "image",
+          "instructions": "",
+          "required": 0,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "",
+            "class": "",
+            "id": ""
+          },
+          "return_format": "array",
+          "preview_size": "regular",
+          "library": "all",
+          "min_width": "",
+          "min_height": "",
+          "min_size": "",
+          "max_width": "",
+          "max_height": "",
+          "max_size": "",
+          "mime_types": ""
+        },
+        {
+          "key": "field_60e6fcf654eb9",
+          "label": "Content",
+          "name": "content",
+          "type": "clone",
+          "instructions": "",
+          "required": 0,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "",
+            "class": "",
+            "id": ""
+          },
+          "clone": [
+            "group_5cee958e0d362"
+          ],
+          "display": "seamless",
+          "layout": "block",
+          "prefix_label": 0,
+          "prefix_name": 0
+        }
+      ]
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "post_type",
+        "operator": "==",
+        "value": "post"
+      },
+      {
+        "param": "post_template",
+        "operator": "==",
+        "value": "single_landingpage.php"
+      }
+    ],
+    [
+      {
+        "param": "post_type",
+        "operator": "==",
+        "value": "page"
+      },
+      {
+        "param": "post_template",
+        "operator": "==",
+        "value": "single_landingpage.php"
+      }
+    ]
+  ],
+  "menu_order": 10,
+  "position": "normal",
+  "style": "seamless",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "hide_on_screen": [
+    "the_content",
+    "excerpt",
+    "discussion",
+    "comments",
+    "revisions",
+    "slug",
+    "author",
+    "format",
+    "featured_image",
+    "categories",
+    "tags",
+    "send-trackbacks"
+  ],
+  "active": true,
+  "description": "",
+  "modified": 1625750828
+}

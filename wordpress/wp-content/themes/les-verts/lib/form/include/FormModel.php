@@ -347,7 +347,9 @@ class FormModel {
 	 * @return null|array
 	 */
 	private function get_mail_settings( $which, $formatted = true ) {
-		if ( ! $this->{$which . '_settings'}[ $formatted ] ) {
+		$formatted = (bool) $formatted;
+		if ( ! isset( $this->{$which . '_settings'}[ $formatted ] )
+		     || null === $this->{$which . '_settings'}[ $formatted ] ) {
 			$this->{$which . '_settings'}[ $formatted ] = get_field( "form_{$which}_mail", $this->id, $formatted );
 		}
 

@@ -21,6 +21,11 @@ class CrmDao {
 	const OPTION_KEY_TOKEN = 'supt_form_crm_token';
 	const WP_REMOTE_TIMEOUT = 45; //seconds
 
+	const MATCH_NONE = 'no_match';
+	const MATCH_EXACT = 'match';
+	const MATCH_AMBIGUOUS = 'ambiguous';
+	const MATCH_MULTIPLE = 'multiple';
+
 	/**
 	 * The api URL with a trailing slash
 	 *
@@ -157,13 +162,73 @@ class CrmDao {
 		}
 
 		if ( $resp->get_status() !== 201 ) {
-			$status_code = $this->is_timeout_error($resp->get_data()) ? 408 : $resp->get_status();
+			$status_code = $this->is_timeout_error( $resp->get_data() ) ? 408 : $resp->get_status();
 
 			$data_sent = print_r( $crm_data, true );
 			throw new Exception( "Could save member to crm. Crm returned status code: {$resp->get_status()}. Reason: {$resp->get_data()}.\n\nData sent: {$data_sent}", $status_code );
 		}
 
-		return json_decode( $resp->get_data() );
+		return json_decode( $resp->get_data(), true );
+	}
+
+	/**
+	 * Check if there is an entry in the crm that matches the given data.
+	 *
+	 * @link https://github.com/grueneschweiz/weblingservice/blob/master/docs/API.md#-find-matching-records
+	 *
+	 * @param $data
+	 *
+	 * @return string no_match|match|ambiguous|multiple -> use MATCH_* class constants
+	 * @throws Exception
+	 */
+	public function match( $data ) {
+		$crm_data = array();
+		foreach ( $data as $key => $crm_field_data ) {
+			$crm_data[ $key ] = array(
+				'value' => $crm_field_data->get_value(),
+			);
+		}
+
+		$args     = array( 'body' => json_encode( $crm_data ), 'timeout' => self::WP_REMOTE_TIMEOUT );
+		$response = wp_remote_post( $this->api_url . 'api/v1/member/match', $this->add_headers( $args ) );
+
+		if ( is_wp_error( $response ) ) {
+			$error_message = $response->get_error_message();
+			if ( $this->is_timeout_error( $error_message ) ) {
+				throw new Exception( "Could match member in crm: $error_message.", 408 );
+			} else {
+				throw new Exception( "Could match member in crm: $error_message." );
+			}
+		}
+
+		/** @var WP_HTTP_Requests_Response $resp */
+		$resp = $response['http_response'];
+		if ( in_array( $resp->get_status(), array( 401, 403 ) ) ) {
+			// if the token isn't valid, get a new one. if the new one is valid, retry to save
+			if ( ! $this->is_token_valid() ) {
+				$this->obtain_token( true );
+				if ( $this->is_token_valid() ) {
+					return $this->match( $data );
+				}
+			}
+		}
+
+		if ( $resp->get_status() !== 200 ) {
+			$status_code = $this->is_timeout_error( $resp->get_data() ) ? 408 : $resp->get_status();
+
+			$data_sent = print_r( $crm_data, true );
+			throw new Exception( "Could match member in crm. Crm returned status code: {$resp->get_status()}. Reason: {$resp->get_data()}.\n\nData sent: {$data_sent}", $status_code );
+		}
+
+		$body = json_decode( $resp->get_data(), true );
+
+		if ( ! array_key_exists( 'status', $body ) ) {
+			$body_string = print_r( $body, true );
+			$data_sent   = print_r( $crm_data, true );
+			throw new Exception( "Invalid response from member match endpoint of crm wrapper. Response: {$body_string}. \n\nData sent: {$data_sent}" );
+		}
+
+		return $body['status'];
 	}
 
 	/**

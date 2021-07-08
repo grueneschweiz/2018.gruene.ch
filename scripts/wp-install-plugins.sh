@@ -14,7 +14,9 @@
 # -l this is a multilingual setup
 #===========================================
 
-set -e
+set -e # exit on error
+set -u # treat undefined variables as errors
+set -o pipefail # only consider pipe successful if all commands involved were successful
 
 ACTIVATE_NETWORK=
 INSTALL_ACTIVATE="--activate"
@@ -22,14 +24,14 @@ NETWORK=
 MULTILANG=
 
 # detect if it's a multisite installation
-if wp site list; then
+if $WPCLI site list; then
 	NETWORK=1
 	ACTIVATE_NETWORK="--network"
 	INSTALL_ACTIVATE="--activate-network"
 	echo "WP multisite detected."
 fi
 
-while getopts "nl" opt; do
+while getopts "l" opt; do
 	case $opt in
     l)
     	MULTILANG=1
@@ -51,10 +53,6 @@ ACF=$($WPCLI plugin list | grep advanced-custom-fields-pro) || ACF=
 SEARCHWP=$($WPCLI plugin list | grep searchwp) || SEARCHWP=
 SEARCHWP_POLYLANG=$($WPCLI plugin list | grep searchwp-polylang) || SEARCHWP_POLYLANG=
 MISSING=0
-
-set -e # exit on error
-set -u # treat undefined variables as errors
-set -o pipefail # only consider pipe successful if all commands involved were successful
 
 RED='\033[0;31m'
 YELLOW='\033[1;33m'
@@ -165,7 +163,7 @@ $WPCLI plugin install wp-maintenance-mode
 $WPCLI plugin install wp-super-cache $INSTALL_ACTIVATE
 
 # WP Super Cache CLI
-php -d memory_limit=2048M $WPCLI package install wp-cli/wp-super-cache-cli
+php -d memory_limit=2048M $(which $WPCLI) package install wp-cli/wp-super-cache-cli
 # if installation fails: go to ~/.wp-cli/packages and run composer install
 
 #====================
@@ -185,6 +183,7 @@ $WPCLI theme delete twentysixteen
 $WPCLI theme delete twentyseventeen
 $WPCLI theme delete twentynineteen
 $WPCLI theme delete twentytwenty
+$WPCLI theme delete twentytwentyone
 
 if $WPCLI plugin is-installed akismet; then
     $WPCLI plugin uninstall akismet --deactivate

@@ -1,6 +1,6 @@
 <header class="o-header">
 	<div class="o-header__display">
-		{% if branding %}
+		{% if branding and not landing_page %}
 			<div class="o-header__branding">
 				{% include 'molecules/m-branding.twig' with {
 					branding: branding,
@@ -13,7 +13,7 @@
 		</div>
 	</div>
 	<div class="o-header__shadow" aria-hidden="true">
-		{% if branding %}
+		{% if branding and not landing_page %}
 			{% include 'molecules/m-branding.twig' with  {
 				branding: branding,
 				shadow: true,

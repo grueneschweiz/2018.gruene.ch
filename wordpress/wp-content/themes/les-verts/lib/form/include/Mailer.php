@@ -193,11 +193,5 @@ class Mailer {
 
 			$mail = $queue->pop();
 		}
-
-		if ( 0 === $queue->length() ) {
-			// since everything was sent, we can now disable the cron job
-			// it will automatically be reenabled, if needed
-			Util::remove_cron( self::CRON_HOOK_MAIL_SEND );
-		}
 	}
 }
