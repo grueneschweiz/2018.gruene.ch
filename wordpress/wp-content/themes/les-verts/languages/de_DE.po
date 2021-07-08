@@ -14,7 +14,7 @@ msgstr "Neuste Beiträge"
 
 #: acf-translate.php:101
 msgid "(Event) Venue"
-msgstr "(Event) Veranstaltungsort"
+msgstr "(Veranstaltung) Veranstaltungsort"
 
 #: acf-translate.php:139
 msgid "(Media) Focal point"
@@ -254,11 +254,11 @@ msgstr "Über diesen Block"
 
 #: acf-translate.php:1527
 msgid "Displays a teaser of your most recent events."
-msgstr "Zeigt ein Teaser der nächsten Events."
+msgstr "Zeigt ein Teaser der nächsten Veranstaltung."
 
 #: acf-translate.php:1554
 msgid "Max events to show"
-msgstr "Max. angezeigter Events"
+msgstr "Max. angezeigter Veranstaltungen"
 
 #: acf-translate.php:1629 acf-translate.php:3577 lib/form/acf/input.php:242
 msgid "Full Width"
@@ -472,15 +472,15 @@ msgstr "Verlinkter Inhalt"
 
 #: acf-translate.php:2729
 msgid "Add up to four links to posts, pages, events or external links."
-msgstr "Füge bis zu vier Links zu Beiträgen, Seiten, Events oder externen Links hinzu."
+msgstr "Füge bis zu vier Links zu Beiträgen, Seiten, Veranstaltungen oder externen Links hinzu."
 
 #: acf-translate.php:2766
 msgid "Single Post / Page / Event"
-msgstr "Einzelner Beitrag / Seite / Event."
+msgstr "Einzelner Beitrag / Seite / Vertanstaltung."
 
 #: acf-translate.php:2771
 msgid "Post / Page / Event"
-msgstr "Beitrag / Seite / Event"
+msgstr "Beitrag / Seite / Veranstaltung"
 
 #: acf-translate.php:2809
 msgid "Auto Link List (Dynamic)"
@@ -800,7 +800,7 @@ msgstr "Linktext"
 
 #: acf-translate.php:5017
 msgid "Event Description"
-msgstr "Eventbeschrieb"
+msgstr "Veranstaltungsbeschrieb"
 
 #: acf-translate.php:5024
 msgid "Displayed in the teaser only."
@@ -841,7 +841,7 @@ msgstr "Neuste Medienmitteilung"
 
 #: acf-translate.php:5261 acf-translate.php:5266 page.php:49
 msgid "Events"
-msgstr "Events"
+msgstr "Veranstaltungen"
 
 #: acf-translate.php:5292 acf-translate.php:5297
 msgid "Positions"
@@ -1623,7 +1623,7 @@ msgstr "Fragezeichen"
 
 #: templates/organisms/o-front-events.twig:20
 msgid "Show all events"
-msgstr "Alle Events anzeigen"
+msgstr "Alle Veranstaltungen anzeigen"
 
 #: templates/organisms/o-people-grid.twig:26
 #: templates/organisms/o-people-grid.twig:28
@@ -1647,7 +1647,7 @@ msgstr "Übersichtsseite"
 
 #: acf-translate.php:1557
 msgid "Visitors can always see all events by clicking the «Show all events»-Button."
-msgstr "Besuchende können durch einen Klick auf «Alle Events anzeigen» immer alle Events ansehen."
+msgstr "Besuchende können durch einen Klick auf «Alle Veranstaltungen anzeigen» immer alle Veranstaltungen ansehen."
 
 #: acf-translate.php:1632
 msgid "If full width, the block will span the whole page (both columns) else it will only take the place of a single column block."
@@ -2122,11 +2122,11 @@ msgstr "superhuit.ch & gruene.ch"
 
 #: page.php:55
 msgid "Upcoming events"
-msgstr "Kommende Events"
+msgstr "Kommende Veranstaltungen"
 
 #: page.php:60
 msgid "Previous events"
-msgstr "Vergangene Events"
+msgstr "Vergangene Veranstaltungen"
 
 #: acf-translate.php:57
 msgid "(Category) Date"
