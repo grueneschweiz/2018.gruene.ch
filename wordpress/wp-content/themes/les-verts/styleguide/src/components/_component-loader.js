@@ -20,16 +20,20 @@ import MPerson from './molecules/m-person/m-person';
 import AImageLazy from './atoms/a-image/a-image-lazy';
 import AImageCover from './atoms/a-image/a-image-cover';
 import MForm from './molecules/m-form/m-form';
-import ABreadcrumbs from "./atoms/a-breadcrumbs/a-breadcrumbs";
+import ABreadcrumbs from './atoms/a-breadcrumbs/a-breadcrumbs';
 import AProgress from './atoms/a-progress/a-progress';
+import Page from './templates/page/page';
+import OFooter from './organisms/o-footer/o-footer';
 
 // ================= STOP TO ADD HERE
 
 /**
- * Add your component in the COMPONENTS_TO_LOAD array with the tree properties "view", "name" & "selector"
+ * Add your component in the COMPONENTS_TO_LOAD array with the tree properties
+ * "view", "name" & "selector"
  *
  * Example: where the selector is the DOM selector for querySelector
- *    { view: MyComponent, name: 'MyComponent', selector: '[data-my-component]' }
+ *    { view: MyComponent, name: 'MyComponent', selector: '[data-my-component]'
+ * }
  */
 const COMPONENTS_TO_LOAD = [
 	{ view: MMenu, name: 'MMenu', selector: '.m-menu' }, // load as very first (performance)
@@ -38,7 +42,11 @@ const COMPONENTS_TO_LOAD = [
 	{ view: OCampaign, name: 'OCampaign', selector: '.o-campaign' },
 	{ view: AInput, name: 'AInput', selector: '.a-input' },
 	{ view: ASelect, name: 'ASelect', selector: '.a-select' },
-	{ view: OPeopleGrid, name: 'OPeopleGrid', selector: '.o-people-grid--horizontal' },
+	{
+		view: OPeopleGrid,
+		name: 'OPeopleGrid',
+		selector: '.o-people-grid--horizontal',
+	},
 	{ view: MMap, name: 'MMap', selector: '.m-map' },
 	{ view: MShare, name: 'MShare', selector: '.m-share' },
 	{ view: MPerson, name: 'MPerson', selector: '.m-person--expandable' },
@@ -47,6 +55,8 @@ const COMPONENTS_TO_LOAD = [
 	{ view: MForm, name: 'MForm', selector: '.m-form' },
 	{ view: ABreadcrumbs, name: 'ABreadcrumbs', selector: '.a-breadcrumbs' },
 	{ view: AProgress, name: 'AProgress', selector: '.a-progress' },
+	{ view: Page, name: 'Page', selector: '.page' },
+	{ view: OFooter, name: 'OFooter', selector: '.o-footer' },
 ];
 
 const LOADED_COMPONENTS = {};

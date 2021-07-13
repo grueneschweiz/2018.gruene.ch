@@ -16,11 +16,9 @@
 		<div class="page__content">
 			<header class="page__header-wrapper">
 				<div class="page__header">
-					{% if not distraction_free %}
-						<div class="page__breadcrumbs">
-							{% include 'atoms/a-breadcrumbs.twig' %}
-						</div>
-					{% endif %}
+					<div class="page__breadcrumbs{% if distraction_free %} page__breadcrumbs--distracting{% endif %}">
+						{% include 'atoms/a-breadcrumbs.twig' %}
+					</div>
 					<h1>{{ post.title|wptexturize }}</h1>
 					{% if not post.teaser_hide_on_page or is_press_release %}
 						<div class="page__header-text page__header-text--bold">
@@ -40,8 +38,8 @@
 		{% endif %}
 		<div
 			class="page__post-meta-wrapper {% if main_content.header_image %}page__row--2{% else %}page__row--1{% endif %}">
-			{% if has_post_meta and not distraction_free %}
-				<aside class="page__post-meta">
+			{% if has_post_meta %}
+				<aside class="page__post-meta{% if distraction_free %} page__post-meta--distracting{% endif %}">
 					{% include 'atoms/a-post-meta.twig' with {
 						'iso_date': post.post_date,
 						'nice_date': post.date,

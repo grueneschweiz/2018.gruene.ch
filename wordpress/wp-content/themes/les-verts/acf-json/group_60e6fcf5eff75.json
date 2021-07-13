@@ -124,14 +124,11 @@
     "comments",
     "revisions",
     "slug",
-    "author",
     "format",
     "featured_image",
-    "categories",
-    "tags",
     "send-trackbacks"
   ],
   "active": true,
   "description": "",
-  "modified": 1625750828
+  "modified": 1626181174
 }
