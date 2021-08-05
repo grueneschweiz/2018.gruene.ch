@@ -49,7 +49,7 @@ $WPCLI option patch update wpseo_titles post_types-post-maintax <<< "category"
 if [ $NETWORK ]; then
     $WPCLI site option update --json disable_comments_options <<< '{"disabled_post_types":["post","page","attachment"],"remove_everywhere":true,"extra_post_types":false,"db_version":6}'
 else
-    $WPCLI option update disable_comments_options <<< '{"disabled_post_types":["post","page","attachment"],"remove_everywhere":true,"extra_post_types":false,"db_version":6}'
+    $WPCLI option update --json disable_comments_options <<< '{"disabled_post_types":["post","page","attachment"],"remove_everywhere":true,"extra_post_types":false,"db_version":6}'
 fi
 
 # hide 'enable media replace' ads
