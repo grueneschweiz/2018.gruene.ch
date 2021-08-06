@@ -17,27 +17,38 @@ class Landingpage_controller {
 	);
 
 	public static function register() {
-		add_filter( 'sidebars_widgets', array( __CLASS__, 'filter_widgets' ) );
+		add_filter( 'dynamic_sidebar_params', array( __CLASS__, 'add_widget_class' ) );
 	}
 
-	public static function filter_widgets( array $widgets ): array {
+	/**
+	 * Wrap widgets that are not in the allow list in a div with the class distracting_widget
+	 *
+	 * @param array $widget
+	 *
+	 * @return array
+	 */
+	public static function add_widget_class( array $widget ): array {
 		if ( ! is_page_template( 'single_landingpage.php' ) ) {
-			return $widgets;
+			return $widget;
 		}
 
-		if ( array_key_exists( 'footer-widget-area', $widgets )
-		     && is_array( $widgets['footer-widget-area'] ) ) {
+		if (
+			// if widget in footer widget area
+			array_key_exists( 'id', $widget[0] )
+			&& 'footer-widget-area' === $widget[0]['id']
 
-			$widgets['footer-widget-area'] = array_filter(
-				$widgets['footer-widget-area'],
-				array( __CLASS__, 'is_allowed_widget' )
-			);
+			// and widget is not in allow list
+			&& array_key_exists( 'widget_id', $widget[0] )
+			&& ! self::is_distracting_widget( $widget[0]['widget_id'] )
+		) {
+			$widget[0]['before_widget'] = '<div class="distracting_widget">' . $widget[0]['before_widget'];
+			$widget[0]['after_widget']  = $widget[0]['after_widget'] . '</div>';
 		}
 
-		return $widgets;
+		return $widget;
 	}
 
-	private static function is_allowed_widget( string $widget_id ): bool {
+	private static function is_distracting_widget( string $widget_id ): bool {
 		$allowed = self::allowed_widgets();
 
 		foreach ( $allowed as $base_id ) {

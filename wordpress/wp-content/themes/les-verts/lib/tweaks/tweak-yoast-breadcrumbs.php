@@ -82,7 +82,11 @@ class CustomMenuBreadcrumbs {
 
 		// make sure the location exists
 		if ( isset( $menu_locations[ $this->menu_location ] ) ) {
-			$this->menu       = wp_get_nav_menu_object( $menu_locations[ $this->menu_location ] );
+			$this->menu = wp_get_nav_menu_object( $menu_locations[ $this->menu_location ] );
+		}
+
+		// make sure the menu has items
+		if ( ! empty( $this->menu ) ) {
 			$this->menu_items = wp_get_nav_menu_items( $this->menu->term_id );
 		}
 	}

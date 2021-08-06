@@ -159,6 +159,10 @@
 		font-weight: $font-weight-semi;
 	}
 
+	&__breadcrumbs--distracting {
+		display: none;
+	}
+
 	&__post-meta-wrapper {
 		@extend .page__side;
 		@extend .page__side--left;
@@ -189,6 +193,10 @@
 			margin-top: 72px;
 			border-top: none;
 			padding: 0;
+		}
+
+		&--distracting {
+			display: none;
 		}
 	}
 
