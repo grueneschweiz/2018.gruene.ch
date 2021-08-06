@@ -19,20 +19,20 @@
                 "url": "https://api.github.com/repos/dannyvankooten/AltoRouter/zipball/39c50092470128c12284d332bb57f306bb5b58e4",
                 "reference": "39c50092470128c12284d332bb57f306bb5b58e4",
                 "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.0"
-            },
-            "require-dev": {
-                "codeclimate/php-test-reporter": "dev-master",
-                "phpunit/phpunit": "4.5.*"
-            },
-            "type": "library",
-            "autoload": {
-							"classmap": [
-								"AltoRouter.php"
-							]
 						},
+					"require": {
+						"php": ">=5.3.0"
+					},
+					"require-dev": {
+						"codeclimate/php-test-reporter": "dev-master",
+						"phpunit/phpunit": "4.5.*"
+					},
+					"type": "library",
+					"autoload": {
+						"classmap": [
+							"AltoRouter.php"
+						]
+					},
 					"notification-url": "https://packagist.org/downloads/",
 					"license": [
 						"MIT"
@@ -571,16 +571,16 @@
 			},
 			{
 				"name": "mindkomm/timmy",
-				"version": "0.14.7",
+				"version": "0.14.8",
 				"source": {
 					"type": "git",
 					"url": "https://github.com/mindkomm/timmy.git",
-					"reference": "3aba2111b5d3d338f4e9f9396a8de494fd8692a3"
+					"reference": "59764c549277bb55d3d862e845e2e908beb363ef"
 				},
 				"dist": {
 					"type": "zip",
-					"url": "https://api.github.com/repos/mindkomm/timmy/zipball/3aba2111b5d3d338f4e9f9396a8de494fd8692a3",
-					"reference": "3aba2111b5d3d338f4e9f9396a8de494fd8692a3",
+					"url": "https://api.github.com/repos/mindkomm/timmy/zipball/59764c549277bb55d3d862e845e2e908beb363ef",
+					"reference": "59764c549277bb55d3d862e845e2e908beb363ef",
 					"shasum": ""
 				},
 				"require": {
@@ -625,7 +625,7 @@
 					"issues": "https://github.com/mindkomm/timmy/issues",
 					"source": "https://github.com/mindkomm/timmy"
 				},
-				"time": "2021-07-01T19:24:13+00:00"
+				"time": "2021-07-28T20:18:03+00:00"
 			},
 			{
 				"name": "myclabs/php-enum",
@@ -1083,16 +1083,16 @@
 			},
 			{
 				"name": "symfony/polyfill-mbstring",
-				"version": "v1.23.0",
+				"version": "v1.23.1",
 				"source": {
 					"type": "git",
 					"url": "https://github.com/symfony/polyfill-mbstring.git",
-					"reference": "2df51500adbaebdc4c38dea4c89a2e131c45c8a1"
+					"reference": "9174a3d80210dca8daa7f31fec659150bbeabfc6"
 				},
 				"dist": {
 					"type": "zip",
-					"url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/2df51500adbaebdc4c38dea4c89a2e131c45c8a1",
-					"reference": "2df51500adbaebdc4c38dea4c89a2e131c45c8a1",
+					"url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/9174a3d80210dca8daa7f31fec659150bbeabfc6",
+					"reference": "9174a3d80210dca8daa7f31fec659150bbeabfc6",
 					"shasum": ""
 				},
 				"require": {
@@ -1143,7 +1143,7 @@
 					"shim"
 				],
 				"support": {
-					"source": "https://github.com/symfony/polyfill-mbstring/tree/v1.23.0"
+					"source": "https://github.com/symfony/polyfill-mbstring/tree/v1.23.1"
 				},
 				"funding": [
 					{
@@ -1159,7 +1159,7 @@
 						"type": "tidelift"
 					}
 				],
-				"time": "2021-05-27T09:27:20+00:00"
+				"time": "2021-05-27T12:26:48+00:00"
 			},
 			{
 				"name": "tgmpa/tgm-plugin-activation",
@@ -1484,5 +1484,5 @@
 	"prefer-lowest": false,
 	"platform": [],
 	"platform-dev": [],
-	"plugin-api-version": "2.0.0"
+	"plugin-api-version": "2.1.0"
 }
