@@ -159,6 +159,9 @@ $WPCLI plugin install limit-login-attempts-reloaded $INSTALL_ACTIVATE
 # Maintenance Mode
 $WPCLI plugin install wp-maintenance-mode
 
+# Disable the block editor for widgets
+$WPCLI plugin install classic-widgets $INSTALL_ACTIVATE
+
 # WP Super Cache
 $WPCLI plugin install wp-super-cache $INSTALL_ACTIVATE
 
