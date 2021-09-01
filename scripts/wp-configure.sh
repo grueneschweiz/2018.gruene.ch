@@ -81,3 +81,15 @@ $WPCLI eval 'wp_cache_setting("cache_time_interval",3600);'
 $WPCLI eval 'wp_cache_setting("wp_cache_not_logged_in",2);'
 $WPCLI eval 'wp_cache_setting("cache_rebuild_files",1);'
 $WPCLI eval 'wp_cache_setting("wp_cache_clear_on_post_edit",1);'
+
+# configure OIDC login
+$WPCLI option patch insert openid_connect_generic_settings login_type auto
+$WPCLI option patch insert openid_connect_generic_settings login_type 'email profile openid'
+$WPCLI option patch insert openid_connect_generic_settings endpoint_login 'https://sso.gruene.ch/auth/realms/gruene/protocol/openid-connect/auth'
+$WPCLI option patch insert openid_connect_generic_settings endpoint_userinfo 'https://keycloak.test.gruene.ch/auth/realms/gruene/protocol/openid-connect/userinfo'
+$WPCLI option patch insert openid_connect_generic_settings endpoint_token 'https://keycloak.test.gruene.ch/auth/realms/gruene/protocol/openid-connect/token'
+$WPCLI option patch insert openid_connect_generic_settings endpoint_end_session 'https://keycloak.test.gruene.ch/auth/realms/gruene/protocol/openid-connect/logout'
+$WPCLI option patch insert openid_connect_generic_settings displayname_format '{given_name} {family_name}'
+$WPCLI option patch insert openid_connect_generic_settings identify_with_username '0'
+$WPCLI option patch insert openid_connect_generic_settings link_existing_users '1'
+$WPCLI option patch insert openid_connect_generic_settings create_if_does_not_exist '1'

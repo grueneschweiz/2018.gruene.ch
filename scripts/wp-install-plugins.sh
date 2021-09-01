@@ -165,6 +165,9 @@ $WPCLI plugin install classic-widgets $INSTALL_ACTIVATE
 # WP Super Cache
 $WPCLI plugin install wp-super-cache $INSTALL_ACTIVATE
 
+# Install OIDC plugin to connect via GREEN login
+$WPCLI plugin install daggerhart-openid-connect-generic
+
 # WP Super Cache CLI
 php -d memory_limit=2048M $(which $WPCLI) package install wp-cli/wp-super-cache-cli
 # if installation fails: go to ~/.wp-cli/packages and run composer install
