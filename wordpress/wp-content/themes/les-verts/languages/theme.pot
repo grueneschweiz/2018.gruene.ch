@@ -3,14 +3,14 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: Les Verts\n"
-"POT-Creation-Date: 2020-12-24 15:43+0100\n"
+"POT-Creation-Date: 2021-09-03 23:14+0200\n"
 "PO-Revision-Date: 2018-11-28 17:49+0100\n"
 "Last-Translator: Cyrill Bolliger <bolliger@gmx.ch>\n"
 "Language-Team: Cyrill Bolliger <cyrill.bolliger@gruene.ch>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.4.2\n"
+"X-Generator: Poedit 3.0\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
 "X-Poedit-WPHeader: style.css\n"
@@ -18,6 +18,7 @@ msgstr ""
 "X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
 "esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
 "_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-Mapping: *.php=gettext:PHP;*.twig=twig\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 "X-Poedit-SearchPathExcluded-1: vendor\n"
@@ -290,7 +291,7 @@ msgstr ""
 #: acf-translate.php:837 acf-translate.php:2151 acf-translate.php:2229
 #: acf-translate.php:2419 acf-translate.php:2649 acf-translate.php:3171
 #: acf-translate.php:4341 acf-translate.php:4742
-#: lib/form/acf/form-details.php:856
+#: lib/form/acf/form-details.php:866
 msgid "Title"
 msgstr ""
 
@@ -642,7 +643,7 @@ msgid "Use an encouraging title, like 'Let me be part of the success'."
 msgstr ""
 
 #: acf-translate.php:2248 acf-translate.php:5045
-#: lib/form/acf/form-details.php:783
+#: lib/form/acf/form-details.php:793
 msgid "Description"
 msgstr ""
 
@@ -1514,7 +1515,7 @@ msgstr ""
 msgid "Main navigation"
 msgstr ""
 
-#: functions.php:98 templates/molecules/m-menu.twig:60
+#: functions.php:98 templates/molecules/m-menu.twig:62
 msgid "Language navigation"
 msgstr ""
 
@@ -1577,7 +1578,7 @@ msgctxt "short date format"
 msgid "y-m-d"
 msgstr ""
 
-#: lib/controllers/navigation.php:230 lib/customizer/GetActive.php:43
+#: lib/controllers/navigation.php:231 lib/customizer/GetActive.php:43
 msgid "Get Active"
 msgstr ""
 
@@ -1675,37 +1676,37 @@ msgstr ""
 msgid "Select the field in Webling that matches this field."
 msgstr ""
 
-#: lib/form/acf/form-details.php:266 lib/form/acf/form-details.php:291
+#: lib/form/acf/form-details.php:276 lib/form/acf/form-details.php:301
 #: lib/form/acf/input.php:139
 msgid "Important Note"
 msgstr ""
 
-#: lib/form/acf/form-details.php:285
+#: lib/form/acf/form-details.php:295
 msgid ""
 "You must select the field type <em>Greeting (CRM)</em> (in the tab "
 "<em>standard</em>) for this field to work! Please follow also the note in "
 "the <em>standard</em> tab."
 msgstr ""
 
-#: lib/form/acf/form-details.php:408
+#: lib/form/acf/form-details.php:418
 msgid ""
 "You must select the field type <em>Subscription (CRM)</em> (in the tab "
 "<em>standard</em>) for this field to work!"
 msgstr ""
 
-#: lib/form/acf/form-details.php:414
+#: lib/form/acf/form-details.php:424
 msgid "Webling Choices"
 msgstr ""
 
-#: lib/form/acf/form-details.php:417
+#: lib/form/acf/form-details.php:427
 msgid "Enter the exact corresponding options in Webling in the same order."
 msgstr ""
 
-#: lib/form/acf/form-details.php:482
+#: lib/form/acf/form-details.php:492
 msgid "Insertion Mode"
 msgstr ""
 
-#: lib/form/acf/form-details.php:485
+#: lib/form/acf/form-details.php:495
 msgid ""
 "<strong>Warning</strong>: Selecting the wrong mode results in data loss!\n"
 "<br><br>\n"
@@ -1713,41 +1714,41 @@ msgid ""
 "multi value fields like the interests field or a note field."
 msgstr ""
 
-#: lib/form/acf/form-details.php:579
+#: lib/form/acf/form-details.php:589
 msgid "Add if empty"
 msgstr ""
 
-#: lib/form/acf/form-details.php:580
+#: lib/form/acf/form-details.php:590
 msgid "Add if new"
 msgstr ""
 
-#: lib/form/acf/form-details.php:581
+#: lib/form/acf/form-details.php:591
 msgid "Append"
 msgstr ""
 
-#: lib/form/acf/form-details.php:582
+#: lib/form/acf/form-details.php:592
 msgid "Replace"
 msgstr ""
 
-#: lib/form/acf/form-details.php:594
+#: lib/form/acf/form-details.php:604
 msgid "Hidden Field"
 msgstr ""
 
-#: lib/form/acf/form-details.php:597
+#: lib/form/acf/form-details.php:607
 msgid ""
 "Use this option to add a value to every persons record that submits this "
 "form."
 msgstr ""
 
-#: lib/form/acf/form-details.php:613
+#: lib/form/acf/form-details.php:623
 msgid "Hide this field from the website visitor"
 msgstr ""
 
-#: lib/form/acf/form-details.php:621 lib/form/acf/form-details.php:664
+#: lib/form/acf/form-details.php:631 lib/form/acf/form-details.php:674
 msgid "Field Value"
 msgstr ""
 
-#: lib/form/acf/form-details.php:624
+#: lib/form/acf/form-details.php:634
 msgid ""
 "Make sure this value is accepted by Webling.\n"
 "<br><br>\n"
@@ -1755,7 +1756,7 @@ msgid ""
 "are accepted values."
 msgstr ""
 
-#: lib/form/acf/form-details.php:667
+#: lib/form/acf/form-details.php:677
 msgid ""
 "Make sure the values are accepted by Webling. Add one choice per line.\n"
 "<br><br>\n"
@@ -1763,60 +1764,60 @@ msgid ""
 "are accepted values."
 msgstr ""
 
-#: lib/form/acf/form-details.php:712
+#: lib/form/acf/form-details.php:722
 msgid "Submit"
 msgstr ""
 
-#: lib/form/acf/form-details.php:739
+#: lib/form/acf/form-details.php:749
 msgid "Configure the submit buttons."
 msgstr ""
 
-#: lib/form/acf/form-details.php:745 lib/widgets/ButtonWidget.php:23
+#: lib/form/acf/form-details.php:755 lib/widgets/ButtonWidget.php:23
 msgid "Button"
 msgstr ""
 
-#: lib/form/acf/form-details.php:764
+#: lib/form/acf/form-details.php:774
 msgid "Button Submitting"
 msgstr ""
 
-#: lib/form/acf/form-details.php:775
+#: lib/form/acf/form-details.php:785
 msgid "Sending"
 msgstr ""
 
-#: lib/form/acf/form-details.php:786
+#: lib/form/acf/form-details.php:796
 msgid ""
 "Why someone should fill in this form. Displayed next to the submit button."
 msgstr ""
 
-#: lib/form/acf/form-details.php:803
+#: lib/form/acf/form-details.php:813
 msgid "After Submit"
 msgstr ""
 
-#: lib/form/acf/form-details.php:819
+#: lib/form/acf/form-details.php:829
 msgid "Success"
 msgstr ""
 
-#: lib/form/acf/form-details.php:822
+#: lib/form/acf/form-details.php:832
 msgid "What should happen after the form was successfully submitted?"
 msgstr ""
 
-#: lib/form/acf/form-details.php:846
+#: lib/form/acf/form-details.php:856
 msgid "Show message (inline)"
 msgstr ""
 
-#: lib/form/acf/form-details.php:847
+#: lib/form/acf/form-details.php:857
 msgid "Redirect to post / page"
 msgstr ""
 
-#: lib/form/acf/form-details.php:875
+#: lib/form/acf/form-details.php:885
 msgid "Thank you for your support!"
 msgstr ""
 
-#: lib/form/acf/form-details.php:883
+#: lib/form/acf/form-details.php:893
 msgid "Message"
 msgstr ""
 
-#: lib/form/acf/form-details.php:910
+#: lib/form/acf/form-details.php:920
 msgid "Redirect to"
 msgstr ""
 
@@ -1977,31 +1978,31 @@ msgid ""
 "automatically: %s"
 msgstr ""
 
-#: lib/form/acf/mail-template.php:28
-#, php-format
-msgctxt "Placeholder"
-msgid ""
-"Use the special placeholder %s to link to the complete submission (with all "
-"linked forms)."
-msgstr ""
-
-#: lib/form/acf/mail-template.php:34
+#: lib/form/acf/mail-template.php:30
 #, php-format
 msgctxt "Placeholder"
 msgid "%s shows the url to the page or post, where the form was embedded."
 msgstr ""
 
-#: lib/form/acf/mail-template.php:40
+#: lib/form/acf/mail-template.php:36
+#, php-format
+msgctxt "Placeholder"
+msgid ""
+"For logged in users only: Use the special placeholder %s to link to the "
+"complete submission (with all linked forms)."
+msgstr ""
+
+#: lib/form/acf/mail-template.php:42
 #, php-format
 msgctxt "Link"
 msgid "Advanced: You may use %s in this mail template."
 msgstr ""
 
-#: lib/form/acf/mail-template.php:55
+#: lib/form/acf/mail-template.php:58
 msgid "Subject"
 msgstr ""
 
-#: lib/form/acf/mail-template.php:74
+#: lib/form/acf/mail-template.php:77
 msgid "Template"
 msgstr ""
 
@@ -2062,13 +2063,29 @@ msgid "The ID of the oAuth2.0 Client."
 msgstr ""
 
 #: lib/form/acf/settings.php:242
-msgid "Group Id"
+msgid "Group ID (default)"
 msgstr ""
 
 #: lib/form/acf/settings.php:245
 msgid ""
 "The ID of the group, where <strong>new</strong> member records should be "
 "stored in."
+msgstr ""
+
+#: lib/form/acf/settings.php:271
+msgid "Group ID (possible duplicates)"
+msgstr ""
+
+#: lib/form/acf/settings.php:275
+msgid ""
+"The ID of the group, where <strong>possible duplicate</strong> member "
+"records should be stored in."
+msgstr ""
+
+#: lib/form/acf/settings.php:276
+msgid ""
+"If left empty, possible duplicates will be stored in the same group as new "
+"member records."
 msgstr ""
 
 #: lib/form/admin/ViewSingle.php:15 lib/form/include/SubmissionsTable.php:32
@@ -2201,12 +2218,12 @@ msgstr ""
 msgid "Select All"
 msgstr ""
 
-#: lib/form/include/CrmSaver.php:151
+#: lib/form/include/CrmSaver.php:245
 #, php-format
 msgid "%s: PERMANENT ERROR saving form data to crm"
 msgstr ""
 
-#: lib/form/include/CrmSaver.php:157
+#: lib/form/include/CrmSaver.php:251
 #, php-format
 msgid ""
 "Hi Admin of %s\n"
@@ -2286,53 +2303,53 @@ msgstr ""
 msgid "No form in the trash"
 msgstr ""
 
-#: lib/form/include/FormType.php:156 lib/form/include/FormType.php:176
+#: lib/form/include/FormType.php:151 lib/form/include/FormType.php:171
 #: lib/form/include/GDPRHelper.php:37
 msgid "Forms"
 msgstr ""
 
-#: lib/form/include/FormType.php:198
+#: lib/form/include/FormType.php:193
 msgid ""
 "Unfortunately not only the form, but also the submissions were copied and we "
 "could not delete them. So make sure you delete the submissions linked with "
 "your newly cloned form manually."
 msgstr ""
 
-#: lib/form/include/FormType.php:249
+#: lib/form/include/FormType.php:244
 msgid "Fields"
 msgstr ""
 
-#: lib/form/include/FormType.php:300
+#: lib/form/include/FormType.php:295
 #, php-format
 msgctxt "form title"
 msgid "View submissions of %s"
 msgstr ""
 
-#: lib/form/include/FormType.php:301 lib/form/include/FormType.php:331
-#: lib/form/include/FormType.php:332 lib/form/include/SubmissionsTable.php:33
+#: lib/form/include/FormType.php:296 lib/form/include/FormType.php:326
+#: lib/form/include/FormType.php:327 lib/form/include/SubmissionsTable.php:33
 msgid "Submissions"
 msgstr ""
 
-#: lib/form/include/FormType.php:367
+#: lib/form/include/FormType.php:365
 msgid "Form Submissions"
 msgstr ""
 
-#: lib/form/include/FormType.php:378
+#: lib/form/include/FormType.php:376
 msgid "Export Submissions"
 msgstr ""
 
-#: lib/form/include/FormType.php:380
+#: lib/form/include/FormType.php:378
 #, php-format
 msgid ""
 "Exports the submission of the form \"%s\" and all its linked forms. Usually "
 "its best to select the first form in the chain before exporting."
 msgstr ""
 
-#: lib/form/include/FormType.php:398
+#: lib/form/include/FormType.php:397
 msgid "Ups, something went wrong."
 msgstr ""
 
-#: lib/form/include/Mail.php:136
+#: lib/form/include/Mail.php:153
 msgctxt "form submission"
 msgid "view complete submission online"
 msgstr ""
@@ -2363,7 +2380,7 @@ msgstr ""
 msgid "No forms available"
 msgstr ""
 
-#: lib/form/include/SubmissionsTable.php:172
+#: lib/form/include/SubmissionsTable.php:173
 msgid "Invalid form"
 msgstr ""
 
@@ -2418,21 +2435,37 @@ msgid ""
 "%s"
 msgstr ""
 
-#: lib/form/submission.php:182
+#: lib/form/include/Util.php:100
+#, php-format
+msgid "ERROR scheduling wp_cron: %s"
+msgstr ""
+
+#: lib/form/include/Util.php:105
+#, php-format
+msgid ""
+"Hi Admin\n"
+"\n"
+"The wp_cron job %s could not be scheduled on %s.\n"
+"Fix this soon, else the form submission won't work as expected.\n"
+"There is no further info about the error, as WordPress only returns 'false' :"
+"("
+msgstr ""
+
+#: lib/form/public-api.php:36 lib/form/submission.php:182
 msgid "Too many requests. Please try again later."
 msgstr ""
 
-#: lib/form/submission.php:309
+#: lib/form/submission.php:308
 #, php-format
 msgid "%s: Invalid value."
 msgstr ""
 
-#: lib/form/submission.php:327
+#: lib/form/submission.php:326
 #, php-format
 msgid "%s: Invalid or missing value."
 msgstr ""
 
-#: lib/form/submission.php:366
+#: lib/form/submission.php:365
 #, php-format
 msgid "%s: Missing data."
 msgstr ""
@@ -2607,6 +2640,14 @@ msgstr ""
 msgid "The tag not in function is not supported."
 msgstr ""
 
+#: lib/tweaks/openid-connect-generic.php:23
+msgid "Default login disabled."
+msgstr ""
+
+#: lib/tweaks/openid-connect-generic.php:31
+msgid "Connect with GREEN-Login"
+msgstr ""
+
 #: lib/widgets/ButtonWidget.php:25
 msgid "Show your main calls to action"
 msgstr ""
@@ -2631,11 +2672,11 @@ msgstr ""
 msgid "Title:"
 msgstr ""
 
-#: page.php:55
+#: page.php:58
 msgid "Upcoming events"
 msgstr ""
 
-#: page.php:60
+#: page.php:63
 msgid "Previous events"
 msgstr ""
 
@@ -2722,7 +2763,7 @@ msgstr ""
 msgid "Sorry, no content"
 msgstr ""
 
-#: templates/molecules/m-branding.twig:11 templates/molecules/m-menu.twig:5
+#: templates/molecules/m-branding.twig:12 templates/molecules/m-menu.twig:5
 msgid "Home"
 msgstr ""
 
@@ -2880,6 +2921,10 @@ msgstr ""
 msgid "Les Verts"
 msgstr ""
 
+#. Theme URI of the plugin/theme
+msgid "https://github.com/grueneschweiz/2018.gruene.ch/"
+msgstr ""
+
 #. Description of the plugin/theme
 msgid ""
 "Custom theme for the GREENS of Switzerland. Designed by superhuit.ch, built "
@@ -2891,9 +2936,13 @@ msgid "superhuit.ch & gruene.ch"
 msgstr ""
 
 #. Template Name of the plugin/theme
-msgid "Overview Page"
+msgid "Front Page"
 msgstr ""
 
 #. Template Name of the plugin/theme
-msgid "Front Page"
+msgid "Landing Page"
+msgstr ""
+
+#. Template Name of the plugin/theme
+msgid "Overview Page"
 msgstr ""
