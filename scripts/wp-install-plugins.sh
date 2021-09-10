@@ -159,8 +159,14 @@ $WPCLI plugin install limit-login-attempts-reloaded $INSTALL_ACTIVATE
 # Maintenance Mode
 $WPCLI plugin install wp-maintenance-mode
 
+# Disable the block editor for widgets
+$WPCLI plugin install classic-widgets $INSTALL_ACTIVATE
+
 # WP Super Cache
 $WPCLI plugin install wp-super-cache $INSTALL_ACTIVATE
+
+# Install OIDC plugin to connect via GREEN login
+$WPCLI plugin install daggerhart-openid-connect-generic
 
 # WP Super Cache CLI
 php -d memory_limit=2048M $(which $WPCLI) package install wp-cli/wp-super-cache-cli

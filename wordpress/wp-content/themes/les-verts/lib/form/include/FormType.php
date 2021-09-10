@@ -5,7 +5,7 @@ namespace SUPT;
 use Exception;
 use WP_Post;
 
-require_once realpath( __DIR__ . '/../../post-types/Model.php' );
+require_once dirname( __DIR__, 2 ) . '/post-types/Model.php';
 
 class FormType extends Model {
 
@@ -14,7 +14,7 @@ class FormType extends Model {
 	const VIEW_ACTION = 'view';
 	const EDIT_ACTION = 'edit';
 
-	static function register_type() {
+	public static function register_type() {
 		self::register_post_type();
 		self::register_acf_fields();
 	}
@@ -84,8 +84,8 @@ class FormType extends Model {
 					'field_5alk49sf14pd4',
 				];
 
-				foreach ( $fields['sub_fields'] as $key => &$field ) {
-					if ( in_array( $field['key'], $fields_to_remove ) ) {
+				foreach ( $fields['sub_fields'] as $key => $field ) {
+					if ( in_array( $field['key'], $fields_to_remove, true ) ) {
 						unset( $fields['sub_fields'][ $key ] );
 					}
 				}
@@ -95,7 +95,7 @@ class FormType extends Model {
 
 			// remove the crm specific field types (prefixed with 'crm_')
 			add_filter( 'acf/load_field/key=field_59f33814cf0dc', function ( $field ) {
-				$field['choices'] = array_filter( $field['choices'], function ( $key ) {
+				$field['choices'] = array_filter( $field['choices'], static function ( $key ) {
 					return false === strpos( $key, 'crm_' );
 				}, ARRAY_FILTER_USE_KEY );
 
@@ -181,7 +181,7 @@ class FormType extends Model {
 	 * @param int $original_id
 	 * @param int $duplicate_id
 	 */
-	public static function duplicate_remove_submissions( $original_id, $duplicate_id ) {
+	public static function duplicate_remove_submissions( int $original_id, int $duplicate_id ) {
 		try {
 			$form = new FormModel( $duplicate_id );
 			foreach ( $form->get_submissions() as $submission ) {
@@ -205,7 +205,7 @@ class FormType extends Model {
 	 *
 	 * @return array
 	 */
-	public static function enable_polylang_support( $post_types, $is_settings ) {
+	public static function enable_polylang_support( array $post_types, bool $is_settings ): array {
 		if ( $is_settings ) {
 			// hides $t from the list of custom post types in Polylang settings
 			unset( $post_types[ self::MODEL_NAME ] );
@@ -222,7 +222,7 @@ class FormType extends Model {
 	 */
 	public static function admin_enqueue_scripts() {
 
-		if ( self::MODEL_NAME != get_post_type() ) {
+		if ( self::MODEL_NAME !== get_post_type() ) {
 			return;
 		}
 
@@ -238,7 +238,7 @@ class FormType extends Model {
 	 *
 	 * @return array
 	 */
-	public static function register_columns_fields( $columns ) {
+	public static function register_columns_fields( $columns ): array {
 		return array_merge(
 			array_slice( $columns, 0, 2 ),
 			array( self::COLUMN_FIELD_NAME => __( 'Fields', THEME_DOMAIN ) ),
@@ -252,7 +252,7 @@ class FormType extends Model {
 	 * @param string $column_name The name of the column to display.
 	 * @param int $post_id The current post ID.
 	 */
-	public static function populate_columns_fields( $column_name, $post_id ) {
+	public static function populate_columns_fields( string $column_name, int $post_id ) {
 		if ( $column_name == self::COLUMN_FIELD_NAME ) {
 			$fields = get_field( 'form_fields', $post_id );
 
@@ -274,7 +274,7 @@ class FormType extends Model {
 	 *
 	 * @return array
 	 */
-	public static function alter_row_actions( $actions, $post ) {
+	public static function alter_row_actions( array $actions, WP_Post $post ): array {
 		if ( $post->post_type === self::MODEL_NAME ) {
 			if ( isset( $actions['inline hide-if-no-js'] ) ) {
 				unset( $actions['inline hide-if-no-js'] );
@@ -307,9 +307,9 @@ class FormType extends Model {
 	 *
 	 * @return array
 	 */
-	public static function order_by_title( $query_vars ) {
+	public static function order_by_title( array $query_vars ): array {
 		global $pagenow, $post_type;
-		if ( ! is_admin() || $pagenow != 'edit.php' || $post_type != self::MODEL_NAME ) {
+		if ( $pagenow !== 'edit.php' || $post_type !== self::MODEL_NAME || ! is_admin() ) {
 			return $query_vars;
 		}
 
@@ -341,14 +341,18 @@ class FormType extends Model {
 		/** @noinspection PhpUnusedParameterInspection */
 		$status, $option, $value
 	) {
-		if ( 'submissions_per_page' == $option ) {
+		if ( 'submissions_per_page' === $option ) {
 			return $value;
 		}
+
+		return null;
 	}
 
 	public static function display_submissions_page() {
 		if ( isset( $_REQUEST['action'] ) && self::VIEW_ACTION === $_REQUEST['action'] ) {
-			return self::display_single_submission();
+			self::display_single_submission();
+
+			return;
 		}
 
 		require_once __DIR__ . '/../helpers/class-wp-list-table.php';
@@ -378,7 +382,7 @@ class FormType extends Model {
 				<?php $submissions->the_export_button() ?>
 			</div>
 		</div>
-		<?
+		<?php
 	}
 
 	public static function display_single_submission() {
@@ -390,6 +394,7 @@ class FormType extends Model {
 			$submission = new SubmissionModel( $id );
 			ViewSingle::display( $submission );
 		} catch ( Exception $e ) {
+			/** @noinspection ForgottenDebugOutputInspection */
 			wp_die( __( 'Ups, something went wrong.', THEME_DOMAIN ) );
 		}
 	}

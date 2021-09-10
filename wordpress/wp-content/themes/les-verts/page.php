@@ -22,61 +22,19 @@
  */
 
 use SUPT\ACFPost;
-use SUPT\SUPTPostQuery;
 
-$context   = Timber::get_context();
-$post      = new ACFPost();
-$templates = array( 'page.twig', 'single.twig' );
+$context         = Timber::get_context();
+$post            = new ACFPost();
+$context['post'] = $post;
+$templates       = array( 'page.twig', 'single.twig' );
 
-// if any post was found (check for name, because we always get a post object back
-if ( $post->post_name ) {
-	array_unshift( $templates, 'page-' . $post->post_name . '.twig' );
-
-	$context['post'] = $post;
-	$post_type       = $post->post_type;
-} else {
-	// else this must be an archive (event archives use this page)
-	global $wp_query;
-	$post_type        = $wp_query->query['post_type'];
-	$context['posts'] = new SUPTPostQuery();
-}
-
-// handle events of the events calendar plugin
-if ( 'tribe_events' === $post_type ) {
-	if ( in_array( get_query_var( 'eventDisplay' ), [ 'list', 'month' ] ) ) {
-
-		// the list view
-		$context['title'] = __( 'Events', THEME_DOMAIN );
-
-		$event_cat_slug = get_query_var( 'tribe_events_cat' );
-		$term           = get_term_by( 'slug', $event_cat_slug, 'tribe_events_cat' );
-		$term_id        = $term instanceof WP_Term ? $term->term_id : null;
-
-		if ( tribe_is_past() ) {
-			$context['events_link'] = [
-				'link'  => tribe_get_listview_link( $term_id ),
-				'label' => __( 'Upcoming events', THEME_DOMAIN )
-			];
-		} else {
-			$context['events_link'] = [
-				'link'  => tribe_get_listview_past_link( $term_id ),
-				'label' => __( 'Previous events', THEME_DOMAIN )
-			];
-		}
-
-		array_unshift( $templates, 'archive.twig' );
-
-	} else {
-
-		// the single view
-		array_unshift( $templates, 'event.twig' );
-	}
-}
-
-// handle front page
 if ( is_front_page() ) {
 	//  Uses lib/controllers/frontpage.php
 	array_unshift( $templates, 'front-page.twig' );
+} elseif ( 'tribe_events' === $post->post_type ) {
+	array_unshift( $templates, 'event.twig' );
+} else {
+	array_unshift( $templates, 'page-' . $post->post_name . '.twig' );
 }
 
 Timber::render( $templates, $context );
