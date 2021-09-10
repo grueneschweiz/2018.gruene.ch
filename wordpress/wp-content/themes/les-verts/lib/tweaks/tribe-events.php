@@ -1,6 +1,13 @@
 <?php
 
 /**
+ * Use the 'archive-tribe_events.php' template file for event archives.
+ */
+add_filter( 'tribe_events_views_v2_use_wp_template_hierarchy', function ( $load, $template, $context, $query ) {
+	return $query->is_archive();
+}, 10, 4 );
+
+/**
  * Force ugly links for tribe events as the pretty permalinks
  * were constantly buggy, especially in combination with polylang.
  */

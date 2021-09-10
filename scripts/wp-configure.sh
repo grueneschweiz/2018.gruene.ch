@@ -58,6 +58,10 @@ $WPCLI option update emr_news 1
 # configure tribe events
 $WPCLI option patch insert --json tribe_events_calendar_options did_init true
 $WPCLI option patch insert tribe_events_calendar_options tribeEventsTemplate default
+$WPCLI option patch insert --json tribe_events_calendar_options tribeEnableViews '["list"]'
+$WPCLI option patch insert tribe_events_calendar_options viewOption list
+$WPCLI option patch insert --json tribe_events_calendar_options views_v2_enabled true
+$WPCLI option patch insert tribe_events_calendar_options postsPerPage '10'
 $WPCLI option patch insert --json tribe_events_calendar_options showComments false
 $WPCLI option patch insert  tribe_events_calendar_options defaultCurrencySymbol CHF
 $WPCLI option patch insert --json tribe_events_calendar_options reverseCurrencyPosition true
@@ -67,9 +71,8 @@ $WPCLI option patch insert --json tribe_events_calendar_options tribe_events_tim
 $WPCLI option patch insert tribe_events_calendar_options stylesheet_mode skeleton
 $WPCLI option patch insert --json tribe_events_calendar_options tribeDisableTribeBar true
 $WPCLI option patch insert --json tribe_events_calendar_options donate-link false
-$WPCLI option patch insert tribe_events_calendar_options viewOption list
-$WPCLI option patch insert tribe_events_calendar_options datepickerFormat "11"
-$WPCLI option patch insert --json tribe_events_calendar_options views_v2_enabled false
+$WPCLI option patch insert tribe_events_calendar_options datepickerFormat '11'
+$WPCLI option patch insert tribe_events_calendar_options stylesheetOption skeleton
 
 # configure searchwp
 $WPCLI option set --json searchwp_engines '{"default":{"label":"Default","settings":{"stemming":true,"adminengine":false},"sources":{"post.post":{"attributes":{"title":80,"content":5,"slug":60,"excerpt":40,"meta":{"*":1},"taxonomy":{"category":50,"post_tag":50}},"rules":[],"options":[]},"post.page":{"attributes":{"title":80,"content":5,"slug":60,"meta":{"*":1}},"rules":[],"options":[]},"post.tribe_events":{"attributes":{"title":80,"content":5,"slug":60,"excerpt":40,"comments":1,"meta":{"*":1}},"rules":[],"options":[]}}}}'
