@@ -232,7 +232,7 @@ RewriteCond %{HTTPS} off
 RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 
 # activate HSTS with 6 month duration time
-Header set Strict-Transport-Security \"max-age=15768000\", includeSubDomains; preload
+Header set Strict-Transport-Security \"max-age=15768000; preload\"
 
 RewriteBase /
 RewriteRule ^index\.php$ - [L]
