@@ -4,8 +4,16 @@
  * The template for displaying the list view of tribe events.
  */
 
+$event_display = tribe_get_request_var(
+	'tribe_event_display',
+	'list'
+);
+
 $context          = Timber::get_context();
-$context['posts'] = tribe_get_events();
+$context['posts'] = tribe_get_events( array(
+	'eventDisplay'   => $event_display,
+	'posts_per_page' => - 1,
+) );
 $context['title'] = __( 'Events', THEME_DOMAIN );
 $templates        = array( 'archive.twig' );
 
