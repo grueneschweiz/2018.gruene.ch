@@ -87,7 +87,7 @@ $WPCLI eval 'wp_cache_setting("wp_cache_clear_on_post_edit",1);'
 
 # configure OIDC login
 $WPCLI option patch insert openid_connect_generic_settings login_type auto
-$WPCLI option patch insert openid_connect_generic_settings login_type 'email profile openid'
+$WPCLI option patch insert openid_connect_generic_settings scope 'email profile openid'
 $WPCLI option patch insert openid_connect_generic_settings endpoint_login 'https://sso.gruene.ch/auth/realms/gruene/protocol/openid-connect/auth'
 $WPCLI option patch insert openid_connect_generic_settings endpoint_userinfo 'https://keycloak.test.gruene.ch/auth/realms/gruene/protocol/openid-connect/userinfo'
 $WPCLI option patch insert openid_connect_generic_settings endpoint_token 'https://keycloak.test.gruene.ch/auth/realms/gruene/protocol/openid-connect/token'
