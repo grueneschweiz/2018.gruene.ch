@@ -27,9 +27,9 @@ class Util {
 	 * @param string $action
 	 * @param mixed $data
 	 * @param Exception $exception
-	 * @param string $form_name
+	 * @param FormModel|null $form
 	 */
-	public static function report_form_error( $action, $data, $exception, $form_name ) {
+	public static function report_form_error( string $action, $data, Exception $exception, $form ) {
 		$domain = Util::get_domain();
 
 		if ( is_string( $data ) ) {
@@ -39,6 +39,9 @@ class Util {
 		}
 
 		$error_msg = $exception->__toString();
+
+		$form_name = $form ? $form->get_title() : 'DELETED FORM';
+		$form_link = $form ? $form->get_link() : 'DELETED FORM';
 
 		$subject = sprintf(
 			__( 'ERROR on form submission: %s - %s', THEME_DOMAIN ),
@@ -50,6 +53,7 @@ class Util {
 				"Hi Admin of %s\n\n" .
 				"There was a problem submitting the form: %s\n" .
 				"The following action failed: %s\n\n" .
+				"The link to the form: %s\n\n" .
 				"The data:\n%s\n\n" .
 				"The error:\n%s",
 				THEME_DOMAIN
@@ -57,6 +61,7 @@ class Util {
 			$domain,
 			$form_name,
 			$action,
+			$form_link,
 			$data_str,
 			$error_msg
 		);
