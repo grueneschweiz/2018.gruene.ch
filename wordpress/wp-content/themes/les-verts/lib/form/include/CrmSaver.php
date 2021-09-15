@@ -175,11 +175,10 @@ class CrmSaver {
 			if ( self::is_non_permanent_error( $e->getCode() ) ) {
 				try {
 					$form      = new FormModel( $item->get_form_id() );
-					$form_name = $form->get_title();
 				} catch ( Exception $e ) {
-					$form_name = 'DELETED FORM';
+					$form = null;
 				}
-				Util::report_form_error( 'save to crm', $item, $e, $form_name );
+				Util::report_form_error( 'save to crm', $item, $e, $form );
 			} else if ( $item->get_attempts() >= self::MAX_SAVE_ATTEMPTS ) {
 				self::send_permanent_error_notification( $item, $e->getMessage() );
 			}
@@ -344,7 +343,7 @@ class CrmSaver {
 					'add crm mapped data of predecessor submissions',
 					$predecessor,
 					$e,
-					$this->form->get_title()
+					$this->form
 				);
 
 				return;

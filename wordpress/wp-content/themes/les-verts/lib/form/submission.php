@@ -491,9 +491,7 @@ class FormSubmission {
 	 * @param Exception $exception
 	 */
 	private function report_error( $action, $data, $exception ) {
-		$form = $this->form->get_title();
-
-		Util::report_form_error( $action, $data, $exception, $form );
+		Util::report_form_error( $action, $data, $exception, $this->form );
 	}
 
 	/**
@@ -528,7 +526,7 @@ class FormSubmission {
 			$mailer = new Mailer( $this->post_meta_id );
 			$mailer->queue_mails();
 		} catch ( Exception $e ) {
-			Util::report_form_error( 'add mails to sending queue', $this->data, $e, $this->form->get_title() );
+			Util::report_form_error( 'add mails to sending queue', $this->data, $e, $this->form );
 		}
 	}
 
@@ -549,7 +547,7 @@ class FormSubmission {
 			$saver = new CrmSaver( $this->post_meta_id );
 			$saver->queue();
 		} catch ( Exception $e ) {
-			Util::report_form_error( 'add data to saving queue of crm', $this->data, $e, $this->form->get_title() );
+			Util::report_form_error( 'add data to saving queue of crm', $this->data, $e, $this->form );
 		}
 	}
 

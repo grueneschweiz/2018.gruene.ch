@@ -404,4 +404,8 @@ class FormModel {
 
 		return $this->has_notification;
 	}
+
+	public function get_link() {
+		return get_edit_post_link( $this->id );
+	}
 }
