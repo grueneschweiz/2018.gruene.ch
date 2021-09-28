@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: Les Verts\n"
-"POT-Creation-Date: 2021-09-03 23:14+0200\n"
+"POT-Creation-Date: 2021-09-28 16:33+0200\n"
 "PO-Revision-Date: 2018-11-28 17:49+0100\n"
 "Last-Translator: Cyrill Bolliger <bolliger@gmx.ch>\n"
 "Language-Team: Cyrill Bolliger <cyrill.bolliger@gruene.ch>\n"
@@ -22,6 +22,7 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 "X-Poedit-SearchPathExcluded-1: vendor\n"
+"X-Poedit-SearchPathExcluded-2: demo-content\n"
 
 #: 404.php:21
 msgid "Latest posts"
@@ -1270,16 +1271,24 @@ msgstr ""
 msgid "What do you recommend to vote?"
 msgstr ""
 
-#: acf-translate.php:4796 templates/atoms/a-vote-tag.twig:2
+#: acf-translate.php:4799 templates/atoms/a-vote-tag.twig:2
 msgid "Yes"
 msgstr ""
 
-#: acf-translate.php:4797 templates/atoms/a-vote-tag.twig:4
+#: acf-translate.php:4800 templates/atoms/a-vote-tag.twig:4
 msgid "No"
 msgstr ""
 
-#: acf-translate.php:4798
-msgid "-"
+#: acf-translate.php:4801
+msgid "Blank"
+msgstr ""
+
+#: acf-translate.php:4802 templates/atoms/a-vote-tag.twig:6
+msgid "Initiative"
+msgstr ""
+
+#: acf-translate.php:4803 templates/atoms/a-vote-tag.twig:8
+msgid "Counter Project"
 msgstr ""
 
 #: acf-translate.php:4814

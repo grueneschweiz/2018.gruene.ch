@@ -1,9 +1,34 @@
 label: Vote
 display:
   padding: 40px;
+default: No
 context:
   label: "Kein Kahlschlag bei der Medienvielfalt: Nein zu No Billag"
   vote-tag:
     label: nein
     modifiers:
       - no
+variants:
+  - name: Yes
+    context:
+      label: "Ehe für alle"
+      vote-tag:
+        label: ja
+        modifiers:
+          - yes
+
+  - name: Initiative
+    context:
+      label: "Question subsidiaire : préférence à l'initiative"
+      vote-tag:
+        label: initiative
+        modifiers:
+          - initiative
+
+  - name: Counter Project
+    context:
+      label: "Question subsidiaire : préférence au contreprojet"
+      vote-tag:
+        label: contreprojet
+        modifiers:
+          - counter-project

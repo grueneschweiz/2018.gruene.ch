@@ -60,18 +60,18 @@
             "button_label": "Add recommendation",
             "sub_fields": [
                 {
-                    "key": "field_5baa445a76610",
+                  "key": "field_5baa445a76610",
                   "label": "Recommendation Link",
-                    "name": "proposal_link",
-                    "type": "group",
-                    "instructions": "Where visitors can read more about this bill.",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "70",
-                        "class": "",
-                        "id": ""
-                    },
+                  "name": "proposal_link",
+                  "type": "group",
+                  "instructions": "Where visitors can read more about this bill.",
+                  "required": 0,
+                  "conditional_logic": 0,
+                  "wrapper": {
+                    "width": "70",
+                    "class": "",
+                    "id": ""
+                  },
                     "layout": "block",
                     "sub_fields": [
                         {
@@ -96,73 +96,73 @@
                             "layout": "vertical",
                             "return_format": "value"
                         },
-                        {
-                          "key": "field_5c46226447063",
-                            "label": "Internal Link",
-                          "name": "internal_link",
-                          "type": "group",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": [
-                              [
-                                {
-                                  "field": "field_5baa448d76611",
-                                  "operator": "==",
-                                  "value": "internal"
-                                }
-                              ]
-                            ],
-                            "wrapper": {
-                                "width": "75",
-                                "class": "",
-                                "id": ""
-                            },
-                          "layout": "block",
-                          "sub_fields": [
+                      {
+                        "key": "field_5c46226447063",
+                        "label": "Internal Link",
+                        "name": "internal_link",
+                        "type": "group",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": [
+                          [
                             {
-                              "key": "field_5baa451976612",
-                              "label": "Post",
-                              "name": "post",
-                              "type": "post_object",
-                              "instructions": "",
-                              "required": 0,
-                              "conditional_logic": 0,
-                              "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                              },
-                              "post_type": [
-                                "post",
-                                "page"
-                              ],
-                              "taxonomy": "",
-                              "allow_null": 0,
-                              "multiple": 0,
-                              "return_format": "object",
-                              "ui": 1
-                            },
-                            {
-                              "key": "field_5c4620e993f91",
-                              "label": "Title Overwrite (optional)",
-                              "name": "title",
-                              "type": "text",
-                              "instructions": "Leave blank, to use the posts title.",
-                              "required": 0,
-                              "conditional_logic": 0,
-                              "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                              },
-                              "default_value": "",
-                              "placeholder": "",
-                              "prepend": "",
-                              "append": "",
-                              "maxlength": ""
+                              "field": "field_5baa448d76611",
+                              "operator": "==",
+                              "value": "internal"
                             }
                           ]
+                        ],
+                        "wrapper": {
+                          "width": "75",
+                          "class": "",
+                          "id": ""
                         },
+                        "layout": "block",
+                        "sub_fields": [
+                          {
+                            "key": "field_5baa451976612",
+                            "label": "Post",
+                            "name": "post",
+                            "type": "post_object",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                              "width": "",
+                              "class": "",
+                              "id": ""
+                            },
+                            "post_type": [
+                              "post",
+                              "page"
+                            ],
+                            "taxonomy": "",
+                            "allow_null": 0,
+                            "multiple": 0,
+                            "return_format": "object",
+                            "ui": 1
+                          },
+                          {
+                            "key": "field_5c4620e993f91",
+                            "label": "Title Overwrite (optional)",
+                            "name": "title",
+                            "type": "text",
+                            "instructions": "Leave blank, to use the posts title.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                              "width": "",
+                              "class": "",
+                              "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "maxlength": ""
+                          }
+                        ]
+                      },
                         {
                             "key": "field_5baa456476613",
                             "label": "External Link (URL)",
@@ -258,9 +258,11 @@
                         "id": ""
                     },
                     "choices": {
-                        "yes": "Yes",
-                        "no": "No",
-                        "free": "-"
+                      "yes": "Yes",
+                      "no": "No",
+                      "free": "Blank",
+                      "initiative": "Initiative",
+                      "counter-project": "Counter Project"
                     },
                     "allow_null": 0,
                     "other_choice": 0,
@@ -342,17 +344,17 @@
             {
                 "param": "page_type",
                 "operator": "==",
-                "value": "front_page"
+              "value": "front_page"
             }
         ]
     ],
-    "menu_order": 0,
-    "position": "normal",
-    "style": "default",
-    "label_placement": "top",
-    "instruction_placement": "label",
-    "hide_on_screen": "",
-    "active": 0,
-    "description": "",
-  "modified": 1548100965
+  "menu_order": 0,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "hide_on_screen": "",
+  "active": false,
+  "description": "",
+  "modified": 1632836199
 }

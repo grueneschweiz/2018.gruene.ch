@@ -16,9 +16,21 @@
 		width: 4.2857em;
 	}
 
-	&--free {
+	&--free,
+	&--initiative,
+	&--counter-project {
 		background-color: $color-grey-2;
 		color: $color-text;
+	}
+
+	&--initiative,
+	&--counter-project {
+		width: auto;
+
+		@include media($_DESKTOP) {
+			padding-left: 0.3333em;
+			padding-right: 0.3333em;
+		}
 	}
 
 	&--no {
