@@ -143,9 +143,9 @@ class CrmDao {
 		if ( is_wp_error( $response ) ) {
 			$error_message = $response->get_error_message();
 			if ( $this->is_timeout_error( $error_message ) ) {
-				throw new Exception( "Could save member to crm: $error_message.", 408 );
+				throw new Exception( "Could not save member to crm: $error_message.", 408 );
 			} else {
-				throw new Exception( "Could save member to crm: $error_message." );
+				throw new Exception( "Could not save member to crm: $error_message." );
 			}
 		}
 
@@ -165,7 +165,7 @@ class CrmDao {
 			$status_code = $this->is_timeout_error( $resp->get_data() ) ? 408 : $resp->get_status();
 
 			$data_sent = print_r( $crm_data, true );
-			throw new Exception( "Could save member to crm. Crm returned status code: {$resp->get_status()}. Reason: {$resp->get_data()}.\n\nData sent: {$data_sent}", $status_code );
+			throw new Exception( "Could not save member to crm. Crm returned status code: {$resp->get_status()}. Reason: {$resp->get_data()}.\n\nData sent: {$data_sent}", $status_code );
 		}
 
 		return json_decode( $resp->get_data(), true );
