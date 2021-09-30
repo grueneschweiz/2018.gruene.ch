@@ -258,7 +258,8 @@ class CrmDao {
 
 		$headers = array(
 			'Authorization' => $bearer_token,
-			'Accept'        => 'application/json'
+			'Accept'        => 'application/json',
+			'Content-Type'  => 'application/json',
 		);
 
 		$args['headers'] = array_merge( $args['headers'], $headers );
