@@ -143,9 +143,9 @@ class CrmDao {
 		if ( is_wp_error( $response ) ) {
 			$error_message = $response->get_error_message();
 			if ( $this->is_timeout_error( $error_message ) ) {
-				throw new Exception( "Could save member to crm: $error_message.", 408 );
+				throw new Exception( "Could not save member to crm: $error_message.", 408 );
 			} else {
-				throw new Exception( "Could save member to crm: $error_message." );
+				throw new Exception( "Could not save member to crm: $error_message." );
 			}
 		}
 
@@ -164,8 +164,8 @@ class CrmDao {
 		if ( $resp->get_status() !== 201 ) {
 			$status_code = $this->is_timeout_error( $resp->get_data() ) ? 408 : $resp->get_status();
 
-			$data_sent = print_r( $crm_data, true );
-			throw new Exception( "Could save member to crm. Crm returned status code: {$resp->get_status()}. Reason: {$resp->get_data()}.\n\nData sent: {$data_sent}", $status_code );
+			$data_sent = print_r( $this->redactToken( $args ), true );
+			throw new Exception( "Could not save member to crm. Crm returned status code: {$resp->get_status()}. Reason: {$resp->get_data()}.\n\nData sent: {$data_sent}", $status_code );
 		}
 
 		return json_decode( $resp->get_data(), true );
@@ -216,7 +216,7 @@ class CrmDao {
 		if ( $resp->get_status() !== 200 ) {
 			$status_code = $this->is_timeout_error( $resp->get_data() ) ? 408 : $resp->get_status();
 
-			$data_sent = print_r( $crm_data, true );
+			$data_sent = print_r( $this->redactToken( $args ), true );
 			throw new Exception( "Could match member in crm. Crm returned status code: {$resp->get_status()}. Reason: {$resp->get_data()}.\n\nData sent: {$data_sent}", $status_code );
 		}
 
@@ -224,7 +224,7 @@ class CrmDao {
 
 		if ( ! array_key_exists( 'status', $body ) ) {
 			$body_string = print_r( $body, true );
-			$data_sent   = print_r( $crm_data, true );
+			$data_sent   = print_r( $this->redactToken( $args ), true );
 			throw new Exception( "Invalid response from member match endpoint of crm wrapper. Response: {$body_string}. \n\nData sent: {$data_sent}" );
 		}
 
@@ -258,7 +258,8 @@ class CrmDao {
 
 		$headers = array(
 			'Authorization' => $bearer_token,
-			'Accept'        => 'application/json'
+			'Accept'        => 'application/json',
+			'Content-Type'  => 'application/json',
 		);
 
 		$args['headers'] = array_merge( $args['headers'], $headers );
@@ -294,5 +295,21 @@ class CrmDao {
 		$resp = $response['http_response'];
 
 		return 200 === $resp->get_status();
+	}
+
+	/**
+	 * Censor Authorization header from given wp_remote_* args.
+	 * Use for logging.
+	 *
+	 * @param array $args
+	 *
+	 * @return array
+	 */
+	private function redactToken( array $args ): array {
+		if ( isset( $args['headers']['Authorization'] ) ) {
+			$args['headers']['Authorization'] = 'REDACTED';
+		}
+
+		return $args;
 	}
 }

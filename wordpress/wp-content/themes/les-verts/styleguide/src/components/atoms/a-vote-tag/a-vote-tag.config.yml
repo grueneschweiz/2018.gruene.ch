@@ -19,3 +19,13 @@ variants:
       label: ja
       modifiers:
         - yes
+  - name: Initiative
+    context:
+      label: initiative
+      modifiers:
+        - initiative
+  - name: Counter Project
+    context:
+      label: gegenvorschlag
+      modifiers:
+        - counter-project

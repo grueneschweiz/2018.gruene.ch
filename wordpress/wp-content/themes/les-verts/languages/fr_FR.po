@@ -212,7 +212,7 @@ msgstr "Utilise un titre générique, par exemple la catégorie, puis crée un l
 #: acf-translate.php:837 acf-translate.php:2151 acf-translate.php:2229
 #: acf-translate.php:2419 acf-translate.php:2649 acf-translate.php:3171
 #: acf-translate.php:4341 acf-translate.php:4742
-#: lib/form/acf/form-details.php:856
+#: lib/form/acf/form-details.php:866
 msgid "Title"
 msgstr "Titre"
 
@@ -801,17 +801,13 @@ msgstr "Lien externe (URL)"
 msgid "What do you recommend to vote?"
 msgstr "Quelle est ta recommandation pour cette votation?"
 
-#: acf-translate.php:4796 templates/atoms/a-vote-tag.twig:2
+#: acf-translate.php:4799 templates/atoms/a-vote-tag.twig:2
 msgid "Yes"
 msgstr "Oui"
 
-#: acf-translate.php:4797 templates/atoms/a-vote-tag.twig:4
+#: acf-translate.php:4800 templates/atoms/a-vote-tag.twig:4
 msgid "No"
 msgstr "Non"
-
-#: acf-translate.php:4798
-msgid "-"
-msgstr "-"
 
 #: acf-translate.php:4814
 msgid "Only displayed, if link is set."
@@ -838,7 +834,7 @@ msgid "Displayed in the teaser only."
 msgstr "Est affiché uniquement dans l'accroche (teaser)"
 
 #: acf-translate.php:2248 acf-translate.php:5045
-#: lib/form/acf/form-details.php:783
+#: lib/form/acf/form-details.php:793
 msgid "Description"
 msgstr "Description"
 
@@ -1059,7 +1055,7 @@ msgstr "Tu peux masquer les boutons «Partager» sur cette page en désactivant 
 msgid "Main navigation"
 msgstr "Navigation principale"
 
-#: functions.php:98 templates/molecules/m-menu.twig:60
+#: functions.php:98 templates/molecules/m-menu.twig:62
 msgid "Language navigation"
 msgstr "Navigation de langue"
 
@@ -1098,7 +1094,7 @@ msgctxt "Example: 21.03.2018: Delegiertenversammlung"
 msgid "%s: %s"
 msgstr "%s: %s"
 
-#: lib/controllers/navigation.php:230 lib/customizer/GetActive.php:43
+#: lib/controllers/navigation.php:231 lib/customizer/GetActive.php:43
 msgid "Get Active"
 msgstr "Participer"
 
@@ -1194,13 +1190,13 @@ msgstr "Aucun formulaire n'a pu être trouvé."
 msgid "No form in the trash"
 msgstr "La corbeille ne contient aucun formulaire"
 
-#: lib/form/include/FormType.php:249
+#: lib/form/include/FormType.php:244
 msgid "Fields"
 msgstr "Champs"
 
 #. Zusammenhang für mich immer noch nicht wirklich klar
-#: lib/form/include/FormType.php:301 lib/form/include/FormType.php:331
-#: lib/form/include/FormType.php:332 lib/form/include/SubmissionsTable.php:33
+#: lib/form/include/FormType.php:296 lib/form/include/FormType.php:326
+#: lib/form/include/FormType.php:327 lib/form/include/SubmissionsTable.php:33
 msgid "Submissions"
 msgstr "Réponses"
 
@@ -1216,43 +1212,43 @@ msgstr "Définis les champs du formulaire."
 msgid "Add field"
 msgstr "Ajouter un champ"
 
-#: lib/form/acf/form-details.php:712
+#: lib/form/acf/form-details.php:722
 msgid "Submit"
 msgstr "Envoyer"
 
-#: lib/form/acf/form-details.php:739
+#: lib/form/acf/form-details.php:749
 msgid "Configure the submit buttons."
 msgstr "Configure les boutons pour envoyer le formulaire."
 
-#: lib/form/acf/form-details.php:745 lib/widgets/ButtonWidget.php:23
+#: lib/form/acf/form-details.php:755 lib/widgets/ButtonWidget.php:23
 msgid "Button"
 msgstr "Bouton"
 
-#: lib/form/acf/form-details.php:764
+#: lib/form/acf/form-details.php:774
 msgid "Button Submitting"
 msgstr "Bouton pendant l'envoi"
 
-#: lib/form/acf/form-details.php:775
+#: lib/form/acf/form-details.php:785
 msgid "Sending"
 msgstr "Envoi en cours"
 
-#: lib/form/acf/form-details.php:786
+#: lib/form/acf/form-details.php:796
 msgid "Why someone should fill in this form. Displayed next to the submit button."
 msgstr "Donne des raisons pour remplir le formulaire. Est affiché à côté du bouton «Envoyer»."
 
-#: lib/form/acf/form-details.php:803
+#: lib/form/acf/form-details.php:813
 msgid "After Submit"
 msgstr "Après l'envoi"
 
-#: lib/form/acf/form-details.php:819
+#: lib/form/acf/form-details.php:829
 msgid "Success"
 msgstr "Réussite"
 
-#: lib/form/acf/form-details.php:875
+#: lib/form/acf/form-details.php:885
 msgid "Thank you for your support!"
 msgstr "Merci beaucoup de ton soutien!"
 
-#: lib/form/acf/form-details.php:883
+#: lib/form/acf/form-details.php:893
 msgid "Message"
 msgstr "Message"
 
@@ -1379,11 +1375,11 @@ msgstr "Largeur %"
 msgid "Min width (optional)"
 msgstr "Largeur minimale (facultatif)"
 
-#: lib/form/acf/mail-template.php:55
+#: lib/form/acf/mail-template.php:58
 msgid "Subject"
 msgstr "Sujet"
 
-#: lib/form/acf/mail-template.php:74
+#: lib/form/acf/mail-template.php:77
 msgid "Template"
 msgstr "Modèle"
 
@@ -1591,7 +1587,7 @@ msgstr "Recommandations de vote"
 msgid "Sorry, no content"
 msgstr "Nous sommes désolés, il n'y a pas de contenu."
 
-#: templates/molecules/m-branding.twig:11 templates/molecules/m-menu.twig:5
+#: templates/molecules/m-branding.twig:12 templates/molecules/m-menu.twig:5
 msgid "Home"
 msgstr "Page d'accueil"
 
@@ -1776,7 +1772,7 @@ msgstr "Recommandations de vote"
 msgid "Vote Recommendation"
 msgstr "Recommandation de vote"
 
-#: lib/form/include/FormType.php:367
+#: lib/form/include/FormType.php:365
 msgid "Form Submissions"
 msgstr "Réponses dans le formulaire"
 
@@ -1793,7 +1789,7 @@ msgstr "Cachet horodaté"
 msgid "No forms available"
 msgstr "Aucun formulaire n'est disponible"
 
-#: lib/form/include/SubmissionsTable.php:172
+#: lib/form/include/SubmissionsTable.php:173
 msgid "Invalid form"
 msgstr "Formulaire non valide"
 
@@ -1840,31 +1836,31 @@ msgstr "Webling"
 msgid "Webling Field"
 msgstr "Champ Webling"
 
-#: lib/form/acf/form-details.php:582
+#: lib/form/acf/form-details.php:592
 msgid "Replace"
 msgstr "Remplacer"
 
-#: lib/form/acf/form-details.php:581
+#: lib/form/acf/form-details.php:591
 msgid "Append"
 msgstr "Ajouter"
 
-#: lib/form/acf/form-details.php:579
+#: lib/form/acf/form-details.php:589
 msgid "Add if empty"
 msgstr "Ajouter si vide"
 
-#: lib/form/acf/form-details.php:594
+#: lib/form/acf/form-details.php:604
 msgid "Hidden Field"
 msgstr "Champ masqué"
 
-#: lib/form/acf/form-details.php:597
+#: lib/form/acf/form-details.php:607
 msgid "Use this option to add a value to every persons record that submits this form."
 msgstr "Utilise cette option pour ajouter une valeur individuelle pour chaque personne remplissant le formulaire"
 
-#: lib/form/acf/form-details.php:613
+#: lib/form/acf/form-details.php:623
 msgid "Hide this field from the website visitor"
 msgstr "Masquer ce champ pour les visiteurs/visiteuses du site"
 
-#: lib/form/acf/form-details.php:621 lib/form/acf/form-details.php:664
+#: lib/form/acf/form-details.php:631 lib/form/acf/form-details.php:674
 msgid "Field Value"
 msgstr "Valeur du champ"
 
@@ -1875,10 +1871,6 @@ msgstr "Nombre"
 #: lib/form/acf/settings.php:191
 msgid "API Url"
 msgstr "Adresse URL de l'API (interface de programmation d’application)"
-
-#: lib/form/acf/settings.php:242
-msgid "Group Id"
-msgstr "N° d'identification (ID) du groupe"
 
 #: lib/form/acf/settings.php:245
 msgid "The ID of the group, where <strong>new</strong> member records should be stored in."
@@ -2027,11 +2019,11 @@ msgstr "Lien du bouton"
 msgid "Add the url, where the get active button should lead to."
 msgstr "Ajoute l'URL vers"
 
-#: lib/form/include/FormType.php:378
+#: lib/form/include/FormType.php:376
 msgid "Export Submissions"
 msgstr "Exporter les saisies"
 
-#: lib/form/include/FormType.php:380
+#: lib/form/include/FormType.php:378
 msgid "Exports the submission of the form \"%s\" and all its linked forms. Usually its best to select the first form in the chain before exporting."
 msgstr "Exporte les réponses du formulaire \"%s\" et des formulaires qui y sont liés. En général, l'idéal est de sélectionner le premier formulaire d'une chaine avant de procéder à l'exportation."
 
@@ -2039,19 +2031,19 @@ msgstr "Exporte les réponses du formulaire \"%s\" et des formulaires qui y sont
 msgid "Export .xlsx"
 msgstr "Exporter au format .xlsx"
 
-#: lib/form/acf/form-details.php:822
+#: lib/form/acf/form-details.php:832
 msgid "What should happen after the form was successfully submitted?"
 msgstr "Quelle doit être l'étape suivant l'envoi réussi du formulaire ?"
 
-#: lib/form/acf/form-details.php:846
+#: lib/form/acf/form-details.php:856
 msgid "Show message (inline)"
 msgstr "Afficher un message (même page)"
 
-#: lib/form/acf/form-details.php:847
+#: lib/form/acf/form-details.php:857
 msgid "Redirect to post / page"
 msgstr "rediriger vers un article / une page"
 
-#: lib/form/acf/form-details.php:910
+#: lib/form/acf/form-details.php:920
 msgid "Redirect to"
 msgstr "Transmettre à"
 
@@ -2110,12 +2102,12 @@ msgstr "Partage ce site par courriel"
 msgid "Share this page by WhatsApp"
 msgstr "Partage ce site par WhatsApp"
 
-#: lib/form/include/FormType.php:300
+#: lib/form/include/FormType.php:295
 msgctxt "form title"
 msgid "View submissions of %s"
 msgstr "Afficher les saisies de %s"
 
-#: lib/form/include/FormType.php:398
+#: lib/form/include/FormType.php:397
 msgid "Ups, something went wrong."
 msgstr "Oups, il y a eu un problème."
 
@@ -2146,17 +2138,12 @@ msgctxt "Placeholders"
 msgid "Use the following tags as placeholders in your mail. They will be replaced automatically: %s"
 msgstr "Utilise les étiquettes suivantes en tant joker que dans le courriel. Elles seront remplacés automatiquement : %s"
 
-#: lib/form/acf/mail-template.php:28
-msgctxt "Placeholder"
-msgid "Use the special placeholder %s to link to the complete submission (with all linked forms)."
-msgstr "Utilise le joker spécial %s pour créer un lien vers la saisie complète (et vers tous les formulaires liés)."
-
-#: lib/form/acf/mail-template.php:40
+#: lib/form/acf/mail-template.php:42
 msgctxt "Link"
 msgid "Advanced: You may use %s in this mail template."
 msgstr "Utilisateur/trice avancé/e: tu peux utiliser %s dans ce modèle de courriel"
 
-#: lib/form/include/Mail.php:136
+#: lib/form/include/Mail.php:153
 msgctxt "form submission"
 msgid "view complete submission online"
 msgstr "Afficher en ligne l'intégralité de la saisie"
@@ -2176,11 +2163,11 @@ msgstr "Thème réalisé sur mesure pour les VERTS en Suisse. Conçu par superhu
 msgid "superhuit.ch & gruene.ch"
 msgstr "superhuit.ch & verts.ch"
 
-#: page.php:55
+#: page.php:58
 msgid "Upcoming events"
 msgstr "Évènements à venir"
 
-#: page.php:60
+#: page.php:63
 msgid "Previous events"
 msgstr "Archives des évènements"
 
@@ -2276,7 +2263,7 @@ msgstr "Affiche les quatre dernières contributions, évènements ou pages corre
 "\n"
 "Cette liste est mise à jour automatiquementn lorsqu'un nouveau contenu correspondant aux critères de filtrage est mis en ligne (liste dynamique)."
 
-#: lib/form/include/FormType.php:198
+#: lib/form/include/FormType.php:193
 msgid "Unfortunately not only the form, but also the submissions were copied and we could not delete them. So make sure you delete the submissions linked with your newly cloned form manually."
 msgstr "Malheureusement, les réponses ont été copiées avec le formulaire, et nous n'avons pas pu les effacer. Merci d'effacer manuellement les réponses liées avec le nouveau formulaire (cloné)."
 
@@ -2319,33 +2306,33 @@ msgstr "Filtrer par catégorie"
 msgid "Show all results"
 msgstr "Afficher tous les résultats"
 
-#: lib/form/acf/form-details.php:266 lib/form/acf/form-details.php:291
+#: lib/form/acf/form-details.php:276 lib/form/acf/form-details.php:301
 #: lib/form/acf/input.php:139
 msgid "Important Note"
 msgstr "Remarque importante"
 
 #. Anrede CRM => Appel CRM
-#: lib/form/acf/form-details.php:285
+#: lib/form/acf/form-details.php:295
 msgid "You must select the field type <em>Greeting (CRM)</em> (in the tab <em>standard</em>) for this field to work! Please follow also the note in the <em>standard</em> tab."
 msgstr "Sélectionne un type de champ <em>Appel (GRC)</em> (dans l'onglet <em>Standard</em>) pour que ce champ fonctionne ! Merci de tenir compte également de la remarque dans l'onglet <em>Standard</em>."
 
-#: lib/form/acf/form-details.php:414
+#: lib/form/acf/form-details.php:424
 msgid "Webling Choices"
 msgstr "Options Webling"
 
 #. Annahme: es geht um Optionen, die man in Webling verändern kann, und nicht durch Webling vorgegeben sind.
-#: lib/form/acf/form-details.php:417
+#: lib/form/acf/form-details.php:427
 msgid "Enter the exact corresponding options in Webling in the same order."
 msgstr "Saisis exactement les options prévues par Webling en respectant strictement leur ordre."
 
-#: lib/form/acf/form-details.php:482
+#: lib/form/acf/form-details.php:492
 msgid "Insertion Mode"
 msgstr "Mode insertion"
 
 #. Warnung ist hier kleingeschrieben, anders als bei 
 #. 
 #. <strong>WARNUNG:</strong> Es gab eineige Shortcodes, die wir nicht automatisiert verarbeiten konnten. %sLade die Liste%s mit den zu kontrollierenden Beiträgen herunter.
-#: lib/form/acf/form-details.php:485
+#: lib/form/acf/form-details.php:495
 msgid "<strong>Warning</strong>: Selecting the wrong mode results in data loss!\n"
 "<br><br>\n"
 "Select replace for single value fields like the address line and append for multi value fields like the interests field or a note field."
@@ -2355,7 +2342,7 @@ msgstr "<strong>Avertissement</strong>: Si le mode sélectionné n'est pas le bo
 "\n"
 ""
 
-#: lib/form/acf/form-details.php:580
+#: lib/form/acf/form-details.php:590
 msgid "Add if new"
 msgstr "Ajouter si nouveau"
 
@@ -2377,7 +2364,7 @@ msgstr "ID client"
 msgid "The ID of the oAuth2.0 Client."
 msgstr "L'ID du client oAuth2.0"
 
-#: lib/form/include/CrmSaver.php:151
+#: lib/form/include/CrmSaver.php:245
 msgid "%s: PERMANENT ERROR saving form data to crm"
 msgstr "%s: ERREUR PERMANENTE lors de l'enregistrement des données du formulaire dans le système GRC"
 
@@ -2410,12 +2397,12 @@ msgstr "Chère administratrice / cher administrateur de %s\n"
 "Description de l'erreur :\n"
 "%s"
 
-#: lib/form/acf/form-details.php:408
+#: lib/form/acf/form-details.php:418
 msgid "You must select the field type <em>Subscription (CRM)</em> (in the tab <em>standard</em>) for this field to work!"
 msgstr "Sélectionne le type de champ <em>Abonnement (GRC)</em> (dans l'onglet <em>Standard</em>) pour que le champ fonctionne !"
 
 #. Anredefeld (oder Feld Anrede) (so wie auch "Interessensfeld" in einem Wort geschrieben wurde)
-#: lib/form/acf/form-details.php:624
+#: lib/form/acf/form-details.php:634
 msgid "Make sure this value is accepted by Webling.\n"
 "<br><br>\n"
 "Example greetings field: Only the greetings that can be selected in Webling are accepted values."
@@ -2423,7 +2410,7 @@ msgstr "Assure-toi que cette valeur soit acceptée par Webling.\n"
 "<br><br>\n"
 "Exemple pour le champ Appel : seuls les appels pouvant être sélectionnés dans Webling sont admissibles."
 
-#: lib/form/acf/form-details.php:667
+#: lib/form/acf/form-details.php:677
 msgid "Make sure the values are accepted by Webling. Add one choice per line.\n"
 "<br><br>\n"
 "Example interest field: Only the interests that can be selected in Webling are accepted values."
@@ -2446,7 +2433,7 @@ msgstr "Option spéciale : Abonnement (GRC)"
 msgid "Special: Greeting (CRM)"
 msgstr "Option spéciale : Appel (GRC)"
 
-#: lib/form/include/CrmSaver.php:157
+#: lib/form/include/CrmSaver.php:251
 msgid "Hi Admin of %s\n"
 "\n"
 "There was a PERMANENT ERROR saving the following data to the crm:\n"
@@ -2510,24 +2497,24 @@ msgstr "Carte"
 msgid "Add Block"
 msgstr "Ajouter un bloc"
 
-#: lib/form/include/FormType.php:156 lib/form/include/FormType.php:176
+#: lib/form/include/FormType.php:151 lib/form/include/FormType.php:171
 #: lib/form/include/GDPRHelper.php:37
 msgid "Forms"
 msgstr "Formulaires"
 
-#: lib/form/submission.php:182
+#: lib/form/public-api.php:36 lib/form/submission.php:182
 msgid "Too many requests. Please try again later."
 msgstr "Le nombre de requêtes est trop important. Merci de réessayer plus tard."
 
-#: lib/form/submission.php:309
+#: lib/form/submission.php:308
 msgid "%s: Invalid value."
 msgstr "%s : valeur non valide"
 
-#: lib/form/submission.php:327
+#: lib/form/submission.php:326
 msgid "%s: Invalid or missing value."
 msgstr "%s : valeur non valide ou manquante"
 
-#: lib/form/submission.php:366
+#: lib/form/submission.php:365
 msgid "%s: Missing data."
 msgstr "%s : données manquantes"
 
@@ -2769,7 +2756,7 @@ msgstr ""
 msgid "Page Template Front Page"
 msgstr ""
 
-#: lib/form/acf/mail-template.php:34
+#: lib/form/acf/mail-template.php:30
 msgctxt "Placeholder"
 msgid "%s shows the url to the page or post, where the form was embedded."
 msgstr ""
@@ -2798,4 +2785,67 @@ msgstr "Accueil"
 #: acf-translate.php:754
 msgid "[Template]Block"
 msgstr ""
+
+#: lib/form/acf/mail-template.php:36
+msgctxt "Placeholder"
+msgid "For logged in users only: Use the special placeholder %s to link to the complete submission (with all linked forms)."
+msgstr ""
+
+#: lib/form/acf/settings.php:242
+msgid "Group ID (default)"
+msgstr ""
+
+#: lib/form/acf/settings.php:271
+msgid "Group ID (possible duplicates)"
+msgstr ""
+
+#: lib/form/acf/settings.php:275
+msgid "The ID of the group, where <strong>possible duplicate</strong> member records should be stored in."
+msgstr ""
+
+#: lib/form/acf/settings.php:276
+msgid "If left empty, possible duplicates will be stored in the same group as new member records."
+msgstr ""
+
+#: lib/form/include/Util.php:100
+msgid "ERROR scheduling wp_cron: %s"
+msgstr ""
+
+#: lib/form/include/Util.php:105
+msgid "Hi Admin\n"
+"\n"
+"The wp_cron job %s could not be scheduled on %s.\n"
+"Fix this soon, else the form submission won't work as expected.\n"
+"There is no further info about the error, as WordPress only returns 'false' :("
+msgstr ""
+
+#: lib/tweaks/openid-connect-generic.php:23
+msgid "Default login disabled."
+msgstr ""
+
+#: lib/tweaks/openid-connect-generic.php:31
+msgid "Connect with GREEN-Login"
+msgstr ""
+
+#. Theme URI of the plugin/theme
+#: 
+msgid "https://github.com/grueneschweiz/2018.gruene.ch/"
+msgstr ""
+
+#. Template Name of the plugin/theme
+#: 
+msgid "Landing Page"
+msgstr ""
+
+#: acf-translate.php:4801
+msgid "Blank"
+msgstr "Vote blanc"
+
+#: acf-translate.php:4802 templates/atoms/a-vote-tag.twig:6
+msgid "Initiative"
+msgstr "Initiative"
+
+#: acf-translate.php:4803 templates/atoms/a-vote-tag.twig:8
+msgid "Counter Project"
+msgstr "Contreprojet"
 

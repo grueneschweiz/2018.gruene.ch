@@ -21,12 +21,11 @@
 	}
 
 	&__tag {
-		position: absolute;
-		top: 14px;
-		right: 0;
+		float: right;
+		margin-left: 1em;
 
 		@include media($_DESKTOP) {
-			top: 10px;
+			margin-top: 0.1em;
 		}
 	}
 

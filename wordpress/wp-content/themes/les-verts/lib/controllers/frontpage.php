@@ -4,7 +4,6 @@
 namespace SUPT;
 
 use Timber\Timber;
-use WP_Query;
 use function get_posts;
 
 class Frontpage_controller {
@@ -166,8 +165,6 @@ class Frontpage_controller {
 	 * Adds the event posts to the context (only if the events block is used)
 	 *
 	 * @param $context
-	 *
-	 * @return WP_Query
 	 */
 	private static function add_events_details( &$context ) {
 		if ( empty( $context['post']->custom['content_blocks'] ) ) {
@@ -175,7 +172,7 @@ class Frontpage_controller {
 		}
 
 		foreach ( $context['post']->custom['content_blocks'] as $id => $type ) {
-			if ( 'events' == $type ) {
+			if ( 'events' === $type ) {
 
 				$post_per_page = (int) $context['post']->{"content_blocks_{$id}_max_num"};
 				$category      = $context['post']->{"content_blocks_{$id}_event_category"};
@@ -186,7 +183,9 @@ class Frontpage_controller {
 					'post_type'      => 'tribe_events',
 					'posts_per_page' => $post_per_page,
 					'post_status'    => 'publish', // prevent 'private' if logged in
-					'orderby'        => 'meta_value_datetime',
+					'orderby'        => 'meta_value',
+					'order'          => 'ASC',
+					'meta_key'       => '_EventStartDate',
 					'meta_query'     => array(
 						array(
 							'key'     => '_EventEndDate',

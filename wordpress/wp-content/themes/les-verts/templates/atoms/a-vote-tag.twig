@@ -2,6 +2,10 @@
 	{% set label = __( 'Yes', constant('THEME_DOMAIN') ) %}
 {% elseif 'no' == tag %}
 	{% set label = __( 'No', constant('THEME_DOMAIN') ) %}
+{% elseif 'initiative' == tag %}
+	{% set label = __( 'Initiative', constant('THEME_DOMAIN') ) %}
+{% elseif 'counter-project' == tag %}
+	{% set label = __( 'Counter Project', constant('THEME_DOMAIN') ) %}
 {% else %}
 	{% set label = '&mdash;' %}
 {% endif %}

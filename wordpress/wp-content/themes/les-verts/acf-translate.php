@@ -811,12 +811,13 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 		'hide_on_screen'        => '',
 		'active'                => false,
 		'description'           => '',
+		'modified'              => 1608247019,
 	) );
 
 	acf_add_local_field_group( array(
-		'key'    => 'group_5b684e748247e',
-		'title'  => __( '[Template]Block title', 'lesverts' ),
-		'fields' => array(
+		'key'                   => 'group_5b684e748247e',
+		'title'                 => __( '[Template]Block title', 'lesverts' ),
+		'fields'                => array(
 			array(
 				'key'               => 'field_5b7199bdd9d92',
 				'label'             => __( 'Block Title', 'lesverts' ),
@@ -1505,6 +1506,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 		'hide_on_screen'        => '',
 		'active'                => false,
 		'description'           => '',
+		'modified'              => 1608246560,
 	) );
 
 	acf_add_local_field_group( array(
@@ -1674,6 +1676,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 		'hide_on_screen'        => '',
 		'active'                => false,
 		'description'           => '',
+		'modified'              => 1607954026,
 	) );
 
 	acf_add_local_field_group( array(
@@ -4793,9 +4796,11 @@ Example: {{current}} have signed. Can we reach {{goal}}?', 'lesverts' ),
 							'id'    => '',
 						),
 						'choices'           => array(
-							'yes'  => __( 'Yes', 'lesverts' ),
-							'no'   => __( 'No', 'lesverts' ),
-							'free' => __( '-', 'lesverts' ),
+							'yes'             => __( 'Yes', 'lesverts' ),
+							'no'              => __( 'No', 'lesverts' ),
+							'free'            => __( 'Blank', 'lesverts' ),
+							'initiative'      => __( 'Initiative', 'lesverts' ),
+							'counter-project' => __( 'Counter Project', 'lesverts' ),
 						),
 						'allow_null'        => 0,
 						'other_choice'      => 0,
@@ -5446,6 +5451,7 @@ Example: {{current}} have signed. Can we reach {{goal}}?', 'lesverts' ),
 		),
 		'active'                => true,
 		'description'           => '',
+		'modified'              => 1608246882,
 	) );
 
 	acf_add_local_field_group( array(
@@ -5503,6 +5509,7 @@ Example: {{current}} have signed. Can we reach {{goal}}?', 'lesverts' ),
 		),
 		'active'                => true,
 		'description'           => '',
+		'modified'              => 1608245051,
 	) );
 
 	acf_add_local_field_group( array(
@@ -5763,7 +5770,7 @@ Example: {{current}} have signed. Can we reach {{goal}}?', 'lesverts' ),
 						'name'              => 'quote',
 						'type'              => 'textarea',
 						'instructions'      => __( 'Max 280 characters', 'lesverts' ),
-						'required'          => 1,
+						'required'          => 0,
 						'conditional_logic' => 0,
 						'wrapper'           => array(
 							'width' => '',
@@ -5775,6 +5782,7 @@ Example: {{current}} have signed. Can we reach {{goal}}?', 'lesverts' ),
 						'maxlength'         => 280,
 						'rows'              => 3,
 						'new_lines'         => '',
+						'translations'      => 'translate',
 					),
 					array(
 						'key'               => 'field_5bb4e14d39fc1',
@@ -5851,7 +5859,7 @@ Example: {{current}} have signed. Can we reach {{goal}}?', 'lesverts' ),
 		),
 		'active'                => true,
 		'description'           => '',
-		'modified'              => 1543422125,
+		'modified'              => 1614790852,
 	) );
 
 	acf_add_local_field_group( array(
@@ -6203,13 +6211,148 @@ Example: {{current}} have signed. Can we reach {{goal}}?', 'lesverts' ),
 		),
 		'active'                => true,
 		'description'           => '',
-		'modified'              => 1596474993,
+		'modified'              => 1625750667,
 	) );
 
 	acf_add_local_field_group( array(
-		'key'    => 'group_5b9a8a0bca273',
-		'title'  => __( 'Overview', 'lesverts' ),
-		'fields' => array(
+		'key'                   => 'group_60e6fcf5eff75',
+		'title'                 => __( 'Landing Page', 'lesverts' ),
+		'fields'                => array(
+			array(
+				'key'               => 'field_60e6fcf637d55',
+				'label'             => __( 'Teaser', 'lesverts' ),
+				'name'              => '',
+				'type'              => 'clone',
+				'instructions'      => '',
+				'required'          => 0,
+				'conditional_logic' => 0,
+				'wrapper'           => array(
+					'width' => '',
+					'class' => '',
+					'id'    => '',
+				),
+				'clone'             => array(
+					0 => 'group_5bcee6dd2cfd7',
+				),
+				'display'           => 'group',
+				'layout'            => 'block',
+				'prefix_label'      => 0,
+				'prefix_name'       => 0,
+			),
+			array(
+				'key'               => 'field_60e6fcf637d90',
+				'label'             => __( 'Main Content', 'lesverts' ),
+				'name'              => 'main_content',
+				'type'              => 'group',
+				'instructions'      => '',
+				'required'          => 0,
+				'conditional_logic' => 0,
+				'wrapper'           => array(
+					'width' => '',
+					'class' => '',
+					'id'    => '',
+				),
+				'layout'            => 'block',
+				'sub_fields'        => array(
+					array(
+						'key'               => 'field_60e6fcf654e7f',
+						'label'             => __( 'Header Image', 'lesverts' ),
+						'name'              => 'header_image',
+						'type'              => 'image',
+						'instructions'      => '',
+						'required'          => 0,
+						'conditional_logic' => 0,
+						'wrapper'           => array(
+							'width' => '',
+							'class' => '',
+							'id'    => '',
+						),
+						'return_format'     => 'array',
+						'preview_size'      => 'regular',
+						'library'           => 'all',
+						'min_width'         => '',
+						'min_height'        => '',
+						'min_size'          => '',
+						'max_width'         => '',
+						'max_height'        => '',
+						'max_size'          => '',
+						'mime_types'        => '',
+					),
+					array(
+						'key'               => 'field_60e6fcf654eb9',
+						'label'             => __( 'Content', 'lesverts' ),
+						'name'              => 'content',
+						'type'              => 'clone',
+						'instructions'      => '',
+						'required'          => 0,
+						'conditional_logic' => 0,
+						'wrapper'           => array(
+							'width' => '',
+							'class' => '',
+							'id'    => '',
+						),
+						'clone'             => array(
+							0 => 'group_5cee958e0d362',
+						),
+						'display'           => 'seamless',
+						'layout'            => 'block',
+						'prefix_label'      => 0,
+						'prefix_name'       => 0,
+					),
+				),
+			),
+		),
+		'location'              => array(
+			array(
+				array(
+					'param'    => 'post_type',
+					'operator' => '==',
+					'value'    => 'post',
+				),
+				array(
+					'param'    => 'post_template',
+					'operator' => '==',
+					'value'    => 'single_landingpage.php',
+				),
+			),
+			array(
+				array(
+					'param'    => 'post_type',
+					'operator' => '==',
+					'value'    => 'page',
+				),
+				array(
+					'param'    => 'post_template',
+					'operator' => '==',
+					'value'    => 'single_landingpage.php',
+				),
+			),
+		),
+		'menu_order'            => 10,
+		'position'              => 'normal',
+		'style'                 => 'seamless',
+		'label_placement'       => 'top',
+		'instruction_placement' => 'label',
+		'hide_on_screen'        => array(
+			0 => 'the_content',
+			1 => 'excerpt',
+			2 => 'discussion',
+			3 => 'comments',
+			4 => 'revisions',
+			5 => 'slug',
+			6 => 'format',
+			7 => 'featured_image',
+			8 => 'send-trackbacks',
+		),
+		'active'                => true,
+		'description'           => '',
+		'modified'              => 1626181174,
+	) );
+
+	acf_add_local_field_group( array(
+		'key'                   => 'group_5b9a8a0bca273',
+		'title'                 => __( 'Overview', 'lesverts' ),
+		'fields'                => array(
 			array(
 				'key'               => 'field_5b9a8a0be9449',
 				'label'             => __( 'Lead', 'lesverts' ),
@@ -6442,6 +6585,30 @@ Example: {{current}} have signed. Can we reach {{goal}}?', 'lesverts' ),
 					'value'    => 'tribe_events',
 				),
 			),
+			array(
+				array(
+					'param'    => 'post_type',
+					'operator' => '==',
+					'value'    => 'post',
+				),
+				array(
+					'param'    => 'post_template',
+					'operator' => '==',
+					'value'    => 'single_landingpage.php',
+				),
+			),
+			array(
+				array(
+					'param'    => 'post_type',
+					'operator' => '==',
+					'value'    => 'page',
+				),
+				array(
+					'param'    => 'page_template',
+					'operator' => '==',
+					'value'    => 'single_landingpage.php',
+				),
+			),
 		),
 		'menu_order'            => 20,
 		'position'              => 'normal',
@@ -6451,7 +6618,7 @@ Example: {{current}} have signed. Can we reach {{goal}}?', 'lesverts' ),
 		'hide_on_screen'        => '',
 		'active'                => true,
 		'description'           => '',
-		'modified'              => 1543324758,
+		'modified'              => 1625750433,
 	) );
 
 endif;
