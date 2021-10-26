@@ -2,6 +2,14 @@
 
 namespace SUPT;
 
+use function add_action;
+use function class_exists;
+use function defined;
+use function is_admin;
+use function is_plugin_active;
+use function register_widget;
+use function version_compare;
+
 /**
  * ACF
  * ===
@@ -15,7 +23,7 @@ namespace SUPT;
 if ( class_exists( 'acf_pro' ) ) {
 	require_once __DIR__ . '/acf/cached-oembeds.php';
 
-	if (is_admin()) {
+	if ( is_admin() ) {
 		require_once __DIR__ . '/acf/acf-init.php';
 		require_once __DIR__ . '/acf/acf-people-title.php';
 	}
@@ -156,9 +164,9 @@ require_once __DIR__ . '/widgets/LinkListWidget.php';
 
 // register post types & taxonomies
 add_action( 'widgets_init', function () {
-	register_widget( '\SUPT\ContactWidget' );
-	register_widget( '\SUPT\ButtonWidget' );
-	register_widget( '\SUPT\LinkListWidget' );
+	register_widget( ContactWidget::class );
+	register_widget( ButtonWidget::class );
+	register_widget( LinkListWidget::class );
 } );
 
 
