@@ -246,7 +246,8 @@ class CustomMenuBreadcrumbs {
 
 		// for all regular menu elements
 		if ( $object_id ) {
-			$current_menu_item = $this->get_menu_item_object_by_object_id( $object_id );
+			$is_term_id        = get_queried_object() instanceof WP_Term;
+			$current_menu_item = $this->get_menu_item_object_by_object_id( $object_id, $is_term_id );
 		}
 
 		// for posts not the post itself but the primary category is linked in the menu
