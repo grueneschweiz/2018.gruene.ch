@@ -244,3 +244,17 @@ if ( class_exists( 'acf_pro' ) ) {
  */
 require_once __DIR__ . '/shortcodes/progress.php';
 Progress_shortcode::register();
+
+
+/**
+ * MIGRATIONS
+ * ==========
+ */
+require_once __DIR__ . '/migrations/Migrator.php';
+$dbVersion = Migrations\Migrator::getDbVersion();
+if ( version_compare( '0.26.0', $dbVersion ) ) {
+	require_once __DIR__ . '/migrations/get-active-button.php';
+}
+if ( version_compare( THEME_DOMAIN, $dbVersion ) ) {
+	Migrations\Migrator::setCurrentVersion();
+}
