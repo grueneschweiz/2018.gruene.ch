@@ -1,4 +1,4 @@
-<div class="a-submenu  {{ modifiers_classes }}">
+<div class="a-submenu {{ modifiers_classes }}">
 	{{#if featured}}
 		<div class="a-submenu--featured__cat-title">
 			{{> @a-cat-title cat-title}}
@@ -9,8 +9,12 @@
 		<a class="a-submenu--featured__link" href="{{ this.url }}">
 			<h3 class="a-submenu--featured__link__title">{{ title }}</h3>
 		</a>
-		<p class="a-submenu--featured__text">{{ text }}</p>
-		{{> @a-button button}}
+		{{#if text}}
+			<p class="a-submenu--featured__text">{{ text }}</p>
+		{{/if}}
+		{{#if button}}
+			{{> @a-button button}}
+		{{/if}}
 	{{else}}
 		<a class="a-submenu__title" href="{{ url }}">{{ title }}</a>
 		<ul class="a-submenu__list">
