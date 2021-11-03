@@ -63,14 +63,20 @@ export default class MMenuMobile extends MMenuBase {
 	}
 
 	afterOpenSubNavigation( element ) {
+		const isRight = element.closest( RIGHT_SELECTOR );
+		if (isRight) {
+			return;
+		}
+
 		this.removeClass( this.right, OPEN_STATE );
 
-		let liClicked = element.parentElement;
+		const liClicked = element.parentElement;
 
 		this.menuItems.forEach( item => {
 			if (item === liClicked) {
 				this.addClass( item, ACTIVE_STATE );
-			} else {
+			}
+			else {
 				this.addClass( item, HIDDEN_STATE );
 			}
 		} );

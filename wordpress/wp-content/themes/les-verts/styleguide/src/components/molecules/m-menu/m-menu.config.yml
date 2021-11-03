@@ -35,25 +35,47 @@ context:
     - title: Grüne Schweiz
     - title: Publikationen
     - title: Kontakt
+  cta-items:
+    - title: Mitmachen
+      section-items:
+        - title: Mitglied werden
+          featured: true
+          link-image:
+            link-url: '#'
+            image-src: "/img/wheat_ratio.jpg"
+            alt: Symbolbild Fair-Food
+            title: This is a linked image
+          cat-title:
+            label: Mitmachen
+          modifiers:
+            - featured
+        - title: Spenden
+          featured: true
+          link-image:
+            link-url: '#'
+            image-src: "/img/wheat_ratio.jpg"
+            alt: Symbolbild Fair-Food
+            title: This is a linked image
+          cat-title:
+            label: Unterstützen
+          modifiers:
+            - featured
   aria-label-main-navigation: Hauptnavigation
   aria-label-language-navigation: Sprachmenü
   aria-label-sub-navigation: Untermenü
   aria-label-close-sub-navigation: Untermenü schliessen
   search_modifiers:
-  - covering
+    - covering
   languages:
     - de
     - fr
   logo:
     de: true
     title: Logo Grüne Schweiz
-  button:
-    label: Mitmachen
-    modifiers:
-      - outline
-      - secondary
 variants:
   - name: Force Mobile
     context:
       modifiers:
         - force-mobile
+  - name: Submenu
+    hidden: true

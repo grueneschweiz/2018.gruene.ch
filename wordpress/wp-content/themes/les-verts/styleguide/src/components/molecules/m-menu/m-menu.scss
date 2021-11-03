@@ -308,6 +308,10 @@
 			overflow-y: hidden;
 		}
 
+		&--cta {
+			background-color: $color-white;
+		}
+
 		&.is-open {
 			display: flex;
 			opacity: 1;

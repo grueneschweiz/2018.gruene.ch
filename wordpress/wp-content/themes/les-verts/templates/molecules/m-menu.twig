@@ -15,28 +15,12 @@
 			{% for item in menu.main.items %}
 				<li class="m-menu__nav-item" role="none">
 					<a
-						class="m-menu__nav-link m-menu__nav-link--{{ item.id }}{% if item.children %} m-menu__nav-link--parent{% endif %}{% if item.current or item.current_item_ancestor %} m-menu__nav-link--active{% endif %}"
+						class="m-menu__nav-link m-menu__nav-link--js-hook m-menu__nav-link--{{ item.id }}{% if item.children %} m-menu__nav-link--parent{% endif %}{% if item.current or item.current_item_ancestor %} m-menu__nav-link--active{% endif %}"
 						href="{{ item.link }}" role="menuitem" {% if loop.first %}tabindex="0" accesskey="1"{% endif %}
 						{% if item.children %}aria-haspopup="menu" aria-expanded="false"{% endif %}
 						{{ link_props(item.link) }}>{{ item.title }}</a>
 					{% if item.children %}
-						<ul class="m-menu__submenu" role="menu"
-								aria-label="{{ __('Submenu', constant('THEME_DOMAIN')) }}">
-							{% for subitem in item.children %}
-								<li class="m-menu__submenu__section" role="none">
-									{% include 'atoms/a-submenu.twig' with {'item': subitem } only %}
-								</li>
-							{% endfor %}
-							<li class="m-menu__submenu__close-wrapper" role="none">
-								<button class="m-menu__submenu__close"
-												aria-label="{{ __('Close submenu', constant('THEME_DOMAIN')) }}">
-									<svg role="img">
-										<title>{{ __('Close icon', constant('THEME_DOMAIN')) }}</title>
-										<use xlink:href="#close"></use>
-									</svg>
-								</button>
-							</li>
-						</ul>
+						{% include 'molecules/m-menu--submenu.twig' with {children: item.children} only %}
 					{% endif %}
 				</li>
 			{% endfor %}
@@ -49,13 +33,28 @@
 	</nav>
 	{% if menu.cta or menu.language %}
 		<div class="m-menu__right">
-			{% if menu.cta %}
-				<div class="m-menu__cta">{% include 'atoms/a-button.twig' with {
-						'link': menu.cta.link|pll,
-						'label': menu.cta.label|pll,
+			<div class="m-menu__cta">
+				{% for item in menu.cta.items %}
+				{% set class = "m-menu__nav-link--js-hook m-menu__nav-link--#{item.id}" %}
+				{% if item.children %}
+					{% set class = class ~ ' m-menu__nav-link--parent' %}
+				{% endif %}
+				<div class="m-menu__nav-item">
+					{% include 'atoms/a-button.twig' with {
+						'link': item.link,
+						'label': item.title,
+						'class': class,
 						'modifiers': ['a-button--outline', 'a-button--secondary']
-					} only %}</div>
-			{% endif %}
+					} only %}
+					{% if item.children %}
+						{% include 'molecules/m-menu--submenu.twig' with {
+							children: item.children,
+							submenu_class: 'm-menu__submenu--cta',
+						} only %}
+					{% endif %}
+				</div>
+			</div>
+			{% endfor %}
 			{% if menu.language %}
 				<div class="m-menu__language-nav">
 					<ul class="m-menu__language-nav-list" role="menubar"
