@@ -4,6 +4,7 @@ display:
   padding: 40px
 context:
   label: Mitmachen
+  class: added-class
 variants:
   - name: Outlined
     context:
