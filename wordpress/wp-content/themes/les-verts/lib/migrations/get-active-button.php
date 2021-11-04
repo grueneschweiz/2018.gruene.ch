@@ -3,15 +3,23 @@
 namespace SUPT\Migrations\GetActiveButton;
 
 use function add_action;
+use function array_merge_recursive;
 use function function_exists;
+use function get_option;
 use function get_theme_mod;
 use function has_nav_menu;
+use function is_array;
 use function is_nav_menu;
 use function pll_languages_list;
 use function pll_translate_string;
 use function set_theme_mod;
 use function sprintf;
+use function strlen;
+use function substr;
+use function trim;
+use function update_option;
 use function wp_create_nav_menu;
+use function wp_get_nav_menu_object;
 use function wp_update_nav_menu_item;
 use const THEME_DOMAIN;
 
@@ -27,7 +35,7 @@ add_action( 'wp_loaded', function () {
 		}
 	}
 
-	// use $locales because as pll_languages_list() may
+	// use $languages because as pll_languages_list() may
 	// also return an empty array.
 	if ( empty( $languages ) ) {
 		migrate();
@@ -35,31 +43,49 @@ add_action( 'wp_loaded', function () {
 } );
 
 function migrate( string $lang = '' ) {
-	$name     = get_nav_name( $lang );
-	$link     = get_nav_link( $lang );
-	$location = 'get-active-nav';
+	$nav_name   = get_nav_name( $lang );
+	$item_title = trim( substr( $nav_name, 0, - strlen( $lang ) ) );
+	$link       = get_nav_link( $lang );
+	$location   = 'get-active-nav';
 
-	// bail out if there is already a menu assigned
-	if ( ! $link || has_nav_menu( $location ) || is_nav_menu( $name ) ) {
+	// exit if no get active button was defined in the customizer
+	if ( ! $link ) {
 		return;
 	}
 
-	// first create nav menu
-	$menu_id = wp_create_nav_menu( $name );
+	if ( ! is_nav_menu( $nav_name ) ) {
+		$menu_id = wp_create_nav_menu( $nav_name );
+	} else {
+		$menu_id = wp_get_nav_menu_object( $nav_name )->term_id;
+	}
 
-	// then add item into newly-created menu
-	wp_update_nav_menu_item( $menu_id, 0, array(
-		'menu-item-title'  => $name,
-		'menu-item-url'    => $link,
-		'menu-item-status' => 'publish'
-	) );
-
+	if ( ! wp_get_nav_menu_items( $menu_id ) ) {
+		wp_update_nav_menu_item( $menu_id, 0, array(
+			'menu-item-title'  => $item_title,
+			'menu-item-url'    => $link,
+			'menu-item-status' => 'publish'
+		) );
+	}
 
 	// Set menu location if needed
 	if ( ! has_nav_menu( $location ) ) {
+		set_nav_location( $location, $menu_id, $lang );
+	}
+}
+
+function set_nav_location( string $location, int $menu_id, string $lang ) {
+	$polylang = get_option( 'polylang' );
+	if ( empty( $lang ) || ! $polylang || ! is_array( $polylang ) ) {
+		// menu not localized
 		$locations              = get_theme_mod( 'nav_menu_locations' );
 		$locations[ $location ] = $menu_id;
 		set_theme_mod( 'nav_menu_locations', $locations );
+	}
+	if ( $polylang && is_array( $polylang ) ) {
+		// localized menu
+		$add      = [ 'nav_menus' => [ 'les-verts' => [ $location => [ $lang => $menu_id ] ] ] ];
+		$polylang = array_merge_recursive( $polylang, $add );
+		update_option( 'polylang', $polylang );
 	}
 }
 
