@@ -3,13 +3,14 @@
 namespace SUPT\Migrations\GetActiveButton;
 
 use function add_action;
-use function array_merge_recursive;
+use function array_replace_recursive;
 use function function_exists;
 use function get_option;
 use function get_theme_mod;
 use function has_nav_menu;
 use function is_array;
 use function is_nav_menu;
+use function pll_default_language;
 use function pll_languages_list;
 use function pll_translate_string;
 use function set_theme_mod;
@@ -68,23 +69,24 @@ function migrate( string $lang = '' ) {
 	}
 
 	// Set menu location if needed
-	if ( ! has_nav_menu( $location ) ) {
+	if ( ! has_nav_menu( $location ) || ! is_default_lang( $lang ) ) {
 		set_nav_location( $location, $menu_id, $lang );
 	}
 }
 
 function set_nav_location( string $location, int $menu_id, string $lang ) {
-	$polylang = get_option( 'polylang' );
-	if ( empty( $lang ) || ! $polylang || ! is_array( $polylang ) ) {
+	if ( is_default_lang( $lang ) ) {
 		// menu not localized
 		$locations              = get_theme_mod( 'nav_menu_locations' );
 		$locations[ $location ] = $menu_id;
 		set_theme_mod( 'nav_menu_locations', $locations );
 	}
+
+	$polylang = get_option( 'polylang' );
 	if ( $polylang && is_array( $polylang ) ) {
 		// localized menu
 		$add      = [ 'nav_menus' => [ 'les-verts' => [ $location => [ $lang => $menu_id ] ] ] ];
-		$polylang = array_merge_recursive( $polylang, $add );
+		$polylang = array_replace_recursive( $polylang, $add );
 		update_option( 'polylang', $polylang );
 	}
 }
@@ -115,5 +117,13 @@ function get_nav_link( string $lang ) {
 	}
 
 	return $link;
+}
+
+function is_default_lang( string $lang ) {
+	if ( function_exists( '\pll_default_language' ) ) {
+		return $lang === pll_default_language();
+	}
+
+	return true;
 }
 
