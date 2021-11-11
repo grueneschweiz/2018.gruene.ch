@@ -147,18 +147,11 @@ class Navigation_controller {
 	}
 
 	public static function add_to_context( $context ) {
-
-		$main_menu = new Menu( 'main-nav', [ 'depth' => 3 ] );
-		self::prepare_special_menu_items( $main_menu->items );
-
-		$cta_menu = new Menu( 'get-active-nav', [ 'depth' => 3 ] );
-		self::prepare_special_menu_items( $cta_menu->items );
-
-		$context['menu']['main']        = $main_menu;
-		$context['menu']['language']    = new Menu( 'language-nav', [ 'depth' => 1 ] );
-		$context['menu']['cta']         = $cta_menu;
-		$context['menu']['footer']      = new Menu( 'footer-nav', [ 'depth' => 2 ] );
-		$context['menu']['footer_meta'] = new Menu( 'footer-meta-nav', [ 'depth' => 1 ] );
+		$context['menu']['main']        = self::get_menu( 'main-nav', [ 'depth' => 3 ] );
+		$context['menu']['language']    = self::get_menu( 'language-nav', [ 'depth' => 1 ] );
+		$context['menu']['cta']         = self::get_menu( 'get-active-nav', [ 'depth' => 3 ] );
+		$context['menu']['footer']      = self::get_menu( 'footer-nav', [ 'depth' => 2 ] );
+		$context['menu']['footer_meta'] = self::get_menu( 'footer-meta-nav', [ 'depth' => 1 ] );
 		$context['menu']['search']      = is_plugin_active( 'searchwp/index.php' );
 
 		$img_id                  = get_theme_mod( Customizer\Logo::SETTING_LOGO_DARK, false );
@@ -169,6 +162,17 @@ class Navigation_controller {
 		];
 
 		return $context;
+	}
+
+	private static function get_menu( string $slug, array $options = array() ) {
+		if ( has_nav_menu( $slug ) ) {
+			$menu = new Menu( $slug, $options );
+			self::prepare_special_menu_items( $menu->items );
+		} else {
+			$menu = array();
+		}
+
+		return $menu;
 	}
 
 	/**
