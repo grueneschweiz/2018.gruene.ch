@@ -1,6 +1,6 @@
 import BaseView from 'base-view';
 
-export const MAIN_ENTRY_SELECTOR = '.m-menu__nav-link';
+export const MAIN_ENTRY_SELECTOR = '.m-menu__nav-link--js-hook';
 export const SUBMENU_SELECTOR = '.m-menu__submenu';
 
 export const OPEN_STATE = 'is-open';

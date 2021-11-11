@@ -148,12 +148,15 @@ class Navigation_controller {
 
 	public static function add_to_context( $context ) {
 
-		$menu = new Menu( 'main-nav', [ 'depth' => 3 ] );
-		self::prepare_special_menu_items( $menu->items );
+		$main_menu = new Menu( 'main-nav', [ 'depth' => 3 ] );
+		self::prepare_special_menu_items( $main_menu->items );
 
-		$context['menu']['main']        = $menu;
+		$cta_menu = new Menu( 'get-active-nav', [ 'depth' => 3 ] );
+		self::prepare_special_menu_items( $cta_menu->items );
+
+		$context['menu']['main']        = $main_menu;
 		$context['menu']['language']    = new Menu( 'language-nav', [ 'depth' => 1 ] );
-		$context['menu']['cta']         = self::get_menu_cta();
+		$context['menu']['cta']         = $cta_menu;
 		$context['menu']['footer']      = new Menu( 'footer-nav', [ 'depth' => 2 ] );
 		$context['menu']['footer_meta'] = new Menu( 'footer-meta-nav', [ 'depth' => 1 ] );
 		$context['menu']['search']      = is_plugin_active( 'searchwp/index.php' );
@@ -208,32 +211,5 @@ class Navigation_controller {
 			$item->category = new Term( $item->category );
 			$item->image    = new Image( $item->image );
 		}
-	}
-
-	/**
-	 * Return array with label and link for the get active button.
-	 *
-	 * The values come from the customizer. If link is defined, an empty
-	 * array will be returned.
-	 *
-	 * @return array
-	 */
-	public static function get_menu_cta() {
-		$link = get_theme_mod( Customizer\GetActive::SETTING_GET_ACTIVE_LINK, false );
-
-		if ( ! $link ) {
-			return [];
-		}
-
-		$label = get_theme_mod( Customizer\GetActive::SETTING_GET_ACTIVE_LABEL, false );
-
-		if ( ! $label ) {
-			$label = __( 'Get Active', THEME_DOMAIN );
-		}
-
-		return [
-			'label' => $label,
-			'link'  => $link,
-		];
 	}
 }

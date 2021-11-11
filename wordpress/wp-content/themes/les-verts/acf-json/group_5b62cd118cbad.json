@@ -1,23 +1,6 @@
 {
     "key": "group_5b62cd118cbad",
     "title": "(Menu) Featured Subnav Item",
-    "location": [
-        [
-            {
-                "param": "nav_menu_item",
-                "operator": "==",
-                "value": "all"
-            }
-        ]
-    ],
-    "menu_order": 0,
-    "position": "normal",
-    "style": "default",
-    "label_placement": "top",
-    "instruction_placement": "label",
-    "hide_on_screen": "",
-    "active": 1,
-    "description": "",
     "fields": [
         {
             "key": "field_5b62da7660cb3",
@@ -115,22 +98,22 @@
                     "mime_types": ""
                 },
                 {
-                    "key": "field_5b62cf84766b4",
-                    "label": "Teaser",
-                    "name": "teaser",
-                    "type": "textarea",
-                    "instructions": "Max. 140 characters.",
-                    "required": 1,
-                    "conditional_logic": [
-                        [
-                            {
-                                "field": "field_5b62da7660cb3",
-                                "operator": "==",
-                                "value": "1"
-                            }
-                        ]
-                    ],
-                    "wrapper": {
+                  "key": "field_5b62cf84766b4",
+                  "label": "Teaser",
+                  "name": "teaser",
+                  "type": "textarea",
+                  "instructions": "Max. 140 characters.",
+                  "required": 0,
+                  "conditional_logic": [
+                    [
+                      {
+                        "field": "field_5b62da7660cb3",
+                        "operator": "==",
+                        "value": "1"
+                      }
+                    ]
+                  ],
+                  "wrapper": {
                         "width": "",
                         "class": "",
                         "id": ""
@@ -141,35 +124,52 @@
                     "rows": 4,
                     "new_lines": ""
                 },
-                {
-                    "key": "field_5b62cfc0766b5",
-                    "label": "Button Text",
-                    "name": "button_text",
-                    "type": "text",
-                    "instructions": "The button will link to this menu item",
-                    "required": 1,
-                    "conditional_logic": [
-                        [
-                            {
-                                "field": "field_5b62da7660cb3",
-                                "operator": "==",
-                                "value": "1"
-                            }
-                        ]
-                    ],
-                    "wrapper": {
+              {
+                "key": "field_5b62cfc0766b5",
+                "label": "Button Text",
+                "name": "button_text",
+                "type": "text",
+                "instructions": "The button will link to this menu item",
+                "required": 0,
+                "conditional_logic": [
+                  [
+                    {
+                      "field": "field_5b62da7660cb3",
+                      "operator": "==",
+                      "value": "1"
+                    }
+                  ]
+                ],
+                "wrapper": {
                         "width": "",
                         "class": "",
                         "id": ""
-                    },
-                    "default_value": "Show campaign",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "maxlength": 60
-                }
+                },
+                "default_value": "Show campaign",
+                "placeholder": "",
+                "prepend": "",
+                "append": "",
+                "maxlength": 60
+              }
             ]
         }
     ],
-    "modified": 1543324738
+  "location": [
+    [
+      {
+        "param": "nav_menu_item",
+        "operator": "==",
+        "value": "all"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "hide_on_screen": "",
+  "active": true,
+  "description": "",
+  "modified": 1635972087
 }

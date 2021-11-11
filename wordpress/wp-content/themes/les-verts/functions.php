@@ -97,6 +97,7 @@ class StarterSite extends TimberSite {
 			'main-nav'        => __( 'Main navigation', THEME_DOMAIN ),
 			'language-nav'    => __( 'Language navigation', THEME_DOMAIN ),
 			'footer-meta-nav' => __( 'Footer meta navigation', THEME_DOMAIN ),
+			'get-active-nav'  => __( 'Action button navigation', THEME_DOMAIN ),
 		) );
 	}
 	
