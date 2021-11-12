@@ -249,9 +249,9 @@ Progress_shortcode::register();
  */
 require_once __DIR__ . '/migrations/Migrator.php';
 $dbVersion = Migrations\Migrator::getDbVersion();
-if ( version_compare( '0.26.0', $dbVersion ) ) {
+if ( 1 === version_compare( '0.26.2', $dbVersion ) ) {
 	require_once __DIR__ . '/migrations/get-active-button.php';
 }
-if ( version_compare( THEME_DOMAIN, $dbVersion ) ) {
+if ( 1 === version_compare( THEME_VERSION, $dbVersion ) ) {
 	Migrations\Migrator::setCurrentVersion();
 }
