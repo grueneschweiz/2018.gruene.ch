@@ -45,8 +45,8 @@ add_action( 'wp_loaded', function () {
 
 function migrate( string $lang = '' ) {
 	$nav_name   = get_nav_name( $lang );
-	$item_title = trim( substr( $nav_name, 0, - strlen( $lang ) ) );
-	$link       = get_nav_link( $lang );
+	$item_title = get_nav_item_title( $lang );
+	$link       = get_nav_item_link( $lang );
 	$location   = 'get-active-nav';
 
 	// exit if no get active button was defined in the customizer
@@ -72,6 +72,16 @@ function migrate( string $lang = '' ) {
 	if ( ! has_nav_menu( $location ) || ! is_default_lang( $lang ) ) {
 		set_nav_location( $location, $menu_id, $lang );
 	}
+}
+
+function get_nav_item_title( string $lang ): string {
+	$name = get_nav_name( $lang );
+
+	if ( $lang === '' ) {
+		return $name;
+	}
+
+	return trim( substr( $name, 0, - strlen( $lang ) ) );
 }
 
 function set_nav_location( string $location, int $menu_id, string $lang ) {
@@ -109,7 +119,7 @@ function get_nav_name( string $lang ) {
 	return $label;
 }
 
-function get_nav_link( string $lang ) {
+function get_nav_item_link( string $lang ) {
 	$link = get_theme_mod( 'get_active_link', '' );
 
 	if ( function_exists( '\pll_translate_string' ) && ! empty( $lang ) && ! empty( $link ) ) {
