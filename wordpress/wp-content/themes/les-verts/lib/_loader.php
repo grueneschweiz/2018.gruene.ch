@@ -6,7 +6,6 @@ use function add_action;
 use function class_exists;
 use function defined;
 use function is_admin;
-use function is_plugin_active;
 use function register_widget;
 use function version_compare;
 
@@ -83,10 +82,6 @@ if ( is_admin() ) {
 require_once __DIR__ . '/admin/rest-disable-user.php';
 require_once __DIR__ . '/admin/timmy-config.php';
 require_once __DIR__ . '/admin/update-handler.php';
-
-if ( is_plugin_active( 'daggerhart-openid-connect-generic/openid-connect-generic.php' ) ) {
-	require_once __DIR__ . '/tweaks/openid-connect-generic.php';
-}
 
 /**
  * CONTROLLERS
