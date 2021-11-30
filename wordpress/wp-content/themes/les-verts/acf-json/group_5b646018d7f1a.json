@@ -266,16 +266,16 @@
                             "name": "map_block",
                             "type": "clone",
                             "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "clone": [
-                              "group_5b6da383ba62c"
-                            ],
+                          "required": 0,
+                          "conditional_logic": 0,
+                          "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                          },
+                          "clone": [
+                            "group_5b6da383ba62c"
+                          ],
                           "display": "seamless",
                           "layout": "block",
                           "prefix_label": 0,
@@ -323,13 +323,18 @@
         }
     ],
     "location": [
-        [
-            {
-                "param": "page_type",
-                "operator": "==",
-                "value": "front_page"
-            }
-        ]
+      [
+        {
+          "param": "page_type",
+          "operator": "==",
+          "value": "front_page"
+        },
+        {
+          "param": "page_template",
+          "operator": "!=",
+          "value": "single_front.php"
+        }
+      ]
     ],
     "menu_order": 0,
     "position": "normal",
@@ -352,5 +357,5 @@
     ],
   "active": true,
   "description": "",
-  "modified": 1608246882
+  "modified": 1638268929
 }
