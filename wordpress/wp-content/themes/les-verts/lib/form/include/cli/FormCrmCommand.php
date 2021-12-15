@@ -51,7 +51,7 @@ class FormCrmCommand {
 		foreach ( $items as $item ) {
 			$last_attempt = $item->last_attempt_seconds_ago() ? $item->last_attempt_seconds_ago() . ' seconds ago' : 'never';
 			$row          = [
-				'id'           => $item->get_submission()->meta_get_id(),
+				'id'           => $item->get_submission_id(),
 				'form_id'      => $item->get_form_id(),
 				'attempts'     => $item->get_attempts(),
 				'last_attempt' => $last_attempt,
@@ -153,8 +153,8 @@ class FormCrmCommand {
 	 *
 	 * ## OPTIONS
 	 *
-	 * [<idx>]
-	 * : The queue index of the item to delete.
+	 * [<id>]
+	 * : The id of the item to delete.
 	 *
 	 * [--all]
 	 * : Delete all crm data in the queue.
@@ -168,7 +168,18 @@ class FormCrmCommand {
 			return;
 		}
 
-		$queue->remove( absint( $args[0] ) );
+		$id = absint( $args[0] );
+
+		/** @var CrmQueueItem $item */
+		foreach ( $queue->get_all() as $index => $item ) {
+			if ( $id === $item->get_submission_id() ) {
+				$queue->remove( $index );
+
+				return;
+			}
+		}
+
+		WP_CLI::error( "Invalid id: ${args[0]}" );
 	}
 }
 
