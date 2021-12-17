@@ -128,3 +128,28 @@ add_action( 'wpseo_add_opengraph_additional_images', function ( $og ) {
 
 	$og->add_image( array( 'url' => $image_url ) );
 } );
+
+/**
+ * Nice open graph descriptions
+ *
+ * If the open graph description data is taken from the content instead of the lead (p.ex. for events)
+ * it may contain html tags, and it is of infinite length. This function cleans out the tags and trims
+ * the description to a max of 140 chars.
+ */
+add_filter( 'wpseo_opengraph_desc', static function ( $description ) {
+	$limit = 140; // cut off descriptions at 140 chars
+	$clean = preg_replace( '/\s+/', ' ', trim( wp_strip_all_tags( $description, true ) ) );
+
+	if ( strlen( $clean ) > $limit ) {
+		// chop off at $limit
+		$hard_trimmed = substr( $clean, 0, $limit );
+
+		// chop of last word part, so we stop with space
+		$soft_trim_pos = strrpos( rtrim( $hard_trimmed, '.,?!;:-‒–"«»›‹' ), ' ' );
+		$trimmed       = substr( $clean, 0, $soft_trim_pos );
+
+		return $trimmed . ' …';
+	}
+
+	return $clean;
+} );
