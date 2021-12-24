@@ -12,8 +12,9 @@
 </section>
 
 <script>
-	if (!window.sessionStorage.getItem( 'branding' )) {
-		document.querySelector( '.m-branding' ).style.display = 'block';
+	var branding = parseInt( window.sessionStorage.getItem( 'branding' ) || 0 );
+	if (branding < 2) {
+		document.querySelectorAll( '.m-branding' ).forEach( el => el.style.display = 'block' );
+		window.sessionStorage.setItem( 'branding', ( branding + 1 ).toString() );
 	}
-	window.sessionStorage.setItem( 'branding', true );
 </script>

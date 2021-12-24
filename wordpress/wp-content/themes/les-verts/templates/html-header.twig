@@ -17,14 +17,16 @@
 		{% endif %}
 	</title>
 	<script type="text/javascript">
-		var html = document.getElementsByTagName( 'html' )[ 0 ];
-		html.className = html.className.replace( /(?:^|\s)no-js(?!\S)/g, 'js' );
+		( function() {
+			var html = document.getElementsByTagName( 'html' )[ 0 ];
+			html.className = html.className.replace( /(?:^|\s)no-js(?!\S)/g, 'js' );
 
-		{% if ( not fn('is_customize_preview') ) %}
-		if (window.sessionStorage.getItem( 'branding' )) {
-			html.classList.add( 'no-branding' );
-		}
-		window.sessionStorage.setItem( 'branding', true );
+			{% if ( not fn('is_customize_preview') ) %}
+			if (window.sessionStorage.getItem( 'branding' )) {
+				html.classList.add( 'no-branding' );
+			}
+			window.sessionStorage.setItem( 'branding', true );
+		} )();
 		{% endif %}
 	</script>
 	<meta name="description"
