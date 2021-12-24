@@ -121,10 +121,6 @@ class StarterSite extends TimberSite {
 			// dont load block styles
 			wp_dequeue_style( 'wp-block-library' );
 			wp_deregister_style( 'wp-block-library' );
-
-			// remove open id connect admin styles
-			wp_dequeue_style( 'daggerhart-openid-connect-generic-admin' );
-			wp_deregister_style( 'daggerhart-openid-connect-generic-admin' );
 		}
 
 		// admin bar styles
