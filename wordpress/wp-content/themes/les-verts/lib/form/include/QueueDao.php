@@ -31,11 +31,13 @@ class QueueDao {
 	 * @param mixed $item
 	 */
 	public function push( $item ) {
+		$this->lock();
 		$queue = $this->get_all();
-		if ( ! in_array( $item, $queue ) ) {
+		if ( ! in_array( $item, $queue, true ) ) {
 			$queue[] = $item;
 			$this->save( $queue );
 		}
+		$this->unlock();
 	}
 
 	/**
@@ -44,9 +46,11 @@ class QueueDao {
 	 * @return mixed|null null if queue is empty
 	 */
 	public function pop() {
+		$this->lock();
 		$queue = $this->get_all();
 		$item  = array_shift( $queue );
 		$this->save( $queue );
+		$this->unlock();
 
 		return $item;
 	}
@@ -100,9 +104,21 @@ class QueueDao {
 	 * @param int $index
 	 */
 	public function remove( int $index ) {
+		$this->lock();
 		$queue = $this->get_all();
 		unset( $queue[ $index ] );
 		$reindexed = array_values( $queue );
 		$this->save( $reindexed );
+		$this->unlock();
+	}
+
+	private function lock() {
+		global $wpdb;
+		$wpdb->query( "LOCK TABLES $wpdb->options WRITE" );
+	}
+
+	private function unlock() {
+		global $wpdb;
+		$wpdb->query( "UNLOCK TABLES" );
 	}
 }
