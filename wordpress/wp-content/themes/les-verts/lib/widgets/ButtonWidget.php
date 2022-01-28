@@ -9,6 +9,8 @@
 namespace SUPT;
 
 
+use const THEME_DOMAIN;
+
 /**
  * Class ButtonWidget
  *
@@ -20,15 +22,15 @@ class ButtonWidget extends Widget {
 	function __construct() {
 		parent::__construct(
 			'supt_button_widget',
-			__( 'Button', \THEME_DOMAIN ),
+			__( 'Button', THEME_DOMAIN ),
 			array(
-				'description' => __( 'Show your main calls to action', \THEME_DOMAIN )
+				'description' => __( 'Show your main calls to action', THEME_DOMAIN )
 			)
 		);
-		
-		$this->set_title_default( __( 'Get active', \THEME_DOMAIN ) );
+
+		$this->set_title_default( __( 'Get active', THEME_DOMAIN ) );
 	}
-	
+
 	/**
 	 * Frontend output
 	 *
@@ -41,16 +43,16 @@ class ButtonWidget extends Widget {
 	public function widget( $args, $instance ) {
 		if ( ! class_exists( '\Timber' ) ) {
 			parent::widget( $args, $instance );
-			
+
 			return;
 		}
-		
+
 		$id = $args['widget_id'];
-		
+
 		echo '<div class="o-footer__cta">';
 		echo $args['before_widget'];
-		\Timber::render( 'molecules/m-footer-cta.twig', array(
-			'title'   => $args['before_title'] . '<span class="m-footer-cta__title">' . $instance['title'] . '<span>' . $args['after_title'],
+		Timber::render( 'molecules/m-footer-cta.twig', array(
+			'title'   => $args['before_title'] . '<span class="m-footer-cta__title">' . $instance['title'] . '</span>' . $args['after_title'],
 			'buttons' => get_field( 'buttons', 'widget_' . $id ),
 		) );
 		echo $args['after_widget'];
