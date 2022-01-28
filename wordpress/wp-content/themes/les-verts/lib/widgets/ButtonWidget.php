@@ -51,7 +51,8 @@ class ButtonWidget extends Widget {
 
 		echo '<div class="o-footer__cta">';
 		echo $args['before_widget'];
-		Timber::render( 'molecules/m-footer-cta.twig', array(
+		/** @noinspection PhpFullyQualifiedNameUsageInspection */
+		\Timber::render( 'molecules/m-footer-cta.twig', array(
 			'title'   => $args['before_title'] . '<span class="m-footer-cta__title">' . $instance['title'] . '</span>' . $args['after_title'],
 			'buttons' => get_field( 'buttons', 'widget_' . $id ),
 		) );
