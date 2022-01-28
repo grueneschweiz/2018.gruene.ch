@@ -26,4 +26,8 @@
 			margin-bottom: 16px;
 		}
 	}
+
+	&__text {
+		max-width: calc(100% - 48px);
+	}
 }
