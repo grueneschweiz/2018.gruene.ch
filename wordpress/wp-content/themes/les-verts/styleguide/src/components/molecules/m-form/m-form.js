@@ -1,4 +1,5 @@
 import BaseView from 'base-view';
+import ajax from '../../../js/service/ajax';
 
 const SUBMIT_BUTTON_SELECTOR = '[data-form-submit]';
 const SUBMIT_WRAPPER_SELECTOR = '.m-form__submit-wrapper';
@@ -119,33 +120,6 @@ export default class MForm extends BaseView {
 		}, 300 );
 	}
 
-	ajax( url, method, data = null ) {
-		return new Promise( function( resolve, reject ) {
-			let xhr = new XMLHttpRequest();
-			xhr.open( method, url );
-			xhr.send( data );
-			xhr.onreadystatechange = function() {
-				if (xhr.readyState === 4) {
-					let raw = xhr.responseText;
-					let resp;
-					try {
-						resp = JSON.parse( raw );
-					}
-					catch ( err ) {
-						resp = {};
-					}
-
-					if (xhr.status === 200) {
-						resolve( resp );
-					}
-					else {
-						reject( resp );
-					}
-				}
-			};
-		} );
-	}
-
 	submit( event ) {
 		event.preventDefault();
 
@@ -181,7 +155,7 @@ export default class MForm extends BaseView {
 	}
 
 	sendForm( url, data ) {
-		return this.ajax( url, 'POST', data ).then( ( resp ) => {
+		return ajax( url, 'POST', data ).then( ( resp ) => {
 			if (resp instanceof Object
 				&& 'success' in resp
 				&& true === resp.success) {
@@ -251,6 +225,6 @@ export default class MForm extends BaseView {
 	}
 
 	getNonce() {
-		return this.ajax( this.element.dataset.nonce, 'GET' );
+		return ajax( this.element.dataset.nonce, 'GET' );
 	}
 }
