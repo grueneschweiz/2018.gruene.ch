@@ -13,6 +13,7 @@
 		background: $color-primary;
 		height: 100%;
 		position: relative;
+		transition: opacity $transition-mid $transition-ease;
 
 		&::after {
 			content: ' ';
@@ -63,6 +64,7 @@
 		color: $color-white;
 		font-weight: $font-weight-bold;
 		font-size: 1.4rem;
+		transition: opacity $transition-mid $transition-ease;
 	}
 
 	&__current--right {
@@ -74,5 +76,22 @@
 	&__legend {
 		line-height: 1.4em;
 		margin: 0 0 0.25em;
+		transition: opacity $transition-mid $transition-ease;
+	}
+}
+
+.a-progress--loading {
+	.a-progress {
+		&__legend {
+			opacity: 0;
+		}
+
+		&__current {
+			opacity: 0;
+		}
+
+		&__bar {
+			opacity: 0;
+		}
 	}
 }

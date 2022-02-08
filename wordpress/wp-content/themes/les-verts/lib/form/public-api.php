@@ -65,3 +65,7 @@ function supt_theme_form_submission_count($form_id) {
 function supt_get_nonce_api_url(): string {
 	return get_rest_url( null, SUPT_FORM_API_V1_BASE . SUPT_FORM_API_ENDPOINT_NONCE );
 }
+
+function supt_get_progress_api_url(): string {
+	return get_rest_url( null, SUPT_FORM_API_V1_BASE . SUPT_FORM_API_ENDPOINT_PROGRESS );
+}
