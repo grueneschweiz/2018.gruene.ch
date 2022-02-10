@@ -15,6 +15,7 @@
 			aria-valuenow="{{progress_bar.current}}"
 			aria-valuemin="0"
 			aria-valuemax="{{progress_bar.goal}}"
+			{% if block.datasource == 'form' %}data-form="{{ block.form }}"{% endif %}
 			{% if block.datasource == 'form' %}data-url="{{ fn('supt_get_progress_api_url') }}/{{ block.form }}?{{ params }}"{% endif %}
 		>
 						<span class="a-progress__current{% if progress_bar.current_percent < 40 %} a-progress__current--right{% endif %}">

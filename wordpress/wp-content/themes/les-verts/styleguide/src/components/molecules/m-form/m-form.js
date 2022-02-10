@@ -15,6 +15,9 @@ const INVALID_STATE = 'is-invalid';
 
 const LAST_SUBMISSION = 'pred';
 
+// sync with a-progress.js
+const SUBMISSION_NOTIFICATION_EVENT = 'supt_form_submission';
+
 export default class MForm extends BaseView {
 	static getUrlParam( param, defaultValue ) {
 		const url = new URL( window.location.href );
@@ -150,8 +153,9 @@ export default class MForm extends BaseView {
 			then( nonce => data.append( 'nonce', nonce ) ).
 			then( () => this.sendForm( url, data ) ).
 			then( resp => this.showSuccess( resp ) ).
+			then( () => this.sendSubmissionNotification() ).
 			catch( resp => this.handleError( resp ) ).
-			finally( this.clearSendingState );
+			finally( this.clearSendingState.bind( this ) );
 	}
 
 	sendForm( url, data ) {
@@ -226,5 +230,13 @@ export default class MForm extends BaseView {
 
 	getNonce() {
 		return ajax( this.element.dataset.nonce, 'GET' );
+	}
+
+	sendSubmissionNotification() {
+		const notification = new CustomEvent( SUBMISSION_NOTIFICATION_EVENT, {
+			detail: { formId: this.element.dataset.formId },
+		} );
+
+		document.dispatchEvent( notification );
 	}
 }

@@ -13,12 +13,17 @@ const DEBOUNCE_DELAY_MS = 300;
 const STEPS = 200;
 const STEP_DELAY = 25; // ms
 
+// sync with m-form.js
+const SUBMISSION_NOTIFICATION_EVENT = 'supt_form_submission';
+
 export default class AProgress extends BaseView {
 	bind() {
 		super.bind();
 
 		this.firstRun = true;
 		this.bar = this.getScopedElement( BAR_SELECTOR );
+
+		this.listenForSubmissions();
 
 		this.updateData().finally( () => {
 			inView( this.element, DEBOUNCE_DELAY_MS ).
@@ -63,6 +68,12 @@ export default class AProgress extends BaseView {
 		this.timer = setInterval( this.animate.bind( this ), STEP_DELAY );
 	}
 
+	addSubmission() {
+		this.current ++;
+		this.spread = this.current - this.min;
+		this.animate();
+	}
+
 	animate() {
 		if (this.firstRun) {
 			this.removeClass( this.element, LOADING_CLASS );
@@ -100,6 +111,21 @@ export default class AProgress extends BaseView {
 		}
 
 		this.value.innerText = value;
+	}
+
+	listenForSubmissions() {
+		document.addEventListener( SUBMISSION_NOTIFICATION_EVENT, event => {
+			if (!( 'form' in this.bar.dataset )) {
+				return;
+			}
+
+			const progressFormId = parseInt( this.bar.dataset.form );
+			const eventFormId = parseInt( event.detail.formId );
+
+			if (progressFormId === eventFormId) {
+				this.addSubmission();
+			}
+		} );
 	}
 
 	destroy() {
