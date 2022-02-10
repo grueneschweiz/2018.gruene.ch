@@ -50,7 +50,7 @@ class ProgressHelper {
 			'form',
 			$request->get_param( 'id' ),
 			$request->get_param( 'o' ),
-			null,
+			0,
 			$request->get_param( 'gm' ),
 			$request->get_param( 'g' ),
 			urldecode( $request->get_param( 'l' ) )
