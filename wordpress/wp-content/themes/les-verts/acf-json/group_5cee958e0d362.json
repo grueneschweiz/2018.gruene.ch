@@ -451,24 +451,55 @@
                         "prefix_name": 0
                       }
                     ],
-                    "min": "",
-                    "max": ""
-                }
+                  "min": "",
+                  "max": ""
+                },
+              "layout_62062994bfc00": {
+                "key": "layout_62062994bfc00",
+                "name": "share_buttons",
+                "label": "Share Buttons",
+                "display": "block",
+                "sub_fields": [
+                  {
+                    "key": "field_620629a0bfc01",
+                    "label": "",
+                    "name": "",
+                    "type": "clone",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                      "width": "",
+                      "class": "",
+                      "id": ""
+                    },
+                    "clone": [
+                      "group_620623a78f503"
+                    ],
+                    "display": "seamless",
+                    "layout": "block",
+                    "prefix_label": 0,
+                    "prefix_name": 0
+                  }
+                ],
+                "min": "",
+                "max": ""
+              }
             },
             "button_label": "Add Content Block",
             "min": "",
             "max": ""
         }
     ],
-    "location": [
-        [
-            {
-                "param": "post_type",
-                "operator": "==",
-              "value": "post"
-            }
-        ]
-    ],
+  "location": [
+    [
+      {
+        "param": "post_type",
+        "operator": "==",
+        "value": "post"
+      }
+    ]
+  ],
   "menu_order": 0,
   "position": "normal",
   "style": "default",
@@ -477,5 +508,6 @@
   "hide_on_screen": "",
   "active": false,
   "description": "",
-  "modified": 1608246560
+  "show_in_rest": 0,
+  "modified": 1644571072
 }

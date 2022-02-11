@@ -1,0 +1,212 @@
+{
+  "key": "group_620623a78f503",
+  "title": "[Template]Share Buttons",
+  "fields": [
+    {
+      "key": "field_620623ce67c8e",
+      "label": "About this Block",
+      "name": "",
+      "type": "message",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "message": "Adds custom share buttons (and disables the default share buttons aside).\r\n\r\nUse this block if you ask users explicitly to share the provided link.",
+      "new_lines": "wpautop",
+      "esc_html": 0
+    },
+    {
+      "key": "field_620624c867c8f",
+      "label": "URL to share",
+      "name": "url_to_share",
+      "type": "url",
+      "instructions": "Enter the URL of the page, that should be shared when clicking the share button. Leave empty to share this page.",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "placeholder": "",
+      "translations": "copy_once"
+    },
+    {
+      "key": "field_620625ac67c90",
+      "label": "Channels",
+      "name": "channels",
+      "type": "checkbox",
+      "instructions": "Which share buttons do you want to display?",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "choices": {
+        "twitter": "Twitter",
+        "facebook": "Facebook",
+        "whatsapp": "WhatsApp",
+        "telegram": "Telegram",
+        "mail": "E-Mail"
+      },
+      "allow_custom": 0,
+      "default_value": [
+        "twitter",
+        "facebook",
+        "whatsapp",
+        "telegram",
+        "mail"
+      ],
+      "layout": "horizontal",
+      "toggle": 0,
+      "return_format": "value",
+      "translations": "copy_once",
+      "save_custom": 0
+    },
+    {
+      "key": "field_6206273067c91",
+      "label": "Twitter: Proposed tweet",
+      "name": "twitter_text",
+      "type": "textarea",
+      "instructions": "Tweet without URL. The URL will be appended automatically.\r\nUsers will be able to customize this text.",
+      "required": 0,
+      "conditional_logic": [
+        [
+          {
+            "field": "field_620625ac67c90",
+            "operator": "==",
+            "value": "twitter"
+          }
+        ]
+      ],
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "placeholder": "",
+      "maxlength": 256,
+      "rows": 2,
+      "new_lines": "",
+      "translations": "translate"
+    },
+    {
+      "key": "field_620627c267c92",
+      "label": "WhatsApp \/ Telegram: Proposed message",
+      "name": "messenger_text",
+      "type": "textarea",
+      "instructions": "Message text without URL. The URL will be appended automatically.\r\nUsers will be able to customize this text.",
+      "required": 0,
+      "conditional_logic": [
+        [
+          {
+            "field": "field_620625ac67c90",
+            "operator": "==",
+            "value": "whatsapp"
+          }
+        ],
+        [
+          {
+            "field": "field_620625ac67c90",
+            "operator": "==",
+            "value": "telegram"
+          }
+        ]
+      ],
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "placeholder": "",
+      "maxlength": "",
+      "rows": 3,
+      "new_lines": "",
+      "translations": "translate"
+    },
+    {
+      "key": "field_6206288767c94",
+      "label": "E-Mail: Proposed subject",
+      "name": "mail_subject",
+      "type": "text",
+      "instructions": "Users will be able to customize this text.",
+      "required": 0,
+      "conditional_logic": [
+        [
+          {
+            "field": "field_620625ac67c90",
+            "operator": "==",
+            "value": "mail"
+          }
+        ]
+      ],
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "placeholder": "",
+      "prepend": "",
+      "append": "",
+      "maxlength": "",
+      "translations": "translate"
+    },
+    {
+      "key": "field_620628f967c95",
+      "label": "E-Mail: Message",
+      "name": "mail_body",
+      "type": "textarea",
+      "instructions": "Message text without URL. The URL will be appended automatically.\r\nUsers will be able to customize this text.",
+      "required": 0,
+      "conditional_logic": [
+        [
+          {
+            "field": "field_620625ac67c90",
+            "operator": "==",
+            "value": "mail"
+          }
+        ]
+      ],
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "placeholder": "",
+      "maxlength": "",
+      "rows": 3,
+      "new_lines": "",
+      "translations": "translate"
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "post_type",
+        "operator": "==",
+        "value": "post"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "hide_on_screen": "",
+  "active": false,
+  "description": "",
+  "show_in_rest": 0,
+  "modified": 1644571519
+}
