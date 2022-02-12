@@ -1,6 +1,10 @@
 <a href="{{link}}" class="a-social-icon" aria-label="{{type}}">
-	<svg role="img">
-		<title>{{type}}</title>
-		<use xlink:href="#{{type}}"></use>
-	</svg>
+	<figure class="a-social-icon__figure">
+		<svg role="img" class="a-social-icon__svg{{#if label }} a-social-icon__svg--with-caption{{/if}}">
+			<title>{{type}}</title>
+			<use xlink:href="#{{type}}"></use>
+		</svg>
+		{{#if label }}
+			<figcaption class="a-social-icon__caption">{{label}}</figcaption>{{/if}}
+	</figure>
 </a>
