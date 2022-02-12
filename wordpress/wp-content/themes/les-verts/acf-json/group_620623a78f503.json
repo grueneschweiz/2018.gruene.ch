@@ -54,7 +54,8 @@
         "facebook": "Facebook",
         "whatsapp": "WhatsApp",
         "telegram": "Telegram",
-        "mail": "E-Mail"
+        "mail": "E-Mail",
+        "link": "Copy Link"
       },
       "allow_custom": 0,
       "default_value": [
@@ -62,7 +63,8 @@
         "facebook",
         "whatsapp",
         "telegram",
-        "mail"
+        "mail",
+        "link"
       ],
       "layout": "horizontal",
       "toggle": 0,
@@ -208,5 +210,5 @@
   "active": false,
   "description": "",
   "show_in_rest": 0,
-  "modified": 1644571519
+  "modified": 1645093466
 }

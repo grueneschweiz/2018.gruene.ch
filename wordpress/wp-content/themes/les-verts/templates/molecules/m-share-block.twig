@@ -1,0 +1,77 @@
+{% if not url_to_share %}
+	{% set url_to_share = post_link %}
+{% endif %}
+
+<div class="m-share-block">
+	{% if 'twitter' in channels %}
+		<div class="m-share-block__icon">
+			{% with %}
+				{% if twitter_via %}
+					{% set link = 'https://twitter.com/intent/tweet?url=' ~ (url_to_share|url_encode) ~ '&text=' ~ (twitter_text|url_encode) ~ '&via=' ~ (twitter_via|url_encode) %}
+				{% else %}
+					{% set link = 'https://twitter.com/intent/tweet?url=' ~ (url_to_share|url_encode) ~ '&text=' ~ (twitter_text|url_encode) %}
+				{% endif %}
+				{% include 'atoms/a-social-icon.twig' with {
+					'type': 'twitter',
+					'modifier': 'no-outline',
+					'title': __('Share on twitter', constant('THEME_DOMAIN')),
+					'link': link,
+					'label': __('Twitter', constant('THEME_DOMAIN'))
+				} only %}
+			{% endwith %}
+		</div>
+	{% endif %}
+	{% if 'facebook' in channels %}
+		<div class="m-share-block__icon">
+			{% include 'atoms/a-social-icon.twig' with {
+				'type': 'facebook',
+				'modifier': 'no-outline',
+				'title': __('Share on facebook', constant('THEME_DOMAIN')),
+				'link': 'https://www.facebook.com/sharer.php?u=' ~ (url_to_share|url_encode),
+				'label': __('Facebook', constant('THEME_DOMAIN'))
+			} only %}
+		</div>
+	{% endif %}
+	{% if 'whatsapp' in channels %}
+		<div class="m-share-block__icon">
+			{% include 'atoms/a-social-icon.twig' with {
+				'type': 'whatsapp',
+				'modifier': 'no-outline',
+				'title': __('Share on WhatsApp', constant('THEME_DOMAIN')),
+				'link': 'https://wa.me/?text=' ~ (messenger_text|url_encode~' '~url_to_share|url_encode),
+				'label': __('WhatsApp', constant('THEME_DOMAIN'))
+			} only %}
+		</div>
+	{% endif %}
+	{% if 'telegram' in channels %}
+		<div class="m-share-block__icon">
+			{% include 'atoms/a-social-icon.twig' with {
+				'type': 'telegram',
+				'title': __('Share on Telegram', constant('THEME_DOMAIN')),
+				'link': 'https://t.me/share/url?url=' ~ url_to_share|url_encode ~ '&text=' ~ messenger_text|url_encode,
+				'label': __('Telegram', constant('THEME_DOMAIN'))
+			} only %}
+		</div>
+	{% endif %}
+	{% if 'mail' in channels %}
+		<div class="m-share-block__icon">
+			{% include 'atoms/a-social-icon.twig' with {
+				'type': 'mail',
+				'modifier': 'no-outline',
+				'title': __('Share by email', constant('THEME_DOMAIN')),
+				'link': 'mailto:?subject=' ~ mail_subject|url_encode ~ '&body=' ~ mail_body|url_encode ~ ' ' ~ url_to_share|url_encode,
+				'label': __('Email', constant('THEME_DOMAIN'))
+			} only %}
+		</div>
+	{% endif %}
+	{% if 'link' in channels %}
+		<div class="m-share-block__icon">
+			{% include 'atoms/a-social-icon.twig' with {
+				'type': 'link',
+				'title': __('Copy link', constant('THEME_DOMAIN')),
+				'link': url_to_share,
+				'label': __('Copy link', constant('THEME_DOMAIN'))
+			} only %}
+		</div>
+	{% endif %}
+</div>

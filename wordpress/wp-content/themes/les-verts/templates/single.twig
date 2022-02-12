@@ -29,7 +29,7 @@
 			</header>
 
 			{% for block in main_content.content %}
-				{% include 'content-block.twig' with {'block':block} only %}
+				{% include 'content-block.twig' with {'block':block|merge({'twitter_via': post.twitter_name,'post_link': post.link})} only %}
 			{% endfor %}
 		</div>
 

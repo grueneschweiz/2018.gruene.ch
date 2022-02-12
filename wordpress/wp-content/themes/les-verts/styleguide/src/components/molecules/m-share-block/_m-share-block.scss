@@ -1,0 +1,16 @@
+.m-share-block {
+	$icon-size-xs: 50px;
+	$icon-size-sm: 80px;
+
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	margin: 0.5rem 0;
+
+	&__icon {
+		@include fluid-props(max-width, $size-tiny, $size-small, $icon-size-xs, $icon-size-sm);
+		@include fluid-props(height, $size-tiny, $size-small, $icon-size-xs, $icon-size-sm);
+	}
+}

@@ -3,6 +3,9 @@
 	width: 100%;
 	height: 100%;
 	display: block;
+	position: relative;
+	line-height: 1em;
+	padding: 0;
 
 	&__figure {
 		height: 100%;
@@ -10,11 +13,16 @@
 	}
 
 	&__caption {
-		font-size: 0.625rem;
+		display: none;
 		text-transform: uppercase;
 		color: $color-primary;
 		text-align: center;
 		transition: all $transition-fast $transition-ease;
+
+		@media all and (min-width: 480px) {
+			display: block;
+			font-size: 0.625rem;
+		}
 
 		@media all and (min-width: $size-small) {
 			font-size: 0.75rem;
@@ -28,9 +36,11 @@
 		width: 100%;
 		height: 100%;
 
-		&--with-caption {
-			height: calc(100% - 1.2rem);
-			margin-bottom: -0.3rem;
+		@media all and (min-width: 480px) {
+			&--with-caption {
+				height: calc(100% - 1.2rem);
+				margin-bottom: -0.3rem;
+			}
 		}
 	}
 
@@ -42,6 +52,28 @@
 
 		.a-social-icon__caption {
 			color: $color-primary-dark;
+		}
+	}
+
+	&__copied {
+		position: absolute;
+		top: 0;
+		left: 50%;
+		transform: translate(-50%);
+		background: $color-grey-1;
+		padding: 0.125em 0.25em;
+		border-radius: 3px;
+		opacity: 0;
+		transition: top ease-out 1s, opacity linear 0.5s 0.5s;
+		text-transform: uppercase;
+		font-size: 0.75rem;
+		font-weight: bold;
+		color: $color-text;
+
+		&--visible {
+			top: 50%;
+			opacity: 1;
+			transition: none;
 		}
 	}
 }

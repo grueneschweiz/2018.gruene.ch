@@ -1,0 +1,25 @@
+label: Share Block
+status: wip
+display:
+  padding: 40px
+context:
+  icons:
+    - link: "https://twitter.com/intent/tweet?url=https%3A%2F%2Fcss-tricks.com%2F&text=Tips%2C+Tricks%2C+and+Techniques+on+using+Cascading+Style+Sheets.&hashtags=css,html"
+      type: twitter--no-outline
+      label: Twitter
+    - link: "https://www.facebook.com/sharer.php?u=https%3A%2F%2Fcss-tricks.com%2F"
+      type: facebook--no-outline
+      label: Facebook
+    - link: "whatsapp://send?abid=BROADCAST_ID&text="
+      type: whatsapp--no-outline
+      label: WhatsApp
+    - link: "telegram://send?abid=BROADCAST_ID&text="
+      type: telegram
+      label: Telegram
+    - link: "mailto:?subject=Sitetitle&body=Some%20content"
+      type: mail--no-outline
+      label: E-Mail
+    - link: "https://example.com"
+      type: link
+      label: Copy Link
+      linkButton: yes

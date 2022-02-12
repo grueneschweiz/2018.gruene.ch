@@ -51,6 +51,10 @@
 	{% include 'atoms/a-oembed.twig' with block only %}
 {% elseif block.acf_fc_layout == 'code' %}
 	{{ block.code }}
+{% elseif block.acf_fc_layout == 'share_buttons' %}
+	<div class="page__share-block">
+		{% include 'molecules/m-share-block.twig' with block only %}
+	</div>
 {% elseif block.acf_fc_layout == 'block' %}
 	{% for element in block.block.get_field('content') %}
 		{% include 'content-block.twig' with {'block': element} %}

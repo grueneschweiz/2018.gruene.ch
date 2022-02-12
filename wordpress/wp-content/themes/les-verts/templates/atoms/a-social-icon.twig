@@ -16,9 +16,23 @@
 	{% set title = type %}
 {% endif %}
 
+{% if type == 'link' %}
+<button data-link="{{ link }}" class="a-social-icon" title="{{ title }}">
+{% else %}
 <a href="{{ link }}" {{ link_props(link) }} class="a-social-icon" title="{{ title }}">
-	<svg role="img">
-		<title>{{ title }}</title>
-		<use xlink:href="#{{ svg }}"></use>
-	</svg>
+{% endif %}
+	<figure class="a-social-icon__figure">
+		<svg role="img" class="a-social-icon__svg{% if label %} a-social-icon__svg--with-caption{% endif %}">
+			<title>{{ title }}</title>
+			<use xlink:href="#{{ svg }}"></use>
+		</svg>
+		{% if label %}
+				<figcaption class="a-social-icon__caption">{{label}}</figcaption>
+		{% endif %}
+	</figure>
+{% if type == 'link' %}
+	<div class="a-social-icon__copied">{{ __('Copied!', constant('THEME_DOMAIN')) }}</div>
+</button>
+{% else %}
 </a>
+{% endif %}
