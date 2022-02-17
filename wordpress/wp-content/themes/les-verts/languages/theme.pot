@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: Les Verts\n"
-"POT-Creation-Date: 2022-02-17 16:15+0100\n"
+"POT-Creation-Date: 2022-02-17 16:37+0100\n"
 "PO-Revision-Date: 2018-11-28 17:49+0100\n"
 "Last-Translator: Cyrill Bolliger <bolliger@gmx.ch>\n"
 "Language-Team: Cyrill Bolliger <cyrill.bolliger@gruene.ch>\n"
@@ -1139,9 +1139,9 @@ msgstr ""
 
 #: acf-translate.php:4140
 msgid ""
-"Adds custom share buttons (and disables the default share buttons aside).\n"
+"Adds custom share buttons.\n"
 "\n"
-"Use this block if you ask users explicitly to share the provided link."
+"Use this block if you ask visitors explicitly to share the provided link."
 msgstr ""
 
 #: acf-translate.php:4148
@@ -1184,8 +1184,8 @@ msgstr ""
 
 #: acf-translate.php:4204
 msgid ""
-"Tweet without URL. The URL will be appended automatically.\n"
-"Users will be able to customize this text."
+"Tweet without URL and via. The URL and via will be appended automatically.\n"
+"Visitors will be able to customize this text."
 msgstr ""
 
 #: acf-translate.php:4230
@@ -1195,7 +1195,7 @@ msgstr ""
 #: acf-translate.php:4233 acf-translate.php:4297
 msgid ""
 "Message text without URL. The URL will be appended automatically.\n"
-"Users will be able to customize this text."
+"Visitors will be able to customize this text."
 msgstr ""
 
 #: acf-translate.php:4266
@@ -1203,7 +1203,7 @@ msgid "E-Mail: Proposed subject"
 msgstr ""
 
 #: acf-translate.php:4269
-msgid "Users will be able to customize this text."
+msgid "Visitors will be able to customize this text."
 msgstr ""
 
 #: acf-translate.php:4294

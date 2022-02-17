@@ -4137,9 +4137,9 @@ Example: {{current}} have signed. Can we reach {{goal}}?', 'lesverts' ),
 					'class' => '',
 					'id'    => '',
 				),
-				'message'           => __( 'Adds custom share buttons (and disables the default share buttons aside).
+				'message'           => __( 'Adds custom share buttons.
 
-Use this block if you ask users explicitly to share the provided link.', 'lesverts' ),
+Use this block if you ask visitors explicitly to share the provided link.', 'lesverts' ),
 				'new_lines'         => 'wpautop',
 				'esc_html'          => 0,
 			),
@@ -4201,8 +4201,8 @@ Use this block if you ask users explicitly to share the provided link.', 'lesver
 				'label'             => __( 'Twitter: Proposed tweet', 'lesverts' ),
 				'name'              => 'twitter_text',
 				'type'              => 'textarea',
-				'instructions'      => __( 'Tweet without URL. The URL will be appended automatically.
-Users will be able to customize this text.', 'lesverts' ),
+				'instructions'      => __( 'Tweet without URL and via. The URL and via will be appended automatically.
+Visitors will be able to customize this text.', 'lesverts' ),
 				'required'          => 0,
 				'conditional_logic' => array(
 					array(
@@ -4231,7 +4231,7 @@ Users will be able to customize this text.', 'lesverts' ),
 				'name'              => 'messenger_text',
 				'type'              => 'textarea',
 				'instructions'      => __( 'Message text without URL. The URL will be appended automatically.
-Users will be able to customize this text.', 'lesverts' ),
+Visitors will be able to customize this text.', 'lesverts' ),
 				'required'          => 0,
 				'conditional_logic' => array(
 					array(
@@ -4266,7 +4266,7 @@ Users will be able to customize this text.', 'lesverts' ),
 				'label'             => __( 'E-Mail: Proposed subject', 'lesverts' ),
 				'name'              => 'mail_subject',
 				'type'              => 'text',
-				'instructions'      => __( 'Users will be able to customize this text.', 'lesverts' ),
+				'instructions'      => __( 'Visitors will be able to customize this text.', 'lesverts' ),
 				'required'          => 0,
 				'conditional_logic' => array(
 					array(
@@ -4295,7 +4295,7 @@ Users will be able to customize this text.', 'lesverts' ),
 				'name'              => 'mail_body',
 				'type'              => 'textarea',
 				'instructions'      => __( 'Message text without URL. The URL will be appended automatically.
-Users will be able to customize this text.', 'lesverts' ),
+Visitors will be able to customize this text.', 'lesverts' ),
 				'required'          => 0,
 				'conditional_logic' => array(
 					array(
