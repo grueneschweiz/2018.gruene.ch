@@ -15,7 +15,7 @@
         "class": "",
         "id": ""
       },
-      "message": "Adds custom share buttons (and disables the default share buttons aside).\r\n\r\nUse this block if you ask users explicitly to share the provided link.",
+      "message": "Adds custom share buttons.\r\n\r\nUse this block if you ask visitors explicitly to share the provided link.",
       "new_lines": "wpautop",
       "esc_html": 0
     },
@@ -77,7 +77,7 @@
       "label": "Twitter: Proposed tweet",
       "name": "twitter_text",
       "type": "textarea",
-      "instructions": "Tweet without URL. The URL will be appended automatically.\r\nUsers will be able to customize this text.",
+      "instructions": "Tweet without URL and via. The URL and via will be appended automatically.\r\nVisitors will be able to customize this text.",
       "required": 0,
       "conditional_logic": [
         [
@@ -105,7 +105,7 @@
       "label": "WhatsApp \/ Telegram: Proposed message",
       "name": "messenger_text",
       "type": "textarea",
-      "instructions": "Message text without URL. The URL will be appended automatically.\r\nUsers will be able to customize this text.",
+      "instructions": "Message text without URL. The URL will be appended automatically.\r\nVisitors will be able to customize this text.",
       "required": 0,
       "conditional_logic": [
         [
@@ -140,7 +140,7 @@
       "label": "E-Mail: Proposed subject",
       "name": "mail_subject",
       "type": "text",
-      "instructions": "Users will be able to customize this text.",
+      "instructions": "Visitors will be able to customize this text.",
       "required": 0,
       "conditional_logic": [
         [
@@ -168,7 +168,7 @@
       "label": "E-Mail: Message",
       "name": "mail_body",
       "type": "textarea",
-      "instructions": "Message text without URL. The URL will be appended automatically.\r\nUsers will be able to customize this text.",
+      "instructions": "Message text without URL. The URL will be appended automatically.\r\nVisitors will be able to customize this text.",
       "required": 0,
       "conditional_logic": [
         [
@@ -210,5 +210,5 @@
   "active": false,
   "description": "",
   "show_in_rest": 0,
-  "modified": 1645093466
+  "modified": 1645112137
 }
