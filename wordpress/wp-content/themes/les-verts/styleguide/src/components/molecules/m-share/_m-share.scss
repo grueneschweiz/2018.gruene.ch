@@ -6,7 +6,7 @@ body.has-share-buttons {
 
 .m-share {
 	$icon-size: 40px;
-	$height-desktop: 272px;
+	$height-desktop: 315px;
 
 	width: 100%;
 	display: flex;
@@ -30,6 +30,10 @@ body.has-share-buttons {
 	&__icon {
 		height: $icon-size;
 		width: $icon-size;
+
+		@media all and (max-width: ($size-tiny - 1)) {
+			width: 38px;
+		}
 
 		@include media($_DESKTOP) {
 			transform: rotate(90deg);
@@ -57,16 +61,18 @@ body.has-share-buttons {
 		justify-content: space-around;
 		width: 0;
 		height: $icon-size;
-		overflow: hidden;
 		transition: width $transition-mid $transition-ease;
 		max-width: 250px;
+		pointer-events: none;
 
 		&.is-open {
 			width: 100vw;
+			pointer-events: auto;
 		}
 
 		@include media($_DESKTOP) {
 			width: 100%;
+			pointer-events: auto;
 		}
 	}
 
@@ -107,7 +113,9 @@ body.has-share-buttons {
 		}
 	}
 
-	&.is-open &__close {
-		display: block;
+	@include media($_MOBILE) {
+		&.is-open &__close {
+			display: block;
+		}
 	}
 }

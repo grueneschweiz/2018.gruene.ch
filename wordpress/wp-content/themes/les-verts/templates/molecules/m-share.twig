@@ -14,6 +14,13 @@
 	<div class="m-share__buttons">
 		<div class="m-share__icon">
 			{% include 'atoms/a-social-icon.twig' with {
+				'type': 'link',
+				'title': __('Copy link to this page', constant('THEME_DOMAIN')),
+				'link': url
+			} only %}
+		</div>
+		<div class="m-share__icon">
+			{% include 'atoms/a-social-icon.twig' with {
 				'type': 'twitter',
 				'modifier': 'no-outline',
 				'title': __('Share this page on twitter', constant('THEME_DOMAIN')),
