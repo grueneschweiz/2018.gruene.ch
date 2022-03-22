@@ -47,4 +47,6 @@ Verify, you name the files exactly as above, and you provide all those file form
 
 * The expensive tasks after form submission are processed asynchronously (using wp cron). Use the WP_CLI to manage the
   jobs `wp form`.
-* See the dedicated [docs](docs/sso.md) for the SSO setup.
+* Dedicated docs:
+  * [SSO setup](docs/sso.md)
+  * [Progressbar](docs/progressbar.md)
