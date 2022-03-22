@@ -78,7 +78,22 @@ class ProgressHelper {
 			$submissions += $this->offset;
 		}
 
-		$this->current_value_cache = $submissions;
+		/**
+		 * Filters the number of form submissions (incl. offset) for the progress bar.
+		 *
+		 * @param int $submissions The displayed submission count
+		 * @param int $form_id The form id
+		 * @param int $offset The number that was added to the real submission count
+		 *
+		 * @since 0.28.0
+		 *
+		 */
+		$this->current_value_cache = apply_filters(
+			FormType::MODEL_NAME . '-submission-count',
+			$submissions,
+			$this->form_id,
+			$this->offset
+		);
 
 		return $this->current_value_cache;
 	}
