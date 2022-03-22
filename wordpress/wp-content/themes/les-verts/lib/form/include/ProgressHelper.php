@@ -72,8 +72,7 @@ class ProgressHelper {
 			return $this->current_value;
 		}
 
-		// this is expensive, so we'll cache it in $this->current
-		$submissions = supt_theme_form_submission_count( (int) $this->form_id );
+		$submissions = $this->get_form_submission_count();
 
 		if ( ! empty( $this->offset ) ) {
 			$submissions += $this->offset;
@@ -164,5 +163,26 @@ class ProgressHelper {
 
 	public function current_percent() {
 		return 100 * $this->current() / $this->goal();
+	}
+
+	private function get_form_submission_count(): int {
+		$submissions = supt_theme_form_submission_count( (int) $this->form_id );
+
+		// add submissions of same form in other languages
+		if ( function_exists( 'pll_get_post_translations' ) ) {
+			$post_ids = pll_get_post_translations( (int) $this->form_id );
+			foreach ( $post_ids as $id ) {
+				if ( $id === $this->form_id ) {
+					continue;
+				}
+
+				$count = supt_theme_form_submission_count( $id );
+				if ( $count > 0 ) {
+					$submissions += $count;
+				}
+			}
+		}
+
+		return $submissions;
 	}
 }
