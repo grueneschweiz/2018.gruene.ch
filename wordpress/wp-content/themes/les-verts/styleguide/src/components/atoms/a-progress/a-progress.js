@@ -58,9 +58,11 @@ export default class AProgress extends BaseView {
 		this.max = this.bar.getAttribute( 'aria-valuemax' );
 		this.current = this.bar.getAttribute( 'aria-valuenow' );
 
-		this.step_count = 0;
-		this.state = 0;
-		this.state_percent = 0;
+		if (this.firstRun) {
+			this.step_count = 0;
+			this.state = 0;
+			this.state_percent = 0;
+		}
 
 		this.sumOfSteps = 1 / 2 * STEPS * ( STEPS + 1 );
 		this.spread = this.current - this.min;
@@ -69,9 +71,7 @@ export default class AProgress extends BaseView {
 	}
 
 	addSubmission() {
-		this.current ++;
-		this.spread = this.current - this.min;
-		this.animate();
+		this.updateData().then( this.startAnimation.bind( this ) );
 	}
 
 	animate() {
