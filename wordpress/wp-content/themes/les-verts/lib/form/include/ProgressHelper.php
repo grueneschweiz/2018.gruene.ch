@@ -63,6 +63,12 @@ class ProgressHelper {
 		);
 	}
 
+	public static function cache_submission_count( int $form_id ) {
+		$transient = "theme_form-submission-count-form-$form_id";
+		$count     = supt_theme_form_submission_count( $form_id );
+		set_transient( $transient, $count, DAY_IN_SECONDS );
+	}
+
 	public function current() {
 		if ( $this->current_value_cache ) {
 			return $this->current_value_cache;
@@ -72,7 +78,7 @@ class ProgressHelper {
 			return $this->current_value;
 		}
 
-		$submissions = $this->get_form_submission_count();
+		$submissions = $this->get_cached_multilang_form_submission_count();
 
 		if ( ! empty( $this->offset ) ) {
 			$submissions += $this->offset;
@@ -180,8 +186,8 @@ class ProgressHelper {
 		return 100 * $this->current() / $this->goal();
 	}
 
-	private function get_form_submission_count(): int {
-		$submissions = supt_theme_form_submission_count( (int) $this->form_id );
+	private function get_cached_multilang_form_submission_count(): int {
+		$submissions = self::get_cached_form_submission_count( (int) $this->form_id );
 
 		// add submissions of same form in other languages
 		if ( function_exists( 'pll_get_post_translations' ) ) {
@@ -191,7 +197,7 @@ class ProgressHelper {
 					continue;
 				}
 
-				$count = supt_theme_form_submission_count( $id );
+				$count = self::get_cached_form_submission_count( $id );
 				if ( $count > 0 ) {
 					$submissions += $count;
 				}
@@ -199,5 +205,21 @@ class ProgressHelper {
 		}
 
 		return $submissions;
+	}
+
+	private static function get_cached_form_submission_count( $form_id ): int {
+		$transient = "theme_form-submission-count-form-$form_id";
+		$count     = get_transient( $transient );
+
+		if ( false === $count ) {
+			self::cache_submission_count( $form_id );
+			$count = get_transient( $transient );
+		}
+
+		if ( false === $count ) {
+			$count = supt_theme_form_submission_count( $form_id );
+		}
+
+		return (int) $count;
 	}
 }
