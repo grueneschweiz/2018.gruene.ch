@@ -1,6 +1,14 @@
-<a href="{{link}}" class="a-social-icon" aria-label="{{type}}">
-	<svg role="img">
-		<title>{{type}}</title>
-		<use xlink:href="#{{type}}"></use>
-	</svg>
-</a>
+<{{#if linkButton}}button data-link="{{link}}"{{else}}a href="{{link}}"{{/if}} class="a-social-icon"
+													aria-label="{{ariaLabel}}">
+	<figure class="a-social-icon__figure">
+		<svg role="img" class="a-social-icon__svg{{#if label }} a-social-icon__svg--with-caption{{/if}}">
+			<title>{{type}}</title>
+			<use xlink:href="#{{type}}"></use>
+		</svg>
+		{{#if label }}
+			<figcaption class="a-social-icon__caption">{{label}}</figcaption>{{/if}}
+	</figure>
+	{{#if linkButton}}
+		<div class="a-social-icon__copied">Copied!</div>
+	{{/if}}
+	</{{#if linkButton}}button{{else}}a{{/if}}>

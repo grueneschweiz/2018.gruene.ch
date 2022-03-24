@@ -214,7 +214,7 @@ class FormModel {
 			)
 		);
 
-		return $count ? $count : 0;
+		return $count ? (int) $count : 0;
 	}
 
 	/**

@@ -4,10 +4,18 @@ default: facebook
 context:
   type: facebook
   link: '#'
+  ariaLabel: post on facebook
 variants:
   - name: twitter
     context:
       type: twitter
+      ariaLabel: tweet
   - name: email
     context:
       type: email
+      ariaLabel: share by email
+  - name: link
+    context:
+      type: link
+      linkButton: yes
+      ariaLabel: copy link

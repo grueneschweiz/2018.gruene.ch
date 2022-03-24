@@ -1,24 +1,56 @@
 import BaseView from 'base-view';
 import inView from '../../../js/service/inview';
+import ajax from '../../../js/service/ajax';
 
 const BAR_SELECTOR = '.a-progress__bar';
 const VALUE_SELECTOR = '.a-progress__value';
+const LEGEND_SELECTOR = '.a-progress__legend';
 const LEGEND_VALUE_SELECTOR = '.a-progress__legend-value';
+
+const LOADING_CLASS = 'a-progress--loading';
 
 const DEBOUNCE_DELAY_MS = 300;
 const STEPS = 200;
 const STEP_DELAY = 25; // ms
 
+// sync with m-form.js
+const SUBMISSION_NOTIFICATION_EVENT = 'supt_form_submission';
+
 export default class AProgress extends BaseView {
 	bind() {
 		super.bind();
 
-		inView( this.element, DEBOUNCE_DELAY_MS ).
-			then( () => this.startAnimation() );
+		this.firstRun = true;
+		this.bar = this.getScopedElement( BAR_SELECTOR );
+
+		this.listenForSubmissions();
+
+		this.updateData().finally( () => {
+			inView( this.element, DEBOUNCE_DELAY_MS ).
+				then( () => this.startAnimation() );
+		} );
+	}
+
+	updateData() {
+		if (!( 'url' in this.bar.dataset )) {
+			return new Promise( resolve => resolve() );
+		}
+
+		const url = this.bar.dataset.url;
+		return ajax( url, 'GET' ).then( ( resp ) => {
+			if (resp instanceof Object
+				&& 'current' in resp
+				&& 'goal' in resp
+				&& 'legend' in resp
+			) {
+				this.bar.setAttribute( 'aria-valuenow', resp.current );
+				this.bar.setAttribute( 'aria-valuemax', resp.goal );
+				this.getScopedElement( LEGEND_SELECTOR ).innerHTML = resp.legend;
+			}
+		} );
 	}
 
 	startAnimation() {
-		this.bar = this.getScopedElement( BAR_SELECTOR );
 		this.value = this.getScopedElement( VALUE_SELECTOR );
 		this.legend_value = this.getScopedElement( LEGEND_VALUE_SELECTOR );
 
@@ -26,17 +58,28 @@ export default class AProgress extends BaseView {
 		this.max = this.bar.getAttribute( 'aria-valuemax' );
 		this.current = this.bar.getAttribute( 'aria-valuenow' );
 
-		this.step_count = 0;
-		this.state = 0;
-		this.state_percent = 0;
+		if (this.firstRun) {
+			this.step_count = 0;
+			this.state = 0;
+			this.state_percent = 0;
+		}
 
-		this.sumOfSteps = 1/2*STEPS*(STEPS+1);
+		this.sumOfSteps = 1 / 2 * STEPS * ( STEPS + 1 );
 		this.spread = this.current - this.min;
 
 		this.timer = setInterval( this.animate.bind( this ), STEP_DELAY );
 	}
 
+	addSubmission() {
+		this.updateData().then( this.startAnimation.bind( this ) );
+	}
+
 	animate() {
+		if (this.firstRun) {
+			this.removeClass( this.element, LOADING_CLASS );
+			this.firstRun = false;
+		}
+
 		if (this.step_count > STEPS) {
 			clearInterval( this.timer );
 
@@ -45,11 +88,12 @@ export default class AProgress extends BaseView {
 			this.bar.style.width = current * 100 + '%';
 			this.setLabelValue( this.current );
 
-		} else {
+		}
+		else {
 
 			this.step_count ++;
 
-			const easing = (STEPS - this.step_count) / this.sumOfSteps;
+			const easing = ( STEPS - this.step_count ) / this.sumOfSteps;
 			const step_size = this.spread * easing;
 			const step_percent = step_size / ( this.max - this.min );
 
@@ -61,12 +105,27 @@ export default class AProgress extends BaseView {
 		}
 	}
 
-	setLabelValue(value) {
+	setLabelValue( value ) {
 		if (this.legend_value) {
 			this.legend_value.innerText = value;
 		}
 
 		this.value.innerText = value;
+	}
+
+	listenForSubmissions() {
+		document.addEventListener( SUBMISSION_NOTIFICATION_EVENT, event => {
+			if (!( 'form' in this.bar.dataset )) {
+				return;
+			}
+
+			const progressFormId = parseInt( this.bar.dataset.form );
+			const eventFormId = parseInt( event.detail.formId );
+
+			if (progressFormId === eventFormId) {
+				this.addSubmission();
+			}
+		} );
 	}
 
 	destroy() {

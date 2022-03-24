@@ -195,6 +195,10 @@ if ( defined( 'TRIBE_EVENTS_FILE' ) ) {
 	require_once __DIR__ . '/tweaks/tribe-events.php';
 }
 
+if ( defined( 'PROMETHEUS_PLUGIN_FILE' ) ) {
+	require_once __DIR__ . '/prometheus/prometheus-metrics-for-wp.php';
+}
+
 
 /**
  * TWIG

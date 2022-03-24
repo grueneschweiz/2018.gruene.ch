@@ -1,6 +1,7 @@
 {% set progress_bar = Progress_Bar(block) %}
+{% set params = {'gm': block.goal, 'g': block.goal_value, 'o': block.offset, 'l':block.legend}|url_encode %}
 
-<div class="a-progress">
+<div class="a-progress a-progress--loading">
 	{% if progress_bar.legend %}
 	<p class="a-progress__legend">{{ progress_bar.legend }}</p>
 	{% else %}
@@ -14,6 +15,8 @@
 			aria-valuenow="{{progress_bar.current}}"
 			aria-valuemin="0"
 			aria-valuemax="{{progress_bar.goal}}"
+			{% if block.datasource == 'form' %}data-form="{{ block.form }}"{% endif %}
+			{% if block.datasource == 'form' %}data-url="{{ fn('supt_get_progress_api_url') }}/{{ block.form }}?{{ params }}"{% endif %}
 		>
 						<span class="a-progress__current{% if progress_bar.current_percent < 40 %} a-progress__current--right{% endif %}">
 							<span class="a-progress__value">{{ progress_bar.current }}</span>{% if unit %}&nbsp;{{unit}}{% endif %}

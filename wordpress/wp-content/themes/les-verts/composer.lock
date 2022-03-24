@@ -236,12 +236,12 @@
 			},
 			"type": "library",
 			"autoload": {
-				"psr-0": {
-					"HTMLPurifier": "library/"
-				},
 				"files": [
 					"library/HTMLPurifier.composer.php"
 				],
+				"psr-0": {
+					"HTMLPurifier": "library/"
+				},
 				"exclude-from-classmap": [
 					"/library/HTMLPurifier/Language/"
 				]
@@ -448,26 +448,27 @@
 		},
 		{
 			"name": "mindkomm/timmy",
-			"version": "0.14.8",
+			"version": "0.14.9",
 			"source": {
 				"type": "git",
 				"url": "https://github.com/mindkomm/timmy.git",
-				"reference": "59764c549277bb55d3d862e845e2e908beb363ef"
+				"reference": "600b1cdcb50ab6d56def247933361f5e038062d6"
 			},
 			"dist": {
 				"type": "zip",
-				"url": "https://api.github.com/repos/mindkomm/timmy/zipball/59764c549277bb55d3d862e845e2e908beb363ef",
-				"reference": "59764c549277bb55d3d862e845e2e908beb363ef",
+				"url": "https://api.github.com/repos/mindkomm/timmy/zipball/600b1cdcb50ab6d56def247933361f5e038062d6",
+				"reference": "600b1cdcb50ab6d56def247933361f5e038062d6",
 				"shasum": ""
 			},
 			"require": {
-				"composer/installers": "~1.0",
+				"composer/installers": "^1.0 || ^2.0",
 				"php": ">=5.4.0",
 				"timber/timber": "^1.3"
 			},
 			"require-dev": {
-				"phpunit/phpunit": "^6.0",
-				"wpackagist-plugin/advanced-custom-fields": "5.*"
+				"phpunit/phpunit": "^7.0",
+				"wpackagist-plugin/advanced-custom-fields": "5.*",
+				"yoast/phpunit-polyfills": "^1.0"
 			},
 			"type": "library",
 			"autoload": {
@@ -502,7 +503,7 @@
 				"issues": "https://github.com/mindkomm/timmy/issues",
 				"source": "https://github.com/mindkomm/timmy"
 			},
-			"time": "2021-07-28T20:18:03+00:00"
+			"time": "2022-03-01T14:52:16+00:00"
 		},
 		{
 			"name": "myclabs/php-enum",
@@ -566,16 +567,16 @@
 		},
 		{
 			"name": "phpoffice/phpspreadsheet",
-			"version": "1.21.0",
+			"version": "1.22.0",
 			"source": {
 				"type": "git",
 				"url": "https://github.com/PHPOffice/PhpSpreadsheet.git",
-				"reference": "1a359d2ccbb89c05f5dffb32711a95f4afc67964"
+				"reference": "3a9e29b4f386a08a151a33578e80ef1747037a48"
 			},
 			"dist": {
 				"type": "zip",
-				"url": "https://api.github.com/repos/PHPOffice/PhpSpreadsheet/zipball/1a359d2ccbb89c05f5dffb32711a95f4afc67964",
-				"reference": "1a359d2ccbb89c05f5dffb32711a95f4afc67964",
+				"url": "https://api.github.com/repos/PHPOffice/PhpSpreadsheet/zipball/3a9e29b4f386a08a151a33578e80ef1747037a48",
+				"reference": "3a9e29b4f386a08a151a33578e80ef1747037a48",
 				"shasum": ""
 			},
 			"require": {
@@ -606,7 +607,7 @@
 				"dompdf/dompdf": "^1.0",
 				"friendsofphp/php-cs-fixer": "^3.2",
 				"jpgraph/jpgraph": "^4.0",
-				"mpdf/mpdf": "^8.0",
+				"mpdf/mpdf": "8.0.17",
 				"phpcompatibility/php-compatibility": "^9.3",
 				"phpstan/phpstan": "^1.1",
 				"phpstan/phpstan-phpunit": "^1.0",
@@ -664,9 +665,9 @@
 			],
 			"support": {
 				"issues": "https://github.com/PHPOffice/PhpSpreadsheet/issues",
-				"source": "https://github.com/PHPOffice/PhpSpreadsheet/tree/1.21.0"
+				"source": "https://github.com/PHPOffice/PhpSpreadsheet/tree/1.22.0"
 			},
-			"time": "2022-01-06T11:10:08+00:00"
+			"time": "2022-02-18T12:57:07+00:00"
 		},
 		{
 			"name": "psr/http-client",
@@ -881,7 +882,7 @@
 		},
 		{
 			"name": "symfony/polyfill-ctype",
-			"version": "v1.24.0",
+			"version": "v1.25.0",
 			"source": {
 				"type": "git",
 				"url": "https://github.com/symfony/polyfill-ctype.git",
@@ -913,12 +914,12 @@
 				}
 			},
 			"autoload": {
-				"psr-4": {
-					"Symfony\\Polyfill\\Ctype\\": ""
-				},
 				"files": [
 					"bootstrap.php"
-				]
+				],
+				"psr-4": {
+					"Symfony\\Polyfill\\Ctype\\": ""
+				}
 			},
 			"notification-url": "https://packagist.org/downloads/",
 			"license": [
@@ -943,7 +944,7 @@
 				"portable"
 			],
 			"support": {
-				"source": "https://github.com/symfony/polyfill-ctype/tree/v1.24.0"
+				"source": "https://github.com/symfony/polyfill-ctype/tree/v1.25.0"
 			},
 			"funding": [
 				{
@@ -963,7 +964,7 @@
 		},
 		{
 			"name": "symfony/polyfill-mbstring",
-			"version": "v1.24.0",
+			"version": "v1.25.0",
 			"source": {
 				"type": "git",
 				"url": "https://github.com/symfony/polyfill-mbstring.git",
@@ -1026,7 +1027,7 @@
 				"shim"
 			],
 			"support": {
-				"source": "https://github.com/symfony/polyfill-mbstring/tree/v1.24.0"
+				"source": "https://github.com/symfony/polyfill-mbstring/tree/v1.25.0"
 			},
 			"funding": [
 				{
@@ -1046,7 +1047,7 @@
 		},
 		{
 			"name": "symfony/polyfill-php72",
-			"version": "v1.24.0",
+			"version": "v1.25.0",
 			"source": {
 				"type": "git",
 				"url": "https://github.com/symfony/polyfill-php72.git",
@@ -1102,7 +1103,7 @@
 				"shim"
 			],
 			"support": {
-				"source": "https://github.com/symfony/polyfill-php72/tree/v1.24.0"
+				"source": "https://github.com/symfony/polyfill-php72/tree/v1.25.0"
 			},
 			"funding": [
 				{

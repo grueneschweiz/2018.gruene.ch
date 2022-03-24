@@ -24,6 +24,7 @@ import ABreadcrumbs from './atoms/a-breadcrumbs/a-breadcrumbs';
 import AProgress from './atoms/a-progress/a-progress';
 import Page from './templates/page/page';
 import OFooter from './organisms/o-footer/o-footer';
+import ASocialIcon from './atoms/a-social-icon/a-social-icon';
 
 // ================= STOP TO ADD HERE
 
@@ -57,6 +58,7 @@ const COMPONENTS_TO_LOAD = [
 	{ view: AProgress, name: 'AProgress', selector: '.a-progress' },
 	{ view: Page, name: 'Page', selector: '.page' },
 	{ view: OFooter, name: 'OFooter', selector: '.o-footer' },
+	{ view: ASocialIcon, name: 'ASocialIcon', selector: '.a-social-icon' },
 ];
 
 const LOADED_COMPONENTS = {};

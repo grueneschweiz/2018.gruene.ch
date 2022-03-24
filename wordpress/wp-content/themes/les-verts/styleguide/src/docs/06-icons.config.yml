@@ -22,6 +22,8 @@ context:
         - mail
         - mobile
         - instagram
+        - telegram
+        - link
         - facebook--no-outline
         - twitter--no-outline
         - mail--no-outline
