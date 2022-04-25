@@ -10,6 +10,7 @@ namespace SUPT;
 
 
 use Timber\Post;
+use Timber\Timber;
 
 class SUPTTribeEvent extends ACFPost {
 	private $venue;
