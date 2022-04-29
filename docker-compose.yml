@@ -47,6 +47,7 @@ services:
       PMA_HOST: db
       PMA_USER: root
       PMA_PASSWORD: wordpress
+      UPLOAD_LIMIT: 1G
 
   mailhog:
     image: mailhog/mailhog

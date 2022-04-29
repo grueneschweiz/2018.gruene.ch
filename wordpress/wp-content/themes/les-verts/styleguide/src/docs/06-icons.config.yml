@@ -18,10 +18,13 @@ context:
     - name: Social Media / Contact
       icons:
         - facebook
+        - tiktok
         - twitter
-        - mail
-        - mobile
+        - linkedin
         - instagram
+        - mail
+        - youtube
+        - mobile
         - telegram
         - link
         - facebook--no-outline

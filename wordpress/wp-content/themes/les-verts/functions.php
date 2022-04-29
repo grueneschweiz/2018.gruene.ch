@@ -34,17 +34,18 @@ class StarterSite extends TimberSite {
 	
 	function __construct() {
 		Locale::setDefault( get_lang() );
-		
+
 		// Theme supports
 		// -> more info: https://developer.wordpress.org/reference/functions/add_theme_support/
 		add_theme_support( 'post-thumbnails' );
 		add_theme_support( 'menus' );
 		add_theme_support( 'yoast-seo-breadcrumbs' );
-		
+		add_theme_support( 'html5', array( 'search-form', 'gallery', 'caption', 'style', 'script' ) );
+
 		// Filters
 		// -> more info: https://developer.wordpress.org/reference/functions/add_filter/
 		add_filter( 'timber_context', array( $this, 'add_to_context' ), - 1 );
-		
+
 		// Actions
 		// -> more info: https://developer.wordpress.org/reference/functions/add_action/
 		add_action( 'init', array( $this, 'register_menu_locations' ) );

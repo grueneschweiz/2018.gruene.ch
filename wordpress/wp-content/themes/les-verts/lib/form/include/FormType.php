@@ -253,8 +253,12 @@ class FormType extends Model {
 	 * @param int $post_id The current post ID.
 	 */
 	public static function populate_columns_fields( string $column_name, int $post_id ) {
-		if ( $column_name == self::COLUMN_FIELD_NAME ) {
+		if ( $column_name === self::COLUMN_FIELD_NAME ) {
 			$fields = get_field( 'form_fields', $post_id );
+
+			if ( empty( $fields ) ) {
+				return;
+			}
 
 			echo implode( '; ', array_map( function ( $f ) {
 				$label = wp_trim_words( strip_tags( $f['form_input_label'] ), 4, '...' );

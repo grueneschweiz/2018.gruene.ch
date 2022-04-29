@@ -4,15 +4,21 @@
 	{% set post = ACFPost(post) %}
 {% endif %}
 
+{% set is_front = 'page' == fn('get_option', 'show_on_front') and post.id == fn('get_option', 'page_on_front') %}
+{% if not is_front %}
+	{% set is_front = 'single_front.php' == fn('get_page_template_slug', post.id) %}
+{% endif %}
+
 <div class="m-front-article {{ modifiers|join(' ') }}">
 	<h3 class="m-front-article__title">
-		{% if post.link %}<a href="{{ post.link }}" tabindex="-1" class="m-front-article__title-link">{{ post.title|wptexturize }}</a>
+		{% if post.link %}<a href="{{ post.link }}" tabindex="-1"
+												 class="m-front-article__title-link">{{ post.title|wptexturize }}</a>
 		{% else %}{{ post.title|wptexturize }}{% endif %}
 	</h3>
-	{% if post.main_content_header_image %}
+	{% if post.main_content_header_image or (is_front and post.campaign_image) %}
 		<div class="m-front-article__image">
 			{% include 'atoms/a-image.twig' with {
-				'image': post.main_content_header_image,
+				'image': post.main_content_header_image > 0 and not is_front ? post.main_content_header_image : post.campaign_image,
 				'size': 'regular',
 				'link_url': post.link(),
 				'no_caption': 1
@@ -29,6 +35,8 @@
 		<p class="m-front-article__text">
 			{% if excerpt %}
 				{{ excerpt|wptexturize }}
+			{% elseif is_front and post.campaign_summary_teaser %}
+				{{ post.campaign_summary_teaser|wptexturize }}
 			{% else %}
 				{{ post.excerpt()|wptexturize }}
 			{% endif %}
