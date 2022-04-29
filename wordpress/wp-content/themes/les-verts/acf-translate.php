@@ -361,7 +361,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 						'name'              => 'teaser',
 						'type'              => 'textarea',
 						'instructions'      => __( 'Max. 140 characters.', 'lesverts' ),
-						'required'          => 0,
+						'required'          => 1,
 						'conditional_logic' => array(
 							array(
 								array(
@@ -388,7 +388,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 						'name'              => 'button_text',
 						'type'              => 'text',
 						'instructions'      => __( 'The button will link to this menu item', 'lesverts' ),
-						'required'          => 0,
+						'required'          => 1,
 						'conditional_logic' => array(
 							array(
 								array(
@@ -430,7 +430,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 		'active'                => true,
 		'description'           => '',
 		'show_in_rest'          => false,
-		'modified'              => 1635972087,
+		'modified'              => 1543324738,
 	) );
 
 	acf_add_local_field_group( array(
@@ -649,6 +649,84 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 						'min'        => '',
 						'max'        => '1',
 					),
+					'layout_626bcd7fbb4b2' => array(
+						'key'        => 'layout_626bcd7fbb4b2',
+						'name'       => 'tiktok',
+						'label'      => __( 'Tiktok', 'lesverts' ),
+						'display'    => 'block',
+						'sub_fields' => array(
+							array(
+								'key'               => 'field_626bcd7fbb4b3',
+								'label'             => __( 'Link to the tiktok profile', 'lesverts' ),
+								'name'              => 'link',
+								'type'              => 'url',
+								'instructions'      => '',
+								'required'          => 1,
+								'conditional_logic' => 0,
+								'wrapper'           => array(
+									'width' => '',
+									'class' => '',
+									'id'    => '',
+								),
+								'default_value'     => '',
+								'placeholder'       => '',
+							),
+						),
+						'min'        => '',
+						'max'        => '1',
+					),
+					'layout_626bcda0bb4b4' => array(
+						'key'        => 'layout_626bcda0bb4b4',
+						'name'       => 'linkedin',
+						'label'      => __( 'Linkedin', 'lesverts' ),
+						'display'    => 'block',
+						'sub_fields' => array(
+							array(
+								'key'               => 'field_626bcda0bb4b5',
+								'label'             => __( 'Link to the linkedin profile', 'lesverts' ),
+								'name'              => 'link',
+								'type'              => 'url',
+								'instructions'      => '',
+								'required'          => 1,
+								'conditional_logic' => 0,
+								'wrapper'           => array(
+									'width' => '',
+									'class' => '',
+									'id'    => '',
+								),
+								'default_value'     => '',
+								'placeholder'       => '',
+							),
+						),
+						'min'        => '',
+						'max'        => '1',
+					),
+					'layout_626bcdb7bb4b6' => array(
+						'key'        => 'layout_626bcdb7bb4b6',
+						'name'       => 'youtube',
+						'label'      => __( 'Youtube', 'lesverts' ),
+						'display'    => 'block',
+						'sub_fields' => array(
+							array(
+								'key'               => 'field_626bcdb7bb4b7',
+								'label'             => __( 'Link to the youtube profile', 'lesverts' ),
+								'name'              => 'link',
+								'type'              => 'url',
+								'instructions'      => '',
+								'required'          => 1,
+								'conditional_logic' => 0,
+								'wrapper'           => array(
+									'width' => '',
+									'class' => '',
+									'id'    => '',
+								),
+								'default_value'     => '',
+								'placeholder'       => '',
+							),
+						),
+						'min'        => '',
+						'max'        => '1',
+					),
 				),
 				'button_label'      => __( 'Add Icon', 'lesverts' ),
 				'min'               => '',
@@ -672,8 +750,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 		'hide_on_screen'        => '',
 		'active'                => true,
 		'description'           => '',
-		'show_in_rest'          => false,
-		'modified'              => 1543324739,
+		'show_in_rest'          => 0,
 	) );
 
 	acf_add_local_field_group( array(
@@ -1494,37 +1571,6 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 						'min'        => '',
 						'max'        => '',
 					),
-					'layout_62062994bfc00' => array(
-						'key'        => 'layout_62062994bfc00',
-						'name'       => 'share_buttons',
-						'label'      => __( 'Share Buttons', 'lesverts' ),
-						'display'    => 'block',
-						'sub_fields' => array(
-							array(
-								'key'               => 'field_620629a0bfc01',
-								'label'             => '',
-								'name'              => '',
-								'type'              => 'clone',
-								'instructions'      => '',
-								'required'          => 0,
-								'conditional_logic' => 0,
-								'wrapper'           => array(
-									'width' => '',
-									'class' => '',
-									'id'    => '',
-								),
-								'clone'             => array(
-									0 => 'group_620623a78f503',
-								),
-								'display'           => 'seamless',
-								'layout'            => 'block',
-								'prefix_label'      => 0,
-								'prefix_name'       => 0,
-							),
-						),
-						'min'        => '',
-						'max'        => '',
-					),
 				),
 				'button_label'      => __( 'Add Content Block', 'lesverts' ),
 				'min'               => '',
@@ -1548,7 +1594,8 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 		'hide_on_screen'        => '',
 		'active'                => false,
 		'description'           => '',
-		'show_in_rest'          => 0,
+		'show_in_rest'          => false,
+		'modified'              => 1608246560,
 	) );
 
 	acf_add_local_field_group( array(
@@ -4121,225 +4168,6 @@ Example: {{current}} have signed. Can we reach {{goal}}?', 'lesverts' ),
 	) );
 
 	acf_add_local_field_group( array(
-		'key'                   => 'group_620623a78f503',
-		'title'                 => __( '[Template]Share Buttons', 'lesverts' ),
-		'fields'                => array(
-			array(
-				'key'               => 'field_620623ce67c8e',
-				'label'             => __( 'About this Block', 'lesverts' ),
-				'name'              => '',
-				'type'              => 'message',
-				'instructions'      => '',
-				'required'          => 0,
-				'conditional_logic' => 0,
-				'wrapper'           => array(
-					'width' => '',
-					'class' => '',
-					'id'    => '',
-				),
-				'message'           => __( 'Adds custom share buttons.
-
-Use this block if you ask visitors explicitly to share the provided link.', 'lesverts' ),
-				'new_lines'         => 'wpautop',
-				'esc_html'          => 0,
-			),
-			array(
-				'key'               => 'field_620624c867c8f',
-				'label'             => __( 'URL to share', 'lesverts' ),
-				'name'              => 'url_to_share',
-				'type'              => 'url',
-				'instructions'      => __( 'Enter the URL of the page, that should be shared when clicking the share button. Leave empty to share this page.', 'lesverts' ),
-				'required'          => 0,
-				'conditional_logic' => 0,
-				'wrapper'           => array(
-					'width' => '',
-					'class' => '',
-					'id'    => '',
-				),
-				'default_value'     => '',
-				'placeholder'       => '',
-				'translations'      => 'copy_once',
-			),
-			array(
-				'key'               => 'field_620625ac67c90',
-				'label'             => __( 'Channels', 'lesverts' ),
-				'name'              => 'channels',
-				'type'              => 'checkbox',
-				'instructions'      => __( 'Which share buttons do you want to display?', 'lesverts' ),
-				'required'          => 0,
-				'conditional_logic' => 0,
-				'wrapper'           => array(
-					'width' => '',
-					'class' => '',
-					'id'    => '',
-				),
-				'choices'           => array(
-					'twitter'  => __( 'Twitter', 'lesverts' ),
-					'facebook' => __( 'Facebook', 'lesverts' ),
-					'whatsapp' => __( 'WhatsApp', 'lesverts' ),
-					'telegram' => __( 'Telegram', 'lesverts' ),
-					'mail'     => __( 'E-Mail', 'lesverts' ),
-					'link'     => __( 'Copy Link', 'lesverts' ),
-				),
-				'allow_custom'      => 0,
-				'default_value'     => array(
-					0 => 'twitter',
-					1 => 'facebook',
-					2 => 'whatsapp',
-					3 => 'telegram',
-					4 => 'mail',
-					5 => 'link',
-				),
-				'layout'            => 'horizontal',
-				'toggle'            => 0,
-				'return_format'     => 'value',
-				'translations'      => 'copy_once',
-				'save_custom'       => 0,
-			),
-			array(
-				'key'               => 'field_6206273067c91',
-				'label'             => __( 'Twitter: Proposed tweet', 'lesverts' ),
-				'name'              => 'twitter_text',
-				'type'              => 'textarea',
-				'instructions'      => __( 'Tweet without URL and via. The URL and via will be appended automatically.
-Visitors will be able to customize this text.', 'lesverts' ),
-				'required'          => 0,
-				'conditional_logic' => array(
-					array(
-						array(
-							'field'    => 'field_620625ac67c90',
-							'operator' => '==',
-							'value'    => 'twitter',
-						),
-					),
-				),
-				'wrapper'           => array(
-					'width' => '',
-					'class' => '',
-					'id'    => '',
-				),
-				'default_value'     => '',
-				'placeholder'       => '',
-				'maxlength'         => 256,
-				'rows'              => 2,
-				'new_lines'         => '',
-				'translations'      => 'translate',
-			),
-			array(
-				'key'               => 'field_620627c267c92',
-				'label'             => __( 'WhatsApp / Telegram: Proposed message', 'lesverts' ),
-				'name'              => 'messenger_text',
-				'type'              => 'textarea',
-				'instructions'      => __( 'Message text without URL. The URL will be appended automatically.
-Visitors will be able to customize this text.', 'lesverts' ),
-				'required'          => 0,
-				'conditional_logic' => array(
-					array(
-						array(
-							'field'    => 'field_620625ac67c90',
-							'operator' => '==',
-							'value'    => 'whatsapp',
-						),
-					),
-					array(
-						array(
-							'field'    => 'field_620625ac67c90',
-							'operator' => '==',
-							'value'    => 'telegram',
-						),
-					),
-				),
-				'wrapper'           => array(
-					'width' => '',
-					'class' => '',
-					'id'    => '',
-				),
-				'default_value'     => '',
-				'placeholder'       => '',
-				'maxlength'         => '',
-				'rows'              => 3,
-				'new_lines'         => '',
-				'translations'      => 'translate',
-			),
-			array(
-				'key'               => 'field_6206288767c94',
-				'label'             => __( 'E-Mail: Proposed subject', 'lesverts' ),
-				'name'              => 'mail_subject',
-				'type'              => 'text',
-				'instructions'      => __( 'Visitors will be able to customize this text.', 'lesverts' ),
-				'required'          => 0,
-				'conditional_logic' => array(
-					array(
-						array(
-							'field'    => 'field_620625ac67c90',
-							'operator' => '==',
-							'value'    => 'mail',
-						),
-					),
-				),
-				'wrapper'           => array(
-					'width' => '',
-					'class' => '',
-					'id'    => '',
-				),
-				'default_value'     => '',
-				'placeholder'       => '',
-				'prepend'           => '',
-				'append'            => '',
-				'maxlength'         => '',
-				'translations'      => 'translate',
-			),
-			array(
-				'key'               => 'field_620628f967c95',
-				'label'             => __( 'E-Mail: Message', 'lesverts' ),
-				'name'              => 'mail_body',
-				'type'              => 'textarea',
-				'instructions'      => __( 'Message text without URL. The URL will be appended automatically.
-Visitors will be able to customize this text.', 'lesverts' ),
-				'required'          => 0,
-				'conditional_logic' => array(
-					array(
-						array(
-							'field'    => 'field_620625ac67c90',
-							'operator' => '==',
-							'value'    => 'mail',
-						),
-					),
-				),
-				'wrapper'           => array(
-					'width' => '',
-					'class' => '',
-					'id'    => '',
-				),
-				'default_value'     => '',
-				'placeholder'       => '',
-				'maxlength'         => '',
-				'rows'              => 3,
-				'new_lines'         => '',
-				'translations'      => 'translate',
-			),
-		),
-		'location'              => array(
-			array(
-				array(
-					'param'    => 'post_type',
-					'operator' => '==',
-					'value'    => 'post',
-				),
-			),
-		),
-		'menu_order'            => 0,
-		'position'              => 'normal',
-		'style'                 => 'default',
-		'label_placement'       => 'top',
-		'instruction_placement' => 'label',
-		'hide_on_screen'        => '',
-		'active'                => false,
-		'description'           => '',
-		'show_in_rest'          => 0,
-	) );
-
-	acf_add_local_field_group( array(
 		'key'                   => 'group_5b6846d09aa72',
 		'title'                 => __( '[Template]Single Post', 'lesverts' ),
 		'fields'                => array(
@@ -5173,7 +5001,7 @@ Visitors will be able to customize this text.', 'lesverts' ),
 		'active'                => false,
 		'description'           => '',
 		'show_in_rest'          => false,
-		'modified'              => 1632836199,
+		'modified'              => 1548100965,
 	) );
 
 	acf_add_local_field_group( array(
@@ -5738,7 +5566,6 @@ Visitors will be able to customize this text.', 'lesverts' ),
 		'active'                => true,
 		'description'           => '',
 		'show_in_rest'          => false,
-		'modified'              => 1638268929,
 	) );
 
 	acf_add_local_field_group( array(
