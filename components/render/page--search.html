@@ -1,0 +1,836 @@
+
+
+<div class="page page--list">
+	<header class="o-header">
+	<div class="o-header__display">
+		<div class="o-header__branding">
+			<section class="m-branding" role="banner" style="display: none">
+				<div class="m-branding__wrapper">
+					<div class="m-branding__row">
+						<h1 class="m-branding__title">
+								<span class="m-branding__unbreakeable">Ökologisch konsequent.</span>
+								<span class="m-branding__unbreakeable">Sozial engagiert.</span>
+								<span class="m-branding__unbreakeable">Global solidarisch.</span>
+						</h1>
+						<a href="/" class="m-branding__logo"><img class="a-logo" alt="" src="/img/logo-defr--white.svg"></a>
+					</div>
+				</div>
+			</section>
+			
+			<script>
+				var branding = parseInt( window.sessionStorage.getItem( 'branding' ) || 0 );
+				if (branding < 2) {
+					document.querySelectorAll( '.m-branding' ).forEach( el => el.style.display = 'block' );
+					window.sessionStorage.setItem( 'branding', ( branding + 1 ).toString() );
+				}
+			</script>
+		</div>
+		<div class="o-header__menu">
+			<div class="m-menu ">
+	<a class="m-menu__logo" href="/" title="">
+		<img class="a-logo" alt="Logo Grüne Schweiz" src="/img/logo-defr--green.svg">	</a>
+	<nav class="m-menu__nav">
+		<div class="m-menu__hamburger">
+			<button class="a-hamburger"
+				aria-label="Navigation anzeigen / verbergen"
+				accesskey="1"
+				type="button"
+				aria-haspopup="true"
+				aria-expanded="false"
+				aria-controls="menu">
+  <span class="a-hamburger__box">
+    <span class="a-hamburger__inner"></span>
+  </span>
+</button>
+
+		</div>
+		<ul class="m-menu__nav-list" role="menubar" id="menu" aria-label="Hauptnavigation">
+				<li class="m-menu__nav-item" role="none">
+					<a class="m-menu__nav-link m-menu__nav-link--js-hook m-menu__nav-link--active"
+						 href="#" role="menuitem" tabindex="0" accesskey="1"
+						 aria-haspopup="menu" aria-expanded="false">Aktuelles</a>
+						<ul class="m-menu__submenu " role="menu" aria-label="">
+								<li class="m-menu__submenu__section" role="none">
+									<div class="a-submenu ">
+											<a class="a-submenu__title" href="">Kampagnen und Events</a>
+											<ul class="a-submenu__list">
+													<li class="a-submenu__item">
+														<a class="a-submenu__link" href="">Petition «Nein zur Lex Beznau»</a>
+													</li>
+													<li class="a-submenu__item">
+														<a class="a-submenu__link" href="">Referendum gegen Versicherungsspione</a>
+													</li>
+													<li class="a-submenu__item">
+														<a class="a-submenu__link" href="">Events</a>
+													</li>
+											</ul>
+									</div>
+								</li>
+								<li class="m-menu__submenu__section" role="none">
+									<div class="a-submenu ">
+											<a class="a-submenu__title" href="">Abstimmungen</a>
+											<ul class="a-submenu__list">
+													<li class="a-submenu__item">
+														<a class="a-submenu__link" href="">Gegenvorschlag Veloinitiative</a>
+													</li>
+													<li class="a-submenu__item">
+														<a class="a-submenu__link" href="">Ernährungssouveränität</a>
+													</li>
+													<li class="a-submenu__item">
+														<a class="a-submenu__link" href="">Fair-Food</a>
+													</li>
+											</ul>
+									</div>
+								</li>
+								<li class="m-menu__submenu__section" role="none">
+									<div class="a-submenu ">
+											<a class="a-submenu__title" href="">Medienmitteilungen</a>
+											<ul class="a-submenu__list">
+											</ul>
+									</div>
+								</li>
+								<li class="m-menu__submenu__section" role="none">
+									<div class="a-submenu a-submenu--featured">
+											<div class="a-submenu--featured__cat-title">
+												<h2 class="a-cat-title">
+														<span class="a-cat-title__link a-cat-title__link--no-link">Fair-Food-Initiative</span>
+												</h2>
+											</div>
+											<div class="a-submenu--featured__image">
+												<figure class="a-image a-image--cover">
+													<a class="a-image__link" href="#" tabindex="-1">
+													<img src="/img/wheat_ratio.jpg" alt="Symbolbild Fair-Food" title="This is a linked image" class="a-image__image a-image__image--fp a-image__image--fp-">
+													</a>
+														<figcaption>
+															
+												
+														</figcaption>
+												</figure>
+											</div>
+											<a class="a-submenu--featured__link" href="">
+												<h3 class="a-submenu--featured__link__title">Fair-Food-Initiative</h3>
+											</a>
+												<p class="a-submenu--featured__text">Umweltfreundlich und fair hergestellte Lebensmittel – dies wollen die Grünen mit der Fair-Food-Initiative erreichen.</p>
+													<button type="button"
+																	class="a-button ">Kampagne anzeigen</button>
+									</div>
+								</li>
+							<li class="m-menu__submenu__close-wrapper" role="none">
+								<button class="m-menu__submenu__close"
+												aria-label="">
+									<svg role="img">
+										<title></title>
+										<use xlink:href="#close"></use>
+									</svg>
+								</button>
+							</li>
+						</ul>
+				</li>
+				<li class="m-menu__nav-item" role="none">
+					<a class="m-menu__nav-link m-menu__nav-link--js-hook"
+						 href="#" role="menuitem" 
+						 aria-haspopup="menu" aria-expanded="false">Positionen</a>
+				</li>
+				<li class="m-menu__nav-item" role="none">
+					<a class="m-menu__nav-link m-menu__nav-link--js-hook"
+						 href="#" role="menuitem" 
+						 aria-haspopup="menu" aria-expanded="false">Grüne Schweiz</a>
+				</li>
+				<li class="m-menu__nav-item" role="none">
+					<a class="m-menu__nav-link m-menu__nav-link--js-hook"
+						 href="#" role="menuitem" 
+						 aria-haspopup="menu" aria-expanded="false">Publikationen</a>
+				</li>
+				<li class="m-menu__nav-item" role="none">
+					<a class="m-menu__nav-link m-menu__nav-link--js-hook"
+						 href="#" role="menuitem" 
+						 aria-haspopup="menu" aria-expanded="false">Kontakt</a>
+				</li>
+			<li class="m-menu__nav-item" role="none">
+				<div class="a-search a-search--covering">
+					<form role="search" method="get" id="searchform" class="a-search__form" action="" autocomplete="off">
+						<div>
+							<label class="screen-reader-text" for="s">Suche</label>
+							<input class="a-search__field" type="text" value="" name="s" id="s" placeholder="Suche">
+							<label class="a-search__submit-label">
+								<input class="a-search__submit" type="submit" id="searchsubmit" value="Suchen">
+								<svg class="a-search__icon" aria-hidden="true">
+									<title>Suchen</title>
+									<use xlink:href="#glass"></use>
+								</svg>
+							</label>
+						</div>
+					</form>
+				</div>
+			</li>
+		</ul>
+	</nav>
+	<div class="m-menu__right">
+		<div class="m-menu__cta">
+				<div class="m-menu__nav-item">
+						<button type="button"
+										class="a-button  a-button--secondary a-button--outline m-menu__nav-link--js-hook">Mitmachen</button>
+						<ul class="m-menu__submenu m-menu__submenu--cta" role="menu" aria-label="">
+								<li class="m-menu__submenu__section" role="none">
+									<div class="a-submenu a-submenu--featured">
+											<div class="a-submenu--featured__cat-title">
+												<h2 class="a-cat-title">
+														<span class="a-cat-title__link a-cat-title__link--no-link">Mitmachen</span>
+												</h2>
+											</div>
+											<div class="a-submenu--featured__image">
+												<figure class="a-image a-image--cover">
+													<a class="a-image__link" href="#" tabindex="-1">
+													<img src="/img/wheat_ratio.jpg" alt="Symbolbild Fair-Food" title="This is a linked image" class="a-image__image a-image__image--fp a-image__image--fp-">
+													</a>
+														<figcaption>
+															
+												
+														</figcaption>
+												</figure>
+											</div>
+											<a class="a-submenu--featured__link" href="">
+												<h3 class="a-submenu--featured__link__title">Mitglied werden</h3>
+											</a>
+									</div>
+								</li>
+								<li class="m-menu__submenu__section" role="none">
+									<div class="a-submenu a-submenu--featured">
+											<div class="a-submenu--featured__cat-title">
+												<h2 class="a-cat-title">
+														<span class="a-cat-title__link a-cat-title__link--no-link">Unterstützen</span>
+												</h2>
+											</div>
+											<div class="a-submenu--featured__image">
+												<figure class="a-image a-image--cover">
+													<a class="a-image__link" href="#" tabindex="-1">
+													<img src="/img/wheat_ratio.jpg" alt="Symbolbild Fair-Food" title="This is a linked image" class="a-image__image a-image__image--fp a-image__image--fp-">
+													</a>
+														<figcaption>
+															
+												
+														</figcaption>
+												</figure>
+											</div>
+											<a class="a-submenu--featured__link" href="">
+												<h3 class="a-submenu--featured__link__title">Spenden</h3>
+											</a>
+									</div>
+								</li>
+							<li class="m-menu__submenu__close-wrapper" role="none">
+								<button class="m-menu__submenu__close"
+												aria-label="">
+									<svg role="img">
+										<title></title>
+										<use xlink:href="#close"></use>
+									</svg>
+								</button>
+							</li>
+						</ul>
+				</div>
+		</div>
+		<div class="m-menu__language-nav">
+			<ul class="m-menu__language-nav-list" role="menubar" aria-label="Sprachmenü">
+					<li class="m-menu__language-nav-item">
+						<a class="m-menu__language-nav-link m-menu__language-nav-link--active"
+							 href="#">de</a>
+					</li>
+					<li class="m-menu__language-nav-item">
+						<a class="m-menu__language-nav-link "
+							 href="#">fr</a>
+					</li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+		</div>
+	</div>
+	<div class="o-header__shadow" aria-hidden="true">
+		<section class="m-branding" role="banner" style="display: none">
+			<div class="m-branding__wrapper">
+				<div class="m-branding__row">
+					<h1 class="m-branding__title">
+							<span class="m-branding__unbreakeable">Ökologisch konsequent.</span>
+							<span class="m-branding__unbreakeable">Sozial engagiert.</span>
+							<span class="m-branding__unbreakeable">Global solidarisch.</span>
+					</h1>
+					<a href="/" class="m-branding__logo"><img class="a-logo" alt="" src="/img/logo-defr--white.svg"></a>
+				</div>
+			</div>
+		</section>
+		
+		<script>
+			var branding = parseInt( window.sessionStorage.getItem( 'branding' ) || 0 );
+			if (branding < 2) {
+				document.querySelectorAll( '.m-branding' ).forEach( el => el.style.display = 'block' );
+				window.sessionStorage.setItem( 'branding', ( branding + 1 ).toString() );
+			}
+		</script>
+		<div class="m-menu ">
+	<a class="m-menu__logo" href="/" title="">
+		<img class="a-logo" alt="Logo Grüne Schweiz" src="/img/logo-defr--green.svg">	</a>
+	<nav class="m-menu__nav">
+		<div class="m-menu__hamburger">
+			<button class="a-hamburger"
+				aria-label="Navigation anzeigen / verbergen"
+				accesskey="1"
+				type="button"
+				aria-haspopup="true"
+				aria-expanded="false"
+				aria-controls="menu">
+  <span class="a-hamburger__box">
+    <span class="a-hamburger__inner"></span>
+  </span>
+</button>
+
+		</div>
+		<ul class="m-menu__nav-list" role="menubar" id="menu" aria-label="Hauptnavigation">
+				<li class="m-menu__nav-item" role="none">
+					<a class="m-menu__nav-link m-menu__nav-link--js-hook m-menu__nav-link--active"
+						 href="#" role="menuitem" tabindex="0" accesskey="1"
+						 aria-haspopup="menu" aria-expanded="false">Aktuelles</a>
+						<ul class="m-menu__submenu " role="menu" aria-label="">
+								<li class="m-menu__submenu__section" role="none">
+									<div class="a-submenu ">
+											<a class="a-submenu__title" href="">Kampagnen und Events</a>
+											<ul class="a-submenu__list">
+													<li class="a-submenu__item">
+														<a class="a-submenu__link" href="">Petition «Nein zur Lex Beznau»</a>
+													</li>
+													<li class="a-submenu__item">
+														<a class="a-submenu__link" href="">Referendum gegen Versicherungsspione</a>
+													</li>
+													<li class="a-submenu__item">
+														<a class="a-submenu__link" href="">Events</a>
+													</li>
+											</ul>
+									</div>
+								</li>
+								<li class="m-menu__submenu__section" role="none">
+									<div class="a-submenu ">
+											<a class="a-submenu__title" href="">Abstimmungen</a>
+											<ul class="a-submenu__list">
+													<li class="a-submenu__item">
+														<a class="a-submenu__link" href="">Gegenvorschlag Veloinitiative</a>
+													</li>
+													<li class="a-submenu__item">
+														<a class="a-submenu__link" href="">Ernährungssouveränität</a>
+													</li>
+													<li class="a-submenu__item">
+														<a class="a-submenu__link" href="">Fair-Food</a>
+													</li>
+											</ul>
+									</div>
+								</li>
+								<li class="m-menu__submenu__section" role="none">
+									<div class="a-submenu ">
+											<a class="a-submenu__title" href="">Medienmitteilungen</a>
+											<ul class="a-submenu__list">
+											</ul>
+									</div>
+								</li>
+								<li class="m-menu__submenu__section" role="none">
+									<div class="a-submenu a-submenu--featured">
+											<div class="a-submenu--featured__cat-title">
+												<h2 class="a-cat-title">
+														<span class="a-cat-title__link a-cat-title__link--no-link">Fair-Food-Initiative</span>
+												</h2>
+											</div>
+											<div class="a-submenu--featured__image">
+												<figure class="a-image a-image--cover">
+													<a class="a-image__link" href="#" tabindex="-1">
+													<img src="/img/wheat_ratio.jpg" alt="Symbolbild Fair-Food" title="This is a linked image" class="a-image__image a-image__image--fp a-image__image--fp-">
+													</a>
+														<figcaption>
+															
+												
+														</figcaption>
+												</figure>
+											</div>
+											<a class="a-submenu--featured__link" href="">
+												<h3 class="a-submenu--featured__link__title">Fair-Food-Initiative</h3>
+											</a>
+												<p class="a-submenu--featured__text">Umweltfreundlich und fair hergestellte Lebensmittel – dies wollen die Grünen mit der Fair-Food-Initiative erreichen.</p>
+													<button type="button"
+																	class="a-button ">Kampagne anzeigen</button>
+									</div>
+								</li>
+							<li class="m-menu__submenu__close-wrapper" role="none">
+								<button class="m-menu__submenu__close"
+												aria-label="">
+									<svg role="img">
+										<title></title>
+										<use xlink:href="#close"></use>
+									</svg>
+								</button>
+							</li>
+						</ul>
+				</li>
+				<li class="m-menu__nav-item" role="none">
+					<a class="m-menu__nav-link m-menu__nav-link--js-hook"
+						 href="#" role="menuitem" 
+						 aria-haspopup="menu" aria-expanded="false">Positionen</a>
+				</li>
+				<li class="m-menu__nav-item" role="none">
+					<a class="m-menu__nav-link m-menu__nav-link--js-hook"
+						 href="#" role="menuitem" 
+						 aria-haspopup="menu" aria-expanded="false">Grüne Schweiz</a>
+				</li>
+				<li class="m-menu__nav-item" role="none">
+					<a class="m-menu__nav-link m-menu__nav-link--js-hook"
+						 href="#" role="menuitem" 
+						 aria-haspopup="menu" aria-expanded="false">Publikationen</a>
+				</li>
+				<li class="m-menu__nav-item" role="none">
+					<a class="m-menu__nav-link m-menu__nav-link--js-hook"
+						 href="#" role="menuitem" 
+						 aria-haspopup="menu" aria-expanded="false">Kontakt</a>
+				</li>
+			<li class="m-menu__nav-item" role="none">
+				<div class="a-search a-search--covering">
+					<form role="search" method="get" id="searchform" class="a-search__form" action="" autocomplete="off">
+						<div>
+							<label class="screen-reader-text" for="s">Suche</label>
+							<input class="a-search__field" type="text" value="" name="s" id="s" placeholder="Suche">
+							<label class="a-search__submit-label">
+								<input class="a-search__submit" type="submit" id="searchsubmit" value="Suchen">
+								<svg class="a-search__icon" aria-hidden="true">
+									<title>Suchen</title>
+									<use xlink:href="#glass"></use>
+								</svg>
+							</label>
+						</div>
+					</form>
+				</div>
+			</li>
+		</ul>
+	</nav>
+	<div class="m-menu__right">
+		<div class="m-menu__cta">
+				<div class="m-menu__nav-item">
+						<button type="button"
+										class="a-button  a-button--secondary a-button--outline m-menu__nav-link--js-hook">Mitmachen</button>
+						<ul class="m-menu__submenu m-menu__submenu--cta" role="menu" aria-label="">
+								<li class="m-menu__submenu__section" role="none">
+									<div class="a-submenu a-submenu--featured">
+											<div class="a-submenu--featured__cat-title">
+												<h2 class="a-cat-title">
+														<span class="a-cat-title__link a-cat-title__link--no-link">Mitmachen</span>
+												</h2>
+											</div>
+											<div class="a-submenu--featured__image">
+												<figure class="a-image a-image--cover">
+													<a class="a-image__link" href="#" tabindex="-1">
+													<img src="/img/wheat_ratio.jpg" alt="Symbolbild Fair-Food" title="This is a linked image" class="a-image__image a-image__image--fp a-image__image--fp-">
+													</a>
+														<figcaption>
+															
+												
+														</figcaption>
+												</figure>
+											</div>
+											<a class="a-submenu--featured__link" href="">
+												<h3 class="a-submenu--featured__link__title">Mitglied werden</h3>
+											</a>
+									</div>
+								</li>
+								<li class="m-menu__submenu__section" role="none">
+									<div class="a-submenu a-submenu--featured">
+											<div class="a-submenu--featured__cat-title">
+												<h2 class="a-cat-title">
+														<span class="a-cat-title__link a-cat-title__link--no-link">Unterstützen</span>
+												</h2>
+											</div>
+											<div class="a-submenu--featured__image">
+												<figure class="a-image a-image--cover">
+													<a class="a-image__link" href="#" tabindex="-1">
+													<img src="/img/wheat_ratio.jpg" alt="Symbolbild Fair-Food" title="This is a linked image" class="a-image__image a-image__image--fp a-image__image--fp-">
+													</a>
+														<figcaption>
+															
+												
+														</figcaption>
+												</figure>
+											</div>
+											<a class="a-submenu--featured__link" href="">
+												<h3 class="a-submenu--featured__link__title">Spenden</h3>
+											</a>
+									</div>
+								</li>
+							<li class="m-menu__submenu__close-wrapper" role="none">
+								<button class="m-menu__submenu__close"
+												aria-label="">
+									<svg role="img">
+										<title></title>
+										<use xlink:href="#close"></use>
+									</svg>
+								</button>
+							</li>
+						</ul>
+				</div>
+		</div>
+		<div class="m-menu__language-nav">
+			<ul class="m-menu__language-nav-list" role="menubar" aria-label="Sprachmenü">
+					<li class="m-menu__language-nav-item">
+						<a class="m-menu__language-nav-link m-menu__language-nav-link--active"
+							 href="#">de</a>
+					</li>
+					<li class="m-menu__language-nav-item">
+						<a class="m-menu__language-nav-link "
+							 href="#">fr</a>
+					</li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+	</div>
+</header>
+
+	<main class="page__main">
+		<article class="page__grid page__grid--no-sidebar">
+			<header class="page__full page__grid page__grid--no-sidebar page__header-wrapper page__header-wrapper--highlighted">
+				<div class="page__content page__header">
+					<h1>Suche</h1>
+					<div class="page__header-text">
+						<div class="a-search a-search--expanded a-search--inverted">
+							<form role="search" method="get" id="searchform" class="a-search__form" action="" autocomplete="off">
+								<div>
+									<label class="screen-reader-text" for="s">Suche</label>
+									<input class="a-search__field" type="text" value="Vernehmlassung Energiestrategie 2050" name="s" id="s" placeholder="Suche">
+									<label class="a-search__submit-label">
+										<input class="a-search__submit" type="submit" id="searchsubmit" value="Suchen">
+										<svg class="a-search__icon" aria-hidden="true">
+											<title>Suchen</title>
+											<use xlink:href="#glass"></use>
+										</svg>
+									</label>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</header>
+			<section class="page__content">
+				<header class="page__list-header">
+					<div class="m-list-header">
+	<h2 class="m-list-header__title-wrapper">
+		<span class="m-list-header__counter">82</span>
+		<span class="m-list-header__title">Suchresultate zu <span class="m-list-header__term">Atomie</span> in der Kategorie <span class="m-list-header__term">Klima und Energie</span></span>
+	</h2>
+	<div class="m-list-header__criteria">
+		<span class="m-list-header__criteria-desc">Nach Kategorie filtern:</span>
+		<ul class="m-list-header__criteria-list">
+			<li class="m-list-header__criteria-item">
+				<a href="#asdf" class="m-list-header__criteria-link m-list-header__criteria-link--active">Klima und Energie</a>
+			</li>
+			<li class="m-list-header__criteria-item">
+				<a href="#asdf" class="m-list-header__criteria-link">Atom</a>
+			</li>
+			<li class="m-list-header__criteria-item">
+				<a href="#lkjh" class="m-list-header__criteria-link">Energiewende</a>
+			</li>
+		</ul>
+		<div class="m-list-header__reset-filter">
+				<button type="button"
+								class="a-button a-button--outline">Alle Resultate Anzeigen</button>
+		</div>
+	</div>
+</div>
+
+				</header>
+				<ul class="page__list-articles">
+						<li class="page__list-article">
+							<div class="m-front-article m-front-article--no-image">
+								<h3 class="m-front-article__title">
+									<a href="#" class="m-front-article__title-link" tabindex="-1">Energie und Klima</a>
+								</h3>
+									<p class="m-front-article__text">Es ist nicht mehr schönzureden: Das Klima erwärmt sich zum allergrössten Teil durch menschliche Aktivitäten - und zwar sehr viel schneller und stärker als ursprünglich angenommen.</p>
+								<div class="m-front-article__link-button">
+									<a href="#" class="a-link-button ">
+	Weiterlesen
+</a>
+
+								</div>
+							</div>
+						</li>
+						<li class="page__list-article">
+							<div class="m-front-article m-front-article--no-image">
+								<h3 class="m-front-article__title">
+									<a href="#" class="m-front-article__title-link" tabindex="-1">Verkehr</a>
+								</h3>
+									<p class="m-front-article__text">Die Mobilität ist Grundlage von Begegnung und Kommunikation. Die GRÜNEN setzen sich dafür ein, dass sie ökologisch verträglich und zukunftsfähig gestaltet wird.</p>
+								<div class="m-front-article__link-button">
+									<a href="#" class="a-link-button ">
+	Weiterlesen
+</a>
+
+								</div>
+							</div>
+						</li>
+						<li class="page__list-article">
+							<div class="m-front-article m-front-article--no-image">
+								<h3 class="m-front-article__title">
+									<a href="#" class="m-front-article__title-link" tabindex="-1">Naturschutz</a>
+								</h3>
+									<p class="m-front-article__text">Die Biodiversität nimmt weltweit immer mehr ab. Der Schutz der natürlichen Lebensgrundlagen ist daher die zentrale Herausforderung des 21. Jahrhunderts.</p>
+								<div class="m-front-article__link-button">
+									<a href="#" class="a-link-button ">
+	Weiterlesen
+</a>
+
+								</div>
+							</div>
+						</li>
+						<li class="page__list-article">
+							<div class="m-front-article m-front-article--no-image">
+								<h3 class="m-front-article__title">
+									<a href="#" class="m-front-article__title-link" tabindex="-1">Raumplanung</a>
+								</h3>
+									<p class="m-front-article__text">Wohnen und Infrastruktur beanspruchen in der Schweiz seit Jahren immer mehr Land. 70 Prozent der Bevölkerung wohnen heute in Städten und Agglomerationen.</p>
+								<div class="m-front-article__link-button">
+									<a href="#" class="a-link-button ">
+	Weiterlesen
+</a>
+
+								</div>
+							</div>
+						</li>
+					<li class="page__list-article page__list-article--hover-link">
+						<a class="a-event-link" href="">
+	<div class="a-event-link__image">
+		<figure class="a-image a-image--cover">
+			
+			<img src="/img/dv.jpg" alt="Die Delegierten schreiten zur Abstimmung" title="This is a linked image" class="a-image__image a-image__image--fp a-image__image--fp-">
+			
+				<figcaption>
+					
+		
+				</figcaption>
+		</figure>
+	</div>
+	<h3 class="a-event-link__title">Delegiertenversammlung mit Stargast mit sehr langem Namen</h3>
+	<div class="a-event-link__meta">
+		<time class="a-event-link__datetime" datetime="2018-08-25 11:00">25. August 2018 – 11:00</time>
+		<div class="a-event-link__place">Säulenhalle Zug</div>
+	</div>
+</a>
+
+					</li>
+				</ul>
+				<footer class="page__list-pagination">
+					<div class="a-pagination">
+	<a href="#" class="a-pagination__link a-pagination__link--icon a-pagination__link--first a-pagination__link--disabled" title="First Page">
+		<svg role="img">
+			<title>First Page</title>
+			<use xlink:href="#last"></use>
+		</svg>
+	</a>
+	<a href="#" class="a-pagination__link a-pagination__link--icon a-pagination__link--prev a-pagination__link--disabled" title="Previous Page">
+		<svg role="img">
+			<title>Previous Page</title>
+			<use xlink:href="#next"></use>
+		</svg>
+	</a>
+	<ul class="a-pagination__list">
+		<li class="a-pagination__item"><span class="a-pagination__link a-pagination__link--current">1</span></li>
+		<li class="a-pagination__item"><a href="#" class="a-pagination__link">2</a></li>
+		<li class="a-pagination__item"><a href="#" class="a-pagination__link">3</a></li>
+		<li class="a-pagination__item"><a href="#" class="a-pagination__link">4</a></li>
+		<li class="a-pagination__item"><a href="#" class="a-pagination__link">5</a></li>
+		<li class="a-pagination__item"><a href="#" class="a-pagination__link">6</a></li>
+	</ul>
+	<a href="#" class="a-pagination__link a-pagination__link--icon a-pagination__link--next" title="Next Page">
+		<svg role="img">
+			<title>Next Page</title>
+			<use xlink:href="#next"></use>
+		</svg>
+	</a>
+	<a href="#" class="a-pagination__link a-pagination__link--icon a-pagination__link--last" title="Last Page">
+		<svg role="img">
+			<title>Last Page</title>
+			<use xlink:href="#last"></use>
+		</svg>
+	</a>
+</div>
+
+				</footer>
+			</section>
+		</article>
+	</main>
+	<div class="page__footer">
+		<footer class="o-footer">
+	<section class="o-footer__main">
+		<div class="o-footer__link-list">
+			<section class="a-footer-link-list">
+	<h2 class="a-footer-link-list__title">Kantonalparteien</h2>
+	<ul class="a-footer-link-list__list">
+			<li class="a-footer-link-list__item">
+				<a href="#" class="a-footer-link-list__link">Aargau</a>
+			</li>
+			<li class="a-footer-link-list__item">
+				<a href="#" class="a-footer-link-list__link">Appenzell innerhoden</a>
+			</li>
+			<li class="a-footer-link-list__item">
+				<a href="#" class="a-footer-link-list__link">Appenzell ausserhoden</a>
+			</li>
+			<li class="a-footer-link-list__item">
+				<a href="#" class="a-footer-link-list__link">Bern</a>
+			</li>
+			<li class="a-footer-link-list__item">
+				<a href="#" class="a-footer-link-list__link">Basel-Landschaft</a>
+			</li>
+			<li class="a-footer-link-list__item">
+				<a href="#" class="a-footer-link-list__link">Basel-Stadt</a>
+			</li>
+			<li class="a-footer-link-list__item">
+				<a href="#" class="a-footer-link-list__link">Freibourg</a>
+			</li>
+			<li class="a-footer-link-list__item">
+				<a href="#" class="a-footer-link-list__link">Genf</a>
+			</li>
+			<li class="a-footer-link-list__item">
+				<a href="#" class="a-footer-link-list__link">Glarus</a>
+			</li>
+			<li class="a-footer-link-list__item">
+				<a href="#" class="a-footer-link-list__link">Graubünden</a>
+			</li>
+			<li class="a-footer-link-list__item">
+				<a href="#" class="a-footer-link-list__link">Jura</a>
+			</li>
+			<li class="a-footer-link-list__item">
+				<a href="#" class="a-footer-link-list__link">Luzern</a>
+			</li>
+			<li class="a-footer-link-list__item">
+				<a href="#" class="a-footer-link-list__link">Neuenburg</a>
+			</li>
+			<li class="a-footer-link-list__item">
+				<a href="#" class="a-footer-link-list__link">Nidwalden</a>
+			</li>
+			<li class="a-footer-link-list__item">
+				<a href="#" class="a-footer-link-list__link">Obwalden</a>
+			</li>
+			<li class="a-footer-link-list__item">
+				<a href="#" class="a-footer-link-list__link">St.Gallen</a>
+			</li>
+			<li class="a-footer-link-list__item">
+				<a href="#" class="a-footer-link-list__link">Schaffhausen</a>
+			</li>
+			<li class="a-footer-link-list__item">
+				<a href="#" class="a-footer-link-list__link">Solothurn</a>
+			</li>
+			<li class="a-footer-link-list__item">
+				<a href="#" class="a-footer-link-list__link">Schwyz</a>
+			</li>
+			<li class="a-footer-link-list__item">
+				<a href="#" class="a-footer-link-list__link">Thurgau</a>
+			</li>
+			<li class="a-footer-link-list__item">
+				<a href="#" class="a-footer-link-list__link">Tessin</a>
+			</li>
+			<li class="a-footer-link-list__item">
+				<a href="#" class="a-footer-link-list__link">Uri</a>
+			</li>
+			<li class="a-footer-link-list__item">
+				<a href="#" class="a-footer-link-list__link">Waadt</a>
+			</li>
+			<li class="a-footer-link-list__item">
+				<a href="#" class="a-footer-link-list__link">Wallis</a>
+			</li>
+			<li class="a-footer-link-list__item">
+				<a href="#" class="a-footer-link-list__link">Zug</a>
+			</li>
+			<li class="a-footer-link-list__item">
+				<a href="#" class="a-footer-link-list__link">Zürich</a>
+			</li>
+			<li class="a-footer-link-list__item">
+				<a href="#" class="a-footer-link-list__link">Junge Grüne</a>
+			</li>
+	</ul>
+</section>
+
+		</div>
+		<div class="o-footer__cta">
+			<section class="m-footer-cta">
+	<h2 class="m-footer-cta__title">Engagiere dich</h2>
+		<div class="m-footer-cta__button">
+				<button type="button"
+								class="a-button a-button--secondary a-button--full-width">Newsletter abonnieren</button>
+		</div>
+		<div class="m-footer-cta__button">
+				<button type="button"
+								class="a-button a-button--outline a-button--secondary a-button--full-width">Mitglied werden</button>
+		</div>
+		<div class="m-footer-cta__button">
+				<button type="button"
+								class="a-button a-button--outline a-button--secondary a-button--full-width">Spenden</button>
+		</div>
+</section>
+
+		</div>
+		<div class="o-footer__contact">
+			<section class="m-footer-contact">
+	<h2 class="m-footer-contact__title">Kontakt</h2>
+	<div class="m-footer-contact__flex">
+		<div class="m-footer-contact__text"><p><strong>Grüne Schweiz</strong><br><strong>Les Verts suisses</strong><br>Waisenhausplatz 21<br>3011 Bern</p><p>031 326 66 00<br>Postkonto 80-26747-3</p><p><a href='mailto:gruene@gruene.ch' class='a-button'>E-Mail senden</a></p></div>
+		<div class="m-footer-contact__social">
+			<a href="https://www.facebook.com/gruenelesverts/" class="a-social-icon"
+																aria-label="">
+				<figure class="a-social-icon__figure">
+					<svg role="img" class="a-social-icon__svg">
+						<title>facebook</title>
+						<use xlink:href="#facebook"></use>
+					</svg>
+			
+				</figure>
+				</a>
+			<a href="https://twitter.com/GrueneCH" class="a-social-icon"
+																aria-label="">
+				<figure class="a-social-icon__figure">
+					<svg role="img" class="a-social-icon__svg">
+						<title>twitter</title>
+						<use xlink:href="#twitter"></use>
+					</svg>
+			
+				</figure>
+				</a>
+			<a href="https://www.instagram.com/gruenelesverts/" class="a-social-icon"
+																aria-label="">
+				<figure class="a-social-icon__figure">
+					<svg role="img" class="a-social-icon__svg">
+						<title>instagram</title>
+						<use xlink:href="#instagram"></use>
+					</svg>
+			
+				</figure>
+				</a>
+		</div>
+	</div>
+</section>
+
+		</div>
+	</section>
+	<section class="o-footer__meta">
+		<div class="a-footer-meta">
+	<div class="a-footer-meta__wrapper">
+		<div class="a-footer-meta__copy">© 2018 Grüne Schweiz</div>
+		<nav class="a-footer-meta__menu">
+			<ul class="a-footer-meta__list" role="menu" aria-label="Footer Meta Navigation">
+					<li class="a-footer-meta__item">
+						<a href="#" class="a-footer-meta__link">Datenschutz</a>
+					</li>
+					<li class="a-footer-meta__item">
+						<a href="#" class="a-footer-meta__link">Impressum</a>
+					</li>
+			</ul>
+		</nav>
+	</div>
+</div>
+
+	</section>
+</footer>
+
+	</div>
+</div>
+

@@ -1,0 +1,135 @@
+.o-people-grid {
+	&--horizontal {
+		width: 100%;
+		height: 100%;
+		overflow: hidden;
+		background: $color-grey-1;
+		position: relative;
+		z-index: 1; // Fix of Webkit flickering
+		@include fluid-props(margin-top margin-bottom padding-top padding-bottom, $fluid-min, $fluid-max, 5px, 25px);
+	}
+
+	&--horizontal &__wrapper {
+		@extend .grid-item;
+
+		@include media($_DESKTOP) {
+			max-width: $grid-max-width-max;
+		}
+	}
+
+	&__cat-title {
+		@include fluid-props(margin-bottom, $size-tiny, $size-medium, 20px, 34px);
+	}
+
+	&__title {
+		@include fluid-props(font-size, $size-tiny, $size-medium, 32px, 48px);
+		@include fluid-props(margin-top, $size-tiny, $size-medium, 20px, 34px);
+		@include fluid-props(margin-bottom, $size-tiny, $size-medium, 26px, 56px);
+	}
+
+	&--vertical &__slider {
+		display: grid;
+		grid-gap: 32px;
+		align-content: space-between;
+		grid-auto-flow: row;
+		grid-template-columns: 1fr;
+
+		@include media(480px) {
+			grid-template-columns: repeat(2, calc(50% - 16px));
+		}
+
+		@include media($size-medium) {
+			grid-template-columns: repeat(3, 242px);
+		}
+	}
+
+	&--horizontal &__slider {
+		display: flex;
+		align-items: stretch;
+		position: relative;
+		z-index: 1;
+		transition-property: transform;
+		box-sizing: content-box;
+		transform: translate3d(0px, 0, 0);
+		cursor: grab;
+	}
+
+	&__slide {
+		background: $color-white;
+	}
+
+	&--horizontal &__slide {
+		@include fluid-props(margin-right, $size-tiny, $size-medium, 20px, 32px);
+		position: relative;
+		transition-property: transform;
+
+		.m-person-slide {
+			width: 220px;
+
+			@include media($size-tiny) {
+				width: 280px;
+			}
+
+			@include media($_DESKTOP) {
+				width: 288px;
+			}
+		}
+	}
+
+	&__slide-button {
+		display: none;
+		position: absolute;
+		z-index: 10;
+		width: 108px;
+		padding-top: 0;
+		padding-bottom: 0;
+		@include fluid-props(top, $size-small, $size-medium, 211px, 240px); // dont ask
+		@include fluid-props(top, $size-medium, $fluid-max, 240px, 269px); // dont ask
+		@include fluid-props(top, $fluid-max, 2000px, 269px, 282px); // dont ask
+		height: 252px;
+		cursor: pointer;
+
+		@include media($size-small) {
+			display: block;
+		}
+
+		@include media($_DESKTOP) {
+			height: 259px;
+		}
+
+		@media screen and (hover: none) and (max-width: 1023px) {
+			// don't combine this query with the one above to work around the missing support in firefox
+			display: none;
+		}
+
+		&.swiper-button-disabled {
+			display: none;
+		}
+
+		@include hover {
+			svg {
+				fill: $color-primary-dark;
+			}
+		}
+
+		svg {
+			height: 48px;
+			width: 48px;
+			fill: $color-primary;
+			stroke: $color-white;
+			transition: fill $transition-fast $transition-ease;
+		}
+
+		&--left {
+			left: 0;
+
+			svg {
+				transform: rotate(180deg);
+			}
+		}
+
+		&--right {
+			right: 0;
+		}
+	}
+}

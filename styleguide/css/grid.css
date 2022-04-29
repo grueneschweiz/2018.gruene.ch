@@ -1,0 +1,28 @@
+.grid-wrapper-for-doc {
+	position: relative;
+	box-sizing: border-box;
+	max-width: 100%;
+	margin: 0;
+	border: 1px solid #ccc;
+	padding: .5em;
+}
+
+.grid {
+	display: grid;
+	grid-column-gap: calc(6px + 30 * (100vw - 320px) / 1360);
+	grid-template-columns: repeat(14, 1fr);
+	margin: 0 auto;
+}
+
+.col {
+	position: relative;
+	box-sizing: border-box;
+	line-height: 2.25rem;
+	background: rgba(105, 41, 41, 0.1);
+	border: 1px solid #c76f6f;
+	border-radius: 2px;
+	overflow: hidden;
+	text-align: center;
+	color: #692929;
+	margin: .3em 0;
+}

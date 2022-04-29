@@ -1,0 +1,325 @@
+.page {
+	/**
+		* ======
+		* Layout
+		* ======
+	  */
+	$page-grid-desktop: #{$page-grid-content-max-width + $page-grid-side-width + 2 * $page-grid-padder-min-width};
+	$page-grid-wide: #{$page-grid-content-max-width + 2 * ($page-grid-side-width + $page-grid-padder-regular-width + $page-grid-wide-side-max-width)};
+
+	&__grid {
+		display: grid;
+		grid-template-columns: [full-start] 1fr [wide-start] 0 [side-left-start] 0 [side-left-end content-start] $page-grid-content-min-width [content-end side-right-start] 0 [side-right-end] 0 [wide-end] 1fr [full-end];
+
+		@include media(#{$page-grid-content-min-width + 2 * $page-grid-padder-regular-width}) {
+			grid-template-columns: [full-start] $page-grid-padder-regular-width [wide-start] 0 [side-left-start] 0 [side-left-end content-start] 1fr [content-end side-right-start] 0 [side-right-end] 0 [wide-end] $page-grid-padder-regular-width [full-end];
+		}
+
+		@include media(#{$page-grid-content-max-width + 2 * $page-grid-padder-regular-width}) {
+			grid-template-columns: [full-start] $page-grid-padder-regular-width [wide-start] 1fr [side-left-start] 0 [side-left-end content-start] $page-grid-content-max-width [content-end side-right-start] 0 [side-right-end] 1fr [wide-end] $page-grid-padder-regular-width [full-end];
+		}
+
+		@include media(#{$page-grid-content-max-width + $page-grid-side-width + 2 * $page-grid-padder-min-width}) {
+			grid-template-columns: [full-start] 1fr [wide-start] 0 [side-left-start] $page-grid-side-width [side-left-end content-start] $page-grid-content-max-width [content-end side-right-start] 0 [side-right-end] 0 [wide-end] 1fr [full-end];
+
+			&--no-sidebar {
+				grid-template-columns: [full-start] $page-grid-padder-regular-width [wide-start] 0 [side-left-start] 1fr [side-left-end content-start] $page-grid-content-max-width [content-end side-right-start] 1fr [side-right-end] 0 [wide-end] $page-grid-padder-regular-width [full-end];
+			}
+		}
+
+		@include media(#{$page-grid-content-max-width + $page-grid-side-width + 2 * $page-grid-padder-regular-width}) {
+			grid-template-columns: [full-start] $page-grid-padder-regular-width [wide-start] 0 [side-left-start] $page-grid-side-width [side-left-end content-start] $page-grid-content-max-width [content-end side-right-start] 1fr [side-right-end] 0 [wide-end] $page-grid-padder-regular-width [full-end];
+
+			&--no-sidebar {
+				grid-template-columns: [full-start] $page-grid-padder-regular-width [wide-start] 0 [side-left-start] 1fr [side-left-end content-start] $page-grid-content-max-width [content-end side-right-start] 1fr [side-right-end] 0 [wide-end] $page-grid-padder-regular-width [full-end];
+			}
+		}
+
+		@include media(#{$page-grid-content-max-width + 2 * ($page-grid-side-width + $page-grid-padder-regular-width)}) {
+			grid-template-columns: [full-start] $page-grid-padder-regular-width [wide-start] 1fr [side-left-start] $page-grid-side-width [side-left-end content-start] $page-grid-content-max-width [content-end side-right-start] $page-grid-side-width [side-right-end] 1fr [wide-end] $page-grid-padder-regular-width [full-end];
+		}
+
+		@include media($page-grid-wide) {
+			grid-template-columns: [full-start] 1fr [wide-start] $page-grid-wide-side-max-width [side-left-start] $page-grid-side-width [side-left-end content-start] $page-grid-content-max-width [content-end side-right-start] $page-grid-side-width [side-right-end] $page-grid-wide-side-max-width [wide-end] 1fr [full-end];
+		}
+
+		@media print {
+			display: block;
+		}
+	}
+
+	&__full {
+		grid-column-start: full-start;
+		grid-column-end: full-end;
+	}
+
+	&__wide {
+		grid-column-start: wide-start;
+		grid-column-end: wide-end;
+
+		&--content-width {
+			max-width: $page-grid-content-max-width;
+		}
+
+		@include only_ie10_above() {
+			max-width: $page-grid-content-max-width;
+			margin: auto;
+		}
+	}
+
+	&__side {
+		grid-column-start: side-left-start;
+		grid-column-end: side-right-end;
+
+		&--full {
+			grid-column-start: full-start;
+			grid-column-end: full-end;
+		}
+
+		@include media($page-grid-desktop) {
+			&--left {
+				grid-column-start: side-left-start;
+				grid-column-end: side-left-end;
+			}
+
+			&--right {
+				grid-column-start: side-right-start;
+				grid-column-end: side-right-end;
+			}
+		}
+	}
+
+	&__row {
+		@include media($page-grid-desktop) {
+			&--1 {
+				grid-row: 1 / 2;
+			}
+
+			&--2 {
+				grid-row: 2 / 3;
+			}
+		}
+	}
+
+	&__content {
+		grid-column-start: content-start;
+		grid-column-end: content-end;
+
+		@include only_ie10_above() {
+			max-width: $page-grid-content-max-width;
+			margin: auto;
+		}
+	}
+
+	&__footer {
+		@include fluid-props(padding-top, $size-medium, $grid-max-width-max, 60px, 90px);
+		background-color: $color-white;
+	}
+
+	/**
+		* ==========
+		* Components
+		* ==========
+	  */
+	&__header-image {
+		width: 100%;
+		height: 50vh;
+		max-height: 600px;
+
+		@media only screen and (min-height: 900px) {
+			height: calc(100vh - 400px);
+			max-height: calc(100vh - 400px);
+		}
+	}
+
+	&__header-wrapper {
+		padding-top: 40px;
+
+		@include media($_DESKTOP) {
+			// keep this discrete, else the post meta position cant be set correctly
+			padding-top: 60px;
+		}
+
+		&--highlighted {
+			background: $color-grey-1;
+			@include fluid-props(padding-bottom, $fluid-min, $fluid-max, 40px, 60px);
+		}
+	}
+
+	&__header-text,
+	&__header-text p {
+		font-size: 1.25rem;
+
+		@include media($size-small) {
+			font-size: 1.46875rem;
+		}
+	}
+
+	&__header-text--bold {
+		font-weight: $font-weight-semi;
+	}
+
+	&__breadcrumbs--distracting {
+		display: none;
+	}
+
+	&__post-meta-wrapper {
+		@extend .page__side;
+		@extend .page__side--left;
+		@extend .page__side--full;
+		@extend .page__grid;
+
+		@include media($page-grid-desktop) {
+			display: flex;
+			flex-direction: column;
+			padding-right: 40px;
+			height: 100%;
+		}
+
+		@include only_ie10_above() {
+			display: none; // sorry folks!
+		}
+	}
+
+	&__post-meta {
+		@extend .page__content;
+
+		background-color: $color-grey-1;
+		border-top: 2px solid $color-primary;
+		padding: 0 15px;
+
+		@include media($page-grid-desktop) {
+			background-color: transparent;
+			margin-top: 72px;
+			border-top: none;
+			padding: 0;
+		}
+
+		&--distracting {
+			display: none;
+		}
+	}
+
+	&__shareable {
+		@include media($page-grid-desktop) {
+			flex-grow: 1;
+		}
+
+		&--margin-top {
+			@include media($page-grid-desktop) {
+				margin-top: 124px;
+			}
+		}
+	}
+
+	//noinspection CssOverwrittenProperties
+	&__share {
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		z-index: 10;
+
+		@include media($_DESKTOP) {
+			position: static; // IE: just keep it fixed
+			position: sticky;
+			top: 235px;
+			z-index: 0;
+			height: 300px;
+		}
+	}
+
+    &:not(&--list) &__content {
+		@include media($size-small){
+			p, li {
+				font-size: 1.25rem;
+			}
+
+			li {
+				letter-spacing: 0.015625em;
+				line-height: 1.75em;
+			}
+		}
+	}
+
+	&__box {
+		background-color: $color-grey-1;
+		@include fluid-props(margin-top margin-bottom, $size-tiny, $size-medium, 25px, 35px);
+		@include fluid-props(padding, $size-tiny, $size-medium, 12px, 40px);
+		@include media($_DESKTOP) {
+			margin-top: 50px;
+			margin-bottom: 50px;
+			padding: 60px;
+		}
+	}
+
+	&__preview-articles {
+		display: grid;
+		grid-template-columns: 1fr;
+		@include fluid-props(grid-column-gap, 1490px, $fluid-max, 40px, 100px); // 1490px = $page-grid-wide, but for some reason sass can't work with the variable
+		@include fluid-props(grid-row-gap, $fluid-min, $fluid-max, 40px, 80px);
+		@include fluid-props(margin-top margin-bottom, $fluid-min, $fluid-max, 50px, 100px);
+
+		@include media($size-small) {
+			grid-template-columns: 1fr 1fr;
+		}
+	}
+
+	&__preview-article {
+		border-bottom: solid 1px $color-grey-2;
+	}
+
+	&__list-header {
+		@include fluid-props(margin-top, $fluid-min, $fluid-max, 40px, 60px);
+	}
+
+	&__list-articles {
+		@include fluid-props(margin-top, $fluid-min, $fluid-max, 40px, 60px);
+		@include clean-ul;
+	}
+
+	&__list-article {
+		@include clean-li;
+
+		border-bottom: solid 1px $color-grey-2;
+
+		&--hover-link {
+			position: relative;
+			margin-left: -15px;
+			padding-left: 15px;
+			margin-right: -15px;
+			padding-right: 15px;
+			border-bottom: none;
+
+			&::after {
+				content: ' ';
+				position: absolute;
+				bottom: 0;
+				left: 15px;
+				background: $color-grey-2;
+				width: calc(100% - 30px);
+				height: 1px;
+			}
+
+			@include hover {
+				background: $color-grey-1;
+			}
+		}
+	}
+
+	&__list-footer {
+		width: 100%;
+		@include fluid-props(margin-top margin-bottom padding-bottom, $fluid-min, $fluid-max, 30px, 50px);
+	}
+
+	&__list-pagination {
+		display: flex;
+		justify-content: center;
+	}
+
+	&__list-events-nav {
+		margin-top: 15px;
+		display: flex;
+		justify-content: center;
+	}
+}

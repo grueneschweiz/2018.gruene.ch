@@ -1,0 +1,51 @@
+.no-branding .m-branding {
+	display: none;
+}
+
+.m-branding {
+	$height: 136px;
+
+	background-color: $color-primary;
+	width: 100%;
+	height: $height;
+
+	@media print {
+		display: none;
+	}
+
+	&__wrapper {
+		@extend .grid-width;
+		display: table;
+	}
+
+	&__row {
+		display: table-row;
+		height: $height;
+	}
+
+	&__logo {
+		@include clean-link;
+		display: table-cell;
+		vertical-align: middle;
+		height: $height;
+		width: 148px;
+		padding: 22px 0;
+
+		@media all and (max-width: $size-small) {
+			display: none;
+		}
+
+		img {
+			width: 148px;
+		}
+	}
+
+	&__title {
+		color: $color-white;
+		display: table-cell;
+		vertical-align: middle;
+		width: 100%;
+		height: $height;
+		@include fluid-props(font-size, $fluid-min, $fluid-max, 24px, 34px);
+	}
+}

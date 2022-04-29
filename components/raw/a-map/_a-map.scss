@@ -1,0 +1,45 @@
+.a-map {
+	width: 100%;
+	height: 100%; // IE copmat
+
+	.map-item {
+		cursor: pointer;
+
+		path {
+			transition: fill $transition-fast $transition-ease;
+			fill: $color-primary-super-light;
+			stroke: #B5B4B4;
+			stroke-width: 0.5px;
+		}
+
+		text {
+			font-family: $font-primary;
+			font-size: 0.75rem;
+			font-weight: $font-weight-bold;
+			letter-spacing: 0.015em;
+			fill: $color-grey-3;
+			display: none;
+		}
+
+		@include media($_DESKTOP) {
+			text {
+				display: block;
+			}
+		}
+
+		&.is-active {
+			path {
+				fill: $color-primary-light;
+				stroke: $color-grey-3;
+			}
+			text {
+				fill: $color-text-light;
+			}
+		}
+
+		@include hover {
+			@extend .is-active;
+		}
+	}
+}
+

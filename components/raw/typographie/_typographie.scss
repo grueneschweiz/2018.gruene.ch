@@ -1,0 +1,193 @@
+/**
+ * General
+ */
+body {
+	font-family: $font-primary;
+	color: $color-text;
+}
+
+h1 {
+	@include heading-font;
+	font-size: 2rem; // 32/16
+
+	@include media($_DESKTOP) {
+		font-size: 2.875rem; // 46/16
+	}
+}
+
+h2 {
+	@include heading-font;
+	font-size: 1.625rem; // 26/16
+
+	@include media($_DESKTOP) {
+		font-size: 1.9375rem; // 31/16
+	}
+}
+
+h3 {
+	@include heading-font;
+	font-size: 1.25rem; // 20/16
+
+	@include media($_DESKTOP) {
+		font-size: 1.46875rem; // 23.5/16
+	}
+}
+
+h4, h5 {
+	@include heading-font;
+	font-size: 1rem;
+
+	@include media($_DESKTOP) {
+		font-size: 1.25rem; // 23.5/16
+	}
+}
+
+/**
+ * Text
+ */
+
+p {
+	letter-spacing: 0.015625em;
+	line-height: 1.75em;
+	margin-top: 1.5em;
+	margin-bottom: 1.5em;
+	font-size: 1rem;
+}
+
+.u-t-excerpt {
+	font-size: 1.25rem; // 20/16
+
+	@include media($_DESKTOP) {
+		font-size: 1.5rem; // 24/16
+		hyphens: initial; // sorry IE users
+	}
+}
+
+a {
+	color: $color-text;
+	outline: none;
+	box-shadow: 0 0.25em 0 0 $color-primary-light;
+	transition: all $transition-fast $transition-ease;
+
+	@include hover {
+		background-color: #cee1a1;
+		box-shadow: 0 0 0 .25em #cee1a1;
+	}
+}
+
+strong, b {
+	font-weight: $font-weight-bold;
+}
+
+/**
+ * Lists
+ */
+
+ul, ol {
+	line-height: 1.75em;
+	margin-top: 1.5em;
+	margin-bottom: 1.5em;
+
+	li {
+		position: relative;
+		padding-left: 1.5em;
+
+		&:before {
+			position: absolute;
+			left: 0;
+		}
+	}
+}
+
+li > ol, li > ul {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+ol {
+	counter-reset: item;
+
+	> li {
+		counter-increment: item;
+
+		> ol > li {
+			padding-left: 2.5em;
+
+			> ol > li {
+				padding-left: 3em;
+			}
+		}
+
+		&:before {
+			content: counters(item, ".") ".";
+		}
+	}
+}
+
+ul li:before {
+	content: "\25A0";
+	color: $color-secondary;
+	transform: translateY(-0.1em) rotate(-5deg);
+	font-size: 0.9em;
+	-webkit-text-size-adjust: 50%;
+}
+
+::selection {
+	color: $color-white;
+	background: $color-primary;
+}
+
+/**
+ * Quotes
+ */
+blockquote, q {
+	font-size: 1.25rem;
+	color: $color-primary;
+	font-weight: $font-weight-bold;
+	font-family: $font-title;
+	letter-spacing: 0.018125em;
+	line-height: 1.2727272727em;
+
+	p {
+		display: inline;
+	}
+
+	&::before {
+		content: '\0000AB';
+		display: inline-block;
+		padding-right: 0.125em;
+	}
+
+	&::after {
+		content: '\0000BB';
+		display: inline-block;
+		padding-left: 0.125em;
+	}
+}
+
+/**
+ * Sub- and Superscript
+ */
+sub, sup {
+	font-size: 75%;
+	line-height: 0;
+	position: relative;
+	vertical-align: baseline;
+}
+
+sup {
+	top: -0.5em;
+}
+
+sub {
+	bottom: -0.25em;
+}
+
+/**
+ * Prevent wrapping of gendered words
+ *
+ * @see THEME_DIR/lib/twig/filters/wptexturize.php
+ */
+span.nowrap {
+	white-space: nowrap;
+}

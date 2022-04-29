@@ -1,0 +1,40 @@
+.a-cat-title {
+	font-size: 1rem;
+	line-height: 1.2em;
+	margin: 0;
+
+	&__link {
+		@include clean-link;
+
+		font-family: $font-primary;
+		font-weight: $font-weight-semi;
+		letter-spacing: 0.125em;
+		line-height: 1.25em;
+		color: $color-text;
+		transition: color $transition-fast $transition-ease;
+		display: inline-block;
+
+		&::after {
+			content: ' ';
+			width: 1.4em;
+			height: 2px;
+			background-color: $color-text-light;
+			transition: all $transition-fast $transition-ease;
+			display: block;
+			margin-top: 0.7em;
+		}
+
+		&:not(&--no-link) {
+			cursor: pointer;
+
+			@include hover {
+				color: $color-primary;
+
+				&:after {
+					width: 100%;
+					background-color: $color-primary;
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,73 @@
+.a-input {
+	position: relative;
+	width: 100%;
+	margin-top: 0.4em;
+
+	&__label {
+		position: absolute;
+		left: 0.75rem;
+		top: 0;
+		text-transform: uppercase;
+		font-size: 0.625rem;
+		font-weight: $font-weight-bold;
+		transition-timing-function: $transition-ease;
+		transition-duration: $transition-fast;
+		transition-property: font-size, top, font-weight;
+
+		&.is-empty {
+			font-size: 1em;
+			font-weight: $font-weight-normal;
+			text-transform: none;
+			top: 1.75rem;
+		}
+
+		&--required:after {
+			content: "*";
+		}
+	}
+
+	&__field {
+		width: 100%;
+		background: $color-grey-1;
+		border: none;
+		height: 2.625rem;
+		color: $color-text;
+		font-size: 1rem;
+		padding-left: 0.75rem;
+		margin-top: 1rem;
+		border-bottom: 2px solid $color-grey-2;
+		transition: border-bottom-color $transition-fast $transition-ease;
+		border-radius: 2px;
+
+		&:not(.is-empty):valid, &.is-valid {
+			border-bottom-color: $color-primary;
+		}
+
+		&.is-touched:invalid,
+		&.is-invalid.is-touched,
+		&.is-required.is-empty.is-touched {
+			border-bottom-color: $color-red;
+		}
+
+		&:focus {
+			outline: none;
+			border-bottom: 2px solid $color-grey-3;
+		}
+	}
+
+	&--invers {
+		background-color: $color-white;
+	}
+
+	&--textarea {
+		padding-top: 0.5em;
+		padding-bottom: 0.5em;
+		height: 6em;
+	}
+
+	&__helptext {
+		font-size: 0.75em;
+		color: $color-grey-3;
+		margin-top: 0.4em;
+	}
+}

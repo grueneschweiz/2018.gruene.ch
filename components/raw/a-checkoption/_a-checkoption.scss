@@ -1,0 +1,68 @@
+.a-checkoption {
+	$checkbox: 'data:image/svg+xml,%3Csvg width="36" height="36" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath stroke="%2384B414" stroke-width="2" d="M25 1h10v10H25z" fill="none" fill-rule="evenodd"/%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cpath fill="%2384B414" d="M0 24h12v12H0z"/%3E%3Cpath d="M3 27l6 6M9 27l-6 6" stroke="%23FFF"/%3E%3C/g%3E%3C/svg%3E';
+	$checkbox_secondary: 'data:image/svg+xml,%3Csvg width="36" height="36" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath stroke="%23E10078" stroke-width="2" d="M25 1h10v10H25z" fill="none" fill-rule="evenodd"/%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cpath fill="%23E10078" d="M0 24h12v12H0z"/%3E%3Cpath d="M3 27l6 6M9 27l-6 6" stroke="%23FFF"/%3E%3C/g%3E%3C/svg%3E';
+	$option: 'data:image/svg+xml,%3Csvg width="36" height="36" xmlns="http://www.w3.org/2000/svg"%3E%3Ccircle stroke="%2384B414" stroke-width="2" cx="30" cy="6" r="5" fill="none" fill-rule="evenodd"/%3E%3Ccircle stroke="%2384B414" stroke-width="4" cx="6" cy="30" r="4" fill="none" fill-rule="evenodd"/%3E%3C/svg%3E';
+
+	margin: 0.4em 0;
+
+	&__field {
+		position: absolute;
+		overflow: hidden;
+		clip: rect(0 0 0 0);
+		height: 1px;
+		width: 1px;
+		margin: -1px;
+		padding: 0;
+		border: 0;
+	}
+
+	&__label {
+		padding-left: 1.75rem;
+		background-size: 2.25rem;
+		cursor: pointer;
+		display: block;
+		background-repeat: no-repeat;
+		background-position: calc(-1.5rem + 2px) 0.125rem;
+		background-image: url($checkbox);
+		position: relative;
+
+		&.a-checkoption--legal, &.a-checkoption--legal p {
+			font-size: 0.875rem !important;
+			line-height: 1.3em;
+			color: $color-text-light;
+			margin: 0;
+		}
+	}
+
+	&__field:focus + &__label {
+		&:after {
+			content: ' ';
+			width: calc(1rem - 5px);
+			height: calc(1rem - 5px);
+			box-shadow: 0 0 5px 1px $color-primary;
+			position: absolute;
+			top: 2px;
+			left: 2px;
+		}
+
+		&.a-checkoption--legal:after {
+			box-shadow: 0 0 5px 1px $color-secondary;
+		}
+
+		&.a-checkoption--option:after {
+			border-radius: calc((1rem - 5px) / 2);
+		}
+	}
+
+	&--legal {
+		background-image: url($checkbox_secondary);
+	}
+
+	&--option {
+		background-image: url($option);
+	}
+
+	&__field:checked + &__label {
+		background-position: 2px -1.375rem;
+	}
+}

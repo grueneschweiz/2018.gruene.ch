@@ -1,0 +1,76 @@
+.a-breadcrumbs {
+	$arrow: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' version='1'%3E%3Cg fill='none' fill-rule='evenodd' stroke='%2384B414'%3E%3Cpath d='M6 0l3 3-3 3M9 3H0'/%3E%3C/g%3E%3C/svg%3E";
+
+	font-size: .875rem;
+
+	span, a {
+		height: 1.25rem;
+	}
+
+	a {
+		@include clean-link;
+		transition: color $transition-fast $transition-ease;
+		display: none;
+
+		@include hover() {
+			color: $color-primary;
+		}
+	}
+
+	& a,
+	.breadcrumb_last {
+		max-width: 180px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+
+		&::before,
+		&:hover::before,
+		&:focus::before {
+			content: ' ';
+			display: inline-block;
+			background: url($arrow) no-repeat center center;
+			background-size: contain;
+			width: 0.8em;
+			margin: 0.2em 0.5em 0 0.2em;
+			height: 0.8em !important; // make sure to overwrite the hover height defined in the typography
+		}
+
+		@include media($_DESKTOP) {
+			display: inline-block;
+		}
+	}
+
+	.breadcrumb_second_last {
+		display: inline-block;
+
+		@include media($_MOBILE) {
+			&::before,
+			&:hover::before,
+			&:focus::before {
+				transform: rotate(180deg);
+				margin: 0 0.5em -0.1em 0.2em;
+			}
+		}
+	}
+
+	.breadcrumb_last {
+		@include media($_MOBILE) {
+			display: none;
+		}
+	}
+
+	// home
+	& > div > span > a {
+		font-weight: $font-weight-semi;
+		padding-top: 0.2em;
+
+		@include media($_DESKTOP){
+			&::before,
+			&:hover::before,
+			&:focus::before {
+				display: none;
+			}
+		}
+	}
+}

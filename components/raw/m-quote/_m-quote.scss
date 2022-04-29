@@ -1,0 +1,82 @@
+.m-quote {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+
+	@include media($size-small) {
+		flex-wrap: nowrap;
+	}
+
+	&__image-outer {
+		@include fluid-props(margin, 320px, $fluid-max, 10px, 15px);
+
+		flex-shrink: 0;
+		width: 247px;
+		height: 247px;
+		transform: rotate(-5deg);
+		overflow: hidden;
+		transition: transform $transition-mid $transition-ease-image;
+
+		@include hover {
+			transform: rotate(-5deg) scale(1.01);
+		}
+	}
+
+	&__image-inner {
+		width: 109%; // cos(5deg) + sin(5deg)
+		height: 109%;
+		transform: translateX(-4.15%) translateY(-4.15%) rotate(5deg);
+	}
+
+	&__caption {
+		width: 100%;
+
+		@include media($size-small) {
+			margin-left: 35px;
+		}
+	}
+
+	&__quote {
+		@extend h3;
+
+		&::before {
+			content: '\00ab';
+			padding-right: 0.05em;
+		}
+
+		&::after {
+			content: '\00bb';
+			padding-left: 0.05em;
+		}
+	}
+
+	&__author {
+		font-size: 0.875rem;
+		font-weight: $font-weight-semi;
+		margin-top: 1em;
+
+		&::before {
+			content: '\002014\0000A0';
+		}
+
+		@include media($size-small) {
+			font-size: 1rem;
+			margin-top: 2em;
+
+			&::before {
+				content: '';
+			}
+		}
+	}
+}
+
+body[class*="lang-fr"] .m-quote__quote {
+	&::before {
+		padding-right: 0.25em;
+	}
+
+	&::after {
+		padding-left: 0.25em;
+	}
+}

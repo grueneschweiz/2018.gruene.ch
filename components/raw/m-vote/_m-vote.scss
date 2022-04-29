@@ -1,0 +1,39 @@
+.m-vote {
+	position: relative;
+	width: 100%;
+	max-width: 689px;
+	padding: 1em 0;
+
+	@include media($_DESKTOP) {
+		padding: 0.5em 0;
+	}
+
+	&__title {
+		margin: 0 3.2em 0 0;
+
+		@include media($_MOBILE) {
+			font-size: 1rem;
+		}
+	}
+
+	&--excerpt &__title::after {
+		display: none;
+	}
+
+	&__tag {
+		float: right;
+		margin-left: 1em;
+
+		@include media($_DESKTOP) {
+			margin-top: 0.1em;
+		}
+	}
+
+	&__excerpt {
+		margin: 0.5em 3.2em 0.5em 0;
+
+		@include media($_DESKTOP) {
+			margin-right: 4.7em;
+		}
+	}
+}

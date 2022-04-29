@@ -1,0 +1,59 @@
+.m-form {
+	&__element {
+		padding: 0.2em 0 0;
+	}
+
+	&__custom-width-block {
+		display: flex;
+		justify-content: space-between;
+		flex-wrap: wrap;
+	}
+
+	&__message {
+		max-height: 0;
+		overflow: hidden;
+		transition: max-height $transition-ease $transition-slow;
+	}
+
+	&__message.is-shown {
+		max-height: 10000px;
+	}
+
+	&__sending {
+		display: inline-block;
+		width: 0.7em;
+		text-align: left;
+		margin-left: 0.2em;
+	}
+
+	&__submit-wrapper {
+		max-height: 10000px;
+		overflow: hidden;
+		transition: height $transition-ease $transition-slow;
+		display: flex;
+		flex-direction: column-reverse;
+		margin-top: 1em;
+
+		@include media($size-small) {
+			align-items: center;
+			flex-direction: row;
+		}
+	}
+
+	&__submit-byline {
+		margin: 0.25em 0 0.4em;
+		line-height: 1.4em;
+
+		@include media($size-small) {
+			margin: 0 0 0 1em;
+		}
+	}
+
+	&__submit-wrapper.is-hidden {
+		height: 0;
+	}
+
+	&__checks-label, &__option-label {
+		margin-top: 0.75em;
+	}
+}

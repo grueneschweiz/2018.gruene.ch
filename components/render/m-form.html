@@ -1,0 +1,273 @@
+
+
+<form action="#" class="m-form" data-sending-lbl="Senden...">
+		<div class="m-form__custom-width-block">
+
+
+
+
+
+		<div class="m-form__element"  style="width: calc(30% - 0.5em);">
+			<div class="a-input a-input--custom-width">
+				<label for="plz" class="a-input__label ">
+					PLZ
+				</label>
+					<input id="plz"
+								 class="a-input__field "
+								 type="text"
+								 
+								 name="plz"
+								 value=""
+						false>
+					<div class="a-input__helptext">This field is optional</div>
+			</div>
+		</div>
+
+		
+		
+
+
+
+
+
+		<div class="m-form__element"  style="width: calc(70% - 0.5em);">
+			<div class="a-input a-input--custom-width">
+				<label for="e_mail" class="a-input__label a-input__label--required">
+					E-Mail
+				</label>
+					<input id="e_mail"
+								 class="a-input__field  is-required"
+								 type="email"
+								 
+								 name="e_mail"
+								 value=""
+						true>
+					<div class="a-input__helptext">This field is required</div>
+			</div>
+		</div>
+
+		</div>
+		<div class="m-form__custom-width-block">
+
+
+
+
+
+		<div class="m-form__element"  style="width: calc(50% - 0.5em);">
+			<div class="a-input a-input--custom-width">
+				<label for="vorname" class="a-input__label ">
+					Vorname
+				</label>
+					<input id="vorname"
+								 class="a-input__field "
+								 type="text"
+								 
+								 name="vorname"
+								 value=""
+						false>
+			</div>
+		</div>
+
+		
+		
+
+
+
+
+
+		<div class="m-form__element"  style="width: calc(50% - 0.5em);">
+			<div class="a-input a-input--custom-width">
+				<label for="nachname" class="a-input__label ">
+					Nachname
+				</label>
+					<input id="nachname"
+								 class="a-input__field "
+								 type="text"
+								 
+								 name="nachname"
+								 value=""
+						false>
+			</div>
+		</div>
+
+		</div>
+		
+
+
+
+
+
+		<div class="m-form__element" >
+			<div class="a-input">
+				<label for="adresse" class="a-input__label ">
+					Adresse
+				</label>
+					<input id="adresse"
+								 class="a-input__field "
+								 type="text"
+								 
+								 name="adresse"
+								 value=""
+						>
+			</div>
+		</div>
+
+		
+		
+
+
+
+
+		<div class="m-form__element" >
+			<div class="m-form__option-label">Thirsty?</div>
+			<fieldset class="m-form__option-fieldset">
+					<div class="a-checkoption">
+							<input type="radio"
+										 name="thirsty"
+										 value="beer"
+										 id="beer"
+										 class="a-checkoption__field">
+						<label for="beer" class="a-checkoption__label a-checkoption--option">
+							Beer
+						</label>
+					</div>
+					<div class="a-checkoption">
+							<input type="radio"
+										 name="thirsty"
+										 value="wine"
+										 id="wine"
+										 class="a-checkoption__field">
+						<label for="wine" class="a-checkoption__label a-checkoption--option">
+							Wine
+						</label>
+					</div>
+					<div class="a-checkoption">
+							<input type="radio"
+										 name="thirsty"
+										 value="schnaps"
+										 id="schnaps"
+										 class="a-checkoption__field">
+						<label for="schnaps" class="a-checkoption__label a-checkoption--option">
+							Schnaps
+						</label>
+					</div>
+			</fieldset>
+		</div>
+
+
+		
+		
+
+
+
+		<div class="m-form__element" >
+				<div class="m-form__checks-label">Hungry?</div>
+				<fieldset class="m-form__checks-fieldset">
+						<div class="a-checkoption">
+								<input type="hidden" name="apero" value="0">
+								<input id="apero"
+											 class="a-checkoption__field"
+											 type="checkbox"
+											 name="apero"
+											 
+									>
+							<label for="apero" class="a-checkoption__label ">
+								Apero
+							</label>
+						</div>
+						<div class="a-checkoption">
+								<input type="hidden" name="main" value="0">
+								<input id="main"
+											 class="a-checkoption__field"
+											 type="checkbox"
+											 name="main"
+											 
+									>
+							<label for="main" class="a-checkoption__label ">
+								Main course
+							</label>
+						</div>
+						<div class="a-checkoption">
+								<input type="hidden" name="dessert" value="0">
+								<input id="dessert"
+											 class="a-checkoption__field"
+											 type="checkbox"
+											 name="dessert"
+											 
+									>
+							<label for="dessert" class="a-checkoption__label ">
+								Dessert
+							</label>
+						</div>
+				</fieldset>
+		</div>
+
+
+
+		
+		
+
+
+		<div class="m-form__element" >
+			<div class="a-select ">
+				<label for="payment" class="a-select__label a-select__label--required">
+					Select Payment Method
+				</label>
+				<div class="a-select__background">
+					<select id="payment"
+									class="a-select__field"
+									name="payment"
+						true>
+						<option value=""> </option>
+							<option value="cash">Cash</option>
+							<option value="card">Card</option>
+					</select>
+				</div>
+			</div>
+		</div>
+
+
+
+
+		
+
+	<div class="m-form__element m-form__privacy-policy" >
+		<div class="a-checkoption">
+				<input type="hidden" name="privacy_policy" value="0">
+				<input id="privacy_policy"
+							 class="a-checkoption__field"
+							 type="checkbox"
+							 name="privacy_policy"
+							 required
+					>
+			<label for="privacy_policy" class="a-checkoption__label a-checkoption--legal">
+				Ich stimme der Datenverarbeitung gemäss Datenschutzbestimmung zu.
+			</label>
+		</div>
+	</div>
+
+	<div class="m-form__submit-wrapper">
+		<div class="m-form__submit-button">
+				<button type="button"
+								class="a-button a-button--secondary"
+								data-form-submit>Informiert bleiben</button>
+		</div>
+		<div class="m-form__submit-byline">Ich abonniere den Newsletter.</div>
+	</div>
+
+	<div class="m-form__message m-form__message--success">
+		<h2 class="m-form__message-title">Vielen Dank!</h2>
+		<p class="m-form__message-body">Schon bald erhälst du unseren Newsletter :)</p>
+	</div>
+	<div class="m-form__message m-form__message--failure">
+		<h2 class="m-form__message-title">Uups, da ist etwas schief gelaufen</h2>
+		<p class="m-form__message-body">Bitte kontaktiere uns, falls das Problem nochmals vor kommt.</p>
+		<p class="m-form__message-error"></p>
+	</div>
+	<div class="m-form__message m-form__message--invalid">
+			<h2 class="m-form__message-title"></h2>
+			<p class="m-form__message-body"></p>
+			<p class="m-form__message-error"></p>
+	</div>
+</form>
+

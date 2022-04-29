@@ -1,0 +1,151 @@
+.a-search {
+	$offset: 0.75em;
+	position: relative;
+
+	&:not(&--inverted) {
+		margin-left: #{- $offset};
+	}
+
+	@include media($_DESKTOP) {
+		padding-top: 0.533em;
+	}
+
+	&--covering {
+		@include media($_DESKTOP) {
+			position: absolute;
+			background: rgba(255, 255, 255, 0);
+			height: 60px;
+			transition: all $transition-ease $transition-mid;
+			width: 100%;
+			max-width: 34px; // this will be overwritten by js
+
+			&.is-active {
+				background: $color-white;
+			}
+		}
+	}
+
+	&--expanded {
+		width: 100%;
+		max-width: 100%;
+	}
+
+	&__icon {
+		fill: none;
+		stroke: $color-text;
+		width: 1.333em;
+		height: 1.333em;
+		margin-bottom: -0.25em;
+		margin-left: -2em;
+		cursor: pointer;
+		transition: stroke $transition-ease $transition-fast;
+
+		&.highlight,
+		&:hover,
+		&:focus {
+			stroke: $color-secondary;
+		}
+	}
+
+	&--expanded &__icon {
+		margin-left: 0;
+	}
+
+	&__field {
+		background: transparent;
+		border: none;
+		width: 8.8em;
+		max-width: 300px;
+		font-size: 0.9375rem;
+		font-weight: 700;
+		color: $color-text;
+		transition: all $transition-ease $transition-mid;
+		height: 2.625em;
+		padding-left: $offset;
+		border-bottom: 2px solid transparent;
+
+		@include media($_DESKTOP) {
+			width: 2em;
+			color: transparent;
+		}
+
+		&::placeholder {
+			color: $color-text;
+			transition: color $transition-ease $transition-fast;
+		}
+
+		&:focus,
+		&.is-active {
+			width: 100%;
+			background-color: $color-grey-1;
+			border-bottom-color: $color-grey-2;
+			outline: none;
+			color: $color-text;
+			padding-right: 2.4em;
+
+			&::placeholder {
+				color: $color-grey-2;
+			}
+		}
+
+		&:not(:focus),
+		&:not(.is-active) {
+			cursor: pointer;
+
+			@include media($_MOBILE) {
+				&.highlight {
+					&::placeholder {
+						color: $color-secondary;
+					}
+				}
+			}
+
+			@include media($_DESKTOP) {
+				&::placeholder {
+					color: transparent;
+				}
+			}
+		}
+	}
+
+	&--inverted &__field {
+		background-color: $color-white;
+	}
+
+	&--expanded &__field {
+		width: 100%;
+		max-width: 100%;
+		color: $color-text;
+		border-bottom-color: $color-grey-3;
+		cursor: text;
+		padding-right: 2.4em;
+
+		&::placeholder {
+			color: $color-grey-3;
+		}
+	}
+
+	&__submit-label {
+		width: 0;
+		position: absolute;
+		top: 7px;
+
+		@include media($_DESKTOP) {
+			top: 16px;
+		}
+	}
+
+	&--expanded &__submit-label {
+		right: 39px;
+	}
+
+	&__submit {
+		// hide for none screen readers
+		position: absolute;
+		left: -10000px;
+		top: auto;
+		width: 1px;
+		height: 1px;
+		overflow: hidden;
+	}
+}

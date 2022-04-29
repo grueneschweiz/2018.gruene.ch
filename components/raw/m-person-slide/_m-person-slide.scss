@@ -1,0 +1,57 @@
+.m-person-slide {
+	line-height: 0;
+
+	&__image {
+		width: 100%;
+		@include aspect-ratio-box(90%);
+	}
+
+	&__caption {
+		padding: 18px 20px;
+
+		& > p {
+			margin: 0;
+			hyphens: auto;
+
+			&:first-of-type {
+				margin-bottom: .75rem;
+			}
+		}
+	}
+
+	&__meta {
+		font-size: 0.875rem;
+	}
+
+	&__author {
+		font-weight: $font-weight-bold;
+	}
+
+	&__quote {
+		&:before {
+			content: "\AB";
+			padding-right: 0.25em;
+		}
+
+		&:after {
+			content: "\BB";
+			padding-left: 0.25em;
+		}
+
+		&:before, &:after {
+			color: $color-primary;
+			font-weight: $font-weight-bold;
+		}
+	}
+}
+
+.o-people-grid--vertical .m-person-slide {
+	&__caption {
+		padding-left: 0;
+		padding-right: 0;
+
+		& > p {
+			font-size: 1rem !important;
+		}
+	}
+}

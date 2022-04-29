@@ -1,0 +1,57 @@
+.m-list-header {
+	&__title {
+		color: $color-text;
+	}
+
+	&__term {
+		color: $color-primary;
+	}
+
+	&__criteria {
+		line-height: 1.5em;
+	}
+
+	&__criteria-desc {
+		font-weight: $font-weight-semi;
+		margin-right: 0.75em;
+	}
+
+	&__criteria-list {
+		@include clean-ul;
+
+		display: inline;
+	}
+
+	&__criteria-item {
+		@include clean-li;
+
+		display: inline;
+		line-height: 1.5em;
+
+		&:not(:last-of-type) {
+			margin-right: 0.75em;
+		}
+	}
+
+	&__criteria-link {
+		@include clean-link;
+		transition: color $transition-ease $transition-fast;
+
+		@include hover {
+			color: $color-primary;
+		}
+
+		&--active {
+			font-weight: $font-weight-bold;
+			cursor: default;
+
+			@include hover {
+				color: $color-text;
+			}
+		}
+	}
+
+	&__reset-filter {
+		margin-top: 1em;
+	}
+}

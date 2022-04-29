@@ -1,0 +1,48 @@
+.o-engagement-map {
+	@extend .grid-item;
+
+	// hack: make sure there's never a gap between this and the footer
+	// else the fixed image from above might be seen. needed because of rounding.
+	margin-bottom: -1px;
+
+	@include media($_MOBILE) {
+		padding-bottom: 80px;
+	}
+
+	@include media($_DESKTOP) {
+		max-width: $grid-max-width-max;
+	}
+
+	&__title {
+		@include fluid-props(font-size, $size-tiny, $size-medium, 32px, 48px);
+		@include fluid-props(margin-top, $size-tiny, $size-medium, 20px, 34px);
+		@include fluid-props(margin-bottom, $size-tiny, $size-medium, 26px, 56px);
+	}
+
+	&__main-wrapper {
+		@include media($_DESKTOP) {
+			display: grid;
+			grid-template-columns: 40% 60%;
+			@include fluid-props(grid-gap, $size-medium, $grid-max-width-max, $grid-gap-min, $grid-gap-max);
+		}
+
+		@include only_ie10_above {
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+			align-items: stretch;
+		}
+	}
+
+	&__desc-wrapper {
+		@include only_ie10_above {
+			width: 40%;
+		}
+	}
+
+	&__map-wrapper {
+		@include only_ie10_above {
+			width: 60%;
+		}
+	}
+}

@@ -1,0 +1,23 @@
+
+
+<section class="m-branding" role="banner" style="display: none">
+	<div class="m-branding__wrapper">
+		<div class="m-branding__row">
+			<h1 class="m-branding__title">
+					<span class="m-branding__unbreakeable">Ökologisch konsequent.</span>
+					<span class="m-branding__unbreakeable">Sozial engagiert.</span>
+					<span class="m-branding__unbreakeable">Global solidarisch.</span>
+			</h1>
+			<a href="/" class="m-branding__logo"><img class="a-logo" alt="" src="/img/logo-defr--white.svg"></a>
+		</div>
+	</div>
+</section>
+
+<script>
+	var branding = parseInt( window.sessionStorage.getItem( 'branding' ) || 0 );
+	if (branding < 2) {
+		document.querySelectorAll( '.m-branding' ).forEach( el => el.style.display = 'block' );
+		window.sessionStorage.setItem( 'branding', ( branding + 1 ).toString() );
+	}
+</script>
+

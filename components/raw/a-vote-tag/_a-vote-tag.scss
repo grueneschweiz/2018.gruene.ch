@@ -1,0 +1,45 @@
+.a-vote-tag {
+	display: inline-block;
+	padding: 0.3333em 0.3333em 0.4167em;
+	border-radius: 2px;
+	text-align: center;
+	text-transform: uppercase;
+	font-size: 0.75rem;
+	font-weight: $font-weight-bold;
+	font-family: $font-title;
+	letter-spacing: 0.04167em;
+	width: 3.6667em;
+
+	@include media($_DESKTOP) {
+		font-size: 0.875rem;
+		padding: 0.4286em 0 0.5em;
+		width: 4.2857em;
+	}
+
+	&--free,
+	&--initiative,
+	&--counter-project {
+		background-color: $color-grey-2;
+		color: $color-text;
+	}
+
+	&--initiative,
+	&--counter-project {
+		width: auto;
+
+		@include media($_DESKTOP) {
+			padding-left: 0.3333em;
+			padding-right: 0.3333em;
+		}
+	}
+
+	&--no {
+		background-color: rgb(253, 218, 218); // color isn't used anywhere else
+		color: $color-red;
+	}
+
+	&--yes {
+		background-color: rgb(237, 244, 220); // color isn't used anywhere else
+		color: $color-primary-dark;
+	}
+}
