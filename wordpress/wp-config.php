@@ -87,12 +87,12 @@ if ( isset( $_SERVER['HTTP_X_FORWARDED_PROTO'] ) && $_SERVER['HTTP_X_FORWARDED_P
 }
 
 
-define( 'MULTISITE',            true       );
-define( 'SUBDOMAIN_INSTALL',    false      ); // Set this to true for sub-domain installations.
-define( 'DOMAIN_CURRENT_SITE',  'localhost');
-define( 'PATH_CURRENT_SITE',    '/'        );
-define( 'SITE_ID_CURRENT_SITE', 1          );
-define( 'BLOG_ID_CURRENT_SITE', 1          );
+define( 'MULTISITE', false );
+define( 'SUBDOMAIN_INSTALL', false ); // Set this to true for sub-domain installations.
+define( 'DOMAIN_CURRENT_SITE', 'localhost' );
+define( 'PATH_CURRENT_SITE', '/' );
+define( 'SITE_ID_CURRENT_SITE', 1 );
+define( 'BLOG_ID_CURRENT_SITE', 1 );
 
 define( 'SUPT_FORM_ASYNC', ! ( (bool) getenv( 'WORDPRESS_DEBUG' ) ) );
 
