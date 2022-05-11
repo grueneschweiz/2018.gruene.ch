@@ -123,12 +123,13 @@ class CrmDao {
 	/**
 	 * Send the data to the crm's api
 	 *
-	 * @param $data
+	 * @param array $data
+	 * @param int|null $id the id of the record to update
 	 *
 	 * @return array|mixed|object
 	 * @throws Exception
 	 */
-	public function save( $data ) {
+	public function save( array $data, int $id = null ) {
 		$crm_data = array();
 		foreach ( $data as $key => $crm_field_data ) {
 			$crm_data[ $key ] = array(
@@ -137,109 +138,66 @@ class CrmDao {
 			);
 		}
 
-		$args     = array( 'body' => json_encode( $crm_data ), 'timeout' => self::WP_REMOTE_TIMEOUT );
-		$response = wp_remote_post( $this->api_url . 'api/v1/member', $this->add_headers( $args ) );
-
-		if ( is_wp_error( $response ) ) {
-			$error_message = $response->get_error_message();
-			if ( $this->is_timeout_error( $error_message ) ) {
-				throw new Exception( "Could not save member to crm: $error_message.", 408 );
-			} else {
-				throw new Exception( "Could not save member to crm: $error_message." );
-			}
+		$url = $this->api_url . 'api/v1/member';
+		if ( $id ) {
+			$url .= "/$id";
 		}
-
-		/** @var WP_HTTP_Requests_Response $resp */
-		$resp = $response['http_response'];
-		if ( in_array( $resp->get_status(), array( 401, 403 ) ) ) {
-			// if the token isn't valid, get a new one. if the new one is valid, retry to save
-			if ( ! $this->is_token_valid() ) {
-				$this->obtain_token( true );
-				if ( $this->is_token_valid() ) {
-					return $this->save( $data );
-				}
-			}
-		}
-
-		if ( $resp->get_status() !== 201 ) {
-			$status_code = $this->is_timeout_error( $resp->get_data() ) ? 408 : $resp->get_status();
-
-			$data_sent = print_r( $this->redactToken( $args ), true );
-			throw new Exception( "Could not save member to crm. Crm returned status code: {$resp->get_status()}. Reason: {$resp->get_data()}.\n\nData sent: {$data_sent}", $status_code );
-		}
+		$method = $id ? 'put' : 'post';
+		$args   = array( 'body' => json_encode( $crm_data ) );
+		$resp   = $this->request( $method, $url, $args );
 
 		return json_decode( $resp->get_data(), true );
 	}
 
 	/**
-	 * Check if there is an entry in the crm that matches the given data.
+	 * Send http request and validate it
 	 *
-	 * @link https://github.com/grueneschweiz/weblingservice/blob/master/docs/API.md#-find-matching-records
+	 * Retries with a new access token, if the current token is invalid.
+	 * Throws exception, if the api doesn't return with a 2xx status code.
 	 *
-	 * @param $data
+	 * @param string $method
+	 * @param string $url
+	 * @param array $args
 	 *
-	 * @return string no_match|match|ambiguous|multiple -> use MATCH_* class constants
+	 * @return WP_HTTP_Requests_Response
 	 * @throws Exception
 	 */
-	public function match( $data ) {
-		$crm_data = array();
-		foreach ( $data as $key => $crm_field_data ) {
-			$crm_data[ $key ] = array(
-				'value' => $crm_field_data->get_value(),
-			);
+	private function request( string $method, string $url, array $args = [] ) {
+		$args['method'] = $method = strtoupper( $method );
+
+		if ( ! isset( $args['timeout'] ) ) {
+			$args['timeout'] = self::WP_REMOTE_TIMEOUT;
 		}
 
-		$args     = array( 'body' => json_encode( $crm_data ), 'timeout' => self::WP_REMOTE_TIMEOUT );
-		$response = wp_remote_post( $this->api_url . 'api/v1/member/match', $this->add_headers( $args ) );
+		$response = wp_remote_request( $url, $this->add_headers( $args ) );
 
 		if ( is_wp_error( $response ) ) {
 			$error_message = $response->get_error_message();
-			if ( $this->is_timeout_error( $error_message ) ) {
-				throw new Exception( "Could match member in crm: $error_message.", 408 );
-			} else {
-				throw new Exception( "Could match member in crm: $error_message." );
-			}
+			$code          = $this->is_timeout_error( $error_message ) ? 408 : null;
+			throw new Exception( "$method request to $url failed: $error_message.", $code );
 		}
 
 		/** @var WP_HTTP_Requests_Response $resp */
 		$resp = $response['http_response'];
 		if ( in_array( $resp->get_status(), array( 401, 403 ) ) ) {
-			// if the token isn't valid, get a new one. if the new one is valid, retry to save
+			// if the token isn't valid, get a new one. if the new one is valid, retry
 			if ( ! $this->is_token_valid() ) {
 				$this->obtain_token( true );
 				if ( $this->is_token_valid() ) {
-					return $this->match( $data );
+					return $this->request( $method, $url, $args );
 				}
 			}
 		}
 
-		if ( $resp->get_status() !== 200 ) {
+		$status_code = $resp->get_status();
+		if ( $status_code < 200 || $status_code >= 300 ) {
 			$status_code = $this->is_timeout_error( $resp->get_data() ) ? 408 : $resp->get_status();
 
 			$data_sent = print_r( $this->redactToken( $args ), true );
-			throw new Exception( "Could match member in crm. Crm returned status code: {$resp->get_status()}. Reason: {$resp->get_data()}.\n\nData sent: {$data_sent}", $status_code );
+			throw new Exception( "$method request to $url failed. Crm returned status code: {$resp->get_status()}. Reason: {$resp->get_data()}.\n\nData sent: {$data_sent}", $status_code );
 		}
 
-		$body = json_decode( $resp->get_data(), true );
-
-		if ( ! array_key_exists( 'status', $body ) ) {
-			$body_string = print_r( $body, true );
-			$data_sent   = print_r( $this->redactToken( $args ), true );
-			throw new Exception( "Invalid response from member match endpoint of crm wrapper. Response: {$body_string}. \n\nData sent: {$data_sent}" );
-		}
-
-		return $body['status'];
-	}
-
-	/**
-	 * Checks if the given error message contains 'Operation timed out after'
-	 *
-	 * @param string $error_message
-	 *
-	 * @return bool
-	 */
-	private function is_timeout_error( $error_message ) {
-		return false !== strpos( $error_message, 'Operation timed out after' );
+		return $resp;
 	}
 
 	/**
@@ -265,6 +223,17 @@ class CrmDao {
 		$args['headers'] = array_merge( $args['headers'], $headers );
 
 		return $args;
+	}
+
+	/**
+	 * Checks if the given error message contains 'Operation timed out after'
+	 *
+	 * @param string $error_message
+	 *
+	 * @return bool
+	 */
+	private function is_timeout_error( $error_message ) {
+		return false !== strpos( $error_message, 'Operation timed out after' );
 	}
 
 	/**
@@ -311,5 +280,62 @@ class CrmDao {
 		}
 
 		return $args;
+	}
+
+	/**
+	 * Check if there is an entry in the crm that matches the given data.
+	 *
+	 * @link https://github.com/grueneschweiz/weblingservice/blob/master/docs/API.md#-find-matching-records
+	 *
+	 * @param $data
+	 *
+	 * @return array @see https://github.com/grueneschweiz/weblingservice/blob/master/docs/API.md#-find-matching-records
+	 * @throws Exception
+	 */
+	public function match( $data ) {
+		$crm_data = array();
+		foreach ( $data as $key => $crm_field_data ) {
+			$crm_data[ $key ] = array(
+				'value' => $crm_field_data->get_value(),
+			);
+		}
+
+		$args = array( 'body' => json_encode( $crm_data ) );
+		$url  = $this->api_url . 'api/v1/member/match';
+		$resp = $this->request( 'post', $url, $args );
+
+		$body = json_decode( $resp->get_data(), true );
+
+		if ( ! array_key_exists( 'status', $body ) ) {
+			$body_string = print_r( $body, true );
+			$data_sent   = print_r( $this->redactToken( $args ), true );
+			throw new Exception( "Invalid response from $url endpoint of crm wrapper. Response: {$body_string}. \n\nData sent: {$data_sent}" );
+		}
+
+		return $body;
+	}
+
+	/**
+	 * Find the main member in CRM from the given member id
+	 *
+	 * @link https://github.com/grueneschweiz/weblingservice/blob/master/docs/API.md#find-main-record
+	 *
+	 * @param int $member_id
+	 *
+	 * @return array @see https://github.com/grueneschweiz/weblingservice/blob/master/docs/API.md#find-main-record
+	 * @throws Exception
+	 */
+	public function main( int $member_id ) {
+		$url  = $this->api_url . "api/v1/member/$member_id/main";
+		$resp = $this->request( 'get', $url );
+
+		$body = json_decode( $resp->get_data(), true );
+
+		if ( ! array_key_exists( 'id', $body ) ) {
+			$body_string = print_r( $body, true );
+			throw new Exception( "Invalid response from $url endpoint of crm wrapper. Response: {$body_string}." );
+		}
+
+		return $body;
 	}
 }
