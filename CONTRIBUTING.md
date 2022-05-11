@@ -57,6 +57,8 @@ You can enable WordPress & php debugs tools to help develop.
 1. Enable xdebug by uncommenting line 13 in `./scripts/php.ini` file
 1. Rebuild the container by running the command `docker-compose down && docker-compose build && docker-compose up -d`
 
+- Setting the PHP constant `SUPT_FORM_ASYNC` to false (e.g. in `wp-config.php`) processes form mails and crm saving
+  synchronously and thus facilitates debugging.
 
 ### Theming
 
