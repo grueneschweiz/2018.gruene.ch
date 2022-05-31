@@ -99,3 +99,7 @@ $WPCLI option patch insert openid_connect_generic_settings displayname_format <<
 $WPCLI option patch insert openid_connect_generic_settings identify_with_username '0'
 $WPCLI option patch insert openid_connect_generic_settings link_existing_users '1'
 $WPCLI option patch insert openid_connect_generic_settings create_if_does_not_exist '1'
+
+# configure limit login attempts
+$WPCLI option set limit_login_show_top_level_menu_item '0'
+$WPCLI option set limit_login_hide_dashboard_widget '1'
