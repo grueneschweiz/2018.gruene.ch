@@ -9,7 +9,7 @@ jobs:
       - run: echo "Deployment triggered by a ${{ github.event_name }} event to the ${{ github.ref }} branch."
       - uses: actions/checkout@v2
 
-      - name: Add symlink
+      - name: Add styleguide symlink
         run: ln -sf wordpress/wp-content/themes/les-verts/styleguide/ styleguide
 
       - name: Cache Composer dependencies
@@ -45,6 +45,10 @@ jobs:
         with:
           cmd: build
 
+      - name: Prepare styleguide release
+        run: |
+          cp -r wordpress/wp-content/themes/les-verts/styleguide/dist/build gh-pages
+
       - name: Prepare theme release
         run: |
           cd wordpress/wp-content/themes
@@ -54,9 +58,12 @@ jobs:
           cp les-verts/styleguide/dist/static/icons.svg les-verts/static/icons.svg
           cp les-verts/styleguide/dist/static/style.css les-verts/static/style.css
           cp les-verts/styleguide/dist/static/style.min.css les-verts/static/style.min.css
-          zip -r release.zip les-verts -x */styleguide/**\*
-          mkdir les-verts/styleguide/dist/build/theme
-          mv release.zip les-verts/styleguide/dist/build/theme/les-verts.zip
+          rm -rf les-verts/styleguide
+          zip -r release.zip les-verts
+
+      - name: Add theme to github pages
+          mkdir gh-pages/theme
+          cp wordpress/wp-content/themes/release.zip gh-pages/theme/les-verts.zip
 
       - name: Parse version number
         run: |
@@ -64,14 +71,14 @@ jobs:
 
       - name: Set new version number in update.json
         run: |
-          sed "s/%VERSION%/$THEME_VERSION/" update.json > wordpress/wp-content/themes/les-verts/styleguide/dist/build/theme/update.json
+          sed "s/%VERSION%/$THEME_VERSION/" update.json > gh-pages/theme/update.json
 
       - name: Deploy to github pages
         uses: peaceiris/actions-gh-pages@v3
         if: ${{ github.ref == 'refs/heads/master' || github.ref == 'refs/heads/styleguide' }}
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./wordpress/wp-content/themes/les-verts/styleguide/dist/build
+          publish_dir: ./gh-pages
 
       - name: Prepare release
         uses: "marvinpinto/action-automatic-releases@v1.2.1"
@@ -83,4 +90,4 @@ jobs:
           prerelease: false
           title: "${{ env.THEME_VERSION }}"
           files: |
-            wordpress/wp-content/themes/les-verts/styleguide/dist/build/theme/les-verts.zip
+            gh-pages/theme/les-verts.zip
