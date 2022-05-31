@@ -12,6 +12,19 @@ jobs:
       - name: Add symlink
         run: ln -sf wordpress/wp-content/themes/les-verts/styleguide/ styleguide
 
+      - name: Cache Composer dependencies
+        uses: actions/cache@v2
+        with:
+          path: /tmp/composer-cache
+          key: ${{ runner.os }}-${{ hashFiles('**/composer.lock') }}
+
+      - name: Composer install
+        uses: php-actions/composer@v6
+        with:
+          dev: no
+          interaction: no
+          args: --working-dir=wordpress/wp-content/themes/les-verts --ignore-platform-reqs
+
       - name: Yarn install
         uses: borales/actions-yarn@v2.3.0
         with:
@@ -31,13 +44,6 @@ jobs:
         uses: borales/actions-yarn@v2.3.0
         with:
           cmd: build
-
-      - name: Composer install
-        uses: php-actions/composer@v6
-        with:
-          dev: no
-          interaction: no
-          args: --working-dir=wordpress/wp-content/themes/les-verts
 
       - name: Prepare theme release
         run: |
