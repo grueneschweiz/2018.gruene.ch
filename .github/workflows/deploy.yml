@@ -62,6 +62,7 @@ jobs:
           zip -r release.zip les-verts
 
       - name: Add theme to github pages
+        run: |
           mkdir gh-pages/theme
           cp wordpress/wp-content/themes/release.zip gh-pages/theme/les-verts.zip
 
