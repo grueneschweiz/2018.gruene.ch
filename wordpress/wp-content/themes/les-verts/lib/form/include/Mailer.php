@@ -59,7 +59,12 @@ class Mailer {
 	public function queue_mails() {
 		$this->queue_confirmation();
 		$this->queue_notification();
-		$this->schedule_cron();
+
+		if ( defined( 'SUPT_FORM_ASYNC' ) && ! SUPT_FORM_ASYNC ) {
+			do_action( self::CRON_HOOK_MAIL_SEND );
+		} else {
+			$this->schedule_cron();
+		}
 	}
 
 	/**

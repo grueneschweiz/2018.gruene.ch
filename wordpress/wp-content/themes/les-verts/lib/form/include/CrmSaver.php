@@ -111,7 +111,7 @@ class CrmSaver {
 			return;
 		}
 
-		$skip  = 0;
+		$skip = 0;
 
 		while ( $queue->has_items() ) {
 			if ( $skip >= $queue->length() ) {
@@ -169,12 +169,18 @@ class CrmSaver {
 		$data   = $item->get_data();
 
 		try {
-			$data   = self::match_and_add_group( $data, $dao );
-			$crm_id = $dao->save( $data );
+			$match = $dao->match( $data );
+			$data  = self::add_group( $data, self::determine_group( $match['status'] ) );
+
+			if ( $match['status'] === CrmDao::MATCH_MULTIPLE ) {
+				$main_id = $dao->main( $match['matches'][0]['id'] )['id'];
+			}
+
+			$crm_id = $dao->save( $data, $main_id ?? null );
 		} catch ( Exception $e ) {
 			if ( self::is_non_permanent_error( $e->getCode() ) ) {
 				try {
-					$form      = new FormModel( $item->get_form_id() );
+					$form = new FormModel( $item->get_form_id() );
 				} catch ( Exception $e ) {
 					$form = null;
 				}
@@ -188,36 +194,21 @@ class CrmSaver {
 	}
 
 	/**
-	 * Adds the correct group to the data.
-	 *
-	 * If a group for possible duplicates is defined in the settings, the data
-	 * is matched against the crm and the group is chosen according to the match
-	 * response. If it is an exact match or no match, the record the default
-	 * group is added to data. Else the group id for possible duplicates is set.
-	 *
-	 * If no group for possible duplicates is defined, the default group id is
-	 * used. No matching against the crm is performed in this case.
+	 * Adds the given group to the given data in 'add if new' mode
 	 *
 	 * @param array $data
-	 * @param CrmDao $dao
+	 * @param int $group_id
 	 *
 	 * @return array
 	 * @throws Exception
 	 */
-	private static function match_and_add_group( array $data, CrmDao $dao ): array {
-		if ( Util::get_setting_duplicate_group_id() ) {
-			$match = $dao->match( $data );
-			$group = self::determine_group( $match );
-		} else {
-			$group = Util::get_setting_default_group_id();
-		}
-
+	private static function add_group( array $data, int $group_id ): array {
 		$data['groups'] = new CrmFieldData(
 			'groups',
 			CrmFieldData::MODE_ADD_IF_NEW,
 			array(),
 			array(),
-			$group,
+			$group_id,
 			false
 		);
 
@@ -275,7 +266,12 @@ class CrmSaver {
 		if ( ! empty( $data ) ) {
 			$item = new CrmQueueItem( $data, $this->submission );
 			$this->queue->push( $item );
-			$this->schedule_cron();
+
+			if ( defined( 'SUPT_FORM_ASYNC' ) && ! SUPT_FORM_ASYNC ) {
+				do_action( self::CRON_HOOK_CRM_SAVE );
+			} else {
+				$this->schedule_cron();
+			}
 		}
 	}
 
@@ -535,7 +531,7 @@ class CrmSaver {
 			return $default_group_id;
 		}
 
-		if ( in_array( $match, array( CrmDao::MATCH_NONE, CrmDao::MATCH_EXACT ), true ) ) {
+		if ( in_array( $match, array( CrmDao::MATCH_NONE, CrmDao::MATCH_EXACT, CrmDao::MATCH_MULTIPLE ), true ) ) {
 			return $default_group_id;
 		}
 

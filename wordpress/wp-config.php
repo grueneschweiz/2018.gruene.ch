@@ -20,16 +20,16 @@
 
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
-define('DB_NAME', $_ENV['WORDPRESS_DB_NAME']);
+define( 'DB_NAME', 'wordpress' );
 
 /** MySQL database username */
-define('DB_USER', $_ENV['WORDPRESS_DB_USER']);
+define( 'DB_USER', 'wordpress' );
 
 /** MySQL database password */
-define('DB_PASSWORD', $_ENV['WORDPRESS_DB_PASSWORD']);
+define( 'DB_PASSWORD', 'wordpress' );
 
 /** MySQL hostname */
-define('DB_HOST', $_ENV['WORDPRESS_DB_HOST']);
+define( 'DB_HOST', 'db:3306' );
 
 /** Database Charset to use in creating database tables. */
 define('DB_CHARSET', 'utf8');
@@ -77,28 +77,32 @@ $table_prefix  = 'wp_';
  *
  * @link https://codex.wordpress.org/Debugging_in_WordPress
  */
-define('WP_DEBUG', $_ENV['WP_DEBUG']);
-define( 'WP_DEBUG_LOG', $_ENV['WP_DEBUG'] );
+define( 'WP_DEBUG', getenv( 'WORDPRESS_DEBUG' ) );
+define( 'WP_DEBUG_LOG', getenv( 'WORDPRESS_DEBUG' ) );
 
 // If we're behind a proxy server and using HTTPS, we need to alert Wordpress of that fact
 // see also http://codex.wordpress.org/Administration_Over_SSL#Using_a_Reverse_Proxy
-if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https') {
-        $_SERVER['HTTPS'] = 'on';
+if ( isset( $_SERVER['HTTP_X_FORWARDED_PROTO'] ) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https' ) {
+	$_SERVER['HTTPS'] = 'on';
 }
 
+define( 'WP_CACHE', true );
 
-define( 'MULTISITE',            true       );
-define( 'SUBDOMAIN_INSTALL',    false      ); // Set this to true for sub-domain installations.
-define( 'DOMAIN_CURRENT_SITE',  'localhost');
-define( 'PATH_CURRENT_SITE',    '/'        );
-define( 'SITE_ID_CURRENT_SITE', 1          );
-define( 'BLOG_ID_CURRENT_SITE', 1          );
+define( 'MULTISITE', false );
+define( 'SUBDOMAIN_INSTALL', false ); // Set this to true for sub-domain installations.
+define( 'DOMAIN_CURRENT_SITE', 'localhost' );
+define( 'PATH_CURRENT_SITE', '/' );
+define( 'SITE_ID_CURRENT_SITE', 1 );
+define( 'BLOG_ID_CURRENT_SITE', 1 );
+
+define( 'SUPT_FORM_ASYNC', ! ( (bool) getenv( 'WORDPRESS_DEBUG' ) ) );
 
 /* That's all, stop editing! Happy blogging. */
 
 /** Absolute path to the WordPress directory. */
-if ( !defined('ABSPATH') )
-        define('ABSPATH', dirname(__FILE__) . '/');
+if ( ! defined( 'ABSPATH' ) ) {
+	define( 'ABSPATH', dirname( __FILE__ ) . '/' );
+}
 
 /** Sets up WordPress vars and included files. */
-require_once(ABSPATH . 'wp-settings.php');
+require_once( ABSPATH . 'wp-settings.php' );
