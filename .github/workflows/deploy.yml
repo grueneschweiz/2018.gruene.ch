@@ -1,0 +1,87 @@
+name: Deploy
+
+on:
+  workflow_run:
+    workflows: [ Deploy ]
+    types: [ requested ]
+    branches:
+      - master
+      - styleguide
+      - v?[0-9]+.[0-9]+.[0-9]+**
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    steps:
+      - run: echo "Deployment triggered by a ${{ github.event_name }} event to the ${{ github.ref }} branch."
+      - uses: actions/checkout@v2
+
+      - name: Add symlink
+        run: ln -sf wordpress/wp-content/themes/les-verts/styleguide/ styleguide
+
+      - name: Yarn install
+        uses: borales/actions-yarn@v2.3.0
+        with:
+          cmd: install --frozen-lockfile # will run `yarn install` command
+
+      - name: Yarn gulp sg_custom
+        uses: borales/actions-yarn@v2.3.0
+        with:
+          cmd: gulp sg:custom
+
+      - name: Yarn fractal:build
+        uses: borales/actions-yarn@v2.3.0
+        with:
+          cmd: fractal:build
+
+      - name: Yarn build
+        uses: borales/actions-yarn@v2.3.0
+        with:
+          cmd: build
+
+      - name: Composer install
+        uses: php-actions/composer@v6
+        with:
+          dev: no
+          interaction: no
+          args: --working-dir=wordpress/wp-content/themes/les-verts
+
+      - name: Prepare theme release
+        run: |
+          cd wordpress/wp-content/themes
+          mkdir les-verts/static
+          cp -r les-verts/styleguide/dist/static/js les-verts/static/js
+          cp -r les-verts/styleguide/dist/static/fonts les-verts/static/fonts
+          cp les-verts/styleguide/dist/static/icons.svg les-verts/static/icons.svg
+          cp les-verts/styleguide/dist/static/style.css les-verts/static/style.css
+          cp les-verts/styleguide/dist/static/style.min.css les-verts/static/style.min.css
+          zip -r release.zip les-verts -x */styleguide/**\*
+          mkdir les-verts/styleguide/dist/build/theme
+          mv release.zip les-verts/styleguide/dist/build/theme/les-verts.zip
+
+      - name: Parse version number
+        run: |
+          echo "THEME_VERSION=$(sed '/^\s*\*\s*Version:/! d; s/^\s*\*\s*Version:\s*//; s/\s*$//' wordpress/wp-content/themes/les-verts/style.css)" >> $GITHUB_ENV
+
+      - name: Set new version number in update.json
+        run: |
+          sed "s/%VERSION%/$THEME_VERSION/" update.json > wordpress/wp-content/themes/les-verts/styleguide/dist/build/theme/update.json
+
+      - name: Deploy to github pages
+        uses: peaceiris/actions-gh-pages@v3
+        if: ${{ github.ref == 'refs/heads/master' || github.ref == 'refs/heads/styleguide' }}
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./wordpress/wp-content/themes/les-verts/styleguide/dist/build
+
+      - name: Prepare release
+        uses: "marvinpinto/action-automatic-releases@v1.2.1"
+        if: ${{ github.ref == 'refs/heads/master' }}
+        with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          automatic_release_tag: "${{ env.THEME_VERSION }}"
+          draft: true
+          prerelease: false
+          title: "${{ env.THEME_VERSION }}"
+          files: |
+            wordpress/wp-content/themes/les-verts/styleguide/dist/build/theme/les-verts.zip
