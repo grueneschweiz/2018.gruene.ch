@@ -6,7 +6,7 @@ The GREENS of Switzerland's website with a living styleguide made with Fractal.b
 
 * [Get the latest version of the theme](https://grueneschweiz.github.io/2018.gruene.ch/theme/les-verts.zip) 📦
 * [Report a bug or request a feature](https://github.com/grueneschweiz/2018.gruene.ch/issues/new) 🕷
-* [Contribute](CONTRIBUTING.md) 💻
+* [Contribute](.github/CONTRIBUTING.md) 💻
 
 Your not a webmonkey and you just want a **website ready to go**?
 * [Turnkey Ready Website](https://extern18.gruene.ch/musterperson/angebot) 🤩
