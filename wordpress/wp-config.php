@@ -86,6 +86,7 @@ if ( isset( $_SERVER['HTTP_X_FORWARDED_PROTO'] ) && $_SERVER['HTTP_X_FORWARDED_P
 	$_SERVER['HTTPS'] = 'on';
 }
 
+define( 'WP_CACHE', true );
 
 define( 'MULTISITE', false );
 define( 'SUBDOMAIN_INSTALL', false ); // Set this to true for sub-domain installations.
