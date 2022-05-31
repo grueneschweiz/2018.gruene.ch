@@ -103,3 +103,5 @@ $WPCLI option patch insert openid_connect_generic_settings create_if_does_not_ex
 # configure limit login attempts
 $WPCLI option set limit_login_show_top_level_menu_item '0'
 $WPCLI option set limit_login_hide_dashboard_widget '1'
+$WPCLI option set limit_login_gdpr '1'
+$WPCLI option set limit_login_lockout_notify ''
