@@ -58,7 +58,7 @@ jobs:
           cp les-verts/styleguide/dist/static/icons.svg les-verts/static/icons.svg
           cp les-verts/styleguide/dist/static/style.css les-verts/static/style.css
           cp les-verts/styleguide/dist/static/style.min.css les-verts/static/style.min.css
-          rm -rf les-verts/styleguide
+          sudo rm -rf les-verts/styleguide
           zip -r release.zip les-verts
 
       - name: Add theme to github pages
