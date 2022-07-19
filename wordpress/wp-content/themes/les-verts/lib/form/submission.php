@@ -113,7 +113,7 @@ class FormSubmission {
 		add_action( 'supt_form_mail_send', array( __CLASS__, 'send_mails' ) );
 		add_action( 'supt_form_remove_expired_nonces', array( __CLASS__, 'remove_expired_nonces' ) );
 
-		if ( ! WP_DEBUG && get_field( 'form_smtp_enabled', 'options' ) ) {
+		if ( ! ( defined( 'WP_DEBUG' ) && WP_DEBUG ) && get_field( 'form_smtp_enabled', 'options' ) ) {
 			add_action( 'phpmailer_init', array( $this, 'setup_SMTP' ) );
 		}
 	}
