@@ -91,7 +91,7 @@ add_action( 'acf/input/admin_footer', function () {
 
 // custom css
 add_filter( 'tiny_mce_before_init', function ( $mce_init ) {
-	$styleguide_css = get_stylesheet_directory_uri() . '/static/style' . ( WP_DEBUG ? '' : '.min' ) . '.css';
+	$styleguide_css = get_stylesheet_directory_uri() . '/static/style' . ( defined( 'WP_DEBUG' ) && WP_DEBUG ? '' : '.min' ) . '.css';
 	$content_css    = get_stylesheet_directory_uri() . '/style-admin-editor.css';
 
 	if ( isset( $mce_init['content_css'] ) ) {

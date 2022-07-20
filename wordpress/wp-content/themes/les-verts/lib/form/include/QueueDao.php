@@ -112,6 +112,28 @@ class QueueDao {
 		$this->unlock();
 	}
 
+	/**
+	 * Remove elements from queue, that don't satisfy the filter callback.
+	 *
+	 * @param callable $callback receives a queue item as only argument,
+	 *                           must return a boolean. False will remove
+	 *                           the item, true will keep it.
+	 *
+	 * @return int The number of elements removed
+	 */
+	public function filter( callable $callback ): int {
+		$this->lock();
+		$queue     = $this->get_all();
+		$lenBefore = count( $queue );
+		$queue     = array_filter( $queue, $callback );
+		$lenAfter  = count( $queue );
+		$reindexed = array_values( $queue );
+		$this->save( $reindexed );
+		$this->unlock();
+
+		return $lenBefore - $lenAfter;
+	}
+
 	private function lock() {
 		global $wpdb;
 		$wpdb->query( "LOCK TABLES $wpdb->options WRITE" );

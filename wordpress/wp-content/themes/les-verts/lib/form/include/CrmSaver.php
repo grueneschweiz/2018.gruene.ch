@@ -111,38 +111,35 @@ class CrmSaver {
 			return;
 		}
 
-		$skip = 0;
-
-		while ( $queue->has_items() ) {
-			if ( $skip >= $queue->length() ) {
-				// if there are only the skipped submissions left in the queue
-				break;
-			}
-
-			/** @var CrmQueueItem $item */
-			$item = $queue->pop();
+		/** @var CrmQueueItem $item */
+		foreach ( $queue->get_all() as $item ) {
+			Util::debug_log( "submissionId={$item->get_submission_id()} msg=Start saving to CRM." );
 
 			if ( ! $item->has_data() ) {
-				// the item will be lost, which is what we want, since there is no data
-				continue;
+				Util::debug_log( "submissionId={$item->get_submission_id()} msg=No data. Discarding entry." );
+
+				// remove item from queue
+				$queue->filter( static function ( $q_item ) use ( $item ) {
+					return $item->get_submission_id() !== $q_item->get_submission_id();
+				} );
 			}
 
-			// if we have exceeded the max attempts and we don't want to force save (=ignore max attempts)
+			// if we have exceeded the max attempts,
+			// and we don't want to force save (=ignore max attempts)
 			if ( ! $force && $item->get_attempts() >= self::MAX_SAVE_ATTEMPTS ) {
-				// push the item back and skip it
-				$queue->push( $item );
-				$skip ++;
+				Util::debug_log( "submissionId={$item->get_submission_id()} msg=Too many attempts. Skipping." );
+				// skip
 				continue;
 			}
 
-			// if not enough time has passed since the last attempt and we don't want to force save (=ignore max attempts)
+			// if not enough time has passed since the last attempt,
+			// and we don't want to force save (=ignore max attempts)
 			if ( ! $force
 			     && $item->last_attempt_seconds_ago()
 			     && $item->last_attempt_seconds_ago() < self::MIN_ATTEMPT_TIMEOUT
 			) {
-				// push the item back and skip it
-				$queue->push( $item );
-				$skip ++;
+				Util::debug_log( "submissionId={$item->get_submission_id()} msg=Last attempt only {$item->last_attempt_seconds_ago()} seconds ago. Skipping." );
+				// skip
 				continue;
 			}
 
@@ -151,10 +148,23 @@ class CrmSaver {
 
 			// on error
 			if ( ! $crm_id ) {
-				// push the item back
-				$queue->push( $item );
-				$skip ++;
+				Util::debug_log( "submissionId={$item->get_submission_id()} msg=Failed to save to CRM." );
+				// keep in queue
+				continue;
 			}
+
+			// on success: remove item from queue
+			Util::debug_log( "submissionId={$item->get_submission_id()} msg=Saved successfully. CRM id: $crm_id" );
+
+			$queue->filter( static function ( $q_item ) use ( $item ) {
+				if ( $item->get_submission_id() !== $q_item->get_submission_id() ) {
+					Util::debug_log( "submissionId={$item->get_submission_id()} msg=Remove from queue." );
+
+					return false; // remove from queue
+				}
+
+				return true;
+			} );
 		}
 	}
 
@@ -178,6 +188,7 @@ class CrmSaver {
 
 			$crm_id = $dao->save( $data, $main_id ?? null );
 		} catch ( Exception $e ) {
+			Util::debug_log( "submissionId={$item->get_submission_id()} msg=Failed to save to CRM: {$e->getCode()} {$e->getMessage()}" );
 			if ( self::is_non_permanent_error( $e->getCode() ) ) {
 				try {
 					$form = new FormModel( $item->get_form_id() );

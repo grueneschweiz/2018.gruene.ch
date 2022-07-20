@@ -31,7 +31,7 @@ require_once __DIR__ . '/lib/_loader.php';
  * ENTRYPOINT
  */
 class StarterSite extends TimberSite {
-	
+
 	function __construct() {
 		Locale::setDefault( get_lang() );
 
@@ -53,46 +53,46 @@ class StarterSite extends TimberSite {
 		add_action( 'admin_enqueue_scripts', array( $this, 'setup_admin_assets' ) );
 		add_action( 'widgets_init', array( $this, 'register_widget_zones' ) );
 		add_action( 'after_setup_theme', array( $this, 'load_textdomain' ) );
-		
+
 		// // For debug purpose only: shows all the hooks & registered actions
 		// add_action('wp', function(){ echo '<pre>';print_r($GLOBALS['wp_filter']); echo '</pre>';exit; } );
-		
+
 		parent::__construct();
 	}
-	
-	
+
+
 	// HELPERS
-	
+
 	function add_to_context( $context ) {
 		// $context['notes'] = 'These values are available everytime you call Timber::get_context();';
 		// The registered controllers may also populate the context. Have a look at lib/_loader.php
-		
+
 		// Inception
 		$context['site'] = $this;
-		
+
 		// Active languages
 		if ( function_exists( 'pll_languages_list' ) ) {
 			$context['langs'] = pll_languages_list();
 		}
-		
+
 		// Theme base URI
 		$context['theme_uri'] = THEME_URI;
-		
+
 		// Theme domain
 		$context['theme_domain'] = THEME_DOMAIN;
-		
+
 		// Global options
 		$context['OPTIONS'] = get_fields( 'options' );
-		
+
 		// Widgets
 		$context['widgets']['footer'] = Timber::get_widgets( 'footer-widget-area' );
-		
+
 		// Are we in debut mode?
-		$context['WP_DEBUG'] = WP_DEBUG;
-		
+		$context['WP_DEBUG'] = defined( 'WP_DEBUG' ) && WP_DEBUG;
+
 		return $context;
 	}
-	
+
 	function register_menu_locations() {
 		register_nav_menus( array(
 			'main-nav'        => __( 'Main navigation', THEME_DOMAIN ),
@@ -101,16 +101,16 @@ class StarterSite extends TimberSite {
 			'get-active-nav'  => __( 'Action button navigation', THEME_DOMAIN ),
 		) );
 	}
-	
+
 	function setup_assets() {
 		// css
 		wp_enqueue_style( THEME_DOMAIN . '-screen',
-			get_stylesheet_directory_uri() . '/static/style' . ( WP_DEBUG ? '' : '.min' ) . '.css', false,
+			get_stylesheet_directory_uri() . '/static/style' . ( defined( 'WP_DEBUG' ) && WP_DEBUG ? '' : '.min' ) . '.css', false,
 			THEME_VERSION );
 
 		// js
 		wp_enqueue_script( THEME_DOMAIN . '-app',
-			get_stylesheet_directory_uri() . '/static/js/app' . ( WP_DEBUG ? '' : '.min' ) . '.js',
+			get_stylesheet_directory_uri() . '/static/js/app' . ( defined( 'WP_DEBUG' ) && WP_DEBUG ? '' : '.min' ) . '.js',
 			array(), THEME_VERSION, true
 		);
 
@@ -130,7 +130,7 @@ class StarterSite extends TimberSite {
 				THEME_VERSION );
 		}
 	}
-	
+
 	function setup_admin_assets() {
 		// global admin styles
 		if ( is_admin() ) {
@@ -138,7 +138,7 @@ class StarterSite extends TimberSite {
 				THEME_VERSION );
 		}
 	}
-	
+
 	/**
 	 * Load the widget zones
 	 *
@@ -155,14 +155,14 @@ class StarterSite extends TimberSite {
 			'after_widget'  => '</div>',
 		) );
 	}
-	
+
 	/**
 	 * Load theme translations
 	 */
 	function load_textdomain() {
 		load_theme_textdomain( THEME_DOMAIN, get_template_directory() . '/languages' );
 	}
-	
+
 }
 
 

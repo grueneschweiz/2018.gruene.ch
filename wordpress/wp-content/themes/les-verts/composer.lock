@@ -562,16 +562,16 @@
 		},
 		{
 			"name": "phpoffice/phpspreadsheet",
-			"version": "1.23.0",
+			"version": "1.24.1",
 			"source": {
 				"type": "git",
 				"url": "https://github.com/PHPOffice/PhpSpreadsheet.git",
-				"reference": "21e4cf62699eebf007db28775f7d1554e612ed9e"
+				"reference": "69991111e05fca3ff7398e1e7fca9ebed33efec6"
 			},
 			"dist": {
 				"type": "zip",
-				"url": "https://api.github.com/repos/PHPOffice/PhpSpreadsheet/zipball/21e4cf62699eebf007db28775f7d1554e612ed9e",
-				"reference": "21e4cf62699eebf007db28775f7d1554e612ed9e",
+				"url": "https://api.github.com/repos/PHPOffice/PhpSpreadsheet/zipball/69991111e05fca3ff7398e1e7fca9ebed33efec6",
+				"reference": "69991111e05fca3ff7398e1e7fca9ebed33efec6",
 				"shasum": ""
 			},
 			"require": {
@@ -599,15 +599,15 @@
 			},
 			"require-dev": {
 				"dealerdirect/phpcodesniffer-composer-installer": "dev-master",
-				"dompdf/dompdf": "^1.0",
+				"dompdf/dompdf": "^1.0 || ^2.0",
 				"friendsofphp/php-cs-fixer": "^3.2",
 				"jpgraph/jpgraph": "^4.0",
-				"mpdf/mpdf": "8.0.17",
+				"mpdf/mpdf": "8.1.1",
 				"phpcompatibility/php-compatibility": "^9.3",
 				"phpstan/phpstan": "^1.1",
 				"phpstan/phpstan-phpunit": "^1.0",
 				"phpunit/phpunit": "^8.5 || ^9.0",
-				"squizlabs/php_codesniffer": "^3.6",
+				"squizlabs/php_codesniffer": "^3.7",
 				"tecnickcom/tcpdf": "^6.4"
 			},
 			"suggest": {
@@ -660,9 +660,9 @@
 			],
 			"support": {
 				"issues": "https://github.com/PHPOffice/PhpSpreadsheet/issues",
-				"source": "https://github.com/PHPOffice/PhpSpreadsheet/tree/1.23.0"
+				"source": "https://github.com/PHPOffice/PhpSpreadsheet/tree/1.24.1"
 			},
-			"time": "2022-04-24T13:53:10+00:00"
+			"time": "2022-07-18T19:50:48+00:00"
 		},
 		{
 			"name": "psr/http-client",
@@ -826,25 +826,25 @@
 		},
 		{
 			"name": "psr/simple-cache",
-			"version": "1.0.1",
+			"version": "2.0.0",
 			"source": {
 				"type": "git",
 				"url": "https://github.com/php-fig/simple-cache.git",
-				"reference": "408d5eafb83c57f6365a3ca330ff23aa4a5fa39b"
+				"reference": "8707bf3cea6f710bf6ef05491234e3ab06f6432a"
 			},
 			"dist": {
 				"type": "zip",
-				"url": "https://api.github.com/repos/php-fig/simple-cache/zipball/408d5eafb83c57f6365a3ca330ff23aa4a5fa39b",
-				"reference": "408d5eafb83c57f6365a3ca330ff23aa4a5fa39b",
+				"url": "https://api.github.com/repos/php-fig/simple-cache/zipball/8707bf3cea6f710bf6ef05491234e3ab06f6432a",
+				"reference": "8707bf3cea6f710bf6ef05491234e3ab06f6432a",
 				"shasum": ""
 			},
 			"require": {
-				"php": ">=5.3.0"
+				"php": ">=8.0.0"
 			},
 			"type": "library",
 			"extra": {
 				"branch-alias": {
-					"dev-master": "1.0.x-dev"
+					"dev-master": "2.0.x-dev"
 				}
 			},
 			"autoload": {
@@ -859,7 +859,7 @@
 			"authors": [
 				{
 					"name": "PHP-FIG",
-					"homepage": "http://www.php-fig.org/"
+					"homepage": "https://www.php-fig.org/"
 				}
 			],
 			"description": "Common interfaces for simple caching",
@@ -871,22 +871,22 @@
 				"simple-cache"
 			],
 			"support": {
-				"source": "https://github.com/php-fig/simple-cache/tree/master"
+				"source": "https://github.com/php-fig/simple-cache/tree/2.0.0"
 			},
-			"time": "2017-10-23T01:57:42+00:00"
+			"time": "2021-10-29T13:22:09+00:00"
 		},
 		{
 			"name": "symfony/polyfill-ctype",
-			"version": "v1.25.0",
+			"version": "v1.26.0",
 			"source": {
 				"type": "git",
 				"url": "https://github.com/symfony/polyfill-ctype.git",
-				"reference": "30885182c981ab175d4d034db0f6f469898070ab"
+				"reference": "6fd1b9a79f6e3cf65f9e679b23af304cd9e010d4"
 			},
 			"dist": {
 				"type": "zip",
-				"url": "https://api.github.com/repos/symfony/polyfill-ctype/zipball/30885182c981ab175d4d034db0f6f469898070ab",
-				"reference": "30885182c981ab175d4d034db0f6f469898070ab",
+				"url": "https://api.github.com/repos/symfony/polyfill-ctype/zipball/6fd1b9a79f6e3cf65f9e679b23af304cd9e010d4",
+				"reference": "6fd1b9a79f6e3cf65f9e679b23af304cd9e010d4",
 				"shasum": ""
 			},
 			"require": {
@@ -901,7 +901,7 @@
 			"type": "library",
 			"extra": {
 				"branch-alias": {
-					"dev-main": "1.23-dev"
+					"dev-main": "1.26-dev"
 				},
 				"thanks": {
 					"name": "symfony/polyfill",
@@ -939,7 +939,7 @@
 				"portable"
 			],
 			"support": {
-				"source": "https://github.com/symfony/polyfill-ctype/tree/v1.25.0"
+				"source": "https://github.com/symfony/polyfill-ctype/tree/v1.26.0"
 			},
 			"funding": [
 				{
@@ -955,20 +955,20 @@
 					"type": "tidelift"
 				}
 			],
-			"time": "2021-10-20T20:35:02+00:00"
+			"time": "2022-05-24T11:49:31+00:00"
 		},
 		{
 			"name": "symfony/polyfill-mbstring",
-			"version": "v1.25.0",
+			"version": "v1.26.0",
 			"source": {
 				"type": "git",
 				"url": "https://github.com/symfony/polyfill-mbstring.git",
-				"reference": "0abb51d2f102e00a4eefcf46ba7fec406d245825"
+				"reference": "9344f9cb97f3b19424af1a21a3b0e75b0a7d8d7e"
 			},
 			"dist": {
 				"type": "zip",
-				"url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/0abb51d2f102e00a4eefcf46ba7fec406d245825",
-				"reference": "0abb51d2f102e00a4eefcf46ba7fec406d245825",
+				"url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/9344f9cb97f3b19424af1a21a3b0e75b0a7d8d7e",
+				"reference": "9344f9cb97f3b19424af1a21a3b0e75b0a7d8d7e",
 				"shasum": ""
 			},
 			"require": {
@@ -983,7 +983,7 @@
 			"type": "library",
 			"extra": {
 				"branch-alias": {
-					"dev-main": "1.23-dev"
+					"dev-main": "1.26-dev"
 				},
 				"thanks": {
 					"name": "symfony/polyfill",
@@ -1022,7 +1022,7 @@
 				"shim"
 			],
 			"support": {
-				"source": "https://github.com/symfony/polyfill-mbstring/tree/v1.25.0"
+				"source": "https://github.com/symfony/polyfill-mbstring/tree/v1.26.0"
 			},
 			"funding": [
 				{
@@ -1038,20 +1038,20 @@
 					"type": "tidelift"
 				}
 			],
-			"time": "2021-11-30T18:21:41+00:00"
+			"time": "2022-05-24T11:49:31+00:00"
 		},
 		{
 			"name": "symfony/polyfill-php72",
-			"version": "v1.25.0",
+			"version": "v1.26.0",
 			"source": {
 				"type": "git",
 				"url": "https://github.com/symfony/polyfill-php72.git",
-				"reference": "9a142215a36a3888e30d0a9eeea9766764e96976"
+				"reference": "bf44a9fd41feaac72b074de600314a93e2ae78e2"
 			},
 			"dist": {
 				"type": "zip",
-				"url": "https://api.github.com/repos/symfony/polyfill-php72/zipball/9a142215a36a3888e30d0a9eeea9766764e96976",
-				"reference": "9a142215a36a3888e30d0a9eeea9766764e96976",
+				"url": "https://api.github.com/repos/symfony/polyfill-php72/zipball/bf44a9fd41feaac72b074de600314a93e2ae78e2",
+				"reference": "bf44a9fd41feaac72b074de600314a93e2ae78e2",
 				"shasum": ""
 			},
 			"require": {
@@ -1060,7 +1060,7 @@
 			"type": "library",
 			"extra": {
 				"branch-alias": {
-					"dev-main": "1.23-dev"
+					"dev-main": "1.26-dev"
 				},
 				"thanks": {
 					"name": "symfony/polyfill",
@@ -1098,7 +1098,7 @@
 				"shim"
 			],
 			"support": {
-				"source": "https://github.com/symfony/polyfill-php72/tree/v1.25.0"
+				"source": "https://github.com/symfony/polyfill-php72/tree/v1.26.0"
 			},
 			"funding": [
 				{
@@ -1114,7 +1114,7 @@
 					"type": "tidelift"
 				}
 			],
-			"time": "2021-05-27T09:17:38+00:00"
+			"time": "2022-05-24T11:49:31+00:00"
 		},
 		{
 			"name": "tgmpa/tgm-plugin-activation",
@@ -1177,16 +1177,16 @@
 		},
 		{
 			"name": "timber/timber",
-			"version": "1.19.2",
+			"version": "1.20.0",
 			"source": {
 				"type": "git",
 				"url": "https://github.com/timber/timber.git",
-				"reference": "e1460c04914c97e5d08be06d27f9df958fc17725"
+				"reference": "3ac8c7629656009b9e0d6d9e4ccda202aad3b8e0"
 			},
 			"dist": {
 				"type": "zip",
-				"url": "https://api.github.com/repos/timber/timber/zipball/e1460c04914c97e5d08be06d27f9df958fc17725",
-				"reference": "e1460c04914c97e5d08be06d27f9df958fc17725",
+				"url": "https://api.github.com/repos/timber/timber/zipball/3ac8c7629656009b9e0d6d9e4ccda202aad3b8e0",
+				"reference": "3ac8c7629656009b9e0d6d9e4ccda202aad3b8e0",
 				"shasum": ""
 			},
 			"require": {
@@ -1194,12 +1194,12 @@
 				"php": ">=5.3.0 || 7.*",
 				"twig/cache-extension": "^1.5",
 				"twig/twig": "^1.41 || ^2.10",
-				"upstatement/routes": "0.8.*"
+				"upstatement/routes": "0.9.*"
 			},
 			"require-dev": {
 				"dealerdirect/phpcodesniffer-composer-installer": "^0.7.0",
 				"johnpbloch/wordpress": "*",
-				"phpunit/phpunit": "5.7.16 || 6.*",
+				"phpunit/phpunit": "5.7.21 || 6.*",
 				"squizlabs/php_codesniffer": "3.*",
 				"wp-coding-standards/wpcs": "^2.0",
 				"wpackagist-plugin/advanced-custom-fields": "5.*",
@@ -1244,7 +1244,7 @@
 				"issues": "https://github.com/timber/timber/issues",
 				"source": "https://github.com/timber/timber"
 			},
-			"time": "2022-04-19T19:03:58+00:00"
+			"time": "2022-06-22T19:42:09+00:00"
 		},
 		{
 			"name": "twig/cache-extension",
@@ -1400,21 +1400,21 @@
 		},
 		{
 			"name": "upstatement/routes",
-			"version": "0.8.2",
+			"version": "0.9.1",
 			"source": {
 				"type": "git",
 				"url": "https://github.com/Upstatement/routes.git",
-				"reference": "2fff0d92754d784529520b0f2ee5696a49089fb8"
+				"reference": "cac3c844ab824e4039fd26edbea5402415aa6d0a"
 			},
 			"dist": {
 				"type": "zip",
-				"url": "https://api.github.com/repos/Upstatement/routes/zipball/2fff0d92754d784529520b0f2ee5696a49089fb8",
-				"reference": "2fff0d92754d784529520b0f2ee5696a49089fb8",
+				"url": "https://api.github.com/repos/Upstatement/routes/zipball/cac3c844ab824e4039fd26edbea5402415aa6d0a",
+				"reference": "cac3c844ab824e4039fd26edbea5402415aa6d0a",
 				"shasum": ""
 			},
 			"require": {
 				"altorouter/altorouter": "^2.0.2",
-				"composer/installers": "^2.0",
+				"composer/installers": "^1.0 || ^2.0",
 				"php": ">=5.6.0|7.*"
 			},
 			"require-dev": {
@@ -1452,7 +1452,7 @@
 				"source": "https://github.com/Upstatement/routes",
 				"wiki": "https://github.com/Upstatement/routes/wiki"
 			},
-			"time": "2022-02-26T07:14:22+00:00"
+			"time": "2022-06-22T19:53:51+00:00"
 		},
 		{
 			"name": "yahnis-elsts/plugin-update-checker",
@@ -1513,5 +1513,5 @@
 	"prefer-lowest": false,
 	"platform": [],
 	"platform-dev": [],
-	"plugin-api-version": "2.1.0"
+	"plugin-api-version": "2.3.0"
 }

@@ -59,6 +59,8 @@ You can enable WordPress & php debugs tools to help develop.
 
 - Setting the PHP constant `SUPT_FORM_ASYNC` to false (e.g. in `wp-config.php`) processes form mails and crm saving
   synchronously and thus facilitates debugging.
+- Setting the PHP constant `LES_VERTS_FORM_DEBUG_LOG` to true (e.g. in `wp-config.php`) will log all form submissions
+  and crm saving to `./form.log`.
 
 ### Theming
 

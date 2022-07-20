@@ -113,7 +113,7 @@ class FormSubmission {
 		add_action( 'supt_form_mail_send', array( __CLASS__, 'send_mails' ) );
 		add_action( 'supt_form_remove_expired_nonces', array( __CLASS__, 'remove_expired_nonces' ) );
 
-		if ( ! WP_DEBUG && get_field( 'form_smtp_enabled', 'options' ) ) {
+		if ( ! ( defined( 'WP_DEBUG' ) && WP_DEBUG ) && get_field( 'form_smtp_enabled', 'options' ) ) {
 			add_action( 'phpmailer_init', array( $this, 'setup_SMTP' ) );
 		}
 	}
@@ -458,6 +458,8 @@ class FormSubmission {
 			return;
 		}
 
+		Util::debug_log( "submissionId={$this->post_meta_id} msg=Saved to DB. email={$submission->meta_get_linked_email()}" );
+
 		$this->update_predecessor( $this->post_meta_id );
 
 		if ( $this->post_meta_id ) {
@@ -546,6 +548,7 @@ class FormSubmission {
 		try {
 			$saver = new CrmSaver( $this->post_meta_id );
 			$saver->queue();
+			Util::debug_log( "submissionId={$this->post_meta_id} msg=Added to CRM saving queue." );
 		} catch ( Exception $e ) {
 			Util::report_form_error( 'add data to saving queue of crm', $this->data, $e, $this->form );
 		}

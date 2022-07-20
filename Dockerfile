@@ -1,6 +1,6 @@
 # Installs WordPress with wp-cli (wp.cli.org) installed
 
-FROM wordpress:latest
+FROM wordpress:php8.1
 
 # Add sudo in order to run wp-cli as the www-data user
 RUN apt-get update && apt-get install -y \

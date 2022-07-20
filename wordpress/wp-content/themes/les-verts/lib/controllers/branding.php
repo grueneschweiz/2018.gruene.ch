@@ -21,7 +21,7 @@ class Branding_controller {
 
 	public static function get_branding() {
 		$tagline       = get_bloginfo( 'description' );
-		$unbreakeables = preg_split( '/([' . self::DELIMITERS . '])/', $tagline, null,
+		$unbreakeables = preg_split( '/([' . self::DELIMITERS . '])/', $tagline, - 1,
 			PREG_SPLIT_DELIM_CAPTURE | PREG_SPLIT_NO_EMPTY );
 
 		foreach ( $unbreakeables as $key => &$item ) {
