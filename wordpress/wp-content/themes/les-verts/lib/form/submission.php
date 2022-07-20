@@ -458,6 +458,8 @@ class FormSubmission {
 			return;
 		}
 
+		Util::debug_log( "submissionId={$this->post_meta_id} msg=Saved to DB. email={$submission->meta_get_linked_email()}" );
+
 		$this->update_predecessor( $this->post_meta_id );
 
 		if ( $this->post_meta_id ) {
@@ -546,6 +548,7 @@ class FormSubmission {
 		try {
 			$saver = new CrmSaver( $this->post_meta_id );
 			$saver->queue();
+			Util::debug_log( "submissionId={$this->post_meta_id} msg=Added to CRM saving queue." );
 		} catch ( Exception $e ) {
 			Util::report_form_error( 'add data to saving queue of crm', $this->data, $e, $this->form );
 		}

@@ -162,4 +162,11 @@ class Util {
 	public static function get_setting_default_group_id() {
 		return (int) get_field( 'group_id', 'option' );
 	}
+
+	public static function debug_log( string $message ) {
+		if ( defined( 'LES_VERTS_FORM_DEBUG_LOG' ) && LES_VERTS_FORM_DEBUG_LOG ) {
+			/** @noinspection ForgottenDebugOutputInspection */
+			error_log( "$message\n", 3, ABSPATH . '/form.log' );
+		}
+	}
 }
