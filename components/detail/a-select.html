@@ -515,6 +515,10 @@
 		<span class="hljs-attribute">transition-timing-function</span>: <span class="hljs-variable">$transition-ease</span>;
 		<span class="hljs-attribute">transition-duration</span>: <span class="hljs-variable">$transition-fast</span>;
 		<span class="hljs-attribute">transition-property</span>: font-size, top, font-weight;
+		<span class="hljs-attribute">max-width</span>: calc(<span class="hljs-number">100%</span> - <span class="hljs-number">2.5rem</span>);
+		<span class="hljs-attribute">text-overflow</span>: ellipsis;
+		<span class="hljs-attribute">white-space</span>: nowrap;
+		<span class="hljs-attribute">overflow</span>: hidden;
 
 		&amp;<span class="hljs-selector-class">.is-empty</span> {
 			<span class="hljs-attribute">font-size</span>: <span class="hljs-number">1em</span>;
@@ -536,6 +540,7 @@
 		<span class="hljs-attribute">transition</span>: border-bottom-color <span class="hljs-variable">$transition-fast</span> <span class="hljs-variable">$transition-ease</span>;
 		<span class="hljs-attribute">position</span>: relative;
 		<span class="hljs-attribute">border-radius</span>: <span class="hljs-number">2px</span>;
+		<span class="hljs-attribute">height</span>: calc(<span class="hljs-number">2.5rem</span> + <span class="hljs-number">2px</span>);
 
 		&amp;<span class="hljs-selector-class">.is-valid</span> {
 			<span class="hljs-attribute">border-bottom-color</span>: <span class="hljs-variable">$color-primary</span>;
@@ -571,16 +576,17 @@
 
 	&amp;__field {
 		<span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
-		<span class="hljs-attribute">position</span>: relative;
-		<span class="hljs-attribute">z-index</span>: <span class="hljs-number">1</span>;
-		<span class="hljs-attribute">background</span>: transparent;
+		<span class="hljs-attribute">position</span>: absolute;
+		<span class="hljs-attribute">top</span>: <span class="hljs-number">0</span>;
+		<span class="hljs-attribute">right</span>: <span class="hljs-number">0</span>;
+		<span class="hljs-attribute">z-index</span>: <span class="hljs-number">3</span>;
 		<span class="hljs-attribute">border</span>: none;
 		<span class="hljs-attribute">height</span>: <span class="hljs-number">2.5rem</span>;
 		<span class="hljs-attribute">color</span>: <span class="hljs-variable">$color-text</span>;
 		<span class="hljs-attribute">font-size</span>: <span class="hljs-number">1rem</span>;
 		<span class="hljs-attribute">border-radius</span>: <span class="hljs-number">0</span>;
 		<span class="hljs-attribute">box-shadow</span>: none;
-		<span class="hljs-attribute">background-image</span>: none;
+		<span class="hljs-attribute">background</span>: transparent none;
 		-webkit-appearance: none;
 
 		&amp;<span class="hljs-selector-pseudo">:focus</span> {
@@ -614,7 +620,7 @@
                 </li>
                 <li class="Meta-item">
                     <strong class="Meta-key">Size:</strong>
-                    <span class="Meta-value">1.8 KB</span>
+                    <span class="Meta-value">1.9 KB</span>
                 </li>
             </ul>
         </div>
@@ -654,6 +660,9 @@
 		<span class="hljs-built_in">this</span>.on( <span class="hljs-string">&#x27;focus&#x27;</span>, INPUT_SELECTOR, <span class="hljs-function">() =&gt;</span> <span class="hljs-built_in">this</span>.onSetFocus() );
 		<span class="hljs-built_in">this</span>.on( <span class="hljs-string">&#x27;blur&#x27;</span>, INPUT_SELECTOR, <span class="hljs-function">() =&gt;</span> <span class="hljs-built_in">this</span>.onRemoveFocus() );
 		<span class="hljs-built_in">this</span>.on( <span class="hljs-string">&#x27;change&#x27;</span>, INPUT_SELECTOR, <span class="hljs-function">() =&gt;</span> <span class="hljs-built_in">this</span>.onChange(), <span class="hljs-literal">false</span>, <span class="hljs-literal">false</span> );
+		<span class="hljs-built_in">this</span>.on( <span class="hljs-string">&#x27;click&#x27;</span>, LABEL_SELECTOR, <span class="hljs-function">() =&gt;</span> {
+			<span class="hljs-built_in">this</span>.select.focus();
+		} );
 	}
 
 	<span class="hljs-function"><span class="hljs-title">onChange</span>(<span class="hljs-params"></span>)</span> {
@@ -730,7 +739,7 @@
                 </li>
                 <li class="Meta-item">
                     <strong class="Meta-key">Size:</strong>
-                    <span class="Meta-value">2 KB</span>
+                    <span class="Meta-value">2.1 KB</span>
                 </li>
             </ul>
         </div>
