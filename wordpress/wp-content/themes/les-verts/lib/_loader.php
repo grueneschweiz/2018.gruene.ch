@@ -254,3 +254,10 @@ if ( 1 === version_compare( '0.26.2', $dbVersion ) ) {
 if ( 1 === version_compare( THEME_VERSION, $dbVersion ) ) {
 	Migrations\Migrator::setCurrentVersion();
 }
+
+
+/**
+ * CLI Commands
+ * ============
+ */
+require_once __DIR__ . '/cli/LesVertsCommand.php';

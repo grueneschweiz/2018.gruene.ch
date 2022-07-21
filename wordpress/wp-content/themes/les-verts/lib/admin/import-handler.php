@@ -2,6 +2,7 @@
 
 namespace SUPT;
 
+use WP_CLI;
 use WP_Query;
 use function get_field;
 use function get_post;
@@ -23,6 +24,7 @@ if ( defined( 'WP_CLI' ) && WP_CLI ) {
 }
 
 class Importer {
+	private static $instance;
 	private $post;
 
 	/**
@@ -32,50 +34,22 @@ class Importer {
 	 */
 	private $review = array();
 
+	private function __construct() {
+	}
+
 	public static function import() {
-		$instance = new Importer();
+		$instance = self::get_instance();
 		$instance->update_posts_and_pages();
 		$instance->update_events();
 		$instance->notify();
 	}
 
-	private function __construct() {
-	}
-
-	private function update_events() {
-		$query = new WP_Query( array(
-			'post_type'   => array( 'tribe_events' ),
-			'post_status' => 'any',
-			'nopaging'    => true
-		) );
-
-		while ( $query->have_posts() ) {
-			$query->the_post();
-			$post       = get_post();
-			$this->post = $post;
-
-			/**
-			 * move body text
-			 */
-			if ( empty( get_field( 'description' ) ) ) {
-				$post_content = $this->process_shortcodes( $post->post_content );
-				update_field( 'description', $post_content );
-				$post->post_content = '';
-			}
-
-			/**
-			 * copy featured image
-			 */
-			$image_id = (int) get_post_thumbnail_id();
-			if ( $image_id ) {
-				update_field( 'image', $image_id );
-			}
-
-			// save the changes on the original post
-			wp_update_post( $post );
+	private static function get_instance() {
+		if ( empty( self::$instance ) ) {
+			self::$instance = new Importer();
 		}
 
-		wp_reset_postdata();
+		return self::$instance;
 	}
 
 	private function update_posts_and_pages() {
@@ -85,11 +59,19 @@ class Importer {
 			'nopaging'    => true
 		) );
 
+		$count = 0;
+
 		while ( $query->have_posts() ) {
+			$count ++;
+
 			$query->the_post();
 			$post       = get_post();
 			$this->post = $post;
-			$content    = get_field( 'main_content', false );
+
+			self::cli_echo( "Processing post #$post->ID (\"$post->post_title\") (post_type: $post->post_type)" );
+			self::cli_echo( "-- $count of {$query->post_count}" );
+
+			$content = get_field( 'main_content', false );
 
 			/**
 			 * move body text
@@ -132,9 +114,17 @@ class Importer {
 
 			// save the changes on the original post
 			wp_update_post( $post );
+
+			self::cli_echo( "-- Done.\n" );
 		}
 
 		wp_reset_postdata();
+	}
+
+	private static function cli_echo( string $message, string $method = 'log' ) {
+		if ( defined( 'WP_CLI' ) && WP_CLI ) {
+			WP_CLI::$method( $message );
+		}
 	}
 
 	private function process_shortcodes( $content ) {
@@ -197,11 +187,6 @@ class Importer {
 		return $content;
 	}
 
-	private function note_for_review( $tag, $shortcode ) {
-		$post_id        = $this->post->ID;
-		$this->review[] = array( 'type' => $tag, 'shortcode' => $shortcode, 'post_id' => $post_id );
-	}
-
 	private static function get_shortcode_attr( $attr, $shortcode ) {
 		$pattern  = $attr . '\s*=\s*([\'"]|&#8221;|&#8217;)(.*)\1';
 		$has_attr = preg_match( "/$pattern/U", $shortcode, $match );
@@ -211,6 +196,72 @@ class Importer {
 		}
 
 		return false;
+	}
+
+	private function note_for_review( $tag, $shortcode ) {
+		$post_id        = $this->post->ID;
+		$this->review[] = array( 'type' => $tag, 'shortcode' => $shortcode, 'post_id' => $post_id );
+	}
+
+	private function strip_block_editor_tags( $content ) {
+		// strip block editor's paragraph tags
+		$p_regex = "/<!-- wp:paragraph -->\s*<p>\s*(.*?)\s*<\/p>\s*<!-- \/wp:paragraph -->/i";
+		$content = preg_replace( $p_regex, '$1', $content );
+
+		// remove any other tags except for the good old more tag
+		$comment_regex = "/<!--(?!\s*more\s*).*?-->/";
+		$content       = preg_replace( $comment_regex, '', $content );
+
+		// remove multiple consecutive newline chars
+		$newlines_regex = "/\n+/";
+		$content        = preg_replace( $newlines_regex, "\n", $content );
+
+		return $content;
+	}
+
+	private function update_events() {
+		$query = new WP_Query( array(
+			'post_type'   => array( 'tribe_events' ),
+			'post_status' => 'any',
+			'nopaging'    => true
+		) );
+
+		$count = 0;
+
+		while ( $query->have_posts() ) {
+			$count ++;
+
+			$query->the_post();
+			$post       = get_post();
+			$this->post = $post;
+
+			self::cli_echo( "Migrate event $count of {$query->post_count}." );
+			self::cli_echo( sprintf( "Post ID: %-10d Title: %s", $post->ID, $post->post_title ) );
+
+			/**
+			 * move body text
+			 */
+			if ( empty( get_field( 'description' ) ) ) {
+				$post_content = $this->process_shortcodes( $post->post_content );
+				update_field( 'description', $post_content );
+				$post->post_content = '';
+			}
+
+			/**
+			 * copy featured image
+			 */
+			$image_id = (int) get_post_thumbnail_id();
+			if ( $image_id ) {
+				update_field( 'image', $image_id );
+			}
+
+			// save the changes on the original post
+			wp_update_post( $post );
+
+			self::cli_echo( "Done.\n", 'success' );
+		}
+
+		wp_reset_postdata();
 	}
 
 	private function notify() {
@@ -235,29 +286,18 @@ class Importer {
 		file_put_contents( $file_path, $data, LOCK_EX );
 
 		// inform user about log file
-		$class   = 'notice notice-warning';
-		$message = sprintf(
-			__( "<strong>WARNING:</strong> There were some shortcodes we couldn't process automatically. %sDownload the list%s of posts to review manually.", 'THEME_DOMAIN' ),
-			"<a href='$file_url' target='_blank'>",
-			'</a>'
-		);
+		if ( defined( 'WP_CLI' ) && WP_CLI ) {
+			self::cli_echo( "There were some shortcodes we couldn't process automatically.", 'warning' );
+			self::cli_echo( "Have a look at the list of posts to review manually: $file_path" );
+		} else {
+			$class   = 'notice notice-warning';
+			$message = sprintf(
+				__( "<strong>WARNING:</strong> There were some shortcodes we couldn't process automatically. %sDownload the list%s of posts to review manually.", 'THEME_DOMAIN' ),
+				"<a href='$file_url' target='_blank'>",
+				'</a>'
+			);
 
-		printf( '<div class="%1$s"><p>%2$s</p></div>', $class, $message );
-	}
-
-	private function strip_block_editor_tags( $content ) {
-		// strip block editor's paragraph tags
-		$p_regex = "/<!-- wp:paragraph -->\s*<p>\s*(.*?)\s*<\/p>\s*<!-- \/wp:paragraph -->/i";
-		$content = preg_replace( $p_regex, '$1', $content );
-
-		// remove any other tags except for the good old more tag
-		$comment_regex = "/<!--(?!\s*more\s*).*?-->/";
-		$content       = preg_replace( $comment_regex, '', $content );
-
-		// remove multiple consecutive newline chars
-		$newlines_regex = "/\n+/";
-		$content        = preg_replace( $newlines_regex, "\n", $content );
-
-		return $content;
+			printf( '<div class="%1$s"><p>%2$s</p></div>', $class, $message );
+		}
 	}
 }
