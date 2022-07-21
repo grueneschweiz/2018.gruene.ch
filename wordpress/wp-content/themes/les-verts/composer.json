@@ -1,6 +1,10 @@
 {
+  "name": "grueneschweiz/2018.gruene.ch",
+  "description": "Custom theme for the GREENS of Switzerland. Designed by superhuit.ch, built by gruene.ch on top of superhuit's stack.",
   "repositories": [],
+  "license": "GPL-3.0-or-later",
   "require": {
+    "php": ">=7.4",
     "mindkomm/timmy": "^0.14.0",
     "phpoffice/phpspreadsheet": "^1.6",
     "timber/timber": "^1.10",
@@ -10,6 +14,9 @@
   "config": {
     "allow-plugins": {
       "composer/installers": true
+    },
+    "platform": {
+      "php": "7.4"
     }
   }
 }

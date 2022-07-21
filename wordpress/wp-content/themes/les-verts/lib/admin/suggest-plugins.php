@@ -95,11 +95,6 @@ function supt_register_required_plugins() {
 			'required' => true,
 		),
 		array(
-			'name'     => 'ACF Code Field',
-			'slug'     => 'acf-code-field',
-			'required' => false,
-		),
-		array(
 			'name'     => 'Classic Widgets',
 			'slug'     => 'classic-widgets',
 			'required' => true,
