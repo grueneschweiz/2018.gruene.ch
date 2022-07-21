@@ -235,8 +235,8 @@ class Importer {
 			$post       = get_post();
 			$this->post = $post;
 
-			self::cli_echo( "Migrate event $count of {$query->post_count}." );
-			self::cli_echo( sprintf( "Post ID: %-10d Title: %s", $post->ID, $post->post_title ) );
+			self::cli_echo( "Processing post #$post->ID (\"$post->post_title\") (post_type: $post->post_type)" );
+			self::cli_echo( "-- $count of {$query->post_count}" );
 
 			/**
 			 * move body text
@@ -258,7 +258,7 @@ class Importer {
 			// save the changes on the original post
 			wp_update_post( $post );
 
-			self::cli_echo( "Done.\n", 'success' );
+			self::cli_echo( "-- Done.\n" );
 		}
 
 		wp_reset_postdata();
