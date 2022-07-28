@@ -165,8 +165,9 @@ class Util {
 
 	public static function debug_log( string $message ) {
 		if ( defined( 'LES_VERTS_FORM_DEBUG_LOG' ) && LES_VERTS_FORM_DEBUG_LOG ) {
+			$timestamp = date_create()->format( DATE_RFC3339_EXTENDED );
 			/** @noinspection ForgottenDebugOutputInspection */
-			error_log( "$message\n", 3, ABSPATH . '/form.log' );
+			error_log( "$timestamp   $message\n", 3, ABSPATH . '/form.log' );
 		}
 	}
 }
