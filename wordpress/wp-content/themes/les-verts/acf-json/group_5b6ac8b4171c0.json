@@ -1,79 +1,83 @@
 {
     "key": "group_5b6ac8b4171c0",
     "title": "Event Description",
-    "location": [
-        [
-            {
-                "param": "post_type",
-                "operator": "==",
-                "value": "tribe_events"
-            }
-        ]
-    ],
-    "menu_order": 0,
-    "position": "normal",
-    "style": "default",
-    "label_placement": "top",
-    "instruction_placement": "label",
-    "hide_on_screen": [
-        "the_content",
-        "excerpt",
-        "discussion",
-        "comments",
-        "slug",
-        "author",
-        "format",
-        "page_attributes",
-        "featured_image",
-        "categories",
-        "send-trackbacks"
-    ],
-    "active": 1,
-    "description": "",
     "fields": [
         {
             "key": "field_5b6ac8da50013",
             "label": "Image",
             "name": "image",
-            "type": "image",
-            "instructions": "Displayed in the teaser only.",
-            "required": 1,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "return_format": "array",
-            "preview_size": "full-width",
-            "library": "all",
-            "min_width": "",
-            "min_height": "",
-            "min_size": "",
-            "max_width": "",
-            "max_height": "",
-            "max_size": "",
-            "mime_types": ""
+          "type": "image",
+          "instructions": "Displayed in the teaser only.",
+          "required": 1,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "",
+            "class": "",
+            "id": ""
+          },
+          "return_format": "array",
+          "preview_size": "thumbnail",
+          "library": "all",
+          "min_width": "",
+          "min_height": "",
+          "min_size": "",
+          "max_width": "",
+          "max_height": "",
+          "max_size": "",
+          "mime_types": "",
+          "translations": "copy_once"
         },
-        {
-            "key": "field_5b6ac92d144e5",
-            "label": "Description",
-            "name": "description",
-            "type": "wysiwyg",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "tabs": "all",
-            "toolbar": "full",
-            "media_upload": 1,
-            "delay": 0
-        }
+      {
+        "key": "field_62e238b3b87a7",
+        "label": "Content",
+        "name": "event_content",
+        "type": "clone",
+        "instructions": "",
+        "required": 0,
+        "conditional_logic": 0,
+        "wrapper": {
+          "width": "",
+          "class": "",
+          "id": ""
+        },
+        "clone": [
+          "group_5cee958e0d362"
+        ],
+        "display": "seamless",
+        "layout": "block",
+        "prefix_label": 0,
+        "prefix_name": 0
+      }
     ],
-    "modified": 1543324752
+  "location": [
+    [
+      {
+        "param": "post_type",
+        "operator": "==",
+        "value": "tribe_events"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "hide_on_screen": [
+    "the_content",
+    "excerpt",
+    "discussion",
+    "comments",
+    "slug",
+    "author",
+    "format",
+    "page_attributes",
+    "featured_image",
+    "categories",
+    "send-trackbacks"
+  ],
+  "active": true,
+  "description": "",
+  "show_in_rest": 0,
+  "modified": 1658996586
 }

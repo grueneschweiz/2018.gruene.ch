@@ -241,10 +241,39 @@ class Importer {
 			/**
 			 * move body text
 			 */
-			if ( empty( get_field( 'description' ) ) ) {
+			$content = get_field( 'event_content', false );
+
+			if ( empty( $content['content'] ) ) {
+				$content['content'] = array();
+			}
+
+			if ( trim( $post->post_content ) ) {
 				$post_content = $this->process_shortcodes( $post->post_content );
-				update_field( 'description', $post_content );
+				$post_content = $this->strip_block_editor_tags( $post_content );
+
+				$idx                        = empty( $content['content'] ) ? 0 : count( $content );
+				$content['content'][ $idx ] = array(
+					'acf_fc_layout' => 'text',
+					'text'          => $post_content
+				);
+
 				$post->post_content = '';
+
+				update_field( 'event_content', $content );
+			}
+
+			/**
+			 * move legacy acf event description
+			 */
+			if ( ! empty( get_field( 'description' ) ) ) {
+				$idx                        = empty( $content['content'] ) ? 0 : count( $content );
+				$content['content'][ $idx ] = array(
+					'acf_fc_layout' => 'text',
+					'text'          => get_field( 'description' )
+				);
+
+				update_field( 'event_content', $content );
+				delete_field( 'description' );
 			}
 
 			/**
