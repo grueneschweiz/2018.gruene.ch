@@ -16,10 +16,11 @@ add_filter( 'tribe_events_force_ugly_link', '__return_true' );
 /**
  * Force ugly links: To really get the ugly links, we do also have to disable url rewriting.
  */
-add_filter('tribe_events_register_event_cat_type_args', function($args) {
+add_filter( 'tribe_events_register_event_cat_type_args', function ( $args ) {
 	$args['rewrite'] = false;
+
 	return $args;
-});
+} );
 
 /**
  * Set the correct base url, as it does not in every case work properly with polylang.
@@ -55,3 +56,47 @@ add_filter( 'template_include', function ( $template ) {
 
 	return $template;
 } );
+
+/**
+ * Use first text content blocks text as excerpt for events.
+ * This is also picked up by Yoast SEO.
+ */
+add_filter( 'get_the_excerpt', function ( string $post_excerpt, WP_Post $post ) {
+	if ( $post->post_type !== 'tribe_events' ) {
+		return $post_excerpt;
+	}
+
+	$content = get_field( 'event_content', $post->ID );
+
+	if ( empty( $content['content'] ) ) {
+		return $post_excerpt;
+	}
+
+	foreach ( $content['content'] as $block ) {
+		if ( $block['acf_fc_layout'] === 'text' ) {
+			return $block['text'];
+		}
+	}
+
+	return $post_excerpt;
+}, 10, 2 );
+
+/**
+ * Use text as meta description
+ */
+add_filter( 'wpseo_replacements', function ( $replacements, $args ) {
+	if ( is_object( $args )
+	     && property_exists( $args, 'post_type' )
+	     && 'tribe_events' === $args->post_type
+	     && property_exists( $args, 'ID' )
+	) {
+		$replacements = [ '%%cf_description%%' => get_the_excerpt( $args->ID ) ];
+	} else if ( is_array( $args )
+	            && isset( $args['post_type'], $args['ID'] )
+	            && 'tribe_events' === $args['post_type']
+	) {
+		$replacements = [ '%%cf_description%%' => get_the_excerpt( $args['ID'] ) ];
+	}
+
+	return $replacements;
+}, 10, 2 );
