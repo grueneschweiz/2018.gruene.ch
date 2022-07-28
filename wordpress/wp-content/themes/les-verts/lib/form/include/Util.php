@@ -9,19 +9,6 @@ use WP_Error;
 
 class Util {
 	/**
-	 * Return domain of current blog
-	 */
-	public static function get_domain() {
-		$url = get_site_url();
-		preg_match( "/^https?:\/\/(www.)?([^\/?:]*)/", $url, $matches );
-		if ( $matches && is_array( $matches ) ) {
-			return $matches[ count( $matches ) - 1 ];
-		}
-
-		return new WP_Error( 'cant-get-domain', 'The domain could not be parsed from the site url', $url );
-	}
-
-	/**
 	 * Notify the site admin about the error from a static context
 	 *
 	 * @param string $action
@@ -67,6 +54,19 @@ class Util {
 		);
 
 		self::send_mail_to_admin( $subject, $message );
+	}
+
+	/**
+	 * Return domain of current blog
+	 */
+	public static function get_domain() {
+		$url = get_site_url();
+		preg_match( "/^https?:\/\/(www.)?([^\/?:]*)/", $url, $matches );
+		if ( $matches && is_array( $matches ) ) {
+			return $matches[ count( $matches ) - 1 ];
+		}
+
+		return new WP_Error( 'cant-get-domain', 'The domain could not be parsed from the site url', $url );
 	}
 
 	/**
