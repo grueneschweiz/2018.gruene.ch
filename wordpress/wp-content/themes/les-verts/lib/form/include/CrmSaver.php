@@ -157,7 +157,7 @@ class CrmSaver {
 			Util::debug_log( "submissionId={$item->get_submission_id()} msg=Saved successfully. CRM id: $crm_id" );
 
 			$queue->filter( static function ( $q_item ) use ( $item ) {
-				if ( $item->get_submission_id() !== $q_item->get_submission_id() ) {
+				if ( $item->get_submission_id() === $q_item->get_submission_id() ) {
 					Util::debug_log( "submissionId={$item->get_submission_id()} msg=Remove from queue." );
 
 					return false; // remove from queue
