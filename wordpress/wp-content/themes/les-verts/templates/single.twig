@@ -22,7 +22,7 @@
 					<h1>{{ post.title|wptexturize }}</h1>
 					{% if not post.teaser_hide_on_page or is_press_release %}
 						<div class="page__header-text page__header-text--bold">
-							<p>{{ post.full_excerpt()|wptexturize|wpautop }}</p>
+							<p>{{ post.full_excerpt()|wptexturize|disableable_wpautop }}</p>
 						</div>
 					{% endif %}
 				</div>

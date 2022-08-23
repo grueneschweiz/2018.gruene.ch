@@ -225,6 +225,7 @@ require_once __DIR__ . '/twig/filters/pll.php';
 require_once __DIR__ . '/twig/filters/l10n_date.php';
 require_once __DIR__ . '/twig/filters/esc_form_value.php';
 require_once __DIR__ . '/twig/filters/license.php';
+require_once __DIR__ . '/twig/filters/disableable_autop.php';
 
 /**
  * FORM LIBRARY

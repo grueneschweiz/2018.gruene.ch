@@ -17,7 +17,7 @@
 				</div>
 			</header>
 			{# legacy content #}
-			{{ post.description|shortcodes|wptexturize|wpautop }}
+			{{ post.description|shortcodes|wptexturize|disableable_wpautop }}
 			{# new content #}
 			{% for block in post.get_field('event_content').content %}
 				{% include 'content-block.twig' with {'block':block|merge({'twitter_via': post.twitter_name,'post_link': post.link})} only %}
