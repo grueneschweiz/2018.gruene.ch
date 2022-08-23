@@ -199,6 +199,9 @@ if ( defined( 'PROMETHEUS_PLUGIN_FILE' ) ) {
 	require_once __DIR__ . '/prometheus/prometheus-metrics-for-wp.php';
 }
 
+if ( defined( 'DEMOVOX_VERSION' ) ) {
+	require_once __DIR__ . '/demovox/demovox.php';
+}
 
 /**
  * TWIG
