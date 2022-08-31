@@ -117,7 +117,7 @@ class Mail {
 	 *
 	 * @return array
 	 */
-	private function prepare_data_for_email( $data, $post_meta_id, $referer_url ) {
+	private function prepare_data_for_email( $data, $post_meta_id, $referer_url ): array {
 		foreach ( $data as $key => $value ) {
 			// flatten arrays
 			if ( is_array( $value ) ) {
@@ -156,9 +156,15 @@ class Mail {
 		return $return;
 	}
 
-	private function compileBody( string $template, array $data ) {
+	private function compileBody( string $template, array $data ): string {
 		try {
-			return Timber::compile_string( $template, $data );
+			$body = Timber::compile_string( $template, $data );
+			if ( false === $body ) {
+				return __( "ERROR: Failed to compile email template.", THEME_DOMAIN )
+				       . "\n\n$template";
+			}
+
+			return $body;
 		} /** @noinspection PhpRedundantCatchClauseInspection */
 		catch ( SyntaxError $e ) {
 			$error_msg = sprintf(
@@ -190,6 +196,10 @@ class Mail {
 			$subject = $template;
 		}
 
+		if ( false === $subject ) {
+			$subject = $template;
+		}
+
 		return html_entity_decode( $subject, ENT_QUOTES | ENT_HTML5 );
 	}
 
@@ -213,7 +223,7 @@ class Mail {
 	/**
 	 * @return int
 	 */
-	public function get_sending_attempts() {
+	public function get_sending_attempts(): int {
 		return $this->sending_attempts;
 	}
 

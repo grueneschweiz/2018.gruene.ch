@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Les Verts\n"
-"POT-Creation-Date: 2022-08-31 14:18+0200\n"
+"POT-Creation-Date: 2022-08-31 14:30+0200\n"
 "PO-Revision-Date: 2018-11-28 17:49+0100\n"
 "Last-Translator: Cyrill Bolliger <bolliger@gmx.ch>\n"
 "Language-Team: Cyrill Bolliger <cyrill.bolliger@gruene.ch>\n"
@@ -2386,22 +2386,26 @@ msgctxt "form submission"
 msgid "view complete submission online"
 msgstr ""
 
-#: lib/form/include/Mail.php:165
+#: lib/form/include/Mail.php:163
+msgid "ERROR: Failed to compile email template."
+msgstr ""
+
+#: lib/form/include/Mail.php:171
 #, php-format
 msgid "ERROR: There is a syntax error in the email template on line %d."
 msgstr ""
 
-#: lib/form/include/Mail.php:169
+#: lib/form/include/Mail.php:175
 msgid ""
 "Often it's just a missing curly bracket. Make sure all your placeholders "
 "start with {{ and end with }}."
 msgstr ""
 
-#: lib/form/include/Mail.php:171
+#: lib/form/include/Mail.php:177
 msgid "The placeholders can't be replaced due to this error."
 msgstr ""
 
-#: lib/form/include/Mail.php:181
+#: lib/form/include/Mail.php:187
 msgid "Email template"
 msgstr ""
 
