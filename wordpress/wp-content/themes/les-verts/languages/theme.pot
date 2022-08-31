@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Les Verts\n"
-"POT-Creation-Date: 2022-04-29 14:40+0200\n"
+"POT-Creation-Date: 2022-08-31 14:18+0200\n"
 "PO-Revision-Date: 2018-11-28 17:49+0100\n"
 "Last-Translator: Cyrill Bolliger <bolliger@gmx.ch>\n"
 "Language-Team: Cyrill Bolliger <cyrill.bolliger@gruene.ch>\n"
@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.1.1\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
 "X-Poedit-WPHeader: style.css\n"
@@ -24,7 +24,7 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-1: vendor\n"
 "X-Poedit-SearchPathExcluded-2: demo-content\n"
 
-#: 404.php:21
+#: 404.php:33
 msgid "Latest posts"
 msgstr ""
 
@@ -1396,7 +1396,7 @@ msgstr ""
 msgid "Latest Press Release"
 msgstr ""
 
-#: acf-translate.php:5375 acf-translate.php:5380 archive-tribe_events.php:17
+#: acf-translate.php:5375 acf-translate.php:5380 archive-tribe_events.php:22
 msgid "Events"
 msgstr ""
 
@@ -1555,11 +1555,11 @@ msgstr ""
 msgid "You can hide the share buttons of this page, by disabling this option."
 msgstr ""
 
-#: archive-tribe_events.php:27
+#: archive-tribe_events.php:28
 msgid "Upcoming events"
 msgstr ""
 
-#: archive-tribe_events.php:32
+#: archive-tribe_events.php:33
 msgid "Previous events"
 msgstr ""
 
@@ -1601,7 +1601,7 @@ msgstr ""
 msgid "Add to Menu"
 msgstr ""
 
-#: lib/admin/import-handler.php:240
+#: lib/admin/import-handler.php:317
 #, php-format
 msgid ""
 "<strong>WARNING:</strong> There were some shortcodes we couldn't process "
@@ -2250,12 +2250,12 @@ msgstr ""
 msgid "Select All"
 msgstr ""
 
-#: lib/form/include/CrmSaver.php:244
+#: lib/form/include/CrmSaver.php:246
 #, php-format
 msgid "%s: PERMANENT ERROR saving form data to crm"
 msgstr ""
 
-#: lib/form/include/CrmSaver.php:250
+#: lib/form/include/CrmSaver.php:252
 #, php-format
 msgid ""
 "Hi Admin of %s\n"
@@ -2381,9 +2381,28 @@ msgstr ""
 msgid "Ups, something went wrong."
 msgstr ""
 
-#: lib/form/include/Mail.php:153
+#: lib/form/include/Mail.php:130
 msgctxt "form submission"
 msgid "view complete submission online"
+msgstr ""
+
+#: lib/form/include/Mail.php:165
+#, php-format
+msgid "ERROR: There is a syntax error in the email template on line %d."
+msgstr ""
+
+#: lib/form/include/Mail.php:169
+msgid ""
+"Often it's just a missing curly bracket. Make sure all your placeholders "
+"start with {{ and end with }}."
+msgstr ""
+
+#: lib/form/include/Mail.php:171
+msgid "The placeholders can't be replaced due to this error."
+msgstr ""
+
+#: lib/form/include/Mail.php:181
+msgid "Email template"
 msgstr ""
 
 #: lib/form/include/SubmissionExport.php:92
@@ -2447,12 +2466,12 @@ msgctxt "Timestamp"
 msgid "Delete submission of the %s?"
 msgstr ""
 
-#: lib/form/include/Util.php:47
+#: lib/form/include/Util.php:34
 #, php-format
 msgid "ERROR on form submission: %s - %s"
 msgstr ""
 
-#: lib/form/include/Util.php:53
+#: lib/form/include/Util.php:40
 #, php-format
 msgid ""
 "Hi Admin of %s\n"
@@ -2812,25 +2831,25 @@ msgctxt "facebook, twitter or instagram"
 msgid "Visit us on %s"
 msgstr ""
 
-#: templates/molecules/m-form.twig:180
+#: templates/molecules/m-form.twig:181
 msgid "Uups, something went wrong!"
 msgstr ""
 
-#: templates/molecules/m-form.twig:182
+#: templates/molecules/m-form.twig:183
 msgid ""
 "Sorry, there was an error submitting this form. If the error persists, "
 "please contact us by email."
 msgstr ""
 
-#: templates/molecules/m-form.twig:186
+#: templates/molecules/m-form.twig:187
 msgid "Please check input"
 msgstr ""
 
-#: templates/molecules/m-form.twig:188
+#: templates/molecules/m-form.twig:189
 msgid "There seems to be an error in your input. Please recheck the fields:"
 msgstr ""
 
-#: templates/molecules/m-form.twig:195
+#: templates/molecules/m-form.twig:196
 msgid ""
 "The form that would normally show up here was closed and is therefore not "
 "available."
