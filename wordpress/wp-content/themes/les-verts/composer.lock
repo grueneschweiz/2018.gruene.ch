@@ -68,16 +68,16 @@
 		},
 		{
 			"name": "composer/installers",
-			"version": "v2.1.1",
+			"version": "v2.2.0",
 			"source": {
 				"type": "git",
 				"url": "https://github.com/composer/installers.git",
-				"reference": "af93ba6e52236418f07a278033eba6959ee5b983"
+				"reference": "c29dc4b93137acb82734f672c37e029dfbd95b35"
 			},
 			"dist": {
 				"type": "zip",
-				"url": "https://api.github.com/repos/composer/installers/zipball/af93ba6e52236418f07a278033eba6959ee5b983",
-				"reference": "af93ba6e52236418f07a278033eba6959ee5b983",
+				"url": "https://api.github.com/repos/composer/installers/zipball/c29dc4b93137acb82734f672c37e029dfbd95b35",
+				"reference": "c29dc4b93137acb82734f672c37e029dfbd95b35",
 				"shasum": ""
 			},
 			"require": {
@@ -165,6 +165,7 @@
 				"magento",
 				"majima",
 				"mako",
+				"matomo",
 				"mediawiki",
 				"miaoxing",
 				"modulework",
@@ -192,7 +193,7 @@
 			],
 			"support": {
 				"issues": "https://github.com/composer/installers/issues",
-				"source": "https://github.com/composer/installers/tree/v2.1.1"
+				"source": "https://github.com/composer/installers/tree/v2.2.0"
 			},
 			"funding": [
 				{
@@ -208,7 +209,7 @@
 					"type": "tidelift"
 				}
 			],
-			"time": "2022-04-13T09:13:00+00:00"
+			"time": "2022-08-20T06:45:11+00:00"
 		},
 		{
 			"name": "ezyang/htmlpurifier",
@@ -502,16 +503,16 @@
 		},
 		{
 			"name": "myclabs/php-enum",
-			"version": "1.8.3",
+			"version": "1.8.4",
 			"source": {
 				"type": "git",
 				"url": "https://github.com/myclabs/php-enum.git",
-				"reference": "b942d263c641ddb5190929ff840c68f78713e937"
+				"reference": "a867478eae49c9f59ece437ae7f9506bfaa27483"
 			},
 			"dist": {
 				"type": "zip",
-				"url": "https://api.github.com/repos/myclabs/php-enum/zipball/b942d263c641ddb5190929ff840c68f78713e937",
-				"reference": "b942d263c641ddb5190929ff840c68f78713e937",
+				"url": "https://api.github.com/repos/myclabs/php-enum/zipball/a867478eae49c9f59ece437ae7f9506bfaa27483",
+				"reference": "a867478eae49c9f59ece437ae7f9506bfaa27483",
 				"shasum": ""
 			},
 			"require": {
@@ -527,7 +528,10 @@
 			"autoload": {
 				"psr-4": {
 					"MyCLabs\\Enum\\": "src/"
-				}
+				},
+				"classmap": [
+					"stubs/Stringable.php"
+				]
 			},
 			"notification-url": "https://packagist.org/downloads/",
 			"license": [
@@ -546,7 +550,7 @@
 			],
 			"support": {
 				"issues": "https://github.com/myclabs/php-enum/issues",
-				"source": "https://github.com/myclabs/php-enum/tree/1.8.3"
+				"source": "https://github.com/myclabs/php-enum/tree/1.8.4"
 			},
 			"funding": [
 				{
@@ -558,7 +562,7 @@
 					"type": "tidelift"
 				}
 			],
-			"time": "2021-07-05T08:18:36+00:00"
+			"time": "2022-08-04T09:53:51+00:00"
 		},
 		{
 			"name": "phpoffice/phpspreadsheet",
@@ -1320,16 +1324,16 @@
 		},
 		{
 			"name": "twig/twig",
-			"version": "v2.15.1",
+			"version": "v2.15.2",
 			"source": {
 				"type": "git",
 				"url": "https://github.com/twigphp/Twig.git",
-				"reference": "3b7cedb2f736899a7dbd0ba3d6da335a015f5cc4"
+				"reference": "3e43405a9a8b578809426339cc3780e16fba0c52"
 			},
 			"dist": {
 				"type": "zip",
-				"url": "https://api.github.com/repos/twigphp/Twig/zipball/3b7cedb2f736899a7dbd0ba3d6da335a015f5cc4",
-				"reference": "3b7cedb2f736899a7dbd0ba3d6da335a015f5cc4",
+				"url": "https://api.github.com/repos/twigphp/Twig/zipball/3e43405a9a8b578809426339cc3780e16fba0c52",
+				"reference": "3e43405a9a8b578809426339cc3780e16fba0c52",
 				"shasum": ""
 			},
 			"require": {
@@ -1384,7 +1388,7 @@
 			],
 			"support": {
 				"issues": "https://github.com/twigphp/Twig/issues",
-				"source": "https://github.com/twigphp/Twig/tree/v2.15.1"
+				"source": "https://github.com/twigphp/Twig/tree/v2.15.2"
 			},
 			"funding": [
 				{
@@ -1396,7 +1400,7 @@
 					"type": "tidelift"
 				}
 			],
-			"time": "2022-05-17T05:46:24+00:00"
+			"time": "2022-08-12T06:43:37+00:00"
 		},
 		{
 			"name": "upstatement/routes",
@@ -1456,16 +1460,16 @@
 		},
 		{
 			"name": "yahnis-elsts/plugin-update-checker",
-			"version": "v4.11",
+			"version": "v4.13",
 			"source": {
 				"type": "git",
 				"url": "https://github.com/YahnisElsts/plugin-update-checker.git",
-				"reference": "3155f2d3f1ca5e7ed3f25b256f020e370515af43"
+				"reference": "6eb27a6911e0e0880d09e5b11f577d3f688f7da7"
 			},
 			"dist": {
 				"type": "zip",
-				"url": "https://api.github.com/repos/YahnisElsts/plugin-update-checker/zipball/3155f2d3f1ca5e7ed3f25b256f020e370515af43",
-				"reference": "3155f2d3f1ca5e7ed3f25b256f020e370515af43",
+				"url": "https://api.github.com/repos/YahnisElsts/plugin-update-checker/zipball/6eb27a6911e0e0880d09e5b11f577d3f688f7da7",
+				"reference": "6eb27a6911e0e0880d09e5b11f577d3f688f7da7",
 				"shasum": ""
 			},
 			"require": {
@@ -1475,7 +1479,7 @@
 			"type": "library",
 			"autoload": {
 				"files": [
-					"load-v4p11.php"
+					"load-v4p13.php"
 				]
 			},
 			"notification-url": "https://packagist.org/downloads/",
@@ -1500,9 +1504,9 @@
 			],
 			"support": {
 				"issues": "https://github.com/YahnisElsts/plugin-update-checker/issues",
-				"source": "https://github.com/YahnisElsts/plugin-update-checker/tree/v4.11"
+				"source": "https://github.com/YahnisElsts/plugin-update-checker/tree/v4.13"
 			},
-			"time": "2021-03-15T16:07:52+00:00"
+			"time": "2022-07-29T12:36:25+00:00"
 		}
 	],
 	"packages-dev": [],
