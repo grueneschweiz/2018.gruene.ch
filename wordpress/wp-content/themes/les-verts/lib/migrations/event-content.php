@@ -16,9 +16,10 @@ class Migrator {
 
 	public function migrate_all(): void {
 		$query = new WP_Query( array(
-			'post_type'   => array( 'tribe_events' ),
-			'post_status' => 'any',
-			'nopaging'    => true
+			'post_type'                    => array( 'tribe_events' ),
+			'post_status'                  => 'any',
+			'nopaging'                     => true,
+			'tribe_suppress_query_filters' => true,
 		) );
 
 		while ( $query->have_posts() ) {
