@@ -1,7 +1,5 @@
 <?php declare( strict_types=1 );
 
-use Demovox\PublicHandler;
-
 $lesverts_demovox_shortcode = false;
 
 /**
@@ -46,7 +44,8 @@ add_action( 'wp_footer', function () {
 	if ( defined( 'DEMOVOX_VERSION' )
 	     && class_exists( '\Demovox\PublicHandler' )
 	) {
-		$handler = new PublicHandler( 'Demovox', DEMOVOX_VERSION );
+		/** @noinspection PhpFullyQualifiedNameUsageInspection */
+		$handler = new \Demovox\PublicHandler( 'Demovox', DEMOVOX_VERSION );
 		if ( method_exists( $handler, 'enqueueAssets' ) ) {
 			$handler->enqueueAssets();
 
