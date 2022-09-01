@@ -22,6 +22,11 @@
 	background: #F4F4F4;
 }
 
+.m-in-short .demovox .form-control,
+.m-in-short .demovox .form-control:focus {
+	background: #ffffff;
+}
+
 .demovox label {
 	text-transform: uppercase;
 	font-size: 0.625rem;
@@ -35,7 +40,8 @@
 
 .demovox .form-check label {
 	text-transform: none;
-	font-size: 1rem;
+	font-size: 0.875rem;
+	line-height: 1.4em;
 	font-weight: normal;
 	padding-left: 1.75rem;
 	-webkit-background-size: 2.25rem 2.25rem;
@@ -127,6 +133,11 @@
 	border: none;
 	border-bottom: 2px solid #E2E2E2;
 	padding: 0.3em;
+}
+
+.m-in-short .demovox .select2-container--default .select2-selection--single,
+.m-in-short .demovox .select2-container--default .select2-selection--single:focus {
+	background: #FFFFFF;
 }
 
 .demovox .select2-container--default .select2-selection--single .select2-selection__arrow {
