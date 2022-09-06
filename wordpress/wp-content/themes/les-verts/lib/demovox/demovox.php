@@ -28,6 +28,21 @@ add_filter( 'do_shortcode_tag', function ( $output, $tag ) {
 }, 10, 2 );
 
 /**
+ * Disable cache for demovox pages
+ */
+add_filter( 'do_shortcode_tag', function ( $output, $tag ) {
+	if ( 0 !== strpos( $tag, 'demovox_' ) ) {
+		return $output;
+	}
+
+	if ( ! defined( 'DONOTCACHEPAGE' ) ) {
+		define( 'DONOTCACHEPAGE', true );
+	}
+
+	return $output;
+}, 10, 2 );
+
+/**
  * Manually enqueue the demovox assets if the current page contains a demovox shortcode
  *
  * We have to enqueue the assets manually because our theme lazily evaluates shortcodes
