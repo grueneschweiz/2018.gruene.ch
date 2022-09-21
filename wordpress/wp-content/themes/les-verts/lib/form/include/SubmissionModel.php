@@ -206,7 +206,14 @@ class SubmissionModel {
 	 * @return string|false
 	 */
 	public function meta_get_email() {
-		return $this->meta[ self::EMAIL_KEY ];
+		if ( array_key_exists( self::EMAIL_KEY, $this->meta ) ) {
+			$email = $this->meta[ self::EMAIL_KEY ];
+			if ( ! empty( $email ) && is_string( $email ) ) {
+				return $email;
+			}
+		}
+
+		return false;
 	}
 
 	/**
@@ -226,19 +233,15 @@ class SubmissionModel {
 		}
 
 		$descendant = $this->meta_get_descendant();
-		if ( $descendant ) {
-			$email = $descendant->meta_get_linked_email();
-			if ( $email ) {
-				return $email;
-			}
+		while ( ! $email && $descendant ) {
+			$email      = $descendant->meta_get_email();
+			$descendant = $descendant->meta_get_descendant();
 		}
 
 		$predecessor = $this->meta_get_predecessor();
-		if ( $predecessor ) {
-			$email = $predecessor->meta_get_linked_email();
-			if ( $email ) {
-				return $email;
-			}
+		while ( ! $email && $predecessor ) {
+			$email       = $predecessor->meta_get_email();
+			$predecessor = $predecessor->meta_get_predecessor();
 		}
 
 		return false;

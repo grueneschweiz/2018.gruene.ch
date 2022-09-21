@@ -116,9 +116,6 @@ class StarterSite extends TimberSite {
 
 		// tweaks
 		if ( ! is_user_logged_in() ) {
-			// don't load jquery
-			wp_deregister_script( 'jquery' );
-
 			// dont load block styles
 			wp_dequeue_style( 'wp-block-library' );
 			wp_deregister_style( 'wp-block-library' );

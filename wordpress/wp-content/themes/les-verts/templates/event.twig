@@ -16,11 +16,16 @@
 					</div>
 				</div>
 			</header>
-			{{ post.description|shortcodes|wptexturize|wpautop }}
+			{# legacy content #}
+			{{ post.description|shortcodes|wptexturize|disableable_wpautop }}
+			{# new content #}
+			{% for block in post.get_field('event_content').content %}
+				{% include 'content-block.twig' with {'block':block|merge({'twitter_via': post.twitter_name,'post_link': post.link})} only %}
+			{% endfor %}
 		</div>
 		<div class="page__post-meta-wrapper page__row--1">
 			<aside class="page__post-meta">
-				{# leave this empty container as spacer for the sharebuttons#}
+				{# leave this empty container as spacer for the sharebuttons #}
 			</aside>
 			{% if post.share_buttons %}
 				<div class="page__shareable">

@@ -35,7 +35,6 @@ if [ $NETWORK ]; then
 fi
 
 # configure YOAST meta description fields
-$WPCLI option patch update wpseo_titles metadesc-tribe_events <<< "%%cf_description%%"
 $WPCLI option patch update wpseo_titles metadesc-post <<< "%%cf_teaser%%"
 $WPCLI option patch update wpseo_titles metadesc-page <<< "%%cf_teaser%%"
 $WPCLI option patch update wpseo_titles breadcrumbs-home <<< "Front Page"

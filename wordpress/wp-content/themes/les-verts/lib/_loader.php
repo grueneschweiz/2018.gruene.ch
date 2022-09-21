@@ -199,6 +199,9 @@ if ( defined( 'PROMETHEUS_PLUGIN_FILE' ) ) {
 	require_once __DIR__ . '/prometheus/prometheus-metrics-for-wp.php';
 }
 
+if ( defined( 'DEMOVOX_VERSION' ) ) {
+	require_once __DIR__ . '/demovox/demovox.php';
+}
 
 /**
  * TWIG
@@ -225,6 +228,7 @@ require_once __DIR__ . '/twig/filters/pll.php';
 require_once __DIR__ . '/twig/filters/l10n_date.php';
 require_once __DIR__ . '/twig/filters/esc_form_value.php';
 require_once __DIR__ . '/twig/filters/license.php';
+require_once __DIR__ . '/twig/filters/disableable_autop.php';
 
 /**
  * FORM LIBRARY
@@ -250,6 +254,9 @@ require_once __DIR__ . '/migrations/Migrator.php';
 $dbVersion = Migrations\Migrator::getDbVersion();
 if ( 1 === version_compare( '0.26.2', $dbVersion ) ) {
 	require_once __DIR__ . '/migrations/get-active-button.php';
+}
+if ( 1 === version_compare( '0.32.0', $dbVersion ) ) {
+	require_once __DIR__ . '/migrations/event-content.php';
 }
 if ( 1 === version_compare( THEME_VERSION, $dbVersion ) ) {
 	Migrations\Migrator::setCurrentVersion();

@@ -5,6 +5,7 @@ namespace SUPT;
 
 
 use Timber\Timber;
+use Twig\Error\SyntaxError;
 
 class Mail {
 	/**
@@ -79,8 +80,8 @@ class Mail {
 		// Render the email from template
 		$data     = $this->prepare_data_for_email( $data, $post_meta_id, $referer_url );
 		$template = $this->sanitize_twig_tags( $template );
-		$body     = Timber::compile_string( $template, $data );
-		$subject  = html_entity_decode( Timber::compile_string( $subject, $data ), ENT_QUOTES | ENT_HTML5 );
+		$body     = $this->compileBody( $template, $data );
+		$subject  = $this->compileSubject( $subject, $data );
 
 		// Assert nice quotes (call after compiling!)
 		$body    = wptexturize( $body );
@@ -108,30 +109,6 @@ class Mail {
 	}
 
 	/**
-	 * Send out mail
-	 *
-	 * @return bool
-	 */
-	public function send() {
-		$this->sending_attempts ++;
-
-		return wp_mail(
-			$this->to,
-			$this->subject,
-			$this->body,
-			$this->headers,
-			$this->attachment
-		);
-	}
-
-	/**
-	 * @return int
-	 */
-	public function get_sending_attempts() {
-		return $this->sending_attempts;
-	}
-
-	/**
 	 * Flatten checkbox arrays, add submission and request urls
 	 *
 	 * @param array $data
@@ -140,7 +117,7 @@ class Mail {
 	 *
 	 * @return array
 	 */
-	private function prepare_data_for_email( $data, $post_meta_id, $referer_url ) {
+	private function prepare_data_for_email( $data, $post_meta_id, $referer_url ): array {
 		foreach ( $data as $key => $value ) {
 			// flatten arrays
 			if ( is_array( $value ) ) {
@@ -156,25 +133,6 @@ class Mail {
 		$data['referer_url'] = $referer_url;
 
 		return $data;
-	}
-
-	/**
-	 * @return array|string
-	 */
-	public function get_to() {
-		return $this->to;
-	}
-
-	public function get_subject(): string {
-		return $this->subject;
-	}
-
-	public function get_headers(): array {
-		return $this->headers;
-	}
-
-	public function get_body(): string {
-		return $this->body;
 	}
 
 	/**
@@ -196,5 +154,95 @@ class Mail {
 		}
 
 		return $return;
+	}
+
+	private function compileBody( string $template, array $data ): string {
+		try {
+			$body = Timber::compile_string( $template, $data );
+			if ( false === $body ) {
+				return __( "ERROR: Failed to compile email template.", THEME_DOMAIN )
+				       . "\n\n$template";
+			}
+
+			return $body;
+		} /** @noinspection PhpRedundantCatchClauseInspection */
+		catch ( SyntaxError $e ) {
+			$error_msg = sprintf(
+				__( 'ERROR: There is a syntax error in the email template on line %d.', THEME_DOMAIN ),
+				$e->getTemplateLine()
+			);
+			$error_msg .= "\n";
+			$error_msg .= __( "Often it's just a missing curly bracket. Make sure all your placeholders start with {{ and end with }}.", THEME_DOMAIN );
+			$error_msg .= "\n";
+			$error_msg .= __( "The placeholders can't be replaced due to this error.", THEME_DOMAIN );
+
+			$template_lines        = explode( "\n", $template );
+			$hinted_template_lines = [];
+			foreach ( $template_lines as $idx => $line ) {
+				$line_number                   = $idx + 1;
+				$indicator                     = $e->getTemplateLine() === $line_number ? '-> ' : '   ';
+				$hinted_template_lines[ $idx ] = "$indicator$line_number    $line";
+			}
+
+			return "$error_msg\n\n---" . __( 'Email template' ) . "---\n\n" . implode( "\n", $hinted_template_lines );
+		}
+	}
+
+	private function compileSubject( string $template, array $data ): string {
+		try {
+			$subject = Timber::compile_string( $template, $data );
+		} /** @noinspection PhpRedundantCatchClauseInspection */
+		catch ( SyntaxError $e ) {
+			$subject = $template;
+		}
+
+		if ( false === $subject ) {
+			$subject = $template;
+		}
+
+		return html_entity_decode( $subject, ENT_QUOTES | ENT_HTML5 );
+	}
+
+	/**
+	 * Send out mail
+	 *
+	 * @return bool
+	 */
+	public function send() {
+		$this->sending_attempts ++;
+
+		return wp_mail(
+			$this->to,
+			$this->subject,
+			$this->body,
+			$this->headers,
+			$this->attachment
+		);
+	}
+
+	/**
+	 * @return int
+	 */
+	public function get_sending_attempts(): int {
+		return $this->sending_attempts;
+	}
+
+	/**
+	 * @return array|string
+	 */
+	public function get_to() {
+		return $this->to;
+	}
+
+	public function get_subject(): string {
+		return $this->subject;
+	}
+
+	public function get_headers(): array {
+		return $this->headers;
+	}
+
+	public function get_body(): string {
+		return $this->body;
 	}
 }

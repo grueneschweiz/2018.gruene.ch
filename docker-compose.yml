@@ -25,7 +25,10 @@ services:
       WORDPRESS_DB_USER: wordpress
       WORDPRESS_DB_PASSWORD: wordpress
       WORDPRESS_DEBUG: 1
-    command: ["apache2-foreground"]
+      PHP_IDE_CONFIG: serverName=Docker
+    command: [ "apache2-foreground" ]
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
 
   db:
     image: mysql:5.7
