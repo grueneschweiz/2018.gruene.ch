@@ -36,6 +36,7 @@ class Migrator {
 		$old_content = $this->get_old_content();
 
 		if ( ! $old_content ) {
+			unset( $this->old_content );
 			return;
 		}
 
