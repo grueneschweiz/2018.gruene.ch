@@ -16,10 +16,12 @@ class Migrator {
 
 	public function migrate_all(): void {
 		$query = new WP_Query( array(
-			'post_type'                    => array( 'tribe_events' ),
+			'post_type'                    => 'tribe_events',
 			'post_status'                  => 'any',
+			'posts_per_page'               => - 1,
 			'nopaging'                     => true,
 			'tribe_suppress_query_filters' => true,
+			'lang'                         => '', // deactivates the Polylang filter
 		) );
 
 		while ( $query->have_posts() ) {
