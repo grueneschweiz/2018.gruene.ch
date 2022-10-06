@@ -8,7 +8,7 @@ msgstr ""
 "Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: 404.php:21
+#: 404.php:33
 msgid "Latest posts"
 msgstr "Ultimi post"
 
@@ -840,7 +840,7 @@ msgstr "Doppio post / Teaser pagina"
 msgid "Latest Press Release"
 msgstr "Ultimo Comunicato stampa"
 
-#: acf-translate.php:5375 acf-translate.php:5380 archive-tribe_events.php:17
+#: acf-translate.php:5375 acf-translate.php:5380 archive-tribe_events.php:22
 msgid "Events"
 msgstr "Eventi"
 
@@ -1551,15 +1551,15 @@ msgstr "Luogo"
 msgid "Save to calendar"
 msgstr "Salva nel calendario"
 
-#: templates/molecules/m-form.twig:180
+#: templates/molecules/m-form.twig:181
 msgid "Uups, something went wrong!"
 msgstr "Oops! Qualcosa è andato storto!"
 
-#: templates/molecules/m-form.twig:182
+#: templates/molecules/m-form.twig:183
 msgid "Sorry, there was an error submitting this form. If the error persists, please contact us by email."
 msgstr "Siamo spiacenti, si è verificato un errore durante l'invio del formulario. Se l'errore persiste, contattaci tramite email."
 
-#: templates/molecules/m-form.twig:186
+#: templates/molecules/m-form.twig:187
 msgid "Please check input"
 msgstr "Si prega di controllare i dati inseriti"
 
@@ -2075,7 +2075,7 @@ msgctxt "Link"
 msgid "Advanced: You may use %s in this mail template."
 msgstr "Avanced: puoi usare %s in questo modello di email."
 
-#: lib/form/include/Mail.php:153
+#: lib/form/include/Mail.php:130
 msgctxt "form submission"
 msgid "view complete submission online"
 msgstr "Visualizza la risposta completa online"
@@ -2095,11 +2095,11 @@ msgstr "Tema personalizzato per i VERDI della Svizzera. Progettato da superhuit.
 msgid "superhuit.ch & gruene.ch"
 msgstr "superhuit.ch & gruene.ch"
 
-#: archive-tribe_events.php:27
+#: archive-tribe_events.php:28
 msgid "Upcoming events"
 msgstr "Prossimi eventi"
 
-#: archive-tribe_events.php:32
+#: archive-tribe_events.php:33
 msgid "Previous events"
 msgstr "Eventi passati"
 
@@ -2204,7 +2204,7 @@ msgstr "Nessun formulario è stato ancora compilato, quindi non c'è niente da e
 msgid "Add custom code (advanced)"
 msgstr "Aggiungi codice personalizzato (avanced)"
 
-#: lib/admin/import-handler.php:240
+#: lib/admin/import-handler.php:317
 msgid "<strong>WARNING:</strong> There were some shortcodes we couldn't process automatically. %sDownload the list%s of posts to review manually."
 msgstr "<strong> ATTENZIONE: </strong> c'erano alcuni shortcodes che non siamo stati in grado di elaborare automaticamente. %sScarica la lista%s di post da controllare manualmente."
 
@@ -2283,11 +2283,11 @@ msgstr "Client ID"
 msgid "The ID of the oAuth2.0 Client."
 msgstr "ID del oAuth2.0 Client."
 
-#: lib/form/include/CrmSaver.php:244
+#: lib/form/include/CrmSaver.php:246
 msgid "%s: PERMANENT ERROR saving form data to crm"
 msgstr "%s: ERRORE PERMANENTE durante il salvataggio dei dati del formulario sul crm"
 
-#: lib/form/include/Util.php:47
+#: lib/form/include/Util.php:34
 msgid "ERROR on form submission: %s - %s"
 msgstr "ERRORE durante l'invio del modulo: %s - %s"
 
@@ -2323,7 +2323,7 @@ msgstr "Speciale: abbonnemento (CRM)"
 msgid "Special: Greeting (CRM)"
 msgstr "Speciale: titolo (CRM) "
 
-#: lib/form/include/CrmSaver.php:250
+#: lib/form/include/CrmSaver.php:252
 msgid "Hi Admin of %s\n"
 "\n"
 "There was a PERMANENT ERROR saving the following data to the crm:\n"
@@ -2455,7 +2455,7 @@ msgstr "Attributi blocco"
 msgid "Uploaded to this block"
 msgstr "Caricato in questo blocco"
 
-#: templates/molecules/m-form.twig:188
+#: templates/molecules/m-form.twig:189
 msgid "There seems to be an error in your input. Please recheck the fields:"
 msgstr "Sembra che ci sia stato un errore di input. Si prega di controllare i seguenti campi:"
 
@@ -2594,7 +2594,7 @@ msgstr "con legenda"
 msgid "{{current}} have signed. Can we reach {{goal}}?"
 msgstr "{{current}} hanno firmato. Raggiungeremo {{goal}}?"
 
-#: templates/molecules/m-form.twig:195
+#: templates/molecules/m-form.twig:196
 msgid "The form that would normally show up here was closed and is therefore not available."
 msgstr "Il modulo che normalmente sarebbe visualizzato qui è stato chiuso e quindi non è disponibile."
 
@@ -2737,13 +2737,13 @@ msgstr ""
 
 #: acf-translate.php:4909 templates/atoms/a-vote-tag.twig:8
 msgid "Counter Project"
-msgstr ""
+msgstr "controprogetto"
 
 #: functions.php:101
 msgid "Action button navigation"
 msgstr ""
 
-#: lib/form/include/Util.php:53
+#: lib/form/include/Util.php:40
 msgid "Hi Admin of %s\n"
 "\n"
 "There was a problem submitting the form: %s\n"
@@ -2821,5 +2821,25 @@ msgstr ""
 
 #: acf-translate.php:712
 msgid "Link to the youtube profile"
+msgstr ""
+
+#: lib/form/include/Mail.php:171
+msgid "ERROR: There is a syntax error in the email template on line %d."
+msgstr ""
+
+#: lib/form/include/Mail.php:175
+msgid "Often it's just a missing curly bracket. Make sure all your placeholders start with {{ and end with }}."
+msgstr ""
+
+#: lib/form/include/Mail.php:177
+msgid "The placeholders can't be replaced due to this error."
+msgstr ""
+
+#: lib/form/include/Mail.php:187
+msgid "Email template"
+msgstr ""
+
+#: lib/form/include/Mail.php:163
+msgid "ERROR: Failed to compile email template."
 msgstr ""
 
