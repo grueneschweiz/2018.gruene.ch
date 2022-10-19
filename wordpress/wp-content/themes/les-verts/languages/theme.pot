@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Les Verts\n"
-"POT-Creation-Date: 2022-10-19 09:29+0200\n"
+"POT-Creation-Date: 2022-10-19 09:42+0200\n"
 "PO-Revision-Date: 2018-11-28 17:49+0100\n"
 "Last-Translator: Cyrill Bolliger <bolliger@gmx.ch>\n"
 "Language-Team: Cyrill Bolliger <cyrill.bolliger@gruene.ch>\n"
@@ -1319,7 +1319,7 @@ msgstr ""
 msgid "Free Vote"
 msgstr ""
 
-#: acf-translate.php:5003
+#: acf-translate.php:5003 templates/atoms/a-vote-tag.twig:12
 msgid "Blank Vote"
 msgstr ""
 
@@ -2815,10 +2815,6 @@ msgstr ""
 
 #: templates/atoms/a-social-icon.twig:34
 msgid "Copied!"
-msgstr ""
-
-#: templates/atoms/a-vote-tag.twig:12
-msgid "Empty Vote"
 msgstr ""
 
 #: templates/atoms/a-vote-tag.twig:17
