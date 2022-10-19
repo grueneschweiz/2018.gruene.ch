@@ -6,6 +6,10 @@
 	{% set label = __( 'Initiative', constant('THEME_DOMAIN') ) %}
 {% elseif 'counter-project' == tag %}
 	{% set label = __( 'Counter Project', constant('THEME_DOMAIN') ) %}
+{% elseif 'free2' == tag %}
+	{% set label = __( 'Free Vote', constant('THEME_DOMAIN') ) %}
+{% elseif 'blank' == tag %}
+	{% set label = __( 'Empty Vote', constant('THEME_DOMAIN') ) %}
 {% else %}
 	{% set label = '&mdash;' %}
 {% endif %}

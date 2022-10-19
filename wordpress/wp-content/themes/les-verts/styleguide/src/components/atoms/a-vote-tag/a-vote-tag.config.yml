@@ -4,7 +4,7 @@ default: Stimmfreigabe
 display:
   padding: 40px
 context:
-  label: '-'
+  label: '—'
   aria-label: Abstimmungsempfehlung
   modifiers:
     - free
@@ -29,3 +29,13 @@ variants:
       label: gegenvorschlag
       modifiers:
         - counter-project
+  - name: Free
+    context:
+      label: Stimmfreigabe
+      modifiers:
+        - free2
+  - name: Blank
+    context:
+      label: Leer
+      modifiers:
+        - blank
