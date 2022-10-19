@@ -183,16 +183,16 @@
                         "width": "75",
                         "class": "",
                         "id": ""
-                            },
-                            "layout": "block",
-                            "sub_fields": [
-                                {
-                                    "key": "field_5baa459776614",
-                                    "label": "URL",
-                                    "name": "url",
-                                    "type": "url",
-                                    "instructions": "",
-                                    "required": 0,
+                      },
+                      "layout": "block",
+                      "sub_fields": [
+                        {
+                          "key": "field_5baa459776614",
+                          "label": "URL",
+                          "name": "url",
+                          "type": "url",
+                          "instructions": "",
+                          "required": 0,
                                     "conditional_logic": 0,
                                     "wrapper": {
                                         "width": "",
@@ -221,61 +221,61 @@
                                     "append": "",
                                     "maxlength": ""
                                 },
-                                {
-                                    "key": "field_5baa45b976616",
-                                    "label": "Teaser",
-                                  "name": "teaser",
-                                  "type": "textarea",
-                                  "instructions": "",
-                                  "required": 0,
-                                  "conditional_logic": 0,
-                                  "wrapper": {
-                                    "width": "",
-                                    "class": "",
-                                    "id": ""
-                                  },
-                                  "default_value": "",
-                                  "placeholder": "",
-                                  "maxlength": 280,
-                                  "rows": 5,
-                                  "new_lines": ""
-                                }
-                            ]
+                        {
+                          "key": "field_5baa45b976616",
+                          "label": "Teaser",
+                          "name": "teaser",
+                          "type": "textarea",
+                          "instructions": "",
+                          "required": 0,
+                          "conditional_logic": 0,
+                          "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                          },
+                          "default_value": "",
+                          "placeholder": "",
+                          "maxlength": 280,
+                          "rows": 5,
+                          "new_lines": ""
+                        }
+                      ]
                     }
                   ],
                   "parent_repeater": "field_5b68447d19735"
                 },
-                {
-                    "key": "field_5b6844e919737",
-                    "label": "Recommendation",
-                  "name": "flag",
-                  "type": "radio",
-                  "instructions": "What do you recommend to vote?",
-                  "required": 1,
-                  "conditional_logic": 0,
-                  "wrapper": {
-                    "width": "30",
-                    "class": "",
-                    "id": ""
-                  },
-                  "choices": {
-                    "yes": "Yes",
-                    "no": "No",
-                    "free": "&mdash;",
-                    "free2": "Free",
-                    "blank": "Blank",
-                    "initiative": "Initiative",
-                    "counter-project": "Counter Project"
-                  },
-                  "default_value": "",
-                  "return_format": "array",
-                  "translations": "copy_once",
-                  "allow_null": 0,
-                  "other_choice": 0,
-                  "layout": "vertical",
-                  "save_other_choice": 0,
-                  "parent_repeater": "field_5b68447d19735"
-                }
+              {
+                "key": "field_5b6844e919737",
+                "label": "Recommendation",
+                "name": "flag",
+                "type": "radio",
+                "instructions": "What do you recommend to vote?",
+                "required": 1,
+                "conditional_logic": 0,
+                "wrapper": {
+                  "width": "30",
+                  "class": "",
+                  "id": ""
+                },
+                "choices": {
+                  "yes": "Yes",
+                  "no": "No",
+                  "free": "&mdash;",
+                  "free2": "Free Vote",
+                  "blank": "Blank Vote",
+                  "initiative": "Initiative",
+                  "counter-project": "Counter Project"
+                },
+                "default_value": "",
+                "return_format": "array",
+                "translations": "copy_once",
+                "allow_null": 0,
+                "other_choice": 0,
+                "layout": "vertical",
+                "save_other_choice": 0,
+                "parent_repeater": "field_5b68447d19735"
+              }
             ],
           "rows_per_page": 20
         },
@@ -326,16 +326,16 @@
                     "conditional_logic": [
                         [
                             {
-                                "field": "field_5b687a7954f7d",
-                                "operator": "!=empty"
+                              "field": "field_5b687a7954f7d",
+                              "operator": "!=empty"
                             }
                         ]
                     ],
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
+                  "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                  },
                   "default_value": "",
                   "placeholder": "",
                   "prepend": "",
@@ -363,5 +363,5 @@
   "active": false,
   "description": "",
   "show_in_rest": 0,
-  "modified": 1666163810
+  "modified": 1666164495
 }
