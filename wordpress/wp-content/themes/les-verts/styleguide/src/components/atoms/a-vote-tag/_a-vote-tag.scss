@@ -17,12 +17,16 @@
 	}
 
 	&--free,
+	&--blank,
+	&--free2,
 	&--initiative,
 	&--counter-project {
 		background-color: $color-grey-2;
 		color: $color-text;
 	}
 
+	&--blank,
+	&--free2,
 	&--initiative,
 	&--counter-project {
 		width: auto;
