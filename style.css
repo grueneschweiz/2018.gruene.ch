@@ -2302,15 +2302,15 @@ body.no-scroll {
     width: 4.2857em;
   }
 }
-.a-vote-tag--free, .a-vote-tag--initiative, .a-vote-tag--counter-project {
+.a-vote-tag--free, .a-vote-tag--blank, .a-vote-tag--free2, .a-vote-tag--initiative, .a-vote-tag--counter-project {
   background-color: #E2E2E2;
   color: #333333;
 }
-.a-vote-tag--initiative, .a-vote-tag--counter-project {
+.a-vote-tag--blank, .a-vote-tag--free2, .a-vote-tag--initiative, .a-vote-tag--counter-project {
   width: auto;
 }
 @media all and (min-width: 1024px) {
-  .a-vote-tag--initiative, .a-vote-tag--counter-project {
+  .a-vote-tag--blank, .a-vote-tag--free2, .a-vote-tag--initiative, .a-vote-tag--counter-project {
     padding-left: 0.3333em;
     padding-right: 0.3333em;
   }
