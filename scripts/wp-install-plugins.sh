@@ -158,7 +158,7 @@ $WPCLI plugin install disable-administration-email-verification-prompt $INSTALL_
 $WPCLI plugin install limit-login-attempts-reloaded $INSTALL_ACTIVATE
 
 # Maintenance Mode
-$WPCLI plugin install wp-maintenance-mode
+$WPCLI plugin install underconstruction
 
 # Disable the block editor for widgets
 $WPCLI plugin install classic-widgets $INSTALL_ACTIVATE
