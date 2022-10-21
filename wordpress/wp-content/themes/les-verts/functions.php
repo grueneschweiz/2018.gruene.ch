@@ -67,6 +67,12 @@ class StarterSite extends TimberSite {
 		// $context['notes'] = 'These values are available everytime you call Timber::get_context();';
 		// The registered controllers may also populate the context. Have a look at lib/_loader.php
 
+		// Some plugins rely on this action, and it is usually called by the get_header() template tag,
+		// which timber doesn't use. It must be called on every page and before any output is echoed.
+		// It must also be included outside of output buffering. Therefore, it's a good spot here, even
+		// if it feels hacky.
+		do_action( 'get_header', null, array() );
+
 		// Inception
 		$context['site'] = $this;
 
