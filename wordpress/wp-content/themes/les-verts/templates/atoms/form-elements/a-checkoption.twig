@@ -1,6 +1,7 @@
 {#
 Parameters:
 - id: string (optional, name is used if id is not provided)
+- classes: string (optional, appended)
 - name: string must be unique in form
 - label: string
 - value: string (radio only)
@@ -14,17 +15,17 @@ Parameters:
 	{% set id = name|uniqueid %}
 {% endif %}
 
-<div class="a-checkoption">
+<div class="a-checkoption{% if classes %} {{ classes }}{% endif %}">
 	{% if 'radio' == type %}
-	<input type="radio"
-				 name="{{ name }}"
-				 id="{{ id }}"
-				 value="{{ value|esc_form_value }}"
-				 {% if required %}required{% endif %}
-		     {% if checked %}checked="checked"{% endif %}
-				 class="a-checkoption__field">
+		<input type="radio"
+					 name="{{ name }}"
+					 id="{{ id }}"
+					 value="{{ value|esc_form_value }}"
+					 {% if required %}required{% endif %}
+			{% if checked %}checked="checked"{% endif %}
+					 class="a-checkoption__field">
 	{% else %}
-	<input type="hidden" name="{{ name }}" value="0">{# make sure unchecked elements still show up in post data #}
+		<input type="hidden" name="{{ name }}" value="0">{# make sure unchecked elements still show up in post data #}
 	<input id="{{ id|default(name) }}"
 				 class="a-checkoption__field"
 				 type="checkbox"

@@ -1,6 +1,7 @@
 {#
 Parameters:
 - id: string (optional, name is used if id is not provided)
+- classes: string (optional, appended)
 - name: string must be unique in form
 - label: string
 - helptext: string (optional)
@@ -9,7 +10,7 @@ Parameters:
 - options: array
 - keyed_options: array      #used for map block, use option OR keyed_options but not both
 #}
-<div class="a-select {{ modifiers_classes }}">
+<div class="a-select {{ modifiers_classes }}{% if classes %} {{ classes }}{% endif %}">
 	<label for="{{ id|default(name) }}" class="a-select__label {% if required %}a-select__label--required{% endif %}">
 		{{ label|wptexturize }}
 	</label>
@@ -18,7 +19,7 @@ Parameters:
 						class="a-select__field"
 						name="{{ name }}"
 						{% if required %}required="required"{% endif %}>
-			<option value=""> </option>
+			<option value=""></option>
 			{% for option in options %}
 				{% set option = option|trim %}
 				<option value="{{ option|esc_form_value }}">{{ option }}</option>

@@ -48,6 +48,8 @@
 			<div class="m-form__element" {% if style %} style="{{ style }}"{% endif %}>
 				{% if 'confirmation' == field.form_input_type %}
 					{% include 'atoms/form-elements/a-checkoption.twig' with {
+						'id': field.dom_id,
+						'classes': field.dom_class,
 						'name': field.slug,
 						'label': field.form_input_label,
 						'type': 'checkbox',
@@ -60,6 +62,8 @@
 						{% set modifiers_classes = 'a-select--' ~ modifiers %}
 					{% endif %}
 					{% include 'atoms/form-elements/a-select.twig' with {
+						'id': field.dom_id,
+						'classes': field.dom_class,
 						'name': field.slug,
 						'label': field.form_input_label,
 						'required': field.form_input_required,
@@ -70,7 +74,8 @@
 
 				{% elseif 'radio' == field.form_input_type %}
 					<div class="m-form__option-label">{{ field.form_input_label|wptexturize }}</div>
-					<fieldset class="m-form__option-fieldset">
+					<fieldset
+						class="m-form__option-fieldset{% if field.dom_class %} {{ field.dom_class }}{% endif %}"{% if field.dom_id %} id="{{ field.dom_id }}"{% endif %}>
 						<input type="hidden" name="{{ field.slug }}"
 									 value="">{# make sure unclicked elements still show up in post data #}
 						{% for option in field.form_input_choices|trim|split('\n') %}
@@ -87,24 +92,24 @@
 
 				{% elseif 'checkbox' == field.form_input_type %}
 					<div class="m-form__checks-label">{{ field.form_input_label|wptexturize }}</div>
-					<fieldset class="m-form__checks-fieldset">
-						{% for option in field.form_input_choices|split('\n') %}
-							{% set option = option|trim %}
-							{% include 'atoms/form-elements/a-checkoption.twig' with {
-								'name': field.slug~'-'~loop.index0,
-								'label': option,
-								'type': 'checkbox'
-							} only %}
-						{% endfor %}
+					<fieldset class="m-form__checks-fieldset{% if field.dom_class %} {{ field.dom_class }}{% endif %}"{% if field.dom_id %} id="{{ field.dom_id }}"{% endif %}">
+					{% for option in field.form_input_choices|split('\n') %}
+						{% set option = option|trim %}
+						{% include 'atoms/form-elements/a-checkoption.twig' with {
+							'name': field.slug~'-'~loop.index0,
+							'label': option,
+							'type': 'checkbox'
+						} only %}
+					{% endfor %}
 					</fieldset>
 
 				{% elseif 'crm_subscription' == field.form_input_type %}
-					<fieldset class="m-form__checks-fieldset">
-						{% include 'atoms/form-elements/a-checkoption.twig' with {
-							'name': field.slug,
-							'label': field.form_input_label,
-							'type': 'checkbox'
-						} only %}
+					<fieldset class="m-form__checks-fieldset{% if field.dom_class %} {{ field.dom_class }}{% endif %}"{% if field.dom_id %} id="{{ field.dom_id }}"{% endif %}">
+					{% include 'atoms/form-elements/a-checkoption.twig' with {
+						'name': field.slug,
+						'label': field.form_input_label,
+						'type': 'checkbox'
+					} only %}
 					</fieldset>
 
 				{% else %}{# if textarea, text, password, email etc #}
@@ -122,6 +127,8 @@
 						{% set type = 'text' %}
 					{% endif %}
 					{% include 'atoms/form-elements/a-input.twig' with {
+						'id': field.dom_id,
+						'classes': field.dom_class,
 						'name': field.slug,
 						'label': field.form_input_label,
 						'helptext': field.form_input_help_text,
