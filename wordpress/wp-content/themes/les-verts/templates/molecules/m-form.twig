@@ -142,24 +142,6 @@
 			</div>{# close .m-form__custom-width-block #}
 		{% endif %}
 
-		{# todo: decide if we want to remove this (which makes forms not fool proof anymore) #}
-		{#{% set privacy_policy_page_id = fn('get_option', 'wp_page_for_privacy_policy') %}#}
-		{#{% if privacy_policy_page_id %}#}
-		{#<div class="m-form__element" {% if style %} style="{{ style }}"{% endif %}>#}
-		{#{% set privacy_policy_url = fn('get_permalink', privacy_policy_page_id) %}#}
-		{#{% set privacy_policy = '<a href="'~privacy_policy_url~'" target="_blank">'~__('privacy policy', constant('THEME_DOMAIN'))~'</a>' %}#}
-		{#<div class="m-form__privacy-policy">#}
-		{#{% include 'atoms/form-elements/a-checkoption.twig' with {#}
-		{#'name': 'privacy_policy',#}
-		{#'label': _x('I agree to the data processing according to the %s.', 'privacy policy', constant('THEME_DOMAIN'))|format(privacy_policy),#}
-		{#'type': 'checkbox',#}
-		{#'required': true,#}
-		{#'modifiers_classes': 'a-checkoption--legal',#}
-		{#} %}#}
-		{#</div>#}
-		{#</div>#}
-		{#{% endif %}#}
-
 		<div class="m-form__submit-wrapper">
 			<div class="m-form__submit-button">
 				{% include 'atoms/a-button.twig' with {
