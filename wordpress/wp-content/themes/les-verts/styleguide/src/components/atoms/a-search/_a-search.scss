@@ -4,6 +4,10 @@
 
 	&:not(&--inverted) {
 		margin-left: #{- $offset};
+
+		@include media($_DESKTOP) {
+			margin-left: 0;
+		}
 	}
 
 	@include media($_DESKTOP) {

@@ -1,6 +1,7 @@
 {#
 Parameters:
 - id: string (optional, name is used if id is not provided)
+- classes: string (optional, appended)
 - name: string must be unique in form
 - label: string
 - value: string
@@ -11,7 +12,7 @@ Parameters:
 - modifiers_classes: string (optional)
 - type: string. accepted values 'textarea' and the html5 input types
 #}
-<div class="a-input{% if wrapper_classes %} {{ wrapper_classes }}{% endif %}">
+<div class="a-input{% if wrapper_classes %} {{ wrapper_classes }}{% endif %}{% if classes %} {{ classes }}{% endif %}">
 	<label for="{{ id|default(name) }}" class="a-input__label {% if required %}a-input__label--required{% endif %}">
 		{{ label|wptexturize }}
 	</label>
