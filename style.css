@@ -1751,6 +1751,11 @@ body.no-scroll {
   margin-left: -0.75em;
 }
 @media all and (min-width: 1024px) {
+  .a-search:not(.a-search--inverted) {
+    margin-left: 0;
+  }
+}
+@media all and (min-width: 1024px) {
   .a-search {
     padding-top: 0.533em;
   }
@@ -2520,6 +2525,7 @@ body.no-scroll {
 .a-select__field {
   width: 100%;
   position: absolute;
+  padding-left: 0.75rem;
   top: 0;
   right: 0;
   z-index: 3;
@@ -3647,6 +3653,7 @@ body.no-scroll {
     -ms-flex-direction: row;
     flex-direction: row;
     max-width: 800px;
+    gap: 0.4rem;
   }
 }
 .m-menu__nav-item {
@@ -3678,6 +3685,9 @@ body.no-scroll {
 }
 .m-menu__nav-item.is-hidden {
   display: none;
+}
+.m-menu__nav-item:last-of-type {
+  min-width: 34px;
 }
 .m-menu__nav-link {
   color: initial;
