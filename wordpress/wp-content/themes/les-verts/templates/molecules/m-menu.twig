@@ -31,28 +31,28 @@
 			{% endif %}
 		</ul>
 	</nav>
-	{% if menu.cta or menu.language %}
-		<div class="m-menu__right">
+	<div class="m-menu__right">
+		{% if menu.cta or menu.language %}
 			<div class="m-menu__cta">
 				{% for item in menu.cta.items %}
-				{% set class = "m-menu__nav-link--js-hook m-menu__nav-link--#{item.id}" %}
-				{% if item.children %}
-					{% set class = class ~ ' m-menu__nav-link--parent' %}
-				{% endif %}
-				<div class="m-menu__nav-item">
-					{% include 'atoms/a-button.twig' with {
-						'link': item.link,
-						'label': item.title,
-						'class': class,
-						'modifiers': ['a-button--outline', 'a-button--secondary']
-					} only %}
+					{% set class = "m-menu__nav-link--js-hook m-menu__nav-link--#{item.id}" %}
 					{% if item.children %}
-						{% include 'molecules/m-menu--submenu.twig' with {
-							children: item.children,
-							submenu_class: 'm-menu__submenu--cta',
-						} only %}
+						{% set class = class ~ ' m-menu__nav-link--parent' %}
 					{% endif %}
-				</div>
+					<div class="m-menu__nav-item">
+						{% include 'atoms/a-button.twig' with {
+							'link': item.link,
+							'label': item.title,
+							'class': class,
+							'modifiers': ['a-button--outline', 'a-button--secondary']
+						} only %}
+						{% if item.children %}
+							{% include 'molecules/m-menu--submenu.twig' with {
+								children: item.children,
+								submenu_class: 'm-menu__submenu--cta',
+							} only %}
+						{% endif %}
+					</div>
 				{% endfor %}
 			</div>
 			{% if menu.language %}
@@ -68,6 +68,6 @@
 					</ul>
 				</div>
 			{% endif %}
-		</div>
-	{% endif %}
+		{% endif %}
+	</div>
 </div>
