@@ -191,6 +191,10 @@
 		&.is-hidden {
 			display: none;
 		}
+
+		&:last-of-type {
+			min-width: 34px;
+		}
 	}
 
 	&__nav-link {
