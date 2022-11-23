@@ -76,7 +76,7 @@ then
       MISSING=1
 fi
 
-if [ ! "$SEARCHWP_POLYLANG" ];
+if [ ! "$SEARCHWP_POLYLANG" ] && [ $MULTILANG ];
 then
       echo -e "${RED}ERROR: ${YELLOW}Missing plugin 'searchwp-polylang'. Upload it, then rerun this script.${NC}"
       MISSING=1
