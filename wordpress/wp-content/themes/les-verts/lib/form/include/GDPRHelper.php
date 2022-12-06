@@ -61,9 +61,23 @@ class GDPRHelper {
 		$values = array_values( $array );
 
 		foreach ( $labels as $key => $label ) {
+			$value = $values[ $key ];
+
+			if ( is_array( $value ) ) {
+				$value = array_map(
+					static function ( $v ) {
+						return (string) $v;
+					}, $value );
+				$value = implode( "; ", $value );
+			}
+
+			if ( ! is_string( $value ) ) {
+				$value = (string) $value;
+			}
+
 			$mapped[] = array(
 				'name'  => $label,
-				'value' => $values[ $key ],
+				'value' => $value,
 			);
 		}
 
