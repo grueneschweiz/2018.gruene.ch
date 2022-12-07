@@ -229,6 +229,7 @@ require_once __DIR__ . '/twig/filters/l10n_date.php';
 require_once __DIR__ . '/twig/filters/esc_form_value.php';
 require_once __DIR__ . '/twig/filters/license.php';
 require_once __DIR__ . '/twig/filters/disableable_autop.php';
+require_once __DIR__ . '/twig/filters/failsafe_get_timer_image_responsive.php';
 
 /**
  * FORM LIBRARY
