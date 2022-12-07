@@ -9,7 +9,7 @@
     "phpoffice/phpspreadsheet": "^1.6",
     "timber/timber": "^1.10",
     "tgmpa/tgm-plugin-activation": "^2.6",
-    "yahnis-elsts/plugin-update-checker": "^4.7"
+    "yahnis-elsts/plugin-update-checker": "^5.0"
   },
   "config": {
     "allow-plugins": {
