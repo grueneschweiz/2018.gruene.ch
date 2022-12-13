@@ -95,7 +95,7 @@ class Util {
 			$start,
 			$recurrence,
 			$hook,
-			wp_generate_uuid4() // pass unique value to bypass the 10 minutes scheduling pause
+			[ wp_generate_uuid4() ] // pass unique value to bypass the 10 minutes scheduling pause
 		);
 
 		if ( ! $scheduled ) {
