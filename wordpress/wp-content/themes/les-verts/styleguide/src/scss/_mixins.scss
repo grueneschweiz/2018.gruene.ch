@@ -147,6 +147,9 @@
 	color: initial; // sorry IE users
 	outline: initial; // sorry IE users
 	box-shadow: none;
+	text-decoration: initial;
+	text-underline-position: initial;
+	box-decoration-break: initial;
 
 	@include hover {
 		background-color: transparent;
