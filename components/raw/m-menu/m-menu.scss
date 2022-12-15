@@ -177,6 +177,7 @@
 
 	&__nav-item {
 		@include clean-li;
+		min-height: 2.5rem;
 
 		&.is-active {
 			position: absolute;

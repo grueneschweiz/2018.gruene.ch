@@ -3,10 +3,6 @@
 
 	font-size: .875rem;
 
-	span, a {
-		height: 1.25rem;
-	}
-
 	a {
 		@include clean-link;
 		transition: color $transition-fast $transition-ease;
@@ -20,7 +16,8 @@
 	& a,
 	.breadcrumb_last {
 		max-width: 180px;
-		overflow: hidden;
+		overflow-y: visible;
+		overflow-x: clip;
 		text-overflow: ellipsis;
 		white-space: nowrap;
 
@@ -61,11 +58,10 @@
 	}
 
 	// home
-	& > div > span > a {
+	& > div > span:first-of-type > a {
 		font-weight: $font-weight-semi;
-		padding-top: 0.2em;
 
-		@include media($_DESKTOP){
+		@include media($_DESKTOP) {
 			&::before,
 			&:hover::before,
 			&:focus::before {
