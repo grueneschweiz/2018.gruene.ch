@@ -173,6 +173,8 @@ add_action( 'widgets_init', function () {
  */
 
 require_once __DIR__ . '/customizer/Logo.php';
+require_once __DIR__ . '/customizer/Branding.php';
+Customizer\Branding::register();
 Customizer\Logo::register();
 
 
