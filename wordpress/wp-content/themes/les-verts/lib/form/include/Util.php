@@ -89,14 +89,13 @@ class Util {
 	 * @param string $recurrence How often the event should recur.
 	 */
 	public static function add_cron( $hook, $start, $recurrence ) {
-		if ( false !== wp_next_scheduled( $hook ) ) {
-			self::remove_cron( $hook );
-		}
+		self::remove_cron( $hook );
 
 		$scheduled = wp_schedule_event(
 			$start,
 			$recurrence,
-			$hook
+			$hook,
+			[ wp_generate_uuid4() ] // pass unique value to bypass the 10 minutes scheduling pause
 		);
 
 		if ( ! $scheduled ) {

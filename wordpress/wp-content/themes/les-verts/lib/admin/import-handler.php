@@ -17,7 +17,7 @@ use function wp_update_post;
  * The import_end hook is not called, if the import is done by cli. So we have
  * to call this class manually.
  */
-if ( defined( 'WP_CLI' ) && WP_CLI ) {
+if ( defined( '\WP_CLI' ) && \WP_CLI ) {
 	Importer::import();
 } else {
 	add_action( 'import_end', array( '\SUPT\Importer', 'import' ) );
@@ -122,9 +122,9 @@ class Importer {
 	}
 
 	private static function cli_echo( string $message, string $method = 'log' ): void {
-		if ( defined( 'WP_CLI' ) && WP_CLI ) {
+		if ( defined( '\WP_CLI' ) && \WP_CLI ) {
 			/** @noinspection PhpUndefinedClassInspection */
-			WP_CLI::$method( $message );
+			\WP_CLI::$method( $message );
 		}
 	}
 
@@ -308,7 +308,7 @@ class Importer {
 		file_put_contents( $file_path, $data, LOCK_EX );
 
 		// inform user about log file
-		if ( defined( 'WP_CLI' ) && WP_CLI ) {
+		if ( defined( '\WP_CLI' ) && \WP_CLI ) {
 			self::cli_echo( "There were some shortcodes we couldn't process automatically.", 'warning' );
 			self::cli_echo( "Have a look at the list of posts to review manually: $file_path" );
 		} else {

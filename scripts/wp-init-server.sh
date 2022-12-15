@@ -194,6 +194,11 @@ else
 	wp cli update --yes
 fi
 
+# install super-cache cli package if needed
+if ! wp super-cache; then
+	wp package install https://github.com/wp-cli/wp-super-cache-cli.git
+fi
+
 # install wordpress
 ###################
 echo "Starting installation in: $INSTALL_PATH"

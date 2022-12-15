@@ -4,7 +4,7 @@
 		"Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
 		"This file is @generated automatically"
 	],
-	"content-hash": "d361c1395ed7f13ac0f044384e81f28c",
+	"content-hash": "52b28018c9d3746546c2340d651b9fbd",
 	"packages": [
 		{
 			"name": "altorouter/altorouter",
@@ -274,16 +274,16 @@
 		},
 		{
 			"name": "maennchen/zipstream-php",
-			"version": "2.2.1",
+			"version": "2.2.6",
 			"source": {
 				"type": "git",
 				"url": "https://github.com/maennchen/ZipStream-PHP.git",
-				"reference": "211e9ba1530ea5260b45d90c9ea252f56ec52729"
+				"reference": "30ad6f93cf3efe4192bc7a4c9cad11ff8f4f237f"
 			},
 			"dist": {
 				"type": "zip",
-				"url": "https://api.github.com/repos/maennchen/ZipStream-PHP/zipball/211e9ba1530ea5260b45d90c9ea252f56ec52729",
-				"reference": "211e9ba1530ea5260b45d90c9ea252f56ec52729",
+				"url": "https://api.github.com/repos/maennchen/ZipStream-PHP/zipball/30ad6f93cf3efe4192bc7a4c9cad11ff8f4f237f",
+				"reference": "30ad6f93cf3efe4192bc7a4c9cad11ff8f4f237f",
 				"shasum": ""
 			},
 			"require": {
@@ -294,6 +294,7 @@
 			},
 			"require-dev": {
 				"ext-zip": "*",
+				"friendsofphp/php-cs-fixer": "^3.9",
 				"guzzlehttp/guzzle": "^6.5.3 || ^7.2.0",
 				"mikey179/vfsstream": "^1.6",
 				"php-coveralls/php-coveralls": "^2.4",
@@ -335,38 +336,42 @@
 			],
 			"support": {
 				"issues": "https://github.com/maennchen/ZipStream-PHP/issues",
-				"source": "https://github.com/maennchen/ZipStream-PHP/tree/2.2.1"
+				"source": "https://github.com/maennchen/ZipStream-PHP/tree/2.2.6"
 			},
 			"funding": [
+				{
+					"url": "https://github.com/maennchen",
+					"type": "github"
+				},
 				{
 					"url": "https://opencollective.com/zipstream",
 					"type": "open_collective"
 				}
 			],
-			"time": "2022-05-18T15:52:06+00:00"
+			"time": "2022-11-25T18:57:19+00:00"
 		},
 		{
 			"name": "markbaker/complex",
-			"version": "3.0.1",
+			"version": "3.0.2",
 			"source": {
 				"type": "git",
 				"url": "https://github.com/MarkBaker/PHPComplex.git",
-				"reference": "ab8bc271e404909db09ff2d5ffa1e538085c0f22"
+				"reference": "95c56caa1cf5c766ad6d65b6344b807c1e8405b9"
 			},
 			"dist": {
 				"type": "zip",
-				"url": "https://api.github.com/repos/MarkBaker/PHPComplex/zipball/ab8bc271e404909db09ff2d5ffa1e538085c0f22",
-				"reference": "ab8bc271e404909db09ff2d5ffa1e538085c0f22",
+				"url": "https://api.github.com/repos/MarkBaker/PHPComplex/zipball/95c56caa1cf5c766ad6d65b6344b807c1e8405b9",
+				"reference": "95c56caa1cf5c766ad6d65b6344b807c1e8405b9",
 				"shasum": ""
 			},
 			"require": {
 				"php": "^7.2 || ^8.0"
 			},
 			"require-dev": {
-				"dealerdirect/phpcodesniffer-composer-installer": "^0.7.0",
-				"phpcompatibility/php-compatibility": "^9.0",
-				"phpunit/phpunit": "^7.0 || ^8.0 || ^9.3",
-				"squizlabs/php_codesniffer": "^3.4"
+				"dealerdirect/phpcodesniffer-composer-installer": "dev-master",
+				"phpcompatibility/php-compatibility": "^9.3",
+				"phpunit/phpunit": "^7.0 || ^8.0 || ^9.0",
+				"squizlabs/php_codesniffer": "^3.7"
 			},
 			"type": "library",
 			"autoload": {
@@ -392,36 +397,36 @@
 			],
 			"support": {
 				"issues": "https://github.com/MarkBaker/PHPComplex/issues",
-				"source": "https://github.com/MarkBaker/PHPComplex/tree/3.0.1"
+				"source": "https://github.com/MarkBaker/PHPComplex/tree/3.0.2"
 			},
-			"time": "2021-06-29T15:32:53+00:00"
+			"time": "2022-12-06T16:21:08+00:00"
 		},
 		{
 			"name": "markbaker/matrix",
-			"version": "3.0.0",
+			"version": "3.0.1",
 			"source": {
 				"type": "git",
 				"url": "https://github.com/MarkBaker/PHPMatrix.git",
-				"reference": "c66aefcafb4f6c269510e9ac46b82619a904c576"
+				"reference": "728434227fe21be27ff6d86621a1b13107a2562c"
 			},
 			"dist": {
 				"type": "zip",
-				"url": "https://api.github.com/repos/MarkBaker/PHPMatrix/zipball/c66aefcafb4f6c269510e9ac46b82619a904c576",
-				"reference": "c66aefcafb4f6c269510e9ac46b82619a904c576",
+				"url": "https://api.github.com/repos/MarkBaker/PHPMatrix/zipball/728434227fe21be27ff6d86621a1b13107a2562c",
+				"reference": "728434227fe21be27ff6d86621a1b13107a2562c",
 				"shasum": ""
 			},
 			"require": {
 				"php": "^7.1 || ^8.0"
 			},
 			"require-dev": {
-				"dealerdirect/phpcodesniffer-composer-installer": "^0.7.0",
-				"phpcompatibility/php-compatibility": "^9.0",
+				"dealerdirect/phpcodesniffer-composer-installer": "dev-master",
+				"phpcompatibility/php-compatibility": "^9.3",
 				"phpdocumentor/phpdocumentor": "2.*",
 				"phploc/phploc": "^4.0",
 				"phpmd/phpmd": "2.*",
-				"phpunit/phpunit": "^7.0 || ^8.0 || ^9.3",
+				"phpunit/phpunit": "^7.0 || ^8.0 || ^9.0",
 				"sebastian/phpcpd": "^4.0",
-				"squizlabs/php_codesniffer": "^3.4"
+				"squizlabs/php_codesniffer": "^3.7"
 			},
 			"type": "library",
 			"autoload": {
@@ -448,9 +453,9 @@
 			],
 			"support": {
 				"issues": "https://github.com/MarkBaker/PHPMatrix/issues",
-				"source": "https://github.com/MarkBaker/PHPMatrix/tree/3.0.0"
+				"source": "https://github.com/MarkBaker/PHPMatrix/tree/3.0.1"
 			},
-			"time": "2021-07-01T19:01:15+00:00"
+			"time": "2022-12-02T22:17:43+00:00"
 		},
 		{
 			"name": "mindkomm/timmy",
@@ -892,16 +897,16 @@
 		},
 		{
 			"name": "symfony/polyfill-ctype",
-			"version": "v1.26.0",
+			"version": "v1.27.0",
 			"source": {
 				"type": "git",
 				"url": "https://github.com/symfony/polyfill-ctype.git",
-				"reference": "6fd1b9a79f6e3cf65f9e679b23af304cd9e010d4"
+				"reference": "5bbc823adecdae860bb64756d639ecfec17b050a"
 			},
 			"dist": {
 				"type": "zip",
-				"url": "https://api.github.com/repos/symfony/polyfill-ctype/zipball/6fd1b9a79f6e3cf65f9e679b23af304cd9e010d4",
-				"reference": "6fd1b9a79f6e3cf65f9e679b23af304cd9e010d4",
+				"url": "https://api.github.com/repos/symfony/polyfill-ctype/zipball/5bbc823adecdae860bb64756d639ecfec17b050a",
+				"reference": "5bbc823adecdae860bb64756d639ecfec17b050a",
 				"shasum": ""
 			},
 			"require": {
@@ -916,7 +921,7 @@
 			"type": "library",
 			"extra": {
 				"branch-alias": {
-					"dev-main": "1.26-dev"
+					"dev-main": "1.27-dev"
 				},
 				"thanks": {
 					"name": "symfony/polyfill",
@@ -954,7 +959,7 @@
 				"portable"
 			],
 			"support": {
-				"source": "https://github.com/symfony/polyfill-ctype/tree/v1.26.0"
+				"source": "https://github.com/symfony/polyfill-ctype/tree/v1.27.0"
 			},
 			"funding": [
 				{
@@ -970,20 +975,20 @@
 					"type": "tidelift"
 				}
 			],
-			"time": "2022-05-24T11:49:31+00:00"
+			"time": "2022-11-03T14:55:06+00:00"
 		},
 		{
 			"name": "symfony/polyfill-mbstring",
-			"version": "v1.26.0",
+			"version": "v1.27.0",
 			"source": {
 				"type": "git",
 				"url": "https://github.com/symfony/polyfill-mbstring.git",
-				"reference": "9344f9cb97f3b19424af1a21a3b0e75b0a7d8d7e"
+				"reference": "8ad114f6b39e2c98a8b0e3bd907732c207c2b534"
 			},
 			"dist": {
 				"type": "zip",
-				"url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/9344f9cb97f3b19424af1a21a3b0e75b0a7d8d7e",
-				"reference": "9344f9cb97f3b19424af1a21a3b0e75b0a7d8d7e",
+				"url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/8ad114f6b39e2c98a8b0e3bd907732c207c2b534",
+				"reference": "8ad114f6b39e2c98a8b0e3bd907732c207c2b534",
 				"shasum": ""
 			},
 			"require": {
@@ -998,7 +1003,7 @@
 			"type": "library",
 			"extra": {
 				"branch-alias": {
-					"dev-main": "1.26-dev"
+					"dev-main": "1.27-dev"
 				},
 				"thanks": {
 					"name": "symfony/polyfill",
@@ -1037,7 +1042,7 @@
 				"shim"
 			],
 			"support": {
-				"source": "https://github.com/symfony/polyfill-mbstring/tree/v1.26.0"
+				"source": "https://github.com/symfony/polyfill-mbstring/tree/v1.27.0"
 			},
 			"funding": [
 				{
@@ -1053,20 +1058,20 @@
 					"type": "tidelift"
 				}
 			],
-			"time": "2022-05-24T11:49:31+00:00"
+			"time": "2022-11-03T14:55:06+00:00"
 		},
 		{
 			"name": "symfony/polyfill-php72",
-			"version": "v1.26.0",
+			"version": "v1.27.0",
 			"source": {
 				"type": "git",
 				"url": "https://github.com/symfony/polyfill-php72.git",
-				"reference": "bf44a9fd41feaac72b074de600314a93e2ae78e2"
+				"reference": "869329b1e9894268a8a61dabb69153029b7a8c97"
 			},
 			"dist": {
 				"type": "zip",
-				"url": "https://api.github.com/repos/symfony/polyfill-php72/zipball/bf44a9fd41feaac72b074de600314a93e2ae78e2",
-				"reference": "bf44a9fd41feaac72b074de600314a93e2ae78e2",
+				"url": "https://api.github.com/repos/symfony/polyfill-php72/zipball/869329b1e9894268a8a61dabb69153029b7a8c97",
+				"reference": "869329b1e9894268a8a61dabb69153029b7a8c97",
 				"shasum": ""
 			},
 			"require": {
@@ -1075,7 +1080,7 @@
 			"type": "library",
 			"extra": {
 				"branch-alias": {
-					"dev-main": "1.26-dev"
+					"dev-main": "1.27-dev"
 				},
 				"thanks": {
 					"name": "symfony/polyfill",
@@ -1113,7 +1118,7 @@
 				"shim"
 			],
 			"support": {
-				"source": "https://github.com/symfony/polyfill-php72/tree/v1.26.0"
+				"source": "https://github.com/symfony/polyfill-php72/tree/v1.27.0"
 			},
 			"funding": [
 				{
@@ -1129,7 +1134,7 @@
 					"type": "tidelift"
 				}
 			],
-			"time": "2022-05-24T11:49:31+00:00"
+			"time": "2022-11-03T14:55:06+00:00"
 		},
 		{
 			"name": "tgmpa/tgm-plugin-activation",
@@ -1192,23 +1197,23 @@
 		},
 		{
 			"name": "timber/timber",
-			"version": "1.21.0",
+			"version": "1.22.1",
 			"source": {
 				"type": "git",
 				"url": "https://github.com/timber/timber.git",
-				"reference": "342007fffa62b89c7d0c345914ac61482e4fe939"
+				"reference": "57fc582c42519f1b05fff5fb2ebf4291b5cd638f"
 			},
 			"dist": {
 				"type": "zip",
-				"url": "https://api.github.com/repos/timber/timber/zipball/342007fffa62b89c7d0c345914ac61482e4fe939",
-				"reference": "342007fffa62b89c7d0c345914ac61482e4fe939",
+				"url": "https://api.github.com/repos/timber/timber/zipball/57fc582c42519f1b05fff5fb2ebf4291b5cd638f",
+				"reference": "57fc582c42519f1b05fff5fb2ebf4291b5cd638f",
 				"shasum": ""
 			},
 			"require": {
 				"composer/installers": "^1.0 || ^2.0",
 				"php": ">=7.2.5 || ^8.0",
 				"twig/cache-extension": "^1.5",
-				"twig/twig": "^1.44 || ^2.10",
+				"twig/twig": "^1.44.7 || ^2.10",
 				"upstatement/routes": "^0.9"
 			},
 			"require-dev": {
@@ -1254,7 +1259,7 @@
 				"issues": "https://github.com/timber/timber/issues",
 				"source": "https://github.com/timber/timber"
 			},
-			"time": "2022-10-12T02:12:15+00:00"
+			"time": "2022-11-24T03:42:29+00:00"
 		},
 		{
 			"name": "twig/cache-extension",
@@ -1466,26 +1471,26 @@
 		},
 		{
 			"name": "yahnis-elsts/plugin-update-checker",
-			"version": "v4.13",
+			"version": "v5.0",
 			"source": {
 				"type": "git",
 				"url": "https://github.com/YahnisElsts/plugin-update-checker.git",
-				"reference": "6eb27a6911e0e0880d09e5b11f577d3f688f7da7"
+				"reference": "81be284da76f12c8751b477b2a0fa44364d26f84"
 			},
 			"dist": {
 				"type": "zip",
-				"url": "https://api.github.com/repos/YahnisElsts/plugin-update-checker/zipball/6eb27a6911e0e0880d09e5b11f577d3f688f7da7",
-				"reference": "6eb27a6911e0e0880d09e5b11f577d3f688f7da7",
+				"url": "https://api.github.com/repos/YahnisElsts/plugin-update-checker/zipball/81be284da76f12c8751b477b2a0fa44364d26f84",
+				"reference": "81be284da76f12c8751b477b2a0fa44364d26f84",
 				"shasum": ""
 			},
 			"require": {
 				"ext-json": "*",
-				"php": ">=5.2.0"
+				"php": ">=5.6.20"
 			},
 			"type": "library",
 			"autoload": {
 				"files": [
-					"load-v4p13.php"
+					"load-v5p0.php"
 				]
 			},
 			"notification-url": "https://packagist.org/downloads/",
@@ -1496,7 +1501,7 @@
 				{
 					"name": "Yahnis Elsts",
 					"email": "whiteshadow@w-shadow.com",
-					"homepage": "http://w-shadow.com/",
+					"homepage": "https://w-shadow.com/",
 					"role": "Developer"
 				}
 			],
@@ -1510,9 +1515,9 @@
 			],
 			"support": {
 				"issues": "https://github.com/YahnisElsts/plugin-update-checker/issues",
-				"source": "https://github.com/YahnisElsts/plugin-update-checker/tree/v4.13"
+				"source": "https://github.com/YahnisElsts/plugin-update-checker/tree/v5.0"
 			},
-			"time": "2022-07-29T12:36:25+00:00"
+			"time": "2022-10-28T17:46:32+00:00"
 		}
 	],
 	"packages-dev": [],

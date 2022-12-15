@@ -13,8 +13,12 @@ class Branding_controller {
 	}
 
 	public static function add_to_context( $context ) {
-		$context['branding']['unbreakeables'] = self::get_branding();
-		$context['branding']['logo']          = self::get_logo();
+		$show_branding = get_theme_mod( Customizer\Branding::SHOW_TAGLINE, true );
+
+		if ( $show_branding ) {
+			$context['branding']['unbreakeables'] = self::get_branding();
+			$context['branding']['logo']          = self::get_logo();
+		}
 
 		return $context;
 	}
