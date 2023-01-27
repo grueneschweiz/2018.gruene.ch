@@ -581,16 +581,16 @@
 		},
 		{
 			"name": "phpoffice/phpspreadsheet",
-			"version": "1.25.2",
+			"version": "1.27.0",
 			"source": {
 				"type": "git",
 				"url": "https://github.com/PHPOffice/PhpSpreadsheet.git",
-				"reference": "a317a09e7def49852400a4b3eca4a4b0790ceeb5"
+				"reference": "eeb8582f9cabf5a7f4ef78015691163233a1834f"
 			},
 			"dist": {
 				"type": "zip",
-				"url": "https://api.github.com/repos/PHPOffice/PhpSpreadsheet/zipball/a317a09e7def49852400a4b3eca4a4b0790ceeb5",
-				"reference": "a317a09e7def49852400a4b3eca4a4b0790ceeb5",
+				"url": "https://api.github.com/repos/PHPOffice/PhpSpreadsheet/zipball/eeb8582f9cabf5a7f4ef78015691163233a1834f",
+				"reference": "eeb8582f9cabf5a7f4ef78015691163233a1834f",
 				"shasum": ""
 			},
 			"require": {
@@ -611,7 +611,7 @@
 				"maennchen/zipstream-php": "^2.1",
 				"markbaker/complex": "^3.0",
 				"markbaker/matrix": "^3.0",
-				"php": "^7.3 || ^8.0",
+				"php": "^7.4 || ^8.0",
 				"psr/http-client": "^1.0",
 				"psr/http-factory": "^1.0",
 				"psr/simple-cache": "^1.0 || ^2.0 || ^3.0"
@@ -620,14 +620,14 @@
 				"dealerdirect/phpcodesniffer-composer-installer": "dev-master",
 				"dompdf/dompdf": "^1.0 || ^2.0",
 				"friendsofphp/php-cs-fixer": "^3.2",
-				"mitoteam/jpgraph": "10.2.4",
-				"mpdf/mpdf": "8.1.1",
+				"mitoteam/jpgraph": "^10.2.4",
+				"mpdf/mpdf": "^8.1.1",
 				"phpcompatibility/php-compatibility": "^9.3",
 				"phpstan/phpstan": "^1.1",
 				"phpstan/phpstan-phpunit": "^1.0",
 				"phpunit/phpunit": "^8.5 || ^9.0",
 				"squizlabs/php_codesniffer": "^3.7",
-				"tecnickcom/tcpdf": "6.5"
+				"tecnickcom/tcpdf": "^6.5"
 			},
 			"suggest": {
 				"dompdf/dompdf": "Option for rendering PDF with PDF Writer",
@@ -680,9 +680,9 @@
 			],
 			"support": {
 				"issues": "https://github.com/PHPOffice/PhpSpreadsheet/issues",
-				"source": "https://github.com/PHPOffice/PhpSpreadsheet/tree/1.25.2"
+				"source": "https://github.com/PHPOffice/PhpSpreadsheet/tree/1.27.0"
 			},
-			"time": "2022-09-25T17:21:01+00:00"
+			"time": "2023-01-24T20:07:45+00:00"
 		},
 		{
 			"name": "psr/http-client",
@@ -1335,16 +1335,16 @@
 		},
 		{
 			"name": "twig/twig",
-			"version": "v2.15.3",
+			"version": "v2.15.4",
 			"source": {
 				"type": "git",
 				"url": "https://github.com/twigphp/Twig.git",
-				"reference": "ab402673db8746cb3a4c46f3869d6253699f614a"
+				"reference": "3e059001d6d597dd50ea7c74dd2464b4adea48d3"
 			},
 			"dist": {
 				"type": "zip",
-				"url": "https://api.github.com/repos/twigphp/Twig/zipball/ab402673db8746cb3a4c46f3869d6253699f614a",
-				"reference": "ab402673db8746cb3a4c46f3869d6253699f614a",
+				"url": "https://api.github.com/repos/twigphp/Twig/zipball/3e059001d6d597dd50ea7c74dd2464b4adea48d3",
+				"reference": "3e059001d6d597dd50ea7c74dd2464b4adea48d3",
 				"shasum": ""
 			},
 			"require": {
@@ -1399,7 +1399,7 @@
 			],
 			"support": {
 				"issues": "https://github.com/twigphp/Twig/issues",
-				"source": "https://github.com/twigphp/Twig/tree/v2.15.3"
+				"source": "https://github.com/twigphp/Twig/tree/v2.15.4"
 			},
 			"funding": [
 				{
@@ -1411,7 +1411,7 @@
 					"type": "tidelift"
 				}
 			],
-			"time": "2022-09-28T08:40:08+00:00"
+			"time": "2022-12-27T12:26:20+00:00"
 		},
 		{
 			"name": "upstatement/routes",
