@@ -24,6 +24,8 @@ context:
         - instagram
         - mail
         - youtube
+        - mastodon
+        - tumblr
         - mobile
         - telegram
         - link

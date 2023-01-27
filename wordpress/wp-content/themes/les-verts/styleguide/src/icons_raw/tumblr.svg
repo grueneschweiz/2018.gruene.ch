@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+	xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+	xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	xmlns:cc="http://creativecommons.org/ns#"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	width="32px"
+	height="32px"
+	viewBox="0 0 32 32"
+	version="1.1"
+	id="svg839"
+	sodipodi:docname="tumblr.svg"
+	inkscape:version="1.1.2 (0a00cf5339, 2022-02-04)"
+	xmlns="http://www.w3.org/2000/svg">
+	<sodipodi:namedview
+		id="namedview841"
+		pagecolor="#ffffff"
+		bordercolor="#666666"
+		borderopacity="1.0"
+		inkscape:pageshadow="2"
+		inkscape:pageopacity="0.0"
+		inkscape:pagecheckerboard="0"
+		showgrid="false"
+		inkscape:zoom="27.71875"
+		inkscape:cx="-0.72153326"
+		inkscape:cy="15.981962"
+		inkscape:window-width="3840"
+		inkscape:window-height="2092"
+		inkscape:window-x="2560"
+		inkscape:window-y="30"
+		inkscape:window-maximized="1"
+		inkscape:current-layer="ico/24px/facebook/green"/>
+	<!-- Generator: Sketch 51.1 (57501) - http://www.bohemiancoding.com/sketch -->
+	<title
+		id="title830">ico/24px/facebook/green
+	</title>
+	<desc
+		id="desc832">Created with Sketch.
+	</desc>
+	<defs
+		id="defs834"/>
+	<g
+		id="ico/24px/facebook/green"
+		stroke="none"
+		stroke-width="1"
+		fill="none"
+		fill-rule="evenodd">
+		<rect
+			id="Rectangle-11"
+			stroke="#84B414"
+			x="0.5"
+			y="0.5"
+			width="31"
+			height="31"/>
+	</g>
+	<metadata
+		id="metadata900">
+		<rdf:RDF>
+			<cc:Work
+				rdf:about="">
+				<dc:title>ico/24px/facebook/green</dc:title>
+			</cc:Work>
+		</rdf:RDF>
+	</metadata>
+	<path
+		d="M 13.212707,15.468834 H 12.14069 c -0.276832,0 -0.500858,-0.224338 -0.500858,-0.500857 v -1.845019 c 0,-0.303077 0.189657,-0.571159 0.47555,-0.67208 0.695201,-0.245586 1.928442,-0.975471 2.131848,-3.0841981 0.02999,-0.3112003 0.284642,-0.5530369 0.597404,-0.5530369 h 1.99687 c 0.272457,0 0.493359,0.2209024 0.493359,0.4933592 v 2.9064128 h 2.020928 c 0.276832,0 0.500859,0.22434 0.500859,0.500857 v 2.253706 c 0,0.27683 -0.224339,0.500857 -0.500859,0.500857 h -2.020928 v 3.256357 c 0,0.739882 0.357444,1.023275 0.697703,1.023275 0.268081,0 0.732382,-0.117169 1.073891,-0.215279 0.241524,-0.06936 0.476799,0.02343 0.577408,0.298703 0.100608,0.275268 0.638961,1.822523 0.638961,1.822523 0.09842,0.280893 -0.0025,0.590843 -0.245899,0.762379 -0.460864,0.324949 -1.327289,0.769564 -2.618334,0.769564 -2.005305,0 -4.245886,-0.891108 -4.245886,-4.216204 0,-0.66052 0,-3.501318 0,-3.501319 z"
+		id="path2"
+		style="stroke-width:0.31245"/>
+</svg>
