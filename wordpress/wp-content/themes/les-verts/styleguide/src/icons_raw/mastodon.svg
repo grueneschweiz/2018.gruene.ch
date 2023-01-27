@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+	xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+	xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	xmlns:cc="http://creativecommons.org/ns#"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	width="32px"
+	height="32px"
+	viewBox="0 0 32 32"
+	version="1.1"
+	id="svg974"
+	sodipodi:docname="mastodon.svg"
+	inkscape:version="1.1.2 (0a00cf5339, 2022-02-04)"
+	xmlns="http://www.w3.org/2000/svg">
+	<sodipodi:namedview
+		id="namedview976"
+		pagecolor="#ffffff"
+		bordercolor="#666666"
+		borderopacity="1.0"
+		inkscape:pageshadow="2"
+		inkscape:pageopacity="0.0"
+		inkscape:pagecheckerboard="0"
+		showgrid="false"
+		inkscape:zoom="27.71875"
+		inkscape:cx="15.981962"
+		inkscape:cy="15.981962"
+		inkscape:window-width="3840"
+		inkscape:window-height="2092"
+		inkscape:window-x="2560"
+		inkscape:window-y="30"
+		inkscape:window-maximized="1"
+		inkscape:current-layer="ico/24px/twitter/green"/>
+	<!-- Generator: Sketch 51.1 (57501) - http://www.bohemiancoding.com/sketch -->
+	<title
+		id="title965">ico/24px/twitter/green
+	</title>
+	<desc
+		id="desc967">Created with Sketch.
+	</desc>
+	<defs
+		id="defs969"/>
+	<g
+		id="ico/24px/twitter/green"
+		stroke="none"
+		stroke-width="1"
+		fill="none"
+		fill-rule="evenodd">
+		<rect
+			id="Rectangle-11"
+			stroke="#84B414"
+			x="0.5"
+			y="0.5"
+			width="31"
+			height="31"/>
+		<path
+			d="m 15.960637,8.3884926 c -1.918335,0.00778 -3.823067,0.251333 -4.81415,0.7082916 0,0 -2.1323169,0.9706798 -2.1323169,4.2770388 0,3.935749 -0.00286,8.878379 3.5327749,9.834212 1.354044,0.363917 2.518482,0.442242 3.454627,0.388259 1.698907,-0.0959 2.539181,-0.616498 2.539181,-0.616498 L 18.4837,21.72447 c 0,0 -1.101184,0.388059 -2.464754,0.343601 -1.350871,-0.04764 -2.774013,-0.14901 -2.995666,-1.835851 -0.02031,-0.156871 -0.03039,-0.315707 -0.02977,-0.47385 2.862422,0.710684 5.303261,0.309536 5.975203,0.228243 1.876102,-0.228003 3.509285,-1.404408 3.7176,-2.479642 0.326445,-1.694461 0.298947,-4.133148 0.298947,-4.133148 0,-3.306359 -2.128596,-4.2770388 -2.128596,-4.2770388 -1.045073,-0.4880787 -2.97769,-0.7160717 -4.896026,-0.7082916 z m -2.05293,2.5218164 c 0.657257,0.01763 1.306732,0.311677 1.706847,0.93281 l 0.387018,0.657433 0.385777,-0.657433 c 0.80341,-1.249253 2.604073,-1.171302 3.46083,-0.204672 0.790071,0.919634 0.614017,1.513178 0.614017,5.621677 v 0.0013 h -1.554272 v -3.574908 c 0,-1.673503 -2.133558,-1.738135 -2.133558,0.231963 v 2.071485 h -1.544347 v -2.071535 c 0,-1.970098 -2.132318,-1.906707 -2.132318,-0.233204 v 3.57495 h -1.557995 c 0,-4.111674 -0.172877,-4.70903 0.614019,-5.621677 0.431555,-0.48649 1.096729,-0.745763 1.753982,-0.728139 z"
+			id="path1383"
+			style="fill:#84b414;fill-opacity:1;stroke-width:0.635106"/>
+	</g>
+	<metadata
+		id="metadata1656">
+		<rdf:RDF>
+			<cc:Work
+				rdf:about="">
+				<dc:title>ico/24px/twitter/green</dc:title>
+			</cc:Work>
+		</rdf:RDF>
+	</metadata>
+</svg>
