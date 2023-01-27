@@ -3,199 +3,263 @@
     "title": "(Widget) Contact",
     "fields": [
         {
-            "key": "field_5b6d66726dae9",
-            "label": "Address",
-            "name": "address",
-            "type": "wysiwyg",
-            "instructions": "",
-            "required": 1,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "tabs": "all",
-            "toolbar": "full",
-            "media_upload": 0,
-            "delay": 0
+          "key": "field_5b6d66726dae9",
+          "label": "Address",
+          "name": "address",
+          "aria-label": "",
+          "type": "wysiwyg",
+          "instructions": "",
+          "required": 1,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "",
+            "class": "",
+            "id": ""
+          },
+          "default_value": "",
+          "tabs": "all",
+          "toolbar": "full",
+          "media_upload": 0,
+          "delay": 0
         },
-        {
-            "key": "field_5b6d66eb6daeb",
-            "label": "Social Media",
-            "name": "social_media",
-            "type": "flexible_content",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "layouts": {
-                "5b6d66ff18a3e": {
-                    "key": "5b6d66ff18a3e",
-                    "name": "facebook",
-                    "label": "Facebook",
-                    "display": "block",
-                    "sub_fields": [
-                        {
-                            "key": "field_5b6d67a21c8de",
-                            "label": "Link to the facebook fan page \/ profile",
-                            "name": "link",
-                            "type": "url",
-                            "instructions": "",
-                            "required": 1,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "",
-                            "placeholder": ""
-                        }
-                    ],
-                    "min": "",
-                    "max": "1"
+      {
+        "key": "field_5b6d66eb6daeb",
+        "label": "Social Media",
+        "name": "social_media",
+        "aria-label": "",
+        "type": "flexible_content",
+        "instructions": "",
+        "required": 0,
+        "conditional_logic": 0,
+        "wrapper": {
+          "width": "",
+          "class": "",
+          "id": ""
+        },
+        "layouts": {
+          "5b6d66ff18a3e": {
+            "key": "5b6d66ff18a3e",
+            "name": "facebook",
+            "label": "Facebook",
+            "display": "block",
+            "sub_fields": [
+              {
+                "key": "field_5b6d67a21c8de",
+                "label": "Link to the facebook fan page \/ profile",
+                "name": "link",
+                "aria-label": "",
+                "type": "url",
+                "instructions": "",
+                "required": 1,
+                "conditional_logic": 0,
+                "wrapper": {
+                  "width": "",
+                  "class": "",
+                  "id": ""
                 },
-                "layout_5b6d67df1c8df": {
-                    "key": "layout_5b6d67df1c8df",
-                    "name": "twitter",
-                    "label": "Twitter",
-                    "display": "block",
-                    "sub_fields": [
-                        {
-                            "key": "field_5b6d67e81c8e0",
-                            "label": "Link to the twitter profile",
-                            "name": "link",
-                            "type": "url",
-                            "instructions": "",
-                            "required": 1,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "",
-                            "placeholder": ""
-                        }
-                    ],
-                    "min": "",
-                    "max": "1"
-                },
-                "layout_5b6d680d1c8e1": {
-                    "key": "layout_5b6d680d1c8e1",
-                    "name": "instagram",
-                    "label": "Instagram",
-                    "display": "block",
-                    "sub_fields": [
-                        {
-                            "key": "field_5b6d681c1c8e2",
-                            "label": "Link to the instagram profile",
-                            "name": "link",
-                            "type": "url",
-                            "instructions": "",
-                            "required": 1,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                              "width": "",
-                              "class": "",
-                              "id": ""
-                            },
-                          "default_value": "",
-                          "placeholder": ""
-                        }
-                    ],
-                  "min": "",
-                  "max": "1"
-                },
-              "layout_626bcd7fbb4b2": {
-                "key": "layout_626bcd7fbb4b2",
-                "name": "tiktok",
-                "label": "Tiktok",
-                "display": "block",
-                "sub_fields": [
-                  {
-                    "key": "field_626bcd7fbb4b3",
-                    "label": "Link to the tiktok profile",
-                    "name": "link",
-                    "type": "url",
-                    "instructions": "",
-                    "required": 1,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                      "width": "",
-                      "class": "",
-                      "id": ""
-                    },
-                    "default_value": "",
-                    "placeholder": ""
-                  }
-                ],
-                "min": "",
-                "max": "1"
-              },
-              "layout_626bcda0bb4b4": {
-                "key": "layout_626bcda0bb4b4",
-                "name": "linkedin",
-                "label": "Linkedin",
-                "display": "block",
-                "sub_fields": [
-                  {
-                    "key": "field_626bcda0bb4b5",
-                    "label": "Link to the linkedin profile",
-                    "name": "link",
-                    "type": "url",
-                    "instructions": "",
-                    "required": 1,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                      "width": "",
-                      "class": "",
-                      "id": ""
-                    },
-                    "default_value": "",
-                    "placeholder": ""
-                  }
-                ],
-                "min": "",
-                "max": "1"
-              },
-              "layout_626bcdb7bb4b6": {
-                "key": "layout_626bcdb7bb4b6",
-                "name": "youtube",
-                "label": "Youtube",
-                "display": "block",
-                "sub_fields": [
-                  {
-                    "key": "field_626bcdb7bb4b7",
-                    "label": "Link to the youtube profile",
-                    "name": "link",
-                    "type": "url",
-                    "instructions": "",
-                    "required": 1,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                      "width": "",
-                      "class": "",
-                      "id": ""
-                    },
-                    "default_value": "",
-                    "placeholder": ""
-                  }
-                ],
-                "min": "",
-                "max": "1"
+                "default_value": "",
+                "placeholder": ""
               }
-            },
-          "button_label": "Add Icon",
-          "min": "",
-          "max": ""
-        }
+            ],
+            "min": "",
+            "max": "1"
+          },
+          "layout_5b6d67df1c8df": {
+            "key": "layout_5b6d67df1c8df",
+            "name": "twitter",
+            "label": "Twitter",
+            "display": "block",
+            "sub_fields": [
+              {
+                "key": "field_5b6d67e81c8e0",
+                "label": "Link to the twitter profile",
+                "name": "link",
+                "aria-label": "",
+                "type": "url",
+                "instructions": "",
+                "required": 1,
+                "conditional_logic": 0,
+                "wrapper": {
+                  "width": "",
+                  "class": "",
+                  "id": ""
+                },
+                "default_value": "",
+                "placeholder": ""
+              }
+            ],
+            "min": "",
+            "max": "1"
+          },
+          "layout_63d42064033f8": {
+            "key": "layout_63d42064033f8",
+            "name": "mastodon",
+            "label": "Mastodon",
+            "display": "block",
+            "sub_fields": [
+              {
+                "key": "field_63d42064033f9",
+                "label": "Link to the mastodon profile",
+                "name": "link",
+                "aria-label": "",
+                "type": "url",
+                "instructions": "",
+                "required": 1,
+                "conditional_logic": 0,
+                "wrapper": {
+                  "width": "",
+                  "class": "",
+                  "id": ""
+                },
+                "default_value": "",
+                "translations": "copy_once",
+                "placeholder": ""
+              }
+            ],
+            "min": "",
+            "max": "1"
+          },
+          "layout_63d42127948a1": {
+            "key": "layout_63d42127948a1",
+            "name": "tumblr",
+            "label": "Tumblr",
+            "display": "block",
+            "sub_fields": [
+              {
+                "key": "field_63d42127948a2",
+                "label": "Link to the tumblr profile",
+                "name": "link",
+                "aria-label": "",
+                "type": "url",
+                "instructions": "",
+                "required": 1,
+                "conditional_logic": 0,
+                "wrapper": {
+                  "width": "",
+                  "class": "",
+                  "id": ""
+                },
+                "default_value": "",
+                "translations": "copy_once",
+                "placeholder": ""
+              }
+            ],
+            "min": "",
+            "max": "1"
+          },
+          "layout_5b6d680d1c8e1": {
+            "key": "layout_5b6d680d1c8e1",
+            "name": "instagram",
+            "label": "Instagram",
+            "display": "block",
+            "sub_fields": [
+              {
+                "key": "field_5b6d681c1c8e2",
+                "label": "Link to the instagram profile",
+                "name": "link",
+                "aria-label": "",
+                "type": "url",
+                "instructions": "",
+                "required": 1,
+                "conditional_logic": 0,
+                "wrapper": {
+                  "width": "",
+                  "class": "",
+                  "id": ""
+                },
+                "default_value": "",
+                "placeholder": ""
+              }
+            ],
+            "min": "",
+            "max": "1"
+          },
+          "layout_626bcd7fbb4b2": {
+            "key": "layout_626bcd7fbb4b2",
+            "name": "tiktok",
+            "label": "Tiktok",
+            "display": "block",
+            "sub_fields": [
+              {
+                "key": "field_626bcd7fbb4b3",
+                "label": "Link to the tiktok profile",
+                "name": "link",
+                "aria-label": "",
+                "type": "url",
+                "instructions": "",
+                "required": 1,
+                "conditional_logic": 0,
+                "wrapper": {
+                  "width": "",
+                  "class": "",
+                  "id": ""
+                },
+                "default_value": "",
+                "placeholder": ""
+              }
+            ],
+            "min": "",
+            "max": "1"
+          },
+          "layout_626bcda0bb4b4": {
+            "key": "layout_626bcda0bb4b4",
+            "name": "linkedin",
+            "label": "Linkedin",
+            "display": "block",
+            "sub_fields": [
+              {
+                "key": "field_626bcda0bb4b5",
+                "label": "Link to the linkedin profile",
+                "name": "link",
+                "aria-label": "",
+                "type": "url",
+                "instructions": "",
+                "required": 1,
+                "conditional_logic": 0,
+                "wrapper": {
+                  "width": "",
+                  "class": "",
+                  "id": ""
+                },
+                "default_value": "",
+                "placeholder": ""
+              }
+            ],
+            "min": "",
+            "max": "1"
+          },
+          "layout_626bcdb7bb4b6": {
+            "key": "layout_626bcdb7bb4b6",
+            "name": "youtube",
+            "label": "Youtube",
+            "display": "block",
+            "sub_fields": [
+              {
+                "key": "field_626bcdb7bb4b7",
+                "label": "Link to the youtube profile",
+                "name": "link",
+                "aria-label": "",
+                "type": "url",
+                "instructions": "",
+                "required": 1,
+                "conditional_logic": 0,
+                "wrapper": {
+                  "width": "",
+                  "class": "",
+                  "id": ""
+                },
+                "default_value": "",
+                "placeholder": ""
+              }
+            ],
+            "min": "",
+            "max": "1"
+          }
+        },
+        "min": "",
+        "max": "",
+        "button_label": "Add Icon"
+      }
     ],
   "location": [
     [
@@ -215,5 +279,5 @@
   "active": true,
   "description": "",
   "show_in_rest": 0,
-  "modified": 1651232205
+  "modified": 1674847470
 }
