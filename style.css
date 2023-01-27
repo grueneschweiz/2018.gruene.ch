@@ -2068,6 +2068,7 @@ body.no-scroll {
   color: #84B414;
   text-align: center;
   transition: all 0.2s cubic-bezier(0.65, 0.05, 0.36, 1);
+  position: relative;
 }
 @media all and (min-width: 480px) {
   .a-social-icon__caption {
