@@ -187,6 +187,7 @@ Customizer\Logo::register();
 
 require_once __DIR__ . '/tweaks/inject-svg-sprite.php';
 require_once __DIR__ . '/tweaks/responsive-local-video.php';
+require_once __DIR__ . '/tweaks/fix-multi-category-urls.php';
 
 if ( defined( 'WPSEO_FILE' ) ) {
 	require_once __DIR__ . '/tweaks/tweak-yoast-social-media-stuff.php';
