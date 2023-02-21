@@ -22,6 +22,7 @@ export default class AImageLazy extends BaseView {
 		if (!this.loading){
 			this.loading = true;
 			let img = this.loadFullImage();
+			console.log( img );
 			if (img.complete) {
 				this.replaceImage( img );
 			} else {
@@ -34,6 +35,8 @@ export default class AImageLazy extends BaseView {
 		let img = this.element.cloneNode( true );
 		img.srcset = img.dataset.srcset || '';
 		img.sizes = img.dataset.sizes || '';
+		img.loading = 'eager'; // otherwise safari on iOS doesn't load images when
+													 // scrolling, even if they are in the viewport
 		img.removeAttribute( 'data-srcset' );
 		img.removeAttribute( 'data-sized' );
 		return img;
