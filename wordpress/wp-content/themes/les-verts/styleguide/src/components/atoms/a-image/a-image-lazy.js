@@ -22,7 +22,6 @@ export default class AImageLazy extends BaseView {
 		if (!this.loading){
 			this.loading = true;
 			let img = this.loadFullImage();
-			console.log( img );
 			if (img.complete) {
 				this.replaceImage( img );
 			} else {
