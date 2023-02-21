@@ -34,10 +34,13 @@ export default class AImageLazy extends BaseView {
 		let img = this.element.cloneNode( true );
 		img.srcset = img.dataset.srcset || '';
 		img.sizes = img.dataset.sizes || '';
-		img.loading = 'eager'; // otherwise safari on iOS doesn't load images when
-													 // scrolling, even if they are in the viewport
 		img.removeAttribute( 'data-srcset' );
 		img.removeAttribute( 'data-sized' );
+
+		// otherwise safari on iOS doesn't load images when
+		// scrolling, even if they are in the viewport
+		img.loading = 'eager';
+
 		return img;
 	}
 
