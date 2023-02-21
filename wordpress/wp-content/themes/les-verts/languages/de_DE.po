@@ -377,7 +377,7 @@ msgstr "Weisse Subline"
 
 #: acf-translate.php:2496
 msgid "Campaign Summary"
-msgstr "Zusammenfasung der Kampagne"
+msgstr "Zusammenfassung der Kampagne"
 
 #: acf-translate.php:2500
 msgid "This refers to the upper left box below the image. Add a brief description of the campaign."
@@ -389,7 +389,7 @@ msgstr "Das ist der Hauptitel. Halte ihn so kurz wie möglich."
 
 #: acf-translate.php:2544
 msgid "Write a brief teaser to attract the readers interest. Keept it short (200 to 400 characters)."
-msgstr "Schreibe einen kurzen Teaser um die Aufmerksamkeit der Besuchenden anzuziehen. Halte dich kurz (200 bis 400 Zeichen)."
+msgstr "Schreibe einen kurzen Teaser, um die Aufmerksamkeit der Besuchenden anzuziehen. Halte dich kurz (200 bis 400 Zeichen)."
 
 #: acf-translate.php:2560
 msgid "Read more button"
@@ -401,7 +401,7 @@ msgstr "Call to Action"
 
 #: acf-translate.php:2582
 msgid "This refers to the second box, the darker one. Use it to call for action."
-msgstr "Dies gehört zur zweiten Box, der dünkleren. Nutze sie für einen Call to Action."
+msgstr "Dies gehört zur zweiten Box, der dunkleren. Nutze sie für einen Call to Action."
 
 #: acf-translate.php:2606
 msgid "Use an encouraging title, like 'Let me be part of the success'."
@@ -626,7 +626,7 @@ msgstr "[Template]Positionen"
 
 #: acf-translate.php:3947
 msgid "Use this block to display a teaser of your political positions. Make sure you link a page, that will further detail your position."
-msgstr "Nutze diesen Block um einen Teaser der politischen Positionen anzuzeigen. Stelle sicher, dass du eine Seite verlinkst, die weiter die Positionen ausführt."
+msgstr "Nutze diesen Block, um einen Teaser der politischen Positionen anzuzeigen. Stelle sicher, dass du eine Seite verlinkst, die weiter die Positionen ausführt."
 
 #: acf-translate.php:3975
 msgid "Positions Group"
@@ -654,7 +654,7 @@ msgstr "[Template]Zitat"
 
 #: acf-translate.php:4440
 msgid "Displays a nicely formatted quote of any person you added in your people section. The image will automatically be pulled from the persons record."
-msgstr "Zeigt ein hübsch formatiertes Zitat von einer Person, die du im Bereich Personen hinzugefügt hast. Das Bild wird automatisch vom Personen eintrag genommen."
+msgstr "Zeigt ein hübsch formatiertes Zitat von einer Person, die du im Bereich Personen hinzugefügt hast. Das Bild wird automatisch vom Personeneintrag genommen."
 
 #: acf-translate.php:1270 acf-translate.php:1275 acf-translate.php:4446
 #: acf-translate.php:6311
@@ -723,7 +723,7 @@ msgstr "Nur als Vorschau anzeigen (auf dieser Seite verstecken)"
 
 #: acf-translate.php:4744
 msgid "If yes, the teaser will only be shown as preview text but not on the page itself."
-msgstr "Wenn ja, wird der Teaser nur als Vorschautext angezeigt aber nicht auf der Seite selbst."
+msgstr "Wenn ja, wird der Teaser nur als Vorschautext angezeigt, aber nicht auf der Seite selbst."
 
 #: acf-translate.php:4774
 msgid "[Template]Testimonials"
@@ -1555,7 +1555,7 @@ msgstr "Uups, etwas ist schief gelaufen!"
 
 #: templates/molecules/m-form.twig:172
 msgid "Sorry, there was an error submitting this form. If the error persists, please contact us by email."
-msgstr "Es tut uns leid, es gab einen Fehler beim versenden dieses Formulars. Bitte kontaktiere uns per E-Mail, falls dieser Fehler erneut auftritt."
+msgstr "Es tut uns leid, es gab einen Fehler beim Versenden dieses Formulars. Bitte kontaktiere uns per E-Mail, falls dieser Fehler erneut auftritt."
 
 #: templates/molecules/m-form.twig:176
 msgid "Please check input"
@@ -2642,7 +2642,7 @@ msgstr "Nur Veranstaltungen einer bestimmten Kategorie anzeigen"
 
 #: acf-translate.php:1934
 msgid "Select Category"
-msgstr "Kategorie Auswählen"
+msgstr "Kategorie auswählen"
 
 #: acf-translate.php:1938
 msgid "Select the category of events to display."
@@ -2705,7 +2705,7 @@ msgstr "Wenn leer gelassen werden mögliche Duplikate in der gleichen Gruppe ges
 
 #: lib/form/include/Util.php:104
 msgid "ERROR scheduling wp_cron: %s"
-msgstr "FEHLER ausführen wp_cron: %s"
+msgstr "FEHLER beim Ausführen von wp_cron: %s"
 
 #: lib/form/include/Util.php:109
 msgid "Hi Admin\n"
@@ -2715,7 +2715,7 @@ msgid "Hi Admin\n"
 "There is no further info about the error, as WordPress only returns 'false' :("
 msgstr "Hallo Admin\n"
 "\n"
-"Der wp_cron Job %s konnte auf %s nicht ausgeführt werden. Löse das zeitnah sonst werden Formularrückmeldungen nicht funktionieren wie erwartet. Es gibt keine weiteren Infos zum Fehler, da WordPress nur 'false' zurückmeldet :("
+"Der wp_cron Job %s konnte auf %s nicht ausgeführt werden. Löse das zeitnah, sonst werden Formularrückmeldungen nicht funktionieren wie erwartet. Es gibt keine weiteren Infos zum Fehler, da WordPress nur 'false' zurückmeldet :("
 
 #. Theme URI of the plugin/theme
 #: 
@@ -2848,7 +2848,7 @@ msgstr "E-Mailvorlage"
 
 #: lib/form/include/Mail.php:163
 msgid "ERROR: Failed to compile email template."
-msgstr "FEHLER: Die E-Mailorlage konnte nicht verarbeitet werden."
+msgstr "FEHLER: Die E-Mailvorlage konnte nicht verarbeitet werden."
 
 #: acf-translate.php:1730
 msgid "Share Buttons"
