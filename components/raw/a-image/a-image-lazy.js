@@ -36,6 +36,11 @@ export default class AImageLazy extends BaseView {
 		img.sizes = img.dataset.sizes || '';
 		img.removeAttribute( 'data-srcset' );
 		img.removeAttribute( 'data-sized' );
+
+		// otherwise safari on iOS doesn't load images when
+		// scrolling, even if they are in the viewport
+		img.loading = 'eager';
+
 		return img;
 	}
 
