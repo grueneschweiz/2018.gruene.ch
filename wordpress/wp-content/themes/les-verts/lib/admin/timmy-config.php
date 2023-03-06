@@ -35,7 +35,7 @@ add_filter( 'intermediate_image_sizes_advanced', function ( $metadata ) {
 
 	$metadata['wpseo-opengraph'] = array(
 		'width'  => 1200,
-		'height' => 628,
+		'height' => 630,
 		'crop'   => true,
 	);
 
@@ -83,7 +83,7 @@ add_filter( 'timmy/sizes', function () {
 
 		// wpseo-opengraph - this is used by yoast as og image
 		'wpseo-opengraph' => [
-			'resize'     => [ 1200, 628, 'center' ],
+			'resize'     => [ 1200, 630, 'center' ],
 			'name'       => 'Open Graph image',
 			'post_types' => [ 'all' ],
 			'show_in_ui' => false,
