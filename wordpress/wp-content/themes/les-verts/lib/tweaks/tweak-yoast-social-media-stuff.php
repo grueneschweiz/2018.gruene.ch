@@ -88,7 +88,7 @@ if ( defined( 'POLYLANG_DIR' ) && function_exists( 'pll__' ) ) {
  * Reduce open graph and twitter image size to make sure we don't exceed the limits
  */
 add_filter( 'wpseo_opengraph_image_size', function () {
-	return 'large';
+	return 'wpseo-opengraph';
 } );
 add_filter( 'wpseo_twitter_image_size', function () {
 	return 'large';
