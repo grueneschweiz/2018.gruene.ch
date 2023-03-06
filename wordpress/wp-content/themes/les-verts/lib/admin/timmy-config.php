@@ -9,14 +9,14 @@ set_post_thumbnail_size( 0, 0 );
 // never set the style_attr for an image
 add_filter( 'timmy/oversize', function ( $oversize ) {
 	$oversize['style_attr'] = false;
-	
+
 	return $oversize;
 } );
 
 // make the full size unavailable when an image is inserted into the WordPress Editor
 add_filter( 'image_size_names_choose', function ( $sizes ) {
 	unset( $sizes['full'] );
-	
+
 	return $sizes;
 }, 11 );
 
@@ -32,7 +32,13 @@ add_filter( 'intermediate_image_sizes_advanced', function ( $metadata ) {
 		'height' => 0,
 		'crop'   => false,
 	);
-	
+
+	$metadata['wpseo-opengraph'] = array(
+		'width'  => 1200,
+		'height' => 628,
+		'crop'   => true,
+	);
+
 	return $metadata;
 }, 11 );
 
@@ -42,37 +48,47 @@ add_filter( 'intermediate_image_sizes_advanced', function ( $metadata ) {
 add_filter( 'timmy/sizes', function () {
 	return [
 		// full width
-		'full-width' => [
+		'full-width'      => [
 			'resize'     => [ 2560 ],
 			'srcset'     => [ [ 640 ], [ 768 ], [ 1024 ], [ 1680 ], [ 2048 ], [ 2560 ] ],
 			'name'       => 'Full width',
 			'post_types' => [ 'all' ],
 			'show_in_ui' => true,
 		],
-		
+
 		// regular
-		'regular'    => [
+		'regular'         => [
 			'resize'     => [ 790 ],
 			'srcset'     => [ [ 100 ], [ 200 ], [ 400 ], [ 640 ], [ 768 ], [ 1024 ], [ 1580 ] ],
 			'name'       => 'Regular width',
 			'post_types' => [ 'all' ],
 			'show_in_ui' => true,
 		],
-		
+
 		// admin thumbnail
-		'thumbnail'  => [
+		'thumbnail'       => [
 			'resize'     => [ 150 ],
 			'name'       => 'Admin Thumbnail',
 			'post_types' => [ 'all' ],
 			'show_in_ui' => true,
 		],
-		
-		// large - this is used by yoast as og image
-		'large'      => [
+
+		// large - this is used by yoast as twitter image
+		'large'           => [
 			'resize'     => [ 1200 ],
+			'name'       => 'Twitter image',
+			'post_types' => [ 'all' ],
+			'show_in_ui' => false,
+		],
+
+		// wpseo-opengraph - this is used by yoast as og image
+		'wpseo-opengraph' => [
+			'resize'     => [ 1200, 628, 'center' ],
 			'name'       => 'Open Graph image',
 			'post_types' => [ 'all' ],
 			'show_in_ui' => false,
+			'tojpg'      => true,
+			'oversize'   => true,
 		]
 	];
 } );
