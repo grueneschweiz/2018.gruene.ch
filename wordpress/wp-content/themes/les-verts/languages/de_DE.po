@@ -977,7 +977,7 @@ msgstr "In Kürze"
 
 #: acf-translate.php:1319
 msgid "Use this block to add text. If you need to add raw HTML, make sure you use the 'text' mode instead of the 'visual' mode."
-msgstr "Nutze diesen Block um Text hinzuzufügen. Solltest du HTML einfügen müssen, nutze den <i>Text</i>- statt den <i>visuellen</i>modus."
+msgstr "Nutze diesen Block um Text hinzuzufügen. Solltest du HTML einfügen müssen, nutze den <i>Text-</i> statt den <i>visuellen</i> Modus."
 
 #: acf-translate.php:1403 acf-translate.php:1426
 msgid "Video / Tweet / Post etc."
