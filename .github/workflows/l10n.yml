@@ -20,8 +20,8 @@ jobs:
         uses: crowdin/github-action@v1
         with:
           # files
-          source: /wordpress/wp-content/themes/les-verts/languages/theme.pot
-          translation: /wordpress/wp-content/themes/les-verts/languages/%two_letters_code%.po
+          source: wordpress/wp-content/themes/les-verts/languages/theme.pot
+          translation: wordpress/wp-content/themes/les-verts/languages/%two_letters_code%.po
 
           # upload options
           upload_sources: true
