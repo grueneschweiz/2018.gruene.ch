@@ -2161,7 +2161,7 @@ msgstr "Mostra direttamente il formulario con il Call to action."
 
 #: acf-translate.php:2496
 msgid "Call to Action (Button)"
-msgstr "Call to Action (pulsante)\n"
+msgstr "Call to Action (pulsante)"
 ""
 
 #: acf-translate.php:2499
@@ -2483,7 +2483,7 @@ msgstr "Se aggiungi una delle seguenti licenze (p.es: <emph>Tunick Spencer (CC B
 "<li style=\"display: inline\"><a href=\"https://creativecommons.org/licenses/by-nc-sa/4.0/\">CC BY-NC-SA</a></li>\n"
 "<li style=\"display: inline\"><a href=\"https://creativecommons.org/licenses/by-nd/4.0/\">CC BY-ND</a></li>\n"
 "<li style=\"display: inline\"><a href=\"https://creativecommons.org/licenses/by-nc-nd/4.0/\">CC BY-NC-ND</a></li>\n"
-"</ul>\n"
+"</ul>"
 ""
 
 #: acf-translate.php:1445

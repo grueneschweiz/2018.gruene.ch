@@ -2325,9 +2325,7 @@ msgid "<strong>Warning</strong>: Selecting the wrong mode results in data loss!\
 "Select replace for single value fields like the address line and append for multi value fields like the interests field or a note field."
 msgstr "<strong>Avertissement</strong>: Si le mode sélectionné n'est pas le bon, des données seront perdues !\n"
 "<br><br>\n"
-"Sélectionne le mode Remplacement pour des champs à valeur unique (p. ex. le champ Adresse) et le mode Insertion pour les champs pouvant contenir plusieurs valeurs (p. ex. le champ Intérêts ou un champ Commentaires).\n"
-"\n"
-""
+"Sélectionne le mode Remplacement pour des champs à valeur unique (p. ex. le champ Adresse) et le mode Insertion pour les champs pouvant contenir plusieurs valeurs (p. ex. le champ Intérêts ou un champ Commentaires)."
 
 #: lib/form/acf/form-details.php:590
 msgid "Add if new"

@@ -2585,7 +2585,7 @@ msgstr "manuelles Ziel"
 
 #: lib/shortcodes/progress.php:64
 msgid "with legend"
-msgstr "mit Legende\n"
+msgstr "mit Legende"
 ""
 
 #: lib/shortcodes/progress.php:65
