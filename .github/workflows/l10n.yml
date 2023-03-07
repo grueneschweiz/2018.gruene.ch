@@ -21,7 +21,7 @@ jobs:
         with:
           # files
           source: wordpress/wp-content/themes/les-verts/languages/theme.pot
-          translation: wordpress/wp-content/themes/les-verts/languages/%two_letters_code%.po
+          translation: wordpress/wp-content/themes/les-verts/languages/%locale_with_underscore%.po
 
           # upload options
           upload_sources: true
