@@ -54,6 +54,9 @@ jobs:
           ) 
           || true
 
+      - name: Install gettext
+        run: sudo apt-get install gettext
+
       - name: Generate Mo-Files
         run: |
           cd wordpress/wp-content/themes/les-verts/languages
