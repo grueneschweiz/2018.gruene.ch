@@ -7,7 +7,8 @@ use Twig\TwigFilter;
 add_filter( 'get_twig', function ( $twig ) {
 	$twig->addFilter(
 		new TwigFilter( 'nice_link', function ( $string ) {
-			$string = trim($string);
+			$string = trim( $string );
+			$string = rtrim( $string, '/' );
 			
 			$pos = strpos( $string, '://' );
 			if ( false === $pos ) {
