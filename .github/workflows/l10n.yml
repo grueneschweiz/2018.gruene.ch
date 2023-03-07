@@ -43,7 +43,7 @@ jobs:
       - name: If translations have changed
         run: >-
           (
-          git diff -U0 languages/*.po
+          git diff -U0 wordpress/wp-content/themes/les-verts/languages/*.po
           | grep '^[+-]' 
           | grep -Ev '^(--- a/|\+\+\+ b/)' 
           | grep -v 'Project-Id-Version'
@@ -56,7 +56,7 @@ jobs:
 
       - name: Generate Mo-Files
         run: |
-          cd wp-content/themes/les-verts/languages
+          cd wordpress/wp-content/themes/les-verts/languages
           for f in *.po; do
             msgfmt -o "${f%.po}.mo" "$f"
           done
