@@ -8,8 +8,8 @@
 
 * [node](https://nodejs.org/) >= 10.16.0
 * [yarn](https://yarnpkg.com) >= 1.7.0
-* [docker](https://www.docker.com/) >= 18.0.0
-* [docker compose](https://docs.docker.com/compose/) >= 1.21.0
+* [docker](https://www.docker.com/) >= 23.0.0
+* [docker compose](https://docs.docker.com/compose/) >= 2.16.0
 
 ### Setup
 
@@ -21,7 +21,7 @@
 
 #### WordPress
 
-1. `docker-compose up -d` - Create docker containers & launch them
+1. `docker compose up -d` - Create docker containers & launch them
 1. Add the required proprietary plugins `polylang-pro`, `advanced-custom-fields-pro`, `searchwp`, `searchwp-polylang`
    into `wordpress/wp-content/plugins`.
 1. `yarn wp:init` - Install WordPress with all dependencies
@@ -34,7 +34,7 @@
 ## Use
 
 1. `yarn start` - start the styleguide & live assets compilation
-2. `docker-compose up -d` - start WordPress
+2. `docker compose up -d` - start WordPress
 
 ### Access
 
@@ -54,7 +54,7 @@ You can enable WordPress & php debugs tools to help develop.
 
 1. Set 1 to `WORDPRESS_DEBUG` environment variable in `./docker-compose.yml` file.
 1. Enable xdebug by uncommenting line 13 in `./scripts/php.ini` file
-1. Rebuild the container by running the command `docker-compose down && docker-compose build && docker-compose up -d`
+1. Rebuild the container by running the command `docker compose down && docker compose build && docker compose up -d`
 
 - Setting the PHP constant `SUPT_FORM_ASYNC` to false (e.g. in `wp-config.php`) processes form mails and crm saving
   synchronously and thus facilitates debugging.
