@@ -17,7 +17,7 @@
 					<a
 						class="m-menu__nav-link m-menu__nav-link--js-hook m-menu__nav-link--{{ item.id }}{% if item.children %} m-menu__nav-link--parent{% endif %}{% if item.current or item.current_item_ancestor %} m-menu__nav-link--active{% endif %}"
 						href="{{ item.link }}" role="menuitem" {% if loop.first %}tabindex="0" accesskey="1"{% endif %}
-						{% if item.children %}aria-haspopup="menu" aria-expanded="false"{% endif %}
+						{% if item.children %}aria-haspopup="menu" aria-expanded="false" main="false"{% endif %}
 						{{ link_props(item.link) }}>{{ item.title }}</a>
 					{% if item.children %}
 						{% include 'molecules/m-menu--submenu.twig' with {children: item.children} only %}

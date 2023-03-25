@@ -154,6 +154,7 @@
 			}
 
 			&__title {
+				@include heading-font;
 				font-size: 1.25rem;
 				line-height: 1.4em;
 				margin-top: 16px;

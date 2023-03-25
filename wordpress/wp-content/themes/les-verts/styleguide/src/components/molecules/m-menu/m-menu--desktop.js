@@ -1,4 +1,9 @@
-import {MMenuBase, SUBMENU_SELECTOR, OPEN_STATE} from './m-menu--base';
+import {
+	MAIN_MENU_SELECTOR,
+	MMenuBase,
+	OPEN_STATE,
+	SUBMENU_SELECTOR,
+} from './m-menu--base';
 
 const CLOSE_SELECTOR = '.m-menu__submenu__close';
 
@@ -10,6 +15,9 @@ export default class MMenuDesktop extends MMenuBase {
 		super.initialize();
 
 		this.ticking = false;
+
+		this.getScopedElement( MAIN_MENU_SELECTOR ).
+			setAttribute( 'aria-orientation', 'horizontal' );
 	}
 
 	bind() {

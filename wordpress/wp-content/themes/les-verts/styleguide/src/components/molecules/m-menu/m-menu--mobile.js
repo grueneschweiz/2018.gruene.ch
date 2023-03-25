@@ -1,7 +1,6 @@
-import { MMenuBase, OPEN_STATE } from './m-menu--base';
+import { MAIN_MENU_SELECTOR, MMenuBase, OPEN_STATE } from './m-menu--base';
 
 const NAV_WRAPPER_SELECTOR = '.m-menu__nav';
-const MAIN_MENU_SELECTOR = '.m-menu__nav-list';
 const RIGHT_SELECTOR = '.m-menu__right';
 const HAMBURGER_SELECTOR = '.a-hamburger';
 const SUBMENU_ITEMS_SELECTOR = '.m-menu__nav-item';
@@ -20,6 +19,8 @@ export default class MMenuMobile extends MMenuBase {
 		this.hamburger = this.getScopedElement( HAMBURGER_SELECTOR );
 		this.right = this.getScopedElement( RIGHT_SELECTOR );
 		this.menuItems = this.getScopedElements( SUBMENU_ITEMS_SELECTOR );
+
+		this.mainNav.setAttribute( 'aria-orientation', 'vertical' );
 	}
 
 	bind() {
