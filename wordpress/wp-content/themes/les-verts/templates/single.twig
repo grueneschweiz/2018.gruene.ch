@@ -19,7 +19,7 @@
 					<div class="page__breadcrumbs{% if distraction_free %} page__breadcrumbs--distracting{% endif %}">
 						{% include 'atoms/a-breadcrumbs.twig' %}
 					</div>
-					<h1>{{ post.title|wptexturize }}</h1>
+					<h1 id="main-content">{{ post.title|wptexturize }}</h1>
 					{% if not post.teaser_hide_on_page or is_press_release %}
 						<div class="page__header-text page__header-text--bold">
 							<p>{{ post.full_excerpt()|wptexturize|disableable_wpautop }}</p>

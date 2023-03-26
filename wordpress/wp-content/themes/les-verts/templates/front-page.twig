@@ -53,7 +53,9 @@
 		} only %}
 	</section>
 	{% endif %}
-	<div class="front__grid-wrapper{% if not post.campaign_show_main_campaign %} front__grid-wrapper--no-campaign{% endif %}">
+	<div
+		class="front__grid-wrapper{% if not post.campaign_show_main_campaign %} front__grid-wrapper--no-campaign{% endif %}"
+		{% if not post.campaign_show_main_campaign %}id="main-content"{% endif %}>
 		<section class="front__grid">
 			{% for block in post.get_field('content_blocks') %}
 			{% if block.acf_fc_layout == 'testimonials' %}
@@ -61,7 +63,7 @@
 		<section class="front__article front__article--full-width">
 			{% include 'organisms/o-people-grid.twig' with block only %}
 		</section>
-		<section class="front__grid"> {# this belongs to the hack above#}
+		<section class="front__grid"> {# this belongs to the hack above #}
 			{% else %}
 				<div class="front__article {% if block.full_width %}front__article--2-col{% endif %}">
 					{% if block.acf_fc_layout == 'vote' %}
