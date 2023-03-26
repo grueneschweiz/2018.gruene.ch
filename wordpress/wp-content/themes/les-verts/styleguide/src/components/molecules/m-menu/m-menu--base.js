@@ -16,14 +16,24 @@ export class MMenuBase extends BaseView {
 	bind() {
 		super.bind();
 
-		this.on( 'click', MAIN_ENTRY_SELECTOR, ( event ) => this.toggleSubNavigation( event ) );
+		this.on( 'click', MAIN_ENTRY_SELECTOR,
+			( event ) => this.toggleSubNavigation( event ) );
+	}
+
+	setOrientation( orientation ) {
+		const main = this.getScopedElement( MAIN_MENU_SELECTOR );
+
+		if (main) {
+			main.setAttribute( 'aria-orientation', orientation );
+		}
 	}
 
 	toggleSubNavigation( event ) {
 		if (this.currentSub !== event.target) {
 			this.closeSubNavigation();
 			this.openSubNavigation( event );
-		}	else {
+		}
+		else {
 			event.preventDefault();
 			this.closeSubNavigation();
 		}

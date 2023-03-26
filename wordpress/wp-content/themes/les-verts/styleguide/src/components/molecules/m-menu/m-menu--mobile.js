@@ -20,7 +20,7 @@ export default class MMenuMobile extends MMenuBase {
 		this.right = this.getScopedElement( RIGHT_SELECTOR );
 		this.menuItems = this.getScopedElements( SUBMENU_ITEMS_SELECTOR );
 
-		this.mainNav.setAttribute( 'aria-orientation', 'vertical' );
+		this.setOrientation( 'vertical' );
 	}
 
 	bind() {
