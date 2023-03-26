@@ -7,29 +7,31 @@
 		</a>
 	{% endif %}
 	<nav class="m-menu__nav{% if not (menu.cta or menu.language) %} m-menu__nav--no-menu-right{% endif %}">
-		<div class="m-menu__hamburger">
-			{% include 'atoms/a-hamburger.twig' with {'id': id} only %}
-		</div>
-		<ul class="m-menu__nav-list" role="menubar" id="{{ id }}"
-				aria-label="{{ __('Main navigation', constant('THEME_DOMAIN')) }}">
-			{% for item in menu.main.items %}
-				<li class="m-menu__nav-item" role="none">
-					<a
-						class="m-menu__nav-link m-menu__nav-link--js-hook m-menu__nav-link--{{ item.id }}{% if item.children %} m-menu__nav-link--parent{% endif %}{% if item.current or item.current_item_ancestor %} m-menu__nav-link--active{% endif %}"
-						href="{{ item.link }}" role="menuitem" {% if loop.first %}tabindex="0" accesskey="1"{% endif %}
-						{% if item.children %}aria-haspopup="menu" aria-expanded="false" main="false"{% endif %}
-						{{ link_props(item.link) }}>{{ item.title }}</a>
-					{% if item.children %}
-						{% include 'molecules/m-menu--submenu.twig' with {children: item.children} only %}
-					{% endif %}
-				</li>
-			{% endfor %}
-			{% if menu.search %}
-				<li class="m-menu__nav-item" role="none">
-					{% include 'atoms/a-search.twig' with {'modifiers':['a-search--covering']} %}
-				</li>
-			{% endif %}
-		</ul>
+		{% if not shadow %}
+			<div class="m-menu__hamburger">
+				{% include 'atoms/a-hamburger.twig' with {'id': id} only %}
+			</div>
+			<ul class="m-menu__nav-list" role="menubar" id="{{ id }}"
+					aria-label="{{ __('Main navigation', constant('THEME_DOMAIN')) }}">
+				{% for item in menu.main.items %}
+					<li class="m-menu__nav-item" role="none">
+						<a
+							class="m-menu__nav-link m-menu__nav-link--js-hook m-menu__nav-link--{{ item.id }}{% if item.children %} m-menu__nav-link--parent{% endif %}{% if item.current or item.current_item_ancestor %} m-menu__nav-link--active{% endif %}"
+							href="{{ item.link }}" role="menuitem" {% if loop.first %}tabindex="0" accesskey="1"{% endif %}
+							{% if item.children %}aria-haspopup="menu" aria-expanded="false" main="false"{% endif %}
+							{{ link_props(item.link) }}>{{ item.title }}</a>
+						{% if item.children %}
+							{% include 'molecules/m-menu--submenu.twig' with {children: item.children} only %}
+						{% endif %}
+					</li>
+				{% endfor %}
+				{% if menu.search %}
+					<li class="m-menu__nav-item" role="none">
+						{% include 'atoms/a-search.twig' with {'modifiers':['a-search--covering']} %}
+					</li>
+				{% endif %}
+			</ul>
+		{% endif %}
 	</nav>
 	<div class="m-menu__right">
 		{% if menu.cta or menu.language %}
@@ -62,7 +64,7 @@
 						{% for language in menu.language.items %}
 							<li class="m-menu__language-nav-item">
 								<a class="m-menu__language-nav-link {% if item.current %}m-menu__language-nav-link--active{% endif %}"
-									 href="{{ language.url }}">{{ language.name }}</a>
+									 href="{{ language.url }}" role="menuitem">{{ language.name }}</a>
 							</li>
 						{% endfor %}
 					</ul>
