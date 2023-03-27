@@ -7,6 +7,7 @@ on:
   pull_request:
     branches:
       - main
+  workflow_dispatch:
 
 jobs:
   synchronize-with-crowdin:
@@ -16,6 +17,14 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+
+      - name: Get branch name on pull request
+        run: echo "BRANCH_NAME=${{ github.head_ref }}" >> $GITHUB_ENV
+        if: github.event_name == 'pull_request'
+
+      - name: Get branch name on push
+        run: echo "BRANCH_NAME=${{ github.ref_name }}" >> $GITHUB_ENV
+        if: github.event_name == 'push'
 
       - name: Synchronize with Crowdin
         uses: crowdin/github-action@v1
@@ -72,6 +81,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: '[L10N] Update translations'
           title: '[L10N] Update translations'
+          base: ${{ env.BRANCH_NAME }}
           branch: l10n_crowdin
           delete-branch: true
           reviewers: ${{ github.actor }}
