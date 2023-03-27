@@ -3,6 +3,7 @@
 	{% if menu.logo.image.id %}
 		{# use site_url() since timber with polylang messes up site.url on some multisite installations #}
 		<a class="m-menu__logo" href="{{ fn('site_url') }}" title="{{ __('Home', constant('THEME_DOMAIN')) }}">
+			<span class="screen-reader-text">{{ __('Home', constant('THEME_DOMAIN')) }}</span>
 			{% include 'atoms/a-logo.twig' with {'logo': menu.logo} only %}
 		</a>
 	{% endif %}
