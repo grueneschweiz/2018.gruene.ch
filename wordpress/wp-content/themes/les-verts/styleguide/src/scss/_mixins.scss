@@ -149,6 +149,8 @@
 	box-shadow: none;
 	text-decoration: initial;
 	text-underline-position: initial;
+	text-underline-offset: initial;
+	text-decoration-skip-ink: initial;
 	box-decoration-break: initial;
 
 	@include hover {

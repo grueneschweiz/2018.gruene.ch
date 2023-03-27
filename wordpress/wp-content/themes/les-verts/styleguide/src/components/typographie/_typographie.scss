@@ -66,8 +66,12 @@ p {
 a {
 	color: $color-text;
 	outline: none;
-	text-decoration: underline .25em $color-primary-light;
+	text-decoration-line: underline;
+	text-decoration-color: $color-primary-light;
+	text-decoration-thickness: 0.25em;
 	text-underline-position: under;
+	text-underline-offset: -0.125em;
+	text-decoration-skip-ink: none;
 	box-decoration-break: clone;
 	transition: all $transition-fast $transition-ease;
 
