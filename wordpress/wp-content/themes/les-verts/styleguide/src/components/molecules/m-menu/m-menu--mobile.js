@@ -26,7 +26,8 @@ export default class MMenuMobile extends MMenuBase {
 	bind() {
 		super.bind();
 
-		this.on( 'click', HAMBURGER_SELECTOR, ( event ) => this.toggleMainNavigation( event ) );
+		this.on( 'click', HAMBURGER_SELECTOR,
+			( event ) => this.toggleMainNavigation( event ) );
 	}
 
 	toggleMainNavigation( event ) {
@@ -34,7 +35,8 @@ export default class MMenuMobile extends MMenuBase {
 
 		if (this.mobileOpen) {
 			this.closeMainNavigation();
-		} else {
+		}
+		else {
 			this.openMainNavigation();
 		}
 	}
@@ -52,13 +54,22 @@ export default class MMenuMobile extends MMenuBase {
 
 	closeMainNavigation() {
 		this.mobileOpen = false;
+		const toClose = [
+			this.navWrapper,
+			this.hamburger,
+			this.mainNav,
+			this.right,
+		];
 
-		this.removeClass( this.navWrapper, OPEN_STATE );
-		this.removeClass( this.hamburger, OPEN_STATE );
-		this.removeClass( this.mainNav, OPEN_STATE );
-		this.removeClass( this.right, OPEN_STATE );
+		for (const el of toClose) {
+			if (el) {
+				this.removeClass( el, OPEN_STATE );
+			}
+		}
 
-		this.hamburger.setAttribute( 'aria-expanded', false );
+		if (this.hamburger) {
+			this.hamburger.setAttribute( 'aria-expanded', false );
+		}
 
 		this.closeSubNavigation();
 	}
