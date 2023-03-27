@@ -11,6 +11,7 @@ on:
 jobs:
   synchronize-with-crowdin:
     runs-on: ubuntu-latest
+    concurrency: l10n-sync
 
     steps:
       - name: Checkout
