@@ -11,7 +11,8 @@
 					<div class="page__breadcrumbs">
 						{% include 'atoms/a-breadcrumbs.twig' %}
 					</div>
-					<h1 id="main-content">{{ title|wptexturize }}</h1>
+					<a id="main-content" aria-hidden="true" tabindex="-1" class="m-skip-link__target"></a>
+					<h1>{{ title|wptexturize }}</h1>
 					{% if archive_description %}
 						<div class="page__header-text">
 							<p>{{ archive_description|wptexturize|disableable_wpautop }}</p>

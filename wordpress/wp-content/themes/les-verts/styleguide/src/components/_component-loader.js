@@ -25,6 +25,7 @@ import AProgress from './atoms/a-progress/a-progress';
 import Page from './templates/page/page';
 import OFooter from './organisms/o-footer/o-footer';
 import ASocialIcon from './atoms/a-social-icon/a-social-icon';
+import MSkipLink from './molecules/m-skip-link/m-skip-link';
 
 // ================= STOP TO ADD HERE
 
@@ -59,6 +60,7 @@ const COMPONENTS_TO_LOAD = [
 	{ view: Page, name: 'Page', selector: '.page' },
 	{ view: OFooter, name: 'OFooter', selector: '.o-footer' },
 	{ view: ASocialIcon, name: 'ASocialIcon', selector: '.a-social-icon' },
+	{ view: MSkipLink, name: 'MSkipLink', selector: '.m-skip-link' },
 ];
 
 const LOADED_COMPONENTS = {};

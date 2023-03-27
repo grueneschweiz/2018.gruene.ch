@@ -54,8 +54,9 @@
 	</section>
 	{% endif %}
 	<div
-		class="front__grid-wrapper{% if not post.campaign_show_main_campaign %} front__grid-wrapper--no-campaign{% endif %}"
-		{% if not post.campaign_show_main_campaign %}id="main-content"{% endif %}>
+		class="front__grid-wrapper{% if not post.campaign_show_main_campaign %} front__grid-wrapper--no-campaign{% endif %}">
+		{% if not post.campaign_show_main_campaign %}<a id="main-content" aria-hidden="true" tabindex="-1"
+																										class="m-skip-link__target"></a>{% endif %}
 		<section class="front__grid">
 			{% for block in post.get_field('content_blocks') %}
 			{% if block.acf_fc_layout == 'testimonials' %}

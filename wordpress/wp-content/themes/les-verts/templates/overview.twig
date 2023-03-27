@@ -9,7 +9,8 @@
 				<div class="page__breadcrumbs">
 					{% include 'atoms/a-breadcrumbs.twig' %}
 				</div>
-				<h1 id="main-content">{{ post.title|wptexturize }}</h1>
+				<a id="main-content" aria-hidden="true" tabindex="-1" class="m-skip-link__target"></a>
+				<h1>{{ post.title|wptexturize }}</h1>
 				<div class="page__header-text">
 					<p>{{ post.full_excerpt()|wptexturize }}</p>
 				</div>
