@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Les Verts\n"
-"POT-Creation-Date: 2023-03-27 13:57+0200\n"
+"POT-Creation-Date: 2023-03-27 14:06+0200\n"
 "PO-Revision-Date: 2018-11-28 17:49+0100\n"
 "Last-Translator: Cyrill Bolliger <bolliger@gmx.ch>\n"
 "Language-Team: Cyrill Bolliger <cyrill.bolliger@gruene.ch>\n"
@@ -1603,11 +1603,11 @@ msgstr ""
 msgid "Previous events"
 msgstr ""
 
-#: functions.php:104 templates/molecules/m-menu.twig:15
+#: functions.php:104 templates/molecules/m-menu.twig:16
 msgid "Main navigation"
 msgstr ""
 
-#: functions.php:105 templates/molecules/m-menu.twig:63
+#: functions.php:105 templates/molecules/m-menu.twig:64
 msgid "Language navigation"
 msgstr ""
 
@@ -2868,6 +2868,7 @@ msgid "Sorry, no content"
 msgstr ""
 
 #: templates/molecules/m-branding.twig:12 templates/molecules/m-menu.twig:5
+#: templates/molecules/m-menu.twig:6
 msgid "Home"
 msgstr ""
 
