@@ -40,6 +40,10 @@
 
 	&--green {
 		background: $color-primary;
+
+		@include high-contrast {
+			background: $color-primary-dark;
+		}
 	}
 
 	&--magenta {
@@ -49,6 +53,10 @@
 	&--white {
 		background: $color-white;
 		color: $color-primary;
+
+		@include high-contrast {
+			color: $color-primary-dark;
+		}
 	}
 
 	&--subline {

@@ -18,6 +18,10 @@
 	transition: color $transition-fast $transition-ease;
 	letter-spacing: 0.08928em;
 
+	@include high-contrast {
+		color: $color-primary-dark;
+	}
+
 	&::after {
 		content: "";
 		width: 0.6em;
@@ -30,6 +34,10 @@
 		position: absolute;
 		right: 0;
 		top: 50%;
+
+		@include high-contrast {
+			border-color: $color-primary-dark;
+		}
 	}
 
 	@include hover {
@@ -43,8 +51,32 @@
 	&--grey {
 		color: $color-grey-3;
 
+		@include high-contrast {
+			color: $color-text;
+		}
+
 		@include hover {
 			color: $color-text-light;
+
+			@include high-contrast {
+				color: $color-text;
+			}
+		}
+
+		&::after {
+			border-color: $color-grey-3;
+
+			@include high-contrast {
+				border-color: $color-text;
+			}
+
+			@include hover {
+				color: $color-text-light;
+
+				@include high-contrast {
+					color: $color-text;
+				}
+			}
 		}
 	}
 
@@ -53,6 +85,10 @@
 
 		@include hover {
 			color: $color-white;
+		}
+
+		&::after {
+			border-color: $color-white;
 		}
 	}
 }

@@ -24,6 +24,15 @@
 	}
 }
 
+/**
+ * CSS Media query for more contrast.
+ */
+@mixin high-contrast() {
+	@media screen and (prefers-contrast: more) {
+		@content;
+	}
+}
+
 @mixin size($width, $height) {
 	width: $width;
 	height: $height;
@@ -153,9 +162,19 @@
 	text-decoration-skip-ink: initial;
 	box-decoration-break: initial;
 
+	@include high-contrast {
+		text-decoration-color: initial; // sorry IE users
+	}
+
 	@include hover {
 		background-color: transparent;
 		box-shadow: none;
+
+		@include high-contrast {
+			background-color: initial;
+			box-shadow: initial;
+			color: initial;
+		}
 	}
 }
 
@@ -196,6 +215,10 @@
 	margin-top: 0.6086956522em;
 	margin-bottom: 0.4057971015em;
 	hyphens: auto;
+
+	@include high-contrast {
+		color: $color-primary-dark;
+	}
 
 	@include media($_DESKTOP) {
 		hyphens: initial; // sorry IE users

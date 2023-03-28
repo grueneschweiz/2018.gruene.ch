@@ -18,10 +18,17 @@
 
 	&__time-wrapper &__icon {
 		fill: $color-primary;
- 	}
+
+		@include high-contrast {
+			fill: $color-primary-dark;
+		}
+	}
 
 	&__location-wrapper &__icon {
 		stroke: $color-primary;
-	}
 
+		@include high-contrast {
+			stroke: $color-primary-dark;
+		}
+	}
 }

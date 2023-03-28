@@ -22,6 +22,10 @@
 		transition: color $transition-fast $transition-ease;
 		hyphens: auto;
 
+		@include high-contrast {
+			color: $color-primary-dark;
+		}
+
 		@include hover {
 			color: $color-primary-dark;
 		}

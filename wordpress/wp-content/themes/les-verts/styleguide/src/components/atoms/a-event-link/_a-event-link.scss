@@ -65,6 +65,10 @@
 				position: absolute;
 				right: 0;
 				top: 50%;
+
+				@include high-contrast {
+					border-color: $color-primary-dark;
+				}
 			}
 		}
 

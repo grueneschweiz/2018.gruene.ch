@@ -18,6 +18,10 @@
 		@extend .a-post-meta__block;
 		color: $color-grey-3;
 		font-weight: $font-weight-bold;
+
+		@include high-contrast {
+			color: $color-text;
+		}
 	}
 
 	&__tags {
@@ -47,6 +51,10 @@
 
 		&:hover {
 			color: $color-primary;
+
+			@include high-contrast {
+				color: $color-primary-dark;
+			}
 		}
 
 		&:not(:last-child)::after {
@@ -59,5 +67,9 @@
 		@extend .a-post-meta__block;
 		color: $color-primary;
 		font-weight: $font-weight-bold;
+
+		@include high-contrast {
+			color: $color-primary-dark;
+		}
 	}
 }

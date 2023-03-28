@@ -15,6 +15,10 @@
 		position: relative;
 		transition: opacity $transition-mid $transition-ease;
 
+		@include high-contrast {
+			background: $color-primary-dark;
+		}
+
 		&::after {
 			content: ' ';
 			display: block;
@@ -71,6 +75,10 @@
 		right: -0.5em;
 		transform: translateY(-50%) translateX(100%);
 		color: $color-text-light;
+
+		@include high-contrast {
+			color: $color-text;
+		}
 	}
 
 	&__legend {

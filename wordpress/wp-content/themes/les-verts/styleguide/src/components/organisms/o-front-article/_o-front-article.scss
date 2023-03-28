@@ -16,6 +16,10 @@
 			height: 29px;
 			width: 40px;
 
+			@include high-contrast {
+				fill: $color-grey-3;
+			}
+
 			@include media($_DESKTOP) {
 				height: 39px;
 				width: 56px;

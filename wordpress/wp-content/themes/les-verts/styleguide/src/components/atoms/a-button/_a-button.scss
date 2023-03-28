@@ -19,15 +19,32 @@
 	cursor: pointer;
 	transition: background-color $transition-fast $transition-ease, color $transition-fast $transition-ease;
 
+	@include high-contrast {
+		background-color: $color-primary-dark;
+		border-color: $color-primary-dark;
+	}
+
 	@include hover {
 		background-color: $color-primary-dark;
+
+		@include high-contrast {
+			color: $color-white;
+		}
 	}
 
 	&.a-button--outline {
 		color: $color-primary;
 
+		@include high-contrast {
+			color: $color-primary-dark;
+		}
+
 		@include hover {
 			background-color: $color-primary;
+
+			@include high-contrast {
+				background-color: $color-primary-dark;
+			}
 		}
 	}
 
