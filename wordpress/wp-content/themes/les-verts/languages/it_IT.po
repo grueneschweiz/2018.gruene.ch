@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 2018gruenech\n"
-"POT-Creation-Date: 2023-01-27 20:34+0100\n"
-"PO-Revision-Date: 2023-03-07 19:58\n"
+"POT-Creation-Date: 2023-03-27 14:06+0200\n"
+"PO-Revision-Date: 2023-03-28 07:05\n"
 "Last-Translator: Cyrill Bolliger <bolliger@gmx.ch>\n"
 "Language-Team: Italian\n"
 "MIME-Version: 1.0\n"
@@ -1497,11 +1497,11 @@ msgstr "Prossimi eventi"
 msgid "Previous events"
 msgstr "Eventi passati"
 
-#: functions.php:104 templates/molecules/m-menu.twig:14
+#: functions.php:104 templates/molecules/m-menu.twig:16
 msgid "Main navigation"
 msgstr "Navigazione principale"
 
-#: functions.php:105 templates/molecules/m-menu.twig:61
+#: functions.php:105 templates/molecules/m-menu.twig:64
 msgid "Language navigation"
 msgstr "Navigazione lingue"
 
@@ -2634,11 +2634,11 @@ msgid_plural "Search results for: %s"
 msgstr[0] "Risultato della ricerca per: %s"
 msgstr[1] "Risultato della ricerca per: %s"
 
-#: templates/404.twig:4
+#: templates/404.twig:5
 msgid "Page not found"
 msgstr "Pagina non trovata"
 
-#: templates/404.twig:6
+#: templates/404.twig:7
 msgid "Sorry, we couldn't find what you're looking for. Have you tried the search?"
 msgstr "Spiacenti, non siamo riusciti a trovare quello che stai cercando. Hai provato la ricerca?"
 
@@ -2649,6 +2649,10 @@ msgstr "Meta-Navigation"
 #: templates/atoms/a-hamburger.twig:2
 msgid "Toggle navigation"
 msgstr "Mostra la navigazione"
+
+#: templates/atoms/a-logo.twig:1
+msgid "Logo"
+msgstr ""
 
 #: templates/atoms/a-map.twig:1
 msgid "Geographical map"
@@ -2704,11 +2708,12 @@ msgstr ""
 msgid "Vote recommendations"
 msgstr "Raccomandazioni di voto"
 
-#: templates/base.twig:15
+#: templates/base.twig:17
 msgid "Sorry, no content"
 msgstr "Spiacente, nessun contenuto"
 
 #: templates/molecules/m-branding.twig:12 templates/molecules/m-menu.twig:5
+#: templates/molecules/m-menu.twig:6
 msgid "Home"
 msgstr ""
 
@@ -2834,7 +2839,7 @@ msgstr ""
 #: templates/molecules/m-share-block.twig:71
 #: templates/molecules/m-share-block.twig:73
 msgid "Copy link"
-msgstr ""
+msgstr "Copia il link"
 
 #: templates/molecules/m-share.twig:2
 msgid "Show share buttons"
@@ -2854,7 +2859,7 @@ msgstr "Chiudi"
 
 #: templates/molecules/m-share.twig:18
 msgid "Copy link to this page"
-msgstr ""
+msgstr "Copia il link a questa pagina"
 
 #: templates/molecules/m-share.twig:26
 msgid "Share this page on twitter"
@@ -2871,6 +2876,10 @@ msgstr "Condividi questa pagina tramite email"
 #: templates/molecules/m-share.twig:50
 msgid "Share this page by WhatsApp"
 msgstr "Condividi questa pagina tramite WhatsApp"
+
+#: templates/molecules/m-skip-link.twig:3
+msgid "Jump to main content"
+msgstr "Vai al contenuto principale"
 
 #: templates/molecules/m-vote.twig:11
 msgctxt "A vote proposal is the subject"
@@ -2901,7 +2910,7 @@ msgstr "I Verdi"
 
 #. Theme URI of the plugin/theme
 msgid "https://github.com/grueneschweiz/2018.gruene.ch/"
-msgstr ""
+msgstr "https://github.com/grueneschweiz/2018.gruene.ch/"
 
 #. Description of the plugin/theme
 msgid "Custom theme for the GREENS of Switzerland. Designed by superhuit.ch, built by gruene.ch on top of superhuit's stack."
@@ -2909,11 +2918,11 @@ msgstr "Tema personalizzato per i VERDI della Svizzera. Progettato da superhuit.
 
 #. Author of the plugin/theme
 msgid "superhuit.ch & gruene.ch"
-msgstr ""
+msgstr "superhuit.ch & gruene.ch"
 
 #. Template Name of the plugin/theme
 msgid "Front Page"
-msgstr ""
+msgstr "Prima pagina"
 
 #. Template Name of the plugin/theme
 msgid "Overview Page"
