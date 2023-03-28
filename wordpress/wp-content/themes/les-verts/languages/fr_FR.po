@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 2018gruenech\n"
-"POT-Creation-Date: 2023-01-27 20:34+0100\n"
-"PO-Revision-Date: 2023-03-07 20:10\n"
+"POT-Creation-Date: 2023-03-27 14:06+0200\n"
+"PO-Revision-Date: 2023-03-28 07:05\n"
 "Last-Translator: Cyrill Bolliger <bolliger@gmx.ch>\n"
 "Language-Team: French\n"
 "MIME-Version: 1.0\n"
@@ -1498,11 +1498,11 @@ msgstr "Évènements à venir"
 msgid "Previous events"
 msgstr "Archives des évènements"
 
-#: functions.php:104 templates/molecules/m-menu.twig:14
+#: functions.php:104 templates/molecules/m-menu.twig:16
 msgid "Main navigation"
 msgstr "Navigation principale"
 
-#: functions.php:105 templates/molecules/m-menu.twig:61
+#: functions.php:105 templates/molecules/m-menu.twig:64
 msgid "Language navigation"
 msgstr "Navigation de langue"
 
@@ -2643,11 +2643,11 @@ msgid_plural "Search results for: %s"
 msgstr[0] "Résultat de la recherche «%s»"
 msgstr[1] "Résultats de la recherche «%s»"
 
-#: templates/404.twig:4
+#: templates/404.twig:5
 msgid "Page not found"
 msgstr "Page non trouvée."
 
-#: templates/404.twig:6
+#: templates/404.twig:7
 msgid "Sorry, we couldn't find what you're looking for. Have you tried the search?"
 msgstr "Pardon, mais nous n'avons pas trouvé le contenu recherché. La fonction «Recherche» peut t'aider à trouver davantage de résultats."
 
@@ -2658,6 +2658,10 @@ msgstr "Meta-navigation"
 #: templates/atoms/a-hamburger.twig:2
 msgid "Toggle navigation"
 msgstr "Afficher la navigation"
+
+#: templates/atoms/a-logo.twig:1
+msgid "Logo"
+msgstr "Logo"
 
 #: templates/atoms/a-map.twig:1
 msgid "Geographical map"
@@ -2713,11 +2717,12 @@ msgstr "copié!"
 msgid "Vote recommendations"
 msgstr "Recommandations de vote"
 
-#: templates/base.twig:15
+#: templates/base.twig:17
 msgid "Sorry, no content"
 msgstr "Nous sommes désolés, il n'y a pas de contenu."
 
 #: templates/molecules/m-branding.twig:12 templates/molecules/m-menu.twig:5
+#: templates/molecules/m-menu.twig:6
 msgid "Home"
 msgstr "Page d'accueil"
 
@@ -2880,6 +2885,10 @@ msgstr "Partage ce site par courriel"
 #: templates/molecules/m-share.twig:50
 msgid "Share this page by WhatsApp"
 msgstr "Partage ce site par WhatsApp"
+
+#: templates/molecules/m-skip-link.twig:3
+msgid "Jump to main content"
+msgstr "Aller au contenu principal"
 
 #: templates/molecules/m-vote.twig:11
 msgctxt "A vote proposal is the subject"
