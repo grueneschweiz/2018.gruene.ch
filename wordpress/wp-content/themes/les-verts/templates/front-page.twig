@@ -51,10 +51,13 @@
 				'type': action_type
 			}
 		} only %}
+		{% set has_desc = post.campaign_summary_title or post.campaign_summary_teaser %}
+		{% set has_cta = cta_title or post.campaign_call_to_action_description or (post.campaign_call_to_action_form and 'form' == action_type) %}
+		{% set has_campaign_elements = has_desc or has_cta %}
 	</section>
 	{% endif %}
 	<div
-		class="front__grid-wrapper{% if not post.campaign_show_main_campaign %} front__grid-wrapper--no-campaign{% endif %}">
+		class="front__grid-wrapper{% if not post.campaign_show_main_campaign or not has_campaign_elements %} front__grid-wrapper--no-campaign{% endif %}">
 		{% if not post.campaign_show_main_campaign %}<a id="main-content" aria-hidden="true" tabindex="-1"
 																										class="m-skip-link__target"></a>{% endif %}
 		<section class="front__grid">
