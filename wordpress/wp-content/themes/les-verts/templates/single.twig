@@ -19,6 +19,7 @@
 					<div class="page__breadcrumbs{% if distraction_free %} page__breadcrumbs--distracting{% endif %}">
 						{% include 'atoms/a-breadcrumbs.twig' %}
 					</div>
+					<a id="main-content" aria-hidden="true" tabindex="-1" class="m-skip-link__target"></a>
 					<h1>{{ post.title|wptexturize }}</h1>
 					{% if not post.teaser_hide_on_page or is_press_release %}
 						<div class="page__header-text page__header-text--bold">

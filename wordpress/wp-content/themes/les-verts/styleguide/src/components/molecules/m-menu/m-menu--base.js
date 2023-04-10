@@ -1,5 +1,6 @@
 import BaseView from 'base-view';
 
+export const MAIN_MENU_SELECTOR = '.m-menu__nav-list';
 export const MAIN_ENTRY_SELECTOR = '.m-menu__nav-link--js-hook';
 export const SUBMENU_SELECTOR = '.m-menu__submenu';
 
@@ -15,14 +16,24 @@ export class MMenuBase extends BaseView {
 	bind() {
 		super.bind();
 
-		this.on( 'click', MAIN_ENTRY_SELECTOR, ( event ) => this.toggleSubNavigation( event ) );
+		this.on( 'click', MAIN_ENTRY_SELECTOR,
+			( event ) => this.toggleSubNavigation( event ) );
+	}
+
+	setOrientation( orientation ) {
+		const main = this.getScopedElement( MAIN_MENU_SELECTOR );
+
+		if (main) {
+			main.setAttribute( 'aria-orientation', orientation );
+		}
 	}
 
 	toggleSubNavigation( event ) {
 		if (this.currentSub !== event.target) {
 			this.closeSubNavigation();
 			this.openSubNavigation( event );
-		}	else {
+		}
+		else {
 			event.preventDefault();
 			this.closeSubNavigation();
 		}
@@ -51,14 +62,14 @@ export class MMenuBase extends BaseView {
 	closeSubNavigation() {
 		this.currentSub = null;
 
-		let elements = this.getScopedElements( SUBMENU_SELECTOR + ', ' + MAIN_ENTRY_SELECTOR );
+		this.getScopedElements( MAIN_ENTRY_SELECTOR ).forEach( ( element ) => {
+			this.removeClass( element, OPEN_STATE );
+			element.setAttribute( 'aria-expanded', false );
+		} );
 
-		for (let key in elements) {
-			if (Object.prototype.hasOwnProperty.call( elements, key )) {
-				this.removeClass( elements[key], OPEN_STATE );
-				elements[key].setAttribute( 'aria-expanded', false );
-			}
-		}
+		this.getScopedElements( SUBMENU_SELECTOR ).forEach( ( element ) => {
+			this.removeClass( element, OPEN_STATE );
+		} );
 
 		this.afterCloseSubNavigation();
 	}

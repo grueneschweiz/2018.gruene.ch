@@ -66,14 +66,28 @@ p {
 a {
 	color: $color-text;
 	outline: none;
-	text-decoration: underline .25em $color-primary-light;
+	text-decoration-line: underline;
+	text-decoration-color: $color-primary-light;
+	text-decoration-thickness: 0.25em;
 	text-underline-position: under;
+	text-underline-offset: -0.125em;
+	text-decoration-skip-ink: none;
 	box-decoration-break: clone;
 	transition: all $transition-fast $transition-ease;
 
+	@include high-contrast {
+		text-decoration-color: $color-text;
+	}
+
 	@include hover {
-		background-color: #cee1a1;
-		box-shadow: 0 0 0 .25em #cee1a1;
+		background-color: $color-primary-light;
+		box-shadow: 0 0 0 .25em $color-primary-light;
+
+		@include high-contrast {
+			background-color: $color-text;
+			box-shadow: 0 0 0 .25em $color-text;
+			color: #ffffff;
+		}
 	}
 }
 
@@ -137,6 +151,10 @@ ul li:before {
 ::selection {
 	color: $color-white;
 	background: $color-primary;
+
+	@include high-contrast {
+		background: $color-primary-dark;
+	}
 }
 
 /**
@@ -149,6 +167,10 @@ blockquote, q {
 	font-family: $font-title;
 	letter-spacing: 0.018125em;
 	line-height: 1.2727272727em;
+
+	@include high-contrast {
+		color: $color-primary-dark;
+	}
 
 	p {
 		display: inline;

@@ -1,0 +1,34 @@
+.m-skip-link {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	clip-path: inset(50%);
+	border: 0;
+
+	&:focus-within {
+		position: fixed;
+		top: 0;
+		left: 0;
+		height: auto;
+		overflow: visible;
+		clip: auto;
+		white-space: normal;
+		clip-path: none;
+		z-index: 100;
+		width: 100%;
+		text-align: center;
+		background-color: $color-primary;
+
+		@include high-contrast {
+			background-color: $color-primary-dark;
+		}
+	}
+
+	&__target {
+		@include clean-link();
+	}
+}

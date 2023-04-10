@@ -19,12 +19,20 @@
 				position: absolute;
 				right: 0;
 				top: 50%;
+
+				@include high-contrast {
+					border-color: $color-primary-dark;
+				}
 			}
 		}
 
 		.a-post-link__title {
 			@include hover() {
 				color: $color-primary;
+
+				@include high-contrast {
+					color: $color-primary-dark;
+				}
 			}
 		}
 	}
@@ -34,12 +42,16 @@
 		transition: color $transition-fast $transition-ease;
 		font-size: 1rem;
 
-		@include hover{
+		@include hover {
 			color: $color-primary-dark;
 		}
 
 		@include media($_DESKTOP) {
 			font-size: 1.25rem;
+		}
+
+		@include high-contrast {
+			color: $color-primary-dark;
 		}
 	}
 
@@ -50,6 +62,10 @@
 	&__meta--header {
 		margin: 0.5em 0 1em;
 		color: $color-text-light;
+
+		@include high-contrast {
+			color: $color-text;
+		}
 	}
 
 	&__meta--footer {

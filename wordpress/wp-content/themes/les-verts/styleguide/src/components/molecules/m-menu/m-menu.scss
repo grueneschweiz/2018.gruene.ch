@@ -26,6 +26,10 @@
 
 		&:focus {
 			border-left: solid 1px $color-primary;
+
+			@include high-contrast {
+				border-color: $color-primary-dark;
+			}
 		}
 
 		.a-logo {
@@ -278,6 +282,10 @@
 					width: 100%;
 					height: 2px;
 					background-color: $color-primary;
+
+					@include high-contrast {
+						background-color: $color-primary-dark;
+					}
 				}
 			}
 		}
@@ -398,6 +406,10 @@
 				height: 100%;
 				stroke: $color-primary;
 				transition: stroke $transition-fast $transition-ease;
+
+				@include high-contrast {
+					stroke: $color-primary-dark;
+				}
 			}
 
 			@include hover {

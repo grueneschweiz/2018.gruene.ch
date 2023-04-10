@@ -7,6 +7,8 @@
 {% endblock %}
 
 <body class="{{ body_class }} lang-{{ fn('get_locale') }}">
+{% include 'molecules/m-skip-link.twig' %}
+
 <div class="page {{ page_modifiers|join }}">
 	{% include 'organisms/o-header.twig' %}
 

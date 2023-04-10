@@ -18,18 +18,20 @@
 		</div>
 	</div>
 	<div class="o-campaign__cta-wrapper">
-		<div class="o-campaign__desc">
-			{% include 'molecules/m-campaign-desc.twig' with {
-				'title': desc.title,
-				'teaser': desc.teaser,
-				'read_more_text': desc.read_more_text,
-				'link': desc.link,
-			} only %}
-		</div>
-		{% if cta.title or cta.desc or cta.form %}
-		<div class="o-campaign__cta">
-			{% include 'molecules/m-campaign-cta.twig' with cta only %}
-		</div>
+		{% if desc.title or desc.teaser %}
+			<div class="o-campaign__desc">
+				{% include 'molecules/m-campaign-desc.twig' with {
+					'title': desc.title,
+					'teaser': desc.teaser,
+					'read_more_text': desc.read_more_text,
+					'link': desc.link,
+				} only %}
+			</div>
+		{% endif %}
+		{% if cta.title or cta.desc or (cta.form and 'form' == cta.type) %}
+			<div class="o-campaign__cta">
+				{% include 'molecules/m-campaign-cta.twig' with cta only %}
+			</div>
 		{% endif %}
 	</div>
 </article>

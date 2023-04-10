@@ -36,6 +36,10 @@
 			@include hover {
 				background: $color-primary-dark;
 			}
+
+			@include high-contrast {
+				background-color: $color-primary-dark;
+			}
 		}
 
 		svg {

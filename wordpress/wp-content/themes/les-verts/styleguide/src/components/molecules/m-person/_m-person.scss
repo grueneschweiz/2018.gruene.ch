@@ -119,6 +119,10 @@
 
 		@include hover {
 			background: $color-primary-light;
+
+			@include high-contrast {
+				color: $color-text;
+			}
 		}
 
 		&::after {

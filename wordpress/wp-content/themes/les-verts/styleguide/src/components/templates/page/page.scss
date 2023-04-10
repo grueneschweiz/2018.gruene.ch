@@ -188,6 +188,10 @@
 		border-top: 2px solid $color-primary;
 		padding: 0 15px;
 
+		@include high-contrast {
+			border-color: $color-primary-dark;
+		}
+
 		@include media($page-grid-desktop) {
 			background-color: transparent;
 			margin-top: 72px;

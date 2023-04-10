@@ -1,0 +1,88 @@
+name: Crowdin Localization
+
+on:
+  push:
+    branches:
+      - dev
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  synchronize-with-crowdin:
+    runs-on: ubuntu-latest
+    concurrency: l10n-sync
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Get branch name on pull request
+        run: echo "BRANCH_NAME=${{ github.head_ref }}" >> $GITHUB_ENV
+        if: github.event_name == 'pull_request'
+
+      - name: Get branch name on push
+        run: echo "BRANCH_NAME=${{ github.ref_name }}" >> $GITHUB_ENV
+        if: github.event_name == 'push'
+
+      - name: Synchronize with Crowdin
+        uses: crowdin/github-action@v1
+        with:
+          # files
+          source: wordpress/wp-content/themes/les-verts/languages/theme.pot
+          translation: wordpress/wp-content/themes/les-verts/languages/%locale_with_underscore%.po
+
+          # upload options
+          upload_sources: true
+          upload_translations: true
+
+          # download options
+          download_translations: true
+          localization_branch_name: l10n_crowdin
+          create_pull_request: false
+          push_translations: false
+
+          # authentication
+          project_id: ${{ secrets.CROWDIN_PROJECT_ID }}
+          token: ${{ secrets.CROWDIN_PERSONAL_TOKEN }}
+
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: If translations have changed
+        run: >-
+          (
+          git diff -U0 wordpress/wp-content/themes/les-verts/languages/*.po
+          | grep '^[+-]' 
+          | grep -Ev '^(--- a/|\+\+\+ b/)' 
+          | grep -v 'Project-Id-Version'
+          | grep -v 'POT-Creation-Date:'
+          | grep -v 'PO-Revision-Date:'
+          | grep -v '^:#'
+          && echo "CHANGES=1" >> $GITHUB_ENV
+          ) 
+          || true
+
+      - name: Install gettext
+        run: sudo apt-get install gettext
+
+      - name: Generate Mo-Files
+        run: |
+          cd wordpress/wp-content/themes/les-verts/languages
+          for f in *.po; do
+            msgfmt -o "${f%.po}.mo" "$f"
+          done
+        if: env.CHANGES
+
+      - name: Create Pull request
+        uses: peter-evans/create-pull-request@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: '[L10N] Update translations'
+          title: '[L10N] Update translations'
+          base: ${{ env.BRANCH_NAME }}
+          branch: l10n_crowdin
+          delete-branch: true
+          reviewers: ${{ github.actor }}
+        if: env.CHANGES

@@ -1,10 +1,12 @@
+{{render '@m-skip-link'}}
 <div class="page page--list">
 	{{render '@o-header'}}
 	<main class="page__main">
 		<article class="page__grid{{#unless shareable}} page__grid--no-sidebar{{/unless}}">
-			<header class="page__full page__grid{{#unless shareable}} page__grid--no-sidebar{{/unless}} page__header-wrapper page__header-wrapper--highlighted">
+			<header class="page__full page__grid{{#unless
+				shareable}} page__grid--no-sidebar{{/unless}} page__header-wrapper page__header-wrapper--highlighted">
 				<div class="page__content page__header">
-					<h1>{{title}}</h1>
+					<h1 id="main-content">{{title}}</h1>
 					<div class="page__header-text">
 						{{> @a-search terms=terms search='Suche' search_submit='Suchen' modifiers=search_modifiers }}
 					</div>

@@ -63,6 +63,10 @@
 			&:after {
 				width: 69px;
 				background-color: $color-primary;
+
+				@include high-contrast {
+					background-color: $color-primary-dark;
+				}
 			}
 		}
 	}

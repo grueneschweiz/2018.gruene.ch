@@ -118,6 +118,10 @@
 			fill: $color-primary;
 			stroke: $color-white;
 			transition: fill $transition-fast $transition-ease;
+
+			@include high-contrast {
+				fill: $color-primary-dark;
+			}
 		}
 
 		&--left {

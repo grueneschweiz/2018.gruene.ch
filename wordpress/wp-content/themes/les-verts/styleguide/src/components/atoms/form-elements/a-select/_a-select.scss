@@ -68,6 +68,10 @@
 		@include hover {
 			&:before {
 				border-color: $color-primary;
+
+				@include high-contrast {
+					border-color: $color-primary-dark;
+				}
 			}
 		}
 	}

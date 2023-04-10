@@ -10,6 +10,10 @@
 			fill: $color-primary-super-light;
 			stroke: #B5B4B4;
 			stroke-width: 0.5px;
+
+			@include high-contrast {
+				stroke: $color-grey-3;
+			}
 		}
 
 		text {
@@ -19,6 +23,10 @@
 			letter-spacing: 0.015em;
 			fill: $color-grey-3;
 			display: none;
+
+			@include high-contrast {
+				fill: $color-text;
+			}
 		}
 
 		@include media($_DESKTOP) {
@@ -32,8 +40,12 @@
 				fill: $color-primary-light;
 				stroke: $color-grey-3;
 			}
+
 			text {
 				fill: $color-text-light;
+				@include high-contrast {
+					fill: $color-text;
+				}
 			}
 		}
 

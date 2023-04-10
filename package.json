@@ -37,7 +37,7 @@
     "start:all": "yarn wp:start && yarn start",
     "build": "gulp build:production",
     "fractal:build": "gulp fractal:build",
-    "wp:start": "docker-compose up -d",
+    "wp:start": "docker compose up -d",
     "wp:init": "./scripts/wp-init-local.sh",
     "component:add": "./scripts/styleguide-add-component.sh",
     "make:release": "./scripts/make-release.sh"

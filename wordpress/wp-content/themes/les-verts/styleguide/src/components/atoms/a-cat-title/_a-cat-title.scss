@@ -30,9 +30,17 @@
 			@include hover {
 				color: $color-primary;
 
+				@include high-contrast {
+					color: $color-primary-dark;
+				}
+
 				&:after {
 					width: 100%;
 					background-color: $color-primary;
+
+					@include high-contrast {
+						background-color: $color-primary-dark;
+					}
 				}
 			}
 		}

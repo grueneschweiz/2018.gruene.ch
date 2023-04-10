@@ -4,6 +4,7 @@
 
 html {
 	font-family: $font-primary;
+	scroll-behavior: smooth;
 }
 
 body.no-scroll {
