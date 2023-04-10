@@ -16,6 +16,10 @@ body.has-share-buttons {
 	border-right: 1px solid $color-primary;
 	padding: 1px;
 
+	@include high-contrast {
+		border-color: $color-primary-dark;
+	}
+
 	@include media($_DESKTOP) {
 		width: $height-desktop;
 		transform: translateY($height-desktop) rotate(-90deg);
@@ -85,6 +89,10 @@ body.has-share-buttons {
 			height: $icon-size;
 			fill: $color-primary;
 			transition: fill $transition-fast $transition-ease;
+
+			@include high-contrast {
+				fill: $color-primary-dark;
+			}
 
 			@include hover {
 				fill: $color-primary-dark;

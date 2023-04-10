@@ -5,6 +5,10 @@
 
 	&__term {
 		color: $color-primary;
+
+		@include high-contrast {
+			color: $color-primary-dark;
+		}
 	}
 
 	&__criteria {
@@ -39,6 +43,10 @@
 
 		@include hover {
 			color: $color-primary;
+
+			@include high-contrast {
+				color: $color-primary-dark;
+			}
 		}
 
 		&--active {

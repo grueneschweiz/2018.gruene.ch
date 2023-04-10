@@ -430,7 +430,15 @@
 <div class="Browser-panel Browser-code is-active" data-role="tab-panel" id="browser-cd2c373e78af56686e0a7fac833d8efe-panel-html">
     <code class="Code Code--lang-html hljs">
         
-        <pre><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;front&quot;</span>&gt;</span>
+        <pre><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;m-skip-link&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#main-content&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;a-link-button a-link-button--white&quot;</span>&gt;</span>
+        Zum Inhalt springen
+    <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;main-content&quot;</span> <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">&quot;true&quot;</span> <span class="hljs-attr">tabindex</span>=<span class="hljs-string">&quot;-1&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;m-skip-link__target&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;front&quot;</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">header</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;o-header&quot;</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;o-header__display&quot;</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;o-header__branding&quot;</span>&gt;</span>
@@ -909,7 +917,7 @@
                 <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;o-campaign__cta-wrapper&quot;</span>&gt;</span>
                     <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;o-campaign__desc&quot;</span>&gt;</span>
                         <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;m-campaign-desc&quot;</span>&gt;</span>
-                            <span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;m-campaign-desc__title&quot;</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;m-campaign-desc__title&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;main-content&quot;</span>&gt;</span>
                                 <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;m-campaign-desc__link&quot;</span>&gt;</span>Fair schmeckt besser!<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
                             <span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
                             <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;m-campaign-desc__desc&quot;</span>&gt;</span>Die Fair-Food Initiative verlangt, was für alle selbstverständlich ist: Lebensmittel aus einer naturnahen, umwelt- und tierfreundlichen Landwirtschaft mit fairen Arbeitsbedingungen fördern. Dabei soll es keine Rolle spielen, ob die Lebensmittel aus der Schweiz stammen oder importiert sind.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
@@ -2029,7 +2037,8 @@
     
     <div class="Browser-panel Browser-code" data-role="tab-panel" id="browser-cd2c373e78af56686e0a7fac833d8efe-panel-view">
     <code class="Code Code--lang-handlebars hljs">
-        <pre><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;front&quot;</span>&gt;</span>
+        <pre><span class="hljs-template-variable">{{<span class="hljs-name"><span class="hljs-builtin-name">render</span></span> <span class="hljs-string">&#x27;<a href="./m-skip-link.html">@m-skip-link</a>&#x27;</span>}}</span><span class="xml">
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;front&quot;</span>&gt;</span>
 	</span><span class="hljs-template-variable">{{<span class="hljs-name"><span class="hljs-builtin-name">render</span></span> <span class="hljs-string">&#x27;<a href="./o-header.html">@o-header</a>&#x27;</span>}}</span><span class="xml">
 	<span class="hljs-tag">&lt;<span class="hljs-name">main</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;front__main&quot;</span>&gt;</span>
 		<span class="hljs-tag">&lt;<span class="hljs-name">section</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;front__campaign&quot;</span>&gt;</span>
@@ -2218,8 +2227,10 @@
         </li>
         
         <li class="Meta-item">
-            <strong class="Meta-key">References <em class="Meta-count">(11)</em>:</strong>
+            <strong class="Meta-key">References <em class="Meta-count">(12)</em>:</strong>
             <span class="Meta-value Meta-value--linkList">
+            
+                <a href="./m-skip-link.html">@<span>m-skip-link</span></a>, 
             
                 <a href="./o-header.html">@<span>o-header</span></a>, 
             
@@ -2374,26 +2385,6 @@
                 data-handle="class-names"
             >
                 <span>Class Names</span>
-                
-            </a>
-        </li>
-        
-    
-        
-        
-        
-        
-        <li class="Tree-item Tree-entity" data-role="item">
-            <a
-                class="Tree-entityLink"
-                href="../../docs/grid.html"
-                data-role="tree-link"
-                
-                data-pjax
-                data-test="grid"
-                data-handle="grid"
-            >
-                <span>Grid</span>
                 
             </a>
         </li>
@@ -6118,6 +6109,40 @@
 
 
 <span class="Status-dot" style="border-color: #FF9233;" title="WIP"></span>
+
+
+</div>
+
+</div>
+
+
+            </a>
+        </li>
+        
+    
+        
+        
+        
+        
+        <li class="Tree-item Tree-entity" data-role="item">
+            <a
+                class="Tree-entityLink"
+                href="./m-skip-link.html"
+                data-role="tree-link"
+                
+                data-pjax
+                data-test="m-skip-link"
+                data-handle="m-skip-link"
+            >
+                <span>Skip-link</span>
+                
+
+<div class="Status Status--unlabelled">
+
+<div class="Status-dots">
+
+
+<span class="Status-dot" style="border-color: #29CC29;" title="Ready"></span>
 
 
 </div>

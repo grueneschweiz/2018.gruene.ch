@@ -430,7 +430,15 @@
 <div class="Browser-panel Browser-code is-active" data-role="tab-panel" id="browser-1bc27f7e33a907a13a7e25a329868ce4-panel-html">
     <code class="Code Code--lang-html hljs">
         
-        <pre><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;page page--list&quot;</span>&gt;</span>
+        <pre><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;m-skip-link&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#main-content&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;a-link-button a-link-button--white&quot;</span>&gt;</span>
+        Zum Inhalt springen
+    <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;main-content&quot;</span> <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">&quot;true&quot;</span> <span class="hljs-attr">tabindex</span>=<span class="hljs-string">&quot;-1&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;m-skip-link__target&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;page page--list&quot;</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">header</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;o-header&quot;</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;o-header__display&quot;</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;o-header__branding&quot;</span>&gt;</span>
@@ -885,7 +893,7 @@
                         <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 
                     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Medienmitteilungen<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;main-content&quot;</span>&gt;</span>Medienmitteilungen<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
                     <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;page__header-text&quot;</span>&gt;</span>
                         <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Hier käme dann ein Kategorienbeschrieb der Medienmitteilungen.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
                     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
@@ -1215,7 +1223,8 @@
     
     <div class="Browser-panel Browser-code" data-role="tab-panel" id="browser-1bc27f7e33a907a13a7e25a329868ce4-panel-view">
     <code class="Code Code--lang-handlebars hljs">
-        <pre><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;page page--list&quot;</span>&gt;</span>
+        <pre><span class="hljs-template-variable">{{<span class="hljs-name"><span class="hljs-builtin-name">render</span></span> <span class="hljs-string">&#x27;<a href="./m-skip-link.html">@m-skip-link</a>&#x27;</span>}}</span><span class="xml">
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;page page--list&quot;</span>&gt;</span>
 	</span><span class="hljs-template-variable">{{<span class="hljs-name"><span class="hljs-builtin-name">render</span></span> <span class="hljs-string">&#x27;<a href="./o-header.html">@o-header</a>&#x27;</span>}}</span><span class="xml">
 	<span class="hljs-tag">&lt;<span class="hljs-name">main</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;page__main&quot;</span>&gt;</span>
 		<span class="hljs-tag">&lt;<span class="hljs-name">article</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;page__grid</span></span></span><span class="hljs-template-tag">{{#<span class="hljs-name"><span class="hljs-builtin-name">unless</span></span> shareable}}</span><span class="xml"><span class="hljs-tag"><span class="hljs-string"> page__grid--no-sidebar</span></span></span><span class="hljs-template-tag">{{/<span class="hljs-name"><span class="hljs-builtin-name">unless</span></span>}}</span><span class="xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>&gt;</span>
@@ -1224,7 +1233,7 @@
 					<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;page__breadcrumbs&quot;</span>&gt;</span>
 						</span><span class="hljs-template-variable">{{<span class="hljs-name"><span class="hljs-builtin-name">render</span></span> <span class="hljs-string">&#x27;<a href="./a-breadcrumbs.html">@a-breadcrumbs</a>&#x27;</span>}}</span><span class="xml">
 					<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-					<span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Medienmitteilungen<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+					<span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;main-content&quot;</span>&gt;</span>Medienmitteilungen<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
 					<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;page__header-text&quot;</span>&gt;</span>
 						<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Hier käme dann ein Kategorienbeschrieb der Medienmitteilungen.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
 					<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
@@ -1539,6 +1548,10 @@
 		<span class="hljs-attribute">border-top</span>: <span class="hljs-number">2px</span> solid <span class="hljs-variable">$color-primary</span>;
 		<span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span> <span class="hljs-number">15px</span>;
 
+		<span class="hljs-keyword">@include</span> high-contrast {
+			<span class="hljs-attribute">border-color</span>: <span class="hljs-variable">$color-primary-dark</span>;
+		}
+
 		<span class="hljs-keyword">@include</span> media(<span class="hljs-variable">$page-grid-desktop</span>) {
 			<span class="hljs-attribute">background-color</span>: transparent;
 			<span class="hljs-attribute">margin-top</span>: <span class="hljs-number">72px</span>;
@@ -1820,8 +1833,10 @@
         </li>
         
         <li class="Meta-item">
-            <strong class="Meta-key">References <em class="Meta-count">(7)</em>:</strong>
+            <strong class="Meta-key">References <em class="Meta-count">(8)</em>:</strong>
             <span class="Meta-value Meta-value--linkList">
+            
+                <a href="./m-skip-link.html">@<span>m-skip-link</span></a>, 
             
                 <a href="./o-header.html">@<span>o-header</span></a>, 
             
@@ -1968,26 +1983,6 @@
                 data-handle="class-names"
             >
                 <span>Class Names</span>
-                
-            </a>
-        </li>
-        
-    
-        
-        
-        
-        
-        <li class="Tree-item Tree-entity" data-role="item">
-            <a
-                class="Tree-entityLink"
-                href="../../docs/grid.html"
-                data-role="tree-link"
-                
-                data-pjax
-                data-test="grid"
-                data-handle="grid"
-            >
-                <span>Grid</span>
                 
             </a>
         </li>
@@ -5712,6 +5707,40 @@
 
 
 <span class="Status-dot" style="border-color: #FF9233;" title="WIP"></span>
+
+
+</div>
+
+</div>
+
+
+            </a>
+        </li>
+        
+    
+        
+        
+        
+        
+        <li class="Tree-item Tree-entity" data-role="item">
+            <a
+                class="Tree-entityLink"
+                href="./m-skip-link.html"
+                data-role="tree-link"
+                
+                data-pjax
+                data-test="m-skip-link"
+                data-handle="m-skip-link"
+            >
+                <span>Skip-link</span>
+                
+
+<div class="Status Status--unlabelled">
+
+<div class="Status-dots">
+
+
+<span class="Status-dot" style="border-color: #29CC29;" title="Ready"></span>
 
 
 </div>

@@ -76,6 +76,10 @@
 		&::placeholder {
 			color: $color-text;
 			transition: color $transition-ease $transition-fast;
+
+			@include high-contrast {
+				color: $color-text;
+			}
 		}
 
 		&:focus,
@@ -87,8 +91,16 @@
 			color: $color-text;
 			padding-right: 2.4em;
 
+			@include high-contrast {
+				border-color: $color-text;
+			}
+
 			&::placeholder {
 				color: $color-grey-2;
+
+				@include high-contrast {
+					color: $color-text;
+				}
 			}
 		}
 
@@ -124,8 +136,16 @@
 		cursor: text;
 		padding-right: 2.4em;
 
+		@include high-contrast {
+			border-color: $color-text;
+		}
+
 		&::placeholder {
 			color: $color-grey-3;
+
+			@include high-contrast {
+				color: $color-text;
+			}
 		}
 	}
 

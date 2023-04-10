@@ -42,6 +42,10 @@
 		.a-hamburger__inner {
 			&, &:before, &:after {
 				background-color: $color-primary;
+
+				@include high-contrast {
+					background-color: $color-primary-dark;
+				}
 			}
 		}
 	}

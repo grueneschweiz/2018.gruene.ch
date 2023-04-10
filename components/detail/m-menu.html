@@ -714,6 +714,7 @@
                             <code class="Code Code--lang-JavaScript FileBrowser-code hljs">
                                 <pre><span class="hljs-keyword">import</span> BaseView <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;base-view&#x27;</span>;
 
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> MAIN_MENU_SELECTOR = <span class="hljs-string">&#x27;.m-menu__nav-list&#x27;</span>;
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> MAIN_ENTRY_SELECTOR = <span class="hljs-string">&#x27;.m-menu__nav-link--js-hook&#x27;</span>;
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> SUBMENU_SELECTOR = <span class="hljs-string">&#x27;.m-menu__submenu&#x27;</span>;
 
@@ -729,14 +730,24 @@
 	<span class="hljs-function"><span class="hljs-title">bind</span>(<span class="hljs-params"></span>)</span> {
 		<span class="hljs-built_in">super</span>.bind();
 
-		<span class="hljs-built_in">this</span>.on( <span class="hljs-string">&#x27;click&#x27;</span>, MAIN_ENTRY_SELECTOR, <span class="hljs-function">(<span class="hljs-params"> event </span>) =&gt;</span> <span class="hljs-built_in">this</span>.toggleSubNavigation( event ) );
+		<span class="hljs-built_in">this</span>.on( <span class="hljs-string">&#x27;click&#x27;</span>, MAIN_ENTRY_SELECTOR,
+			<span class="hljs-function">(<span class="hljs-params"> event </span>) =&gt;</span> <span class="hljs-built_in">this</span>.toggleSubNavigation( event ) );
+	}
+
+	<span class="hljs-function"><span class="hljs-title">setOrientation</span>(<span class="hljs-params"> orientation </span>)</span> {
+		<span class="hljs-keyword">const</span> main = <span class="hljs-built_in">this</span>.getScopedElement( MAIN_MENU_SELECTOR );
+
+		<span class="hljs-keyword">if</span> (main) {
+			main.setAttribute( <span class="hljs-string">&#x27;aria-orientation&#x27;</span>, orientation );
+		}
 	}
 
 	<span class="hljs-function"><span class="hljs-title">toggleSubNavigation</span>(<span class="hljs-params"> event </span>)</span> {
 		<span class="hljs-keyword">if</span> (<span class="hljs-built_in">this</span>.currentSub !== event.target) {
 			<span class="hljs-built_in">this</span>.closeSubNavigation();
 			<span class="hljs-built_in">this</span>.openSubNavigation( event );
-		}	<span class="hljs-keyword">else</span> {
+		}
+		<span class="hljs-keyword">else</span> {
 			event.preventDefault();
 			<span class="hljs-built_in">this</span>.closeSubNavigation();
 		}
@@ -765,14 +776,14 @@
 	<span class="hljs-function"><span class="hljs-title">closeSubNavigation</span>(<span class="hljs-params"></span>)</span> {
 		<span class="hljs-built_in">this</span>.currentSub = <span class="hljs-literal">null</span>;
 
-		<span class="hljs-keyword">let</span> elements = <span class="hljs-built_in">this</span>.getScopedElements( SUBMENU_SELECTOR + <span class="hljs-string">&#x27;, &#x27;</span> + MAIN_ENTRY_SELECTOR );
+		<span class="hljs-built_in">this</span>.getScopedElements( MAIN_ENTRY_SELECTOR ).forEach( <span class="hljs-function">(<span class="hljs-params"> element </span>) =&gt;</span> {
+			<span class="hljs-built_in">this</span>.removeClass( element, OPEN_STATE );
+			element.setAttribute( <span class="hljs-string">&#x27;aria-expanded&#x27;</span>, <span class="hljs-literal">false</span> );
+		} );
 
-		<span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> key <span class="hljs-keyword">in</span> elements) {
-			<span class="hljs-keyword">if</span> (<span class="hljs-built_in">Object</span>.prototype.hasOwnProperty.call( elements, key )) {
-				<span class="hljs-built_in">this</span>.removeClass( elements[key], OPEN_STATE );
-				elements[key].setAttribute( <span class="hljs-string">&#x27;aria-expanded&#x27;</span>, <span class="hljs-literal">false</span> );
-			}
-		}
+		<span class="hljs-built_in">this</span>.getScopedElements( SUBMENU_SELECTOR ).forEach( <span class="hljs-function">(<span class="hljs-params"> element </span>) =&gt;</span> {
+			<span class="hljs-built_in">this</span>.removeClass( element, OPEN_STATE );
+		} );
 
 		<span class="hljs-built_in">this</span>.afterCloseSubNavigation();
 	}
@@ -811,7 +822,7 @@
                 </li>
                 <li class="Meta-item">
                     <strong class="Meta-key">Size:</strong>
-                    <span class="Meta-value">1.8 KB</span>
+                    <span class="Meta-value">2 KB</span>
                 </li>
             </ul>
         </div>
@@ -824,7 +835,7 @@
                         <div class="FileBrowser-itemPreview">
                             
                             <code class="Code Code--lang-JavaScript FileBrowser-code hljs">
-                                <pre><span class="hljs-keyword">import</span> {MMenuBase, SUBMENU_SELECTOR, OPEN_STATE} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./m-menu--base&#x27;</span>;
+                                <pre><span class="hljs-keyword">import</span> { MMenuBase, OPEN_STATE, SUBMENU_SELECTOR } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./m-menu--base&#x27;</span>;
 
 <span class="hljs-keyword">const</span> CLOSE_SELECTOR = <span class="hljs-string">&#x27;.m-menu__submenu__close&#x27;</span>;
 
@@ -836,6 +847,8 @@
 		<span class="hljs-built_in">super</span>.initialize();
 
 		<span class="hljs-built_in">this</span>.ticking = <span class="hljs-literal">false</span>;
+
+		<span class="hljs-built_in">this</span>.setOrientation( <span class="hljs-string">&#x27;horizontal&#x27;</span> );
 	}
 
 	<span class="hljs-function"><span class="hljs-title">bind</span>(<span class="hljs-params"></span>)</span> {
@@ -942,7 +955,7 @@
                 </li>
                 <li class="Meta-item">
                     <strong class="Meta-key">Size:</strong>
-                    <span class="Meta-value">2.4 KB</span>
+                    <span class="Meta-value">2.5 KB</span>
                 </li>
             </ul>
         </div>
@@ -955,10 +968,9 @@
                         <div class="FileBrowser-itemPreview">
                             
                             <code class="Code Code--lang-JavaScript FileBrowser-code hljs">
-                                <pre><span class="hljs-keyword">import</span> { MMenuBase, OPEN_STATE } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./m-menu--base&#x27;</span>;
+                                <pre><span class="hljs-keyword">import</span> { MAIN_MENU_SELECTOR, MMenuBase, OPEN_STATE } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./m-menu--base&#x27;</span>;
 
 <span class="hljs-keyword">const</span> NAV_WRAPPER_SELECTOR = <span class="hljs-string">&#x27;.m-menu__nav&#x27;</span>;
-<span class="hljs-keyword">const</span> MAIN_MENU_SELECTOR = <span class="hljs-string">&#x27;.m-menu__nav-list&#x27;</span>;
 <span class="hljs-keyword">const</span> RIGHT_SELECTOR = <span class="hljs-string">&#x27;.m-menu__right&#x27;</span>;
 <span class="hljs-keyword">const</span> HAMBURGER_SELECTOR = <span class="hljs-string">&#x27;.a-hamburger&#x27;</span>;
 <span class="hljs-keyword">const</span> SUBMENU_ITEMS_SELECTOR = <span class="hljs-string">&#x27;.m-menu__nav-item&#x27;</span>;
@@ -977,12 +989,15 @@
 		<span class="hljs-built_in">this</span>.hamburger = <span class="hljs-built_in">this</span>.getScopedElement( HAMBURGER_SELECTOR );
 		<span class="hljs-built_in">this</span>.right = <span class="hljs-built_in">this</span>.getScopedElement( RIGHT_SELECTOR );
 		<span class="hljs-built_in">this</span>.menuItems = <span class="hljs-built_in">this</span>.getScopedElements( SUBMENU_ITEMS_SELECTOR );
+
+		<span class="hljs-built_in">this</span>.setOrientation( <span class="hljs-string">&#x27;vertical&#x27;</span> );
 	}
 
 	<span class="hljs-function"><span class="hljs-title">bind</span>(<span class="hljs-params"></span>)</span> {
 		<span class="hljs-built_in">super</span>.bind();
 
-		<span class="hljs-built_in">this</span>.on( <span class="hljs-string">&#x27;click&#x27;</span>, HAMBURGER_SELECTOR, <span class="hljs-function">(<span class="hljs-params"> event </span>) =&gt;</span> <span class="hljs-built_in">this</span>.toggleMainNavigation( event ) );
+		<span class="hljs-built_in">this</span>.on( <span class="hljs-string">&#x27;click&#x27;</span>, HAMBURGER_SELECTOR,
+			<span class="hljs-function">(<span class="hljs-params"> event </span>) =&gt;</span> <span class="hljs-built_in">this</span>.toggleMainNavigation( event ) );
 	}
 
 	<span class="hljs-function"><span class="hljs-title">toggleMainNavigation</span>(<span class="hljs-params"> event </span>)</span> {
@@ -990,7 +1005,8 @@
 
 		<span class="hljs-keyword">if</span> (<span class="hljs-built_in">this</span>.mobileOpen) {
 			<span class="hljs-built_in">this</span>.closeMainNavigation();
-		} <span class="hljs-keyword">else</span> {
+		}
+		<span class="hljs-keyword">else</span> {
 			<span class="hljs-built_in">this</span>.openMainNavigation();
 		}
 	}
@@ -1008,13 +1024,22 @@
 
 	<span class="hljs-function"><span class="hljs-title">closeMainNavigation</span>(<span class="hljs-params"></span>)</span> {
 		<span class="hljs-built_in">this</span>.mobileOpen = <span class="hljs-literal">false</span>;
+		<span class="hljs-keyword">const</span> toClose = [
+			<span class="hljs-built_in">this</span>.navWrapper,
+			<span class="hljs-built_in">this</span>.hamburger,
+			<span class="hljs-built_in">this</span>.mainNav,
+			<span class="hljs-built_in">this</span>.right,
+		];
 
-		<span class="hljs-built_in">this</span>.removeClass( <span class="hljs-built_in">this</span>.navWrapper, OPEN_STATE );
-		<span class="hljs-built_in">this</span>.removeClass( <span class="hljs-built_in">this</span>.hamburger, OPEN_STATE );
-		<span class="hljs-built_in">this</span>.removeClass( <span class="hljs-built_in">this</span>.mainNav, OPEN_STATE );
-		<span class="hljs-built_in">this</span>.removeClass( <span class="hljs-built_in">this</span>.right, OPEN_STATE );
+		<span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> el <span class="hljs-keyword">of</span> toClose) {
+			<span class="hljs-keyword">if</span> (el) {
+				<span class="hljs-built_in">this</span>.removeClass( el, OPEN_STATE );
+			}
+		}
 
-		<span class="hljs-built_in">this</span>.hamburger.setAttribute( <span class="hljs-string">&#x27;aria-expanded&#x27;</span>, <span class="hljs-literal">false</span> );
+		<span class="hljs-keyword">if</span> (<span class="hljs-built_in">this</span>.hamburger) {
+			<span class="hljs-built_in">this</span>.hamburger.setAttribute( <span class="hljs-string">&#x27;aria-expanded&#x27;</span>, <span class="hljs-literal">false</span> );
+		}
 
 		<span class="hljs-built_in">this</span>.closeSubNavigation();
 	}
@@ -1206,6 +1231,10 @@
 
 		&amp;:focus {
 			border-left: solid 1px $color-primary;
+
+			@include high-contrast {
+				border-color: $color-primary-dark;
+			}
 		}
 
 		.a-logo {
@@ -1458,6 +1487,10 @@
 					width: 100%;
 					height: 2px;
 					background-color: $color-primary;
+
+					@include high-contrast {
+						background-color: $color-primary-dark;
+					}
 				}
 			}
 		}
@@ -1578,6 +1611,10 @@
 				height: 100%;
 				stroke: $color-primary;
 				transition: stroke $transition-fast $transition-ease;
+
+				@include high-contrast {
+					stroke: $color-primary-dark;
+				}
 			}
 
 			@include hover {
@@ -1620,7 +1657,7 @@
                 </li>
                 <li class="Meta-item">
                     <strong class="Meta-key">Size:</strong>
-                    <span class="Meta-value">7.8 KB</span>
+                    <span class="Meta-value">8.1 KB</span>
                 </li>
             </ul>
         </div>
@@ -1975,26 +2012,6 @@
                 data-handle="class-names"
             >
                 <span>Class Names</span>
-                
-            </a>
-        </li>
-        
-    
-        
-        
-        
-        
-        <li class="Tree-item Tree-entity" data-role="item">
-            <a
-                class="Tree-entityLink"
-                href="../../docs/grid.html"
-                data-role="tree-link"
-                
-                data-pjax
-                data-test="grid"
-                data-handle="grid"
-            >
-                <span>Grid</span>
                 
             </a>
         </li>
@@ -5719,6 +5736,40 @@
 
 
 <span class="Status-dot" style="border-color: #FF9233;" title="WIP"></span>
+
+
+</div>
+
+</div>
+
+
+            </a>
+        </li>
+        
+    
+        
+        
+        
+        
+        <li class="Tree-item Tree-entity" data-role="item">
+            <a
+                class="Tree-entityLink"
+                href="./m-skip-link.html"
+                data-role="tree-link"
+                
+                data-pjax
+                data-test="m-skip-link"
+                data-handle="m-skip-link"
+            >
+                <span>Skip-link</span>
+                
+
+<div class="Status Status--unlabelled">
+
+<div class="Status-dots">
+
+
+<span class="Status-dot" style="border-color: #29CC29;" title="Ready"></span>
 
 
 </div>

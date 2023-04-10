@@ -9,6 +9,10 @@
 	width: 100%;
 	height: $height;
 
+	@include high-contrast {
+		background-color: $color-primary-dark;
+	}
+
 	@media print {
 		display: none;
 	}

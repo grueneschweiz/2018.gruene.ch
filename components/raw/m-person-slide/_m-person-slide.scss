@@ -41,6 +41,10 @@
 		&:before, &:after {
 			color: $color-primary;
 			font-weight: $font-weight-bold;
+
+			@include high-contrast {
+				color: $color-primary-dark;
+			}
 		}
 	}
 }

@@ -17,6 +17,10 @@
 		@include fluid-props(margin-left margin-right, $fluid-min, $size-medium, 5px, 16px);
 		color: $color-primary;
 
+		@include high-contrast {
+			color: $color-primary-dark;
+		}
+
 		@include hover {
 			color: $color-primary-dark;
 		}
@@ -26,6 +30,10 @@
 			transition: stroke $transition-fast $transition-ease;
 
 			@include hover {
+				stroke: $color-primary-dark;
+			}
+
+			@include high-contrast {
 				stroke: $color-primary-dark;
 			}
 
@@ -40,6 +48,10 @@
 
 			@include hover {
 				stroke: $color-grey-2;
+			}
+
+			@include high-contrast {
+				stroke: $color-grey-3;
 			}
 		}
 
@@ -63,6 +75,10 @@
 
 			@include hover {
 				color: $color-text;
+			}
+
+			@include high-contrast {
+				text-decoration: underline $color-primary-dark;
 			}
 		}
 	}

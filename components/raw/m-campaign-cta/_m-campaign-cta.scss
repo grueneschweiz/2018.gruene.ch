@@ -19,6 +19,10 @@
 		@include media($_DESKTOP) {
 			color: $color-secondary;
 			transition: color $transition-fast $transition-ease;
+
+			@include high-contrast {
+				color: $color-secondary-dark;
+			}
 		}
 	}
 

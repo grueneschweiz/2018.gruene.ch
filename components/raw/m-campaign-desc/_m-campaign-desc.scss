@@ -28,6 +28,10 @@
 		color: $color-primary;
 		transition: color $transition-fast $transition-ease;
 
+		@include high-contrast {
+			color: $color-primary-dark;
+		}
+
 		@include hover {
 			color: $color-primary-dark;
 		}

@@ -3,6 +3,10 @@
 	width: 100%;
 	font-size: 0.875rem;
 
+	@include high-contrast {
+		background: $color-primary-dark;
+	}
+
 	&__wrapper {
 		max-width: $grid-max-width-max;
 		width: 100%;
