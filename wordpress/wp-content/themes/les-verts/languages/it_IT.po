@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 2018gruenech\n"
 "POT-Creation-Date: 2023-03-27 14:06+0200\n"
-"PO-Revision-Date: 2023-06-14 13:30\n"
+"PO-Revision-Date: 2023-07-18 08:17\n"
 "Last-Translator: Cyrill Bolliger <bolliger@gmx.ch>\n"
 "Language-Team: Italian\n"
 "MIME-Version: 1.0\n"
@@ -215,7 +215,7 @@ msgstr ""
 #: acf-translate.php:597 acf-translate.php:6230 acf-translate.php:6235
 #: templates/molecules/m-share-block.twig:31
 msgid "Facebook"
-msgstr ""
+msgstr "Facebook"
 
 #: acf-translate.php:602
 msgid "Link to the facebook fan page / profile"
@@ -224,7 +224,7 @@ msgstr "Link alla pagina / profilo Facebook"
 #: acf-translate.php:624 acf-translate.php:6200
 #: templates/molecules/m-share-block.twig:19
 msgid "Twitter"
-msgstr ""
+msgstr "Twitter"
 
 #: acf-translate.php:629
 msgid "Link to the twitter profile"
@@ -232,7 +232,7 @@ msgstr "Link al profilo Twitter"
 
 #: acf-translate.php:651
 msgid "Mastodon"
-msgstr ""
+msgstr "Mastodon"
 
 #: acf-translate.php:656
 msgid "Link to the mastodon profile"
@@ -240,7 +240,7 @@ msgstr ""
 
 #: acf-translate.php:679
 msgid "Tumblr"
-msgstr ""
+msgstr "Tumblr"
 
 #: acf-translate.php:684
 msgid "Link to the tumblr profile"
@@ -248,7 +248,7 @@ msgstr ""
 
 #: acf-translate.php:707 acf-translate.php:6257
 msgid "Instagram"
-msgstr ""
+msgstr "Instagram"
 
 #: acf-translate.php:712
 msgid "Link to the instagram profile"
@@ -256,7 +256,7 @@ msgstr "Link al profilo Instagram"
 
 #: acf-translate.php:734
 msgid "Tiktok"
-msgstr ""
+msgstr "TikTok"
 
 #: acf-translate.php:739
 msgid "Link to the tiktok profile"
@@ -264,7 +264,7 @@ msgstr ""
 
 #: acf-translate.php:761
 msgid "Linkedin"
-msgstr ""
+msgstr "Linkedin"
 
 #: acf-translate.php:766
 msgid "Link to the linkedin profile"
@@ -272,7 +272,7 @@ msgstr ""
 
 #: acf-translate.php:788
 msgid "Youtube"
-msgstr ""
+msgstr "YouTube"
 
 #: acf-translate.php:793
 msgid "Link to the youtube profile"
@@ -351,7 +351,7 @@ msgstr "Interno"
 
 #: acf-translate.php:1067 acf-translate.php:1141 acf-translate.php:5221
 msgid "URL"
-msgstr ""
+msgstr "URL"
 
 #: acf-translate.php:1068 lib/form/acf/settings.php:121
 msgid "None"
@@ -1241,7 +1241,7 @@ msgstr ""
 
 #: acf-translate.php:5298
 msgid "&mdash;"
-msgstr ""
+msgstr "&mdash;"
 
 #: acf-translate.php:5299 templates/atoms/a-vote-tag.twig:10
 msgid "Free Vote"
@@ -1363,7 +1363,7 @@ msgstr "Contatto"
 #: acf-translate.php:6114 acf-translate.php:6119 lib/form/acf/input.php:43
 #: templates/molecules/m-share-block.twig:63
 msgid "Email"
-msgstr ""
+msgstr "Email"
 
 #: acf-translate.php:6143 acf-translate.php:6148 lib/form/acf/input.php:44
 msgid "Phone"
@@ -1957,7 +1957,7 @@ msgstr ""
 
 #: lib/form/acf/settings.php:11
 msgid "SMTP"
-msgstr ""
+msgstr "SMTP"
 
 #: lib/form/acf/settings.php:27
 msgid "Send over SMTP"
@@ -1981,11 +1981,11 @@ msgstr ""
 
 #: lib/form/acf/settings.php:122
 msgid "SSL"
-msgstr ""
+msgstr "SSL"
 
 #: lib/form/acf/settings.php:123
 msgid "TLS"
-msgstr ""
+msgstr "TLS"
 
 #: lib/form/acf/settings.php:135
 msgid "Username"
@@ -1997,7 +1997,7 @@ msgstr ""
 
 #: lib/form/acf/settings.php:191
 msgid "API Url"
-msgstr ""
+msgstr "API Url"
 
 #: lib/form/acf/settings.php:207
 msgid "API Key (Client Secret)"
@@ -2822,7 +2822,7 @@ msgstr ""
 
 #: templates/molecules/m-share-block.twig:42
 msgid "WhatsApp"
-msgstr ""
+msgstr "WhatsApp"
 
 #: templates/molecules/m-share-block.twig:50
 msgid "Share on Telegram"
@@ -2830,7 +2830,7 @@ msgstr ""
 
 #: templates/molecules/m-share-block.twig:52
 msgid "Telegram"
-msgstr ""
+msgstr "Telegram"
 
 #: templates/molecules/m-share-block.twig:61
 msgid "Share by email"
