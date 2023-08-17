@@ -170,7 +170,7 @@ $WPCLI plugin install wp-super-cache $INSTALL_ACTIVATE
 $WPCLI plugin install daggerhart-openid-connect-generic
 
 # WP Super Cache CLI
-WP_CLI_PACKAGES_DIR=/var/www/.wp-cli/packages/ php -d memory_limit=2048M /bin/wp-cli.phar --allow-root package install wp-cli/wp-super-cache-cli
+WP_CLI_PACKAGES_DIR=~/.wp-cli/packages/ php -d memory_limit=2048M $(which $WPCLI) --allow-root package install wp-cli/wp-super-cache-cli
 # if installation fails: go to ~/.wp-cli/packages and run composer install
 
 #====================
@@ -192,6 +192,7 @@ $WPCLI theme delete twentynineteen
 $WPCLI theme delete twentytwenty
 $WPCLI theme delete twentytwentyone
 $WPCLI theme delete twentytwentytwo
+$WPCLI theme delete twentytwentythree
 
 if $WPCLI plugin is-installed akismet; then
     $WPCLI plugin uninstall akismet --deactivate
