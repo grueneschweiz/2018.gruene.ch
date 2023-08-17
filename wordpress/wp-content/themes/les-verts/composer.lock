@@ -581,16 +581,16 @@
 		},
 		{
 			"name": "phpoffice/phpspreadsheet",
-			"version": "1.28.0",
+			"version": "1.29.0",
 			"source": {
 				"type": "git",
 				"url": "https://github.com/PHPOffice/PhpSpreadsheet.git",
-				"reference": "6e81cf39bbd93ebc3a4e8150444c41e8aa9b769a"
+				"reference": "fde2ccf55eaef7e86021ff1acce26479160a0fa0"
 			},
 			"dist": {
 				"type": "zip",
-				"url": "https://api.github.com/repos/PHPOffice/PhpSpreadsheet/zipball/6e81cf39bbd93ebc3a4e8150444c41e8aa9b769a",
-				"reference": "6e81cf39bbd93ebc3a4e8150444c41e8aa9b769a",
+				"url": "https://api.github.com/repos/PHPOffice/PhpSpreadsheet/zipball/fde2ccf55eaef7e86021ff1acce26479160a0fa0",
+				"reference": "fde2ccf55eaef7e86021ff1acce26479160a0fa0",
 				"shasum": ""
 			},
 			"require": {
@@ -608,7 +608,7 @@
 				"ext-zip": "*",
 				"ext-zlib": "*",
 				"ezyang/htmlpurifier": "^4.15",
-				"maennchen/zipstream-php": "^2.1",
+				"maennchen/zipstream-php": "^2.1 || ^3.0",
 				"markbaker/complex": "^3.0",
 				"markbaker/matrix": "^3.0",
 				"php": "^7.4 || ^8.0",
@@ -620,12 +620,12 @@
 				"dealerdirect/phpcodesniffer-composer-installer": "dev-main",
 				"dompdf/dompdf": "^1.0 || ^2.0",
 				"friendsofphp/php-cs-fixer": "^3.2",
-				"mitoteam/jpgraph": "^10.2.4",
+				"mitoteam/jpgraph": "^10.3",
 				"mpdf/mpdf": "^8.1.1",
 				"phpcompatibility/php-compatibility": "^9.3",
 				"phpstan/phpstan": "^1.1",
 				"phpstan/phpstan-phpunit": "^1.0",
-				"phpunit/phpunit": "^8.5 || ^9.0",
+				"phpunit/phpunit": "^8.5 || ^9.0 || ^10.0",
 				"squizlabs/php_codesniffer": "^3.7",
 				"tecnickcom/tcpdf": "^6.5"
 			},
@@ -680,27 +680,27 @@
 			],
 			"support": {
 				"issues": "https://github.com/PHPOffice/PhpSpreadsheet/issues",
-				"source": "https://github.com/PHPOffice/PhpSpreadsheet/tree/1.28.0"
+				"source": "https://github.com/PHPOffice/PhpSpreadsheet/tree/1.29.0"
 			},
-			"time": "2023-02-25T12:24:49+00:00"
+			"time": "2023-06-14T22:48:31+00:00"
 		},
 		{
 			"name": "psr/http-client",
-			"version": "1.0.1",
+			"version": "1.0.2",
 			"source": {
 				"type": "git",
 				"url": "https://github.com/php-fig/http-client.git",
-				"reference": "2dfb5f6c5eff0e91e20e913f8c5452ed95b86621"
+				"reference": "0955afe48220520692d2d09f7ab7e0f93ffd6a31"
 			},
 			"dist": {
 				"type": "zip",
-				"url": "https://api.github.com/repos/php-fig/http-client/zipball/2dfb5f6c5eff0e91e20e913f8c5452ed95b86621",
-				"reference": "2dfb5f6c5eff0e91e20e913f8c5452ed95b86621",
+				"url": "https://api.github.com/repos/php-fig/http-client/zipball/0955afe48220520692d2d09f7ab7e0f93ffd6a31",
+				"reference": "0955afe48220520692d2d09f7ab7e0f93ffd6a31",
 				"shasum": ""
 			},
 			"require": {
 				"php": "^7.0 || ^8.0",
-				"psr/http-message": "^1.0"
+				"psr/http-message": "^1.0 || ^2.0"
 			},
 			"type": "library",
 			"extra": {
@@ -720,7 +720,7 @@
 			"authors": [
 				{
 					"name": "PHP-FIG",
-					"homepage": "http://www.php-fig.org/"
+					"homepage": "https://www.php-fig.org/"
 				}
 			],
 			"description": "Common interface for HTTP clients",
@@ -732,27 +732,27 @@
 				"psr-18"
 			],
 			"support": {
-				"source": "https://github.com/php-fig/http-client/tree/master"
+				"source": "https://github.com/php-fig/http-client/tree/1.0.2"
 			},
-			"time": "2020-06-29T06:28:15+00:00"
+			"time": "2023-04-10T20:12:12+00:00"
 		},
 		{
 			"name": "psr/http-factory",
-			"version": "1.0.1",
+			"version": "1.0.2",
 			"source": {
 				"type": "git",
 				"url": "https://github.com/php-fig/http-factory.git",
-				"reference": "12ac7fcd07e5b077433f5f2bee95b3a771bf61be"
+				"reference": "e616d01114759c4c489f93b099585439f795fe35"
 			},
 			"dist": {
 				"type": "zip",
-				"url": "https://api.github.com/repos/php-fig/http-factory/zipball/12ac7fcd07e5b077433f5f2bee95b3a771bf61be",
-				"reference": "12ac7fcd07e5b077433f5f2bee95b3a771bf61be",
+				"url": "https://api.github.com/repos/php-fig/http-factory/zipball/e616d01114759c4c489f93b099585439f795fe35",
+				"reference": "e616d01114759c4c489f93b099585439f795fe35",
 				"shasum": ""
 			},
 			"require": {
 				"php": ">=7.0.0",
-				"psr/http-message": "^1.0"
+				"psr/http-message": "^1.0 || ^2.0"
 			},
 			"type": "library",
 			"extra": {
@@ -772,7 +772,7 @@
 			"authors": [
 				{
 					"name": "PHP-FIG",
-					"homepage": "http://www.php-fig.org/"
+					"homepage": "https://www.php-fig.org/"
 				}
 			],
 			"description": "Common interfaces for PSR-7 HTTP message factories",
@@ -787,31 +787,31 @@
 				"response"
 			],
 			"support": {
-				"source": "https://github.com/php-fig/http-factory/tree/master"
+				"source": "https://github.com/php-fig/http-factory/tree/1.0.2"
 			},
-			"time": "2019-04-30T12:38:16+00:00"
+			"time": "2023-04-10T20:10:41+00:00"
 		},
 		{
 			"name": "psr/http-message",
-			"version": "1.0.1",
+			"version": "1.1",
 			"source": {
 				"type": "git",
 				"url": "https://github.com/php-fig/http-message.git",
-				"reference": "f6561bf28d520154e4b0ec72be95418abe6d9363"
+				"reference": "cb6ce4845ce34a8ad9e68117c10ee90a29919eba"
 			},
 			"dist": {
 				"type": "zip",
-				"url": "https://api.github.com/repos/php-fig/http-message/zipball/f6561bf28d520154e4b0ec72be95418abe6d9363",
-				"reference": "f6561bf28d520154e4b0ec72be95418abe6d9363",
+				"url": "https://api.github.com/repos/php-fig/http-message/zipball/cb6ce4845ce34a8ad9e68117c10ee90a29919eba",
+				"reference": "cb6ce4845ce34a8ad9e68117c10ee90a29919eba",
 				"shasum": ""
 			},
 			"require": {
-				"php": ">=5.3.0"
+				"php": "^7.2 || ^8.0"
 			},
 			"type": "library",
 			"extra": {
 				"branch-alias": {
-					"dev-master": "1.0.x-dev"
+					"dev-master": "1.1.x-dev"
 				}
 			},
 			"autoload": {
@@ -840,9 +840,9 @@
 				"response"
 			],
 			"support": {
-				"source": "https://github.com/php-fig/http-message/tree/master"
+				"source": "https://github.com/php-fig/http-message/tree/1.1"
 			},
-			"time": "2016-08-06T14:39:51+00:00"
+			"time": "2023-04-04T09:50:52+00:00"
 		},
 		{
 			"name": "psr/simple-cache",
@@ -1335,16 +1335,16 @@
 		},
 		{
 			"name": "twig/twig",
-			"version": "v2.15.4",
+			"version": "v2.15.5",
 			"source": {
 				"type": "git",
 				"url": "https://github.com/twigphp/Twig.git",
-				"reference": "3e059001d6d597dd50ea7c74dd2464b4adea48d3"
+				"reference": "fc02a6af3eeb97c4bf5650debc76c2eda85ac22e"
 			},
 			"dist": {
 				"type": "zip",
-				"url": "https://api.github.com/repos/twigphp/Twig/zipball/3e059001d6d597dd50ea7c74dd2464b4adea48d3",
-				"reference": "3e059001d6d597dd50ea7c74dd2464b4adea48d3",
+				"url": "https://api.github.com/repos/twigphp/Twig/zipball/fc02a6af3eeb97c4bf5650debc76c2eda85ac22e",
+				"reference": "fc02a6af3eeb97c4bf5650debc76c2eda85ac22e",
 				"shasum": ""
 			},
 			"require": {
@@ -1399,7 +1399,7 @@
 			],
 			"support": {
 				"issues": "https://github.com/twigphp/Twig/issues",
-				"source": "https://github.com/twigphp/Twig/tree/v2.15.4"
+				"source": "https://github.com/twigphp/Twig/tree/v2.15.5"
 			},
 			"funding": [
 				{
@@ -1411,7 +1411,7 @@
 					"type": "tidelift"
 				}
 			],
-			"time": "2022-12-27T12:26:20+00:00"
+			"time": "2023-05-03T17:49:41+00:00"
 		},
 		{
 			"name": "upstatement/routes",
@@ -1471,16 +1471,16 @@
 		},
 		{
 			"name": "yahnis-elsts/plugin-update-checker",
-			"version": "v5.0",
+			"version": "v5.1",
 			"source": {
 				"type": "git",
 				"url": "https://github.com/YahnisElsts/plugin-update-checker.git",
-				"reference": "81be284da76f12c8751b477b2a0fa44364d26f84"
+				"reference": "48b03e93c9c2587f9276dce00ce2b6d94c1190d2"
 			},
 			"dist": {
 				"type": "zip",
-				"url": "https://api.github.com/repos/YahnisElsts/plugin-update-checker/zipball/81be284da76f12c8751b477b2a0fa44364d26f84",
-				"reference": "81be284da76f12c8751b477b2a0fa44364d26f84",
+				"url": "https://api.github.com/repos/YahnisElsts/plugin-update-checker/zipball/48b03e93c9c2587f9276dce00ce2b6d94c1190d2",
+				"reference": "48b03e93c9c2587f9276dce00ce2b6d94c1190d2",
 				"shasum": ""
 			},
 			"require": {
@@ -1490,7 +1490,7 @@
 			"type": "library",
 			"autoload": {
 				"files": [
-					"load-v5p0.php"
+					"load-v5p1.php"
 				]
 			},
 			"notification-url": "https://packagist.org/downloads/",
@@ -1515,9 +1515,9 @@
 			],
 			"support": {
 				"issues": "https://github.com/YahnisElsts/plugin-update-checker/issues",
-				"source": "https://github.com/YahnisElsts/plugin-update-checker/tree/v5.0"
+				"source": "https://github.com/YahnisElsts/plugin-update-checker/tree/v5.1"
 			},
-			"time": "2022-10-28T17:46:32+00:00"
+			"time": "2023-05-20T11:55:43+00:00"
 		}
 	],
 	"packages-dev": [],
