@@ -19,15 +19,17 @@
 		<div class="page__wide">
 			<div class="page__preview-articles">
 				{% for item in post.get_field('posts') %}
-					<article class="page__preview-article">
-						{% include 'molecules/m-front-article.twig' with {
-							'post': item.post,
-							'modifiers': [
-								'm-front-article--image-first',
-								'm-front-article--stretch'
-							]
-						} only %}
-					</article>
+					{% if item.post %}
+						<article class="page__preview-article">
+							{% include 'molecules/m-front-article.twig' with {
+								'post': item.post,
+								'modifiers': [
+									'm-front-article--image-first',
+									'm-front-article--stretch'
+								]
+							} only %}
+						</article>
+					{% endif %}
 				{% endfor %}
 			</div>
 		</div>
