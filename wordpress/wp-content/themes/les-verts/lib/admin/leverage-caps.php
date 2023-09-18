@@ -29,3 +29,16 @@ add_filter( 'map_meta_cap', function ( $caps, $cap ) {
 
 	return $caps;
 }, 1, 2 );
+
+/**
+ * Allow upload of CSV files for any user with upload_files capability
+ *
+ * Required for events calendar event import.
+ */
+add_filter( 'upload_mimes', function ( $allowed_mime_types ) {
+	if ( current_user_can( 'upload_files' ) ) {
+		$allowed_mime_types['csv'] = 'text/csv';
+	}
+
+	return $allowed_mime_types;
+} );
