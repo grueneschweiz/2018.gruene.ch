@@ -6,6 +6,7 @@
             "key": "field_5b9a8a0be9449",
             "label": "Lead",
             "name": "",
+          "aria-label": "",
             "type": "clone",
             "instructions": "",
             "required": 0,
@@ -27,6 +28,7 @@
             "key": "field_5b9a8a0be959d",
             "label": "Main Content",
             "name": "posts",
+          "aria-label": "",
             "type": "repeater",
             "instructions": "",
             "required": 0,
@@ -46,6 +48,7 @@
                     "key": "field_5b9a8b184a95e",
                     "label": "Post \/ Page",
                     "name": "post",
+                  "aria-label": "",
                     "type": "post_object",
                     "instructions": "Select the post or page, that should be displayed.",
                     "required": 0,
@@ -63,9 +66,12 @@
                     "allow_null": 0,
                     "multiple": 0,
                     "return_format": "id",
-                    "ui": 1
+                  "ui": 1,
+                  "bidirectional_target": [],
+                  "parent_repeater": "field_5b9a8a0be959d"
                 }
-            ]
+            ],
+          "rows_per_page": 20
         }
     ],
     "location": [
@@ -108,10 +114,10 @@
         "slug",
         "author",
         "format",
-        "featured_image",
         "send-trackbacks"
     ],
-    "active": 1,
+  "active": true,
     "description": "",
-    "modified": 1569833931
+  "show_in_rest": 0,
+  "modified": 1693907037
 }
