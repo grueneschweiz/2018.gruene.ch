@@ -686,16 +686,16 @@
 		},
 		{
 			"name": "psr/http-client",
-			"version": "1.0.2",
+			"version": "1.0.3",
 			"source": {
 				"type": "git",
 				"url": "https://github.com/php-fig/http-client.git",
-				"reference": "0955afe48220520692d2d09f7ab7e0f93ffd6a31"
+				"reference": "bb5906edc1c324c9a05aa0873d40117941e5fa90"
 			},
 			"dist": {
 				"type": "zip",
-				"url": "https://api.github.com/repos/php-fig/http-client/zipball/0955afe48220520692d2d09f7ab7e0f93ffd6a31",
-				"reference": "0955afe48220520692d2d09f7ab7e0f93ffd6a31",
+				"url": "https://api.github.com/repos/php-fig/http-client/zipball/bb5906edc1c324c9a05aa0873d40117941e5fa90",
+				"reference": "bb5906edc1c324c9a05aa0873d40117941e5fa90",
 				"shasum": ""
 			},
 			"require": {
@@ -732,9 +732,9 @@
 				"psr-18"
 			],
 			"support": {
-				"source": "https://github.com/php-fig/http-client/tree/1.0.2"
+				"source": "https://github.com/php-fig/http-client"
 			},
-			"time": "2023-04-10T20:12:12+00:00"
+			"time": "2023-09-23T14:17:50+00:00"
 		},
 		{
 			"name": "psr/http-factory",
@@ -897,16 +897,16 @@
 		},
 		{
 			"name": "symfony/polyfill-ctype",
-			"version": "v1.27.0",
+			"version": "v1.28.0",
 			"source": {
 				"type": "git",
 				"url": "https://github.com/symfony/polyfill-ctype.git",
-				"reference": "5bbc823adecdae860bb64756d639ecfec17b050a"
+				"reference": "ea208ce43cbb04af6867b4fdddb1bdbf84cc28cb"
 			},
 			"dist": {
 				"type": "zip",
-				"url": "https://api.github.com/repos/symfony/polyfill-ctype/zipball/5bbc823adecdae860bb64756d639ecfec17b050a",
-				"reference": "5bbc823adecdae860bb64756d639ecfec17b050a",
+				"url": "https://api.github.com/repos/symfony/polyfill-ctype/zipball/ea208ce43cbb04af6867b4fdddb1bdbf84cc28cb",
+				"reference": "ea208ce43cbb04af6867b4fdddb1bdbf84cc28cb",
 				"shasum": ""
 			},
 			"require": {
@@ -921,7 +921,7 @@
 			"type": "library",
 			"extra": {
 				"branch-alias": {
-					"dev-main": "1.27-dev"
+					"dev-main": "1.28-dev"
 				},
 				"thanks": {
 					"name": "symfony/polyfill",
@@ -959,7 +959,7 @@
 				"portable"
 			],
 			"support": {
-				"source": "https://github.com/symfony/polyfill-ctype/tree/v1.27.0"
+				"source": "https://github.com/symfony/polyfill-ctype/tree/v1.28.0"
 			},
 			"funding": [
 				{
@@ -975,20 +975,20 @@
 					"type": "tidelift"
 				}
 			],
-			"time": "2022-11-03T14:55:06+00:00"
+			"time": "2023-01-26T09:26:14+00:00"
 		},
 		{
 			"name": "symfony/polyfill-mbstring",
-			"version": "v1.27.0",
+			"version": "v1.28.0",
 			"source": {
 				"type": "git",
 				"url": "https://github.com/symfony/polyfill-mbstring.git",
-				"reference": "8ad114f6b39e2c98a8b0e3bd907732c207c2b534"
+				"reference": "42292d99c55abe617799667f454222c54c60e229"
 			},
 			"dist": {
 				"type": "zip",
-				"url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/8ad114f6b39e2c98a8b0e3bd907732c207c2b534",
-				"reference": "8ad114f6b39e2c98a8b0e3bd907732c207c2b534",
+				"url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/42292d99c55abe617799667f454222c54c60e229",
+				"reference": "42292d99c55abe617799667f454222c54c60e229",
 				"shasum": ""
 			},
 			"require": {
@@ -1003,7 +1003,7 @@
 			"type": "library",
 			"extra": {
 				"branch-alias": {
-					"dev-main": "1.27-dev"
+					"dev-main": "1.28-dev"
 				},
 				"thanks": {
 					"name": "symfony/polyfill",
@@ -1042,7 +1042,7 @@
 				"shim"
 			],
 			"support": {
-				"source": "https://github.com/symfony/polyfill-mbstring/tree/v1.27.0"
+				"source": "https://github.com/symfony/polyfill-mbstring/tree/v1.28.0"
 			},
 			"funding": [
 				{
@@ -1058,20 +1058,20 @@
 					"type": "tidelift"
 				}
 			],
-			"time": "2022-11-03T14:55:06+00:00"
+			"time": "2023-07-28T09:04:16+00:00"
 		},
 		{
 			"name": "symfony/polyfill-php72",
-			"version": "v1.27.0",
+			"version": "v1.28.0",
 			"source": {
 				"type": "git",
 				"url": "https://github.com/symfony/polyfill-php72.git",
-				"reference": "869329b1e9894268a8a61dabb69153029b7a8c97"
+				"reference": "70f4aebd92afca2f865444d30a4d2151c13c3179"
 			},
 			"dist": {
 				"type": "zip",
-				"url": "https://api.github.com/repos/symfony/polyfill-php72/zipball/869329b1e9894268a8a61dabb69153029b7a8c97",
-				"reference": "869329b1e9894268a8a61dabb69153029b7a8c97",
+				"url": "https://api.github.com/repos/symfony/polyfill-php72/zipball/70f4aebd92afca2f865444d30a4d2151c13c3179",
+				"reference": "70f4aebd92afca2f865444d30a4d2151c13c3179",
 				"shasum": ""
 			},
 			"require": {
@@ -1080,7 +1080,7 @@
 			"type": "library",
 			"extra": {
 				"branch-alias": {
-					"dev-main": "1.27-dev"
+					"dev-main": "1.28-dev"
 				},
 				"thanks": {
 					"name": "symfony/polyfill",
@@ -1118,7 +1118,7 @@
 				"shim"
 			],
 			"support": {
-				"source": "https://github.com/symfony/polyfill-php72/tree/v1.27.0"
+				"source": "https://github.com/symfony/polyfill-php72/tree/v1.28.0"
 			},
 			"funding": [
 				{
@@ -1134,7 +1134,7 @@
 					"type": "tidelift"
 				}
 			],
-			"time": "2022-11-03T14:55:06+00:00"
+			"time": "2023-01-26T09:26:14+00:00"
 		},
 		{
 			"name": "tgmpa/tgm-plugin-activation",
@@ -1471,16 +1471,16 @@
 		},
 		{
 			"name": "yahnis-elsts/plugin-update-checker",
-			"version": "v5.1",
+			"version": "v5.2",
 			"source": {
 				"type": "git",
 				"url": "https://github.com/YahnisElsts/plugin-update-checker.git",
-				"reference": "48b03e93c9c2587f9276dce00ce2b6d94c1190d2"
+				"reference": "5a270988c5f76bfdfbbb42cccc7c9627f7dd64d0"
 			},
 			"dist": {
 				"type": "zip",
-				"url": "https://api.github.com/repos/YahnisElsts/plugin-update-checker/zipball/48b03e93c9c2587f9276dce00ce2b6d94c1190d2",
-				"reference": "48b03e93c9c2587f9276dce00ce2b6d94c1190d2",
+				"url": "https://api.github.com/repos/YahnisElsts/plugin-update-checker/zipball/5a270988c5f76bfdfbbb42cccc7c9627f7dd64d0",
+				"reference": "5a270988c5f76bfdfbbb42cccc7c9627f7dd64d0",
 				"shasum": ""
 			},
 			"require": {
@@ -1490,7 +1490,7 @@
 			"type": "library",
 			"autoload": {
 				"files": [
-					"load-v5p1.php"
+					"load-v5p2.php"
 				]
 			},
 			"notification-url": "https://packagist.org/downloads/",
@@ -1515,9 +1515,9 @@
 			],
 			"support": {
 				"issues": "https://github.com/YahnisElsts/plugin-update-checker/issues",
-				"source": "https://github.com/YahnisElsts/plugin-update-checker/tree/v5.1"
+				"source": "https://github.com/YahnisElsts/plugin-update-checker/tree/v5.2"
 			},
-			"time": "2023-05-20T11:55:43+00:00"
+			"time": "2023-08-17T12:44:32+00:00"
 		}
 	],
 	"packages-dev": [],
