@@ -295,7 +295,12 @@ class FormField {
 				return preg_replace( "/[^${allowed}]/", '', $data );
 
 			case self::TYPE_EMAIL:
-				return filter_var( $data, FILTER_SANITIZE_EMAIL );
+				// autofix the most common typos
+				$fixed = preg_replace( '/\.con$/', '.com', $data );
+				$fixed = preg_replace( '/@gnail\.com$/', '@gmail.com', $fixed );
+				$fixed = preg_replace( '/@hotnail\.com$/', '@hotmail.com', $fixed );
+
+				return filter_var( $fixed, FILTER_SANITIZE_EMAIL );
 
 			case self::TYPE_NUMBER:
 				return filter_var( $data, FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION );
