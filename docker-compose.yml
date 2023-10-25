@@ -31,7 +31,7 @@ services:
       - "host.docker.internal:host-gateway"
 
   db:
-    image: mysql:5.7
+    image: mariadb:10.6
     volumes:
       - database:/var/lib/mysql:delegated
     environment:
