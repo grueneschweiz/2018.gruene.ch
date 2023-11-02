@@ -1,7 +1,7 @@
 <?php
 
 add_action( 'after_setup_theme', function () {
-	$current_version = get_theme_mod( 'version_number', null );
+	$current_version = get_theme_mod( 'version_number', '0' );
 
 	// if everything is up to date stop here
 	if ( THEME_VERSION == $current_version ) {
