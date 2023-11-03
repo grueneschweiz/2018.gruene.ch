@@ -3,12 +3,22 @@
 
 namespace SUPT;
 
+use Exception;
+
 /**
  * Data queue. Based on WordPress' options api.
  *
  * @package SUPT
  */
 class QueueDao {
+	/**
+	 * Time to wait to acquire a lock.
+	 *
+	 * Should be long enough to survive the sending time of a mail, but
+	 * be short enough to not run into PHPs max_execution_time timeout.
+	 */
+	const LOCK_ACQUIRE_TIMEOUT_SECONDS = 15;
+
 	/**
 	 * The key under witch the queue is stored
 	 *
@@ -29,6 +39,8 @@ class QueueDao {
 	 * Add item to the end of the queue
 	 *
 	 * @param mixed $item
+	 *
+	 * @throws Exception
 	 */
 	public function push( $item ) {
 		$this->lock();
@@ -44,6 +56,8 @@ class QueueDao {
 	 * Return the first item from the queue and remove it
 	 *
 	 * @return mixed|null null if queue is empty
+	 *
+	 * @throws Exception
 	 */
 	public function pop() {
 		$this->lock();
@@ -102,6 +116,8 @@ class QueueDao {
 	 * Remove item with given index from queue
 	 *
 	 * @param int $index
+	 *
+	 * @throws Exception
 	 */
 	public function remove( int $index ) {
 		$this->lock();
@@ -120,6 +136,8 @@ class QueueDao {
 	 *                           the item, true will keep it.
 	 *
 	 * @return int The number of elements removed
+	 *
+	 * @throws Exception
 	 */
 	public function filter( callable $callback ): int {
 		$this->lock();
@@ -134,13 +152,34 @@ class QueueDao {
 		return $lenBefore - $lenAfter;
 	}
 
+	/**
+	 * @throws Exception
+	 */
 	private function lock() {
 		global $wpdb;
-		$wpdb->query( "LOCK TABLES $wpdb->options WRITE" );
+		$lock    = $this->get_lock_name();
+		$timeout = self::LOCK_ACQUIRE_TIMEOUT_SECONDS;
+		$result  = $wpdb->get_var( "SELECT GET_LOCK('$lock', $timeout);" );
+		if ( $result !== '1' ) {
+			throw new Exception( "Failed to acquire DB lock \"$lock\": $result" );
+		}
 	}
 
+	/**
+	 * @throws Exception
+	 */
 	private function unlock() {
 		global $wpdb;
-		$wpdb->query( "UNLOCK TABLES" );
+		$lock   = $this->get_lock_name();
+		$result = $wpdb->get_var( "SELECT RELEASE_LOCK('$lock');" );
+		if ( $result !== '1' ) {
+			throw new Exception( "Failed to release DB lock \"$lock\": $result" );
+		}
+	}
+
+	private function get_lock_name(): string {
+		global $wpdb;
+
+		return DB_NAME . '.' . $wpdb->postmeta . '.' . $this->key;
 	}
 }

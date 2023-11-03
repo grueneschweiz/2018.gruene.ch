@@ -55,6 +55,8 @@ class Mailer {
 
 	/**
 	 * Add the mails for the submission to the sending queue
+	 *
+	 * @throws Exception
 	 */
 	public function queue_mails() {
 		$this->queue_confirmation();
@@ -69,6 +71,8 @@ class Mailer {
 
 	/**
 	 * Queue the confirmation mail, if confirmation is enabled and we have a destination address
+	 *
+	 * @throws Exception
 	 */
 	private function queue_confirmation() {
 		$to = $this->submission->meta_get_linked_email();
@@ -91,6 +95,8 @@ class Mailer {
 
 	/**
 	 * Queue the notification mail, if notification is enabled
+	 *
+	 * @throws Exception
 	 */
 	private function queue_notification() {
 		if ( $this->form->has_notification() ) {
@@ -176,8 +182,14 @@ class Mailer {
 		$queue = self::get_queue();
 		$error = 0;
 
-		/** @var Mail $mail */
-		$mail = $queue->pop();
+		try {
+			/** @var Mail $mail */
+			$mail = $queue->pop();
+		} catch ( Exception $e ) {
+			// just wait for the next run
+			return;
+		}
+
 		while ( ! empty( $mail ) ) {
 			$sent = $mail->send();
 
@@ -186,7 +198,11 @@ class Mailer {
 
 				// requeue mail on error if number of retries is not exceeded
 				if ( $mail->get_sending_attempts() < self::SENDING_RETRIES ) {
-					$queue->push( $mail );
+					try {
+						$queue->push( $mail );
+					} catch ( Exception $e ) {
+						self::send_error_notification( $mail, $e );
+					}
 					$error ++;
 				}
 
@@ -196,7 +212,45 @@ class Mailer {
 				}
 			}
 
-			$mail = $queue->pop();
+			try {
+				$mail = $queue->pop();
+			} catch ( Exception $e ) {
+				// just wait for the next run
+				return;
+			}
 		}
+	}
+
+	private static function send_error_notification( Mail $mail, Exception $e ) {
+		$domain = Util::get_domain();
+
+		$subject = sprintf(
+			__( '%s: ERROR while sending mail', THEME_DOMAIN ),
+			$domain
+		);
+
+		$message = sprintf(
+			__(
+				"Hi Admin of %s\n\n" .
+				"There was an ERROR while sending the following mail and we were unable to save it back to the sending queue." .
+				"YOU MUST SEND IT MANUALLY. The mail:\n\n---\n\n" .
+				"to: %s\n" .
+				"subject: %s\n" .
+				"body: %s\n\n---\n\n" .
+				"More details in the error message below.\n\n" .
+				"Have a nice day.\n" .
+				"Your Website - %s\n\n" .
+				"Error message:\n%s",
+				THEME_DOMAIN
+			),
+			$domain,
+			$mail->get_to(),
+			$mail->get_subject(),
+			$mail->get_body(),
+			$domain,
+			$e->getMessage(),
+		);
+
+		Util::send_mail_to_admin( $subject, $message );
 	}
 }

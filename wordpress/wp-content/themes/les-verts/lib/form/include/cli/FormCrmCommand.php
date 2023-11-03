@@ -3,6 +3,7 @@
 
 namespace SUPT;
 
+use Exception;
 use WP_CLI;
 use function WP_CLI\Utils\format_items;
 
@@ -158,6 +159,7 @@ class FormCrmCommand {
 	 *
 	 * [--all]
 	 * : Delete all crm data in the queue.
+	 * @throws Exception
 	 */
 	public function delete( $args, $assoc_args ) {
 		$queue = CrmSaver::get_queue();
@@ -173,7 +175,11 @@ class FormCrmCommand {
 		/** @var CrmQueueItem $item */
 		foreach ( $queue->get_all() as $index => $item ) {
 			if ( $id === $item->get_submission_id() ) {
-				$queue->remove( $index );
+				try {
+					$queue->remove( $index );
+				} catch ( Exception $e ) {
+					WP_CLI::error( "Failed to delete item. {$e->getMessage()}" );
+				}
 
 				return;
 			}
