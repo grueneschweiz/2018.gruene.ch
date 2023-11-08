@@ -1,13 +1,5 @@
 <?php
 
-if ( ! defined( 'SUPT_UPLOAD_MAX_PX_PNG' ) ) {
-	define( 'SUPT_UPLOAD_MAX_PX_PNG', 1920 * 1920 ); // max area of 1920px * 1980px
-}
-
-if ( ! defined( 'SUPT_UPLOAD_MAX_PX_JPEG' ) ) {
-	define( 'SUPT_UPLOAD_MAX_PX_JPEG', 4096 * 4096 ); // max area of 4096px * 4096px
-}
-
 /**
  * Restrict max image upload dimensions for PNGs and JPEGs.
  *
@@ -33,7 +25,10 @@ add_filter( 'wp_handle_upload_prefilter', function ( $file ) {
 
 	list( $width, $height, $type ) = $file_data;
 
-	if ( $type === IMAGETYPE_PNG && SUPT_UPLOAD_MAX_PX_PNG < $width * $height ) {
+	if ( defined( 'SUPT_UPLOAD_MAX_PX_PNG' )
+	     && $type === IMAGETYPE_PNG
+	     && SUPT_UPLOAD_MAX_PX_PNG < $width * $height
+	) {
 		$len           = (int) floor( sqrt( SUPT_UPLOAD_MAX_PX_PNG ) );
 		$file['error'] = sprintf(
 			__( 'PNG images must not exceed the area of %d * %d pixels. Reduce the image dimensions or convert it to JPEG.', THEME_DOMAIN ),
@@ -42,7 +37,10 @@ add_filter( 'wp_handle_upload_prefilter', function ( $file ) {
 		);
 	}
 
-	if ( $type === IMAGETYPE_JPEG && SUPT_UPLOAD_MAX_PX_JPEG < $width * $height ) {
+	if ( defined( 'SUPT_UPLOAD_MAX_PX_JPEG' )
+	     && $type === IMAGETYPE_JPEG
+	     && SUPT_UPLOAD_MAX_PX_JPEG < $width * $height
+	) {
 		$len           = (int) floor( sqrt( SUPT_UPLOAD_MAX_PX_JPEG ) );
 		$file['error'] = sprintf(
 			__( 'Images must not exceed the area of %d * %d pixels. Please reduce the image dimensions and try again.', THEME_DOMAIN ),
