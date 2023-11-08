@@ -3,11 +3,19 @@
 /**
  * Detect if an ICS file is for a single event and then ensure only that event's ID is used for the ICS file
  *
- * @link https://docs.theeventscalendar.com/reference/hooks/tribe_ical_template_event_ids/
+ * This fixes https://theeventscalendar.com/known-issues/#dl_TEC-4469 for the Events Calendar before 6.0.6.
  *
- * @todo: remove once https://theeventscalendar.com/known-issues/#dl_TEC-4469 is resolved
+ * @link https://docs.theeventscalendar.com/reference/hooks/tribe_ical_template_event_ids/
  */
 add_filter( 'tribe_ical_template_event_ids', function ( $ids ) {
+	if ( class_exists( 'Tribe__Events__Main' )
+	     && Tribe__Events__Main::VERSION
+	     && version_compare( Tribe__Events__Main::VERSION, '6.0.6', '>=' )
+	) {
+		// only apply the filter to the Events Calendar before 6.0.6
+		return $ids;
+	}
+
 	$query = tribe_get_global_query_object();
 	if ( $query && isset( $query->is_single ) && $query->is_single ) {
 		$ids = $query->queried_object->ID;
@@ -33,7 +41,7 @@ add_filter( 'tribe_events_force_ugly_link', '__return_true' );
  * Force ugly links: To really get the ugly links, we do also have to disable url rewriting.
  */
 add_filter( 'tribe_events_register_event_cat_type_args', function ( $args ) {
-	$args['rewrite'] = false;
+//	$args['rewrite'] = false;
 
 	return $args;
 } );
