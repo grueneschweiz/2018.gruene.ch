@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 2018gruenech\n"
-"POT-Creation-Date: 2023-03-27 14:06+0200\n"
-"PO-Revision-Date: 2023-03-28 07:05\n"
+"POT-Creation-Date: 2023-11-03 19:25+0100\n"
+"PO-Revision-Date: 2023-11-03 18:28\n"
 "Last-Translator: Cyrill Bolliger <bolliger@gmx.ch>\n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.4.1\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
 "X-Poedit-WPHeader: style.css\n"
@@ -2160,12 +2160,12 @@ msgstr "Letzte Seite"
 msgid "Select All"
 msgstr "Alle auswählen"
 
-#: lib/form/include/CrmSaver.php:246
+#: lib/form/include/CrmSaver.php:254
 #, php-format
 msgid "%s: PERMANENT ERROR saving form data to crm"
 msgstr "%s: PERMANENTER FEHLER beim Speichern der Formulardaten in das CRM"
 
-#: lib/form/include/CrmSaver.php:252
+#: lib/form/include/CrmSaver.php:260
 #, php-format
 msgid "Hi Admin of %s\n\n"
 "There was a PERMANENT ERROR saving the following data to the crm:\n"
@@ -2311,6 +2311,27 @@ msgstr "Die Platzhalter können wegen dieses Fehlers nicht ersetzt werden."
 #: lib/form/include/Mail.php:187
 msgid "Email template"
 msgstr "E-Mailvorlage"
+
+#: lib/form/include/Mailer.php:228
+#, php-format
+msgid "%s: ERROR while sending mail"
+msgstr ""
+
+#: lib/form/include/Mailer.php:234
+#, php-format
+msgid "Hi Admin of %s\n\n"
+"There was an ERROR while sending the following mail and we were unable to save it back to the sending queue.YOU MUST SEND IT MANUALLY. The mail:\n\n"
+"---\n\n"
+"to: %s\n"
+"subject: %s\n"
+"body: %s\n\n"
+"---\n\n"
+"More details in the error message below.\n\n"
+"Have a nice day.\n"
+"Your Website - %s\n\n"
+"Error message:\n"
+"%s"
+msgstr ""
 
 #: lib/form/include/SubmissionExport.php:92
 msgid "Website export"
@@ -2604,6 +2625,16 @@ msgstr "Hier findest du alle Inhalte mit den Schlagworten %s."
 #: lib/timber/SUPTPostQuery.php:337
 msgid "The tag not in function is not supported."
 msgstr "Die 'tag not in' Funktion wird nicht unterstützt."
+
+#: lib/tweaks/limit-image-upload-dims.php:39
+#, php-format
+msgid "PNG images must not exceed the area of %d * %d pixels. Reduce the image dimensions or convert it to JPEG."
+msgstr ""
+
+#: lib/tweaks/limit-image-upload-dims.php:48
+#, php-format
+msgid "Images must not exceed the area of %d * %d pixels. Please reduce the image dimensions and try again."
+msgstr ""
 
 #: lib/widgets/ButtonWidget.php:27
 msgid "Show your main calls to action"
@@ -2928,10 +2959,10 @@ msgid "superhuit.ch & gruene.ch"
 msgstr "superhuit.ch & gruene.ch"
 
 #. Template Name of the plugin/theme
-msgid "Front Page"
-msgstr "Startseite"
-
-#. Template Name of the plugin/theme
 msgid "Overview Page"
 msgstr "Übersichtsseite"
+
+#. Template Name of the plugin/theme
+msgid "Front Page"
+msgstr "Startseite"
 
