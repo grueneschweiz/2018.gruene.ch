@@ -119,9 +119,13 @@ class CrmSaver {
 				Util::debug_log( "submissionId={$item->get_submission_id()} msg=No data. Discarding entry." );
 
 				// remove item from queue
-				$queue->filter( static function ( $q_item ) use ( $item ) {
-					return $item->get_submission_id() !== $q_item->get_submission_id();
-				} );
+				try {
+					$queue->filter( static function ( $q_item ) use ( $item ) {
+						return $item->get_submission_id() !== $q_item->get_submission_id();
+					} );
+				} catch ( Exception $e ) {
+					// do nothing, well remove it the next time
+				}
 			}
 
 			// if we have exceeded the max attempts,
@@ -156,15 +160,19 @@ class CrmSaver {
 			// on success: remove item from queue
 			Util::debug_log( "submissionId={$item->get_submission_id()} msg=Saved successfully. CRM id: $crm_id" );
 
-			$queue->filter( static function ( $q_item ) use ( $item ) {
-				if ( $item->get_submission_id() === $q_item->get_submission_id() ) {
-					Util::debug_log( "submissionId={$item->get_submission_id()} msg=Remove from queue." );
+			try {
+				$queue->filter( static function ( $q_item ) use ( $item ) {
+					if ( $item->get_submission_id() === $q_item->get_submission_id() ) {
+						Util::debug_log( "submissionId={$item->get_submission_id()} msg=Remove from queue." );
 
-					return false; // remove from queue
-				}
+						return false; // remove from queue
+					}
 
-				return true;
-			} );
+					return true;
+				} );
+			} catch ( Exception $e ) {
+				// do nothing, we'll remove it the next time
+			}
 		}
 	}
 
@@ -270,6 +278,8 @@ class CrmSaver {
 
 	/**
 	 * Add the submission to saving queue
+	 *
+	 * @throws Exception
 	 */
 	public function queue() {
 		$data = $this->get_data();

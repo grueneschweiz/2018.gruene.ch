@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Les Verts\n"
-"POT-Creation-Date: 2023-03-27 14:06+0200\n"
+"POT-Creation-Date: 2023-11-03 19:25+0100\n"
 "PO-Revision-Date: 2018-11-28 17:49+0100\n"
 "Last-Translator: Cyrill Bolliger <bolliger@gmx.ch>\n"
 "Language-Team: Cyrill Bolliger <cyrill.bolliger@gruene.ch>\n"
@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.4.1\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
 "X-Poedit-WPHeader: style.css\n"
@@ -2300,12 +2300,12 @@ msgstr ""
 msgid "Select All"
 msgstr ""
 
-#: lib/form/include/CrmSaver.php:246
+#: lib/form/include/CrmSaver.php:254
 #, php-format
 msgid "%s: PERMANENT ERROR saving form data to crm"
 msgstr ""
 
-#: lib/form/include/CrmSaver.php:252
+#: lib/form/include/CrmSaver.php:260
 #, php-format
 msgid ""
 "Hi Admin of %s\n"
@@ -2457,6 +2457,36 @@ msgstr ""
 
 #: lib/form/include/Mail.php:187
 msgid "Email template"
+msgstr ""
+
+#: lib/form/include/Mailer.php:228
+#, php-format
+msgid "%s: ERROR while sending mail"
+msgstr ""
+
+#: lib/form/include/Mailer.php:234
+#, php-format
+msgid ""
+"Hi Admin of %s\n"
+"\n"
+"There was an ERROR while sending the following mail and we were unable to "
+"save it back to the sending queue.YOU MUST SEND IT MANUALLY. The mail:\n"
+"\n"
+"---\n"
+"\n"
+"to: %s\n"
+"subject: %s\n"
+"body: %s\n"
+"\n"
+"---\n"
+"\n"
+"More details in the error message below.\n"
+"\n"
+"Have a nice day.\n"
+"Your Website - %s\n"
+"\n"
+"Error message:\n"
+"%s"
 msgstr ""
 
 #: lib/form/include/SubmissionExport.php:92
@@ -2750,6 +2780,20 @@ msgstr ""
 
 #: lib/timber/SUPTPostQuery.php:337
 msgid "The tag not in function is not supported."
+msgstr ""
+
+#: lib/tweaks/limit-image-upload-dims.php:39
+#, php-format
+msgid ""
+"PNG images must not exceed the area of %d * %d pixels. Reduce the image "
+"dimensions or convert it to JPEG."
+msgstr ""
+
+#: lib/tweaks/limit-image-upload-dims.php:48
+#, php-format
+msgid ""
+"Images must not exceed the area of %d * %d pixels. Please reduce the image "
+"dimensions and try again."
 msgstr ""
 
 #: lib/widgets/ButtonWidget.php:27
@@ -3082,9 +3126,9 @@ msgid "superhuit.ch & gruene.ch"
 msgstr ""
 
 #. Template Name of the plugin/theme
-msgid "Front Page"
+msgid "Overview Page"
 msgstr ""
 
 #. Template Name of the plugin/theme
-msgid "Overview Page"
+msgid "Front Page"
 msgstr ""

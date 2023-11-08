@@ -185,6 +185,7 @@ Customizer\Logo::register();
  * Rendering tweaks, hacks,…
  */
 
+require_once __DIR__ . '/tweaks/limit-image-upload-dims.php';
 require_once __DIR__ . '/tweaks/inject-svg-sprite.php';
 require_once __DIR__ . '/tweaks/responsive-local-video.php';
 require_once __DIR__ . '/tweaks/fix-multi-category-urls.php';

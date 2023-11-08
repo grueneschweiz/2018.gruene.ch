@@ -50,3 +50,9 @@ Verify, you name the files exactly as above, and you provide all those file form
 * Dedicated docs:
   * [SSO setup](docs/sso.md)
   * [Progressbar](docs/progressbar.md)
+* The upload of PNGs and JPEGs can be limited in their dimensions (to prevent imagemagick memory issues). To do so, add
+  the following constants to your `wp-config.php`:
+  ```php
+  define( 'SUPT_UPLOAD_MAX_PX_PNG', 1920 * 1920 ); // max area of 1920px * 1980px
+  define( 'SUPT_UPLOAD_MAX_PX_JPEG', 4096 * 4096 ); // max area of 4096px * 4096px
+  ```

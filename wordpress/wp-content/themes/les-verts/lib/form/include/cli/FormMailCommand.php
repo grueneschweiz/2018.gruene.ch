@@ -3,6 +3,7 @@
 
 namespace SUPT;
 
+use Exception;
 use WP_CLI;
 use function WP_CLI\Utils\format_items;
 
@@ -134,7 +135,11 @@ class FormMailCommand {
 			return;
 		}
 
-		$queue->remove( absint( $args[0] ) );
+		try {
+			$queue->remove( absint( $args[0] ) );
+		} catch ( Exception $e ) {
+			WP_CLI::error( "Failed to delete item. {$e->getMessage()}" );
+		}
 	}
 }
 
