@@ -41,7 +41,7 @@ add_filter( 'tribe_events_force_ugly_link', '__return_true' );
  * Force ugly links: To really get the ugly links, we do also have to disable url rewriting.
  */
 add_filter( 'tribe_events_register_event_cat_type_args', function ( $args ) {
-//	$args['rewrite'] = false;
+	$args['rewrite'] = false;
 
 	return $args;
 } );
