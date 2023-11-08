@@ -1197,16 +1197,16 @@
 		},
 		{
 			"name": "timber/timber",
-			"version": "1.22.1",
+			"version": "1.23.0",
 			"source": {
 				"type": "git",
 				"url": "https://github.com/timber/timber.git",
-				"reference": "57fc582c42519f1b05fff5fb2ebf4291b5cd638f"
+				"reference": "b988e51e5bc9e9743745b4d3c6eba6e106fae83f"
 			},
 			"dist": {
 				"type": "zip",
-				"url": "https://api.github.com/repos/timber/timber/zipball/57fc582c42519f1b05fff5fb2ebf4291b5cd638f",
-				"reference": "57fc582c42519f1b05fff5fb2ebf4291b5cd638f",
+				"url": "https://api.github.com/repos/timber/timber/zipball/b988e51e5bc9e9743745b4d3c6eba6e106fae83f",
+				"reference": "b988e51e5bc9e9743745b4d3c6eba6e106fae83f",
 				"shasum": ""
 			},
 			"require": {
@@ -1259,7 +1259,13 @@
 				"issues": "https://github.com/timber/timber/issues",
 				"source": "https://github.com/timber/timber"
 			},
-			"time": "2022-11-24T03:42:29+00:00"
+			"funding": [
+				{
+					"url": "https://opencollective.com/timber",
+					"type": "open_collective"
+				}
+			],
+			"time": "2023-10-20T19:05:07+00:00"
 		},
 		{
 			"name": "twig/cache-extension",
@@ -1533,5 +1539,5 @@
 	"platform-overrides": {
 		"php": "7.4"
 	},
-	"plugin-api-version": "2.3.0"
+	"plugin-api-version": "2.6.0"
 }
