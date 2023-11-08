@@ -182,6 +182,7 @@
 		a {
 			box-shadow: none;
 			color: inherit;
+			text-decoration: none;
 
 			@include hover {
 				background: none;
