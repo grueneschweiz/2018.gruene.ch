@@ -68,6 +68,13 @@ class FormSubmission {
 	private $nonce;
 
 	/**
+	 * The submitted secret
+	 *
+	 * @var string
+	 */
+	private $secret;
+
+	/**
 	 * The response status code
 	 *
 	 * @var int
@@ -155,6 +162,8 @@ class FormSubmission {
 		$this->abort_if_limit_exceeded();
 		$this->add_submission_metadata();
 		$this->abort_if_invalid_header();
+		$this->abort_if_invalid_nonce();
+		$this->abort_if_invalid_secret();
 		$this->add_data();
 		$this->abort_if_invalid_data();
 		$this->add_metadata();
@@ -254,6 +263,10 @@ class FormSubmission {
 		if ( isset( $_POST['nonce'] ) ) {
 			$this->nonce = $_POST['nonce'];
 		}
+
+		if ( isset( $_POST['secret'] ) ) {
+			$this->secret = $_POST['secret'];
+		}
 	}
 
 	private function get_safe_referer() {
@@ -265,9 +278,19 @@ class FormSubmission {
 	}
 
 	/**
-	 * Check if form is submitted using ajax and has a valid nonce.
+	 * Check if form is submitted using ajax.
 	 */
 	private function abort_if_invalid_header() {
+		// only accept ajax submissions
+		if ( ! ( defined( 'DOING_AJAX' ) && DOING_AJAX ) ) {
+			$this->respond_with_general_error( 400, 'Submission not valid.' );
+		}
+	}
+
+	/**
+	 * Check if form has a valid nonce.
+	 */
+	private function abort_if_invalid_nonce() {
 		require_once __DIR__ . '/include/Nonce.php';
 
 		if ( ! Nonce::consume( $this->nonce ) ) {
@@ -275,10 +298,18 @@ class FormSubmission {
 
 			return;
 		}
+	}
 
-		// only accept ajax submissions
-		if ( ! ( defined( 'DOING_AJAX' ) && DOING_AJAX ) ) {
-			$this->respond_with_general_error( 400, 'Submission not valid.' );
+	/**
+	 * Check if form has a valid secret.
+	 */
+	private function abort_if_invalid_secret() {
+		$expectedSecret = hash( 'sha256', $this->form->get_id() . $this->nonce );
+
+		if ( $this->secret !== $expectedSecret ) {
+			$this->respond_with_general_error( 400, 'Invalid secret.' );
+
+			return;
 		}
 	}
 
