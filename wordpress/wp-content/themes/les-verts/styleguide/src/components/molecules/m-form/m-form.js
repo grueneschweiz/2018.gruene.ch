@@ -150,7 +150,11 @@ export default class MForm extends BaseView {
 
 		// get a nonce, then submit the form
 		this.getNonce().
-			then( nonce => data.append( 'nonce', nonce ) ).
+			then( nonce => {
+				data.append( 'nonce', nonce );
+				return this.getSecret( nonce );
+			} ).
+			then( secret => data.append( 'secret', secret ) ).
 			then( () => this.sendForm( url, data ) ).
 			then( resp => this.showSuccess( resp ) ).
 			then( () => this.sendSubmissionNotification() ).
@@ -230,6 +234,22 @@ export default class MForm extends BaseView {
 
 	getNonce() {
 		return ajax( this.element.dataset.nonce, 'GET' );
+	}
+
+	getSecret( nonce ) {
+		const rawSecret = `${ this.element.dataset.formId }${ nonce }`;
+		return this.sha256hex( rawSecret );
+	}
+
+	sha256hex( string ) {
+		const encoder = new TextEncoder();
+		const data = encoder.encode( string );
+		return crypto.subtle.digest( 'SHA-256', data ).then( hashBuffer => {
+			// convert ArrayBuffer to hex string
+			const hashArray = Array.from( new Uint8Array( hashBuffer ) );
+			return hashArray.map( b => b.toString( 16 ).padStart( 2, '0' ) ).
+				join( '' );
+		} );
 	}
 
 	sendSubmissionNotification() {
