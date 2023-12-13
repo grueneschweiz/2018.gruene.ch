@@ -952,7 +952,11 @@
 
 		<span class="hljs-comment">// get a nonce, then submit the form</span>
 		<span class="hljs-built_in">this</span>.getNonce().
-			then( <span class="hljs-function"><span class="hljs-params">nonce</span> =&gt;</span> data.append( <span class="hljs-string">&#x27;nonce&#x27;</span>, nonce ) ).
+			then( <span class="hljs-function"><span class="hljs-params">nonce</span> =&gt;</span> {
+				data.append( <span class="hljs-string">&#x27;nonce&#x27;</span>, nonce );
+				<span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.getSecret( nonce );
+			} ).
+			then( <span class="hljs-function"><span class="hljs-params">secret</span> =&gt;</span> data.append( <span class="hljs-string">&#x27;secret&#x27;</span>, secret ) ).
 			then( <span class="hljs-function">() =&gt;</span> <span class="hljs-built_in">this</span>.sendForm( url, data ) ).
 			then( <span class="hljs-function"><span class="hljs-params">resp</span> =&gt;</span> <span class="hljs-built_in">this</span>.showSuccess( resp ) ).
 			then( <span class="hljs-function">() =&gt;</span> <span class="hljs-built_in">this</span>.sendSubmissionNotification() ).
@@ -1034,6 +1038,22 @@
 		<span class="hljs-keyword">return</span> ajax( <span class="hljs-built_in">this</span>.element.dataset.nonce, <span class="hljs-string">&#x27;GET&#x27;</span> );
 	}
 
+	<span class="hljs-function"><span class="hljs-title">getSecret</span>(<span class="hljs-params"> nonce </span>)</span> {
+		<span class="hljs-keyword">const</span> rawSecret = <span class="hljs-string">`<span class="hljs-subst">${ <span class="hljs-built_in">this</span>.element.dataset.formId }</span><span class="hljs-subst">${ nonce }</span>`</span>;
+		<span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.sha256hex( rawSecret );
+	}
+
+	<span class="hljs-function"><span class="hljs-title">sha256hex</span>(<span class="hljs-params"> string </span>)</span> {
+		<span class="hljs-keyword">const</span> encoder = <span class="hljs-keyword">new</span> TextEncoder();
+		<span class="hljs-keyword">const</span> data = encoder.encode( string );
+		<span class="hljs-keyword">return</span> crypto.subtle.digest( <span class="hljs-string">&#x27;SHA-256&#x27;</span>, data ).then( <span class="hljs-function"><span class="hljs-params">hashBuffer</span> =&gt;</span> {
+			<span class="hljs-comment">// convert ArrayBuffer to hex string</span>
+			<span class="hljs-keyword">const</span> hashArray = <span class="hljs-built_in">Array</span>.from( <span class="hljs-keyword">new</span> <span class="hljs-built_in">Uint8Array</span>( hashBuffer ) );
+			<span class="hljs-keyword">return</span> hashArray.map( <span class="hljs-function"><span class="hljs-params">b</span> =&gt;</span> b.toString( <span class="hljs-number">16</span> ).padStart( <span class="hljs-number">2</span>, <span class="hljs-string">&#x27;0&#x27;</span> ) ).
+				join( <span class="hljs-string">&#x27;&#x27;</span> );
+		} );
+	}
+
 	<span class="hljs-function"><span class="hljs-title">sendSubmissionNotification</span>(<span class="hljs-params"></span>)</span> {
 		<span class="hljs-keyword">const</span> notification = <span class="hljs-keyword">new</span> CustomEvent( SUBMISSION_NOTIFICATION_EVENT, {
 			<span class="hljs-attr">detail</span>: { <span class="hljs-attr">formId</span>: <span class="hljs-built_in">this</span>.element.dataset.formId },
@@ -1058,7 +1078,7 @@
                 </li>
                 <li class="Meta-item">
                     <strong class="Meta-key">Size:</strong>
-                    <span class="Meta-value">6.6 KB</span>
+                    <span class="Meta-value">7.2 KB</span>
                 </li>
             </ul>
         </div>

@@ -1,6 +1,6 @@
 import BaseView from 'base-view';
 
-const FIRST_LINK_SELECTOR = 'div > span > span > a';
+const FIRST_LINK_SELECTOR = 'div > span:nth-of-type(2) > a';
 const MENU_SELECTOR = '.o-header__display';
 const ITEM_SELECTOR = '.m-menu__nav-link--';
 const HAMBURGER_SELECTOR = '.a-hamburger';
