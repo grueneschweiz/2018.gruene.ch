@@ -286,7 +286,7 @@ class CrmSaver {
 
 		if ( ! empty( $data ) ) {
 			$item = new CrmQueueItem( $data, $this->submission );
-			$this->queue->push( $item );
+			$this->queue->push_if_not_in_queue( $item );
 
 			if ( defined( 'SUPT_FORM_ASYNC' ) && ! SUPT_FORM_ASYNC ) {
 				do_action( self::CRON_HOOK_CRM_SAVE );

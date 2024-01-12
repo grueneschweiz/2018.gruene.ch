@@ -40,16 +40,23 @@ class QueueDao {
 	 *
 	 * @param mixed $item
 	 *
+	 * @return void
 	 * @throws Exception
 	 */
 	public function push( $item ) {
-		$this->lock();
-		$queue = $this->get_all();
-		if ( ! in_array( $item, $queue, true ) ) {
-			$queue[] = $item;
-			$this->save( $queue );
-		}
-		$this->unlock();
+		$this->_push( $item, true );
+	}
+
+	/**
+	 * Add item to the end of the queue if not yet in queue
+	 *
+	 * @param mixed $item
+	 *
+	 * @return void
+	 * @throws Exception
+	 */
+	public function push_if_not_in_queue( $item ) {
+		$this->_push( $item, false );
 	}
 
 	/**
@@ -181,5 +188,42 @@ class QueueDao {
 		global $wpdb;
 
 		return DB_NAME . '.' . $wpdb->postmeta . '.' . $this->key;
+	}
+
+	/**
+	 * Add item to the end of the queue
+	 *
+	 * @param mixed $item
+	 * @param bool $allow_duplicates prevent adding the same item twice
+	 *
+	 * @return void
+	 * @throws Exception
+	 */
+	private function _push( $item, $allow_duplicates ) {
+		$this->lock();
+		$queue = $this->get_all();
+		if ( $allow_duplicates || ! $this->contains( $queue, $item ) ) {
+			$queue[] = $item;
+			$this->save( $queue );
+		}
+		$this->unlock();
+	}
+
+	/**
+	 * Check if all_items contains item by comparing the values.
+	 *
+	 * @param $all_items
+	 * @param $item
+	 *
+	 * @return bool
+	 */
+	private function contains( $all_items, $item ) {
+		if ( is_scalar( $item ) ) {
+			// strict: true => prevent type coercion
+			return in_array( $item, $all_items, true );
+		}
+
+		// strict: false => compare objects / arrays by value
+		return in_array( $item, $all_items, false );
 	}
 }
