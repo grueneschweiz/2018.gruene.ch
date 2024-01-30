@@ -1341,16 +1341,16 @@
 		},
 		{
 			"name": "twig/twig",
-			"version": "v2.15.6",
+			"version": "v2.16.0",
 			"source": {
 				"type": "git",
 				"url": "https://github.com/twigphp/Twig.git",
-				"reference": "ad637405a828601a56f32ccab9a85541c4b66c9d"
+				"reference": "0c9cc7ef2e0ec6d20c5af1200522a89ba101f623"
 			},
 			"dist": {
 				"type": "zip",
-				"url": "https://api.github.com/repos/twigphp/Twig/zipball/ad637405a828601a56f32ccab9a85541c4b66c9d",
-				"reference": "ad637405a828601a56f32ccab9a85541c4b66c9d",
+				"url": "https://api.github.com/repos/twigphp/Twig/zipball/0c9cc7ef2e0ec6d20c5af1200522a89ba101f623",
+				"reference": "0c9cc7ef2e0ec6d20c5af1200522a89ba101f623",
 				"shasum": ""
 			},
 			"require": {
@@ -1366,7 +1366,7 @@
 			"type": "library",
 			"extra": {
 				"branch-alias": {
-					"dev-master": "2.15-dev"
+					"dev-master": "2.16-dev"
 				}
 			},
 			"autoload": {
@@ -1405,7 +1405,7 @@
 			],
 			"support": {
 				"issues": "https://github.com/twigphp/Twig/issues",
-				"source": "https://github.com/twigphp/Twig/tree/v2.15.6"
+				"source": "https://github.com/twigphp/Twig/tree/v2.16.0"
 			},
 			"funding": [
 				{
@@ -1417,7 +1417,7 @@
 					"type": "tidelift"
 				}
 			],
-			"time": "2023-11-21T17:34:48+00:00"
+			"time": "2023-12-22T07:22:15+00:00"
 		},
 		{
 			"name": "upstatement/routes",
