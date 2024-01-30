@@ -1,6 +1,6 @@
 {% set fields = post.get_field('form_fields') %}
 {% set custom_width_block_width = 0 %}
-{% set default_id_prefix = post.id|uniqueid %}
+{% set default_id_prefix = post.id %}
 
 {% if 'publish' == post.status %}
 	<form class="m-form"
