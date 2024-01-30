@@ -1,5 +1,6 @@
 {% set fields = post.get_field('form_fields') %}
 {% set custom_width_block_width = 0 %}
+{% set default_id_prefix = post.id|uniqueid %}
 
 {% if 'publish' == post.status %}
 	<form class="m-form"
@@ -54,7 +55,8 @@
 						'label': field.form_input_label,
 						'type': 'checkbox',
 						'required': field.form_input_required,
-						'modifiers_classes': 'a-checkoption--legal'
+						'modifiers_classes': 'a-checkoption--legal',
+						'default_id_prefix': default_id_prefix
 					} only %}
 
 				{% elseif 'select' == field.form_input_type or 'crm_greeting' == field.form_input_type %}
@@ -69,7 +71,8 @@
 						'required': field.form_input_required,
 						'helptext': field.form_input_help_text,
 						'options': field.form_input_choices|split('\n'),
-						'modifiers_classes': modifiers_classes
+						'modifiers_classes': modifiers_classes,
+						'default_id_prefix': default_id_prefix
 					} only %}
 
 				{% elseif 'radio' == field.form_input_type %}
@@ -85,7 +88,8 @@
 								'label': option,
 								'required': field.form_input_required,
 								'type': 'radio',
-								'value': option
+								'value': option,
+								'default_id_prefix': default_id_prefix
 							} only %}
 						{% endfor %}
 					</fieldset>
@@ -98,7 +102,8 @@
 						{% include 'atoms/form-elements/a-checkoption.twig' with {
 							'name': field.slug~'-'~loop.index0,
 							'label': option,
-							'type': 'checkbox'
+							'type': 'checkbox',
+							'default_id_prefix': default_id_prefix
 						} only %}
 					{% endfor %}
 					</fieldset>
@@ -108,7 +113,8 @@
 					{% include 'atoms/form-elements/a-checkoption.twig' with {
 						'name': field.slug,
 						'label': field.form_input_label,
-						'type': 'checkbox'
+						'type': 'checkbox',
+						'default_id_prefix': default_id_prefix
 					} only %}
 					</fieldset>
 
@@ -136,7 +142,8 @@
 						'type': type|default(field.form_input_type),
 						'wrapper_classes': wrapper_classes,
 						'modifiers_classes': modifiers_classes,
-						'pattern': pattern
+						'pattern': pattern,
+						'default_id_prefix': default_id_prefix
 					} only %}
 					{% set type = '' %}
 					{% set pattern = '' %}

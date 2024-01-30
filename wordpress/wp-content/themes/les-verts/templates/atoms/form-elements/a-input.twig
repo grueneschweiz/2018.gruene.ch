@@ -1,6 +1,6 @@
 {#
 Parameters:
-- id: string (optional, name is used if id is not provided)
+- id: string (optional, `{{ default_id_prefix }}-{{ name }}-{{ uniqueid }}` is used if id is not provided)
 - classes: string (optional, appended)
 - name: string must be unique in form
 - label: string
@@ -11,18 +11,24 @@ Parameters:
 - required: bool
 - modifiers_classes: string (optional)
 - type: string. accepted values 'textarea' and the html5 input types
+- default_id_prefix: string
 #}
+
+{% if not id %}
+	{% set id = (default_id_prefix ~ "-" ~ name)|uniqueid %}
+{% endif %}
+
 <div class="a-input{% if wrapper_classes %} {{ wrapper_classes }}{% endif %}{% if classes %} {{ classes }}{% endif %}">
-	<label for="{{ id|default(name) }}" class="a-input__label {% if required %}a-input__label--required{% endif %}">
+	<label for="{{ id }}" class="a-input__label {% if required %}a-input__label--required{% endif %}">
 		{{ label|wptexturize }}
 	</label>
 	{% if 'textarea' == type %}
-		<textarea id="{{ id|default(name) }}"
+		<textarea id="{{ id }}"
 							class="a-input__field {{ modifiers_classes }}"
 							name="{{ name }}"
 							{% if required %}required="required"{% endif %}>{{ value }}</textarea>
 	{% else %}
-		<input id="{{ id|default(name) }}"
+		<input id="{{ id }}"
 					 class="a-input__field {{ modifiers_classes }}{% if required %} is-required{% endif %}"
 					 type="{{ type }}"
 					 name="{{ name }}"
