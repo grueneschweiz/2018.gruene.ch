@@ -6,7 +6,7 @@ set -e
 # INSTALL DEV ENVIRONMENT #
 ###########################
 # Install theme dependencies with composer
-docker exec --user 1000:1000 wp_docker_les_verts bash -c "cd /var/www/html/wp-content/themes/les-verts && composer install"
+docker exec --user $(id -u):$(id -g) wp_docker_les_verts bash -c "cd /var/www/html/wp-content/themes/les-verts && composer install"
 
 # Install wp core
 docker exec wp_docker_les_verts wp core install --url=localhost --title=LesVERTS --admin_user=admin --admin_password=admin --admin_email=admin@gruene.ch
@@ -21,7 +21,7 @@ docker exec wp_docker_les_verts bash -c "chmod +x wp-configure.sh && export WPCL
 yarn install && yarn build
 
 # Create dist symlink
-docker exec --user 1000:1000 wp_docker_les_verts bash -c "cd wp-content/themes/les-verts && ln -sf styleguide/dist/static static"
+docker exec --user $(id -u):$(id -g) wp_docker_les_verts bash -c "cd wp-content/themes/les-verts && ln -sf styleguide/dist/static static"
 
 # Import demo content
 docker cp scripts/wp-add-demo-content.sh wp_docker_les_verts:/var/www/html/wp-add-demo-content.sh
