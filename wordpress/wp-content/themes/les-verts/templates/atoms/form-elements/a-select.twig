@@ -1,6 +1,6 @@
 {#
 Parameters:
-- id: string (optional, name is used if id is not provided)
+- id: string (optional, `{{ default_id_prefix }}-{{ uniqueid }}-{{ name }}` is used if id is not provided)
 - classes: string (optional, appended)
 - name: string must be unique in form
 - label: string
@@ -9,13 +9,19 @@ Parameters:
 - modifiers_classes: string (optional)
 - options: array
 - keyed_options: array      #used for map block, use option OR keyed_options but not both
+- default_id_prefix: string
 #}
+
+{% if not id %}
+	{% set id = default_id_prefix|uniqueid ~ "-" ~ name %}
+{% endif %}
+
 <div class="a-select {{ modifiers_classes }}{% if classes %} {{ classes }}{% endif %}">
-	<label for="{{ id|default(name) }}" class="a-select__label {% if required %}a-select__label--required{% endif %}">
+	<label for="{{ id }}" class="a-select__label {% if required %}a-select__label--required{% endif %}">
 		{{ label|wptexturize }}
 	</label>
 	<div class="a-select__background">
-		<select id="{{ id|default(name) }}"
+		<select id="{{ id }}"
 						class="a-select__field"
 						name="{{ name }}"
 						{% if required %}required="required"{% endif %}>

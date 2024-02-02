@@ -244,7 +244,7 @@ class SubmissionModel {
 			$predecessor = $predecessor->meta_get_predecessor();
 		}
 
-		return false;
+		return $email ?? false;
 	}
 
 	/**

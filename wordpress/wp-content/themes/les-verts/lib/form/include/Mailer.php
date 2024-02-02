@@ -89,7 +89,7 @@ class Mailer {
 				$this->submission->meta_get_referer()
 			);
 
-			$this->queue->push( $confirmation );
+			$this->queue->push_if_not_in_queue( $confirmation );
 		}
 	}
 
@@ -111,7 +111,7 @@ class Mailer {
 				$this->submission->meta_get_referer()
 			);
 
-			$this->queue->push( $notification );
+			$this->queue->push_if_not_in_queue( $notification );
 		}
 	}
 
@@ -199,7 +199,7 @@ class Mailer {
 				// requeue mail on error if number of retries is not exceeded
 				if ( $mail->get_sending_attempts() < self::SENDING_RETRIES ) {
 					try {
-						$queue->push( $mail );
+						$queue->push_if_not_in_queue( $mail );
 					} catch ( Exception $e ) {
 						self::send_error_notification( $mail, $e );
 					}
