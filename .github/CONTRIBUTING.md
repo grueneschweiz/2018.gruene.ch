@@ -21,7 +21,6 @@
 
 #### WordPress
 
-1. `docker compose up -d` - Create docker containers & launch them
 1. Add the required proprietary plugins `polylang-pro`, `advanced-custom-fields-pro`, `searchwp`, `searchwp-polylang`
    into `wordpress/wp-content/plugins`.
 1. `yarn wp:init` - Install WordPress with all dependencies
@@ -34,7 +33,7 @@
 ## Use
 
 1. `yarn start` - start the styleguide & live assets compilation
-2. `docker compose up -d` - start WordPress
+2. `yarn wp:start` - start WordPress
 
 ### Access
 
@@ -50,11 +49,7 @@ _That's probably all you need to know!_ 🍻
 
 ### Debug
 
-You can enable WordPress & php debugs tools to help develop.
-
-1. Set 1 to `WORDPRESS_DEBUG` environment variable in `./docker-compose.yml` file.
-1. Enable xdebug by uncommenting line 13 in `./scripts/php.ini` file
-1. Rebuild the container by running the command `docker compose down && docker compose build && docker compose up -d`
+XDEBUG is enabled by default.
 
 - Setting the PHP constant `SUPT_FORM_ASYNC` to false (e.g. in `wp-config.php`) processes form mails and crm saving
   synchronously and thus facilitates debugging.
