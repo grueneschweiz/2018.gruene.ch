@@ -7,7 +7,11 @@ services:
   wordpress:
     depends_on:
       - db
-    build: .
+    build:
+      context: .
+      args:
+        - "UID=${UID:-1000}"
+        - "GID=${GID:-1000}"
     ports:
       # MUST be on port 80, because multisite
       # doesn't support ports in base url
