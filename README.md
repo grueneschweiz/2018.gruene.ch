@@ -8,7 +8,7 @@ The GREENS of Switzerland's website with a living styleguide made with Fractal.b
 * [Report a bug or request a feature](https://github.com/grueneschweiz/2018.gruene.ch/issues/new) 🕷
 * [Contribute](.github/CONTRIBUTING.md) 💻
 
-Your not a webmonkey and you just want a **website ready to go**?
+You're not a web monkey and you just want a **website ready to go**?
 * [Turnkey Ready Website](https://extern18.gruene.ch/musterperson/angebot) 🤩
 * [Manual - Help Pages](https://docs.gruene.ch) 🚨
 
@@ -48,6 +48,7 @@ Verify, you name the files exactly as above, and you provide all those file form
 * The expensive tasks after form submission are processed asynchronously (using wp cron). Use the WP_CLI to manage the
   jobs `wp form`.
 * Dedicated docs:
+  * [Dev guide](.github/CONTRIBUTING.md)
   * [SSO setup](docs/sso.md)
   * [Progressbar](docs/progressbar.md)
 * The upload of PNGs and JPEGs can be limited in their dimensions (to prevent imagemagick memory issues). To do so, add
