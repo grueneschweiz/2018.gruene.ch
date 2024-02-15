@@ -126,8 +126,7 @@ wordpress/sitemap.xml.gz
 .data
 dist
 node_modules
-deploy.*
-!deploy.example.sh
+deploy.conf
 .wordpress
 wp-cli.phar
 !/.github/workflows/deploy.yml
