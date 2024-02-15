@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 2018gruenech\n"
 "POT-Creation-Date: 2023-11-03 19:25+0100\n"
-"PO-Revision-Date: 2023-11-03 18:28\n"
+"PO-Revision-Date: 2024-01-12 12:27\n"
 "Last-Translator: Cyrill Bolliger <bolliger@gmx.ch>\n"
 "Language-Team: French\n"
 "MIME-Version: 1.0\n"
@@ -1895,7 +1895,7 @@ msgstr "Sera affiché sous la zone de saisie du texte (en petits caractères)"
 
 #: lib/form/acf/input.php:156
 msgid "Please add <em>Hallo</em>, <em>Liebe</em>, <em>Lieber</em> or <em>salut</em>, <em>chère</em>, <em>cher</em>. All other values will be ignored!"
-msgstr "Merci d'insérer <em>Hallo</em>, <em>Liebe</em>, <em>Lieber</em> ou <em>salut</em>, <em>chère</em>, <em>cher</em>. Toutes les autres valeurs seront ignorées!"
+msgstr "Merci d'insérer <em>Hallo</em>, <em>Liebe</em>, <em>Lieber</em> ou <em>Salut</em>, <em>Chère</em>, <em>Cher</em>. Toutes les autres valeurs seront ignorées!"
 
 #: lib/form/acf/input.php:162
 msgid "Choices"
