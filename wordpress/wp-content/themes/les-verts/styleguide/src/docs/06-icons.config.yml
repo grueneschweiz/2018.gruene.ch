@@ -19,9 +19,11 @@ context:
       icons:
         - facebook
         - tiktok
+        - bluesky
         - twitter
         - linkedin
         - instagram
+        - threads
         - mail
         - youtube
         - mastodon

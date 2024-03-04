@@ -15,9 +15,12 @@
 					{{#if website}}<a href="http://{{website}}" class="m-person__contact m-person__contact--website">{{website}}</a>{{/if}}
 				</address>
 				<div class="m-person__social-media">
+					{{#if bluesky}}<div class="m-person__social-icon">{{> @a-social-icon type='bluesky' link=bluesky}}</div>{{/if}}
+					{{#if tiktok}}<div class="m-person__social-icon">{{> @a-social-icon type='tiktok' link=tiktok}}</div>{{/if}}
+					{{#if instagram}}<div class="m-person__social-icon">{{> @a-social-icon type='instagram' link=instagram}}</div>{{/if}}
+					{{#if threads}}<div class="m-person__social-icon">{{> @a-social-icon type='threads' link=threads}}</div>{{/if}}
 					{{#if facebook}}<div class="m-person__social-icon">{{> @a-social-icon type='facebook' link=facebook}}</div>{{/if}}
 					{{#if twitter}}<div class="m-person__social-icon">{{> @a-social-icon type='twitter' link=twitter}}</div>{{/if}}
-					{{#if instagram}}<div class="m-person__social-icon">{{> @a-social-icon type='instagram' link=instagram}}</div>{{/if}}
 				</div>
 			{{/unless}}
 		</div>
@@ -36,9 +39,12 @@
 				{{#if website}}<a href="http://{{website}}" class="m-person__contact m-person__contact--website">{{website}}</a>{{/if}}
 			</address>
 			<div class="m-person__social-media">
+        {{#if bluesky}}<div class="m-person__social-icon">{{> @a-social-icon type='bluesky' link=bluesky}}</div>{{/if}}
+				{{#if tiktok}}<div class="m-person__social-icon">{{> @a-social-icon type='tiktok' link=tiktok}}</div>{{/if}}
+				{{#if instagram}}<div class="m-person__social-icon">{{> @a-social-icon type='instagram' link=instagram}}</div>{{/if}}
+				{{#if threads}}<div class="m-person__social-icon">{{> @a-social-icon type='threads' link=threads}}</div>{{/if}}
 				{{#if facebook}}<div class="m-person__social-icon">{{> @a-social-icon type='facebook' link=facebook}}</div>{{/if}}
 				{{#if twitter}}<div class="m-person__social-icon">{{> @a-social-icon type='twitter' link=twitter}}</div>{{/if}}
-				{{#if instagram}}<div class="m-person__social-icon">{{> @a-social-icon type='instagram' link=instagram}}</div>{{/if}}
 			</div>
 		</div>
 	{{/if}}
