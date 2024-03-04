@@ -228,6 +228,33 @@
             "min": "",
             "max": "1"
           },
+          "layout_threads0000001": {
+            "key": "layout_threads0000001",
+            "name": "threads",
+            "label": "Threads",
+            "display": "block",
+            "sub_fields": [
+              {
+                "key": "field_threads0000002",
+                "label": "Link to the Threads profile",
+                "name": "link",
+                "aria-label": "",
+                "type": "url",
+                "instructions": "",
+                "required": 1,
+                "conditional_logic": 0,
+                "wrapper": {
+                  "width": "",
+                  "class": "",
+                  "id": ""
+                },
+                "default_value": "",
+                "placeholder": ""
+              }
+            ],
+            "min": "",
+            "max": "1"
+          },
           "layout_626bcda0bb4b4": {
             "key": "layout_626bcda0bb4b4",
             "name": "linkedin",

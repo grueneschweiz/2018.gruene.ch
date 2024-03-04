@@ -35,6 +35,11 @@ add_filter( 'get_twig', function ( $twig ) {
 				$base   = 'https://www.instagram.com/';
 				$string = preg_replace( '/^(www)?\.instagram\.com\/?/', '', $string );
 				$string = str_replace( '@', '', $string );
+			} elseif ( 'threads' === $type ) {
+				$base   = 'https://threads.net/';
+				$string = preg_replace( '/^(www)?\.threads\.net\/?/', '', $string );
+				$string = str_replace( '@', '', $string );
+				$string = "@" . $string;
 			} elseif ( 'mastodon' === $type ) {
 				if ( preg_match( '/^@(\S+)@(\S+)$/', $string, $matches ) ) {
 					$base   = 'https://' . $matches[2];

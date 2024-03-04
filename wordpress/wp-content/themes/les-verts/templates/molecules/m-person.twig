@@ -41,6 +41,34 @@
 				</address>
 				<div class="m-person__social-media">
 					{% for block in contact %}
+						{% if 'bluesky' == block.acf_fc_layout %}
+							<div class="m-person__social-icon">{% include 'atoms/a-social-icon.twig' with {
+									'link': block.bluesky,
+									'type': 'bluesky',
+									'title': __('Visit the Bluesky profile of %s', constant('THEME_DOMAIN'))|format(person.full_name),
+								} %}</div>
+						{% endif %}
+						{% if 'tiktok' == block.acf_fc_layout %}
+							<div class="m-person__social-icon">{% include 'atoms/a-social-icon.twig' with {
+									'link': block.tiktok,
+									'type': 'tiktok',
+									'title': __('Visit the TikTok profile of %s', constant('THEME_DOMAIN'))|format(person.full_name),
+								} %}</div>
+						{% endif %}
+						{% if 'instagram' == block.acf_fc_layout %}
+							<div class="m-person__social-icon">{% include 'atoms/a-social-icon.twig' with {
+									'link': block.insta,
+									'type': 'instagram',
+									'title': __('Visit the instagram profile of %s', constant('THEME_DOMAIN'))|format(person.full_name),
+								} %}</div>
+						{% endif %}
+						{% if 'threads' == block.acf_fc_layout %}
+							<div class="m-person__social-icon">{% include 'atoms/a-social-icon.twig' with {
+									'link': block.threads,
+									'type': 'threads',
+									'title': __('Visit the Threads profile of %s', constant('THEME_DOMAIN'))|format(person.full_name),
+								} %}</div>
+						{% endif %}
 						{% if 'facebook' == block.acf_fc_layout %}
 							<div class="m-person__social-icon">{% include 'atoms/a-social-icon.twig' with {
 									'link': block.facebook,
@@ -53,27 +81,6 @@
 									'link': block.twitter,
 									'type': 'twitter',
 									'title': __('Visit the twitter profile of %s', constant('THEME_DOMAIN'))|format(person.full_name),
-								} %}</div>
-						{% endif %}
-						{% if 'tiktok' == block.acf_fc_layout %}
-							<div class="m-person__social-icon">{% include 'atoms/a-social-icon.twig' with {
-									'link': block.tiktok,
-									'type': 'tiktok',
-									'title': __('Visit the TikTok profile of %s', constant('THEME_DOMAIN'))|format(person.full_name),
-								} %}</div>
-						{% endif %}
-						{% if 'bluesky' == block.acf_fc_layout %}
-							<div class="m-person__social-icon">{% include 'atoms/a-social-icon.twig' with {
-									'link': block.bluesky,
-									'type': 'bluesky',
-									'title': __('Visit the Bluesky profile of %s', constant('THEME_DOMAIN'))|format(person.full_name),
-								} %}</div>
-						{% endif %}
-						{% if 'instagram' == block.acf_fc_layout %}
-							<div class="m-person__social-icon">{% include 'atoms/a-social-icon.twig' with {
-									'link': block.insta,
-									'type': 'instagram',
-									'title': __('Visit the instagram profile of %s', constant('THEME_DOMAIN'))|format(person.full_name),
 								} %}</div>
 						{% endif %}
 					{% endfor %}
@@ -112,6 +119,30 @@
 				</address>
 				<div class="m-person__social-media">
 					{% for block in contact %}
+						{% if 'bluesky' == block.acf_fc_layout %}
+							<div class="m-person__social-icon">{% include 'atoms/a-social-icon.twig' with {
+									'link': block.bluesky,
+									'type': 'bluesky'
+								} %}</div>
+						{% endif %}
+						{% if 'tiktok' == block.acf_fc_layout %}
+							<div class="m-person__social-icon">{% include 'atoms/a-social-icon.twig' with {
+									'link': block.tiktok,
+									'type': 'tiktok'
+								} %}</div>
+						{% endif %}
+						{% if 'instagram' == block.acf_fc_layout %}
+							<div class="m-person__social-icon">{% include 'atoms/a-social-icon.twig' with {
+									'link': block.insta,
+									'type': 'instagram'
+								} %}</div>
+						{% endif %}
+						{% if 'threads' == block.acf_fc_layout %}
+							<div class="m-person__social-icon">{% include 'atoms/a-social-icon.twig' with {
+									'link': block.threads,
+									'type': 'threads'
+								} %}</div>
+						{% endif %}
 						{% if 'facebook' == block.acf_fc_layout %}
 							<div class="m-person__social-icon">{% include 'atoms/a-social-icon.twig' with {
 									'link': block.facebook,
@@ -122,24 +153,6 @@
 							<div class="m-person__social-icon">{% include 'atoms/a-social-icon.twig' with {
 									'link': block.twitter,
 									'type': 'twitter'
-								} %}</div>
-						{% endif %}
-						{% if 'tiktok' == block.acf_fc_layout %}
-							<div class="m-person__social-icon">{% include 'atoms/a-social-icon.twig' with {
-									'link': block.tiktok,
-									'type': 'tiktok'
-								} %}</div>
-						{% endif %}
-						{% if 'bluesky' == block.acf_fc_layout %}
-							<div class="m-person__social-icon">{% include 'atoms/a-social-icon.twig' with {
-									'link': block.bluesky,
-									'type': 'bluesky'
-								} %}</div>
-						{% endif %}
-						{% if 'instagram' == block.acf_fc_layout %}
-							<div class="m-person__social-icon">{% include 'atoms/a-social-icon.twig' with {
-									'link': block.insta,
-									'type': 'instagram'
 								} %}</div>
 						{% endif %}
 					{% endfor %}

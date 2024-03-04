@@ -8,6 +8,8 @@
 	{% set link = link|social_link('tiktok') %}
 {% elseif 'instagram' == type %}
 	{% set link = link|social_link('instagram') %}
+{% elseif 'threads' == type %}
+	{% set link = link|social_link('threads') %}
 {% elseif 'mastodon' == type %}
 	{% set link = link|social_link('mastodon') %}
 {% elseif 'tumblr' == type %}

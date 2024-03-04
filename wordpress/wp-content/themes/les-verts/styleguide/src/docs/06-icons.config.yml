@@ -23,6 +23,7 @@ context:
         - twitter
         - linkedin
         - instagram
+        - threads
         - mail
         - youtube
         - mastodon

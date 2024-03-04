@@ -283,6 +283,35 @@
                     ],
                     "min": "",
                     "max": "1"
+                },
+                "layout_threads000003": {
+                  "key": "layout_threads000003",
+                  "name": "threads",
+                  "label": "Threads",
+                  "display": "block",
+                  "sub_fields": [
+                    {
+                      "key": "field_threads000004",
+                      "label": "Threads Name",
+                      "name": "threads",
+                      "type": "text",
+                      "instructions": "Use @name",
+                      "required": 0,
+                      "conditional_logic": 0,
+                      "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                      },
+                      "default_value": "",
+                      "placeholder": "",
+                      "prepend": "",
+                      "append": "",
+                      "maxlength": ""
+                    }
+                  ],
+                  "min": "",
+                  "max": "1"
                 }
             },
             "button_label": "Add Contact",
