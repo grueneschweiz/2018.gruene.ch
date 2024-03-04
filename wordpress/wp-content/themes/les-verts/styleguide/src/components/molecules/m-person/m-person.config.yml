@@ -13,9 +13,10 @@ context:
   email: balthasar.glaettli@gruene.ch
   phone: 079 123 45 67
   website: www.balthasar-glaettli.ch
-  facebook: https://google.com
-  twitter: https://google.com
-  instagram: https://google.com
+  facebook: https://www.facebook.com/wikipedia/
+  instagram: https://www.instagram.com/nasa/
+  tiktok: https://www.tiktok.com/@wikipedia
+  bluesky: https://bsky.app/profile/wikipedia.bsky.social
 variants:
   - name: expandable
     context:

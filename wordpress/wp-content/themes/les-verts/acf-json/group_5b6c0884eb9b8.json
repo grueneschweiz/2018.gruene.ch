@@ -197,6 +197,64 @@
                     "min": "",
                     "max": "1"
                 },
+                "layout_626bcd7fbb4a2": {
+                    "key": "layout_626bcd7fbb4a2",
+                    "name": "bluesky",
+                    "label": "Bluesky",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_626bcd7fbb4a3",
+                            "label": "Bluesky Name",
+                            "name": "bluesky",
+                            "type": "text",
+                            "instructions": "Use @name",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "maxlength": ""
+                        }
+                    ],
+                    "min": "",
+                    "max": "1"
+                },
+                "layout_626bcd7fbb4b2": {
+                    "key": "layout_626bcd7fbb4b2",
+                    "name": "tiktok",
+                    "label": "Tiktok",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_626bcd7fbb4b3",
+                            "label": "Tiktok",
+                            "name": "tiktok",
+                            "type": "text",
+                            "instructions": "Use @name",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "maxlength": ""
+                        }
+                    ],
+                    "min": "",
+                    "max": "1"
+                },
                 "layout_5b6c0a909418a": {
                     "key": "layout_5b6c0a909418a",
                     "name": "instagram",

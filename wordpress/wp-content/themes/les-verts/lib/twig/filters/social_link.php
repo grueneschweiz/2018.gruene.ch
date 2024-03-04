@@ -21,6 +21,16 @@ add_filter( 'get_twig', function ( $twig ) {
 				$base   = 'https://twitter.com/';
 				$string = preg_replace( '/^(www)?\.twitter\.com\/?/', '', $string );
 				$string = str_replace( '@', '', $string );
+			} elseif ( 'tiktok' === $type ) {
+				$base   = 'https://tiktok.com/';
+				$string = preg_replace( '/^(www)?\.tiktok\.com\/?/', '', $string );
+				$string = str_replace( '@', '', $string );
+				$string = "@" . $string;
+			} elseif ( 'bluesky' === $type ) {
+				$base   = 'https://bsky.app/profile/';
+				$string = preg_replace( '/^(www)?\.bsky\.app\/?/', '', $string );
+				$string = str_replace( '@', '', $string );
+				$string = $string . ".bsky.social";
 			} elseif ( 'instagram' === $type ) {
 				$base   = 'https://www.instagram.com/';
 				$string = preg_replace( '/^(www)?\.instagram\.com\/?/', '', $string );
