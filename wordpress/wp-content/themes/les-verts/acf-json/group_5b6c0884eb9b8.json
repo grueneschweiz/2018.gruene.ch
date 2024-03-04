@@ -197,14 +197,14 @@
                     "min": "",
                     "max": "1"
                 },
-                "layout_626bcd7fbb4a2": {
-                    "key": "layout_626bcd7fbb4a2",
+                "layout_bluesky_editor": {
+                    "key": "layout_bluesky_editor",
                     "name": "bluesky",
                     "label": "Bluesky",
                     "display": "block",
                     "sub_fields": [
                         {
-                            "key": "field_626bcd7fbb4a3",
+                            "key": "field_bluesky_editor",
                             "label": "Bluesky Name",
                             "name": "bluesky",
                             "type": "text",
@@ -226,14 +226,14 @@
                     "min": "",
                     "max": "1"
                 },
-                "layout_626bcd7fbb4b2": {
-                    "key": "layout_626bcd7fbb4b2",
+                "layout_tiktok_editor": {
+                    "key": "layout_tiktok_editor",
                     "name": "tiktok",
                     "label": "Tiktok",
                     "display": "block",
                     "sub_fields": [
                         {
-                            "key": "field_626bcd7fbb4b3",
+                            "key": "field_tiktok_editor",
                             "label": "Tiktok",
                             "name": "tiktok",
                             "type": "text",
@@ -284,14 +284,14 @@
                     "min": "",
                     "max": "1"
                 },
-                "layout_threads000003": {
-                  "key": "layout_threads000003",
+                "layout_threads_editor": {
+                  "key": "layout_threads_editor",
                   "name": "threads",
                   "label": "Threads",
                   "display": "block",
                   "sub_fields": [
                     {
-                      "key": "field_threads000004",
+                      "key": "field_threads_editor",
                       "label": "Threads Name",
                       "name": "threads",
                       "type": "text",

@@ -728,14 +728,14 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 						'min'        => '',
 						'max'        => '1',
 					),
-					'layout_threads0000001' => array(
-						'key'        => 'layout_threads0000001',
+					'layout_threads_frontend' => array(
+						'key'        => 'layout_threads_frontend',
 						'name'       => 'threads',
 						'label'      => __( 'Threads', 'lesverts' ),
 						'display'    => 'block',
 						'sub_fields' => array(
 							array(
-								'key'               => 'field_threads0000002',
+								'key'               => 'field_threads_frontend',
 								'label'             => __( 'Link to the threads profile', 'lesverts' ),
 								'name'              => 'link',
 								'aria-label'        => '',
@@ -755,14 +755,14 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 						'min'        => '',
 						'max'        => '1',
 					),
-					'layout_5b6d680d1c8e3' => array(
-						'key'        => 'layout_5b6d680d1c8e3',
+					'layout_tiktok_frontend' => array(
+						'key'        => 'layout_tiktok_frontend',
 						'name'       => 'tiktok',
 						'label'      => __( 'Tiktok', 'lesverts' ),
 						'display'    => 'block',
 						'sub_fields' => array(
 							array(
-								'key'               => 'field_5b6d680d1c8e4',
+								'key'               => 'field_tiktok_frontend',
 								'label'             => __( 'Link to the tiktok profile', 'lesverts' ),
 								'name'              => 'link',
 								'aria-label'        => '',
@@ -782,14 +782,14 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 						'min'        => '',
 						'max'        => '1',
 					),
-					'layout_5b6d680d1c8a1' => array(
-						'key'        => 'layout_5b6d680d1c8a1',
+					'layout_bluesky_frontend' => array(
+						'key'        => 'layout_bluesky_frontend',
 						'name'       => 'bluesky',
 						'label'      => __( 'Bluesky', 'lesverts' ),
 						'display'    => 'block',
 						'sub_fields' => array(
 							array(
-								'key'               => 'field_5b6d681c1c8a2',
+								'key'               => 'field_bluesky_frontend',
 								'label'             => __( 'Link to the Bluesky profile', 'lesverts' ),
 								'name'              => 'link',
 								'aria-label'        => '',
@@ -6305,14 +6305,14 @@ Example: {{current}} have signed. Can we reach {{goal}}?', 'lesverts' ),
 						'min'        => '',
 						'max'        => '1',
 					),
-					'layout_626bcd7fbb4a2' => array(
-						'key'        => 'layout_626bcd7fbb4a2',
+					'layout_bluesky_editor' => array(
+						'key'        => 'layout_bluesky_editor',
 						'name'       => 'bluesky',
 						'label'      => __( 'Bluesky', 'lesverts' ),
 						'display'    => 'block',
 						'sub_fields' => array(
 							array(
-								'key'               => 'field_626bcd7fbb4a3',
+								'key'               => 'field_bluesky_editor',
 								'label'             => __( 'Bluesky Name', 'lesverts' ),
 								'name'              => 'bluesky',
 								'aria-label'        => '',
@@ -6335,14 +6335,14 @@ Example: {{current}} have signed. Can we reach {{goal}}?', 'lesverts' ),
 						'min'        => '',
 						'max'        => '1',
 					),
-					'layout_626bcd7fbb4b2' => array(
-						'key'        => 'layout_626bcd7fbb4b2',
+					'layout_tiktok_editor' => array(
+						'key'        => 'layout_tiktok_editor',
 						'name'       => 'tiktok',
 						'label'      => __( 'Tiktok', 'lesverts' ),
 						'display'    => 'block',
 						'sub_fields' => array(
 							array(
-								'key'               => 'field_626bcd7fbb4b3',
+								'key'               => 'field_tiktok_editor',
 								'label'             => __( 'Tiktok Name', 'lesverts' ),
 								'name'              => 'tiktok',
 								'aria-label'        => '',
@@ -6395,14 +6395,14 @@ Example: {{current}} have signed. Can we reach {{goal}}?', 'lesverts' ),
 						'min'        => '',
 						'max'        => '1',
 					),
-					'layout_threads000003' => array(
-						'key'        => 'layout_threads000003',
+					'layout_threads_editor' => array(
+						'key'        => 'layout_threads_editor',
 						'name'       => 'threads',
 						'label'      => __( 'Threads', 'lesverts' ),
 						'display'    => 'block',
 						'sub_fields' => array(
 							array(
-								'key'               => 'field_threads000004',
+								'key'               => 'field_threads_editor',
 								'label'             => __( 'Threads Name', 'lesverts' ),
 								'name'              => 'threads',
 								'aria-label'        => '',

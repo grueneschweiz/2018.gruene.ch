@@ -91,14 +91,14 @@
             "min": "",
             "max": "1"
           },
-          "layout_5b6d680d1c8a1": {
-              "key": "layout_5b6d680d1c8a1",
+          "layout_bluesky_frontend": {
+              "key": "layout_bluesky_frontend",
               "name": "bluesky",
               "label": "Bluesky",
               "display": "block",
               "sub_fields": [
                   {
-                      "key": "field_5b6d681c1c8a2",
+                      "key": "field_bluesky_frontend",
                       "label": "Link to the bluesky profile",
                       "name": "link",
                       "aria-label": "",
@@ -174,14 +174,14 @@
             "min": "",
             "max": "1"
           },
-          "layout_5b6d680d1c8e3": {
-              "key": "layout_5b6d680d1c8e3",
+          "layout_tiktok_frontend": {
+              "key": "layout_tiktok_frontend",
               "name": "tiktok",
               "label": "Tiktok",
               "display": "block",
               "sub_fields": [
                   {
-                      "key": "field_5b6d680d1c8e4",
+                      "key": "field_tiktok_frontend",
                       "label": "Link to the tiktok profile",
                       "name": "link",
                       "aria-label": "",
@@ -228,14 +228,14 @@
             "min": "",
             "max": "1"
           },
-          "layout_threads0000001": {
-            "key": "layout_threads0000001",
+          "layout_threads_frontend": {
+            "key": "layout_threads_frontend",
             "name": "threads",
             "label": "Threads",
             "display": "block",
             "sub_fields": [
               {
-                "key": "field_threads0000002",
+                "key": "field_threads_frontend",
                 "label": "Link to the Threads profile",
                 "name": "link",
                 "aria-label": "",
