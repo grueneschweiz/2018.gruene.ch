@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 2018gruenech\n"
 "POT-Creation-Date: 2023-11-03 19:25+0100\n"
-"PO-Revision-Date: 2023-11-03 18:28\n"
+"PO-Revision-Date: 2024-02-02 15:17\n"
 "Last-Translator: Cyrill Bolliger <bolliger@gmx.ch>\n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -2315,7 +2315,7 @@ msgstr "E-Mailvorlage"
 #: lib/form/include/Mailer.php:228
 #, php-format
 msgid "%s: ERROR while sending mail"
-msgstr ""
+msgstr "%s: ERROR beim Senden einer Mail"
 
 #: lib/form/include/Mailer.php:234
 #, php-format
@@ -2331,7 +2331,18 @@ msgid "Hi Admin of %s\n\n"
 "Your Website - %s\n\n"
 "Error message:\n"
 "%s"
-msgstr ""
+msgstr "Hallo Admin von %s\n\n"
+"Beim Versenden der folgenden Mail ist ein FEHLER aufgetreten und wir konnten sie nicht in der Warteschlange speichern. Die Mail:\n\n"
+"---\n\n"
+"an: %s\n"
+"subject: %s\n"
+"body: %s\n\n"
+"---\n\n"
+"Mehr Details in der Fehlermeldung unten.\n\n"
+"Einen schönen Tag noch.\n"
+"Deine Website - %s\n\n"
+"Fehlermeldung:\n"
+"%s"
 
 #: lib/form/include/SubmissionExport.php:92
 msgid "Website export"
@@ -2629,12 +2640,12 @@ msgstr "Die 'tag not in' Funktion wird nicht unterstützt."
 #: lib/tweaks/limit-image-upload-dims.php:39
 #, php-format
 msgid "PNG images must not exceed the area of %d * %d pixels. Reduce the image dimensions or convert it to JPEG."
-msgstr ""
+msgstr "PNG-Bilder dürfen die Fläche von %d * %d Pixel nicht überschreiten. Verkleinere die Bildgrösse oder wandle sie in JPEG um."
 
 #: lib/tweaks/limit-image-upload-dims.php:48
 #, php-format
 msgid "Images must not exceed the area of %d * %d pixels. Please reduce the image dimensions and try again."
-msgstr ""
+msgstr "Die Bilder dürfen die Fläche von %d * %d nicht überschreiten. Bitte reduziere die Bildgrösse und versuche es erneut."
 
 #: lib/widgets/ButtonWidget.php:27
 msgid "Show your main calls to action"
