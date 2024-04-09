@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 2018gruenech\n"
 "POT-Creation-Date: 2023-11-03 19:25+0100\n"
-"PO-Revision-Date: 2024-01-12 12:27\n"
+"PO-Revision-Date: 2024-04-09 13:35\n"
 "Last-Translator: Cyrill Bolliger <bolliger@gmx.ch>\n"
 "Language-Team: French\n"
 "MIME-Version: 1.0\n"
@@ -2333,7 +2333,18 @@ msgid "Hi Admin of %s\n\n"
 "Your Website - %s\n\n"
 "Error message:\n"
 "%s"
-msgstr ""
+msgstr "Hi Admin of %s\n\n"
+"Il y a eu une ERREUR lors de l'envoi du mail suivant et nous n'avons pas pu le sauvegarder dans la file d'attente d'envoi. VOUS DEVEZ L'ENVOYER MANUELLEMENT. Le courrier :\n\n"
+"---\n\n"
+"to : %s\n"
+"subject : %s\n"
+"body : %s\n\n"
+"---\n\n"
+"Plus de détails dans le message d'erreur ci-dessous.\n\n"
+"Je te souhaite une bonne journée.\n"
+"Ton site Web - %s\n\n"
+"Message d'erreur :\n"
+"%s"
 
 #: lib/form/include/SubmissionExport.php:92
 msgid "Website export"
@@ -2631,12 +2642,12 @@ msgstr "La fonction «tag not in» ne peut pas être utilisée."
 #: lib/tweaks/limit-image-upload-dims.php:39
 #, php-format
 msgid "PNG images must not exceed the area of %d * %d pixels. Reduce the image dimensions or convert it to JPEG."
-msgstr ""
+msgstr "Les images PNG ne doivent pas dépasser les dimensions de %d * %d pixels. Réduis les dimensions de l'image ou convertis-la en JPEG."
 
 #: lib/tweaks/limit-image-upload-dims.php:48
 #, php-format
 msgid "Images must not exceed the area of %d * %d pixels. Please reduce the image dimensions and try again."
-msgstr ""
+msgstr "Les images ne doivent pas dépasser les dimensions de %d * %d pixels. Réduis les dimensions de l'image et essaie à nouveau."
 
 #: lib/widgets/ButtonWidget.php:27
 msgid "Show your main calls to action"
