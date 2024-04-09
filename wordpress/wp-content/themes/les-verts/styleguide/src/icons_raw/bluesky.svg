@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="32px"
+   height="32px"
+   viewBox="0 0 32 32"
+   version="1.1"
+   id="svg1"
+   sodipodi:docname="bluesky.svg"
+   inkscape:version="1.3.1 (9b9bdc1480, 2023-11-25, custom)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="14.409497"
+     inkscape:cx="31.229405"
+     inkscape:cy="21.270694"
+     inkscape:window-width="1920"
+     inkscape:window-height="1043"
+     inkscape:window-x="1920"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg1" />
+  <title
+     id="title1">bluesky</title>
+  <defs
+     id="defs1" />
+  <g
+     id="bluesky"
+     stroke="none"
+     stroke-width="1"
+     fill="none"
+     fill-rule="evenodd">
+    <rect
+       id="Rectangle-11"
+       stroke="#84B414"
+       x="0.5"
+       y="0.5"
+       width="31"
+       height="31" />
+    <path
+       d="m 12.225409,24.39862 c -1.315703,-0.192308 -3.1520257,-1.772374 -3.5898697,-3.088907 -0.554914,-1.668547 0.7738816,-3.029789 3.4684067,-3.553092 0.148025,-0.02875 0.13504,-0.0431 -0.01747,-0.01932 C 9.5120612,18.138756 7.2650495,16.84967 6.8719995,14.745818 6.7522271,14.104725 6.5631417,12.141134 6.4066581,9.9134146 6.2178957,7.2261693 7.4993913,6.5272341 9.9469448,7.982522 c 1.8665692,1.109842 4.7753032,4.537723 6.0605342,7.142213 0.11299,0.22897 0.100978,0.225574 0.183878,0.05199 0.500515,-1.048024 1.69633,-2.814878 2.82285,-4.170852 3.608832,-4.3438954 7.028641,-5.0651158 6.82301,-1.4389393 -0.120142,2.1186403 -0.390813,4.8620833 -0.533413,5.4065113 -0.524832,2.003754 -2.745996,3.171861 -5.234351,2.752739 -0.146469,-0.02467 -0.03667,0.01303 0.148981,0.05116 3.794293,0.779199 4.606375,3.117863 1.906309,5.489863 -2.480933,2.179494 -4.449233,1.253301 -5.841644,-2.748815 -0.164515,-0.472854 -0.172248,-0.480159 -0.255502,-0.24139 -1.057081,3.031639 -2.269278,4.345675 -3.802188,4.121618 z"
+       id="Fill-1"
+       fill="#84B414" />
+  </g>
+  <metadata
+     id="metadata1">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:title>bluesky</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+</svg>

@@ -197,6 +197,64 @@
                     "min": "",
                     "max": "1"
                 },
+                "layout_bluesky_editor": {
+                    "key": "layout_bluesky_editor",
+                    "name": "bluesky",
+                    "label": "Bluesky",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_bluesky_editor",
+                            "label": "Bluesky Name",
+                            "name": "bluesky",
+                            "type": "text",
+                            "instructions": "Use @name",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "maxlength": ""
+                        }
+                    ],
+                    "min": "",
+                    "max": "1"
+                },
+                "layout_tiktok_editor": {
+                    "key": "layout_tiktok_editor",
+                    "name": "tiktok",
+                    "label": "Tiktok",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_tiktok_editor",
+                            "label": "Tiktok",
+                            "name": "tiktok",
+                            "type": "text",
+                            "instructions": "Use @name",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "maxlength": ""
+                        }
+                    ],
+                    "min": "",
+                    "max": "1"
+                },
                 "layout_5b6c0a909418a": {
                     "key": "layout_5b6c0a909418a",
                     "name": "instagram",
@@ -225,6 +283,35 @@
                     ],
                     "min": "",
                     "max": "1"
+                },
+                "layout_threads_editor": {
+                  "key": "layout_threads_editor",
+                  "name": "threads",
+                  "label": "Threads",
+                  "display": "block",
+                  "sub_fields": [
+                    {
+                      "key": "field_threads_editor",
+                      "label": "Threads Name",
+                      "name": "threads",
+                      "type": "text",
+                      "instructions": "Use @name",
+                      "required": 0,
+                      "conditional_logic": 0,
+                      "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                      },
+                      "default_value": "",
+                      "placeholder": "",
+                      "prepend": "",
+                      "append": "",
+                      "maxlength": ""
+                    }
+                  ],
+                  "min": "",
+                  "max": "1"
                 }
             },
             "button_label": "Add Contact",

@@ -91,6 +91,33 @@
             "min": "",
             "max": "1"
           },
+          "layout_bluesky_frontend": {
+              "key": "layout_bluesky_frontend",
+              "name": "bluesky",
+              "label": "Bluesky",
+              "display": "block",
+              "sub_fields": [
+                  {
+                      "key": "field_bluesky_frontend",
+                      "label": "Link to the bluesky profile",
+                      "name": "link",
+                      "aria-label": "",
+                      "type": "url",
+                      "instructions": "",
+                      "required": 1,
+                      "conditional_logic": 0,
+                      "wrapper": {
+                          "width": "",
+                          "class": "",
+                          "id": ""
+                      },
+                      "default_value": "",
+                      "placeholder": ""
+                  }
+              ],
+              "min": "",
+              "max": "1"
+          },
           "layout_63d42064033f8": {
             "key": "layout_63d42064033f8",
             "name": "mastodon",
@@ -147,6 +174,33 @@
             "min": "",
             "max": "1"
           },
+          "layout_tiktok_frontend": {
+              "key": "layout_tiktok_frontend",
+              "name": "tiktok",
+              "label": "Tiktok",
+              "display": "block",
+              "sub_fields": [
+                  {
+                      "key": "field_tiktok_frontend",
+                      "label": "Link to the tiktok profile",
+                      "name": "link",
+                      "aria-label": "",
+                      "type": "url",
+                      "instructions": "",
+                      "required": 1,
+                      "conditional_logic": 0,
+                      "wrapper": {
+                          "width": "",
+                          "class": "",
+                          "id": ""
+                      },
+                      "default_value": "",
+                      "placeholder": ""
+                  }
+              ],
+              "min": "",
+              "max": "1"
+          },
           "layout_5b6d680d1c8e1": {
             "key": "layout_5b6d680d1c8e1",
             "name": "instagram",
@@ -174,15 +228,15 @@
             "min": "",
             "max": "1"
           },
-          "layout_626bcd7fbb4b2": {
-            "key": "layout_626bcd7fbb4b2",
-            "name": "tiktok",
-            "label": "Tiktok",
+          "layout_threads_frontend": {
+            "key": "layout_threads_frontend",
+            "name": "threads",
+            "label": "Threads",
             "display": "block",
             "sub_fields": [
               {
-                "key": "field_626bcd7fbb4b3",
-                "label": "Link to the tiktok profile",
+                "key": "field_threads_frontend",
+                "label": "Link to the Threads profile",
                 "name": "link",
                 "aria-label": "",
                 "type": "url",
