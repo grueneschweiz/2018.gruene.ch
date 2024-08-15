@@ -355,7 +355,7 @@
                   "maxlength": 280,
                   "rows": 3,
                   "new_lines": "",
-                  "translations": "translate"
+                  "translations": "ignore"
                 },
                 {
                     "key": "field_5bb4e14d39fc1",

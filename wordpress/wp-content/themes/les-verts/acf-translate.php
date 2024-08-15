@@ -1981,7 +1981,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 				'default_value'     => 'all',
 				'layout'            => 'horizontal',
 				'return_format'     => 'value',
-				'translations'      => 'sync',
+				'translations'      => 'ignore',
 			),
 			array(
 				'key'               => 'field_5fd2a2ea57612',
@@ -6469,7 +6469,7 @@ Example: {{current}} have signed. Can we reach {{goal}}?', 'lesverts' ),
 						'maxlength'         => 280,
 						'rows'              => 3,
 						'new_lines'         => '',
-						'translations'      => 'translate',
+						'translations'      => 'ignore',
 						'parent_repeater'   => 'field_5bbb2b59ceb1f',
 					),
 					array(

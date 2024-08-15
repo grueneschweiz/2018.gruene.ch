@@ -82,7 +82,7 @@
         "default_value": "all",
         "layout": "horizontal",
         "return_format": "value",
-        "translations": "sync"
+        "translations": "ignore"
       },
       {
         "key": "field_5fd2a2ea57612",
