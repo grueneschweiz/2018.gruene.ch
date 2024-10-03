@@ -45,6 +45,8 @@ class StarterSite extends TimberSite {
 		// Filters
 		// -> more info: https://developer.wordpress.org/reference/functions/add_filter/
 		add_filter( 'timber_context', array( $this, 'add_to_context' ), - 1 );
+		// Disable SearchWP Email Summaries
+		add_filter( 'searchwp/email_summaries/disabled', '__return_true');
 
 		// Actions
 		// -> more info: https://developer.wordpress.org/reference/functions/add_action/
