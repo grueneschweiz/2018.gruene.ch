@@ -56,7 +56,6 @@ USER www-data
 # (dont mount it, cause it gets updated by a sed srcipt.
 # mounting it therefore crashes the boot process.)
 COPY wordpress/wp-config.php /var/www/html/wp-config.php
-RUN chown www-data:www-data /var/www/html/wp-config.php
 
 # Set working directory
 WORKDIR /var/www/html
