@@ -3,7 +3,6 @@ volumes:
 
 services:
   wordpress:
-    image: wordpress:php8.1-apache
     depends_on:
       - db
     build:
