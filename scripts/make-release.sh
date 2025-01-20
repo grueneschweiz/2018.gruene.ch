@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+# This is the old release-script. Now we use the github action called "deploy".
+# Use this only for testing purposes.
+#
+
 # halt on all errors
 set -e
 

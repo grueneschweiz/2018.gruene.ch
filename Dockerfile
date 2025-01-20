@@ -55,7 +55,7 @@ USER www-data
 # Copy wp-config.php into container
 # (dont mount it, cause it gets updated by a sed srcipt.
 # mounting it therefore crashes the boot process.)
-COPY wordpress/wp-config.php /var/www/html/wp-config.ph
+COPY wordpress/wp-config.php /var/www/html/wp-config.php
 
 # Set working directory
 WORKDIR /var/www/html
