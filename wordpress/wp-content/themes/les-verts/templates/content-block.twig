@@ -1,64 +1,70 @@
-{% if block.acf_fc_layout == 'in_short' %}
-	<div class="page__box">
-		{% include 'molecules/m-in-short.twig' with block only %}
-	</div>
-{% elseif block.acf_fc_layout == 'quote' %}
-	<div class="page__quote">
-		{% include 'molecules/m-quote.twig' with block only %}
-	</div>
-{% elseif block.acf_fc_layout == 'person' %}
-	<div class="page__person">
-		{% include 'molecules/m-person.twig' with block only %}
-	</div>
-{% elseif block.acf_fc_layout == 'progress_bar' %}
-	<div class="page__progress">
-		{% include 'atoms/a-progress.twig' with {'block': block} only %}
-	</div>
-{% elseif block.acf_fc_layout == 'form' or block.form %}
-	{% if block.action_id %}
-		{% set action_id = block.action_id %}
+{% if block %}
+	{% if block.acf_fc_layout == 'block' %}
+		{% for element in block.block.meta('content') %}
+			{% include 'content-block.twig' with {
+				'block': element
+			} only %}
+		{% endfor %}
+	{% else %}
+		{% if block.acf_fc_layout == 'in_short' %}
+			<div class="page__box">
+				{% include 'molecules/m-in-short.twig' with block only %}
+			</div>
+		{% elseif block.acf_fc_layout == 'quote' %}
+			<div class="page__quote">
+				{% include 'molecules/m-quote.twig' with block only %}
+			</div>
+		{% elseif block.acf_fc_layout == 'person' %}
+			<div class="page__person">
+				{% include 'molecules/m-person.twig' with block only %}
+			</div>
+		{% elseif block.acf_fc_layout == 'progress_bar' %}
+			<div class="page__progress">
+				{% include 'atoms/a-progress.twig' with {'block': block} only %}
+			</div>
+		{% elseif block.acf_fc_layout == 'form' or block.form %}
+			{% if block.action_id %}
+				{% set action_id = block.action_id %}
+			{% endif %}
+			{% if block.config_id %}
+				{% set config_id = block.config_id %}
+			{% endif %}
+			<div class="page__form">
+				{% include 'molecules/m-form.twig' with {
+					'post': ACFPost(block.form),
+					'action_id': action_id,
+					'config_id': config_id
+				} only %}
+			</div>
+		{% elseif block.acf_fc_layout == 'image' or block.image %}
+			<div class="page__image">
+				{% include 'atoms/a-image.twig' with {
+					'image': block.image.id,
+				} only %}
+			</div>
+		{% elseif block.acf_fc_layout == 'engagement_funnel' %}
+			<div class="page__engagement_funnel">
+				{% include 'engagement-funnel.twig' with {'block': block} only %}
+			</div>
+		{% elseif block.acf_fc_layout == 'testimonials' %}
+			<div class="page__testimonials">
+				{% include 'organisms/o-people-grid.twig' with {
+					'taxonomy': block.taxonomy,
+					'layout': 'vertical'
+				} only %}
+			</div>
+		{% elseif block.acf_fc_layout == 'map' %}
+			{% include 'molecules/m-map.twig' with block only %}
+		{% elseif block.acf_fc_layout == 'oembed' %}
+			{% include 'atoms/a-oembed.twig' with block only %}
+		{% elseif block.acf_fc_layout == 'code' %}
+			{{ block.code }}
+		{% elseif block.acf_fc_layout == 'share_buttons' %}
+			<div class="page__share-block">
+				{% include 'molecules/m-share-block.twig' with block only %}
+			</div>
+		{% else %}
+			{{ block.text|shortcodes|wptexturize|disableable_wpautop }}
+		{% endif %}
 	{% endif %}
-	{% if block.config_id %}
-		{% set config_id = block.config_id %}
-	{% endif %}
-	<div class="page__form">
-		{% include 'molecules/m-form.twig' with {
-			'post': ACFPost(block.form),
-			'action_id': action_id,
-			'config_id': config_id
-		} only %}
-	</div>
-{% elseif block.acf_fc_layout == 'image' or block.image %}
-	<div class="page__image">
-		{% include 'atoms/a-image.twig' with {
-			'image': block.image.id,
-		} only %}
-	</div>
-{% elseif block.acf_fc_layout == 'engagement_funnel' %}
-	<div class="page__engagement_funnel">
-		{% include 'engagement-funnel.twig' with {'block': block} only %}
-	</div>
-{% elseif block.acf_fc_layout == 'testimonials' %}
-	<div class="page__testimonials">
-		{% include 'organisms/o-people-grid.twig' with {
-			'taxonomy': block.taxonomy,
-			'layout': 'vertical'
-		} only %}
-	</div>
-{% elseif block.acf_fc_layout == 'map' %}
-	{% include 'molecules/m-map.twig' with block only %}
-{% elseif block.acf_fc_layout == 'oembed' %}
-	{% include 'atoms/a-oembed.twig' with block only %}
-{% elseif block.acf_fc_layout == 'code' %}
-	{{ block.code }}
-{% elseif block.acf_fc_layout == 'share_buttons' %}
-	<div class="page__share-block">
-		{% include 'molecules/m-share-block.twig' with block only %}
-	</div>
-{% elseif block.acf_fc_layout == 'block' %}
-	{% for element in block.block.get_field('content') %}
-		{% include 'content-block.twig' with {'block': element} %}
-	{% endfor %}
-{% else %}
-	{{ block.text|shortcodes|wptexturize|disableable_wpautop }}
 {% endif %}

@@ -20,9 +20,11 @@
 			{# legacy content #}
 			{{ post.description|shortcodes|wptexturize|disableable_wpautop }}
 			{# new content #}
-			{% for block in post.get_field('event_content').content %}
-				{% include 'content-block.twig' with {'block':block|merge({'twitter_via': post.twitter_name,'post_link': post.link})} only %}
-			{% endfor %}
+			{% if post.meta('event_content') %}
+				{% for block in post.meta('event_content').content %}
+					{% include 'content-block.twig' with {'block':block|merge({'twitter_via': post.twitter_name,'post_link': post.link})} only %}
+				{% endfor %}
+			{% endif %}
 		</div>
 		<div class="page__post-meta-wrapper page__row--1">
 			<aside class="page__post-meta">

@@ -3,13 +3,14 @@
 namespace SUPT;
 
 use TimberImage;
+use function add_filter;
 
 class Branding_controller {
 
 	const DELIMITERS = '\.,\-\/';
 
 	public static function register() {
-		add_filter( 'timber_context', array( __CLASS__, 'add_to_context' ) );
+		add_filter( 'timber/context', array( __CLASS__, 'add_to_context' ) );
 	}
 
 	public static function add_to_context( $context ) {

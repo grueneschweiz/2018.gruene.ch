@@ -1,44 +1,41 @@
 <?php
 
-add_filter( 'get_twig', function ( $twig ) {
-	$twig->addFunction( new Twig_SimpleFunction( 'getPeopleTestimonialByTaxonomies',
-			function ( $category, $random = true ) {
-				$meta_query = array();
-				foreach ( $category as $cat_id ) {
-					$meta_query[] = array(
-						'key'     => 'testimonials_$_taxonomy',
-						'compare' => 'LIKE',
-						'value'   => '"' . $cat_id . '"',
-					);
-				}
-				
-				$meta_query['relation'] = 'OR';
-				
-				
-				$query = array(
-					'post_type'  => 'people',
-					'meta_query' => $meta_query,
-					'nopaging' => true,
+namespace SUPT;
+
+use Twig\TwigFunction;
+
+add_filter( 'timber/twig', function ( $twig ) {
+	$twig->addFunction( new TwigFunction( 'getPeopleTestimonialByTaxonomies', function ( $taxonomies ) {
+		$args = array(
+			'post_type'  => 'people',
+			'posts_per_page' => -1,
+			'tax_query' => array(
+				'relation' => 'AND'
+			),
+			'meta_query' => array(
+				array(
+					'key'     => 'testimonial',
+					'value'   => '',
+					'compare' => '!='
+				)
+			)
+		);
+
+		foreach ( $taxonomies as $taxonomy => $terms ) {
+			if ( ! empty( $terms ) ) {
+				$args['tax_query'][] = array(
+					'taxonomy' => $taxonomy,
+					'field'    => 'term_id',
+					'terms'    => $terms
 				);
-				
-				if ( $random ) {
-					$query['order']   = 'ASC'; // needed for order by 'rand' to work
-					$query['orderby'] = 'rand';
-				}
-				
-				return new \Timber\PostQuery( $query, '\SUPT\SUPTPerson' );
-			} )
-	);
-	
+			}
+		}
+
+		$query = new \WP_Query( $args );
+		return array_map( function ( $post ) {
+			return new ACFPost( $post );
+		}, $query->posts );
+	} ) );
+
 	return $twig;
-} );
-
-
-add_filter( 'posts_where', function ( $where ) {
-	/**
-	 * @link https://www.advancedcustomfields.com/resources/query-posts-custom-fields/
-	 */
-	$where = str_replace( 'meta_key = \'testimonials_$_taxonomy', "meta_key LIKE 'testimonials_%_taxonomy", $where );
-	
-	return $where;
 } );

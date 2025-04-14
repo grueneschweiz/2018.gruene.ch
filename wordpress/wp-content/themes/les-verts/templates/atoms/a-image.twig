@@ -9,42 +9,64 @@
 	not_lazy: optional. boolean.
 	small_copy: optional. boolen.
 #}
-{% set img = TimberImage(image) %}
-{% if not size %}
-	{% set size = 'regular' %}
-	{% set no_crop = 1 %}
-{% endif %}
-{% if img.focal_point %}
-	{% set focal_point = img.focal_point %}
-{% else %}
-	{% set focal_point = middle_center %}
-{% endif %}
-<figure class="a-image{% if not no_crop %} a-image--cover{% endif %}">
-	{% if link_url %}<a class="a-image__link" href="{{ link_url }}"
-											tabindex="-1"{% if target %} target="{{ taget }}" rel="noopener"{% else %} {{ link_props(link_url) }} {% endif %}>{% endif %}
-
-		{% if not not_lazy %}
-		<noscript>{% endif %}
-			<img {{ image|failsafe_get_timer_image_responsive(size) }}
-				class="a-image__image{% if not no_crop %} a-image__image--fp a-image__image--fp-{{ focal_point }}{% endif %}"
-				alt="{{ img.alt }}"
-			>
-			{% if not not_lazy %}</noscript>
-		<div class="a-image__lazy-wrapper">
-			<img src="{{ img.src|resize(20) }}"
-				{{ image|failsafe_get_timer_image_responsive(size)|lazy }}
-					 class="a-image__image a-image__image--lazy{% if no_crop %} a-image__image--no-crop{% else %} a-image__image--fp a-image__image--fp-{{ focal_point }}{% endif %}"
-					 alt="{{ img.alt }}"
-			>
-		</div>
-		{% endif %}
-		{% if link_url %}</a>{% endif %}
-	{% if (not ( no_caption and no_copy )) and (img.caption or img.copyright) %}
-		<figcaption>
-			{% if not no_caption and img.caption %}<span class="a-image__caption">{{ img.caption|wptexturize }}</span>{% endif %}
-			{% if not no_copy and img.copyright %}
-				<small class="a-image__copy{% if not no_caption and img.caption %} a-image__copy--caption{% endif %} a-image__copy--small{% if small_copy %}{% endif %}">&copy; {{ img.copyright|wptexturize|license }}</small>
-			{% endif %}
-		</figcaption>
+{% if image %}
+	{% if not link_url %}
+		{% set link_url = '' %}
 	{% endif %}
-</figure>
+
+	{% if not size %}
+		{% set size = 'thumbnail' %}
+	{% endif %}
+
+	{% if not no_copy %}
+		{% set no_copy = 0 %}
+	{% endif %}
+
+	{% set img = get_image(image) %}
+
+	{% if img %}
+		<figure class="a-image{% if not no_crop %} a-image--cover{% endif %}">
+			{% if link_url %}<a class="a-image__link" href="{{ link_url }}"
+											tabindex="-1"{% if target %} target="{{ target }}" rel="noopener"{% else %} {{ link_props(link_url) }} {% endif %}>{% endif %}
+
+				{% if not not_lazy %}
+				<noscript>{% endif %}
+					<img srcset="{{ img.srcset('custom-6') }} 480w,
+								{{ img.srcset('custom-6-2x') }} 960w,
+								{{ img.srcset('custom-12') }} 768w,
+								{{ img.srcset('custom-12-2x') }} 1536w,
+								{{ img.srcset('custom-full') }} 1400w,
+								{{ img.srcset('custom-full-2x') }} 2800w"
+						sizes="100vw"
+						src="{{ img.src('custom-6') }}"
+						class="a-image__image{% if not no_crop %} a-image__image--fp a-image__image--fp-{{ focal_point }}{% endif %}"
+						alt="{{ img.alt }}"
+					>
+					{% if not not_lazy %}</noscript>
+				<div class="a-image__lazy-wrapper">
+					<img src="{{ img.src|resize(20) }}"
+						srcset="{{ img.srcset('custom-6') }} 480w,
+								{{ img.srcset('custom-6-2x') }} 960w,
+								{{ img.srcset('custom-12') }} 768w,
+								{{ img.srcset('custom-12-2x') }} 1536w,
+								{{ img.srcset('custom-full') }} 1400w,
+								{{ img.srcset('custom-full-2x') }} 2800w"
+						sizes="100vw"
+						loading="lazy"
+						class="a-image__image a-image__image--lazy{% if no_crop %} a-image__image--no-crop{% else %} a-image__image--fp a-image__image--fp-{{ focal_point }}{% endif %}"
+						alt="{{ img.alt }}"
+					>
+				</div>
+				{% endif %}
+				{% if link_url %}</a>{% endif %}
+				{% if (not ( no_caption and no_copy )) and (img.caption or img.copyright) %}
+					<figcaption>
+						{% if not no_caption and img.caption %}<span class="a-image__caption">{{ img.caption|wptexturize }}</span>{% endif %}
+						{% if not no_copy and img.copyright %}
+							<small class="a-image__copy{% if not no_caption and img.caption %} a-image__copy--caption{% endif %} a-image__copy--small{% if small_copy %}{% endif %}">&copy; {{ img.copyright|wptexturize|license }}</small>
+						{% endif %}
+					</figcaption>
+				{% endif %}
+			</figure>
+		{% endif %}
+	{% endif %}

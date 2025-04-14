@@ -2,34 +2,39 @@
 
 namespace SUPT;
 
-use \Twig_SimpleFunction;
-
-const DEFAULT_MODIFIERS = array(
-	'default',
-	'color-primary',
-	'left'
-);
+use Twig\TwigFunction;
 
 /**
- * Returns the component classes
- * 
- * USAGE:
- * - in php `SUPT\component_classes( $page_id )`
- * - in twig `{{ component_classes( page.ID ) }}`
+ * Returns a string with all classes for a component
+ *
+ * @param string $base_class
+ * @param array $modifiers
+ * @param array $extra_classes
+ *
+ * @return string
  */
-function component_classes($class, $modifiers) {
-	$classes = $class;
-	foreach ($modifiers as $modifier) {
-		// Add the modifier only if not a default one
-		// This way, the html is not polluted with useless modifiers.
-		if (!in_array($modifier, \SUPT\DEFAULT_MODIFIERS)) {
-			$classes .= " " . $class . "--" . $modifier;
-		}
-	}
-	return $classes;
+function component_classes($base_class, $modifiers = [], $extra_classes = []) {
+    $classes = [$base_class];
+
+    // add modifiers
+    if (is_array($modifiers)) {
+        foreach ($modifiers as $modifier) {
+            if ($modifier) {
+                $classes[] = $base_class . '--' . $modifier;
+            }
+        }
+    }
+
+    // add extra classes
+    if (is_array($extra_classes)) {
+        $classes = array_merge($classes, $extra_classes);
+    }
+
+    return implode(' ', array_unique($classes));
 }
+
 // Add the function to Twig
-add_filter( 'get_twig', function( $twig ) {
-	$twig->addFunction( new Twig_SimpleFunction( 'component_classes', 'SUPT\component_classes' ) );
-	return $twig;
-} );
+add_filter('timber/twig', function($twig) {
+    $twig->addFunction(new TwigFunction('component_classes', 'SUPT\component_classes'));
+    return $twig;
+});

@@ -9,8 +9,11 @@
  * @since    Timber 0.1
  */
 
-$context         = Timber::get_context();
-$post            = new \SUPT\ACFPost();
+use SUPT\ACFPost;
+use Timber\Timber;
+
+$context = Timber::context();
+$post = Timber::get_post();
 $context['post'] = $post;
 
 if ( post_password_required( $post->ID ) ) {

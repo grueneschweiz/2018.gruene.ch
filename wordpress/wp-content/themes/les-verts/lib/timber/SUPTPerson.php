@@ -8,7 +8,9 @@
 
 namespace SUPT;
 
-class SUPTPerson extends \TimberPost {
+use Timber\Post;
+
+class SUPTPerson extends Post {
 	private $__testimonials;
 	
 	public function quote( $taxonomy ) {

@@ -1,5 +1,5 @@
 # Installs WordPress with wp-cli and composer
-FROM wordpress:php8.1
+FROM wordpress:php8.4
 
 ARG UID=1000
 ARG GID=1000

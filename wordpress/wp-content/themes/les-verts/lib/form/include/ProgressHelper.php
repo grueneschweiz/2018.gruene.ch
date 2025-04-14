@@ -24,12 +24,12 @@ class ProgressHelper {
 	 */
 	private function __construct(
 		string $datasource = 'manual',
-		int $form_id = null,
+		?int $form_id = null,
 		int $offset = 0,
 		int $current_value = 0,
 		string $goal_mode = 'manual',
 		int $goal_value = 0,
-		string $legend = null
+		?string $legend = null
 	) {
 		if ( 'form' === $datasource ) {
 			$this->form_id = $form_id;

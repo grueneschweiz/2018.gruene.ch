@@ -5,10 +5,15 @@
  */
 
 use SUPT\ACFPost;
+use Timber\Timber;
 
-$context                     = Timber::get_context();
-$post                        = new ACFPost();
-$context['post']             = $post;
+$context = Timber::context();
+$post = Timber::get_post();
+$context['post'] = $post;
 $context['distraction_free'] = true;
-$templates                   = array( 'single.twig' );
-Timber::render( $templates, $context );
+
+if (post_password_required($post->ID)) {
+    Timber::render('single-password.twig', $context);
+} else {
+    Timber::render(array('single-' . $post->ID . '.twig', 'single-' . $post->post_type . '.twig', 'single.twig'), $context);
+}

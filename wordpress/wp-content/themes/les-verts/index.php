@@ -12,10 +12,16 @@
  * @subpackage  Timber
  * @since   Timber 0.1
  */
-$context          = Timber::get_context();
-$context['posts'] = new SUPT\SUPTPostQuery();
-$templates        = array( 'index.twig' );
-if ( is_home() ) {
-	array_unshift( $templates, 'home.twig' );
+
+use SUPT\SUPTPostQuery;
+use Timber\Timber;
+
+$context = Timber::context();
+$context['posts'] = new SUPTPostQuery();
+$templates = array('index.twig');
+
+if (is_home()) {
+    $context['title'] = get_the_title(get_option('page_for_posts', true));
 }
-Timber::render( $templates, $context );
+
+Timber::render($templates, $context);

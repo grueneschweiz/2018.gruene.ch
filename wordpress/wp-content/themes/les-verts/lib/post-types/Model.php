@@ -24,7 +24,7 @@ class Model {
 	/**
 	 * Get all posts, filtered by a taxonomy value
 	 **/
-	static function getPostsByTaxonomy($taxonomy_value, $taxonomy_slug = null) {
+	static function getPostsByTaxonomy($taxonomy_value, ?string $taxonomy_slug = null) {
 		if (empty($taxonomy_slug)) {
 			$taxonomy_slug = static::CATEGORY_NAME;
 		}
@@ -49,7 +49,7 @@ class Model {
 	 * Get all terms of a taxonomy.
 	 * If no custom taxonomy specified, gets all categories.
 	 */
-	static function getTerms($taxonomy_slug = null, $custom_query = array()) {
+	static function getTerms(?string $taxonomy_slug = null, array $custom_query = array()) {
 		if (empty($taxonomy_slug)) {
 			$taxonomy_slug = static::CATEGORY_NAME;
 		}
@@ -67,7 +67,7 @@ class Model {
 	 * Get all posts, grouped by a taxonomy.
 	 * If no custom taxonomy specified, groups by category.
 	 */
-	static function getPostsGroupedByTaxonomy($taxonomy_slug = null) {
+	static function getPostsGroupedByTaxonomy(?string $taxonomy_slug = null) {
 		if (empty($taxonomy_slug)) {
 			$taxonomy_slug = static::CATEGORY_NAME;
 		}

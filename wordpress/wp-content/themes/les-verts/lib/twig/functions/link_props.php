@@ -2,23 +2,21 @@
 
 namespace SUPT;
 
-use \Twig_SimpleFunction;
+use Twig\TwigFunction;
 
-add_filter( 'get_twig', function( $twig ) {
+add_filter( 'timber/twig', function( $twig ) {
 	$site_host = parse_url(get_site_url(), PHP_URL_HOST);
 
-	$twig->addFunction( new Twig_SimpleFunction( 'link_props', function( $url ) use ($site_host) {
-		$host = parse_url($url, PHP_URL_HOST);
+	$twig->addFunction( new TwigFunction( 'link_props', function( $url ) use ($site_host) {
+		$props = [];
+		$url_host = parse_url($url, PHP_URL_HOST);
 
-		if (empty($host)) {
-			return '';
+		if ($url_host && $url_host !== $site_host) {
+			$props['target'] = '_blank';
+			$props['rel'] = 'noopener noreferrer';
 		}
 
-		if ($host === $site_host) {
-			return '';
-		}
-
-		return 'target="_blank" rel="noopener"';
+		return $props;
 	} ) );
 	return $twig;
 });

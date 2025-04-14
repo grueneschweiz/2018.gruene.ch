@@ -18,19 +18,21 @@
 		</header>
 		<div class="page__wide">
 			<div class="page__preview-articles">
-				{% for item in post.get_field('posts') %}
-					{% if item.post %}
-						<article class="page__preview-article">
-							{% include 'molecules/m-front-article.twig' with {
-								'post': item.post,
-								'modifiers': [
-									'm-front-article--image-first',
-									'm-front-article--stretch'
-								]
-							} only %}
-						</article>
-					{% endif %}
-				{% endfor %}
+				{% if post.meta('posts') %}
+					{% for item in post.meta('posts') %}
+						{% if item.post %}
+							<article class="page__preview-article">
+								{% include 'molecules/m-front-article.twig' with {
+									'post': item.post,
+									'modifiers': [
+										'm-front-article--image-first',
+										'm-front-article--stretch'
+									]
+								} only %}
+							</article>
+						{% endif %}
+					{% endfor %}
+				{% endif %}
 			</div>
 		</div>
 	</article>

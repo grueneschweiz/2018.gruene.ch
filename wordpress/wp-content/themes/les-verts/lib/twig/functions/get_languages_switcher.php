@@ -2,28 +2,28 @@
 
 namespace SUPT;
 
-use \Twig_SimpleFunction;
+use Twig\TwigFunction;
 
 /**
- * Prints a simple languages switcher
- * 
+ * Returns an array with all available languages and their urls
+ *
  * USAGE:
- * - in php `SUPT\get_languages_switcher( $page_id )`
- * - in twig `{{ get_languages_switcher( page.ID ) }}`
+ * - in php `SUPT\get_languages_switcher()`
+ * - in twig `{{ get_languages_switcher() }}`
  */
-function get_languages_switcher($post_id) {
-	if ( ! function_exists('pll_the_languages') ) return '';
-	$switcher = pll_the_languages(array(
-		'dropdown' => 1,
-		'display_names_as' => 'slug',
-		'hide_if_empty' => 0,
-		'echo' => 0,
-		'post_id' => $post_id
-	));
-	return $switcher;
+function get_languages_switcher() {
+    if (!function_exists('pll_the_languages')) {
+        return [];
+    }
+
+    return pll_the_languages([
+        'raw' => 1,
+        'hide_if_empty' => 0,
+    ]);
 }
+
 // Add the function to Twig
-add_filter( 'get_twig', function( $twig ) {
-	$twig->addFunction( new Twig_SimpleFunction( 'get_languages_switcher', 'SUPT\get_languages_switcher' ) );
-	return $twig;
+add_filter('timber/twig', function($twig) {
+    $twig->addFunction(new TwigFunction('get_languages_switcher', 'SUPT\get_languages_switcher'));
+    return $twig;
 });

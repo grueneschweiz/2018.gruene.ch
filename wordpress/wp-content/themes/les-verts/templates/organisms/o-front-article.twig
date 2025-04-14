@@ -1,102 +1,112 @@
-{% if block.acf_fc_layout == 'media' %}
-	{% set inner_modifiers = ['m-front-article--no-image'] %}
-	{% set post = latest_press_release %}
-	{% set modifiers = ['o-front-article--mm'] %}
-	{% set author = '' %}
-	{% set excerpt = '' %}
-	{% set oton = 0 %}
-	{% for field in post.main_content_content %}
-		{# the following section is awfully awkward, somehow get_fields didn't
-		   work so we had to help ourself with the ugly attribute solution #}
-		{% if field == 'quote' %}
-			{% set modifiers = ['o-front-article--oton', 'o-front-article--mm'] %}
-			{% set oton = 1 %}
-			{% set excerpt = '&laquo;&nbsp;' ~ attribute(post, 'main_content_content_'~loop.index0~'_quote') ~ '&nbsp;&raquo;' %}
-			{% set author = ACFPost(attribute(post, 'main_content_content_'~loop.index0~'_person')) %}
-		{% endif %}
-	{% endfor %}
-{% else %}
-	{% set modifiers = ['o-front-article--' ~ block.acf_fc_layout] %}
-	{% if block.acf_fc_layout == 'double' %}
-		{% set inner_modifiers = ['m-front-article--image-second'] %}
-		{% set posts = {
-			0: latest_posts.0 ?? block.post_1.post ?? block.post_1_post,
-			1: latest_posts.1 ?? block.post_2.post ?? block.post_2_post
-		} %}
-	{% else %}
-		{% set inner_modifiers = ['m-front-article--image-first'] %}
-		{% set post = latest_posts.0 ?? block.post %}
-	{% endif %}
-{% endif %}
+{% if block %}
+    {% if block.acf_fc_layout == 'media' %}
+        {% set inner_modifiers = ['m-front-article--no-image'] %}
+        {% set post = latest_press_release %}
+        {% set modifiers = ['o-front-article--mm'] %}
+        {% set author = '' %}
+        {% set excerpt = '' %}
+        {% set oton = 0 %}
+        {% if post %}
+            {% for field in post.main_content_content %}
+                {# the following section is awfully awkward, somehow get_fields didn't
+                   work so we had to help ourself with the ugly attribute solution #}
+                {% if field == 'quote' %}
+                    {% set modifiers = ['o-front-article--oton', 'o-front-article--mm'] %}
+                    {% set oton = 1 %}
+                    {% set excerpt = '&laquo;&nbsp;' ~ attribute(post, 'main_content_content_'~loop.index0~'_quote') ~ '&nbsp;&raquo;' %}
+                    {% set author = ACFPost(attribute(post, 'main_content_content_'~loop.index0~'_person')) %}
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    {% else %}
+        {% set modifiers = ['o-front-article--' ~ block.acf_fc_layout] %}
+        {% if block.acf_fc_layout == 'double' %}
+            {% set inner_modifiers = ['m-front-article--image-second'] %}
+            {% set posts = {
+                0: latest_posts.0 ?? block.post_1.post ?? block.post_1_post,
+                1: latest_posts.1 ?? block.post_2.post ?? block.post_2_post
+            } %}
+        {% else %}
+            {% set inner_modifiers = ['m-front-article--image-first'] %}
+            {% set post = latest_posts.0 ?? block.post %}
+        {% endif %}
+    {% endif %}
 
-<article class="o-front-article {{ modifiers|join(' ') }}">
-	<div class="o-front-article__cat-title">
-		{% include 'atoms/a-cat-title.twig' with block.block_title only %}
-	</div>
-	{% if oton %}
-		<div class="o-front-article__quote">
-			<svg role="img">
-				<title>{{ __('Quotation mark', constant('THEME_DOMAIN')) }}</title>
-				<use xlink:href="#quote"></use>
-			</svg>
-		</div>
-	{% endif %}
-	<div class="o-front-article__articles">
-		{% if block.acf_fc_layout == 'double' %}
-			{% for post in posts %}
-				<div class="o-front-article__article">
-					{% include 'molecules/m-front-article.twig' with {
-						'post': post,
-						'modifiers': inner_modifiers
-					} only %}
-				</div>
-			{% endfor %}
-		{% else %}
-			<div class="o-front-article__article">
-				{% include 'molecules/m-front-article.twig' with {
-					'post': post,
-					'modifiers': inner_modifiers,
-					'author': author,
-					'excerpt': excerpt
-				} only %}
-			</div>
-		{% endif %}
-	</div>
-	{% if block.acf_fc_layout == 'single' and block.footer.cta_link %}
-		<footer class="o-front-article__cta">
-			<div class="o-front-article__cta-button">
-				{% include 'atoms/a-button.twig' with {
-					'link': block.footer.cta_link,
-					'label': block.footer.cta_label,
-					'modifiers': 'a-button--secondary'
-				} %}
-			</div>
-			<div class="o-front-article__cta-label">
-				{{ block.footer.cta_desc|wptexturize }}
-			</div>
-		</footer>
-	{% endif %}
-	{% if block.acf_fc_layout == 'media' %}
-		<footer class="o-front-article__mm">
-			<div class="o-front-article__meta">
-				<time class="o-front-article__date"
-							datetime="{{ post.post_date|date('Y-m-d H:i') }}">{{ post.post_date|date()|l10n_date }}</time>
-				{% if oton %}
-					{#todo: add link again: <a href="{{ author.link() }}" class="o-front-article__author">{{ author.title }}</a>#}
-					<span class="o-front-article__author">{{ author.title }}</span>
-				{% endif %}
-			</div>
-			{% if oton %}
-				<div class="o-front-article__author-image">
-					{# todo: add link again: 'link_url': author.link(),#}
-					{% include 'atoms/a-image.twig' with {
-						'image': author.image,
-						'size': 'regular',
-						'no_caption': 1,
-						'no_copy': 1
-					} only %}
-				</div>
-			{% endif %}
-		</footer>
-	{% endif %}
-</article>
+    <article class="o-front-article {{ modifiers|join(' ') }}">
+        {% if block.block_title %}
+            <div class="o-front-article__cat-title">
+                {% include 'atoms/a-cat-title.twig' with block.block_title only %}
+            </div>
+        {% endif %}
+        {% if oton %}
+            <div class="o-front-article__quote">
+                <svg role="img">
+                    <title>{{ __('Quotation mark', constant('THEME_DOMAIN')) }}</title>
+                    <use xlink:href="#quote"></use>
+                </svg>
+            </div>
+        {% endif %}
+        <div class="o-front-article__articles">
+            {% if block.acf_fc_layout == 'double' %}
+                {% for key, post in posts %}
+                    {% if post %}
+                        <div class="o-front-article__article">
+                            {% include 'molecules/m-front-article.twig' with {
+                                'post': post,
+                                'modifiers': inner_modifiers
+                            } only %}
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            {% else %}
+                {% if post %}
+                    <div class="o-front-article__article">
+                        {% include 'molecules/m-front-article.twig' with {
+                            'post': post,
+                            'modifiers': inner_modifiers,
+                            'author': author,
+                            'excerpt': excerpt
+                        } only %}
+                    </div>
+                {% endif %}
+            {% endif %}
+        </div>
+        {% if block.acf_fc_layout == 'single' and block.footer.cta_link %}
+            <footer class="o-front-article__cta">
+                <div class="o-front-article__cta-button">
+                    {% include 'atoms/a-button.twig' with {
+                        'link': block.footer.cta_link,
+                        'label': block.footer.cta_label,
+                        'modifiers': 'a-button--secondary'
+                    } %}
+                </div>
+                <div class="o-front-article__cta-label">
+                    {{ block.footer.cta_desc|wptexturize }}
+                </div>
+            </footer>
+        {% endif %}
+        {% if block.acf_fc_layout == 'media' %}
+            <footer class="o-front-article__mm">
+                <div class="o-front-article__meta">
+                    <time class="o-front-article__date"
+                                datetime="{{ post.post_date|date('Y-m-d H:i') }}">{{ post.post_date|date()|l10n_date }}</time>
+                    {% if oton %}
+                        {#todo: add link again: <a href="{{ author.link() }}" class="o-front-article__author">{{ author.title }}</a>#}
+                        <span class="o-front-article__author">{{ author.title }}</span>
+                    {% endif %}
+                </div>
+                {% if oton %}
+                    <div class="o-front-article__author-image">
+                        {# todo: add link again: 'link_url': author.link(),#}
+                        {% include 'atoms/a-image.twig' with {
+                            'image': author.image,
+                            'size': 'regular',
+                            'no_caption': 1,
+                            'no_copy': 1
+                        } only %}
+                    </div>
+                {% endif %}
+            </footer>
+        {% endif %}
+    </article>
+{% endif %}

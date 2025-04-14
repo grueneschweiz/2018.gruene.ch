@@ -17,15 +17,11 @@
 
 use SUPT\ACFPost;
 use SUPT\SUPTPostQuery;
+use Timber\Timber;
 
-$templates = array( 'home.twig', 'archive.twig', 'index.twig' );
+$context = Timber::context();
+$context['posts'] = new SUPTPostQuery();
+$context['title'] = get_the_title(get_option('page_for_posts', true));
+$templates = array('home.twig', 'archive.twig', 'index.twig');
 
-$context          = Timber::get_context();
-$posts            = new SUPTPostQuery();
-$context['posts'] = $posts;
-
-$post                           = new ACFPost();
-$context['title']               = $post->post_title;
-$context['archive_description'] = $post->full_excerpt;
-
-Timber::render( $templates, $context );
+Timber::render($templates, $context);

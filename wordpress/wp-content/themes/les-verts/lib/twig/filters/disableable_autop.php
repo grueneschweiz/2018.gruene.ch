@@ -15,7 +15,7 @@ use Twig\TwigFilter;
  * <!-- lesverts-noautop -->no wpautop in here<!-- lesverts-end-noautop -->
  * wpautop is applied again here.
  */
-add_filter( 'get_twig', function ( $twig ) {
+add_filter('timber/twig', function ( $twig ) {
 	$twig->addFilter( new TwigFilter( 'disableable_wpautop', function ( $str ) {
 		if ( false === strpos( $str, '<!-- lesverts-noautop -->' ) ) {
 			return wpautop( $str );

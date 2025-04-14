@@ -4,19 +4,18 @@
   "repositories": [],
   "license": "GPL-3.0-or-later",
   "require": {
-    "php": ">=7.4",
-    "mindkomm/timmy": "^0.14.0",
-    "phpoffice/phpspreadsheet": "^1.6",
-    "timber/timber": "^1.10",
+    "php": ">=8.4",
+    "phpoffice/phpspreadsheet": "^1.29",
+    "timber/timber": "^2.0",
     "tgmpa/tgm-plugin-activation": "^2.6",
-    "yahnis-elsts/plugin-update-checker": "^5.0"
+    "yahnis-elsts/plugin-update-checker": "^5.5"
   },
   "config": {
     "allow-plugins": {
       "composer/installers": true
     },
     "platform": {
-      "php": "7.4"
+      "php": "8.4"
     }
   }
 }

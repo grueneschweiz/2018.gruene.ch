@@ -21,20 +21,20 @@
  * @since    Timber 0.1
  */
 
-use SUPT\ACFPost;
+use Timber\Timber;
 
-$context         = Timber::get_context();
-$post            = new ACFPost();
+$context = Timber::context();
+$post = Timber::get_post();
 $context['post'] = $post;
-$templates       = array( 'page.twig', 'single.twig' );
+$templates = array('page.twig', 'single.twig');
 
-if ( is_front_page() ) {
-	//  Uses lib/controllers/frontpage.php
-	array_unshift( $templates, 'front-page.twig' );
-} elseif ( 'tribe_events' === $post->post_type ) {
-	array_unshift( $templates, 'event.twig' );
+if (is_front_page()) {
+    //  Uses lib/controllers/frontpage.php
+    array_unshift($templates, 'front-page.twig');
+} elseif ('tribe_events' === $post->post_type) {
+    array_unshift($templates, 'event.twig');
 } else {
-	array_unshift( $templates, 'page-' . $post->post_name . '.twig' );
+    array_unshift($templates, 'page-' . $post->post_name . '.twig');
 }
 
-Timber::render( $templates, $context );
+Timber::render($templates, $context);

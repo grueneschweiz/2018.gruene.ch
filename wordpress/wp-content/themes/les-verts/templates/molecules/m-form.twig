@@ -1,4 +1,4 @@
-{% set fields = post.get_field('form_fields') %}
+{% set fields = post.meta('form_fields') %}
 {% set custom_width_block_width = 0 %}
 {% set default_id_prefix = post.id %}
 
@@ -96,7 +96,7 @@
 
 				{% elseif 'checkbox' == field.form_input_type %}
 					<div class="m-form__checks-label">{{ field.form_input_label|wptexturize }}</div>
-					<fieldset class="m-form__checks-fieldset{% if field.dom_class %} {{ field.dom_class }}{% endif %}"{% if field.dom_id %} id="{{ field.dom_id }}"{% endif %}">
+					<fieldset class="m-form__checks-fieldset{% if field.dom_class %} {{ field.dom_class }}{% endif %}"{% if field.dom_id %} id="{{ field.dom_id }}"{% endif %}>
 					{% for option in field.form_input_choices|split('\n') %}
 						{% set option = option|trim %}
 						{% include 'atoms/form-elements/a-checkoption.twig' with {
@@ -109,7 +109,7 @@
 					</fieldset>
 
 				{% elseif 'crm_subscription' == field.form_input_type %}
-					<fieldset class="m-form__checks-fieldset{% if field.dom_class %} {{ field.dom_class }}{% endif %}"{% if field.dom_id %} id="{{ field.dom_id }}"{% endif %}">
+					<fieldset class="m-form__checks-fieldset{% if field.dom_class %} {{ field.dom_class }}{% endif %}"{% if field.dom_id %} id="{{ field.dom_id }}"{% endif %}>
 					{% include 'atoms/form-elements/a-checkoption.twig' with {
 						'name': field.slug,
 						'label': field.form_input_label,

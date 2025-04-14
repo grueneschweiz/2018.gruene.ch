@@ -2,7 +2,7 @@
 
 namespace SUPT;
 
-use \Twig_SimpleFunction;
+use Twig\TwigFunction;
 
 /**
  * Returns the current lang, in ISO 2-letters code
@@ -12,14 +12,15 @@ use \Twig_SimpleFunction;
  * - in twig `{{ get_lang( post.ID ) }}`
  */
 function get_lang() {
-	if (function_exists('pll_current_language')) {
-		return pll_current_language();
-	} else {
-		return get_locale();
-	}
+    if (function_exists('pll_current_language')) {
+        return pll_current_language();
+    } else {
+        return get_locale();
+    }
 }
+
 // Add the function to Twig
-add_filter( 'get_twig', function( $twig ) {
-	$twig->addFunction( new Twig_SimpleFunction( 'get_lang', 'SUPT\get_lang' ) );
-	return $twig;
+add_filter('timber/twig', function($twig) {
+    $twig->addFunction(new TwigFunction('get_lang', 'SUPT\get_lang'));
+    return $twig;
 });

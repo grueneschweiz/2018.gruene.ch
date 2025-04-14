@@ -1,8 +1,8 @@
 {% extends "base.twig" %}
 
 {% block content %}
-	{% set main_content = post.get_field('main_content') %}
-	{% set link_lists = post.get_field('link_lists') %}
+	{% set main_content = post.meta('main_content') %}
+	{% set link_lists = post.meta('link_lists') %}
 	<article class="page__grid{% if not post.share_buttons %} page__grid--no-sidebar{% endif %}">
 		{% if main_content.header_image %}
 			<div class="page__full page__header-image">

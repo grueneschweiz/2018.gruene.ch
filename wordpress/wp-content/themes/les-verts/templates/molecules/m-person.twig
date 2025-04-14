@@ -3,7 +3,7 @@
 {% endif %}
 
 {% set id = person.slug|uniqueid %}
-{% set contact = person.get_field('contact') %}
+{% set contact = person.meta('contact') %}
 
 <article class="m-person{% if expandable %} m-person--expandable{% endif %}">
 	<div class="m-person__main">

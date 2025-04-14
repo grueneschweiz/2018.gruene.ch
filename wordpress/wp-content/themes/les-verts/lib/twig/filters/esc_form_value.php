@@ -9,7 +9,7 @@ use Twig\TwigFilter;
  *
  * This filter is used in conjunction with forms. Changes must be reflected in the form submission validation.
  */
-add_filter( 'get_twig', function ( $twig ) {
+add_filter('timber/twig', function ( $twig ) {
 	$twig->addFilter( new TwigFilter( 'esc_form_value', function ( $str ) {
 		return preg_replace( '/[&<>"\']/', '', $str );
 	} ) );

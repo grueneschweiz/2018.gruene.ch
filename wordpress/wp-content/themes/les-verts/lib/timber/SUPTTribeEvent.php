@@ -8,111 +8,94 @@
 
 namespace SUPT;
 
-
 use Timber\Post;
 use Timber\Timber;
 
 class SUPTTribeEvent extends ACFPost {
-	private $venue;
-	private $venue_string = '';
-	private $time_string = '';
-	private $timestamp = '';
+    private $venue;
+    private $venue_string = '';
+    private $time_string = '';
+    private $timestamp = '';
 
-	/**
-	 * Return the venue object of the event
-	 *
-	 * @return Post|null
-	 */
-	public function venue() {
-		if ( $this->venue || empty($this->_EventVenueID)) {
-			return $this->venue;
-		}
+    /**
+     * Return the venue object of the event
+     *
+     * @return Post|null
+     */
+    public function venue() {
+        if ($this->venue || empty($this->_EventVenueID)) {
+            return $this->venue;
+        }
 
-		// load venue
-		$this->venue = Timber::get_post( $this->_EventVenueID );
+        // load venue
+        if ($this->_EventVenueID) {
+            $this->venue = Timber::get_post($this->_EventVenueID);
+        }
 
-		return $this->venue;
-	}
+        return $this->venue;
+    }
 
-	/**
-	 * If there is a venue return a nicely formatted address string
-	 *
-	 * @return string
-	 */
-	public function venue_string() {
-		if ( $this->venue_string ) {
-			return $this->venue_string;
-		}
+    /**
+     * If there is a venue return a nicely formatted address string
+     *
+     * @return string
+     */
+    public function venue_string() {
+        if ($this->venue_string) {
+            return $this->venue_string;
+        }
 
-		if ( ! $this->venue() ) {
-			return '';
-		}
-		
-		$venue[] = $this->venue()->title();
+        $venue = $this->venue();
+        if (!$venue) {
+            return '';
+        }
 
-		if ( $this->venue->_VenueAddress ) {
-			$venue[] = $this->venue()->get_field( '_VenueAddress' );
-		}
+        $this->venue_string = $venue->post_title;
 
-		if ( $this->venue->_VenueCity ) {
-			$venue[] = $this->venue()->get_field( '_VenueCity' );
-		}
+        if ($street = $venue->_VenueAddress) {
+            $this->venue_string .= ", $street";
+        }
 
-		$this->venue_string = implode( ', ', $venue );
+        if ($city = $venue->_VenueCity) {
+            $this->venue_string .= ", $city";
+        }
 
-		return $this->venue_string;
-	}
+        return $this->venue_string;
+    }
 
-	/**
-	 * Return a nicely formatted and localized string
-	 * with the events time indication.
-	 *
-	 * If we have a all day event, only the start date will be returned.
-	 *
-	 * @return string
-	 */
-	public function time_string() {
-		if ($this->time_string) {
-			return $this->time_string;
-		}
+    /**
+     * Return nicely formatted time string
+     *
+     * @return string
+     */
+    public function time_string() {
+        if ($this->time_string) {
+            return $this->time_string;
+        }
 
-		$start_date = date_i18n( get_option( 'date_format' ), strtotime( $this->_EventStartDate ) );
+        $this->time_string = tribe_get_start_date($this->ID, false, 'j.n.Y');
 
-		if ( $this->_EventAllDay ) {
-			$this->time_string = $start_date;
+        if ($end_date = tribe_get_end_date($this->ID, false, 'j.n.Y')) {
+            if ($end_date !== $this->time_string) {
+                $this->time_string .= ' - ' . $end_date;
+            }
+        }
 
-			return $this->time_string;
-		}
+        return $this->time_string;
+    }
 
-		$start_time = date_i18n( get_option( 'time_format' ), strtotime( $this->_EventStartDate ) );
-		$stop_time  = date_i18n( get_option( 'time_format' ), strtotime( $this->_EventEndDate ) );
+    /**
+     * Return timestamp for sorting
+     *
+     * @return string
+     */
+    public function timestamp() {
+        if ($this->timestamp) {
+            return $this->timestamp;
+        }
 
-		$this->time_string = $start_date . ' | ' . $start_time . ' &ndash; ' . $stop_time;
+        $this->timestamp = tribe_get_start_date($this->ID, false, 'U');
 
-		return $this->time_string;
-	}
-
-	/**
-	 * Return a american formatted time string of the
-	 * beginning of the event.
-	 *
-	 * If we have a all day event, only the start date will be returned.
-	 *
-	 * @return string
-	 */
-	public function timestamp() {
-		if ($this->timestamp) {
-			return $this->timestamp;
-		}
-
-		if ( $this->_EventAllDay ) {
-			$format = 'Y-m-d';
-		} else {
-			$format = 'Y-m-d H:i';
-		}
-
-		$this->timestamp = date( $format, strtotime( $this->_EventStartDate ) );
-
-		return $this->timestamp;
-	}
+        return $this->timestamp;
+    }
 }

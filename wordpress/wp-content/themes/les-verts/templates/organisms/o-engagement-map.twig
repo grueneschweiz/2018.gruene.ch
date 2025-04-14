@@ -1,20 +1,29 @@
-{% set map_field = {} %}
-{% for field in map_block.get_field('content') %}
-	{% if field.acf_fc_layout == 'map' %}
-		{% set map_field = field %}
-	{% endif %}
-{% endfor %}
-
-<article class="o-engagement-map">
-	<div class="o-engagement-map__cat-title">
-		{% include 'atoms/a-cat-title.twig' with block_title only %}
-	</div>
-	<h3 class="o-engagement-map__title">{{ title|wptexturize }}</h3>
-	<div class="o-engagement-map__main-wrapper">
-		<div class="o-engagement-map__desc-wrapper">
-			{{ text|wptexturize }}
-		</div>
-		<div class="o-engagement-map__map-wrapper">
-			{% include 'molecules/m-map.twig' with map_field only %}
-	</div>
-</article>
+{% if map_block %}
+	{% for field in map_block.meta('content') %}
+		{% if field == 'map' %}
+			<article class="o-engagement-map">
+				<div class="o-engagement-map__cat-title">
+					{% include 'atoms/a-cat-title.twig' with block_title only %}
+				</div>
+				<h3 class="o-engagement-map__title">{{ title|wptexturize }}</h3>
+				<div class="o-engagement-map__main-wrapper">
+					<div class="o-engagement-map__desc-wrapper">
+						{{ text|wptexturize }}
+					</div>
+					<div class="o-engagement-map__map-wrapper">
+						<div class="o-engagement-map__map">
+							{% include 'atoms/a-map.twig' with {
+								'map': map_block.content_map
+							} only %}
+						</div>
+						{% if map_block.content_text %}
+							<div class="o-engagement-map__text">
+								{{ map_block.content_text|wptexturize }}
+							</div>
+						{% endif %}
+					</div>
+				</div>
+			</article>
+		{% endif %}
+	{% endfor %}
+{% endif %}

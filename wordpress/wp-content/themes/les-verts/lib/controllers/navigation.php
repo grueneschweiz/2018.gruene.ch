@@ -5,16 +5,20 @@ namespace SUPT;
 use DateTime;
 use DateTimeZone;
 use Exception;
-use Timber\Image;
 use Timber\Menu;
 use Timber\MenuItem;
-use Timber\Term;
+use Timber\Timber;
 use WP_Post;
+use function add_filter;
+use function get_option;
+use function get_theme_mod;
+use function has_nav_menu;
+use function is_plugin_active;
 
 class Navigation_controller {
 
 	public static function register() {
-		add_filter( 'timber_context', array( __CLASS__, 'add_to_context' ) );
+		add_filter( 'timber/context', array( __CLASS__, 'add_to_context' ) );
 		add_filter( 'wp_get_nav_menu_items', array( __CLASS__, 'add_events_to_nav' ) );
 	}
 
@@ -156,7 +160,7 @@ class Navigation_controller {
 
 		$img_id                  = get_theme_mod( Customizer\Logo::SETTING_LOGO_DARK, false );
 		$context['menu']['logo'] = [
-			'image'  => new Image( $img_id ),
+			'image'  => $img_id ? Timber::get_image($img_id) : null,
 			'srcset' => [ 2, 3 ],
 			'resize' => [ 116 ],
 		];
@@ -212,8 +216,10 @@ class Navigation_controller {
 	 */
 	public static function add_featured_item( &$item ) {
 		if ( $item->featured_menu_item ) {
-			$item->category = new Term( $item->category );
-			$item->image    = new Image( $item->image );
+			$item->category = Timber::get_term($item->category);
+			if ( $item->featured_image ) {
+				$item->featured_image = Timber::get_image($item->featured_image);
+			}
 		}
 	}
 }

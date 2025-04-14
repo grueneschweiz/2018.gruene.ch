@@ -1,4 +1,10 @@
-<img class="a-logo" alt="{{ __('Logo', constant('THEME_DOMAIN')) }}" {{ logo.image|get_timber_image_responsive({
-	resize: logo.resize,
-	srcset: logo.srcset,
-}) }}>
+<img class="a-logo" alt="{{ __('Logo', constant('THEME_DOMAIN')) }}" 
+    srcset="{{ logo.image.src('custom-6') }} 480w,
+            {{ logo.image.src('custom-6-2x') }} 960w,
+            {{ logo.image.src('custom-12') }} 768w,
+            {{ logo.image.src('custom-12-2x') }} 1536w,
+            {{ logo.image.src('custom-full') }} 1400w,
+            {{ logo.image.src('custom-full-2x') }} 2800w"
+    sizes="100vw"
+    src="{{ logo.image.src('custom-6') }}"
+>

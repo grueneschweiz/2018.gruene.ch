@@ -8,7 +8,9 @@
 
 namespace SUPT;
 
-class ACFPost extends \TimberPost {
+use Timber\Post;
+
+class ACFPost extends Post {
 	private $__excerpt;
 	private $__fullExcerpt;
 	private $__twitterName;

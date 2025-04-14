@@ -34,11 +34,11 @@ class FormModel {
 	 * FormModel constructor.
 	 *
 	 * @param int $id the form id
-	 * @param WP_Post $post
+	 * @param \WP_Post|null $post
 	 *
 	 * @throws Exception
 	 */
-	public function __construct( $id, $post = null ) {
+	public function __construct( int $id, ?\WP_Post $post = null ) {
 		$this->id = $id;
 
 		if ( get_post_type( $id ) !== FormType::MODEL_NAME ) {

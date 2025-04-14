@@ -6,7 +6,7 @@
 	{% set action = config.initial_action %}
 {% endif %}
 
-{% set content = action.get_field('content') %}
+{% set content = action.meta('content') %}
 
 {% if content.post_type == 'petition' %}
 	{% include 'content-block.twig' with {
@@ -21,7 +21,7 @@
 		'config_id': config.id
 	}} only %}
 {% else %}{# assume post #}
-	{% for block in content.get_field('main_content').content %}
+	{% for block in content.meta('main_content').content %}
 		{% include 'content-block.twig' with {
 			'block': block,
 			'action_id': action.id,

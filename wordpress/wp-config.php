@@ -18,6 +18,9 @@
  * @package WordPress
  */
 
+// Suppress deprecation notices
+error_reporting(E_ALL & ~E_DEPRECATED & ~E_USER_DEPRECATED);
+
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
 define( 'DB_NAME', 'wordpress' );
@@ -29,7 +32,7 @@ define( 'DB_USER', 'wordpress' );
 define( 'DB_PASSWORD', 'wordpress' );
 
 /** MySQL hostname */
-define( 'DB_HOST', 'db:3306' );
+define( 'DB_HOST', 'db' );
 
 /** Database Charset to use in creating database tables. */
 define('DB_CHARSET', 'utf8');
@@ -103,6 +106,9 @@ define( 'SUPT_FORM_ASYNC', ! ( (bool) getenv( 'WORDPRESS_DEBUG' ) ) );
 if ( ! defined( 'ABSPATH' ) ) {
 	define( 'ABSPATH', dirname( __FILE__ ) . '/' );
 }
+
+/** Establish WP SuperCache TODO MSC **/
+define( 'WPCACHEHOME', ABSPATH . 'wp-content/plugins/wp-super-cache/' );
 
 /** Sets up WordPress vars and included files. */
 require_once( ABSPATH . 'wp-settings.php' );

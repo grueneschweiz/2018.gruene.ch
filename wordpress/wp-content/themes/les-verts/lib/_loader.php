@@ -62,25 +62,23 @@ if ( is_admin() ) {
 	}
 
 	require_once __DIR__ . '/admin/acf-featured-image.php';
-	require_once __DIR__ . '/admin/customize-tinymce.php';
 	require_once __DIR__ . '/admin/admin-hide-pll-sync.php';
+	require_once __DIR__ . '/admin/check-updates.php';
+	require_once __DIR__ . '/admin/customize-tinymce.php';
+	require_once __DIR__ . '/admin/import-handler.php';
+	require_once __DIR__ . '/admin/leverage-caps.php';
+	require_once __DIR__ . '/admin/rest-disable-user.php';
 	require_once __DIR__ . '/admin/smush.php';
+	require_once __DIR__ . '/admin/suggest-plugins.php';
 	require_once __DIR__ . '/admin/svg-support.php';
 	require_once __DIR__ . '/admin/tweak-tribe-events.php';
 	require_once __DIR__ . '/admin/custom-menu-metabox.php';
-	require_once __DIR__ . '/admin/leverage-caps.php';
 
 	if ( defined( 'WPSEO_FILE' ) ) {
 		require_once __DIR__ . '/admin/tweak-yoast-seo.php';
 	}
-
-	require_once __DIR__ . '/admin/suggest-plugins.php';
-	require_once __DIR__ . '/admin/check-updates.php';
-	require_once __DIR__ . '/admin/import-handler.php';
 }
 
-require_once __DIR__ . '/admin/rest-disable-user.php';
-require_once __DIR__ . '/admin/timmy-config.php';
 require_once __DIR__ . '/admin/update-handler.php';
 
 /**
@@ -233,7 +231,6 @@ require_once __DIR__ . '/twig/filters/l10n_date.php';
 require_once __DIR__ . '/twig/filters/esc_form_value.php';
 require_once __DIR__ . '/twig/filters/license.php';
 require_once __DIR__ . '/twig/filters/disableable_autop.php';
-require_once __DIR__ . '/twig/filters/failsafe_get_timer_image_responsive.php';
 
 /**
  * FORM LIBRARY

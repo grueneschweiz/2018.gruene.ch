@@ -3,14 +3,14 @@
 {% block content %}
 	{% if post.campaign_show_main_campaign %}
 	<section class="front__campaign">
-		{% set bars = post.get_field('campaign_bars') %}
+		{% set bars = post.meta('campaign_bars') %}
 		{% if post.campaign_summary_read_more %}
 			{% set read_more_text = post.campaign_summary_read_more.title %}
 			{% set read_more_link = post.campaign_summary_read_more.url %}
 		{% else %}
 			{# this is a legacy handler. #}
 			{% set read_more_text = post.campaign_summary_read_more_text %}
-			{% set read_more_link = post.get_field('campaign_link').link() %}
+			{% set read_more_link = post.meta('campaign_link').link() %}
 		{% endif %}
 		{% if post.campaign_call_to_action_title %}
 			{% set cta_title = post.campaign_call_to_action_title %}
@@ -61,7 +61,7 @@
 		{% if not post.campaign_show_main_campaign %}<a id="main-content" aria-hidden="true" tabindex="-1"
 																										class="m-skip-link__target"></a>{% endif %}
 		<section class="front__grid">
-			{% for block in post.get_field('content_blocks') %}
+			{% for block in post.meta('content_blocks') %}
 			{% if block.acf_fc_layout == 'testimonials' %}
 		</section> {# this dirty hack is necessary to achieve full with even on big screens and shift around the IE scrollbar bug #}
 		<section class="front__article front__article--full-width">
@@ -85,7 +85,7 @@
 					{% elseif block.acf_fc_layout == 'engagement_map' %}
 						{% include 'organisms/o-engagement-map.twig' with block only %}
 					{% elseif block.acf_fc_layout == 'block' %}
-						{% for b in block.block.get_field('content') %}
+						{% for b in block.block.meta('content') %}
 							{% include 'content-block.twig' with {'block':b} only %}
 						{% endfor %}
 					{% else %}

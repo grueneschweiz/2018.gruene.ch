@@ -1,37 +1,34 @@
 <?php
 
-add_filter( 'get_twig', function ( $twig ) {
-	$twig->addFunction( new Twig_SimpleFunction( 'ACFPost', function ( $post ) {
-			return new \SUPT\ACFPost( $post );
-		} )
-	);
-	
-	return $twig;
-} );
+namespace SUPT;
 
-add_filter( 'get_twig', function ( $twig ) {
-	$twig->addFunction( new Twig_SimpleFunction( 'PostQuery', function ( $query ) {
-			return new \SUPT\SUPTPostQuery( $query, '\SUPT\ACFPost' );
-		} )
-	);
-	
-	return $twig;
-} );
+use Timber\Timber;
+use Twig\TwigFunction;
 
-add_filter( 'get_twig', function ( $twig ) {
-	$twig->addFunction( new Twig_SimpleFunction( 'TribeEvent', function ( $post ) {
-			return new \SUPT\SUPTTribeEvent( $post, '\SUPT\SUPTTribeEvent' );
-		} )
-	);
-	
-	return $twig;
-} );
+add_filter('timber/twig', function($twig) {
+    // Register ACFPost type
+    $twig->addFunction(new TwigFunction('ACFPost', function($post) {
+        if (!$post) {
+            return null;
+        }
+        return Timber::get_post($post->ID);
+    }));
 
-add_filter( 'get_twig', function ( $twig ) {
-	$twig->addFunction( new Twig_SimpleFunction( 'EFPConfiguration', function ( $post ) {
-			return new \SUPT\EFPConfiguration( $post, '\SUPT\EFPConfiguration' );
-		} )
-	);
-	
-	return $twig;
-} );
+    // Register PostQuery type
+    $twig->addFunction(new TwigFunction('PostQuery', function($query) {
+        if (!$query) {
+            return null;
+        }
+        return new SUPTPostQuery($query);
+    }));
+
+    // Register TribeEvent type
+    $twig->addFunction(new TwigFunction('TribeEvent', function($post) {
+        if (!$post) {
+            return null;
+        }
+        return Timber::get_post($post->ID);
+    }));
+
+    return $twig;
+});

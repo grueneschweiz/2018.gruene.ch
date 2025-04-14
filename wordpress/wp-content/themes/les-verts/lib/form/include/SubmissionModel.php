@@ -30,12 +30,12 @@ class SubmissionModel {
 	 * SubmissionModel constructor.
 	 *
 	 * @param int|null $id
-	 * @param array $data
+	 * @param array|null $data
 	 *
 	 * @throws InvalidArgumentException
 	 * @throws Exception
 	 */
-	public function __construct( $id = null, $data = null ) {
+	public function __construct( ?int $id = null, ?array $data = null ) {
 		$this->id = $id;
 
 		if ( is_null( $data ) ) {

@@ -124,12 +124,12 @@ class CrmDao {
 	 * Send the data to the crm's api
 	 *
 	 * @param array $data
-	 * @param int|null $id the id of the record to update
+	 * @param ?int $id the id of the record to update
 	 *
 	 * @return array|mixed|object
 	 * @throws Exception
 	 */
-	public function save( array $data, int $id = null ) {
+	public function save( array $data, ?int $id = null ) {
 		$crm_data = array();
 		foreach ( $data as $key => $crm_field_data ) {
 			$crm_data[ $key ] = array(

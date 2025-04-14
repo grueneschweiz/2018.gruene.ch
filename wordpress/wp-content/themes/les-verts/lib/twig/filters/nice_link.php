@@ -4,7 +4,7 @@ namespace SUPT;
 
 use Twig\TwigFilter;
 
-add_filter( 'get_twig', function ( $twig ) {
+add_filter('timber/twig', function ( $twig ) {
 	$twig->addFilter(
 		new TwigFilter( 'nice_link', function ( $string ) {
 			$string = trim( $string );

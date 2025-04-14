@@ -7,5 +7,8 @@
  * WooCommerce) you can delete this file and footer.php
  */
 
-$GLOBALS['timberContext'] = Timber::get_context();
+use Timber\Timber;
+
+$GLOBALS['timberContext'] = Timber::context();
+$templates = array('page-plugin.twig');
 ob_start();
