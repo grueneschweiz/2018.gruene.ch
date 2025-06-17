@@ -11,6 +11,7 @@
  * * MySQL settings
  * * Secret keys
  * * Database table prefix
+ * * Mailchimp-Service configuration (optional)
  * * ABSPATH
  *
  * @link https://codex.wordpress.org/Editing_wp-config.php
@@ -96,6 +97,9 @@ define( 'SITE_ID_CURRENT_SITE', 1 );
 define( 'BLOG_ID_CURRENT_SITE', 1 );
 
 define( 'SUPT_FORM_ASYNC', ! ( (bool) getenv( 'WORDPRESS_DEBUG' ) ) );
+
+// Mailchimp-Service configuration (leave empty to disable integration)
+define( 'MAILCHIMP_SERVICE_ENDPOINT', getenv('MAILCHIMP_SERVICE_ENDPOINT') ?: '' );
 
 /* That's all, stop editing! Happy blogging. */
 

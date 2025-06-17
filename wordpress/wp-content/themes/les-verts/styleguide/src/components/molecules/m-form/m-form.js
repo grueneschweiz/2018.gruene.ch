@@ -233,8 +233,26 @@ export default class MForm extends BaseView {
 	}
 
 	getNonce() {
-		return ajax( this.element.dataset.nonce, 'GET' );
-	}
+        return new Promise((resolve, reject) => {
+            let xhr = new XMLHttpRequest();
+            xhr.open('GET', this.element.dataset.nonce);
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        try {
+                            let nonce = JSON.parse(xhr.responseText.trim());
+                            resolve(nonce);
+                        } catch (e) {
+                            resolve(xhr.responseText.trim());
+                        }
+                    } else {
+                        reject(new Error('Failed to get nonce'));
+                    }
+                }
+            };
+            xhr.send();
+        });
+    }
 
 	getSecret( nonce ) {
 		const rawSecret = `${ this.element.dataset.formId }${ nonce }`;

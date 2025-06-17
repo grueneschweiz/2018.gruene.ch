@@ -18,7 +18,7 @@ class FormCrmCommand {
 
 	/**
 	 * Prints meta data of queued records.
-	 *
+	 * //TODO MSC: implement general queue listing
 	 * ## OPTIONS
 	 *
 	 * [--field=<field>]
@@ -84,7 +84,7 @@ class FormCrmCommand {
 
 	/**
 	 * Prints data of single record.
-	 *
+	 * //TODO MSC: implement general queue item retrieval
 	 * ## OPTIONS
 	 *
 	 * <id>
@@ -138,7 +138,7 @@ class FormCrmCommand {
 	}
 
 	/**
-	 * Stores the crm data queued to save.
+	 * Stores the data queued to save to crm or mailchimp.
 	 *
 	 * ## OPTIONS
 	 *
@@ -146,12 +146,13 @@ class FormCrmCommand {
 	 * : Try to store every record, even if it failed in the past.
 	 */
 	public function store( $args, $assoc_args ) {
-		CrmSaver::save_to_crm( array_key_exists( 'force', $assoc_args ) );
+		SyncProcessor::process_queue();
+		//TODO MSC: implement force parameter
 	}
 
 	/**
 	 * Deletes crm data queued to save.
-	 *
+	 * //TODO MSC: implement general queue deletion
 	 * ## OPTIONS
 	 *
 	 * [<id>]

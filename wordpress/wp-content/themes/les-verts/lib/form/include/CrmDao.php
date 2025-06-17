@@ -296,7 +296,7 @@ class CrmDao {
 		$crm_data = array();
 		foreach ( $data as $key => $crm_field_data ) {
 			$crm_data[ $key ] = array(
-				'value' => $crm_field_data->get_value(),
+				'value' => $crm_field_data,
 			);
 		}
 

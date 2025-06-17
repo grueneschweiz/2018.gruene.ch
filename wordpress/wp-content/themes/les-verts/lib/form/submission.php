@@ -8,6 +8,8 @@ use function apply_filters;
 
 require_once __DIR__ . '/include/FormModel.php';
 require_once __DIR__ . '/include/SubmissionModel.php';
+require_once __DIR__ . '/include/SyncEnqueuer.php';
+require_once __DIR__ . '/include/SyncProcessor.php';
 
 /**
  * handle the form submission according to FormType fields
@@ -116,7 +118,7 @@ class FormSubmission {
 	private function register_actions() {
 		add_action( 'wp_ajax_supt_form_submit', array( $this, 'handle_submit' ) );
 		add_action( 'wp_ajax_nopriv_supt_form_submit', array( $this, 'handle_submit' ) );
-		add_action( 'supt_form_save_to_crm', array( __CLASS__, 'save_to_crm' ) );
+		add_action( 'supt_form_save_to_crm', array( __CLASS__, 'process_queue' ) );
 		add_action( 'supt_form_mail_send', array( __CLASS__, 'send_mails' ) );
 		add_action( 'supt_form_remove_expired_nonces', array( __CLASS__, 'remove_expired_nonces' ) );
 
@@ -146,13 +148,12 @@ class FormSubmission {
 	}
 
 	/**
-	 * Save the form submissions to the crm
+	 * Save the form submissions to the crm or mailchimp
 	 *
 	 * Called by the WordPress cron job
 	 */
-	public static function save_to_crm() {
-		require_once __DIR__ . '/include/CrmSaver.php';
-		CrmSaver::save_to_crm();
+	public static function save_to_crm_or_mc() {
+		SyncProcessor::process_queue();
 	}
 
 	/**
@@ -169,7 +170,7 @@ class FormSubmission {
 		$this->add_metadata();
 		$this->save();
 		$this->add_mails_to_sending_queue();
-		$this->add_to_saving_queue_of_crm();
+		$this->add_to_saving_queue();
 		spawn_cron();
 
 		$this->send_response();
@@ -566,24 +567,26 @@ class FormSubmission {
 	/**
 	 * Add the data to save to the saving queue, processed by a cron job
 	 */
-	private function add_to_saving_queue_of_crm() {
-		require_once __DIR__ . '/include/CrmDao.php';
+	private function add_to_saving_queue() {
 
-		// bail early, if the crm api isn't configured
-		if ( ! CrmDao::has_api_url() ) {
+		require_once __DIR__ . '/include/CrmDao.php';
+		require_once __DIR__ . '/include/MailchimpSaver.php';
+
+		// bail early, if the crm and mailchimp api isn't configured
+		if ( !CrmDao::has_api_url() && !MailchimpSaver::has_mailchimp_api_key() ) {
 			return;
 		}
 
-		require_once __DIR__ . '/include/CrmSaver.php';
-
 		try {
-			$saver = new CrmSaver( $this->post_meta_id );
-			$saver->queue();
-			Util::debug_log( "submissionId={$this->post_meta_id} msg=Added to CRM saving queue." );
+			// add the submission to the queue
+			$form_id = $this->form ? $this->form->get_id() : null;
+			$enqueuer = new SyncEnqueuer($this->post_meta_id, $form_id);
+			$enqueuer->add_to_queue($this->data);
 		} catch ( Exception $e ) {
-			Util::report_form_error( 'add data to saving queue of crm', $this->data, $e, $this->form );
+			Util::report_form_error( 'add data to sync queue', $this->data, $e, $this->form );
 		}
 	}
+
 
 	/**
 	 * Send response and die
