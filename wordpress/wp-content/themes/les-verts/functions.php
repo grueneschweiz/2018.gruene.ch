@@ -14,9 +14,6 @@ define( 'THEME_URI', get_template_directory_uri() );
 // Initialize Timber
 new Timber\Timber();
 
-// Initialize Timmy (Timber image manipulation)
-new Timmy\Timmy();
-
 // Configure Timber
 Timber::$dirname = array( 'templates', 'views' );
 

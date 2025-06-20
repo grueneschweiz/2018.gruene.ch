@@ -2,6 +2,12 @@
 
 namespace SUPT;
 
+// Load image handling functionality
+require_once __DIR__ . '/image-handling.php';
+
+// Load Twig image filters
+require_once __DIR__ . '/twig/image-filters.php';
+
 use function add_action;
 use function class_exists;
 use function defined;
@@ -80,7 +86,6 @@ if ( is_admin() ) {
 }
 
 require_once __DIR__ . '/admin/rest-disable-user.php';
-require_once __DIR__ . '/admin/timmy-config.php';
 require_once __DIR__ . '/admin/update-handler.php';
 
 /**
@@ -233,7 +238,7 @@ require_once __DIR__ . '/twig/filters/l10n_date.php';
 require_once __DIR__ . '/twig/filters/esc_form_value.php';
 require_once __DIR__ . '/twig/filters/license.php';
 require_once __DIR__ . '/twig/filters/disableable_autop.php';
-require_once __DIR__ . '/twig/filters/failsafe_get_timer_image_responsive.php';
+require_once __DIR__ . '/twig/filters/failsafe_get_timber_image_responsive.php';
 
 /**
  * FORM LIBRARY
