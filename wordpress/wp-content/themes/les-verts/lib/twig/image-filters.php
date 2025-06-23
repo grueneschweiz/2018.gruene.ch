@@ -86,14 +86,24 @@ class ImageFilters extends AbstractExtension {
      * Build HTML attributes string from image data
      */
     private function buildHtmlAttributes(Image $image, $src, $width, $height, $size, $attr) {
+        // Get focal point or default to center
+        $focal_point = $this->getFocalPoint($image);
+        $position = $this->mapFocalPointToPosition($focal_point);
+
         $attributes = [
             'src' => esc_url($src),
             'class' => 'wp-image-' . (int)$image->ID,
             'loading' => 'lazy',
             'sizes' => wp_get_attachment_image_sizes($image->ID, $size) ?: '',
-            'style' => 'object-fit: cover; object-position: center; width: 100%; height: 100%;',
+            'style' => sprintf(
+                'object-fit: cover; object-position: %s; width: 100%%; height: 100%%;',
+                esc_attr($position)
+            ),
             'alt' => !empty($attr['alt']) ? $attr['alt'] : ''
         ];
+
+        // Add data attribute for focal point
+        $attributes['data-focal-point'] = $focal_point;
 
         if (!empty($width)) $attributes['width'] = (int)$width;
         if (!empty($height)) $attributes['height'] = (int)$height;
@@ -110,6 +120,48 @@ class ImageFilters extends AbstractExtension {
         return implode(' ', $html_attributes);
     }
 
+    /**
+     * Get the focal point for an image
+     *
+     * @param Image $image Timber Image object
+     * @return string Focal point in format 'position_x_position_y' (e.g. 'center_center')
+     */
+    private function getFocalPoint(Image $image) {
+        // Try to get focal point from image meta
+        $focal_point = $image->meta('focal_point') ?? '';
+
+        // If no focal point is set, try to get it from the image object
+        if (empty($focal_point) && property_exists($image, 'focal_point')) {
+            $focal_point = $image->focal_point;
+        }
+
+        // Default to center if no focal point is set
+        return !empty($focal_point) ? $focal_point : 'center';
+    }
+
+    /**
+     * Map focal point to CSS object-position value
+     *
+     * @param string $focal_point Focal point value from ACF (e.g., 'top-left', 'center-center')
+     * @return string CSS object-position value (e.g., 'left top', 'center center')
+     */
+    private function mapFocalPointToPosition($focal_point) {
+        if (!function_exists('acf_get_field')) {
+            return 'center';
+        }
+
+        $field = acf_get_field('focal_point');
+
+        if (empty($field) || !isset($field['choices'][$focal_point])) {
+            return 'center';
+        }
+
+        return $field['choices'][$focal_point];
+    }
+
+    /**
+     * Initialize image from various input types
+     */
     private function initializeImage($image) {
         if (is_numeric($image) || is_string($image)) {
             return new Image($image);
