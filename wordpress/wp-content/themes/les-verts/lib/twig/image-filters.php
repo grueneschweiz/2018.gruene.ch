@@ -20,81 +20,70 @@ class ImageFilters extends AbstractExtension {
         ];
     }
 
-    public function getTimberImageResponsive(Environment $env, $image, $size = 'regular-1580', $attr = []) {
+    public function getTimberImageResponsive(Environment $env, $image, $size = 'regular', $attr = []) {
         $image = $this->initializeImage($image);
         if (empty($image)) {
             return '';
         }
 
-        // get image sizes
-        list($width, $height, $size) = $this->handleImageSizing($image, $size);
+        if(!is_string($size)) {
+            $size = 'regular';
+        }
 
-        // get image source
+        if(!is_array($attr)) {
+            $attr = [];
+        }
+
         $src = $this->getImageSource($image, $size);
         if (empty($src)) {
             return '';
         }
 
         // Build and return HTML attributes
-        return $this->buildHtmlAttributes($image, $src, $width, $height, $size, $attr);
+        return $this->buildHtmlAttributes($image, $src, $size, $attr);
     }
 
-    /**
-     * Handle image sizing based on the provided size parameter
-     */
-    private function handleImageSizing(Image $image, $size) {
-        $width = $height = '';
-        $image_sizes = wp_get_attachment_metadata($image->ID);
-        $image_sizes = is_array($image_sizes) ? $image_sizes : [];
-
-        if (is_array($size)) {
-            $width = !empty($size[0]) ? (int)$size[0] : 0;
-            $height = !empty($size[1]) ? (int)$size[1] : 0;
-            $size = [$width, $height];
-        }
-        elseif (is_string($size)) {
-            if (!empty($image_sizes['sizes'][$size])) {
-                $width = $image_sizes['sizes'][$size]['width'] ?? '';
-                $height = $image_sizes['sizes'][$size]['height'] ?? '';
-            } else {
-                $width = $image_sizes['width'] ?? '';
-                $height = $image_sizes['height'] ?? '';
-            }
-        }
-
-        return [$width, $height, $size];
-    }
-
-    /**
-     * Get the image source URL with error handling
-     */
     private function getImageSource(Image $image, $size) {
         try {
+            // Try with exact size first
             $src = $image->src($size);
-            if (empty($src)) {
-                error_log('Empty image source for attachment ID: ' . $image->ID);
-                return '';
+            if ($src) return $src;
+
+            // Try with suffix (-c-default or -c-center) if not already present
+            if (str_ends_with($src, '-c-default')) {
+                $src = $image->src($size . '-c-default');
+                if ($src) return $src;
             }
-            return $src;
+            else if (str_ends_with($src, '-c-center')) {
+                $src = $image->src($size . '-c-center');
+                if ($src) return $src;
+            }
+
+            // Fall back to full size
+            $src = $image->src('full');
+            if ($src) return $src;
+
+            return '';
+
         } catch (\Exception $e) {
-            error_log('Error getting image source: ' . $e->getMessage());
             return '';
         }
     }
 
     /**
-     * Build HTML attributes string from image data
+     * Build HTML attributes st§ring from image data
      */
-    private function buildHtmlAttributes(Image $image, $src, $width, $height, $size, $attr) {
-        // Get focal point or default to center
+    private function buildHtmlAttributes(Image $image, $src, $size, $attr) {
+        $srcset = wp_get_attachment_image_srcset($image->ID, $size);
+
         $focal_point = $this->getFocalPoint($image);
         $position = $this->mapFocalPointToPosition($focal_point);
 
         $attributes = [
             'src' => esc_url($src),
-            'class' => 'wp-image-' . (int)$image->ID,
+            'srcset' => $srcset,
+            'sizes' => '100vw',
             'loading' => 'lazy',
-            'sizes' => wp_get_attachment_image_sizes($image->ID, $size) ?: '',
             'style' => sprintf(
                 'object-fit: cover; object-position: %s; width: 100%%; height: 100%%;',
                 esc_attr($position)
@@ -102,11 +91,7 @@ class ImageFilters extends AbstractExtension {
             'alt' => !empty($attr['alt']) ? $attr['alt'] : ''
         ];
 
-        // Add data attribute for focal point
         $attributes['data-focal-point'] = $focal_point;
-
-        if (!empty($width)) $attributes['width'] = (int)$width;
-        if (!empty($height)) $attributes['height'] = (int)$height;
 
         $attributes = array_merge($attributes, $attr);
 
@@ -159,19 +144,46 @@ class ImageFilters extends AbstractExtension {
         return $field['choices'][$focal_point];
     }
 
-    /**
-     * Initialize image from various input types
-     */
     private function initializeImage($image) {
+        $img = null;
         if (is_numeric($image) || is_string($image)) {
-            return new Image($image);
-        }
-
-        if (!($image instanceof Image)) {
+            $img = new Image($image);
+        } elseif ($image instanceof Image) {
+            $img = $image;
+        } else {
             return null;
         }
 
-        return $image;
+        // Check if we're dealing with a scaled image and if we should use the original
+        $file_loc = $img->file_loc();
+        $file = $img->file();
+        if ($file_loc && strpos($file_loc, '-scaled.') !== false) {
+            $original_file_loc = str_replace('-scaled.', '.', $file_loc);
+            $original_file = str_replace('-scaled.', '.', $file);
+            $original_url = str_replace(
+                basename($file_loc),
+                basename($original_file_loc),
+                $img->src()
+            );
+
+            // Only proceed if original exists and we're not already using it
+            if (file_exists($original_file_loc)) {
+                // Create a new Image instance with the original file
+                $original_img = new \Timber\Image($img->ID);
+                $original_img->file = $original_file;
+                $original_img->file_loc = $original_file_loc;
+                $original_img->abs_url = $original_url;
+
+                // Update the source to use the original
+                $original_img->src = function() use ($original_url) {
+                    return $original_url;
+                };
+
+                return $original_img;
+            }
+        }
+
+        return $img;
     }
 
     public function resize($image, $width, $height = 0, $crop = 'default') {
