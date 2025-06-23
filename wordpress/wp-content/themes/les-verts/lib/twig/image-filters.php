@@ -21,72 +21,105 @@ class ImageFilters extends AbstractExtension {
     }
 
     public function getTimberImageResponsive(Environment $env, $image, $size = 'regular-1580', $attr = []) {
+        $image = $this->initializeImage($image);
         if (empty($image)) {
             return '';
         }
-    
-        if (is_numeric($image)) {
-            $image = new Image($image);
-        } elseif (is_string($image)) {
-            $image = new Image($image);
-        }
-    
-        if (!($image instanceof Image)) {
-            return '';
-        }
-    
-        // Get the image dimensions for the requested size
-        $image_sizes = wp_get_attachment_metadata($image->ID);
-        $width = '';
-        $height = '';
-    
-        // Handle case when size is an array
-        if (is_array($size)) {
-            $width = $size[0] ?? '';
-            $height = $size[1] ?? '';
-        } 
-        // Handle case when size is a string
-        elseif (is_string($size) && !empty($image_sizes['sizes'][$size])) {
-            $width = $image_sizes['sizes'][$size]['width'] ?? $image_sizes['width'] ?? '';
-            $height = $image_sizes['sizes'][$size]['height'] ?? $image_sizes['height'] ?? '';
-        } 
-        // Fallback to full size
-        else {
-            $width = $image_sizes['width'] ?? '';
-            $height = $image_sizes['height'] ?? '';
-        }
-    
-        // Get the image source
-        $src = $image->src($size);
+
+        // get image sizes
+        list($width, $height, $size) = $this->handleImageSizing($image, $size);
+
+        // get image source
+        $src = $this->getImageSource($image, $size);
         if (empty($src)) {
             return '';
         }
-    
-        // Build attributes
-        $attributes = [
-            'src' => $src,
-            'class' => 'wp-image-' . $image->ID,
-            'loading' => 'lazy',
-            'sizes' => wp_get_attachment_image_sizes($image->ID, $size),
-            'style' => 'object-fit: cover; object-position: center; width: 100%; height: 100%;'
-        ];
-    
-        // Only add width/height if we have valid values
-        if ($width) $attributes['width'] = $width;
-        if ($height) $attributes['height'] = $height;
-    
-        // Merge with provided attributes (allowing them to override defaults)
-        $attributes = array_merge($attributes, $attr);
-    
-        // Build the image tag
-        $html = '<img';
-        foreach ($attributes as $name => $value) {
-            if ($value !== null && $value !== '') {
-                $html .= ' ' . esc_attr($name) . '="' . esc_attr($value) . '"';
+
+        // Build and return HTML attributes
+        return $this->buildHtmlAttributes($image, $src, $width, $height, $size, $attr);
+    }
+
+    /**
+     * Handle image sizing based on the provided size parameter
+     */
+    private function handleImageSizing(Image $image, $size) {
+        $width = $height = '';
+        $image_sizes = wp_get_attachment_metadata($image->ID);
+        $image_sizes = is_array($image_sizes) ? $image_sizes : [];
+
+        if (is_array($size)) {
+            $width = !empty($size[0]) ? (int)$size[0] : 0;
+            $height = !empty($size[1]) ? (int)$size[1] : 0;
+            $size = [$width, $height];
+        }
+        elseif (is_string($size)) {
+            if (!empty($image_sizes['sizes'][$size])) {
+                $width = $image_sizes['sizes'][$size]['width'] ?? '';
+                $height = $image_sizes['sizes'][$size]['height'] ?? '';
+            } else {
+                $width = $image_sizes['width'] ?? '';
+                $height = $image_sizes['height'] ?? '';
             }
         }
-    
-        return $html;
+
+        return [$width, $height, $size];
+    }
+
+    /**
+     * Get the image source URL with error handling
+     */
+    private function getImageSource(Image $image, $size) {
+        try {
+            $src = $image->src($size);
+            if (empty($src)) {
+                error_log('Empty image source for attachment ID: ' . $image->ID);
+                return '';
+            }
+            return $src;
+        } catch (\Exception $e) {
+            error_log('Error getting image source: ' . $e->getMessage());
+            return '';
+        }
+    }
+
+    /**
+     * Build HTML attributes string from image data
+     */
+    private function buildHtmlAttributes(Image $image, $src, $width, $height, $size, $attr) {
+        $attributes = [
+            'src' => esc_url($src),
+            'class' => 'wp-image-' . (int)$image->ID,
+            'loading' => 'lazy',
+            'sizes' => wp_get_attachment_image_sizes($image->ID, $size) ?: '',
+            'style' => 'object-fit: cover; object-position: center; width: 100%; height: 100%;',
+            'alt' => !empty($attr['alt']) ? $attr['alt'] : ''
+        ];
+
+        if (!empty($width)) $attributes['width'] = (int)$width;
+        if (!empty($height)) $attributes['height'] = (int)$height;
+
+        $attributes = array_merge($attributes, $attr);
+
+        $html_attributes = [];
+        foreach ($attributes as $name => $value) {
+            if ($value !== null && $value !== '') {
+                $html_attributes[] = esc_attr($name) . '="' . esc_attr($value) . '"';
+            }
+        }
+
+        return implode(' ', $html_attributes);
+    }
+
+    private function initializeImage($image) {
+        if (is_numeric($image) || is_string($image)) {
+            return new Image($image);
+        }
+
+        if (!($image instanceof Image)) {
+            return null;
+        }
+
+        return $image;
     }
 
     public function resize($image, $width, $height = 0, $crop = 'default') {
@@ -115,7 +148,7 @@ class ImageFilters extends AbstractExtension {
         return $resized ?: $image->src();
     }
 
-public function timberImage(Environment $env, $image, $size = 'full', $crop = 'default') {
+    public function timberImage(Environment $env, $image, $size = 'full', $crop = 'default') {
         if (empty($image)) {
             return '';
         }
