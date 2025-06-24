@@ -49,18 +49,8 @@ class ImageFilters extends AbstractExtension {
             $src = $image->src($size);
             if ($src) return $src;
 
-            // Try with suffix (-c-default or -c-center) if not already present
-            if (str_ends_with($src, '-c-default')) {
-                $src = $image->src($size . '-c-default');
-                if ($src) return $src;
-            }
-            else if (str_ends_with($src, '-c-center')) {
-                $src = $image->src($size . '-c-center');
-                if ($src) return $src;
-            }
-
             // Fall back to full size
-            $src = $image->src('full');
+            $src = $image->src('full-width-2560x0');
             if ($src) return $src;
 
             return '';
@@ -212,7 +202,7 @@ class ImageFilters extends AbstractExtension {
         return $resized ?: $image->src();
     }
 
-    public function timberImage(Environment $env, $image, $size = 'full', $crop = 'default') {
+    public function timberImage(Environment $env, $image, $size = 'full-width-2560x0', $crop = 'default') {
         if (empty($image)) {
             return '';
         }

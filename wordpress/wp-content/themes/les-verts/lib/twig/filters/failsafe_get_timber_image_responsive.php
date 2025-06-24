@@ -12,7 +12,7 @@ add_filter( 'get_twig', function ( $twig ) {
     
     $twig->addFilter(
         new TwigFilter( 'failsafe_get_timber_image_responsive', 
-            function (Environment $env, $image, $size = 'full') use ($image_filters) {
+            function (Environment $env, $image, $size = 'full-width-2560x0') use ($image_filters) {
                 return $image_filters->getTimberImageResponsive($env, $image, $size);
             },
             ['needs_environment' => true]
