@@ -69,7 +69,7 @@ function les_verts_image_handling_setup() {
 }
 
 /**
- * --- This part is for compatibility with the legacy Timmy image handling ---
+ * --- This part is for compatibility with legacy Timmy image handling ---
  * --- If most of the images have been uploaded with the new image handling, remove this part ---
  * --- This fix is implemented in july 2025 ---
  *

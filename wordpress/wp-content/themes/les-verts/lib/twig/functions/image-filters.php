@@ -64,7 +64,13 @@ class ImageFilters extends AbstractExtension {
      * Build HTML attributes st§ring from image data
      */
     private function buildHtmlAttributes(Image $image, $src, $size, $attr) {
+        // First try WordPress core srcset generation
         $srcset = wp_get_attachment_image_srcset($image->ID, $size);
+
+        // If WordPress couldn't generate srcset, try to build one from legacy files
+        if (!$srcset) {
+            $srcset = $this->buildLegacySrcset($image->ID, $size);
+        }
 
         $focal_point = $this->getFocalPoint($image);
         $position = $this->mapFocalPointToPosition($focal_point);
@@ -73,7 +79,7 @@ class ImageFilters extends AbstractExtension {
             'src' => esc_url($src),
             'srcset' => $srcset,        // Standard srcset for non-lazy images
             'data-srcset' => $srcset,   // Data-srcset for lazy loading JavaScript
-            'sizes' => '100vw', //TODO
+            'sizes' => '100vw',
             'loading' => 'lazy',
             'style' => sprintf(
                 'object-fit: cover; object-position: %s; width: 100%%; height: 100%%;',
@@ -94,6 +100,31 @@ class ImageFilters extends AbstractExtension {
         }
 
         return implode(' ', $html_attributes);
+    }
+
+    private function buildLegacySrcset($image_id, $size) {
+        // Get all defined image sizes from LesVertsImages
+        $all_sizes = \SUPT\LesVertsImages::getSizes();
+        $srcset_parts = [];
+
+        foreach ($all_sizes as $size_name => $width) {
+            // Try to find legacy image for this size
+            $legacy_result = \SUPT\find_legacy_image($image_id, $size_name);
+
+            if ($legacy_result && is_array($legacy_result)) {
+                // Extract URL and width from the result
+                $url = $legacy_result[0];
+                $actual_width = $legacy_result[1]; // Actual width from getimagesize()
+
+                // Add to srcset if we have valid data
+                if ($url && $actual_width) {
+                    $srcset_parts[] = esc_url($url) . ' ' . $actual_width . 'w';
+                }
+            }
+        }
+
+        // Return the built srcset or empty string
+        return !empty($srcset_parts) ? implode(', ', $srcset_parts) : '';
     }
 
     /**
@@ -145,35 +176,6 @@ class ImageFilters extends AbstractExtension {
             return null;
         }
 
-        // Check if we're dealing with a scaled image and if we should use the original
-        $file_loc = $img->file_loc();
-        $file = $img->file();
-        if ($file_loc && strpos($file_loc, '-scaled.') !== false) {
-            $original_file_loc = str_replace('-scaled.', '.', $file_loc);
-            $original_file = str_replace('-scaled.', '.', $file);
-            $original_url = str_replace(
-                basename($file_loc),
-                basename($original_file_loc),
-                $img->src()
-            );
-
-            // Only proceed if original exists and we're not already using it
-            if (file_exists($original_file_loc)) {
-                // Create a new Image instance with the original file
-                $original_img = new \Timber\Image($img->ID);
-                $original_img->file = $original_file;
-                $original_img->file_loc = $original_file_loc;
-                $original_img->abs_url = $original_url;
-
-                // Update the source to use the original
-                $original_img->src = function() use ($original_url) {
-                    return $original_url;
-                };
-
-                return $original_img;
-            }
-        }
-
         return $img;
     }
 
@@ -203,14 +205,12 @@ class ImageFilters extends AbstractExtension {
         return $resized ?: $image->src();
     }
 
-    public function timberImage(Environment $env, $image, $size = 'full-width', $crop = 'default') {
+    public function timberImage(Environment $env, $image, $size = 'regular', $crop = 'default') {
         if (empty($image)) {
             return '';
         }
 
-        if (is_numeric($image)) {
-            $image = new Image($image);
-        } elseif (is_string($image)) {
+        if (is_numeric($image) || is_string($image)) {
             $image = new Image($image);
         }
 
