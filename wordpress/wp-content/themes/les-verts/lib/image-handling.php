@@ -1,19 +1,22 @@
 <?php
 /**
  * Image handling functionality for Les Verts theme
- * 
+ *
  * Replaces Timmy with WordPress core image handling
+ *
+ * Example of legacy Timmy file names:
+ * custom_palette-1-150x0-c-default.png  rgb_palette-1-1200x0-c-default.png  rgb_palette-1-20x0-c-default.png    rgb_palette-1-790x0-c-default.png
+ * rgb_palette-1-10x0-c-default.png      rgb_palette-1-150x0-c-default.png   rgb_palette-1-2560x0-c-default.png
+ *
+ * Example of new file names:
+ * europawahlen-1-1200x630.jpg  europawahlen-1-150x100.jpg    europawahlen-1-2560x1713.jpg  europawahlen-1-768x514.jpg
+ * europawahlen-1-1200x803.jpg  europawahlen-1-1580x1057.jpg  europawahlen-1-400x268.jpg	 europawahlen-1-scaled.jpg
  */
 
 /**
  * Global image size definitions
  */
 class LesVertsImages {
-    /**
-     * Get image size widths
-     * 
-     * @return array Array of size name => width in pixels
-     */
     public static function getSizes() {
         return [
             'thumbnail' => 150,
@@ -21,7 +24,7 @@ class LesVertsImages {
             'medium' => 768,
             'regular' => 1200,
             'large' => 1580,
-            'full' => 2560
+            'full-width' => 2560  // Avoid conflict with WordPress 'full' keyword
         ];
     }
 }
@@ -31,63 +34,20 @@ class LesVertsImages {
  */
 add_action('after_setup_theme', 'les_verts_image_handling_setup');
 function les_verts_image_handling_setup() {
-    // Full width images (for full viewport width sections)
-    add_image_size('full-width-2560x0', 2560, 0, false);  // Max width for large displays
-    add_image_size('full-width-1680x0', 1680, 0, false);  // Common desktop
-    add_image_size('full-width-1024x0', 1024, 0, false);  // Tablets
-    add_image_size('full-width-640x0', 640, 0, false);    // Large phones
+    $sizes = LesVertsImages::getSizes();
 
-    // Regular content images (for content areas)
-    add_image_size('regular-1580x0', 1580, 0, false);     // Max content width
-    add_image_size('regular-1024x0', 1024, 0, false);     // Smaller content
-    add_image_size('regular-790x0', 790, 0, false);       // Default content
-    add_image_size('regular-400x0', 400, 0, false);       // Small content
+    // Register image sizes using simple names
+    foreach ($sizes as $size_name => $width) {
+        add_image_size($size_name, $width, 0, false);
+    }
 
-    // Social/SEO
-    add_image_size('large', 1200, 0, false);
+    // Social/SEO specific sizes
     add_image_size('wpseo-opengraph', 1200, 630, true);
 
     // Set default image quality
     add_filter('jpeg_quality', function() { return 85; });
     add_filter('wp_editor_set_quality', function() { return 85; });
 }
-
-/*
-Debugging: Log and remove image sizes
-
-// At the end of the les_verts_image_handling_setup() function, add:
-add_action('after_setup_theme', function() {
-    // ... existing code ...
-
-    // Debug: Log all registered image sizes
-    add_action('init', function() {
-        global $_wp_additional_image_sizes;
-        error_log('=== REGISTERED IMAGE SIZES ===');
-        error_log(print_r($_wp_additional_image_sizes, true));
-        error_log(print_r(wp_get_registered_image_subsizes(), true));
-        error_log('==============================');
-    }, 999);
-}, 0);
-
-// Remove unnecessary image sizes
-add_action('init', function() {
-    // Remove default WordPress sizes we don't need
-    remove_image_size('1536x1536');
-    remove_image_size('2048x2048');
-    remove_image_size('medium_large');
-
-    // Remove duplicate sizes
-    remove_image_size('regular-2560x0');  // Duplicate of full-width
-    remove_image_size('regular-2048x0');  // Duplicate of full-width
-    remove_image_size('regular-768x0');   // Too close to 790x0
-    remove_image_size('regular-200x0');   // Too small
-    remove_image_size('regular-150x0');   // Too small
-    remove_image_size('regular-100x0');   // Too small
-    remove_image_size('full-width-200x0'); // Too small
-    remove_image_size('full-width-100x0'); // Too small
-}, 99);
-
-*/
 
 // Set threshold to 4K resolution instead of default 2560px
 add_filter('big_image_size_threshold', function() {
@@ -96,7 +56,7 @@ add_filter('big_image_size_threshold', function() {
 
 /**
  * Hook into WordPress image URL generation to support legacy Timmy filenames
- * 
+ *
  * This filter intercepts wp_get_attachment_image_src() calls and provides
  * fallback support for old Timmy-style filenames when new ones don't exist.
  */
@@ -108,38 +68,47 @@ function les_verts_image_downsize_fallback($out, $attachment_id, $size) {
         return false;
     }
 
-    if(!is_string($size) || $size === 'full') {
-        $size = 'full-width-2560x0';
+    if(!is_string($size)) {
+        $size = 'regular';
     }
 
-    // Check if WordPress has the requested size
-    if (isset($metadata['sizes'][$size])) {
-        $upload_dir = wp_upload_dir();
-        $pathinfo = pathinfo($metadata['file']);
-        $size_data = $metadata['sizes'][$size];
+    $upload_dir = wp_upload_dir();
+    $pathinfo = pathinfo($metadata['file']);
 
-        $wordpress_file = trailingslashit($upload_dir['basedir']) . 
+    // Check if WordPress has the requested size
+    if(hasRequestedImageSize($metadata, $size, $upload_dir, $pathinfo)) {
+        return false;
+    }
+
+    // Try legacy Timmy format
+    $legacy_image = les_verts_find_legacy_image($attachment_id, $size);
+    if ($legacy_image) {
+        return $legacy_image;
+    }
+
+    // Check for "-scaled" in filename and match with original file
+    return getScaledImage($metadata, $pathinfo, $upload_dir);
+}
+
+function hasRequestedImageSize($metadata, $size, $upload_dir, $pathinfo) {
+    if (isset($metadata['sizes'][$size])) {
+
+        $size_data = $metadata['sizes'][$size];
+        $wordpress_file = trailingslashit($upload_dir['basedir']) .
                          $pathinfo['dirname'] . '/' . $size_data['file'];
 
         if (file_exists($wordpress_file)) {
             // WordPress has this size and file exists, let it handle it
-            return false;
+            return true;
         }
     }
 
-    // WordPress doesn't have this size or file doesn't exist, try legacy Timmy format
-    $legacy_image = les_verts_find_legacy_image($attachment_id, $size);
-    
-    if ($legacy_image) {
-        return $legacy_image;
-    }
-    
     return false;
 }
 
 /**
  * Find legacy Timmy-style image files
- * 
+ *
  * @param int $attachment_id The attachment ID
  * @param string|array $size The image size
  * @return array|false Image data array or false if not found
@@ -149,68 +118,63 @@ function les_verts_find_legacy_image($attachment_id, $size) {
     if (!$attachment) {
         return false;
     }
-    
+
     $upload_dir = wp_upload_dir();
     $metadata = wp_get_attachment_metadata($attachment_id);
-    
+
     if (!$metadata || !isset($metadata['file'])) {
         return false;
     }
-    
+
     // Get the base filename without extension
     $pathinfo = pathinfo($metadata['file']);
     $extension = $pathinfo['extension'];
 
-    if($extension === 'svg') {
+    if($extension !== 'png' && $extension !== 'jpg' && $extension !== 'jpeg' && $extension !== 'webp') {
         return false;
     }
 
     $base_path = trailingslashit($upload_dir['basedir']) . $pathinfo['dirname'];
-    $base_name = str_replace('scaled', '', $pathinfo['filename']);
-    
+    $base_name = $pathinfo['filename'];
+
     // Extract width from WordPress filename using regex (e.g., europawahlen-1-1024x685 -> 1024)
     $width = false;
     if (preg_match('/-(\d+)x\d+$/', $base_name, $matches)) {
         $width = $matches[1];
     }
-    
-    // Remove any existing WordPress dimensions from filename (e.g., -1200x630)
-    $clean_name = preg_replace('/-\d+x\d+$/', '', $base_name);
-    
-    if ($width) {
-        // Search for legacy files with specific width: [name]-[width]*-c-default.[ext]
-        $search_pattern = $base_path . '/' . $clean_name . '-' . $width . '*-c-default.' . $extension;
-        $legacy_files = glob($search_pattern);
-        
-        // Also try -c-center as fallback
-        if (empty($legacy_files)) {
-            $search_pattern = $base_path . '/' . $clean_name . '-' . $width . '*-c-center.jpg';
-            $legacy_files = glob($search_pattern);
+
+    if ($width === false) {
+        if($size === 'full') {
+            return false;
         }
-    } else {
-        // Fallback: Search for any legacy files: [name]*-c-default.[ext]
-        $search_pattern = $base_path . '/' . $clean_name . '*-c-default.' . $extension;
-        $legacy_files = glob($search_pattern);
-        
-        // Also try -c-center as fallback
-        if (empty($legacy_files)) {
-            $search_pattern = $base_path . '/' . $clean_name . '*-c-center.jpg';
-            $legacy_files = glob($search_pattern);
+        else {
+            $width = isset(LesVertsImages::getSizes()[$size]) ?
+                LesVertsImages::getSizes()[$size] :
+                LesVertsImages::getSizes()['regular'];
         }
     }
-    
+
+    // Remove any existing WordPress dimensions from filename (e.g., -1200x630)
+    $clean_name = str_replace('-scaled', '', preg_replace('/-\d+x\d+$/', '', $base_name));
+    $search_pattern = $base_path . '/' . $clean_name . '-' . $width . '*-c-default.' . $extension;
+    $legacy_files = glob($search_pattern);
+
+    if (empty($legacy_files)) {
+        $search_pattern = $base_path . '/' . $clean_name . '-' . $width . '*-c-center.jpg';
+        $legacy_files = glob($search_pattern);
+    }
+
     if (!empty($legacy_files)) {
         // Find the best matching file based on extracted width
         $best_match = les_verts_select_legacy_file_by_width($legacy_files, $width, $size);
-        
+
         if ($best_match) {
             $legacy_path = $best_match;
             $legacy_filename = basename($legacy_path);
-            
-            $legacy_url = trailingslashit($upload_dir['baseurl']) . 
+
+            $legacy_url = trailingslashit($upload_dir['baseurl']) .
                          $pathinfo['dirname'] . '/' . $legacy_filename;
-            
-            // Get dimensions from actual file
+
             $image_info = getimagesize($legacy_path);
             if ($image_info) {
                 return [
@@ -222,13 +186,13 @@ function les_verts_find_legacy_image($attachment_id, $size) {
             }
         }
     }
-    
+
     return false;
 }
 
 /**
  * Select the best matching legacy file based on width
- * 
+ *
  * @param array $legacy_files Array of legacy file paths
  * @param int|string $target_width Target width extracted from WordPress filename
  * @return string|false Best matching file path or false if none suitable
@@ -238,43 +202,115 @@ function les_verts_select_legacy_file_by_width($legacy_files, $target_width, $si
     if (empty($legacy_files)) {
         return false;
     }
-    
+
     if (!$target_width) {
-        //TODO this is not the best way to do it
-        $sizes = ["full-width-2560x0" => 2560, "large" => 1200, "medium" => 768, "thumbnail" => 150];
+        $sizes = LesVertsImages::getSizes();
         if (array_key_exists($size, $sizes)) {
             $target_width = $sizes[$size];
         }
         else {
-            $target_width = 2560;
+            $target_width = LesVertsImages::getSizes()['regular'];
         }
     }
-    
+
     $target_width = (int) $target_width;
     $best_match = null;
-    $smallest_diff = PHP_INT_MAX;
-    
-    foreach ($legacy_files as $file_path) {
+    $best_match_width = PHP_INT_MAX;  // Track width of best match
+    $biggest_image_index = 0;
+    $biggest_image_width = 0;
+
+    for($i = 0; $i < count($legacy_files); $i++) {
         // Extract width from legacy filename (e.g., image-790x0-c-default.jpg -> 790)
-        $filename = basename($file_path);
+        $filename = basename($legacy_files[$i]);
         if (preg_match('/-(\d+)x\d+-c-/', $filename, $matches)) {
             $file_width = (int) $matches[1];
-            
-            // Calculate difference from target width
-            $diff = abs($file_width - $target_width);
-            
-            if ($diff < $smallest_diff) {
-                $smallest_diff = $diff;
-                $best_match = $file_path;
+
+            // Only update best match if image is >= target AND smaller than current best
+            if ($file_width >= $target_width && $file_width < $best_match_width) {
+                $best_match_width = $file_width;
+                $best_match = $legacy_files[$i];
             }
-            
+
+            // Track biggest image as fallback
+            if ($file_width > $biggest_image_width) {
+                $biggest_image_index = $i;
+                $biggest_image_width = $file_width;
+            }
+
             // Perfect match found, no need to continue
-            if ($diff === 0) {
+            if ($file_width === $target_width) {
                 break;
             }
         }
     }
-    
-    // Return best match or first file as fallback
-    return $best_match ?: $legacy_files[0];
+
+    // Return best match or biggest image as fallback
+    return $best_match ?: $legacy_files[$biggest_image_index];
 }
+
+function getScaledImage($metadata, $pathinfo, $upload_dir) {
+    // Check for "-scaled" in filename and match with original file
+    if(str_contains($pathinfo['filename'], '-scaled')) {
+        $scaled_file = trailingslashit($upload_dir['basedir']) . $pathinfo['dirname'] . '/' . $pathinfo['basename'];
+        if (file_exists($scaled_file)) {
+            return false;
+        }
+
+        $original_url = trailingslashit($upload_dir['baseurl']) . $pathinfo['dirname'] . '/' . $metadata['original_image'];
+        $original_file = trailingslashit($upload_dir['basedir']) . $pathinfo['dirname'] . '/' . $metadata['original_image'];
+
+        if (file_exists($original_file)) {
+            return [
+                $original_url,
+                $metadata['width'], // width
+                $metadata['height'], // height
+                false // original image
+            ];
+        }
+    }
+
+    return false;
+}
+
+/*
+//Debugging: Log and remove image sizes
+add_action('after_setup_theme', function() {
+
+    // Debug: Log all registered image sizes
+    add_action('init', function() {
+        global $_wp_additional_image_sizes;
+        error_log('=== REGISTERED IMAGE SIZES ===');
+        error_log(print_r($_wp_additional_image_sizes, true));
+        error_log(print_r(wp_get_registered_image_subsizes(), true));
+        error_log('==============================');
+    }, 999);
+}, 0);
+/*
+// Remove unnecessary image sizes
+add_action('init', function() {
+    // Remove default WordPress sizes we don't need
+    remove_image_size('1536x1536');
+    remove_image_size('2048x2048');
+    remove_image_size('medium_large');
+
+    // Remove old complex size names from previous setup
+    remove_image_size('regular-1580x0');
+    remove_image_size('regular-1024x0');
+    remove_image_size('regular-790x0');
+    remove_image_size('regular-400x0');
+    remove_image_size('full-width-2560x0');
+    remove_image_size('full-width-1680x0');
+    remove_image_size('full-width-1024x0');
+    remove_image_size('full-width-640x0');
+
+    // Remove any other legacy Timmy-style sizes if they exist
+    remove_image_size('regular-2560x0');
+    remove_image_size('regular-2048x0');
+    remove_image_size('regular-768x0');
+    remove_image_size('regular-200x0');
+    remove_image_size('regular-150x0');
+    remove_image_size('regular-100x0');
+    remove_image_size('full-width-200x0');
+    remove_image_size('full-width-100x0');
+}, 99);
+*/

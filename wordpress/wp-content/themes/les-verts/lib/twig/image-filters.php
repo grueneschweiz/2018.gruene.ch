@@ -50,7 +50,7 @@ class ImageFilters extends AbstractExtension {
             if ($src) return $src;
 
             // Fall back to full size
-            $src = $image->src('full-width-2560x0');
+            $src = $image->src('full-width');
             if ($src) return $src;
 
             return '';
@@ -71,7 +71,8 @@ class ImageFilters extends AbstractExtension {
 
         $attributes = [
             'src' => esc_url($src),
-            'srcset' => $srcset,
+            'srcset' => $srcset,        // Standard srcset for non-lazy images
+            'data-srcset' => $srcset,   // Data-srcset for lazy loading JavaScript
             'sizes' => '100vw',
             'loading' => 'lazy',
             'style' => sprintf(
@@ -202,7 +203,7 @@ class ImageFilters extends AbstractExtension {
         return $resized ?: $image->src();
     }
 
-    public function timberImage(Environment $env, $image, $size = 'full-width-2560x0', $crop = 'default') {
+    public function timberImage(Environment $env, $image, $size = 'full-width', $crop = 'default') {
         if (empty($image)) {
             return '';
         }
