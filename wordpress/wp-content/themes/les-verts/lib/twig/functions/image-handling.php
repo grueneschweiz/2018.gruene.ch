@@ -4,14 +4,28 @@
  *
  * Replaces Timmy with WordPress core image handling
  *
- * Example of legacy Timmy file names:
- * custom_palette-1-150x0-c-default.png  rgb_palette-1-1200x0-c-default.png  rgb_palette-1-20x0-c-default.png    rgb_palette-1-790x0-c-default.png
- * rgb_palette-1-10x0-c-default.png      rgb_palette-1-150x0-c-default.png   rgb_palette-1-2560x0-c-default.png
- *
- * Example of new file names:
- * europawahlen-1-1200x630.jpg  europawahlen-1-150x100.jpg    europawahlen-1-2560x1713.jpg  europawahlen-1-768x514.jpg
- * europawahlen-1-1200x803.jpg  europawahlen-1-1580x1057.jpg  europawahlen-1-400x268.jpg	 europawahlen-1-scaled.jpg
  */
+
+namespace SUPT;
+
+use SUPT\Twig\ImageFilters;
+use Twig\TwigFilter;
+use Twig\Environment;
+
+add_filter('get_twig', function($twig) {
+    $image_filters = new ImageFilters();
+
+    $twig->addFilter(
+        new TwigFilter( 'get_timber_image_responsive',
+            function (Environment $env, $image, $size = 'full-width') use ($image_filters) {
+                return $image_filters->getTimberImageResponsive($env, $image, $size);
+            },
+            ['needs_environment' => true]
+        )
+    );
+
+    return $twig;
+}, 10);
 
 /**
  * Global image size definitions
@@ -29,10 +43,15 @@ class LesVertsImages {
     }
 }
 
+// Set threshold to 4K resolution instead of default 2560px
+add_filter('big_image_size_threshold', function() {
+    return 3840; // 4K width
+});
+
 /**
  * Setup image sizes and configurations
  */
-add_action('after_setup_theme', 'les_verts_image_handling_setup');
+add_action('after_setup_theme', 'SUPT\les_verts_image_handling_setup');
 function les_verts_image_handling_setup() {
     $sizes = LesVertsImages::getSizes();
 
@@ -49,10 +68,19 @@ function les_verts_image_handling_setup() {
     add_filter('wp_editor_set_quality', function() { return 85; });
 }
 
-// Set threshold to 4K resolution instead of default 2560px
-add_filter('big_image_size_threshold', function() {
-    return 3840; // 4K width
-});
+/**
+ * --- This part is for compatibility with the legacy Timmy image handling ---
+ * --- If most of the images have been uploaded with the new image handling, remove this part ---
+ * --- This fix is implemented in july 2025 ---
+ *
+ * Example of legacy Timmy file names:
+ * custom_palette-1-150x0-c-default.png  rgb_palette-1-1200x0-c-default.png  rgb_palette-1-20x0-c-default.png    rgb_palette-1-790x0-c-default.png
+ * rgb_palette-1-10x0-c-default.png      rgb_palette-1-150x0-c-default.png   rgb_palette-1-2560x0-c-default.png
+ *
+ * Example of new (wordpress default) file names:
+ * europawahlen-1-1200x630.jpg  europawahlen-1-150x100.jpg    europawahlen-1-2560x1713.jpg  europawahlen-1-768x514.jpg
+ * europawahlen-1-1200x803.jpg  europawahlen-1-1580x1057.jpg  europawahlen-1-400x268.jpg	 europawahlen-1-scaled.jpg
+ */
 
 /**
  * Hook into WordPress image URL generation to support legacy Timmy filenames
@@ -60,8 +88,8 @@ add_filter('big_image_size_threshold', function() {
  * This filter intercepts wp_get_attachment_image_src() calls and provides
  * fallback support for old Timmy-style filenames when new ones don't exist.
  */
-add_filter('image_downsize', 'les_verts_image_downsize_fallback', 5, 3);
-function les_verts_image_downsize_fallback($out, $attachment_id, $size) {
+add_filter('image_downsize', 'SUPT\image_downsize_fallback', 5, 3);
+function image_downsize_fallback($out, $attachment_id, $size) {
     // Check if WordPress already has this image size by looking at metadata
     $metadata = wp_get_attachment_metadata($attachment_id);
     if (!$metadata || !isset($metadata['file'])) {
@@ -81,7 +109,7 @@ function les_verts_image_downsize_fallback($out, $attachment_id, $size) {
     }
 
     // Try legacy Timmy format
-    $legacy_image = les_verts_find_legacy_image($attachment_id, $size);
+    $legacy_image = find_legacy_image($attachment_id, $size);
     if ($legacy_image) {
         return $legacy_image;
     }
@@ -113,7 +141,7 @@ function hasRequestedImageSize($metadata, $size, $upload_dir, $pathinfo) {
  * @param string|array $size The image size
  * @return array|false Image data array or false if not found
  */
-function les_verts_find_legacy_image($attachment_id, $size) {
+function find_legacy_image($attachment_id, $size) {
     $attachment = get_post($attachment_id);
     if (!$attachment) {
         return false;
@@ -312,5 +340,5 @@ add_action('init', function() {
     remove_image_size('regular-100x0');
     remove_image_size('full-width-200x0');
     remove_image_size('full-width-100x0');
-}, 99);
+}
 */

@@ -45,12 +45,12 @@ class ImageFilters extends AbstractExtension {
 
     private function getImageSource(Image $image, $size) {
         try {
-            // Try with exact size first
-            $src = $image->src($size);
-            if ($src) return $src;
-
-            // Fall back to full size
-            $src = $image->src('full-width');
+            if(\SUPT\LesVertsImages::getSizes()[$size]) {
+                $src = $image->src($size);
+            }
+            else {
+                $src = $image->src('regular');
+            }
             if ($src) return $src;
 
             return '';
@@ -73,7 +73,7 @@ class ImageFilters extends AbstractExtension {
             'src' => esc_url($src),
             'srcset' => $srcset,        // Standard srcset for non-lazy images
             'data-srcset' => $srcset,   // Data-srcset for lazy loading JavaScript
-            'sizes' => '100vw',
+            'sizes' => '100vw', //TODO
             'loading' => 'lazy',
             'style' => sprintf(
                 'object-fit: cover; object-position: %s; width: 100%%; height: 100%%;',

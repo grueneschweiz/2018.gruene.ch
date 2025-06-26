@@ -2,12 +2,6 @@
 
 namespace SUPT;
 
-// Load image handling functionality
-require_once __DIR__ . '/image-handling.php';
-
-// Load Twig image filters
-require_once __DIR__ . '/twig/image-filters.php';
-
 use function add_action;
 use function class_exists;
 use function defined;
@@ -224,6 +218,8 @@ require_once __DIR__ . '/twig/functions/get_lang.php';
 require_once __DIR__ . '/twig/functions/register_timber_custom_post_types.php';
 require_once __DIR__ . '/twig/functions/get_people.php';
 require_once __DIR__ . '/twig/functions/link_props.php';
+require_once __DIR__ . '/twig/functions/image-filters.php';
+require_once __DIR__ . '/twig/functions/image-handling.php';
 
 // filters
 require_once __DIR__ . '/twig/filters/email.php';
@@ -238,7 +234,6 @@ require_once __DIR__ . '/twig/filters/l10n_date.php';
 require_once __DIR__ . '/twig/filters/esc_form_value.php';
 require_once __DIR__ . '/twig/filters/license.php';
 require_once __DIR__ . '/twig/filters/disableable_autop.php';
-require_once __DIR__ . '/twig/filters/failsafe_get_timber_image_responsive.php';
 
 /**
  * FORM LIBRARY

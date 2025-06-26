@@ -25,14 +25,14 @@
 
 		{% if not not_lazy %}
 		<noscript>{% endif %}
-			<img {{ img|failsafe_get_timber_image_responsive(size) }}
+			<img {{ img|get_timber_image_responsive(size) }}
 				class="a-image__image{% if not no_crop %} a-image__image--fp a-image__image--fp-{{ focal_point }}{% endif %}"
 				alt="{{ img.alt }}"
 			>
 		{% if not not_lazy %}</noscript>
 		<div class="a-image__lazy-wrapper">
 			<img src="{{ img.src }}"
-				{{ img|failsafe_get_timber_image_responsive(size) }}
+				{{ img|get_timber_image_responsive(size) }}
 					 class="a-image__image a-image__image--lazy{% if no_crop %} a-image__image--no-crop{% else %} a-image__image--fp a-image__image--fp-{{ focal_point }}{% endif %}"
 					 alt="{{ img.alt }}" loading="lazy"
 			>
