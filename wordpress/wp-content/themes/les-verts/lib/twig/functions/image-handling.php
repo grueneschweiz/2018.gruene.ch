@@ -35,10 +35,11 @@ class LesVertsImages {
         return [
             'thumbnail' => 150,
             'small' => 400,
-            'medium' => 768,
-            'regular' => 1200,
-            'large' => 1580,
-            'full-width' => 2560  // Avoid conflict with WordPress 'full' keyword
+            'medium' => 640,
+            'regular' => 790,
+            'large' => 1200,
+            'huge' => 1580,
+            'full-width' => 2560
         ];
     }
 }
@@ -300,45 +301,46 @@ function getScaledImage($metadata, $pathinfo, $upload_dir) {
     return false;
 }
 
-/*
-//Debugging: Log and remove image sizes
-add_action('after_setup_theme', function() {
-
-    // Debug: Log all registered image sizes
-    add_action('init', function() {
-        global $_wp_additional_image_sizes;
-        error_log('=== REGISTERED IMAGE SIZES ===');
-        error_log(print_r($_wp_additional_image_sizes, true));
-        error_log(print_r(wp_get_registered_image_subsizes(), true));
-        error_log('==============================');
-    }, 999);
-}, 0);
-/*
-// Remove unnecessary image sizes
+/**
+ * One-time migration to clean up legacy image sizes
+ * This will run once and then never again
+ */
 add_action('init', function() {
-    // Remove default WordPress sizes we don't need
-    remove_image_size('1536x1536');
-    remove_image_size('2048x2048');
-    remove_image_size('medium_large');
+    $migration_key = 'les_verts_image_cleanup_20250701';
 
-    // Remove old complex size names from previous setup
-    remove_image_size('regular-1580x0');
-    remove_image_size('regular-1024x0');
-    remove_image_size('regular-790x0');
-    remove_image_size('regular-400x0');
-    remove_image_size('full-width-2560x0');
-    remove_image_size('full-width-1680x0');
-    remove_image_size('full-width-1024x0');
-    remove_image_size('full-width-640x0');
+    // Check if migration has already run
+    if (get_option($migration_key, false)) {
+        return; // Already completed, skip
+    }
 
-    // Remove any other legacy Timmy-style sizes if they exist
-    remove_image_size('regular-2560x0');
-    remove_image_size('regular-2048x0');
-    remove_image_size('regular-768x0');
-    remove_image_size('regular-200x0');
-    remove_image_size('regular-150x0');
-    remove_image_size('regular-100x0');
-    remove_image_size('full-width-200x0');
-    remove_image_size('full-width-100x0');
+    // Perform the cleanup
+    les_verts_cleanup_legacy_image_sizes();
+
+    // Mark migration as completed
+    update_option($migration_key, true);
+});
+
+/**
+ * Clean up legacy image sizes and WordPress defaults we don't need
+ */
+function les_verts_cleanup_legacy_image_sizes() {
+    // Remove WordPress default sizes we don't need based on production audit
+    $legacy_sizes = [
+        '1536x1536',     // WordPress default large size
+        '2048x2048',     // WordPress default extra large size
+        'post-thumbnail' // Unused theme size (0x0)
+    ];
+
+    foreach ($legacy_sizes as $size) {
+        remove_image_size($size);
+    }
+
+    // Optional: Clean up database entries for these sizes
+    // This removes them from the global $_wp_additional_image_sizes array
+    global $_wp_additional_image_sizes;
+    foreach ($legacy_sizes as $size) {
+        if (isset($_wp_additional_image_sizes[$size])) {
+            unset($_wp_additional_image_sizes[$size]);
+        }
+    }
 }
-*/

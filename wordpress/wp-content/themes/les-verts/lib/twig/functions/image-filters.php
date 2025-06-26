@@ -226,9 +226,3 @@ class ImageFilters extends AbstractExtension {
         return 'supt_image_filters';
     }
 }
-
-// Add to Twig
-add_filter('timber/twig', function(Environment $twig) {
-    $twig->addExtension(new ImageFilters());
-    return $twig;
-});
