@@ -12,6 +12,9 @@ use Twig\TwigFilter;
 use Twig\Environment;
 
 class ImageFilters extends AbstractExtension {
+
+    private const MIN_EXPECTED_SIZE_OPTIONS = 6;
+
     public function getFilters() {
         return [
             new TwigFilter('get_timber_image_responsive', [$this, 'getTimberImageResponsive'], ['needs_environment' => true]),
@@ -51,7 +54,7 @@ class ImageFilters extends AbstractExtension {
      */
     private function getImageSource(Image $image, $size) {
         try {
-            if(\SUPT\LesVertsImages::getSizes()[$size]) {
+            if(isset(\SUPT\LesVertsImages::getSizesWithFull()[$size])) {
                 $src = $image->src($size);
             }
             else {
@@ -73,13 +76,16 @@ class ImageFilters extends AbstractExtension {
         // First try WordPress core srcset generation
         $srcset = wp_get_attachment_image_srcset($image->ID, $size);
 
-        // If WordPress couldn't generate srcset, try to build one from legacy files
-        if (!$srcset) {
-            $srcset = \SUPT\buildLegacySrcset($image->ID);
+        $num_srcset_options = 0;
+        if ($srcset) {
+            $srcset_options = array_filter(array_map('trim', explode(',', $srcset)));
+            $num_srcset_options = count($srcset_options);
         }
 
-        $focal_point = $this->getFocalPoint($image);
-        $position = $this->mapFocalPointToPosition($focal_point);
+        if ($num_srcset_options < self::MIN_EXPECTED_SIZE_OPTIONS) {
+            // If WordPress couldn't generate srcset, try to build one from legacy files
+            $srcset = \SUPT\buildLegacySrcset($image->ID);
+        }
 
         $attributes = [
             'src' => esc_url($src),
@@ -87,13 +93,10 @@ class ImageFilters extends AbstractExtension {
             'data-srcset' => $srcset,   // Data-srcset for lazy loading JavaScript
             'sizes' => '100vw',
             'loading' => 'lazy',
-            'style' => sprintf(
-                'object-fit: cover; object-position: %s; width: 100%%; height: 100%%;',
-                esc_attr($position)
-            ),
             'alt' => !empty($attr['alt']) ? $attr['alt'] : ''
         ];
 
+        $focal_point = $this->getFocalPoint($image);
         $attributes['data-focal-point'] = $focal_point;
 
         $attributes = array_merge($attributes, $attr);
@@ -125,26 +128,6 @@ class ImageFilters extends AbstractExtension {
 
         // Default to center if no focal point is set
         return !empty($focal_point) ? $focal_point : 'center';
-    }
-
-    /**
-     * Map focal point to CSS object-position value
-     *
-     * @param string $focal_point Focal point value from ACF (e.g., 'top-left', 'center-center')
-     * @return string CSS object-position value (e.g., 'left top', 'center center')
-     */
-    private function mapFocalPointToPosition($focal_point) {
-        if (!function_exists('acf_get_field')) {
-            return 'center';
-        }
-
-        $field = acf_get_field('focal_point');
-
-        if (empty($field) || !isset($field['choices'][$focal_point])) {
-            return 'center';
-        }
-
-        return $field['choices'][$focal_point];
     }
 
     private function initializeImage($image) {
