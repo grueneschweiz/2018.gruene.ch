@@ -65,7 +65,7 @@ class ImageFilters extends AbstractExtension {
     }
 
     /**
-     * Build HTML attributes st§ring from image data
+     * Build HTML attributes string from image data
      */
     private function buildHtmlAttributes(Image $image, $src, $size, $attr) {
         // First try WordPress core srcset generation
