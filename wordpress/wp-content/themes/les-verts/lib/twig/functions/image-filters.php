@@ -16,7 +16,6 @@ class ImageFilters extends AbstractExtension {
         return [
             new TwigFilter('get_timber_image_responsive', [$this, 'getTimberImageResponsive'], ['needs_environment' => true]),
             new TwigFilter('resize', [$this, 'resize']),
-            new TwigFilter('timber_image', [$this, 'timberImage'], ['needs_environment' => true]),
         ];
     }
 
@@ -74,7 +73,7 @@ class ImageFilters extends AbstractExtension {
 
         // If WordPress couldn't generate srcset, try to build one from legacy files
         if (!$srcset) {
-            $srcset = $this->buildLegacySrcset($image->ID, $size);
+            $srcset = \SUPT\buildLegacySrcset($image->ID);
         }
 
         $focal_point = $this->getFocalPoint($image);
@@ -105,31 +104,6 @@ class ImageFilters extends AbstractExtension {
         }
 
         return implode(' ', $html_attributes);
-    }
-
-    private function buildLegacySrcset($image_id, $size) {
-        // Get all defined image sizes from LesVertsImages
-        $all_sizes = \SUPT\LesVertsImages::getSizes();
-        $srcset_parts = [];
-
-        foreach ($all_sizes as $size_name => $width) {
-            // Try to find legacy image for this size
-            $legacy_result = \SUPT\find_legacy_image($image_id, $size_name);
-
-            if ($legacy_result && is_array($legacy_result)) {
-                // Extract URL and width from the result
-                $url = $legacy_result[0];
-                $actual_width = $legacy_result[1]; // Actual width from getimagesize()
-
-                // Add to srcset if we have valid data
-                if ($url && $actual_width) {
-                    $srcset_parts[] = esc_url($url) . ' ' . $actual_width . 'w';
-                }
-            }
-        }
-
-        // Return the built srcset or empty string
-        return !empty($srcset_parts) ? implode(', ', $srcset_parts) : '';
     }
 
     /**
@@ -208,22 +182,6 @@ class ImageFilters extends AbstractExtension {
         );
 
         return $resized ?: $image->src();
-    }
-
-    public function timberImage(Environment $env, $image, $size = 'regular', $crop = 'default') {
-        if (empty($image)) {
-            return '';
-        }
-
-        if (is_numeric($image) || is_string($image)) {
-            $image = new Image($image);
-        }
-
-        if (!($image instanceof Image)) {
-            return '';
-        }
-
-        return $image->src($size);
     }
 
     // getName() is deprecated in Twig 3.x, but we keep it for backward compatibility

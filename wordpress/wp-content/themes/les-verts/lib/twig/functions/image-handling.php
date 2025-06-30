@@ -12,21 +12,6 @@ use SUPT\Twig\ImageFilters;
 use Twig\TwigFilter;
 use Twig\Environment;
 
-add_filter('get_twig', function($twig) {
-    $image_filters = new ImageFilters();
-
-    $twig->addFilter(
-        new TwigFilter( 'get_timber_image_responsive',
-            function (Environment $env, $image, $size = 'medium') use ($image_filters) {
-                return $image_filters->getTimberImageResponsive($env, $image, $size);
-            },
-            ['needs_environment' => true]
-        )
-    );
-
-    return $twig;
-}, 10);
-
 /**
  * Global image size definitions
  */
@@ -47,6 +32,10 @@ class LesVertsImages {
     public static function getFullSizeWidth() {
         return 2560;
     }
+
+    public static function getPNGMaxSize() {
+        return 3 * 1024 * 1024; // 3MB in bytes
+    }
 }
 
 // Set threshold to 2560px as largest version of the image to store
@@ -56,58 +45,19 @@ add_filter('big_image_size_threshold', function() {
 });
 
 /**
- * PNG upload restriction: Reject PNGs wider than 2560px for faster processing
- * Forces users to resize large PNGs before upload, avoiding slow server processing
- */
-add_filter('wp_handle_upload_prefilter', 'SUPT\restrict_large_png_uploads');
-function restrict_large_png_uploads($file) {
-    // Only check PNG files
-    if (!isset($file['type']) || $file['type'] !== 'image/png') {
-        return $file;
-    }
-
-    // Only process if file exists and is valid
-    if (!isset($file['tmp_name']) || !file_exists($file['tmp_name'])) {
-        return $file;
-    }
-
-    // Get image dimensions quickly
-    $image_info = getimagesize($file['tmp_name']);
-    if (!$image_info) {
-        return $file; // Let WordPress handle invalid files
-    }
-
-    // Check if PNG is too wide
-    if ($image_info[0] > LesVertsImages::getFullSizeWidth()) {
-        // Reject the upload with clear error message
-        $file['error'] = sprintf(
-            'PNG images must be %dx%d pixels or less. Your image is %dx%d pixels. Please resize it or use a JPG format.',
-            LesVertsImages::getFullSizeWidth(),
-            LesVertsImages::getFullSizeWidth(),
-            $image_info[0],
-            $image_info[1]
-        );
-    }
-
-    return $file;
-}
-
-
-/**
  * Configure WordPress core media sizes programmatically
- * This sets the values shown in Settings > Media
  */
 add_action('after_setup_theme', 'SUPT\les_verts_configure_wordpress_media_sizes');
 function les_verts_configure_wordpress_media_sizes() {
-    // Set WordPress core image sizes (Settings > Media)
+    // WordPress core image sizes can be set in Settings > Media, but we override them here
     update_option('thumbnail_size_w', 150);
     update_option('thumbnail_size_h', 150);
     update_option('thumbnail_crop', 1); // Crop thumbnails
 
-    update_option('medium_size_w', 790);  // Our main responsive size!
+    update_option('medium_size_w', 790);  // Our main responsive size
     update_option('medium_size_h', 0);    // Height 0 = proportional
 
-    update_option('large_size_w', 1024);  // Updated to match LesVertsImages
+    update_option('large_size_w', 1024);
     update_option('large_size_h', 0);     // Height 0 = proportional
 }
 
@@ -117,10 +67,8 @@ function les_verts_configure_wordpress_media_sizes() {
  */
 add_action('after_setup_theme', 'SUPT\les_verts_image_handling_setup');
 function les_verts_image_handling_setup() {
-    // First: Clean up unwanted sizes actively
     les_verts_clean_unwanted_sizes();
 
-    // Then: Register our desired sizes
     $sizes = LesVertsImages::getSizes();
     foreach ($sizes as $size_name => $width) {
         add_image_size($size_name, $width, 0, false);
@@ -163,9 +111,96 @@ function les_verts_clean_unwanted_sizes() {
 }
 
 /**
- * --- This part is for compatibility with legacy Timmy image handling ---
- * --- If most of the images have been uploaded with the new image handling, remove this part ---
- * --- This fix is implemented in july 2025 ---
+ * PNG upload restriction: Reject PNGs wider than 2560px for faster processing
+ * Forces users to resize large PNGs before upload, avoiding slow server processing
+ */
+add_filter('wp_handle_upload_prefilter', 'SUPT\restrict_large_png_uploads');
+function restrict_large_png_uploads($file) {
+    // Only check PNG files
+    if (!isset($file['type']) || $file['type'] !== 'image/png') {
+        return $file;
+    }
+
+    // Only process if file exists and is valid
+    if (!isset($file['tmp_name']) || !file_exists($file['tmp_name'])) {
+        return $file;
+    }
+
+    // Check file size first (faster than dimension check)
+    if (isset($file['size']) && $file['size'] > LesVertsImages::getPNGMaxSize()) {
+        $file['error'] = sprintf(
+            'PNG images must be smaller than %dMB. Your file is %.1fMB. Please compress it or use a JPG format.',
+            LesVertsImages::getPNGMaxSize() / (1024 * 1024),
+            $file['size'] / (1024 * 1024)
+        );
+        return $file;
+    }
+
+    // Get image dimensions
+    $image_info = getimagesize($file['tmp_name']);
+    if (!$image_info) {
+        return $file; // Let WordPress handle invalid files
+    }
+
+    // Check if PNG is too wide
+    if ($image_info[0] > LesVertsImages::getFullSizeWidth()) {
+        // Reject the upload with clear error message
+        $file['error'] = sprintf(
+            'PNG images must be %dx%d pixels or less. Your image is %dx%d pixels. Please resize it or use a JPG format.',
+            LesVertsImages::getFullSizeWidth(),
+            LesVertsImages::getFullSizeWidth(),
+            $image_info[0],
+            $image_info[1]
+        );
+    }
+
+    return $file;
+}
+
+/**
+ * Skip all image scaling for PNG files - use original only
+ * We use Smushit for image optimization anyways
+ */
+add_filter('intermediate_image_sizes_advanced', 'SUPT\skip_png_scaling', 10, 2);
+function skip_png_scaling($sizes, $metadata) {
+    // Check if this is a PNG file
+    if (isset($metadata['file']) &&
+        preg_match('/\.png$/i', $metadata['file'])) {
+        // Return empty array = no intermediate sizes generated
+        return [];
+    }
+
+    return $sizes;
+}
+
+/**
+ * Add image filters to Twig
+ */
+add_filter('get_twig', function($twig) {
+    $image_filters = new ImageFilters();
+
+    $twig->addFilter(
+        new TwigFilter( 'get_timber_image_responsive',
+            function (Environment $env, $image, $size = 'medium') use ($image_filters) {
+                return $image_filters->getTimberImageResponsive($env, $image, $size);
+            },
+            ['needs_environment' => true]
+        )
+    );
+
+    return $twig;
+}, 10);
+
+/**
+ * LEGACY COMPATIBILITY: Support for old Timmy plugin image files
+ *
+ * Background: This site previously used the Timmy plugin for image processing.
+ * We migrated to WordPress core image handling in July 2025 for better performance and less dependencies.
+ *
+ * This fallback code ensures old images still work while new uploads use the new system.
+ * Once all legacy images are phased out, this entire section can be safely removed.
+ *
+ * Migration status: Mixed (legacy files still exist, new uploads use WordPress format)
  *
  * Example of legacy Timmy file names:
  * custom_palette-1-150x0-c-default.png  rgb_palette-1-1200x0-c-default.png  rgb_palette-1-20x0-c-default.png    rgb_palette-1-790x0-c-default.png
@@ -392,4 +427,28 @@ function getScaledImage($metadata, $pathinfo, $upload_dir) {
     }
 
     return false;
+}
+
+function buildLegacySrcset($image_id) {
+    // Get all defined image sizes from LesVertsImages
+    $srcset_parts = [];
+
+    foreach (LesVertsImages::getSizes() as $size_name => $width) {
+        // Try to find legacy image for this size
+        $legacy_result = find_legacy_image($image_id, $size_name);
+
+        if ($legacy_result && is_array($legacy_result)) {
+            // Extract URL and width from the result
+            $url = $legacy_result[0];
+            $actual_width = $legacy_result[1]; // Actual width from getimagesize()
+
+            // Add to srcset if we have valid data
+            if ($url && $actual_width) {
+                $srcset_parts[] = esc_url($url) . ' ' . $actual_width . 'w';
+            }
+        }
+    }
+
+    // Return the built srcset or empty string
+    return !empty($srcset_parts) ? implode(', ', $srcset_parts) : '';
 }
