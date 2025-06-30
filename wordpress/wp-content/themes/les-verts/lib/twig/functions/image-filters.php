@@ -43,10 +43,12 @@ class ImageFilters extends AbstractExtension {
             return '';
         }
 
-        // Build and return HTML attributes
         return $this->buildHtmlAttributes($image, $src, $size, $attr);
     }
 
+    /**
+     * Get the source URL via the wordpress core src() method
+     */
     private function getImageSource(Image $image, $size) {
         try {
             if(\SUPT\LesVertsImages::getSizes()[$size]) {
@@ -65,7 +67,7 @@ class ImageFilters extends AbstractExtension {
     }
 
     /**
-     * Build HTML attributes string from image data
+     * Build HTML attributes from image data
      */
     private function buildHtmlAttributes(Image $image, $src, $size, $attr) {
         // First try WordPress core srcset generation
