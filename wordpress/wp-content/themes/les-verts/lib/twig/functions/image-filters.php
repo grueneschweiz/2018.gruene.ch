@@ -20,14 +20,19 @@ class ImageFilters extends AbstractExtension {
         ];
     }
 
-    public function getTimberImageResponsive(Environment $env, $image, $size = 'regular', $attr = []) {
+    public function getTimberImageResponsive(Environment $env, $image, $size = 'medium', $attr = []) {
         $image = $this->initializeImage($image);
         if (empty($image)) {
             return '';
         }
 
+        // Handle 'full-width' references
+        if ($size === 'full-width') {
+            $size = 'full';
+        }
+
         if(!is_string($size)) {
-            $size = 'regular';
+            $size = 'medium';
         }
 
         if(!is_array($attr)) {
@@ -49,7 +54,7 @@ class ImageFilters extends AbstractExtension {
                 $src = $image->src($size);
             }
             else {
-                $src = $image->src('regular');
+                $src = $image->src('medium');
             }
             if ($src) return $src;
 

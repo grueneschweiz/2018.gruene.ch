@@ -17,7 +17,7 @@ add_filter('get_twig', function($twig) {
 
     $twig->addFilter(
         new TwigFilter( 'get_timber_image_responsive',
-            function (Environment $env, $image, $size = 'full-width') use ($image_filters) {
+            function (Environment $env, $image, $size = 'medium') use ($image_filters) {
                 return $image_filters->getTimberImageResponsive($env, $image, $size);
             },
             ['needs_environment' => true]
@@ -33,30 +33,95 @@ add_filter('get_twig', function($twig) {
 class LesVertsImages {
     public static function getSizes() {
         return [
-            'thumbnail' => 150,
-            'small' => 400,
-            'medium' => 640,
-            'regular' => 790,
-            'large' => 1200,
-            'huge' => 1580,
-            'full-width' => 2560
+            // Wordpress core sizes can be set via Settings > Media
+            'thumbnail' => 150,    // WordPress: thumbnail_size_w
+            'small' => 400,        // Timmy: 400x0
+            'medium' => 790,       // WordPress: medium_size_w (our main responsive size)
+            'large' => 1024,       // WordPress: large_size_w
+            'extra-large' => 1200, // Timmy: 1200x0
+            'huge' => 1580         // Timmy: 1580x0
         ];
+    }
+
+    // We use WP built in "full" keyword, matching Timmy's 2560x0
+    public static function getFullSizeWidth() {
+        return 2560;
     }
 }
 
-// Set threshold to 4K resolution instead of default 2560px
+// Set threshold to 2560px as largest version of the image to store
+// These images are stored with the "scaled" suffix, if they are larger than 2560px
 add_filter('big_image_size_threshold', function() {
-    return 3840; // 4K width
+    return LesVertsImages::getFullSizeWidth();
 });
 
 /**
+ * PNG upload restriction: Reject PNGs wider than 2560px for faster processing
+ * Forces users to resize large PNGs before upload, avoiding slow server processing
+ */
+add_filter('wp_handle_upload_prefilter', 'SUPT\restrict_large_png_uploads');
+function restrict_large_png_uploads($file) {
+    // Only check PNG files
+    if (!isset($file['type']) || $file['type'] !== 'image/png') {
+        return $file;
+    }
+
+    // Only process if file exists and is valid
+    if (!isset($file['tmp_name']) || !file_exists($file['tmp_name'])) {
+        return $file;
+    }
+
+    // Get image dimensions quickly
+    $image_info = getimagesize($file['tmp_name']);
+    if (!$image_info) {
+        return $file; // Let WordPress handle invalid files
+    }
+
+    // Check if PNG is too wide
+    if ($image_info[0] > LesVertsImages::getFullSizeWidth()) {
+        // Reject the upload with clear error message
+        $file['error'] = sprintf(
+            'PNG images must be %dx%d pixels or less. Your image is %dx%d pixels. Please resize it or use a JPG format.',
+            LesVertsImages::getFullSizeWidth(),
+            LesVertsImages::getFullSizeWidth(),
+            $image_info[0],
+            $image_info[1]
+        );
+    }
+
+    return $file;
+}
+
+
+/**
+ * Configure WordPress core media sizes programmatically
+ * This sets the values shown in Settings > Media
+ */
+add_action('after_setup_theme', 'SUPT\les_verts_configure_wordpress_media_sizes');
+function les_verts_configure_wordpress_media_sizes() {
+    // Set WordPress core image sizes (Settings > Media)
+    update_option('thumbnail_size_w', 150);
+    update_option('thumbnail_size_h', 150);
+    update_option('thumbnail_crop', 1); // Crop thumbnails
+
+    update_option('medium_size_w', 790);  // Our main responsive size!
+    update_option('medium_size_h', 0);    // Height 0 = proportional
+
+    update_option('large_size_w', 1024);  // Updated to match LesVertsImages
+    update_option('large_size_h', 0);     // Height 0 = proportional
+}
+
+/**
  * Setup image sizes and configurations
+ * This runs on every page load to ensure consistent size management
  */
 add_action('after_setup_theme', 'SUPT\les_verts_image_handling_setup');
 function les_verts_image_handling_setup() {
-    $sizes = LesVertsImages::getSizes();
+    // First: Clean up unwanted sizes actively
+    les_verts_clean_unwanted_sizes();
 
-    // Register image sizes using simple names
+    // Then: Register our desired sizes
+    $sizes = LesVertsImages::getSizes();
     foreach ($sizes as $size_name => $width) {
         add_image_size($size_name, $width, 0, false);
     }
@@ -67,6 +132,34 @@ function les_verts_image_handling_setup() {
     // Set default image quality
     add_filter('jpeg_quality', function() { return 85; });
     add_filter('wp_editor_set_quality', function() { return 85; });
+}
+
+/**
+ * Actively clean up unwanted image sizes on every load
+ * This ensures WordPress only has the sizes we want
+ */
+function les_verts_clean_unwanted_sizes() {
+    // WordPress defaults we don't need
+    $unwanted_sizes = [
+        '1536x1536',        // WordPress default
+        '2048x2048',        // WordPress default
+        'post-thumbnail',   // Unused theme size
+        'medium_large',     // WordPress default (768px)
+        'medium-large',     // Alternative name
+    ];
+
+    // Remove from WordPress registry
+    foreach ($unwanted_sizes as $size) {
+        remove_image_size($size);
+    }
+
+    // Clean up global array (more thorough)
+    global $_wp_additional_image_sizes;
+    foreach ($unwanted_sizes as $size) {
+        if (isset($_wp_additional_image_sizes[$size])) {
+            unset($_wp_additional_image_sizes[$size]);
+        }
+    }
 }
 
 /**
@@ -299,48 +392,4 @@ function getScaledImage($metadata, $pathinfo, $upload_dir) {
     }
 
     return false;
-}
-
-/**
- * One-time migration to clean up legacy image sizes
- * This will run once and then never again
- */
-add_action('init', function() {
-    $migration_key = 'les_verts_image_cleanup_20250701';
-
-    // Check if migration has already run
-    if (get_option($migration_key, false)) {
-        return; // Already completed, skip
-    }
-
-    // Perform the cleanup
-    les_verts_cleanup_legacy_image_sizes();
-
-    // Mark migration as completed
-    update_option($migration_key, true);
-});
-
-/**
- * Clean up legacy image sizes and WordPress defaults we don't need
- */
-function les_verts_cleanup_legacy_image_sizes() {
-    // Remove WordPress default sizes we don't need based on production audit
-    $legacy_sizes = [
-        '1536x1536',     // WordPress default large size
-        '2048x2048',     // WordPress default extra large size
-        'post-thumbnail' // Unused theme size (0x0)
-    ];
-
-    foreach ($legacy_sizes as $size) {
-        remove_image_size($size);
-    }
-
-    // Optional: Clean up database entries for these sizes
-    // This removes them from the global $_wp_additional_image_sizes array
-    global $_wp_additional_image_sizes;
-    foreach ($legacy_sizes as $size) {
-        if (isset($_wp_additional_image_sizes[$size])) {
-            unset($_wp_additional_image_sizes[$size]);
-        }
-    }
 }

@@ -1,6 +1,6 @@
 {# accepted parameters:
 	image: id or TimberImage
-	size: optional. string. passible values 'full-width', 'regular'.
+	size: optional. string. passible values 'full-width', 'medium'.
 		if a size is given, the outer container must define the image boundaries.
 	link_url: optional. string.
 	target: optional. string.
@@ -11,7 +11,7 @@
 #}
 {% set img = TimberImage(image) %}
 {% if not size %}
-	{% set size = 'regular' %}
+	{% set size = 'medium' %}
 	{% set no_crop = 1 %}
 {% endif %}
 {% if img.focal_point %}
