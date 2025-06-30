@@ -19,7 +19,7 @@
 		<div class="m-front-article__image">
 			{% include 'atoms/a-image.twig' with {
 				'image': post.main_content_header_image > 0 and not is_front ? post.main_content_header_image : post.campaign_image,
-				'size': 'regular',
+				'size': 'medium',
 				'link_url': post.link(),
 				'no_caption': 1
 			} only %}

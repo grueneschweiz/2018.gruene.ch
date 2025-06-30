@@ -1,6 +1,6 @@
 {# accepted parameters:
 	image: id or TimberImage
-	size: optional. string. passible values 'full-width', 'regular'.
+	size: optional. string. passible values 'full-width', 'medium'.
 		if a size is given, the outer container must define the image boundaries.
 	link_url: optional. string.
 	target: optional. string.
@@ -11,7 +11,7 @@
 #}
 {% set img = TimberImage(image) %}
 {% if not size %}
-	{% set size = 'regular' %}
+	{% set size = 'medium' %}
 	{% set no_crop = 1 %}
 {% endif %}
 {% if img.focal_point %}
@@ -25,16 +25,16 @@
 
 		{% if not not_lazy %}
 		<noscript>{% endif %}
-			<img {{ image|failsafe_get_timer_image_responsive(size) }}
+			<img {{ img|get_timber_image_responsive(size) }}
 				class="a-image__image{% if not no_crop %} a-image__image--fp a-image__image--fp-{{ focal_point }}{% endif %}"
 				alt="{{ img.alt }}"
 			>
-			{% if not not_lazy %}</noscript>
+		{% if not not_lazy %}</noscript>
 		<div class="a-image__lazy-wrapper">
-			<img src="{{ img.src|resize(20) }}"
-				{{ image|failsafe_get_timer_image_responsive(size)|lazy }}
+			<img src="{{ img.src }}"
+				{{ img|get_timber_image_responsive(size) }}
 					 class="a-image__image a-image__image--lazy{% if no_crop %} a-image__image--no-crop{% else %} a-image__image--fp a-image__image--fp-{{ focal_point }}{% endif %}"
-					 alt="{{ img.alt }}"
+					 alt="{{ img.alt }}" loading="lazy"
 			>
 		</div>
 		{% endif %}
