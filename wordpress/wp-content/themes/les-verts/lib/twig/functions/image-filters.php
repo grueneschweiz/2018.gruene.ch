@@ -30,7 +30,7 @@ class ImageFilters extends AbstractExtension {
             $size = 'full';
         }
 
-        if(!is_string($size)) {
+        if(!is_string($size) || $size === 'regular') {
             $size = 'medium';
         }
 

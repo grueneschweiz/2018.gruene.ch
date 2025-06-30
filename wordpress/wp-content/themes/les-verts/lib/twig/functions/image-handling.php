@@ -223,8 +223,8 @@ function image_downsize_fallback($out, $attachment_id, $size) {
         return false;
     }
 
-    if(!is_string($size)) {
-        $size = 'regular';
+    if(!is_string($size) || $size === 'regular') {
+        $size = 'medium';
     }
 
     $upload_dir = wp_upload_dir();
