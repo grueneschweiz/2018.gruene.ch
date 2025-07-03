@@ -84,6 +84,6 @@ export default class AImageCover extends BaseView {
 
 		const zoom = iRatio > cRatio ? iRatio / cRatio : cRatio / iRatio;
 
-		img.sizes = cDims.width * zoom + 'px';
+		img.sizes = Math.min(cDims.width * zoom, window.innerWidth) + 'px';
 	}
 }

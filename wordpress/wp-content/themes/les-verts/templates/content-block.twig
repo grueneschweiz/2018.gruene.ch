@@ -32,6 +32,7 @@
 	<div class="page__image">
 		{% include 'atoms/a-image.twig' with {
 			'image': block.image.id,
+			'size': 'medium'
 		} only %}
 	</div>
 {% elseif block.acf_fc_layout == 'engagement_funnel' %}

@@ -80,7 +80,6 @@ if ( is_admin() ) {
 }
 
 require_once __DIR__ . '/admin/rest-disable-user.php';
-require_once __DIR__ . '/admin/timmy-config.php';
 require_once __DIR__ . '/admin/update-handler.php';
 
 /**
@@ -219,6 +218,8 @@ require_once __DIR__ . '/twig/functions/get_lang.php';
 require_once __DIR__ . '/twig/functions/register_timber_custom_post_types.php';
 require_once __DIR__ . '/twig/functions/get_people.php';
 require_once __DIR__ . '/twig/functions/link_props.php';
+require_once __DIR__ . '/twig/functions/image-filters.php';
+require_once __DIR__ . '/twig/functions/image-handling.php';
 
 // filters
 require_once __DIR__ . '/twig/filters/email.php';
@@ -233,7 +234,6 @@ require_once __DIR__ . '/twig/filters/l10n_date.php';
 require_once __DIR__ . '/twig/filters/esc_form_value.php';
 require_once __DIR__ . '/twig/filters/license.php';
 require_once __DIR__ . '/twig/filters/disableable_autop.php';
-require_once __DIR__ . '/twig/filters/failsafe_get_timer_image_responsive.php';
 
 /**
  * FORM LIBRARY

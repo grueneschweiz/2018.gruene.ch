@@ -7,13 +7,13 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - run: echo "Deployment triggered by a ${{ github.event_name }} event to the ${{ github.ref }} branch."
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
       - name: Add styleguide symlink
         run: ln -sf wordpress/wp-content/themes/les-verts/styleguide/ styleguide
 
       - name: Cache Composer dependencies
-        uses: actions/cache@v2
+        uses: actions/cache@v4
         with:
           path: /tmp/composer-cache
           key: ${{ runner.os }}-${{ hashFiles('**/composer.lock') }}
