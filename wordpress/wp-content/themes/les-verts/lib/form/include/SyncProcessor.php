@@ -45,14 +45,14 @@ class SyncProcessor {
                 return;
             }
         }
-        
+
         /** @var CrmQueueItem $item */
         foreach ($items as $item) {
             if (!$item->has_data()) {
                 Util::debug_log("submissionId={$item->get_submission_id()} msg=No data to save to CRM");
                 continue;
             }
-            
+
             try {
                 $processed = $processor->processItem($item);
                 $processor->updateQueue($queue, $item, $processed);
@@ -63,15 +63,34 @@ class SyncProcessor {
     }
 
     /**
+     * Extract simple data from CrmFieldData objects
+     *
+     * @param array $crm_field_data_objects Array of CrmFieldData objects
+     * @return array Simple key-value array
+     */
+    private function restructureFieldData(array $crm_field_data_objects): array {
+        $data = array();
+        foreach ($crm_field_data_objects as $crm_field_data) {
+            if ($crm_field_data instanceof CrmFieldData) {
+                $data[$crm_field_data->get_key()] = $crm_field_data->get_value();
+            }
+        }
+        return $data;
+    }
+
+    /**
      * Process a single queue item
      *
      * @param CrmQueueItem $item Queue item to process
      * @return bool Whether the item was successfully processed
      */
     private function processItem(CrmQueueItem $item): bool {
+        $data = $item->get_data();
+        $data = $this->restructureFieldData($data);
+
         // Try CRM first if available
         if ($this->canSyncToCrm && $this->crmDao) {
-            $processed = $this->processCrmItem($item);
+            $processed = $this->maybeSendToCrmSaver($item, $data);
             if ($processed) {
                 return true;
             }
@@ -79,7 +98,7 @@ class SyncProcessor {
 
         // If not processed by CRM and Mailchimp is configured, try Mailchimp
         if ($this->canSyncToMailchimp) {
-            $processed = $this->processMailchimpItem($item);
+            $processed = $this->sendToMailchimpSaver($item, $data);
             if ($processed) {
                 return true;
             }
@@ -92,25 +111,24 @@ class SyncProcessor {
      * Process an item with the CRM
      *
      * @param CrmQueueItem $item Queue item to process
+     * @param array $data Extracted simple data array
      * @return bool Whether the item was successfully processed
      */
-    private function processCrmItem(CrmQueueItem $item): bool {
-        $data = $item->get_data();
-        
+    private function maybeSendToCrmSaver(CrmQueueItem $item, array $data): bool {
         $match = $this->crmDao->match($data);
-        
+
         if (!isset($match['status']) || $match['status'] === CrmDao::MATCH_NONE) {
             return false;
         }
-        
+
         $crm_saver = new CrmSaver();
         $result = $crm_saver->save_to_crm($data, $this->crmDao, $match);
         $processed = $result !== false;
-        
+
         if ($processed) {
             Util::debug_log("submissionId={$item->get_submission_id()} msg=Processed by CRM");
         }
-        
+
         return $processed;
     }
 
@@ -118,16 +136,17 @@ class SyncProcessor {
      * Process an item with Mailchimp
      *
      * @param CrmQueueItem $item Queue item to process
+     * @param array $data Extracted simple data array
      * @return bool Whether the item was successfully processed
      */
-    private function processMailchimpItem(CrmQueueItem $item): bool {
-        $result = MailchimpSaver::send_to_mailchimp($item->get_data());
+    private function sendToMailchimpSaver(CrmQueueItem $item, array $data): bool {
+        $result = MailchimpSaver::send_to_mailchimp($data);
         $processed = $result !== false;
-        
+
         if ($processed) {
             Util::debug_log("submissionId={$item->get_submission_id()} msg=Processed by Mailchimp");
         }
-        
+
         return $processed;
     }
 
@@ -147,11 +166,11 @@ class SyncProcessor {
         } else {
             $item->add_attempt();
             $queue->push_if_not_in_queue($item);
-            
+
             Util::debug_log("submissionId={$item->get_submission_id()} msg=Processing failed, will retry. attempts={$item->get_attempts()}");
         }
     }
-    
+
     public static function add_cron_schedule($schedules) {
         $schedules['every_minute'] = [
             'interval' => 60,
