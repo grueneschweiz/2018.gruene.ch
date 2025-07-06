@@ -8,166 +8,272 @@ require_once __DIR__ . '/MailchimpSaver.php';
 require_once __DIR__ . '/Util.php';
 require_once __DIR__ . '/QueueDao.php';
 require_once __DIR__ . '/CrmQueueItem.php';
-require_once __DIR__ . '/SubmissionModel.php';
+require_once __DIR__ . '/CrmMaxSyncsException.php';
 
 class SyncProcessor {
-    const QUEUE_KEY = 'sync_save';
-    const CRON_HOOK_SYNC_SAVE = 'supt_form_save_to_sync';
-    const CRON_SYNC_SAVE_INTERVAL = 'every_minute';
-    const MAX_BATCH_SIZE = 200;
+    const CRON_HOOK_CRM_MC_SAVE = 'supt_form_save_to_crm';
+    const CRON_SYNC_SAVE_INTERVAL = 'every_ten_minutes';
+    const CRON_SYNC_SAVE_INTERVAL_SECONDS = 10 * MINUTE_IN_SECONDS;
+    const MAX_BATCH_SIZE = 30;
+    const CRM_MAX_SYNCS_PER_RUN = 15;
     const MAX_SAVE_ATTEMPTS = 5;
+    const MIN_ATTEMPT_TIMEOUT = 19 * MINUTE_IN_SECONDS;
+    const CRON_LOCK_KEY = 'sync_processor_lock';
+    const CRON_LOCK_TIMEOUT = 9 * MINUTE_IN_SECONDS;
 
-    private CrmDao $crmDao;
-    private bool $canSyncToCrm = false;
-    private bool $canSyncToMailchimp = false;
+    const MSG_ITEM_NO_DATA = "Item has no data";
+    const MSG_ITEM_MAX_ATTEMPTS = "Item was processed more than " . self::MAX_SAVE_ATTEMPTS . " times. " .
+    "Has been removed from the queue.";
+
+    private CrmDao $crm_dao;
+    private QueueDao $queue;
+    private int $crm_sync_count = 0;
+    private bool $can_sync_to_crm = false;
+    private bool $can_sync_to_mailchimp = false;
 
     public function __construct() {
-        $this->canSyncToCrm = CrmDao::has_api_url();
-        $this->canSyncToMailchimp = MailchimpSaver::has_mailchimp_api_key();
+        $this->can_sync_to_crm = CrmDao::has_api_url();
+        $this->can_sync_to_mailchimp = MailchimpSaver::has_mailchimp_api_key();
     }
 
     public static function process_queue() {
         $processor = new self();
 
-        $queue = new QueueDao(self::QUEUE_KEY);
-        $items = array_slice($queue->get_all(), 0, self::MAX_BATCH_SIZE);
-
-        // If neither sync option is available, nothing to do
-        if (!$processor->canSyncToCrm && !$processor->canSyncToMailchimp) {
+        if (!$processor->can_sync_to_crm && !$processor->can_sync_to_mailchimp) {
+            Util::remove_cron( self::CRON_HOOK_CRM_MC_SAVE );
             return;
         }
 
-        if ($processor->canSyncToCrm) {
-            try {
-                $processor->crmDao = new CrmDao();
-            } catch (\Exception $e) {
-                Util::send_mail_to_admin("Error: permanent CRM authentication failure.", $e->getMessage());
+        if (!$processor->acquire_lock()) {
+            return;
+        }
+
+        try {
+            $processor->queue = new QueueDao(SyncEnqueuer::QUEUE_KEY);
+            $items = array_slice($processor->queue->get_all(), 0, self::MAX_BATCH_SIZE);
+
+            if (empty($items)) {
                 return;
             }
-        }
-        
-        /** @var CrmQueueItem $item */
-        foreach ($items as $item) {
-            if (!$item->has_data()) {
-                Util::debug_log("submissionId={$item->get_submission_id()} msg=No data to save to CRM");
-                continue;
+
+            if ($processor->can_sync_to_crm) {
+                try {
+                    $processor->crm_dao = new CrmDao();
+                } catch (\Exception $e) {
+                    $first_item = $items[0] ?? null;
+                    $submission = ($first_item instanceof CrmQueueItem) ? $first_item->get_submission_id() : "(submission id not found)";
+                    CrmSaver::send_permanent_error_notification($submission, $e->getMessage());
+                    return;
+                }
             }
-            
-            try {
-                $processed = $processor->processItem($item);
-                $processor->updateQueue($queue, $item, $processed);
-            } catch (\Exception $e) {
-                Util::report_form_error('sync queue process', $item, $e, null);
+
+            /** @var CrmQueueItem $item */
+            foreach ($items as $item) {
+                if($processor->too_many_attempts($item)) {
+                    continue;
+                }
+
+                if (!$item->has_data()) {
+                    Util::report_form_error('sync queue process', $item, new \Exception(self::MSG_ITEM_NO_DATA), null);
+                    $processor->update_queue($item, true);
+                    continue;
+                }
+
+                try {
+                    $processed = $processor->process_item($item);
+                    $processor->update_queue($item, $processed);
+                }
+                catch (CrmMaxSyncsException $e) {
+                    Util::debug_log("submissionId={$item->get_submission_id()} msg=Too many CRM syncs per run. Ending this run.");
+                    return;
+                } catch (\Exception $e) {
+                    Util::report_form_error('sync queue process', $item, $e, null);
+                    $processor->update_queue($item, false);
+                }
             }
+
+            $processor->schedule_next_batch();
+        } finally {
+            $processor->release_lock();
         }
     }
 
     /**
-     * Process a single queue item
+     * (Re)schedule the CRM-MC save cron job if not already scheduled
+     * or if the next run is too far in the future.
      *
-     * @param CrmQueueItem $item Queue item to process
-     * @return bool Whether the item was successfully processed
+     * The checks ensure that the cron job respects the current (shortened)
+     * interval after a configuration update.
      */
-    private function processItem(CrmQueueItem $item): bool {
-        // Try CRM first if available
-        if ($this->canSyncToCrm && $this->crmDao) {
-            $processed = $this->processCrmItem($item);
-            if ($processed) {
-                return true;
-            }
+    public static function schedule_cron() {
+        Util::add_cron(self::CRON_HOOK_CRM_MC_SAVE, time() - 1, self::CRON_SYNC_SAVE_INTERVAL);
+    }
+
+    /**
+     * Get the queue without any filtering
+     */
+    public static function get_queue(): QueueDao {
+        return new QueueDao(SyncEnqueuer::QUEUE_KEY);
+    }
+
+    /**
+     * Try to acquire the processing lock
+     *
+     * @return bool True if lock was acquired, false if already locked
+     */
+    private function acquire_lock(): bool {
+        if (get_transient(self::CRON_LOCK_KEY)) {
+            Util::debug_log("msg=Sync processor already running, skipping this execution");
+            return false;
         }
 
-        // If not processed by CRM and Mailchimp is configured, try Mailchimp
-        if ($this->canSyncToMailchimp) {
-            $processed = $this->processMailchimpItem($item);
-            if ($processed) {
-                return true;
+        return set_transient(self::CRON_LOCK_KEY, true, self::CRON_LOCK_TIMEOUT);
+    }
+
+    /**
+     * Release the processing lock
+     */
+    private function release_lock(): void {
+        delete_transient(self::CRON_LOCK_KEY);
+    }
+
+    /**
+     * Extract simple data from CrmFieldData objects
+     *
+     * @param array $crm_field_data_objects Array of CrmFieldData objects
+     * @return array Simple key-value array
+     */
+    private function restructure_field_data(array $crm_field_data_objects): array {
+        $data = array();
+        foreach ($crm_field_data_objects as $crm_field_data) {
+            if ($crm_field_data instanceof CrmFieldData) {
+                $data[$crm_field_data->get_key()] = $crm_field_data->get_value();
             }
+        }
+        return $data;
+    }
+
+    /**
+     * Check if the item should be processed
+     *
+     * @param CrmQueueItem $item The item to check
+     * @return bool True if the item should be processed, false otherwise
+     */
+    private function too_many_attempts(CrmQueueItem $item) {
+        if ( $item->get_attempts() >= self::MAX_SAVE_ATTEMPTS ) {
+            Util::debug_log( "submissionId={$item->get_submission_id()} msg=Too many attempts. Skipping." );
+            return true;
+        }
+
+        if ( $item->last_attempt_seconds_ago() &&
+             $item->last_attempt_seconds_ago() < self::MIN_ATTEMPT_TIMEOUT ) {
+            Util::debug_log( "submissionId={$item->get_submission_id()} msg=Last attempt only {$item->last_attempt_seconds_ago()} seconds ago. Skipping." );
+            return true;
         }
 
         return false;
     }
 
     /**
-     * Process an item with the CRM
+     * Process a single queue item
      *
-     * @param CrmQueueItem $item Queue item to process
-     * @return bool Whether the item was successfully processed
+     * @param CrmQueueItem $item The queue item to process
+     * @return bool True if the item was processed successfully, false otherwise
+     * @throws Exception If an error occurs during matching or saving
+     * @throws CrmMaxSyncsException If the maximum number of CRM syncs per run is exceeded
      */
-    private function processCrmItem(CrmQueueItem $item): bool {
-        $data = $item->get_data();
-        
-        $match = $this->crmDao->match($data);
-        
-        if (!isset($match['status']) || $match['status'] === CrmDao::MATCH_NONE) {
-            return false;
+    private function process_item(CrmQueueItem $item): bool {
+        $crm_field_data_objects = $item->get_data();
+        $simple_data = $this->restructure_field_data($crm_field_data_objects);
+
+        $new_contacts_to_crm = !$this->can_sync_to_mailchimp || $this->should_force_crm_sync($item);
+
+        // Try to match in CRM
+        if ($this->can_sync_to_crm) {
+            $match = $this->crm_dao->match($crm_field_data_objects);
+            if ($this->is_valid_crm_match($match) || $new_contacts_to_crm) {
+                if($this->crm_sync_count >= self::CRM_MAX_SYNCS_PER_RUN) {
+                    throw new CrmMaxSyncsException();
+                }
+                $this->crm_sync_count++;
+                if (CrmSaver::save_to_crm($crm_field_data_objects, $this->crm_dao, $match, $new_contacts_to_crm)) {
+                    Util::logProcessed($item, 'CRM');
+                    return true;
+                }
+            }
         }
-        
-        $crm_saver = new CrmSaver();
-        $result = $crm_saver->save_to_crm($data, $this->crmDao, $match);
-        $processed = $result !== false;
-        
-        if ($processed) {
-            Util::debug_log("submissionId={$item->get_submission_id()} msg=Processed by CRM");
+
+        // If not matched in CRM and Mailchimp is configured, send to Mailchimp
+        if (!$new_contacts_to_crm) {
+            MailchimpSaver::send_to_mailchimp($simple_data);
+            Util::logProcessed($item, 'Mailchimp');
+            return true;
         }
-        
-        return $processed;
+
+        return false;
     }
 
     /**
-     * Process an item with Mailchimp
+     * Check if the form should be forced to sync to CRM
      *
-     * @param CrmQueueItem $item Queue item to process
-     * @return bool Whether the item was successfully processed
+     * @param CrmQueueItem $item The item to get the form id from
+     * @return bool True if the form has the 'force_crm_sync' option set
      */
-    private function processMailchimpItem(CrmQueueItem $item): bool {
-        $result = MailchimpSaver::send_to_mailchimp($item->get_data());
-        $processed = $result !== false;
-        
-        if ($processed) {
-            Util::debug_log("submissionId={$item->get_submission_id()} msg=Processed by Mailchimp");
-        }
-        
-        return $processed;
+    private function should_force_crm_sync(CrmQueueItem $item): bool {
+        return $this->can_sync_to_crm && (bool) get_field('force_crm_sync', $item->get_form_id());
+    }
+
+    /**
+     * Check if the CRM match result indicates a valid match
+     *
+     * @param array $match The match result from CRM
+     * @return bool True if there's a valid match, false otherwise
+     */
+    private function is_valid_crm_match(array $match): bool {
+        return isset($match['status']) && $match['status'] !== CrmDao::MATCH_NONE;
     }
 
     /**
      * Update the queue based on processing result
      *
-     * @param QueueDao $queue Queue data access object
      * @param CrmQueueItem $item Queue item that was processed
      * @param bool $processed Whether the item was successfully processed
      */
-    private function updateQueue(QueueDao $queue, CrmQueueItem $item, bool $processed): void {
-        // Remove from queue if processed or max attempts reached
-        if ($processed || ($item->get_attempts() ?? 0) >= self::MAX_SAVE_ATTEMPTS) {
-            $queue->filter(function($q_item) use ($item) {
-                return $q_item->get_submission_id() !== $item->get_submission_id();
-            });
+    private function update_queue(CrmQueueItem $item, bool $remove): void {
+        if ($remove) {
+            $this->remove_from_queue($item);
+        } else if ($item->get_attempts() >= self::MAX_SAVE_ATTEMPTS) {
+            $this->remove_from_queue($item);
+            Util::report_form_error('item max attempts', $item, new \Exception(self::MSG_ITEM_MAX_ATTEMPTS), null);
         } else {
             $item->add_attempt();
-            $queue->push_if_not_in_queue($item);
-            
+            $this->queue->push_if_not_in_queue($item);
             Util::debug_log("submissionId={$item->get_submission_id()} msg=Processing failed, will retry. attempts={$item->get_attempts()}");
         }
     }
-    
-    public static function add_cron_schedule($schedules) {
-        $schedules['every_minute'] = [
-            'interval' => 60,
-            'display' => __('Every Minute'),
-        ];
-        return $schedules;
+
+    /**
+     * Remove the item from the queue
+     *
+     * @param CrmQueueItem $item The item to remove
+     */
+    private function remove_from_queue(CrmQueueItem $item): void {
+        $this->queue->filter(function($q_item) use ($item) {
+            return $q_item->get_submission_id() !== $item->get_submission_id();
+        });
     }
 
-    public static function register_cron() {
-        if (!wp_next_scheduled(self::CRON_HOOK_SYNC_SAVE)) {
-            wp_schedule_event(time(), self::CRON_SYNC_SAVE_INTERVAL, self::CRON_HOOK_SYNC_SAVE);
+    /**
+     * Schedule the next batch processing if there are more items in the queue
+     * This creates a chain of processing until the queue is empty
+     */
+    private function schedule_next_batch(): void {
+        if ($this->queue->has_items()) {
+            wp_schedule_single_event(
+                time() + 60,
+                self::CRON_HOOK_CRM_MC_SAVE,
+                [wp_generate_uuid4()]
+            );
         }
-        add_action(self::CRON_HOOK_SYNC_SAVE, [__CLASS__, 'process_queue']);
     }
 }
-
-// Register WordPress hooks for cron jobs
-add_filter('cron_schedules', ['\SUPT\SyncProcessor', 'add_cron_schedule']);
-add_action('init', ['\SUPT\SyncProcessor', 'register_cron']);

@@ -10,26 +10,24 @@ require_once __DIR__ . '/CrmDao.php';
 require_once __DIR__ . '/Util.php';
 
 class CrmSaver {
-	const CRON_HOOK_CRM_SAVE = 'supt_form_save_to_crm';
 
 	/**
 	 * @param array $data
 	 * @param CrmDao $dao
 	 * @throws Exception on crm save error
 	 *
-	 * @return false|mixed false on error else the crm id
+	 * @return bool true on success else false
 	 */
-	public function save_to_crm( array $data, CrmDao $dao, $match = null ) {
-		$crm_id = false;
-		$data = $this->add_group( $data, self::determine_group( $match['status'] ) );
+	public static function save_to_crm( array $data, CrmDao $dao, $match, $new_contacts_to_crm ) {
+		$crm_saver = new self();
+		$data = $crm_saver->add_group( $data, $crm_saver->determine_group( $match['status'] ) );
 
 		if ( $match['status'] === CrmDao::MATCH_MULTIPLE ) {
 			$main_id = $dao->main( $match['matches'][0]['id'] )['id'];
 		}
 
 		$crm_id = $dao->save( $data, $main_id ?? null );
-
-		return $crm_id;
+		return $crm_id !== false;
 	}
 
 	/**
@@ -77,21 +75,7 @@ class CrmSaver {
 		return $duplicate_group_id;
 	}
 
-	/**
-	 * TODO MSC: move to Util
-	 * Check if the given status code is likely to change if we retry the same request later
-	 *
-	 * @param int $code
-	 *
-	 * @return bool
-	 */
-	private static function is_non_permanent_error( $code ) {
-		$non_permanent = array( 401, 408, 429, 499, 503, 504, 599 );
-
-		return in_array( $code, $non_permanent );
-	}
-
-	private static function send_permanent_error_notification( $submission, $err_message ) {
+	public static function send_permanent_error_notification( $submission, $err_message ) {
 		$domain = Util::get_domain();
 
 		$subject = sprintf(
@@ -112,7 +96,7 @@ class CrmSaver {
 				THEME_DOMAIN
 			),
 			$domain,
-			print_r( $submission, true ),
+			$submission,
 			$domain,
 			$err_message
 		);

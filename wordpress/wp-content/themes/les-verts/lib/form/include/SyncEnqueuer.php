@@ -10,7 +10,7 @@ require_once __DIR__ . '/Util.php';
 
 class SyncEnqueuer {
     const QUEUE_KEY = 'sync_save';
-    
+
     const CRM_SUBSCRIPTION_VALUE = 'yes';
     const CRM_GREETINGS_INFORMAL = array(
         'hallo'  => 'nD',
@@ -34,7 +34,7 @@ class SyncEnqueuer {
         'chère'  => 'f',
         'cher'   => 'm'
     );
-    
+
     /**
      * @var SubmissionModel
      */
@@ -44,7 +44,7 @@ class SyncEnqueuer {
      * @var FormModel
      */
     private $form;
-    
+
     /**
      * @var array
      */
@@ -88,15 +88,13 @@ class SyncEnqueuer {
         $queue = new QueueDao(self::QUEUE_KEY);
 
         // Process the data
-        $this->apply_filtered_data(); //TODO MSC test
+        $this->apply_filtered_data();
 
         if ( ! empty( $this->data ) ) {
             unset($this->data['_meta_']);
 			$item = new CrmQueueItem( $this->data, $this->submission );
 			$queue->push_if_not_in_queue( $item );
         }
-
-        Util::debug_log("submissionId={$this->submission->get_id()} msg=Added to Sync queue.");
 
         // If SUPT_FORM_ASYNC is false, process the sync queue immediately (for debugging)
         if (defined('SUPT_FORM_ASYNC') && !SUPT_FORM_ASYNC) {
@@ -110,9 +108,7 @@ class SyncEnqueuer {
      * Get and apply the filtered data for the crm
      */
     private function apply_filtered_data() {
-        if (empty($this->data)) {
-            $this->data = $this->add_crm_mapped_data();
-        }
+        $this->data = $this->add_crm_mapped_data();
 
         /**
          * Filters the submitted data, right before it's saved in the crm.
@@ -130,7 +126,7 @@ class SyncEnqueuer {
      * - The group (only if a new record is created)
      * - The entry channel (only if a new record is created)
      * - The language (only if none is set yet)
-     * 
+     *
      * @return array
      */
     private function add_crm_mapped_data() {
@@ -144,7 +140,7 @@ class SyncEnqueuer {
             $this->auto_add_entry_channel();
             $this->auto_add_language();
         }
-        
+
         return $this->crm_data;
     }
 
