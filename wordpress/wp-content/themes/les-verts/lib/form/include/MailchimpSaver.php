@@ -11,13 +11,12 @@ class MailchimpSaver {
 
     /**
      * Send data to Mailchimp API
-     * 
+     *
      * @param array $data Form data
-     * @return bool Success status
      * @throws \Exception On API error
      */
     public static function send_to_mailchimp($data) {
-        
+
         // Send to Mailchimp service
         $response = wp_remote_post(
             MAILCHIMP_SERVICE_ENDPOINT,
@@ -38,8 +37,6 @@ class MailchimpSaver {
         if ($status_code < 200 || $status_code >= 300) {
             throw new \Exception('Mailchimp API error: HTTP ' . $status_code . ' - ' . wp_remote_retrieve_response_message($response));
         }
-
-        return true;
     }
 
     public static function has_mailchimp_api_key() {

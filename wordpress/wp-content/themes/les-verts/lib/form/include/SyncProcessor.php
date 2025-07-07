@@ -41,7 +41,9 @@ class SyncProcessor {
             try {
                 $processor->crmDao = new CrmDao();
             } catch (\Exception $e) {
-                Util::send_mail_to_admin("Error: permanent CRM authentication failure.", $e->getMessage());
+                $first_item = $items[0] ?? null;
+                $submission = ($first_item instanceof CrmQueueItem) ? $first_item->get_submission_id() : "(submission id not found)";
+                CrmSaver::send_permanent_error_notification($submission, $e->getMessage());
                 return;
             }
         }
@@ -53,11 +55,14 @@ class SyncProcessor {
                 continue;
             }
 
+            $processed = false;
             try {
                 $processed = $processor->processItem($item);
-                $processor->updateQueue($queue, $item, $processed);
             } catch (\Exception $e) {
                 Util::report_form_error('sync queue process', $item, $e, null);
+            }
+            finally {
+                $processor->updateQueue($queue, $item, $processed);
             }
         }
     }
@@ -83,25 +88,25 @@ class SyncProcessor {
      *
      * @param CrmQueueItem $item Queue item to process
      * @return bool Whether the item was successfully processed
+     * @throws \Exception On API error
      */
     private function processItem(CrmQueueItem $item): bool {
-        $data = $item->get_data();
-        $data = $this->restructureFieldData($data);
+        $crm_field_data_objects = $item->get_data();
+        $simple_data = $this->restructureFieldData($crm_field_data_objects);
 
         // Try CRM first if available
         if ($this->canSyncToCrm && $this->crmDao) {
-            $processed = $this->maybeSendToCrmSaver($item, $data);
+            $processed = $this->maybeSendToCrmSaver($item, $crm_field_data_objects);
             if ($processed) {
                 return true;
             }
         }
 
-        // If not processed by CRM and Mailchimp is configured, try Mailchimp
+        // If not processed by CRM and Mailchimp is configured, send to Mailchimp
         if ($this->canSyncToMailchimp) {
-            $processed = $this->sendToMailchimpSaver($item, $data);
-            if ($processed) {
-                return true;
-            }
+            MailchimpSaver::send_to_mailchimp($simple_data);
+            Util::debug_log("submissionId={$item->get_submission_id()} msg=Processed by Mailchimp");
+            return true;
         }
 
         return false;
@@ -113,38 +118,20 @@ class SyncProcessor {
      * @param CrmQueueItem $item Queue item to process
      * @param array $data Extracted simple data array
      * @return bool Whether the item was successfully processed
+     * @throws \Exception On API error
      */
-    private function maybeSendToCrmSaver(CrmQueueItem $item, array $data): bool {
-        $match = $this->crmDao->match($data);
+    private function maybeSendToCrmSaver(CrmQueueItem $item, array $crm_field_data_objects): bool {
+        $match = $this->crmDao->match($crm_field_data_objects);
 
         if (!isset($match['status']) || $match['status'] === CrmDao::MATCH_NONE) {
             return false;
         }
 
         $crm_saver = new CrmSaver();
-        $result = $crm_saver->save_to_crm($data, $this->crmDao, $match);
-        $processed = $result !== false;
+        $processed = $crm_saver->save_to_crm($crm_field_data_objects, $this->crmDao, $match);
 
         if ($processed) {
             Util::debug_log("submissionId={$item->get_submission_id()} msg=Processed by CRM");
-        }
-
-        return $processed;
-    }
-
-    /**
-     * Process an item with Mailchimp
-     *
-     * @param CrmQueueItem $item Queue item to process
-     * @param array $data Extracted simple data array
-     * @return bool Whether the item was successfully processed
-     */
-    private function sendToMailchimpSaver(CrmQueueItem $item, array $data): bool {
-        $result = MailchimpSaver::send_to_mailchimp($data);
-        $processed = $result !== false;
-
-        if ($processed) {
-            Util::debug_log("submissionId={$item->get_submission_id()} msg=Processed by Mailchimp");
         }
 
         return $processed;
