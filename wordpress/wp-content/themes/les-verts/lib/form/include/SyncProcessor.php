@@ -94,16 +94,20 @@ class SyncProcessor {
         $crm_field_data_objects = $item->get_data();
         $simple_data = $this->restructureFieldData($crm_field_data_objects);
 
+        // Get the CRM sync only setting from the form
+        $force_crm = get_field('force_crm_sync', $item->get_form_id()) ?: false;
+        $sync_to_mailchimp = $this->canSyncToMailchimp && !$force_crm;
+
         // Try CRM first if available
         if ($this->canSyncToCrm && $this->crmDao) {
-            $processed = $this->maybeSendToCrmSaver($item, $crm_field_data_objects);
+            $processed = $this->maybeSendToCrmSaver($item, $crm_field_data_objects, $sync_to_mailchimp);
             if ($processed) {
                 return true;
             }
         }
 
         // If not processed by CRM and Mailchimp is configured, send to Mailchimp
-        if ($this->canSyncToMailchimp) {
+        if ($sync_to_mailchimp) {
             MailchimpSaver::send_to_mailchimp($simple_data);
             Util::debug_log("submissionId={$item->get_submission_id()} msg=Processed by Mailchimp");
             return true;
@@ -120,10 +124,10 @@ class SyncProcessor {
      * @return bool Whether the item was successfully processed
      * @throws \Exception On API error
      */
-    private function maybeSendToCrmSaver(CrmQueueItem $item, array $crm_field_data_objects): bool {
+    private function maybeSendToCrmSaver(CrmQueueItem $item, array $crm_field_data_objects, $sync_to_mailchimp = false): bool {
         $match = $this->crmDao->match($crm_field_data_objects);
 
-        if (!isset($match['status']) || $match['status'] === CrmDao::MATCH_NONE) {
+        if ((!isset($match['status']) || $match['status'] === CrmDao::MATCH_NONE) && $sync_to_mailchimp) {
             return false;
         }
 
@@ -161,7 +165,7 @@ class SyncProcessor {
     public static function add_cron_schedule($schedules) {
         $schedules['every_minute'] = [
             'interval' => 60,
-            'display' => __('Every Minute'),
+            'display' => 'Every Minute',
         ];
         return $schedules;
     }
