@@ -19,8 +19,9 @@ class CrmSaver {
 	 *
 	 * @return bool true on success else false
 	 */
-	public function save_to_crm( array $data, CrmDao $dao, $match = null ) {
-		$data = $this->add_group( $data, self::determine_group( $match['status'] ) );
+	public static function save_to_crm( array $data, CrmDao $dao, $match, $new_contacts_to_crm ) {
+		$crm_saver = new self();
+		$data = $crm_saver->add_group( $data, $crm_saver->determine_group( $match['status'] ) );
 
 		if ( $match['status'] === CrmDao::MATCH_MULTIPLE ) {
 			$main_id = $dao->main( $match['matches'][0]['id'] )['id'];

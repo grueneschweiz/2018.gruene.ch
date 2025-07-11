@@ -8,38 +8,36 @@ require_once __DIR__ . '/MailchimpSaver.php';
 require_once __DIR__ . '/Util.php';
 require_once __DIR__ . '/QueueDao.php';
 require_once __DIR__ . '/CrmQueueItem.php';
-require_once __DIR__ . '/SubmissionModel.php';
 
 class SyncProcessor {
-    const QUEUE_KEY = 'sync_save';
     const CRON_HOOK_SYNC_SAVE = 'supt_form_save_to_sync';
     const CRON_SYNC_SAVE_INTERVAL = 'every_minute';
     const MAX_BATCH_SIZE = 200;
     const MAX_SAVE_ATTEMPTS = 5;
 
-    private CrmDao $crmDao;
-    private bool $canSyncToCrm = false;
-    private bool $canSyncToMailchimp = false;
+    private CrmDao $crm_dao;
+    private bool $can_sync_to_crm = false;
+    private bool $can_sync_to_mailchimp = false;
 
     public function __construct() {
-        $this->canSyncToCrm = CrmDao::has_api_url();
-        $this->canSyncToMailchimp = MailchimpSaver::has_mailchimp_api_key();
+        $this->can_sync_to_crm = CrmDao::has_api_url();
+        $this->can_sync_to_mailchimp = MailchimpSaver::has_mailchimp_api_key();
     }
 
     public static function process_queue() {
         $processor = new self();
 
-        $queue = new QueueDao(self::QUEUE_KEY);
+        $queue = new QueueDao(SyncEnqueuer::QUEUE_KEY);
         $items = array_slice($queue->get_all(), 0, self::MAX_BATCH_SIZE);
 
         // If neither sync option is available, nothing to do
-        if (!$processor->canSyncToCrm && !$processor->canSyncToMailchimp) {
+        if (!$processor->can_sync_to_crm && !$processor->can_sync_to_mailchimp) {
             return;
         }
 
-        if ($processor->canSyncToCrm) {
+        if ($processor->can_sync_to_crm) {
             try {
-                $processor->crmDao = new CrmDao();
+                $processor->crm_dao = new CrmDao();
             } catch (\Exception $e) {
                 $first_item = $items[0] ?? null;
                 $submission = ($first_item instanceof CrmQueueItem) ? $first_item->get_submission_id() : "(submission id not found)";
@@ -83,33 +81,28 @@ class SyncProcessor {
         return $data;
     }
 
-    /**
-     * Process a single queue item
-     *
-     * @param CrmQueueItem $item Queue item to process
-     * @return bool Whether the item was successfully processed
-     * @throws \Exception On API error
-     */
     private function processItem(CrmQueueItem $item): bool {
         $crm_field_data_objects = $item->get_data();
         $simple_data = $this->restructureFieldData($crm_field_data_objects);
 
-        // Get the CRM sync only setting from the form
-        $force_crm = get_field('force_crm_sync', $item->get_form_id()) ?: false;
-        $sync_to_mailchimp = $this->canSyncToMailchimp && !$force_crm;
+        $new_contacts_to_crm = !$this->can_sync_to_mailchimp || $this->shouldForceCrmSync($item);
 
-        // Try CRM first if available
-        if ($this->canSyncToCrm && $this->crmDao) {
-            $processed = $this->maybeSendToCrmSaver($item, $crm_field_data_objects, $sync_to_mailchimp);
-            if ($processed) {
-                return true;
+        // Try to match in CRM
+        if ($this->can_sync_to_crm) {
+            $match = $this->crm_dao->match($crm_field_data_objects);
+
+            if ($this->isValidCrmMatch($match) || $new_contacts_to_crm) {
+                if (CrmSaver::save_to_crm($crm_field_data_objects, $this->crm_dao, $match, $new_contacts_to_crm)) {
+                    $this->logProcessed($item, 'CRM');
+                    return true;
+                }
             }
         }
 
-        // If not processed by CRM and Mailchimp is configured, send to Mailchimp
-        if ($sync_to_mailchimp) {
+        // If not matched in CRM and Mailchimp is configured, send to Mailchimp
+        if (!$new_contacts_to_crm) {
             MailchimpSaver::send_to_mailchimp($simple_data);
-            Util::debug_log("submissionId={$item->get_submission_id()} msg=Processed by Mailchimp");
+            $this->logProcessed($item, 'Mailchimp');
             return true;
         }
 
@@ -117,28 +110,33 @@ class SyncProcessor {
     }
 
     /**
-     * Process an item with the CRM
+     * Check if the form should be forced to sync to CRM
      *
-     * @param CrmQueueItem $item Queue item to process
-     * @param array $data Extracted simple data array
-     * @return bool Whether the item was successfully processed
-     * @throws \Exception On API error
+     * @param CrmQueueItem $item The item to get the form id from
+     * @return bool True if the form has the 'force_crm_sync' option set
      */
-    private function maybeSendToCrmSaver(CrmQueueItem $item, array $crm_field_data_objects, $sync_to_mailchimp = false): bool {
-        $match = $this->crmDao->match($crm_field_data_objects);
+    private function shouldForceCrmSync(CrmQueueItem $item): bool {
+        return $this->can_sync_to_crm && (bool) get_field('force_crm_sync', $item->get_form_id());
+    }
 
-        if ((!isset($match['status']) || $match['status'] === CrmDao::MATCH_NONE) && $sync_to_mailchimp) {
-            return false;
-        }
+    /**
+     * Check if the CRM match result indicates a valid match
+     *
+     * @param array $match The match result from CRM
+     * @return bool True if there's a valid match, false otherwise
+     */
+    private function isValidCrmMatch(array $match): bool {
+        return isset($match['status']) && $match['status'] !== CrmDao::MATCH_NONE;
+    }
 
-        $crm_saver = new CrmSaver();
-        $processed = $crm_saver->save_to_crm($crm_field_data_objects, $this->crmDao, $match);
-
-        if ($processed) {
-            Util::debug_log("submissionId={$item->get_submission_id()} msg=Processed by CRM");
-        }
-
-        return $processed;
+    /**
+     * Log that the item was processed
+     *
+     * @param CrmQueueItem $item The item that was processed
+     * @param string $system The system that processed the item
+     */
+    private function logProcessed(CrmQueueItem $item, string $system): void {
+        Util::debug_log("submissionId={$item->get_submission_id()} msg=Processed by $system");
     }
 
     /**
