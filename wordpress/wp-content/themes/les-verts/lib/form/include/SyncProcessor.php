@@ -30,8 +30,8 @@ class SyncProcessor {
         $queue = new QueueDao(SyncEnqueuer::QUEUE_KEY);
         $items = array_slice($queue->get_all(), 0, self::MAX_BATCH_SIZE);
 
-        // If neither sync option is available, nothing to do
-        if (!$processor->can_sync_to_crm && !$processor->can_sync_to_mailchimp) {
+        if (empty($items) ||
+            (!$processor->can_sync_to_crm && !$processor->can_sync_to_mailchimp)) {
             return;
         }
 
