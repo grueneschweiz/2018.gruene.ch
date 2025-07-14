@@ -160,6 +160,10 @@ class SyncProcessor {
         }
     }
 
+    public static function get_queue(): QueueDao {
+        return new QueueDao(SyncEnqueuer::QUEUE_KEY);
+    }
+
     public static function add_cron_schedule($schedules) {
         $schedules['every_minute'] = [
             'interval' => 60,
