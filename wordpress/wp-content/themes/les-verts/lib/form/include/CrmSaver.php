@@ -10,7 +10,6 @@ require_once __DIR__ . '/CrmDao.php';
 require_once __DIR__ . '/Util.php';
 
 class CrmSaver {
-	const CRON_HOOK_CRM_SAVE = 'supt_form_save_to_crm';
 
 	/**
 	 * @param array $data
