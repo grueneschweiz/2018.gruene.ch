@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Les Verts\n"
-"POT-Creation-Date: 2025-07-07 17:36+0200\n"
+"POT-Creation-Date: 2025-07-15 13:27+0200\n"
 "PO-Revision-Date: 2018-11-28 17:49+0100\n"
 "Last-Translator: Cyrill Bolliger <bolliger@gmx.ch>\n"
 "Language-Team: Cyrill Bolliger <cyrill.bolliger@gruene.ch>\n"
@@ -353,7 +353,7 @@ msgstr ""
 #: acf-translate.php:1070 acf-translate.php:2574 acf-translate.php:2656
 #: acf-translate.php:2854 acf-translate.php:3094 acf-translate.php:3646
 #: acf-translate.php:4872 acf-translate.php:5292
-#: lib/form/acf/form-details.php:886
+#: lib/form/acf/form-details.php:884
 msgid "Title"
 msgstr ""
 
@@ -1905,41 +1905,41 @@ msgstr ""
 msgid "After Submit"
 msgstr ""
 
-#: lib/form/acf/form-details.php:830
+#: lib/form/acf/form-details.php:829
 msgid "Force CRM Sync"
 msgstr ""
 
-#: lib/form/acf/form-details.php:833
+#: lib/form/acf/form-details.php:832
 msgid ""
 "When enabled, form submissions will only sync to CRM and skip direct "
 "Mailchimp sync."
 msgstr ""
 
-#: lib/form/acf/form-details.php:849
+#: lib/form/acf/form-details.php:847
 msgid "Success"
 msgstr ""
 
-#: lib/form/acf/form-details.php:852
+#: lib/form/acf/form-details.php:850
 msgid "What should happen after the form was successfully submitted?"
 msgstr ""
 
-#: lib/form/acf/form-details.php:876
+#: lib/form/acf/form-details.php:874
 msgid "Show message (inline)"
 msgstr ""
 
-#: lib/form/acf/form-details.php:877
+#: lib/form/acf/form-details.php:875
 msgid "Redirect to post / page"
 msgstr ""
 
-#: lib/form/acf/form-details.php:905
+#: lib/form/acf/form-details.php:903
 msgid "Thank you for your support!"
 msgstr ""
 
-#: lib/form/acf/form-details.php:913
+#: lib/form/acf/form-details.php:911
 msgid "Message"
 msgstr ""
 
-#: lib/form/acf/form-details.php:940
+#: lib/form/acf/form-details.php:938
 msgid "Redirect to"
 msgstr ""
 
@@ -2425,49 +2425,49 @@ msgstr ""
 msgid "No form in the trash"
 msgstr ""
 
-#: lib/form/include/FormType.php:151 lib/form/include/FormType.php:171
+#: lib/form/include/FormType.php:160 lib/form/include/FormType.php:180
 #: lib/form/include/GDPRHelper.php:37
 msgid "Forms"
 msgstr ""
 
-#: lib/form/include/FormType.php:193
+#: lib/form/include/FormType.php:202
 msgid ""
 "Unfortunately not only the form, but also the submissions were copied and we "
 "could not delete them. So make sure you delete the submissions linked with "
 "your newly cloned form manually."
 msgstr ""
 
-#: lib/form/include/FormType.php:244
+#: lib/form/include/FormType.php:253
 msgid "Fields"
 msgstr ""
 
-#: lib/form/include/FormType.php:299
+#: lib/form/include/FormType.php:308
 #, php-format
 msgctxt "form title"
 msgid "View submissions of %s"
 msgstr ""
 
-#: lib/form/include/FormType.php:300 lib/form/include/FormType.php:330
-#: lib/form/include/FormType.php:331 lib/form/include/SubmissionsTable.php:33
+#: lib/form/include/FormType.php:309 lib/form/include/FormType.php:339
+#: lib/form/include/FormType.php:340 lib/form/include/SubmissionsTable.php:33
 msgid "Submissions"
 msgstr ""
 
-#: lib/form/include/FormType.php:370
+#: lib/form/include/FormType.php:379
 msgid "Form Submissions"
 msgstr ""
 
-#: lib/form/include/FormType.php:381
+#: lib/form/include/FormType.php:390
 msgid "Export Submissions"
 msgstr ""
 
-#: lib/form/include/FormType.php:383
+#: lib/form/include/FormType.php:392
 #, php-format
 msgid ""
 "Exports the submission of the form \"%s\" and all its linked forms. Usually "
 "its best to select the first form in the chain before exporting."
 msgstr ""
 
-#: lib/form/include/FormType.php:402
+#: lib/form/include/FormType.php:411
 msgid "Ups, something went wrong."
 msgstr ""
 
@@ -2628,21 +2628,25 @@ msgid ""
 "("
 msgstr ""
 
-#: lib/form/public-api.php:36 lib/form/submission.php:192
+#: lib/form/public-api.php:36 lib/form/submission.php:206
 msgid "Too many requests. Please try again later."
 msgstr ""
 
-#: lib/form/submission.php:340
+#: lib/form/submission.php:22
+msgid "Every 10 Minutes"
+msgstr ""
+
+#: lib/form/submission.php:354
 #, php-format
 msgid "%s: Invalid value."
 msgstr ""
 
-#: lib/form/submission.php:358
+#: lib/form/submission.php:372
 #, php-format
 msgid "%s: Invalid or missing value."
 msgstr ""
 
-#: lib/form/submission.php:397
+#: lib/form/submission.php:411
 #, php-format
 msgid "%s: Missing data."
 msgstr ""
@@ -2825,11 +2829,19 @@ msgstr ""
 #: lib/tweaks/limit-image-upload-dims.php:34
 #, php-format
 msgid ""
+"PNG images must be smaller than %dMB. Your file is %.1fMB. Please compress "
+"it or convert it to JPEG."
+msgstr ""
+
+#: lib/tweaks/limit-image-upload-dims.php:46
+#: lib/tweaks/limit-image-upload-dims.php:54
+#, php-format
+msgid ""
 "PNG images must not exceed the area of %d * %d pixels. Reduce the image "
 "dimensions or convert it to JPEG."
 msgstr ""
 
-#: lib/tweaks/limit-image-upload-dims.php:46
+#: lib/tweaks/limit-image-upload-dims.php:67
 #, php-format
 msgid ""
 "Images must not exceed the area of %d * %d pixels. Please reduce the image "
