@@ -120,53 +120,6 @@ function les_verts_clean_unwanted_sizes() {
 }
 
 /**
- * PNG upload restriction: Reject PNGs by size and width for faster processing
- * Forces users to resize large PNGs before upload, avoiding slow server processing
- */
-add_filter('wp_handle_upload_prefilter', 'SUPT\restrict_large_png_uploads');
-function restrict_large_png_uploads($file) {
-    // Only check PNG files
-    if (!isset($file['type']) || $file['type'] !== 'image/png') {
-        return $file;
-    }
-
-    // Only process if file exists and is valid
-    if (!isset($file['tmp_name']) || !file_exists($file['tmp_name'])) {
-        return $file;
-    }
-
-    // Check file size first (faster than dimension check)
-    if (isset($file['size']) && $file['size'] > LesVertsImages::getPNGMaxSize()) {
-        $file['error'] = sprintf(
-            'PNG images must be smaller than %dMB. Your file is %.1fMB. Please compress it or use a JPG format.',
-            LesVertsImages::getPNGMaxSize() / (1024 * 1024),
-            $file['size'] / (1024 * 1024)
-        );
-        return $file;
-    }
-
-    // Get image dimensions
-    $image_info = getimagesize($file['tmp_name']);
-    if (!$image_info) {
-        return $file; // Let WordPress handle invalid files
-    }
-
-    // Check if PNG is too wide
-    if ($image_info[0] > LesVertsImages::getFullSizeWidth()) {
-        // Reject the upload with clear error message
-        $file['error'] = sprintf(
-            'PNG images must be %dx%d pixels or less. Your image is %dx%d pixels. Please resize it or use a JPG format.',
-            LesVertsImages::getFullSizeWidth(),
-            LesVertsImages::getFullSizeWidth(),
-            $image_info[0],
-            $image_info[1]
-        );
-    }
-
-    return $file;
-}
-
-/**
  * Skip all image scaling for PNG files - use original only
  * We use Smushit for image optimization anyways
  */

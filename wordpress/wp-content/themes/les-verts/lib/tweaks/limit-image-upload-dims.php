@@ -1,5 +1,7 @@
 <?php
 
+use SUPT\LesVertsImages;
+
 /**
  * Restrict max image upload dimensions for PNGs and JPEGs.
  *
@@ -25,16 +27,35 @@ add_filter( 'wp_handle_upload_prefilter', function ( $file ) {
 
 	list( $width, $height, $type ) = $file_data;
 
-	if ( defined( 'SUPT_UPLOAD_MAX_PX_PNG' )
-	     && $type === IMAGETYPE_PNG
-	     && SUPT_UPLOAD_MAX_PX_PNG < $width * $height
-	) {
-		$len           = (int) floor( sqrt( SUPT_UPLOAD_MAX_PX_PNG ) );
-		$file['error'] = sprintf(
-			__( 'PNG images must not exceed the area of %d * %d pixels. Reduce the image dimensions or convert it to JPEG.', THEME_DOMAIN ),
-			$len,
-			$len
-		);
+    if($type === IMAGETYPE_PNG) {
+		// New hard size limit
+		if (isset($file['size']) && $file['size'] > LesVertsImages::getPNGMaxSize()) {
+			$file['error'] = sprintf(
+				__( 'PNG images must be smaller than %dMB. Your file is %.1fMB. Please compress it or convert it to JPEG.', THEME_DOMAIN ),
+				LesVertsImages::getPNGMaxSize() / (1024 * 1024),
+				$file['size'] / (1024 * 1024)
+			);
+		}
+
+		// Legacy PNG dimensions checks (could still be configured)
+		if ( defined( 'SUPT_UPLOAD_MAX_PX_PNG' )
+			&& SUPT_UPLOAD_MAX_PX_PNG < $width * $height
+		) {
+			$len           = (int) floor( sqrt( SUPT_UPLOAD_MAX_PX_PNG ) );
+			$file['error'] = sprintf(
+				__( 'PNG images must not exceed the area of %d * %d pixels. Reduce the image dimensions or convert it to JPEG.', THEME_DOMAIN ),
+				$len,
+				$len
+			);
+		}
+		// New hard dimensions limit
+		else if ($width > LesVertsImages::getFullSizeWidth() || $height > LesVertsImages::getFullSizeWidth()) {
+			$file['error'] = sprintf(
+				__( 'PNG images must not exceed the area of %d * %d pixels. Reduce the image dimensions or convert it to JPEG.', THEME_DOMAIN ),
+				LesVertsImages::getFullSizeWidth(),
+				LesVertsImages::getFullSizeWidth()
+			);
+		}
 	}
 
 	if ( defined( 'SUPT_UPLOAD_MAX_PX_JPEG' )
