@@ -28,6 +28,7 @@ services:
       WORDPRESS_DB_PASSWORD: wordpress
       WORDPRESS_DEBUG: 1
       PHP_IDE_CONFIG: serverName=Docker
+      MAILCHIMP_SERVICE_ENDPOINT: ${MAILCHIMP_SERVICE_ENDPOINT}
     command: [ "apache2-foreground" ]
     extra_hosts:
       - "host.docker.internal:host-gateway"

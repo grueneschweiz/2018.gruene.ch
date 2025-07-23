@@ -131,3 +131,4 @@ deploy.*
 .wordpress
 wp-cli.phar
 !/.github/workflows/deploy.yml
+.env

@@ -102,6 +102,15 @@ class FormType extends Model {
 				return $field;
 			} );
 		}
+
+		// hide the mailchimp field if Mailchimp is not configured
+		add_filter( 'acf/load_field/key=field_59f33e699d496', function( $field ) {
+			if ( ! MailchimpSaver::has_mailchimp_api_key() ) {
+				return false;
+			}
+
+			return $field;
+		});
 	}
 
 	public static function register_actions_filters() {

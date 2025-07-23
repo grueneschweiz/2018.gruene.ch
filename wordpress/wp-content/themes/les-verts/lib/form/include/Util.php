@@ -136,10 +136,10 @@ class Util {
 	 */
 	public static function remove_all_crons() {
 		require_once 'Mailer.php';
-		require_once 'CrmSaver.php';
+		require_once 'SyncProcessor.php';
 
 		self::remove_cron( Mailer::CRON_HOOK_MAIL_SEND );
-		self::remove_cron( CrmSaver::CRON_HOOK_CRM_SAVE );
+		self::remove_cron( SyncProcessor::CRON_HOOK_CRM_MC_SAVE );
 	}
 
 	/**
@@ -161,6 +161,17 @@ class Util {
 	public static function get_setting_default_group_id() {
 		return (int) get_field( 'group_id', 'option' );
 	}
+
+
+    /**
+     * Log that the item was processed
+     *
+     * @param CrmQueueItem $item The item that was processed
+     * @param string $system The system that processed the item
+     */
+    public static function logProcessed(CrmQueueItem $item, string $system): void {
+        self::debug_log("submissionId={$item->get_submission_id()} msg=Processed by $system");
+    }
 
 	public static function debug_log( string $message ) {
 		if ( defined( 'LES_VERTS_FORM_DEBUG_LOG' ) && LES_VERTS_FORM_DEBUG_LOG ) {
