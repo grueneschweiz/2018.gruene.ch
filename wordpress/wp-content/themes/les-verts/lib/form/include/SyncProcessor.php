@@ -22,8 +22,9 @@ class SyncProcessor {
     const CRON_LOCK_TIMEOUT = 9 * MINUTE_IN_SECONDS;
 
     const MSG_ITEM_NO_DATA = "Item has no data";
+    const SUBJECT_ITEM_MAX_ATTEMPTS = "SyncProcessor: Max attempts reached";
     const MSG_ITEM_MAX_ATTEMPTS = "Item was processed more than " . self::MAX_SAVE_ATTEMPTS . " times. " .
-    "Has been removed from the queue.";
+        "Has been removed from the queue.";
 
     private CrmDao $crm_dao;
     private QueueDao $queue;
@@ -40,11 +41,13 @@ class SyncProcessor {
         $processor = new self();
 
         if (!$processor->can_sync_to_crm && !$processor->can_sync_to_mailchimp) {
-            Util::remove_cron( self::CRON_HOOK_CRM_MC_SAVE );
+            Util::remove_cron(self::CRON_HOOK_CRM_MC_SAVE);
+            Util::debug_log("msg=No CRM or Mailchimp API key found, removing cron job");
             return;
         }
 
         if (!$processor->acquire_lock()) {
+            Util::debug_log("msg=Sync processor already running, skipping this execution");
             return;
         }
 
@@ -63,36 +66,40 @@ class SyncProcessor {
                     $first_item = $items[0] ?? null;
                     $submission = ($first_item instanceof CrmQueueItem) ? $first_item->get_submission_id() : "(submission id not found)";
                     CrmSaver::send_permanent_error_notification($submission, $e->getMessage());
+                    Util::debug_log("submissionId={$submission} msg=Failed to create CRM DAO. Skipping.");
                     return;
                 }
             }
 
             /** @var CrmQueueItem $item */
             foreach ($items as $item) {
-                if($processor->too_many_attempts($item)) {
+                if ($processor->too_many_attempts($item) || $processor->too_recent_attempt($item)) {
                     continue;
                 }
 
                 if (!$item->has_data()) {
                     Util::report_form_error('sync queue process', $item, new \Exception(self::MSG_ITEM_NO_DATA), null);
-                    $processor->update_queue($item, true);
+                    $processor->remove_from_queue($item);
                     continue;
                 }
 
                 try {
-                    $processed = $processor->process_item($item);
-                    $processor->update_queue($item, $processed);
-                }
-                catch (CrmMaxSyncsException $e) {
-                    Util::debug_log("submissionId={$item->get_submission_id()} msg=Too many CRM syncs per run. Ending this run.");
+                    if ($processor->process_item($item)) {
+                        $processor->remove_from_queue($item);
+                    } else {
+                        $processor->update_queue($item);
+                    }
+                } catch (CrmMaxSyncsException $e) {
+                    Util::debug_log("submissionId=" . $item->get_submission_id() . " msg=Too many CRM syncs per run. Ending this run.");
                     return;
                 } catch (\Exception $e) {
                     Util::report_form_error('sync queue process', $item, $e, null);
-                    $processor->update_queue($item, false);
+                    $processor->update_queue($item);
                 }
             }
 
             $processor->schedule_next_batch();
+            Util::debug_log("msg=Processed batch of {$processor->crm_sync_count} CRM syncs");
         } finally {
             $processor->release_lock();
         }
@@ -161,13 +168,30 @@ class SyncProcessor {
      */
     private function too_many_attempts(CrmQueueItem $item) {
         if ( $item->get_attempts() >= self::MAX_SAVE_ATTEMPTS ) {
-            Util::debug_log( "submissionId={$item->get_submission_id()} msg=Too many attempts. Skipping." );
+            $this->remove_from_queue($item);
+            Util::send_mail_to_admin(
+                self::SUBJECT_ITEM_MAX_ATTEMPTS . "id=" . $item->get_submission_id(),
+                self::MSG_ITEM_MAX_ATTEMPTS . "\n\n" . $item->get_data()
+            );
+            Util::debug_log("submissionId=" . $item->get_submission_id() . " msg=Too many attempts. Removed from queue.");
             return true;
         }
 
-        if ( $item->last_attempt_seconds_ago() &&
-             $item->last_attempt_seconds_ago() < self::MIN_ATTEMPT_TIMEOUT ) {
-            Util::debug_log( "submissionId={$item->get_submission_id()} msg=Last attempt only {$item->last_attempt_seconds_ago()} seconds ago. Skipping." );
+        return false;
+    }
+
+    /**
+     * Check if the item should be skipped because it was processed too recently
+     *
+     * @param CrmQueueItem $item The item to check
+     * @return bool True if the item should be skipped, false otherwise
+     */
+    private function too_recent_attempt(CrmQueueItem $item) {
+        if (
+            $item->last_attempt_seconds_ago() &&
+            $item->last_attempt_seconds_ago() < self::MIN_ATTEMPT_TIMEOUT
+        ) {
+            Util::debug_log("submissionId={$item->get_submission_id()} msg=Last attempt only {$item->last_attempt_seconds_ago()} seconds ago. Skipping.");
             return true;
         }
 
@@ -182,7 +206,8 @@ class SyncProcessor {
      * @throws Exception If an error occurs during matching or saving
      * @throws CrmMaxSyncsException If the maximum number of CRM syncs per run is exceeded
      */
-    private function process_item(CrmQueueItem $item): bool {
+    private function process_item(CrmQueueItem $item): bool
+    {
         $crm_field_data_objects = $item->get_data();
         $simple_data = $this->restructure_field_data($crm_field_data_objects);
 
@@ -192,7 +217,7 @@ class SyncProcessor {
         if ($this->can_sync_to_crm) {
             $match = $this->crm_dao->match($crm_field_data_objects);
             if ($this->is_valid_crm_match($match) || $new_contacts_to_crm) {
-                if($this->crm_sync_count >= self::CRM_MAX_SYNCS_PER_RUN) {
+                if ($this->crm_sync_count >= self::CRM_MAX_SYNCS_PER_RUN) {
                     throw new CrmMaxSyncsException();
                 }
                 $this->crm_sync_count++;
@@ -219,7 +244,8 @@ class SyncProcessor {
      * @param CrmQueueItem $item The item to get the form id from
      * @return bool True if the form has the 'force_crm_sync' option set
      */
-    private function should_force_crm_sync(CrmQueueItem $item): bool {
+    private function should_force_crm_sync(CrmQueueItem $item): bool
+    {
         return $this->can_sync_to_crm && (bool) get_field('force_crm_sync', $item->get_form_id());
     }
 
@@ -229,7 +255,8 @@ class SyncProcessor {
      * @param array $match The match result from CRM
      * @return bool True if there's a valid match, false otherwise
      */
-    private function is_valid_crm_match(array $match): bool {
+    private function is_valid_crm_match(array $match): bool
+    {
         return isset($match['status']) && $match['status'] !== CrmDao::MATCH_NONE;
     }
 
@@ -237,19 +264,12 @@ class SyncProcessor {
      * Update the queue based on processing result
      *
      * @param CrmQueueItem $item Queue item that was processed
-     * @param bool $processed Whether the item was successfully processed
      */
-    private function update_queue(CrmQueueItem $item, bool $remove): void {
-        if ($remove) {
-            $this->remove_from_queue($item);
-        } else if ($item->get_attempts() >= self::MAX_SAVE_ATTEMPTS) {
-            $this->remove_from_queue($item);
-            Util::report_form_error('item max attempts', $item, new \Exception(self::MSG_ITEM_MAX_ATTEMPTS), null);
-        } else {
-            $item->add_attempt();
-            $this->queue->push_if_not_in_queue($item);
-            Util::debug_log("submissionId={$item->get_submission_id()} msg=Processing failed, will retry. attempts={$item->get_attempts()}");
-        }
+    private function update_queue(CrmQueueItem $item): void
+    {
+        $item->add_attempt();
+        $this->queue->update_and_move_to_end($item);
+        Util::debug_log("submissionId={$item->get_submission_id()} msg=Processing failed, will retry. attempts={$item->get_attempts()}");
     }
 
     /**
@@ -257,8 +277,9 @@ class SyncProcessor {
      *
      * @param CrmQueueItem $item The item to remove
      */
-    private function remove_from_queue(CrmQueueItem $item): void {
-        $this->queue->filter(function($q_item) use ($item) {
+    private function remove_from_queue(CrmQueueItem $item): void
+    {
+        $this->queue->filter(function ($q_item) use ($item) {
             return $q_item->get_submission_id() !== $item->get_submission_id();
         });
     }
@@ -267,7 +288,8 @@ class SyncProcessor {
      * Schedule the next batch processing if there are more items in the queue
      * This creates a chain of processing until the queue is empty
      */
-    private function schedule_next_batch(): void {
+    private function schedule_next_batch(): void
+    {
         if ($this->queue->has_items()) {
             wp_schedule_single_event(
                 time() + 60,
