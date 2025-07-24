@@ -106,8 +106,6 @@ class CrmQueueItem {
 			return null;
 		}
 
-		$now = new DateTime();
-
-		return $now->diff( $this->last_attempt )->s;
+		return (new DateTime())->getTimestamp() - $this->last_attempt->getTimestamp();
 	}
 }

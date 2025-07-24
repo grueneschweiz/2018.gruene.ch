@@ -60,6 +60,37 @@ class QueueDao {
 	}
 
 	/**
+	 * Update an existing item in the queue by submission ID and move it to the end of the queue
+	 *
+	 * @param CrmQueueItem $updated_item The item with updated values
+	 * @return bool True if item was found and updated, false otherwise
+	 * @throws Exception
+	 */
+	public function update_and_move_to_end(CrmQueueItem $updated_item) {
+		$this->lock();
+		$queue = $this->get_all();
+		$found = false;
+		$new_queue = [];
+
+		foreach ($queue as $item) {
+			if (!$found && $item instanceof CrmQueueItem &&
+				$item->get_submission_id() === $updated_item->get_submission_id()) {
+				$found = true; // Skip the old instance
+			} else {
+				$new_queue[] = $item;
+			}
+		}
+
+		if ($found) {
+			$new_queue[] = $updated_item;
+			$this->save($new_queue);
+		}
+
+		$this->unlock();
+		return $found;
+	}
+
+	/**
 	 * Return the first item from the queue and remove it
 	 *
 	 * @return mixed|null null if queue is empty
@@ -100,6 +131,7 @@ class QueueDao {
 	 * @return array
 	 */
 	public function get_all() {
+		wp_cache_delete( $this->key, 'options' );
 		return get_option( $this->key, array() );
 	}
 
@@ -217,13 +249,21 @@ class QueueDao {
 	 *
 	 * @return bool
 	 */
-	private function contains( $all_items, $item ) {
-		if ( is_scalar( $item ) ) {
-			// strict: true => prevent type coercion
-			return in_array( $item, $all_items, true );
+	private function contains($all_items, $item) {
+		if ($item instanceof CrmQueueItem) {
+			foreach ($all_items as $queue_item) {
+				if ($queue_item instanceof CrmQueueItem &&
+					$queue_item->get_submission_id() === $item->get_submission_id()) {
+					return true;
+				}
+			}
+			return false;
 		}
 
-		// strict: false => compare objects / arrays by value
-		return in_array( $item, $all_items, false );
+		// Original comparison for non-CrmQueueItems
+		if (is_scalar($item)) {
+			return in_array($item, $all_items, true);
+		}
+		return in_array($item, $all_items, false);
 	}
 }
