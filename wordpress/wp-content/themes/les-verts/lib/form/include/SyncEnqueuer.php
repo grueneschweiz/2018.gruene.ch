@@ -85,7 +85,6 @@ class SyncEnqueuer {
      */
     public function add_to_queue($data) {
         $this->data = $data;
-        $queue = new QueueDao(self::QUEUE_KEY);
 
         // Process the data
         $this->apply_filtered_data();
@@ -93,7 +92,8 @@ class SyncEnqueuer {
         if ( ! empty( $this->data ) ) {
             unset($this->data['_meta_']);
 			$item = new CrmQueueItem( $this->data, $this->submission );
-			$queue->push_if_not_in_queue( $item );
+            $queue = new QueueDao(self::QUEUE_KEY);
+            $queue->push_if_not_in_queue( $item );
         }
 
         // If SUPT_FORM_ASYNC is false, process the sync queue immediately (for debugging)

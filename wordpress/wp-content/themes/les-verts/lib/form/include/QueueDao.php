@@ -69,30 +69,25 @@ class QueueDao {
 	public function update_and_move_to_end(CrmQueueItem $updated_item) {
 		$this->lock();
 		$queue = $this->get_all();
-		$unset = false;
-		$found_item = null;
+		$found = false;
+		$new_queue = [];
 
-		// Find and remove the item from its current position
-		foreach ($queue as $key => $item) {
-			if ($item instanceof CrmQueueItem &&
-				$updated_item instanceof CrmQueueItem &&
+		foreach ($queue as $item) {
+			if (!$found && $item instanceof CrmQueueItem &&
 				$item->get_submission_id() === $updated_item->get_submission_id()) {
-				$found_item = $updated_item;
-				unset($queue[$key]);
-				$unset = true;
-				break;
+				$found = true; // Skip the old instance
+			} else {
+				$new_queue[] = $item;
 			}
 		}
 
-		// If found, add the item to the end of the queue
-		if ($unset && $found_item !== null) {
-			$queue[] = $found_item;
-			$this->save($queue);
+		if ($found) {
+			$new_queue[] = $updated_item;
+			$this->save($new_queue);
 		}
 
 		$this->unlock();
-
-		return $unset;
+		return $found;
 	}
 
 	/**
@@ -136,6 +131,7 @@ class QueueDao {
 	 * @return array
 	 */
 	public function get_all() {
+		wp_cache_delete( $this->key, 'options' );
 		return get_option( $this->key, array() );
 	}
 

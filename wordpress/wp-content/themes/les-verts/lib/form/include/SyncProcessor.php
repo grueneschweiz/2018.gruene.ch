@@ -52,7 +52,7 @@ class SyncProcessor {
         }
 
         try {
-            $processor->queue = new QueueDao(SyncEnqueuer::QUEUE_KEY);
+            $processor->queue = self::get_queue();
             $items = array_slice($processor->queue->get_all(), 0, self::MAX_BATCH_SIZE);
 
             if (empty($items)) {
@@ -171,7 +171,7 @@ class SyncProcessor {
             $this->remove_from_queue($item);
             Util::send_mail_to_admin(
                 self::SUBJECT_ITEM_MAX_ATTEMPTS . "id=" . $item->get_submission_id(),
-                self::MSG_ITEM_MAX_ATTEMPTS . "\n\n" . $item->get_data()
+                self::MSG_ITEM_MAX_ATTEMPTS . "\n\n" . json_encode($item->get_data())
             );
             Util::debug_log("submissionId=" . $item->get_submission_id() . " msg=Too many attempts. Removed from queue.");
             return true;
