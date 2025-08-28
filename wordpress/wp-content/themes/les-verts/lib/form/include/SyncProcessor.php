@@ -15,9 +15,9 @@ class SyncProcessor {
     const CRON_SYNC_SAVE_INTERVAL = 'every_ten_minutes';
     const CRON_SYNC_SAVE_INTERVAL_SECONDS = 10 * MINUTE_IN_SECONDS;
     const MAX_BATCH_SIZE = 30;
-    const CRM_MAX_SYNCS_PER_RUN = 15;
+    const CRM_MAX_SYNCS_PER_RUN = 10;
     const MAX_SAVE_ATTEMPTS = 5;
-    const MIN_ATTEMPT_TIMEOUT = 19 * MINUTE_IN_SECONDS;
+    const MIN_ATTEMPT_TIMEOUT = 39 * MINUTE_IN_SECONDS;
     const CRON_LOCK_KEY = 'sync_processor_lock';
     const CRON_LOCK_TIMEOUT = 9 * MINUTE_IN_SECONDS;
 
@@ -229,6 +229,9 @@ class SyncProcessor {
 
         // If not matched in CRM and Mailchimp is configured, send to Mailchimp
         if (!$new_contacts_to_crm) {
+            if(empty($simple_data['language'])) {
+                $simple_data['language'] = get_field('mailchimp_language', $item->get_form_id());
+            }
             MailchimpSaver::send_to_mailchimp($simple_data);
             Util::logProcessed($item, 'Mailchimp');
             return true;
