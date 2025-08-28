@@ -84,7 +84,12 @@ class ImageFilters extends AbstractExtension {
 
         if ($num_srcset_options < self::MIN_EXPECTED_SIZE_OPTIONS) {
             // If WordPress couldn't generate srcset, try to build one from legacy files
-            $srcset = \SUPT\buildLegacySrcset($image->ID);
+            $legacy_srcset = \SUPT\buildLegacySrcset($image->ID);
+            $legacy_srcset_options = array_filter(array_map('trim', explode(',', $legacy_srcset)));
+            $num_legacy_srcset_options = count($legacy_srcset_options);
+            if ($num_legacy_srcset_options > $num_srcset_options) {
+                $srcset = $legacy_srcset;
+            }
         }
 
         $attributes = [
