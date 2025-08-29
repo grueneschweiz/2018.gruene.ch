@@ -89,6 +89,9 @@ class StarterSite extends TimberSite {
 		// Global options
 		$context['OPTIONS'] = get_fields( 'options' );
 
+		// Feature flags
+		$context['invert_cta_colors'] = defined('INVERT_CTA_COLORS') && INVERT_CTA_COLORS;
+
 		// Widgets
 		$context['widgets']['footer'] = Timber::get_widgets( 'footer-widget-area' );
 

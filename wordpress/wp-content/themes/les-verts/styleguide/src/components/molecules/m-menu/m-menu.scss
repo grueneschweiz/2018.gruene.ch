@@ -55,12 +55,17 @@
 		}
 
 		@include media($_DESKTOP) {
+			display: flex;
+				align-items: center;
 			@include fluid-props(padding-right, $size-medium, $size-huge, 24px, 33px);
 		}
 	}
 
 	&__cta {
-		display: inline-block;
+		display: inline-flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 0.5rem;
 	}
 
 	&__language-nav {
@@ -119,7 +124,7 @@
 
 	&__nav {
 		@include media($_DESKTOP) {
-			width: calc(100% - 500 * (100vw / 1024));
+			width: calc(100% - 54vw);
 		}
 
 		@include media($_MOBILE) {

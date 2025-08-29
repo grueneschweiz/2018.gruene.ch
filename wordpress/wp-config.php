@@ -101,6 +101,9 @@ define( 'SUPT_FORM_ASYNC', ! ( (bool) getenv( 'WORDPRESS_DEBUG' ) ) );
 // Mailchimp-Service configuration (leave empty to disable integration)
 define( 'MAILCHIMP_SERVICE_ENDPOINT', getenv('MAILCHIMP_SERVICE_ENDPOINT') ?: '' );
 
+// Feature flag: invert CTA button colors in __cta areas (enable with env INVERT_CTA_COLORS=1)
+define( 'INVERT_CTA_COLORS', (bool) getenv('INVERT_CTA_COLORS') );
+
 /* That's all, stop editing! Happy blogging. */
 
 /** Absolute path to the WordPress directory. */
