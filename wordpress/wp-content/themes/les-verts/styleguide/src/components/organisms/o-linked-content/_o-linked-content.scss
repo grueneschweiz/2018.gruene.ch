@@ -1,7 +1,9 @@
 .o-linked-content {
 	&__title {
 		@include fluid-props(margin-bottom, $fluid-min, $fluid-max, 30px, 70px);
-		margin-top: 40px;
+		& {
+			margin-top: 40px;
+		}
 
 		@include media($size-small) {
 			text-align: center;

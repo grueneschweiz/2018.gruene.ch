@@ -4,16 +4,18 @@
 .a-bar {
 	$no-sanuk-factor: 1.15;
 
-	font-family: $font-bar;
-	font-weight: $font-weight-extra;
-	color: $color-white;
-	text-transform: uppercase;
-	line-height: 1em;
-	white-space: nowrap;
+	& {
+		font-family: $font-bar;
+		font-weight: $font-weight-extra;
+		color: $color-white;
+		text-transform: uppercase;
+		line-height: 1em;
+		white-space: nowrap;
 
-	display: inline-block;
-	padding: .15em .2em 0;
-	margin-bottom: 0.1em;
+		display: inline-block;
+		padding: .15em .2em 0;
+		margin-bottom: 0.1em;
+	}
 
 	&--no-sanuk {
 		font-family: 'Passion One Bold', $font-bar; // don't use locally installed sanuk

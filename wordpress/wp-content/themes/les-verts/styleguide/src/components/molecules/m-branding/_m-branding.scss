@@ -29,11 +29,13 @@
 
 	&__logo {
 		@include clean-link;
-		display: table-cell;
-		vertical-align: middle;
-		height: $height;
-		width: 148px;
-		padding: 22px 0;
+		& {
+			display: table-cell;
+			vertical-align: middle;
+			height: $height;
+			width: 148px;
+			padding: 22px 0;
+		}
 
 		@media all and (max-width: $size-small) {
 			display: none;

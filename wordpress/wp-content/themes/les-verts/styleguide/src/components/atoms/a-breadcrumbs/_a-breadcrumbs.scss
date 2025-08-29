@@ -5,8 +5,11 @@
 
 	a {
 		@include clean-link;
-		transition: color $transition-fast $transition-ease;
-		display: none;
+		
+		& {
+			transition: color $transition-fast $transition-ease;
+			display: none;
+		}
 
 		@include hover() {
 			color: $color-primary;

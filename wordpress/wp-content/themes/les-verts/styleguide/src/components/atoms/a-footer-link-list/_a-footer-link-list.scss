@@ -40,13 +40,16 @@
 
 	&__link {
 		@include clean-link;
-		line-height: 1.75em;
-		padding: 7px 0 8px;
-		display: block;
-		position: relative;
-		white-space: nowrap;
-		overflow: hidden;
-		text-overflow: ellipsis;
+		
+		& {
+			line-height: 1.75em;
+			padding: 7px 0 8px;
+			display: block;
+			position: relative;
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+		}
 
 		&:after {
 			content: ' ';

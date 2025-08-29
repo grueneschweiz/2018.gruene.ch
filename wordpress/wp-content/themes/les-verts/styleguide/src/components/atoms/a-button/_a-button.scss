@@ -1,23 +1,26 @@
 .a-button {
 	@include clean-link;
-	font-size: 0.875em; // keep this as em
-	display: inline-block;
-	line-height: 1.71428em; // 24/14
-	letter-spacing: .08928em; // 1.25/14
-	padding-left: 1.57142em; // 22/14
-	padding-right: 1.57142em; // 22/14
+	
+	& {
+		font-size: 0.875em; // keep this as em
+		display: inline-block;
+		line-height: 1.71428em; // 24/14
+		letter-spacing: .08928em; // 1.25/14
+		padding-left: 1.57142em; // 22/14
+		padding-right: 1.57142em; // 22/14
+		background-color: $color-primary;
+		border-color: $color-primary;
+		border-radius: .14285em; // 2/14
+		color: $color-white;
+		font-family: $font-secondary;
+		font-weight: $font-weight-bold;
+		text-align: center;
+		text-transform: uppercase;
+		cursor: pointer;
+		transition: background-color $transition-fast $transition-ease, color $transition-fast $transition-ease;
+	}
+	
 	@include fluid-props(padding-top padding-bottom, $fluid-min, $fluid-max, 6px, 10px);
-
-	background-color: $color-primary;
-	border-color: $color-primary;
-	border-radius: .14285em; // 2/14
-	color: $color-white;
-	font-family: $font-secondary;
-	font-weight: $font-weight-bold;
-	text-align: center;
-	text-transform: uppercase;
-	cursor: pointer;
-	transition: background-color $transition-fast $transition-ease, color $transition-fast $transition-ease;
 
 	@include high-contrast {
 		background-color: $color-primary-dark;
@@ -54,15 +57,19 @@
 }
 
 .a-button--secondary {
-	background-color: $color-secondary;
-	border-color: $color-secondary;
+	& {
+		background-color: $color-secondary;
+		border-color: $color-secondary;
+	}
 
 	@include hover {
 		background-color: $color-secondary-dark;
 	}
 
 	&.a-button--outline {
-		color: $color-secondary;
+		& {
+			color: $color-secondary;
+		}
 
 		@include hover {
 			background-color: $color-secondary;
@@ -71,9 +78,11 @@
 }
 
 .a-button--outline {
-	background-color: transparent;
-	border-width: 1px;
-	border-style: solid;
+	& {
+		background-color: transparent;
+		border-width: 1px;
+		border-style: solid;
+	}
 
 	@include hover {
 		color: $color-white;
@@ -81,9 +90,11 @@
 }
 
 .a-button--transparent {
-	background-color: transparent;
-	border-width: 1px;
-	border-style: solid;
-	color: $color-white;
-	border-color: $color-white;
+	& {
+		background-color: transparent;
+		border-width: 1px;
+		border-style: solid;
+		color: $color-white;
+		border-color: $color-white;
+	}
 }

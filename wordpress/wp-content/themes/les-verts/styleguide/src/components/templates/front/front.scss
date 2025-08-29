@@ -7,7 +7,9 @@
 		@include media($size-large) {
 			margin-top: -170px; // dont supercharge on 2k screens
 		}
-		padding-top: 300px;
+		& {
+			padding-top: 300px;
+		}
 
 		&--no-campaign {
 			margin-top: 0;
@@ -21,10 +23,12 @@
 			grid-template-columns: 1fr 1fr;
 			@include fluid-props(grid-column-gap, $size-medium, $grid-max-width-max, $grid-gap-min, $grid-gap-max);
 			@include fluid-props(grid-row-gap, $size-medium, $grid-max-width-max, 6px, 72px);
-			align-items: start;
-			max-width: $grid-max-width-max;
-			width: calc(100% - 2 * #{$grid-min-side-margin});
-			margin: 0 $grid-min-side-margin;
+			& {
+				align-items: start;
+				max-width: $grid-max-width-max;
+				width: calc(100% - 2 * #{$grid-min-side-margin});
+				margin: 0 $grid-min-side-margin;
+			}
 		}
 
 		@include media($grid-max-width-max + 2 * $grid-min-side-margin) {

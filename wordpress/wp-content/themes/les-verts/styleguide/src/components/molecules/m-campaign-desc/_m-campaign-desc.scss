@@ -9,8 +9,10 @@
 		padding-left: 60px; // don't oversize it for 2k screens
 		padding-right: 60px;
 	}
-	padding-top: 13px;
-	padding-bottom: 40px;
+	& {
+		padding-top: 13px;
+		padding-bottom: 40px;
+	}
 
 	@include media($_DESKTOP) {
 		padding-right: calc(75px + 39 * (100vw - 375px) / 1305);
@@ -25,8 +27,10 @@
 
 	&__link {
 		@include clean-link;
-		color: $color-primary;
-		transition: color $transition-fast $transition-ease;
+		& {
+			color: $color-primary;
+			transition: color $transition-fast $transition-ease;
+		}
 
 		@include high-contrast {
 			color: $color-primary-dark;

@@ -23,14 +23,18 @@
 	&__criteria-list {
 		@include clean-ul;
 
-		display: inline;
+		& {
+			display: inline;
+		}
 	}
 
 	&__criteria-item {
 		@include clean-li;
 
-		display: inline;
-		line-height: 1.5em;
+		& {
+			display: inline;
+			line-height: 1.5em;
+		}
 
 		&:not(:last-of-type) {
 			margin-right: 0.75em;
@@ -39,7 +43,9 @@
 
 	&__criteria-link {
 		@include clean-link;
-		transition: color $transition-ease $transition-fast;
+		& {
+			transition: color $transition-ease $transition-fast;
+		}
 
 		@include hover {
 			color: $color-primary;

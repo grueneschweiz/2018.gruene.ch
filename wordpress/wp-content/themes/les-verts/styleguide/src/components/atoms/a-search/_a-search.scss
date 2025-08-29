@@ -56,17 +56,19 @@
 	}
 
 	&__field {
-		background: transparent;
-		border: none;
-		width: 8.8em;
-		max-width: 300px;
-		font-size: 0.9375rem;
-		font-weight: 700;
-		color: $color-text;
-		transition: all $transition-ease $transition-mid;
-		height: 2.625em;
-		padding-left: $offset;
-		border-bottom: 2px solid transparent;
+		& {
+			background: transparent;
+			border: none;
+			width: 8.8em;
+			max-width: 300px;
+			font-size: 0.9375rem;
+			font-weight: 700;
+			color: $color-text;
+			transition: all $transition-ease $transition-mid;
+			height: 2.625em;
+			padding-left: $offset;
+			border-bottom: 2px solid transparent;
+		}
 
 		@include media($_DESKTOP) {
 			width: 2em;
@@ -129,12 +131,14 @@
 	}
 
 	&--expanded &__field {
-		width: 100%;
-		max-width: 100%;
-		color: $color-text;
-		border-bottom-color: $color-grey-3;
-		cursor: text;
-		padding-right: 2.4em;
+		& {
+			width: 100%;
+			max-width: 100%;
+			color: $color-text;
+			border-bottom-color: $color-grey-3;
+			cursor: text;
+			padding-right: 2.4em;
+		}
 
 		@include high-contrast {
 			border-color: $color-text;

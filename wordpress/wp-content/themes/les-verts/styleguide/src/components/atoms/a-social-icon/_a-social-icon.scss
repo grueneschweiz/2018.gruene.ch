@@ -1,11 +1,13 @@
 .a-social-icon {
 	@include clean-link;
-	width: 100%;
-	height: 100%;
-	display: block;
-	position: relative;
-	line-height: 1em;
-	padding: 0;
+	& {
+		width: 100%;
+		height: 100%;
+		display: block;
+		position: relative;
+		line-height: 1em;
+		padding: 0;
+	}
 
 	&__figure {
 		height: 100%;

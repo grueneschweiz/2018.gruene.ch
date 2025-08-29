@@ -140,9 +140,11 @@
 	&__link {
 		@include clean-link;
 
-		display: block;
-		max-width: 100%;
-		overflow: hidden;
+		& {
+			display: block;
+			max-width: 100%;
+			overflow: hidden;
+		}
 
 		@include hover {
 			.a-image__image {
@@ -160,12 +162,19 @@
 		position: absolute;
 		@include fluid-props(bottom right, $size-tiny, $size-large, 5px, 10px);
 		@include fluid-props(font-size, $size-tiny, $size-large, 5px, 7px);
-		transform: translateX(calc(100% - 1em)) rotate(-90deg);
-		transform-origin: top left;
-
-		color: $color-white;
-		text-transform: uppercase;
-		mix-blend-mode: difference;
+		
+		&::before { // Empty pseudo-element to avoid mixed declarations warnings
+			content: "";
+			display: none;
+		}
+		
+		& {
+			transform: translateX(calc(100% - 1em)) rotate(-90deg);
+			transform-origin: top left;
+			color: $color-white;
+			text-transform: uppercase;
+			mix-blend-mode: difference;
+		}
 
 		&--caption {
 			transform: none;

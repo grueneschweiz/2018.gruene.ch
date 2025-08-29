@@ -12,8 +12,10 @@
 		margin-left: auto;
 		margin-right: auto;
 		@include fluid-grid-item-props(padding);
-		display: grid;
-		grid-gap: 80px;
+		& {
+			display: grid;
+			grid-gap: 80px;
+		}
 
 		@include media($size-small) {
 			grid-template-columns: repeat(2, 1fr);

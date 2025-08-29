@@ -10,10 +10,12 @@
 	}
 
 	&__bar {
-		background: $color-primary;
-		height: 100%;
-		position: relative;
-		transition: opacity $transition-mid $transition-ease;
+		& {
+			background: $color-primary;
+			height: 100%;
+			position: relative;
+			transition: opacity $transition-mid $transition-ease;
+		}
 
 		@include high-contrast {
 			background: $color-primary-dark;

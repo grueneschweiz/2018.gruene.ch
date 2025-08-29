@@ -1,8 +1,10 @@
 .a-pagination {
 	&__list {
 		@include clean-ul;
-		display: inline-block;
-		margin: 0 0.75em;
+		& {
+			display: inline-block;
+			margin: 0 0.75em;
+		}
 	}
 
 	&__item {
@@ -12,10 +14,14 @@
 
 	&__link {
 		@include clean-link;
-		display: inline-block;
-		transition: color $transition-fast $transition-ease;
+		
+		& {
+			display: inline-block;
+			transition: color $transition-fast $transition-ease;
+			color: $color-primary;
+		}
+		
 		@include fluid-props(margin-left margin-right, $fluid-min, $size-medium, 5px, 16px);
-		color: $color-primary;
 
 		@include high-contrast {
 			color: $color-primary-dark;

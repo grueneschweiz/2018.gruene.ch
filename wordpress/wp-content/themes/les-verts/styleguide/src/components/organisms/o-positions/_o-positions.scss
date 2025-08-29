@@ -18,8 +18,10 @@
 		display: grid;
 		grid-template-columns: 1fr;
 		@include fluid-props(grid-column-gap, $size-medium, $grid-max-width-max, $grid-gap-min, $grid-gap-max);
-		grid-row-gap: 40px;
-		align-items: start;
+		& {
+			grid-row-gap: 40px;
+			align-items: start;
+		}
 
 		@include media($_DESKTOP) {
 			grid-template-columns: 1fr 1fr;

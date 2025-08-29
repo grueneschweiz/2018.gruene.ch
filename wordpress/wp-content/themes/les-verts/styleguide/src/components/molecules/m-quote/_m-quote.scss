@@ -11,12 +11,14 @@
 	&__image-outer {
 		@include fluid-props(margin, 320px, $fluid-max, 10px, 15px);
 
-		flex-shrink: 0;
-		width: 247px;
-		height: 247px;
-		transform: rotate(-5deg);
-		overflow: hidden;
-		transition: transform $transition-mid $transition-ease-image;
+		& {
+			flex-shrink: 0;
+			width: 247px;
+			height: 247px;
+			transform: rotate(-5deg);
+			overflow: hidden;
+			transition: transform $transition-mid $transition-ease-image;
+		}
 
 		@include hover {
 			transform: rotate(-5deg) scale(1.01);

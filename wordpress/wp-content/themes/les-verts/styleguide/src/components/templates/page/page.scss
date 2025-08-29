@@ -113,7 +113,9 @@
 
 	&__footer {
 		@include fluid-props(padding-top, $size-medium, $grid-max-width-max, 60px, 90px);
-		background-color: $color-white;
+		& {
+			background-color: $color-white;
+		}
 	}
 
 	/**

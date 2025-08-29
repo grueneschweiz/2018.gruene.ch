@@ -20,13 +20,15 @@
 
 	&__proposal {
 		@include clean-link;
-		flex-grow: 1;
-		flex-shrink: 0;
-		display: flex;
-		align-items: center;
-		align-content: center;
-		transition: background $transition-fast $transition-ease;
-		position: relative;
+		& {
+			flex-grow: 1;
+			flex-shrink: 0;
+			display: flex;
+			align-items: center;
+			align-content: center;
+			transition: background $transition-fast $transition-ease;
+			position: relative;
+		}
 		@include fluid-grid-item-props(padding-left padding-right);
 
 		&:after {

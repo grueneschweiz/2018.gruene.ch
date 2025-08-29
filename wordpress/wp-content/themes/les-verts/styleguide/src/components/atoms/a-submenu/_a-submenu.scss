@@ -8,11 +8,13 @@
 
 	&__title {
 		@include clean-link;
-		font-family: $font-title;
-		display: block;
-		line-height: 2em;
-		color: $color-text;
-		transition: color $transition-fast $transition-ease;
+		& {
+			font-family: $font-title;
+			display: block;
+			line-height: 2em;
+			color: $color-text;
+			transition: color $transition-fast $transition-ease;
+		}
 
 		&:hover, &--active {
 			color: $color-secondary;
@@ -72,13 +74,17 @@
 
 	&__list {
 		@include clean-ul;
-		list-style-image: url(data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7); // fix edge bug
+		& {
+			list-style-image: url(data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7); // fix edge bug
+		}
 	}
 
 	&__item {
 		@include clean-li;
-		color: $color-text;
-		margin: 1em 0 0 1.25em;
+		& {
+			color: $color-text;
+			margin: 1em 0 0 1.25em;
+		}
 
 		@include media($_DESKTOP) {
 			margin: 0;
@@ -87,12 +93,14 @@
 
 	&__link {
 		@include clean-link;
-		color: $color-text;
-		line-height: 1.75em;
-		padding: 7px 0;
-		display: block;
-		position: relative;
-		transition: color $transition-fast $transition-ease;
+		& {
+			color: $color-text;
+			line-height: 1.75em;
+			padding: 7px 0;
+			display: block;
+			position: relative;
+			transition: color $transition-fast $transition-ease;
+		}
 
 		&:hover, &--active {
 			color: $color-secondary;
@@ -171,10 +179,12 @@
 
 			&__title {
 				@include heading-font;
-				font-size: 1.25rem;
-				line-height: 1.4em;
-				margin-top: 16px;
-				transition: color $transition-fast $transition-ease;
+				& {
+					font-size: 1.25rem;
+					line-height: 1.4em;
+					margin-top: 16px;
+					transition: color $transition-fast $transition-ease;
+				}
 
 				@include hover {
 					color: $color-primary-dark;

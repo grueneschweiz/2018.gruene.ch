@@ -143,8 +143,10 @@
 
 	&__author {
 		@include clean-link;
-		display: inline-block;
-		font-weight: bold;
+		& {
+			display: inline-block;
+			font-weight: bold;
+		}
 
 		@include media($_DESKTOP) {
 			margin-left: 28px;

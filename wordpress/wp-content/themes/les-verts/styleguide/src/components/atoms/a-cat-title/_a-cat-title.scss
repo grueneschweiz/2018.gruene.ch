@@ -6,13 +6,15 @@
 	&__link {
 		@include clean-link;
 
-		font-family: $font-primary;
-		font-weight: $font-weight-semi;
-		letter-spacing: 0.125em;
-		line-height: 1.25em;
-		color: $color-text;
-		transition: color $transition-fast $transition-ease;
-		display: inline-block;
+		& {
+			font-family: $font-primary;
+			font-weight: $font-weight-semi;
+			letter-spacing: 0.125em;
+			line-height: 1.25em;
+			color: $color-text;
+			transition: color $transition-fast $transition-ease;
+			display: inline-block;
+		}
 
 		&::after {
 			content: ' ';

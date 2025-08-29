@@ -60,8 +60,10 @@
 
 	&--horizontal &__slide {
 		@include fluid-props(margin-right, $size-tiny, $size-medium, 20px, 32px);
-		position: relative;
-		transition-property: transform;
+		& {
+			position: relative;
+			transition-property: transform;
+		}
 
 		.m-person-slide {
 			width: 220px;
@@ -86,8 +88,10 @@
 		@include fluid-props(top, $size-small, $size-medium, 211px, 240px); // dont ask
 		@include fluid-props(top, $size-medium, $fluid-max, 240px, 269px); // dont ask
 		@include fluid-props(top, $fluid-max, 2000px, 269px, 282px); // dont ask
-		height: 252px;
-		cursor: pointer;
+		& {
+			height: 252px;
+			cursor: pointer;
+		}
 
 		@include media($size-small) {
 			display: block;

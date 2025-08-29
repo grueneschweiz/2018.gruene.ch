@@ -3,7 +3,9 @@
 
 	background-color: $color-grey-1;
 	@include fluid-props(margin-top, $fluid-min, $fluid-max, 20px, 40px);
-	font-size: 0.875rem;
+	& {
+		font-size: 0.875rem;
+	}
 	@include media($size-small) {
 		font-size: 1rem;
 	}
@@ -58,8 +60,10 @@
 
 	&__full-name {
 		@include heading-font;
-		display: inline-block;
-		font-size: 1rem;
+		& {
+			display: inline-block;
+			font-size: 1rem;
+		}
 	}
 
 	&__supplementary {

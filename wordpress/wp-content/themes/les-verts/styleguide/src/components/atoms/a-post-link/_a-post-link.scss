@@ -1,7 +1,9 @@
 .a-post-link {
 	@include clean-link;
 
-	display: block;
+	& {
+		display: block;
+	}
 	@include fluid-props(padding-top padding-bottom, $fluid-min, $fluid-max, 22px, 26px);
 
 	&--link {

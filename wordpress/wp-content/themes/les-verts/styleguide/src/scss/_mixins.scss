@@ -74,41 +74,63 @@
  * Fluid Props
  */
 @mixin fluid-props($properties, $min-vw, $max-vw, $min-value, $max-value, $set-initial-properties: true, $suffix: null) {
+	// Store the original values to use in media queries
+	$original-min-vw: $min-vw;
+	$original-max-vw: $max-vw;
+	$original-min-value: $min-value;
+	$original-max-value: $max-value;
+	$large-screen-scaling: false;
+
+	// Check for 2k scaling before any media queries
+	@if $max-vw == $size-large {
+		$large-screen-scaling: true;
+	}
+
+	// Set initial properties
 	@if $set-initial-properties {
-		@each $property in $properties {
-			#{$property}: $min-value $suffix;
+		& {
+			@each $property in $properties {
+				#{$property}: $min-value $suffix;
+			}
 		}
 	}
 
+	// First media query
 	@media screen and (min-width: $min-vw) {
 		@each $property in $properties {
 			#{$property}: calc(#{$min-value} + #{strip-unit($max-value - $min-value)} * (100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)}) $suffix;
 		}
 	}
 
-	// scaling until 2k if the max-vw equals the mockup size
-	@if $max-vw == $size-large {
-		$min-vw: $size-large;
-		$max-vw: $size-huge;
-		$min-value: $max-value;
-		$max-value: math.div($max-value * $size-huge, $size-large);
-
-		@if $max-value < 0 {
-			$max-value: floor($max-value);
-		} @else {
-			$max-value: ceil($max-value);
-		}
-
-		@media screen and (min-width: $size-large) {
-			@each $property in $properties {
-				#{$property}: calc(#{$min-value} + #{strip-unit($max-value - $min-value)} * (100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)}) $suffix;
-			}
-		}
+	// Second media query for 2k scaling - call it separately
+	@if $large-screen-scaling {
+		@include fluid-props-large-screen($properties, $original-max-value, $suffix);
 	}
 
+	// Final media query
 	@media screen and (min-width: $max-vw) {
 		@each $property in $properties {
 			#{$property}: $max-value $suffix;
+		}
+	}
+}
+
+// Helper mixin for large screen scaling
+@mixin fluid-props-large-screen($properties, $original-max-value, $suffix: null) {
+	$min-vw: $size-large;
+	$max-vw: $size-huge;
+	$min-value: $original-max-value;
+	$max-value: math.div($original-max-value * $size-huge, $size-large);
+
+	@if $max-value < 0 {
+		$max-value: math.floor($max-value);
+	} @else {
+		$max-value: math.ceil($max-value);
+	}
+
+	@media screen and (min-width: $size-large) {
+		@each $property in $properties {
+			#{$property}: calc(#{$min-value} + #{strip-unit($max-value - $min-value)} * (100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)}) $suffix;
 		}
 	}
 }
@@ -179,8 +201,10 @@
 }
 
 @mixin clean-ul {
-	line-height: 1;
-	margin: 0;
+	& {
+		line-height: 1;
+		margin: 0;
+	}
 }
 
 @mixin clean-ol {
