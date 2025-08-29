@@ -1,20 +1,21 @@
-// makes php storm happy. normally it would be enough to add it in styles.scss
+// Import math module and variables with namespace
 @use 'sass:math';
+@use 'variables' as v;
 
 /**
  * CSS Media query.
  *
- * Use @include media($_MOBILE) or @include media($_DESKTOP) to trigger
+ * Use @include media($MOBILE) or @include media($DESKTOP) to trigger
  * the mobile/desktop breakpoint. Any other input will be treated as
  * (min-width: $query)
  */
 @mixin media($query) {
-	@if $query == $_MOBILE {
-		@media all and (max-width: ($size-medium - 1)) {
+	@if $query == v.$MOBILE {
+		@media all and (max-width: (v.$size-medium - 1)) {
 			@content;
 		}
-	} @else if ($query == $_DESKTOP) {
-		@media all and (min-width: $size-medium) {
+	} @else if ($query == v.$DESKTOP) {
+		@media all and (min-width: v.$size-medium) {
 			@content;
 		}
 	} @else {
@@ -82,7 +83,7 @@
 	$large-screen-scaling: false;
 
 	// Check for 2k scaling before any media queries
-	@if $max-vw == $size-large {
+	@if $max-vw == v.$size-large {
 		$large-screen-scaling: true;
 	}
 
@@ -117,10 +118,10 @@
 
 // Helper mixin for large screen scaling
 @mixin fluid-props-large-screen($properties, $original-max-value, $suffix: null) {
-	$min-vw: $size-large;
-	$max-vw: $size-huge;
+	$min-vw: v.$size-large;
+	$max-vw: v.$size-huge;
 	$min-value: $original-max-value;
-	$max-value: math.div($original-max-value * $size-huge, $size-large);
+	$max-value: math.div($original-max-value * v.$size-huge, v.$size-large);
 
 	@if $max-value < 0 {
 		$max-value: math.floor($max-value);
@@ -128,7 +129,7 @@
 		$max-value: math.ceil($max-value);
 	}
 
-	@media screen and (min-width: $size-large) {
+	@media screen and (min-width: v.$size-large) {
 		@each $property in $properties {
 			#{$property}: calc(#{$min-value} + #{strip-unit($max-value - $min-value)} * (100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)}) $suffix;
 		}
@@ -144,7 +145,7 @@
  * This is just a shortcut to have the right sizes ready.
  */
 @mixin fluid-grid-item-props($properties) {
-	@include fluid-props($properties, $size-medium, $grid-max-width-max, $grid-item-padding-min, $grid-item-padding-max);
+	@include fluid-props($properties, v.$size-medium, v.$grid-max-width-max, v.$grid-item-padding-min, v.$grid-item-padding-max);
 }
 
 /**
@@ -232,8 +233,8 @@
  * Headings
  */
 @mixin heading-font {
-	font-family: $font-title;
-	color: $color-primary;
+	font-family: v.$font-title;
+	color: v.$color-primary;
 	letter-spacing: 0.018125em; // 0.025 For Sanuk; 0.018125em for Arial Black
 	line-height: 1.2727272727em;
 	margin-top: 0.6086956522em;
@@ -241,10 +242,10 @@
 	hyphens: auto;
 
 	@include high-contrast {
-		color: $color-primary-dark;
+		color: v.$color-primary-dark;
 	}
 
-	@include media($_DESKTOP) {
+	@include media(v.$DESKTOP) {
 		hyphens: initial; // sorry IE users
 	}
 }

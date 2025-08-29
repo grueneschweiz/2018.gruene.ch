@@ -1,3 +1,7 @@
+@use "sass:math";
+@use "../../../scss/variables" as v;
+@use "../../../scss/mixins" as m;
+
 .m-in-short {
 	&__title {
 		@extend h3;
@@ -5,7 +9,7 @@
 
 	.m-in-short__title {
 		// we need two levels of binding to overwrite the @extend from above
-		color: $color-text;
+		color: v.$color-text;
 		margin-top: 0;
 	}
 

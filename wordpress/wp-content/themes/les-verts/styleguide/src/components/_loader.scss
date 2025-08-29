@@ -1,3 +1,7 @@
+@use "sass:math";
+@use "../scss/variables" as v;
+@use "../scss/mixins" as m;
+
 // __ THIS IS AN AUTO-GENERATED FILE __
 @import "./atoms/a-bar/a-bar";
 @import "./atoms/a-breadcrumbs/a-breadcrumbs";

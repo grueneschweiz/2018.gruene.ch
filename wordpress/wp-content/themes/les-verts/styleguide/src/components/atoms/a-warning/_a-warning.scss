@@ -1,4 +1,8 @@
+@use "sass:math";
+@use "../../../scss/variables" as v;
+@use "../../../scss/mixins" as m;
+
 .a-warning {
-	background: $color-warning;
+	background: v.$color-warning;
 	padding: 1.25em 1em;
 }

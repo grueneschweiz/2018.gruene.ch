@@ -1,3 +1,7 @@
+@use "sass:math";
+@use "../../../scss/variables" as v;
+@use "../../../scss/mixins" as m;
+
 .no-branding .m-branding {
 	display: none;
 }
@@ -5,12 +9,12 @@
 .m-branding {
 	$height: 136px;
 
-	background-color: $color-primary;
+	background-color: v.$color-primary;
 	width: 100%;
 	height: $height;
 
-	@include high-contrast {
-		background-color: $color-primary-dark;
+	@include m.high-contrast {
+		background-color: v.$color-primary-dark;
 	}
 
 	@media print {
@@ -28,7 +32,7 @@
 	}
 
 	&__logo {
-		@include clean-link;
+		@include m.clean-link;
 		& {
 			display: table-cell;
 			vertical-align: middle;
@@ -37,7 +41,7 @@
 			padding: 22px 0;
 		}
 
-		@media all and (max-width: $size-small) {
+		@media all and (max-width: v.$size-small) {
 			display: none;
 		}
 
@@ -47,11 +51,11 @@
 	}
 
 	&__title {
-		color: $color-white;
+		color: v.$color-white;
 		display: table-cell;
 		vertical-align: middle;
 		width: 100%;
 		height: $height;
-		@include fluid-props(font-size, $fluid-min, $fluid-max, 24px, 34px);
+		@include m.fluid-props(font-size, v.$fluid-min, v.$fluid-max, 24px, 34px);
 	}
 }

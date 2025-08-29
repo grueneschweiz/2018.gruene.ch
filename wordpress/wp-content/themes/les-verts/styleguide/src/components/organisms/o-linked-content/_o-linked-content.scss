@@ -1,11 +1,15 @@
+@use "sass:math";
+@use "../../../scss/variables" as v;
+@use "../../../scss/mixins" as m;
+
 .o-linked-content {
 	&__title {
-		@include fluid-props(margin-bottom, $fluid-min, $fluid-max, 30px, 70px);
+		@include m.fluid-props(margin-bottom, v.$fluid-min, v.$fluid-max, 30px, 70px);
 		& {
 			margin-top: 40px;
 		}
 
-		@include media($size-small) {
+		@include m.media(v.$size-small) {
 			text-align: center;
 		}
 	}
@@ -18,9 +22,9 @@
 		display: grid;
 		grid-template-columns: 1fr;
 		grid-column-gap: 50px;
-		@include fluid-props(grid-row-gap, $fluid-min, $fluid-max, 60px, 120px);
+		@include m.fluid-props(grid-row-gap, v.$fluid-min, v.$fluid-max, 60px, 120px);
 
-		@include media($size-small) {
+		@include m.media(v.$size-small) {
 			grid-template-columns: 1fr 1fr;
 		}
 	}
@@ -30,7 +34,7 @@
 	}
 
 	&__block--full-width {
-		@include media($size-small) {
+		@include m.media(v.$size-small) {
 			grid-column: 1 / 3;
 		}
 	}

@@ -1,17 +1,21 @@
+@use "sass:math";
+@use "../../../scss/variables" as v;
+@use "../../../scss/mixins" as m;
+
 .o-front-events {
 	@extend .grid-item;
 	padding-left: 0;
 	padding-right: 0;
 
-	@include media($_DESKTOP) {
-		max-width: $grid-max-width-max;
+	@include m.media(v.$DESKTOP) {
+		max-width: v.$grid-max-width-max;
 	}
 
 	&__cat-title {
 		margin-bottom: 4px;
-		@include fluid-grid-item-props(margin-left);
+		@include m.fluid-grid-item-props(margin-left);
 
-		@include media($_DESKTOP) {
+		@include m.media(v.$DESKTOP) {
 			margin-bottom: 25px;
 		}
 	}
@@ -21,31 +25,31 @@
 		display: grid;
 		align-items: stretch;
 		grid-template-columns: 1fr;
-		@include fluid-props(grid-column-gap, $size-medium, $grid-max-width-max, $grid-gap-min, $grid-gap-max);
+		@include m.fluid-props(grid-column-gap, v.$size-medium, v.$grid-max-width-max, v.$grid-gap-min, v.$grid-gap-max);
 	}
 
 	&--full-width &__events {
-		@include media($_DESKTOP) {
+		@include m.media(v.$DESKTOP) {
 			grid-template-columns: 1fr 1fr;
 		}
 	}
 
 	&__inner {
-		border-bottom: 1px solid $color-grey-2;
+		border-bottom: 1px solid v.$color-grey-2;
 		height: 100%;
 	}
 
 	&__event {
 		width: 100%;
-		@include fluid-grid-item-props(padding-left padding-right);
+		@include m.fluid-grid-item-props(padding-left padding-right);
 
-		@include hover {
-			background-color: $color-grey-1;
+		@include m.hover {
+			background-color: v.$color-grey-1;
 		}
 	}
 
 	&__more {
 		padding-top: 16px;
-		@include fluid-grid-item-props(padding-left);
+		@include m.fluid-grid-item-props(padding-left);
 	}
 }

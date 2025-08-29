@@ -1,18 +1,22 @@
+@use "sass:math";
+@use "../../../scss/variables" as v;
+@use "../../../scss/mixins" as m;
+
 .a-cat-title {
 	font-size: 1rem;
 	line-height: 1.2em;
 	margin: 0;
 
 	&__link {
-		@include clean-link;
+		@include m.clean-link;
 
 		& {
-			font-family: $font-primary;
-			font-weight: $font-weight-semi;
+			font-family: v.$font-primary;
+			font-weight: v.$font-weight-semi;
 			letter-spacing: 0.125em;
 			line-height: 1.25em;
-			color: $color-text;
-			transition: color $transition-fast $transition-ease;
+			color: v.$color-text;
+			transition: color v.$transition-fast v.$transition-ease;
 			display: inline-block;
 		}
 
@@ -20,8 +24,8 @@
 			content: ' ';
 			width: 1.4em;
 			height: 2px;
-			background-color: $color-text-light;
-			transition: all $transition-fast $transition-ease;
+			background-color: v.$color-text-light;
+			transition: all v.$transition-fast v.$transition-ease;
 			display: block;
 			margin-top: 0.7em;
 		}
@@ -29,19 +33,19 @@
 		&:not(&--no-link) {
 			cursor: pointer;
 
-			@include hover {
-				color: $color-primary;
+			@include m.hover {
+				color: v.$color-primary;
 
-				@include high-contrast {
-					color: $color-primary-dark;
+				@include m.high-contrast {
+					color: v.$color-primary-dark;
 				}
 
 				&:after {
 					width: 100%;
-					background-color: $color-primary;
+					background-color: v.$color-primary;
 
-					@include high-contrast {
-						background-color: $color-primary-dark;
+					@include m.high-contrast {
+						background-color: v.$color-primary-dark;
 					}
 				}
 			}

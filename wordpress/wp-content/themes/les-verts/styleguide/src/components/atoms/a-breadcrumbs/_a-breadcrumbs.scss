@@ -1,21 +1,25 @@
+@use "sass:math";
+@use "../../../scss/variables" as v;
+@use "../../../scss/mixins" as m;
+
 .a-breadcrumbs {
 	$arrow: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' version='1'%3E%3Cg fill='none' fill-rule='evenodd' stroke='%2384B414'%3E%3Cpath d='M6 0l3 3-3 3M9 3H0'/%3E%3C/g%3E%3C/svg%3E";
 
 	font-size: .875rem;
 
 	a {
-		@include clean-link;
+		@include m.clean-link;
 		
 		& {
-			transition: color $transition-fast $transition-ease;
+			transition: color v.$transition-fast v.$transition-ease;
 			display: none;
 		}
 
-		@include hover() {
-			color: $color-primary;
+		@include m.hover() {
+			color: v.$color-primary;
 
-			@include high-contrast {
-				color: $color-primary-dark;
+			@include m.high-contrast {
+				color: v.$color-primary-dark;
 			}
 		}
 	}
@@ -40,7 +44,7 @@
 			height: 0.8em !important; // make sure to overwrite the hover height defined in the typography
 		}
 
-		@include media($_DESKTOP) {
+		@include m.media(v.$DESKTOP) {
 			display: inline-block;
 		}
 	}
@@ -48,7 +52,7 @@
 	.breadcrumb_second_last {
 		display: inline-block;
 
-		@include media($_MOBILE) {
+		@include m.media(v.$MOBILE) {
 			&::before,
 			&:hover::before,
 			&:focus::before {
@@ -59,16 +63,16 @@
 	}
 
 	.breadcrumb_last {
-		@include media($_MOBILE) {
+		@include m.media(v.$MOBILE) {
 			display: none;
 		}
 	}
 
 	// home
 	& > div > span:first-of-type > a {
-		font-weight: $font-weight-semi;
+		font-weight: v.$font-weight-semi;
 
-		@include media($_DESKTOP) {
+		@include m.media(v.$DESKTOP) {
 			&::before,
 			&:hover::before,
 			&:focus::before {

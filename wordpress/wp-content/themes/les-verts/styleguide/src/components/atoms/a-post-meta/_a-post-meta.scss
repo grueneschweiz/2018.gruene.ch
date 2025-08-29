@@ -1,11 +1,15 @@
+@use "sass:math";
+@use "../../../scss/variables" as v;
+@use "../../../scss/mixins" as m;
+
 .a-post-meta {
 	font-size: 0.875rem;
 	letter-spacing: 0.018em;
 	hyphens: auto;
 	line-height: 1.57em;
-	@include fluid-props(padding-top padding-bottom, $fluid-min, $size-medium, 4px, 40px);
+	@include m.fluid-props(padding-top padding-bottom, v.$fluid-min, v.$size-medium, 4px, 40px);
 
-	@include media($_MOBILE) {
+	@include m.media(v.$MOBILE) {
 		padding: 6px 0 8px;
 	}
 
@@ -16,11 +20,11 @@
 
 	&__date {
 		@extend .a-post-meta__block;
-		color: $color-grey-3;
-		font-weight: $font-weight-bold;
+		color: v.$color-grey-3;
+		font-weight: v.$font-weight-bold;
 
-		@include high-contrast {
-			color: $color-text;
+		@include m.high-contrast {
+			color: v.$color-text;
 		}
 	}
 
@@ -37,7 +41,7 @@
 			content: ' ';
 			height: 1px;
 			width: 20px;
-			background-color: $color-grey-2;
+			background-color: v.$color-grey-2;
 			display: block;
 			margin-bottom: 8px;
 		}
@@ -45,18 +49,18 @@
 
 	&__tag,
 	&__category {
-		@include clean-link;
+		@include m.clean-link;
 		
 		& {
-			transition: color $transition-ease $transition-fast;
+			transition: color v.$transition-ease v.$transition-fast;
 			display: inline-block; // only hyphenate if really necessary
 		}
 
 		&:hover {
-			color: $color-primary;
+			color: v.$color-primary;
 
-			@include high-contrast {
-				color: $color-primary-dark;
+			@include m.high-contrast {
+				color: v.$color-primary-dark;
 			}
 		}
 
@@ -66,15 +70,15 @@
 	}
 
 	&__author {
-		@include clean-link;
+		@include m.clean-link;
 		@extend .a-post-meta__block;
 		& {
-			color: $color-primary;
-			font-weight: $font-weight-bold;
+			color: v.$color-primary;
+			font-weight: v.$font-weight-bold;
 		}
 
-		@include high-contrast {
-			color: $color-primary-dark;
+		@include m.high-contrast {
+			color: v.$color-primary-dark;
 		}
 	}
 }

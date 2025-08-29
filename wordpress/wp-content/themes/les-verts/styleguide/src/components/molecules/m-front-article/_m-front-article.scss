@@ -1,3 +1,7 @@
+@use "sass:math";
+@use "../../../scss/variables" as v;
+@use "../../../scss/mixins" as m;
+
 .m-front-article {
 	display: flex;
 	flex-direction: column;
@@ -5,8 +9,8 @@
 	height: 100%; // mm
 
 	&__title {
-		@include fluid-props(font-size, $size-tiny, $size-medium, 20px, 24px);
-		@include fluid-props(margin-top, $size-tiny, $size-medium, 4px, 12px);
+		@include m.fluid-props(font-size, v.$size-tiny, v.$size-medium, 20px, 24px);
+		@include m.fluid-props(margin-top, v.$size-tiny, v.$size-medium, 4px, 12px);
 		& {
 			margin-bottom: 0.5em;
 		}
@@ -18,27 +22,27 @@
 	}
 
 	&__title-link {
-		@include clean-link;
+		@include m.clean-link;
 		& {
 			line-height: 1.4em;
-			color: $color-primary;
-			transition: color $transition-fast $transition-ease;
+			color: v.$color-primary;
+			transition: color v.$transition-fast v.$transition-ease;
 			hyphens: auto;
 		}
 
-		@include high-contrast {
-			color: $color-primary-dark;
+		@include m.high-contrast {
+			color: v.$color-primary-dark;
 		}
 
-		@include hover {
-			color: $color-primary-dark;
+		@include m.hover {
+			color: v.$color-primary-dark;
 		}
 	}
 
 	&__image {
 		margin-bottom: 12px;
 		width: 100%;
-		@include aspect-ratio-box(56.25%);
+		@include m.aspect-ratio-box(56.25%);
 	}
 
 	&--image-first &__image {
@@ -59,8 +63,8 @@
 		display: flex;
 		flex-direction: row;
 		align-items: flex-end;
-		@include fluid-props(margin-bottom, $fluid-min, $fluid-max, 10px, 24px);
-		@include fluid-props(margin-top, $fluid-min, $fluid-max, 0px, 24px);
+		@include m.fluid-props(margin-bottom, v.$fluid-min, v.$fluid-max, 10px, 24px);
+		@include m.fluid-props(margin-top, v.$fluid-min, v.$fluid-max, 0px, 24px);
 	}
 }
 

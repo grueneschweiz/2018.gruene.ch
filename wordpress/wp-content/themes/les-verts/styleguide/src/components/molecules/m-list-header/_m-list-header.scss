@@ -1,13 +1,17 @@
+@use "sass:math";
+@use "../../../scss/variables" as v;
+@use "../../../scss/mixins" as m;
+
 .m-list-header {
 	&__title {
-		color: $color-text;
+		color: v.$color-text;
 	}
 
 	&__term {
-		color: $color-primary;
+		color: v.$color-primary;
 
-		@include high-contrast {
-			color: $color-primary-dark;
+		@include m.high-contrast {
+			color: v.$color-primary-dark;
 		}
 	}
 
@@ -16,12 +20,12 @@
 	}
 
 	&__criteria-desc {
-		font-weight: $font-weight-semi;
+		font-weight: v.$font-weight-semi;
 		margin-right: 0.75em;
 	}
 
 	&__criteria-list {
-		@include clean-ul;
+		@include m.clean-ul;
 
 		& {
 			display: inline;
@@ -29,7 +33,7 @@
 	}
 
 	&__criteria-item {
-		@include clean-li;
+		@include m.clean-li;
 
 		& {
 			display: inline;
@@ -42,25 +46,25 @@
 	}
 
 	&__criteria-link {
-		@include clean-link;
+		@include m.clean-link;
 		& {
-			transition: color $transition-ease $transition-fast;
+			transition: color v.$transition-ease v.$transition-fast;
 		}
 
-		@include hover {
-			color: $color-primary;
+		@include m.hover {
+			color: v.$color-primary;
 
-			@include high-contrast {
-				color: $color-primary-dark;
+			@include m.high-contrast {
+				color: v.$color-primary-dark;
 			}
 		}
 
 		&--active {
-			font-weight: $font-weight-bold;
+			font-weight: v.$font-weight-bold;
 			cursor: default;
 
-			@include hover {
-				color: $color-text;
+			@include m.hover {
+				color: v.$color-text;
 			}
 		}
 	}

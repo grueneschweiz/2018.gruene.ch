@@ -1,23 +1,27 @@
+@use "sass:math";
+@use "../../../scss/variables" as v;
+@use "../../../scss/mixins" as m;
+
 .a-event-link {
-	@include clean-link;
+	@include m.clean-link;
 
 	& {
 		display: grid;
 		grid-template-columns: 1fr;
 		grid-column-gap: 12px;
 	}
-	@include fluid-props(padding-top padding-bottom, $fluid-min, $fluid-max, 18px, 22px);
+	@include m.fluid-props(padding-top padding-bottom, v.$fluid-min, v.$fluid-max, 18px, 22px);
 
-	@include media($size-tiny) {
+	@include m.media(v.$size-tiny) {
 		grid-template-columns: 80px 1fr;
 	}
 
-	@include media($_DESKTOP) {
+	@include m.media(v.$DESKTOP) {
 		grid-template-columns: 148px 1fr;
 		grid-column-gap: 32px;
 	}
 
-	@include only_ie10_above {
+	@include m.only_ie10_above {
 		display: flex;
 		flex-direction: row;
 		flex-wrap: wrap;
@@ -32,15 +36,15 @@
 		grid-row: 1 / 3;
 		display: none;
 
-		@include media($size-tiny) {
+		@include m.media(v.$size-tiny) {
 			display: block;
 		}
 
-		@include media($_DESKTOP) {
+		@include m.media(v.$DESKTOP) {
 			height: 94px;
 		}
 
-		@include only_ie10_above {
+		@include m.only_ie10_above {
 			width: 148px;
 			margin-right: 32px;
 		}
@@ -49,11 +53,11 @@
 	&__title {
 		margin: 0;
 		align-self: start;
-		color: $color-text;
+		color: v.$color-text;
 		font-size: 1rem;
 		hyphens: auto;
 
-		@include media($_MOBILE) {
+		@include m.media(v.$MOBILE) {
 			position: relative;
 			padding-right: 2em;
 
@@ -61,20 +65,20 @@
 				content: "";
 				width: 0.6em;
 				height: 0.6em;
-				border-top: 0.1666666667em solid $color-primary; // 2/12
-				border-right: 0.1666666667em solid $color-primary; // 2/12
+				border-top: 0.1666666667em solid v.$color-primary; // 2/12
+				border-right: 0.1666666667em solid v.$color-primary; // 2/12
 				transform: translateX(-0.2em) translateY(-50%) rotate(45deg);
 				position: absolute;
 				right: 0;
 				top: 50%;
 
-				@include high-contrast {
-					border-color: $color-primary-dark;
+				@include m.high-contrast {
+					border-color: v.$color-primary-dark;
 				}
 			}
 		}
 
-		@include only_ie10_above {
+		@include m.only_ie10_above {
 			width: calc(100% - 180px);
 			display: block;
 		}
@@ -86,7 +90,7 @@
 		align-self: end;
 		margin-top: 0.8571428571em;
 
-		@include only_ie10_above {
+		@include m.only_ie10_above {
 			margin-left: 180px;
 			margin-top: -32px;
 		}
@@ -102,7 +106,7 @@
 
 		&:before {
 			content: "\25A0";
-			color: $color-secondary;
+			color: v.$color-secondary;
 			margin-right: 0.85em;
 			display: inline-block;
 			transform: translateY(-0.1em) rotate(-5deg);

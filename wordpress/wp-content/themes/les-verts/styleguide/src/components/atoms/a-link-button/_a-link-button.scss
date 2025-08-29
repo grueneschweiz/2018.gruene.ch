@@ -1,5 +1,9 @@
+@use "sass:math";
+@use "../../../scss/variables" as v;
+@use "../../../scss/mixins" as m;
+
 .a-link-button {
-	@include clean-link;
+	@include m.clean-link;
 	
 	& {
 		position: relative;
@@ -9,41 +13,41 @@
 		padding-right: 1.5em;
 		line-height: 1.2em;
 		padding-left: 0;
-		color: $color-primary;
-		font-family: $font-secondary;
-		font-weight: $font-weight-bold;
+		color: v.$color-primary;
+		font-family: v.$font-secondary;
+		font-weight: v.$font-weight-bold;
 		text-transform: uppercase;
 		cursor: pointer;
-		transition: color $transition-fast $transition-ease;
+		transition: color v.$transition-fast v.$transition-ease;
 		letter-spacing: 0.08928em;
 	}
 	
-	@include fluid-props(padding-top padding-bottom, $fluid-min, $fluid-max, 6px, 10px);
+	@include m.fluid-props(padding-top padding-bottom, v.$fluid-min, v.$fluid-max, 6px, 10px);
 
-	@include high-contrast {
-		color: $color-primary-dark;
+	@include m.high-contrast {
+		color: v.$color-primary-dark;
 	}
 
 	&::after {
 		content: "";
 		width: 0.6em;
 		height: 0.6em;
-		border-color: $color-primary;
+		border-color: v.$color-primary;
 		border-top: 0.1666666667em solid; // 2/12
 		border-right: 0.1666666667em solid; // 2/12
 		transform: translateY(-50%) translateX(-0.5em) rotate(45deg);
-		transition: transform $transition-fast $transition-ease;
+		transition: transform v.$transition-fast v.$transition-ease;
 		position: absolute;
 		right: 0;
 		top: 50%;
 
-		@include high-contrast {
-			border-color: $color-primary-dark;
+		@include m.high-contrast {
+			border-color: v.$color-primary-dark;
 		}
 	}
 
-	@include hover {
-		color: $color-primary-dark;
+	@include m.hover {
+		color: v.$color-primary-dark;
 
 		&::after {
 			transform: translateY(-50%) translateX(0.5em) rotate(45deg);
@@ -51,46 +55,46 @@
 	}
 
 	&--grey {
-		color: $color-grey-3;
+		color: v.$color-grey-3;
 
-		@include high-contrast {
-			color: $color-text;
+		@include m.high-contrast {
+			color: v.$color-text;
 		}
 
-		@include hover {
-			color: $color-text-light;
+		@include m.hover {
+			color: v.$color-text-light;
 
-			@include high-contrast {
-				color: $color-text;
+			@include m.high-contrast {
+				color: v.$color-text;
 			}
 		}
 
 		&::after {
-			border-color: $color-grey-3;
+			border-color: v.$color-grey-3;
 
-			@include high-contrast {
-				border-color: $color-text;
+			@include m.high-contrast {
+				border-color: v.$color-text;
 			}
 
-			@include hover {
-				color: $color-text-light;
+			@include m.hover {
+				color: v.$color-text-light;
 
-				@include high-contrast {
-					color: $color-text;
+				@include m.high-contrast {
+					color: v.$color-text;
 				}
 			}
 		}
 	}
 
 	&--white {
-		color: $color-white;
+		color: v.$color-white;
 
-		@include hover {
-			color: $color-white;
+		@include m.hover {
+			color: v.$color-white;
 		}
 
 		&::after {
-			border-color: $color-white;
+			border-color: v.$color-white;
 		}
 	}
 }

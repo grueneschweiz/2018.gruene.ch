@@ -1,3 +1,7 @@
+@use "sass:math";
+@use "../../../scss/variables" as v;
+@use "../../../scss/mixins" as m;
+
 .m-form {
 	&__element {
 		padding: 0.2em 0 0;
@@ -12,7 +16,7 @@
 	&__message {
 		max-height: 0;
 		overflow: hidden;
-		transition: max-height $transition-ease $transition-slow;
+		transition: max-height v.$transition-ease v.$transition-slow;
 	}
 
 	&__message.is-shown {
@@ -29,12 +33,12 @@
 	&__submit-wrapper {
 		max-height: 10000px;
 		overflow: hidden;
-		transition: height $transition-ease $transition-slow;
+		transition: height v.$transition-ease v.$transition-slow;
 		display: flex;
 		flex-direction: column-reverse;
 		margin-top: 1em;
 
-		@include media($size-small) {
+		@include m.media(v.$size-small) {
 			align-items: center;
 			flex-direction: row;
 		}
@@ -44,7 +48,7 @@
 		margin: 0.25em 0 0.4em;
 		line-height: 1.4em;
 
-		@include media($size-small) {
+		@include m.media(v.$size-small) {
 			margin: 0 0 0 1em;
 		}
 	}

@@ -1,36 +1,38 @@
-// makes php storm happy. normally it would be enough to add it in styles.scss
+// Import required modules with namespaces
 @use 'sass:math';
+@use '../../../scss/variables' as v;
+@use '../../../scss/mixins' as m;
 
 .m-menu {
 	font-size: 0.9375rem; // 15/16
-	border-bottom: 0.125rem solid $color-grey-1;
-	background: $color-white;
-	z-index: $z-index-menu;
+	border-bottom: 0.125rem solid v.$color-grey-1;
+	background: v.$color-white;
+	z-index: v.$z-index-menu;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	width: 100%;
 	position: relative;
-	@include fluid-props(height, $size-medium, $grid-max-width-max, 80px, 100px);
+	@include m.fluid-props(height, v.$size-medium, v.$grid-max-width-max, 80px, 100px);
 
 	&__logo {
-		@include clean-link;
-		@include fluid-props(width, $size-medium, $grid-max-width-max, 100px, 116px);
+		@include m.clean-link;
+		@include m.fluid-props(width, v.$size-medium, v.$grid-max-width-max, 100px, 116px);
 		& {
 			margin-left: 30px;
 			position: relative;
 			z-index: 5;
 		}
 
-		@include media($_DESKTOP) {
-			@include fluid-props(margin-left, $size-medium, $grid-max-width-max, 16px, 33px);
+		@include m.media(v.$DESKTOP) {
+			@include m.fluid-props(margin-left, v.$size-medium, v.$grid-max-width-max, 16px, 33px);
 		}
 
 		&:focus {
-			border-left: solid 1px $color-primary;
+			border-left: solid 1px v.$color-primary;
 
-			@include high-contrast {
-				border-color: $color-primary-dark;
+			@include m.high-contrast {
+				border-color: v.$color-primary-dark;
 			}
 		}
 
@@ -45,9 +47,9 @@
 			display: block;
 		}
 
-		@include media($_MOBILE) {
+		@include m.media(v.$MOBILE) {
 			display: none;
-			background: $color-grey-1;
+			background: v.$color-grey-1;
 			position: absolute;
 			top: 80px;
 			left: 0;
@@ -56,8 +58,8 @@
 			min-height: 80px;
 		}
 
-		@include media($_DESKTOP) {
-			@include fluid-props(padding-right, $size-medium, $size-huge, 24px, 33px);
+		@include m.media(v.$DESKTOP) {
+			@include m.fluid-props(padding-right, v.$size-medium, v.$size-huge, 24px, 33px);
 		}
 	}
 
@@ -68,14 +70,14 @@
 	&__language-nav {
 		font-size: 0.875rem;
 		display: inline-block;
-		@include fluid-props(margin-left, $size-medium, $size-huge, 24px, 55px);
+		@include m.fluid-props(margin-left, v.$size-medium, v.$size-huge, 24px, 55px);
 		& {
 			float: right;
 			margin-top: 11px;
 			margin-bottom: 11px;
 		}
 
-		@include media($_DESKTOP) {
+		@include m.media(v.$DESKTOP) {
 			float: none;
 			margin-top: 0;
 			margin-bottom: 0;
@@ -83,31 +85,31 @@
 	}
 
 	&__language-nav-list {
-		@include clean-ul;
+		@include m.clean-ul;
 	}
 
 	&__language-nav-item {
-		@include clean-li;
+		@include m.clean-li;
 		display: inline-block;
-		font-weight: $font-weight-bold;
+		font-weight: v.$font-weight-bold;
 		text-transform: uppercase;
 
 		&:not(:last-of-type)::after {
 			content: '|';
-			font-weight: $font-weight-normal;
+			font-weight: v.$font-weight-normal;
 			padding: 0 0.125em;
 		}
 	}
 
 	&__language-nav-link {
-		@include clean-link;
+		@include m.clean-link;
 		& {
-			color: $color-text;
-			transition: color $transition-fast $transition-ease;
+			color: v.$color-text;
+			transition: color v.$transition-fast v.$transition-ease;
 		}
 
 		&--active {
-			color: $color-secondary;
+			color: v.$color-secondary;
 		}
 
 		&:hover {
@@ -124,11 +126,11 @@
    */
 
 	&__nav {
-		@include media($_DESKTOP) {
+		@include m.media(v.$DESKTOP) {
 			width: calc(100% - 500 * (100vw / 1024));
 		}
 
-		@include media($_MOBILE) {
+		@include m.media(v.$MOBILE) {
 			width: 100%;
 			padding: 27px 38px 40px;
 			position: absolute;
@@ -136,12 +138,12 @@
 			right: 0;
 
 			&.is-open {
-				background: $color-white;
+				background: v.$color-white;
 				min-height: calc(100vh - 160px);
-				@include fluid-props(top, $size-medium, $grid-max-width-max, 160px, 164px);
+				@include m.fluid-props(top, v.$size-medium, v.$grid-max-width-max, 160px, 164px);
 
 				.m-menu__hamburger {
-					@include fluid-props(top, $size-medium, $grid-max-width-max, -133px, -135px);
+					@include m.fluid-props(top, v.$size-medium, v.$grid-max-width-max, -133px, -135px);
 				}
 			}
 
@@ -160,13 +162,13 @@
 		top: 27px;
 		right: 31px;
 
-		@include media($_DESKTOP) {
+		@include m.media(v.$DESKTOP) {
 			display: none;
 		}
 	}
 
 	&__nav-list {
-		@include clean-ul;
+		@include m.clean-ul;
 		& {
 			width: 100%;
 			margin: 0 auto;
@@ -179,7 +181,7 @@
 			display: flex;
 		}
 
-		@include media($_DESKTOP) {
+		@include m.media(v.$DESKTOP) {
 			display: flex;
 			flex-direction: row;
 			max-width: 800px;
@@ -188,7 +190,7 @@
 	}
 
 	&__nav-item {
-		@include clean-li;
+		@include m.clean-li;
 		min-height: 2.5rem;
 
 		&.is-active {
@@ -199,7 +201,7 @@
 			padding-right: 34px;
 			width: 100%;
 			left: 0;
-			background: $color-white;
+			background: v.$color-white;
 		}
 
 		&.is-hidden {
@@ -212,24 +214,24 @@
 	}
 
 	&__nav-link {
-		@include clean-link;
+		@include m.clean-link;
 		& {
 			display: inline-block;
-			font-weight: $font-weight-bold;
+			font-weight: v.$font-weight-bold;
 			white-space: nowrap;
-			color: $color-text;
+			color: v.$color-text;
 			position: relative;
 			padding: 19px 0;
-			transition: color $transition-fast $transition-ease;
+			transition: color v.$transition-fast v.$transition-ease;
 		}
 
-		@include media($_DESKTOP) {
+		@include m.media(v.$DESKTOP) {
 			margin: 0;
 		}
 
 		&--active,
 		&:hover {
-			color: $color-secondary;
+			color: v.$color-secondary;
 		}
 
 		&:focus {
@@ -237,7 +239,7 @@
 				content: '';
 				width: 0;
 				height: 0;
-				border-left: 1px solid $color-secondary;
+				border-left: 1px solid v.$color-secondary;
 				margin-right: 0.5em;
 				margin-left: calc(-1px - 0.5em);
 			}
@@ -245,11 +247,11 @@
 
 		&.is-open {
 			&:after {
-				@include fluid-props(bottom, $size-medium, $grid-max-width-max, -14.7px, -24px);
+				@include m.fluid-props(bottom, v.$size-medium, v.$grid-max-width-max, -14.7px, -24px);
 			}
 
-			@include media($_MOBILE) {
-				color: $color-secondary;
+			@include m.media(v.$MOBILE) {
+				color: v.$color-secondary;
 				width: 100%;
 				margin-top: 15px;
 
@@ -272,29 +274,29 @@
 					width: 34px;
 					height: 2px;
 					z-index: 1;
-					background-color: $color-secondary;
+					background-color: v.$color-secondary;
 				}
 
-				@include hover {
+				@include m.hover {
 					&:before {
 						margin-left: 0;
 						width: calc(100vw - 69px);
-						transition: width $transition-fast $transition-ease;
+						transition: width v.$transition-fast v.$transition-ease;
 					}
 				}
 			}
 
-			@include media($_DESKTOP) {
+			@include m.media(v.$DESKTOP) {
 				&:after {
 					content: '';
 					position: absolute;
 					left: 0;
 					width: 100%;
 					height: 2px;
-					background-color: $color-primary;
+					background-color: v.$color-primary;
 
-					@include high-contrast {
-						background-color: $color-primary-dark;
+					@include m.high-contrast {
+						background-color: v.$color-primary-dark;
 					}
 				}
 			}
@@ -306,7 +308,7 @@
    */
 
 	&__submenu {
-		@include clean-ul;
+		@include m.clean-ul;
 		& {
 			list-style-image: url(data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7); // fix edge bug
 			position: absolute;
@@ -317,17 +319,17 @@
 			overflow-y: scroll;
 			display: none;
 			hyphens: auto;
-			background-color: $color-grey-1;
+			background-color: v.$color-grey-1;
 			flex-direction: column;
 		}
-		@include fluid-props(top, $size-medium, $grid-max-width-max, 80px, 100px);
+		@include m.fluid-props(top, v.$size-medium, v.$grid-max-width-max, 80px, 100px);
 
-		@include media($_MOBILE) {
+		@include m.media(v.$MOBILE) {
 			top: 84px;
 		}
 
-		@include media($_DESKTOP) {
-			background-color: $color-white;
+		@include m.media(v.$DESKTOP) {
+			background-color: v.$color-white;
 			justify-content: center;
 			align-items: flex-start;
 			flex-direction: row;
@@ -336,7 +338,7 @@
 		}
 
 		&--cta {
-			background-color: $color-white;
+			background-color: v.$color-white;
 		}
 
 		&.is-open {
@@ -344,7 +346,7 @@
 			opacity: 1;
 			animation-name: fadeInOpacity;
 			animation-iteration-count: 1;
-			animation-duration: $transition-fast;
+			animation-duration: v.$transition-fast;
 
 			@keyframes fadeInOpacity {
 				0% {
@@ -355,19 +357,19 @@
 				}
 			}
 
-			@include media($_MOBILE) {
+			@include m.media(v.$MOBILE) {
 				min-height: calc(100vh - 151px + 20 * (100vh - 1024px) / 416);
 			}
 		}
 
 		&__section {
-			@include clean-li;
+			@include m.clean-li;
 			width: calc(100% - 74px);
 			display: block;
 			margin-left: 41px;
 			margin-right: 41px;
 			margin-top: 2em;
-			animation: fadeIn $transition-fast $transition-ease both;
+			animation: fadeIn v.$transition-fast v.$transition-ease both;
 
 			&:nth-last-of-type(2) {
 				// second last because the last one is the close button
@@ -376,7 +378,7 @@
 
 			@for $i from 1 through 4 {
 				&:nth-of-type(#{$i}) {
-					animation-delay: math.div($i * $transition-fast, 8);
+					animation-delay: math.div($i * v.$transition-fast, 8);
 				}
 			}
 
@@ -391,9 +393,9 @@
 				}
 			}
 
-			@include media($_DESKTOP) {
+			@include m.media(v.$DESKTOP) {
 				max-width: 268px;
-				@include fluid-props(margin-left margin-right, $size-medium, $grid-max-width-max, 12px, 16px);
+				@include m.fluid-props(margin-left margin-right, v.$size-medium, v.$grid-max-width-max, 12px, 16px);
 				& {
 					margin-top: 72px;
 				}
@@ -401,12 +403,12 @@
 		}
 
 		&__close-wrapper {
-			@include clean-li;
+			@include m.clean-li;
 			margin-left: 30px;
 			margin-top: 12px;
 			display: none;
 
-			@include media($_DESKTOP) {
+			@include m.media(v.$DESKTOP) {
 				display: block;
 			}
 		}
@@ -418,17 +420,17 @@
 			svg {
 				width: 100%;
 				height: 100%;
-				stroke: $color-primary;
-				transition: stroke $transition-fast $transition-ease;
+				stroke: v.$color-primary;
+				transition: stroke v.$transition-fast v.$transition-ease;
 
-				@include high-contrast {
-					stroke: $color-primary-dark;
+				@include m.high-contrast {
+					stroke: v.$color-primary-dark;
 				}
 			}
 
-			@include hover {
+			@include m.hover {
 				svg {
-					stroke: $color-secondary;
+					stroke: v.$color-secondary;
 				}
 			}
 		}

@@ -1,18 +1,22 @@
+@use "sass:math";
+@use "../../../scss/variables" as v;
+@use "../../../scss/mixins" as m;
+
 .m-person {
 	$intermediate-breakpoint: 480px;
 
-	background-color: $color-grey-1;
-	@include fluid-props(margin-top, $fluid-min, $fluid-max, 20px, 40px);
+	background-color: v.$color-grey-1;
+	@include m.fluid-props(margin-top, v.$fluid-min, v.$fluid-max, 20px, 40px);
 	& {
 		font-size: 0.875rem;
 	}
-	@include media($size-small) {
+	@include m.media(v.$size-small) {
 		font-size: 1rem;
 	}
 
 	&__text {
 		font-size: 0.875rem !important;
-		@include media($size-small) {
+		@include m.media(v.$size-small) {
 			font-size: 1rem !important;
 		}
 	}
@@ -22,7 +26,7 @@
 		flex-direction: column;
 		position: relative;
 
-		@include media($intermediate-breakpoint) {
+		@include m.media($intermediate-breakpoint) {
 			flex-direction: row;
 		}
 	}
@@ -30,11 +34,11 @@
 	&__image {
 		width: 100%;
 
-		@include media($intermediate-breakpoint) {
+		@include m.media($intermediate-breakpoint) {
 			max-width: 170px;
 		}
 
-		@include media($size-small) {
+		@include m.media(v.$size-small) {
 			max-width: 215px;
 		}
 	}
@@ -42,14 +46,14 @@
 	&__image-aspect-ratio-box {
 		width: 100%;
 
-		@include aspect-ratio-box(100%);
+		@include m.aspect-ratio-box(100%);
 	}
 
 	&__basic-info {
 		margin: 8px 20px 20px;
 		width: 100%;
 
-		@include media($size-small) {
+		@include m.media(v.$size-small) {
 			margin: 12px 24px 24px;
 		}
 	}
@@ -59,7 +63,7 @@
 	}
 
 	&__full-name {
-		@include heading-font;
+		@include m.heading-font;
 		& {
 			display: inline-block;
 			font-size: 1rem;
@@ -79,7 +83,7 @@
 
 		@extend .m-person__text;
 
-		@include media($intermediate-breakpoint) {
+		@include m.media($intermediate-breakpoint) {
 			hyphens: none;
 		}
 	}
@@ -109,23 +113,23 @@
 		position: absolute;
 		bottom: 0;
 		right: 0;
-		background: $color-primary-super-light;
+		background: v.$color-primary-super-light;
 		padding: 16px 12px 16px 18px;
 
 		font-size: 0.875rem;
-		color: $color-primary-dark;
-		font-family: $font-secondary;
-		font-weight: $font-weight-bold;
+		color: v.$color-primary-dark;
+		font-family: v.$font-secondary;
+		font-weight: v.$font-weight-bold;
 		text-transform: uppercase;
 		cursor: pointer;
-		transition: all $transition-fast $transition-ease;
+		transition: all v.$transition-fast v.$transition-ease;
 		letter-spacing: 0.08928em;
 
-		@include hover {
-			background: $color-primary-light;
+		@include m.hover {
+			background: v.$color-primary-light;
 
-			@include high-contrast {
-				color: $color-text;
+			@include m.high-contrast {
+				color: v.$color-text;
 			}
 		}
 
@@ -157,12 +161,12 @@
 	}
 
 	&__expandable {
-		background: $color-grey-2;
-		transition: all ease-in-out $transition-mid;
+		background: v.$color-grey-2;
+		transition: all ease-in-out v.$transition-mid;
 		overflow: hidden;
 		max-height: 5000px;
 
-		@include fluid-props(padding, $intermediate-breakpoint, $size-small, 20px, 48px);
+		@include m.fluid-props(padding, $intermediate-breakpoint, v.$size-small, 20px, 48px);
 
 		&.is-collapsed {
 			max-height: 0;
@@ -173,7 +177,7 @@
 
 		h1, h2, h3, h4, h5 {
 			font-size: 1rem;
-			color: $color-text;
+			color: v.$color-text;
 		}
 	}
 

@@ -1,46 +1,50 @@
+@use "sass:math";
+@use "../../../scss/variables" as v;
+@use "../../../scss/mixins" as m;
+
 .page {
 	/**
 		* ======
 		* Layout
 		* ======
 	  */
-	$page-grid-desktop: #{$page-grid-content-max-width + $page-grid-side-width + 2 * $page-grid-padder-min-width};
-	$page-grid-wide: #{$page-grid-content-max-width + 2 * ($page-grid-side-width + $page-grid-padder-regular-width + $page-grid-wide-side-max-width)};
+	$page-grid-desktop: #{v.$page-grid-content-max-width + v.$page-grid-side-width + 2 * v.$page-grid-padder-min-width};
+	$page-grid-wide: #{v.$page-grid-content-max-width + 2 * (v.$page-grid-side-width + v.$page-grid-padder-regular-width + v.$page-grid-wide-side-max-width)};
 
 	&__grid {
 		display: grid;
-		grid-template-columns: [full-start] 1fr [wide-start] 0 [side-left-start] 0 [side-left-end content-start] $page-grid-content-min-width [content-end side-right-start] 0 [side-right-end] 0 [wide-end] 1fr [full-end];
+		grid-template-columns: [full-start] 1fr [wide-start] 0 [side-left-start] 0 [side-left-end content-start] v.$page-grid-content-min-width [content-end side-right-start] 0 [side-right-end] 0 [wide-end] 1fr [full-end];
 
-		@include media(#{$page-grid-content-min-width + 2 * $page-grid-padder-regular-width}) {
-			grid-template-columns: [full-start] $page-grid-padder-regular-width [wide-start] 0 [side-left-start] 0 [side-left-end content-start] 1fr [content-end side-right-start] 0 [side-right-end] 0 [wide-end] $page-grid-padder-regular-width [full-end];
+		@include m.media(#{v.$page-grid-content-min-width + 2 * v.$page-grid-padder-regular-width}) {
+			grid-template-columns: [full-start] v.$page-grid-padder-regular-width [wide-start] 0 [side-left-start] 0 [side-left-end content-start] 1fr [content-end side-right-start] 0 [side-right-end] 0 [wide-end] v.$page-grid-padder-regular-width [full-end];
 		}
 
-		@include media(#{$page-grid-content-max-width + 2 * $page-grid-padder-regular-width}) {
-			grid-template-columns: [full-start] $page-grid-padder-regular-width [wide-start] 1fr [side-left-start] 0 [side-left-end content-start] $page-grid-content-max-width [content-end side-right-start] 0 [side-right-end] 1fr [wide-end] $page-grid-padder-regular-width [full-end];
+		@include m.media(#{v.$page-grid-content-max-width + 2 * v.$page-grid-padder-regular-width}) {
+			grid-template-columns: [full-start] v.$page-grid-padder-regular-width [wide-start] 1fr [side-left-start] 0 [side-left-end content-start] v.$page-grid-content-max-width [content-end side-right-start] 0 [side-right-end] 1fr [wide-end] v.$page-grid-padder-regular-width [full-end];
 		}
 
-		@include media(#{$page-grid-content-max-width + $page-grid-side-width + 2 * $page-grid-padder-min-width}) {
-			grid-template-columns: [full-start] 1fr [wide-start] 0 [side-left-start] $page-grid-side-width [side-left-end content-start] $page-grid-content-max-width [content-end side-right-start] 0 [side-right-end] 0 [wide-end] 1fr [full-end];
+		@include m.media(#{v.$page-grid-content-max-width + v.$page-grid-side-width + 2 * v.$page-grid-padder-min-width}) {
+			grid-template-columns: [full-start] 1fr [wide-start] 0 [side-left-start] v.$page-grid-side-width [side-left-end content-start] v.$page-grid-content-max-width [content-end side-right-start] 0 [side-right-end] 0 [wide-end] 1fr [full-end];
 
 			&--no-sidebar {
-				grid-template-columns: [full-start] $page-grid-padder-regular-width [wide-start] 0 [side-left-start] 1fr [side-left-end content-start] $page-grid-content-max-width [content-end side-right-start] 1fr [side-right-end] 0 [wide-end] $page-grid-padder-regular-width [full-end];
+				grid-template-columns: [full-start] v.$page-grid-padder-regular-width [wide-start] 0 [side-left-start] 1fr [side-left-end content-start] v.$page-grid-content-max-width [content-end side-right-start] 1fr [side-right-end] 0 [wide-end] v.$page-grid-padder-regular-width [full-end];
 			}
 		}
 
-		@include media(#{$page-grid-content-max-width + $page-grid-side-width + 2 * $page-grid-padder-regular-width}) {
-			grid-template-columns: [full-start] $page-grid-padder-regular-width [wide-start] 0 [side-left-start] $page-grid-side-width [side-left-end content-start] $page-grid-content-max-width [content-end side-right-start] 1fr [side-right-end] 0 [wide-end] $page-grid-padder-regular-width [full-end];
+		@include m.media(#{v.$page-grid-content-max-width + v.$page-grid-side-width + 2 * v.$page-grid-padder-regular-width}) {
+			grid-template-columns: [full-start] v.$page-grid-padder-regular-width [wide-start] 0 [side-left-start] v.$page-grid-side-width [side-left-end content-start] v.$page-grid-content-max-width [content-end side-right-start] 1fr [side-right-end] 0 [wide-end] v.$page-grid-padder-regular-width [full-end];
 
 			&--no-sidebar {
-				grid-template-columns: [full-start] $page-grid-padder-regular-width [wide-start] 0 [side-left-start] 1fr [side-left-end content-start] $page-grid-content-max-width [content-end side-right-start] 1fr [side-right-end] 0 [wide-end] $page-grid-padder-regular-width [full-end];
+				grid-template-columns: [full-start] v.$page-grid-padder-regular-width [wide-start] 0 [side-left-start] 1fr [side-left-end content-start] v.$page-grid-content-max-width [content-end side-right-start] 1fr [side-right-end] 0 [wide-end] v.$page-grid-padder-regular-width [full-end];
 			}
 		}
 
-		@include media(#{$page-grid-content-max-width + 2 * ($page-grid-side-width + $page-grid-padder-regular-width)}) {
-			grid-template-columns: [full-start] $page-grid-padder-regular-width [wide-start] 1fr [side-left-start] $page-grid-side-width [side-left-end content-start] $page-grid-content-max-width [content-end side-right-start] $page-grid-side-width [side-right-end] 1fr [wide-end] $page-grid-padder-regular-width [full-end];
+		@include m.media(#{v.$page-grid-content-max-width + 2 * (v.$page-grid-side-width + v.$page-grid-padder-regular-width)}) {
+			grid-template-columns: [full-start] v.$page-grid-padder-regular-width [wide-start] 1fr [side-left-start] v.$page-grid-side-width [side-left-end content-start] v.$page-grid-content-max-width [content-end side-right-start] v.$page-grid-side-width [side-right-end] 1fr [wide-end] v.$page-grid-padder-regular-width [full-end];
 		}
 
-		@include media($page-grid-wide) {
-			grid-template-columns: [full-start] 1fr [wide-start] $page-grid-wide-side-max-width [side-left-start] $page-grid-side-width [side-left-end content-start] $page-grid-content-max-width [content-end side-right-start] $page-grid-side-width [side-right-end] $page-grid-wide-side-max-width [wide-end] 1fr [full-end];
+		@include m.media($page-grid-wide) {
+			grid-template-columns: [full-start] 1fr [wide-start] v.$page-grid-wide-side-max-width [side-left-start] v.$page-grid-side-width [side-left-end content-start] v.$page-grid-content-max-width [content-end side-right-start] v.$page-grid-side-width [side-right-end] v.$page-grid-wide-side-max-width [wide-end] 1fr [full-end];
 		}
 
 		@media print {
@@ -58,11 +62,11 @@
 		grid-column-end: wide-end;
 
 		&--content-width {
-			max-width: $page-grid-content-max-width;
+			max-width: v.$page-grid-content-max-width;
 		}
 
-		@include only_ie10_above() {
-			max-width: $page-grid-content-max-width;
+		@include m.only_ie10_above() {
+			max-width: v.$page-grid-content-max-width;
 			margin: auto;
 		}
 	}
@@ -76,7 +80,7 @@
 			grid-column-end: full-end;
 		}
 
-		@include media($page-grid-desktop) {
+		@include m.media($page-grid-desktop) {
 			&--left {
 				grid-column-start: side-left-start;
 				grid-column-end: side-left-end;
@@ -90,7 +94,7 @@
 	}
 
 	&__row {
-		@include media($page-grid-desktop) {
+		@include m.media($page-grid-desktop) {
 			&--1 {
 				grid-row: 1 / 2;
 			}
@@ -105,16 +109,16 @@
 		grid-column-start: content-start;
 		grid-column-end: content-end;
 
-		@include only_ie10_above() {
-			max-width: $page-grid-content-max-width;
+		@include m.only_ie10_above() {
+			max-width: v.$page-grid-content-max-width;
 			margin: auto;
 		}
 	}
 
 	&__footer {
-		@include fluid-props(padding-top, $size-medium, $grid-max-width-max, 60px, 90px);
+		@include m.fluid-props(padding-top, v.$size-medium, v.$grid-max-width-max, 60px, 90px);
 		& {
-			background-color: $color-white;
+			background-color: v.$color-white;
 		}
 	}
 
@@ -137,14 +141,14 @@
 	&__header-wrapper {
 		padding-top: 40px;
 
-		@include media($_DESKTOP) {
+		@include m.media(v.$DESKTOP) {
 			// keep this discrete, else the post meta position cant be set correctly
 			padding-top: 60px;
 		}
 
 		&--highlighted {
-			background: $color-grey-1;
-			@include fluid-props(padding-bottom, $fluid-min, $fluid-max, 40px, 60px);
+			background: v.$color-grey-1;
+			@include m.fluid-props(padding-bottom, v.$fluid-min, v.$fluid-max, 40px, 60px);
 		}
 	}
 
@@ -152,13 +156,13 @@
 	&__header-text p {
 		font-size: 1.25rem;
 
-		@include media($size-small) {
+		@include m.media(v.$size-small) {
 			font-size: 1.46875rem;
 		}
 	}
 
 	&__header-text--bold {
-		font-weight: $font-weight-semi;
+		font-weight: v.$font-weight-semi;
 	}
 
 	&__breadcrumbs--distracting {
@@ -171,14 +175,14 @@
 		@extend .page__side--full;
 		@extend .page__grid;
 
-		@include media($page-grid-desktop) {
+		@include m.media($page-grid-desktop) {
 			display: flex;
 			flex-direction: column;
 			padding-right: 40px;
 			height: 100%;
 		}
 
-		@include only_ie10_above() {
+		@include m.only_ie10_above() {
 			display: none; // sorry folks!
 		}
 	}
@@ -186,15 +190,15 @@
 	&__post-meta {
 		@extend .page__content;
 
-		background-color: $color-grey-1;
-		border-top: 2px solid $color-primary;
+		background-color: v.$color-grey-1;
+		border-top: 2px solid v.$color-primary;
 		padding: 0 15px;
 
-		@include high-contrast {
-			border-color: $color-primary-dark;
+		@include m.high-contrast {
+			border-color: v.$color-primary-dark;
 		}
 
-		@include media($page-grid-desktop) {
+		@include m.media($page-grid-desktop) {
 			background-color: transparent;
 			margin-top: 72px;
 			border-top: none;
@@ -207,12 +211,12 @@
 	}
 
 	&__shareable {
-		@include media($page-grid-desktop) {
+		@include m.media($page-grid-desktop) {
 			flex-grow: 1;
 		}
 
 		&--margin-top {
-			@include media($page-grid-desktop) {
+			@include m.media($page-grid-desktop) {
 				margin-top: 124px;
 			}
 		}
@@ -226,7 +230,7 @@
 		width: 100%;
 		z-index: 10;
 
-		@include media($_DESKTOP) {
+		@include m.media(v.$DESKTOP) {
 			position: static; // IE: just keep it fixed
 			position: sticky;
 			top: 235px;
@@ -236,7 +240,7 @@
 	}
 
     &:not(&--list) &__content {
-		@include media($size-small){
+		@include m.media(v.$size-small){
 			p, li {
 				font-size: 1.25rem;
 			}
@@ -249,10 +253,10 @@
 	}
 
 	&__box {
-		background-color: $color-grey-1;
-		@include fluid-props(margin-top margin-bottom, $size-tiny, $size-medium, 25px, 35px);
-		@include fluid-props(padding, $size-tiny, $size-medium, 12px, 40px);
-		@include media($_DESKTOP) {
+		background-color: v.$color-grey-1;
+		@include m.fluid-props(margin-top margin-bottom, v.$size-tiny, v.$size-medium, 25px, 35px);
+		@include m.fluid-props(padding, v.$size-tiny, v.$size-medium, 12px, 40px);
+		@include m.media(v.$DESKTOP) {
 			margin-top: 50px;
 			margin-bottom: 50px;
 			padding: 60px;
@@ -262,32 +266,32 @@
 	&__preview-articles {
 		display: grid;
 		grid-template-columns: 1fr;
-		@include fluid-props(grid-column-gap, 1490px, $fluid-max, 40px, 100px); // 1490px = $page-grid-wide, but for some reason sass can't work with the variable
-		@include fluid-props(grid-row-gap, $fluid-min, $fluid-max, 40px, 80px);
-		@include fluid-props(margin-top margin-bottom, $fluid-min, $fluid-max, 50px, 100px);
+		@include m.fluid-props(grid-column-gap, 1490px, v.$fluid-max, 40px, 100px); // 1490px = v.$page-grid-wide, but for some reason sass can't work with the variable
+		@include m.fluid-props(grid-row-gap, v.$fluid-min, v.$fluid-max, 40px, 80px);
+		@include m.fluid-props(margin-top margin-bottom, v.$fluid-min, v.$fluid-max, 50px, 100px);
 
-		@include media($size-small) {
+		@include m.media(v.$size-small) {
 			grid-template-columns: 1fr 1fr;
 		}
 	}
 
 	&__preview-article {
-		border-bottom: solid 1px $color-grey-2;
+		border-bottom: solid 1px v.$color-grey-2;
 	}
 
 	&__list-header {
-		@include fluid-props(margin-top, $fluid-min, $fluid-max, 40px, 60px);
+		@include m.fluid-props(margin-top, v.$fluid-min, v.$fluid-max, 40px, 60px);
 	}
 
 	&__list-articles {
-		@include fluid-props(margin-top, $fluid-min, $fluid-max, 40px, 60px);
-		@include clean-ul;
+		@include m.fluid-props(margin-top, v.$fluid-min, v.$fluid-max, 40px, 60px);
+		@include m.clean-ul;
 	}
 
 	&__list-article {
-		@include clean-li;
+		@include m.clean-li;
 
-		border-bottom: solid 1px $color-grey-2;
+		border-bottom: solid 1px v.$color-grey-2;
 
 		&--hover-link {
 			position: relative;
@@ -302,20 +306,20 @@
 				position: absolute;
 				bottom: 0;
 				left: 15px;
-				background: $color-grey-2;
+				background: v.$color-grey-2;
 				width: calc(100% - 30px);
 				height: 1px;
 			}
 
-			@include hover {
-				background: $color-grey-1;
+			@include m.hover {
+				background: v.$color-grey-1;
 			}
 		}
 	}
 
 	&__list-footer {
 		width: 100%;
-		@include fluid-props(margin-top margin-bottom padding-bottom, $fluid-min, $fluid-max, 30px, 50px);
+		@include m.fluid-props(margin-top margin-bottom padding-bottom, v.$fluid-min, v.$fluid-max, 30px, 50px);
 	}
 
 	&__list-pagination {

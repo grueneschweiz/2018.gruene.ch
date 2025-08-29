@@ -1,13 +1,17 @@
+@use "sass:math";
+@use "../../../scss/variables" as v;
+@use "../../../scss/mixins" as m;
+
 .a-post-link {
-	@include clean-link;
+	@include m.clean-link;
 
 	& {
 		display: block;
 	}
-	@include fluid-props(padding-top padding-bottom, $fluid-min, $fluid-max, 22px, 26px);
+	@include m.fluid-props(padding-top padding-bottom, v.$fluid-min, v.$fluid-max, 22px, 26px);
 
 	&--link {
-		@include media($_MOBILE) {
+		@include m.media(v.$MOBILE) {
 			position: relative;
 			padding-right: 2em;
 
@@ -15,25 +19,25 @@
 				content: "";
 				width: 0.6em;
 				height: 0.6em;
-				border-top: 0.1666666667em solid $color-primary; // 2/12
-				border-right: 0.1666666667em solid $color-primary; // 2/12
+				border-top: 0.1666666667em solid v.$color-primary; // 2/12
+				border-right: 0.1666666667em solid v.$color-primary; // 2/12
 				transform: translateX(-0.2em) translateY(-50%) rotate(45deg);
 				position: absolute;
 				right: 0;
 				top: 50%;
 
-				@include high-contrast {
-					border-color: $color-primary-dark;
+				@include m.high-contrast {
+					border-color: v.$color-primary-dark;
 				}
 			}
 		}
 
 		.a-post-link__title {
-			@include hover() {
-				color: $color-primary;
+			@include m.hover() {
+				color: v.$color-primary;
 
-				@include high-contrast {
-					color: $color-primary-dark;
+				@include m.high-contrast {
+					color: v.$color-primary-dark;
 				}
 			}
 		}
@@ -41,32 +45,32 @@
 
 	&__title {
 		margin: 0;
-		transition: color $transition-fast $transition-ease;
+		transition: color v.$transition-fast v.$transition-ease;
 		font-size: 1rem;
 
-		@include hover {
-			color: $color-primary-dark;
+		@include m.hover {
+			color: v.$color-primary-dark;
 		}
 
-		@include media($_DESKTOP) {
+		@include m.media(v.$DESKTOP) {
 			font-size: 1.25rem;
 		}
 
-		@include high-contrast {
-			color: $color-primary-dark;
+		@include m.high-contrast {
+			color: v.$color-primary-dark;
 		}
 	}
 
 	&__title-link {
-		@include clean-link;
+		@include m.clean-link;
 	}
 
 	&__meta--header {
 		margin: 0.5em 0 1em;
-		color: $color-text-light;
+		color: v.$color-text-light;
 
-		@include high-contrast {
-			color: $color-text;
+		@include m.high-contrast {
+			color: v.$color-text;
 		}
 	}
 
@@ -81,7 +85,7 @@
 
 		&:not(:first-child)::before {
 			content: "\25A0";
-			color: $color-grey-3;
+			color: v.$color-grey-3;
 			margin-right: 0.85em;
 			margin-left: 0.55em;
 			display: inline-block;

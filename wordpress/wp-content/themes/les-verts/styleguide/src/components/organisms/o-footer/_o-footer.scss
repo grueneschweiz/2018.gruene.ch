@@ -1,5 +1,9 @@
+@use "sass:math";
+@use "../../../scss/variables" as v;
+@use "../../../scss/mixins" as m;
+
 .o-footer {
-	background: $color-grey-1;
+	background: v.$color-grey-1;
 	width: 100%;
 
 	@media print {
@@ -7,25 +11,25 @@
 	}
 
 	&__main {
-		max-width: $grid-max-width-max;
+		max-width: v.$grid-max-width-max;
 		width: 100%;
 		margin-left: auto;
 		margin-right: auto;
-		@include fluid-grid-item-props(padding);
+		@include m.fluid-grid-item-props(padding);
 		& {
 			display: grid;
 			grid-gap: 80px;
 		}
 
-		@include media($size-small) {
+		@include m.media(v.$size-small) {
 			grid-template-columns: repeat(2, 1fr);
 		}
 
-		@include media($_DESKTOP) {
+		@include m.media(v.$DESKTOP) {
 			grid-template-columns: minmax(33%, 40%) 1fr 1fr;
 		}
 
-		@include only_ie10_above {
+		@include m.only_ie10_above {
 			display: flex;
 			flex-wrap: wrap;
 			justify-content: space-between;
@@ -35,12 +39,12 @@
 	&__cta {
 		grid-row: 1 / 2;
 
-		@include media($_DESKTOP) {
+		@include m.media(v.$DESKTOP) {
 			justify-self: center;
 			grid-column: 2 / 3;
 		}
 
-		@include only_ie10_above {
+		@include m.only_ie10_above {
 			width: 29%;
 			max-width: 300px;
 		}
@@ -49,30 +53,30 @@
 	&__contact {
 		grid-row: 2 / 3;
 
-		@include media($size-small) {
+		@include m.media(v.$size-small) {
 			grid-row: 1 / 2;
 		}
 
-		@include media($_DESKTOP) {
+		@include m.media(v.$DESKTOP) {
 			grid-column: 3 / 4;
 		}
 
-		@include only_ie10_above {
+		@include m.only_ie10_above {
 			width: 29%;
 			max-width: 300px;
 		}
 	}
 
 	&__link-list {
-		@include media($size-small) {
+		@include m.media(v.$size-small) {
 			grid-column: 1 / 3;
 		}
 
-		@include media($_DESKTOP) {
+		@include m.media(v.$DESKTOP) {
 			grid-column: 1 / 2;
 		}
 
-		@include only_ie10_above {
+		@include m.only_ie10_above {
 			width: 38%;
 			max-width: 450px;
 		}

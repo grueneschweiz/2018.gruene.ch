@@ -1,6 +1,10 @@
+@use "sass:math";
+@use "../../../scss/variables" as v;
+@use "../../../scss/mixins" as m;
+
 .a-pagination {
 	&__list {
-		@include clean-ul;
+		@include m.clean-ul;
 		& {
 			display: inline-block;
 			margin: 0 0.75em;
@@ -8,39 +12,39 @@
 	}
 
 	&__item {
-		@include clean-li;
+		@include m.clean-li;
 		display: inline-block;
 	}
 
 	&__link {
-		@include clean-link;
+		@include m.clean-link;
 		
 		& {
 			display: inline-block;
-			transition: color $transition-fast $transition-ease;
-			color: $color-primary;
+			transition: color v.$transition-fast v.$transition-ease;
+			color: v.$color-primary;
 		}
 		
-		@include fluid-props(margin-left margin-right, $fluid-min, $size-medium, 5px, 16px);
+		@include m.fluid-props(margin-left margin-right, v.$fluid-min, v.$size-medium, 5px, 16px);
 
-		@include high-contrast {
-			color: $color-primary-dark;
+		@include m.high-contrast {
+			color: v.$color-primary-dark;
 		}
 
-		@include hover {
-			color: $color-primary-dark;
+		@include m.hover {
+			color: v.$color-primary-dark;
 		}
 
 		&--icon {
-			stroke: $color-primary;
-			transition: stroke $transition-fast $transition-ease;
+			stroke: v.$color-primary;
+			transition: stroke v.$transition-fast v.$transition-ease;
 
-			@include hover {
-				stroke: $color-primary-dark;
+			@include m.hover {
+				stroke: v.$color-primary-dark;
 			}
 
-			@include high-contrast {
-				stroke: $color-primary-dark;
+			@include m.high-contrast {
+				stroke: v.$color-primary-dark;
 			}
 
 			svg {
@@ -50,14 +54,14 @@
 		}
 
 		&--disabled {
-			stroke: $color-grey-2;
+			stroke: v.$color-grey-2;
 
-			@include hover {
-				stroke: $color-grey-2;
+			@include m.hover {
+				stroke: v.$color-grey-2;
 			}
 
-			@include high-contrast {
-				stroke: $color-grey-3;
+			@include m.high-contrast {
+				stroke: v.$color-grey-3;
 			}
 		}
 
@@ -77,14 +81,14 @@
 		}
 
 		&--current {
-			color: $color-text;
+			color: v.$color-text;
 
-			@include hover {
-				color: $color-text;
+			@include m.hover {
+				color: v.$color-text;
 			}
 
-			@include high-contrast {
-				text-decoration: underline $color-primary-dark;
+			@include m.high-contrast {
+				text-decoration: underline v.$color-primary-dark;
 			}
 		}
 	}

@@ -3,14 +3,9 @@
 @use 'sass:math';
 
 /**
- * Core imports.
+ * Core imports using the module system.
  */
-@import './scss/variables',
-'./scss/reset',
-'./scss/mixins',
-'./scss/fonts',
-'./scss/html',
-'./scss/grid';
+@use './scss' as *;
 /**
  * Import the auto-generated component file.
  */
