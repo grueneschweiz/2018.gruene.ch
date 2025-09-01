@@ -7,6 +7,6 @@
  */
 @use './scss' as *;
 /**
- * Import the auto-generated component file.
+ * Import components through the wrapper file.
  */
-@import './components/loader';
+@use './components/components' as *;

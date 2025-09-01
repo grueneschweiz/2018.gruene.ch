@@ -1,13 +1,17 @@
 @use "sass:math";
 @use "../../../scss/variables" as v;
 @use "../../../scss/mixins" as m;
+@use "../../../scss/grid" as g;
 
 .o-engagement-map {
-	@extend .grid-item;
-
+	max-width: 651px;
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
 	// hack: make sure there's never a gap between this and the footer
 	// else the fixed image from above might be seen. needed because of rounding.
 	margin-bottom: -1px;
+	@include m.fluid-grid-item-props(padding);
 
 	@include m.media(v.$MOBILE) {
 		padding-bottom: 80px;

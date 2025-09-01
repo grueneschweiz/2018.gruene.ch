@@ -1,11 +1,17 @@
 @use "sass:math";
 @use "../../../scss/variables" as v;
 @use "../../../scss/mixins" as m;
+@use "../../../scss/grid" as g;
 
 .o-front-events {
-	@extend .grid-item;
+	max-width: 651px;
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	// Override padding from grid-item
 	padding-left: 0;
 	padding-right: 0;
+	@include m.fluid-grid-item-props(padding);
 
 	@include m.media(v.$DESKTOP) {
 		max-width: v.$grid-max-width-max;

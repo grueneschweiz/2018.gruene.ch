@@ -1,6 +1,4 @@
-@use "sass:math";
-@use "../../../scss/variables" as v;
-@use "../../../scss/mixins" as m;
+@use "../../../scss/_config" as *;
 
 .no-branding .m-branding {
 	display: none;
@@ -9,12 +7,12 @@
 .m-branding {
 	$height: 136px;
 
-	background-color: v.$color-primary;
+	background-color: $color-primary;
 	width: 100%;
 	height: $height;
 
-	@include m.high-contrast {
-		background-color: v.$color-primary-dark;
+	@include high-contrast {
+		background-color: $color-primary-dark;
 	}
 
 	@media print {
@@ -22,8 +20,10 @@
 	}
 
 	&__wrapper {
-		@extend .grid-width;
+		margin-left: auto;
+		margin-right: auto;
 		display: table;
+		@include fluid-props(max-width, $fluid-min, $fluid-max, $grid-max-width-min, $grid-max-width-max);
 	}
 
 	&__row {
@@ -32,7 +32,7 @@
 	}
 
 	&__logo {
-		@include m.clean-link;
+		@include clean-link;
 		& {
 			display: table-cell;
 			vertical-align: middle;
@@ -41,7 +41,7 @@
 			padding: 22px 0;
 		}
 
-		@media all and (max-width: v.$size-small) {
+		@media all and (max-width: $size-small) {
 			display: none;
 		}
 
@@ -51,11 +51,11 @@
 	}
 
 	&__title {
-		color: v.$color-white;
+		color: $color-white;
 		display: table-cell;
 		vertical-align: middle;
 		width: 100%;
 		height: $height;
-		@include m.fluid-props(font-size, v.$fluid-min, v.$fluid-max, 24px, 34px);
+		@include fluid-props(font-size, $fluid-min, $fluid-max, 24px, 34px);
 	}
 }

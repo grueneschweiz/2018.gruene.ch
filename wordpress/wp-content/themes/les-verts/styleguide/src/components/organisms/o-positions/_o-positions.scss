@@ -1,9 +1,14 @@
 @use "sass:math";
 @use "../../../scss/variables" as v;
 @use "../../../scss/mixins" as m;
+@use "../../../scss/grid" as g;
 
 .o-positions {
-	@extend .grid-item;
+	max-width: 651px;
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	@include m.fluid-grid-item-props(padding);
 
 	@include m.media(v.$DESKTOP) {
 		max-width: v.$grid-max-width-max;
