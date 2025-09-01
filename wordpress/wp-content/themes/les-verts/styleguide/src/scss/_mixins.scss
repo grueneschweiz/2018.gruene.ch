@@ -29,8 +29,10 @@
  * CSS Media query for more contrast.
  */
 @mixin high-contrast() {
-	@media screen and (prefers-contrast: more) {
-		@content;
+	& {
+		@media screen and (prefers-contrast: more) {
+			@content;
+		}
 	}
 }
 
@@ -97,9 +99,11 @@
 	}
 
 	// First media query
-	@media screen and (min-width: $min-vw) {
-		@each $property in $properties {
-			#{$property}: calc(#{$min-value} + #{strip-unit($max-value - $min-value)} * (100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)}) $suffix;
+	& {
+		@media screen and (min-width: $min-vw) {
+			@each $property in $properties {
+				#{$property}: calc(#{$min-value} + #{strip-unit($max-value - $min-value)} * (100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)}) $suffix;
+			}
 		}
 	}
 
@@ -109,9 +113,11 @@
 	}
 
 	// Final media query
-	@media screen and (min-width: $max-vw) {
-		@each $property in $properties {
-			#{$property}: $max-value $suffix;
+	& {
+		@media screen and (min-width: $max-vw) {
+			@each $property in $properties {
+				#{$property}: $max-value $suffix;
+			}
 		}
 	}
 }
@@ -129,9 +135,11 @@
 		$max-value: math.ceil($max-value);
 	}
 
-	@media screen and (min-width: v.$size-large) {
-		@each $property in $properties {
-			#{$property}: calc(#{$min-value} + #{strip-unit($max-value - $min-value)} * (100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)}) $suffix;
+	& {
+		@media screen and (min-width: v.$size-large) {
+			@each $property in $properties {
+				#{$property}: calc(#{$min-value} + #{strip-unit($max-value - $min-value)} * (100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)}) $suffix;
+			}
 		}
 	}
 }
