@@ -645,12 +645,17 @@
 		}
 
 		@include media($_DESKTOP) {
+			display: flex;
+				align-items: center;
 			@include fluid-props(padding-right, $size-medium, $size-huge, 24px, 33px);
 		}
 	}
 
 	&amp;__cta {
-		display: inline-block;
+		display: inline-flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 0.5rem;
 	}
 
 	&amp;__language-nav {
@@ -709,7 +714,7 @@
 
 	&amp;__nav {
 		@include media($_DESKTOP) {
-			width: calc(100% - 500 * (100vw / 1024));
+			width: calc(100% - 54vw);
 		}
 
 		@include media($_MOBILE) {
@@ -1042,7 +1047,7 @@
                 </li>
                 <li class="Meta-item">
                     <strong class="Meta-key">Size:</strong>
-                    <span class="Meta-value">8.1 KB</span>
+                    <span class="Meta-value">8.2 KB</span>
                 </li>
             </ul>
         </div>

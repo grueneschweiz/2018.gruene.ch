@@ -87,3 +87,31 @@
 	color: $color-white;
 	border-color: $color-white;
 }
+
+// Feature toggle: invert CTA colors
+// When the body has .has-inverted-cta, invert button colors inside any __cta block
+// - Filled buttons: background becomes white, text becomes brand color
+// - Outline buttons: become filled with the brand color
+.a-button.has-inverted-cta {
+	// default (primary) filled inversion
+	background-color: $color-white;
+	border-color: $color-white;
+	color: $color-primary;
+
+	// secondary variant inversion
+	&.a-button--secondary {
+		color: $color-secondary;
+	}
+
+	// outline becomes filled (primary)
+	&.a-button--outline {
+		background-color: $color-primary;
+		border-color: $color-primary;
+		color: $color-white;
+
+		&.a-button--secondary {
+			background-color: $color-secondary;
+			border-color: $color-secondary;
+		}
+	}
+}
