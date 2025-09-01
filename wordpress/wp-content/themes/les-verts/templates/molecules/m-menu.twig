@@ -47,7 +47,8 @@
 							'link': item.link,
 							'label': item.title,
 							'class': class,
-							'modifiers': ['a-button--outline', 'a-button--secondary']
+							'modifiers': ['a-button--outline', 'a-button--secondary'],
+							'invert_cta_colors': invert_cta_colors
 						} only %}
 						{% if item.children %}
 							{% include 'molecules/m-menu--submenu.twig' with {

@@ -58,13 +58,18 @@
 			min-height: 80px;
 		}
 
-		@include m.media(v.$DESKTOP) {
-			@include m.fluid-props(padding-right, v.$size-medium, v.$size-huge, 24px, 33px);
+		@include media($_DESKTOP) {
+			display: flex;
+				align-items: center;
+			@include fluid-props(padding-right, $size-medium, $size-huge, 24px, 33px);
 		}
 	}
 
 	&__cta {
-		display: inline-block;
+		display: inline-flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 0.5rem;
 	}
 
 	&__language-nav {
@@ -126,8 +131,8 @@
    */
 
 	&__nav {
-		@include m.media(v.$DESKTOP) {
-			width: calc(100% - 500 * (100vw / 1024));
+		@include media($_DESKTOP) {
+			width: calc(100% - 54vw);
 		}
 
 		@include m.media(v.$MOBILE) {

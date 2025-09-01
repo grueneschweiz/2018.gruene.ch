@@ -29,6 +29,7 @@ services:
       WORDPRESS_DEBUG: 1
       PHP_IDE_CONFIG: serverName=Docker
       MAILCHIMP_SERVICE_ENDPOINT: ${MAILCHIMP_SERVICE_ENDPOINT}
+      INVERT_CTA_COLORS: ${INVERT_CTA_COLORS}
     command: [ "apache2-foreground" ]
     extra_hosts:
       - "host.docker.internal:host-gateway"
