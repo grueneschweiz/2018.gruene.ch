@@ -1,9 +1,21 @@
 {% if 'email' == acf_fc_layout %}
-	<a href="{{email|email|hexencode}}" class="a-contact a-contact--email">{{email|hexencode}}</a>
+	{% if '[' in email %}
+		{# Shortcode detected - let plugin handle everything #}
+		<div class="a-contact a-contact--email">{{email|shortcode|raw}}</div>
+	{% else %}
+		{# Plain email - create normal link #}
+		<a href="{{email|email|hexencode}}" class="a-contact a-contact--email">{{email|hexencode}}</a>
+	{% endif %}
 {% endif %}
 
 {% if 'phone' == acf_fc_layout %}
-	<a href="{{phone|phone}}" class="a-contact a-contact--phone">{{phone}}</a>
+	{% if '[' in phone %}
+		{# Shortcode detected - let plugin handle everything #}
+		<div class="a-contact a-contact--phone">{{phone|shortcode|raw}}</div>
+	{% else %}
+		{# Plain phone - create normal link #}
+		<a href="{{phone|phone}}" class="a-contact a-contact--phone">{{phone}}</a>
+	{% endif %}
 {% endif %}
 
 {% if 'website' == acf_fc_layout %}

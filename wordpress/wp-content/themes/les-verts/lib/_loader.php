@@ -222,6 +222,7 @@ require_once __DIR__ . '/twig/functions/image-filters.php';
 require_once __DIR__ . '/twig/functions/image-handling.php';
 
 // filters
+require_once __DIR__ . '/twig/filters/shortcode.php';
 require_once __DIR__ . '/twig/filters/email.php';
 require_once __DIR__ . '/twig/filters/phone.php';
 require_once __DIR__ . '/twig/filters/social_link.php';
