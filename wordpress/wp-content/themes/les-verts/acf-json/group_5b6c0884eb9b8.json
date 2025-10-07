@@ -69,7 +69,7 @@
                             "key": "field_5b6c097794180",
                             "label": "Email",
                             "name": "email",
-                            "type": "email",
+                            "type": "text",
                             "instructions": "",
                             "required": 0,
                             "conditional_logic": 0,
