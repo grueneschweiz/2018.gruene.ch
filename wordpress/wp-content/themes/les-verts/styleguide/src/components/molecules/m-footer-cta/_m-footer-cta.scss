@@ -1,3 +1,7 @@
+@use "sass:math";
+@use "../../../scss/variables" as v;
+@use "../../../scss/mixins" as m;
+
 .m-footer-cta {
 	display: flex;
 	flex-direction: column;
@@ -5,8 +9,8 @@
 	&__title {
 		margin-top: 0;
 		margin-bottom: 40px;
-		color: $color-secondary;
-		@include fluid-props(font-size, $size-tiny, $size-medium, 20px, 32px);
+		color: v.$color-secondary;
+		@include m.fluid-props(font-size, v.$size-tiny, v.$size-medium, 20px, 32px);
 	}
 
 	&__button {

@@ -1,16 +1,20 @@
+@use "sass:math";
+@use "../../../scss/variables" as v;
+@use "../../../scss/mixins" as m;
+
 .a-simple-dialog {
-	@include media($_DESKTOP) {
+	@include m.media(v.$DESKTOP) {
 		display: flex;
 	}
 
 	&__main {
-		background: $color-grey-1;
+		background: v.$color-grey-1;
 	}
 
 	// if several blocks are used, a-simple-dialog__content can be injected
 	&__content {
 		padding: 30px;
-		border-bottom: solid 1px $color-grey-2;
+		border-bottom: solid 1px v.$color-grey-2;
 	}
 
 	&--reduced-top-bottom-padding &__content {
@@ -25,27 +29,27 @@
 	&__close {
 		display: none;
 
-		@include media($_DESKTOP) {
-			background: $color-primary;
+		@include m.media(v.$DESKTOP) {
+			background: v.$color-primary;
 			width: 40px;
 			height: 40px;
 			padding: 5px;
 			display: block;
-			transition: background-color $transition-fast $transition-ease;
+			transition: background-color v.$transition-fast v.$transition-ease;
 
-			@include hover {
-				background: $color-primary-dark;
+			@include m.hover {
+				background: v.$color-primary-dark;
 			}
 
-			@include high-contrast {
-				background-color: $color-primary-dark;
+			@include m.high-contrast {
+				background-color: v.$color-primary-dark;
 			}
 		}
 
 		svg {
 			width: 30px;
 			height: 30px;
-			stroke: $color-white;
+			stroke: v.$color-white;
 		}
 	}
 }

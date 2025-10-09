@@ -1,3 +1,7 @@
+@use "sass:math";
+@use "../../../scss/variables" as v;
+@use "../../../scss/mixins" as m;
+
 .a-progress {
 	margin: 1em 0;
 	width: 100%;
@@ -5,18 +9,20 @@
 	&__container {
 		width: 100%;
 		height: 2.5rem;
-		background: $color-grey-1;
+		background: v.$color-grey-1;
 		overflow: hidden;
 	}
 
 	&__bar {
-		background: $color-primary;
-		height: 100%;
-		position: relative;
-		transition: opacity $transition-mid $transition-ease;
+		& {
+			background: v.$color-primary;
+			height: 100%;
+			position: relative;
+			transition: opacity v.$transition-mid v.$transition-ease;
+		}
 
-		@include high-contrast {
-			background: $color-primary-dark;
+		@include m.high-contrast {
+			background: v.$color-primary-dark;
 		}
 
 		&::after {
@@ -31,7 +37,7 @@
 			position: absolute;
 
 			animation-iteration-count: infinite;
-			animation-timing-function: $transition-ease;
+			animation-timing-function: v.$transition-ease;
 			animation-duration: 2.5s;
 			animation-name: flash;
 
@@ -56,7 +62,7 @@
 		width: 100%;
 		text-align: right;
 		padding-bottom: 0.125em;
-		color: $color-text-light;
+		color: v.$color-text-light;
 		font-size: 0.875rem;
 	}
 
@@ -65,26 +71,26 @@
 		right: 0.5em;
 		top: 50%;
 		transform: translateY(-50%);
-		color: $color-white;
-		font-weight: $font-weight-bold;
+		color: v.$color-white;
+		font-weight: v.$font-weight-bold;
 		font-size: 1.4rem;
-		transition: opacity $transition-mid $transition-ease;
+		transition: opacity v.$transition-mid v.$transition-ease;
 	}
 
 	&__current--right {
 		right: -0.5em;
 		transform: translateY(-50%) translateX(100%);
-		color: $color-text-light;
+		color: v.$color-text-light;
 
-		@include high-contrast {
-			color: $color-text;
+		@include m.high-contrast {
+			color: v.$color-text;
 		}
 	}
 
 	&__legend {
 		line-height: 1.4em;
 		margin: 0 0 0.25em;
-		transition: opacity $transition-mid $transition-ease;
+		transition: opacity v.$transition-mid v.$transition-ease;
 	}
 }
 

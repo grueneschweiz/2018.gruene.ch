@@ -1,3 +1,5 @@
+@use "../../../scss/_config" as *;
+
 .no-branding .m-branding {
 	display: none;
 }
@@ -18,8 +20,10 @@
 	}
 
 	&__wrapper {
-		@extend .grid-width;
+		margin-left: auto;
+		margin-right: auto;
 		display: table;
+		@include fluid-props(max-width, $fluid-min, $fluid-max, $grid-max-width-min, $grid-max-width-max);
 	}
 
 	&__row {
@@ -29,11 +33,13 @@
 
 	&__logo {
 		@include clean-link;
-		display: table-cell;
-		vertical-align: middle;
-		height: $height;
-		width: 148px;
-		padding: 22px 0;
+		& {
+			display: table-cell;
+			vertical-align: middle;
+			height: $height;
+			width: 148px;
+			padding: 22px 0;
+		}
 
 		@media all and (max-width: $size-small) {
 			display: none;

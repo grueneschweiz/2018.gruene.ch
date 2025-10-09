@@ -1,3 +1,7 @@
+@use "sass:math";
+@use "../../../../scss/variables" as v;
+@use "../../../../scss/mixins" as m;
+
 .a-select {
 	position: relative;
 	width: 100%;
@@ -9,9 +13,9 @@
 		top: -1rem;
 		text-transform: uppercase;
 		font-size: 0.625rem;
-		font-weight: $font-weight-bold;
-		transition-timing-function: $transition-ease;
-		transition-duration: $transition-fast;
+		font-weight: v.$font-weight-bold;
+		transition-timing-function: v.$transition-ease;
+		transition-duration: v.$transition-fast;
 		transition-property: font-size, top, font-weight;
 		max-width: calc(100% - 2.5rem);
 		text-overflow: ellipsis;
@@ -20,7 +24,7 @@
 
 		&.is-empty {
 			font-size: 1em;
-			font-weight: $font-weight-normal;
+			font-weight: v.$font-weight-normal;
 			text-transform: none;
 			top: 0.75rem;
 		}
@@ -31,25 +35,25 @@
 	}
 
 	&__background {
-		background: $color-grey-1;
-		border-bottom: 2px solid $color-grey-2;
+		background: v.$color-grey-1;
+		border-bottom: 2px solid v.$color-grey-2;
 		margin-top: 1.4rem;
 		padding-left: 0.75rem;
-		transition: border-bottom-color $transition-fast $transition-ease;
+		transition: border-bottom-color v.$transition-fast v.$transition-ease;
 		position: relative;
 		border-radius: 2px;
 		height: calc(2.5rem + 2px);
 
 		&.is-valid {
-			border-bottom-color: $color-primary;
+			border-bottom-color: v.$color-primary;
 		}
 
 		&.is-invalid.is-touched {
-			border-bottom-color: $color-red;
+			border-bottom-color: v.$color-red;
 		}
 
 		&.has-focus-within, &:focus-within {
-			border-bottom: 2px solid $color-grey-3;
+			border-bottom: 2px solid v.$color-grey-3;
 		}
 
 		&:before {
@@ -65,12 +69,12 @@
 			transform: translateX(-100%) rotate(45deg);
 		}
 
-		@include hover {
+		@include m.hover {
 			&:before {
-				border-color: $color-primary;
+				border-color: v.$color-primary;
 
-				@include high-contrast {
-					border-color: $color-primary-dark;
+				@include m.high-contrast {
+					border-color: v.$color-primary-dark;
 				}
 			}
 		}
@@ -85,7 +89,7 @@
 		z-index: 3;
 		border: none;
 		height: 2.5rem;
-		color: $color-text;
+		color: v.$color-text;
 		font-size: 1rem;
 		border-radius: 0;
 		box-shadow: none;
@@ -98,12 +102,12 @@
 	}
 
 	&--invers &__background {
-		background-color: $color-white;
+		background-color: v.$color-white;
 	}
 
 	&__helptext {
 		font-size: 0.75em;
-		color: $color-grey-3;
+		color: v.$color-grey-3;
 		margin-top: 0.4em;
 	}
 }

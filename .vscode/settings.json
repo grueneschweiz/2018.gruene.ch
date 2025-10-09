@@ -1,0 +1,17 @@
+{
+    "files.trimTrailingWhitespace": true,
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
+    "[php]": {
+        "editor.tabSize": 4,
+        "editor.insertSpaces": true
+    },
+    "[javascript]": {
+        "editor.tabSize": 2,
+        "editor.insertSpaces": true
+    },
+    "[twig]": {
+        "editor.tabSize": 2,
+        "editor.insertSpaces": true
+    }
+}

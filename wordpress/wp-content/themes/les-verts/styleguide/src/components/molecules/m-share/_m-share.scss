@@ -1,5 +1,9 @@
+@use "sass:math";
+@use "../../../scss/variables" as v;
+@use "../../../scss/mixins" as m;
+
 body.has-share-buttons {
-	@include media($_MOBILE) {
+	@include m.media(v.$MOBILE) {
 		margin-bottom: 42px;
 	}
 }
@@ -12,15 +16,15 @@ body.has-share-buttons {
 	display: flex;
 	flex-direction: row-reverse;
 	align-items: center;
-	background: $color-grey-1;
-	border-right: 1px solid $color-primary;
+	background: v.$color-grey-1;
+	border-right: 1px solid v.$color-primary;
 	padding: 1px;
 
-	@include high-contrast {
-		border-color: $color-primary-dark;
+	@include m.high-contrast {
+		border-color: v.$color-primary-dark;
 	}
 
-	@include media($_DESKTOP) {
+	@include m.media(v.$DESKTOP) {
 		width: $height-desktop;
 		transform: translateY($height-desktop) rotate(-90deg);
 		transform-origin: top left;
@@ -35,26 +39,26 @@ body.has-share-buttons {
 		height: $icon-size;
 		width: $icon-size;
 
-		@media all and (max-width: ($size-tiny - 1)) {
+		@media all and (max-width: (v.$size-tiny - 1)) {
 			width: 38px;
 		}
 
-		@include media($_DESKTOP) {
+		@include m.media(v.$DESKTOP) {
 			transform: rotate(90deg);
 		}
 	}
 
 	&__desc {
 		font-size: 0.75rem;
-		color: $color-primary-dark;
-		font-family: $font-secondary;
-		font-weight: $font-weight-bold;
+		color: v.$color-primary-dark;
+		font-family: v.$font-secondary;
+		font-weight: v.$font-weight-bold;
 		text-transform: uppercase;
 		cursor: pointer;
 		letter-spacing: 0.08928em;
 		padding: 0 0.5em 0 1em;
 
-		@include media($_DESKTOP) {
+		@include m.media(v.$DESKTOP) {
 			padding: 0 1em 0 1.5em;
 			cursor: default;
 		}
@@ -65,7 +69,7 @@ body.has-share-buttons {
 		justify-content: space-around;
 		width: 0;
 		height: $icon-size;
-		transition: width $transition-mid $transition-ease;
+		transition: width v.$transition-mid v.$transition-ease;
 		max-width: 250px;
 		pointer-events: none;
 
@@ -74,7 +78,7 @@ body.has-share-buttons {
 			pointer-events: auto;
 		}
 
-		@include media($_DESKTOP) {
+		@include m.media(v.$DESKTOP) {
 			width: 100%;
 			pointer-events: auto;
 		}
@@ -87,18 +91,18 @@ body.has-share-buttons {
 		svg {
 			width: $icon-size;
 			height: $icon-size;
-			fill: $color-primary;
-			transition: fill $transition-fast $transition-ease;
+			fill: v.$color-primary;
+			transition: fill v.$transition-fast v.$transition-ease;
 
-			@include high-contrast {
-				fill: $color-primary-dark;
+			@include m.high-contrast {
+				fill: v.$color-primary-dark;
 			}
 
-			@include hover {
-				fill: $color-primary-dark;
+			@include m.hover {
+				fill: v.$color-primary-dark;
 			}
 
-			@include media($_DESKTOP) {
+			@include m.media(v.$DESKTOP) {
 				display: none;
 			}
 		}
@@ -109,7 +113,7 @@ body.has-share-buttons {
 	}
 
 	&__close {
-		stroke: $color-primary-dark;
+		stroke: v.$color-primary-dark;
 		width: $icon-size;
 		height: $icon-size;
 		display: none;
@@ -121,7 +125,7 @@ body.has-share-buttons {
 		}
 	}
 
-	@include media($_MOBILE) {
+	@include m.media(v.$MOBILE) {
 		&.is-open &__close {
 			display: block;
 		}

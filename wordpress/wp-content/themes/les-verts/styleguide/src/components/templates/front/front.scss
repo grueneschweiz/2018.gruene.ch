@@ -1,13 +1,18 @@
+@use '../../../scss/variables' as v;
+@use '../../../scss/mixins' as m;
+
 .front {
 
 	&__grid-wrapper {
 		width: 100%;
-		background: $color-white;
-		@include fluid-props(margin-top, $fluid-min, $fluid-max, -260px, -170px);
-		@include media($size-large) {
+		background: v.$color-white;
+		@include m.fluid-props(margin-top, v.$fluid-min, v.$fluid-max, -260px, -170px);
+		@include m.media(v.$size-large) {
 			margin-top: -170px; // dont supercharge on 2k screens
 		}
-		padding-top: 300px;
+		& {
+			padding-top: 300px;
+		}
 
 		&--no-campaign {
 			margin-top: 0;
@@ -16,26 +21,28 @@
 	}
 
 	&__grid {
-		@include media($_DESKTOP) {
+		@include m.media(v.$DESKTOP) {
 			display: grid;
 			grid-template-columns: 1fr 1fr;
-			@include fluid-props(grid-column-gap, $size-medium, $grid-max-width-max, $grid-gap-min, $grid-gap-max);
-			@include fluid-props(grid-row-gap, $size-medium, $grid-max-width-max, 6px, 72px);
-			align-items: start;
-			max-width: $grid-max-width-max;
-			width: calc(100% - 2 * #{$grid-min-side-margin});
-			margin: 0 $grid-min-side-margin;
+			@include m.fluid-props(grid-column-gap, v.$size-medium, v.$grid-max-width-max, v.$grid-gap-min, v.$grid-gap-max);
+			@include m.fluid-props(grid-row-gap, v.$size-medium, v.$grid-max-width-max, 6px, 72px);
+			& {
+				align-items: start;
+				max-width: v.$grid-max-width-max;
+				width: calc(100% - 2 * #{v.$grid-min-side-margin});
+				margin: 0 v.$grid-min-side-margin;
+			}
 		}
 
-		@include media($grid-max-width-max + 2 * $grid-min-side-margin) {
+		@include m.media(v.$grid-max-width-max + 2 * v.$grid-min-side-margin) {
 			margin-left: auto;
 			margin-right: auto;
-			width: $grid-max-width-max;
+			width: v.$grid-max-width-max;
 		}
 	}
 
 	&__article {
-		@include media($_DESKTOP) {
+		@include m.media(v.$DESKTOP) {
 			height: 100%;
 		}
 

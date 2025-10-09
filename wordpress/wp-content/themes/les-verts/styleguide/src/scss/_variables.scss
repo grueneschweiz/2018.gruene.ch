@@ -1,8 +1,12 @@
 /**
  * CONSTANTS
  */
-$_DESKTOP: 'desktop';
-$_MOBILE: 'mobile';
+$DESKTOP: 'desktop';
+$MOBILE: 'mobile';
+
+// Keep old variable names for backward compatibility within this file
+$_DESKTOP: $DESKTOP;
+$_MOBILE: $MOBILE;
 
 /**
  * COLORS

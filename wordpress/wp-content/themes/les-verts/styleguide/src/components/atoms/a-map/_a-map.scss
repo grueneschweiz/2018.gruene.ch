@@ -1,3 +1,7 @@
+@use "sass:math";
+@use "../../../scss/variables" as v;
+@use "../../../scss/mixins" as m;
+
 .a-map {
 	width: 100%;
 	height: 100%; // IE copmat
@@ -6,30 +10,30 @@
 		cursor: pointer;
 
 		path {
-			transition: fill $transition-fast $transition-ease;
-			fill: $color-primary-super-light;
+			transition: fill v.$transition-fast v.$transition-ease;
+			fill: v.$color-primary-super-light;
 			stroke: #B5B4B4;
 			stroke-width: 0.5px;
 
-			@include high-contrast {
-				stroke: $color-grey-3;
+			@include m.high-contrast {
+				stroke: v.$color-grey-3;
 			}
 		}
 
 		text {
-			font-family: $font-primary;
+			font-family: v.$font-primary;
 			font-size: 0.75rem;
-			font-weight: $font-weight-bold;
+			font-weight: v.$font-weight-bold;
 			letter-spacing: 0.015em;
-			fill: $color-grey-3;
+			fill: v.$color-grey-3;
 			display: none;
 
-			@include high-contrast {
-				fill: $color-text;
+			@include m.high-contrast {
+				fill: v.$color-text;
 			}
 		}
 
-		@include media($_DESKTOP) {
+		@include m.media(v.$DESKTOP) {
 			text {
 				display: block;
 			}
@@ -37,19 +41,19 @@
 
 		&.is-active {
 			path {
-				fill: $color-primary-light;
-				stroke: $color-grey-3;
+				fill: v.$color-primary-light;
+				stroke: v.$color-grey-3;
 			}
 
 			text {
-				fill: $color-text-light;
-				@include high-contrast {
-					fill: $color-text;
+				fill: v.$color-text-light;
+				@include m.high-contrast {
+					fill: v.$color-text;
 				}
 			}
 		}
 
-		@include hover {
+		@include m.hover {
 			@extend .is-active;
 		}
 	}

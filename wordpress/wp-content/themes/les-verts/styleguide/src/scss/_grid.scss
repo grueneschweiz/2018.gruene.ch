@@ -2,18 +2,19 @@
  * Extend this class to use the global grid system in your templates.
  * Based on the powerfull CSS Grid Layout.
  */
+@use 'variables' as v;
+@use 'mixins' as m;
 .grid-width {
-	@include fluid-props(max-width, $fluid-min, $fluid-max, $grid-max-width-min, $grid-max-width-max);
-
 	margin-left: auto;
 	margin-right: auto;
+	@include m.fluid-props(max-width, v.$fluid-min, v.$fluid-max, v.$grid-max-width-min, v.$grid-max-width-max);
 }
 
 .grid {
 	@extend .grid-width;
-	@include fluid-props(grid-column-gap, $fluid-min, $fluid-max, $grid-gap-min, $grid-gap-max);
 	display: grid;
-	grid-template-columns: repeat($grid-nb-columns, 1fr);
+	grid-template-columns: repeat(v.$grid-nb-columns, 1fr);
+	@include m.fluid-props(grid-column-gap, v.$fluid-min, v.$fluid-max, v.$grid-gap-min, v.$grid-gap-max);
 }
 
 .grid-item {
@@ -21,9 +22,9 @@
 	width: 100%;
 	margin-left: auto;
 	margin-right: auto;
-	@include fluid-grid-item-props(padding);
+	@include m.fluid-grid-item-props(padding);
 
-	@include media($_DESKTOP) {
+	@include m.media(v.$DESKTOP) {
 		max-width: 100%;
 	}
 }

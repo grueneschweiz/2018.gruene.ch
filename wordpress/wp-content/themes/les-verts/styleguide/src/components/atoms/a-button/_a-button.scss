@@ -1,49 +1,56 @@
+@use "sass:math";
+@use "../../../scss/variables" as v;
+@use "../../../scss/mixins" as m;
+
 .a-button {
-	@include clean-link;
-	font-size: 0.875em; // keep this as em
-	display: inline-block;
-	line-height: 1.71428em; // 24/14
-	letter-spacing: .08928em; // 1.25/14
-	padding-left: 1.57142em; // 22/14
-	padding-right: 1.57142em; // 22/14
-	@include fluid-props(padding-top padding-bottom, $fluid-min, $fluid-max, 6px, 10px);
+	@include m.clean-link;
+	
+	& {
+		font-size: 0.875em; // keep this as em
+		display: inline-block;
+		line-height: 1.71428em; // 24/14
+		letter-spacing: .08928em; // 1.25/14
+		padding-left: 1.57142em; // 22/14
+		padding-right: 1.57142em; // 22/14
+		background-color: v.$color-primary;
+		border-color: v.$color-primary;
+		border-radius: .14285em; // 2/14
+		color: v.$color-white;
+		font-family: v.$font-secondary;
+		font-weight: v.$font-weight-bold;
+		text-align: center;
+		text-transform: uppercase;
+		cursor: pointer;
+		transition: background-color v.$transition-fast v.$transition-ease, color v.$transition-fast v.$transition-ease;
+	}
+	
+	@include m.fluid-props(padding-top padding-bottom, v.$fluid-min, v.$fluid-max, 6px, 10px);
 
-	background-color: $color-primary;
-	border-color: $color-primary;
-	border-radius: .14285em; // 2/14
-	color: $color-white;
-	font-family: $font-secondary;
-	font-weight: $font-weight-bold;
-	text-align: center;
-	text-transform: uppercase;
-	cursor: pointer;
-	transition: background-color $transition-fast $transition-ease, color $transition-fast $transition-ease;
-
-	@include high-contrast {
-		background-color: $color-primary-dark;
-		border-color: $color-primary-dark;
+	@include m.high-contrast {
+		background-color: v.$color-primary-dark;
+		border-color: v.$color-primary-dark;
 	}
 
-	@include hover {
-		background-color: $color-primary-dark;
+	@include m.hover {
+		background-color: v.$color-primary-dark;
 
-		@include high-contrast {
-			color: $color-white;
+		@include m.high-contrast {
+			color: v.$color-white;
 		}
 	}
 
 	&.a-button--outline {
-		color: $color-primary;
+		color: v.$color-primary;
 
-		@include high-contrast {
-			color: $color-primary-dark;
+		@include m.high-contrast {
+			color: v.$color-primary-dark;
 		}
 
-		@include hover {
-			background-color: $color-primary;
+		@include m.hover {
+			background-color: v.$color-primary;
 
-			@include high-contrast {
-				background-color: $color-primary-dark;
+			@include m.high-contrast {
+				background-color: v.$color-primary-dark;
 			}
 		}
 	}
@@ -54,38 +61,46 @@
 }
 
 .a-button--secondary {
-	background-color: $color-secondary;
-	border-color: $color-secondary;
+	& {
+		background-color: v.$color-secondary;
+		border-color: v.$color-secondary;
+	}
 
-	@include hover {
-		background-color: $color-secondary-dark;
+	@include m.hover {
+		background-color: v.$color-secondary-dark;
 	}
 
 	&.a-button--outline {
-		color: $color-secondary;
+		& {
+			color: v.$color-secondary;
+		}
 
-		@include hover {
-			background-color: $color-secondary;
+		@include m.hover {
+			background-color: v.$color-secondary;
 		}
 	}
 }
 
 .a-button--outline {
-	background-color: transparent;
-	border-width: 1px;
-	border-style: solid;
+	& {
+		background-color: transparent;
+		border-width: 1px;
+		border-style: solid;
+	}
 
-	@include hover {
-		color: $color-white;
+	@include m.hover {
+		color: v.$color-white;
 	}
 }
 
 .a-button--transparent {
-	background-color: transparent;
-	border-width: 1px;
-	border-style: solid;
-	color: $color-white;
-	border-color: $color-white;
+	& {
+		background-color: transparent;
+		border-width: 1px;
+		border-style: solid;
+		color: v.$color-white;
+		border-color: v.$color-white;
+	}
 }
 
 // Feature toggle: invert CTA colors
@@ -94,24 +109,24 @@
 // - Outline buttons: become filled with the brand color
 .a-button.has-inverted-cta {
 	// default (primary) filled inversion
-	background-color: $color-white;
-	border-color: $color-white;
-	color: $color-primary;
+	background-color: v.$color-white;
+	border-color: v.$color-white;
+	color: v.$color-primary;
 
 	// secondary variant inversion
 	&.a-button--secondary {
-		color: $color-secondary;
+		color: v.$color-secondary;
 	}
 
 	// outline becomes filled (primary)
 	&.a-button--outline {
-		background-color: $color-primary;
-		border-color: $color-primary;
-		color: $color-white;
+		background-color: v.$color-primary;
+		border-color: v.$color-primary;
+		color: v.$color-white;
 
 		&.a-button--secondary {
-			background-color: $color-secondary;
-			border-color: $color-secondary;
+			background-color: v.$color-secondary;
+			border-color: v.$color-secondary;
 		}
 	}
 }

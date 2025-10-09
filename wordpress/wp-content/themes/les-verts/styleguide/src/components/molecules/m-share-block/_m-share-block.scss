@@ -1,3 +1,7 @@
+@use "sass:math";
+@use "../../../scss/variables" as v;
+@use "../../../scss/mixins" as m;
+
 .m-share-block {
 	$icon-size-xs: 50px;
 	$icon-size-sm: 80px;
@@ -10,7 +14,7 @@
 	margin: 0.5rem 0;
 
 	&__icon {
-		@include fluid-props(max-width, $size-tiny, $size-small, $icon-size-xs, $icon-size-sm);
-		@include fluid-props(height, $size-tiny, $size-small, $icon-size-xs, $icon-size-sm);
+		@include m.fluid-props(max-width, v.$size-tiny, v.$size-small, $icon-size-xs, $icon-size-sm);
+		@include m.fluid-props(height, v.$size-tiny, v.$size-small, $icon-size-xs, $icon-size-sm);
 	}
 }

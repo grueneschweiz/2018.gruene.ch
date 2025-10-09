@@ -11,7 +11,7 @@ const SOURCE_FILE = './styleguide/src/components/_loader.scss';
  * @return {String}
  */
 function getRelativePath(view_path) {
-	return '@import "./' + view_path.replace('.hbs', '') + '";\n';
+	return '@forward "./' + view_path.replace('.hbs', '') + '";\n';
 }
 
 /**

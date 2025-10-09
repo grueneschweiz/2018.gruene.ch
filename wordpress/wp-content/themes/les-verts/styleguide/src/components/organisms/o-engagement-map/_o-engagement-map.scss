@@ -1,32 +1,40 @@
-.o-engagement-map {
-	@extend .grid-item;
+@use "sass:math";
+@use "../../../scss/variables" as v;
+@use "../../../scss/mixins" as m;
+@use "../../../scss/grid" as g;
 
+.o-engagement-map {
+	max-width: 651px;
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
 	// hack: make sure there's never a gap between this and the footer
 	// else the fixed image from above might be seen. needed because of rounding.
 	margin-bottom: -1px;
+	@include m.fluid-grid-item-props(padding);
 
-	@include media($_MOBILE) {
+	@include m.media(v.$MOBILE) {
 		padding-bottom: 80px;
 	}
 
-	@include media($_DESKTOP) {
-		max-width: $grid-max-width-max;
+	@include m.media(v.$DESKTOP) {
+		max-width: v.$grid-max-width-max;
 	}
 
 	&__title {
-		@include fluid-props(font-size, $size-tiny, $size-medium, 32px, 48px);
-		@include fluid-props(margin-top, $size-tiny, $size-medium, 20px, 34px);
-		@include fluid-props(margin-bottom, $size-tiny, $size-medium, 26px, 56px);
+		@include m.fluid-props(font-size, v.$size-tiny, v.$size-medium, 32px, 48px);
+		@include m.fluid-props(margin-top, v.$size-tiny, v.$size-medium, 20px, 34px);
+		@include m.fluid-props(margin-bottom, v.$size-tiny, v.$size-medium, 26px, 56px);
 	}
 
 	&__main-wrapper {
-		@include media($_DESKTOP) {
+		@include m.media(v.$DESKTOP) {
 			display: grid;
 			grid-template-columns: 40% 60%;
-			@include fluid-props(grid-gap, $size-medium, $grid-max-width-max, $grid-gap-min, $grid-gap-max);
+			@include m.fluid-props(grid-gap, v.$size-medium, v.$grid-max-width-max, v.$grid-gap-min, v.$grid-gap-max);
 		}
 
-		@include only_ie10_above {
+		@include m.only_ie10_above {
 			display: flex;
 			flex-direction: row;
 			flex-wrap: wrap;
@@ -35,13 +43,13 @@
 	}
 
 	&__desc-wrapper {
-		@include only_ie10_above {
+		@include m.only_ie10_above {
 			width: 40%;
 		}
 	}
 
 	&__map-wrapper {
-		@include only_ie10_above {
+		@include m.only_ie10_above {
 			width: 60%;
 		}
 	}

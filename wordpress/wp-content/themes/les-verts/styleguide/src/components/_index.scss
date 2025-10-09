@@ -1,8 +1,6 @@
 @use "sass:math";
-@use "../scss/variables" as v;
-@use "../scss/mixins" as m;
 
-// __ THIS IS AN AUTO-GENERATED FILE __
+// Forward all component styles
 @forward "./atoms/a-bar/a-bar";
 @forward "./atoms/a-breadcrumbs/a-breadcrumbs";
 @forward "./atoms/a-button/a-button";

@@ -1,26 +1,35 @@
+@use "sass:math";
+@use "../../../scss/variables" as v;
+@use "../../../scss/mixins" as m;
+@use "../../../scss/grid" as g;
+
 .o-front-article {
-	@extend .grid-item;
+	max-width: 651px;
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	@include m.fluid-grid-item-props(padding);
 
 	&__cat-title {
-		@include media($_DESKTOP) {
+		@include m.media(v.$DESKTOP) {
 			margin-bottom: 8px;
 		}
 	}
 
 	&__quote {
 		position: absolute;
-		@include fluid-grid-item-props(top right);
+		@include m.fluid-grid-item-props(top right);
 
 		svg {
-			fill: $color-primary-super-light;
+			fill: v.$color-primary-super-light;
 			height: 29px;
 			width: 40px;
 
-			@include high-contrast {
-				fill: $color-grey-3;
+			@include m.high-contrast {
+				fill: v.$color-grey-3;
 			}
 
-			@include media($_DESKTOP) {
+			@include m.media(v.$DESKTOP) {
 				height: 39px;
 				width: 56px;
 			}
@@ -34,7 +43,7 @@
 	}
 
 	&--mm &__articles {
-		@include media($_MOBILE) {
+		@include m.media(v.$MOBILE) {
 			padding: 12px 0;
 		}
 	}
@@ -45,14 +54,14 @@
 	}
 
 	&--double &__article {
-		@include media($_MOBILE) {
+		@include m.media(v.$MOBILE) {
 			&:first-child {
-				border-bottom: solid 1px $color-grey-2;
+				border-bottom: solid 1px v.$color-grey-2;
 				padding-bottom: 20px;
 			}
 		}
 
-		@include media($_DESKTOP) {
+		@include m.media(v.$DESKTOP) {
 			width: calc(50% - 16px);
 
 			&:first-of-type {
@@ -71,13 +80,13 @@
 
 	&--mm {
 		position: relative;
-		background: $color-grey-1;
+		background: v.$color-grey-1;
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
 		min-height: 80%;
 
-		@include media($_MOBILE) {
+		@include m.media(v.$MOBILE) {
 			margin-top: 41px;
 			margin-bottom: 41px;
 		}
@@ -85,11 +94,11 @@
 
 	&__cta {
 		margin-top: 16px;
-		border-top: 1px solid $color-grey-2;
+		border-top: 1px solid v.$color-grey-2;
 		display: flex;
 		flex-direction: column-reverse;
 
-		@include media($_DESKTOP) {
+		@include m.media(v.$DESKTOP) {
 			flex-direction: row;
 			align-items: center;
 			padding-top: 20px;
@@ -100,7 +109,7 @@
 		margin: 16px 0;
 		line-height: 1.4em;
 
-		@include media($_DESKTOP) {
+		@include m.media(v.$DESKTOP) {
 			margin-left: 40px;
 		}
 	}
@@ -119,14 +128,14 @@
 		transform-origin: bottom right;
 		margin-left: 20px;
 
-		@include media(480px) {
+		@include m.media(480px) {
 			margin-top: -27px;
 		}
 	}
 
 	&__meta {
 		flex-grow: 1;
-		border-top: solid 1px $color-grey-2;
+		border-top: solid 1px v.$color-grey-2;
 		margin-top: 12px;
 		font-size: 0.875rem; // 14/16
 	}
@@ -135,24 +144,26 @@
 		display: block;
 		margin: 12px 0 8px;
 
-		@include media($_DESKTOP) {
+		@include m.media(v.$DESKTOP) {
 			margin-bottom: 0;
 			display: inline-block;
 		}
 	}
 
 	&__author {
-		@include clean-link;
-		display: inline-block;
-		font-weight: bold;
+		@include m.clean-link;
+		& {
+			display: inline-block;
+			font-weight: bold;
+		}
 
-		@include media($_DESKTOP) {
+		@include m.media(v.$DESKTOP) {
 			margin-left: 28px;
 			position: relative;
 
 			&::before, &:hover::before {
 				content: "\25A0";
-				color: $color-secondary;
+				color: v.$color-secondary;
 				position: absolute;
 				left: -19px;
 				transform: translateY(-0.1em) rotate(-5deg);

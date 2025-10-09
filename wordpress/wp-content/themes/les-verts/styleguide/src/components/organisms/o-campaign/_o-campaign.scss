@@ -1,3 +1,7 @@
+@use "sass:math";
+@use "../../../scss/variables" as v;
+@use "../../../scss/mixins" as m;
+
 .o-campaign {
 	position: relative;
 
@@ -17,19 +21,19 @@
 		height: 100%;
 		position: absolute;
 		top: 0;
-		@include fluid-props(font-size, $fluid-min, $fluid-max, 20px, 72px);
+		@include m.fluid-props(font-size, v.$fluid-min, v.$fluid-max, 20px, 72px);
 
-		@include media($size-large) {
+		@include m.media(v.$size-large) {
 			font-size: 72px;
 		}
 
 		.m-bars {
 			position: absolute;
-			@include fluid-props(bottom, $fluid-min, $size-medium, 15px, 40px);
-			@include media($_DESKTOP) {
+			@include m.fluid-props(bottom, v.$fluid-min, v.$size-medium, 15px, 40px);
+			@include m.media(v.$DESKTOP) {
 				bottom: 60px;
 			}
-			@include media($size-large) {
+			@include m.media(v.$size-large) {
 				bottom: 40px;
 			}
 		}
@@ -44,20 +48,20 @@
 	&__cta-wrapper {
 		margin-left: 10px;
 		margin-right: 10px;
-		@include fluid-props(margin-top, $fluid-min, $fluid-max, -10px, -60px);
+		@include m.fluid-props(margin-top, v.$fluid-min, v.$fluid-max, -10px, -60px);
 
-		@include media($_DESKTOP) {
-			width: calc(100% - 2 * #{$grid-min-side-margin});
-			margin: -4em $grid-min-side-margin;
+		@include m.media(v.$DESKTOP) {
+			width: calc(100% - 2 * #{v.$grid-min-side-margin});
+			margin: -4em v.$grid-min-side-margin;
 			display: grid;
 			grid-template-columns: 1fr 60px 16px 16px 60px 1fr;
 			grid-template-rows: repeat(12, 1fr);
 		}
 
-		@include media($grid-max-width-max + 2 * $grid-min-side-margin) {
+		@include m.media(v.$grid-max-width-max + 2 * v.$grid-min-side-margin) {
 			margin-left: auto;
 			margin-right: auto;
-			width: $grid-max-width-max;
+			width: v.$grid-max-width-max;
 		}
 	}
 

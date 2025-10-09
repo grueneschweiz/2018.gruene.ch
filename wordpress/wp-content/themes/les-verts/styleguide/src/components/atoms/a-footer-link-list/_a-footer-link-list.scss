@@ -1,8 +1,12 @@
+@use "sass:math";
+@use "../../../scss/variables" as v;
+@use "../../../scss/mixins" as m;
+
 .a-footer-link-list {
 	&__title {
 		margin-top: 0;
 		margin-bottom: 40px;
-		@include fluid-props(font-size, $size-tiny, $size-medium, 20px, 32px);
+		@include m.fluid-props(font-size, v.$size-tiny, v.$size-medium, 20px, 32px);
 	}
 
 	&__list {
@@ -10,17 +14,17 @@
 		display: grid;
 		grid-template-columns: repeat(2, calc(50% - 12px));
 		grid-column-gap: 24px;
-		width: calc(100vw - #{2*$grid-item-padding-min});
+		width: calc(100vw - #{2*v.$grid-item-padding-min});
 
-		@include media($size-tiny) {
+		@include m.media(v.$size-tiny) {
 			grid-template-columns: repeat(3, calc(33% - 16px));
 		}
 
-		@include media($_DESKTOP) {
+		@include m.media(v.$DESKTOP) {
 			width: 100%;
 		}
 
-		@include only_ie10_above {
+		@include m.only_ie10_above {
 			display: flex;
 			flex-wrap: wrap;
 			flex-direction: row;
@@ -29,43 +33,46 @@
 	}
 
 	&__item {
-		@include clean-li;
+		@include m.clean-li;
 		width: 100%;
 
-		@include only_ie10_above {
+		@include m.only_ie10_above {
 			width: 120px;
 			margin-right: 20px;
 		}
 	}
 
 	&__link {
-		@include clean-link;
-		line-height: 1.75em;
-		padding: 7px 0 8px;
-		display: block;
-		position: relative;
-		white-space: nowrap;
-		overflow: hidden;
-		text-overflow: ellipsis;
+		@include m.clean-link;
+		
+		& {
+			line-height: 1.75em;
+			padding: 7px 0 8px;
+			display: block;
+			position: relative;
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+		}
 
 		&:after {
 			content: ' ';
 			width: 36px;
 			height: 1px;
-			background-color: $color-grey-2;
+			background-color: v.$color-grey-2;
 			position: absolute;
 			bottom: 0;
 			left: 0;
-			transition: width $transition-fast $transition-ease;
+			transition: width v.$transition-fast v.$transition-ease;
 		}
 
-		@include hover {
+		@include m.hover {
 			&:after {
 				width: 69px;
-				background-color: $color-primary;
+				background-color: v.$color-primary;
 
-				@include high-contrast {
-					background-color: $color-primary-dark;
+				@include m.high-contrast {
+					background-color: v.$color-primary-dark;
 				}
 			}
 		}

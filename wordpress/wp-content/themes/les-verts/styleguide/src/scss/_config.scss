@@ -1,0 +1,16 @@
+/**
+ * Central configuration module for SCSS
+ * This file forwards all necessary modules
+ */
+
+// Forward math module
+@forward "sass:math";
+
+// Forward variables
+@forward "./variables";
+
+// Forward mixins
+@forward "./mixins";
+
+// Forward grid
+@forward "./grid";

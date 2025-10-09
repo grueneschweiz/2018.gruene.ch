@@ -1,3 +1,7 @@
+@use "sass:math";
+@use "../../../scss/variables" as v;
+@use "../../../scss/mixins" as m;
+
 .a-search {
 	$offset: 0.75em;
 	position: relative;
@@ -5,26 +9,26 @@
 	&:not(&--inverted) {
 		margin-left: #{- $offset};
 
-		@include media($_DESKTOP) {
+		@include m.media(v.$DESKTOP) {
 			margin-left: 0;
 		}
 	}
 
-	@include media($_DESKTOP) {
+	@include m.media(v.$DESKTOP) {
 		padding-top: 0.533em;
 	}
 
 	&--covering {
-		@include media($_DESKTOP) {
+		@include m.media(v.$DESKTOP) {
 			position: absolute;
 			background: rgba(255, 255, 255, 0);
 			height: 60px;
-			transition: all $transition-ease $transition-mid;
+			transition: all v.$transition-ease v.$transition-mid;
 			width: 100%;
 			max-width: 34px; // this will be overwritten by js
 
 			&.is-active {
-				background: $color-white;
+				background: v.$color-white;
 			}
 		}
 	}
@@ -36,18 +40,18 @@
 
 	&__icon {
 		fill: none;
-		stroke: $color-text;
+		stroke: v.$color-text;
 		width: 1.333em;
 		height: 1.333em;
 		margin-bottom: -0.25em;
 		margin-left: -2em;
 		cursor: pointer;
-		transition: stroke $transition-ease $transition-fast;
+		transition: stroke v.$transition-ease v.$transition-fast;
 
 		&.highlight,
 		&:hover,
 		&:focus {
-			stroke: $color-secondary;
+			stroke: v.$color-secondary;
 		}
 	}
 
@@ -56,50 +60,52 @@
 	}
 
 	&__field {
-		background: transparent;
-		border: none;
-		width: 8.8em;
-		max-width: 300px;
-		font-size: 0.9375rem;
-		font-weight: 700;
-		color: $color-text;
-		transition: all $transition-ease $transition-mid;
-		height: 2.625em;
-		padding-left: $offset;
-		border-bottom: 2px solid transparent;
+		& {
+			background: transparent;
+			border: none;
+			width: 8.8em;
+			max-width: 300px;
+			font-size: 0.9375rem;
+			font-weight: 700;
+			color: v.$color-text;
+			transition: all v.$transition-ease v.$transition-mid;
+			height: 2.625em;
+			padding-left: $offset;
+			border-bottom: 2px solid transparent;
+		}
 
-		@include media($_DESKTOP) {
+		@include m.media(v.$DESKTOP) {
 			width: 2em;
 			color: transparent;
 		}
 
 		&::placeholder {
-			color: $color-text;
-			transition: color $transition-ease $transition-fast;
+			color: v.$color-text;
+			transition: color v.$transition-ease v.$transition-fast;
 
-			@include high-contrast {
-				color: $color-text;
+			@include m.high-contrast {
+				color: v.$color-text;
 			}
 		}
 
 		&:focus,
 		&.is-active {
 			width: 100%;
-			background-color: $color-grey-1;
-			border-bottom-color: $color-grey-2;
+			background-color: v.$color-grey-1;
+			border-bottom-color: v.$color-grey-2;
 			outline: none;
-			color: $color-text;
+			color: v.$color-text;
 			padding-right: 2.4em;
 
-			@include high-contrast {
-				border-color: $color-text;
+			@include m.high-contrast {
+				border-color: v.$color-text;
 			}
 
 			&::placeholder {
-				color: $color-grey-2;
+				color: v.$color-grey-2;
 
-				@include high-contrast {
-					color: $color-text;
+				@include m.high-contrast {
+					color: v.$color-text;
 				}
 			}
 		}
@@ -108,15 +114,15 @@
 		&:not(.is-active) {
 			cursor: pointer;
 
-			@include media($_MOBILE) {
+			@include m.media(v.$MOBILE) {
 				&.highlight {
 					&::placeholder {
-						color: $color-secondary;
+						color: v.$color-secondary;
 					}
 				}
 			}
 
-			@include media($_DESKTOP) {
+			@include m.media(v.$DESKTOP) {
 				&::placeholder {
 					color: transparent;
 				}
@@ -125,26 +131,28 @@
 	}
 
 	&--inverted &__field {
-		background-color: $color-white;
+		background-color: v.$color-white;
 	}
 
 	&--expanded &__field {
-		width: 100%;
-		max-width: 100%;
-		color: $color-text;
-		border-bottom-color: $color-grey-3;
-		cursor: text;
-		padding-right: 2.4em;
+		& {
+			width: 100%;
+			max-width: 100%;
+			color: v.$color-text;
+			border-bottom-color: v.$color-grey-3;
+			cursor: text;
+			padding-right: 2.4em;
+		}
 
-		@include high-contrast {
-			border-color: $color-text;
+		@include m.high-contrast {
+			border-color: v.$color-text;
 		}
 
 		&::placeholder {
-			color: $color-grey-3;
+			color: v.$color-grey-3;
 
-			@include high-contrast {
-				color: $color-text;
+			@include m.high-contrast {
+				color: v.$color-text;
 			}
 		}
 	}
@@ -154,7 +162,7 @@
 		position: absolute;
 		top: 7px;
 
-		@include media($_DESKTOP) {
+		@include m.media(v.$DESKTOP) {
 			top: 16px;
 		}
 	}

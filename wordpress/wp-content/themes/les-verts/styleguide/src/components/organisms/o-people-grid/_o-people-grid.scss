@@ -1,30 +1,39 @@
+@use "sass:math";
+@use "../../../scss/variables" as v;
+@use "../../../scss/mixins" as m;
+@use "../../../scss/grid" as g;
+
 .o-people-grid {
 	&--horizontal {
 		width: 100%;
 		height: 100%;
 		overflow: hidden;
-		background: $color-grey-1;
+		background: v.$color-grey-1;
 		position: relative;
 		z-index: 1; // Fix of Webkit flickering
-		@include fluid-props(margin-top margin-bottom padding-top padding-bottom, $fluid-min, $fluid-max, 5px, 25px);
+		@include m.fluid-props(margin-top margin-bottom padding-top padding-bottom, v.$fluid-min, v.$fluid-max, 5px, 25px);
 	}
 
 	&--horizontal &__wrapper {
-		@extend .grid-item;
+		max-width: 651px;
+		width: 100%;
+		margin-left: auto;
+		margin-right: auto;
+		@include m.fluid-grid-item-props(padding);
 
-		@include media($_DESKTOP) {
-			max-width: $grid-max-width-max;
+		@include m.media(v.$DESKTOP) {
+			max-width: v.$grid-max-width-max;
 		}
 	}
 
 	&__cat-title {
-		@include fluid-props(margin-bottom, $size-tiny, $size-medium, 20px, 34px);
+		@include m.fluid-props(margin-bottom, v.$size-tiny, v.$size-medium, 20px, 34px);
 	}
 
 	&__title {
-		@include fluid-props(font-size, $size-tiny, $size-medium, 32px, 48px);
-		@include fluid-props(margin-top, $size-tiny, $size-medium, 20px, 34px);
-		@include fluid-props(margin-bottom, $size-tiny, $size-medium, 26px, 56px);
+		@include m.fluid-props(font-size, v.$size-tiny, v.$size-medium, 32px, 48px);
+		@include m.fluid-props(margin-top, v.$size-tiny, v.$size-medium, 20px, 34px);
+		@include m.fluid-props(margin-bottom, v.$size-tiny, v.$size-medium, 26px, 56px);
 	}
 
 	&--vertical &__slider {
@@ -34,11 +43,11 @@
 		grid-auto-flow: row;
 		grid-template-columns: 1fr;
 
-		@include media(480px) {
+		@include m.media(480px) {
 			grid-template-columns: repeat(2, calc(50% - 16px));
 		}
 
-		@include media($size-medium) {
+		@include m.media(v.$size-medium) {
 			grid-template-columns: repeat(3, 242px);
 		}
 	}
@@ -55,22 +64,24 @@
 	}
 
 	&__slide {
-		background: $color-white;
+		background: v.$color-white;
 	}
 
 	&--horizontal &__slide {
-		@include fluid-props(margin-right, $size-tiny, $size-medium, 20px, 32px);
-		position: relative;
-		transition-property: transform;
+		@include m.fluid-props(margin-right, v.$size-tiny, v.$size-medium, 20px, 32px);
+		& {
+			position: relative;
+			transition-property: transform;
+		}
 
 		.m-person-slide {
 			width: 220px;
 
-			@include media($size-tiny) {
+			@include m.media(v.$size-tiny) {
 				width: 280px;
 			}
 
-			@include media($_DESKTOP) {
+			@include m.media(v.$DESKTOP) {
 				width: 288px;
 			}
 		}
@@ -83,17 +94,19 @@
 		width: 108px;
 		padding-top: 0;
 		padding-bottom: 0;
-		@include fluid-props(top, $size-small, $size-medium, 211px, 240px); // dont ask
-		@include fluid-props(top, $size-medium, $fluid-max, 240px, 269px); // dont ask
-		@include fluid-props(top, $fluid-max, 2000px, 269px, 282px); // dont ask
-		height: 252px;
-		cursor: pointer;
+		@include m.fluid-props(top, v.$size-small, v.$size-medium, 211px, 240px); // dont ask
+		@include m.fluid-props(top, v.$size-medium, v.$fluid-max, 240px, 269px); // dont ask
+		@include m.fluid-props(top, v.$fluid-max, 2000px, 269px, 282px); // dont ask
+		& {
+			height: 252px;
+			cursor: pointer;
+		}
 
-		@include media($size-small) {
+		@include m.media(v.$size-small) {
 			display: block;
 		}
 
-		@include media($_DESKTOP) {
+		@include m.media(v.$DESKTOP) {
 			height: 259px;
 		}
 
@@ -106,21 +119,21 @@
 			display: none;
 		}
 
-		@include hover {
+		@include m.hover {
 			svg {
-				fill: $color-primary-dark;
+				fill: v.$color-primary-dark;
 			}
 		}
 
 		svg {
 			height: 48px;
 			width: 48px;
-			fill: $color-primary;
-			stroke: $color-white;
-			transition: fill $transition-fast $transition-ease;
+			fill: v.$color-primary;
+			stroke: v.$color-white;
+			transition: fill v.$transition-fast v.$transition-ease;
 
-			@include high-contrast {
-				fill: $color-primary-dark;
+			@include m.high-contrast {
+				fill: v.$color-primary-dark;
 			}
 		}
 

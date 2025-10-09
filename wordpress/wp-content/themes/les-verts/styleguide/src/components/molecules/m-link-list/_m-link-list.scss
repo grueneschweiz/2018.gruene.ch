@@ -1,10 +1,14 @@
+@use "sass:math";
+@use "../../../scss/variables" as v;
+@use "../../../scss/mixins" as m;
+
 .m-link-list {
 	&__cat-title {
 		margin-bottom: 16px;
 	}
 
 	&__list {
-		@include clean-ul;
+		@include m.clean-ul;
 	}
 
 	&--full-width {
@@ -14,33 +18,33 @@
 			grid-column-gap: 50px;
 			align-items: stretch;
 
-			@include media($size-small) {
+			@include m.media(v.$size-small) {
 				grid-template-columns: 1fr 1fr;
 			}
 		}
 	}
 
 	&__item {
-		@include clean-li;
-		transition: background-color $transition-fast $transition-ease;
+		@include m.clean-li;
+		transition: background-color v.$transition-fast v.$transition-ease;
 		margin: 0 -12px;
 		padding: 0 12px;
 
-		@include hover {
-			background-color: $color-grey-1;
+		@include m.hover {
+			background-color: v.$color-grey-1;
 		}
 	}
 
 	&--full-width {
 		.m-link-list__item {
-			@include hover {
+			@include m.hover {
 				background-color: transparent;
 			}
 		}
 	}
 
 	&__inner {
-		border-bottom: 1px solid $color-grey-2;
+		border-bottom: 1px solid v.$color-grey-2;
 		height: 100%;
 	}
 

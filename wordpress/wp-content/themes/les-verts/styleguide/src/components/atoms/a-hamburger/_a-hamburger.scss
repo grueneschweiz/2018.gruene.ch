@@ -1,3 +1,7 @@
+@use "sass:math";
+@use "../../../scss/variables" as v;
+@use "../../../scss/mixins" as m;
+
 .a-hamburger {
 	padding: 0;
 	font-size: 0;
@@ -14,14 +18,14 @@
 		display: block;
 		top: 50%;
 		margin-top: -1px;
-		transition: transform $transition-fast $transition-ease;
+		transition: transform v.$transition-fast v.$transition-ease;
 
 		&, &:before, &:after {
 			width: 24px;
 			height: 2px;
-			background-color: $color-text-light;
+			background-color: v.$color-text-light;
 			position: absolute;
-			transition: all $transition-fast $transition-ease;
+			transition: all v.$transition-fast v.$transition-ease;
 		}
 
 		&:before, &:after {
@@ -38,13 +42,13 @@
 		}
 	}
 
-	@include hover {
+	@include m.hover {
 		.a-hamburger__inner {
 			&, &:before, &:after {
-				background-color: $color-primary;
+				background-color: v.$color-primary;
 
-				@include high-contrast {
-					background-color: $color-primary-dark;
+				@include m.high-contrast {
+					background-color: v.$color-primary-dark;
 				}
 			}
 		}
