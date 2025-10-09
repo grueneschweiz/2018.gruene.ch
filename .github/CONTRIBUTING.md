@@ -6,10 +6,10 @@
 
 ### Requirements
 
-* [node](https://nodejs.org/) >= 10.16.0
-* [yarn](https://yarnpkg.com) >= 1.7.0
-* [docker](https://www.docker.com/) >= 23.0.0
-* [docker compose](https://docs.docker.com/compose/) >= 2.16.0
+* [node](https://nodejs.org/) >= 20
+* [yarn](https://yarnpkg.com) >= 1.22.0
+* [docker](https://www.docker.com/) >= 25.0.0
+* [docker compose](https://docs.docker.com/compose/) >= 2.40.0
 
 ### Setup
 
@@ -169,4 +169,3 @@ Localization is a mess:
     [crowdin](https://crowdin.com/project/2018gruenech) and create a new PR with the translated files. If no
     translations changed, no PR is created.
   - Merge the PR.
-  
