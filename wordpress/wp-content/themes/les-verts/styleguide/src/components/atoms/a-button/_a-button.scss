@@ -109,24 +109,24 @@
 // - Outline buttons: become filled with the brand color
 .a-button.has-inverted-cta {
 	// default (primary) filled inversion
-	background-color: $color-white;
-	border-color: $color-white;
-	color: $color-primary;
+	background-color: v.$color-white;
+	border-color: v.$color-white;
+	color: v.$color-primary;
 
 	// secondary variant inversion
 	&.a-button--secondary {
-		color: $color-secondary;
+		color: v.$color-secondary;
 	}
 
 	// outline becomes filled (primary)
 	&.a-button--outline {
-		background-color: $color-primary;
-		border-color: $color-primary;
-		color: $color-white;
+		background-color: v.$color-primary;
+		border-color: v.$color-primary;
+		color: v.$color-white;
 
 		&.a-button--secondary {
-			background-color: $color-secondary;
-			border-color: $color-secondary;
+			background-color: v.$color-secondary;
+			border-color: v.$color-secondary;
 		}
 	}
 }

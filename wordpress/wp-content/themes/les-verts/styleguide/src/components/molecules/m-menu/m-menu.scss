@@ -58,10 +58,10 @@
 			min-height: 80px;
 		}
 
-		@include media($_DESKTOP) {
+		@include m.media(v.$DESKTOP) {
 			display: flex;
 				align-items: center;
-			@include fluid-props(padding-right, $size-medium, $size-huge, 24px, 33px);
+			@include m.fluid-props(padding-right, v.$size-medium, v.$size-huge, 24px, 33px);
 		}
 	}
 
@@ -131,7 +131,7 @@
    */
 
 	&__nav {
-		@include media($_DESKTOP) {
+		@include m.media(v.$DESKTOP) {
 			width: calc(100% - 54vw);
 		}
 
