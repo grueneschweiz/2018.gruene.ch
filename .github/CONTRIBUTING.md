@@ -6,7 +6,7 @@
 
 ### Requirements
 
-* [node](https://nodejs.org/) >= 20
+* [node](https://nodejs.org/) >= 16
 * [yarn](https://yarnpkg.com) >= 1.22.0
 * [docker](https://www.docker.com/) >= 25.0.0
 * [docker compose](https://docs.docker.com/compose/) >= 2.40.0
