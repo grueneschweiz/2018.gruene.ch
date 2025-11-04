@@ -92,6 +92,10 @@
 		display: flex;
 		flex-direction: column;
 		align-items: flex-start;
+
+		.yw-protect-info .dashicons {
+			margin-top: 3px;
+		}
 	}
 
 	&__contact {
