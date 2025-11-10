@@ -133,6 +133,12 @@
 	&__nav {
 		@include m.media(v.$DESKTOP) {
 			width: calc(100% - 54vw);
+
+			&--no-menu-right {
+				width: 100%;
+				max-width: 800px;
+				margin: 0 auto;
+			}
 		}
 
 		@include m.media(v.$MOBILE) {
