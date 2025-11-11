@@ -1,9 +1,10 @@
 /**
  * SET SOME GLOBAL HTML & BODY RULES.
  */
+@use 'variables' as v;
 
 html {
-	font-family: $font-primary;
+	font-family: v.$font-primary;
 	scroll-behavior: smooth;
 }
 

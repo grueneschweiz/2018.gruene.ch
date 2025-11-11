@@ -34,44 +34,44 @@
 			</ul>
 		{% endif %}
 	</nav>
+	{% if menu.cta or menu.language %}
 	<div class="m-menu__right">
-		{% if menu.cta or menu.language %}
-			<div class="m-menu__cta">
-				{% for item in menu.cta.items %}
-					{% set class = "m-menu__nav-link--js-hook m-menu__nav-link--#{item.id}" %}
+		<div class="m-menu__cta">
+			{% for item in menu.cta.items %}
+				{% set class = "m-menu__nav-link--js-hook m-menu__nav-link--#{item.id}" %}
+				{% if item.children %}
+					{% set class = class ~ ' m-menu__nav-link--parent' %}
+				{% endif %}
+				<div class="m-menu__nav-item">
+					{% include 'atoms/a-button.twig' with {
+						'link': item.link,
+						'label': item.title,
+						'class': class,
+						'modifiers': ['a-button--outline', 'a-button--secondary'],
+						'invert_cta_colors': invert_cta_colors
+					} only %}
 					{% if item.children %}
-						{% set class = class ~ ' m-menu__nav-link--parent' %}
-					{% endif %}
-					<div class="m-menu__nav-item">
-						{% include 'atoms/a-button.twig' with {
-							'link': item.link,
-							'label': item.title,
-							'class': class,
-							'modifiers': ['a-button--outline', 'a-button--secondary'],
-							'invert_cta_colors': invert_cta_colors
+						{% include 'molecules/m-menu--submenu.twig' with {
+							children: item.children,
+							submenu_class: 'm-menu__submenu--cta',
 						} only %}
-						{% if item.children %}
-							{% include 'molecules/m-menu--submenu.twig' with {
-								children: item.children,
-								submenu_class: 'm-menu__submenu--cta',
-							} only %}
-						{% endif %}
-					</div>
-				{% endfor %}
-			</div>
-			{% if menu.language %}
-				<div class="m-menu__language-nav">
-					<ul class="m-menu__language-nav-list" role="menubar"
-							aria-label="{{ __('Language navigation', constant('THEME_DOMAIN')) }}">
-						{% for language in menu.language.items %}
-							<li class="m-menu__language-nav-item">
-								<a class="m-menu__language-nav-link {% if item.current %}m-menu__language-nav-link--active{% endif %}"
-									 href="{{ language.url }}" role="menuitem">{{ language.name }}</a>
-							</li>
-						{% endfor %}
-					</ul>
+					{% endif %}
 				</div>
-			{% endif %}
+			{% endfor %}
+		</div>
+		{% if menu.language %}
+			<div class="m-menu__language-nav">
+				<ul class="m-menu__language-nav-list" role="menubar"
+						aria-label="{{ __('Language navigation', constant('THEME_DOMAIN')) }}">
+					{% for language in menu.language.items %}
+						<li class="m-menu__language-nav-item">
+							<a class="m-menu__language-nav-link {% if item.current %}m-menu__language-nav-link--active{% endif %}"
+								 href="{{ language.url }}" role="menuitem">{{ language.name }}</a>
+						</li>
+					{% endfor %}
+				</ul>
+			</div>
 		{% endif %}
 	</div>
+	{% endif %}
 </div>

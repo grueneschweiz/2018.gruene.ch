@@ -1,9 +1,13 @@
+@use "sass:math";
+@use "../../../scss/variables" as v;
+@use "../../../scss/mixins" as m;
+
 .m-person-slide {
 	line-height: 0;
 
 	&__image {
 		width: 100%;
-		@include aspect-ratio-box(90%);
+		@include m.aspect-ratio-box(90%);
 	}
 
 	&__caption {
@@ -24,7 +28,7 @@
 	}
 
 	&__author {
-		font-weight: $font-weight-bold;
+		font-weight: v.$font-weight-bold;
 	}
 
 	&__quote {
@@ -39,11 +43,11 @@
 		}
 
 		&:before, &:after {
-			color: $color-primary;
-			font-weight: $font-weight-bold;
+			color: v.$color-primary;
+			font-weight: v.$font-weight-bold;
 
-			@include high-contrast {
-				color: $color-primary-dark;
+			@include m.high-contrast {
+				color: v.$color-primary-dark;
 			}
 		}
 	}

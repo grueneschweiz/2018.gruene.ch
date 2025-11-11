@@ -1,0 +1,5 @@
+@use "sass:math";
+
+// This file is a wrapper for the auto-generated _loader.scss
+// It uses @use to import the loader, which helps avoid deprecation warnings
+@use "./loader" as *;
