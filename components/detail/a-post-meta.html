@@ -494,14 +494,18 @@
                         <div class="FileBrowser-itemPreview">
                             
                             <code class="Code Code--lang-SCSS FileBrowser-code hljs">
-                                <pre><span class="hljs-selector-class">.a-post-meta</span> {
+                                <pre><span class="hljs-keyword">@use</span> <span class="hljs-string">&quot;sass:math&quot;</span>;
+<span class="hljs-keyword">@use</span> <span class="hljs-string">&quot;../../../scss/variables&quot;</span> as v;
+<span class="hljs-keyword">@use</span> <span class="hljs-string">&quot;../../../scss/mixins&quot;</span> as m;
+
+<span class="hljs-selector-class">.a-post-meta</span> {
 	<span class="hljs-attribute">font-size</span>: <span class="hljs-number">0.875rem</span>;
 	<span class="hljs-attribute">letter-spacing</span>: <span class="hljs-number">0.018em</span>;
 	<span class="hljs-attribute">hyphens</span>: auto;
 	<span class="hljs-attribute">line-height</span>: <span class="hljs-number">1.57em</span>;
-	<span class="hljs-keyword">@include</span> fluid-props(padding-top padding-bottom, <span class="hljs-variable">$fluid-min</span>, <span class="hljs-variable">$size-medium</span>, <span class="hljs-number">4px</span>, <span class="hljs-number">40px</span>);
+	<span class="hljs-keyword">@include</span> m.fluid-props(padding-top padding-bottom, v.<span class="hljs-variable">$fluid-min</span>, v.<span class="hljs-variable">$size-medium</span>, <span class="hljs-number">4px</span>, <span class="hljs-number">40px</span>);
 
-	<span class="hljs-keyword">@include</span> media($_MOBILE) {
+	<span class="hljs-keyword">@include</span> m.media(v.<span class="hljs-variable">$MOBILE</span>) {
 		<span class="hljs-attribute">padding</span>: <span class="hljs-number">6px</span> <span class="hljs-number">0</span> <span class="hljs-number">8px</span>;
 	}
 
@@ -512,11 +516,11 @@
 
 	&amp;__date {
 		<span class="hljs-keyword">@extend</span> .a-post-meta__block;
-		<span class="hljs-attribute">color</span>: <span class="hljs-variable">$color-grey-3</span>;
-		<span class="hljs-attribute">font-weight</span>: <span class="hljs-variable">$font-weight-bold</span>;
+		<span class="hljs-attribute">color</span>: v.<span class="hljs-variable">$color-grey-3</span>;
+		<span class="hljs-attribute">font-weight</span>: v.<span class="hljs-variable">$font-weight-bold</span>;
 
-		<span class="hljs-keyword">@include</span> high-contrast {
-			<span class="hljs-attribute">color</span>: <span class="hljs-variable">$color-text</span>;
+		<span class="hljs-keyword">@include</span> m.high-contrast {
+			<span class="hljs-attribute">color</span>: v.<span class="hljs-variable">$color-text</span>;
 		}
 	}
 
@@ -533,7 +537,7 @@
 			<span class="hljs-attribute">content</span>: <span class="hljs-string">&#x27; &#x27;</span>;
 			<span class="hljs-attribute">height</span>: <span class="hljs-number">1px</span>;
 			<span class="hljs-attribute">width</span>: <span class="hljs-number">20px</span>;
-			<span class="hljs-attribute">background-color</span>: <span class="hljs-variable">$color-grey-2</span>;
+			<span class="hljs-attribute">background-color</span>: v.<span class="hljs-variable">$color-grey-2</span>;
 			<span class="hljs-attribute">display</span>: block;
 			<span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">8px</span>;
 		}
@@ -541,15 +545,18 @@
 
 	&amp;__tag,
 	&amp;__category {
-		<span class="hljs-keyword">@include</span> clean-link;
-		<span class="hljs-attribute">transition</span>: color <span class="hljs-variable">$transition-ease</span> <span class="hljs-variable">$transition-fast</span>;
-		<span class="hljs-attribute">display</span>: inline-block; <span class="hljs-comment">// only hyphenate if really necessary</span>
+		<span class="hljs-keyword">@include</span> m.clean-link;
+		
+		&amp; {
+			<span class="hljs-attribute">transition</span>: color v.<span class="hljs-variable">$transition-ease</span> v.<span class="hljs-variable">$transition-fast</span>;
+			<span class="hljs-attribute">display</span>: inline-block; <span class="hljs-comment">// only hyphenate if really necessary</span>
+		}
 
 		&amp;<span class="hljs-selector-pseudo">:hover</span> {
-			<span class="hljs-attribute">color</span>: <span class="hljs-variable">$color-primary</span>;
+			<span class="hljs-attribute">color</span>: v.<span class="hljs-variable">$color-primary</span>;
 
-			<span class="hljs-keyword">@include</span> high-contrast {
-				<span class="hljs-attribute">color</span>: <span class="hljs-variable">$color-primary-dark</span>;
+			<span class="hljs-keyword">@include</span> m.high-contrast {
+				<span class="hljs-attribute">color</span>: v.<span class="hljs-variable">$color-primary-dark</span>;
 			}
 		}
 
@@ -559,13 +566,15 @@
 	}
 
 	&amp;__author {
-		<span class="hljs-keyword">@include</span> clean-link;
+		<span class="hljs-keyword">@include</span> m.clean-link;
 		<span class="hljs-keyword">@extend</span> .a-post-meta__block;
-		<span class="hljs-attribute">color</span>: <span class="hljs-variable">$color-primary</span>;
-		<span class="hljs-attribute">font-weight</span>: <span class="hljs-variable">$font-weight-bold</span>;
+		&amp; {
+			<span class="hljs-attribute">color</span>: v.<span class="hljs-variable">$color-primary</span>;
+			<span class="hljs-attribute">font-weight</span>: v.<span class="hljs-variable">$font-weight-bold</span>;
+		}
 
-		<span class="hljs-keyword">@include</span> high-contrast {
-			<span class="hljs-attribute">color</span>: <span class="hljs-variable">$color-primary-dark</span>;
+		<span class="hljs-keyword">@include</span> m.high-contrast {
+			<span class="hljs-attribute">color</span>: v.<span class="hljs-variable">$color-primary-dark</span>;
 		}
 	}
 }
@@ -585,7 +594,7 @@
                 </li>
                 <li class="Meta-item">
                     <strong class="Meta-key">Size:</strong>
-                    <span class="Meta-value">1.3 KB</span>
+                    <span class="Meta-value">1.4 KB</span>
                 </li>
             </ul>
         </div>
@@ -2808,14 +2817,14 @@
         <li class="Tree-item Tree-entity" data-role="item">
             <a
                 class="Tree-entityLink"
-                href="./a-social-icon--twitter.html"
+                href="./a-social-icon--bluesky.html"
                 data-role="tree-link"
                 
                 data-pjax
-                data-test="a-social-icon--twitter"
-                data-handle="a-social-icon--twitter"
+                data-test="a-social-icon--bluesky"
+                data-handle="a-social-icon--bluesky"
             >
-                <span>Twitter</span>
+                <span>Bluesky</span>
                 
 
 <div class="Status Status--unlabelled">

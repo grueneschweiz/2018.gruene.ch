@@ -492,7 +492,11 @@
                         <div class="FileBrowser-itemPreview">
                             
                             <code class="Code Code--lang-SCSS FileBrowser-code hljs">
-                                <pre><span class="hljs-selector-class">.a-checkoption</span> {
+                                <pre><span class="hljs-keyword">@use</span> <span class="hljs-string">&quot;sass:math&quot;</span>;
+<span class="hljs-keyword">@use</span> <span class="hljs-string">&quot;../../../../scss/variables&quot;</span> as v;
+<span class="hljs-keyword">@use</span> <span class="hljs-string">&quot;../../../../scss/mixins&quot;</span> as m;
+
+<span class="hljs-selector-class">.a-checkoption</span> {
 	<span class="hljs-variable">$checkbox</span>: <span class="hljs-string">&#x27;data:image/svg+xml,%3Csvg width=&quot;36&quot; height=&quot;36&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;%3E%3Cpath stroke=&quot;%2384B414&quot; stroke-width=&quot;2&quot; d=&quot;M25 1h10v10H25z&quot; fill=&quot;none&quot; fill-rule=&quot;evenodd&quot;/%3E%3Cg fill=&quot;none&quot; fill-rule=&quot;evenodd&quot;%3E%3Cpath fill=&quot;%2384B414&quot; d=&quot;M0 24h12v12H0z&quot;/%3E%3Cpath d=&quot;M3 27l6 6M9 27l-6 6&quot; stroke=&quot;%23FFF&quot;/%3E%3C/g%3E%3C/svg%3E&#x27;</span>;
 	<span class="hljs-variable">$checkbox_secondary</span>: <span class="hljs-string">&#x27;data:image/svg+xml,%3Csvg width=&quot;36&quot; height=&quot;36&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;%3E%3Cpath stroke=&quot;%23E10078&quot; stroke-width=&quot;2&quot; d=&quot;M25 1h10v10H25z&quot; fill=&quot;none&quot; fill-rule=&quot;evenodd&quot;/%3E%3Cg fill=&quot;none&quot; fill-rule=&quot;evenodd&quot;%3E%3Cpath fill=&quot;%23E10078&quot; d=&quot;M0 24h12v12H0z&quot;/%3E%3Cpath d=&quot;M3 27l6 6M9 27l-6 6&quot; stroke=&quot;%23FFF&quot;/%3E%3C/g%3E%3C/svg%3E&#x27;</span>;
 	<span class="hljs-variable">$option</span>: <span class="hljs-string">&#x27;data:image/svg+xml,%3Csvg width=&quot;36&quot; height=&quot;36&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;%3E%3Ccircle stroke=&quot;%2384B414&quot; stroke-width=&quot;2&quot; cx=&quot;30&quot; cy=&quot;6&quot; r=&quot;5&quot; fill=&quot;none&quot; fill-rule=&quot;evenodd&quot;/%3E%3Ccircle stroke=&quot;%2384B414&quot; stroke-width=&quot;4&quot; cx=&quot;6&quot; cy=&quot;30&quot; r=&quot;4&quot; fill=&quot;none&quot; fill-rule=&quot;evenodd&quot;/%3E%3C/svg%3E&#x27;</span>;
@@ -523,7 +527,7 @@
 		&amp;<span class="hljs-selector-class">.a-checkoption--legal</span>, &amp;<span class="hljs-selector-class">.a-checkoption--legal</span> <span class="hljs-selector-tag">p</span> {
 			<span class="hljs-attribute">font-size</span>: <span class="hljs-number">0.875rem</span> <span class="hljs-meta">!important</span>;
 			<span class="hljs-attribute">line-height</span>: <span class="hljs-number">1.3em</span>;
-			<span class="hljs-attribute">color</span>: <span class="hljs-variable">$color-text-light</span>;
+			<span class="hljs-attribute">color</span>: v.<span class="hljs-variable">$color-text-light</span>;
 			<span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
 		}
 	}
@@ -533,14 +537,14 @@
 			content: <span class="hljs-string">&#x27; &#x27;</span>;
 			<span class="hljs-attribute">width</span>: calc(<span class="hljs-number">1rem</span> - <span class="hljs-number">5px</span>);
 			<span class="hljs-attribute">height</span>: calc(<span class="hljs-number">1rem</span> - <span class="hljs-number">5px</span>);
-			<span class="hljs-attribute">box-shadow</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">5px</span> <span class="hljs-number">1px</span> <span class="hljs-variable">$color-primary</span>;
+			<span class="hljs-attribute">box-shadow</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">5px</span> <span class="hljs-number">1px</span> v.<span class="hljs-variable">$color-primary</span>;
 			<span class="hljs-attribute">position</span>: absolute;
 			<span class="hljs-attribute">top</span>: <span class="hljs-number">2px</span>;
 			<span class="hljs-attribute">left</span>: <span class="hljs-number">2px</span>;
 		}
 
 		&amp;<span class="hljs-selector-class">.a-checkoption--legal</span>:after {
-			box-shadow: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">5px</span> <span class="hljs-number">1px</span> <span class="hljs-variable">$color-secondary</span>;
+			box-shadow: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">5px</span> <span class="hljs-number">1px</span> v.<span class="hljs-variable">$color-secondary</span>;
 		}
 
 		&amp;<span class="hljs-selector-class">.a-checkoption--option</span>:after {
@@ -576,7 +580,7 @@
                 </li>
                 <li class="Meta-item">
                     <strong class="Meta-key">Size:</strong>
-                    <span class="Meta-value">2.2 KB</span>
+                    <span class="Meta-value">2.3 KB</span>
                 </li>
             </ul>
         </div>
@@ -2760,14 +2764,14 @@
         <li class="Tree-item Tree-entity" data-role="item">
             <a
                 class="Tree-entityLink"
-                href="./a-social-icon--twitter.html"
+                href="./a-social-icon--bluesky.html"
                 data-role="tree-link"
                 
                 data-pjax
-                data-test="a-social-icon--twitter"
-                data-handle="a-social-icon--twitter"
+                data-test="a-social-icon--bluesky"
+                data-handle="a-social-icon--bluesky"
             >
-                <span>Twitter</span>
+                <span>Bluesky</span>
                 
 
 <div class="Status Status--unlabelled">

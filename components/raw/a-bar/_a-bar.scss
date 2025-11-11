@@ -1,22 +1,25 @@
-// makes php storm happy. normally it would be enough to add it in styles.scss
-@use 'sass:math';
+@use "sass:math";
+@use "../../../scss/variables" as v;
+@use "../../../scss/mixins" as m;
 
 .a-bar {
 	$no-sanuk-factor: 1.15;
 
-	font-family: $font-bar;
-	font-weight: $font-weight-extra;
-	color: $color-white;
-	text-transform: uppercase;
-	line-height: 1em;
-	white-space: nowrap;
+	& {
+		font-family: v.$font-bar;
+		font-weight: v.$font-weight-extra;
+		color: v.$color-white;
+		text-transform: uppercase;
+		line-height: 1em;
+		white-space: nowrap;
 
-	display: inline-block;
-	padding: .15em .2em 0;
-	margin-bottom: 0.1em;
+		display: inline-block;
+		padding: .15em .2em 0;
+		margin-bottom: 0.1em;
+	}
 
 	&--no-sanuk {
-		font-family: 'Passion One Bold', $font-bar; // don't use locally installed sanuk
+		font-family: 'Passion One Bold', v.$font-bar; // don't use locally installed sanuk
 		font-size: #{$no-sanuk-factor}em;
 		padding: 0 .15em 0;
 		letter-spacing: 0.02em;
@@ -39,23 +42,23 @@
 	}
 
 	&--green {
-		background: $color-primary;
+		background: v.$color-primary;
 
-		@include high-contrast {
-			background: $color-primary-dark;
+		@include m.high-contrast {
+			background: v.$color-primary-dark;
 		}
 	}
 
 	&--magenta {
-		background: $color-secondary;
+		background: v.$color-secondary;
 	}
 
 	&--white {
-		background: $color-white;
-		color: $color-primary;
+		background: v.$color-white;
+		color: v.$color-primary;
 
-		@include high-contrast {
-			color: $color-primary-dark;
+		@include m.high-contrast {
+			color: v.$color-primary-dark;
 		}
 	}
 

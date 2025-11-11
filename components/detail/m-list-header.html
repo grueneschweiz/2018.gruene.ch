@@ -508,16 +508,20 @@
                         <div class="FileBrowser-itemPreview">
                             
                             <code class="Code Code--lang-SCSS FileBrowser-code hljs">
-                                <pre><span class="hljs-selector-class">.m-list-header</span> {
+                                <pre><span class="hljs-keyword">@use</span> <span class="hljs-string">&quot;sass:math&quot;</span>;
+<span class="hljs-keyword">@use</span> <span class="hljs-string">&quot;../../../scss/variables&quot;</span> as v;
+<span class="hljs-keyword">@use</span> <span class="hljs-string">&quot;../../../scss/mixins&quot;</span> as m;
+
+<span class="hljs-selector-class">.m-list-header</span> {
 	&amp;__title {
-		<span class="hljs-attribute">color</span>: <span class="hljs-variable">$color-text</span>;
+		<span class="hljs-attribute">color</span>: v.<span class="hljs-variable">$color-text</span>;
 	}
 
 	&amp;__term {
-		<span class="hljs-attribute">color</span>: <span class="hljs-variable">$color-primary</span>;
+		<span class="hljs-attribute">color</span>: v.<span class="hljs-variable">$color-primary</span>;
 
-		<span class="hljs-keyword">@include</span> high-contrast {
-			<span class="hljs-attribute">color</span>: <span class="hljs-variable">$color-primary-dark</span>;
+		<span class="hljs-keyword">@include</span> m.high-contrast {
+			<span class="hljs-attribute">color</span>: v.<span class="hljs-variable">$color-primary-dark</span>;
 		}
 	}
 
@@ -526,21 +530,25 @@
 	}
 
 	&amp;__criteria-desc {
-		<span class="hljs-attribute">font-weight</span>: <span class="hljs-variable">$font-weight-semi</span>;
+		<span class="hljs-attribute">font-weight</span>: v.<span class="hljs-variable">$font-weight-semi</span>;
 		<span class="hljs-attribute">margin-right</span>: <span class="hljs-number">0.75em</span>;
 	}
 
 	&amp;__criteria-list {
-		<span class="hljs-keyword">@include</span> clean-ul;
+		<span class="hljs-keyword">@include</span> m.clean-ul;
 
-		<span class="hljs-attribute">display</span>: inline;
+		&amp; {
+			<span class="hljs-attribute">display</span>: inline;
+		}
 	}
 
 	&amp;__criteria-item {
-		<span class="hljs-keyword">@include</span> clean-li;
+		<span class="hljs-keyword">@include</span> m.clean-li;
 
-		<span class="hljs-attribute">display</span>: inline;
-		<span class="hljs-attribute">line-height</span>: <span class="hljs-number">1.5em</span>;
+		&amp; {
+			<span class="hljs-attribute">display</span>: inline;
+			<span class="hljs-attribute">line-height</span>: <span class="hljs-number">1.5em</span>;
+		}
 
 		&amp;<span class="hljs-selector-pseudo">:not</span>(:last-of-type) {
 			<span class="hljs-attribute">margin-right</span>: <span class="hljs-number">0.75em</span>;
@@ -548,23 +556,25 @@
 	}
 
 	&amp;__criteria-link {
-		<span class="hljs-keyword">@include</span> clean-link;
-		<span class="hljs-attribute">transition</span>: color <span class="hljs-variable">$transition-ease</span> <span class="hljs-variable">$transition-fast</span>;
+		<span class="hljs-keyword">@include</span> m.clean-link;
+		&amp; {
+			<span class="hljs-attribute">transition</span>: color v.<span class="hljs-variable">$transition-ease</span> v.<span class="hljs-variable">$transition-fast</span>;
+		}
 
-		<span class="hljs-keyword">@include</span> <span class="hljs-attribute">hover</span> {
-			<span class="hljs-attribute">color</span>: <span class="hljs-variable">$color-primary</span>;
+		<span class="hljs-keyword">@include</span> m.<span class="hljs-attribute">hover</span> {
+			<span class="hljs-attribute">color</span>: v.<span class="hljs-variable">$color-primary</span>;
 
-			<span class="hljs-keyword">@include</span> high-contrast {
-				<span class="hljs-attribute">color</span>: <span class="hljs-variable">$color-primary-dark</span>;
+			<span class="hljs-keyword">@include</span> m.high-contrast {
+				<span class="hljs-attribute">color</span>: v.<span class="hljs-variable">$color-primary-dark</span>;
 			}
 		}
 
 		&amp;--active {
-			<span class="hljs-attribute">font-weight</span>: <span class="hljs-variable">$font-weight-bold</span>;
+			<span class="hljs-attribute">font-weight</span>: v.<span class="hljs-variable">$font-weight-bold</span>;
 			<span class="hljs-attribute">cursor</span>: default;
 
-			<span class="hljs-keyword">@include</span> <span class="hljs-attribute">hover</span> {
-				<span class="hljs-attribute">color</span>: <span class="hljs-variable">$color-text</span>;
+			<span class="hljs-keyword">@include</span> m.<span class="hljs-attribute">hover</span> {
+				<span class="hljs-attribute">color</span>: v.<span class="hljs-variable">$color-text</span>;
 			}
 		}
 	}
@@ -589,7 +599,7 @@
                 </li>
                 <li class="Meta-item">
                     <strong class="Meta-key">Size:</strong>
-                    <span class="Meta-value">873 Bytes</span>
+                    <span class="Meta-value">1 KB</span>
                 </li>
             </ul>
         </div>
@@ -2791,14 +2801,14 @@
         <li class="Tree-item Tree-entity" data-role="item">
             <a
                 class="Tree-entityLink"
-                href="./a-social-icon--twitter.html"
+                href="./a-social-icon--bluesky.html"
                 data-role="tree-link"
                 
                 data-pjax
-                data-test="a-social-icon--twitter"
-                data-handle="a-social-icon--twitter"
+                data-test="a-social-icon--bluesky"
+                data-handle="a-social-icon--bluesky"
             >
-                <span>Twitter</span>
+                <span>Bluesky</span>
                 
 
 <div class="Status Status--unlabelled">

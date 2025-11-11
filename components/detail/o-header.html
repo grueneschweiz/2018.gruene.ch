@@ -917,11 +917,15 @@
                         <div class="FileBrowser-itemPreview">
                             
                             <code class="Code Code--lang-SCSS FileBrowser-code hljs">
-                                <pre><span class="hljs-selector-class">.o-header</span> {
+                                <pre><span class="hljs-keyword">@use</span> <span class="hljs-string">&quot;sass:math&quot;</span>;
+<span class="hljs-keyword">@use</span> <span class="hljs-string">&quot;../../../scss/variables&quot;</span> as v;
+<span class="hljs-keyword">@use</span> <span class="hljs-string">&quot;../../../scss/mixins&quot;</span> as m;
+
+<span class="hljs-selector-class">.o-header</span> {
 	&amp;__display {
 		<span class="hljs-attribute">position</span>: fixed;
 		<span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
-		<span class="hljs-attribute">z-index</span>: <span class="hljs-variable">$z-index-header</span>;
+		<span class="hljs-attribute">z-index</span>: v.<span class="hljs-variable">$z-index-header</span>;
 
 		<span class="hljs-keyword">@media</span> print {
 			<span class="hljs-attribute">position</span>: absolute;
@@ -948,7 +952,7 @@
                 </li>
                 <li class="Meta-item">
                     <strong class="Meta-key">Size:</strong>
-                    <span class="Meta-value">177 Bytes</span>
+                    <span class="Meta-value">269 Bytes</span>
                 </li>
             </ul>
         </div>
@@ -3259,14 +3263,14 @@
         <li class="Tree-item Tree-entity" data-role="item">
             <a
                 class="Tree-entityLink"
-                href="./a-social-icon--twitter.html"
+                href="./a-social-icon--bluesky.html"
                 data-role="tree-link"
                 
                 data-pjax
-                data-test="a-social-icon--twitter"
-                data-handle="a-social-icon--twitter"
+                data-test="a-social-icon--bluesky"
+                data-handle="a-social-icon--bluesky"
             >
-                <span>Twitter</span>
+                <span>Bluesky</span>
                 
 
 <div class="Status Status--unlabelled">

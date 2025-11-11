@@ -497,33 +497,37 @@
                         <div class="FileBrowser-itemPreview">
                             
                             <code class="Code Code--lang-SCSS FileBrowser-code hljs">
-                                <pre><span class="hljs-selector-class">.a-search</span> {
+                                <pre><span class="hljs-keyword">@use</span> <span class="hljs-string">&quot;sass:math&quot;</span>;
+<span class="hljs-keyword">@use</span> <span class="hljs-string">&quot;../../../scss/variables&quot;</span> as v;
+<span class="hljs-keyword">@use</span> <span class="hljs-string">&quot;../../../scss/mixins&quot;</span> as m;
+
+<span class="hljs-selector-class">.a-search</span> {
 	<span class="hljs-variable">$offset</span>: <span class="hljs-number">0.75em</span>;
 	<span class="hljs-attribute">position</span>: relative;
 
 	&amp;<span class="hljs-selector-pseudo">:not</span>(&amp;--inverted) {
 		<span class="hljs-attribute">margin-left</span>: #{- <span class="hljs-variable">$offset</span>};
 
-		<span class="hljs-keyword">@include</span> media($_DESKTOP) {
+		<span class="hljs-keyword">@include</span> m.media(v.<span class="hljs-variable">$DESKTOP</span>) {
 			<span class="hljs-attribute">margin-left</span>: <span class="hljs-number">0</span>;
 		}
 	}
 
-	<span class="hljs-keyword">@include</span> media($_DESKTOP) {
+	<span class="hljs-keyword">@include</span> m.media(v.<span class="hljs-variable">$DESKTOP</span>) {
 		<span class="hljs-attribute">padding-top</span>: <span class="hljs-number">0.533em</span>;
 	}
 
 	&amp;--covering {
-		<span class="hljs-keyword">@include</span> media($_DESKTOP) {
+		<span class="hljs-keyword">@include</span> m.media(v.<span class="hljs-variable">$DESKTOP</span>) {
 			<span class="hljs-attribute">position</span>: absolute;
 			<span class="hljs-attribute">background</span>: rgba(<span class="hljs-number">255</span>, <span class="hljs-number">255</span>, <span class="hljs-number">255</span>, <span class="hljs-number">0</span>);
 			<span class="hljs-attribute">height</span>: <span class="hljs-number">60px</span>;
-			<span class="hljs-attribute">transition</span>: all <span class="hljs-variable">$transition-ease</span> <span class="hljs-variable">$transition-mid</span>;
+			<span class="hljs-attribute">transition</span>: all v.<span class="hljs-variable">$transition-ease</span> v.<span class="hljs-variable">$transition-mid</span>;
 			<span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
 			<span class="hljs-attribute">max-width</span>: <span class="hljs-number">34px</span>; <span class="hljs-comment">// this will be overwritten by js</span>
 
 			&amp;<span class="hljs-selector-class">.is-active</span> {
-				<span class="hljs-attribute">background</span>: <span class="hljs-variable">$color-white</span>;
+				<span class="hljs-attribute">background</span>: v.<span class="hljs-variable">$color-white</span>;
 			}
 		}
 	}
@@ -535,18 +539,18 @@
 
 	&amp;__icon {
 		fill: none;
-		stroke: <span class="hljs-variable">$color-text</span>;
+		stroke: v.<span class="hljs-variable">$color-text</span>;
 		<span class="hljs-attribute">width</span>: <span class="hljs-number">1.333em</span>;
 		<span class="hljs-attribute">height</span>: <span class="hljs-number">1.333em</span>;
 		<span class="hljs-attribute">margin-bottom</span>: -<span class="hljs-number">0.25em</span>;
 		<span class="hljs-attribute">margin-left</span>: -<span class="hljs-number">2em</span>;
 		<span class="hljs-attribute">cursor</span>: pointer;
-		<span class="hljs-attribute">transition</span>: stroke <span class="hljs-variable">$transition-ease</span> <span class="hljs-variable">$transition-fast</span>;
+		<span class="hljs-attribute">transition</span>: stroke v.<span class="hljs-variable">$transition-ease</span> v.<span class="hljs-variable">$transition-fast</span>;
 
 		&amp;<span class="hljs-selector-class">.highlight</span>,
 		&amp;<span class="hljs-selector-pseudo">:hover</span>,
 		&amp;<span class="hljs-selector-pseudo">:focus</span> {
-			stroke: <span class="hljs-variable">$color-secondary</span>;
+			stroke: v.<span class="hljs-variable">$color-secondary</span>;
 		}
 	}
 
@@ -555,50 +559,52 @@
 	}
 
 	&amp;__field {
-		<span class="hljs-attribute">background</span>: transparent;
-		<span class="hljs-attribute">border</span>: none;
-		<span class="hljs-attribute">width</span>: <span class="hljs-number">8.8em</span>;
-		<span class="hljs-attribute">max-width</span>: <span class="hljs-number">300px</span>;
-		<span class="hljs-attribute">font-size</span>: <span class="hljs-number">0.9375rem</span>;
-		<span class="hljs-attribute">font-weight</span>: <span class="hljs-number">700</span>;
-		<span class="hljs-attribute">color</span>: <span class="hljs-variable">$color-text</span>;
-		<span class="hljs-attribute">transition</span>: all <span class="hljs-variable">$transition-ease</span> <span class="hljs-variable">$transition-mid</span>;
-		<span class="hljs-attribute">height</span>: <span class="hljs-number">2.625em</span>;
-		<span class="hljs-attribute">padding-left</span>: <span class="hljs-variable">$offset</span>;
-		<span class="hljs-attribute">border-bottom</span>: <span class="hljs-number">2px</span> solid transparent;
+		&amp; {
+			<span class="hljs-attribute">background</span>: transparent;
+			<span class="hljs-attribute">border</span>: none;
+			<span class="hljs-attribute">width</span>: <span class="hljs-number">8.8em</span>;
+			<span class="hljs-attribute">max-width</span>: <span class="hljs-number">300px</span>;
+			<span class="hljs-attribute">font-size</span>: <span class="hljs-number">0.9375rem</span>;
+			<span class="hljs-attribute">font-weight</span>: <span class="hljs-number">700</span>;
+			<span class="hljs-attribute">color</span>: v.<span class="hljs-variable">$color-text</span>;
+			<span class="hljs-attribute">transition</span>: all v.<span class="hljs-variable">$transition-ease</span> v.<span class="hljs-variable">$transition-mid</span>;
+			<span class="hljs-attribute">height</span>: <span class="hljs-number">2.625em</span>;
+			<span class="hljs-attribute">padding-left</span>: <span class="hljs-variable">$offset</span>;
+			<span class="hljs-attribute">border-bottom</span>: <span class="hljs-number">2px</span> solid transparent;
+		}
 
-		<span class="hljs-keyword">@include</span> media($_DESKTOP) {
+		<span class="hljs-keyword">@include</span> m.media(v.<span class="hljs-variable">$DESKTOP</span>) {
 			<span class="hljs-attribute">width</span>: <span class="hljs-number">2em</span>;
 			<span class="hljs-attribute">color</span>: transparent;
 		}
 
 		&amp;<span class="hljs-selector-pseudo">::placeholder</span> {
-			<span class="hljs-attribute">color</span>: <span class="hljs-variable">$color-text</span>;
-			<span class="hljs-attribute">transition</span>: color <span class="hljs-variable">$transition-ease</span> <span class="hljs-variable">$transition-fast</span>;
+			<span class="hljs-attribute">color</span>: v.<span class="hljs-variable">$color-text</span>;
+			<span class="hljs-attribute">transition</span>: color v.<span class="hljs-variable">$transition-ease</span> v.<span class="hljs-variable">$transition-fast</span>;
 
-			<span class="hljs-keyword">@include</span> high-contrast {
-				<span class="hljs-attribute">color</span>: <span class="hljs-variable">$color-text</span>;
+			<span class="hljs-keyword">@include</span> m.high-contrast {
+				<span class="hljs-attribute">color</span>: v.<span class="hljs-variable">$color-text</span>;
 			}
 		}
 
 		&amp;<span class="hljs-selector-pseudo">:focus</span>,
 		&amp;<span class="hljs-selector-class">.is-active</span> {
 			<span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
-			<span class="hljs-attribute">background-color</span>: <span class="hljs-variable">$color-grey-1</span>;
-			<span class="hljs-attribute">border-bottom-color</span>: <span class="hljs-variable">$color-grey-2</span>;
+			<span class="hljs-attribute">background-color</span>: v.<span class="hljs-variable">$color-grey-1</span>;
+			<span class="hljs-attribute">border-bottom-color</span>: v.<span class="hljs-variable">$color-grey-2</span>;
 			<span class="hljs-attribute">outline</span>: none;
-			<span class="hljs-attribute">color</span>: <span class="hljs-variable">$color-text</span>;
+			<span class="hljs-attribute">color</span>: v.<span class="hljs-variable">$color-text</span>;
 			<span class="hljs-attribute">padding-right</span>: <span class="hljs-number">2.4em</span>;
 
-			<span class="hljs-keyword">@include</span> high-contrast {
-				<span class="hljs-attribute">border-color</span>: <span class="hljs-variable">$color-text</span>;
+			<span class="hljs-keyword">@include</span> m.high-contrast {
+				<span class="hljs-attribute">border-color</span>: v.<span class="hljs-variable">$color-text</span>;
 			}
 
 			&amp;<span class="hljs-selector-pseudo">::placeholder</span> {
-				<span class="hljs-attribute">color</span>: <span class="hljs-variable">$color-grey-2</span>;
+				<span class="hljs-attribute">color</span>: v.<span class="hljs-variable">$color-grey-2</span>;
 
-				<span class="hljs-keyword">@include</span> high-contrast {
-					<span class="hljs-attribute">color</span>: <span class="hljs-variable">$color-text</span>;
+				<span class="hljs-keyword">@include</span> m.high-contrast {
+					<span class="hljs-attribute">color</span>: v.<span class="hljs-variable">$color-text</span>;
 				}
 			}
 		}
@@ -607,15 +613,15 @@
 		&amp;<span class="hljs-selector-pseudo">:not</span>(.is-active) {
 			<span class="hljs-attribute">cursor</span>: pointer;
 
-			<span class="hljs-keyword">@include</span> media($_MOBILE) {
+			<span class="hljs-keyword">@include</span> m.media(v.<span class="hljs-variable">$MOBILE</span>) {
 				&amp;<span class="hljs-selector-class">.highlight</span> {
 					&amp;<span class="hljs-selector-pseudo">::placeholder</span> {
-						<span class="hljs-attribute">color</span>: <span class="hljs-variable">$color-secondary</span>;
+						<span class="hljs-attribute">color</span>: v.<span class="hljs-variable">$color-secondary</span>;
 					}
 				}
 			}
 
-			<span class="hljs-keyword">@include</span> media($_DESKTOP) {
+			<span class="hljs-keyword">@include</span> m.media(v.<span class="hljs-variable">$DESKTOP</span>) {
 				&amp;<span class="hljs-selector-pseudo">::placeholder</span> {
 					<span class="hljs-attribute">color</span>: transparent;
 				}
@@ -624,26 +630,28 @@
 	}
 
 	&amp;--inverted &amp;__field {
-		<span class="hljs-attribute">background-color</span>: <span class="hljs-variable">$color-white</span>;
+		<span class="hljs-attribute">background-color</span>: v.<span class="hljs-variable">$color-white</span>;
 	}
 
 	&amp;--expanded &amp;__field {
-		<span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
-		<span class="hljs-attribute">max-width</span>: <span class="hljs-number">100%</span>;
-		<span class="hljs-attribute">color</span>: <span class="hljs-variable">$color-text</span>;
-		<span class="hljs-attribute">border-bottom-color</span>: <span class="hljs-variable">$color-grey-3</span>;
-		<span class="hljs-attribute">cursor</span>: text;
-		<span class="hljs-attribute">padding-right</span>: <span class="hljs-number">2.4em</span>;
+		&amp; {
+			<span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
+			<span class="hljs-attribute">max-width</span>: <span class="hljs-number">100%</span>;
+			<span class="hljs-attribute">color</span>: v.<span class="hljs-variable">$color-text</span>;
+			<span class="hljs-attribute">border-bottom-color</span>: v.<span class="hljs-variable">$color-grey-3</span>;
+			<span class="hljs-attribute">cursor</span>: text;
+			<span class="hljs-attribute">padding-right</span>: <span class="hljs-number">2.4em</span>;
+		}
 
-		<span class="hljs-keyword">@include</span> high-contrast {
-			<span class="hljs-attribute">border-color</span>: <span class="hljs-variable">$color-text</span>;
+		<span class="hljs-keyword">@include</span> m.high-contrast {
+			<span class="hljs-attribute">border-color</span>: v.<span class="hljs-variable">$color-text</span>;
 		}
 
 		&amp;<span class="hljs-selector-pseudo">::placeholder</span> {
-			<span class="hljs-attribute">color</span>: <span class="hljs-variable">$color-grey-3</span>;
+			<span class="hljs-attribute">color</span>: v.<span class="hljs-variable">$color-grey-3</span>;
 
-			<span class="hljs-keyword">@include</span> high-contrast {
-				<span class="hljs-attribute">color</span>: <span class="hljs-variable">$color-text</span>;
+			<span class="hljs-keyword">@include</span> m.high-contrast {
+				<span class="hljs-attribute">color</span>: v.<span class="hljs-variable">$color-text</span>;
 			}
 		}
 	}
@@ -653,7 +661,7 @@
 		<span class="hljs-attribute">position</span>: absolute;
 		<span class="hljs-attribute">top</span>: <span class="hljs-number">7px</span>;
 
-		<span class="hljs-keyword">@include</span> media($_DESKTOP) {
+		<span class="hljs-keyword">@include</span> m.media(v.<span class="hljs-variable">$DESKTOP</span>) {
 			<span class="hljs-attribute">top</span>: <span class="hljs-number">16px</span>;
 		}
 	}
@@ -688,7 +696,7 @@
                 </li>
                 <li class="Meta-item">
                     <strong class="Meta-key">Size:</strong>
-                    <span class="Meta-value">2.8 KB</span>
+                    <span class="Meta-value">3 KB</span>
                 </li>
             </ul>
         </div>
@@ -3018,14 +3026,14 @@
         <li class="Tree-item Tree-entity" data-role="item">
             <a
                 class="Tree-entityLink"
-                href="./a-social-icon--twitter.html"
+                href="./a-social-icon--bluesky.html"
                 data-role="tree-link"
                 
                 data-pjax
-                data-test="a-social-icon--twitter"
-                data-handle="a-social-icon--twitter"
+                data-test="a-social-icon--bluesky"
+                data-handle="a-social-icon--bluesky"
             >
-                <span>Twitter</span>
+                <span>Bluesky</span>
                 
 
 <div class="Status Status--unlabelled">

@@ -1,8 +1,12 @@
+@use "sass:math";
+@use "../../../scss/variables" as v;
+@use "../../../scss/mixins" as m;
+
 .m-footer-contact {
 	&__title {
 		margin-top: 0;
 		margin-bottom: 40px;
-		@include fluid-props(font-size, $size-tiny, $size-medium, 20px, 32px);
+		@include m.fluid-props(font-size, v.$size-tiny, v.$size-medium, 20px, 32px);
 	}
 
 	&__text p {

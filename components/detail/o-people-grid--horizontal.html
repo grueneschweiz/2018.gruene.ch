@@ -726,33 +726,42 @@
                         <div class="FileBrowser-itemPreview">
                             
                             <code class="Code Code--lang-SCSS FileBrowser-code hljs">
-                                <pre><span class="hljs-selector-class">.o-people-grid</span> {
+                                <pre><span class="hljs-keyword">@use</span> <span class="hljs-string">&quot;sass:math&quot;</span>;
+<span class="hljs-keyword">@use</span> <span class="hljs-string">&quot;../../../scss/variables&quot;</span> as v;
+<span class="hljs-keyword">@use</span> <span class="hljs-string">&quot;../../../scss/mixins&quot;</span> as m;
+<span class="hljs-keyword">@use</span> <span class="hljs-string">&quot;../../../scss/grid&quot;</span> as g;
+
+<span class="hljs-selector-class">.o-people-grid</span> {
 	&amp;--horizontal {
 		<span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
 		<span class="hljs-attribute">height</span>: <span class="hljs-number">100%</span>;
 		<span class="hljs-attribute">overflow</span>: hidden;
-		<span class="hljs-attribute">background</span>: <span class="hljs-variable">$color-grey-1</span>;
+		<span class="hljs-attribute">background</span>: v.<span class="hljs-variable">$color-grey-1</span>;
 		<span class="hljs-attribute">position</span>: relative;
 		<span class="hljs-attribute">z-index</span>: <span class="hljs-number">1</span>; <span class="hljs-comment">// Fix of Webkit flickering</span>
-		<span class="hljs-keyword">@include</span> fluid-props(margin-top margin-bottom padding-top padding-bottom, <span class="hljs-variable">$fluid-min</span>, <span class="hljs-variable">$fluid-max</span>, <span class="hljs-number">5px</span>, <span class="hljs-number">25px</span>);
+		<span class="hljs-keyword">@include</span> m.fluid-props(margin-top margin-bottom padding-top padding-bottom, v.<span class="hljs-variable">$fluid-min</span>, v.<span class="hljs-variable">$fluid-max</span>, <span class="hljs-number">5px</span>, <span class="hljs-number">25px</span>);
 	}
 
 	&amp;--horizontal &amp;__wrapper {
-		<span class="hljs-keyword">@extend</span> .grid-item;
+		<span class="hljs-attribute">max-width</span>: <span class="hljs-number">651px</span>;
+		<span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
+		<span class="hljs-attribute">margin-left</span>: auto;
+		<span class="hljs-attribute">margin-right</span>: auto;
+		<span class="hljs-keyword">@include</span> m.fluid-grid-item-props(padding);
 
-		<span class="hljs-keyword">@include</span> media($_DESKTOP) {
-			<span class="hljs-attribute">max-width</span>: <span class="hljs-variable">$grid-max-width-max</span>;
+		<span class="hljs-keyword">@include</span> m.media(v.<span class="hljs-variable">$DESKTOP</span>) {
+			<span class="hljs-attribute">max-width</span>: v.<span class="hljs-variable">$grid-max-width-max</span>;
 		}
 	}
 
 	&amp;__cat-title {
-		<span class="hljs-keyword">@include</span> fluid-props(margin-bottom, <span class="hljs-variable">$size-tiny</span>, <span class="hljs-variable">$size-medium</span>, <span class="hljs-number">20px</span>, <span class="hljs-number">34px</span>);
+		<span class="hljs-keyword">@include</span> m.fluid-props(margin-bottom, v.<span class="hljs-variable">$size-tiny</span>, v.<span class="hljs-variable">$size-medium</span>, <span class="hljs-number">20px</span>, <span class="hljs-number">34px</span>);
 	}
 
 	&amp;__title {
-		<span class="hljs-keyword">@include</span> fluid-props(font-size, <span class="hljs-variable">$size-tiny</span>, <span class="hljs-variable">$size-medium</span>, <span class="hljs-number">32px</span>, <span class="hljs-number">48px</span>);
-		<span class="hljs-keyword">@include</span> fluid-props(margin-top, <span class="hljs-variable">$size-tiny</span>, <span class="hljs-variable">$size-medium</span>, <span class="hljs-number">20px</span>, <span class="hljs-number">34px</span>);
-		<span class="hljs-keyword">@include</span> fluid-props(margin-bottom, <span class="hljs-variable">$size-tiny</span>, <span class="hljs-variable">$size-medium</span>, <span class="hljs-number">26px</span>, <span class="hljs-number">56px</span>);
+		<span class="hljs-keyword">@include</span> m.fluid-props(font-size, v.<span class="hljs-variable">$size-tiny</span>, v.<span class="hljs-variable">$size-medium</span>, <span class="hljs-number">32px</span>, <span class="hljs-number">48px</span>);
+		<span class="hljs-keyword">@include</span> m.fluid-props(margin-top, v.<span class="hljs-variable">$size-tiny</span>, v.<span class="hljs-variable">$size-medium</span>, <span class="hljs-number">20px</span>, <span class="hljs-number">34px</span>);
+		<span class="hljs-keyword">@include</span> m.fluid-props(margin-bottom, v.<span class="hljs-variable">$size-tiny</span>, v.<span class="hljs-variable">$size-medium</span>, <span class="hljs-number">26px</span>, <span class="hljs-number">56px</span>);
 	}
 
 	&amp;--vertical &amp;__slider {
@@ -762,11 +771,11 @@
 		grid-<span class="hljs-attribute">auto</span>-flow: row;
 		grid-template-<span class="hljs-attribute">columns</span>: <span class="hljs-number">1</span>fr;
 
-		<span class="hljs-keyword">@include</span> media(<span class="hljs-number">480px</span>) {
+		<span class="hljs-keyword">@include</span> m.media(<span class="hljs-number">480px</span>) {
 			grid-template-<span class="hljs-attribute">columns</span>: repeat(<span class="hljs-number">2</span>, calc(<span class="hljs-number">50%</span> - <span class="hljs-number">16px</span>));
 		}
 
-		<span class="hljs-keyword">@include</span> media(<span class="hljs-variable">$size-medium</span>) {
+		<span class="hljs-keyword">@include</span> m.media(v.<span class="hljs-variable">$size-medium</span>) {
 			grid-template-<span class="hljs-attribute">columns</span>: repeat(<span class="hljs-number">3</span>, <span class="hljs-number">242px</span>);
 		}
 	}
@@ -783,22 +792,24 @@
 	}
 
 	&amp;__slide {
-		<span class="hljs-attribute">background</span>: <span class="hljs-variable">$color-white</span>;
+		<span class="hljs-attribute">background</span>: v.<span class="hljs-variable">$color-white</span>;
 	}
 
 	&amp;--horizontal &amp;__slide {
-		<span class="hljs-keyword">@include</span> fluid-props(margin-right, <span class="hljs-variable">$size-tiny</span>, <span class="hljs-variable">$size-medium</span>, <span class="hljs-number">20px</span>, <span class="hljs-number">32px</span>);
-		<span class="hljs-attribute">position</span>: relative;
-		<span class="hljs-attribute">transition-property</span>: transform;
+		<span class="hljs-keyword">@include</span> m.fluid-props(margin-right, v.<span class="hljs-variable">$size-tiny</span>, v.<span class="hljs-variable">$size-medium</span>, <span class="hljs-number">20px</span>, <span class="hljs-number">32px</span>);
+		&amp; {
+			<span class="hljs-attribute">position</span>: relative;
+			<span class="hljs-attribute">transition-property</span>: transform;
+		}
 
 		<span class="hljs-selector-class">.m-person-slide</span> {
 			<span class="hljs-attribute">width</span>: <span class="hljs-number">220px</span>;
 
-			<span class="hljs-keyword">@include</span> media(<span class="hljs-variable">$size-tiny</span>) {
+			<span class="hljs-keyword">@include</span> m.media(v.<span class="hljs-variable">$size-tiny</span>) {
 				<span class="hljs-attribute">width</span>: <span class="hljs-number">280px</span>;
 			}
 
-			<span class="hljs-keyword">@include</span> media($_DESKTOP) {
+			<span class="hljs-keyword">@include</span> m.media(v.<span class="hljs-variable">$DESKTOP</span>) {
 				<span class="hljs-attribute">width</span>: <span class="hljs-number">288px</span>;
 			}
 		}
@@ -811,17 +822,19 @@
 		<span class="hljs-attribute">width</span>: <span class="hljs-number">108px</span>;
 		<span class="hljs-attribute">padding-top</span>: <span class="hljs-number">0</span>;
 		<span class="hljs-attribute">padding-bottom</span>: <span class="hljs-number">0</span>;
-		<span class="hljs-keyword">@include</span> fluid-props(top, <span class="hljs-variable">$size-small</span>, <span class="hljs-variable">$size-medium</span>, <span class="hljs-number">211px</span>, <span class="hljs-number">240px</span>); <span class="hljs-comment">// dont ask</span>
-		<span class="hljs-keyword">@include</span> fluid-props(top, <span class="hljs-variable">$size-medium</span>, <span class="hljs-variable">$fluid-max</span>, <span class="hljs-number">240px</span>, <span class="hljs-number">269px</span>); <span class="hljs-comment">// dont ask</span>
-		<span class="hljs-keyword">@include</span> fluid-props(top, <span class="hljs-variable">$fluid-max</span>, <span class="hljs-number">2000px</span>, <span class="hljs-number">269px</span>, <span class="hljs-number">282px</span>); <span class="hljs-comment">// dont ask</span>
-		<span class="hljs-attribute">height</span>: <span class="hljs-number">252px</span>;
-		<span class="hljs-attribute">cursor</span>: pointer;
+		<span class="hljs-keyword">@include</span> m.fluid-props(top, v.<span class="hljs-variable">$size-small</span>, v.<span class="hljs-variable">$size-medium</span>, <span class="hljs-number">211px</span>, <span class="hljs-number">240px</span>); <span class="hljs-comment">// dont ask</span>
+		<span class="hljs-keyword">@include</span> m.fluid-props(top, v.<span class="hljs-variable">$size-medium</span>, v.<span class="hljs-variable">$fluid-max</span>, <span class="hljs-number">240px</span>, <span class="hljs-number">269px</span>); <span class="hljs-comment">// dont ask</span>
+		<span class="hljs-keyword">@include</span> m.fluid-props(top, v.<span class="hljs-variable">$fluid-max</span>, <span class="hljs-number">2000px</span>, <span class="hljs-number">269px</span>, <span class="hljs-number">282px</span>); <span class="hljs-comment">// dont ask</span>
+		&amp; {
+			<span class="hljs-attribute">height</span>: <span class="hljs-number">252px</span>;
+			<span class="hljs-attribute">cursor</span>: pointer;
+		}
 
-		<span class="hljs-keyword">@include</span> media(<span class="hljs-variable">$size-small</span>) {
+		<span class="hljs-keyword">@include</span> m.media(v.<span class="hljs-variable">$size-small</span>) {
 			<span class="hljs-attribute">display</span>: block;
 		}
 
-		<span class="hljs-keyword">@include</span> media($_DESKTOP) {
+		<span class="hljs-keyword">@include</span> m.media(v.<span class="hljs-variable">$DESKTOP</span>) {
 			<span class="hljs-attribute">height</span>: <span class="hljs-number">259px</span>;
 		}
 
@@ -834,21 +847,21 @@
 			<span class="hljs-attribute">display</span>: none;
 		}
 
-		<span class="hljs-keyword">@include</span> <span class="hljs-attribute">hover</span> {
+		<span class="hljs-keyword">@include</span> m.<span class="hljs-attribute">hover</span> {
 			svg {
-				fill: <span class="hljs-variable">$color-primary-dark</span>;
+				fill: v.<span class="hljs-variable">$color-primary-dark</span>;
 			}
 		}
 
 		svg {
 			<span class="hljs-attribute">height</span>: <span class="hljs-number">48px</span>;
 			<span class="hljs-attribute">width</span>: <span class="hljs-number">48px</span>;
-			fill: <span class="hljs-variable">$color-primary</span>;
-			stroke: <span class="hljs-variable">$color-white</span>;
-			<span class="hljs-attribute">transition</span>: fill <span class="hljs-variable">$transition-fast</span> <span class="hljs-variable">$transition-ease</span>;
+			fill: v.<span class="hljs-variable">$color-primary</span>;
+			stroke: v.<span class="hljs-variable">$color-white</span>;
+			<span class="hljs-attribute">transition</span>: fill v.<span class="hljs-variable">$transition-fast</span> v.<span class="hljs-variable">$transition-ease</span>;
 
-			<span class="hljs-keyword">@include</span> high-contrast {
-				fill: <span class="hljs-variable">$color-primary-dark</span>;
+			<span class="hljs-keyword">@include</span> m.high-contrast {
+				fill: v.<span class="hljs-variable">$color-primary-dark</span>;
 			}
 		}
 
@@ -881,7 +894,7 @@
                 </li>
                 <li class="Meta-item">
                     <strong class="Meta-key">Size:</strong>
-                    <span class="Meta-value">2.8 KB</span>
+                    <span class="Meta-value">3.1 KB</span>
                 </li>
             </ul>
         </div>
@@ -3213,14 +3226,14 @@ Swiper.use([Keyboard, Navigation, A11y]);
         <li class="Tree-item Tree-entity" data-role="item">
             <a
                 class="Tree-entityLink"
-                href="./a-social-icon--twitter.html"
+                href="./a-social-icon--bluesky.html"
                 data-role="tree-link"
                 
                 data-pjax
-                data-test="a-social-icon--twitter"
-                data-handle="a-social-icon--twitter"
+                data-test="a-social-icon--bluesky"
+                data-handle="a-social-icon--bluesky"
             >
-                <span>Twitter</span>
+                <span>Bluesky</span>
                 
 
 <div class="Status Status--unlabelled">

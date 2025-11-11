@@ -1,24 +1,30 @@
+@use "sass:math";
+@use "../../../scss/variables" as v;
+@use "../../../scss/mixins" as m;
+
 .m-quote {
 	display: flex;
 	flex-wrap: wrap;
 	align-items: center;
 	justify-content: center;
 
-	@include media($size-small) {
+	@include m.media(v.$size-small) {
 		flex-wrap: nowrap;
 	}
 
 	&__image-outer {
-		@include fluid-props(margin, 320px, $fluid-max, 10px, 15px);
+		@include m.fluid-props(margin, 320px, v.$fluid-max, 10px, 15px);
 
-		flex-shrink: 0;
-		width: 247px;
-		height: 247px;
-		transform: rotate(-5deg);
-		overflow: hidden;
-		transition: transform $transition-mid $transition-ease-image;
+		& {
+			flex-shrink: 0;
+			width: 247px;
+			height: 247px;
+			transform: rotate(-5deg);
+			overflow: hidden;
+			transition: transform v.$transition-mid v.$transition-ease-image;
+		}
 
-		@include hover {
+		@include m.hover {
 			transform: rotate(-5deg) scale(1.01);
 		}
 	}
@@ -32,13 +38,21 @@
 	&__caption {
 		width: 100%;
 
-		@include media($size-small) {
+		@include m.media(v.$size-small) {
 			margin-left: 35px;
 		}
 	}
 
 	&__quote {
-		@extend h3;
+		@include m.heading-font;
+
+		& {
+			font-size: 1.25rem; // 20/16
+		}
+
+		@include m.media(v.$DESKTOP) {
+			font-size: 1.46875rem; // 23.5/16
+		}
 
 		&::before {
 			content: '\00ab';
@@ -53,14 +67,14 @@
 
 	&__author {
 		font-size: 0.875rem;
-		font-weight: $font-weight-semi;
+		font-weight: v.$font-weight-semi;
 		margin-top: 1em;
 
 		&::before {
 			content: '\002014\0000A0';
 		}
 
-		@include media($size-small) {
+		@include m.media(v.$size-small) {
 			font-size: 1rem;
 			margin-top: 2em;
 

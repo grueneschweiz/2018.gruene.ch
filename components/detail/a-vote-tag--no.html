@@ -467,19 +467,23 @@
                         <div class="FileBrowser-itemPreview">
                             
                             <code class="Code Code--lang-SCSS FileBrowser-code hljs">
-                                <pre><span class="hljs-selector-class">.a-vote-tag</span> {
+                                <pre><span class="hljs-keyword">@use</span> <span class="hljs-string">&quot;sass:math&quot;</span>;
+<span class="hljs-keyword">@use</span> <span class="hljs-string">&quot;../../../scss/variables&quot;</span> as v;
+<span class="hljs-keyword">@use</span> <span class="hljs-string">&quot;../../../scss/mixins&quot;</span> as m;
+
+<span class="hljs-selector-class">.a-vote-tag</span> {
 	<span class="hljs-attribute">display</span>: inline-block;
 	<span class="hljs-attribute">padding</span>: <span class="hljs-number">0.3333em</span> <span class="hljs-number">0.3333em</span> <span class="hljs-number">0.4167em</span>;
 	<span class="hljs-attribute">border-radius</span>: <span class="hljs-number">2px</span>;
 	<span class="hljs-attribute">text-align</span>: center;
 	<span class="hljs-attribute">text-transform</span>: uppercase;
 	<span class="hljs-attribute">font-size</span>: <span class="hljs-number">0.75rem</span>;
-	<span class="hljs-attribute">font-weight</span>: <span class="hljs-variable">$font-weight-bold</span>;
-	<span class="hljs-attribute">font-family</span>: <span class="hljs-variable">$font-title</span>;
+	<span class="hljs-attribute">font-weight</span>: v.<span class="hljs-variable">$font-weight-bold</span>;
+	<span class="hljs-attribute">font-family</span>: v.<span class="hljs-variable">$font-title</span>;
 	<span class="hljs-attribute">letter-spacing</span>: <span class="hljs-number">0.04167em</span>;
 	<span class="hljs-attribute">width</span>: <span class="hljs-number">3.6667em</span>;
 
-	<span class="hljs-keyword">@include</span> media($_DESKTOP) {
+	<span class="hljs-keyword">@include</span> m.media(v.<span class="hljs-variable">$DESKTOP</span>) {
 		<span class="hljs-attribute">font-size</span>: <span class="hljs-number">0.875rem</span>;
 		<span class="hljs-attribute">padding</span>: <span class="hljs-number">0.4286em</span> <span class="hljs-number">0</span> <span class="hljs-number">0.5em</span>;
 		<span class="hljs-attribute">width</span>: <span class="hljs-number">4.2857em</span>;
@@ -490,8 +494,8 @@
 	&amp;--free2,
 	&amp;--initiative,
 	&amp;--counter-project {
-		<span class="hljs-attribute">background-color</span>: <span class="hljs-variable">$color-grey-2</span>;
-		<span class="hljs-attribute">color</span>: <span class="hljs-variable">$color-text</span>;
+		<span class="hljs-attribute">background-color</span>: v.<span class="hljs-variable">$color-grey-2</span>;
+		<span class="hljs-attribute">color</span>: v.<span class="hljs-variable">$color-text</span>;
 	}
 
 	&amp;--blank,
@@ -500,7 +504,7 @@
 	&amp;--counter-project {
 		<span class="hljs-attribute">width</span>: auto;
 
-		<span class="hljs-keyword">@include</span> media($_DESKTOP) {
+		<span class="hljs-keyword">@include</span> m.media(v.<span class="hljs-variable">$DESKTOP</span>) {
 			<span class="hljs-attribute">padding-left</span>: <span class="hljs-number">0.3333em</span>;
 			<span class="hljs-attribute">padding-right</span>: <span class="hljs-number">0.3333em</span>;
 		}
@@ -508,12 +512,12 @@
 
 	&amp;--no {
 		<span class="hljs-attribute">background-color</span>: rgb(<span class="hljs-number">253</span>, <span class="hljs-number">218</span>, <span class="hljs-number">218</span>); <span class="hljs-comment">// color isn&#x27;t used anywhere else</span>
-		<span class="hljs-attribute">color</span>: <span class="hljs-variable">$color-red</span>;
+		<span class="hljs-attribute">color</span>: v.<span class="hljs-variable">$color-red</span>;
 	}
 
 	&amp;--yes {
 		<span class="hljs-attribute">background-color</span>: rgb(<span class="hljs-number">237</span>, <span class="hljs-number">244</span>, <span class="hljs-number">220</span>); <span class="hljs-comment">// color isn&#x27;t used anywhere else</span>
-		<span class="hljs-attribute">color</span>: <span class="hljs-variable">$color-primary-dark</span>;
+		<span class="hljs-attribute">color</span>: v.<span class="hljs-variable">$color-primary-dark</span>;
 	}
 }
 </pre>
@@ -532,7 +536,7 @@
                 </li>
                 <li class="Meta-item">
                     <strong class="Meta-key">Size:</strong>
-                    <span class="Meta-value">905 Bytes</span>
+                    <span class="Meta-value">1 KB</span>
                 </li>
             </ul>
         </div>
@@ -2730,14 +2734,14 @@
         <li class="Tree-item Tree-entity" data-role="item">
             <a
                 class="Tree-entityLink"
-                href="./a-social-icon--twitter.html"
+                href="./a-social-icon--bluesky.html"
                 data-role="tree-link"
                 
                 data-pjax
-                data-test="a-social-icon--twitter"
-                data-handle="a-social-icon--twitter"
+                data-test="a-social-icon--bluesky"
+                data-handle="a-social-icon--bluesky"
             >
-                <span>Twitter</span>
+                <span>Bluesky</span>
                 
 
 <div class="Status Status--unlabelled">

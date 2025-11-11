@@ -490,13 +490,17 @@
                         <div class="FileBrowser-itemPreview">
                             
                             <code class="Code Code--lang-SCSS FileBrowser-code hljs">
-                                <pre><span class="hljs-selector-class">.a-image</span> {
+                                <pre><span class="hljs-keyword">@use</span> <span class="hljs-string">&quot;sass:math&quot;</span>;
+<span class="hljs-keyword">@use</span> <span class="hljs-string">&quot;../../../scss/variables&quot;</span> as v;
+<span class="hljs-keyword">@use</span> <span class="hljs-string">&quot;../../../scss/mixins&quot;</span> as m;
+
+<span class="hljs-selector-class">.a-image</span> {
 	<span class="hljs-attribute">max-width</span>: <span class="hljs-number">100%</span>;
 	<span class="hljs-attribute">position</span>: relative;
 	<span class="hljs-attribute">line-height</span>: <span class="hljs-number">0</span>;
 
 	&amp;__image {
-		<span class="hljs-attribute">transition</span>: transform <span class="hljs-variable">$transition-mid</span> <span class="hljs-variable">$transition-ease-image</span>;
+		<span class="hljs-attribute">transition</span>: transform v.<span class="hljs-variable">$transition-mid</span> v.<span class="hljs-variable">$transition-ease-image</span>;
 	}
 
 	&amp;__image--no-crop {
@@ -530,8 +534,8 @@
 
 	&amp;__image--loaded {
 		<span class="hljs-attribute">animation-name</span>: reveal;
-		<span class="hljs-attribute">animation-duration</span>: <span class="hljs-variable">$transition-mid</span>;
-		<span class="hljs-attribute">animation-timing-function</span>: <span class="hljs-variable">$transition-ease-image</span>;
+		<span class="hljs-attribute">animation-duration</span>: v.<span class="hljs-variable">$transition-mid</span>;
+		<span class="hljs-attribute">animation-timing-function</span>: v.<span class="hljs-variable">$transition-ease-image</span>;
 	}
 
 	&amp;--cover &amp;__image--fp {
@@ -630,13 +634,15 @@
 	}
 
 	&amp;__link {
-		<span class="hljs-keyword">@include</span> clean-link;
+		<span class="hljs-keyword">@include</span> m.clean-link;
 
-		<span class="hljs-attribute">display</span>: block;
-		<span class="hljs-attribute">max-width</span>: <span class="hljs-number">100%</span>;
-		<span class="hljs-attribute">overflow</span>: hidden;
+		&amp; {
+			<span class="hljs-attribute">display</span>: block;
+			<span class="hljs-attribute">max-width</span>: <span class="hljs-number">100%</span>;
+			<span class="hljs-attribute">overflow</span>: hidden;
+		}
 
-		<span class="hljs-keyword">@include</span> <span class="hljs-attribute">hover</span> {
+		<span class="hljs-keyword">@include</span> m.<span class="hljs-attribute">hover</span> {
 			<span class="hljs-selector-class">.a-image__image</span> {
 				<span class="hljs-attribute">transform</span>: scale(<span class="hljs-number">1.01</span>);
 			}
@@ -650,18 +656,25 @@
 
 	&amp;__copy {
 		<span class="hljs-attribute">position</span>: absolute;
-		<span class="hljs-keyword">@include</span> fluid-props(bottom right, <span class="hljs-variable">$size-tiny</span>, <span class="hljs-variable">$size-large</span>, <span class="hljs-number">5px</span>, <span class="hljs-number">10px</span>);
-		<span class="hljs-keyword">@include</span> fluid-props(font-size, <span class="hljs-variable">$size-tiny</span>, <span class="hljs-variable">$size-large</span>, <span class="hljs-number">5px</span>, <span class="hljs-number">7px</span>);
-		<span class="hljs-attribute">transform</span>: translateX(calc(<span class="hljs-number">100%</span> - <span class="hljs-number">1em</span>)) rotate(-<span class="hljs-number">90deg</span>);
-		<span class="hljs-attribute">transform-origin</span>: top left;
-
-		<span class="hljs-attribute">color</span>: <span class="hljs-variable">$color-white</span>;
-		<span class="hljs-attribute">text-transform</span>: uppercase;
-		mix-blend-mode: difference;
+		<span class="hljs-keyword">@include</span> m.fluid-props(bottom right, v.<span class="hljs-variable">$size-tiny</span>, v.<span class="hljs-variable">$size-large</span>, <span class="hljs-number">5px</span>, <span class="hljs-number">10px</span>);
+		<span class="hljs-keyword">@include</span> m.fluid-props(font-size, v.<span class="hljs-variable">$size-tiny</span>, v.<span class="hljs-variable">$size-large</span>, <span class="hljs-number">5px</span>, <span class="hljs-number">7px</span>);
+		
+		&amp;<span class="hljs-selector-pseudo">::before</span> { <span class="hljs-comment">// Empty pseudo-element to avoid mixed declarations warnings</span>
+			<span class="hljs-attribute">content</span>: <span class="hljs-string">&quot;&quot;</span>;
+			<span class="hljs-attribute">display</span>: none;
+		}
+		
+		&amp; {
+			<span class="hljs-attribute">transform</span>: translateX(calc(<span class="hljs-number">100%</span> - <span class="hljs-number">1em</span>)) rotate(-<span class="hljs-number">90deg</span>);
+			<span class="hljs-attribute">transform-origin</span>: top left;
+			<span class="hljs-attribute">color</span>: v.<span class="hljs-variable">$color-white</span>;
+			<span class="hljs-attribute">text-transform</span>: uppercase;
+			mix-blend-mode: difference;
+		}
 
 		&amp;--<span class="hljs-selector-tag">caption</span> {
 			<span class="hljs-attribute">transform</span>: none;
-			<span class="hljs-attribute">color</span>: <span class="hljs-variable">$color-text-light</span>;
+			<span class="hljs-attribute">color</span>: v.<span class="hljs-variable">$color-text-light</span>;
 			mix-blend-mode: normal;
 		}
 
@@ -676,7 +689,7 @@
 			<span class="hljs-attribute">color</span>: inherit;
 			<span class="hljs-attribute">text-decoration</span>: none;
 
-			<span class="hljs-keyword">@include</span> <span class="hljs-attribute">hover</span> {
+			<span class="hljs-keyword">@include</span> m.<span class="hljs-attribute">hover</span> {
 				<span class="hljs-attribute">background</span>: none;
 				<span class="hljs-attribute">box-shadow</span>: none;
 			}
@@ -686,9 +699,9 @@
 	&amp;__caption {
 		<span class="hljs-attribute">line-height</span>: <span class="hljs-number">1.4em</span>;
 		<span class="hljs-attribute">font-size</span>: <span class="hljs-number">0.875rem</span>;
-		<span class="hljs-attribute">color</span>: <span class="hljs-variable">$color-text-light</span>;
+		<span class="hljs-attribute">color</span>: v.<span class="hljs-variable">$color-text-light</span>;
 		<span class="hljs-attribute">padding</span>: <span class="hljs-number">0.5em</span> <span class="hljs-number">1em</span> <span class="hljs-number">1em</span>;
-		<span class="hljs-attribute">background</span>: <span class="hljs-variable">$color-grey-1</span>;
+		<span class="hljs-attribute">background</span>: v.<span class="hljs-variable">$color-grey-1</span>;
 		<span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
 		<span class="hljs-attribute">display</span>: block;
 	}
@@ -718,7 +731,7 @@
                 </li>
                 <li class="Meta-item">
                     <strong class="Meta-key">Size:</strong>
-                    <span class="Meta-value">3.1 KB</span>
+                    <span class="Meta-value">3.3 KB</span>
                 </li>
             </ul>
         </div>
@@ -3142,14 +3155,14 @@
         <li class="Tree-item Tree-entity" data-role="item">
             <a
                 class="Tree-entityLink"
-                href="./a-social-icon--twitter.html"
+                href="./a-social-icon--bluesky.html"
                 data-role="tree-link"
                 
                 data-pjax
-                data-test="a-social-icon--twitter"
-                data-handle="a-social-icon--twitter"
+                data-test="a-social-icon--bluesky"
+                data-handle="a-social-icon--bluesky"
             >
-                <span>Twitter</span>
+                <span>Bluesky</span>
                 
 
 <div class="Status Status--unlabelled">

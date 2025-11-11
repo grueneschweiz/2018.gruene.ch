@@ -618,17 +618,31 @@
                         <div class="FileBrowser-itemPreview">
                             
                             <code class="Code Code--lang-SCSS FileBrowser-code hljs">
-                                <pre><span class="hljs-selector-class">.o-vote</span> {
-	<span class="hljs-keyword">@extend</span> .grid-item;
+                                <pre><span class="hljs-keyword">@use</span> <span class="hljs-string">&quot;sass:math&quot;</span>;
+<span class="hljs-keyword">@use</span> <span class="hljs-string">&quot;../../../scss/variables&quot;</span> as v;
+<span class="hljs-keyword">@use</span> <span class="hljs-string">&quot;../../../scss/mixins&quot;</span> as m;
+<span class="hljs-keyword">@use</span> <span class="hljs-string">&quot;../../../scss/grid&quot;</span> as g;
+
+<span class="hljs-selector-class">.o-vote</span> {
+	<span class="hljs-attribute">max-width</span>: <span class="hljs-number">651px</span>;
+	<span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
+	<span class="hljs-attribute">margin-left</span>: auto;
+	<span class="hljs-attribute">margin-right</span>: auto;
+	<span class="hljs-comment">// Original styles</span>
 	<span class="hljs-attribute">height</span>: <span class="hljs-number">100%</span>;
 	<span class="hljs-attribute">padding-left</span>: <span class="hljs-number">0</span>;
 	<span class="hljs-attribute">padding-right</span>: <span class="hljs-number">0</span>;
 	<span class="hljs-attribute">display</span>: flex;
 	<span class="hljs-attribute">flex-direction</span>: column;
+	<span class="hljs-keyword">@include</span> m.fluid-grid-item-props(padding);
+
+	<span class="hljs-keyword">@include</span> m.media(v.<span class="hljs-variable">$DESKTOP</span>) {
+		<span class="hljs-attribute">max-width</span>: <span class="hljs-number">100%</span>;
+	}
 
 	&amp;__cat-title {
 		<span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">22px</span>;
-		<span class="hljs-keyword">@include</span> fluid-grid-item-props(margin-left);
+		<span class="hljs-keyword">@include</span> m.fluid-grid-item-props(margin-left);
 	}
 
 	&amp;__proposals {
@@ -639,42 +653,44 @@
 	}
 
 	&amp;__proposal {
-		<span class="hljs-keyword">@include</span> clean-link;
-		<span class="hljs-attribute">flex-grow</span>: <span class="hljs-number">1</span>;
-		<span class="hljs-attribute">flex-shrink</span>: <span class="hljs-number">0</span>;
-		<span class="hljs-attribute">display</span>: flex;
-		<span class="hljs-attribute">align-items</span>: center;
-		<span class="hljs-attribute">align-content</span>: center;
-		<span class="hljs-attribute">transition</span>: background <span class="hljs-variable">$transition-fast</span> <span class="hljs-variable">$transition-ease</span>;
-		<span class="hljs-attribute">position</span>: relative;
-		<span class="hljs-keyword">@include</span> fluid-grid-item-props(padding-left padding-right);
+		<span class="hljs-keyword">@include</span> m.clean-link;
+		&amp; {
+			<span class="hljs-attribute">flex-grow</span>: <span class="hljs-number">1</span>;
+			<span class="hljs-attribute">flex-shrink</span>: <span class="hljs-number">0</span>;
+			<span class="hljs-attribute">display</span>: flex;
+			<span class="hljs-attribute">align-items</span>: center;
+			<span class="hljs-attribute">align-content</span>: center;
+			<span class="hljs-attribute">transition</span>: background v.<span class="hljs-variable">$transition-fast</span> v.<span class="hljs-variable">$transition-ease</span>;
+			<span class="hljs-attribute">position</span>: relative;
+		}
+		<span class="hljs-keyword">@include</span> m.fluid-grid-item-props(padding-left padding-right);
 
 		&amp;:after {
 			content: <span class="hljs-string">&#x27; &#x27;</span>;
 			<span class="hljs-attribute">width</span>: calc(<span class="hljs-number">100%</span> - <span class="hljs-number">82px</span>);
 			<span class="hljs-attribute">height</span>: <span class="hljs-number">1px</span>;
-			<span class="hljs-attribute">background</span>: <span class="hljs-variable">$color-grey-2</span>;
+			<span class="hljs-attribute">background</span>: v.<span class="hljs-variable">$color-grey-2</span>;
 			<span class="hljs-attribute">position</span>: absolute;
 			<span class="hljs-attribute">bottom</span>: <span class="hljs-number">1px</span>;
-			<span class="hljs-keyword">@include</span> fluid-grid-item-props(left);
+			<span class="hljs-keyword">@include</span> m.fluid-grid-item-props(left);
 
-			<span class="hljs-keyword">@include</span> media($_DESKTOP) {
+			<span class="hljs-keyword">@include</span> m.media(v.<span class="hljs-variable">$DESKTOP</span>) {
 				<span class="hljs-attribute">width</span>: calc(<span class="hljs-number">100%</span> - <span class="hljs-number">2</span> * (<span class="hljs-number">41px</span> + <span class="hljs-number">19</span> * (<span class="hljs-number">100vw</span> - <span class="hljs-number">1024px</span>) / <span class="hljs-number">416</span>));
 			}
 
-			<span class="hljs-keyword">@include</span> media(<span class="hljs-number">1470px</span>) {
-				<span class="hljs-attribute">width</span>: calc(<span class="hljs-number">100%</span> - #{<span class="hljs-number">2</span>*<span class="hljs-variable">$grid-item-padding-max</span>});
+			<span class="hljs-keyword">@include</span> m.media(<span class="hljs-number">1470px</span>) {
+				<span class="hljs-attribute">width</span>: calc(<span class="hljs-number">100%</span> - #{<span class="hljs-number">2</span>*v.<span class="hljs-variable">$grid-item-padding-max</span>});
 			}
 		}
 
-		<span class="hljs-keyword">@include</span> <span class="hljs-attribute">hover</span> {
-			<span class="hljs-attribute">background</span>: <span class="hljs-variable">$color-grey-1</span>;
+		<span class="hljs-keyword">@include</span> m.<span class="hljs-attribute">hover</span> {
+			<span class="hljs-attribute">background</span>: v.<span class="hljs-variable">$color-grey-1</span>;
 		}
 	}
 
 	&amp;__more {
 		<span class="hljs-attribute">padding-top</span>: <span class="hljs-number">16px</span>;
-		<span class="hljs-keyword">@include</span> fluid-grid-item-props(padding-left padding-right);
+		<span class="hljs-keyword">@include</span> m.fluid-grid-item-props(padding-left padding-right);
 	}
 }
 </pre>
@@ -693,7 +709,7 @@
                 </li>
                 <li class="Meta-item">
                     <strong class="Meta-key">Size:</strong>
-                    <span class="Meta-value">1.1 KB</span>
+                    <span class="Meta-value">1.5 KB</span>
                 </li>
             </ul>
         </div>
@@ -3044,14 +3060,14 @@
         <li class="Tree-item Tree-entity" data-role="item">
             <a
                 class="Tree-entityLink"
-                href="./a-social-icon--twitter.html"
+                href="./a-social-icon--bluesky.html"
                 data-role="tree-link"
                 
                 data-pjax
-                data-test="a-social-icon--twitter"
-                data-handle="a-social-icon--twitter"
+                data-test="a-social-icon--bluesky"
+                data-handle="a-social-icon--bluesky"
             >
-                <span>Twitter</span>
+                <span>Bluesky</span>
                 
 
 <div class="Status Status--unlabelled">

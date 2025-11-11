@@ -1,3 +1,7 @@
+@use "sass:math";
+@use "../../../scss/variables" as v;
+@use "../../../scss/mixins" as m;
+
 .m-skip-link {
 	position: absolute;
 	width: 1px;
@@ -21,14 +25,14 @@
 		z-index: 100;
 		width: 100%;
 		text-align: center;
-		background-color: $color-primary;
+		background-color: v.$color-primary;
 
-		@include high-contrast {
-			background-color: $color-primary-dark;
+		@include m.high-contrast {
+			background-color: v.$color-primary-dark;
 		}
 	}
 
 	&__target {
-		@include clean-link();
+		@include m.clean-link();
 	}
 }

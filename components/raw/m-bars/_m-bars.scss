@@ -1,3 +1,7 @@
+@use "sass:math";
+@use "../../../scss/variables" as v;
+@use "../../../scss/mixins" as m;
+
 .m-bars {
 	line-height: 0; // so the subline won't be to high
 	width: 100%;

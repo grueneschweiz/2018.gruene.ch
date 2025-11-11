@@ -693,12 +693,18 @@
                         <div class="FileBrowser-itemPreview">
                             
                             <code class="Code Code--lang-SCSS FileBrowser-code hljs">
-                                <pre><span class="hljs-selector-class">.o-linked-content</span> {
-	&amp;__title {
-		<span class="hljs-keyword">@include</span> fluid-props(margin-bottom, <span class="hljs-variable">$fluid-min</span>, <span class="hljs-variable">$fluid-max</span>, <span class="hljs-number">30px</span>, <span class="hljs-number">70px</span>);
-		<span class="hljs-attribute">margin-top</span>: <span class="hljs-number">40px</span>;
+                                <pre><span class="hljs-keyword">@use</span> <span class="hljs-string">&quot;sass:math&quot;</span>;
+<span class="hljs-keyword">@use</span> <span class="hljs-string">&quot;../../../scss/variables&quot;</span> as v;
+<span class="hljs-keyword">@use</span> <span class="hljs-string">&quot;../../../scss/mixins&quot;</span> as m;
 
-		<span class="hljs-keyword">@include</span> media(<span class="hljs-variable">$size-small</span>) {
+<span class="hljs-selector-class">.o-linked-content</span> {
+	&amp;__title {
+		<span class="hljs-keyword">@include</span> m.fluid-props(margin-bottom, v.<span class="hljs-variable">$fluid-min</span>, v.<span class="hljs-variable">$fluid-max</span>, <span class="hljs-number">30px</span>, <span class="hljs-number">70px</span>);
+		&amp; {
+			<span class="hljs-attribute">margin-top</span>: <span class="hljs-number">40px</span>;
+		}
+
+		<span class="hljs-keyword">@include</span> m.media(v.<span class="hljs-variable">$size-small</span>) {
 			<span class="hljs-attribute">text-align</span>: center;
 		}
 	}
@@ -711,9 +717,9 @@
 		<span class="hljs-attribute">display</span>: grid;
 		grid-template-<span class="hljs-attribute">columns</span>: <span class="hljs-number">1</span>fr;
 		grid-<span class="hljs-attribute">column-gap</span>: <span class="hljs-number">50px</span>;
-		<span class="hljs-keyword">@include</span> fluid-props(grid-row-gap, <span class="hljs-variable">$fluid-min</span>, <span class="hljs-variable">$fluid-max</span>, <span class="hljs-number">60px</span>, <span class="hljs-number">120px</span>);
+		<span class="hljs-keyword">@include</span> m.fluid-props(grid-row-gap, v.<span class="hljs-variable">$fluid-min</span>, v.<span class="hljs-variable">$fluid-max</span>, <span class="hljs-number">60px</span>, <span class="hljs-number">120px</span>);
 
-		<span class="hljs-keyword">@include</span> media(<span class="hljs-variable">$size-small</span>) {
+		<span class="hljs-keyword">@include</span> m.media(v.<span class="hljs-variable">$size-small</span>) {
 			grid-template-<span class="hljs-attribute">columns</span>: <span class="hljs-number">1</span>fr <span class="hljs-number">1</span>fr;
 		}
 	}
@@ -723,7 +729,7 @@
 	}
 
 	&amp;__block--full-<span class="hljs-attribute">width</span> {
-		<span class="hljs-keyword">@include</span> media(<span class="hljs-variable">$size-small</span>) {
+		<span class="hljs-keyword">@include</span> m.media(v.<span class="hljs-variable">$size-small</span>) {
 			grid-column: <span class="hljs-number">1</span> / <span class="hljs-number">3</span>;
 		}
 	}
@@ -744,7 +750,7 @@
                 </li>
                 <li class="Meta-item">
                     <strong class="Meta-key">Size:</strong>
-                    <span class="Meta-value">632 Bytes</span>
+                    <span class="Meta-value">757 Bytes</span>
                 </li>
             </ul>
         </div>
@@ -2940,14 +2946,14 @@
         <li class="Tree-item Tree-entity" data-role="item">
             <a
                 class="Tree-entityLink"
-                href="./a-social-icon--twitter.html"
+                href="./a-social-icon--bluesky.html"
                 data-role="tree-link"
                 
                 data-pjax
-                data-test="a-social-icon--twitter"
-                data-handle="a-social-icon--twitter"
+                data-test="a-social-icon--bluesky"
+                data-handle="a-social-icon--bluesky"
             >
-                <span>Twitter</span>
+                <span>Bluesky</span>
                 
 
 <div class="Status Status--unlabelled">

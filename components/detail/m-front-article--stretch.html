@@ -509,16 +509,22 @@
                         <div class="FileBrowser-itemPreview">
                             
                             <code class="Code Code--lang-SCSS FileBrowser-code hljs">
-                                <pre><span class="hljs-selector-class">.m-front-article</span> {
+                                <pre><span class="hljs-keyword">@use</span> <span class="hljs-string">&quot;sass:math&quot;</span>;
+<span class="hljs-keyword">@use</span> <span class="hljs-string">&quot;../../../scss/variables&quot;</span> as v;
+<span class="hljs-keyword">@use</span> <span class="hljs-string">&quot;../../../scss/mixins&quot;</span> as m;
+
+<span class="hljs-selector-class">.m-front-article</span> {
 	<span class="hljs-attribute">display</span>: flex;
 	<span class="hljs-attribute">flex-direction</span>: column;
 	<span class="hljs-attribute">justify-content</span>: space-evenly; <span class="hljs-comment">// mm</span>
 	<span class="hljs-attribute">height</span>: <span class="hljs-number">100%</span>; <span class="hljs-comment">// mm</span>
 
 	&amp;__title {
-		<span class="hljs-keyword">@include</span> fluid-props(font-size, <span class="hljs-variable">$size-tiny</span>, <span class="hljs-variable">$size-medium</span>, <span class="hljs-number">20px</span>, <span class="hljs-number">24px</span>);
-		<span class="hljs-keyword">@include</span> fluid-props(margin-top, <span class="hljs-variable">$size-tiny</span>, <span class="hljs-variable">$size-medium</span>, <span class="hljs-number">4px</span>, <span class="hljs-number">12px</span>);
-		<span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">0.5em</span>;
+		<span class="hljs-keyword">@include</span> m.fluid-props(font-size, v.<span class="hljs-variable">$size-tiny</span>, v.<span class="hljs-variable">$size-medium</span>, <span class="hljs-number">20px</span>, <span class="hljs-number">24px</span>);
+		<span class="hljs-keyword">@include</span> m.fluid-props(margin-top, v.<span class="hljs-variable">$size-tiny</span>, v.<span class="hljs-variable">$size-medium</span>, <span class="hljs-number">4px</span>, <span class="hljs-number">12px</span>);
+		&amp; {
+			<span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">0.5em</span>;
+		}
 	}
 
 	&amp;--image-second &amp;__title,
@@ -527,25 +533,27 @@
 	}
 
 	&amp;__title-link {
-		<span class="hljs-keyword">@include</span> clean-link;
-		<span class="hljs-attribute">line-height</span>: <span class="hljs-number">1.4em</span>;
-		<span class="hljs-attribute">color</span>: <span class="hljs-variable">$color-primary</span>;
-		<span class="hljs-attribute">transition</span>: color <span class="hljs-variable">$transition-fast</span> <span class="hljs-variable">$transition-ease</span>;
-		<span class="hljs-attribute">hyphens</span>: auto;
-
-		<span class="hljs-keyword">@include</span> high-contrast {
-			<span class="hljs-attribute">color</span>: <span class="hljs-variable">$color-primary-dark</span>;
+		<span class="hljs-keyword">@include</span> m.clean-link;
+		&amp; {
+			<span class="hljs-attribute">line-height</span>: <span class="hljs-number">1.4em</span>;
+			<span class="hljs-attribute">color</span>: v.<span class="hljs-variable">$color-primary</span>;
+			<span class="hljs-attribute">transition</span>: color v.<span class="hljs-variable">$transition-fast</span> v.<span class="hljs-variable">$transition-ease</span>;
+			<span class="hljs-attribute">hyphens</span>: auto;
 		}
 
-		<span class="hljs-keyword">@include</span> <span class="hljs-attribute">hover</span> {
-			<span class="hljs-attribute">color</span>: <span class="hljs-variable">$color-primary-dark</span>;
+		<span class="hljs-keyword">@include</span> m.high-contrast {
+			<span class="hljs-attribute">color</span>: v.<span class="hljs-variable">$color-primary-dark</span>;
+		}
+
+		<span class="hljs-keyword">@include</span> m.<span class="hljs-attribute">hover</span> {
+			<span class="hljs-attribute">color</span>: v.<span class="hljs-variable">$color-primary-dark</span>;
 		}
 	}
 
 	&amp;__image {
 		<span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">12px</span>;
 		<span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
-		<span class="hljs-keyword">@include</span> aspect-ratio-box(<span class="hljs-number">56.25%</span>);
+		<span class="hljs-keyword">@include</span> m.aspect-ratio-box(<span class="hljs-number">56.25%</span>);
 	}
 
 	&amp;--image-first &amp;__image {
@@ -566,8 +574,8 @@
 		<span class="hljs-attribute">display</span>: flex;
 		<span class="hljs-attribute">flex-direction</span>: row;
 		<span class="hljs-attribute">align-items</span>: flex-end;
-		<span class="hljs-keyword">@include</span> fluid-props(margin-bottom, <span class="hljs-variable">$fluid-min</span>, <span class="hljs-variable">$fluid-max</span>, <span class="hljs-number">10px</span>, <span class="hljs-number">24px</span>);
-		<span class="hljs-keyword">@include</span> fluid-props(margin-top, <span class="hljs-variable">$fluid-min</span>, <span class="hljs-variable">$fluid-max</span>, <span class="hljs-number">0px</span>, <span class="hljs-number">24px</span>);
+		<span class="hljs-keyword">@include</span> m.fluid-props(margin-bottom, v.<span class="hljs-variable">$fluid-min</span>, v.<span class="hljs-variable">$fluid-max</span>, <span class="hljs-number">10px</span>, <span class="hljs-number">24px</span>);
+		<span class="hljs-keyword">@include</span> m.fluid-props(margin-top, v.<span class="hljs-variable">$fluid-min</span>, v.<span class="hljs-variable">$fluid-max</span>, <span class="hljs-number">0px</span>, <span class="hljs-number">24px</span>);
 	}
 }
 
@@ -590,7 +598,7 @@
                 </li>
                 <li class="Meta-item">
                     <strong class="Meta-key">Size:</strong>
-                    <span class="Meta-value">1.2 KB</span>
+                    <span class="Meta-value">1.4 KB</span>
                 </li>
             </ul>
         </div>
@@ -2799,14 +2807,14 @@
         <li class="Tree-item Tree-entity" data-role="item">
             <a
                 class="Tree-entityLink"
-                href="./a-social-icon--twitter.html"
+                href="./a-social-icon--bluesky.html"
                 data-role="tree-link"
                 
                 data-pjax
-                data-test="a-social-icon--twitter"
-                data-handle="a-social-icon--twitter"
+                data-test="a-social-icon--bluesky"
+                data-handle="a-social-icon--bluesky"
             >
-                <span>Twitter</span>
+                <span>Bluesky</span>
                 
 
 <div class="Status Status--unlabelled">

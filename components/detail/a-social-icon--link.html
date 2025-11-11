@@ -491,14 +491,20 @@
                         <div class="FileBrowser-itemPreview">
                             
                             <code class="Code Code--lang-SCSS FileBrowser-code hljs">
-                                <pre><span class="hljs-selector-class">.a-social-icon</span> {
-	<span class="hljs-keyword">@include</span> clean-link;
-	<span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
-	<span class="hljs-attribute">height</span>: <span class="hljs-number">100%</span>;
-	<span class="hljs-attribute">display</span>: block;
-	<span class="hljs-attribute">position</span>: relative;
-	<span class="hljs-attribute">line-height</span>: <span class="hljs-number">1em</span>;
-	<span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span>;
+                                <pre><span class="hljs-keyword">@use</span> <span class="hljs-string">&quot;sass:math&quot;</span>;
+<span class="hljs-keyword">@use</span> <span class="hljs-string">&quot;../../../scss/variables&quot;</span> as v;
+<span class="hljs-keyword">@use</span> <span class="hljs-string">&quot;../../../scss/mixins&quot;</span> as m;
+
+<span class="hljs-selector-class">.a-social-icon</span> {
+	<span class="hljs-keyword">@include</span> m.clean-link;
+	&amp; {
+		<span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
+		<span class="hljs-attribute">height</span>: <span class="hljs-number">100%</span>;
+		<span class="hljs-attribute">display</span>: block;
+		<span class="hljs-attribute">position</span>: relative;
+		<span class="hljs-attribute">line-height</span>: <span class="hljs-number">1em</span>;
+		<span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span>;
+	}
 
 	&amp;__figure {
 		<span class="hljs-attribute">height</span>: <span class="hljs-number">100%</span>;
@@ -508,13 +514,13 @@
 	&amp;__caption {
 		<span class="hljs-attribute">display</span>: none;
 		<span class="hljs-attribute">text-transform</span>: uppercase;
-		<span class="hljs-attribute">color</span>: <span class="hljs-variable">$color-primary</span>;
+		<span class="hljs-attribute">color</span>: v.<span class="hljs-variable">$color-primary</span>;
 		<span class="hljs-attribute">text-align</span>: center;
-		<span class="hljs-attribute">transition</span>: all <span class="hljs-variable">$transition-fast</span> <span class="hljs-variable">$transition-ease</span>;
+		<span class="hljs-attribute">transition</span>: all v.<span class="hljs-variable">$transition-fast</span> v.<span class="hljs-variable">$transition-ease</span>;
 		<span class="hljs-attribute">position</span>: relative; <span class="hljs-comment">// fixes safari cutting of multiline labels</span>
 
-		<span class="hljs-keyword">@include</span> high-contrast {
-			<span class="hljs-attribute">color</span>: <span class="hljs-variable">$color-primary-dark</span>;
+		<span class="hljs-keyword">@include</span> m.high-contrast {
+			<span class="hljs-attribute">color</span>: v.<span class="hljs-variable">$color-primary-dark</span>;
 		}
 
 		<span class="hljs-keyword">@media</span> all <span class="hljs-keyword">and</span> (<span class="hljs-attribute">min-width</span>: <span class="hljs-number">480px</span>) {
@@ -522,21 +528,21 @@
 			<span class="hljs-attribute">font-size</span>: <span class="hljs-number">0.625rem</span>;
 		}
 
-		<span class="hljs-keyword">@media</span> all <span class="hljs-keyword">and</span> (<span class="hljs-attribute">min-width</span>: <span class="hljs-variable">$size-small</span>) {
+		<span class="hljs-keyword">@media</span> all <span class="hljs-keyword">and</span> (<span class="hljs-attribute">min-width</span>: v.<span class="hljs-variable">$size-small</span>) {
 			<span class="hljs-attribute">font-size</span>: <span class="hljs-number">0.75rem</span>;
 		}
 	}
 
 	&amp;__svg {
-		fill: <span class="hljs-variable">$color-primary</span>;
-		stroke: <span class="hljs-variable">$color-primary</span>;
-		<span class="hljs-attribute">transition</span>: all <span class="hljs-variable">$transition-fast</span> <span class="hljs-variable">$transition-ease</span>;
+		fill: v.<span class="hljs-variable">$color-primary</span>;
+		stroke: v.<span class="hljs-variable">$color-primary</span>;
+		<span class="hljs-attribute">transition</span>: all v.<span class="hljs-variable">$transition-fast</span> v.<span class="hljs-variable">$transition-ease</span>;
 		<span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
 		<span class="hljs-attribute">height</span>: <span class="hljs-number">100%</span>;
 
-		<span class="hljs-keyword">@include</span> high-contrast {
-			fill: <span class="hljs-variable">$color-primary-dark</span>;
-			stroke: <span class="hljs-variable">$color-primary-dark</span>;
+		<span class="hljs-keyword">@include</span> m.high-contrast {
+			fill: v.<span class="hljs-variable">$color-primary-dark</span>;
+			stroke: v.<span class="hljs-variable">$color-primary-dark</span>;
 		}
 
 		<span class="hljs-keyword">@media</span> all <span class="hljs-keyword">and</span> (<span class="hljs-attribute">min-width</span>: <span class="hljs-number">480px</span>) {
@@ -547,14 +553,14 @@
 		}
 	}
 
-	<span class="hljs-keyword">@include</span> <span class="hljs-attribute">hover</span> {
+	<span class="hljs-keyword">@include</span> m.<span class="hljs-attribute">hover</span> {
 		<span class="hljs-selector-class">.a-social-icon__svg</span> {
-			fill: <span class="hljs-variable">$color-primary-dark</span>;
-			stroke: <span class="hljs-variable">$color-primary-dark</span>;
+			fill: v.<span class="hljs-variable">$color-primary-dark</span>;
+			stroke: v.<span class="hljs-variable">$color-primary-dark</span>;
 		}
 
 		<span class="hljs-selector-class">.a-social-icon__caption</span> {
-			<span class="hljs-attribute">color</span>: <span class="hljs-variable">$color-primary-dark</span>;
+			<span class="hljs-attribute">color</span>: v.<span class="hljs-variable">$color-primary-dark</span>;
 		}
 	}
 
@@ -562,20 +568,20 @@
 		<span class="hljs-attribute">position</span>: absolute;
 		<span class="hljs-attribute">top</span>: <span class="hljs-number">0</span>;
 		<span class="hljs-attribute">right</span>: <span class="hljs-number">100%</span>;
-		<span class="hljs-attribute">background</span>: <span class="hljs-variable">$color-grey-1</span>;
+		<span class="hljs-attribute">background</span>: v.<span class="hljs-variable">$color-grey-1</span>;
 		<span class="hljs-attribute">padding</span>: <span class="hljs-number">0.125em</span> <span class="hljs-number">0.25em</span>;
 		<span class="hljs-attribute">border-radius</span>: <span class="hljs-number">3px</span>;
 		<span class="hljs-attribute">opacity</span>: <span class="hljs-number">0</span>;
 		<span class="hljs-attribute">transition</span>: top ease-out <span class="hljs-number">1s</span>, opacity linear <span class="hljs-number">0.5s</span> <span class="hljs-number">0.5s</span>;
 		<span class="hljs-attribute">text-transform</span>: uppercase;
 		<span class="hljs-attribute">font-size</span>: <span class="hljs-number">0.6125rem</span>;
-		<span class="hljs-attribute">color</span>: <span class="hljs-variable">$color-primary-dark</span>;
-		<span class="hljs-attribute">font-family</span>: <span class="hljs-variable">$font-secondary</span>;
-		<span class="hljs-attribute">font-weight</span>: <span class="hljs-variable">$font-weight-bold</span>;
+		<span class="hljs-attribute">color</span>: v.<span class="hljs-variable">$color-primary-dark</span>;
+		<span class="hljs-attribute">font-family</span>: v.<span class="hljs-variable">$font-secondary</span>;
+		<span class="hljs-attribute">font-weight</span>: v.<span class="hljs-variable">$font-weight-bold</span>;
 		<span class="hljs-attribute">letter-spacing</span>: <span class="hljs-number">0.08928em</span>;
 		<span class="hljs-attribute">z-index</span>: <span class="hljs-number">1</span>;
 
-		<span class="hljs-keyword">@include</span> media($_DESKTOP) {
+		<span class="hljs-keyword">@include</span> m.media(v.<span class="hljs-variable">$DESKTOP</span>) {
 			<span class="hljs-attribute">font-size</span>: <span class="hljs-number">0.75rem</span>;
 			<span class="hljs-attribute">right</span>: auto;
 			<span class="hljs-attribute">left</span>: <span class="hljs-number">50%</span>;
@@ -605,7 +611,7 @@
                 </li>
                 <li class="Meta-item">
                     <strong class="Meta-key">Size:</strong>
-                    <span class="Meta-value">1.8 KB</span>
+                    <span class="Meta-value">1.9 KB</span>
                 </li>
             </ul>
         </div>
@@ -712,8 +718,8 @@
                     <span>Facebook</span>
                 </a>, 
             
-                <a href="./a-social-icon--twitter.html">
-                    <span>Twitter</span>
+                <a href="./a-social-icon--bluesky.html">
+                    <span>Bluesky</span>
                 </a>, 
             
                 <a href="./a-social-icon--email.html">
@@ -2850,14 +2856,14 @@
         <li class="Tree-item Tree-entity" data-role="item">
             <a
                 class="Tree-entityLink"
-                href="./a-social-icon--twitter.html"
+                href="./a-social-icon--bluesky.html"
                 data-role="tree-link"
                 
                 data-pjax
-                data-test="a-social-icon--twitter"
-                data-handle="a-social-icon--twitter"
+                data-test="a-social-icon--bluesky"
+                data-handle="a-social-icon--bluesky"
             >
-                <span>Twitter</span>
+                <span>Bluesky</span>
                 
 
 <div class="Status Status--unlabelled">

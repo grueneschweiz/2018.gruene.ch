@@ -603,19 +603,25 @@
                         <div class="FileBrowser-itemPreview">
                             
                             <code class="Code Code--lang-SCSS FileBrowser-code hljs">
-                                <pre><span class="hljs-selector-class">.m-person</span> {
+                                <pre><span class="hljs-keyword">@use</span> <span class="hljs-string">&quot;sass:math&quot;</span>;
+<span class="hljs-keyword">@use</span> <span class="hljs-string">&quot;../../../scss/variables&quot;</span> as v;
+<span class="hljs-keyword">@use</span> <span class="hljs-string">&quot;../../../scss/mixins&quot;</span> as m;
+
+<span class="hljs-selector-class">.m-person</span> {
 	<span class="hljs-variable">$intermediate-breakpoint</span>: <span class="hljs-number">480px</span>;
 
-	<span class="hljs-attribute">background-color</span>: <span class="hljs-variable">$color-grey-1</span>;
-	<span class="hljs-keyword">@include</span> fluid-props(margin-top, <span class="hljs-variable">$fluid-min</span>, <span class="hljs-variable">$fluid-max</span>, <span class="hljs-number">20px</span>, <span class="hljs-number">40px</span>);
-	<span class="hljs-attribute">font-size</span>: <span class="hljs-number">0.875rem</span>;
-	<span class="hljs-keyword">@include</span> media(<span class="hljs-variable">$size-small</span>) {
+	<span class="hljs-attribute">background-color</span>: v.<span class="hljs-variable">$color-grey-1</span>;
+	<span class="hljs-keyword">@include</span> m.fluid-props(margin-top, v.<span class="hljs-variable">$fluid-min</span>, v.<span class="hljs-variable">$fluid-max</span>, <span class="hljs-number">20px</span>, <span class="hljs-number">40px</span>);
+	&amp; {
+		<span class="hljs-attribute">font-size</span>: <span class="hljs-number">0.875rem</span>;
+	}
+	<span class="hljs-keyword">@include</span> m.media(v.<span class="hljs-variable">$size-small</span>) {
 		<span class="hljs-attribute">font-size</span>: <span class="hljs-number">1rem</span>;
 	}
 
 	&amp;__text {
 		<span class="hljs-attribute">font-size</span>: <span class="hljs-number">0.875rem</span> <span class="hljs-meta">!important</span>;
-		<span class="hljs-keyword">@include</span> media(<span class="hljs-variable">$size-small</span>) {
+		<span class="hljs-keyword">@include</span> m.media(v.<span class="hljs-variable">$size-small</span>) {
 			<span class="hljs-attribute">font-size</span>: <span class="hljs-number">1rem</span> <span class="hljs-meta">!important</span>;
 		}
 	}
@@ -625,7 +631,7 @@
 		<span class="hljs-attribute">flex-direction</span>: column;
 		<span class="hljs-attribute">position</span>: relative;
 
-		<span class="hljs-keyword">@include</span> media(<span class="hljs-variable">$intermediate-breakpoint</span>) {
+		<span class="hljs-keyword">@include</span> m.media(<span class="hljs-variable">$intermediate-breakpoint</span>) {
 			<span class="hljs-attribute">flex-direction</span>: row;
 		}
 	}
@@ -633,11 +639,11 @@
 	&amp;__image {
 		<span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
 
-		<span class="hljs-keyword">@include</span> media(<span class="hljs-variable">$intermediate-breakpoint</span>) {
+		<span class="hljs-keyword">@include</span> m.media(<span class="hljs-variable">$intermediate-breakpoint</span>) {
 			<span class="hljs-attribute">max-width</span>: <span class="hljs-number">170px</span>;
 		}
 
-		<span class="hljs-keyword">@include</span> media(<span class="hljs-variable">$size-small</span>) {
+		<span class="hljs-keyword">@include</span> m.media(v.<span class="hljs-variable">$size-small</span>) {
 			<span class="hljs-attribute">max-width</span>: <span class="hljs-number">215px</span>;
 		}
 	}
@@ -645,14 +651,14 @@
 	&amp;__image-aspect-ratio-box {
 		<span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
 
-		<span class="hljs-keyword">@include</span> aspect-ratio-box(<span class="hljs-number">100%</span>);
+		<span class="hljs-keyword">@include</span> m.aspect-ratio-box(<span class="hljs-number">100%</span>);
 	}
 
 	&amp;__basic-info {
 		<span class="hljs-attribute">margin</span>: <span class="hljs-number">8px</span> <span class="hljs-number">20px</span> <span class="hljs-number">20px</span>;
 		<span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
 
-		<span class="hljs-keyword">@include</span> media(<span class="hljs-variable">$size-small</span>) {
+		<span class="hljs-keyword">@include</span> m.media(v.<span class="hljs-variable">$size-small</span>) {
 			<span class="hljs-attribute">margin</span>: <span class="hljs-number">12px</span> <span class="hljs-number">24px</span> <span class="hljs-number">24px</span>;
 		}
 	}
@@ -662,9 +668,11 @@
 	}
 
 	&amp;__full-name {
-		<span class="hljs-keyword">@include</span> heading-font;
-		<span class="hljs-attribute">display</span>: inline-block;
-		<span class="hljs-attribute">font-size</span>: <span class="hljs-number">1rem</span>;
+		<span class="hljs-keyword">@include</span> m.heading-font;
+		&amp; {
+			<span class="hljs-attribute">display</span>: inline-block;
+			<span class="hljs-attribute">font-size</span>: <span class="hljs-number">1rem</span>;
+		}
 	}
 
 	&amp;__supplementary {
@@ -680,7 +688,7 @@
 
 		<span class="hljs-keyword">@extend</span> .m-person__text;
 
-		<span class="hljs-keyword">@include</span> media(<span class="hljs-variable">$intermediate-breakpoint</span>) {
+		<span class="hljs-keyword">@include</span> m.media(<span class="hljs-variable">$intermediate-breakpoint</span>) {
 			<span class="hljs-attribute">hyphens</span>: none;
 		}
 	}
@@ -689,6 +697,10 @@
 		<span class="hljs-attribute">display</span>: flex;
 		<span class="hljs-attribute">flex-direction</span>: column;
 		<span class="hljs-attribute">align-items</span>: flex-start;
+
+		<span class="hljs-selector-class">.yw-protect-info</span> <span class="hljs-selector-class">.dashicons</span> {
+			<span class="hljs-attribute">margin-top</span>: <span class="hljs-number">3px</span>;
+		}
 	}
 
 	&amp;__contact {
@@ -710,23 +722,23 @@
 		<span class="hljs-attribute">position</span>: absolute;
 		<span class="hljs-attribute">bottom</span>: <span class="hljs-number">0</span>;
 		<span class="hljs-attribute">right</span>: <span class="hljs-number">0</span>;
-		<span class="hljs-attribute">background</span>: <span class="hljs-variable">$color-primary-super-light</span>;
+		<span class="hljs-attribute">background</span>: v.<span class="hljs-variable">$color-primary-super-light</span>;
 		<span class="hljs-attribute">padding</span>: <span class="hljs-number">16px</span> <span class="hljs-number">12px</span> <span class="hljs-number">16px</span> <span class="hljs-number">18px</span>;
 
 		<span class="hljs-attribute">font-size</span>: <span class="hljs-number">0.875rem</span>;
-		<span class="hljs-attribute">color</span>: <span class="hljs-variable">$color-primary-dark</span>;
-		<span class="hljs-attribute">font-family</span>: <span class="hljs-variable">$font-secondary</span>;
-		<span class="hljs-attribute">font-weight</span>: <span class="hljs-variable">$font-weight-bold</span>;
+		<span class="hljs-attribute">color</span>: v.<span class="hljs-variable">$color-primary-dark</span>;
+		<span class="hljs-attribute">font-family</span>: v.<span class="hljs-variable">$font-secondary</span>;
+		<span class="hljs-attribute">font-weight</span>: v.<span class="hljs-variable">$font-weight-bold</span>;
 		<span class="hljs-attribute">text-transform</span>: uppercase;
 		<span class="hljs-attribute">cursor</span>: pointer;
-		<span class="hljs-attribute">transition</span>: all <span class="hljs-variable">$transition-fast</span> <span class="hljs-variable">$transition-ease</span>;
+		<span class="hljs-attribute">transition</span>: all v.<span class="hljs-variable">$transition-fast</span> v.<span class="hljs-variable">$transition-ease</span>;
 		<span class="hljs-attribute">letter-spacing</span>: <span class="hljs-number">0.08928em</span>;
 
-		<span class="hljs-keyword">@include</span> <span class="hljs-attribute">hover</span> {
-			<span class="hljs-attribute">background</span>: <span class="hljs-variable">$color-primary-light</span>;
+		<span class="hljs-keyword">@include</span> m.<span class="hljs-attribute">hover</span> {
+			<span class="hljs-attribute">background</span>: v.<span class="hljs-variable">$color-primary-light</span>;
 
-			<span class="hljs-keyword">@include</span> high-contrast {
-				<span class="hljs-attribute">color</span>: <span class="hljs-variable">$color-text</span>;
+			<span class="hljs-keyword">@include</span> m.high-contrast {
+				<span class="hljs-attribute">color</span>: v.<span class="hljs-variable">$color-text</span>;
 			}
 		}
 
@@ -758,12 +770,12 @@
 	}
 
 	&amp;__expandable {
-		<span class="hljs-attribute">background</span>: <span class="hljs-variable">$color-grey-2</span>;
-		<span class="hljs-attribute">transition</span>: all ease-in-out <span class="hljs-variable">$transition-mid</span>;
+		<span class="hljs-attribute">background</span>: v.<span class="hljs-variable">$color-grey-2</span>;
+		<span class="hljs-attribute">transition</span>: all ease-in-out v.<span class="hljs-variable">$transition-mid</span>;
 		<span class="hljs-attribute">overflow</span>: hidden;
 		<span class="hljs-attribute">max-height</span>: <span class="hljs-number">5000px</span>;
 
-		<span class="hljs-keyword">@include</span> fluid-props(padding, <span class="hljs-variable">$intermediate-breakpoint</span>, <span class="hljs-variable">$size-small</span>, <span class="hljs-number">20px</span>, <span class="hljs-number">48px</span>);
+		<span class="hljs-keyword">@include</span> m.fluid-props(padding, <span class="hljs-variable">$intermediate-breakpoint</span>, v.<span class="hljs-variable">$size-small</span>, <span class="hljs-number">20px</span>, <span class="hljs-number">48px</span>);
 
 		&amp;<span class="hljs-selector-class">.is-collapsed</span> {
 			<span class="hljs-attribute">max-height</span>: <span class="hljs-number">0</span>;
@@ -774,7 +786,7 @@
 
 		<span class="hljs-selector-tag">h1</span>, <span class="hljs-selector-tag">h2</span>, <span class="hljs-selector-tag">h3</span>, <span class="hljs-selector-tag">h4</span>, <span class="hljs-selector-tag">h5</span> {
 			<span class="hljs-attribute">font-size</span>: <span class="hljs-number">1rem</span>;
-			<span class="hljs-attribute">color</span>: <span class="hljs-variable">$color-text</span>;
+			<span class="hljs-attribute">color</span>: v.<span class="hljs-variable">$color-text</span>;
 		}
 	}
 
@@ -798,7 +810,7 @@
                 </li>
                 <li class="Meta-item">
                     <strong class="Meta-key">Size:</strong>
-                    <span class="Meta-value">2.9 KB</span>
+                    <span class="Meta-value">3.1 KB</span>
                 </li>
             </ul>
         </div>
@@ -3090,14 +3102,14 @@
         <li class="Tree-item Tree-entity" data-role="item">
             <a
                 class="Tree-entityLink"
-                href="./a-social-icon--twitter.html"
+                href="./a-social-icon--bluesky.html"
                 data-role="tree-link"
                 
                 data-pjax
-                data-test="a-social-icon--twitter"
-                data-handle="a-social-icon--twitter"
+                data-test="a-social-icon--bluesky"
+                data-handle="a-social-icon--bluesky"
             >
-                <span>Twitter</span>
+                <span>Bluesky</span>
                 
 
 <div class="Status Status--unlabelled">

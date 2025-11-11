@@ -1336,49 +1336,53 @@
                         <div class="FileBrowser-itemPreview">
                             
                             <code class="Code Code--lang-SCSS FileBrowser-code hljs">
-                                <pre><span class="hljs-selector-class">.page</span> {
+                                <pre><span class="hljs-keyword">@use</span> <span class="hljs-string">&quot;sass:math&quot;</span>;
+<span class="hljs-keyword">@use</span> <span class="hljs-string">&quot;../../../scss/variables&quot;</span> as v;
+<span class="hljs-keyword">@use</span> <span class="hljs-string">&quot;../../../scss/mixins&quot;</span> as m;
+
+<span class="hljs-selector-class">.page</span> {
 	<span class="hljs-comment">/**
 		* ======
 		* Layout
 		* ======
 	  */</span>
-	<span class="hljs-variable">$page-grid-desktop</span>: #{<span class="hljs-variable">$page-grid-content-max-width</span> + <span class="hljs-variable">$page-grid-side-width</span> + <span class="hljs-number">2</span> * <span class="hljs-variable">$page-grid-padder-min-width</span>};
-	<span class="hljs-variable">$page-grid-wide</span>: #{<span class="hljs-variable">$page-grid-content-max-width</span> + <span class="hljs-number">2</span> * (<span class="hljs-variable">$page-grid-side-width</span> + <span class="hljs-variable">$page-grid-padder-regular-width</span> + <span class="hljs-variable">$page-grid-wide-side-max-width</span>)};
+	<span class="hljs-variable">$page-grid-desktop</span>: #{v.<span class="hljs-variable">$page-grid-content-max-width</span> + v.<span class="hljs-variable">$page-grid-side-width</span> + <span class="hljs-number">2</span> * v.<span class="hljs-variable">$page-grid-padder-min-width</span>};
+	<span class="hljs-variable">$page-grid-wide</span>: #{v.<span class="hljs-variable">$page-grid-content-max-width</span> + <span class="hljs-number">2</span> * (v.<span class="hljs-variable">$page-grid-side-width</span> + v.<span class="hljs-variable">$page-grid-padder-regular-width</span> + v.<span class="hljs-variable">$page-grid-wide-side-max-width</span>)};
 
 	&amp;__grid {
 		<span class="hljs-attribute">display</span>: grid;
-		grid-template-<span class="hljs-attribute">columns</span>: [full-start] <span class="hljs-number">1</span>fr [wide-start] <span class="hljs-number">0</span> [side-left-start] <span class="hljs-number">0</span> [side-left-end content-start] <span class="hljs-variable">$page-grid-content-min-width</span> [content-end side-right-start] <span class="hljs-number">0</span> [side-right-end] <span class="hljs-number">0</span> [wide-end] <span class="hljs-number">1</span>fr [full-end];
+		grid-template-<span class="hljs-attribute">columns</span>: [full-start] <span class="hljs-number">1</span>fr [wide-start] <span class="hljs-number">0</span> [side-left-start] <span class="hljs-number">0</span> [side-left-end content-start] v.<span class="hljs-variable">$page-grid-content-min-width</span> [content-end side-right-start] <span class="hljs-number">0</span> [side-right-end] <span class="hljs-number">0</span> [wide-end] <span class="hljs-number">1</span>fr [full-end];
 
-		<span class="hljs-keyword">@include</span> media(#{<span class="hljs-variable">$page-grid-content-min-width</span> + 2 * <span class="hljs-variable">$page-grid-padder-regular-width</span>}) {
-			grid-template-<span class="hljs-attribute">columns</span>: [full-start] <span class="hljs-variable">$page-grid-padder-regular-width</span> [wide-start] <span class="hljs-number">0</span> [side-left-start] <span class="hljs-number">0</span> [side-left-end content-start] <span class="hljs-number">1</span>fr [content-end side-right-start] <span class="hljs-number">0</span> [side-right-end] <span class="hljs-number">0</span> [wide-end] <span class="hljs-variable">$page-grid-padder-regular-width</span> [full-end];
+		<span class="hljs-keyword">@include</span> m.media(#{v.<span class="hljs-variable">$page-grid-content-min-width</span> + 2 * v.<span class="hljs-variable">$page-grid-padder-regular-width</span>}) {
+			grid-template-<span class="hljs-attribute">columns</span>: [full-start] v.<span class="hljs-variable">$page-grid-padder-regular-width</span> [wide-start] <span class="hljs-number">0</span> [side-left-start] <span class="hljs-number">0</span> [side-left-end content-start] <span class="hljs-number">1</span>fr [content-end side-right-start] <span class="hljs-number">0</span> [side-right-end] <span class="hljs-number">0</span> [wide-end] v.<span class="hljs-variable">$page-grid-padder-regular-width</span> [full-end];
 		}
 
-		<span class="hljs-keyword">@include</span> media(#{<span class="hljs-variable">$page-grid-content-max-width</span> + 2 * <span class="hljs-variable">$page-grid-padder-regular-width</span>}) {
-			grid-template-<span class="hljs-attribute">columns</span>: [full-start] <span class="hljs-variable">$page-grid-padder-regular-width</span> [wide-start] <span class="hljs-number">1</span>fr [side-left-start] <span class="hljs-number">0</span> [side-left-end content-start] <span class="hljs-variable">$page-grid-content-max-width</span> [content-end side-right-start] <span class="hljs-number">0</span> [side-right-end] <span class="hljs-number">1</span>fr [wide-end] <span class="hljs-variable">$page-grid-padder-regular-width</span> [full-end];
+		<span class="hljs-keyword">@include</span> m.media(#{v.<span class="hljs-variable">$page-grid-content-max-width</span> + 2 * v.<span class="hljs-variable">$page-grid-padder-regular-width</span>}) {
+			grid-template-<span class="hljs-attribute">columns</span>: [full-start] v.<span class="hljs-variable">$page-grid-padder-regular-width</span> [wide-start] <span class="hljs-number">1</span>fr [side-left-start] <span class="hljs-number">0</span> [side-left-end content-start] v.<span class="hljs-variable">$page-grid-content-max-width</span> [content-end side-right-start] <span class="hljs-number">0</span> [side-right-end] <span class="hljs-number">1</span>fr [wide-end] v.<span class="hljs-variable">$page-grid-padder-regular-width</span> [full-end];
 		}
 
-		<span class="hljs-keyword">@include</span> media(#{<span class="hljs-variable">$page-grid-content-max-width</span> + <span class="hljs-variable">$page-grid-side-width</span> + 2 * <span class="hljs-variable">$page-grid-padder-min-width</span>}) {
-			grid-template-<span class="hljs-attribute">columns</span>: [full-start] <span class="hljs-number">1</span>fr [wide-start] <span class="hljs-number">0</span> [side-left-start] <span class="hljs-variable">$page-grid-side-width</span> [side-left-end content-start] <span class="hljs-variable">$page-grid-content-max-width</span> [content-end side-right-start] <span class="hljs-number">0</span> [side-right-end] <span class="hljs-number">0</span> [wide-end] <span class="hljs-number">1</span>fr [full-end];
+		<span class="hljs-keyword">@include</span> m.media(#{v.<span class="hljs-variable">$page-grid-content-max-width</span> + v.<span class="hljs-variable">$page-grid-side-width</span> + 2 * v.<span class="hljs-variable">$page-grid-padder-min-width</span>}) {
+			grid-template-<span class="hljs-attribute">columns</span>: [full-start] <span class="hljs-number">1</span>fr [wide-start] <span class="hljs-number">0</span> [side-left-start] v.<span class="hljs-variable">$page-grid-side-width</span> [side-left-end content-start] v.<span class="hljs-variable">$page-grid-content-max-width</span> [content-end side-right-start] <span class="hljs-number">0</span> [side-right-end] <span class="hljs-number">0</span> [wide-end] <span class="hljs-number">1</span>fr [full-end];
 
 			&amp;--no-sidebar {
-				grid-template-<span class="hljs-attribute">columns</span>: [full-start] <span class="hljs-variable">$page-grid-padder-regular-width</span> [wide-start] <span class="hljs-number">0</span> [side-left-start] <span class="hljs-number">1</span>fr [side-left-end content-start] <span class="hljs-variable">$page-grid-content-max-width</span> [content-end side-right-start] <span class="hljs-number">1</span>fr [side-right-end] <span class="hljs-number">0</span> [wide-end] <span class="hljs-variable">$page-grid-padder-regular-width</span> [full-end];
+				grid-template-<span class="hljs-attribute">columns</span>: [full-start] v.<span class="hljs-variable">$page-grid-padder-regular-width</span> [wide-start] <span class="hljs-number">0</span> [side-left-start] <span class="hljs-number">1</span>fr [side-left-end content-start] v.<span class="hljs-variable">$page-grid-content-max-width</span> [content-end side-right-start] <span class="hljs-number">1</span>fr [side-right-end] <span class="hljs-number">0</span> [wide-end] v.<span class="hljs-variable">$page-grid-padder-regular-width</span> [full-end];
 			}
 		}
 
-		<span class="hljs-keyword">@include</span> media(#{<span class="hljs-variable">$page-grid-content-max-width</span> + <span class="hljs-variable">$page-grid-side-width</span> + 2 * <span class="hljs-variable">$page-grid-padder-regular-width</span>}) {
-			grid-template-<span class="hljs-attribute">columns</span>: [full-start] <span class="hljs-variable">$page-grid-padder-regular-width</span> [wide-start] <span class="hljs-number">0</span> [side-left-start] <span class="hljs-variable">$page-grid-side-width</span> [side-left-end content-start] <span class="hljs-variable">$page-grid-content-max-width</span> [content-end side-right-start] <span class="hljs-number">1</span>fr [side-right-end] <span class="hljs-number">0</span> [wide-end] <span class="hljs-variable">$page-grid-padder-regular-width</span> [full-end];
+		<span class="hljs-keyword">@include</span> m.media(#{v.<span class="hljs-variable">$page-grid-content-max-width</span> + v.<span class="hljs-variable">$page-grid-side-width</span> + 2 * v.<span class="hljs-variable">$page-grid-padder-regular-width</span>}) {
+			grid-template-<span class="hljs-attribute">columns</span>: [full-start] v.<span class="hljs-variable">$page-grid-padder-regular-width</span> [wide-start] <span class="hljs-number">0</span> [side-left-start] v.<span class="hljs-variable">$page-grid-side-width</span> [side-left-end content-start] v.<span class="hljs-variable">$page-grid-content-max-width</span> [content-end side-right-start] <span class="hljs-number">1</span>fr [side-right-end] <span class="hljs-number">0</span> [wide-end] v.<span class="hljs-variable">$page-grid-padder-regular-width</span> [full-end];
 
 			&amp;--no-sidebar {
-				grid-template-<span class="hljs-attribute">columns</span>: [full-start] <span class="hljs-variable">$page-grid-padder-regular-width</span> [wide-start] <span class="hljs-number">0</span> [side-left-start] <span class="hljs-number">1</span>fr [side-left-end content-start] <span class="hljs-variable">$page-grid-content-max-width</span> [content-end side-right-start] <span class="hljs-number">1</span>fr [side-right-end] <span class="hljs-number">0</span> [wide-end] <span class="hljs-variable">$page-grid-padder-regular-width</span> [full-end];
+				grid-template-<span class="hljs-attribute">columns</span>: [full-start] v.<span class="hljs-variable">$page-grid-padder-regular-width</span> [wide-start] <span class="hljs-number">0</span> [side-left-start] <span class="hljs-number">1</span>fr [side-left-end content-start] v.<span class="hljs-variable">$page-grid-content-max-width</span> [content-end side-right-start] <span class="hljs-number">1</span>fr [side-right-end] <span class="hljs-number">0</span> [wide-end] v.<span class="hljs-variable">$page-grid-padder-regular-width</span> [full-end];
 			}
 		}
 
-		<span class="hljs-keyword">@include</span> media(#{<span class="hljs-variable">$page-grid-content-max-width</span> + 2 * ($page-grid-side-width + $page-grid-padder-regular-width)}) {
-			grid-template-<span class="hljs-attribute">columns</span>: [full-start] <span class="hljs-variable">$page-grid-padder-regular-width</span> [wide-start] <span class="hljs-number">1</span>fr [side-left-start] <span class="hljs-variable">$page-grid-side-width</span> [side-left-end content-start] <span class="hljs-variable">$page-grid-content-max-width</span> [content-end side-right-start] <span class="hljs-variable">$page-grid-side-width</span> [side-right-end] <span class="hljs-number">1</span>fr [wide-end] <span class="hljs-variable">$page-grid-padder-regular-width</span> [full-end];
+		<span class="hljs-keyword">@include</span> m.media(#{v.<span class="hljs-variable">$page-grid-content-max-width</span> + 2 * (v.$page-grid-side-width + v.$page-grid-padder-regular-width)}) {
+			grid-template-<span class="hljs-attribute">columns</span>: [full-start] v.<span class="hljs-variable">$page-grid-padder-regular-width</span> [wide-start] <span class="hljs-number">1</span>fr [side-left-start] v.<span class="hljs-variable">$page-grid-side-width</span> [side-left-end content-start] v.<span class="hljs-variable">$page-grid-content-max-width</span> [content-end side-right-start] v.<span class="hljs-variable">$page-grid-side-width</span> [side-right-end] <span class="hljs-number">1</span>fr [wide-end] v.<span class="hljs-variable">$page-grid-padder-regular-width</span> [full-end];
 		}
 
-		<span class="hljs-keyword">@include</span> media(<span class="hljs-variable">$page-grid-wide</span>) {
-			grid-template-<span class="hljs-attribute">columns</span>: [full-start] <span class="hljs-number">1</span>fr [wide-start] <span class="hljs-variable">$page-grid-wide-side-max-width</span> [side-left-start] <span class="hljs-variable">$page-grid-side-width</span> [side-left-end content-start] <span class="hljs-variable">$page-grid-content-max-width</span> [content-end side-right-start] <span class="hljs-variable">$page-grid-side-width</span> [side-right-end] <span class="hljs-variable">$page-grid-wide-side-max-width</span> [wide-end] <span class="hljs-number">1</span>fr [full-end];
+		<span class="hljs-keyword">@include</span> m.media(<span class="hljs-variable">$page-grid-wide</span>) {
+			grid-template-<span class="hljs-attribute">columns</span>: [full-start] <span class="hljs-number">1</span>fr [wide-start] v.<span class="hljs-variable">$page-grid-wide-side-max-width</span> [side-left-start] v.<span class="hljs-variable">$page-grid-side-width</span> [side-left-end content-start] v.<span class="hljs-variable">$page-grid-content-max-width</span> [content-end side-right-start] v.<span class="hljs-variable">$page-grid-side-width</span> [side-right-end] v.<span class="hljs-variable">$page-grid-wide-side-max-width</span> [wide-end] <span class="hljs-number">1</span>fr [full-end];
 		}
 
 		<span class="hljs-keyword">@media</span> print {
@@ -1396,11 +1400,11 @@
 		grid-column-end: wide-end;
 
 		&amp;--<span class="hljs-attribute">content</span>-<span class="hljs-attribute">width</span> {
-			<span class="hljs-attribute">max-width</span>: <span class="hljs-variable">$page-grid-content-max-width</span>;
+			<span class="hljs-attribute">max-width</span>: v.<span class="hljs-variable">$page-grid-content-max-width</span>;
 		}
 
-		<span class="hljs-keyword">@include</span> <span class="hljs-keyword">only</span>_ie10_above() {
-			<span class="hljs-attribute">max-width</span>: <span class="hljs-variable">$page-grid-content-max-width</span>;
+		<span class="hljs-keyword">@include</span> m.<span class="hljs-keyword">only</span>_ie10_above() {
+			<span class="hljs-attribute">max-width</span>: v.<span class="hljs-variable">$page-grid-content-max-width</span>;
 			<span class="hljs-attribute">margin</span>: auto;
 		}
 	}
@@ -1414,7 +1418,7 @@
 			grid-column-end: full-end;
 		}
 
-		<span class="hljs-keyword">@include</span> media(<span class="hljs-variable">$page-grid-desktop</span>) {
+		<span class="hljs-keyword">@include</span> m.media(<span class="hljs-variable">$page-grid-desktop</span>) {
 			&amp;--<span class="hljs-attribute">left</span> {
 				grid-column-start: side-left-start;
 				grid-column-end: side-left-end;
@@ -1428,7 +1432,7 @@
 	}
 
 	&amp;__row {
-		<span class="hljs-keyword">@include</span> media(<span class="hljs-variable">$page-grid-desktop</span>) {
+		<span class="hljs-keyword">@include</span> m.media(<span class="hljs-variable">$page-grid-desktop</span>) {
 			&amp;--1 {
 				grid-row: <span class="hljs-number">1</span> / <span class="hljs-number">2</span>;
 			}
@@ -1443,15 +1447,17 @@
 		grid-column-start: content-start;
 		grid-column-end: content-end;
 
-		<span class="hljs-keyword">@include</span> <span class="hljs-keyword">only</span>_ie10_above() {
-			<span class="hljs-attribute">max-width</span>: <span class="hljs-variable">$page-grid-content-max-width</span>;
+		<span class="hljs-keyword">@include</span> m.<span class="hljs-keyword">only</span>_ie10_above() {
+			<span class="hljs-attribute">max-width</span>: v.<span class="hljs-variable">$page-grid-content-max-width</span>;
 			<span class="hljs-attribute">margin</span>: auto;
 		}
 	}
 
 	&amp;__footer {
-		<span class="hljs-keyword">@include</span> fluid-props(padding-top, <span class="hljs-variable">$size-medium</span>, <span class="hljs-variable">$grid-max-width-max</span>, <span class="hljs-number">60px</span>, <span class="hljs-number">90px</span>);
-		<span class="hljs-attribute">background-color</span>: <span class="hljs-variable">$color-white</span>;
+		<span class="hljs-keyword">@include</span> m.fluid-props(padding-top, v.<span class="hljs-variable">$size-medium</span>, v.<span class="hljs-variable">$grid-max-width-max</span>, <span class="hljs-number">60px</span>, <span class="hljs-number">90px</span>);
+		&amp; {
+			<span class="hljs-attribute">background-color</span>: v.<span class="hljs-variable">$color-white</span>;
+		}
 	}
 
 	<span class="hljs-comment">/**
@@ -1473,14 +1479,14 @@
 	&amp;__header-wrapper {
 		<span class="hljs-attribute">padding-top</span>: <span class="hljs-number">40px</span>;
 
-		<span class="hljs-keyword">@include</span> media($_DESKTOP) {
+		<span class="hljs-keyword">@include</span> m.media(v.<span class="hljs-variable">$DESKTOP</span>) {
 			<span class="hljs-comment">// keep this discrete, else the post meta position cant be set correctly</span>
 			<span class="hljs-attribute">padding-top</span>: <span class="hljs-number">60px</span>;
 		}
 
 		&amp;--highlighted {
-			<span class="hljs-attribute">background</span>: <span class="hljs-variable">$color-grey-1</span>;
-			<span class="hljs-keyword">@include</span> fluid-props(padding-bottom, <span class="hljs-variable">$fluid-min</span>, <span class="hljs-variable">$fluid-max</span>, <span class="hljs-number">40px</span>, <span class="hljs-number">60px</span>);
+			<span class="hljs-attribute">background</span>: v.<span class="hljs-variable">$color-grey-1</span>;
+			<span class="hljs-keyword">@include</span> m.fluid-props(padding-bottom, v.<span class="hljs-variable">$fluid-min</span>, v.<span class="hljs-variable">$fluid-max</span>, <span class="hljs-number">40px</span>, <span class="hljs-number">60px</span>);
 		}
 	}
 
@@ -1488,13 +1494,13 @@
 	&amp;__header-text <span class="hljs-selector-tag">p</span> {
 		<span class="hljs-attribute">font-size</span>: <span class="hljs-number">1.25rem</span>;
 
-		<span class="hljs-keyword">@include</span> media(<span class="hljs-variable">$size-small</span>) {
+		<span class="hljs-keyword">@include</span> m.media(v.<span class="hljs-variable">$size-small</span>) {
 			<span class="hljs-attribute">font-size</span>: <span class="hljs-number">1.46875rem</span>;
 		}
 	}
 
 	&amp;__header-text--bold {
-		<span class="hljs-attribute">font-weight</span>: <span class="hljs-variable">$font-weight-semi</span>;
+		<span class="hljs-attribute">font-weight</span>: v.<span class="hljs-variable">$font-weight-semi</span>;
 	}
 
 	&amp;__breadcrumbs--distracting {
@@ -1507,14 +1513,14 @@
 		<span class="hljs-keyword">@extend</span> .page__side--full;
 		<span class="hljs-keyword">@extend</span> .page__<span class="hljs-attribute">grid</span>;
 
-		<span class="hljs-keyword">@include</span> media(<span class="hljs-variable">$page-grid-desktop</span>) {
+		<span class="hljs-keyword">@include</span> m.media(<span class="hljs-variable">$page-grid-desktop</span>) {
 			<span class="hljs-attribute">display</span>: flex;
 			<span class="hljs-attribute">flex-direction</span>: column;
 			<span class="hljs-attribute">padding-right</span>: <span class="hljs-number">40px</span>;
 			<span class="hljs-attribute">height</span>: <span class="hljs-number">100%</span>;
 		}
 
-		<span class="hljs-keyword">@include</span> <span class="hljs-keyword">only</span>_ie10_above() {
+		<span class="hljs-keyword">@include</span> m.<span class="hljs-keyword">only</span>_ie10_above() {
 			<span class="hljs-attribute">display</span>: none; <span class="hljs-comment">// sorry folks!</span>
 		}
 	}
@@ -1522,15 +1528,15 @@
 	&amp;__post-meta {
 		<span class="hljs-keyword">@extend</span> .page__content;
 
-		<span class="hljs-attribute">background-color</span>: <span class="hljs-variable">$color-grey-1</span>;
-		<span class="hljs-attribute">border-top</span>: <span class="hljs-number">2px</span> solid <span class="hljs-variable">$color-primary</span>;
+		<span class="hljs-attribute">background-color</span>: v.<span class="hljs-variable">$color-grey-1</span>;
+		<span class="hljs-attribute">border-top</span>: <span class="hljs-number">2px</span> solid v.<span class="hljs-variable">$color-primary</span>;
 		<span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span> <span class="hljs-number">15px</span>;
 
-		<span class="hljs-keyword">@include</span> high-contrast {
-			<span class="hljs-attribute">border-color</span>: <span class="hljs-variable">$color-primary-dark</span>;
+		<span class="hljs-keyword">@include</span> m.high-contrast {
+			<span class="hljs-attribute">border-color</span>: v.<span class="hljs-variable">$color-primary-dark</span>;
 		}
 
-		<span class="hljs-keyword">@include</span> media(<span class="hljs-variable">$page-grid-desktop</span>) {
+		<span class="hljs-keyword">@include</span> m.media(<span class="hljs-variable">$page-grid-desktop</span>) {
 			<span class="hljs-attribute">background-color</span>: transparent;
 			<span class="hljs-attribute">margin-top</span>: <span class="hljs-number">72px</span>;
 			<span class="hljs-attribute">border-top</span>: none;
@@ -1543,12 +1549,12 @@
 	}
 
 	&amp;__shareable {
-		<span class="hljs-keyword">@include</span> media(<span class="hljs-variable">$page-grid-desktop</span>) {
+		<span class="hljs-keyword">@include</span> m.media(<span class="hljs-variable">$page-grid-desktop</span>) {
 			<span class="hljs-attribute">flex-grow</span>: <span class="hljs-number">1</span>;
 		}
 
 		&amp;--<span class="hljs-attribute">margin-top</span> {
-			<span class="hljs-keyword">@include</span> media(<span class="hljs-variable">$page-grid-desktop</span>) {
+			<span class="hljs-keyword">@include</span> m.media(<span class="hljs-variable">$page-grid-desktop</span>) {
 				<span class="hljs-attribute">margin-top</span>: <span class="hljs-number">124px</span>;
 			}
 		}
@@ -1562,7 +1568,7 @@
 		<span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
 		<span class="hljs-attribute">z-index</span>: <span class="hljs-number">10</span>;
 
-		<span class="hljs-keyword">@include</span> media($_DESKTOP) {
+		<span class="hljs-keyword">@include</span> m.media(v.<span class="hljs-variable">$DESKTOP</span>) {
 			<span class="hljs-attribute">position</span>: static; <span class="hljs-comment">// IE: just keep it fixed</span>
 			<span class="hljs-attribute">position</span>: sticky;
 			<span class="hljs-attribute">top</span>: <span class="hljs-number">235px</span>;
@@ -1572,7 +1578,7 @@
 	}
 
     &amp;<span class="hljs-selector-pseudo">:not</span>(&amp;--list) &amp;__content {
-		<span class="hljs-keyword">@include</span> media(<span class="hljs-variable">$size-small</span>){
+		<span class="hljs-keyword">@include</span> m.media(v.<span class="hljs-variable">$size-small</span>){
 			<span class="hljs-selector-tag">p</span>, <span class="hljs-selector-tag">li</span> {
 				<span class="hljs-attribute">font-size</span>: <span class="hljs-number">1.25rem</span>;
 			}
@@ -1585,10 +1591,10 @@
 	}
 
 	&amp;__box {
-		<span class="hljs-attribute">background-color</span>: <span class="hljs-variable">$color-grey-1</span>;
-		<span class="hljs-keyword">@include</span> fluid-props(margin-top margin-bottom, <span class="hljs-variable">$size-tiny</span>, <span class="hljs-variable">$size-medium</span>, <span class="hljs-number">25px</span>, <span class="hljs-number">35px</span>);
-		<span class="hljs-keyword">@include</span> fluid-props(padding, <span class="hljs-variable">$size-tiny</span>, <span class="hljs-variable">$size-medium</span>, <span class="hljs-number">12px</span>, <span class="hljs-number">40px</span>);
-		<span class="hljs-keyword">@include</span> media($_DESKTOP) {
+		<span class="hljs-attribute">background-color</span>: v.<span class="hljs-variable">$color-grey-1</span>;
+		<span class="hljs-keyword">@include</span> m.fluid-props(margin-top margin-bottom, v.<span class="hljs-variable">$size-tiny</span>, v.<span class="hljs-variable">$size-medium</span>, <span class="hljs-number">25px</span>, <span class="hljs-number">35px</span>);
+		<span class="hljs-keyword">@include</span> m.fluid-props(padding, v.<span class="hljs-variable">$size-tiny</span>, v.<span class="hljs-variable">$size-medium</span>, <span class="hljs-number">12px</span>, <span class="hljs-number">40px</span>);
+		<span class="hljs-keyword">@include</span> m.media(v.<span class="hljs-variable">$DESKTOP</span>) {
 			<span class="hljs-attribute">margin-top</span>: <span class="hljs-number">50px</span>;
 			<span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">50px</span>;
 			<span class="hljs-attribute">padding</span>: <span class="hljs-number">60px</span>;
@@ -1598,32 +1604,32 @@
 	&amp;__preview-articles {
 		<span class="hljs-attribute">display</span>: grid;
 		grid-template-<span class="hljs-attribute">columns</span>: <span class="hljs-number">1</span>fr;
-		<span class="hljs-keyword">@include</span> fluid-props(grid-column-gap, <span class="hljs-number">1490px</span>, <span class="hljs-variable">$fluid-max</span>, <span class="hljs-number">40px</span>, <span class="hljs-number">100px</span>); <span class="hljs-comment">// 1490px = $page-grid-wide, but for some reason sass can&#x27;t work with the variable</span>
-		<span class="hljs-keyword">@include</span> fluid-props(grid-row-gap, <span class="hljs-variable">$fluid-min</span>, <span class="hljs-variable">$fluid-max</span>, <span class="hljs-number">40px</span>, <span class="hljs-number">80px</span>);
-		<span class="hljs-keyword">@include</span> fluid-props(margin-top margin-bottom, <span class="hljs-variable">$fluid-min</span>, <span class="hljs-variable">$fluid-max</span>, <span class="hljs-number">50px</span>, <span class="hljs-number">100px</span>);
+		<span class="hljs-keyword">@include</span> m.fluid-props(grid-column-gap, <span class="hljs-number">1490px</span>, v.<span class="hljs-variable">$fluid-max</span>, <span class="hljs-number">40px</span>, <span class="hljs-number">100px</span>); <span class="hljs-comment">// 1490px = v.$page-grid-wide, but for some reason sass can&#x27;t work with the variable</span>
+		<span class="hljs-keyword">@include</span> m.fluid-props(grid-row-gap, v.<span class="hljs-variable">$fluid-min</span>, v.<span class="hljs-variable">$fluid-max</span>, <span class="hljs-number">40px</span>, <span class="hljs-number">80px</span>);
+		<span class="hljs-keyword">@include</span> m.fluid-props(margin-top margin-bottom, v.<span class="hljs-variable">$fluid-min</span>, v.<span class="hljs-variable">$fluid-max</span>, <span class="hljs-number">50px</span>, <span class="hljs-number">100px</span>);
 
-		<span class="hljs-keyword">@include</span> media(<span class="hljs-variable">$size-small</span>) {
+		<span class="hljs-keyword">@include</span> m.media(v.<span class="hljs-variable">$size-small</span>) {
 			grid-template-<span class="hljs-attribute">columns</span>: <span class="hljs-number">1</span>fr <span class="hljs-number">1</span>fr;
 		}
 	}
 
 	&amp;__preview-<span class="hljs-selector-tag">article</span> {
-		<span class="hljs-attribute">border-bottom</span>: solid <span class="hljs-number">1px</span> <span class="hljs-variable">$color-grey-2</span>;
+		<span class="hljs-attribute">border-bottom</span>: solid <span class="hljs-number">1px</span> v.<span class="hljs-variable">$color-grey-2</span>;
 	}
 
 	&amp;__list-<span class="hljs-selector-tag">header</span> {
-		<span class="hljs-keyword">@include</span> fluid-props(margin-top, <span class="hljs-variable">$fluid-min</span>, <span class="hljs-variable">$fluid-max</span>, <span class="hljs-number">40px</span>, <span class="hljs-number">60px</span>);
+		<span class="hljs-keyword">@include</span> m.fluid-props(margin-top, v.<span class="hljs-variable">$fluid-min</span>, v.<span class="hljs-variable">$fluid-max</span>, <span class="hljs-number">40px</span>, <span class="hljs-number">60px</span>);
 	}
 
 	&amp;__list-articles {
-		<span class="hljs-keyword">@include</span> fluid-props(margin-top, <span class="hljs-variable">$fluid-min</span>, <span class="hljs-variable">$fluid-max</span>, <span class="hljs-number">40px</span>, <span class="hljs-number">60px</span>);
-		<span class="hljs-keyword">@include</span> clean-ul;
+		<span class="hljs-keyword">@include</span> m.fluid-props(margin-top, v.<span class="hljs-variable">$fluid-min</span>, v.<span class="hljs-variable">$fluid-max</span>, <span class="hljs-number">40px</span>, <span class="hljs-number">60px</span>);
+		<span class="hljs-keyword">@include</span> m.clean-ul;
 	}
 
 	&amp;__list-<span class="hljs-selector-tag">article</span> {
-		<span class="hljs-keyword">@include</span> clean-li;
+		<span class="hljs-keyword">@include</span> m.clean-li;
 
-		<span class="hljs-attribute">border-bottom</span>: solid <span class="hljs-number">1px</span> <span class="hljs-variable">$color-grey-2</span>;
+		<span class="hljs-attribute">border-bottom</span>: solid <span class="hljs-number">1px</span> v.<span class="hljs-variable">$color-grey-2</span>;
 
 		&amp;--hover-link {
 			<span class="hljs-attribute">position</span>: relative;
@@ -1638,20 +1644,20 @@
 				<span class="hljs-attribute">position</span>: absolute;
 				<span class="hljs-attribute">bottom</span>: <span class="hljs-number">0</span>;
 				<span class="hljs-attribute">left</span>: <span class="hljs-number">15px</span>;
-				<span class="hljs-attribute">background</span>: <span class="hljs-variable">$color-grey-2</span>;
+				<span class="hljs-attribute">background</span>: v.<span class="hljs-variable">$color-grey-2</span>;
 				<span class="hljs-attribute">width</span>: calc(<span class="hljs-number">100%</span> - <span class="hljs-number">30px</span>);
 				<span class="hljs-attribute">height</span>: <span class="hljs-number">1px</span>;
 			}
 
-			<span class="hljs-keyword">@include</span> <span class="hljs-attribute">hover</span> {
-				<span class="hljs-attribute">background</span>: <span class="hljs-variable">$color-grey-1</span>;
+			<span class="hljs-keyword">@include</span> m.<span class="hljs-attribute">hover</span> {
+				<span class="hljs-attribute">background</span>: v.<span class="hljs-variable">$color-grey-1</span>;
 			}
 		}
 	}
 
 	&amp;__list-<span class="hljs-selector-tag">footer</span> {
 		<span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
-		<span class="hljs-keyword">@include</span> fluid-props(margin-top margin-bottom padding-bottom, <span class="hljs-variable">$fluid-min</span>, <span class="hljs-variable">$fluid-max</span>, <span class="hljs-number">30px</span>, <span class="hljs-number">50px</span>);
+		<span class="hljs-keyword">@include</span> m.fluid-props(margin-top margin-bottom padding-bottom, v.<span class="hljs-variable">$fluid-min</span>, v.<span class="hljs-variable">$fluid-max</span>, <span class="hljs-number">30px</span>, <span class="hljs-number">50px</span>);
 	}
 
 	&amp;__list-pagination {
@@ -1681,7 +1687,7 @@
                 </li>
                 <li class="Meta-item">
                     <strong class="Meta-key">Size:</strong>
-                    <span class="Meta-value">8.6 KB</span>
+                    <span class="Meta-value">9 KB</span>
                 </li>
             </ul>
         </div>
@@ -3897,14 +3903,14 @@
         <li class="Tree-item Tree-entity" data-role="item">
             <a
                 class="Tree-entityLink"
-                href="./a-social-icon--twitter.html"
+                href="./a-social-icon--bluesky.html"
                 data-role="tree-link"
                 
                 data-pjax
-                data-test="a-social-icon--twitter"
-                data-handle="a-social-icon--twitter"
+                data-test="a-social-icon--bluesky"
+                data-handle="a-social-icon--bluesky"
             >
-                <span>Twitter</span>
+                <span>Bluesky</span>
                 
 
 <div class="Status Status--unlabelled">

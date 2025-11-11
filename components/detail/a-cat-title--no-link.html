@@ -475,28 +475,34 @@
                         <div class="FileBrowser-itemPreview">
                             
                             <code class="Code Code--lang-SCSS FileBrowser-code hljs">
-                                <pre><span class="hljs-selector-class">.a-cat-title</span> {
+                                <pre><span class="hljs-keyword">@use</span> <span class="hljs-string">&quot;sass:math&quot;</span>;
+<span class="hljs-keyword">@use</span> <span class="hljs-string">&quot;../../../scss/variables&quot;</span> as v;
+<span class="hljs-keyword">@use</span> <span class="hljs-string">&quot;../../../scss/mixins&quot;</span> as m;
+
+<span class="hljs-selector-class">.a-cat-title</span> {
 	<span class="hljs-attribute">font-size</span>: <span class="hljs-number">1rem</span>;
 	<span class="hljs-attribute">line-height</span>: <span class="hljs-number">1.2em</span>;
 	<span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
 
 	&amp;__link {
-		<span class="hljs-keyword">@include</span> clean-link;
+		<span class="hljs-keyword">@include</span> m.clean-link;
 
-		<span class="hljs-attribute">font-family</span>: <span class="hljs-variable">$font-primary</span>;
-		<span class="hljs-attribute">font-weight</span>: <span class="hljs-variable">$font-weight-semi</span>;
-		<span class="hljs-attribute">letter-spacing</span>: <span class="hljs-number">0.125em</span>;
-		<span class="hljs-attribute">line-height</span>: <span class="hljs-number">1.25em</span>;
-		<span class="hljs-attribute">color</span>: <span class="hljs-variable">$color-text</span>;
-		<span class="hljs-attribute">transition</span>: color <span class="hljs-variable">$transition-fast</span> <span class="hljs-variable">$transition-ease</span>;
-		<span class="hljs-attribute">display</span>: inline-block;
+		&amp; {
+			<span class="hljs-attribute">font-family</span>: v.<span class="hljs-variable">$font-primary</span>;
+			<span class="hljs-attribute">font-weight</span>: v.<span class="hljs-variable">$font-weight-semi</span>;
+			<span class="hljs-attribute">letter-spacing</span>: <span class="hljs-number">0.125em</span>;
+			<span class="hljs-attribute">line-height</span>: <span class="hljs-number">1.25em</span>;
+			<span class="hljs-attribute">color</span>: v.<span class="hljs-variable">$color-text</span>;
+			<span class="hljs-attribute">transition</span>: color v.<span class="hljs-variable">$transition-fast</span> v.<span class="hljs-variable">$transition-ease</span>;
+			<span class="hljs-attribute">display</span>: inline-block;
+		}
 
 		&amp;<span class="hljs-selector-pseudo">::after</span> {
 			<span class="hljs-attribute">content</span>: <span class="hljs-string">&#x27; &#x27;</span>;
 			<span class="hljs-attribute">width</span>: <span class="hljs-number">1.4em</span>;
 			<span class="hljs-attribute">height</span>: <span class="hljs-number">2px</span>;
-			<span class="hljs-attribute">background-color</span>: <span class="hljs-variable">$color-text-light</span>;
-			<span class="hljs-attribute">transition</span>: all <span class="hljs-variable">$transition-fast</span> <span class="hljs-variable">$transition-ease</span>;
+			<span class="hljs-attribute">background-color</span>: v.<span class="hljs-variable">$color-text-light</span>;
+			<span class="hljs-attribute">transition</span>: all v.<span class="hljs-variable">$transition-fast</span> v.<span class="hljs-variable">$transition-ease</span>;
 			<span class="hljs-attribute">display</span>: block;
 			<span class="hljs-attribute">margin-top</span>: <span class="hljs-number">0.7em</span>;
 		}
@@ -504,19 +510,19 @@
 		&amp;<span class="hljs-selector-pseudo">:not</span>(&amp;--no-link) {
 			<span class="hljs-attribute">cursor</span>: pointer;
 
-			<span class="hljs-keyword">@include</span> <span class="hljs-attribute">hover</span> {
-				<span class="hljs-attribute">color</span>: <span class="hljs-variable">$color-primary</span>;
+			<span class="hljs-keyword">@include</span> m.<span class="hljs-attribute">hover</span> {
+				<span class="hljs-attribute">color</span>: v.<span class="hljs-variable">$color-primary</span>;
 
-				<span class="hljs-keyword">@include</span> high-contrast {
-					<span class="hljs-attribute">color</span>: <span class="hljs-variable">$color-primary-dark</span>;
+				<span class="hljs-keyword">@include</span> m.high-contrast {
+					<span class="hljs-attribute">color</span>: v.<span class="hljs-variable">$color-primary-dark</span>;
 				}
 
 				&amp;:after {
 					width: <span class="hljs-number">100%</span>;
-					<span class="hljs-attribute">background-color</span>: <span class="hljs-variable">$color-primary</span>;
+					<span class="hljs-attribute">background-color</span>: v.<span class="hljs-variable">$color-primary</span>;
 
-					<span class="hljs-keyword">@include</span> high-contrast {
-						<span class="hljs-attribute">background-color</span>: <span class="hljs-variable">$color-primary-dark</span>;
+					<span class="hljs-keyword">@include</span> m.high-contrast {
+						<span class="hljs-attribute">background-color</span>: v.<span class="hljs-variable">$color-primary-dark</span>;
 					}
 				}
 			}
@@ -539,7 +545,7 @@
                 </li>
                 <li class="Meta-item">
                     <strong class="Meta-key">Size:</strong>
-                    <span class="Meta-value">856 Bytes</span>
+                    <span class="Meta-value">995 Bytes</span>
                 </li>
             </ul>
         </div>
@@ -2718,14 +2724,14 @@
         <li class="Tree-item Tree-entity" data-role="item">
             <a
                 class="Tree-entityLink"
-                href="./a-social-icon--twitter.html"
+                href="./a-social-icon--bluesky.html"
                 data-role="tree-link"
                 
                 data-pjax
-                data-test="a-social-icon--twitter"
-                data-handle="a-social-icon--twitter"
+                data-test="a-social-icon--bluesky"
+                data-handle="a-social-icon--bluesky"
             >
-                <span>Twitter</span>
+                <span>Bluesky</span>
                 
 
 <div class="Status Status--unlabelled">

@@ -558,17 +558,26 @@
                         <div class="FileBrowser-itemPreview">
                             
                             <code class="Code Code--lang-SCSS FileBrowser-code hljs">
-                                <pre><span class="hljs-selector-class">.o-positions</span> {
-	<span class="hljs-keyword">@extend</span> .grid-item;
+                                <pre><span class="hljs-keyword">@use</span> <span class="hljs-string">&quot;sass:math&quot;</span>;
+<span class="hljs-keyword">@use</span> <span class="hljs-string">&quot;../../../scss/variables&quot;</span> as v;
+<span class="hljs-keyword">@use</span> <span class="hljs-string">&quot;../../../scss/mixins&quot;</span> as m;
+<span class="hljs-keyword">@use</span> <span class="hljs-string">&quot;../../../scss/grid&quot;</span> as g;
 
-	<span class="hljs-keyword">@include</span> media($_DESKTOP) {
-		<span class="hljs-attribute">max-width</span>: <span class="hljs-variable">$grid-max-width-max</span>;
+<span class="hljs-selector-class">.o-positions</span> {
+	<span class="hljs-attribute">max-width</span>: <span class="hljs-number">651px</span>;
+	<span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
+	<span class="hljs-attribute">margin-left</span>: auto;
+	<span class="hljs-attribute">margin-right</span>: auto;
+	<span class="hljs-keyword">@include</span> m.fluid-grid-item-props(padding);
+
+	<span class="hljs-keyword">@include</span> m.media(v.<span class="hljs-variable">$DESKTOP</span>) {
+		<span class="hljs-attribute">max-width</span>: v.<span class="hljs-variable">$grid-max-width-max</span>;
 	}
 
 	&amp;__cat-title {
 		<span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">22px</span>;
 
-		<span class="hljs-keyword">@include</span> media($_DESKTOP) {
+		<span class="hljs-keyword">@include</span> m.media(v.<span class="hljs-variable">$DESKTOP</span>) {
 			<span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">47px</span>;
 		}
 	}
@@ -577,11 +586,13 @@
 		<span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
 		<span class="hljs-attribute">display</span>: grid;
 		grid-template-<span class="hljs-attribute">columns</span>: <span class="hljs-number">1</span>fr;
-		<span class="hljs-keyword">@include</span> fluid-props(grid-column-gap, <span class="hljs-variable">$size-medium</span>, <span class="hljs-variable">$grid-max-width-max</span>, <span class="hljs-variable">$grid-gap-min</span>, <span class="hljs-variable">$grid-gap-max</span>);
-		grid-row-gap: <span class="hljs-number">40px</span>;
-		<span class="hljs-attribute">align-items</span>: start;
+		<span class="hljs-keyword">@include</span> m.fluid-props(grid-column-gap, v.<span class="hljs-variable">$size-medium</span>, v.<span class="hljs-variable">$grid-max-width-max</span>, v.<span class="hljs-variable">$grid-gap-min</span>, v.<span class="hljs-variable">$grid-gap-max</span>);
+		&amp; {
+			grid-row-gap: <span class="hljs-number">40px</span>;
+			<span class="hljs-attribute">align-items</span>: start;
+		}
 
-		<span class="hljs-keyword">@include</span> media($_DESKTOP) {
+		<span class="hljs-keyword">@include</span> m.media(v.<span class="hljs-variable">$DESKTOP</span>) {
 			grid-template-<span class="hljs-attribute">columns</span>: <span class="hljs-number">1</span>fr <span class="hljs-number">1</span>fr;
 			grid-row-gap: <span class="hljs-number">64px</span>;
 			<span class="hljs-attribute">align-items</span>: start;
@@ -592,7 +603,7 @@
 		}
 
 		&amp;--3 {
-			<span class="hljs-keyword">@include</span> media(<span class="hljs-variable">$grid-max-width-max</span>) {
+			<span class="hljs-keyword">@include</span> m.media(v.<span class="hljs-variable">$grid-max-width-max</span>) {
 				grid-template-<span class="hljs-attribute">columns</span>: <span class="hljs-number">1</span>fr <span class="hljs-number">1</span>fr <span class="hljs-number">1</span>fr;
 			}
 		}
@@ -601,18 +612,18 @@
 	&amp;__article {
 		<span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
 
-		<span class="hljs-keyword">@include</span> media($_DESKTOP) {
+		<span class="hljs-keyword">@include</span> m.media(v.<span class="hljs-variable">$DESKTOP</span>) {
 			&amp;<span class="hljs-selector-pseudo">:nth-of-type</span>(even) {
-				<span class="hljs-keyword">@include</span> fluid-grid-item-props(padding-left);
+				<span class="hljs-keyword">@include</span> m.fluid-grid-item-props(padding-left);
 			}
 
 			&amp;<span class="hljs-selector-pseudo">:nth-of-type</span>(odd) {
-				<span class="hljs-keyword">@include</span> fluid-grid-item-props(padding-right);
+				<span class="hljs-keyword">@include</span> m.fluid-grid-item-props(padding-right);
 			}
 		}
 
 		&amp;--1, &amp;--3 {
-			<span class="hljs-keyword">@include</span> media(<span class="hljs-variable">$grid-max-width-max</span>) {
+			<span class="hljs-keyword">@include</span> m.media(v.<span class="hljs-variable">$grid-max-width-max</span>) {
 				&amp;<span class="hljs-selector-pseudo">:nth-of-type</span>(even) {
 					<span class="hljs-attribute">padding-left</span>: <span class="hljs-number">0</span>;
 				}
@@ -622,7 +633,7 @@
 			}
 		}
 
-		<span class="hljs-keyword">@include</span> <span class="hljs-keyword">only</span>_ie10_above {
+		<span class="hljs-keyword">@include</span> m.<span class="hljs-keyword">only</span>_ie10_above {
 			&amp;<span class="hljs-selector-pseudo">:nth-of-type</span>(even) {
 				<span class="hljs-attribute">padding</span>: <span class="hljs-number">30px</span> <span class="hljs-number">0</span>;
 			}
@@ -645,7 +656,7 @@
                 </li>
                 <li class="Meta-item">
                     <strong class="Meta-key">Size:</strong>
-                    <span class="Meta-value">1.2 KB</span>
+                    <span class="Meta-value">1.5 KB</span>
                 </li>
             </ul>
         </div>
@@ -2884,14 +2895,14 @@
         <li class="Tree-item Tree-entity" data-role="item">
             <a
                 class="Tree-entityLink"
-                href="./a-social-icon--twitter.html"
+                href="./a-social-icon--bluesky.html"
                 data-role="tree-link"
                 
                 data-pjax
-                data-test="a-social-icon--twitter"
-                data-handle="a-social-icon--twitter"
+                data-test="a-social-icon--bluesky"
+                data-handle="a-social-icon--bluesky"
             >
-                <span>Twitter</span>
+                <span>Bluesky</span>
                 
 
 <div class="Status Status--unlabelled">

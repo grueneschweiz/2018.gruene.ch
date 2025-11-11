@@ -485,42 +485,50 @@
                         <div class="FileBrowser-itemPreview">
                             
                             <code class="Code Code--lang-SCSS FileBrowser-code hljs">
-                                <pre><span class="hljs-selector-class">.m-campaign-desc</span> {
-	<span class="hljs-attribute">background</span>: <span class="hljs-variable">$color-grey-1</span>;
+                                <pre><span class="hljs-keyword">@use</span> <span class="hljs-string">&quot;sass:math&quot;</span>;
+<span class="hljs-keyword">@use</span> <span class="hljs-string">&quot;../../../scss/variables&quot;</span> as v;
+<span class="hljs-keyword">@use</span> <span class="hljs-string">&quot;../../../scss/mixins&quot;</span> as m;
+
+<span class="hljs-selector-class">.m-campaign-desc</span> {
+	<span class="hljs-attribute">background</span>: v.<span class="hljs-variable">$color-grey-1</span>;
 	<span class="hljs-attribute">height</span>: <span class="hljs-number">100%</span>;
 	<span class="hljs-attribute">display</span>: flex;
 	<span class="hljs-attribute">flex-direction</span>: column;
 	<span class="hljs-attribute">justify-content</span>: space-around;
-	<span class="hljs-keyword">@include</span> fluid-props(padding-left padding-right, <span class="hljs-variable">$fluid-min</span>, <span class="hljs-variable">$fluid-max</span>, <span class="hljs-number">29px</span>, <span class="hljs-number">60px</span>);
-	<span class="hljs-keyword">@include</span> media(<span class="hljs-variable">$size-large</span>) {
+	<span class="hljs-keyword">@include</span> m.fluid-props(padding-left padding-right, v.<span class="hljs-variable">$fluid-min</span>, v.<span class="hljs-variable">$fluid-max</span>, <span class="hljs-number">29px</span>, <span class="hljs-number">60px</span>);
+	<span class="hljs-keyword">@include</span> m.media(v.<span class="hljs-variable">$size-large</span>) {
 		<span class="hljs-attribute">padding-left</span>: <span class="hljs-number">60px</span>; <span class="hljs-comment">// don&#x27;t oversize it for 2k screens</span>
 		<span class="hljs-attribute">padding-right</span>: <span class="hljs-number">60px</span>;
 	}
-	<span class="hljs-attribute">padding-top</span>: <span class="hljs-number">13px</span>;
-	<span class="hljs-attribute">padding-bottom</span>: <span class="hljs-number">40px</span>;
+	&amp; {
+		<span class="hljs-attribute">padding-top</span>: <span class="hljs-number">13px</span>;
+		<span class="hljs-attribute">padding-bottom</span>: <span class="hljs-number">40px</span>;
+	}
 
-	<span class="hljs-keyword">@include</span> media($_DESKTOP) {
+	<span class="hljs-keyword">@include</span> m.media(v.<span class="hljs-variable">$DESKTOP</span>) {
 		<span class="hljs-attribute">padding-right</span>: calc(<span class="hljs-number">75px</span> + <span class="hljs-number">39</span> * (<span class="hljs-number">100vw</span> - <span class="hljs-number">375px</span>) / <span class="hljs-number">1305</span>);
 	}
 
 	&amp;__title {
-		<span class="hljs-keyword">@include</span> fluid-props(font-size, <span class="hljs-variable">$fluid-min</span>, <span class="hljs-variable">$fluid-max</span>, <span class="hljs-number">32px</span>, <span class="hljs-number">48px</span>);
-		<span class="hljs-keyword">@include</span> media(<span class="hljs-variable">$size-large</span>) {
+		<span class="hljs-keyword">@include</span> m.fluid-props(font-size, v.<span class="hljs-variable">$fluid-min</span>, v.<span class="hljs-variable">$fluid-max</span>, <span class="hljs-number">32px</span>, <span class="hljs-number">48px</span>);
+		<span class="hljs-keyword">@include</span> m.media(v.<span class="hljs-variable">$size-large</span>) {
 			<span class="hljs-attribute">font-size</span>: <span class="hljs-number">48px</span>; <span class="hljs-comment">// don&#x27;t go over 48 for 2k screens</span>
 		}
 	}
 
 	&amp;__link {
-		<span class="hljs-keyword">@include</span> clean-link;
-		<span class="hljs-attribute">color</span>: <span class="hljs-variable">$color-primary</span>;
-		<span class="hljs-attribute">transition</span>: color <span class="hljs-variable">$transition-fast</span> <span class="hljs-variable">$transition-ease</span>;
-
-		<span class="hljs-keyword">@include</span> high-contrast {
-			<span class="hljs-attribute">color</span>: <span class="hljs-variable">$color-primary-dark</span>;
+		<span class="hljs-keyword">@include</span> m.clean-link;
+		&amp; {
+			<span class="hljs-attribute">color</span>: v.<span class="hljs-variable">$color-primary</span>;
+			<span class="hljs-attribute">transition</span>: color v.<span class="hljs-variable">$transition-fast</span> v.<span class="hljs-variable">$transition-ease</span>;
 		}
 
-		<span class="hljs-keyword">@include</span> <span class="hljs-attribute">hover</span> {
-			<span class="hljs-attribute">color</span>: <span class="hljs-variable">$color-primary-dark</span>;
+		<span class="hljs-keyword">@include</span> m.high-contrast {
+			<span class="hljs-attribute">color</span>: v.<span class="hljs-variable">$color-primary-dark</span>;
+		}
+
+		<span class="hljs-keyword">@include</span> m.<span class="hljs-attribute">hover</span> {
+			<span class="hljs-attribute">color</span>: v.<span class="hljs-variable">$color-primary-dark</span>;
 		}
 	}
 
@@ -545,7 +553,7 @@
                 </li>
                 <li class="Meta-item">
                     <strong class="Meta-key">Size:</strong>
-                    <span class="Meta-value">947 Bytes</span>
+                    <span class="Meta-value">1.1 KB</span>
                 </li>
             </ul>
         </div>
@@ -2727,14 +2735,14 @@
         <li class="Tree-item Tree-entity" data-role="item">
             <a
                 class="Tree-entityLink"
-                href="./a-social-icon--twitter.html"
+                href="./a-social-icon--bluesky.html"
                 data-role="tree-link"
                 
                 data-pjax
-                data-test="a-social-icon--twitter"
-                data-handle="a-social-icon--twitter"
+                data-test="a-social-icon--bluesky"
+                data-handle="a-social-icon--bluesky"
             >
-                <span>Twitter</span>
+                <span>Bluesky</span>
                 
 
 <div class="Status Status--unlabelled">

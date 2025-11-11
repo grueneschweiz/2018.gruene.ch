@@ -1,12 +1,16 @@
+@use "sass:math";
+@use "../../../scss/variables" as v;
+@use "../../../scss/mixins" as m;
+
 .m-event-details {
 	line-height: 1.75em;
-	@include fluid-props(margin-bottom, $fluid-min, $fluid-max, 40px, 80px);
+	@include m.fluid-props(margin-bottom, v.$fluid-min, v.$fluid-max, 40px, 80px);
 
-	@include media($size-small) {
+	@include m.media(v.$size-small) {
 		font-size: 1.125rem;
 	}
 
-	@include media($size-medium) {
+	@include m.media(v.$size-medium) {
 		font-size: 1.25rem;
 	}
 
@@ -17,18 +21,18 @@
 	}
 
 	&__time-wrapper &__icon {
-		fill: $color-primary;
+		fill: v.$color-primary;
 
-		@include high-contrast {
-			fill: $color-primary-dark;
+		@include m.high-contrast {
+			fill: v.$color-primary-dark;
 		}
 	}
 
 	&__location-wrapper &__icon {
-		stroke: $color-primary;
+		stroke: v.$color-primary;
 
-		@include high-contrast {
-			stroke: $color-primary-dark;
+		@include m.high-contrast {
+			stroke: v.$color-primary-dark;
 		}
 	}
 }

@@ -1,21 +1,27 @@
+@use "sass:math";
+@use "../../../scss/variables" as v;
+@use "../../../scss/mixins" as m;
+
 .a-submenu {
 	width: 100%;
 	max-width: 269px;
 
-	@include media($_DESKTOP) {
+	@include m.media(v.$DESKTOP) {
 		min-width: 177px;
 	}
 
 	&__title {
-		@include clean-link;
-		font-family: $font-title;
-		display: block;
-		line-height: 2em;
-		color: $color-text;
-		transition: color $transition-fast $transition-ease;
+		@include m.clean-link;
+		& {
+			font-family: v.$font-title;
+			display: block;
+			line-height: 2em;
+			color: v.$color-text;
+			transition: color v.$transition-fast v.$transition-ease;
+		}
 
 		&:hover, &--active {
-			color: $color-secondary;
+			color: v.$color-secondary;
 		}
 
 		&:focus {
@@ -23,45 +29,45 @@
 				content: '';
 				width: 0;
 				height: 0;
-				border-left: 1px solid $color-secondary;
+				border-left: 1px solid v.$color-secondary;
 				margin-right: 0.5em;
 				margin-left: calc(-1px - 0.5em);
 
-				@include media($_DESKTOP) {
-					border-left-color: $color-primary;
+				@include m.media(v.$DESKTOP) {
+					border-left-color: v.$color-primary;
 
-					@include high-contrast {
-						border-left-color: $color-primary-dark;
+					@include m.high-contrast {
+						border-left-color: v.$color-primary-dark;
 					}
 				}
 			}
 		}
 
-		@include media($_DESKTOP) {
-			color: $color-primary;
+		@include m.media(v.$DESKTOP) {
+			color: v.$color-primary;
 			margin-bottom: 5px;
 			padding-bottom: 12px;
 			position: relative;
 			line-height: 1.25em;
-			transition: color $transition-fast $transition-ease;
+			transition: color v.$transition-fast v.$transition-ease;
 
-			@include high-contrast {
-				color: $color-primary-dark;
+			@include m.high-contrast {
+				color: v.$color-primary-dark;
 			}
 
 			&:after {
 				content: "";
 				width: 0;
 				height: 2px;
-				background-color: $color-primary-dark;
+				background-color: v.$color-primary-dark;
 				position: absolute;
 				bottom: 0;
 				left: 0;
-				transition: width $transition-fast $transition-ease;
+				transition: width v.$transition-fast v.$transition-ease;
 			}
 
 			&:hover, &--active {
-				color: $color-primary-dark;
+				color: v.$color-primary-dark;
 
 				&:after {
 					width: 69px;
@@ -71,34 +77,40 @@
 	}
 
 	&__list {
-		@include clean-ul;
-		list-style-image: url(data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7); // fix edge bug
+		@include m.clean-ul;
+		& {
+			list-style-image: url(data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7); // fix edge bug
+		}
 	}
 
 	&__item {
-		@include clean-li;
-		color: $color-text;
-		margin: 1em 0 0 1.25em;
+		@include m.clean-li;
+		& {
+			color: v.$color-text;
+			margin: 1em 0 0 1.25em;
+		}
 
-		@include media($_DESKTOP) {
+		@include m.media(v.$DESKTOP) {
 			margin: 0;
 		}
 	}
 
 	&__link {
-		@include clean-link;
-		color: $color-text;
-		line-height: 1.75em;
-		padding: 7px 0;
-		display: block;
-		position: relative;
-		transition: color $transition-fast $transition-ease;
+		@include m.clean-link;
+		& {
+			color: v.$color-text;
+			line-height: 1.75em;
+			padding: 7px 0;
+			display: block;
+			position: relative;
+			transition: color v.$transition-fast v.$transition-ease;
+		}
 
 		&:hover, &--active {
-			color: $color-secondary;
+			color: v.$color-secondary;
 
-			@include media($_DESKTOP) {
-				color: $color-text;
+			@include m.media(v.$DESKTOP) {
+				color: v.$color-text;
 			}
 		}
 
@@ -107,41 +119,41 @@
 				content: '';
 				width: 0;
 				height: 0;
-				border-left: 1px solid $color-secondary;
+				border-left: 1px solid v.$color-secondary;
 				margin-right: 0.5em;
 				margin-left: calc(-1px - 0.5em);
 
-				@include media($_DESKTOP) {
-					border-left-color: $color-primary;
+				@include m.media(v.$DESKTOP) {
+					border-left-color: v.$color-primary;
 
-					@include high-contrast {
-						border-color: $color-primary-dark;
+					@include m.high-contrast {
+						border-color: v.$color-primary-dark;
 					}
 				}
 			}
 		}
 
-		@include media($_DESKTOP) {
+		@include m.media(v.$DESKTOP) {
 			&:after {
 				content: "";
 				width: 36px;
 				height: 1px;
-				background-color: $color-grey-2;
+				background-color: v.$color-grey-2;
 				position: absolute;
 				bottom: 0;
 				left: 0;
-				transition: width $transition-fast $transition-ease;
+				transition: width v.$transition-fast v.$transition-ease;
 			}
 
 			&:hover, &--active {
-				color: $color-text;
+				color: v.$color-text;
 
 				&:after {
 					width: 69px;
-					background-color: $color-primary;
+					background-color: v.$color-primary;
 
-					@include high-contrast {
-						background-color: $color-primary-dark;
+					@include m.high-contrast {
+						background-color: v.$color-primary-dark;
 					}
 				}
 			}
@@ -151,33 +163,35 @@
 	&--featured {
 		margin-top: 2em;
 
-		@include media($_DESKTOP) {
+		@include m.media(v.$DESKTOP) {
 			margin-top: initial;
 		}
 
 		&__image {
 			margin-top: 28px;
-			@include aspect-ratio-box(56.25%);
+			@include m.aspect-ratio-box(56.25%);
 		}
 
 		&__link {
-			@include clean-link;
+			@include m.clean-link;
 
 			&__image {
 				width: 100%;
 				margin-top: 28px;
-				transition: transform $transition-fast $transition-ease;
+				transition: transform v.$transition-fast v.$transition-ease;
 			}
 
 			&__title {
-				@include heading-font;
-				font-size: 1.25rem;
-				line-height: 1.4em;
-				margin-top: 16px;
-				transition: color $transition-fast $transition-ease;
+				@include m.heading-font;
+				& {
+					font-size: 1.25rem;
+					line-height: 1.4em;
+					margin-top: 16px;
+					transition: color v.$transition-fast v.$transition-ease;
+				}
 
-				@include hover {
-					color: $color-primary-dark;
+				@include m.hover {
+					color: v.$color-primary-dark;
 				}
 			}
 		}

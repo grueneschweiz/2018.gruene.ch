@@ -561,11 +561,15 @@
                         <div class="FileBrowser-itemPreview">
                             
                             <code class="Code Code--lang-SCSS FileBrowser-code hljs">
-                                <pre><span class="hljs-selector-class">.a-footer-link-list</span> {
+                                <pre><span class="hljs-keyword">@use</span> <span class="hljs-string">&quot;sass:math&quot;</span>;
+<span class="hljs-keyword">@use</span> <span class="hljs-string">&quot;../../../scss/variables&quot;</span> as v;
+<span class="hljs-keyword">@use</span> <span class="hljs-string">&quot;../../../scss/mixins&quot;</span> as m;
+
+<span class="hljs-selector-class">.a-footer-link-list</span> {
 	&amp;__title {
 		<span class="hljs-attribute">margin-top</span>: <span class="hljs-number">0</span>;
 		<span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">40px</span>;
-		<span class="hljs-keyword">@include</span> fluid-props(font-size, <span class="hljs-variable">$size-tiny</span>, <span class="hljs-variable">$size-medium</span>, <span class="hljs-number">20px</span>, <span class="hljs-number">32px</span>);
+		<span class="hljs-keyword">@include</span> m.fluid-props(font-size, v.<span class="hljs-variable">$size-tiny</span>, v.<span class="hljs-variable">$size-medium</span>, <span class="hljs-number">20px</span>, <span class="hljs-number">32px</span>);
 	}
 
 	&amp;__list {
@@ -573,17 +577,17 @@
 		<span class="hljs-attribute">display</span>: grid;
 		grid-template-<span class="hljs-attribute">columns</span>: repeat(<span class="hljs-number">2</span>, calc(<span class="hljs-number">50%</span> - <span class="hljs-number">12px</span>));
 		grid-<span class="hljs-attribute">column-gap</span>: <span class="hljs-number">24px</span>;
-		<span class="hljs-attribute">width</span>: calc(<span class="hljs-number">100vw</span> - #{<span class="hljs-number">2</span>*<span class="hljs-variable">$grid-item-padding-min</span>});
+		<span class="hljs-attribute">width</span>: calc(<span class="hljs-number">100vw</span> - #{<span class="hljs-number">2</span>*v.<span class="hljs-variable">$grid-item-padding-min</span>});
 
-		<span class="hljs-keyword">@include</span> media(<span class="hljs-variable">$size-tiny</span>) {
+		<span class="hljs-keyword">@include</span> m.media(v.<span class="hljs-variable">$size-tiny</span>) {
 			grid-template-<span class="hljs-attribute">columns</span>: repeat(<span class="hljs-number">3</span>, calc(<span class="hljs-number">33%</span> - <span class="hljs-number">16px</span>));
 		}
 
-		<span class="hljs-keyword">@include</span> media($_DESKTOP) {
+		<span class="hljs-keyword">@include</span> m.media(v.<span class="hljs-variable">$DESKTOP</span>) {
 			<span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
 		}
 
-		<span class="hljs-keyword">@include</span> <span class="hljs-keyword">only</span>_ie10_above {
+		<span class="hljs-keyword">@include</span> m.<span class="hljs-keyword">only</span>_ie10_above {
 			<span class="hljs-attribute">display</span>: flex;
 			<span class="hljs-attribute">flex-wrap</span>: wrap;
 			<span class="hljs-attribute">flex-direction</span>: row;
@@ -592,43 +596,46 @@
 	}
 
 	&amp;__item {
-		<span class="hljs-keyword">@include</span> clean-li;
+		<span class="hljs-keyword">@include</span> m.clean-li;
 		<span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
 
-		<span class="hljs-keyword">@include</span> <span class="hljs-keyword">only</span>_ie10_above {
+		<span class="hljs-keyword">@include</span> m.<span class="hljs-keyword">only</span>_ie10_above {
 			<span class="hljs-attribute">width</span>: <span class="hljs-number">120px</span>;
 			<span class="hljs-attribute">margin-right</span>: <span class="hljs-number">20px</span>;
 		}
 	}
 
 	&amp;__link {
-		<span class="hljs-keyword">@include</span> clean-link;
-		<span class="hljs-attribute">line-height</span>: <span class="hljs-number">1.75em</span>;
-		<span class="hljs-attribute">padding</span>: <span class="hljs-number">7px</span> <span class="hljs-number">0</span> <span class="hljs-number">8px</span>;
-		<span class="hljs-attribute">display</span>: block;
-		<span class="hljs-attribute">position</span>: relative;
-		<span class="hljs-attribute">white-space</span>: nowrap;
-		<span class="hljs-attribute">overflow</span>: hidden;
-		<span class="hljs-attribute">text-overflow</span>: ellipsis;
+		<span class="hljs-keyword">@include</span> m.clean-link;
+		
+		&amp; {
+			<span class="hljs-attribute">line-height</span>: <span class="hljs-number">1.75em</span>;
+			<span class="hljs-attribute">padding</span>: <span class="hljs-number">7px</span> <span class="hljs-number">0</span> <span class="hljs-number">8px</span>;
+			<span class="hljs-attribute">display</span>: block;
+			<span class="hljs-attribute">position</span>: relative;
+			<span class="hljs-attribute">white-space</span>: nowrap;
+			<span class="hljs-attribute">overflow</span>: hidden;
+			<span class="hljs-attribute">text-overflow</span>: ellipsis;
+		}
 
 		&amp;:after {
 			content: <span class="hljs-string">&#x27; &#x27;</span>;
 			<span class="hljs-attribute">width</span>: <span class="hljs-number">36px</span>;
 			<span class="hljs-attribute">height</span>: <span class="hljs-number">1px</span>;
-			<span class="hljs-attribute">background-color</span>: <span class="hljs-variable">$color-grey-2</span>;
+			<span class="hljs-attribute">background-color</span>: v.<span class="hljs-variable">$color-grey-2</span>;
 			<span class="hljs-attribute">position</span>: absolute;
 			<span class="hljs-attribute">bottom</span>: <span class="hljs-number">0</span>;
 			<span class="hljs-attribute">left</span>: <span class="hljs-number">0</span>;
-			<span class="hljs-attribute">transition</span>: width <span class="hljs-variable">$transition-fast</span> <span class="hljs-variable">$transition-ease</span>;
+			<span class="hljs-attribute">transition</span>: width v.<span class="hljs-variable">$transition-fast</span> v.<span class="hljs-variable">$transition-ease</span>;
 		}
 
-		<span class="hljs-keyword">@include</span> <span class="hljs-attribute">hover</span> {
+		<span class="hljs-keyword">@include</span> m.<span class="hljs-attribute">hover</span> {
 			&amp;:after {
 				width: <span class="hljs-number">69px</span>;
-				<span class="hljs-attribute">background-color</span>: <span class="hljs-variable">$color-primary</span>;
+				<span class="hljs-attribute">background-color</span>: v.<span class="hljs-variable">$color-primary</span>;
 
-				<span class="hljs-keyword">@include</span> high-contrast {
-					<span class="hljs-attribute">background-color</span>: <span class="hljs-variable">$color-primary-dark</span>;
+				<span class="hljs-keyword">@include</span> m.high-contrast {
+					<span class="hljs-attribute">background-color</span>: v.<span class="hljs-variable">$color-primary-dark</span>;
 				}
 			}
 		}
@@ -650,7 +657,7 @@
                 </li>
                 <li class="Meta-item">
                     <strong class="Meta-key">Size:</strong>
-                    <span class="Meta-value">1.3 KB</span>
+                    <span class="Meta-value">1.5 KB</span>
                 </li>
             </ul>
         </div>
@@ -2928,14 +2935,14 @@
         <li class="Tree-item Tree-entity" data-role="item">
             <a
                 class="Tree-entityLink"
-                href="./a-social-icon--twitter.html"
+                href="./a-social-icon--bluesky.html"
                 data-role="tree-link"
                 
                 data-pjax
-                data-test="a-social-icon--twitter"
-                data-handle="a-social-icon--twitter"
+                data-test="a-social-icon--bluesky"
+                data-handle="a-social-icon--bluesky"
             >
-                <span>Twitter</span>
+                <span>Bluesky</span>
                 
 
 <div class="Status Status--unlabelled">
