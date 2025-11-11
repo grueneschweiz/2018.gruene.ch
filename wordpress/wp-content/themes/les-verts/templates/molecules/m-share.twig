@@ -21,18 +21,18 @@
 		</div>
 		<div class="m-share__icon">
 			{% include 'atoms/a-social-icon.twig' with {
-				'type': 'twitter',
-				'modifier': 'no-outline',
-				'title': __('Share this page on twitter', constant('THEME_DOMAIN')),
-				'link': 'https://twitter.com/intent/tweet?url=' ~ (url|url_encode) ~ '&text=' ~ (text|url_encode) ~ '&via=' ~ (via|url_encode)
-			} only %}
-		</div>
-		<div class="m-share__icon">
-			{% include 'atoms/a-social-icon.twig' with {
 				'type': 'facebook',
 				'modifier': 'no-outline',
 				'title': __('Share this page on facebook', constant('THEME_DOMAIN')),
 				'link': 'https://www.facebook.com/sharer.php?u=' ~ (url|url_encode)
+			} only %}
+		</div>
+		<div class="m-share__icon">
+			{% include 'atoms/a-social-icon.twig' with {
+				'type': 'bluesky',
+				'modifier': 'no-outline',
+				'title': __('Share this page on Bluesky', constant('THEME_DOMAIN')),
+				'link': 'https://bsky.app/intent/compose?text=' ~ (text|url_encode) ~ ' ' ~ (url|url_encode)
 			} only %}
 		</div>
 		<div class="m-share__icon">

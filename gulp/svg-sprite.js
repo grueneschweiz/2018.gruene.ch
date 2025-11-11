@@ -17,7 +17,7 @@ module.exports = function( options, done ) {
 			},
 			shape: {
 				id: {
-					separator: '_', // Folder separation
+					separator: '-', // Folder separation
 					whitespace: '-', // Whitespace
 				},
 				transform: [

@@ -6,10 +6,10 @@ context:
   link: '#'
   ariaLabel: post on facebook
 variants:
-  - name: twitter
+  - name: bluesky
     context:
-      type: twitter
-      ariaLabel: tweet
+      type: bluesky
+      ariaLabel: share on bluesky
   - name: email
     context:
       type: email
