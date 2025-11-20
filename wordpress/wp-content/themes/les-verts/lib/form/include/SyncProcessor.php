@@ -9,6 +9,7 @@ require_once __DIR__ . '/Util.php';
 require_once __DIR__ . '/QueueDao.php';
 require_once __DIR__ . '/CrmQueueItem.php';
 require_once __DIR__ . '/CrmMaxSyncsException.php';
+require_once __DIR__ . '/FormModel.php';
 
 class SyncProcessor {
     const CRON_HOOK_CRM_MC_SAVE = 'supt_form_save_to_crm';
@@ -78,7 +79,8 @@ class SyncProcessor {
                 }
 
                 if (!$item->has_data()) {
-                    Util::report_form_error('sync queue process', $item, new \Exception(self::MSG_ITEM_NO_DATA), null);
+                    $form = $processor->get_form_from_item($item);
+                    Util::report_form_error('sync queue process', $item, new \Exception(self::MSG_ITEM_NO_DATA), $form);
                     $processor->remove_from_queue($item);
                     continue;
                 }
@@ -93,7 +95,8 @@ class SyncProcessor {
                     Util::debug_log("submissionId=" . $item->get_submission_id() . " msg=Too many CRM syncs per run. Ending this run.");
                     return;
                 } catch (\Exception $e) {
-                    Util::report_form_error('sync queue process', $item, $e, null);
+                    $form = $processor->get_form_from_item($item);
+                    Util::report_form_error('sync queue process', $item, $e, $form);
                     $processor->update_queue($item);
                 }
             }
@@ -121,6 +124,24 @@ class SyncProcessor {
      */
     public static function get_queue(): QueueDao {
         return new QueueDao(SyncEnqueuer::QUEUE_KEY);
+    }
+
+    /**
+     * Get the form object from a CrmQueueItem, or null if it can't be retrieved
+     *
+     * @param CrmQueueItem $item The queue item
+     * @return FormModel|null The form object or null if not found
+     */
+    private function get_form_from_item(CrmQueueItem $item): ?FormModel {
+        try {
+            $form_id = $item->get_form_id();
+            if ($form_id && $form_id !== CrmQueueItem::ID_INVALID_FORM) {
+                return new FormModel($form_id);
+            }
+        } catch (\Exception $e) {
+            // Form can't be retrieved, return null
+        }
+        return null;
     }
 
     /**
