@@ -95,7 +95,8 @@ class SyncProcessor {
                     Util::debug_log("submissionId=" . $item->get_submission_id() . " msg=Too many CRM syncs per run. Ending this run.");
                     return;
                 } catch (\Exception $e) {
-                    Util::debug_log("submissionId=" . $item->get_submission_id() . " msg=Processing failed, will retry: " . $e->getMessage());
+                    $form = $processor->get_form_from_item($item);
+                    Util::report_form_error('sync queue process', $item, $e, $form);
                     $processor->update_queue($item);
                 }
             }
