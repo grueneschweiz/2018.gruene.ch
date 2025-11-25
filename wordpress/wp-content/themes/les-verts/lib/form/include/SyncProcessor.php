@@ -95,8 +95,7 @@ class SyncProcessor {
                     Util::debug_log("submissionId=" . $item->get_submission_id() . " msg=Too many CRM syncs per run. Ending this run.");
                     return;
                 } catch (\Exception $e) {
-                    $form = $processor->get_form_from_item($item);
-                    Util::report_form_error('sync queue process', $item, $e, $form);
+                    Util::debug_log("submissionId=" . $item->get_submission_id() . " msg=Processing failed, will retry: " . $e->getMessage());
                     $processor->update_queue($item);
                 }
             }
@@ -190,15 +189,35 @@ class SyncProcessor {
     private function too_many_attempts(CrmQueueItem $item) {
         if ( $item->get_attempts() >= self::MAX_SAVE_ATTEMPTS ) {
             $this->remove_from_queue($item);
+
+            // Extract readable data from CrmFieldData objects for the email
+            $readable_data = $this->extract_readable_data($item->get_data());
+
             Util::send_mail_to_admin(
-                self::SUBJECT_ITEM_MAX_ATTEMPTS . "id=" . $item->get_submission_id(),
-                self::MSG_ITEM_MAX_ATTEMPTS . "\n\n" . json_encode($item->get_data())
+                self::SUBJECT_ITEM_MAX_ATTEMPTS . " id=" . $item->get_submission_id(),
+                self::MSG_ITEM_MAX_ATTEMPTS . "\n\n" . json_encode($readable_data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE)
             );
             Util::debug_log("submissionId=" . $item->get_submission_id() . " msg=Too many attempts. Removed from queue.");
             return true;
         }
 
         return false;
+    }
+
+    /**
+     * Extract readable key-value data from CrmFieldData objects
+     *
+     * @param array $crm_field_data_objects Array of CrmFieldData objects
+     * @return array Simple key-value array with actual values
+     */
+    private function extract_readable_data(array $crm_field_data_objects): array {
+        $data = array();
+        foreach ($crm_field_data_objects as $crm_field_data) {
+            if ($crm_field_data instanceof CrmFieldData) {
+                $data[$crm_field_data->get_key()] = $crm_field_data->get_value();
+            }
+        }
+        return $data;
     }
 
     /**
