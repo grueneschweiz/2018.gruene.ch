@@ -97,6 +97,7 @@ define( 'SITE_ID_CURRENT_SITE', 1 );
 define( 'BLOG_ID_CURRENT_SITE', 1 );
 
 define( 'SUPT_FORM_ASYNC', ! ( (bool) getenv( 'WORDPRESS_DEBUG' ) ) );
+define( 'SUPT_FORM_MIN_SUBMIT_TIME', 2 ); // Minimum seconds between first interaction and submit
 
 // Mailchimp-Service configuration (leave empty to disable integration)
 define( 'MAILCHIMP_SERVICE_ENDPOINT', getenv('MAILCHIMP_SERVICE_ENDPOINT') ?: '' );
