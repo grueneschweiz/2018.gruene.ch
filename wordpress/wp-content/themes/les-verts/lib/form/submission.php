@@ -175,6 +175,8 @@ class FormSubmission {
 	 */
 	public function handle_submit() {
 		$this->abort_if_limit_exceeded();
+		$this->abort_if_honeypot_filled();
+		$this->abort_if_too_fast();
 		$this->add_submission_metadata();
 		$this->abort_if_invalid_header();
 		$this->abort_if_invalid_nonce();
@@ -188,6 +190,39 @@ class FormSubmission {
 		spawn_cron();
 
 		$this->send_response();
+	}
+
+	/**
+	 * Check if the honeypot field was filled (only bots fill hidden fields).
+	 */
+	private function abort_if_honeypot_filled() {
+		if ( ! empty( $_POST['fax'] ) ) {
+			$this->respond_with_general_error( 400, 'Submission not valid.' );
+		}
+	}
+
+	/**
+	 * Check if the form was submitted too quickly (bots submit in milliseconds).
+	 *
+	 * The hidden field is populated by JS on first user interaction.
+	 * If the field is empty or missing, JS didn't run (likely a bot).
+	 * If the time delta is too small, the form was filled inhumanly fast.
+	 */
+	private function abort_if_too_fast() {
+		$interaction_time = isset( $_POST['form_interaction_duration'] )
+			? (int) $_POST['form_interaction_duration']
+			: 0;
+
+		if ( ! $interaction_time ) {
+			$this->respond_with_general_error( 400, 'Submission not valid.' );
+
+			return;
+		}
+
+		$min_time = defined( 'SUPT_FORM_MIN_SUBMIT_TIME' ) ? \SUPT_FORM_MIN_SUBMIT_TIME : 2;
+		if ( $interaction_time < $min_time ) {
+			$this->respond_with_general_error( 400, 'Submission not valid.' );
+		}
 	}
 
 	/**
