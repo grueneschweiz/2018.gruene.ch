@@ -768,7 +768,6 @@
 		<span class="hljs-built_in">super</span>.bind();
 
 		<span class="hljs-built_in">this</span>.on( <span class="hljs-string">&#x27;afterReplaceImage&#x27;</span>, <span class="hljs-function">() =&gt;</span> {
-			<span class="hljs-built_in">this</span>.setSizes();
 			<span class="hljs-built_in">this</span>.objectFit();
 		} );
 	}
@@ -821,17 +820,6 @@
 
 		<span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;&#x27;</span>;
 	}
-
-	<span class="hljs-function"><span class="hljs-title">setSizes</span>(<span class="hljs-params"></span>)</span> {
-		<span class="hljs-keyword">const</span> img = <span class="hljs-built_in">this</span>.getScopedElement( COVER_IMAGE_SELECTOR );
-		<span class="hljs-keyword">const</span> cDims = <span class="hljs-built_in">this</span>.element.getBoundingClientRect();
-		<span class="hljs-keyword">const</span> cRatio = cDims.width / cDims.height;
-		<span class="hljs-keyword">const</span> iRatio = img.naturalWidth / img.naturalHeight;
-
-		<span class="hljs-keyword">const</span> zoom = iRatio &gt; cRatio ? iRatio / cRatio : cRatio / iRatio;
-
-		img.sizes = <span class="hljs-built_in">Math</span>.min(cDims.width * zoom, <span class="hljs-built_in">window</span>.innerWidth) + <span class="hljs-string">&#x27;px&#x27;</span>;
-	}
 }
 </pre>
                             </code>
@@ -849,7 +837,7 @@
                 </li>
                 <li class="Meta-item">
                     <strong class="Meta-key">Size:</strong>
-                    <span class="Meta-value">1.9 KB</span>
+                    <span class="Meta-value">1.6 KB</span>
                 </li>
             </ul>
         </div>
