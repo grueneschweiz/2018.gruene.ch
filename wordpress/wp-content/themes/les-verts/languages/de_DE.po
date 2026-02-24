@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 2018gruenech\n"
 "POT-Creation-Date: 2025-07-15 13:27+0200\n"
-"PO-Revision-Date: 2025-07-15 11:58\n"
+"PO-Revision-Date: 2026-02-12 16:25\n"
 "Last-Translator: Cyrill Bolliger <bolliger@gmx.ch>\n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -2885,7 +2885,7 @@ msgstr "Symbol Schließen"
 #: templates/molecules/m-person.twig:48
 #, php-format
 msgid "Visit the Bluesky profile of %s"
-msgstr "Besuche das Twitterprofil von %s"
+msgstr "Besuche das Blueskyprofil von %s"
 
 #: templates/molecules/m-person.twig:55
 #, php-format
