@@ -96,7 +96,6 @@ class ImageFilters extends AbstractExtension {
             'src' => esc_url($src),
             'srcset' => $srcset,        // Standard srcset for non-lazy images
             'data-srcset' => $srcset,   // Data-srcset for lazy loading JavaScript
-            'sizes' => '100vw',
             'loading' => 'lazy',
             'alt' => !empty($attr['alt']) ? $attr['alt'] : ''
         ];
@@ -105,6 +104,16 @@ class ImageFilters extends AbstractExtension {
         $attributes['data-focal-point'] = $focal_point;
 
         $attributes = array_merge($attributes, $attr);
+
+        // For cover images (object-fit: cover), use 200vw to account for ~2x zoom from aspect ratio mismatch
+        // This ensures browser downloads high enough resolution before cropping
+        // Set this AFTER merge to prevent it from being overwritten
+        $sizes_value = !empty($attr['data-cover']) ? '200vw' : '100vw';
+        $attributes['sizes'] = $sizes_value;
+        $attributes['data-sizes'] = $sizes_value;  // Also set data-sizes for lazy loading script
+
+        // Remove data-cover from final attributes (it's only used for logic, not as HTML attribute)
+        unset($attributes['data-cover']);
 
         $html_attributes = [];
         foreach ($attributes as $name => $value) {
