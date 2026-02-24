@@ -22,7 +22,6 @@ export default class AImageCover extends BaseView {
 		super.bind();
 
 		this.on( 'afterReplaceImage', () => {
-			this.setSizes();
 			this.objectFit();
 		} );
 	}
@@ -74,16 +73,5 @@ export default class AImageCover extends BaseView {
 		}
 
 		return '';
-	}
-
-	setSizes() {
-		const img = this.getScopedElement( COVER_IMAGE_SELECTOR );
-		const cDims = this.element.getBoundingClientRect();
-		const cRatio = cDims.width / cDims.height;
-		const iRatio = img.naturalWidth / img.naturalHeight;
-
-		const zoom = iRatio > cRatio ? iRatio / cRatio : cRatio / iRatio;
-
-		img.sizes = Math.min(cDims.width * zoom, window.innerWidth) + 'px';
 	}
 }
