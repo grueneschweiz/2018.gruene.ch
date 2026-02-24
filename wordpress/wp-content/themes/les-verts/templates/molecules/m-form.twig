@@ -156,6 +156,15 @@
 			</div>{# close .m-form__custom-width-block #}
 		{% endif %}
 
+		{# Honeypot anti-spam field #}
+		<div style="position: absolute; left: -5000px;" aria-hidden="true">
+			<label for="{{ default_id_prefix }}-fax">{{ __('Please leave empty', constant('THEME_DOMAIN')) }}</label>
+			<input type="text" name="fax" id="{{ default_id_prefix }}-fax" tabindex="-1" autocomplete="off">
+		</div>
+
+		{# Time-based anti-spam check: JS sets the value on first interaction #}
+		<input type="hidden" name="form_interaction_duration" value="">
+
 		<div class="m-form__submit-wrapper">
 			<div class="m-form__submit-button">
 				{% include 'atoms/a-button.twig' with {

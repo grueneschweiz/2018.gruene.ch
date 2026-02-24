@@ -87,8 +87,8 @@ function les_verts_image_handling_setup() {
     add_image_size('wpseo-opengraph', 1200, 630, true);
 
     // Set default image quality
-    add_filter('jpeg_quality', function() { return 85; });
-    add_filter('wp_editor_set_quality', function() { return 85; });
+    add_filter('jpeg_quality', function() { return 90; });
+    add_filter('wp_editor_set_quality', function() { return 90; });
 }
 
 /**
@@ -141,8 +141,8 @@ add_filter('get_twig', function($twig) {
 
     $twig->addFilter(
         new TwigFilter( 'get_timber_image_responsive',
-            function (Environment $env, $image, $size = 'medium') use ($image_filters) {
-                return $image_filters->getTimberImageResponsive($env, $image, $size);
+            function (Environment $env, $image, $size = 'medium', $attr = []) use ($image_filters) {
+                return $image_filters->getTimberImageResponsive($env, $image, $size, $attr);
             },
             ['needs_environment' => true]
         )
