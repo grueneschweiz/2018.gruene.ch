@@ -34,6 +34,7 @@ export default class MForm extends BaseView {
 
 		/* @noinspection JSCheckFunctionSignaturesInspection */
 		this.on( 'submit', e => this.submit( e ) );
+		this.trackFirstInteraction();
 	}
 
 	static buildRedirectUrl( url, formId ) {
@@ -104,6 +105,7 @@ export default class MForm extends BaseView {
 		this.sendingTimer = null;
 		this.origSubmitLbl = this.submitButton.innerHTML;
 		this.predecessorId = MForm.getUrlParam( LAST_SUBMISSION, - 1 );
+		this.interactionRecorded = false;
 	}
 
 	showSending() {
@@ -143,6 +145,9 @@ export default class MForm extends BaseView {
 
 		// mark as sending
 		this.showSending();
+
+		// set interaction duration before collecting form data
+		this.setInteractionDuration();
 
 		// the form data
 		const data = this.getFormData();
@@ -229,6 +234,27 @@ export default class MForm extends BaseView {
 			form.bind();
 
 			this.destroy();
+		}
+	}
+
+	trackFirstInteraction() {
+		const handler = () => {
+			if (this.interactionRecorded) {
+				return;
+			}
+			this.interactionRecorded = true;
+			this.interactionStartTime = Date.now();
+		};
+
+		this.element.addEventListener( 'input', handler );
+		this.element.addEventListener( 'change', handler );
+	}
+
+	setInteractionDuration() {
+		const field = this.element.querySelector(
+			'[name="form_interaction_duration"]' );
+		if (field && this.interactionStartTime) {
+			field.value = Math.floor( ( Date.now() - this.interactionStartTime ) / 1000 );
 		}
 	}
 
