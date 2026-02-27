@@ -1,0 +1,134 @@
+{
+    "key": "group_tracking_scripts_options",
+    "title": "Tracking Scripts Options",
+    "fields": [
+        {
+            "key": "field_tracking_banner_text",
+            "label": "Banner Text",
+            "name": "tracking_banner_text",
+            "type": "textarea",
+            "instructions": "Text displayed in the cookie banner",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Wir verwenden Tracking-Skripte, um unsere Website zu verbessern und dir relevante Inhalte anzuzeigen.",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_tracking_privacy_link",
+            "label": "Privacy Policy Link",
+            "name": "tracking_privacy_link",
+            "type": "url",
+            "instructions": "Link to your privacy policy page",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "https://example.com/privacy"
+        },
+        {
+            "key": "field_tracking_facebook_pixel_id",
+            "label": "Facebook Pixel ID",
+            "name": "tracking_facebook_pixel_id",
+            "type": "text",
+            "instructions": "Enter your Facebook Pixel ID (e.g., 1234567890)",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "1234567890",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_tracking_custom_scripts",
+            "label": "Custom Scripts",
+            "name": "tracking_custom_scripts",
+            "type": "repeater",
+            "instructions": "Add custom tracking scripts that will be loaded via external URL",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "field_tracking_script_name",
+            "min": 0,
+            "max": 0,
+            "layout": "table",
+            "button_label": "Add Script",
+            "sub_fields": [
+                {
+                    "key": "field_tracking_script_name",
+                    "label": "Script Name",
+                    "name": "script_name",
+                    "type": "text",
+                    "instructions": "Name for admin reference (e.g., \"Google Analytics\")",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "Google Analytics",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_tracking_script_url",
+                    "label": "Script URL",
+                    "name": "script_url",
+                    "type": "url",
+                    "instructions": "Full URL to the external script",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "https://example.com/script.js"
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "tracking-scripts-settings"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0
+}

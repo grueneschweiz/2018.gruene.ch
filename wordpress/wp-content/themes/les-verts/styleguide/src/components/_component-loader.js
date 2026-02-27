@@ -26,6 +26,7 @@ import Page from './templates/page/page';
 import OFooter from './organisms/o-footer/o-footer';
 import ASocialIcon from './atoms/a-social-icon/a-social-icon';
 import MSkipLink from './molecules/m-skip-link/m-skip-link';
+import OCookieBanner from './organisms/o-cookie-banner/o-cookie-banner';
 
 // ================= STOP TO ADD HERE
 
@@ -40,6 +41,7 @@ import MSkipLink from './molecules/m-skip-link/m-skip-link';
 const COMPONENTS_TO_LOAD = [
 	{ view: MMenu, name: 'MMenu', selector: '.m-menu' }, // load as very first (performance)
 	{ view: OHeader, name: 'OHeader', selector: '.o-header' }, // load second (performance)
+	{ view: OCookieBanner, name: 'OCookieBanner', selector: '.o-cookie-banner' }, // load third (consent management)
 	{ view: ASearch, name: 'ASearch', selector: '.a-search'},
 	{ view: OCampaign, name: 'OCampaign', selector: '.o-campaign' },
 	{ view: AInput, name: 'AInput', selector: '.a-input' },

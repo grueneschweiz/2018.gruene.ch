@@ -1,0 +1,145 @@
+{
+    "key": "group_tracking_scripts_page",
+    "title": "Enable Tracking Scripts",
+    "fields": [
+        {
+            "key": "field_enable_facebook_pixel",
+            "label": "Enable Facebook Pixel",
+            "name": "enable_facebook_pixel",
+            "type": "true_false",
+            "instructions": "Load Facebook Pixel on this page (requires Facebook Pixel ID to be configured in Tracking Scripts settings)",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "Load Facebook Pixel on this page",
+            "default_value": 0,
+            "ui": 1,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_enable_custom_script_0",
+            "label": "Enable Custom Script 1",
+            "name": "enable_custom_script_0",
+            "type": "true_false",
+            "instructions": "Load the first custom script configured in Tracking Scripts settings",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "Load Custom Script 1 on this page",
+            "default_value": 0,
+            "ui": 1,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_enable_custom_script_1",
+            "label": "Enable Custom Script 2",
+            "name": "enable_custom_script_1",
+            "type": "true_false",
+            "instructions": "Load the second custom script configured in Tracking Scripts settings",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "Load Custom Script 2 on this page",
+            "default_value": 0,
+            "ui": 1,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_enable_custom_script_2",
+            "label": "Enable Custom Script 3",
+            "name": "enable_custom_script_2",
+            "type": "true_false",
+            "instructions": "Load the third custom script configured in Tracking Scripts settings",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "Load Custom Script 3 on this page",
+            "default_value": 0,
+            "ui": 1,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_enable_custom_script_3",
+            "label": "Enable Custom Script 4",
+            "name": "enable_custom_script_3",
+            "type": "true_false",
+            "instructions": "Load the fourth custom script configured in Tracking Scripts settings",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "Load Custom Script 4 on this page",
+            "default_value": 0,
+            "ui": 1,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_enable_custom_script_4",
+            "label": "Enable Custom Script 5",
+            "name": "enable_custom_script_4",
+            "type": "true_false",
+            "instructions": "Load the fifth custom script configured in Tracking Scripts settings",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "Load Custom Script 5 on this page",
+            "default_value": 0,
+            "ui": 1,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ],
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "page"
+            }
+        ]
+    ],
+    "menu_order": 100,
+    "position": "side",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Enable tracking scripts for this page. The cookie banner will only appear if at least one script is enabled.",
+    "show_in_rest": 0
+}

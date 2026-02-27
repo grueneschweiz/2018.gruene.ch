@@ -1,0 +1,148 @@
+@use "../../../scss/variables" as v;
+@use "../../../scss/mixins" as m;
+
+.o-cookie-banner {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: 9999;
+	background: v.$color-grey-1;
+	box-shadow: 0 -2px 20px rgba(0, 0, 0, 0.20);
+	padding: 20px;
+	display: none;
+	animation: slideUp 0.3s ease-out;
+
+	@include m.media(v.$DESKTOP) {
+		left: auto;
+		right: 8%;
+		bottom: 0;
+		width: 800px;
+		max-width: calc(100vw - 40px);
+		border: 12px solid v.$color-grey-2;
+		border-top: 12px solid v.$color-grey-2;
+		border-bottom: none;
+		border-radius: 4px 4px 0 0;
+		box-shadow: 0 -2px 30px rgba(0, 0, 0, 0.30);
+	}
+
+	&--visible {
+		display: flex;
+		flex-direction: column;
+	}
+
+	&__content {
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+		gap: 15px;
+
+		@include m.media(v.$DESKTOP) {
+			gap: 20px;
+		}
+	}
+
+	&__text {
+		margin: 0;
+		font-size: 14px;
+		line-height: 1.5;
+		color: v.$color-text;
+
+		@include m.media(v.$DESKTOP) {
+			font-size: 15px;
+		}
+	}
+
+	&__privacy-link {
+		color: v.$color-primary;
+		text-decoration: underline;
+		transition: color v.$transition-fast v.$transition-ease;
+
+		@include m.hover {
+			color: v.$color-primary-dark;
+		}
+	}
+
+	&__actions {
+		display: flex;
+		gap: 10px;
+		flex-wrap: wrap;
+
+		@include m.media(v.$DESKTOP) {
+			gap: 15px;
+		}
+	}
+
+	&__button {
+		flex: 1;
+		min-width: 120px;
+		font-size: 14px;
+		padding: 10px 20px;
+
+		@include m.media(v.$DESKTOP) {
+			flex: 0 1 auto;
+		}
+
+		&--accept {
+			background: v.$color-primary;
+			color: v.$color-white;
+			border: none;
+
+			@include m.hover {
+				background: v.$color-primary-dark;
+			}
+		}
+
+		&--decline {
+			background: v.$color-white;
+			color: v.$color-text;
+			border: 1px solid v.$color-grey-2;
+
+			@include m.hover {
+				background: v.$color-grey-1;
+			}
+		}
+	}
+
+	&__close {
+		position: absolute;
+		top: 10px;
+		right: 10px;
+		background: transparent;
+		border: none;
+		padding: 5px;
+		cursor: pointer;
+		opacity: 0.6;
+		transition: opacity v.$transition-fast v.$transition-ease;
+		display: none;
+
+		@include m.hover {
+			opacity: 1;
+		}
+
+		&[hidden] {
+			display: none;
+		}
+
+		&:not([hidden]) {
+			display: block;
+		}
+
+		svg {
+			width: 20px;
+			height: 20px;
+			stroke: v.$color-text;
+		}
+	}
+}
+
+@keyframes slideUp {
+	from {
+		transform: translateY(100%);
+		opacity: 0;
+	}
+	to {
+		transform: translateY(0);
+		opacity: 1;
+	}
+}
