@@ -3199,3 +3199,20 @@ msgstr ""
 #. Template Name of the plugin/theme
 msgid "Overview Page"
 msgstr ""
+
+#: templates/organisms/o-cookie-banner.twig:7
+msgid "Datenschutzerklärung"
+msgstr ""
+
+#: templates/organisms/o-cookie-banner.twig:13
+msgid "Akzeptieren"
+msgstr ""
+
+#: templates/organisms/o-cookie-banner.twig:16
+msgid "Ablehnen"
+msgstr ""
+
+#: templates/organisms/o-cookie-banner.twig:20
+#: templates/organisms/o-cookie-banner.twig:22
+msgid "Close banner"
+msgstr ""

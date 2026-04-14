@@ -1,0 +1,66 @@
+{
+    "key": "group_tracking_scripts_translatable",
+    "title": "Tracking Scripts (Translatable)",
+    "fields": [
+        {
+            "key": "field_tracking_banner_text_translatable",
+            "label": "Banner Text",
+            "name": "tracking_banner_text",
+            "type": "textarea",
+            "instructions": "Text displayed in the cookie banner (language-specific)",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "Wir verwenden Tracking-Skripte...",
+            "maxlength": "",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_tracking_privacy_link_translatable",
+            "label": "Privacy Policy Link",
+            "name": "tracking_privacy_link",
+            "type": "url",
+            "instructions": "Link to your privacy policy page (language-specific)",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "https://example.com/privacy"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "tracking-scripts-de"
+            }
+        ],
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "tracking-scripts-fr"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Language-specific cookie banner text and privacy policy link",
+    "show_in_rest": 0
+}

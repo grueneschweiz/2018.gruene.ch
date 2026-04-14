@@ -8,15 +8,32 @@
 add_action( 'acf/init', function () {
 	acf_update_setting( 'l10n_textdomain', THEME_DOMAIN );
 
-	// Add Tracking Scripts options page under Settings
+	// Add Tracking Scripts options pages under Settings
 	if ( function_exists( 'acf_add_options_page' ) ) {
+		// Global tracking scripts configuration (same for all languages)
 		acf_add_options_page( [
 			'page_title'  => __( 'Tracking Scripts', THEME_DOMAIN ),
 			'menu_title'  => __( 'Tracking Scripts', THEME_DOMAIN ),
 			'menu_slug'   => 'tracking-scripts-settings',
 			'capability'  => 'manage_options',
 			'parent_slug' => 'options-general.php',
+			'post_id'     => 'tracking-scripts',
 		] );
+
+		// Language-specific pages for translatable content (banner text, privacy link)
+		if ( function_exists( 'pll_languages_list' ) ) {
+			$languages = pll_languages_list();
+			foreach ( $languages as $lang ) {
+				acf_add_options_page( [
+					'page_title'  => sprintf( __( 'Cookie Banner Text (%s)', THEME_DOMAIN ), strtoupper( $lang ) ),
+					'menu_title'  => sprintf( __( 'Cookie Banner (%s)', THEME_DOMAIN ), strtoupper( $lang ) ),
+					'menu_slug'   => 'tracking-scripts-' . $lang,
+					'capability'  => 'manage_options',
+					'parent_slug' => 'options-general.php',
+					'post_id'     => 'tracking-scripts-' . $lang,
+				] );
+			}
+		}
 	}
 } );
 
@@ -39,7 +56,7 @@ add_filter( 'acf/prepare_field/key=field_enable_facebook_pixel', function ( $fie
 		return $field;
 	}
 
-	$pixel_id = get_field( 'tracking_facebook_pixel_id', 'option' );
+	$pixel_id = get_field( 'tracking_facebook_pixel_id', 'tracking-scripts' );
 
 	if ( empty( $pixel_id ) ) {
 		return false; // Hide field
@@ -64,7 +81,7 @@ add_filter( 'acf/prepare_field', function ( $field ) {
 
 		if ( isset( $matches[1] ) ) {
 			$script_index = intval( $matches[1] );
-			$custom_scripts = get_field( 'tracking_custom_scripts', 'option' );
+			$custom_scripts = get_field( 'tracking_custom_scripts', 'tracking-scripts' );
 
 			// Hide field if this script index doesn't exist in configuration
 			if ( ! is_array( $custom_scripts ) || ! isset( $custom_scripts[ $script_index ] ) || empty( $custom_scripts[ $script_index ]['script_url'] ) ) {
