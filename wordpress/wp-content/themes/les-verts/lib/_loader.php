@@ -100,6 +100,7 @@ require_once __DIR__ . '/controllers/navigation.php';
 require_once __DIR__ . '/controllers/progress_bar.php';
 require_once __DIR__ . '/controllers/frontpage.php';
 require_once __DIR__ . '/controllers/landingpage.php';
+require_once __DIR__ . '/controllers/cookie_banner.php';
 
 // register
 Branding_controller::register();
@@ -107,6 +108,7 @@ Navigation_controller::register();
 Progress_controller::register();
 Frontpage_controller::register();
 Landingpage_controller::register();
+Cookie_Banner_controller::register();
 
 /**
  * CUSTOM POST TYPES
@@ -188,6 +190,7 @@ require_once __DIR__ . '/tweaks/limit-image-upload-dims.php';
 require_once __DIR__ . '/tweaks/inject-svg-sprite.php';
 require_once __DIR__ . '/tweaks/responsive-local-video.php';
 require_once __DIR__ . '/tweaks/fix-multi-category-urls.php';
+require_once __DIR__ . '/tweaks/tracking-scripts.php';
 
 if ( defined( 'WPSEO_FILE' ) ) {
 	require_once __DIR__ . '/tweaks/tweak-yoast-social-media-stuff.php';

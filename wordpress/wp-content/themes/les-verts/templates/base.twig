@@ -24,6 +24,9 @@
 			{% include 'footer.twig' %}
 		</footer>
 	</div>
+	{% if cookie_banner.enabled %}
+		{% include 'organisms/o-cookie-banner.twig' %}
+	{% endif %}
 	{{ function('wp_footer') }}
 	{% endblock %}
 	</div>
