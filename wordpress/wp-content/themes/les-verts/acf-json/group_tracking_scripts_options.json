@@ -1,42 +1,7 @@
 {
     "key": "group_tracking_scripts_options",
-    "title": "Tracking Scripts Options",
+    "title": "Tracking Scripts (Global)",
     "fields": [
-        {
-            "key": "field_tracking_banner_text",
-            "label": "Banner Text",
-            "name": "tracking_banner_text",
-            "type": "textarea",
-            "instructions": "Text displayed in the cookie banner",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "Wir verwenden Tracking-Skripte, um unsere Website zu verbessern und dir relevante Inhalte anzuzeigen.",
-            "placeholder": "",
-            "maxlength": "",
-            "rows": 3,
-            "new_lines": ""
-        },
-        {
-            "key": "field_tracking_privacy_link",
-            "label": "Privacy Policy Link",
-            "name": "tracking_privacy_link",
-            "type": "url",
-            "instructions": "Link to your privacy policy page",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "https://example.com/privacy"
-        },
         {
             "key": "field_tracking_facebook_pixel_id",
             "label": "Facebook Pixel ID",
@@ -129,6 +94,6 @@
     "instruction_placement": "label",
     "hide_on_screen": "",
     "active": true,
-    "description": "",
+    "description": "Global tracking scripts configuration (same for all languages)",
     "show_in_rest": 0
 }
