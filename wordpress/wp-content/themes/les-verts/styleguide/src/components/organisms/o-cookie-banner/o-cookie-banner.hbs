@@ -1,0 +1,26 @@
+<div class="o-cookie-banner" role="dialog" aria-labelledby="cookie-banner-text" aria-live="polite">
+	<div class="o-cookie-banner__content">
+		<p id="cookie-banner-text" class="o-cookie-banner__text">
+			{{{ text }}}
+			{{#if privacy_link}}
+				<a href="{{ privacy_link }}" class="o-cookie-banner__privacy-link" target="_blank" rel="noopener">
+					{{ privacy_text }}
+				</a>
+			{{/if}}
+		</p>
+		<div class="o-cookie-banner__actions">
+			<button type="button" class="a-button o-cookie-banner__button o-cookie-banner__button--accept" data-action="accept">
+				{{ accept_text }}
+			</button>
+			<button type="button" class="a-button a-button--secondary o-cookie-banner__button o-cookie-banner__button--decline" data-action="decline">
+				{{ decline_text }}
+			</button>
+		</div>
+	</div>
+	<button type="button" class="o-cookie-banner__close" aria-label="Close banner" hidden>
+		<svg role="img" aria-hidden="true">
+			<title>Close banner</title>
+			<use xlink:href="#close"></use>
+		</svg>
+	</button>
+</div>

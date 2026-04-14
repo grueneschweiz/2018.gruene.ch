@@ -1,0 +1,8 @@
+title: Cookie Banner
+status: ready
+context:
+  text: "Wir verwenden Tracking-Skripte, um unsere Website zu verbessern und dir relevante Inhalte anzuzeigen."
+  privacy_link: "#"
+  privacy_text: "Datenschutzerklärung"
+  accept_text: "Akzeptieren"
+  decline_text: "Ablehnen"
