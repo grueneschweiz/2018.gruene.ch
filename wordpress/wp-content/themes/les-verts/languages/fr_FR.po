@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 2018gruenech\n"
-"POT-Creation-Date: 2025-07-15 13:27+0200\n"
-"PO-Revision-Date: 2025-07-15 11:58\n"
+"POT-Creation-Date: 2026-04-16 14:33+0200\n"
+"PO-Revision-Date: 2026-04-16 12:56\n"
 "Last-Translator: Cyrill Bolliger <bolliger@gmx.ch>\n"
 "Language-Team: French\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 3.6\n"
+"X-Generator: Poedit 3.9\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
 "X-Poedit-WPHeader: style.css\n"
@@ -1125,7 +1125,7 @@ msgstr "Affiche une accroche (teaser) d'un article ou d'une page."
 msgid "Select the post to display. The excerpt and the image of the post, will be displayed."
 msgstr "Choisis l'article à afficher. L'accroche (teaser) et l'image de l'article seront affichées."
 
-#: acf-translate.php:4651 acf-translate.php:5372 functions.php:151
+#: acf-translate.php:4651 acf-translate.php:5372 functions.php:154
 msgid "Footer"
 msgstr "Pied de page"
 
@@ -1528,25 +1528,39 @@ msgstr "Évènements à venir"
 msgid "Previous events"
 msgstr "Archives des évènements"
 
-#: functions.php:103
+#: functions.php:106
 msgid "Main navigation"
 msgstr "Navigation principale"
 
-#: functions.php:104
+#: functions.php:107
 msgid "Language navigation"
 msgstr "Navigation de langue"
 
-#: functions.php:105
+#: functions.php:108
 msgid "Footer meta navigation"
 msgstr "Méta-navigation dans le pied de page"
 
-#: functions.php:106
+#: functions.php:109
 msgid "Action button navigation"
 msgstr "bouton de la navigation \"action\""
 
-#: functions.php:153
+#: functions.php:156
 msgid "This is the footer. Use it for your primary calls to action (Button widget), your contact details (Contact widget) and the footer menu (Link list widget)."
 msgstr "Voici le pied de page. Utilise-le pour tes principaux appels à agir (gadget logiciel «Bouton»), tes coordonnées (gadget logiciel «Coordonnées») et un menu de navigation (gadget logiciel «Liste de liens»)."
+
+#: lib/acf/acf-init.php:15 lib/acf/acf-init.php:16
+msgid "Tracking Scripts"
+msgstr "Scripts de suivi"
+
+#: lib/acf/acf-init.php:28
+#, php-format
+msgid "Cookie Banner Text (%s)"
+msgstr "Bannière Cookie Texte (%s)"
+
+#: lib/acf/acf-init.php:29
+#, php-format
+msgid "Cookie Banner (%s)"
+msgstr "Bannière Cookie (%s)"
 
 #: lib/admin/acf-option-pages.php:21 lib/admin/acf-option-pages.php:22
 msgid "Global Options"
@@ -1578,6 +1592,10 @@ msgstr "Ce thème dépend fortement de l'extension (plugin) %sAdvanced Custom Fi
 #, php-format
 msgid "The WordPress' search is very limited and searches titles only. We therefore suggest installing the %sSearchWP%s."
 msgstr "La recherche proposée par WordPress est très limitée et ne s'étend qu'aux titres. Nous recommandons par conséquent l'installation de %sSearchWP%s."
+
+#: lib/controllers/cookie_banner.php:88
+msgid "Wir verwenden Tracking-Skripte, um unsere Website zu verbessern und dir relevante Inhalte anzuzeigen."
+msgstr "Nous utilisons des scripts de suivi pour améliorer notre site web et vous proposer un contenu pertinent."
 
 #: lib/controllers/navigation.php:77
 #, php-format
@@ -2483,7 +2501,7 @@ msgid "Hi Admin\n\n"
 msgstr "Salut Admin\n\n"
 "Le wp_cron Job %s n'a pas pu être exécuté sur %s. Résous-le rapidement, faute de quoi les réponses au formulaire ne pourront pas fonctionner comme souhaité. Nous n'avons pas d'autres informations sur l'erreur car WordPress annonce seulement \"false\" :("
 
-#: lib/form/public-api.php:36 lib/form/submission.php:206
+#: lib/form/public-api.php:36 lib/form/submission.php:241
 msgid "Too many requests. Please try again later."
 msgstr "Le nombre de requêtes est trop important. Merci de réessayer plus tard."
 
@@ -2491,17 +2509,17 @@ msgstr "Le nombre de requêtes est trop important. Merci de réessayer plus tard
 msgid "Every 10 Minutes"
 msgstr "Toutes les 10 minutes"
 
-#: lib/form/submission.php:354
+#: lib/form/submission.php:389
 #, php-format
 msgid "%s: Invalid value."
 msgstr "%s : valeur non valide"
 
-#: lib/form/submission.php:372
+#: lib/form/submission.php:407
 #, php-format
 msgid "%s: Invalid or missing value."
 msgstr "%s : valeur non valide ou manquante"
 
-#: lib/form/submission.php:411
+#: lib/form/submission.php:446
 #, php-format
 msgid "%s: Missing data."
 msgstr "%s : données manquantes"
@@ -2834,23 +2852,27 @@ msgctxt "facebook, twitter or instagram"
 msgid "Visit us on %s"
 msgstr "Rends-nous visite sur %s"
 
-#: templates/molecules/m-form.twig:177
+#: templates/molecules/m-form.twig:161
+msgid "Please leave empty"
+msgstr "Veuillez laisser vide"
+
+#: templates/molecules/m-form.twig:186
 msgid "Uups, something went wrong!"
 msgstr "Oups, il y a eu une erreur!"
 
-#: templates/molecules/m-form.twig:179
+#: templates/molecules/m-form.twig:188
 msgid "Sorry, there was an error submitting this form. If the error persists, please contact us by email."
 msgstr "Nous sommes désolés, une erreur s'est produite lors de l'envoi du formulaire. Merci de nous contacter par courriel si cette erreur se reproduit."
 
-#: templates/molecules/m-form.twig:183
+#: templates/molecules/m-form.twig:192
 msgid "Please check input"
 msgstr "Merci de vérifier les informations saisies."
 
-#: templates/molecules/m-form.twig:185
+#: templates/molecules/m-form.twig:194
 msgid "There seems to be an error in your input. Please recheck the fields:"
 msgstr "Il semble qu'une erreur s'est produite lors de la saisie. Merci de vérifier les erreurs suivantes :"
 
-#: templates/molecules/m-form.twig:192
+#: templates/molecules/m-form.twig:201
 msgid "The form that would normally show up here was closed and is therefore not available."
 msgstr "Le formulaire qui devrait normalement s'afficher ici est clos et n'est donc pas disponible."
 
@@ -2922,36 +2944,36 @@ msgstr "Plus..."
 msgid "Less"
 msgstr "Moins..."
 
-#: templates/molecules/m-share-block.twig:17
-msgid "Share on twitter"
-msgstr "partager sur Twitter"
+#: templates/molecules/m-share-block.twig:11
+msgid "Share on Bluesky"
+msgstr "Partager sur Bluesky"
 
-#: templates/molecules/m-share-block.twig:29
+#: templates/molecules/m-share-block.twig:22
 msgid "Share on facebook"
 msgstr "partager sur Facebook"
 
-#: templates/molecules/m-share-block.twig:40
+#: templates/molecules/m-share-block.twig:33
 msgid "Share on WhatsApp"
 msgstr "partager via WhatsApp"
 
-#: templates/molecules/m-share-block.twig:42
+#: templates/molecules/m-share-block.twig:35
 msgid "WhatsApp"
 msgstr "WhatsApp"
 
-#: templates/molecules/m-share-block.twig:50
+#: templates/molecules/m-share-block.twig:43
 msgid "Share on Telegram"
 msgstr "partager via Telegram"
 
-#: templates/molecules/m-share-block.twig:52
+#: templates/molecules/m-share-block.twig:45
 msgid "Telegram"
 msgstr "Telegram"
 
-#: templates/molecules/m-share-block.twig:61
+#: templates/molecules/m-share-block.twig:54
 msgid "Share by email"
 msgstr "partager via courriel"
 
-#: templates/molecules/m-share-block.twig:71
-#: templates/molecules/m-share-block.twig:73
+#: templates/molecules/m-share-block.twig:64
+#: templates/molecules/m-share-block.twig:66
 msgid "Copy link"
 msgstr "copier le lien"
 
@@ -2976,12 +2998,12 @@ msgid "Copy link to this page"
 msgstr "copier le lien de cette page"
 
 #: templates/molecules/m-share.twig:26
-msgid "Share this page on twitter"
-msgstr "Partage ce site "
-
-#: templates/molecules/m-share.twig:34
 msgid "Share this page on facebook"
 msgstr "Partage ce site sur Facebook"
+
+#: templates/molecules/m-share.twig:34
+msgid "Share this page on Bluesky"
+msgstr "Partage ce site sur Bluesky"
 
 #: templates/molecules/m-share.twig:42
 msgid "Share this page by email"
@@ -2999,6 +3021,23 @@ msgstr "Aller au contenu principal"
 msgctxt "A vote proposal is the subject"
 msgid "More about this subject"
 msgstr "Plus d'informations sur cet objet"
+
+#: templates/organisms/o-cookie-banner.twig:7
+msgid "Datenschutzerklärung"
+msgstr "Protection des données"
+
+#: templates/organisms/o-cookie-banner.twig:13
+msgid "Akzeptieren"
+msgstr "Accepter"
+
+#: templates/organisms/o-cookie-banner.twig:16
+msgid "Ablehnen"
+msgstr "Refuser"
+
+#: templates/organisms/o-cookie-banner.twig:20
+#: templates/organisms/o-cookie-banner.twig:22
+msgid "Close banner"
+msgstr "Fermer"
 
 #: templates/organisms/o-front-article.twig:39
 msgid "Quotation mark"

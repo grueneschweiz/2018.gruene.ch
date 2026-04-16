@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 2018gruenech\n"
-"POT-Creation-Date: 2025-07-15 13:27+0200\n"
-"PO-Revision-Date: 2026-02-12 16:25\n"
+"POT-Creation-Date: 2026-04-16 14:33+0200\n"
+"PO-Revision-Date: 2026-04-16 12:56\n"
 "Last-Translator: Cyrill Bolliger <bolliger@gmx.ch>\n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.6\n"
+"X-Generator: Poedit 3.9\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
 "X-Poedit-WPHeader: style.css\n"
@@ -1124,7 +1124,7 @@ msgstr "Zeige einen Teaser eines Beitrages oder einer Seite an."
 msgid "Select the post to display. The excerpt and the image of the post, will be displayed."
 msgstr "Wähle den anzuzeigenden Beitrag. Der Teaser und das Bild des Beitrages werden angezeigt."
 
-#: acf-translate.php:4651 acf-translate.php:5372 functions.php:151
+#: acf-translate.php:4651 acf-translate.php:5372 functions.php:154
 msgid "Footer"
 msgstr "Footer"
 
@@ -1526,25 +1526,39 @@ msgstr "Kommende Veranstaltungen"
 msgid "Previous events"
 msgstr "Vergangene Veranstaltungen"
 
-#: functions.php:103
+#: functions.php:106
 msgid "Main navigation"
 msgstr "Hauptnavigation"
 
-#: functions.php:104
+#: functions.php:107
 msgid "Language navigation"
 msgstr "Sprachnavigation"
 
-#: functions.php:105
+#: functions.php:108
 msgid "Footer meta navigation"
 msgstr "Footer-Metanavigation"
 
-#: functions.php:106
+#: functions.php:109
 msgid "Action button navigation"
 msgstr "Aktions-Button-Navigation"
 
-#: functions.php:153
+#: functions.php:156
 msgid "This is the footer. Use it for your primary calls to action (Button widget), your contact details (Contact widget) and the footer menu (Link list widget)."
 msgstr "Das ist der Footer. Verwende ihn für deine wichtigsten Aufrufe zur Aktion (Button-Widget), deine Kontaktdaten (Kontakt-Widget) und eine Footer-Navigation (Linkliste-Widget)."
+
+#: lib/acf/acf-init.php:15 lib/acf/acf-init.php:16
+msgid "Tracking Scripts"
+msgstr "Tracking Scripts"
+
+#: lib/acf/acf-init.php:28
+#, php-format
+msgid "Cookie Banner Text (%s)"
+msgstr "Cookie-Banner Text (%s)"
+
+#: lib/acf/acf-init.php:29
+#, php-format
+msgid "Cookie Banner (%s)"
+msgstr "Cookie-Banner (%s)"
 
 #: lib/admin/acf-option-pages.php:21 lib/admin/acf-option-pages.php:22
 msgid "Global Options"
@@ -1576,6 +1590,10 @@ msgstr "Dieses Theme hängt stark von %sAdvanced Custom Fields Pro%s ab. Ohne di
 #, php-format
 msgid "The WordPress' search is very limited and searches titles only. We therefore suggest installing the %sSearchWP%s."
 msgstr "Die Suche von WordPress ist sehr eingeschränkt und sucht nur in den Titeln. Wir empfehlen darum %sSearchWP%s zu installieren."
+
+#: lib/controllers/cookie_banner.php:88
+msgid "Wir verwenden Tracking-Skripte, um unsere Website zu verbessern und dir relevante Inhalte anzuzeigen."
+msgstr "Wir verwenden Tracking-Skripte, um unsere Website zu verbessern und dir relevante Inhalte anzuzeigen."
 
 #: lib/controllers/navigation.php:77
 #, php-format
@@ -2481,7 +2499,7 @@ msgid "Hi Admin\n\n"
 msgstr "Hallo Admin\n\n"
 "Der wp_cron Job %s konnte auf %s nicht ausgeführt werden. Löse das zeitnah, sonst werden Formularrückmeldungen nicht funktionieren wie erwartet. Es gibt keine weiteren Infos zum Fehler, da WordPress nur 'false' zurückmeldet :("
 
-#: lib/form/public-api.php:36 lib/form/submission.php:206
+#: lib/form/public-api.php:36 lib/form/submission.php:241
 msgid "Too many requests. Please try again later."
 msgstr "Zu viele Anfragen. Bitte versuche es später nochmals."
 
@@ -2489,17 +2507,17 @@ msgstr "Zu viele Anfragen. Bitte versuche es später nochmals."
 msgid "Every 10 Minutes"
 msgstr "Alle 10 Minuten"
 
-#: lib/form/submission.php:354
+#: lib/form/submission.php:389
 #, php-format
 msgid "%s: Invalid value."
 msgstr "%s: Ungültiger Wert."
 
-#: lib/form/submission.php:372
+#: lib/form/submission.php:407
 #, php-format
 msgid "%s: Invalid or missing value."
 msgstr "%s: Ungültiger oder fehlender Wert."
 
-#: lib/form/submission.php:411
+#: lib/form/submission.php:446
 #, php-format
 msgid "%s: Missing data."
 msgstr "%s: Fehlende Daten."
@@ -2832,23 +2850,27 @@ msgctxt "facebook, twitter or instagram"
 msgid "Visit us on %s"
 msgstr "Besuche uns auf %s"
 
-#: templates/molecules/m-form.twig:177
+#: templates/molecules/m-form.twig:161
+msgid "Please leave empty"
+msgstr "Bitte leer lassen"
+
+#: templates/molecules/m-form.twig:186
 msgid "Uups, something went wrong!"
 msgstr "Uups, etwas ist schief gelaufen!"
 
-#: templates/molecules/m-form.twig:179
+#: templates/molecules/m-form.twig:188
 msgid "Sorry, there was an error submitting this form. If the error persists, please contact us by email."
 msgstr "Es tut uns leid, es gab einen Fehler beim Versenden dieses Formulars. Bitte kontaktiere uns per E-Mail, falls dieser Fehler erneut auftritt."
 
-#: templates/molecules/m-form.twig:183
+#: templates/molecules/m-form.twig:192
 msgid "Please check input"
 msgstr "Bitte überprüfe die Eingaben"
 
-#: templates/molecules/m-form.twig:185
+#: templates/molecules/m-form.twig:194
 msgid "There seems to be an error in your input. Please recheck the fields:"
 msgstr "Es scheint einen Eingabefehler gegeben zu haben. Bitte überprüfe die folgenden Felder:"
 
-#: templates/molecules/m-form.twig:192
+#: templates/molecules/m-form.twig:201
 msgid "The form that would normally show up here was closed and is therefore not available."
 msgstr "Das Formular, das hier üblicherweise angezeigt würde, wurde geschlossen und ist deswegen nicht verfügbar."
 
@@ -2920,36 +2942,36 @@ msgstr "Mehr"
 msgid "Less"
 msgstr "Weniger"
 
-#: templates/molecules/m-share-block.twig:17
-msgid "Share on twitter"
-msgstr "Auf Twitter teilen"
+#: templates/molecules/m-share-block.twig:11
+msgid "Share on Bluesky"
+msgstr "Auf Bluesky teilen"
 
-#: templates/molecules/m-share-block.twig:29
+#: templates/molecules/m-share-block.twig:22
 msgid "Share on facebook"
 msgstr "Auf Facebook teilen"
 
-#: templates/molecules/m-share-block.twig:40
+#: templates/molecules/m-share-block.twig:33
 msgid "Share on WhatsApp"
 msgstr "Via WhatsApp teilen"
 
-#: templates/molecules/m-share-block.twig:42
+#: templates/molecules/m-share-block.twig:35
 msgid "WhatsApp"
 msgstr "WhatsApp"
 
-#: templates/molecules/m-share-block.twig:50
+#: templates/molecules/m-share-block.twig:43
 msgid "Share on Telegram"
 msgstr "Via Telegram teilen"
 
-#: templates/molecules/m-share-block.twig:52
+#: templates/molecules/m-share-block.twig:45
 msgid "Telegram"
 msgstr "Telegram"
 
-#: templates/molecules/m-share-block.twig:61
+#: templates/molecules/m-share-block.twig:54
 msgid "Share by email"
 msgstr "Via E-Mail teilen"
 
-#: templates/molecules/m-share-block.twig:71
-#: templates/molecules/m-share-block.twig:73
+#: templates/molecules/m-share-block.twig:64
+#: templates/molecules/m-share-block.twig:66
 msgid "Copy link"
 msgstr "Link kopieren"
 
@@ -2974,12 +2996,12 @@ msgid "Copy link to this page"
 msgstr "Link zu dieser Seite kopieren"
 
 #: templates/molecules/m-share.twig:26
-msgid "Share this page on twitter"
-msgstr "Teile diese Seite auf Twitter"
-
-#: templates/molecules/m-share.twig:34
 msgid "Share this page on facebook"
 msgstr "Teile diese Seite auf Facebook"
+
+#: templates/molecules/m-share.twig:34
+msgid "Share this page on Bluesky"
+msgstr "Teile diese Seite auf Bluesky"
 
 #: templates/molecules/m-share.twig:42
 msgid "Share this page by email"
@@ -2997,6 +3019,23 @@ msgstr "Zum Hauptinhalt springen"
 msgctxt "A vote proposal is the subject"
 msgid "More about this subject"
 msgstr "Mehr zu dieser Vorlage"
+
+#: templates/organisms/o-cookie-banner.twig:7
+msgid "Datenschutzerklärung"
+msgstr "Datenschutzerklärung"
+
+#: templates/organisms/o-cookie-banner.twig:13
+msgid "Akzeptieren"
+msgstr "Akzeptieren"
+
+#: templates/organisms/o-cookie-banner.twig:16
+msgid "Ablehnen"
+msgstr "Ablehnen"
+
+#: templates/organisms/o-cookie-banner.twig:20
+#: templates/organisms/o-cookie-banner.twig:22
+msgid "Close banner"
+msgstr "Schliessen"
 
 #: templates/organisms/o-front-article.twig:39
 msgid "Quotation mark"
