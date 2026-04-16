@@ -153,19 +153,18 @@ Localization is a mess:
   - If you changed some ACF fields:
     [Export all ACF field groups as PHP](http://localhost/wp-admin/edit.php?post_type=acf-field-group&page=acf-tools)
     and store them in
-    [wordpress/wp-content/themes/les-verts/acf-translate.php](wordpress/wp-content/themes/les-verts/acf-translate.php).
+    [wordpress/wp-content/themes/les-verts/acf-translate.php](/wordpress/wp-content/themes/les-verts/acf-translate.php).
     Make sure you don't overwrite the `die();` statement on top.
-  - Download and install [Poedit Pro](https://poedit.net/pro) on your local machine. You need the pro version because of
-    twig.
+  - Download and install [Poedit Pro](https://poedit.net/pro) on your local machine. You need the pro version because of twig.
   - Open
-    [wordpress/wp-content/themes/les-verts/languages/theme.pot](wordpress/wp-content/themes/les-verts/languages/theme.pot)
+    [wordpress/wp-content/themes/les-verts/languages/theme.pot](/wordpress/wp-content/themes/les-verts/languages/theme.pot)
     with Poedit Pro and choose _Update from code_. Save the updated `theme.pot` file.
   - Commit the `theme.pot` file and push it to the `dev` branch on github.
   - The new strings are pushed to [crowdin](https://crowdin.com/project/2018gruenech) by
-    the [l10n.yml](.github/workflows/l10n.yml)
+    the [l10n.yml](/.github/workflows/l10n.yml)
     workflow.
   - Translate the strings on [crowdin](https://crowdin.com/project/2018gruenech).
-  - Trigger the [l10n.yml](.github/workflows/l10n.yml) workflow again. This will download the translated strings from
+  - Trigger the [l10n.yml](/.github/workflows/l10n.yml) workflow again. This will download the translated strings from
     [crowdin](https://crowdin.com/project/2018gruenech) and create a new PR with the translated files. If no
     translations changed, no PR is created.
   - Merge the PR.

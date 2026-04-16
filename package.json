@@ -32,6 +32,10 @@
   "browserslist": [
     "cover 99.5% in CH"
   ],
+  "resolutions": {
+    "follow-redirects": "1.16.0",
+    "picomatch": "2.3.2"
+  },
   "scripts": {
     "start": "gulp fractal:start",
     "start:all": "yarn wp:start && yarn start",
@@ -52,11 +56,11 @@
     "swiper": "^6.4.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.3.3",
-    "@babel/preset-env": "^7.3.1",
-    "@frctl/fractal": "^1.2.0",
-    "@frctl/handlebars": "^1.1.5",
-    "@frctl/mandelbrot": "^1.2.0",
+    "@babel/core": "^7.29.0",
+    "@babel/preset-env": "^7.29.2",
+    "@frctl/fractal": "1.5.15",
+    "@frctl/handlebars": "1.2.15",
+    "@frctl/mandelbrot": "1.10.3",
     "babelify": "^10.0.0",
     "browserify": "^17.0.0",
     "gulp": "^4.0.0",
@@ -70,10 +74,10 @@
     "gulp-sass": "^6.0.0",
     "gulp-svg-sprite": "^1.5.0",
     "gulp-uglify": "^3.0.1",
-    "handlebars": "^4.7.7",
+    "handlebars": "^4.7.9",
     "handlebars-helper-svg": "^2.0.1",
     "lodash.isobject": "^3.0.2",
-    "sass": "^1.35.2",
+    "sass": "^1.99.0",
     "vinyl-buffer": "^1.0.1",
     "vinyl-source-stream": "^2.0.0"
   }

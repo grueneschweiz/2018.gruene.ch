@@ -28,11 +28,17 @@ class Cookie_Banner_controller {
 	 * @return array
 	 */
 	public static function add_to_context( $context ) {
-		// Get global tracking scripts settings
-		$banner_text = get_field( 'tracking_banner_text', 'option' );
-		$privacy_link = get_field( 'tracking_privacy_link', 'option' );
-		$facebook_pixel_id = get_field( 'tracking_facebook_pixel_id', 'option' );
-		$custom_scripts = get_field( 'tracking_custom_scripts', 'option' );
+		// Get current language for language-specific options
+		$current_lang = function_exists( 'pll_current_language' ) ? pll_current_language() : '';
+		$lang_post_id = $current_lang ? 'tracking-scripts-' . $current_lang : 'tracking-scripts';
+
+		// Get language-specific translatable content (banner text, privacy link)
+		$banner_text = get_field( 'tracking_banner_text', $lang_post_id );
+		$privacy_link = get_field( 'tracking_privacy_link', $lang_post_id );
+
+		// Get global tracking scripts configuration (same for all languages)
+		$facebook_pixel_id = get_field( 'tracking_facebook_pixel_id', 'tracking-scripts' );
+		$custom_scripts = get_field( 'tracking_custom_scripts', 'tracking-scripts' );
 
 		// Get current page/post ID
 		$post_id = get_the_ID();
@@ -111,8 +117,8 @@ class Cookie_Banner_controller {
 		$active_scripts = [];
 
 		// Get global settings
-		$facebook_pixel_id = get_field( 'tracking_facebook_pixel_id', 'option' );
-		$custom_scripts = get_field( 'tracking_custom_scripts', 'option' );
+		$facebook_pixel_id = get_field( 'tracking_facebook_pixel_id', 'tracking-scripts' );
+		$custom_scripts = get_field( 'tracking_custom_scripts', 'tracking-scripts' );
 
 		// Check Facebook Pixel
 		if ( ! empty( $facebook_pixel_id ) && get_field( 'enable_facebook_pixel', $post_id ) ) {
