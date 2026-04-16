@@ -32,6 +32,10 @@
   "browserslist": [
     "cover 99.5% in CH"
   ],
+  "resolutions": {
+    "follow-redirects": "1.16.0",
+    "picomatch": "2.3.2"
+  },
   "scripts": {
     "start": "gulp fractal:start",
     "start:all": "yarn wp:start && yarn start",
@@ -70,7 +74,7 @@
     "gulp-sass": "^6.0.0",
     "gulp-svg-sprite": "^1.5.0",
     "gulp-uglify": "^3.0.1",
-    "handlebars": "^4.7.7",
+    "handlebars": "^4.7.9",
     "handlebars-helper-svg": "^2.0.1",
     "lodash.isobject": "^3.0.2",
     "sass": "^1.35.2",
