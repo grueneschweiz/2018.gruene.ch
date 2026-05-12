@@ -248,6 +248,9 @@ export default class MForm extends BaseView {
 
 		this.element.addEventListener( 'input', handler );
 		this.element.addEventListener( 'change', handler );
+		this.element.addEventListener( 'click', handler );
+		this.element.addEventListener( 'focus', handler, true );
+		this.element.addEventListener( 'touchstart', handler );
 	}
 
 	setInteractionDuration() {

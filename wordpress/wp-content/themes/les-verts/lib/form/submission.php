@@ -197,6 +197,15 @@ class FormSubmission {
 	 */
 	private function abort_if_honeypot_filled() {
 		if ( ! empty( $_POST['fax'] ) ) {
+			Util::debug_log( sprintf(
+				'[FORM_VALIDATION_REJECT] Reason: honeypot_filled | Value: %s | IP: %s | UA: %s | Form: %s | Referer: %s',
+				substr( $_POST['fax'], 0, 50 ), // Truncate value to avoid log spam
+				$_SERVER['REMOTE_ADDR'] ?? 'unknown',
+				substr( $_SERVER['HTTP_USER_AGENT'] ?? 'unknown', 0, 100 ),
+				$_POST['form_id'] ?? 'unknown',
+				$_SERVER['HTTP_REFERER'] ?? 'unknown'
+			) );
+
 			$this->respond_with_general_error( 400, 'Submission not valid.' );
 		}
 	}
@@ -213,14 +222,34 @@ class FormSubmission {
 			? (int) $_POST['form_interaction_duration']
 			: 0;
 
-		if ( ! $interaction_time ) {
-			$this->respond_with_general_error( 400, 'Submission not valid.' );
+		$min_time = defined( 'SUPT_FORM_MIN_SUBMIT_TIME' ) ? \SUPT_FORM_MIN_SUBMIT_TIME : 2;
 
-			return;
+		// Log validation failures for debugging
+		$should_reject = false;
+		$rejection_reason = '';
+
+		if ( ! $interaction_time ) {
+			$should_reject = true;
+			$rejection_reason = isset( $_POST['form_interaction_duration'] )
+				? 'field_present_but_empty'
+				: 'field_missing';
+		} elseif ( $interaction_time < $min_time ) {
+			$should_reject = true;
+			$rejection_reason = 'too_fast';
 		}
 
-		$min_time = defined( 'SUPT_FORM_MIN_SUBMIT_TIME' ) ? \SUPT_FORM_MIN_SUBMIT_TIME : 2;
-		if ( $interaction_time < $min_time ) {
+		if ( $should_reject ) {
+			Util::debug_log( sprintf(
+				'[FORM_VALIDATION_REJECT] Reason: %s | Duration: %s | Min: %d | IP: %s | UA: %s | Form: %s | Referer: %s',
+				$rejection_reason,
+				isset( $_POST['form_interaction_duration'] ) ? $_POST['form_interaction_duration'] : 'NOT_SET',
+				$min_time,
+				$_SERVER['REMOTE_ADDR'] ?? 'unknown',
+				substr( $_SERVER['HTTP_USER_AGENT'] ?? 'unknown', 0, 100 ),
+				$_POST['form_id'] ?? 'unknown',
+				$_SERVER['HTTP_REFERER'] ?? 'unknown'
+			) );
+
 			$this->respond_with_general_error( 400, 'Submission not valid.' );
 		}
 	}
