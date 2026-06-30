@@ -56,7 +56,7 @@
     "swiper": "^6.4.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.29.0",
+    "@babel/core": "^7.29.6",
     "@babel/preset-env": "^7.29.2",
     "@frctl/fractal": "1.5.15",
     "@frctl/handlebars": "1.2.15",
