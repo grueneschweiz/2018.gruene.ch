@@ -1,8 +1,6 @@
 import BaseView from './../../../js/base-view';
-import Swiper, { A11y, Keyboard, Navigation } from 'swiper';
-
-// Install modules
-Swiper.use([Keyboard, Navigation, A11y]);
+import Swiper from 'swiper';
+import { A11y, Keyboard, Navigation } from 'swiper/modules';
 
 const SWIPER_CONTAINER_SELECTOR = '.o-people-grid__library-container';
 const SLIDER_NEXT_BUTTON_SELECTOR = '.o-people-grid__slide-button--right';
@@ -13,6 +11,7 @@ export default class OPeopleGrid extends BaseView {
 		super.bind();
 
 		new Swiper( SWIPER_CONTAINER_SELECTOR, {
+			modules: [ Keyboard, Navigation, A11y ],
 			slidesPerView: 'auto',
 			navigation: {
 				nextEl: SLIDER_NEXT_BUTTON_SELECTOR,
