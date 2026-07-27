@@ -30,11 +30,23 @@
 		display: grid;
 		align-items: stretch;
 		grid-template-columns: 1fr;
-		@include m.fluid-props(grid-row-gap, v.$size-medium, v.$grid-max-width-max, v.$grid-gap-min, v.$grid-gap-max);
+	}
+
+	&__inner {
+		border-bottom: 1px solid v.$color-grey-2;
+		height: 100%;
 	}
 
 	&__initiative {
 		width: 100%;
 		@include m.fluid-grid-item-props(padding-left padding-right);
+
+		@include m.hover {
+			background-color: v.$color-grey-1;
+		}
+
+		&:last-child .o-front-initiatives__inner {
+			border-bottom: none;
+		}
 	}
 }

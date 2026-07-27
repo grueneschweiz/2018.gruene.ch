@@ -5,7 +5,9 @@
 	<div class="o-front-initiatives__initiatives">
 		{{#each rows}}
 			<div class="o-front-initiatives__initiative">
-				{{> @a-initiative-link this }}
+				<div class="o-front-initiatives__inner">
+					{{> @a-initiative-link this }}
+				</div>
 			</div>
 		{{/each}}
 	</div>

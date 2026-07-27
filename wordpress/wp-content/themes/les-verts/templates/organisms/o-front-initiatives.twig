@@ -5,12 +5,12 @@
 	<div class="o-front-initiatives__initiatives">
 		{% for row in block.rows %}
 			<div class="o-front-initiatives__initiative">
-				{% include 'atoms/a-initiative-link.twig' with {
-					'image': row.image,
-					'title': row.title,
-					'subtitle': row.subtitle,
-					'link': row.link
-				} only %}
+				<div class="o-front-initiatives__inner">
+					{% include 'atoms/a-initiative-link.twig' with {
+						'image': row.image,
+						'link': row.link
+					} only %}
+				</div>
 			</div>
 		{% endfor %}
 	</div>

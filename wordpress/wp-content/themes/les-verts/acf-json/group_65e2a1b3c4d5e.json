@@ -15,7 +15,7 @@
                 "class": "",
                 "id": ""
             },
-            "message": "Displays up to 4 images promoting your current initiatives. Clicking an image leads to the configured link.",
+            "message": "Displays up to 4 images promoting your current initiatives. The whole image is clickable and leads to the configured link.",
             "new_lines": "wpautop",
             "esc_html": 0
         },
@@ -53,7 +53,7 @@
                 "class": "",
                 "id": ""
             },
-            "collapsed": "field_65e2a1b3c4d63",
+            "collapsed": "field_65e2a1b3c4d62",
             "min": 1,
             "max": 4,
             "layout": "block",
@@ -64,7 +64,7 @@
                     "label": "Image",
                     "name": "image",
                     "type": "image",
-                    "instructions": "The image is cropped to a 16:9 ratio.",
+                    "instructions": "The image is cropped to a 4:1 ratio.",
                     "required": 1,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -84,49 +84,11 @@
                     "mime_types": ""
                 },
                 {
-                    "key": "field_65e2a1b3c4d63",
-                    "label": "Title",
-                    "name": "title",
-                    "type": "text",
-                    "instructions": "",
-                    "required": 1,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "maxlength": ""
-                },
-                {
-                    "key": "field_65e2a1b3c4d64",
-                    "label": "Subtitle",
-                    "name": "subtitle",
-                    "type": "text",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "maxlength": ""
-                },
-                {
                     "key": "field_65e2a1b3c4d65",
                     "label": "Link",
                     "name": "link",
                     "type": "url",
-                    "instructions": "The whole image and title are clickable and lead to this link.",
+                    "instructions": "The whole image is clickable and leads to this link.",
                     "required": 1,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -157,5 +119,5 @@
     "hide_on_screen": "",
     "active": false,
     "description": "",
-    "modified": 1721000000
+    "modified": 1721100000
 }
