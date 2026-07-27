@@ -1,0 +1,17 @@
+<div class="o-front-initiatives">
+	<div class="o-front-initiatives__cat-title">
+		{% include 'atoms/a-cat-title.twig' with block.block_title only %}
+	</div>
+	<div class="o-front-initiatives__initiatives">
+		{% for row in block.rows %}
+			<div class="o-front-initiatives__initiative">
+				{% include 'atoms/a-initiative-link.twig' with {
+					'image': row.image,
+					'title': row.title,
+					'subtitle': row.subtitle,
+					'link': row.link
+				} only %}
+			</div>
+		{% endfor %}
+	</div>
+</div>

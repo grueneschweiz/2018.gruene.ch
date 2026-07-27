@@ -1,0 +1,34 @@
+label: Initiatives
+status: ready
+context:
+  cat-title:
+    label: Initiatives
+  rows:
+    - title: Klimaschutz jetzt
+      subtitle: Für eine nachhaltige Zukunft in der Schweiz.
+      link: '#'
+      image:
+        image-src: "/img/dv.jpg"
+        alt: Initiative image
+        title: This is a linked image
+    - title: Bezahlbares Wohnen
+      subtitle: Fairer Wohnraum für alle.
+      link: '#'
+      image:
+        image-src: "/img/dv.jpg"
+        alt: Initiative image
+        title: This is a linked image
+    - title: Gleichstellung stärken
+      subtitle: Für eine gerechte Gesellschaft.
+      link: '#'
+      image:
+        image-src: "/img/dv.jpg"
+        alt: Initiative image
+        title: This is a linked image
+    - title: Biodiversität schützen
+      subtitle: Lebensräume erhalten für kommende Generationen.
+      link: '#'
+      image:
+        image-src: "/img/dv.jpg"
+        alt: Initiative image
+        title: This is a linked image

@@ -1,0 +1,39 @@
+@use "sass:math";
+@use "../../../scss/variables" as v;
+@use "../../../scss/mixins" as m;
+
+.a-initiative-link {
+	@include m.clean-link;
+
+	& {
+		display: block;
+	}
+	@include m.fluid-props(padding-top padding-bottom, v.$fluid-min, v.$fluid-max, 18px, 22px);
+
+	@include m.hover {
+		.a-initiative-link__title {
+			color: v.$color-primary-dark;
+		}
+	}
+
+	&__image {
+		width: 100%;
+		margin-bottom: 12px;
+		@include m.aspect-ratio-box(56.25%);
+	}
+
+	&__title {
+		margin: 0;
+		color: v.$color-text;
+		font-size: 1rem;
+		hyphens: auto;
+		transition: color v.$transition-fast v.$transition-ease;
+	}
+
+	&__subtitle {
+		font-size: 0.875rem;
+		line-height: 1.4em;
+		margin-top: 0.4em;
+		color: v.$color-text-light;
+	}
+}

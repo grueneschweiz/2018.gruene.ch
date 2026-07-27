@@ -80,6 +80,10 @@
 								'events_link': loop.parent.events_link
 							} only %}
 						{% endif %}
+					{% elseif block.acf_fc_layout == 'initiatives' %}
+						{% include 'organisms/o-front-initiatives.twig' with {
+							'block': block
+						} only %}
 					{% elseif block.acf_fc_layout == 'positions' %}
 						{% include 'organisms/o-positions.twig' with block only %}
 					{% elseif block.acf_fc_layout == 'engagement_map' %}
