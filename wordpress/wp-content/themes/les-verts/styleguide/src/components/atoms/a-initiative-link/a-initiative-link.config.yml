@@ -1,0 +1,8 @@
+label: Initiative link
+status: ready
+context:
+  link: '#'
+  image:
+    image-src: "/img/dv.jpg"
+    alt: Initiative image
+    title: This is a linked image

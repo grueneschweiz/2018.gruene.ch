@@ -1,0 +1,52 @@
+@use "sass:math";
+@use "../../../scss/variables" as v;
+@use "../../../scss/mixins" as m;
+
+.o-front-initiatives {
+	max-width: 651px;
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	// Override padding from grid-item
+	padding-left: 0;
+	padding-right: 0;
+	@include m.fluid-grid-item-props(padding);
+
+	@include m.media(v.$DESKTOP) {
+		max-width: v.$grid-max-width-max;
+	}
+
+	&__cat-title {
+		margin-bottom: 4px;
+		@include m.fluid-grid-item-props(margin-left);
+
+		@include m.media(v.$DESKTOP) {
+			margin-bottom: 25px;
+		}
+	}
+
+	&__initiatives {
+		width: 100%;
+		display: grid;
+		align-items: stretch;
+		grid-template-columns: 1fr;
+	}
+
+	&__inner {
+		border-bottom: 1px solid v.$color-grey-2;
+		height: 100%;
+	}
+
+	&__initiative {
+		width: 100%;
+		@include m.fluid-grid-item-props(padding-left padding-right);
+
+		@include m.hover {
+			background-color: v.$color-grey-1;
+		}
+
+		&:last-child .o-front-initiatives__inner {
+			border-bottom: none;
+		}
+	}
+}

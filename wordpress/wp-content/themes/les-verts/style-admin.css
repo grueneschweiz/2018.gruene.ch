@@ -25,3 +25,7 @@
 {
 	display: none;
 }
+
+.acf-field-65e2a1b3c4d62 .acf-image-uploader .image-wrap {
+	max-width: 290px !important;
+}
