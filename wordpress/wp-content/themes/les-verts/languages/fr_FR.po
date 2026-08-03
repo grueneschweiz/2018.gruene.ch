@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 2018gruenech\n"
 "POT-Creation-Date: 2026-04-16 14:33+0200\n"
-"PO-Revision-Date: 2026-04-16 12:56\n"
+"PO-Revision-Date: 2026-08-03 15:01\n"
 "Last-Translator: Cyrill Bolliger <bolliger@gmx.ch>\n"
 "Language-Team: French\n"
 "MIME-Version: 1.0\n"
@@ -85,7 +85,7 @@ msgstr "en haut à droite"
 
 #: acf-translate.php:164
 msgid "middle left"
-msgstr "au mileu à gauche"
+msgstr "au milieu à gauche"
 
 #: acf-translate.php:165
 msgid "middle center"
