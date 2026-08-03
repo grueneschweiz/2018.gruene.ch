@@ -15,7 +15,7 @@
                 "class": "",
                 "id": ""
             },
-            "message": "Displays up to 4 images promoting your current initiatives. The whole image is clickable and leads to the configured link.",
+            "message": "Displays up to 4 images promoting your current initiatives. Images are displayed in a 4:1 ratio; recommended minimum size: 1000 x 250 px. The logo and title of the initiative should be part of the uploaded image. Please avoid images with a transparent background. The whole image is clickable and leads to the configured link.",
             "new_lines": "wpautop",
             "esc_html": 0
         },
@@ -64,7 +64,7 @@
                     "label": "Image",
                     "name": "image",
                     "type": "image",
-                    "instructions": "The image is cropped to a 4:1 ratio.",
+                    "instructions": "The logo and title of the initiative should be part of the uploaded image.",
                     "required": 1,
                     "conditional_logic": 0,
                     "wrapper": {
