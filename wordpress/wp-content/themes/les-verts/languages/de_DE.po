@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 2018gruenech\n"
-"POT-Creation-Date: 2026-04-16 14:33+0200\n"
-"PO-Revision-Date: 2026-04-16 12:56\n"
+"POT-Creation-Date: 2026-08-03 17:44+0200\n"
+"PO-Revision-Date: 2026-08-04 11:30\n"
 "Last-Translator: Cyrill Bolliger <bolliger@gmx.ch>\n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -39,11 +39,11 @@ msgstr "Neuste Beiträge"
 msgid "(Category) Author"
 msgstr "(Kategorie) Autor"
 
-#: acf-translate.php:17
+#: acf-translate.php:17 acf-translate.php:7359
 msgid "Show author"
 msgstr "Autor anzeigen"
 
-#: acf-translate.php:21
+#: acf-translate.php:21 acf-translate.php:7363
 msgid "Show the author for all posts of this category?"
 msgstr "Bei allen Beiträgen dieser Kategorie den Autor anzeigen?"
 
@@ -51,11 +51,11 @@ msgstr "Bei allen Beiträgen dieser Kategorie den Autor anzeigen?"
 msgid "(Category) Date"
 msgstr "Datum"
 
-#: acf-translate.php:63
+#: acf-translate.php:63 acf-translate.php:7406
 msgid "Has date"
 msgstr "Hat Datum"
 
-#: acf-translate.php:67
+#: acf-translate.php:67 acf-translate.php:7410
 msgid "Should a date be displayed with all posts categorized in this category?"
 msgstr "Soll bei allen Posts dieser Kategorie das Datum angezeigt werden?"
 
@@ -152,12 +152,12 @@ msgstr "Diese Option funktioniert nur für Unterpunkte (Level 2). Auf anderen St
 #: acf-translate.php:313 acf-translate.php:1054 acf-translate.php:1920
 #: acf-translate.php:3003 acf-translate.php:3153 acf-translate.php:3372
 #: acf-translate.php:3624 acf-translate.php:4007 acf-translate.php:4607
-#: acf-translate.php:4850 acf-translate.php:4990
+#: acf-translate.php:4850 acf-translate.php:4990 acf-translate.php:7808
 msgid "Block Title"
 msgstr "Blocktitel"
 
 #: acf-translate.php:343 acf-translate.php:1404 acf-translate.php:1427
-#: acf-translate.php:2099 acf-translate.php:5589
+#: acf-translate.php:2099 acf-translate.php:5589 acf-translate.php:7851
 msgid "Image"
 msgstr "Bild"
 
@@ -196,7 +196,7 @@ msgid "Max. 40 characters."
 msgstr "Max. 40 Zeichen."
 
 #: acf-translate.php:493 acf-translate.php:939 acf-translate.php:1090
-#: acf-translate.php:3191 acf-translate.php:3196
+#: acf-translate.php:3191 acf-translate.php:3196 acf-translate.php:7877
 msgid "Link"
 msgstr "Link"
 
@@ -327,6 +327,7 @@ msgstr "[Template]Block"
 #: acf-translate.php:3135 acf-translate.php:3352 acf-translate.php:3989
 #: acf-translate.php:4249 acf-translate.php:4482 acf-translate.php:4589
 #: acf-translate.php:4832 acf-translate.php:4972 acf-translate.php:5082
+#: acf-translate.php:7790
 msgid "About this Block"
 msgstr "Über diesen Block"
 
@@ -777,7 +778,7 @@ msgid "[Template]Link Lists"
 msgstr "[Template]Linkliste"
 
 #: acf-translate.php:3086
-msgid "Use link list blocks to provide some additional information, the reader could be interested in. \n\n"
+msgid "Use link list blocks to provide some additional information, the reader could be interested in.\n\n"
 "A good first starting point would be a <i>manual link list</i> block that lists documents where the reader can dig deeper, like the debate in parliament etc. A second cool block <i>(auto link list)</i> could be the latest posts of the same category or with the same tag."
 msgstr "Verwende Linklisten, um zusätzliche Informationen bereitzustellen, an denen die Leserschaft interessiert sein könnte.\n\n"
 "Ein guter erster Ausgangspunkt wäre eine <i>manuelle Linkliste</i>, die Dokumente auflistet, mit welchen die Leserschaft das Thema vertiefen kann, wie z.B. die Debatte im Parlament etc. Ein zweiter cooler Block <i>(automatische Linkliste)</i> könnte die neuesten Beiträge der gleichen Kategorie oder mit dem gleichen Tag enthalten."
@@ -853,7 +854,7 @@ msgid "Content is displayed if <strong>at lease one tag matches</strong>."
 msgstr "Inhalt der <strong>mindestens einem Schlagwort</strong> entspricht, wird angezeigt."
 
 #: acf-translate.php:3364
-msgid "Display the latest four posts, events or pages that meet the given filter criteria. \n\n"
+msgid "Display the latest four posts, events or pages that meet the given filter criteria.\n\n"
 "This list will automatically be updated if any new content meets the filter criteria (dynamic)."
 msgstr "Zeigt die letzten vier Beiträge, Veranstaltungen oder Seiten an, die den angegebenen Filterkriterien entsprechen. \n\n"
 "Diese Liste wird automatisch aktualisiert, wenn ein neuer Inhalt die Filterkriterien erfüllt (dynamisch)."
@@ -1517,6 +1518,154 @@ msgstr "Teilen-Buttons anzeigen"
 #: acf-translate.php:7259
 msgid "You can hide the share buttons of this page, by disabling this option."
 msgstr "Du kannst die Teilen-Buttons auf dieser Seite verstecken, indem du diese Option deaktivierst."
+
+#: acf-translate.php:7453
+msgid "Facebook Pixel ID"
+msgstr "Facebook Pixel ID"
+
+#: acf-translate.php:7457
+msgid "Enter your Facebook Pixel ID (e.g., 1234567890)"
+msgstr "Gib deine Facebook-Pixel-ID ein (z. B. 1234567890)"
+
+#: acf-translate.php:7473
+msgid "Custom Scripts"
+msgstr "Benutzerdefinierte Skripte"
+
+#: acf-translate.php:7477
+msgid "Add custom tracking scripts that will be loaded via external URL"
+msgstr "Füge benutzerdefinierte Tracking-Skripte hinzu, die über eine externe URL geladen werden"
+
+#: acf-translate.php:7489
+msgid "Add Script"
+msgstr "Skript hinzufügen"
+
+#: acf-translate.php:7494
+msgid "Script Name"
+msgstr "Skriptname"
+
+#: acf-translate.php:7498
+msgid "Name for admin reference (e.g., \"Google Analytics\")"
+msgstr "Name zur Verwaltung (z. B. „Google Analytics“)"
+
+#: acf-translate.php:7515
+msgid "Script URL"
+msgstr "Skript-URL"
+
+#: acf-translate.php:7519
+msgid "Full URL to the external script"
+msgstr "Vollständige URL zum externen Skript"
+
+#: acf-translate.php:7561
+msgid "Banner Text"
+msgstr "Bannertext"
+
+#: acf-translate.php:7565
+msgid "Text displayed in the cookie banner (language-specific)"
+msgstr "Text, der im Cookie-Banner angezeigt wird (sprachspezifisch)"
+
+#: acf-translate.php:7581
+msgid "Privacy Policy Link"
+msgstr "Link zur Datenschutzerklärung"
+
+#: acf-translate.php:7585
+msgid "Link to your privacy policy page (language-specific)"
+msgstr "Link zu deiner Datenschutzerklärung (sprachspezifisch)"
+
+#: acf-translate.php:7631
+msgid "Enable Facebook Pixel"
+msgstr "Facebook-Pixel aktivieren"
+
+#: acf-translate.php:7635
+msgid "Load Facebook Pixel on this page (requires Facebook Pixel ID to be configured in Tracking Scripts settings)"
+msgstr "Facebook-Pixel auf dieser Seite laden (dafür muss die Facebook-Pixel-ID in den Einstellungen für Tracking-Skripte konfiguriert sein)"
+
+#: acf-translate.php:7643
+msgid "Load Facebook Pixel on this page"
+msgstr "Facebook-Pixel auf dieser Seite einbinden"
+
+#: acf-translate.php:7651
+msgid "Enable Custom Script 1"
+msgstr "Benutzerdefiniertes Skript 1 aktivieren"
+
+#: acf-translate.php:7655
+msgid "Load the first custom script configured in Tracking Scripts settings"
+msgstr "Laden Sie das erste benutzerdefinierte Skript in den Tracking Scripts Einstellungen"
+
+#: acf-translate.php:7663
+msgid "Load Custom Script 1 on this page"
+msgstr "Lade das benutzerdefinierte Skript 1 auf dieser Seite"
+
+#: acf-translate.php:7671
+msgid "Enable Custom Script 2"
+msgstr "Benutzerdefiniertes Skript 2 aktivieren"
+
+#: acf-translate.php:7675
+msgid "Load the second custom script configured in Tracking Scripts settings"
+msgstr "Laden Sie das zweite benutzerdefinierte Skript in den Tracking Scripts Einstellungen"
+
+#: acf-translate.php:7683
+msgid "Load Custom Script 2 on this page"
+msgstr "Lade das benutzerdefinierte Skript 2 auf dieser Seite"
+
+#: acf-translate.php:7691
+msgid "Enable Custom Script 3"
+msgstr "Benutzerdefiniertes Skript 3 aktivieren"
+
+#: acf-translate.php:7695
+msgid "Load the third custom script configured in Tracking Scripts settings"
+msgstr "Laden Sie das dritte benutzerdefinierte Skript in den Tracking Scripts Einstellungen"
+
+#: acf-translate.php:7703
+msgid "Load Custom Script 3 on this page"
+msgstr "Lade das benutzerdefinierte Skript 3 auf dieser Seite"
+
+#: acf-translate.php:7711
+msgid "Enable Custom Script 4"
+msgstr "Benutzerdefiniertes Skript 4 aktivieren"
+
+#: acf-translate.php:7715
+msgid "Load the fourth custom script configured in Tracking Scripts settings"
+msgstr "Laden Sie das vierte benutzerdefinierte Skript in den Tracking Scripts Einstellungen"
+
+#: acf-translate.php:7723
+msgid "Load Custom Script 4 on this page"
+msgstr "Lade das benutzerdefinierte Skript 4 auf dieser Seite"
+
+#: acf-translate.php:7731
+msgid "Enable Custom Script 5"
+msgstr "Benutzerdefiniertes Skript 5 aktivieren"
+
+#: acf-translate.php:7735
+msgid "Load the fifth custom script configured in Tracking Scripts settings"
+msgstr "Laden Sie das fünfte benutzerdefinierte Skript in den Tracking Scripts Einstellungen"
+
+#: acf-translate.php:7743
+msgid "Load Custom Script 5 on this page"
+msgstr "Lade das benutzerdefinierte Skript 5 auf dieser Seite"
+
+#: acf-translate.php:7802
+msgid "Displays up to 4 images promoting your current initiatives. Images are displayed in a 4:1 ratio; recommended minimum size: 1000 x 250 px. The logo and title of the initiative should be part of the uploaded image. Please avoid images with a transparent background. The whole image is clickable and leads to the configured link."
+msgstr "Zeigt bis zu 4 Bilder an, die für deine aktuellen Initiativen werben. Die Bilder werden im Seitenverhältnis 4:1 angezeigt; empfohlene Mindestgröße: 1000 x 250 px. Das Logo und der Titel der Initiative sollten Teil des hochgeladenen Bildes sein. Bitte vermeide Bilder mit transparentem Hintergrund. Das gesamte Bild ist anklickbar und führt zu dem konfigurierten Link."
+
+#: acf-translate.php:7830
+msgid "Initiatives"
+msgstr "Initiativen"
+
+#: acf-translate.php:7834
+msgid "Add up to 4 initiatives."
+msgstr "Füge bis zu 4 Initiativen hinzu."
+
+#: acf-translate.php:7846
+msgid "Add Initiative"
+msgstr "Initiative hinzufügen"
+
+#: acf-translate.php:7855
+msgid "The logo and title of the initiative should be part of the uploaded image."
+msgstr "Das Logo und der Titel der Initiative sollten auf dem hochgeladenen Bild zu sehen sein."
+
+#: acf-translate.php:7881
+msgid "The whole image is clickable and leads to this link."
+msgstr "Das gesamte Bild ist anklickbar und führt zu diesem Link."
 
 #: archive-tribe_events.php:28
 msgid "Upcoming events"
@@ -2499,7 +2648,7 @@ msgid "Hi Admin\n\n"
 msgstr "Hallo Admin\n\n"
 "Der wp_cron Job %s konnte auf %s nicht ausgeführt werden. Löse das zeitnah, sonst werden Formularrückmeldungen nicht funktionieren wie erwartet. Es gibt keine weiteren Infos zum Fehler, da WordPress nur 'false' zurückmeldet :("
 
-#: lib/form/public-api.php:36 lib/form/submission.php:241
+#: lib/form/public-api.php:36 lib/form/submission.php:270
 msgid "Too many requests. Please try again later."
 msgstr "Zu viele Anfragen. Bitte versuche es später nochmals."
 
@@ -2507,17 +2656,17 @@ msgstr "Zu viele Anfragen. Bitte versuche es später nochmals."
 msgid "Every 10 Minutes"
 msgstr "Alle 10 Minuten"
 
-#: lib/form/submission.php:389
+#: lib/form/submission.php:418
 #, php-format
 msgid "%s: Invalid value."
 msgstr "%s: Ungültiger Wert."
 
-#: lib/form/submission.php:407
+#: lib/form/submission.php:436
 #, php-format
 msgid "%s: Invalid or missing value."
 msgstr "%s: Ungültiger oder fehlender Wert."
 
-#: lib/form/submission.php:446
+#: lib/form/submission.php:475
 #, php-format
 msgid "%s: Missing data."
 msgstr "%s: Fehlende Daten."
