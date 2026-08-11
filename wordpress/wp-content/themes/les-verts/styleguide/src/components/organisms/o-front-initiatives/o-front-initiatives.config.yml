@@ -3,6 +3,9 @@ status: ready
 context:
   cat-title:
     label: Initiatives
+  link-button:
+    label: Alle Initiativen anzeigen
+    url: '#'
   rows:
     - link: '#'
       image:

@@ -11,4 +11,9 @@
 			</div>
 		{{/each}}
 	</div>
+	{{#if link-button.url}}
+		<div class="o-front-initiatives__more">
+			{{> @a-link-button link-button}}
+		</div>
+	{{/if}}
 </div>

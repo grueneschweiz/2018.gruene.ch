@@ -14,4 +14,12 @@
 			</div>
 		{% endfor %}
 	</div>
+	{% if block.more_link.url and block.more_link.title %}
+		<div class="o-front-initiatives__more">
+			{% include 'atoms/a-link-button.twig' with {
+				'link': block.more_link.url,
+				'label': block.more_link.title
+			} only %}
+		</div>
+	{% endif %}
 </div>

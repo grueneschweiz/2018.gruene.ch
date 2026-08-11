@@ -100,6 +100,64 @@
                     "placeholder": ""
                 }
             ]
+        },
+        {
+            "key": "field_65e2a1b3c4d70",
+            "label": "Link to all Initiatives",
+            "name": "more_link",
+            "type": "group",
+            "instructions": "Optional link displayed below the initiative images.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "row",
+            "sub_fields": [
+                {
+                    "key": "field_65e2a1b3c4d71",
+                    "label": "Link Title",
+                    "name": "title",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_65e2a1b3c4d72",
+                    "label": "Link URL",
+                    "name": "url",
+                    "type": "page_link",
+                    "instructions": "Select a page or post.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "post_type": [
+                        "page",
+                        "post"
+                    ],
+                    "taxonomy": "",
+                    "allow_null": 1,
+                    "allow_archives": 1,
+                    "multiple": 0
+                }
+            ]
         }
     ],
     "location": [

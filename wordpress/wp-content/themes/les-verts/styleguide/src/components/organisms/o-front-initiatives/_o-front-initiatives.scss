@@ -49,4 +49,9 @@
 			border-bottom: none;
 		}
 	}
+
+	&__more {
+		padding-top: 8px;
+		@include m.fluid-grid-item-props(padding-left);
+	}
 }
