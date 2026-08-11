@@ -41,6 +41,11 @@
 		width: 100%;
 		@include m.fluid-grid-item-props(padding-left padding-right);
 
+		@include m.media(v.$MOBILE) {
+			padding-left: 0;
+			padding-right: 0;
+		}
+
 		@include m.hover {
 			background-color: v.$color-grey-1;
 		}
