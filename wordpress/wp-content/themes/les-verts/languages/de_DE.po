@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 2018gruenech\n"
-"POT-Creation-Date: 2026-08-03 17:44+0200\n"
-"PO-Revision-Date: 2026-08-04 11:30\n"
+"POT-Creation-Date: 2026-08-11 15:11+0200\n"
+"PO-Revision-Date: 2026-08-17 19:27\n"
 "Last-Translator: Cyrill Bolliger <bolliger@gmx.ch>\n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -1666,6 +1666,22 @@ msgstr "Das Logo und der Titel der Initiative sollten auf dem hochgeladenen Bild
 #: acf-translate.php:7881
 msgid "The whole image is clickable and leads to this link."
 msgstr "Das gesamte Bild ist anklickbar und führt zu diesem Link."
+
+#: acf-translate.php:7897
+msgid "Link to all Initiatives"
+msgstr "Link auf alle Initiativen"
+
+#: acf-translate.php:7901
+msgid "Optional link displayed below the initiative images."
+msgstr "Optionaler Link, der unter den Bildern der Initiative angezeigt wird."
+
+#: acf-translate.php:7913
+msgid "Link Title"
+msgstr "Titel"
+
+#: acf-translate.php:7935
+msgid "Link URL"
+msgstr "Link-URL"
 
 #: archive-tribe_events.php:28
 msgid "Upcoming events"
