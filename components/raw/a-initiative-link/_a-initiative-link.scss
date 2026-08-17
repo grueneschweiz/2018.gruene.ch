@@ -1,0 +1,17 @@
+@use "sass:math";
+@use "../../../scss/variables" as v;
+@use "../../../scss/mixins" as m;
+
+.a-initiative-link {
+	@include m.clean-link;
+
+	& {
+		display: block;
+	}
+	@include m.fluid-props(padding-top padding-bottom, v.$fluid-min, v.$fluid-max, 10px, 14px);
+
+	&__image {
+		width: 100%;
+		@include m.aspect-ratio-box(25%);
+	}
+}

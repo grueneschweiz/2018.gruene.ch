@@ -908,10 +908,8 @@
                             
                             <code class="Code Code--lang-JavaScript FileBrowser-code hljs">
                                 <pre><span class="hljs-keyword">import</span> BaseView <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./../../../js/base-view&#x27;</span>;
-<span class="hljs-keyword">import</span> Swiper, { A11y, Keyboard, Navigation } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;swiper&#x27;</span>;
-
-<span class="hljs-comment">// Install modules</span>
-Swiper.use([Keyboard, Navigation, A11y]);
+<span class="hljs-keyword">import</span> Swiper <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;swiper&#x27;</span>;
+<span class="hljs-keyword">import</span> { A11y, Keyboard, Navigation } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;swiper/modules&#x27;</span>;
 
 <span class="hljs-keyword">const</span> SWIPER_CONTAINER_SELECTOR = <span class="hljs-string">&#x27;.o-people-grid__library-container&#x27;</span>;
 <span class="hljs-keyword">const</span> SLIDER_NEXT_BUTTON_SELECTOR = <span class="hljs-string">&#x27;.o-people-grid__slide-button--right&#x27;</span>;
@@ -922,6 +920,7 @@ Swiper.use([Keyboard, Navigation, A11y]);
 		<span class="hljs-built_in">super</span>.bind();
 
 		<span class="hljs-keyword">new</span> Swiper( SWIPER_CONTAINER_SELECTOR, {
+			<span class="hljs-attr">modules</span>: [ Keyboard, Navigation, A11y ],
 			<span class="hljs-attr">slidesPerView</span>: <span class="hljs-string">&#x27;auto&#x27;</span>,
 			<span class="hljs-attr">navigation</span>: {
 				<span class="hljs-attr">nextEl</span>: SLIDER_NEXT_BUTTON_SELECTOR,
@@ -950,7 +949,7 @@ Swiper.use([Keyboard, Navigation, A11y]);
                 </li>
                 <li class="Meta-item">
                     <strong class="Meta-key">Size:</strong>
-                    <span class="Meta-value">733 Bytes</span>
+                    <span class="Meta-value">744 Bytes</span>
                 </li>
             </ul>
         </div>
@@ -2196,6 +2195,40 @@ Swiper.use([Keyboard, Navigation, A11y]);
                 data-handle="a-image"
             >
                 <span>Image</span>
+                
+
+<div class="Status Status--unlabelled">
+
+<div class="Status-dots">
+
+
+<span class="Status-dot" style="border-color: #29CC29;" title="Ready"></span>
+
+
+</div>
+
+</div>
+
+
+            </a>
+        </li>
+        
+    
+        
+        
+        
+        
+        <li class="Tree-item Tree-entity" data-role="item">
+            <a
+                class="Tree-entityLink"
+                href="./a-initiative-link.html"
+                data-role="tree-link"
+                
+                data-pjax
+                data-test="a-initiative-link"
+                data-handle="a-initiative-link"
+            >
+                <span>Initiative link</span>
                 
 
 <div class="Status Status--unlabelled">
@@ -5577,6 +5610,40 @@ Swiper.use([Keyboard, Navigation, A11y]);
                 </ul>
             </li>
             
+        
+    
+        
+        
+        
+        
+        <li class="Tree-item Tree-entity" data-role="item">
+            <a
+                class="Tree-entityLink"
+                href="./o-front-initiatives.html"
+                data-role="tree-link"
+                
+                data-pjax
+                data-test="o-front-initiatives"
+                data-handle="o-front-initiatives"
+            >
+                <span>Initiatives</span>
+                
+
+<div class="Status Status--unlabelled">
+
+<div class="Status-dots">
+
+
+<span class="Status-dot" style="border-color: #29CC29;" title="Ready"></span>
+
+
+</div>
+
+</div>
+
+
+            </a>
+        </li>
         
     
         
