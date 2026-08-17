@@ -1,0 +1,29 @@
+label: Initiatives
+status: ready
+context:
+  cat-title:
+    label: Initiatives
+  link-button:
+    label: Alle Initiativen anzeigen
+    url: '#'
+  rows:
+    - link: '#'
+      image:
+        image-src: "/img/dv.jpg"
+        alt: Klimaschutz jetzt
+        title: This is a linked image
+    - link: '#'
+      image:
+        image-src: "/img/dv.jpg"
+        alt: Bezahlbares Wohnen
+        title: This is a linked image
+    - link: '#'
+      image:
+        image-src: "/img/dv.jpg"
+        alt: Gleichstellung stärken
+        title: This is a linked image
+    - link: '#'
+      image:
+        image-src: "/img/dv.jpg"
+        alt: Biodiversität schützen
+        title: This is a linked image

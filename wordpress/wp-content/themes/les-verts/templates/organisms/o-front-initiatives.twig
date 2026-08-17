@@ -1,0 +1,25 @@
+<div class="o-front-initiatives">
+	<div class="o-front-initiatives__cat-title">
+		{% include 'atoms/a-cat-title.twig' with block.block_title only %}
+	</div>
+	<div class="o-front-initiatives__initiatives">
+		{% for row in block.rows %}
+			<div class="o-front-initiatives__initiative">
+				<div class="o-front-initiatives__inner">
+					{% include 'atoms/a-initiative-link.twig' with {
+						'image': row.image,
+						'link': row.link
+					} only %}
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+	{% if block.more_link.url and block.more_link.title %}
+		<div class="o-front-initiatives__more">
+			{% include 'atoms/a-link-button.twig' with {
+				'link': block.more_link.url,
+				'label': block.more_link.title
+			} only %}
+		</div>
+	{% endif %}
+</div>

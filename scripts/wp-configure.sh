@@ -102,7 +102,20 @@ $WPCLI option patch insert openid_connect_generic_settings link_existing_users '
 $WPCLI option patch insert openid_connect_generic_settings create_if_does_not_exist '1'
 
 # configure limit login attempts
-$WPCLI option set limit_login_show_top_level_menu_item '0'
-$WPCLI option set limit_login_hide_dashboard_widget '1'
-$WPCLI option set limit_login_gdpr '1'
-$WPCLI option set limit_login_lockout_notify ''
+if [ $NETWORK ]; then
+	$WPCLI site option update limit_login_show_top_level_menu_item '0'
+	$WPCLI site option update limit_login_hide_dashboard_widget '1'
+	$WPCLI site option update limit_login_gdpr '1'
+	$WPCLI site option update limit_login_lockout_notify ''
+	$WPCLI site option update limit_login_digest_daily '0'
+	$WPCLI site option update limit_login_digest_weekly '0'
+	$WPCLI site option update limit_login_digest_monthly '0'
+else
+	$WPCLI option set limit_login_show_top_level_menu_item '0'
+	$WPCLI option set limit_login_hide_dashboard_widget '1'
+	$WPCLI option set limit_login_gdpr '1'
+	$WPCLI option set limit_login_lockout_notify ''
+	$WPCLI option set limit_login_digest_daily '0'
+	$WPCLI option set limit_login_digest_weekly '0'
+	$WPCLI option set limit_login_digest_monthly '0'
+fi

@@ -13,9 +13,14 @@ module.exports = function (config, done) {
 	const stream = browserify({
 			entries: config.entries,
 			paths: config.paths,
+			extensions: ['.mjs', '.js', '.json'],
 			debug: true
 		})
-		.transform(babelify, { presets: ["@babel/preset-env"] })
+		.transform(babelify, {
+			presets: ["@babel/preset-env"],
+			global: true,
+			ignore: [/\/node_modules\/(?!swiper)/]
+		})
 		.bundle()
 		// .on( 'error', plumber.stop)		// Handle errors -> avoid gulp to crash on error
 		// .pipe(plumber())

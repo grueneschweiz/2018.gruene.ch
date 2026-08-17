@@ -285,6 +285,37 @@
                   "min": "",
                   "max": "1"
                 },
+              "layout_65e2a1b3c4d66": {
+                "key": "layout_65e2a1b3c4d66",
+                "name": "initiatives",
+                "label": "Initiatives",
+                "display": "block",
+                "sub_fields": [
+                  {
+                    "key": "field_65e2a1b3c4d67",
+                    "label": "Initiatives",
+                    "name": "initiatives",
+                    "type": "clone",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                      "width": "",
+                      "class": "",
+                      "id": ""
+                    },
+                    "clone": [
+                      "group_65e2a1b3c4d5e"
+                    ],
+                    "display": "seamless",
+                    "layout": "block",
+                    "prefix_label": 0,
+                    "prefix_name": 0
+                  }
+                ],
+                "min": "",
+                "max": "1"
+              },
               "layout_5fdbdba216ca7": {
                 "key": "layout_5fdbdba216ca7",
                 "name": "block",
@@ -357,5 +388,5 @@
     ],
   "active": true,
   "description": "",
-  "modified": 1638268929
+  "modified": 1721000000
 }

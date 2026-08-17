@@ -151,10 +151,11 @@ Localization is a mess:
 - Follow these 99 simple steps for translating the theme 😅
   - Respect [WordPress Internationalization](https://developer.wordpress.org/apis/internationalization/) on development
   - If you changed some ACF fields:
-    [Export all ACF field groups as PHP](http://localhost/wp-admin/edit.php?post_type=acf-field-group&page=acf-tools)
-    and store them in
+    - Make sure your changes to field groups are committed first
+    - [Activate and export the new ACF field groups as PHP](http://localhost/wp-admin/edit.php?post_type=acf-field-group&page=acf-tools)
+    and store them at the end of
     [wordpress/wp-content/themes/les-verts/acf-translate.php](/wordpress/wp-content/themes/les-verts/acf-translate.php).
-    Make sure you don't overwrite the `die();` statement on top.
+    - Discard the changes from activating your ACF field groups
   - Download and install [Poedit Pro](https://poedit.net/pro) on your local machine. You need the pro version because of twig.
   - Open
     [wordpress/wp-content/themes/les-verts/languages/theme.pot](/wordpress/wp-content/themes/les-verts/languages/theme.pot)
