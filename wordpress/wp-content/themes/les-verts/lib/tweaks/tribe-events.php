@@ -82,6 +82,30 @@ add_filter( 'template_include', function ( $template ) {
 } );
 
 /**
+ * Since The Events Calendar 6.15.6, `Tribe\Events\Views\V2\Hooks::disabled_views_redirect()`
+ * redirects any archive request whose `eventDisplay`/`tribe_event_display` value is not a
+ * registered View slug (e.g. 'list', 'month', 'day') to the default view, stripping the
+ * requested display along the way.
+ *
+ * Because the theme forces ugly links (see `tribe_events_force_ugly_link` above), past events
+ * are requested via the `tribe_event_display=past` query var handled by our own
+ * `archive-tribe_events.php` template. 'past' is a legitimate display *mode* of the List View,
+ * not a separate View, but the context reads it into `event_display` too and the redirect
+ * treats it as an unknown/disabled View, breaking the past events list
+ * (e.g. https://gruene.ch/?post_type=tribe_events&tribe_event_display=past was redirected to
+ * https://gruene.ch/events/liste?tribe_redirected=1).
+ *
+ * @link https://docs.theeventscalendar.com/reference/hooks/tec_events_views_v2_should_redirect/
+ */
+add_filter( 'tec_events_views_v2_should_redirect', function ( $should_redirect ) {
+	if ( 'past' === tribe_get_request_var( 'tribe_event_display' ) ) {
+		return false;
+	}
+
+	return $should_redirect;
+} );
+
+/**
  * Use first text content blocks text as excerpt for events.
  * This is also picked up by Yoast SEO.
  */
