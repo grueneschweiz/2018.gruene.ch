@@ -9,6 +9,7 @@
 				enctype="multipart/form-data"
 				data-sending-lbl="{{ post.form_submitting }}"
 				data-nonce="{{ fn('supt_get_nonce_api_url') }}"
+				data-pow-difficulty="{{ fn('supt_get_form_pow_difficulty') }}"
 				{% if action_id %}data-action-id="{{ action_id }}"{% endif %}
 		{% if config_id %}data-config-id="{{ config_id }}"{% endif %}
 				data-form-id="{{ post.id }}">
@@ -156,10 +157,14 @@
 			</div>{# close .m-form__custom-width-block #}
 		{% endif %}
 
-		{# Honeypot anti-spam field #}
+		{# Honeypot anti-spam fields #}
 		<div style="position: absolute; left: -5000px;" aria-hidden="true">
 			<label for="{{ default_id_prefix }}-fax">{{ __('Please leave empty', constant('THEME_DOMAIN')) }}</label>
 			<input type="text" name="fax" id="{{ default_id_prefix }}-fax" tabindex="-1" autocomplete="off">
+		</div>
+		<div class="m-form__hp-field" aria-hidden="true">
+			<label for="{{ default_id_prefix }}-contact_url">Website</label>
+			<input type="text" name="contact_url" id="{{ default_id_prefix }}-contact_url" tabindex="-1" autocomplete="nope" value="">
 		</div>
 
 		{# Time-based anti-spam check: JS sets the value on first interaction #}

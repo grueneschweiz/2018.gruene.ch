@@ -74,21 +74,42 @@ class Nonce {
 	 * consumed it is immediately invalidated.
 	 *
 	 * @param string $nonce
+	 * @param int $min_age_seconds Minimum elapsed seconds required since nonce creation
 	 *
 	 * @return bool
 	 */
-	public static function consume( $nonce ) {
-		$valid = self::verify( $nonce );
+	public static function consume( $nonce, int $min_age_seconds = 0 ) {
+		if ( empty( $nonce ) || ! is_string( $nonce ) ) {
+			return false;
+		}
+
+		$valid = self::verify( $nonce, $min_age_seconds );
 		self::remove( $nonce );
 
 		return $valid;
 	}
 
-	private static function verify( $nonce ) {
+	private static function verify( $nonce, int $min_age_seconds = 0 ) {
 		$name        = self::get_option_name( $nonce );
-		$valid_until = get_option( $name, 0 );
+		$valid_until = (int) get_option( $name, 0 );
 
-		return $valid_until > time();
+		if ( $valid_until <= 0 ) {
+			return false;
+		}
+
+		$now = time();
+		if ( $valid_until <= $now ) {
+			return false;
+		}
+
+		if ( $min_age_seconds > 0 ) {
+			$created_at = $valid_until - self::TTL;
+			if ( ( $now - $created_at ) < $min_age_seconds ) {
+				return false;
+			}
+		}
+
+		return true;
 	}
 
 	private static function remove( $nonce ) {

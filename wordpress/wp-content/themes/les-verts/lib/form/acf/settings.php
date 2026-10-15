@@ -1,7 +1,7 @@
 <?php
 
 if ( function_exists( 'acf_add_local_field_group' ) ):
-	
+
 	acf_add_local_field_group( array(
 		'key'                   => 'group_5a880cad9baac',
 		'title'                 => 'Settings',
@@ -295,6 +295,41 @@ if ( function_exists( 'acf_add_local_field_group' ) ):
 				'min'               => 100,
 				'max'               => '',
 				'step'              => 1,
+			),
+			array(
+				'key'               => 'field_670e1000a1b2c',
+				'label'             => __( 'Anti-Spam', THEME_DOMAIN ),
+				'name'              => '',
+				'type'              => 'tab',
+				'instructions'      => '',
+				'required'          => 0,
+				'conditional_logic' => 0,
+				'wrapper'           => array(
+					'width' => '',
+					'class' => '',
+					'id'    => '',
+				),
+				'placement'         => 'left',
+				'endpoint'          => 1,
+			),
+			array(
+				'key'               => 'field_670e1001a1b2d',
+				'label'             => __( 'Strict headless-bot protection', THEME_DOMAIN ),
+				'name'              => 'form_strict_antispam_disabled',
+				'type'              => 'true_false',
+				'instructions'      => __( 'Strict protection (Proof-of-Work, server-side nonce timing, and headless browser telemetry) is enabled by default. Enable this toggle only if you want to disable strict checks on this site.', THEME_DOMAIN ),
+				'required'          => 0,
+				'conditional_logic' => 0,
+				'wrapper'           => array(
+					'width' => '',
+					'class' => '',
+					'id'    => '',
+				),
+				'message'           => __( 'Disable strict headless-bot protection', THEME_DOMAIN ),
+				'default_value'     => 0,
+				'ui'                => 1,
+				'ui_on_text'        => __( 'Disabled', THEME_DOMAIN ),
+				'ui_off_text'       => __( 'Active', THEME_DOMAIN ),
 			),
 		),
 		'location'              => array(

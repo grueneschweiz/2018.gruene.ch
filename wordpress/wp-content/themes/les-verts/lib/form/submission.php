@@ -91,6 +91,20 @@ class FormSubmission {
 	private $secret;
 
 	/**
+	 * The submitted Proof-of-Work counter
+	 *
+	 * @var string
+	 */
+	private $pow_counter = '';
+
+	/**
+	 * The submitted client interaction telemetry string
+	 *
+	 * @var string
+	 */
+	private $telemetry = '';
+
+	/**
 	 * The response status code
 	 *
 	 * @var int
@@ -196,10 +210,22 @@ class FormSubmission {
 	 * Check if the honeypot field was filled (only bots fill hidden fields).
 	 */
 	private function abort_if_honeypot_filled() {
+		$honeypot_value = '';
+		$honeypot_field = '';
+
 		if ( ! empty( $_POST['fax'] ) ) {
+			$honeypot_value = (string) $_POST['fax'];
+			$honeypot_field = 'fax';
+		} elseif ( ! empty( $_POST['contact_url'] ) ) {
+			$honeypot_value = (string) $_POST['contact_url'];
+			$honeypot_field = 'contact_url';
+		}
+
+		if ( '' !== $honeypot_field ) {
 			Util::debug_log( sprintf(
-				'[FORM_VALIDATION_REJECT] Reason: honeypot_filled | Value: %s | IP: %s | UA: %s | Form: %s | Referer: %s',
-				substr( $_POST['fax'], 0, 50 ), // Truncate value to avoid log spam
+				'[FORM_VALIDATION_REJECT] Reason: honeypot_filled (%s) | Value: %s | IP: %s | UA: %s | Form: %s | Referer: %s',
+				$honeypot_field,
+				substr( $honeypot_value, 0, 50 ), // Truncate value to avoid log spam
 				$_SERVER['REMOTE_ADDR'] ?? 'unknown',
 				substr( $_SERVER['HTTP_USER_AGENT'] ?? 'unknown', 0, 100 ),
 				$_POST['form_id'] ?? 'unknown',
@@ -346,6 +372,14 @@ class FormSubmission {
 		if ( isset( $_POST['secret'] ) ) {
 			$this->secret = $_POST['secret'];
 		}
+
+		if ( isset( $_POST['pow_counter'] ) ) {
+			$this->pow_counter = (string) $_POST['pow_counter'];
+		}
+
+		if ( isset( $_POST['telemetry'] ) ) {
+			$this->telemetry = (string) $_POST['telemetry'];
+		}
 	}
 
 	private function get_safe_referer() {
@@ -372,7 +406,21 @@ class FormSubmission {
 	private function abort_if_invalid_nonce() {
 		require_once __DIR__ . '/include/Nonce.php';
 
-		if ( ! Nonce::consume( $this->nonce ) ) {
+		$min_age = 0;
+		if ( Util::is_strict_antispam_enabled() ) {
+			$min_age = defined( 'SUPT_FORM_MIN_SUBMIT_TIME' ) ? (int) \SUPT_FORM_MIN_SUBMIT_TIME : 2;
+		}
+
+		if ( ! Nonce::consume( $this->nonce, $min_age ) ) {
+			Util::debug_log( sprintf(
+				'[FORM_VALIDATION_REJECT] Reason: invalid_or_too_fast_nonce | MinAge: %d | IP: %s | UA: %s | Form: %s | Referer: %s',
+				$min_age,
+				$_SERVER['REMOTE_ADDR'] ?? 'unknown',
+				substr( $_SERVER['HTTP_USER_AGENT'] ?? 'unknown', 0, 100 ),
+				$_POST['form_id'] ?? 'unknown',
+				$_SERVER['HTTP_REFERER'] ?? 'unknown'
+			) );
+
 			$this->respond_with_general_error( 400, 'Invalid nonce.' );
 
 			return;
@@ -380,16 +428,112 @@ class FormSubmission {
 	}
 
 	/**
-	 * Check if form has a valid secret.
+	 * Check if form has a valid secret, Proof-of-Work prefix, and human interaction telemetry.
 	 */
 	private function abort_if_invalid_secret() {
-		$expectedSecret = hash( 'sha256', $this->form->get_id() . $this->nonce );
+		if ( ! Util::is_strict_antispam_enabled() ) {
+			$expected_legacy = hash( 'sha256', $this->form->get_id() . $this->nonce );
+			$expected_pow    = hash(
+				'sha256',
+				$this->form->get_id() . ':' . $this->nonce . ':' . $this->telemetry . ':' . $this->pow_counter
+			);
 
-		if ( $this->secret !== $expectedSecret ) {
+			if ( $this->secret !== $expected_legacy && $this->secret !== $expected_pow ) {
+				$this->respond_with_general_error( 400, 'Invalid secret.' );
+
+				return;
+			}
+
+			return;
+		}
+
+		if ( '' === $this->pow_counter || ! ctype_digit( $this->pow_counter ) || '' === $this->telemetry ) {
+			Util::debug_log( sprintf(
+				'[FORM_VALIDATION_REJECT] Reason: missing_pow_or_telemetry | IP: %s | UA: %s | Form: %s',
+				$_SERVER['REMOTE_ADDR'] ?? 'unknown',
+				substr( $_SERVER['HTTP_USER_AGENT'] ?? 'unknown', 0, 100 ),
+				$this->form->get_id()
+			) );
 			$this->respond_with_general_error( 400, 'Invalid secret.' );
 
 			return;
 		}
+
+		$expected_secret = hash(
+			'sha256',
+			$this->form->get_id() . ':' . $this->nonce . ':' . $this->telemetry . ':' . $this->pow_counter
+		);
+
+		$difficulty = Util::get_pow_difficulty();
+		$prefix     = str_repeat( '0', $difficulty );
+
+		if (
+			! hash_equals( $expected_secret, (string) $this->secret ) ||
+			( $difficulty > 0 && 0 !== strpos( $expected_secret, $prefix ) )
+		) {
+			Util::debug_log( sprintf(
+				'[FORM_VALIDATION_REJECT] Reason: invalid_pow_secret | Difficulty: %d | IP: %s | UA: %s | Form: %s',
+				$difficulty,
+				$_SERVER['REMOTE_ADDR'] ?? 'unknown',
+				substr( $_SERVER['HTTP_USER_AGENT'] ?? 'unknown', 0, 100 ),
+				$this->form->get_id()
+			) );
+			$this->respond_with_general_error( 400, 'Invalid secret.' );
+
+			return;
+		}
+
+		if ( ! $this->is_valid_telemetry( $this->telemetry ) ) {
+			Util::debug_log( sprintf(
+				'[FORM_VALIDATION_REJECT] Reason: headless_or_untrusted_telemetry | Telemetry: %s | IP: %s | UA: %s | Form: %s',
+				substr( $this->telemetry, 0, 50 ),
+				$_SERVER['REMOTE_ADDR'] ?? 'unknown',
+				substr( $_SERVER['HTTP_USER_AGENT'] ?? 'unknown', 0, 100 ),
+				$this->form->get_id()
+			) );
+			$this->respond_with_general_error( 400, 'Submission not valid.' );
+
+			return;
+		}
+	}
+
+	/**
+	 * Validate signed client interaction telemetry string ("webdriver:trustedEvents:keyOrInputEvents:pointerEvents").
+	 *
+	 * @param string $telemetry
+	 *
+	 * @return bool
+	 */
+	private function is_valid_telemetry( string $telemetry ): bool {
+		$parts = explode( ':', $telemetry );
+		if ( 4 !== count( $parts ) ) {
+			return false;
+		}
+
+		foreach ( $parts as $part ) {
+			if ( '' === $part || ! ctype_digit( $part ) ) {
+				return false;
+			}
+		}
+
+		$webdriver      = (int) $parts[0];
+		$trusted_events = (int) $parts[1];
+		$input_events   = (int) $parts[2];
+		$pointer_events = (int) $parts[3];
+
+		if ( 0 !== $webdriver ) {
+			return false;
+		}
+
+		if ( $trusted_events < 1 ) {
+			return false;
+		}
+
+		if ( ( $input_events + $pointer_events ) < 1 ) {
+			return false;
+		}
+
+		return true;
 	}
 
 	/**
