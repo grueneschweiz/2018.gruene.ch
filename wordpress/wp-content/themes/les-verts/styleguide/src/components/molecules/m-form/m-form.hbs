@@ -1,4 +1,4 @@
-<form action="#" class="m-form" data-sending-lbl="{{ submitting }}">
+<form action="#" class="m-form" data-sending-lbl="{{ submitting }}" data-pow-difficulty="3">
 	{{#each fields}}
 		{{#if custom_width_start}}<div class="m-form__custom-width-block">{{/if}}
 
@@ -54,6 +54,16 @@
 			id='privacy_policy'
 		}}
 	</div>
+
+	<div style="position: absolute; left: -5000px;" aria-hidden="true">
+		<label for="fax">Please leave empty</label>
+		<input type="text" name="fax" id="fax" tabindex="-1" autocomplete="off">
+	</div>
+	<div class="m-form__hp-field" aria-hidden="true">
+		<label for="contact_url">Website</label>
+		<input type="text" name="contact_url" id="contact_url" tabindex="-1" autocomplete="nope" value="">
+	</div>
+	<input type="hidden" name="form_interaction_duration" value="">
 
 	<div class="m-form__submit-wrapper">
 		<div class="m-form__submit-button">

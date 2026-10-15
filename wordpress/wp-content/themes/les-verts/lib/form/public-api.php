@@ -69,3 +69,7 @@ function supt_get_nonce_api_url(): string {
 function supt_get_progress_api_url(): string {
 	return get_rest_url( null, SUPT_FORM_API_V1_BASE . SUPT_FORM_API_ENDPOINT_PROGRESS );
 }
+
+function supt_get_form_pow_difficulty(): int {
+	return \SUPT\Util::get_pow_difficulty();
+}

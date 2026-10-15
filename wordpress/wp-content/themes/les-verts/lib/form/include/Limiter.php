@@ -70,29 +70,45 @@ class Limiter {
 	 */
 	public function __construct( string $for ) {
 		$this->ip         = $this->get_user_ip();
-		$this->user_agent = $_SERVER['HTTP_USER_AGENT'];
+		$this->user_agent = $_SERVER['HTTP_USER_AGENT'] ?? '';
 		$this->option_key = self::OPTION_BASE_KEY . $for;
 	}
 
 	/**
-	 * Get visitor ip. If behind proxy, try to find real ip.
+	 * Get visitor IP address.
 	 *
-	 * @see https://stackoverflow.com/a/13646848
+	 * Defaults to $_SERVER['REMOTE_ADDR'] to prevent X-Forwarded-For IP spoofing.
+	 * When SUPT_TRUST_PROXY_HEADERS is enabled (e.g. behind Cloudflare or a trusted reverse proxy),
+	 * checks HTTP_CF_CONNECTING_IP first, then the first valid IP in HTTP_X_FORWARDED_FOR.
 	 *
 	 * @return string
 	 */
 	private function get_user_ip() {
-		if ( array_key_exists( 'HTTP_X_FORWARDED_FOR', $_SERVER ) && ! empty( $_SERVER['HTTP_X_FORWARDED_FOR'] ) ) {
-			if ( strpos( $_SERVER['HTTP_X_FORWARDED_FOR'], ',' ) > 0 ) {
-				$addr = explode( ",", $_SERVER['HTTP_X_FORWARDED_FOR'] );
+		$trust_proxy = defined( 'SUPT_TRUST_PROXY_HEADERS' ) && \SUPT_TRUST_PROXY_HEADERS;
 
-				return trim( $addr[0] );
-			} else {
-				return $_SERVER['HTTP_X_FORWARDED_FOR'];
+		if ( $trust_proxy ) {
+			if ( ! empty( $_SERVER['HTTP_CF_CONNECTING_IP'] ) ) {
+				$cf_ip = trim( $_SERVER['HTTP_CF_CONNECTING_IP'] );
+				if ( false !== filter_var( $cf_ip, FILTER_VALIDATE_IP ) ) {
+					return $cf_ip;
+				}
 			}
-		} else {
-			return $_SERVER['REMOTE_ADDR'];
+
+			if ( ! empty( $_SERVER['HTTP_X_FORWARDED_FOR'] ) ) {
+				$forwarded_ips = explode( ',', $_SERVER['HTTP_X_FORWARDED_FOR'] );
+				$candidate_ip  = trim( $forwarded_ips[0] );
+				if ( false !== filter_var( $candidate_ip, FILTER_VALIDATE_IP ) ) {
+					return $candidate_ip;
+				}
+			}
 		}
+
+		$remote_addr = $_SERVER['REMOTE_ADDR'] ?? '';
+		if ( false !== filter_var( $remote_addr, FILTER_VALIDATE_IP ) ) {
+			return $remote_addr;
+		}
+
+		return '0.0.0.0';
 	}
 
 	/**

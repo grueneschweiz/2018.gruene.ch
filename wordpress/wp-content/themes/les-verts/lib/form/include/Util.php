@@ -162,6 +162,44 @@ class Util {
 		return (int) get_field( 'group_id', 'option' );
 	}
 
+	/**
+	 * Determine whether strict headless-bot anti-spam protection is enabled.
+	 *
+	 * Enabled by default across all instances/sites. Can be disabled globally via
+	 * the SUPT_FORM_STRICT_ANTISPAM constant in wp-config.php or per site via the
+	 * 'form_strict_antispam_disabled' ACF option in Forms -> Settings.
+	 *
+	 * @return bool
+	 */
+	public static function is_strict_antispam_enabled(): bool {
+		if ( defined( 'SUPT_FORM_STRICT_ANTISPAM' ) ) {
+			return (bool) \SUPT_FORM_STRICT_ANTISPAM;
+		}
+
+		if ( function_exists( 'get_field' ) && get_field( 'form_strict_antispam_disabled', 'option' ) ) {
+			return false;
+		}
+
+		return true;
+	}
+
+	/**
+	 * Return the required number of leading hex zeros for Proof-of-Work verification.
+	 *
+	 * @return int
+	 */
+	public static function get_pow_difficulty(): int {
+		if ( ! self::is_strict_antispam_enabled() ) {
+			return 0;
+		}
+
+		if ( defined( 'SUPT_FORM_POW_DIFFICULTY' ) ) {
+			return max( 0, min( 6, (int) \SUPT_FORM_POW_DIFFICULTY ) );
+		}
+
+		return 3;
+	}
+
 
     /**
      * Log that the item was processed
