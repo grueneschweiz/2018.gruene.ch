@@ -430,7 +430,7 @@
 <div class="Browser-panel Browser-code is-active" data-role="tab-panel" id="browser-3224082b0404a4ba2de910c3cf73c8e3-panel-html">
     <code class="Code Code--lang-html hljs">
         
-        <pre><span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">action</span>=<span class="hljs-string">&quot;#&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;m-form&quot;</span> <span class="hljs-attr">data-sending-lbl</span>=<span class="hljs-string">&quot;Senden...&quot;</span>&gt;</span>
+        <pre><span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">action</span>=<span class="hljs-string">&quot;#&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;m-form&quot;</span> <span class="hljs-attr">data-sending-lbl</span>=<span class="hljs-string">&quot;Senden...&quot;</span> <span class="hljs-attr">data-pow-difficulty</span>=<span class="hljs-string">&quot;3&quot;</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;m-form__custom-width-block&quot;</span>&gt;</span>
 
         <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;m-form__element&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;width: calc(30% - 0.5em);&quot;</span>&gt;</span>
@@ -574,6 +574,16 @@
         <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;position: absolute; left: -5000px;&quot;</span> <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">&quot;true&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;fax&quot;</span>&gt;</span>Please leave empty<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;fax&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;fax&quot;</span> <span class="hljs-attr">tabindex</span>=<span class="hljs-string">&quot;-1&quot;</span> <span class="hljs-attr">autocomplete</span>=<span class="hljs-string">&quot;off&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;m-form__hp-field&quot;</span> <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">&quot;true&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;contact_url&quot;</span>&gt;</span>Website<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;contact_url&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;contact_url&quot;</span> <span class="hljs-attr">tabindex</span>=<span class="hljs-string">&quot;-1&quot;</span> <span class="hljs-attr">autocomplete</span>=<span class="hljs-string">&quot;nope&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;hidden&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;form_interaction_duration&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;&quot;</span>&gt;</span>
+
     <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;m-form__submit-wrapper&quot;</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;m-form__submit-button&quot;</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;a-button a-button--secondary&quot;</span> <span class="hljs-attr">data-form-submit</span>&gt;</span>Informiert bleiben<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
@@ -603,7 +613,7 @@
     
     <div class="Browser-panel Browser-code" data-role="tab-panel" id="browser-3224082b0404a4ba2de910c3cf73c8e3-panel-view">
     <code class="Code Code--lang-handlebars hljs">
-        <pre><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">action</span>=<span class="hljs-string">&quot;#&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;m-form&quot;</span> <span class="hljs-attr">data-sending-lbl</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">submitting</span> }}</span><span class="xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>&gt;</span>
+        <pre><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">action</span>=<span class="hljs-string">&quot;#&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;m-form&quot;</span> <span class="hljs-attr">data-sending-lbl</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{ <span class="hljs-name">submitting</span> }}</span><span class="xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">data-pow-difficulty</span>=<span class="hljs-string">&quot;3&quot;</span>&gt;</span>
 	</span><span class="hljs-template-tag">{{#<span class="hljs-name"><span class="hljs-builtin-name">each</span></span> fields}}</span><span class="xml">
 		</span><span class="hljs-template-tag">{{#<span class="hljs-name"><span class="hljs-builtin-name">if</span></span> custom_width_start}}</span><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;m-form__custom-width-block&quot;</span>&gt;</span></span><span class="hljs-template-tag">{{/<span class="hljs-name"><span class="hljs-builtin-name">if</span></span>}}</span><span class="xml">
 
@@ -659,6 +669,16 @@
 			<span class="hljs-attr">id</span>=<span class="hljs-string">&#x27;privacy_policy&#x27;</span>
 		}}</span><span class="xml">
 	<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+	<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;position: absolute; left: -5000px;&quot;</span> <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">&quot;true&quot;</span>&gt;</span>
+		<span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;fax&quot;</span>&gt;</span>Please leave empty<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+		<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;fax&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;fax&quot;</span> <span class="hljs-attr">tabindex</span>=<span class="hljs-string">&quot;-1&quot;</span> <span class="hljs-attr">autocomplete</span>=<span class="hljs-string">&quot;off&quot;</span>&gt;</span>
+	<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+	<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;m-form__hp-field&quot;</span> <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">&quot;true&quot;</span>&gt;</span>
+		<span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;contact_url&quot;</span>&gt;</span>Website<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+		<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;contact_url&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;contact_url&quot;</span> <span class="hljs-attr">tabindex</span>=<span class="hljs-string">&quot;-1&quot;</span> <span class="hljs-attr">autocomplete</span>=<span class="hljs-string">&quot;nope&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;&quot;</span>&gt;</span>
+	<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+	<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;hidden&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;form_interaction_duration&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;&quot;</span>&gt;</span>
 
 	<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;m-form__submit-wrapper&quot;</span>&gt;</span>
 		<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;m-form__submit-button&quot;</span>&gt;</span>
@@ -774,6 +794,21 @@
 	&amp;__checks-<span class="hljs-selector-tag">label</span>, &amp;__option-<span class="hljs-selector-tag">label</span> {
 		<span class="hljs-attribute">margin-top</span>: <span class="hljs-number">0.75em</span>;
 	}
+
+	&amp;__hp-field {
+		<span class="hljs-attribute">position</span>: absolute;
+		<span class="hljs-attribute">width</span>: <span class="hljs-number">1px</span>;
+		<span class="hljs-attribute">height</span>: <span class="hljs-number">1px</span>;
+		<span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span>;
+		<span class="hljs-attribute">margin</span>: -<span class="hljs-number">1px</span>;
+		<span class="hljs-attribute">overflow</span>: hidden;
+		<span class="hljs-attribute">clip</span>: rect(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>);
+		<span class="hljs-attribute">clip-path</span>: inset(<span class="hljs-number">50%</span>);
+		<span class="hljs-attribute">white-space</span>: nowrap;
+		<span class="hljs-attribute">border</span>: <span class="hljs-number">0</span>;
+		<span class="hljs-attribute">opacity</span>: <span class="hljs-number">0</span>;
+		<span class="hljs-attribute">pointer-events</span>: none;
+	}
 }
 </pre>
                             </code>
@@ -791,7 +826,7 @@
                 </li>
                 <li class="Meta-item">
                     <strong class="Meta-key">Size:</strong>
-                    <span class="Meta-value">1 KB</span>
+                    <span class="Meta-value">1.3 KB</span>
                 </li>
             </ul>
         </div>
@@ -850,9 +885,12 @@
 	}
 
 	<span class="hljs-function"><span class="hljs-title">handleError</span>(<span class="hljs-params"> resp </span>)</span> {
+		<span class="hljs-built_in">this</span>.noncePromise = <span class="hljs-literal">null</span>;
+		<span class="hljs-built_in">this</span>.prefetchedNonce = <span class="hljs-literal">null</span>;
+
 		<span class="hljs-keyword">if</span> (resp <span class="hljs-keyword">instanceof</span> <span class="hljs-built_in">Object</span> &amp;&amp; <span class="hljs-string">&#x27;data&#x27;</span> <span class="hljs-keyword">in</span> resp) {
 			<span class="hljs-keyword">if</span> (<span class="hljs-string">&#x27;nonce&#x27;</span> <span class="hljs-keyword">in</span> resp.data) {
-				<span class="hljs-built_in">this</span>.element.dataset.nonce = resp.data.nonce;
+				<span class="hljs-built_in">this</span>.prefetchedNonce = resp.data.nonce;
 			}
 
 			<span class="hljs-keyword">if</span> (<span class="hljs-string">&#x27;general&#x27;</span> <span class="hljs-keyword">in</span> resp.data) {
@@ -912,6 +950,12 @@
 		<span class="hljs-built_in">this</span>.origSubmitLbl = <span class="hljs-built_in">this</span>.submitButton.innerHTML;
 		<span class="hljs-built_in">this</span>.predecessorId = MForm.getUrlParam( LAST_SUBMISSION, - <span class="hljs-number">1</span> );
 		<span class="hljs-built_in">this</span>.interactionRecorded = <span class="hljs-literal">false</span>;
+		<span class="hljs-built_in">this</span>.nonceUrl = <span class="hljs-built_in">this</span>.element.dataset.nonce;
+		<span class="hljs-built_in">this</span>.noncePromise = <span class="hljs-literal">null</span>;
+		<span class="hljs-built_in">this</span>.prefetchedNonce = <span class="hljs-literal">null</span>;
+		<span class="hljs-built_in">this</span>.trustedEventCount = <span class="hljs-number">0</span>;
+		<span class="hljs-built_in">this</span>.inputEventCount = <span class="hljs-number">0</span>;
+		<span class="hljs-built_in">this</span>.pointerEventCount = <span class="hljs-number">0</span>;
 	}
 
 	<span class="hljs-function"><span class="hljs-title">showSending</span>(<span class="hljs-params"></span>)</span> {
@@ -958,14 +1002,19 @@
 		<span class="hljs-comment">// the form data</span>
 		<span class="hljs-keyword">const</span> data = <span class="hljs-built_in">this</span>.getFormData();
 		<span class="hljs-keyword">const</span> url = <span class="hljs-built_in">this</span>.element.action;
+		<span class="hljs-keyword">const</span> telemetry = <span class="hljs-built_in">this</span>.getTelemetryPayload();
 
-		<span class="hljs-comment">// get a nonce, then submit the form</span>
+		<span class="hljs-comment">// get a nonce, solve Proof-of-Work challenge, then submit the form</span>
 		<span class="hljs-built_in">this</span>.getNonce().
 			then( <span class="hljs-function"><span class="hljs-params">nonce</span> =&gt;</span> {
 				data.append( <span class="hljs-string">&#x27;nonce&#x27;</span>, nonce );
-				<span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.getSecret( nonce );
+				data.append( <span class="hljs-string">&#x27;telemetry&#x27;</span>, telemetry );
+				<span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.solveProofOfWork( nonce, telemetry );
 			} ).
-			then( <span class="hljs-function"><span class="hljs-params">secret</span> =&gt;</span> data.append( <span class="hljs-string">&#x27;secret&#x27;</span>, secret ) ).
+			then( <span class="hljs-function"><span class="hljs-params">powResult</span> =&gt;</span> {
+				data.append( <span class="hljs-string">&#x27;pow_counter&#x27;</span>, powResult.counter );
+				data.append( <span class="hljs-string">&#x27;secret&#x27;</span>, powResult.secret );
+			} ).
 			then( <span class="hljs-function">() =&gt;</span> <span class="hljs-built_in">this</span>.sendForm( url, data ) ).
 			then( <span class="hljs-function"><span class="hljs-params">resp</span> =&gt;</span> <span class="hljs-built_in">this</span>.showSuccess( resp ) ).
 			then( <span class="hljs-function">() =&gt;</span> <span class="hljs-built_in">this</span>.sendSubmissionNotification() ).
@@ -1044,19 +1093,47 @@
 	}
 
 	<span class="hljs-function"><span class="hljs-title">trackFirstInteraction</span>(<span class="hljs-params"></span>)</span> {
-		<span class="hljs-keyword">const</span> handler = <span class="hljs-function">() =&gt;</span> {
+		<span class="hljs-keyword">const</span> recordInteraction = <span class="hljs-function">(<span class="hljs-params"> event, category </span>) =&gt;</span> {
+			<span class="hljs-keyword">if</span> (event &amp;&amp; event.isTrusted) {
+				<span class="hljs-built_in">this</span>.trustedEventCount = <span class="hljs-built_in">Math</span>.min( <span class="hljs-number">999</span>, <span class="hljs-built_in">this</span>.trustedEventCount + <span class="hljs-number">1</span> );
+				<span class="hljs-keyword">if</span> (<span class="hljs-string">&#x27;input&#x27;</span> === category) {
+					<span class="hljs-built_in">this</span>.inputEventCount = <span class="hljs-built_in">Math</span>.min( <span class="hljs-number">999</span>, <span class="hljs-built_in">this</span>.inputEventCount + <span class="hljs-number">1</span> );
+				}
+				<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-string">&#x27;pointer&#x27;</span> === category) {
+					<span class="hljs-built_in">this</span>.pointerEventCount = <span class="hljs-built_in">Math</span>.min( <span class="hljs-number">999</span>, <span class="hljs-built_in">this</span>.pointerEventCount + <span class="hljs-number">1</span> );
+				}
+			}
+
 			<span class="hljs-keyword">if</span> (<span class="hljs-built_in">this</span>.interactionRecorded) {
 				<span class="hljs-keyword">return</span>;
 			}
+
+			<span class="hljs-keyword">if</span> (event &amp;&amp; <span class="hljs-literal">false</span> === event.isTrusted) {
+				<span class="hljs-keyword">return</span>;
+			}
+
 			<span class="hljs-built_in">this</span>.interactionRecorded = <span class="hljs-literal">true</span>;
 			<span class="hljs-built_in">this</span>.interactionStartTime = <span class="hljs-built_in">Date</span>.now();
+			<span class="hljs-built_in">this</span>.prefetchNonce();
 		};
 
-		<span class="hljs-built_in">this</span>.element.addEventListener( <span class="hljs-string">&#x27;input&#x27;</span>, handler );
-		<span class="hljs-built_in">this</span>.element.addEventListener( <span class="hljs-string">&#x27;change&#x27;</span>, handler );
-		<span class="hljs-built_in">this</span>.element.addEventListener( <span class="hljs-string">&#x27;click&#x27;</span>, handler );
-		<span class="hljs-built_in">this</span>.element.addEventListener( <span class="hljs-string">&#x27;focus&#x27;</span>, handler, <span class="hljs-literal">true</span> );
-		<span class="hljs-built_in">this</span>.element.addEventListener( <span class="hljs-string">&#x27;touchstart&#x27;</span>, handler );
+		<span class="hljs-built_in">this</span>.element.addEventListener( <span class="hljs-string">&#x27;input&#x27;</span>, <span class="hljs-function"><span class="hljs-params">e</span> =&gt;</span> recordInteraction( e, <span class="hljs-string">&#x27;input&#x27;</span> ) );
+		<span class="hljs-built_in">this</span>.element.addEventListener( <span class="hljs-string">&#x27;change&#x27;</span>, <span class="hljs-function"><span class="hljs-params">e</span> =&gt;</span> recordInteraction( e, <span class="hljs-string">&#x27;input&#x27;</span> ) );
+		<span class="hljs-built_in">this</span>.element.addEventListener( <span class="hljs-string">&#x27;keydown&#x27;</span>, <span class="hljs-function"><span class="hljs-params">e</span> =&gt;</span> recordInteraction( e, <span class="hljs-string">&#x27;input&#x27;</span> ) );
+		<span class="hljs-built_in">this</span>.element.addEventListener( <span class="hljs-string">&#x27;click&#x27;</span>, <span class="hljs-function"><span class="hljs-params">e</span> =&gt;</span> recordInteraction( e, <span class="hljs-string">&#x27;pointer&#x27;</span> ) );
+		<span class="hljs-built_in">this</span>.element.addEventListener( <span class="hljs-string">&#x27;focus&#x27;</span>, <span class="hljs-function"><span class="hljs-params">e</span> =&gt;</span> recordInteraction( e, <span class="hljs-string">&#x27;pointer&#x27;</span> ), <span class="hljs-literal">true</span> );
+		<span class="hljs-built_in">this</span>.element.addEventListener( <span class="hljs-string">&#x27;touchstart&#x27;</span>, <span class="hljs-function"><span class="hljs-params">e</span> =&gt;</span> recordInteraction( e, <span class="hljs-string">&#x27;pointer&#x27;</span> ) );
+	}
+
+	<span class="hljs-function"><span class="hljs-title">prefetchNonce</span>(<span class="hljs-params"></span>)</span> {
+		<span class="hljs-keyword">if</span> (!<span class="hljs-built_in">this</span>.nonceUrl || <span class="hljs-built_in">this</span>.noncePromise || <span class="hljs-built_in">this</span>.prefetchedNonce) {
+			<span class="hljs-keyword">return</span>;
+		}
+
+		<span class="hljs-built_in">this</span>.noncePromise = ajax( <span class="hljs-built_in">this</span>.nonceUrl, <span class="hljs-string">&#x27;GET&#x27;</span> ).catch( <span class="hljs-function">() =&gt;</span> {
+			<span class="hljs-built_in">this</span>.noncePromise = <span class="hljs-literal">null</span>;
+			<span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;
+		} );
 	}
 
 	<span class="hljs-function"><span class="hljs-title">setInteractionDuration</span>(<span class="hljs-params"></span>)</span> {
@@ -1068,7 +1145,86 @@
 	}
 
 	<span class="hljs-function"><span class="hljs-title">getNonce</span>(<span class="hljs-params"></span>)</span> {
-		<span class="hljs-keyword">return</span> ajax( <span class="hljs-built_in">this</span>.element.dataset.nonce, <span class="hljs-string">&#x27;GET&#x27;</span> );
+		<span class="hljs-keyword">if</span> (<span class="hljs-built_in">this</span>.prefetchedNonce) {
+			<span class="hljs-keyword">const</span> nonce = <span class="hljs-built_in">this</span>.prefetchedNonce;
+			<span class="hljs-built_in">this</span>.prefetchedNonce = <span class="hljs-literal">null</span>;
+			<span class="hljs-keyword">return</span> <span class="hljs-built_in">Promise</span>.resolve( nonce );
+		}
+
+		<span class="hljs-keyword">if</span> (<span class="hljs-built_in">this</span>.noncePromise) {
+			<span class="hljs-keyword">const</span> promise = <span class="hljs-built_in">this</span>.noncePromise;
+			<span class="hljs-built_in">this</span>.noncePromise = <span class="hljs-literal">null</span>;
+			<span class="hljs-keyword">return</span> promise.then( <span class="hljs-function"><span class="hljs-params">nonce</span> =&gt;</span> {
+				<span class="hljs-keyword">if</span> (nonce) {
+					<span class="hljs-keyword">return</span> nonce;
+				}
+				<span class="hljs-keyword">return</span> ajax( <span class="hljs-built_in">this</span>.nonceUrl, <span class="hljs-string">&#x27;GET&#x27;</span> );
+			} );
+		}
+
+		<span class="hljs-keyword">return</span> ajax( <span class="hljs-built_in">this</span>.nonceUrl, <span class="hljs-string">&#x27;GET&#x27;</span> );
+	}
+
+	<span class="hljs-function"><span class="hljs-title">isHeadlessAutomated</span>(<span class="hljs-params"></span>)</span> {
+		<span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> navigator !== <span class="hljs-string">&#x27;undefined&#x27;</span> &amp;&amp; navigator.webdriver === <span class="hljs-literal">true</span>) {
+			<span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+		}
+		<span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> <span class="hljs-built_in">window</span> !== <span class="hljs-string">&#x27;undefined&#x27;</span> &amp;&amp; ( <span class="hljs-built_in">window</span>._phantom || <span class="hljs-built_in">window</span>.__nightmare || <span class="hljs-built_in">window</span>.callPhantom )) {
+			<span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+		}
+		<span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+	}
+
+	<span class="hljs-function"><span class="hljs-title">getTelemetryPayload</span>(<span class="hljs-params"></span>)</span> {
+		<span class="hljs-keyword">const</span> webdriverFlag = <span class="hljs-built_in">this</span>.isHeadlessAutomated() ? <span class="hljs-number">1</span> : <span class="hljs-number">0</span>;
+		<span class="hljs-keyword">return</span> <span class="hljs-string">`<span class="hljs-subst">${ webdriverFlag }</span>:<span class="hljs-subst">${ <span class="hljs-built_in">this</span>.trustedEventCount }</span>:<span class="hljs-subst">${ <span class="hljs-built_in">this</span>.inputEventCount }</span>:<span class="hljs-subst">${ <span class="hljs-built_in">this</span>.pointerEventCount }</span>`</span>;
+	}
+
+	<span class="hljs-function"><span class="hljs-title">getPowDifficulty</span>(<span class="hljs-params"></span>)</span> {
+		<span class="hljs-keyword">const</span> rawDifficulty = <span class="hljs-built_in">parseInt</span>( <span class="hljs-built_in">this</span>.element.dataset.powDifficulty, <span class="hljs-number">10</span> );
+		<span class="hljs-keyword">if</span> (<span class="hljs-built_in">isNaN</span>( rawDifficulty ) || rawDifficulty &lt; <span class="hljs-number">0</span>) {
+			<span class="hljs-keyword">return</span> <span class="hljs-number">3</span>;
+		}
+		<span class="hljs-keyword">return</span> <span class="hljs-built_in">Math</span>.min( <span class="hljs-number">6</span>, rawDifficulty );
+	}
+
+	<span class="hljs-function"><span class="hljs-title">solveProofOfWork</span>(<span class="hljs-params"> nonce, telemetry </span>)</span> {
+		<span class="hljs-keyword">const</span> formId = <span class="hljs-built_in">this</span>.element.dataset.formId || <span class="hljs-string">&#x27;&#x27;</span>;
+		<span class="hljs-keyword">const</span> difficulty = <span class="hljs-built_in">this</span>.getPowDifficulty();
+		<span class="hljs-keyword">const</span> targetPrefix = <span class="hljs-string">&#x27;0&#x27;</span>.repeat( difficulty );
+		<span class="hljs-keyword">const</span> baseString = <span class="hljs-string">`<span class="hljs-subst">${ formId }</span>:<span class="hljs-subst">${ nonce }</span>:<span class="hljs-subst">${ telemetry }</span>:`</span>;
+
+		<span class="hljs-keyword">if</span> (<span class="hljs-number">0</span> === difficulty) {
+			<span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.sha256hex( <span class="hljs-string">`<span class="hljs-subst">${ baseString }</span>0`</span> ).then( <span class="hljs-function"><span class="hljs-params">hash</span> =&gt;</span> ( {
+				<span class="hljs-attr">counter</span>: <span class="hljs-string">&#x27;0&#x27;</span>,
+				<span class="hljs-attr">secret</span>: hash,
+			} ) );
+		}
+
+		<span class="hljs-keyword">const</span> batchSize = <span class="hljs-number">64</span>;
+		<span class="hljs-keyword">const</span> solveBatch = <span class="hljs-function"><span class="hljs-params">startCounter</span> =&gt;</span> {
+			<span class="hljs-keyword">const</span> promises = [];
+			<span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; batchSize; i ++) {
+				<span class="hljs-keyword">const</span> candidateCounter = startCounter + i;
+				promises.push(
+					<span class="hljs-built_in">this</span>.sha256hex( <span class="hljs-string">`<span class="hljs-subst">${ baseString }</span><span class="hljs-subst">${ candidateCounter }</span>`</span> ).then( <span class="hljs-function"><span class="hljs-params">hash</span> =&gt;</span> ( {
+						<span class="hljs-attr">counter</span>: <span class="hljs-built_in">String</span>( candidateCounter ),
+						<span class="hljs-attr">secret</span>: hash,
+					} ) )
+				);
+			}
+
+			<span class="hljs-keyword">return</span> <span class="hljs-built_in">Promise</span>.all( promises ).then( <span class="hljs-function"><span class="hljs-params">results</span> =&gt;</span> {
+				<span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; results.length; i ++) {
+					<span class="hljs-keyword">if</span> (<span class="hljs-number">0</span> === results[ i ].secret.indexOf( targetPrefix )) {
+						<span class="hljs-keyword">return</span> results[ i ];
+					}
+				}
+				<span class="hljs-keyword">return</span> solveBatch( startCounter + batchSize );
+			} );
+		};
+
+		<span class="hljs-keyword">return</span> solveBatch( <span class="hljs-number">0</span> );
 	}
 
 	<span class="hljs-function"><span class="hljs-title">getSecret</span>(<span class="hljs-params"> nonce </span>)</span> {
@@ -1111,7 +1267,7 @@
                 </li>
                 <li class="Meta-item">
                     <strong class="Meta-key">Size:</strong>
-                    <span class="Meta-value">8.1 KB</span>
+                    <span class="Meta-value">11.6 KB</span>
                 </li>
             </ul>
         </div>

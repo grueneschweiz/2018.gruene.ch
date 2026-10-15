@@ -44,9 +44,12 @@ export default class MForm extends BaseView {
 	}
 
 	handleError( resp ) {
+		this.noncePromise = null;
+		this.prefetchedNonce = null;
+
 		if (resp instanceof Object && 'data' in resp) {
 			if ('nonce' in resp.data) {
-				this.element.dataset.nonce = resp.data.nonce;
+				this.prefetchedNonce = resp.data.nonce;
 			}
 
 			if ('general' in resp.data) {
@@ -106,6 +109,12 @@ export default class MForm extends BaseView {
 		this.origSubmitLbl = this.submitButton.innerHTML;
 		this.predecessorId = MForm.getUrlParam( LAST_SUBMISSION, - 1 );
 		this.interactionRecorded = false;
+		this.nonceUrl = this.element.dataset.nonce;
+		this.noncePromise = null;
+		this.prefetchedNonce = null;
+		this.trustedEventCount = 0;
+		this.inputEventCount = 0;
+		this.pointerEventCount = 0;
 	}
 
 	showSending() {
@@ -152,14 +161,19 @@ export default class MForm extends BaseView {
 		// the form data
 		const data = this.getFormData();
 		const url = this.element.action;
+		const telemetry = this.getTelemetryPayload();
 
-		// get a nonce, then submit the form
+		// get a nonce, solve Proof-of-Work challenge, then submit the form
 		this.getNonce().
 			then( nonce => {
 				data.append( 'nonce', nonce );
-				return this.getSecret( nonce );
+				data.append( 'telemetry', telemetry );
+				return this.solveProofOfWork( nonce, telemetry );
 			} ).
-			then( secret => data.append( 'secret', secret ) ).
+			then( powResult => {
+				data.append( 'pow_counter', powResult.counter );
+				data.append( 'secret', powResult.secret );
+			} ).
 			then( () => this.sendForm( url, data ) ).
 			then( resp => this.showSuccess( resp ) ).
 			then( () => this.sendSubmissionNotification() ).
@@ -238,19 +252,47 @@ export default class MForm extends BaseView {
 	}
 
 	trackFirstInteraction() {
-		const handler = () => {
+		const recordInteraction = ( event, category ) => {
+			if (event && event.isTrusted) {
+				this.trustedEventCount = Math.min( 999, this.trustedEventCount + 1 );
+				if ('input' === category) {
+					this.inputEventCount = Math.min( 999, this.inputEventCount + 1 );
+				}
+				else if ('pointer' === category) {
+					this.pointerEventCount = Math.min( 999, this.pointerEventCount + 1 );
+				}
+			}
+
 			if (this.interactionRecorded) {
 				return;
 			}
+
+			if (event && false === event.isTrusted) {
+				return;
+			}
+
 			this.interactionRecorded = true;
 			this.interactionStartTime = Date.now();
+			this.prefetchNonce();
 		};
 
-		this.element.addEventListener( 'input', handler );
-		this.element.addEventListener( 'change', handler );
-		this.element.addEventListener( 'click', handler );
-		this.element.addEventListener( 'focus', handler, true );
-		this.element.addEventListener( 'touchstart', handler );
+		this.element.addEventListener( 'input', e => recordInteraction( e, 'input' ) );
+		this.element.addEventListener( 'change', e => recordInteraction( e, 'input' ) );
+		this.element.addEventListener( 'keydown', e => recordInteraction( e, 'input' ) );
+		this.element.addEventListener( 'click', e => recordInteraction( e, 'pointer' ) );
+		this.element.addEventListener( 'focus', e => recordInteraction( e, 'pointer' ), true );
+		this.element.addEventListener( 'touchstart', e => recordInteraction( e, 'pointer' ) );
+	}
+
+	prefetchNonce() {
+		if (!this.nonceUrl || this.noncePromise || this.prefetchedNonce) {
+			return;
+		}
+
+		this.noncePromise = ajax( this.nonceUrl, 'GET' ).catch( () => {
+			this.noncePromise = null;
+			return null;
+		} );
 	}
 
 	setInteractionDuration() {
@@ -262,7 +304,86 @@ export default class MForm extends BaseView {
 	}
 
 	getNonce() {
-		return ajax( this.element.dataset.nonce, 'GET' );
+		if (this.prefetchedNonce) {
+			const nonce = this.prefetchedNonce;
+			this.prefetchedNonce = null;
+			return Promise.resolve( nonce );
+		}
+
+		if (this.noncePromise) {
+			const promise = this.noncePromise;
+			this.noncePromise = null;
+			return promise.then( nonce => {
+				if (nonce) {
+					return nonce;
+				}
+				return ajax( this.nonceUrl, 'GET' );
+			} );
+		}
+
+		return ajax( this.nonceUrl, 'GET' );
+	}
+
+	isHeadlessAutomated() {
+		if (typeof navigator !== 'undefined' && navigator.webdriver === true) {
+			return true;
+		}
+		if (typeof window !== 'undefined' && ( window._phantom || window.__nightmare || window.callPhantom )) {
+			return true;
+		}
+		return false;
+	}
+
+	getTelemetryPayload() {
+		const webdriverFlag = this.isHeadlessAutomated() ? 1 : 0;
+		return `${ webdriverFlag }:${ this.trustedEventCount }:${ this.inputEventCount }:${ this.pointerEventCount }`;
+	}
+
+	getPowDifficulty() {
+		const rawDifficulty = parseInt( this.element.dataset.powDifficulty, 10 );
+		if (isNaN( rawDifficulty ) || rawDifficulty < 0) {
+			return 3;
+		}
+		return Math.min( 6, rawDifficulty );
+	}
+
+	solveProofOfWork( nonce, telemetry ) {
+		const formId = this.element.dataset.formId || '';
+		const difficulty = this.getPowDifficulty();
+		const targetPrefix = '0'.repeat( difficulty );
+		const baseString = `${ formId }:${ nonce }:${ telemetry }:`;
+
+		if (0 === difficulty) {
+			return this.sha256hex( `${ baseString }0` ).then( hash => ( {
+				counter: '0',
+				secret: hash,
+			} ) );
+		}
+
+		const batchSize = 64;
+		const solveBatch = startCounter => {
+			const promises = [];
+			for (let i = 0; i < batchSize; i ++) {
+				const candidateCounter = startCounter + i;
+				promises.push(
+					this.sha256hex( `${ baseString }${ candidateCounter }` ).then( hash => ( {
+						counter: String( candidateCounter ),
+						secret: hash,
+					} ) )
+				);
+			}
+
+			return Promise.all( promises ).then( results => {
+				for (let i = 0; i < results.length; i ++) {
+					if (0 === results[ i ].secret.indexOf( targetPrefix )) {
+						return results[ i ];
+					}
+				}
+				return solveBatch( startCounter + batchSize );
+			} );
+		};
+
+		return solveBatch( 0 );
 	}
 
 	getSecret( nonce ) {

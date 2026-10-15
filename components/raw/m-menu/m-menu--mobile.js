@@ -20,6 +20,8 @@ export default class MMenuMobile extends MMenuBase {
 		this.right = this.getScopedElement( RIGHT_SELECTOR );
 		this.menuItems = this.getScopedElements( SUBMENU_ITEMS_SELECTOR );
 
+		this.onResize = () => this.updateNavPosition();
+
 		this.setOrientation( 'vertical' );
 	}
 
@@ -50,6 +52,9 @@ export default class MMenuMobile extends MMenuBase {
 		this.addClass( this.right, OPEN_STATE );
 
 		this.hamburger.setAttribute( 'aria-expanded', true );
+
+		this.updateNavPosition();
+		window.addEventListener( 'resize', this.onResize );
 	}
 
 	closeMainNavigation() {
@@ -71,7 +76,39 @@ export default class MMenuMobile extends MMenuBase {
 			this.hamburger.setAttribute( 'aria-expanded', false );
 		}
 
+		window.removeEventListener( 'resize', this.onResize );
+		this.resetNavPosition();
+
 		this.closeSubNavigation();
+	}
+
+	/**
+	 * The CTA buttons / language switcher (`.m-menu__right`) can wrap onto several
+	 * lines on mobile depending on their content, which changes their rendered height.
+	 * The main navigation is positioned right below that block, so its offset needs to
+	 * be recalculated whenever the menu opens (or the viewport is resized) to prevent
+	 * the navigation items from being hidden behind (or overlapping) the CTA buttons.
+	 */
+	updateNavPosition() {
+		if (!this.navWrapper || !this.right) {
+			return;
+		}
+
+		if (this.isDesktop()) {
+			this.resetNavPosition();
+			return;
+		}
+
+		const headerRect = this.element.getBoundingClientRect();
+		const rightRect = this.right.getBoundingClientRect();
+
+		this.navWrapper.style.top = `${ rightRect.bottom - headerRect.top }px`;
+	}
+
+	resetNavPosition() {
+		if (this.navWrapper) {
+			this.navWrapper.style.top = '';
+		}
 	}
 
 	afterOpenSubNavigation( element ) {

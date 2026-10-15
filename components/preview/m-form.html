@@ -33,7 +33,7 @@
 	<meta name="theme-color" content="#ffffff">
 </head>
 <body>
-<form action="#" class="m-form" data-sending-lbl="Senden...">
+<form action="#" class="m-form" data-sending-lbl="Senden..." data-pow-difficulty="3">
 		<div class="m-form__custom-width-block">
 
 
@@ -300,6 +300,16 @@
 			</label>
 		</div>
 	</div>
+
+	<div style="position: absolute; left: -5000px;" aria-hidden="true">
+		<label for="fax">Please leave empty</label>
+		<input type="text" name="fax" id="fax" tabindex="-1" autocomplete="off">
+	</div>
+	<div class="m-form__hp-field" aria-hidden="true">
+		<label for="contact_url">Website</label>
+		<input type="text" name="contact_url" id="contact_url" tabindex="-1" autocomplete="nope" value="">
+	</div>
+	<input type="hidden" name="form_interaction_duration" value="">
 
 	<div class="m-form__submit-wrapper">
 		<div class="m-form__submit-button">
