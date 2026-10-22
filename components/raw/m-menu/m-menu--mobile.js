@@ -3,6 +3,7 @@ import { MAIN_MENU_SELECTOR, MMenuBase, OPEN_STATE } from './m-menu--base';
 const NAV_WRAPPER_SELECTOR = '.m-menu__nav';
 const RIGHT_SELECTOR = '.m-menu__right';
 const HAMBURGER_SELECTOR = '.a-hamburger';
+const HAMBURGER_WRAPPER_SELECTOR = '.m-menu__hamburger';
 const SUBMENU_ITEMS_SELECTOR = '.m-menu__nav-item';
 
 const HIDDEN_STATE = 'is-hidden';
@@ -17,8 +18,17 @@ export default class MMenuMobile extends MMenuBase {
 		this.navWrapper = this.getScopedElement( NAV_WRAPPER_SELECTOR );
 		this.mainNav = this.getScopedElement( MAIN_MENU_SELECTOR );
 		this.hamburger = this.getScopedElement( HAMBURGER_SELECTOR );
+		this.hamburgerWrapper = this.getScopedElement( HAMBURGER_WRAPPER_SELECTOR );
 		this.right = this.getScopedElement( RIGHT_SELECTOR );
 		this.menuItems = this.getScopedElements( SUBMENU_ITEMS_SELECTOR );
+
+		// The hamburger wrapper's resting (closed) offset within `.m-menu`, captured while
+		// the menu is still closed. Used by updateNavPosition() to keep it visually pinned
+		// in place even though it's actually positioned relative to `.m-menu__nav`, whose
+		// own offset changes dynamically (see updateNavPosition()).
+		this.hamburgerRestTop = this.hamburgerWrapper
+			? this.hamburgerWrapper.getBoundingClientRect().top - this.element.getBoundingClientRect().top
+			: 0;
 
 		this.onResize = () => this.updateNavPosition();
 
@@ -88,6 +98,11 @@ export default class MMenuMobile extends MMenuBase {
 	 * The main navigation is positioned right below that block, so its offset needs to
 	 * be recalculated whenever the menu opens (or the viewport is resized) to prevent
 	 * the navigation items from being hidden behind (or overlapping) the CTA buttons.
+	 *
+	 * The hamburger/close icon is positioned relative to `.m-menu__nav` too (with a
+	 * fixed negative offset meant to cancel out nav's default top and land back at its
+	 * resting spot in the header), so it has to be recalculated in lockstep, otherwise
+	 * it drifts down behind the CTA buttons by the same amount nav's offset grows.
 	 */
 	updateNavPosition() {
 		if (!this.navWrapper || !this.right) {
@@ -101,13 +116,22 @@ export default class MMenuMobile extends MMenuBase {
 
 		const headerRect = this.element.getBoundingClientRect();
 		const rightRect = this.right.getBoundingClientRect();
+		const navTop = rightRect.bottom - headerRect.top;
 
-		this.navWrapper.style.top = `${ rightRect.bottom - headerRect.top }px`;
+		this.navWrapper.style.top = `${ navTop }px`;
+
+		if (this.hamburgerWrapper) {
+			this.hamburgerWrapper.style.top = `${ this.hamburgerRestTop - navTop }px`;
+		}
 	}
 
 	resetNavPosition() {
 		if (this.navWrapper) {
 			this.navWrapper.style.top = '';
+		}
+
+		if (this.hamburgerWrapper) {
+			this.hamburgerWrapper.style.top = '';
 		}
 	}
 

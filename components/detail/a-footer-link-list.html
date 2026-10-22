@@ -577,14 +577,10 @@
 		<span class="hljs-attribute">display</span>: grid;
 		grid-template-<span class="hljs-attribute">columns</span>: repeat(<span class="hljs-number">2</span>, calc(<span class="hljs-number">50%</span> - <span class="hljs-number">12px</span>));
 		grid-<span class="hljs-attribute">column-gap</span>: <span class="hljs-number">24px</span>;
-		<span class="hljs-attribute">width</span>: calc(<span class="hljs-number">100vw</span> - #{<span class="hljs-number">2</span>*v.<span class="hljs-variable">$grid-item-padding-min</span>});
+		<span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
 
 		<span class="hljs-keyword">@include</span> m.media(v.<span class="hljs-variable">$size-tiny</span>) {
 			grid-template-<span class="hljs-attribute">columns</span>: repeat(<span class="hljs-number">3</span>, calc(<span class="hljs-number">33%</span> - <span class="hljs-number">16px</span>));
-		}
-
-		<span class="hljs-keyword">@include</span> m.media(v.<span class="hljs-variable">$DESKTOP</span>) {
-			<span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
 		}
 
 		<span class="hljs-keyword">@include</span> m.<span class="hljs-keyword">only</span>_ie10_above {
@@ -607,7 +603,7 @@
 
 	&amp;__link {
 		<span class="hljs-keyword">@include</span> m.clean-link;
-		
+
 		&amp; {
 			<span class="hljs-attribute">line-height</span>: <span class="hljs-number">1.75em</span>;
 			<span class="hljs-attribute">padding</span>: <span class="hljs-number">7px</span> <span class="hljs-number">0</span> <span class="hljs-number">8px</span>;
@@ -657,7 +653,7 @@
                 </li>
                 <li class="Meta-item">
                     <strong class="Meta-key">Size:</strong>
-                    <span class="Meta-value">1.5 KB</span>
+                    <span class="Meta-value">1.4 KB</span>
                 </li>
             </ul>
         </div>
