@@ -38,6 +38,7 @@
 
 	&__cta {
 		grid-row: 1 / 2;
+		min-width: 0; // let the grid item shrink below its content's intrinsic width
 
 		@include m.media(v.$DESKTOP) {
 			justify-self: center;
@@ -52,6 +53,7 @@
 
 	&__contact {
 		grid-row: 2 / 3;
+		min-width: 0; // let the grid item shrink below its content's intrinsic width
 
 		@include m.media(v.$size-small) {
 			grid-row: 1 / 2;
@@ -68,6 +70,8 @@
 	}
 
 	&__link-list {
+		min-width: 0; // let the grid item shrink below its content's intrinsic width
+
 		@include m.media(v.$size-small) {
 			grid-column: 1 / 3;
 		}

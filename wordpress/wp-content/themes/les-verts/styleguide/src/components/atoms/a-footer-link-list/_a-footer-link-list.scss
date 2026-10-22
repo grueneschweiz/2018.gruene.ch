@@ -14,14 +14,10 @@
 		display: grid;
 		grid-template-columns: repeat(2, calc(50% - 12px));
 		grid-column-gap: 24px;
-		width: calc(100vw - #{2*v.$grid-item-padding-min});
+		width: 100%;
 
 		@include m.media(v.$size-tiny) {
 			grid-template-columns: repeat(3, calc(33% - 16px));
-		}
-
-		@include m.media(v.$DESKTOP) {
-			width: 100%;
 		}
 
 		@include m.only_ie10_above {
@@ -44,7 +40,7 @@
 
 	&__link {
 		@include m.clean-link;
-		
+
 		& {
 			line-height: 1.75em;
 			padding: 7px 0 8px;
