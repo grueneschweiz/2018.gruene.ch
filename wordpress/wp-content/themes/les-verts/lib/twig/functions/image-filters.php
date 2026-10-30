@@ -92,13 +92,23 @@ class ImageFilters extends AbstractExtension {
             }
         }
 
+        if (!is_string($srcset)) {
+            $srcset = '';
+        }
+
         $attributes = [
             'src' => esc_url($src),
-            'srcset' => $srcset,        // Standard srcset for non-lazy images
-            'data-srcset' => $srcset,   // Data-srcset for lazy loading JavaScript
             'loading' => 'lazy',
             'alt' => !empty($attr['alt']) ? $attr['alt'] : ''
         ];
+
+        if ($srcset !== '') {
+            // Only emit srcset and sizes when candidates exist. An empty srcset
+            // with a sizes attribute lets WordPress auto-sizes inject "auto",
+            // which breaks intrinsic image sizing in Chromium browsers.
+            $attributes['srcset'] = $srcset;        // Standard srcset for non-lazy images
+            $attributes['data-srcset'] = $srcset;   // Data-srcset for lazy loading JavaScript
+        }
 
         $focal_point = $this->getFocalPoint($image);
         $attributes['data-focal-point'] = $focal_point;
@@ -108,9 +118,11 @@ class ImageFilters extends AbstractExtension {
         // For cover images (object-fit: cover), use 200vw to account for ~2x zoom from aspect ratio mismatch
         // This ensures browser downloads high enough resolution before cropping
         // Set this AFTER merge to prevent it from being overwritten
-        $sizes_value = !empty($attr['data-cover']) ? '200vw' : '100vw';
-        $attributes['sizes'] = $sizes_value;
-        $attributes['data-sizes'] = $sizes_value;  // Also set data-sizes for lazy loading script
+        if ($srcset !== '') {
+            $sizes_value = !empty($attr['data-cover']) ? '200vw' : '100vw';
+            $attributes['sizes'] = $sizes_value;
+            $attributes['data-sizes'] = $sizes_value;  // Also set data-sizes for lazy loading script
+        }
 
         // Remove data-cover from final attributes (it's only used for logic, not as HTML attribute)
         unset($attributes['data-cover']);
