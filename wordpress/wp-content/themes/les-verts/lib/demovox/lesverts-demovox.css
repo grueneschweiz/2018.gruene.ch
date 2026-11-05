@@ -6,34 +6,6 @@
 	margin-bottom: 0.6em;
 }
 
-.demovox .form-control {
-	margin-top: 0.4em;
-	background: #F4F4F4;
-	border: none;
-	font-size: 1rem;
-	border-bottom: 2px solid #E2E2E2;
-	border-radius: 2px;
-}
-
-.demovox .form-control:focus {
-	outline: none;
-	border-bottom: 2px solid #6A6A6A;
-	box-shadow: none;
-	background: #F4F4F4;
-}
-
-.m-in-short .demovox .form-control,
-.m-in-short .demovox .form-control:focus {
-	background: #ffffff;
-}
-
-.demovox label {
-	text-transform: uppercase;
-	font-size: 0.625rem;
-	font-weight: 700;
-	display: block;
-}
-
 .demovox .form-check {
 	padding-left: 0;
 }
@@ -102,87 +74,10 @@
 	content: none;
 }
 
-/* set first and last name next to each other */
-@media screen and (min-width: 768px) {
-	#demovox-grp-name_first {
-		width: calc(50% - 0.5em);
-		float: left;
-	}
-
-	#demovox-grp-name_last {
-		width: calc(50% - 0.5em);
-		float: left;
-		margin-left: 1em;
-	}
-}
-
-/* hide phone */
-#demovox-grp-phone {
-	display: none;
-}
-
-.demovox .select2-container {
-	margin-top: 0.4em;
-	width: 100%;
-}
-
-.demovox .select2-container--default .select2-selection--single {
-	background: #F4F4F4;
-	height: 2.4em;
-	border-radius: 2px;
-	border: none;
-	border-bottom: 2px solid #E2E2E2;
-	padding: 0.3em;
-}
-
-.m-in-short .demovox .select2-container--default .select2-selection--single,
-.m-in-short .demovox .select2-container--default .select2-selection--single:focus {
-	background: #FFFFFF;
-}
-
-.demovox .select2-container--default .select2-selection--single .select2-selection__arrow {
-	top: 0.3em;
-}
-
 .select2-results__option::before {
 	content: none;
 }
 
 #demovox-grp-is_optin {
 	margin-top: 0.8em;
-}
-
-#demovox-ajax-button,
-#demovox-grp-ajax-button,
-.btn.btn-success {
-	box-shadow: none;
-	border: none;
-	width: auto;
-	margin-top: 1em;
-	font-size: 0.875em;
-	display: inline-block;
-	line-height: 1.71428em;
-	letter-spacing: .08928em;
-	padding-left: 1.57142em;
-	padding-right: 1.57142em;
-	padding-top: 6px;
-	padding-bottom: 6px;
-	background-color: #E10078;
-	border-color: #E10078;
-	-webkit-border-radius: .14285em;
-	-moz-border-radius: .14285em;
-	border-radius: .14285em;
-	color: #FFFFFF;
-	font-family: Arial, Helvetica, sans-serif;
-	font-weight: 700;
-	text-align: center;
-	text-transform: uppercase;
-	cursor: pointer;
-	-webkit-transition: background-color 0.2s cubic-bezier(0.65, 0.05, 0.36, 1), color 0.2s cubic-bezier(0.65, 0.05, 0.36, 1);
-	transition: background-color 0.2s cubic-bezier(0.65, 0.05, 0.36, 1), color 0.2s cubic-bezier(0.65, 0.05, 0.36, 1);
-}
-
-#demovox-ajax-button:hover, #demovox-ajax-button:focus,
-.btn.btn-success:hover, .btn.btn-success:focus {
-	background-color: #B1025F;
 }

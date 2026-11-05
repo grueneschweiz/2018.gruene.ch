@@ -33,7 +33,7 @@
     "cover 99.5% in CH"
   ],
   "resolutions": {
-    "follow-redirects": "1.16.0",
+    "follow-redirects": "1.16.2",
     "picomatch": "2.3.2"
   },
   "scripts": {
