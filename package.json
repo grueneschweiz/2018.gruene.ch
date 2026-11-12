@@ -33,8 +33,14 @@
     "cover 99.5% in CH"
   ],
   "resolutions": {
+    "**/js-beautify/**/minimatch": "11.0.5",
+    "axios": "0.35.0",
+    "decode-uri-component": "0.5.1",
+    "flatted": "3.4.4",
     "follow-redirects": "1.16.2",
-    "picomatch": "2.3.2"
+    "markdown-it": "14.3.3",
+    "picomatch": "2.3.2",
+    "tmp": "0.2.7"
   },
   "scripts": {
     "start": "gulp fractal:start",
@@ -72,7 +78,7 @@
     "gulp-plumber": "^1.2.1",
     "gulp-rename": "^2.0.0",
     "gulp-sass": "^6.0.0",
-    "gulp-svg-sprite": "^1.5.0",
+    "gulp-svg-sprite": "^2.0.3",
     "gulp-uglify": "^3.0.1",
     "handlebars": "^4.7.9",
     "handlebars-helper-svg": "^2.0.1",
